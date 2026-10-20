@@ -137,6 +137,7 @@ export const ANNOUNCEMENT_TYPE_LABELS: Record<string, Localized> = {
   book_started: { ar: "بدء كتاب جديد", en: "New book started" },
   book_finished: { ar: "ختم كتاب", en: "Book completed" },
   guest: { ar: "درس ضيف", en: "Guest lesson" },
+  lecture: { ar: "محاضرة", en: "Lecture" },
   schedule_change: { ar: "تغيير في الجدول", en: "Schedule change" },
   other: { ar: "إعلان", en: "Announcement" },
 };

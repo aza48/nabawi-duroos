@@ -498,4 +498,84 @@ export const LESSONS: Lesson[] = [
     sequence: L("كشف الشبهات (انتهى) ← فضل الإسلام (الحالي) ← العقيدة الواسطية ← العقيدة الطحاوية", "Kashf ash-Shubuhat (finished) → Fadl al-Islam (current) → Al-Aqidah al-Wasitiyyah → Al-Aqidah at-Tahawiyyah"),
     note: L("أول درس من فضل الإسلام كان يوم الاثنين — كتبت القناة ٩/٥ سهوًا", "The first Fadl al-Islam lesson was Monday — the channel wrote 9/5 by mistake"),
   },
+
+  // ==================== جامع حماد البلوي ====================
+  // Recurring series below are NOT a published timetable: no channel post
+  // states a weekly schedule. Their weekdays are a pattern observed across
+  // numbered, dated recording posts — the notes say so explicitly.
+  {
+    id: "balawi-saidi-tahrir",
+    shaykh: L("د. يوسف بن محسن السعيدي", "Dr. Yusuf ibn Muhsin al-Sa'idi"),
+    book: L("شرح مختصر التحرير", "Explanation of Mukhtasar al-Tahrir"),
+    bookAuthor: L("ابن النجار الحنبلي", "Ibn an-Najjar al-Hanbali"),
+    masjid: "balawi",
+    days: [0],
+    // No prayer time is stated in the recording posts (evening marker only);
+    // "maghrib" is only a grouping bucket — timeLabel carries the honest text.
+    prayer: "maghrib",
+    timeLabel: L("مساءً — لم يُذكر وقت الصلاة في منشورات القناة", "Evening — no prayer time is stated in the channel posts"),
+    location: L("جامع حماد البلوي — حي الفيصلية", "Jami' Hammad al-Balawi — al-Faisaliyah District"),
+    topic: "usul",
+    status: "active",
+    note: L(
+      "سلسلة مستمرة — تُستنتج أيامها من منشورات القنوات (لم يُنشر جدول رسمي). الدروس المرقّمة ٢١–٢٥ وقعت أيام الأحد ٢٤/٣ – ٢٣/٤/١٤٤٨",
+      "Ongoing series — its days are inferred from channel posts (no official timetable published). Numbered lessons 21–25 fell on Sundays, 24/3 – 23/4/1448"
+    ),
+  },
+  {
+    id: "balawi-ghalib-ubudiyyah",
+    shaykh: L("د. غالب بن غازي السعيدي", "Dr. Ghalib ibn Ghazi al-Sa'idi"),
+    book: L("شرح العبودية", "Explanation of Al-'Ubudiyyah"),
+    bookAuthor: L("شيخ الإسلام ابن تيمية", "Shaykh al-Islam Ibn Taymiyyah"),
+    masjid: "balawi",
+    days: [6],
+    prayer: "asr",
+    timeLabel: L("يوم علمي — جلسات بعد العصر والمغرب والعشاء", "Scholarly day — sessions after Asr, Maghrib and Isha"),
+    location: L("جامع حماد البلوي — حي الفيصلية", "Jami' Hammad al-Balawi — al-Faisaliyah District"),
+    topic: "aqidah",
+    status: "active",
+    note: L(
+      "سلسلة مستمرة — تُستنتج أيامها من منشورات القنوات (لم يُنشر جدول رسمي). دروس مرقّمة أيام السبت منذ ١/٤/١٤٤٨، وآخر إعلان عن تتمتها كان ليوم السبت ٦/٥/١٤٤٨",
+      "Ongoing series — its days are inferred from channel posts (no official timetable published). Numbered lessons on Saturdays since 1/4/1448; the latest continuation was announced for Saturday 6/5/1448"
+    ),
+  },
+
+  // ==================== مسجد دار الهجرة ====================
+  {
+    id: "hijrah-qahtani-tawhid",
+    shaykh: L("الشيخ ماهر القحطاني", "Shaykh Maher al-Qahtani"),
+    book: L("شرح كتاب التوحيد", "Explanation of Kitab al-Tawhid"),
+    bookAuthor: L("الإمام محمد بن عبد الوهاب", "Imam Muhammad ibn Abd al-Wahhab"),
+    masjid: "dar-hijrah",
+    days: [],
+    daysLabel: L("الدرس الشهري — أُعلن عن درس يوم السبت ١/٤/١٤٤٨", "The monthly lesson — announced instance: Saturday 1/4/1448"),
+    frequency: L("شهريًا", "Monthly"),
+    prayer: "maghrib",
+    location: L("مسجد دار الهجرة — الفيصلية", "Masjid Dar al-Hijrah — al-Faisaliyah"),
+    topic: "aqidah",
+    status: "active",
+    note: L(
+      "وصف المنشور نفسه الدرس بأنه «الدرس الشهري» دون أن يحدد يومًا ثابتًا من الشهر؛ الدرس المُعلن كان بعد صلاة المغرب",
+      "The post itself calls this «the monthly lesson» without fixing a day of the month; the announced instance was after Maghrib"
+    ),
+  },
+  {
+    id: "hijrah-tariq-fath",
+    shaykh: L("أ. د. طارق القحطاني", "Prof. Dr. Tariq al-Qahtani"),
+    book: L("شرح فتح الواحد الصمد في أدلة صحيح المعتقد", "Explanation of Fath al-Wahid as-Samad fi Adillat Sahih al-Mu'taqad"),
+    bookAuthor: L("المؤلف نفسه", "The author himself"),
+    masjid: "dar-hijrah",
+    days: [3],
+    // No prayer time is stated in the two livestream posts; "maghrib" is only
+    // a grouping bucket — timeLabel carries the honest text.
+    prayer: "maghrib",
+    timeLabel: L("لم يُذكر وقت الصلاة في المنشورات — يُبث مباشرة عبر قناة الشيخ على تيليجرام", "No prayer time is stated in the posts — livestreamed via the shaykh's Telegram channel"),
+    location: L("مسجد دار الهجرة — الفيصلية", "Masjid Dar al-Hijrah — al-Faisaliyah"),
+    topic: "aqidah",
+    status: "active",
+    note: L(
+      "سلسلة مستمرة — تُستنتج أيامها من منشورات القنوات (لم يُنشر جدول رسمي). رُصد بدء البث لدرسين في أربعاءين متتاليين: ٩ و١٦ سبتمبر ٢٠٢٦",
+      "Ongoing series — its days are inferred from channel posts (no official timetable published). Livestreams were observed on two consecutive Wednesdays: 9 and 16 September 2026"
+    ),
+  },
 ];

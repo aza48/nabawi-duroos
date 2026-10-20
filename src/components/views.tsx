@@ -44,7 +44,10 @@ import {
   streamInfoForShaykh,
 } from "../data/streams";
 import { findBookScope, findShaykhScope, shaykhScopeId } from "../lib/scopes";
-import { gregorianLong, hijriPlain, lessonDateBracket } from "../lib/dates";
+import { gregorianLong, hijriPlain, lessonDateBracket, riyadhToday } from "../lib/dates";
+import { useDbAnnouncements } from "../lib/useDbAnnouncements";
+import { eventsForMasjid, MasjidEvent } from "../data/events";
+import { DAR_HIJRAH_STREAM } from "../data/streams";
 import { BellToggle, SubscribeBox } from "./subscribe";
 import { AdminAnnouncements } from "./admin";
 import {
@@ -178,6 +181,56 @@ export function HomeView({
 }
 
 /* =============================== SCHEDULE =============================== */
+function EventCard({ e }: { e: MasjidEvent }) {
+  const { t, ui } = useLang();
+  const ended = e.endIso < riyadhToday().iso;
+  const kindLabel =
+    e.kind === "course" ? ui("eventCourse") : e.kind === "alert" ? ui("eventAlert") : ui("eventLecture");
+  const kindCls =
+    e.kind === "alert"
+      ? "bg-[var(--status-cancel-bg)] text-[var(--status-cancel-tx)]"
+      : "bg-[var(--brand-deep)] text-white";
+  return (
+    <article className={`rounded-card bg-[var(--card)] p-5 shadow-soft sm:p-6 ${ended ? "opacity-80" : ""}`}>
+      <div className="flex flex-wrap items-center gap-2">
+        <span className={`inline-flex items-center gap-1.5 rounded-pill px-3 py-1 text-xs font-semibold ${kindCls}`}>
+          {kindLabel}
+        </span>
+        {ended ? (
+          <span className="rounded-pill bg-[var(--status-pause-bg)] px-3 py-1 text-xs font-semibold text-[var(--status-pause-tx)]">
+            {ui("ended")}
+          </span>
+        ) : null}
+      </div>
+      <h3 className="mt-3 text-[15px] font-semibold leading-relaxed text-[var(--ink)]">{t(e.title)}</h3>
+      {e.shaykh ? <p className="mt-1 text-sm font-medium text-[var(--ink-soft)]">{t(e.shaykh)}</p> : null}
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[var(--ink-soft)]">
+        <span className="inline-flex items-center gap-1.5">
+          <CalendarRange className="h-4 w-4" />
+          {t(e.hijriDate)}
+        </span>
+        {e.prayer ? (
+          <span className="inline-flex items-center gap-1.5">
+            <Clock3 className="h-4 w-4" />
+            {t(e.prayer)}
+          </span>
+        ) : null}
+      </div>
+      <footer className="mt-4 border-t border-[var(--ceramic)] pt-3 text-xs">
+        <a
+          href={e.source}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 font-medium text-[var(--brand)] hover:underline"
+        >
+          {ui("source")}
+          <ExternalLink className="h-3.5 w-3.5" />
+        </a>
+      </footer>
+    </article>
+  );
+}
+
 export function ScheduleView({
   masjid,
   setMasjid,
@@ -191,14 +244,15 @@ export function ScheduleView({
 }) {
   const { t, ui } = useLang();
   const rows = lessons.filter((l) => l.masjid === masjid);
+  const events = eventsForMasjid(masjid);
   return (
     <div className="space-y-8">
-      <div className="flex flex-wrap gap-2">
+      <div className="-mx-4 flex flex-nowrap gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
         {(Object.keys(MASJIDS) as MasjidId[]).map((m) => (
           <button
             key={m}
             onClick={() => setMasjid(m)}
-            className={`inline-flex h-[50px] items-center gap-2 rounded-pill px-6 text-[15px] font-semibold transition-all duration-150 active:scale-95 ${
+            className={`inline-flex h-[50px] shrink-0 items-center gap-2 whitespace-nowrap rounded-pill px-6 text-[15px] font-semibold transition-all duration-150 active:scale-95 ${
               masjid === m ? "bg-[var(--brand-deep)] text-white shadow-soft" : "bg-[var(--card)] text-[var(--ink-soft)] shadow-soft"
             }`}
           >
@@ -213,20 +267,64 @@ export function ScheduleView({
         {masjid === "quba" ? (
           <p className="mt-1 text-sm text-[var(--ink-soft)]">{t(QUBA_PERIOD)}</p>
         ) : null}
-        <p className="mt-1 text-sm text-[var(--ink-soft)]">
-          {rows.length} {ui("lessonsCount")}
-        </p>
+        {rows.length > 0 ? (
+          <p className="mt-1 text-sm text-[var(--ink-soft)]">
+            {rows.length} {ui("lessonsCount")}
+          </p>
+        ) : null}
       </section>
 
-      <ScheduleTable lessons={rows} onShaykh={onShaykh} />
+      {masjid === "dar-hijrah" ? (
+        <section className="rounded-card bg-[var(--card)] p-5 shadow-soft">
+          <h2 className="flex items-center gap-2 text-[15px] font-semibold text-[var(--ink)]">
+            <Radio className="h-5 w-5 text-[var(--brand-accent)]" />
+            {ui("telegramListen")}
+          </h2>
+          <p className="mt-2 text-sm leading-loose text-[var(--ink-soft)]">{ui("hijrahStreamNote")}</p>
+          <a
+            href={DAR_HIJRAH_STREAM.url}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-flex items-center gap-2 rounded-pill bg-[var(--ceramic)] px-4 py-2 text-sm font-medium text-[var(--brand)]"
+            dir="ltr"
+          >
+            {DAR_HIJRAH_STREAM.handle}
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </section>
+      ) : null}
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {rows.map((l, i) => (
-          <Reveal key={l.id} delay={(i % 4) * 0.04}>
-            <LessonCard lesson={l} onShaykh={onShaykh} />
-          </Reveal>
-        ))}
-      </div>
+      {rows.length === 0 ? (
+        <EmptyState title={ui("noStandingSchedule")} />
+      ) : (
+        <>
+          <ScheduleTable lessons={rows} onShaykh={onShaykh} />
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {rows.map((l, i) => (
+              <Reveal key={l.id} delay={(i % 4) * 0.04}>
+                <LessonCard lesson={l} onShaykh={onShaykh} />
+              </Reveal>
+            ))}
+          </div>
+        </>
+      )}
+
+      {events.length > 0 ? (
+        <section>
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-[var(--ink)]">
+            <CalendarRange className="h-5 w-5 text-[var(--brand-accent)]" />
+            {ui("eventsTitle")}
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {events.map((e, i) => (
+              <Reveal key={e.id} delay={(i % 4) * 0.04}>
+                <EventCard e={e} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }
@@ -287,7 +385,16 @@ export function DailyView({ lessons, onShaykh }: { lessons: Lesson[]; onShaykh: 
 }
 
 /* =============================== SEARCH =============================== */
-export function SearchView({ lessons, onShaykh }: { lessons: Lesson[]; onShaykh: (n: string) => void }) {
+export function SearchView({
+  lessons,
+  onShaykh,
+  onMasjidFocus,
+}: {
+  lessons: Lesson[];
+  onShaykh: (n: string) => void;
+  /** Theme follows the search masjid selection (null = "all" → default). */
+  onMasjidFocus?: (m: MasjidId | null) => void;
+}) {
   const { t, ui, lang, statusLabel } = useLang();
   const [q, setQ] = useState("");
   const [masjid, setMasjidF] = useState("all");
@@ -314,6 +421,7 @@ export function SearchView({ lessons, onShaykh }: { lessons: Lesson[]; onShaykh:
 
   const clear = () => {
     setQ(""); setMasjidF("all"); setTopic("all"); setDay("all"); setPrayer("all"); setStatus("all"); setBook("all");
+    onMasjidFocus?.(null);
   };
 
   return (
@@ -330,7 +438,10 @@ export function SearchView({ lessons, onShaykh }: { lessons: Lesson[]; onShaykh:
         <p className="text-sm font-medium text-[var(--ink-soft)]">{lang === "ar" ? "المسجد" : "Mosque"}</p>
         <FilterChips
           value={masjid}
-          onChange={setMasjidF}
+          onChange={(v) => {
+            setMasjidF(v);
+            onMasjidFocus?.(v === "all" ? null : (v as MasjidId));
+          }}
           options={[
             { value: "all", label: ui("all") },
             ...(Object.keys(MASJIDS) as MasjidId[]).map((m) => ({ value: m, label: t(MASJIDS[m].short) })),
@@ -428,6 +539,7 @@ const DB_TYPE_MAP: Record<string, AnnouncementType> = {
   book_started: "new-book",
   book_finished: "book-finished",
   guest: "guest",
+  lecture: "lecture",
   schedule_change: "info",
   other: "info",
 };
@@ -457,21 +569,8 @@ export function mapDbAnnouncement(row: AnnouncementRow): Announcement {
 
 export function FeedView({ extra }: { extra: Announcement[] }) {
   const { ui } = useLang();
-  const [dbAnns, setDbAnns] = useState<Announcement[]>([]);
-  useEffect(() => {
-    let alive = true;
-    fetch("/api/announcements")
-      .then((r) => (r.ok ? r.json() : { announcements: [] }))
-      .then((d: { announcements?: AnnouncementRow[] }) => {
-        if (alive && Array.isArray(d.announcements)) {
-          setDbAnns(d.announcements.map(mapDbAnnouncement));
-        }
-      })
-      .catch(() => {});
-    return () => {
-      alive = false;
-    };
-  }, []);
+  const rows = useDbAnnouncements();
+  const dbAnns = rows.map(mapDbAnnouncement);
   const all = [...dbAnns, ...extra, ...ANNOUNCEMENTS];
   return (
     <div className="space-y-6">

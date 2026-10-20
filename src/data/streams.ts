@@ -32,6 +32,16 @@ export const MANARA_ALHARAMAIN = {
   url: "https://manaratalharamain.gov.sa",
 };
 
+/**
+ * Dar al-Hijrah — Prof. Tariq al-Qahtani's lessons there are livestreamed on
+ * his own Telegram channel (stated in @drosalmadina livestream posts,
+ * 2026-09-09 and 2026-09-16). Telegram is link-out only (not embeddable).
+ */
+export const DAR_HIJRAH_STREAM = {
+  handle: "@TariqAlQahtany",
+  url: "https://t.me/TariqAlQahtany",
+};
+
 /** General Nabawi duroos Telegram channels (link-out only). */
 export const GENERAL_TELEGRAM = [
   {

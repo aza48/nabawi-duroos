@@ -4,7 +4,8 @@
 
 /* ============================================================
    Duroos Aggregator — per-masjid themes via CSS variables.
-   data-masjid="nabawi" | "quba" | "ibrahim"
+   data-masjid="nabawi" | "quba" | "ibrahim" | "sayyid-shuhada"
+              | "balawi" | "dar-hijrah" | "qiblatain"
    data-mode="light" | "dark"
    ============================================================ */
 
@@ -118,6 +119,154 @@
   --status-active-bg: rgba(74, 107, 52, 0.32);
   --status-active-tx: #b7d795;
   --status-cancel-bg: rgba(200, 32, 20, 0.24);
+  --status-cancel-tx: #ff9d8f;
+  --status-pause-bg: rgba(203, 162, 88, 0.22);
+  --status-pause-tx: #e8c876;
+}
+
+/* Sayyid al-Shuhada — deep masjid red, warm porcelain neutrals */
+.app-shell[data-masjid="sayyid-shuhada"] {
+  --brand: #9e1b1b;
+  --brand-accent: #b3272d;
+  --brand-deep: #671212;
+  --brand-uplift: #7d1a1a;
+  --canvas: #f7f1ec;
+  --ceramic: #efe2da;
+  --card: #ffffff;
+  --ink: rgba(43, 18, 14, 0.9);
+  --ink-soft: rgba(43, 18, 14, 0.6);
+  --ink-faint: rgba(43, 18, 14, 0.4);
+  --status-active-bg: #e5f2e9;
+  --status-active-tx: #1c6b3a;
+  --status-cancel-bg: #fbe7e4;
+  --status-cancel-tx: #a81a0e;
+  --status-pause-bg: #f7ecd7;
+  --status-pause-tx: #8a6418;
+  --status-guest-bg: #671212;
+  --status-guest-tx: #ffffff;
+}
+
+.app-shell[data-masjid="sayyid-shuhada"][data-mode="dark"] {
+  --canvas: #22100e;
+  --ceramic: #2c1713;
+  --card: #38201b;
+  --ink: rgba(248, 235, 230, 0.9);
+  --ink-soft: rgba(248, 235, 230, 0.62);
+  --ink-faint: rgba(248, 235, 230, 0.38);
+  --status-active-bg: rgba(28, 107, 58, 0.28);
+  --status-active-tx: #7fd49a;
+  --status-cancel-bg: rgba(200, 32, 20, 0.28);
+  --status-cancel-tx: #ff9d8f;
+  --status-pause-bg: rgba(203, 162, 88, 0.22);
+  --status-pause-tx: #e8c876;
+}
+
+/* Jami' Hammad al-Balawi — deep red with gold accents */
+.app-shell[data-masjid="balawi"] {
+  --brand: #8f1d22;
+  --brand-accent: #b3272d;
+  --brand-deep: #571014;
+  --brand-uplift: #71181d;
+  --canvas: #f8f2ec;
+  --ceramic: #f0e4d8;
+  --card: #ffffff;
+  --ink: rgba(43, 20, 16, 0.9);
+  --ink-soft: rgba(43, 20, 16, 0.6);
+  --ink-faint: rgba(43, 20, 16, 0.4);
+  --status-active-bg: #e5f2e9;
+  --status-active-tx: #1c6b3a;
+  --status-cancel-bg: #fbe7e4;
+  --status-cancel-tx: #a81a0e;
+  --status-pause-bg: #f7ecd7;
+  --status-pause-tx: #8a6418;
+  --status-guest-bg: #cba258;
+  --status-guest-tx: #402d08;
+}
+
+.app-shell[data-masjid="balawi"][data-mode="dark"] {
+  --canvas: #200d0e;
+  --ceramic: #2b1415;
+  --card: #371b1c;
+  --ink: rgba(248, 236, 228, 0.9);
+  --ink-soft: rgba(248, 236, 228, 0.62);
+  --ink-faint: rgba(248, 236, 228, 0.38);
+  --status-active-bg: rgba(28, 107, 58, 0.28);
+  --status-active-tx: #7fd49a;
+  --status-cancel-bg: rgba(200, 32, 20, 0.28);
+  --status-cancel-tx: #ff9d8f;
+  --status-pause-bg: rgba(203, 162, 88, 0.22);
+  --status-pause-tx: #e8c876;
+}
+
+/* Masjid Dar al-Hijrah — teal family */
+.app-shell[data-masjid="dar-hijrah"] {
+  --brand: #0f766e;
+  --brand-accent: #0d9488;
+  --brand-deep: #134e4a;
+  --brand-uplift: #115e59;
+  --canvas: #eef5f3;
+  --ceramic: #dfece8;
+  --card: #ffffff;
+  --ink: rgba(10, 40, 38, 0.9);
+  --ink-soft: rgba(10, 40, 38, 0.6);
+  --ink-faint: rgba(10, 40, 38, 0.4);
+  --status-active-bg: #e2f2ec;
+  --status-active-tx: #14604f;
+  --status-cancel-bg: #fbe7e4;
+  --status-cancel-tx: #a81a0e;
+  --status-pause-bg: #f7ecd7;
+  --status-pause-tx: #8a6418;
+  --status-guest-bg: #134e4a;
+  --status-guest-tx: #ffffff;
+}
+
+.app-shell[data-masjid="dar-hijrah"][data-mode="dark"] {
+  --canvas: #0e201d;
+  --ceramic: #142a26;
+  --card: #1b352f;
+  --ink: rgba(232, 246, 242, 0.9);
+  --ink-soft: rgba(232, 246, 242, 0.62);
+  --ink-faint: rgba(232, 246, 242, 0.38);
+  --status-active-bg: rgba(20, 96, 79, 0.35);
+  --status-active-tx: #7fd4bd;
+  --status-cancel-bg: rgba(200, 32, 20, 0.24);
+  --status-cancel-tx: #ff9d8f;
+  --status-pause-bg: rgba(203, 162, 88, 0.22);
+  --status-pause-tx: #e8c876;
+}
+
+/* Masjid al-Qiblatain — red primary with charcoal / near-black neutrals */
+.app-shell[data-masjid="qiblatain"] {
+  --brand: #b02020;
+  --brand-accent: #c62828;
+  --brand-deep: #17181c;
+  --brand-uplift: #26282e;
+  --canvas: #f3f1ee;
+  --ceramic: #e7e4e0;
+  --card: #ffffff;
+  --ink: rgba(16, 16, 18, 0.9);
+  --ink-soft: rgba(16, 16, 18, 0.6);
+  --ink-faint: rgba(16, 16, 18, 0.4);
+  --status-active-bg: #e5f2e9;
+  --status-active-tx: #1c6b3a;
+  --status-cancel-bg: #fbe7e4;
+  --status-cancel-tx: #a81a0e;
+  --status-pause-bg: #f7ecd7;
+  --status-pause-tx: #8a6418;
+  --status-guest-bg: #17181c;
+  --status-guest-tx: #ffffff;
+}
+
+.app-shell[data-masjid="qiblatain"][data-mode="dark"] {
+  --canvas: #101114;
+  --ceramic: #17181c;
+  --card: #1f2025;
+  --ink: rgba(240, 240, 242, 0.9);
+  --ink-soft: rgba(240, 240, 242, 0.62);
+  --ink-faint: rgba(240, 240, 242, 0.38);
+  --status-active-bg: rgba(28, 107, 58, 0.28);
+  --status-active-tx: #7fd49a;
+  --status-cancel-bg: rgba(200, 32, 20, 0.28);
   --status-cancel-tx: #ff9d8f;
   --status-pause-bg: rgba(203, 162, 88, 0.22);
   --status-pause-tx: #e8c876;

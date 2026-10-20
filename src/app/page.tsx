@@ -33,6 +33,7 @@ import {
   SeasonalView,
   ShaykhView,
 } from "../components/views";
+import { LectureAlert } from "../components/LectureAlert";
 
 function Shell() {
   const { lang, setLang, ui } = useLang();
@@ -188,7 +189,11 @@ function Shell() {
         ) : view === "daily" ? (
           <DailyView lessons={lessons} onShaykh={openShaykh} />
         ) : view === "search" ? (
-          <SearchView lessons={lessons} onShaykh={openShaykh} />
+          <SearchView
+            lessons={lessons}
+            onShaykh={openShaykh}
+            onMasjidFocus={(m) => setThemeMasjid(m ?? "nabawi")}
+          />
         ) : view === "feed" ? (
           <FeedView extra={[]} />
         ) : view === "streams" ? (
@@ -200,6 +205,7 @@ function Shell() {
         )}
       </main>
 
+      <LectureAlert />
       <FloatingLiveButton onClick={() => nav("streams")} />
       <MobileBottomNav view={view} setView={nav} items={bottomItems} />
     </div>

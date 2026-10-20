@@ -1,4 +1,11 @@
-export type MasjidId = "nabawi" | "quba" | "ibrahim";
+export type MasjidId =
+  | "nabawi"
+  | "quba"
+  | "ibrahim"
+  | "sayyid-shuhada"
+  | "balawi"
+  | "dar-hijrah"
+  | "qiblatain";
 export type Prayer = "fajr" | "dhuhr" | "asr" | "maghrib" | "isha";
 export type LessonStatus = "active" | "cancelled" | "paused" | "guest";
 
@@ -22,6 +29,9 @@ export interface Lesson {
   frequency?: Localized; // e.g. monthly markers
   prayer: Prayer;
   prayerNote?: Localized; // e.g. "واستمرار بعد العشاء"
+  /** Overrides the prayer-time label when the sources do not state a prayer time
+      (the `prayer` value is then only a grouping/sort bucket). */
+  timeLabel?: Localized;
   location: Localized;
   topic: string; // topic key
   status: LessonStatus;
@@ -37,7 +47,8 @@ export type AnnouncementType =
   | "book-finished"
   | "reminder"
   | "info"
-  | "guest";
+  | "guest"
+  | "lecture";
 
 export interface Announcement {
   id: string;
@@ -105,6 +116,26 @@ export const MASJIDS: Record<MasjidId, Localized & { short: Localized }> = {
     en: "Masjid Muhammad ibn Ibrahim — Islamic University",
     short: { ar: "ابن إبراهيم", en: "Ibn Ibrahim" },
   },
+  "sayyid-shuhada": {
+    ar: "مسجد سيد الشهداء",
+    en: "Sayyid al-Shuhada Mosque",
+    short: { ar: "سيد الشهداء", en: "Sayyid al-Shuhada" },
+  },
+  balawi: {
+    ar: "جامع حماد البلوي — حي الفيصلية",
+    en: "Jami' Hammad al-Balawi — al-Faisaliyah District",
+    short: { ar: "البلوي", en: "Al-Balawi" },
+  },
+  "dar-hijrah": {
+    ar: "مسجد دار الهجرة — الفيصلية",
+    en: "Masjid Dar al-Hijrah — al-Faisaliyah",
+    short: { ar: "دار الهجرة", en: "Dar al-Hijrah" },
+  },
+  qiblatain: {
+    ar: "مسجد القبلتين",
+    en: "Masjid al-Qiblatain",
+    short: { ar: "القبلتين", en: "Qiblatain" },
+  },
 };
 
 /* ---------- Backend (Neon) shared shapes ----------
@@ -119,6 +150,7 @@ export const ANNOUNCEMENT_TYPES = [
   "book_started",
   "book_finished",
   "guest",
+  "lecture",
   "schedule_change",
   "other",
 ] as const;

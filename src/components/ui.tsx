@@ -69,6 +69,16 @@ export function StatusBadge({ status }: { status: Lesson["status"] }) {
 export function PrayerTimeLabel({ lesson }: { lesson: Lesson }) {
   const { t, ui, lang } = useLang();
   const prayer = PRAYERS[lesson.prayer];
+  // Lessons whose sources state no prayer time carry an explicit timeLabel;
+  // never present the grouping-bucket prayer as if it were stated.
+  if (lesson.timeLabel) {
+    return (
+      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--ink)]">
+        <Clock3 className="h-4 w-4 text-[var(--brand-accent)]" />
+        {t(lesson.timeLabel)}
+      </span>
+    );
+  }
   return (
     <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--ink)]">
       <Clock3 className="h-4 w-4 text-[var(--brand-accent)]" />
@@ -367,7 +377,9 @@ export function ScheduleTable({ lessons, onShaykh }: { lessons: Lesson[]; onShay
                   {l.daysLabel ? t(l.daysLabel) : l.days.map((d) => (lang === "ar" ? daysAr[d] : daysEn[d])).join("، ") || (l.frequency ? t(l.frequency) : "—")}
                 </td>
                 <td className="px-5 py-3 text-[var(--ink-soft)]">
-                  {lang === "ar" ? "بعد" : "After"} {t(PRAYERS[l.prayer])}
+                  {l.timeLabel
+                    ? t(l.timeLabel)
+                    : `${lang === "ar" ? "بعد" : "After"} ${t(PRAYERS[l.prayer])}`}
                 </td>
               </tr>
             ))}

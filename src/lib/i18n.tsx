@@ -95,6 +95,7 @@ const UI = {
     reminder: { ar: "تذكير", en: "Reminder" },
     info: { ar: "خبر", en: "Info" },
     guest: { ar: "درس ضيف", en: "Guest" },
+    lecture: { ar: "محاضرة", en: "Lecture" },
   },
   advancedFilters: { ar: "عوامل تصفية متقدمة", en: "Advanced filters" },
   clearFilters: { ar: "مسح التصفية", en: "Clear filters" },
@@ -146,6 +147,7 @@ const UI = {
     book_started: { ar: "بدء كتاب جديد", en: "New book started" },
     book_finished: { ar: "ختم كتاب", en: "Book completed" },
     guest: { ar: "درس ضيف", en: "Guest lesson" },
+    lecture: { ar: "محاضرة", en: "Lecture" },
     schedule_change: { ar: "تغيير في الجدول", en: "Schedule change" },
     other: { ar: "أخرى", en: "Other" },
   },
@@ -166,6 +168,21 @@ const UI = {
   subscribersWord: { ar: "مشتركًا", en: "subscribers" },
   noAnnouncementsYet: { ar: "لا توجد إعلانات بعد", en: "No announcements yet" },
   backHome: { ar: "العودة للرئيسية", en: "Back to home" },
+  eventsTitle: { ar: "أحداث ومحاضرات", en: "Events & lectures" },
+  ended: { ar: "انتهى", en: "Ended" },
+  eventCourse: { ar: "دورة علمية", en: "Course" },
+  eventLecture: { ar: "محاضرة", en: "Lecture" },
+  eventAlert: { ar: "تنبيه", en: "Alert" },
+  noStandingSchedule: {
+    ar: "لا توجد دروس أسبوعية ثابتة رُصدت لهذا المسجد — تُنشر هنا المحاضرات والدورات عند الإعلان عنها",
+    en: "No standing weekly duroos were observed for this masjid — lectures and courses are posted here when announced",
+  },
+  upcomingLectures: { ar: "محاضرات قادمة", en: "Upcoming lectures" },
+  dismiss: { ar: "إغلاق", en: "Dismiss" },
+  hijrahStreamNote: {
+    ar: "يبثّ أ. د. طارق القحطاني دروسه من هذا المسجد مباشرة عبر قناته على تيليجرام",
+    en: "Prof. Tariq al-Qahtani livestreams his lessons from this masjid via his Telegram channel",
+  },
 } as const;
 
 export type UiKey = keyof typeof UI;
