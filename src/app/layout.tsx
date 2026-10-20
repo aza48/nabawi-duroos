@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_Arabic } from "next/font/google";
+import { Alexandria, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,11 +8,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const arabic = Noto_Sans_Arabic({
+const arabic = Alexandria({
   subsets: ["arabic"],
   variable: "--font-arabic",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {

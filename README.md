@@ -12,7 +12,7 @@ schedules + Telegram channel previews (October 2026).
 ## Stack
 
 - Next.js 14 (App Router) + TypeScript + Tailwind CSS
-- `lucide-react` icons, `framer-motion` (subtle only), `next/font` (Inter + Noto Sans Arabic)
+- `lucide-react` icons, `framer-motion` (subtle only), `next/font` (Inter + Alexandria (Arabic))
 - No gradients, no glassmorphism, no neumorphism
 
 ## Run locally
