@@ -43,6 +43,21 @@ export const TELEGRAM_SOURCES: TelegramSource[] = [
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "ruh-asr-cancelled-9-5-1448",
+    shaykh: L("أ. د. سليمان بن سليم الله الرحيلي", "Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli"),
+    text: L(
+      "يعتذر الشيخ عن درس عصر [الثلاثاء ٩/٥/١٤٤٨هـ] في المسجد النبوي",
+      "The shaykh apologizes for the Asr lesson of [Tuesday 9/5/1448 AH] at the Prophet's Mosque"
+    ),
+    postedHijri: L("الثلاثاء ٩/٥/١٤٤٨هـ", "Tuesday 9/5/1448 AH"),
+    postedGregorian: L("٢٠ أكتوبر ٢٠٢٦", "20 October 2026"),
+    source: "@drosalmadina",
+    sourceName: L("دروس المدينة النبوية", "Duroos al-Madinah an-Nabawiyyah"),
+    type: "cancellation",
+    expired: false,
+    channelNote: L("إشعار ليوم واحد — أثره ينتهي بانتهاء اليوم", "Single-day notice — its effect ends with today"),
+  },
+  {
     id: "abadr-tawhid-postponed",
     shaykh: L("أ. د. عبد الرزاق بن عبد المحسن البدر", "Prof. Dr. Abdurrazzaq ibn Abdulmuhsin al-Badr"),
     text: L(
