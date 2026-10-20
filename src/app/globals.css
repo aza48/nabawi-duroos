@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Duroos Aggregator — per-masjid themes via CSS variables.
+   data-masjid="nabawi" | "quba" | "ibrahim"
+   data-mode="light" | "dark"
+   ============================================================ */
+
+:root {
+  --gold: #cba258;
+  --danger: #c82014;
+}
+
+.app-shell[data-masjid="nabawi"] {
+  --brand: #006241;
+  --brand-accent: #00754a;
+  --brand-deep: #1e3932;
+  --brand-uplift: #2b5148;
+  --canvas: #f2f0eb;
+  --ceramic: #edebe9;
+  --card: #ffffff;
+  --ink: rgba(0, 0, 0, 0.87);
+  --ink-soft: rgba(0, 0, 0, 0.58);
+  --ink-faint: rgba(0, 0, 0, 0.38);
+  --status-active-bg: #e5f2e9;
+  --status-active-tx: #1c6b3a;
+  --status-cancel-bg: #fbe7e4;
+  --status-cancel-tx: #a81a0e;
+  --status-pause-bg: #f7ecd7;
+  --status-pause-tx: #8a6418;
+  --status-guest-bg: #1e3932;
+  --status-guest-tx: #ffffff;
+}
+
+.app-shell[data-masjid="nabawi"][data-mode="dark"] {
+  --canvas: #14201c;
+  --ceramic: #1a2823;
+  --card: #20302a;
+  --ink: rgba(255, 255, 255, 0.9);
+  --ink-soft: rgba(255, 255, 255, 0.62);
+  --ink-faint: rgba(255, 255, 255, 0.38);
+  --status-active-bg: rgba(28, 107, 58, 0.28);
+  --status-active-tx: #7fd49a;
+  --status-cancel-bg: rgba(200, 32, 20, 0.24);
+  --status-cancel-tx: #ff9d8f;
+  --status-pause-bg: rgba(203, 162, 88, 0.22);
+  --status-pause-tx: #e8c876;
+}
+
+/* Quba — light grey ashy slate, inspired by the masjid carpets */
+.app-shell[data-masjid="quba"] {
+  --brand: #475569;
+  --brand-accent: #64748b;
+  --brand-deep: #2d3a4a;
+  --brand-uplift: #3b4c60;
+  --canvas: #eef0f2;
+  --ceramic: #e3e7eb;
+  --card: #ffffff;
+  --ink: rgba(21, 32, 43, 0.9);
+  --ink-soft: rgba(21, 32, 43, 0.6);
+  --ink-faint: rgba(21, 32, 43, 0.4);
+  --status-active-bg: #e6edf3;
+  --status-active-tx: #33516b;
+  --status-cancel-bg: #fbe7e4;
+  --status-cancel-tx: #a81a0e;
+  --status-pause-bg: #f7ecd7;
+  --status-pause-tx: #8a6418;
+  --status-guest-bg: #2d3a4a;
+  --status-guest-tx: #ffffff;
+}
+
+.app-shell[data-masjid="quba"][data-mode="dark"] {
+  --canvas: #181d23;
+  --ceramic: #1f252d;
+  --card: #262d36;
+  --ink: rgba(240, 243, 246, 0.9);
+  --ink-soft: rgba(240, 243, 246, 0.62);
+  --ink-faint: rgba(240, 243, 246, 0.38);
+  --status-active-bg: rgba(71, 85, 105, 0.4);
+  --status-active-tx: #a9c3dc;
+  --status-cancel-bg: rgba(200, 32, 20, 0.24);
+  --status-cancel-tx: #ff9d8f;
+  --status-pause-bg: rgba(203, 162, 88, 0.22);
+  --status-pause-tx: #e8c876;
+}
+
+/* Masjid Muhammad ibn Ibrahim — pastel warm brown, carpet-inspired */
+.app-shell[data-masjid="ibrahim"] {
+  --brand: #7c5b3f;
+  --brand-accent: #936f4c;
+  --brand-deep: #4f3a28;
+  --brand-uplift: #684d34;
+  --canvas: #f4ece1;
+  --ceramic: #ecdfd0;
+  --card: #fffdf8;
+  --ink: rgba(62, 44, 28, 0.9);
+  --ink-soft: rgba(62, 44, 28, 0.6);
+  --ink-faint: rgba(62, 44, 28, 0.4);
+  --status-active-bg: #e9f0e2;
+  --status-active-tx: #4a6b34;
+  --status-cancel-bg: #fbe7e4;
+  --status-cancel-tx: #a81a0e;
+  --status-pause-bg: #f7ecd7;
+  --status-pause-tx: #8a6418;
+  --status-guest-bg: #4f3a28;
+  --status-guest-tx: #ffffff;
+}
+
+.app-shell[data-masjid="ibrahim"][data-mode="dark"] {
+  --canvas: #241a12;
+  --ceramic: #2c2117;
+  --card: #352a1d;
+  --ink: rgba(246, 235, 220, 0.9);
+  --ink-soft: rgba(246, 235, 220, 0.62);
+  --ink-faint: rgba(246, 235, 220, 0.38);
+  --status-active-bg: rgba(74, 107, 52, 0.32);
+  --status-active-tx: #b7d795;
+  --status-cancel-bg: rgba(200, 32, 20, 0.24);
+  --status-cancel-tx: #ff9d8f;
+  --status-pause-bg: rgba(203, 162, 88, 0.22);
+  --status-pause-tx: #e8c876;
+}
+
+/* Smooth ~600ms cross-fade when the masjid theme switches */
+.theme-animated,
+.theme-animated * {
+  transition:
+    background-color 0.6s ease,
+    border-color 0.6s ease,
+    color 0.35s ease,
+    box-shadow 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-animated,
+  .theme-animated * {
+    transition: none;
+  }
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tight tracking, warm editorial feel */
+h1, h2, h3 {
+  letter-spacing: -0.015em;
+}
+
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+  letter-spacing: 0;
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 8px;
+}
