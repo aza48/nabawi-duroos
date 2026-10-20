@@ -336,6 +336,69 @@ export function MobileBottomNav({
   );
 }
 
+/* ---------- ShaykhProfileCard ---------- */
+/** Portrait + facts card for a shaykh. Sweeps in from the left on scroll:
+    the card slides left→right, the photo glides inside its frame, and a
+    gold rule grows left→right under the photo. */
+export function ShaykhProfileCard({
+  name,
+  role,
+  facts,
+  photo,
+}: {
+  name: Localized;
+  role: Localized;
+  facts: Localized[];
+  photo: string;
+}) {
+  const { t, lang } = useLang();
+  return (
+    <motion.article
+      initial={{ opacity: 0, x: -64 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="overflow-hidden rounded-card bg-[var(--card)] shadow-soft"
+    >
+      <div className="flex flex-col sm:flex-row">
+        <div className="relative w-full shrink-0 overflow-hidden sm:w-[280px]">
+          <motion.img
+            src={photo}
+            alt={t(name)}
+            initial={{ x: -36, scale: 1.1 }}
+            whileInView={{ x: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
+            className="h-64 w-full object-cover object-top sm:h-full"
+          />
+          <motion.span
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+            className="absolute inset-x-0 bottom-0 h-1 origin-left bg-[var(--gold)]"
+          />
+        </div>
+        <div className="p-6 sm:p-7">
+          <p className="text-xs font-medium uppercase tracking-wider text-[var(--ink-soft)]">
+            {lang === "ar" ? "نبذة عن الشيخ" : "About the shaykh"}
+          </p>
+          <h2 className="mt-1.5 text-[22px] font-semibold leading-snug text-[var(--ink)]">{t(name)}</h2>
+          <p className="mt-1 text-sm font-medium text-[var(--brand)]">{t(role)}</p>
+          <ul className="mt-4 space-y-2.5">
+            {facts.map((f) => (
+              <li key={f.ar} className="flex items-start gap-2 text-sm leading-relaxed text-[var(--ink)]">
+                <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--gold)]" />
+                <span>{t(f)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
 /* ---------- ShaykhHeader ---------- */
 export function ShaykhHeader({ name, sub }: { name: string; sub?: string }) {
   return (

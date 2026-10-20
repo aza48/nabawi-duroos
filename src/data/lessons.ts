@@ -498,6 +498,18 @@ export const LESSONS: Lesson[] = [
     sequence: L("كشف الشبهات (انتهى) ← فضل الإسلام (الحالي) ← العقيدة الواسطية ← العقيدة الطحاوية", "Kashf ash-Shubuhat (finished) → Fadl al-Islam (current) → Al-Aqidah al-Wasitiyyah → Al-Aqidah at-Tahawiyyah"),
     note: L("أول درس من فضل الإسلام كان يوم الاثنين — كتبت القناة ٩/٥ سهوًا", "The first Fadl al-Islam lesson was Monday — the channel wrote 9/5 by mistake"),
   },
+  {
+    id: "uni-saadi-kafi",
+    shaykh: L("الشيخ عبدالله بن محمد الساعدي", "Shaykh Abdullah ibn Muhammad al-Sa'adi"),
+    book: L("كتاب الكافي", "Kitab al-Kafi"),
+    bookAuthor: L("ابن قدامة المقدسي", "Ibn Qudamah al-Maqdisi"),
+    masjid: "ibrahim",
+    days: [2],
+    prayer: "maghrib",
+    location: L("مسجد محمد بن إبراهيم — بالجامعة الإسلامية", "Masjid Muhammad ibn Ibrahim — at the Islamic University"),
+    topic: "fiqh",
+    status: "active",
+  },
 
   // ==================== جامع حماد البلوي ====================
   // Recurring series below are NOT a published timetable: no channel post

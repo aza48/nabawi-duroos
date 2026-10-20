@@ -47,6 +47,7 @@ import { findBookScope, findShaykhScope, shaykhScopeId } from "../lib/scopes";
 import { gregorianLong, hijriPlain, lessonDateBracket, riyadhToday } from "../lib/dates";
 import { useDbAnnouncements } from "../lib/useDbAnnouncements";
 import { eventsForMasjid, MasjidEvent } from "../data/events";
+import { SHAYKH_PROFILES } from "../data/profiles";
 import { DAR_HIJRAH_STREAM } from "../data/streams";
 import { BellToggle, SubscribeBox } from "./subscribe";
 import { AdminAnnouncements } from "./admin";
@@ -60,6 +61,7 @@ import {
   ScheduleTable,
   SeasonalBanner,
   ShaykhHeader,
+  ShaykhProfileCard,
   StatusBadge,
 } from "./ui";
 
@@ -791,6 +793,15 @@ export function ShaykhView({
       </button>
 
       <ShaykhHeader name={t(first.shaykh)} sub={ui("shaykh")} />
+
+      {SHAYKH_PROFILES[nameAr] ? (
+        <ShaykhProfileCard
+          name={first.shaykh}
+          role={SHAYKH_PROFILES[nameAr].role}
+          facts={SHAYKH_PROFILES[nameAr].facts}
+          photo={SHAYKH_PROFILES[nameAr].photo}
+        />
+      ) : null}
 
       {/* Email alerts for this shaykh */}
       <section className="flex flex-wrap items-center gap-3 rounded-card bg-[var(--card)] p-5 shadow-soft">
