@@ -68,8 +68,8 @@ const UI = {
   toBeAnnounced: { ar: "يُعلن قريبًا", en: "To be announced" },
   adminTitle: { ar: "لوحة الإدارة", en: "Admin Dashboard" },
   adminNote: {
-    ar: "تنبيه: في هذه النسخة المحمولة تُحفظ قرارات الإدارة والإضافات اليدوية في متصفحك فقط (localStorage)، ولا تُنشر حتى تُرحَّل إلى خادم فعلي",
-    en: "Note: in this portable build, admin decisions and manual additions are stored in your browser only (localStorage) and are not published until a real backend is connected",
+    ar: "إعلانات قاعدة البيانات محمية بكلمة مرور وتُنشر للموقع والمشتركين بالبريد. قرارات قائمة المراجعة وإضافة الدروس اليدوية ما زالت تُحفظ في متصفحك فقط (localStorage)",
+    en: "Database announcements are password-protected and publish to the site and to email subscribers. Review-queue decisions and manual lesson additions are still stored in your browser only (localStorage)",
   },
   reviewQueue: { ar: "قائمة المراجعة — منشورات تيليجرام", en: "Review queue — Telegram posts" },
   approve: { ar: "اعتماد", en: "Approve" },
@@ -98,6 +98,74 @@ const UI = {
   },
   advancedFilters: { ar: "عوامل تصفية متقدمة", en: "Advanced filters" },
   clearFilters: { ar: "مسح التصفية", en: "Clear filters" },
+  streams: { ar: "البث المباشر", en: "Livestreams" },
+  liveNow: { ar: "البث المباشر الآن", en: "Live now" },
+  officialLive: { ar: "البث الرسمي لدروس المسجد النبوي", en: "Official live stream of Nabawi duroos" },
+  watchOnYoutube: { ar: "المشاهدة على يوتيوب", en: "Watch on YouTube" },
+  manaraTitle: { ar: "منارة الحرمين", en: "Manarat al-Haramain" },
+  manaraNote: { ar: "بوابة البث التابعة للرئاسة العامة لشؤون الحرمين", en: "The Presidency's streaming portal for the Two Holy Mosques" },
+  noStreamQuba: { ar: "لا يوجد بث مباشر موثّق لدروس مسجد قباء — تابع التحديثات عبر قنوات تيليجرام العامة", en: "No verified livestream for Masjid Quba duroos — follow updates via the public Telegram channels" },
+  noStreamIu: { ar: "لا يوجد بث مباشر موثّق لدروس الجامعة الإسلامية — دروس الشيخ ماهر خوجة تُنشر عبر قناته", en: "No verified livestream for Islamic University duroos — Shaykh Maher Khujah's lessons are posted on his channel" },
+  telegramListen: { ar: "المتابعة على تيليجرام", en: "Follow on Telegram" },
+  coveredByLive: { ar: "دروسه مشمولة بالبث الرسمي أعلاه", en: "His lessons are covered by the official live stream above" },
+  subscribeTitle: { ar: "تنبيهات الدروس بالبريد", en: "Lesson alerts by email" },
+  subscribeHint: { ar: "أدخل بريدك ليصلك تأكيد، ثم اختر المشايخ والكتب التي تريد تنبيهاتها (إلغاءات، تأجيلات، بدء وختم الكتب)", en: "Enter your email to receive a confirmation, then choose the shuyukh and books you want alerts for (cancellations, delays, new and finished books)" },
+  emailPlaceholder: { ar: "بريدك الإلكتروني", en: "Your email address" },
+  subscribeBtn: { ar: "اشترك", en: "Subscribe" },
+  checkEmail: { ar: "تم! افحص بريدك واضغط رابط التأكيد لتفعيل التنبيهات", en: "Done! Check your inbox and click the confirmation link to activate alerts" },
+  alreadyConfirmed: { ar: "بريدك مؤكّد ومفعّل للتنبيهات", en: "Your email is confirmed and alerts are active" },
+  alertsSoon: { ar: "التنبيهات بالبريد قريبًا", en: "Email alerts coming soon" },
+  invalidEmail: { ar: "أدخل بريدًا إلكترونيًا صحيحًا", en: "Enter a valid email address" },
+  alertsForShaykh: { ar: "تنبيهات هذا الشيخ", en: "Alerts for this shaykh" },
+  alertsForBook: { ar: "تنبيهات هذا الكتاب", en: "Alerts for this book" },
+  alertSet: { ar: "تم ضبط التنبيه — أكّد بريدك إن لم تفعل", en: "Alert set — confirm your email if you haven't yet" },
+  needEmailFirst: { ar: "أدخل بريدك أولًا", en: "Enter your email first" },
+  manageAlerts: { ar: "إدارة التنبيهات", en: "Manage alerts" },
+  manageTitle: { ar: "إدارة تنبيهات الدروس", en: "Manage lesson alerts" },
+  manageHint: { ar: "اختر المشايخ والكتب التي تصلك تنبيهاتها، ثم احفظ", en: "Choose the shuyukh and books you receive alerts for, then save" },
+  saveChanges: { ar: "حفظ التغييرات", en: "Save changes" },
+  changesSaved: { ar: "تم حفظ تنبيهاتك", en: "Your alerts have been saved" },
+  invalidLink: { ar: "هذا الرابط غير صالح أو منتهٍ", en: "This link is invalid or expired" },
+  notConfirmedYet: { ar: "بريدك لم يُؤكَّد بعد — افحص بريدك واضغط رابط التأكيد أولًا", en: "Your email is not confirmed yet — check your inbox and click the confirmation link first" },
+  yourEmail: { ar: "بريدك", en: "Your email" },
+  adminLoginTitle: { ar: "دخول الإدارة", en: "Admin sign-in" },
+  password: { ar: "كلمة المرور", en: "Password" },
+  login: { ar: "دخول", en: "Sign in" },
+  wrongPassword: { ar: "كلمة المرور غير صحيحة", en: "Incorrect password" },
+  adminNotConfigured: { ar: "الإدارة غير مفعّلة: لم يتم تعيين كلمة مرور المسؤول (ADMIN_PASSWORD) على الخادم", en: "Admin is not enabled: no admin password (ADMIN_PASSWORD) is set on the server" },
+  backendNotConfigured: { ar: "قاعدة البيانات غير متصلة بعد — أضف DATABASE_URL لتفعيل هذه الميزة", en: "The database is not connected yet — add DATABASE_URL to enable this feature" },
+  loginRequired: { ar: "يلزم تسجيل الدخول لإدارة الإعلانات", en: "Sign-in is required to manage announcements" },
+  goToLogin: { ar: "الذهاب لصفحة الدخول", en: "Go to sign-in" },
+  dbAnnouncements: { ar: "إعلانات قاعدة البيانات (تُنشر وتصل المشتركين بالبريد)", en: "Database announcements (published ones email subscribers)" },
+  createAnnouncement: { ar: "إعلان جديد", en: "New announcement" },
+  annType: {
+    cancelled: { ar: "إلغاء", en: "Cancelled" },
+    delayed: { ar: "تأجيل", en: "Delayed / postponed" },
+    paused: { ar: "توقف مؤقت", en: "Paused" },
+    resumed: { ar: "استئناف", en: "Resumed" },
+    book_started: { ar: "بدء كتاب جديد", en: "New book started" },
+    book_finished: { ar: "ختم كتاب", en: "Book completed" },
+    guest: { ar: "درس ضيف", en: "Guest lesson" },
+    schedule_change: { ar: "تغيير في الجدول", en: "Schedule change" },
+    other: { ar: "أخرى", en: "Other" },
+  },
+  titleAr: { ar: "العنوان (عربي)", en: "Title (Arabic)" },
+  titleEn: { ar: "العنوان (إنجليزي)", en: "Title (English)" },
+  bodyAr: { ar: "النص (عربي)", en: "Body (Arabic)" },
+  bodyEn: { ar: "النص (إنجليزي)", en: "Body (English)" },
+  lessonDate: { ar: "تاريخ الدرس (اختياري)", en: "Lesson date (optional)" },
+  annShaykh: { ar: "الشيخ", en: "Shaykh" },
+  annBook: { ar: "الكتاب (اختياري)", en: "Book (optional)" },
+  noneOption: { ar: "— بدون —", en: "— None —" },
+  createDraft: { ar: "حفظ كمسودة", en: "Save as draft" },
+  draft: { ar: "مسودة", en: "Draft" },
+  publishedLabel: { ar: "منشور", en: "Published" },
+  publishSend: { ar: "نشر وإرسال بالبريد", en: "Publish & email" },
+  deleteAnn: { ar: "حذف", en: "Delete" },
+  sentTo: { ar: "أُرسل إلى", en: "Sent to" },
+  subscribersWord: { ar: "مشتركًا", en: "subscribers" },
+  noAnnouncementsYet: { ar: "لا توجد إعلانات بعد", en: "No announcements yet" },
+  backHome: { ar: "العودة للرئيسية", en: "Back to home" },
 } as const;
 
 export type UiKey = keyof typeof UI;
@@ -109,6 +177,7 @@ interface LangCtx {
   ui: (key: UiKey) => string;
   statusLabel: (s: string) => string;
   typeLabel: (s: string) => string;
+  annTypeLabel: (s: string) => string;
 }
 
 const Ctx = createContext<LangCtx>({
@@ -118,6 +187,7 @@ const Ctx = createContext<LangCtx>({
   ui: () => "",
   statusLabel: () => "",
   typeLabel: () => "",
+  annTypeLabel: () => "",
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
@@ -156,9 +226,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     },
     [lang]
   );
+  const annTypeLabel = useCallback(
+    (s: string) => {
+      const v = (UI.annType as Record<string, Localized>)[s];
+      return v ? (lang === "ar" ? v.ar : v.en) : s;
+    },
+    [lang]
+  );
 
   return (
-    <Ctx.Provider value={{ lang, setLang, t, ui, statusLabel, typeLabel }}>
+    <Ctx.Provider value={{ lang, setLang, t, ui, statusLabel, typeLabel, annTypeLabel }}>
       {children}
     </Ctx.Provider>
   );

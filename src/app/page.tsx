@@ -27,6 +27,7 @@ import {
   DailyView,
   FeedView,
   HomeView,
+  LivestreamsView,
   ScheduleView,
   SearchView,
   SeasonalView,
@@ -42,7 +43,6 @@ function Shell() {
   const [ready, setReady] = useState(false);
   const [shaykhName, setShaykhName] = useState<string | null>(null);
   const [extraLessons, setExtraLessons] = useState<Lesson[]>([]);
-  const [extraAnnouncements, setExtraAnnouncements] = useState<Announcement[]>([]);
 
   // hydrate persisted state
   useEffect(() => {
@@ -51,8 +51,6 @@ function Shell() {
       if (m === "dark" || m === "light") setMode(m);
       const el = window.localStorage.getItem("duroos-extra-lessons");
       if (el) setExtraLessons(JSON.parse(el));
-      const ea = window.localStorage.getItem("duroos-extra-announcements");
-      if (ea) setExtraAnnouncements(JSON.parse(ea));
     } catch {}
     const id = window.setTimeout(() => setReady(true), 350);
     return () => window.clearTimeout(id);
@@ -70,12 +68,6 @@ function Shell() {
     setExtraLessons(next);
     window.localStorage.setItem("duroos-extra-lessons", JSON.stringify(next));
   };
-  const addAnnouncement = (a: Announcement) => {
-    const next = [a, ...extraAnnouncements];
-    setExtraAnnouncements(next);
-    window.localStorage.setItem("duroos-extra-announcements", JSON.stringify(next));
-  };
-
   const openShaykh = (nameAr: string) => {
     setShaykhName(nameAr);
     const first = lessons.find((l) => l.shaykh.ar === nameAr);
@@ -83,6 +75,11 @@ function Shell() {
   };
 
   const nav = (v: ViewKey) => {
+    // Admin lives on its own password-protected route now.
+    if (v === "admin") {
+      window.location.href = "/admin";
+      return;
+    }
     setView(v);
     setShaykhName(null);
     if (v === "home" || v === "schedule") setThemeMasjid(scheduleMasjid);
@@ -142,6 +139,7 @@ function Shell() {
             {headerLink("daily", ui("daily"))}
             {headerLink("search", ui("search"))}
             {headerLink("feed", ui("feed"))}
+            {headerLink("streams", ui("streams"))}
             {headerLink("seasonal", ui("seasonal"))}
             {headerLink("admin", ui("admin"))}
           </nav>
@@ -192,15 +190,17 @@ function Shell() {
         ) : view === "search" ? (
           <SearchView lessons={lessons} onShaykh={openShaykh} />
         ) : view === "feed" ? (
-          <FeedView extra={extraAnnouncements} />
+          <FeedView extra={[]} />
+        ) : view === "streams" ? (
+          <LivestreamsView />
         ) : view === "seasonal" ? (
           <SeasonalView />
         ) : (
-          <AdminView addAnnouncement={addAnnouncement} addLesson={addLesson} />
+          <AdminView addLesson={addLesson} />
         )}
       </main>
 
-      <FloatingLiveButton onClick={() => nav("feed")} />
+      <FloatingLiveButton onClick={() => nav("streams")} />
       <MobileBottomNav view={view} setView={nav} items={bottomItems} />
     </div>
   );

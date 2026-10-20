@@ -106,3 +106,56 @@ export const MASJIDS: Record<MasjidId, Localized & { short: Localized }> = {
     short: { ar: "ابن إبراهيم", en: "Ibn Ibrahim" },
   },
 };
+
+/* ---------- Backend (Neon) shared shapes ----------
+   Kept here (not in lib/db) so client components can use the types and the
+   type list without bundling the database driver. */
+
+export const ANNOUNCEMENT_TYPES = [
+  "cancelled",
+  "delayed",
+  "paused",
+  "resumed",
+  "book_started",
+  "book_finished",
+  "guest",
+  "schedule_change",
+  "other",
+] as const;
+
+export type AnnouncementTypeDb = (typeof ANNOUNCEMENT_TYPES)[number];
+
+export interface SubscriberRow {
+  id: number;
+  email: string;
+  status: "pending" | "confirmed" | "unsubscribed" | string;
+  confirm_token: string | null;
+  manage_token: string | null;
+  created_at: string;
+  confirmed_at: string | null;
+}
+
+export interface SubscriptionRow {
+  id: number;
+  subscriber_id: number;
+  scope_type: string;
+  scope_id: string;
+  created_at: string;
+}
+
+export interface AnnouncementRow {
+  id: number;
+  shaykh_id: string;
+  book_id: string | null;
+  type: string;
+  title_ar: string;
+  title_en: string;
+  body_ar: string;
+  body_en: string;
+  /** "YYYY-MM-DD" (Postgres date) or null */
+  lesson_date: string | null;
+  status: "draft" | "published" | string;
+  created_at: string;
+  published_at: string | null;
+  sent_at: string | null;
+}

@@ -13,6 +13,7 @@ import {
   Landmark,
   MapPin,
   MoonStar,
+  Radio,
   Send,
   ShieldCheck,
   SlidersHorizontal,
@@ -20,6 +21,8 @@ import {
 } from "lucide-react";
 import {
   Announcement,
+  AnnouncementRow,
+  AnnouncementType,
   Lesson,
   Localized,
   MASJIDS,
@@ -33,6 +36,17 @@ import {
 import { useLang } from "../lib/i18n";
 import { ANNOUNCEMENTS, PENDING_POSTS, TELEGRAM_SOURCES } from "../data/announcements";
 import { LESSONS, QUBA_PERIOD } from "../data/lessons";
+import {
+  GENERAL_TELEGRAM,
+  MANARA_ALHARAMAIN,
+  NABAWI_YOUTUBE,
+  SHAYKH_TELEGRAM,
+  streamInfoForShaykh,
+} from "../data/streams";
+import { findBookScope, findShaykhScope, shaykhScopeId } from "../lib/scopes";
+import { gregorianLong, hijriPlain, lessonDateBracket } from "../lib/dates";
+import { BellToggle, SubscribeBox } from "./subscribe";
+import { AdminAnnouncements } from "./admin";
 import {
   AnnouncementCard,
   EmptyState,
@@ -125,6 +139,11 @@ export function HomeView({
           </h2>
           <AnnouncementCard a={latest} />
         </section>
+      </Reveal>
+
+      {/* Email alerts */}
+      <Reveal>
+        <SubscribeBox />
       </Reveal>
 
       {/* Today's Nabawi lessons by prayer */}
@@ -401,12 +420,63 @@ export function SearchView({ lessons, onShaykh }: { lessons: Lesson[]; onShaykh:
 }
 
 /* =============================== FEED =============================== */
+const DB_TYPE_MAP: Record<string, AnnouncementType> = {
+  cancelled: "cancellation",
+  delayed: "postponement",
+  paused: "info",
+  resumed: "resumption",
+  book_started: "new-book",
+  book_finished: "book-finished",
+  guest: "guest",
+  schedule_change: "info",
+  other: "info",
+};
+
+/** Map a published DB announcement row onto the static feed's card shape. */
+export function mapDbAnnouncement(row: AnnouncementRow): Announcement {
+  const shaykh = findShaykhScope(row.shaykh_id)?.name ?? { ar: row.shaykh_id, en: row.shaykh_id };
+  const book = row.book_id ? findBookScope(row.book_id)?.book : undefined;
+  const published = row.published_at ? new Date(row.published_at) : new Date(row.created_at);
+  const dateBracket = row.lesson_date ? lessonDateBracket(row.lesson_date) : null;
+  const todayIso = new Date().toISOString().slice(0, 10);
+  return {
+    id: `db-${row.id}`,
+    shaykh,
+    text: {
+      ar: `${row.title_ar}. ${row.body_ar}${book ? ` — ${book.ar}` : ""}${dateBracket ? ` ${dateBracket.ar}` : ""}`,
+      en: `${row.title_en}. ${row.body_en}${book ? ` — ${book.en}` : ""}${dateBracket ? ` ${dateBracket.en}` : ""}`,
+    },
+    postedHijri: hijriPlain(published),
+    postedGregorian: gregorianLong(published),
+    source: "@admin",
+    sourceName: L("إدارة التطبيق", "App admin"),
+    type: DB_TYPE_MAP[row.type] ?? "info",
+    expired: !!row.lesson_date && row.lesson_date < todayIso,
+  };
+}
+
 export function FeedView({ extra }: { extra: Announcement[] }) {
   const { ui } = useLang();
-  const all = [...extra, ...ANNOUNCEMENTS];
+  const [dbAnns, setDbAnns] = useState<Announcement[]>([]);
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/announcements")
+      .then((r) => (r.ok ? r.json() : { announcements: [] }))
+      .then((d: { announcements?: AnnouncementRow[] }) => {
+        if (alive && Array.isArray(d.announcements)) {
+          setDbAnns(d.announcements.map(mapDbAnnouncement));
+        }
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+  const all = [...dbAnns, ...extra, ...ANNOUNCEMENTS];
   return (
     <div className="space-y-6">
       <h1 className="text-2xl font-semibold text-[var(--ink)]">{ui("liveUpdates")}</h1>
+      <SubscribeBox />
       <div className="space-y-4">
         {all.map((a, i) => (
           <Reveal key={a.id} delay={Math.min(i, 3) * 0.04}>
@@ -464,6 +534,124 @@ export function SeasonalView() {
   );
 }
 
+/* =============================== LIVESTREAMS =============================== */
+export function LivestreamsView() {
+  const { t, ui } = useLang();
+  const shaykhStreams = Object.entries(SHAYKH_TELEGRAM)
+    .map(([nameAr, tg]) => {
+      const lesson = LESSONS.find((l) => l.shaykh.ar === nameAr);
+      return lesson ? { name: lesson.shaykh, nameAr, tg, nabawi: lesson.masjid === "nabawi" } : null;
+    })
+    .filter((x): x is NonNullable<typeof x> => !!x);
+
+  return (
+    <div className="space-y-8">
+      <h1 className="flex items-center gap-2 text-2xl font-semibold text-[var(--ink)]">
+        <Radio className="h-6 w-6 text-[var(--brand-accent)]" />
+        {ui("streams")}
+      </h1>
+
+      {/* Official live player — Nabawi */}
+      <section className="rounded-card bg-[var(--card)] p-6 shadow-soft">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-pill bg-[var(--status-cancel-bg)] px-3 py-1 text-xs font-semibold text-[var(--status-cancel-tx)]">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute h-full w-full animate-ping rounded-full bg-current opacity-60" />
+              <span className="relative h-2 w-2 rounded-full bg-current" />
+            </span>
+            {ui("liveNow")}
+          </span>
+          <h2 className="text-lg font-semibold text-[var(--ink)]">{ui("officialLive")}</h2>
+        </div>
+        <p className="mt-1 text-sm text-[var(--ink-soft)]">
+          {t(NABAWI_YOUTUBE.channelName)} · <span dir="ltr">{NABAWI_YOUTUBE.handle}</span>
+        </p>
+        <div className="mt-4 aspect-video w-full overflow-hidden rounded-card bg-black">
+          <iframe
+            src={NABAWI_YOUTUBE.liveEmbedUrl}
+            title={ui("officialLive")}
+            loading="lazy"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+            className="h-full w-full"
+          />
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <a
+            href={NABAWI_YOUTUBE.liveUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-11 items-center gap-2 rounded-pill bg-[var(--brand-accent)] px-4 text-sm font-semibold text-white active:scale-95"
+          >
+            {ui("watchOnYoutube")}
+            <ExternalLink className="h-4 w-4" />
+          </a>
+          <a
+            href={MANARA_ALHARAMAIN.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-11 items-center gap-2 rounded-pill border border-[var(--brand)] px-4 text-sm font-semibold text-[var(--brand)] active:scale-95"
+          >
+            {ui("manaraTitle")}
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </div>
+        <p className="mt-2 text-xs text-[var(--ink-soft)]">{ui("manaraNote")}</p>
+      </section>
+
+      {/* Per-shaykh link-outs */}
+      <section>
+        <h2 className="mb-4 text-lg font-semibold text-[var(--ink)]">{ui("telegramListen")}</h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {shaykhStreams.map((s) => (
+            <div key={s.nameAr} className="rounded-card bg-[var(--card)] p-5 shadow-soft">
+              <p className="font-semibold text-[var(--ink)]">{t(s.name)}</p>
+              {s.nabawi ? <p className="mt-1 text-xs text-[var(--ink-soft)]">{ui("coveredByLive")}</p> : null}
+              <a
+                href={s.tg.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-pill bg-[var(--ceramic)] px-4 py-2 text-sm font-medium text-[var(--brand)]"
+                dir="ltr"
+              >
+                {s.tg.handle}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          ))}
+          {GENERAL_TELEGRAM.map((g) => (
+            <div key={g.handle} className="rounded-card bg-[var(--card)] p-5 shadow-soft">
+              <p className="font-semibold text-[var(--ink)]">{t(g.name)}</p>
+              <a
+                href={g.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-pill bg-[var(--ceramic)] px-4 py-2 text-sm font-medium text-[var(--brand)]"
+                dir="ltr"
+              >
+                {g.handle}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Honest notes: no verified streams for Quba / IU */}
+      <section className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-card bg-[var(--ceramic)] p-5">
+          <h3 className="font-semibold text-[var(--ink)]">{t(MASJIDS.quba)}</h3>
+          <p className="mt-2 text-sm leading-loose text-[var(--ink-soft)]">{ui("noStreamQuba")}</p>
+        </div>
+        <div className="rounded-card bg-[var(--ceramic)] p-5">
+          <h3 className="font-semibold text-[var(--ink)]">{t(MASJIDS.ibrahim)}</h3>
+          <p className="mt-2 text-sm leading-loose text-[var(--ink-soft)]">{ui("noStreamIu")}</p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 /* =============================== SHAYKH =============================== */
 export function ShaykhView({
   nameAr,
@@ -482,6 +670,7 @@ export function ShaykhView({
   );
   const first = mine[0];
   const announcements = ANNOUNCEMENTS.filter((a) => a.shaykh.ar === nameAr);
+  const stream = streamInfoForShaykh(nameAr, lessons);
   const channel = SHAYKH_CHANNELS[nameAr];
   const finished = FINISHED_BOOKS[nameAr] ?? [];
   const locations = Array.from(new Set(mine.map((l) => `${t(MASJIDS[l.masjid])} — ${t(l.location)}`)));
@@ -503,6 +692,13 @@ export function ShaykhView({
       </button>
 
       <ShaykhHeader name={t(first.shaykh)} sub={ui("shaykh")} />
+
+      {/* Email alerts for this shaykh */}
+      <section className="flex flex-wrap items-center gap-3 rounded-card bg-[var(--card)] p-5 shadow-soft">
+        <BellRing className="h-5 w-5 text-[var(--brand-accent)]" />
+        <span className="text-[15px] font-semibold text-[var(--ink)]">{ui("alertsForShaykh")}</span>
+        <BellToggle scopeType="shaykh" scopeId={shaykhScopeId(first.shaykh)} label={ui("alertsForShaykh")} />
+      </section>
 
       <section>
         <h2 className="mb-4 text-lg font-semibold text-[var(--ink)]">{ui("weeklySchedule")}</h2>
@@ -563,6 +759,43 @@ export function ShaykhView({
         </section>
       ) : null}
 
+      {stream && (stream.onOfficialLive || stream.telegram) ? (
+        <section className="rounded-card bg-[var(--card)] p-6 shadow-soft">
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-[var(--ink)]">
+            <Radio className="h-5 w-5 text-[var(--brand-accent)]" />
+            {ui("streams")}
+          </h2>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {stream.onOfficialLive ? (
+              <a
+                href={NABAWI_YOUTUBE.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-11 items-center gap-2 rounded-pill bg-[var(--brand-accent)] px-4 text-sm font-semibold text-white active:scale-95"
+              >
+                {ui("watchOnYoutube")}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            ) : null}
+            {stream.telegram ? (
+              <a
+                href={stream.telegram.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-11 items-center gap-2 rounded-pill border border-[var(--brand)] px-4 text-sm font-semibold text-[var(--brand)] active:scale-95"
+                dir="ltr"
+              >
+                {stream.telegram.handle}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            ) : null}
+          </div>
+          {stream.onOfficialLive ? (
+            <p className="mt-2 text-xs text-[var(--ink-soft)]">{ui("coveredByLive")}</p>
+          ) : null}
+        </section>
+      ) : null}
+
       {announcements.length > 0 ? (
         <section>
           <h2 className="mb-4 text-lg font-semibold text-[var(--ink)]">{ui("recentAnnouncements")}</h2>
@@ -580,18 +813,9 @@ export function ShaykhView({
 /* =============================== ADMIN =============================== */
 type QueueState = Record<string, "approved" | "rejected" | "verified">;
 
-export function AdminView({
-  addAnnouncement,
-  addLesson,
-}: {
-  addAnnouncement: (a: Announcement) => void;
-  addLesson: (l: Lesson) => void;
-}) {
+export function AdminView({ addLesson }: { addLesson: (l: Lesson) => void }) {
   const { t, ui, lang } = useLang();
   const [queue, setQueue] = useState<QueueState>({});
-  const [annText, setAnnText] = useState("");
-  const [annShaykh, setAnnShaykh] = useState("");
-  const [savedMsg, setSavedMsg] = useState("");
   const [lShaykh, setLShaykh] = useState("");
   const [lBook, setLBook] = useState("");
   const [lMasjid, setLMasjid] = useState<MasjidId>("nabawi");
@@ -609,23 +833,6 @@ export function AdminView({
     const next = { ...queue, [id]: d };
     setQueue(next);
     window.localStorage.setItem("duroos-admin-queue", JSON.stringify(next));
-  };
-
-  const submitAnnouncement = () => {
-    if (!annText.trim()) return;
-    addAnnouncement({
-      id: `local-ann-${Date.now()}`,
-      shaykh: L(annShaykh || (lang === "ar" ? "إدارة التطبيق" : "App admin"), annShaykh || "App admin"),
-      text: L(annText, annText),
-      postedHijri: L("الثلاثاء ٩/٥/١٤٤٨هـ", "Tuesday 9/5/1448 AH"),
-      postedGregorian: L("٢٠ أكتوبر ٢٠٢٦", "20 October 2026"),
-      source: "@admin",
-      sourceName: L("إدخال يدوي", "Manual entry"),
-      type: "info",
-      expired: false,
-    });
-    setAnnText(""); setAnnShaykh("");
-    setSavedMsg(ui("announcementSaved"));
   };
 
   const submitLesson = () => {
@@ -723,17 +930,11 @@ export function AdminView({
         </div>
       </section>
 
-      {/* Manual additions */}
-      <section className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-card bg-[var(--card)] p-6 shadow-soft">
-          <h2 className="mb-4 text-lg font-semibold text-[var(--ink)]">{ui("addAnnouncement")}</h2>
-          <div className="space-y-3">
-            <input value={annShaykh} onChange={(e) => setAnnShaykh(e.target.value)} placeholder={ui("shaykh")} className={inputCls} />
-            <textarea value={annText} onChange={(e) => setAnnText(e.target.value)} placeholder={ui("textField")} rows={3} className="w-full rounded-card bg-[var(--ceramic)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-faint)] focus:ring-2 focus:ring-[var(--brand-accent)]" />
-            <PillButton onClick={submitAnnouncement}>{ui("save")}</PillButton>
-            {savedMsg ? <p className="text-sm text-[var(--brand-accent)]">{savedMsg}</p> : null}
-          </div>
-        </div>
+      {/* DB-backed announcements (publish → emails subscribers) */}
+      <AdminAnnouncements />
+
+      {/* Manual lesson addition (still local in this build) */}
+      <section>
         <div className="rounded-card bg-[var(--card)] p-6 shadow-soft">
           <h2 className="mb-4 text-lg font-semibold text-[var(--ink)]">{ui("addLesson")}</h2>
           <div className="space-y-3">

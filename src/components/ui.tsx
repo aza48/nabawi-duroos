@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { CalendarDays, Clock3, MapPin, Megaphone, MoonStar, Radio, SearchX, User } from "lucide-react";
 import { Announcement, Lesson, Localized, MASJIDS, PRAYERS, TOPICS } from "../lib/types";
 import { useLang } from "../lib/i18n";
+import { BellToggle } from "./subscribe";
 
 /* ---------- Reveal on scroll (subtle; content never fully hidden) ---------- */
 export function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
@@ -114,7 +115,7 @@ export function LessonCard({
   lesson: Lesson;
   onShaykh?: (name: string) => void;
 }) {
-  const { t, lang } = useLang();
+  const { t, ui, lang } = useLang();
   const topic = TOPICS[lesson.topic];
   return (
     <article className="rounded-card bg-[var(--card)] p-5 shadow-soft sm:p-6">
@@ -125,7 +126,10 @@ export function LessonCard({
         >
           {t(lesson.shaykh)}
         </button>
-        <StatusBadge status={lesson.status} />
+        <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
+          <BellToggle scopeType="book" scopeId={lesson.id} label={ui("alertsForBook")} />
+          <StatusBadge status={lesson.status} />
+        </div>
       </div>
 
       <h3 className="mt-2 text-[15px] font-medium leading-relaxed text-[var(--ink)]">
@@ -211,15 +215,19 @@ export function AnnouncementCard({ a }: { a: Announcement }) {
           <CalendarDays className="h-3.5 w-3.5" />
           {ui("postedOn")}: {t(a.postedHijri)} — {t(a.postedGregorian)}
         </span>
-        <a
-          href={`https://t.me/s/${a.source.replace("@", "")}`}
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium text-[var(--brand)] hover:underline"
-          dir="ltr"
-        >
-          {a.source}
-        </a>
+        {a.source === "@admin" ? (
+          <span className="font-medium text-[var(--ink-soft)]">{t(a.sourceName)}</span>
+        ) : (
+          <a
+            href={`https://t.me/s/${a.source.replace("@", "")}`}
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-[var(--brand)] hover:underline"
+            dir="ltr"
+          >
+            {a.source}
+          </a>
+        )}
       </footer>
     </article>
   );
@@ -287,7 +295,7 @@ export function FloatingLiveButton({ onClick }: { onClick: () => void }) {
 }
 
 /* ---------- MobileBottomNav ---------- */
-export type ViewKey = "home" | "schedule" | "daily" | "search" | "feed" | "seasonal" | "admin";
+export type ViewKey = "home" | "schedule" | "daily" | "search" | "feed" | "seasonal" | "streams" | "admin";
 
 export function MobileBottomNav({
   view,
