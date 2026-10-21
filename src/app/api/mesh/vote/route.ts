@@ -10,7 +10,9 @@ export async function POST(req: NextRequest){
   const body=await req.json().catch(()=>({})) as {targetType?:string;targetId?:number};
   const tt=body.targetType; const tid=Number(body.targetId);
   if((tt!=="question"&&tt!=="answer")||!tid) return bad("Invalid vote target");
-  const exists = tt==="question" ? await queryOne(`SELECT id FROM mesh_questions WHERE id=$1`,[tid]) : await queryOne(`SELECT id FROM mesh_answers WHERE id=$1`,[tid]);
+  const exists = tt==="question"
+    ? await queryOne(`SELECT id FROM mesh_questions WHERE id=$1 AND deleted_at IS NULL`,[tid])
+    : await queryOne(`SELECT a.id FROM mesh_answers a JOIN mesh_questions q ON q.id=a.question_id WHERE a.id=$1 AND a.deleted_at IS NULL AND q.deleted_at IS NULL`,[tid]);
   if(!exists) return NextResponse.json({error:"not_found"},{status:404});
   const prev=await queryOne(`SELECT id FROM mesh_votes WHERE user_id=$1 AND target_type=$2 AND target_id=$3`,[user.id,tt,tid]);
   let voted:boolean;

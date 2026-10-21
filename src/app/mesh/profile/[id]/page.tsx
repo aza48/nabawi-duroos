@@ -7,7 +7,8 @@ import { DiscussionList } from "@/components/mesh/DiscussionList";
 import { UserChips } from "@/components/mesh/UserBadge";
 import { useMeshPrefs } from "@/lib/mesh-i18n";
 
-type ProfileData = { display_name: string; bio: string | null; created_at: string; role?: string; entry_year_hijri?: number | null; country?: string | null; questions: ReturnType<typeof seedQuestionToListItem>[]; answersCount: number };
+type DeletedQ = { id: number; title: string; deleted_at: string };
+type ProfileData = { display_name: string; bio: string | null; created_at: string; role?: string; entry_year_hijri?: number | null; country?: string | null; questions: ReturnType<typeof seedQuestionToListItem>[]; answersCount: number; own_deleted_questions?: DeletedQ[] };
 type Me = { id: number; display_name: string; bio: string | null; personal_email: string | null; country: string | null };
 
 export default function ProfilePage() {
@@ -42,6 +43,10 @@ export default function ProfilePage() {
       setSaved(true);
     } finally { setSaving(false); }
   }
+  async function restoreDeleted(qid: number) {
+    const r = await fetch(`/api/mesh/questions/${qid}/restore`, { method: "POST" });
+    if (r.ok) window.location.reload();
+  }
   const labelStyle: React.CSSProperties = { display: "grid", gap: 6, fontWeight: 600, fontSize: 14 };
   return <div className="mesh-container" style={{ padding: "40px 0 48px", maxWidth: 860 }}>
     <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
@@ -69,5 +74,21 @@ export default function ProfilePage() {
     )}
     <h2 style={{ fontSize: 20, marginTop: 40, marginBottom: 12 }}>{t("profile.questionsPosted")} ({data.questions.length})</h2>
     <DiscussionList items={data.questions} />
+    {isSelf && data.own_deleted_questions && data.own_deleted_questions.length > 0 && (
+      <section style={{ marginTop: 40 }}>
+        <h2 style={{ fontSize: 18, marginBottom: 12 }}>{t("profile.deletedTitle")}</h2>
+        <div className="mesh-card" style={{ overflow: "hidden" }}>
+          {data.own_deleted_questions.map((dq) => (
+            <div key={dq.id} style={{ display: "flex", gap: 16, alignItems: "center", justifyContent: "space-between", padding: "14px 20px", borderBottom: "1px solid var(--mesh-hairline)" }}>
+              <div style={{ minWidth: 0 }}>
+                <Link href={`/mesh/question/${dq.id}`} style={{ fontSize: 14.5, fontWeight: 600, color: "var(--mesh-text)", textDecoration: "none" }}>{dq.title}</Link>
+                <div style={{ fontSize: 12, color: "var(--mesh-muted)", marginTop: 2 }}>{new Date(dq.deleted_at).toLocaleDateString(lang === "ar" ? "ar" : "en-GB", { day: "numeric", month: "short", year: "numeric" })}</div>
+              </div>
+              <button className="mesh-btn mesh-btn-outline mesh-btn-sm mesh-focus" onClick={() => restoreDeleted(dq.id)}>{t("profile.restoreBtn")}</button>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
   </div>;
 }

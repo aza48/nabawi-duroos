@@ -18,7 +18,16 @@ export async function GET() {
   if (!dbConfigured()) return NextResponse.json({ user: null, dbConfigured: false });
   try { await ensureMesh(); } catch { return NextResponse.json({ user: null, dbConfigured: false }); }
   const user = await getCurrentUser();
-  return NextResponse.json({ user: publicUser(user), dbConfigured: true });
+  let notificationsUnread = 0;
+  if (user) {
+    try {
+      const { queryOne } = await import("@/lib/db");
+      const row = await queryOne<{ c: string }>(`SELECT count(*)::text AS c FROM mesh_notifications WHERE user_id=$1 AND read_at IS NULL`, [user.id]);
+      notificationsUnread = parseInt(row?.c || "0", 10);
+    } catch { /* notifications table may not exist yet on very first init */ }
+  }
+  const pub = publicUser(user);
+  return NextResponse.json({ user: pub ? { ...pub, notifications_unread: notificationsUnread } : null, dbConfigured: true });
 }
 
 export async function PATCH(req: NextRequest) {

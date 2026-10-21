@@ -2,10 +2,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { LogOut, Menu, Moon, Plus, Search, Sun, User, X } from "lucide-react";
+import { Bell, LogOut, Menu, Moon, Plus, Search, Sun, User, X } from "lucide-react";
 import { useMeshPrefs } from "@/lib/mesh-i18n";
 
-export type MeshMe = { id: number; display_name: string; role: string } | null;
+export type MeshMe = { id: number; display_name: string; role: string; notifications_unread?: number } | null;
 
 export function useMeshMe() {
   const [me, setMe] = useState<MeshMe>(null);
@@ -74,6 +74,10 @@ export default function MeshShell({ children }: { children: React.ReactNode }) {
         <div style={{ borderTop: "1px solid var(--mesh-hairline)", marginTop: 24, paddingTop: 24, display: "grid", gap: 10 }}>
           {me ? (<>
             <Link href={`/mesh/profile/${me.id}`} className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}><User size={17} /><span style={{ fontWeight: 600 }}>{me.display_name}</span></Link>
+            <Link href="/mesh/notifications" className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}>
+              <Bell size={17} /> {t("nav.notifications")}
+              {!!me.notifications_unread && <span aria-label={`${me.notifications_unread}`} style={{ marginInlineStart: "auto", background: "var(--mesh-primary)", color: "var(--mesh-on-primary)", fontSize: 11, fontWeight: 700, minWidth: 20, height: 20, borderRadius: 999, display: "inline-grid", placeItems: "center", padding: "0 6px" }}>{me.notifications_unread}</span>}
+            </Link>
             <button onClick={logout} className="mesh-drawer-row mesh-focus" style={{ cursor: "pointer" }} tabIndex={menuOpen ? 0 : -1}><LogOut size={17} /> {t("nav.logout")}</button>
           </>) : (
             <Link href="/mesh/login" className="mesh-btn mesh-btn-outline mesh-focus" style={{ width: "100%", minHeight: 44 }} tabIndex={menuOpen ? 0 : -1}>{t("nav.login")}</Link>

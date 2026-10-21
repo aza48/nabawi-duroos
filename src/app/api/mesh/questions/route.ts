@@ -12,16 +12,16 @@ export async function GET(req: NextRequest){
   const category = sp.get("category")||""; const q = sp.get("q")||""; const sort = sp.get("sort")||"recent";
   const limit = Math.min(100, Math.max(1, parseInt(sp.get("limit")||"20",10)||20));
   const offset = Math.max(0, parseInt(sp.get("offset")||"0",10)||0);
-  const params: unknown[] = []; let where = "WHERE 1=1";
+  const params: unknown[] = []; let where = "WHERE qq.deleted_at IS NULL";
   if(category){ params.push(category); where += ` AND (c.slug=$${params.length} OR pc.slug=$${params.length})`; }
   if(q){ params.push(`%${q}%`); const i=params.length; where += ` AND (qq.title ILIKE $${i} OR qq.body ILIKE $${i} OR EXISTS (SELECT 1 FROM mesh_question_tags qt JOIN mesh_tags t ON t.id=qt.tag_id WHERE qt.question_id=qq.id AND t.name ILIKE $${i}) OR EXISTS (SELECT 1 FROM mesh_answers aa WHERE aa.question_id=qq.id AND aa.body ILIKE $${i}))`; }
-  if(sort==="unanswered") where += ` AND (SELECT count(*) FROM mesh_answers a2 WHERE a2.question_id=qq.id)=0`;
+  if(sort==="unanswered") where += ` AND (SELECT count(*) FROM mesh_answers a2 WHERE a2.question_id=qq.id AND a2.deleted_at IS NULL)=0`;
   const order = sort==="top" ? "vote_count DESC, qq.created_at DESC" : "qq.created_at DESC";
   params.push(limit); params.push(offset);
   const rows = await query(`SELECT qq.id, qq.title, qq.body, qq.author_id, u.display_name AS author_name, u.role AS author_role, u.entry_year_hijri AS author_entry_year, u.country AS author_country, COALESCE(pc.slug, c.slug) AS category_slug, COALESCE(pc.name, c.name) AS category_name, c.slug AS raw_category_slug,
     (SELECT count(*)::int FROM mesh_votes v WHERE v.target_type='question' AND v.target_id=qq.id) AS vote_count,
-    (SELECT count(*)::int FROM mesh_answers a WHERE a.question_id=qq.id) AS answer_count,
-    (qq.accepted_answer_id IS NOT NULL) AS solved, qq.accepted_answer_id, qq.is_seed, qq.created_at, qq.updated_at,
+    (SELECT count(*)::int FROM mesh_answers a WHERE a.question_id=qq.id AND a.deleted_at IS NULL) AS answer_count,
+    (qq.accepted_answer_id IS NOT NULL) AS solved, qq.accepted_answer_id, qq.status, qq.is_seed, qq.created_at, qq.updated_at,
     COALESCE((SELECT json_agg(t.name) FROM mesh_question_tags qt JOIN mesh_tags t ON t.id=qt.tag_id WHERE qt.question_id=qq.id),'[]'::json) AS tags
     FROM mesh_questions qq JOIN mesh_users u ON u.id=qq.author_id JOIN mesh_categories c ON c.id=qq.category_id LEFT JOIN mesh_categories pc ON pc.id=c.parent_id
     ${where} ORDER BY ${order} LIMIT $${params.length-1} OFFSET $${params.length}`, params);

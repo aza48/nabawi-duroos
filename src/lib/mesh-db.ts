@@ -29,6 +29,21 @@ async function doInit(): Promise<void> {
   await query(`CREATE TABLE IF NOT EXISTS mesh_tags (id serial PRIMARY KEY, name text NOT NULL, slug text UNIQUE NOT NULL)`);
   await query(`CREATE TABLE IF NOT EXISTS mesh_question_tags (question_id int NOT NULL REFERENCES mesh_questions(id) ON DELETE CASCADE, tag_id int NOT NULL REFERENCES mesh_tags(id) ON DELETE CASCADE, PRIMARY KEY(question_id,tag_id))`);
   await query(`CREATE TABLE IF NOT EXISTS mesh_reports (id serial PRIMARY KEY, reporter_id int REFERENCES mesh_users(id), target_type text NOT NULL, target_id int NOT NULL, reason text NOT NULL, status text DEFAULT 'open', created_at timestamptz DEFAULT now())`);
+  // Phase 4: thread lifecycle — status, soft delete, staff updates, event history, notifications (all idempotent)
+  await query(`ALTER TABLE mesh_questions ADD COLUMN IF NOT EXISTS status text NOT NULL DEFAULT 'open'`);
+  await query(`DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname='ck_mesh_questions_status') THEN ALTER TABLE mesh_questions ADD CONSTRAINT ck_mesh_questions_status CHECK (status IN ('open','resolved','locked')); END IF; END $$`);
+  await query(`ALTER TABLE mesh_questions ADD COLUMN IF NOT EXISTS deleted_at timestamptz`);
+  await query(`ALTER TABLE mesh_questions ADD COLUMN IF NOT EXISTS deleted_by int`);
+  await query(`ALTER TABLE mesh_answers ADD COLUMN IF NOT EXISTS is_staff_update boolean NOT NULL DEFAULT false`);
+  await query(`ALTER TABLE mesh_answers ADD COLUMN IF NOT EXISTS deleted_at timestamptz`);
+  await query(`ALTER TABLE mesh_answers ADD COLUMN IF NOT EXISTS deleted_by int`);
+  await query(`CREATE TABLE IF NOT EXISTS mesh_question_events (id serial PRIMARY KEY, question_id int NOT NULL REFERENCES mesh_questions(id) ON DELETE CASCADE, actor_id int REFERENCES mesh_users(id) ON DELETE SET NULL, type text NOT NULL, detail text, created_at timestamptz DEFAULT now())`);
+  await query(`CREATE INDEX IF NOT EXISTS idx_mesh_question_events_q ON mesh_question_events (question_id, created_at DESC)`);
+  await query(`CREATE TABLE IF NOT EXISTS mesh_notifications (id serial PRIMARY KEY, user_id int NOT NULL REFERENCES mesh_users(id) ON DELETE CASCADE, type text NOT NULL, question_id int, answer_id int, actor_id int, read_at timestamptz, created_at timestamptz DEFAULT now())`);
+  await query(`CREATE INDEX IF NOT EXISTS idx_mesh_notifications_user ON mesh_notifications (user_id, read_at)`);
+  // One-time backfill: questions that already have an accepted solution count as resolved.
+  // The NOT EXISTS guard keeps this one-time: once a lifecycle event exists (e.g. a reopen), later inits never flip it back.
+  await query(`UPDATE mesh_questions SET status='resolved' WHERE accepted_answer_id IS NOT NULL AND status='open' AND NOT EXISTS (SELECT 1 FROM mesh_question_events e WHERE e.question_id = mesh_questions.id)`);
   await seedMeshIfEmpty();
 }
 
@@ -73,7 +88,7 @@ export async function seedMeshIfEmpty(): Promise<void> {
       if (ar) aMap.set(ans.id, ar.id);
     }
     if (qq.acceptedAnswerId && aMap.get(qq.acceptedAnswerId)) {
-      await query(`UPDATE mesh_questions SET accepted_answer_id=$1 WHERE id=$2`, [aMap.get(qq.acceptedAnswerId), r.id]);
+      await query(`UPDATE mesh_questions SET accepted_answer_id=$1, status='resolved' WHERE id=$2`, [aMap.get(qq.acceptedAnswerId), r.id]);
     }
     // votes: distribute seed votes as rows from seed users (cycle) up to voteCount, and answer votes similarly
     const voters = Array.from(userIdMap.values());

@@ -35,6 +35,29 @@ function esc(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+/** Bilingual (EN first, AR below) notice that an accepted solution was flagged as outdated. */
+export function meshOutdatedEmail(questionId: number, title: string): { subject: string; html: string } {
+  const url = `https://nabawi-duroos.vercel.app/mesh/question/${questionId}`;
+  const subject = "MESH — a solution was flagged as outdated";
+  const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#FAFAFA;font-family:Inter,Alexandria,'Segoe UI',Arial,sans-serif;color:#171717">
+  <div style="max-width:520px;margin:0 auto;background:#ffffff;border:1px solid #EBEBEB;border-radius:12px;padding:28px">
+    <p style="font-size:20px;font-weight:800;margin:0 0 4px">MESH</p>
+    <p style="font-size:12px;color:#8F8F8F;margin:0 0 20px">Medinah English Students Hub</p>
+    <p style="font-size:15px;line-height:1.6">A member flagged the accepted solution on this question as outdated or no longer working:</p>
+    <p style="font-size:15px;font-weight:600;line-height:1.6;margin:12px 0">&ldquo;${esc(title)}&rdquo;</p>
+    <p style="margin:16px 0"><a href="${url}" style="color:#125934;font-weight:600">Open the question</a></p>
+    <p style="font-size:13px;color:#4D4D4D;line-height:1.6">If the procedure has changed, you can post an update, or reopen the thread so members can share what works now.</p>
+    <hr style="border:none;border-top:1px solid #EBEBEB;margin:24px 0" />
+    <div dir="rtl" lang="ar" style="text-align:right">
+      <p style="font-size:15px;line-height:1.8">قام أحد الأعضاء بالإبلاغ بأن الحل المقبول في هذا السؤال قديم أو لم يعد يعمل:</p>
+      <p style="font-size:15px;font-weight:600;line-height:1.8;margin:12px 0">&laquo;${esc(title)}&raquo;</p>
+      <p style="margin:16px 0"><a href="${url}" style="color:#125934;font-weight:600">افتح السؤال</a></p>
+      <p style="font-size:13px;color:#4D4D4D;line-height:1.8">إذا تغيّرت الإجراءات، يمكنك نشر تحديث أو إعادة فتح النقاش حتى يشارك الأعضاء ما يعمل الآن.</p>
+    </div>
+  </div></body></html>`;
+  return { subject, html };
+}
+
 /** Bilingual (EN first, AR below) 6-digit code email for signup verification and password reset. */
 export function meshCodeEmail(code: string, purpose: "signup" | "reset"): { subject: string; html: string } {
   const actionEn = purpose === "signup" ? "verify your MESH account" : "reset your MESH password";

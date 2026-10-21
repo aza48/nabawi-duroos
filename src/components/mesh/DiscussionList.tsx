@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ArrowUp, Check, MessageSquare } from "lucide-react";
+import { ArrowUp, Check, Lock, MessageSquare } from "lucide-react";
 import { relativeTime, type MeshListItem } from "@/data/mesh-seed";
 import { useMeshPrefs, pickLang } from "@/lib/mesh-i18n";
 import { AuthorName } from "@/components/mesh/UserBadge";
@@ -20,7 +20,9 @@ export function DiscussionRow({ item }: { item: MeshListItem }) {
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center", marginBottom: 6 }}>
           <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".05em", textTransform: "uppercase", color: "var(--mesh-accent)" }}>{catName}</span>
-          {item.solved && <span className="mesh-solved"><Check size={12} /> {t("disc.solved")}</span>}
+          {(item as { status?: string }).status === "resolved" && <span className="mesh-solved"><Check size={12} /> {t("disc.resolved")}</span>}
+          {(item as { status?: string }).status === "locked" && <span style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "var(--mesh-canvas)", color: "var(--mesh-muted)", border: "1px solid var(--mesh-hairline)", fontSize: 11, fontWeight: 700, padding: "3px 9px", borderRadius: 999, textTransform: "uppercase", letterSpacing: ".04em" }}><Lock size={11} /> {t("disc.locked")}</span>}
+          {!(item as { status?: string }).status && item.solved && <span className="mesh-solved"><Check size={12} /> {t("disc.solved")}</span>}
           {item.is_seed && <span style={{ fontSize: 11, color: "var(--mesh-muted)", border: "1px solid var(--mesh-hairline)", padding: "1px 6px", borderRadius: 999 }}>{t("disc.sample")}</span>}
         </div>
         <Link href={`/mesh/question/${item.id}`} style={{ fontSize: 16.5, fontWeight: 600, color: "var(--mesh-text)", textDecoration: "none", lineHeight: 1.4, display: "block" }}>{title}</Link>

@@ -34,6 +34,13 @@ export const meshCategories: MeshCategory[] = [
   { slug: "moving-luggage", name: "Moving and Luggage", description: "Shipping and packing.", nameAr: "النقل والأمتعة", descriptionAr: "الشحن والتعبئة.", parentSlug: "getting-ready-to-leave", isMain: false, displayOrder: 37 },
 ];
 
+/**
+ * Procedure-type subcategory slugs (Phase 4): accepted solutions older than 12 months in these
+ * subcategories get a "procedures may have changed" notice. Covers Iqama/Absher, Nafath, visas,
+ * exit procedures, banking, SIM/internet, housing contracts, and closing accounts.
+ */
+export const meshProcedureSlugs: string[] = ["visa-iqama", "nafath-absher", "exit-procedures", "banking-payments", "sim-cards", "housing-accommodation", "closing-accounts"];
+
 export const meshTags: string[] = ["University admission","Visa and Iqama","Nafath","Absher","University registration","Accommodation","Transport","SIM cards","Banking","Groceries and essentials","Exit procedures","Travel","Final paperwork","Accommodation handover","Closing accounts"];
 
 export const meshSeedUsers: MeshUserSeed[] = [
@@ -105,7 +112,7 @@ export function seedQuestionToListItem(qq: MeshQuestionSeed) {
     id: qq.id, title: qq.title, body: qq.body, title_ar: qq.titleAr, body_ar: qq.bodyAr, author_id: qq.authorId, author_name: qq.authorName,
     author_role: su?.role ?? "member", author_entry_year: su?.entryYear ?? null, author_country: su?.country ?? null,
     category_slug: qq.categorySlug, category_name: qq.categoryName, category_name_ar: meshCategories.find((c) => c.slug === qq.categorySlug)?.nameAr ?? null, subcategory_slug: qq.subcategorySlug ?? null,
-    vote_count: qq.voteCount, answer_count: qq.answers.length, solved: qq.acceptedAnswerId != null,
+    vote_count: qq.voteCount, answer_count: qq.answers.length, solved: qq.acceptedAnswerId != null, status: qq.acceptedAnswerId != null ? "resolved" : "open",
     accepted_answer_id: qq.acceptedAnswerId, is_seed: true, tags: qq.tags, created_at: qq.createdAt, updated_at: qq.updatedAt,
   };
 }
