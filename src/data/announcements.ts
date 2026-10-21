@@ -43,6 +43,22 @@ export const TELEGRAM_SOURCES: TelegramSource[] = [
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "lecture-quba-omari-14480510",
+    shaykh: L("د. عبد الهادي بن عوض العمري", "Dr. Abdulhadi bin Awad al-Omari"),
+    text: L(
+      "محاضرة بعنوان: القدوات الحسنة وأثرها في تثبيت العقيدة الصحيحة — في مسجد قباء، بعد صلاة المغرب، يوم [الأربعاء ١٠/٥/١٤٤٨]",
+      "A lecture titled: Righteous Role Models and Their Effect in Firmly Establishing the Correct Creed — at Masjid Quba, on [Wednesday 10/5/1448] after Maghrib prayer"
+    ),
+    postedHijri: L("١٠/٥/١٤٤٨هـ", "10/5/1448 AH"),
+    postedGregorian: L("٢١ أكتوبر ٢٠٢٦", "21 October 2026"),
+    source: "@khizana_62",
+    sourceName: L("قناة خزانة العلم", "Khazanat al-Ilm channel"),
+    type: "lecture",
+    expired: false,
+    eventDate: "2026-10-21",
+    masjidId: "quba",
+  },
+  {
     id: "ruh-asr-cancelled-9-5-1448",
     shaykh: L("أ. د. سليمان بن سليم الله الرحيلي", "Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli"),
     text: L(

@@ -61,6 +61,9 @@ export interface Announcement {
   sourceName: Localized;
   type: AnnouncementType;
   expired: boolean;
+  /** ISO "YYYY-MM-DD" (Asia/Riyadh semantics) of a one-off event, e.g. a lecture. */
+  eventDate?: string;
+  masjidId?: MasjidId;
   channelNote?: Localized;
 }
 
