@@ -4,6 +4,7 @@ import { ensureMesh } from "@/lib/mesh-db";
 import { getCurrentUser } from "@/lib/mesh-auth";
 import { noDb } from "@/lib/mesh-api";
 import { logQuestionEvent } from "@/lib/mesh-lifecycle";
+import { audit } from "@/lib/mesh-admin";
 
 export async function POST(req: NextRequest, { params }: { params: { id: string } }){
   if(!dbConfigured()) return noDb(); try{ await ensureMesh(); }catch{ return noDb(); }
@@ -16,12 +17,14 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
   if(body.locked===true){
     await query(`UPDATE mesh_questions SET status='locked', updated_at=now() WHERE id=$1`,[qid]);
     if(q.status!=="locked") await logQuestionEvent(qid, user.id, "locked");
+    await audit(user.id, "question_lock", "question", qid, null);
     return NextResponse.json({ ok: true, status: "locked" });
   }
   if(body.locked===false){
     const next = q.accepted_answer_id ? "resolved" : "open";
     await query(`UPDATE mesh_questions SET status=$1, updated_at=now() WHERE id=$2`,[next,qid]);
     if(q.status==="locked") await logQuestionEvent(qid, user.id, "unlocked");
+    await audit(user.id, "question_unlock", "question", qid, `status -> ${next}`);
     return NextResponse.json({ ok: true, status: next });
   }
   return NextResponse.json({error:"invalid_body"},{status:400});

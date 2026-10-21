@@ -4,6 +4,7 @@ import { ensureMesh } from "@/lib/mesh-db";
 import { getCurrentUser } from "@/lib/mesh-auth";
 import { noDb, bad, clean } from "@/lib/mesh-api";
 import { logQuestionEvent, threadCapabilities, withinRestoreWindow } from "@/lib/mesh-lifecycle";
+import { audit } from "@/lib/mesh-admin";
 
 type QRow = {
   id: number; title: string; body: string; author_id: number; author_name: string; author_role: string;
@@ -65,5 +66,6 @@ export async function DELETE(_req: NextRequest, { params }: { params: { id: stri
   if(existing.author_id!==user.id && user.role!=="admin") return NextResponse.json({error:"forbidden"},{status:403});
   await query(`UPDATE mesh_questions SET deleted_at=now(), deleted_by=$1, updated_at=now() WHERE id=$2`,[user.id,id]);
   await logQuestionEvent(id, user.id, "deleted");
+  if(user.role==="admin") await audit(user.id, "question_delete", "question", id, null);
   return NextResponse.json({ ok: true });
 }

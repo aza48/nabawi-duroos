@@ -41,6 +41,10 @@ async function doInit(): Promise<void> {
   await query(`CREATE INDEX IF NOT EXISTS idx_mesh_question_events_q ON mesh_question_events (question_id, created_at DESC)`);
   await query(`CREATE TABLE IF NOT EXISTS mesh_notifications (id serial PRIMARY KEY, user_id int NOT NULL REFERENCES mesh_users(id) ON DELETE CASCADE, type text NOT NULL, question_id int, answer_id int, actor_id int, read_at timestamptz, created_at timestamptz DEFAULT now())`);
   await query(`CREATE INDEX IF NOT EXISTS idx_mesh_notifications_user ON mesh_notifications (user_id, read_at)`);
+  // Phase 5: admin console — suspension flag + audit log (all idempotent)
+  await query(`ALTER TABLE mesh_users ADD COLUMN IF NOT EXISTS suspended_at timestamptz`);
+  await query(`CREATE TABLE IF NOT EXISTS mesh_audit_log (id serial PRIMARY KEY, actor_id int, action text NOT NULL, target_type text, target_id int, detail text, created_at timestamptz DEFAULT now())`);
+  await query(`CREATE INDEX IF NOT EXISTS idx_mesh_audit_created ON mesh_audit_log (created_at DESC)`);
   // One-time backfill: questions that already have an accepted solution count as resolved.
   // The NOT EXISTS guard keeps this one-time: once a lifecycle event exists (e.g. a reopen), later inits never flip it back.
   await query(`UPDATE mesh_questions SET status='resolved' WHERE accepted_answer_id IS NOT NULL AND status='open' AND NOT EXISTS (SELECT 1 FROM mesh_question_events e WHERE e.question_id = mesh_questions.id)`);

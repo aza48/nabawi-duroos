@@ -20,7 +20,7 @@ export function verifyPassword(password: string, stored: string): boolean {
 }
 export function hashToken(token: string): string { return createHash("sha256").update(token).digest("hex"); }
 
-export type MeshUser = { id: number; email: string; display_name: string; bio: string | null; role: string; is_seed: boolean; created_at: string; email_verified: boolean; entry_year_hijri: number | null; personal_email: string | null; country: string | null };
+export type MeshUser = { id: number; email: string; display_name: string; bio: string | null; role: string; is_seed: boolean; created_at: string; email_verified: boolean; entry_year_hijri: number | null; personal_email: string | null; country: string | null; suspended_at: string | null };
 
 export async function createSession(userId: number): Promise<string> {
   const token = randomBytes(32).toString("hex");
@@ -33,6 +33,10 @@ export function setSessionCookie(token: string) {
 }
 export function clearSessionCookie() { cookies().set(MESH_COOKIE, "", { httpOnly: true, sameSite: "lax", path: "/", maxAge: 0 }); }
 
+function bootstrapAdminEmails(): Set<string> {
+  return new Set((process.env.MESH_ADMIN_EMAILS || "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean));
+}
+
 export async function getCurrentUser(): Promise<MeshUser | null> {
   try {
     const token = cookies().get(MESH_COOKIE)?.value;
@@ -40,7 +44,23 @@ export async function getCurrentUser(): Promise<MeshUser | null> {
     const row = await queryOne<MeshUser & { sid: number }>(
       `SELECT u.id,u.email,u.display_name,u.bio,u.role,u.is_seed,u.created_at,u.email_verified,u.entry_year_hijri,u.personal_email,u.country, s.id as sid FROM mesh_sessions s JOIN mesh_users u ON u.id=s.user_id WHERE s.token_hash=$1 AND s.expires_at>now()`, [hashToken(token)]);
     if (!row) return null;
-    return { id: row.id, email: row.email, display_name: row.display_name, bio: row.bio, role: row.role, is_seed: row.is_seed, created_at: row.created_at, email_verified: row.email_verified, entry_year_hijri: row.entry_year_hijri, personal_email: row.personal_email, country: row.country };
+    const user: MeshUser = { id: row.id, email: row.email, display_name: row.display_name, bio: row.bio, role: row.role, is_seed: row.is_seed, created_at: row.created_at, email_verified: row.email_verified, entry_year_hijri: row.entry_year_hijri, personal_email: row.personal_email, country: row.country, suspended_at: null };
+    // Phase 5 columns are read separately so a pre-init database can never break session lookup.
+    try {
+      const extra = await queryOne<{ suspended_at: string | null }>(`SELECT suspended_at FROM mesh_users WHERE id=$1`, [user.id]);
+      user.suspended_at = extra?.suspended_at ?? null;
+    } catch { /* column not migrated yet — treat as not suspended */ }
+    // A suspended account's live sessions die here: every route resolves the viewer through getCurrentUser.
+    if (user.suspended_at) return null;
+    // Bootstrap: emails listed in MESH_ADMIN_EMAILS are promoted to admin on first authenticated touch.
+    if (user.role !== "admin" && bootstrapAdminEmails().has(user.email.toLowerCase())) {
+      try {
+        await query(`UPDATE mesh_users SET role='admin' WHERE id=$1`, [user.id]);
+        user.role = "admin";
+        try { await query(`INSERT INTO mesh_audit_log (actor_id, action, target_type, target_id, detail) VALUES ($1,'admin_bootstrap','user',$1,'Promoted via MESH_ADMIN_EMAILS')`, [user.id]); } catch { /* audit table may not exist pre-init */ }
+      } catch { /* promotion is best-effort; the env list is re-checked on every request */ }
+    }
+    return user;
   } catch { return null; }
 }
 export async function requireUser(): Promise<MeshUser | null> { return getCurrentUser(); }

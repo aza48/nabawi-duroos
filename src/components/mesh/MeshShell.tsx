@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Bell, LogOut, Menu, Moon, Plus, Search, Sun, User, X } from "lucide-react";
+import { Bell, LogOut, Menu, Moon, Plus, Search, Shield, Sun, User, X } from "lucide-react";
 import { useMeshPrefs } from "@/lib/mesh-i18n";
 
 export type MeshMe = { id: number; display_name: string; role: string; notifications_unread?: number } | null;
@@ -78,6 +78,9 @@ export default function MeshShell({ children }: { children: React.ReactNode }) {
               <Bell size={17} /> {t("nav.notifications")}
               {!!me.notifications_unread && <span aria-label={`${me.notifications_unread}`} style={{ marginInlineStart: "auto", background: "var(--mesh-primary)", color: "var(--mesh-on-primary)", fontSize: 11, fontWeight: 700, minWidth: 20, height: 20, borderRadius: 999, display: "inline-grid", placeItems: "center", padding: "0 6px" }}>{me.notifications_unread}</span>}
             </Link>
+            {me.role === "admin" && (
+              <Link href="/mesh/admin" className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}><Shield size={17} /> {t("nav.admin")}</Link>
+            )}
             <button onClick={logout} className="mesh-drawer-row mesh-focus" style={{ cursor: "pointer" }} tabIndex={menuOpen ? 0 : -1}><LogOut size={17} /> {t("nav.logout")}</button>
           </>) : (
             <Link href="/mesh/login" className="mesh-btn mesh-btn-outline mesh-focus" style={{ width: "100%", minHeight: 44 }} tabIndex={menuOpen ? 0 : -1}>{t("nav.login")}</Link>

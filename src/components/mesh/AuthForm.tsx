@@ -11,6 +11,7 @@ export function meshAuthError(t: T, d: Record<string, unknown>, status: number):
   if (e === "invalid_email") return t("auth.errInvalidEmail");
   if (e === "invalid_code") return t("auth.errInvalidCode");
   if (e === "email_not_verified") return t("auth.errNotVerified");
+  if (e === "account_suspended") return t("auth.errSuspended");
   if (e === "too_many_attempts") return t("auth.errTooMany");
   if (e === "resend_too_soon") return t("auth.errResendSoon");
   if (e === "email_not_configured") return t("auth.errEmailConfig");
