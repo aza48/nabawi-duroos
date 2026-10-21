@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Megaphone, X } from "lucide-react";
 import { useLang } from "../lib/i18n";
 import { Announcement, AnnouncementRow, Localized, MASJIDS } from "../lib/types";
@@ -31,6 +31,11 @@ import { ANNOUNCEMENTS } from "../data/announcements";
  * All active items are grouped into ONE card, one bullet each. Dismissing
  * stores the shown item ids (DB numeric ids and static string ids share the
  * same localStorage key); a new id re-triggers the card on a later visit.
+ *
+ * Presentation: a centered modal — a full-viewport backdrop blurs the page
+ * behind it (clicking the backdrop dismisses, same as the ✕ button), and
+ * the card itself is frosted "liquid glass" tinted from the active masjid
+ * theme variables. The glass treatment lives only in this component.
  */
 
 const DISMISS_KEY = "duroos_dismissed_lectures";
@@ -74,6 +79,7 @@ function masjidFor(row: AnnouncementRow): Localized | null {
 export function LectureAlert() {
   const { t, ui, lang } = useLang();
   const rows = useDbAnnouncements();
+  const reduceMotion = useReducedMotion();
   const [dismissed, setDismissed] = useState<DismissId[] | null>(null);
 
   useEffect(() => {
@@ -85,11 +91,13 @@ export function LectureAlert() {
     }
   }, []);
 
-  if (dismissed === null) return null;
+  // Until the stored dismissals load, treat everything as not-yet-dismissed
+  // but keep the card hidden (visible requires dismissed !== null below).
+  const dismissedList: DismissId[] = dismissed ?? [];
   const todayIso = riyadhToday().iso;
 
   const dbBullets: Bullet[] = rows
-    .filter((r) => isDbActive(r, todayIso) && !dismissed.includes(r.id))
+    .filter((r) => isDbActive(r, todayIso) && !dismissedList.includes(r.id))
     .map((row) => {
       const shaykh = findShaykhScope(row.shaykh_id)?.name;
       const masjid = masjidFor(row);
@@ -112,7 +120,7 @@ export function LectureAlert() {
   const staticBullets: Bullet[] = ANNOUNCEMENTS.filter((a) => {
     if (seenStatic.has(a.id)) return false;
     seenStatic.add(a.id);
-    return isStaticActive(a, todayIso) && !dismissed.includes(a.id);
+    return isStaticActive(a, todayIso) && !dismissedList.includes(a.id);
   }).map((a) => {
     const meta = [
       t(a.shaykh),
@@ -128,10 +136,20 @@ export function LectureAlert() {
   });
 
   const active = [...dbBullets, ...staticBullets];
-  const visible = active.length > 0;
+  const visible = dismissed !== null && active.length > 0;
+
+  // Lock background scroll while the modal is open; restore on close/unmount.
+  useEffect(() => {
+    if (!visible) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [visible]);
 
   const dismiss = () => {
-    const next = Array.from(new Set([...dismissed, ...active.map((b) => b.id)]));
+    const next = Array.from(new Set([...dismissedList, ...active.map((b) => b.id)]));
     setDismissed(next);
     try {
       window.localStorage.setItem(DISMISS_KEY, JSON.stringify(next));
@@ -141,51 +159,78 @@ export function LectureAlert() {
   return (
     <AnimatePresence>
       {visible ? (
-        <motion.aside
-          key="lecture-alert"
-          initial={{ opacity: 0, y: -14 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          className="fixed inset-x-4 top-20 z-50 mx-auto max-w-xl rounded-card bg-[var(--card)] p-5 shadow-lift ring-1 ring-black/5 sm:p-6"
-          role="alert"
+        <motion.div
+          key="lecture-alert-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.25, ease: "easeOut" }}
+          onClick={dismiss}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+          style={{
+            // Light themed tint + a real blur of the page behind the modal.
+            background: "color-mix(in srgb, var(--brand-deep) 18%, transparent)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+          }}
         >
-          <div className="flex items-start justify-between gap-3">
-            <h2 className="flex items-center gap-2 text-lg font-semibold text-[var(--ink)]">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--brand-deep)] text-white">
-                <Megaphone className="h-4.5 w-4.5" />
-              </span>
-              {ui("upcomingLectures")}
-            </h2>
-            <button
-              onClick={dismiss}
-              aria-label={ui("dismiss")}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--ceramic)] text-[var(--ink-soft)] transition-transform active:scale-95"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          </div>
-          <ul className="mt-4 space-y-3">
-            {active.map((b) => (
-              <li key={b.key} className="flex gap-2.5">
-                <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-accent)]" />
-                <div>
-                  <p className="text-[15px] font-semibold leading-relaxed text-[var(--ink)]">
-                    {b.title}
-                  </p>
-                  <p className="mt-0.5 text-sm leading-relaxed text-[var(--ink-soft)]">
-                    {b.meta.join(" · ")}
-                  </p>
-                  {b.body ? (
-                    <p className="mt-0.5 text-sm leading-relaxed text-[var(--ink-soft)]">
-                      {b.body}
+          <motion.aside
+            key="lecture-alert"
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 10 }}
+            animate={reduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.97, y: 6 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-[22px] p-6 sm:p-7"
+            style={{
+              // Liquid glass: translucent theme surface, deep frost + saturation,
+              // a theme-aware hairline edge and a specular top highlight.
+              background: "color-mix(in srgb, var(--card) 62%, transparent)",
+              backdropFilter: "blur(20px) saturate(1.5)",
+              WebkitBackdropFilter: "blur(20px) saturate(1.5)",
+              border: "1px solid color-mix(in srgb, var(--ink) 14%, transparent)",
+              boxShadow:
+                "inset 0 1px 0 0 rgba(255, 255, 255, 0.35), inset 0 -0.5px 0 0 color-mix(in srgb, var(--ink) 6%, transparent), 0 24px 60px -12px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.12)",
+            }}
+            role="alert"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-[var(--ink)]">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--brand-deep)] text-white">
+                  <Megaphone className="h-4.5 w-4.5" />
+                </span>
+                {ui("upcomingLectures")}
+              </h2>
+              <button
+                onClick={dismiss}
+                aria-label={ui("dismiss")}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--ceramic)] text-[var(--ink-soft)] transition-transform active:scale-95"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <ul className="mt-4 space-y-3">
+              {active.map((b) => (
+                <li key={b.key} className="flex gap-2.5">
+                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-accent)]" />
+                  <div>
+                    <p className="text-[15px] font-semibold leading-relaxed text-[var(--ink)]">
+                      {b.title}
                     </p>
-                  ) : null}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </motion.aside>
+                    <p className="mt-0.5 text-sm leading-relaxed text-[var(--ink-soft)]">
+                      {b.meta.join(" · ")}
+                    </p>
+                    {b.body ? (
+                      <p className="mt-0.5 text-sm leading-relaxed text-[var(--ink-soft)]">
+                        {b.body}
+                      </p>
+                    ) : null}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </motion.aside>
+        </motion.div>
       ) : null}
     </AnimatePresence>
   );
