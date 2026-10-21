@@ -1,5 +1,6 @@
 import { query, queryOne, dbConfigured } from "./db";
 import { meshCategories, meshSeedQuestions, meshSeedUsers, meshTags } from "@/data/mesh-seed";
+import { meshSeedArticles } from "@/data/mesh-articles-seed";
 
 export { dbConfigured };
 
@@ -48,7 +49,12 @@ async function doInit(): Promise<void> {
   // One-time backfill: questions that already have an accepted solution count as resolved.
   // The NOT EXISTS guard keeps this one-time: once a lifecycle event exists (e.g. a reopen), later inits never flip it back.
   await query(`UPDATE mesh_questions SET status='resolved' WHERE accepted_answer_id IS NOT NULL AND status='open' AND NOT EXISTS (SELECT 1 FROM mesh_question_events e WHERE e.question_id = mesh_questions.id)`);
+  // Resources (articles): long-form guides written by mandoobs/admins, liked by any member.
+  // author_id is nullable with ON DELETE SET NULL so deleting a member account never breaks articles.
+  await query(`CREATE TABLE IF NOT EXISTS mesh_articles (id serial PRIMARY KEY, author_id int REFERENCES mesh_users(id) ON DELETE SET NULL, title text NOT NULL, banner text, body_html text NOT NULL DEFAULT '', status text NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','published')), is_seed boolean DEFAULT false, created_at timestamptz DEFAULT now(), updated_at timestamptz DEFAULT now())`);
+  await query(`CREATE TABLE IF NOT EXISTS mesh_article_likes (id serial PRIMARY KEY, article_id int NOT NULL REFERENCES mesh_articles(id) ON DELETE CASCADE, user_id int NOT NULL REFERENCES mesh_users(id) ON DELETE CASCADE, created_at timestamptz DEFAULT now(), UNIQUE(article_id,user_id))`);
   await seedMeshIfEmpty();
+  await seedMeshArticlesIfEmpty();
 }
 
 function slugify(s: string) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""); }
@@ -107,6 +113,20 @@ export async function seedMeshIfEmpty(): Promise<void> {
         try { await query(`INSERT INTO mesh_votes (user_id,target_type,target_id) VALUES ($1,'answer',$2) ON CONFLICT DO NOTHING`, [voters[i], dbAid]); } catch { /* */ }
       }
     }
+  }
+}
+
+/** Seed the two sample Resources articles, attributed to the seed mandoob. Runs whenever the
+ *  articles table is empty — including on existing installs where seedMeshIfEmpty has already run. */
+export async function seedMeshArticlesIfEmpty(): Promise<void> {
+  const existing = await queryOne<{ c: string }>(`SELECT count(*)::text as c FROM mesh_articles`);
+  if (existing && parseInt(existing.c, 10) > 0) return;
+  const mandoob = meshSeedUsers.find((u) => u.role === "mandoob");
+  if (!mandoob) return;
+  const author = await queryOne<{ id: number }>(`SELECT id FROM mesh_users WHERE email=$1`, [`seed${mandoob.id}@mesh.local`]);
+  if (!author) return;
+  for (const a of meshSeedArticles) {
+    await query(`INSERT INTO mesh_articles (author_id,title,body_html,status,is_seed) VALUES ($1,$2,$3,'published',true)`, [author.id, a.title, a.bodyHtml]);
   }
 }
 

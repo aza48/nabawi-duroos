@@ -87,6 +87,38 @@
 .mesh-drawer.open{transform:translateX(0)!important;visibility:visible;box-shadow:0 0 64px rgba(0,0,0,.28)}
 .mesh-drawer-row{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mesh-text);text-decoration:none;background:none;border:none;font-family:inherit;text-align:start;padding:10px 2px;width:100%}
 @media (prefers-reduced-motion: reduce){.mesh-drawer,.mesh-drawer-backdrop{transition:none!important}}
+/* Resources (articles) */
+.mesh-article-grid{display:grid;grid-template-columns:1fr;gap:22px}
+@media (min-width:900px){.mesh-article-grid{grid-template-columns:1fr 1fr}}
+.mesh-article-card{display:flex;flex-direction:column;background:var(--mesh-surface);border:1px solid var(--mesh-hairline);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .18s,transform .18s}
+.mesh-article-card:hover{border-color:var(--mesh-border-strong);transform:translateY(-2px)}
+.mesh-article-banner{width:100%;aspect-ratio:5/2;object-fit:cover;display:block}
+.mesh-article-banner-empty{width:100%;aspect-ratio:5/2;background:var(--mesh-pale);color:var(--mesh-accent);display:grid;place-items:center}
+/* Article body typography — used by the reader page AND the editor surface,
+   so what authors see while writing is what readers get. */
+.mesh-article-body{font-size:17px;line-height:1.8;color:var(--mesh-text);overflow-wrap:break-word}
+.mesh-article-body p{margin:0 0 1.1em}
+.mesh-article-body h1{font-size:26px;line-height:1.3;margin:1.2em 0 .6em;font-weight:800}
+.mesh-article-body h2{font-size:22px;line-height:1.35;margin:1.3em 0 .55em;font-weight:700}
+.mesh-article-body blockquote{margin:1.2em 0;padding:2px 0 2px 18px;padding-inline-start:18px;border-inline-start:3px solid var(--mesh-accent);color:var(--mesh-secondary)}
+.mesh-article-body ul,.mesh-article-body ol{margin:0 0 1.1em;padding-inline-start:24px}
+.mesh-article-body li{margin:.3em 0}
+.mesh-article-body a{color:var(--mesh-accent);text-decoration:underline}
+.mesh-article-body img{max-width:100%;height:auto;border-radius:12px}
+.mesh-article-body hr{border:none;border-top:1px solid var(--mesh-hairline);margin:30px 0}
+.mesh-article-body code{background:var(--mesh-pale);padding:2px 6px;border-radius:6px;font-size:.88em}
+.mesh-article-body pre{background:var(--mesh-pale);padding:16px;border-radius:12px;overflow-x:auto;margin:0 0 1.1em}
+.mesh-article-body pre code{background:none;padding:0}
+/* Editor */
+.mesh-editor{border:1px solid var(--mesh-hairline);border-radius:12px;background:var(--mesh-input-bg);overflow:hidden}
+.mesh-editor:focus-within{border-color:var(--mesh-accent);box-shadow:0 0 0 3px rgba(33,134,83,.22)}
+.mesh-editor-toolbar{display:flex;flex-wrap:wrap;gap:2px;padding:8px;border-bottom:1px solid var(--mesh-hairline);background:var(--mesh-surface)}
+.mesh-editor-btn{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:8px;border:1px solid transparent;background:transparent;color:var(--mesh-secondary);cursor:pointer;font-family:inherit}
+.mesh-editor-btn:hover{border-color:var(--mesh-hairline);color:var(--mesh-text)}
+.mesh-editor-btn.active{background:var(--mesh-pale);color:var(--mesh-accent)}
+.mesh-editor-btn:disabled{opacity:.35;cursor:default}
+.mesh-editor .ProseMirror{min-height:320px;padding:20px;outline:none}
+.mesh-editor .ProseMirror > :first-child{margin-top:0}
 @media (prefers-reduced-motion: reduce){.mesh-root *{transition:none!important;animation:none!important}}
 @media (max-width:1023px){
   .mesh-cat-content{max-width:52%}
