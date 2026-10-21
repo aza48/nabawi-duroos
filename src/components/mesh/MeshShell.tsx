@@ -27,21 +27,21 @@ export default function MeshShell({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <header className="mesh-header-bar" style={{ position: "sticky", top: 0, zIndex: 40 }}>
-        <div className="mesh-container" style={{ display: "flex", alignItems: "center", gap: 16, minHeight: 64, flexWrap: "wrap", paddingTop: 8, paddingBottom: 8 }}>
+        <div className="mesh-container" style={{ display: "flex", alignItems: "center", gap: 20, minHeight: 64, flexWrap: "wrap", paddingTop: 10, paddingBottom: 10 }}>
           <Link href="/mesh" style={{ textDecoration: "none", color: "var(--mesh-text)", lineHeight: 1 }}>
             <span style={{ fontWeight: 800, fontSize: 22, letterSpacing: "-0.02em" }}>MESH</span>
-            <span style={{ display: "block", fontSize: 10, color: "var(--mesh-muted)", fontWeight: 500, marginTop: 2 }}>{t("brand.sub")}</span>
+            <span style={{ display: "block", fontSize: 10, color: "var(--mesh-muted)", fontWeight: 500, marginTop: 3 }}>{t("brand.sub")}</span>
           </Link>
-          <nav style={{ display: "flex", gap: 16, fontSize: 14, fontWeight: 500 }} aria-label={t("nav.main")}>
+          <nav style={{ display: "flex", gap: 20, fontSize: 14, fontWeight: 500 }} aria-label={t("nav.main")}>
             <Link href="/mesh" style={{ color: "var(--mesh-text)", textDecoration: "none" }}>{t("nav.home")}</Link>
             <Link href="/mesh/browse" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("nav.browse")}</Link>
             <Link href="/mesh/category/getting-started" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("nav.gettingStarted")}</Link>
           </nav>
           <form role="search" style={{ flex: 1, minWidth: 140, maxWidth: 320, marginInlineStart: "auto", position: "relative" }} onSubmit={(e) => { e.preventDefault(); router.push(`/mesh/browse?q=${encodeURIComponent(q)}`); }}>
-            <Search size={16} className="mesh-search-icon" style={{ top: 13 }} aria-hidden />
+            <Search size={16} className="mesh-search-icon" style={{ top: 15 }} aria-hidden />
             <input aria-label={t("nav.searchAria")} className="mesh-input mesh-focus mesh-search-input" style={{ minHeight: 40 }} placeholder={t("nav.searchPh")} value={q} onChange={(e) => setQ(e.target.value)} />
           </form>
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
             <button type="button" className="mesh-icon-btn mesh-lang-btn mesh-focus" onClick={() => setLang(lang === "ar" ? "en" : "ar")} aria-label={t("lang.toggle")}>
               {lang === "ar" ? "English" : "العربية"}
             </button>
@@ -49,19 +49,19 @@ export default function MeshShell({ children }: { children: React.ReactNode }) {
               {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
             </button>
             {me ? (<>
-              <Link href={`/mesh/profile/${me.id}`} style={{ display: "inline-flex", gap: 6, alignItems: "center", fontSize: 14, fontWeight: 600, color: "var(--mesh-text)", textDecoration: "none" }}><User size={16} />{me.display_name}</Link>
+              <Link href={`/mesh/profile/${me.id}`} style={{ display: "inline-flex", gap: 8, alignItems: "center", fontSize: 14, fontWeight: 600, color: "var(--mesh-text)", textDecoration: "none", padding: "8px 2px" }}><User size={16} />{me.display_name}</Link>
               <button onClick={logout} className="mesh-btn mesh-btn-outline mesh-btn-sm mesh-focus" aria-label={t("nav.logout")}><LogOut size={14} /> {t("nav.logout")}</button>
             </>) : (<Link href="/mesh/login" style={{ fontSize: 14, fontWeight: 600, color: "var(--mesh-text)", textDecoration: "none", padding: "8px 4px" }}>{t("nav.login")}</Link>)}
             <Link href="/mesh/ask" className="mesh-btn mesh-btn-primary mesh-focus" style={{ minHeight: 40, padding: "0 16px" }}><Plus size={16} /> {t("nav.ask")}</Link>
           </div>
         </div>
       </header>
-      {demo && <div role="status" className="mesh-demo-banner"><div className="mesh-container" style={{ paddingTop: 8, paddingBottom: 8 }}>{t("demo.banner")}</div></div>}
+      {demo && <div role="status" className="mesh-demo-banner"><div className="mesh-container" style={{ paddingTop: 12, paddingBottom: 12 }}>{t("demo.banner")}</div></div>}
       <main>{children}</main>
-      <footer style={{ borderTop: "1px solid var(--mesh-hairline)", background: "var(--mesh-surface)", marginTop: 64 }}>
-        <div className="mesh-container" style={{ paddingTop: 32, paddingBottom: 32, display: "flex", gap: 24, flexWrap: "wrap", justifyContent: "space-between" }}>
-          <div><div style={{ fontWeight: 800 }}>MESH</div><div style={{ fontSize: 12, color: "var(--mesh-muted)" }}>{t("footer.tag")}</div></div>
-          <nav style={{ display: "flex", gap: 18, fontSize: 14 }} aria-label={t("nav.footer")}>
+      <footer style={{ borderTop: "1px solid var(--mesh-hairline)", background: "var(--mesh-surface)", marginTop: 72 }}>
+        <div className="mesh-container" style={{ paddingTop: 40, paddingBottom: 40, display: "flex", gap: 28, flexWrap: "wrap", justifyContent: "space-between" }}>
+          <div><div style={{ fontWeight: 800 }}>MESH</div><div style={{ fontSize: 12, color: "var(--mesh-muted)", marginTop: 4 }}>{t("footer.tag")}</div></div>
+          <nav style={{ display: "flex", gap: 20, fontSize: 14 }} aria-label={t("nav.footer")}>
             <Link href="/mesh/about" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.about")}</Link>
             <Link href="/mesh/guidelines" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.guidelines")}</Link>
             <Link href="/mesh/about#contact" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.contact")}</Link>

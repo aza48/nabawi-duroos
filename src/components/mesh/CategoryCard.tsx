@@ -14,8 +14,8 @@ function Media({ slug }: { slug: string }) {
   if (slug === "getting-started") return (
     <div className="mesh-cat-logos" aria-hidden>
       {/* Real app icons published by the National Information Center on the Apple App Store (Absher / Nafath) */}
-      <img className="mesh-cat-logo mesh-cat-logo-absher" src="/images/mesh/absher.jpg" alt="" width={512} height={512} />
-      <img className="mesh-cat-logo mesh-cat-logo-nafath" src="/images/mesh/nafath.jpg" alt="" width={512} height={512} />
+      <img className="mesh-cat-logo" src="/images/mesh/absher.jpg" alt="" width={512} height={512} />
+      <img className="mesh-cat-logo" src="/images/mesh/nafath.jpg" alt="" width={512} height={512} />
     </div>
   );
   if (slug === "getting-settled") return <img className="mesh-cat-photo" src="/images/mesh/madinah-city.jpg" alt="" width={1024} height={768} aria-hidden />;
@@ -37,19 +37,20 @@ export default function CategoryCard({ slug, variant = "card" }: { slug: string;
       <div className="mesh-cat-glass" aria-hidden />
       <div className="mesh-cat-edge" aria-hidden />
       <div className="mesh-cat-content">
-        <h2 className="mesh-cat-title" style={variant === "header" ? { fontSize: 28 } : undefined}>
+        <h2 className="mesh-cat-title" style={variant === "header" ? { fontSize: 30 } : undefined}>
           {lang === "ar" ? name : (<>{words.slice(0, -1).join(" ")}{words.length > 1 ? " " : ""}<span className="mesh-accent-text">{words[words.length - 1]}</span></>)}
         </h2>
         <p className="mesh-cat-desc">{desc}</p>
         <div className="mesh-cat-tags">{(CARD_TAGS[slug] || []).map((tg) => <span key={tg} className="mesh-cat-tag">{tg}</span>)}</div>
         {variant === "card" && (
-          <span style={{ display: "inline-flex", gap: 6, alignItems: "center", marginTop: 10, fontWeight: 600, fontSize: 14 }}>
+          <span style={{ display: "inline-flex", gap: 8, alignItems: "center", marginTop: 16, fontWeight: 600, fontSize: 14 }}>
             {t("home.explore")} <span className="mesh-arrow"><ArrowRight size={16} className="mesh-flip-rtl" /></span>
           </span>
         )}
       </div>
     </>
   );
-  if (variant === "header") return <div className="mesh-cat-card mesh-cat-card-header">{inner}</div>;
-  return <Link href={`/mesh/category/${slug}`} className="mesh-cat-card mesh-focus" aria-label={name}>{inner}</Link>;
+  const mod = slug === "getting-started" ? " mesh-cat--logos" : "";
+  if (variant === "header") return <div className={`mesh-cat-card mesh-cat-card-header${mod}`}>{inner}</div>;
+  return <Link href={`/mesh/category/${slug}`} className={`mesh-cat-card mesh-focus${mod}`} aria-label={name}>{inner}</Link>;
 }
