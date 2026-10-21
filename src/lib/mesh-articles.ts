@@ -23,8 +23,9 @@ export function validBanner(value: unknown): string | null | undefined {
 export function parseArticleInput(body: Record<string, unknown>): { input: ArticleInput } | { error: string } {
   const title = typeof body.title === "string" ? body.title.trim() : "";
   if (title.length < 3 || title.length > ARTICLE_TITLE_MAX) return { error: "invalid_title" };
-  const banner = validBanner(body.banner);
-  if (banner === undefined) return { error: "invalid_banner" };
+  const rawBanner = validBanner(body.banner);
+  if (rawBanner === undefined && body.banner !== undefined) return { error: "invalid_banner" };
+  const banner = rawBanner ?? null; // banner is optional on create — omitted means no banner
   const rawBody = typeof body.bodyHtml === "string" ? body.bodyHtml : "";
   if (rawBody.length > ARTICLE_BODY_MAX) return { error: "body_too_large" };
   const bodyHtml = sanitizeArticleHtml(rawBody);
