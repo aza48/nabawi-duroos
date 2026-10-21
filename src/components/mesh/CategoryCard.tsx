@@ -19,7 +19,7 @@ function Media({ slug }: { slug: string }) {
     </div>
   );
   if (slug === "getting-settled") return <img className="mesh-cat-photo" src="/images/mesh/madinah-city.jpg" alt="" width={1024} height={768} aria-hidden />;
-  return <img className="mesh-cat-photo" src="/images/mesh/departure.jpg" alt="" width={1024} height={672} aria-hidden />;
+  return <img className="mesh-cat-photo" src="/images/mesh/saudia-plane.jpg" alt="" width={1280} height={853} aria-hidden />;
 }
 
 export default function CategoryCard({ slug, variant = "card" }: { slug: string; variant?: "card" | "header" }) {
