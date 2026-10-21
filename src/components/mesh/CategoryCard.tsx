@@ -35,7 +35,6 @@ export default function CategoryCard({ slug, variant = "card" }: { slug: string;
       <div className="mesh-cat-media"><Media slug={slug} /></div>
       <div className="mesh-cat-tint" aria-hidden />
       <div className="mesh-cat-glass" aria-hidden />
-      <div className="mesh-cat-edge" aria-hidden />
       <div className="mesh-cat-content">
         <h2 className="mesh-cat-title" style={variant === "header" ? { fontSize: 30 } : undefined}>
           {lang === "ar" ? name : (<>{words.slice(0, -1).join(" ")}{words.length > 1 ? " " : ""}<span className="mesh-accent-text">{words[words.length - 1]}</span></>)}
