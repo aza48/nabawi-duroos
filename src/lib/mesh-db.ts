@@ -11,6 +11,13 @@ export function initMeshDb(): Promise<void> {
 
 async function doInit(): Promise<void> {
   await query(`CREATE TABLE IF NOT EXISTS mesh_users (id serial PRIMARY KEY, email text UNIQUE NOT NULL, display_name text NOT NULL, password_hash text NOT NULL, bio text, role text DEFAULT 'member', is_seed boolean DEFAULT false, created_at timestamptz DEFAULT now())`);
+  // Phase 2: email verification + cohort + recovery email + country (idempotent; existing users grandfathered as verified)
+  await query(`ALTER TABLE mesh_users ADD COLUMN IF NOT EXISTS email_verified boolean NOT NULL DEFAULT true`);
+  await query(`ALTER TABLE mesh_users ADD COLUMN IF NOT EXISTS entry_year_hijri int`);
+  await query(`ALTER TABLE mesh_users ADD COLUMN IF NOT EXISTS personal_email text`);
+  await query(`ALTER TABLE mesh_users ADD COLUMN IF NOT EXISTS country text`);
+  await query(`CREATE TABLE IF NOT EXISTS mesh_email_codes (id serial PRIMARY KEY, user_id int NOT NULL REFERENCES mesh_users(id) ON DELETE CASCADE, purpose text NOT NULL CHECK (purpose IN ('signup','reset')), code_hash text NOT NULL, expires_at timestamptz NOT NULL, attempts int NOT NULL DEFAULT 0, consumed_at timestamptz, created_at timestamptz DEFAULT now())`);
+  await query(`CREATE INDEX IF NOT EXISTS idx_mesh_email_codes_lookup ON mesh_email_codes (user_id, purpose, created_at DESC)`);
   await query(`CREATE TABLE IF NOT EXISTS mesh_sessions (id serial PRIMARY KEY, user_id int NOT NULL REFERENCES mesh_users(id) ON DELETE CASCADE, token_hash text UNIQUE NOT NULL, expires_at timestamptz NOT NULL, created_at timestamptz DEFAULT now())`);
   await query(`CREATE TABLE IF NOT EXISTS mesh_categories (id serial PRIMARY KEY, slug text UNIQUE NOT NULL, name text NOT NULL, description text, parent_id int REFERENCES mesh_categories(id), display_order int DEFAULT 0, is_main boolean DEFAULT false)`);
   await query(`CREATE TABLE IF NOT EXISTS mesh_answers (id serial PRIMARY KEY, question_id int, author_id int REFERENCES mesh_users(id), body text NOT NULL, is_seed boolean DEFAULT false, created_at timestamptz DEFAULT now(), updated_at timestamptz DEFAULT now())`);
@@ -48,7 +55,7 @@ export async function seedMeshIfEmpty(): Promise<void> {
   const userIdMap = new Map<number, number>();
   for (const u of meshSeedUsers) {
     const email = `seed${u.id}@mesh.local`;
-    const r = await queryOne<{ id: number }>(`INSERT INTO mesh_users (email,display_name,password_hash,bio,is_seed,created_at) VALUES ($1,$2,'seed-no-login',$3,true,$4) ON CONFLICT (email) DO UPDATE SET display_name=EXCLUDED.display_name RETURNING id`, [email, u.displayName, u.bio, u.createdAt]);
+    const r = await queryOne<{ id: number }>(`INSERT INTO mesh_users (email,display_name,password_hash,bio,is_seed,created_at,role,entry_year_hijri,country) VALUES ($1,$2,'seed-no-login',$3,true,$4,$5,$6,$7) ON CONFLICT (email) DO UPDATE SET display_name=EXCLUDED.display_name RETURNING id`, [email, u.displayName, u.bio, u.createdAt, u.role ?? "member", u.entryYear ?? null, u.country ?? null]);
     if (r) userIdMap.set(u.id, r.id);
   }
   // Insert questions preserving seed id order via insertion; store mapping seedQid->dbId, seedAid->dbId

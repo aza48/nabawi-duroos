@@ -9,12 +9,12 @@ export async function GET(_req: NextRequest, { params }: { params: { id: string 
   if(!dbConfigured()) return noDb(); try{ await ensureMesh(); }catch{ return noDb(); }
   const id = parseInt(params.id,10); if(!id) return bad("Invalid id",404);
   const viewer = await getCurrentUser();
-  const qrow = await queryOne(`SELECT qq.id, qq.title, qq.body, qq.author_id, u.display_name AS author_name, COALESCE(pc.slug,c.slug) AS category_slug, COALESCE(pc.name,c.name) AS category_name, qq.accepted_answer_id, qq.is_seed, qq.created_at, qq.updated_at,
+  const qrow = await queryOne(`SELECT qq.id, qq.title, qq.body, qq.author_id, u.display_name AS author_name, u.role AS author_role, u.entry_year_hijri AS author_entry_year, u.country AS author_country, COALESCE(pc.slug,c.slug) AS category_slug, COALESCE(pc.name,c.name) AS category_name, qq.accepted_answer_id, qq.is_seed, qq.created_at, qq.updated_at,
     (SELECT count(*)::int FROM mesh_votes v WHERE v.target_type='question' AND v.target_id=qq.id) AS vote_count,
     COALESCE((SELECT json_agg(t.name) FROM mesh_question_tags qt JOIN mesh_tags t ON t.id=qt.tag_id WHERE qt.question_id=qq.id),'[]'::json) AS tags
     FROM mesh_questions qq JOIN mesh_users u ON u.id=qq.author_id JOIN mesh_categories c ON c.id=qq.category_id LEFT JOIN mesh_categories pc ON pc.id=c.parent_id WHERE qq.id=$1`,[id]);
   if(!qrow) return NextResponse.json({error:"not_found"},{status:404});
-  const answers = await query(`SELECT a.id, a.body, a.author_id, u.display_name AS author_name, a.is_seed, a.created_at, a.updated_at,
+  const answers = await query(`SELECT a.id, a.body, a.author_id, u.display_name AS author_name, u.role AS author_role, u.entry_year_hijri AS author_entry_year, u.country AS author_country, a.is_seed, a.created_at, a.updated_at,
     (SELECT count(*)::int FROM mesh_votes v WHERE v.target_type='answer' AND v.target_id=a.id) AS vote_count
     FROM mesh_answers a JOIN mesh_users u ON u.id=a.author_id WHERE a.question_id=$1
     ORDER BY (a.id = (SELECT accepted_answer_id FROM mesh_questions WHERE id=$1)) DESC NULLS LAST, vote_count DESC, a.created_at ASC`,[id]);

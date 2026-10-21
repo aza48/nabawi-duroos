@@ -1,5 +1,5 @@
 export type MeshCategory = { slug: string; name: string; description: string; nameAr: string; descriptionAr: string; parentSlug: string | null; isMain: boolean; displayOrder: number };
-export type MeshUserSeed = { id: number; displayName: string; bio: string; createdAt: string };
+export type MeshUserSeed = { id: number; displayName: string; bio: string; createdAt: string; role?: string; entryYear?: number; country?: string };
 export type MeshAnswerSeed = { id: number; authorId: number; authorName: string; body: string; bodyAr: string; voteCount: number; createdAt: string; isSeed: true };
 export type MeshQuestionSeed = {
   id: number; authorId: number; authorName: string; categorySlug: string; categoryName: string; subcategorySlug?: string;
@@ -37,10 +37,10 @@ export const meshCategories: MeshCategory[] = [
 export const meshTags: string[] = ["University admission","Visa and Iqama","Nafath","Absher","University registration","Accommodation","Transport","SIM cards","Banking","Groceries and essentials","Exit procedures","Travel","Final paperwork","Accommodation handover","Closing accounts"];
 
 export const meshSeedUsers: MeshUserSeed[] = [
-  { id: 1, displayName: "Yusuf A.", bio: "Second-year student, based near the university.", createdAt: "2026-09-12T10:00:00Z" },
-  { id: 2, displayName: "Fatima K.", bio: "Student of knowledge, in Madinah since 2024.", createdAt: "2026-08-20T10:00:00Z" },
-  { id: 3, displayName: "Bilal R.", bio: "Recently arrived — sharing what I learn as I go.", createdAt: "2026-10-02T10:00:00Z" },
-  { id: 4, displayName: "Maryam S.", bio: "Final-year student, happy to help newcomers.", createdAt: "2025-11-15T10:00:00Z" },
+  { id: 1, displayName: "Yusuf A.", bio: "Second-year student, based near the university.", createdAt: "2026-09-12T10:00:00Z", role: "mandoob", country: "Malaysia", entryYear: 1445 },
+  { id: 2, displayName: "Fatima K.", bio: "Student of knowledge, in Madinah since 2024.", createdAt: "2026-08-20T10:00:00Z", entryYear: 1446 },
+  { id: 3, displayName: "Bilal R.", bio: "Recently arrived — sharing what I learn as I go.", createdAt: "2026-10-02T10:00:00Z", entryYear: 1447 },
+  { id: 4, displayName: "Maryam S.", bio: "Final-year student, happy to help newcomers.", createdAt: "2025-11-15T10:00:00Z", entryYear: 1444 },
   { id: 5, displayName: "Idris O.", bio: "Part-time Arabic student.", createdAt: "2026-07-10T10:00:00Z" },
   { id: 6, displayName: "Hannah T.", bio: "Moved to Madinah with family in 2025.", createdAt: "2026-05-18T10:00:00Z" },
   { id: 7, displayName: "Omar N.", bio: "Graduating this year.", createdAt: "2025-09-01T10:00:00Z" },
@@ -100,8 +100,10 @@ export const meshSeedQuestions: MeshQuestionSeed[] = [
 ];
 
 export function seedQuestionToListItem(qq: MeshQuestionSeed) {
+  const su = meshSeedUsers.find((x) => x.id === qq.authorId);
   return {
     id: qq.id, title: qq.title, body: qq.body, title_ar: qq.titleAr, body_ar: qq.bodyAr, author_id: qq.authorId, author_name: qq.authorName,
+    author_role: su?.role ?? "member", author_entry_year: su?.entryYear ?? null, author_country: su?.country ?? null,
     category_slug: qq.categorySlug, category_name: qq.categoryName, category_name_ar: meshCategories.find((c) => c.slug === qq.categorySlug)?.nameAr ?? null, subcategory_slug: qq.subcategorySlug ?? null,
     vote_count: qq.voteCount, answer_count: qq.answers.length, solved: qq.acceptedAnswerId != null,
     accepted_answer_id: qq.acceptedAnswerId, is_seed: true, tags: qq.tags, created_at: qq.createdAt, updated_at: qq.updatedAt,

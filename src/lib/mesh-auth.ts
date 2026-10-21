@@ -20,7 +20,7 @@ export function verifyPassword(password: string, stored: string): boolean {
 }
 export function hashToken(token: string): string { return createHash("sha256").update(token).digest("hex"); }
 
-export type MeshUser = { id: number; email: string; display_name: string; bio: string | null; role: string; is_seed: boolean; created_at: string };
+export type MeshUser = { id: number; email: string; display_name: string; bio: string | null; role: string; is_seed: boolean; created_at: string; email_verified: boolean; entry_year_hijri: number | null; personal_email: string | null; country: string | null };
 
 export async function createSession(userId: number): Promise<string> {
   const token = randomBytes(32).toString("hex");
@@ -38,9 +38,9 @@ export async function getCurrentUser(): Promise<MeshUser | null> {
     const token = cookies().get(MESH_COOKIE)?.value;
     if (!token) return null;
     const row = await queryOne<MeshUser & { sid: number }>(
-      `SELECT u.id,u.email,u.display_name,u.bio,u.role,u.is_seed,u.created_at, s.id as sid FROM mesh_sessions s JOIN mesh_users u ON u.id=s.user_id WHERE s.token_hash=$1 AND s.expires_at>now()`, [hashToken(token)]);
+      `SELECT u.id,u.email,u.display_name,u.bio,u.role,u.is_seed,u.created_at,u.email_verified,u.entry_year_hijri,u.personal_email,u.country, s.id as sid FROM mesh_sessions s JOIN mesh_users u ON u.id=s.user_id WHERE s.token_hash=$1 AND s.expires_at>now()`, [hashToken(token)]);
     if (!row) return null;
-    return { id: row.id, email: row.email, display_name: row.display_name, bio: row.bio, role: row.role, is_seed: row.is_seed, created_at: row.created_at };
+    return { id: row.id, email: row.email, display_name: row.display_name, bio: row.bio, role: row.role, is_seed: row.is_seed, created_at: row.created_at, email_verified: row.email_verified, entry_year_hijri: row.entry_year_hijri, personal_email: row.personal_email, country: row.country };
   } catch { return null; }
 }
 export async function requireUser(): Promise<MeshUser | null> { return getCurrentUser(); }

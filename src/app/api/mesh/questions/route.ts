@@ -18,7 +18,7 @@ export async function GET(req: NextRequest){
   if(sort==="unanswered") where += ` AND (SELECT count(*) FROM mesh_answers a2 WHERE a2.question_id=qq.id)=0`;
   const order = sort==="top" ? "vote_count DESC, qq.created_at DESC" : "qq.created_at DESC";
   params.push(limit); params.push(offset);
-  const rows = await query(`SELECT qq.id, qq.title, qq.body, qq.author_id, u.display_name AS author_name, COALESCE(pc.slug, c.slug) AS category_slug, COALESCE(pc.name, c.name) AS category_name, c.slug AS raw_category_slug,
+  const rows = await query(`SELECT qq.id, qq.title, qq.body, qq.author_id, u.display_name AS author_name, u.role AS author_role, u.entry_year_hijri AS author_entry_year, u.country AS author_country, COALESCE(pc.slug, c.slug) AS category_slug, COALESCE(pc.name, c.name) AS category_name, c.slug AS raw_category_slug,
     (SELECT count(*)::int FROM mesh_votes v WHERE v.target_type='question' AND v.target_id=qq.id) AS vote_count,
     (SELECT count(*)::int FROM mesh_answers a WHERE a.question_id=qq.id) AS answer_count,
     (qq.accepted_answer_id IS NOT NULL) AS solved, qq.accepted_answer_id, qq.is_seed, qq.created_at, qq.updated_at,
