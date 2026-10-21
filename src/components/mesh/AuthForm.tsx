@@ -8,7 +8,7 @@ type T = (k: string) => string;
 
 export function meshAuthError(t: T, d: Record<string, unknown>, status: number): string {
   const e = typeof d.error === "string" ? d.error : "";
-  if (e === "iu_email_required") return t("auth.errIuEmail");
+  if (e === "invalid_email") return t("auth.errInvalidEmail");
   if (e === "invalid_code") return t("auth.errInvalidCode");
   if (e === "email_not_verified") return t("auth.errNotVerified");
   if (e === "too_many_attempts") return t("auth.errTooMany");
@@ -94,7 +94,7 @@ function Inner({ isSignup }: { isSignup: boolean }) {
     {resetDone && <p role="status" style={{ color: "var(--mesh-accent)", fontSize: 14, marginTop: 16 }}>{t("auth.resetDone")}</p>}
     <form onSubmit={submit} style={{ display: "grid", gap: 20, marginTop: 28 }}>
       {isSignup && <label style={{ display: "grid", gap: 6, fontWeight: 600, fontSize: 14 }}>{t("auth.displayName")}<input className="mesh-input mesh-focus" value={name} onChange={(e) => setName(e.target.value)} required /></label>}
-      <label style={{ display: "grid", gap: 6, fontWeight: 600, fontSize: 14 }}>{t("auth.email")}<input className="mesh-input mesh-focus" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder={isSignup ? "47xxxxxxxx@iu.edu.sa" : undefined} />{isSignup && <span style={{ fontWeight: 400, fontSize: 12, color: "var(--mesh-muted)", lineHeight: 1.6 }}>{t("auth.iuHint")}</span>}</label>
+      <label style={{ display: "grid", gap: 6, fontWeight: 600, fontSize: 14 }}>{t("auth.email")}<input className="mesh-input mesh-focus" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder={isSignup ? "you@example.com" : undefined} />{isSignup && <span style={{ fontWeight: 400, fontSize: 12, color: "var(--mesh-muted)", lineHeight: 1.6 }}>{t("auth.iuHint")}</span>}</label>
       <label style={{ display: "grid", gap: 6, fontWeight: 600, fontSize: 14 }}>{t("auth.password")}<input className="mesh-input mesh-focus" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={8} />{isSignup && <span style={{ fontWeight: 400, fontSize: 12, color: "var(--mesh-muted)" }}>{t("auth.pwHint")}</span>}</label>
       {err && <p role="alert" style={{ color: "var(--mesh-error)", fontSize: 14 }}>{err}</p>}
       <button disabled={busy} className="mesh-btn mesh-btn-primary mesh-focus">{busy ? t("auth.wait") : (isSignup ? t("auth.signupBtn") : t("auth.loginBtn"))}</button>
