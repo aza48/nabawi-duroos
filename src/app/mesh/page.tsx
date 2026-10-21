@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { meshCategories, meshSeedQuestions, seedQuestionToListItem, type MeshListItem } from "@/data/mesh-seed";
 import { DiscussionList } from "@/components/mesh/DiscussionList";
 import CategoryCard from "@/components/mesh/CategoryCard";
+import MeshHero from "@/components/mesh/MeshHero";
 import { useMeshPrefs, pickLang } from "@/lib/mesh-i18n";
 
 const MAIN_SLUGS = ["getting-started", "getting-settled", "getting-ready-to-leave"];
@@ -29,25 +30,19 @@ export default function MeshHome() {
   const mains = meshCategories.filter((c) => c.isMain);
   return (
     <div className="mesh-container">
-      <section style={{ padding: "56px 0 48px", maxWidth: 720 }}>
-        <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--mesh-accent)", margin: 0 }}>{t("hero.kicker")}</p>
-        <h1 style={{ fontSize: "clamp(32px,5vw,46px)", lineHeight: 1.12, margin: "16px 0 12px", fontWeight: 800 }}>{t("hero.h1a")}<br /><span style={{ color: "var(--mesh-accent)" }}>{t("hero.h1b")}</span></h1>
-        <div className="mesh-fade-line" aria-hidden />
-        <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--mesh-secondary)", margin: "18px 0 26px" }}>{t("hero.sub")}</p>
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-          <Link href="/mesh/browse" className="mesh-btn mesh-btn-primary mesh-focus">{t("hero.browse")}</Link>
-          <Link href="/mesh/ask" className="mesh-btn mesh-btn-outline mesh-focus">{t("hero.ask")}</Link>
-        </div>
-        {demo && <p style={{ fontSize: 12, color: "var(--mesh-muted)", marginTop: 16 }}>{t("demo.note")}</p>}
-      </section>
-      <section style={{ display: "grid", gap: 20 }} aria-label={t("home.categoriesAria")}>
+      <MeshHero />
+      <div className="mesh-hero-search">
+        <Search size={18} className="mesh-hero-search-icon" />
+        <input placeholder={t("home.searchPh")} aria-label={t("nav.searchAria")} value={search} onChange={(e) => setSearch(e.target.value)} />
+      </div>
+      {demo && <p style={{ fontSize: 12, color: "var(--mesh-muted)", marginTop: 14, textAlign: "center" }}>{t("demo.note")}</p>}
+      <section style={{ display: "grid", gap: 20, marginTop: 44 }} aria-label={t("home.categoriesAria")}>
         {MAIN_SLUGS.map((slug) => <CategoryCard key={slug} slug={slug} />)}
       </section>
       <section style={{ marginTop: 48, padding: "0 0 8px" }}>
         <h2 style={{ fontSize: 26, margin: "0 0 6px" }}>{t("home.recent")}</h2>
         <p style={{ color: "var(--mesh-secondary)", margin: "0 0 24px", fontSize: 14 }}>{t("home.recentSub")}</p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", marginBottom: 12 }}>
-          <div className="mesh-search-wrap" style={{ minWidth: 220 }}><Search size={16} className="mesh-search-icon" /><input className="mesh-input mesh-focus mesh-search-input" placeholder={t("home.searchPh")} aria-label={t("nav.searchAria")} value={search} onChange={(e) => setSearch(e.target.value)} /></div>
           <select className="mesh-input mesh-focus" style={{ width: "auto" }} aria-label={t("sort.aria")} value={sort} onChange={(e) => setSort(e.target.value)}><option value="recent">{t("sort.recent")}</option><option value="top">{t("sort.top")}</option><option value="unanswered">{t("sort.unanswered")}</option></select>
         </div>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", margin: "14px 0 6px" }}>
