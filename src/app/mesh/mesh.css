@@ -80,6 +80,13 @@
 .mesh-icon-btn{display:inline-grid;place-items:center;width:40px;height:40px;min-width:40px;border-radius:999px;border:1px solid var(--mesh-hairline);background:transparent;color:var(--mesh-text);cursor:pointer;font-family:inherit}
 .mesh-icon-btn:hover{border-color:var(--mesh-border-strong)}
 .mesh-lang-btn{width:auto;min-height:40px;padding:0 14px;font-size:13px;font-weight:600}
+.mesh-drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .24s ease;z-index:60}
+.mesh-drawer-backdrop.open{opacity:1;pointer-events:auto}
+.mesh-drawer{position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(320px,86vw);background:var(--mesh-surface);border-inline-start:1px solid var(--mesh-hairline);z-index:61;padding:24px;overflow-y:auto;transform:translateX(105%);transition:transform .26s ease;visibility:hidden}
+.mesh-root[data-lang="ar"] .mesh-drawer{transform:translateX(-105%)}
+.mesh-drawer.open{transform:translateX(0)!important;visibility:visible;box-shadow:0 0 64px rgba(0,0,0,.28)}
+.mesh-drawer-row{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mesh-text);text-decoration:none;background:none;border:none;font-family:inherit;text-align:start;padding:10px 2px;width:100%}
+@media (prefers-reduced-motion: reduce){.mesh-drawer,.mesh-drawer-backdrop{transition:none!important}}
 @media (prefers-reduced-motion: reduce){.mesh-root *{transition:none!important;animation:none!important}}
 @media (max-width:1023px){
   .mesh-cat-content{max-width:52%}

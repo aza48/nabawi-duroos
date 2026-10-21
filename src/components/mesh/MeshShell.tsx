@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { LogOut, Moon, Plus, Search, Sun, User } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
+import { LogOut, Menu, Moon, Plus, Search, Sun, User, X } from "lucide-react";
 import { useMeshPrefs } from "@/lib/mesh-i18n";
 
 export type MeshMe = { id: number; display_name: string; role: string } | null;
@@ -18,12 +18,24 @@ export function useMeshMe() {
 
 export default function MeshShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const pathname = usePathname();
   const { me, setMe } = useMeshMe();
   const { lang, setLang, theme, toggleTheme, t } = useMeshPrefs();
   const [q, setQ] = useState("");
   const [demo, setDemo] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => { fetch("/api/mesh/auth/me").then((r) => r.json()).then((d) => { if (d.dbConfigured === false) setDemo(true); }).catch(() => setDemo(true)); }, []);
-  async function logout() { await fetch("/api/mesh/auth/logout", { method: "POST" }); setMe(null); router.push("/mesh"); router.refresh(); }
+  // Close the sidebar on navigation, on Escape, and lock body scroll while it is open.
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMenuOpen(false); };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = prev; };
+  }, [menuOpen]);
+  async function logout() { await fetch("/api/mesh/auth/logout", { method: "POST" }); setMe(null); setMenuOpen(false); router.push("/mesh"); router.refresh(); }
   return (
     <div>
       <header className="mesh-header-bar" style={{ position: "sticky", top: 0, zIndex: 40 }}>
@@ -41,21 +53,49 @@ export default function MeshShell({ children }: { children: React.ReactNode }) {
             <Search size={16} className="mesh-search-icon" style={{ top: 15 }} aria-hidden />
             <input aria-label={t("nav.searchAria")} className="mesh-input mesh-focus mesh-search-input" style={{ minHeight: 40 }} placeholder={t("nav.searchPh")} value={q} onChange={(e) => setQ(e.target.value)} />
           </form>
-          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-            <button type="button" className="mesh-icon-btn mesh-lang-btn mesh-focus" onClick={() => setLang(lang === "ar" ? "en" : "ar")} aria-label={t("lang.toggle")}>
-              {lang === "ar" ? "English" : "العربية"}
-            </button>
-            <button type="button" className="mesh-icon-btn mesh-focus" onClick={toggleTheme} aria-label={t("theme.toggle")}>
-              {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
-            </button>
-            {me ? (<>
-              <Link href={`/mesh/profile/${me.id}`} style={{ display: "inline-flex", gap: 8, alignItems: "center", fontSize: 14, fontWeight: 600, color: "var(--mesh-text)", textDecoration: "none", padding: "8px 2px" }}><User size={16} />{me.display_name}</Link>
-              <button onClick={logout} className="mesh-btn mesh-btn-outline mesh-btn-sm mesh-focus" aria-label={t("nav.logout")}><LogOut size={14} /> {t("nav.logout")}</button>
-            </>) : (<Link href="/mesh/login" style={{ fontSize: 14, fontWeight: 600, color: "var(--mesh-text)", textDecoration: "none", padding: "8px 4px" }}>{t("nav.login")}</Link>)}
-            <Link href="/mesh/ask" className="mesh-btn mesh-btn-primary mesh-focus" style={{ minHeight: 40, padding: "0 16px" }}><Plus size={16} /> {t("nav.ask")}</Link>
-          </div>
+          <button type="button" className="mesh-icon-btn mesh-focus" onClick={() => setMenuOpen(true)} aria-label={t("nav.menu")} aria-expanded={menuOpen} aria-controls="mesh-sidebar">
+            <Menu size={19} />
+          </button>
         </div>
       </header>
+
+      {/* Sidebar: account actions + create post + theme/language settings */}
+      <div className={`mesh-drawer-backdrop${menuOpen ? " open" : ""}`} onClick={() => setMenuOpen(false)} aria-hidden={!menuOpen} />
+      <aside id="mesh-sidebar" className={`mesh-drawer${menuOpen ? " open" : ""}`} aria-hidden={!menuOpen} aria-label={t("nav.menu")}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
+          <span style={{ fontWeight: 800, fontSize: 18 }}>MESH</span>
+          <button type="button" className="mesh-icon-btn mesh-focus" onClick={() => setMenuOpen(false)} aria-label={t("nav.close")} tabIndex={menuOpen ? 0 : -1}>
+            <X size={18} />
+          </button>
+        </div>
+
+        <Link href="/mesh/ask" className="mesh-btn mesh-btn-primary mesh-focus" style={{ width: "100%", minHeight: 46 }} tabIndex={menuOpen ? 0 : -1}><Plus size={16} /> {t("nav.ask")}</Link>
+
+        <div style={{ borderTop: "1px solid var(--mesh-hairline)", marginTop: 24, paddingTop: 24, display: "grid", gap: 10 }}>
+          {me ? (<>
+            <Link href={`/mesh/profile/${me.id}`} className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}><User size={17} /><span style={{ fontWeight: 600 }}>{me.display_name}</span></Link>
+            <button onClick={logout} className="mesh-drawer-row mesh-focus" style={{ cursor: "pointer" }} tabIndex={menuOpen ? 0 : -1}><LogOut size={17} /> {t("nav.logout")}</button>
+          </>) : (
+            <Link href="/mesh/login" className="mesh-btn mesh-btn-outline mesh-focus" style={{ width: "100%", minHeight: 44 }} tabIndex={menuOpen ? 0 : -1}>{t("nav.login")}</Link>
+          )}
+        </div>
+
+        <div style={{ borderTop: "1px solid var(--mesh-hairline)", marginTop: 24, paddingTop: 24, display: "grid", gap: 10 }}>
+          <div className="mesh-drawer-row" style={{ justifyContent: "space-between" }}>
+            <span>{t("theme.toggle")}</span>
+            <button type="button" className="mesh-icon-btn mesh-focus" onClick={toggleTheme} aria-label={t("theme.toggle")} tabIndex={menuOpen ? 0 : -1}>
+              {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+            </button>
+          </div>
+          <div className="mesh-drawer-row" style={{ justifyContent: "space-between" }}>
+            <span>{t("lang.toggle")}</span>
+            <button type="button" className="mesh-icon-btn mesh-lang-btn mesh-focus" onClick={() => setLang(lang === "ar" ? "en" : "ar")} aria-label={t("lang.toggle")} tabIndex={menuOpen ? 0 : -1}>
+              {lang === "ar" ? "English" : "العربية"}
+            </button>
+          </div>
+        </div>
+      </aside>
+
       {demo && <div role="status" className="mesh-demo-banner"><div className="mesh-container" style={{ paddingTop: 12, paddingBottom: 12 }}>{t("demo.banner")}</div></div>}
       <main>{children}</main>
       <footer style={{ borderTop: "1px solid var(--mesh-hairline)", background: "var(--mesh-surface)", marginTop: 72 }}>
