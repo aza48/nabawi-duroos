@@ -43,6 +43,23 @@ export const TELEGRAM_SOURCES: TelegramSource[] = [
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "quba-sufi-hamawiyyah-cancelled-12-5-1448",
+    shaykh: L("أ. د. عبد القادر بن عطا صوفي", "Prof. Dr. Abdulqadir ibn Ata Sufi"),
+    text: L(
+      "يعتذر الشيخ أ. د. عبدالقادر بن محمد عطا صوفي عن درس الجمعة — شرح الحموية — بعد صلاة العشاء بمسجد قباء، يوم [الجمعة ١٢/٥/١٤٤٨]، لظرف السفر؛ ويُستأنف الدرس يوم [الجمعة ١٩/٥/١٤٤٨] بإذن الله",
+      "Shaykh Prof. Abdulqadir bin Muhammad Ata Sufi has excused himself from his Friday lesson — Sharh al-Hamawiyyah — after Isha prayer at Masjid Quba, on [Friday 12/5/1448], due to travel; the lesson resumes on [Friday 19/5/1448], God willing."
+    ),
+    postedHijri: L("١١/٥/١٤٤٨هـ", "11/5/1448 AH"),
+    postedGregorian: L("٢٢ أكتوبر ٢٠٢٦", "22 October 2026"),
+    source: "@khizana_62",
+    sourceName: L("قناة خزانة العلم", "Khazanat al-Ilm channel"),
+    type: "cancellation",
+    expired: false,
+    eventDate: "2026-10-23",
+    masjidId: "quba",
+    channelNote: L("إلغاء لجمعة واحدة فقط — من @khizana_62 (المنشور 10897)", "Single-Friday cancellation only — from @khizana_62 (post 10897)"),
+  },
+  {
     id: "lecture-quba-omari-14480510",
     shaykh: L("د. عبد الهادي بن عوض العمري", "Dr. Abdulhadi bin Awad al-Omari"),
     text: L(

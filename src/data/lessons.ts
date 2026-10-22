@@ -158,7 +158,7 @@ export const LESSONS: Lesson[] = [
   // — Abdullatif al-Shamani
   {
     id: "shamani-tafsir",
-    shaykh: L("الشيخ عبد اللطيف بن سليم الشاماني", "Shaykh Abdullatif ibn Saleem al-Shamani"),
+    shaykh: L("د. عبد اللطيف بن شلوة الشاماني", "Dr. Abdullatif ibn Shalwah al-Shamani"),
     book: L("تفسير السعدي", "Tafsir as-Sa'di"),
     masjid: "nabawi",
     days: [2, 3, 4],
