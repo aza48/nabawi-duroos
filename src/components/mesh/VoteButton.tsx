@@ -27,7 +27,7 @@ export default function VoteButton({ targetType, targetId, initialCount, initial
         <ArrowUp size={18} />
       </button>
       <span style={{ fontWeight: 700, fontSize: 14 }}>{count}</span>
-      {prompt && <span style={{ fontSize: 12, color: "var(--mesh-secondary)", textAlign: "center", maxWidth: 140 }}>{demoMode ? t("vote.activates") + " " : ""}<Link href={`/mesh/login?next=${typeof window !== "undefined" ? encodeURIComponent(window.location.pathname) : "/mesh"}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("vote.signIn")}</Link></span>}
+      {prompt && <span style={{ fontSize: 12, color: "var(--mesh-secondary)", textAlign: "center", maxWidth: 140 }}>{demoMode ? t("vote.activates") + " " : ""}<Link href={`/login?next=${typeof window !== "undefined" ? encodeURIComponent(window.location.pathname) : "/"}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("vote.signIn")}</Link></span>}
     </div>
   );
 }

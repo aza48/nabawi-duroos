@@ -20,20 +20,28 @@ function ShellInner({ children }: { children: ReactNode }) {
     <div className="app-shell min-h-screen bg-[var(--canvas)] text-[var(--ink)]" data-masjid="nabawi" data-mode="light">
       <header className="sticky top-0 z-30 bg-[var(--canvas)]/95 backdrop-blur-sm">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
-          <a href="/" className="flex items-center gap-2">
+          <a href="/duroos" className="flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--brand-deep)] text-white">
               <MoonStar className="h-5 w-5" />
             </span>
             <span className="text-[15px] font-semibold">{ui("appName")}</span>
           </a>
-          <button
+          <div className="flex items-center gap-2">
+            <a
+              href="/"
+              className="hidden h-10 items-center rounded-pill bg-[var(--card)] px-3.5 text-sm font-semibold shadow-soft transition-transform active:scale-95 sm:inline-flex"
+            >
+              Medina Hub
+            </a>
+            <button
             onClick={() => setLang(lang === "ar" ? "en" : "ar")}
             className="inline-flex h-10 items-center gap-1.5 rounded-pill bg-[var(--card)] px-3.5 text-sm font-semibold shadow-soft transition-transform active:scale-95"
             aria-label="Language / اللغة"
           >
-            <Languages className="h-4 w-4" />
-            {lang === "ar" ? "EN" : "عربي"}
-          </button>
+              <Languages className="h-4 w-4" />
+              {lang === "ar" ? "EN" : "عربي"}
+            </button>
+          </div>
         </div>
       </header>
       <main className="mx-auto w-full max-w-5xl px-4 pb-16 pt-4 sm:px-6">{children}</main>

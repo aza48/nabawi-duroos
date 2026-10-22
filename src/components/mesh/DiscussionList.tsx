@@ -25,7 +25,7 @@ export function DiscussionRow({ item }: { item: MeshListItem }) {
           {!(item as { status?: string }).status && item.solved && <span className="mesh-solved"><Check size={12} /> {t("disc.solved")}</span>}
           {item.is_seed && <span style={{ fontSize: 11, color: "var(--mesh-muted)", border: "1px solid var(--mesh-hairline)", padding: "1px 6px", borderRadius: 999 }}>{t("disc.sample")}</span>}
         </div>
-        <Link href={`/mesh/question/${item.id}`} style={{ fontSize: 16.5, fontWeight: 600, color: "var(--mesh-text)", textDecoration: "none", lineHeight: 1.4, display: "block" }}>{title}</Link>
+        <Link href={`/question/${item.id}`} style={{ fontSize: 16.5, fontWeight: 600, color: "var(--mesh-text)", textDecoration: "none", lineHeight: 1.4, display: "block" }}>{title}</Link>
         <p style={{ margin: "6px 0 10px", fontSize: 14, lineHeight: 1.6, color: "var(--mesh-secondary)", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{body}</p>
         <div style={{ display: "flex", gap: 16, flexWrap: "wrap", fontSize: 12, color: "var(--mesh-muted)", alignItems: "center" }}>
           <AuthorName name={item.author_name} role={(item as {author_role?: string}).author_role} entryYear={(item as {author_entry_year?: number|null}).author_entry_year} country={(item as {author_country?: string|null}).author_country} /><span>{relativeTime(item.created_at, lang)}</span>
@@ -38,6 +38,6 @@ export function DiscussionRow({ item }: { item: MeshListItem }) {
 }
 export function DiscussionList({ items }: { items: MeshListItem[] }) {
   const { t } = useMeshPrefs();
-  if (!items.length) return <div className="mesh-card" style={{ padding: 32, textAlign: "center", color: "var(--mesh-secondary)" }}><p style={{ fontWeight: 600, color: "var(--mesh-text)" }}>{t("disc.emptyTitle")}</p><p style={{ fontSize: 14 }}>{t("disc.emptySub")}</p><Link href="/mesh/ask" className="mesh-btn mesh-btn-primary mesh-btn-sm" style={{ marginTop: 12 }}>{t("nav.ask")}</Link></div>;
+  if (!items.length) return <div className="mesh-card" style={{ padding: 32, textAlign: "center", color: "var(--mesh-secondary)" }}><p style={{ fontWeight: 600, color: "var(--mesh-text)" }}>{t("disc.emptyTitle")}</p><p style={{ fontSize: 14 }}>{t("disc.emptySub")}</p><Link href="/ask" className="mesh-btn mesh-btn-primary mesh-btn-sm" style={{ marginTop: 12 }}>{t("nav.ask")}</Link></div>;
   return <div>{items.map((it) => <DiscussionRow key={it.id} item={it} />)}</div>;
 }

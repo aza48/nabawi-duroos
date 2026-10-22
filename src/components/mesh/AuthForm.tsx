@@ -72,7 +72,7 @@ export function VerifyView({ email, next, initialCooldown = 0, notice }: { email
 
 function Inner({ isSignup }: { isSignup: boolean }) {
   const { t } = useMeshPrefs();
-  const router = useRouter(); const sp = useSearchParams(); const next = sp.get("next") || "/mesh";
+  const router = useRouter(); const sp = useSearchParams(); const next = sp.get("next") || "/";
   const [email, setEmail] = useState(""); const [password, setPassword] = useState(""); const [name, setName] = useState("");
   const [err, setErr] = useState(""); const [busy, setBusy] = useState(false);
   const [verifyEmail, setVerifyEmail] = useState<string | null>(null); const [verifyNotice, setVerifyNotice] = useState("");
@@ -100,14 +100,14 @@ function Inner({ isSignup }: { isSignup: boolean }) {
       {err && <p role="alert" style={{ color: "var(--mesh-error)", fontSize: 14 }}>{err}</p>}
       <button disabled={busy} className="mesh-btn mesh-btn-primary mesh-focus">{busy ? t("auth.wait") : (isSignup ? t("auth.signupBtn") : t("auth.loginBtn"))}</button>
     </form>
-    {!isSignup && <p style={{ fontSize: 14, marginTop: 18 }}><Link href={`/mesh/forgot?next=${encodeURIComponent(next)}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("auth.forgotLink")}</Link></p>}
-    <p style={{ fontSize: 14, color: "var(--mesh-secondary)", marginTop: 24 }}>{isSignup ? <><span>{t("auth.haveAccount")} </span><Link href={`/mesh/login?next=${encodeURIComponent(next)}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("auth.loginLink")}</Link></> : <><span>{t("auth.newTo")} </span><Link href={`/mesh/signup?next=${encodeURIComponent(next)}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("auth.createOne")}</Link></>}</p>
+    {!isSignup && <p style={{ fontSize: 14, marginTop: 18 }}><Link href={`/forgot?next=${encodeURIComponent(next)}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("auth.forgotLink")}</Link></p>}
+    <p style={{ fontSize: 14, color: "var(--mesh-secondary)", marginTop: 24 }}>{isSignup ? <><span>{t("auth.haveAccount")} </span><Link href={`/login?next=${encodeURIComponent(next)}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("auth.loginLink")}</Link></> : <><span>{t("auth.newTo")} </span><Link href={`/signup?next=${encodeURIComponent(next)}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("auth.createOne")}</Link></>}</p>
   </div>;
 }
 
 function ForgotInner() {
   const { t } = useMeshPrefs();
-  const sp = useSearchParams(); const next = sp.get("next") || "/mesh";
+  const sp = useSearchParams(); const next = sp.get("next") || "/";
   const [step, setStep] = useState<1 | 2>(1);
   const [email, setEmail] = useState(""); const [code, setCode] = useState(""); const [newPassword, setNewPassword] = useState("");
   const [err, setErr] = useState(""); const [info, setInfo] = useState(""); const [busy, setBusy] = useState(false);
@@ -133,7 +133,7 @@ function ForgotInner() {
       const r = await fetch("/api/mesh/auth/reset", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, code: code.trim(), newPassword }) });
       const d = await r.json().catch(() => ({}));
       if (!r.ok) setErr(meshAuthError(t, d, r.status));
-      else window.location.href = `/mesh/login?reset=1&next=${encodeURIComponent(next)}`;
+      else window.location.href = `/login?reset=1&next=${encodeURIComponent(next)}`;
     } finally { setBusy(false); }
   }
   return <div className="mesh-container" style={{ padding: "48px 0 56px", maxWidth: 460 }}>
@@ -161,7 +161,7 @@ function ForgotInner() {
         </p>
       </form>
     )}
-    <p style={{ fontSize: 14, color: "var(--mesh-secondary)", marginTop: 24 }}><Link href={`/mesh/login?next=${encodeURIComponent(next)}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("auth.backToLogin")}</Link></p>
+    <p style={{ fontSize: 14, color: "var(--mesh-secondary)", marginTop: 24 }}><Link href={`/login?next=${encodeURIComponent(next)}`} style={{ color: "var(--mesh-accent)", fontWeight: 600 }}>{t("auth.backToLogin")}</Link></p>
   </div>;
 }
 

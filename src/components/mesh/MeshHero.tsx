@@ -105,8 +105,8 @@ export default function MeshHero() {
       <div className="mesh-hero-inner">
         <div className="mesh-hero-word" aria-hidden="true">MESH</div>
         <div className="mesh-hero-actions">
-          <Link href="/mesh/browse" className="mesh-btn mesh-hero-btn-gold mesh-focus">{t("hero.browse")}</Link>
-          <Link href="/mesh/ask" className="mesh-btn mesh-hero-btn-glass mesh-focus">{t("hero.ask")}</Link>
+          <Link href="/browse" className="mesh-btn mesh-hero-btn-gold mesh-focus">{t("hero.browse")}</Link>
+          <Link href="/ask" className="mesh-btn mesh-hero-btn-glass mesh-focus">{t("hero.ask")}</Link>
         </div>
       </div>
     </section>

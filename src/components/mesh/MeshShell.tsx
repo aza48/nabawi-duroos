@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Bell, BookOpen, LogOut, Menu, Moon, Plus, Search, Shield, Sun, User, X } from "lucide-react";
+import { Bell, BookOpen, LogOut, Menu, Moon, MoonStar, Plus, Search, Shield, Sun, User, X } from "lucide-react";
 import { useMeshPrefs } from "@/lib/mesh-i18n";
 
 export type MeshMe = { id: number; display_name: string; role: string; notifications_unread?: number } | null;
@@ -35,21 +35,21 @@ export default function MeshShell({ children }: { children: React.ReactNode }) {
     document.body.style.overflow = "hidden";
     return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = prev; };
   }, [menuOpen]);
-  async function logout() { await fetch("/api/mesh/auth/logout", { method: "POST" }); setMe(null); setMenuOpen(false); router.push("/mesh"); router.refresh(); }
+  async function logout() { await fetch("/api/mesh/auth/logout", { method: "POST" }); setMe(null); setMenuOpen(false); router.push("/"); router.refresh(); }
   return (
     <div>
       <header className="mesh-header-bar" style={{ position: "sticky", top: 0, zIndex: 40 }}>
         <div className="mesh-container" style={{ display: "flex", alignItems: "center", gap: 20, minHeight: 64, flexWrap: "wrap", paddingTop: 10, paddingBottom: 10 }}>
-          <Link href="/mesh" style={{ textDecoration: "none", color: "var(--mesh-text)", lineHeight: 1 }}>
+          <Link href="/" style={{ textDecoration: "none", color: "var(--mesh-text)", lineHeight: 1 }}>
             <span style={{ fontWeight: 800, fontSize: 22, letterSpacing: "-0.02em" }}>MESH</span>
             <span style={{ display: "block", fontSize: 10, color: "var(--mesh-muted)", fontWeight: 500, marginTop: 3 }}>{t("brand.sub")}</span>
           </Link>
           <nav style={{ display: "flex", gap: 20, fontSize: 14, fontWeight: 500 }} aria-label={t("nav.main")}>
-            <Link href="/mesh" style={{ color: "var(--mesh-text)", textDecoration: "none" }}>{t("nav.home")}</Link>
-            <Link href="/mesh/browse" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("nav.browse")}</Link>
-            <Link href="/mesh/category/getting-started" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("nav.gettingStarted")}</Link>
+            <Link href="/" style={{ color: "var(--mesh-text)", textDecoration: "none" }}>{t("nav.home")}</Link>
+            <Link href="/browse" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("nav.browse")}</Link>
+            <Link href="/category/getting-started" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("nav.gettingStarted")}</Link>
           </nav>
-          <form role="search" style={{ flex: 1, minWidth: 140, maxWidth: 320, marginInlineStart: "auto", position: "relative" }} onSubmit={(e) => { e.preventDefault(); router.push(`/mesh/browse?q=${encodeURIComponent(q)}`); }}>
+          <form role="search" style={{ flex: 1, minWidth: 140, maxWidth: 320, marginInlineStart: "auto", position: "relative" }} onSubmit={(e) => { e.preventDefault(); router.push(`/browse?q=${encodeURIComponent(q)}`); }}>
             <Search size={16} className="mesh-search-icon" style={{ top: 15 }} aria-hidden />
             <input aria-label={t("nav.searchAria")} className="mesh-input mesh-focus mesh-search-input" style={{ minHeight: 40 }} placeholder={t("nav.searchPh")} value={q} onChange={(e) => setQ(e.target.value)} />
           </form>
@@ -69,13 +69,14 @@ export default function MeshShell({ children }: { children: React.ReactNode }) {
           </button>
         </div>
 
-        <Link href="/mesh/ask" className="mesh-btn mesh-btn-primary mesh-focus" style={{ width: "100%", minHeight: 46 }} tabIndex={menuOpen ? 0 : -1}><Plus size={16} /> {t("nav.ask")}</Link>
+        <Link href="/ask" className="mesh-btn mesh-btn-primary mesh-focus" style={{ width: "100%", minHeight: 46 }} tabIndex={menuOpen ? 0 : -1}><Plus size={16} /> {t("nav.ask")}</Link>
 
         <div style={{ borderTop: "1px solid var(--mesh-hairline)", marginTop: 24, paddingTop: 24, display: "grid", gap: 10 }}>
-          <Link href="/mesh/resources" className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}><BookOpen size={17} /> {t("nav.resources")}</Link>
+          <Link href="/resources" className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}><BookOpen size={17} /> {t("nav.resources")}</Link>
+          <a href="/duroos" className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}><MoonStar size={17} /> {lang === "ar" ? "دروس النبوي" : "Nabawi Duroos"}</a>
           {me ? (<>
-            <Link href={`/mesh/profile/${me.id}`} className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}><User size={17} /><span style={{ fontWeight: 600 }}>{me.display_name}</span></Link>
-            <Link href="/mesh/notifications" className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}>
+            <Link href={`/profile/${me.id}`} className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}><User size={17} /><span style={{ fontWeight: 600 }}>{me.display_name}</span></Link>
+            <Link href="/notifications" className="mesh-drawer-row mesh-focus" tabIndex={menuOpen ? 0 : -1}>
               <Bell size={17} /> {t("nav.notifications")}
               {!!me.notifications_unread && <span aria-label={`${me.notifications_unread}`} style={{ marginInlineStart: "auto", background: "var(--mesh-primary)", color: "var(--mesh-on-primary)", fontSize: 11, fontWeight: 700, minWidth: 20, height: 20, borderRadius: 999, display: "inline-grid", placeItems: "center", padding: "0 6px" }}>{me.notifications_unread}</span>}
             </Link>
@@ -84,7 +85,7 @@ export default function MeshShell({ children }: { children: React.ReactNode }) {
             )}
             <button onClick={logout} className="mesh-drawer-row mesh-focus" style={{ cursor: "pointer" }} tabIndex={menuOpen ? 0 : -1}><LogOut size={17} /> {t("nav.logout")}</button>
           </>) : (
-            <Link href="/mesh/login" className="mesh-btn mesh-btn-outline mesh-focus" style={{ width: "100%", minHeight: 44 }} tabIndex={menuOpen ? 0 : -1}>{t("nav.login")}</Link>
+            <Link href="/login" className="mesh-btn mesh-btn-outline mesh-focus" style={{ width: "100%", minHeight: 44 }} tabIndex={menuOpen ? 0 : -1}>{t("nav.login")}</Link>
           )}
         </div>
 
@@ -110,11 +111,11 @@ export default function MeshShell({ children }: { children: React.ReactNode }) {
         <div className="mesh-container" style={{ paddingTop: 40, paddingBottom: 40, display: "flex", gap: 28, flexWrap: "wrap", justifyContent: "space-between" }}>
           <div><div style={{ fontWeight: 800 }}>MESH</div><div style={{ fontSize: 12, color: "var(--mesh-muted)", marginTop: 4 }}>{t("footer.tag")}</div></div>
           <nav style={{ display: "flex", gap: 20, fontSize: 14 }} aria-label={t("nav.footer")}>
-            <Link href="/mesh/resources" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("nav.resources")}</Link>
-            <Link href="/mesh/about" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.about")}</Link>
-            <Link href="/mesh/guidelines" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.guidelines")}</Link>
-            <Link href="/mesh/about#contact" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.contact")}</Link>
-            <Link href="/mesh/privacy" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.privacy")}</Link>
+            <Link href="/resources" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("nav.resources")}</Link>
+            <Link href="/about" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.about")}</Link>
+            <Link href="/guidelines" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.guidelines")}</Link>
+            <Link href="/about#contact" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.contact")}</Link>
+            <Link href="/privacy" style={{ color: "var(--mesh-secondary)", textDecoration: "none" }}>{t("footer.privacy")}</Link>
           </nav>
         </div>
       </footer>

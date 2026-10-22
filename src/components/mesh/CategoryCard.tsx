@@ -51,5 +51,5 @@ export default function CategoryCard({ slug, variant = "card" }: { slug: string;
   );
   const mod = slug === "getting-started" ? " mesh-cat--logos" : "";
   if (variant === "header") return <div className={`mesh-cat-card mesh-cat-card-header${mod}`}>{inner}</div>;
-  return <Link href={`/mesh/category/${slug}`} className={`mesh-cat-card mesh-focus${mod}`} aria-label={name}>{inner}</Link>;
+  return <Link href={`/category/${slug}`} className={`mesh-cat-card mesh-focus${mod}`} aria-label={name}>{inner}</Link>;
 }

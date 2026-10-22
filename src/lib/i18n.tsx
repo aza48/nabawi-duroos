@@ -13,7 +13,7 @@ import { Localized } from "./types";
 export type Lang = "ar" | "en";
 
 const UI = {
-  appName: { ar: "مجمّع دروس الحرمين", en: "Duroos Aggregator" },
+  appName: { ar: "دروس النبوي", en: "Nabawi Duroos" },
   tagline: {
     ar: "جدول دروس المسجد النبوي المحدّث مباشرة، وإعلانات المشايخ أولًا بأول",
     en: "The live-updated duroos schedule of the Prophet's Mosque, with shuyukh announcements as they happen",

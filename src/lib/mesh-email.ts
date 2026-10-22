@@ -37,7 +37,7 @@ function esc(s: string): string {
 
 /** Bilingual (EN first, AR below) notice that an accepted solution was flagged as outdated. */
 export function meshOutdatedEmail(questionId: number, title: string): { subject: string; html: string } {
-  const url = `https://nabawi-duroos.vercel.app/mesh/question/${questionId}`;
+  const url = `https://nabawi-duroos.vercel.app/question/${questionId}`;
   const subject = "MESH — a solution was flagged as outdated";
   const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#FAFAFA;font-family:Inter,Alexandria,'Segoe UI',Arial,sans-serif;color:#171717">
   <div style="max-width:520px;margin:0 auto;background:#ffffff;border:1px solid #EBEBEB;border-radius:12px;padding:28px">
