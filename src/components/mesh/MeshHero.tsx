@@ -38,24 +38,41 @@ function Lattice({ stroke, idSuffix }: { stroke: string; idSuffix: string }) {
 export default function MeshHero() {
   const { t } = useMeshPrefs();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const startedRef = useRef(false);
   const [phase, setPhase] = useState<"video" | "pattern">("video");
   const [ramp, setRamp] = useState(false);
 
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setPhase("pattern");
-      setRamp(true);
-    }
-  }, []);
+  const tryPlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    // Never treat a rejected play() as "skip the video": iOS Low Power
+    // Mode and slow loads reject it even though a retry or a tap works.
+    v.play().catch(() => {});
+  };
 
   useEffect(() => {
     if (phase === "video") {
       // Logo + tint grow gradually across the whole video, then the
       // lattice takes over cleanly once both are fully in.
       setRamp(false);
-      videoRef.current?.play().catch(() => setPhase("pattern"));
+      startedRef.current = false;
+      tryPlay();
       const a = setTimeout(() => setRamp(true), 90);
-      return () => clearTimeout(a);
+      // If the browser blocks autoplay (e.g. iOS Low Power Mode), start
+      // the video on the first touch/click anywhere instead.
+      const kick = () => tryPlay();
+      window.addEventListener("pointerdown", kick);
+      window.addEventListener("touchstart", kick, { passive: true });
+      // Last resort: if playback somehow never began, don't sit forever.
+      const fallback = setTimeout(() => {
+        if (!startedRef.current) setPhase("pattern");
+      }, 12000);
+      return () => {
+        clearTimeout(a);
+        clearTimeout(fallback);
+        window.removeEventListener("pointerdown", kick);
+        window.removeEventListener("touchstart", kick);
+      };
     }
     setRamp(true);
     const id = setTimeout(() => setPhase("video"), 8000);
@@ -68,10 +85,13 @@ export default function MeshHero() {
         ref={videoRef}
         className="mesh-hero-video"
         src="/mesh-hero.mp4"
+        poster="/mesh-hero-poster.jpg"
         autoPlay
         muted
         playsInline
         preload="auto"
+        onCanPlay={tryPlay}
+        onPlaying={() => { startedRef.current = true; }}
         onEnded={() => setPhase("pattern")}
         aria-hidden="true"
       />
