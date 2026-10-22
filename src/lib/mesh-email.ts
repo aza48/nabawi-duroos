@@ -27,8 +27,11 @@ export async function sendMeshEmail(to: string, subject: string, html: string): 
         htmlContent: html,
       }),
     });
+    // Log only the status — never the recipient or contents — so send failures are diagnosable in function logs.
+    if (!res.ok) console.error(`mesh email send failed: Brevo HTTP ${res.status}`);
     return res.ok;
-  } catch {
+  } catch (err) {
+    console.error("mesh email send failed: network error");
     return false;
   }
 }

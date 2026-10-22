@@ -15,6 +15,7 @@ export function meshAuthError(t: T, d: Record<string, unknown>, status: number):
   if (e === "too_many_attempts") return t("auth.errTooMany");
   if (e === "resend_too_soon") return t("auth.errResendSoon");
   if (e === "email_not_configured") return t("auth.errEmailConfig");
+  if (e === "email_send_failed") return t("auth.errSendFailed");
   if (status === 503 || e === "database_not_configured") return t("auth.errAccounts");
   return e || t("auth.errGeneric");
 }

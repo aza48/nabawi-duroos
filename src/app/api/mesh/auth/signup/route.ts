@@ -42,8 +42,9 @@ export async function POST(req: NextRequest) {
   const mail = meshCodeEmail(code, "signup");
   const sent = await sendMeshEmail(email, mail.subject, mail.html);
   if (!sent) {
-    if (!existing) await query(`DELETE FROM mesh_users WHERE id=$1`, [userId]);
-    return NextResponse.json({ error: "email_not_configured" }, { status: 503 });
+    // Keep the unverified account: it stays visible in the admin console, and the member can
+    // request a fresh code (resend / signing up again) once sending recovers — never delete it.
+    return NextResponse.json({ error: "email_send_failed" }, { status: 503 });
   }
   return NextResponse.json({ needsVerification: true, email, emailSent: true }, { status: 201 });
 }
