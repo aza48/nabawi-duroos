@@ -3,15 +3,13 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useMeshPrefs } from "@/lib/mesh-i18n";
 
-const TAG_WORDS = ["MEDINA", "ENGLISH", "STUDENT", "HUB"];
-
-function PatternSvg() {
+function Lattice({ stroke, idSuffix }: { stroke: string; idSuffix: string }) {
+  const id = `mesh-lattice-${idSuffix}`;
   return (
     <svg className="mesh-hero-pattern-svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
       <defs>
-        <pattern id="mesh-lattice" width="144" height="144" patternUnits="userSpaceOnUse">
-          <rect width="144" height="144" fill="#060606" />
-          <g fill="none" stroke="#8E8E8E" strokeWidth="1.6">
+        <pattern id={id} width="144" height="144" patternUnits="userSpaceOnUse">
+          <g fill="none" stroke={stroke} strokeWidth="1.6">
             {/* eight-point star, centre */}
             <rect x="44" y="44" width="56" height="56" />
             <rect x="44" y="44" width="56" height="56" transform="rotate(45 72 72)" />
@@ -32,7 +30,7 @@ function PatternSvg() {
           </g>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#mesh-lattice)" />
+      <rect width="100%" height="100%" fill={`url(#${id})`} />
     </svg>
   );
 }
@@ -41,22 +39,31 @@ export default function MeshHero() {
   const { t } = useMeshPrefs();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [phase, setPhase] = useState<"video" | "pattern">("video");
+  const [ramp, setRamp] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) setPhase("pattern");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setPhase("pattern");
+      setRamp(true);
+    }
   }, []);
 
   useEffect(() => {
     if (phase === "video") {
+      // Logo + tint grow gradually across the whole video, then the
+      // lattice takes over cleanly once both are fully in.
+      setRamp(false);
       videoRef.current?.play().catch(() => setPhase("pattern"));
-      return;
+      const a = setTimeout(() => setRamp(true), 90);
+      return () => clearTimeout(a);
     }
+    setRamp(true);
     const id = setTimeout(() => setPhase("video"), 8000);
     return () => clearTimeout(id);
   }, [phase]);
 
   return (
-    <section className="mesh-hero" data-phase={phase} aria-label="MESH — Medina English Student Hub">
+    <section className="mesh-hero" data-phase={phase} data-ramp={ramp ? "on" : "off"} aria-label="MESH — Medina English Student Hub">
       <video
         ref={videoRef}
         className="mesh-hero-video"
@@ -69,21 +76,14 @@ export default function MeshHero() {
         aria-hidden="true"
       />
       <div className="mesh-hero-pattern" aria-hidden="true">
-        <PatternSvg />
-        <div className="mesh-hero-sheen" />
+        <Lattice stroke="#8E8E8E" idSuffix="grey" />
+        <div className="mesh-hero-pattern-white">
+          <Lattice stroke="#FFFFFF" idSuffix="white" />
+        </div>
       </div>
       <div className="mesh-hero-glass" aria-hidden="true" />
       <div className="mesh-hero-inner">
         <div className="mesh-hero-word" aria-hidden="true">MESH</div>
-        <div className="mesh-hero-bar" aria-hidden="true" />
-        <p className="mesh-hero-tag" aria-label="Medina English Student Hub">
-          {TAG_WORDS.map((w, i) => (
-            <span key={w} className="mesh-hero-tag-word">
-              <span className="mesh-hero-tag-gold">{w[0]}</span>{w.slice(1)}
-              {i < TAG_WORDS.length - 1 && <span className="mesh-hero-tag-dot" aria-hidden="true">·</span>}
-            </span>
-          ))}
-        </p>
         <div className="mesh-hero-actions">
           <Link href="/mesh/browse" className="mesh-btn mesh-hero-btn-gold mesh-focus">{t("hero.browse")}</Link>
           <Link href="/mesh/ask" className="mesh-btn mesh-hero-btn-glass mesh-focus">{t("hero.ask")}</Link>
