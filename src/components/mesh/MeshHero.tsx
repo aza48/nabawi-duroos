@@ -10,8 +10,8 @@ function PatternSvg() {
     <svg className="mesh-hero-pattern-svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
       <defs>
         <pattern id="mesh-lattice" width="144" height="144" patternUnits="userSpaceOnUse">
-          <rect width="144" height="144" fill="#F2EFE7" />
-          <g fill="none" stroke="#B9C2B0" strokeWidth="1.6">
+          <rect width="144" height="144" fill="#060606" />
+          <g fill="none" stroke="#8E8E8E" strokeWidth="1.6">
             {/* eight-point star, centre */}
             <rect x="44" y="44" width="56" height="56" />
             <rect x="44" y="44" width="56" height="56" transform="rotate(45 72 72)" />
@@ -74,7 +74,6 @@ export default function MeshHero() {
       </div>
       <div className="mesh-hero-glass" aria-hidden="true" />
       <div className="mesh-hero-inner">
-        <p className="mesh-hero-greeting" lang="ar" dir="rtl">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّهِ وَبَرَكَاتُهُ</p>
         <div className="mesh-hero-word" aria-hidden="true">MESH</div>
         <div className="mesh-hero-bar" aria-hidden="true" />
         <p className="mesh-hero-tag" aria-label="Medina English Student Hub">
