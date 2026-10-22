@@ -150,7 +150,7 @@ function Shell() {
               href="/"
               className="hidden h-10 items-center rounded-pill bg-[var(--card)] px-3.5 text-sm font-semibold shadow-soft transition-transform active:scale-95 sm:inline-flex"
             >
-              Medina Hub
+              MESH
             </a>
             <button
               onClick={() => setLang(lang === "ar" ? "en" : "ar")}

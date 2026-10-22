@@ -20,19 +20,19 @@ const arabic = Alexandria({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nabawi-duroos.vercel.app"),
-  title: "Medina Hub — Medinah English Students Hub",
+  title: "MESH — Medinah English Students Hub",
   description: "Practical answers, local knowledge, and advice from students in Madinah.",
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     siteName: "MESH — Medinah English Students Hub",
-    title: "Medina Hub — Medinah English Students Hub",
+    title: "MESH — Medinah English Students Hub",
     description: "Practical answers, local knowledge, and advice from students in Madinah.",
     images: [{ url: "/mesh-hero-poster.jpg", width: 1200, height: 480, alt: "MESH — Medinah English Students Hub" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Medina Hub — Medinah English Students Hub",
+    title: "MESH — Medinah English Students Hub",
     description: "Practical answers, local knowledge, and advice from students in Madinah.",
     images: ["/mesh-hero-poster.jpg"],
   },
