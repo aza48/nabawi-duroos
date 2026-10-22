@@ -38,10 +38,10 @@ export async function POST(req: NextRequest) {
   const parsed = parseArticleInput(body);
   if ("error" in parsed) return bad(parsed.error);
   const { title, banner, bodyHtml, status } = parsed.input;
-  const row = await queryOne<{ id: number }>(
-    `INSERT INTO mesh_articles (author_id, title, banner, body_html, status) VALUES ($1,$2,$3,$4,$5) RETURNING id`,
+  const row = await queryOne<{ id: number; updated_at: string }>(
+    `INSERT INTO mesh_articles (author_id, title, banner, body_html, status) VALUES ($1,$2,$3,$4,$5) RETURNING id, updated_at`,
     [user.id, title, banner, bodyHtml, status]
   );
   if (!row) return bad("Could not create article", 500);
-  return NextResponse.json({ id: row.id, status }, { status: 201 });
+  return NextResponse.json({ id: row.id, status, updated_at: row.updated_at }, { status: 201 });
 }

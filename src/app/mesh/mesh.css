@@ -118,6 +118,8 @@
 .mesh-editor-btn.active{background:var(--mesh-pale);color:var(--mesh-accent)}
 .mesh-editor-btn:disabled{opacity:.35;cursor:default}
 .mesh-editor .ProseMirror{min-height:320px;padding:20px;outline:none}
+.mesh-spin{animation:meshSpin 1s linear infinite}
+@keyframes meshSpin{to{transform:rotate(360deg)}}
 .mesh-editor .ProseMirror > :first-child{margin-top:0}
 @media (prefers-reduced-motion: reduce){.mesh-root *{transition:none!important;animation:none!important}}
 @media (max-width:1023px){

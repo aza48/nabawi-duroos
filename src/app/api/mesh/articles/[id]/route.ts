@@ -43,14 +43,15 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   const nextStatus = patch.status ?? row.status;
   const nextBody = patch.bodyHtml ?? row.body_html;
   if (nextStatus === "published" && plainTextOf(nextBody).length === 0) return bad("empty_body");
-  await query(
+  const updated = await queryOne<{ updated_at: string }>(
     `UPDATE mesh_articles SET
        title = CASE WHEN $1::boolean THEN $2 ELSE title END,
        banner = CASE WHEN $3::boolean THEN $4 ELSE banner END,
        body_html = CASE WHEN $5::boolean THEN $6 ELSE body_html END,
        status = CASE WHEN $7::boolean THEN $8 ELSE status END,
        updated_at = now()
-     WHERE id = $9`,
+     WHERE id = $9
+     RETURNING updated_at`,
     [
       patch.title !== undefined, patch.title ?? null,
       patch.banner !== undefined, patch.banner ?? null,
@@ -59,7 +60,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
       id,
     ]
   );
-  return NextResponse.json({ id, status: nextStatus });
+  return NextResponse.json({ id, status: nextStatus, updated_at: updated?.updated_at ?? null });
 }
 
 export async function DELETE(_req: NextRequest, { params }: { params: { id: string } }) {
