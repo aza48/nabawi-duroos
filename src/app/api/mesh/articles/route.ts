@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
   if (!dbConfigured()) return noDb(); try { await ensureMesh(); } catch { return noDb(); }
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  if (user.role !== "mandoob" && user.role !== "admin") return NextResponse.json({ error: "writers_only" }, { status: 403 });
+  if (user.role !== "mandoob" && user.role !== "contributor" && user.role !== "admin") return NextResponse.json({ error: "writers_only" }, { status: 403 });
   const body = await req.json().catch(() => ({})) as Record<string, unknown>;
   const parsed = parseArticleInput(body);
   if ("error" in parsed) return bad(parsed.error);

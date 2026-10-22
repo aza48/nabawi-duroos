@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
        (SELECT count(*)::int FROM mesh_questions qq WHERE qq.author_id=u.id) AS questions_count,
        (SELECT count(*)::int FROM mesh_answers aa WHERE aa.author_id=u.id) AS answers_count
      FROM mesh_users u ${where}
-     ORDER BY CASE u.role WHEN 'admin' THEN 0 WHEN 'mandoob' THEN 1 ELSE 2 END, u.created_at DESC
+     ORDER BY CASE u.role WHEN 'admin' THEN 0 WHEN 'mandoob' THEN 1 WHEN 'contributor' THEN 2 ELSE 3 END, u.created_at DESC
      LIMIT $${params.length - 1} OFFSET $${params.length}`, params);
   return NextResponse.json({ users: rows });
 }

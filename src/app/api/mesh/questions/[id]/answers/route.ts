@@ -10,8 +10,8 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
   const qid=parseInt(params.id,10); const q=await queryOne<{status:string;deleted_at:string|null}>(`SELECT status, deleted_at FROM mesh_questions WHERE id=$1`,[qid]); if(!q || q.deleted_at) return NextResponse.json({error:"not_found"},{status:404});
   const body=await req.json().catch(()=>({})) as Record<string,unknown>; const text=clean(body.body,5000); if(!text) return bad("Answer cannot be empty");
   const wantsStaffUpdate = body.staffUpdate===true;
-  const isStaff = user.role==="admin" || user.role==="mandoob";
-  // Closed threads (resolved/locked) refuse normal answers. Staff (admin/mandoob) may append an official update without reopening.
+  const isStaff = user.role==="admin" || user.role==="mandoob" || user.role==="contributor";
+  // Closed threads (resolved/locked) refuse normal answers. Staff (admin/mandoob/contributor) may append an official update without reopening.
   if(q.status!=="open" && !(wantsStaffUpdate && isStaff)) return NextResponse.json({error:"thread_closed"},{status:403});
   const staffUpdate = wantsStaffUpdate && isStaff;
   const row=await queryOne<{id:number}>(`INSERT INTO mesh_answers (question_id,author_id,body,is_staff_update) VALUES ($1,$2,$3,$4) RETURNING id`,[qid,user.id,text,staffUpdate]);

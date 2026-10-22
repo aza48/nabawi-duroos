@@ -4,7 +4,7 @@ import { ensureMesh } from "@/lib/mesh-db";
 import { noDb, bad, clean } from "@/lib/mesh-api";
 import { requireAdmin, audit, ensureTombstoneUser } from "@/lib/mesh-admin";
 
-const ROLES = ["member", "mandoob", "admin"];
+const ROLES = ["member", "mandoob", "contributor", "admin"];
 type TargetRow = { id: number; email: string; display_name: string; role: string; country: string | null; is_seed: boolean; suspended_at: string | null };
 
 async function adminCount(): Promise<number> {

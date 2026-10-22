@@ -170,7 +170,7 @@ function Inner() {
       if (!meRes || meRes.dbConfigured === false) { setPhase("demo"); return; }
       const user = meRes.user;
       if (!user) { setPhase("anon"); return; }
-      if (user.role !== "mandoob" && user.role !== "admin") { setPhase("member"); return; }
+      if (user.role !== "mandoob" && user.role !== "contributor" && user.role !== "admin") { setPhase("member"); return; }
       if (editId) {
         const r = await fetch(`/api/mesh/articles/${editId}`).catch(() => null);
         if (!r || !r.ok) { setPhase("notfound"); return; }

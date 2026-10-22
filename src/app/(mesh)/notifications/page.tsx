@@ -32,6 +32,7 @@ export default function NotificationsPage() {
     const actor = n.actor_name || t("ev.someone");
     const title = n.question_title || "MESH";
     if (n.type === "outdated_flag") return t("notif.outdatedFlag").replace("{actor}", actor).replace("{title}", title);
+    if (n.type === "new_question") return t("notif.newQuestion").replace("{actor}", actor).replace("{title}", title);
     return t("notif.generic").replace("{title}", title);
   }
 

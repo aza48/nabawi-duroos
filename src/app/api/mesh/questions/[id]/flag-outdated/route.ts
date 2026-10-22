@@ -19,8 +19,8 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
   const body=await req.json().catch(()=>({})) as Record<string,unknown>;
   const note=clean(body.note, 300) || null;
   await logQuestionEvent(qid, user.id, "outdated_flagged", note);
-  // Notify the OP and every real (non-seed) mandoob — except the flagger. One notification + one email per recipient.
-  const recipients=await query<{id:number;email:string}>(`SELECT id, email FROM mesh_users WHERE (id=$1 OR (role='mandoob' AND is_seed=false)) AND id<>$2`,[q.author_id, user.id]);
+  // Notify the OP and every real (non-seed) mandoob/contributor — except the flagger. One notification + one email per recipient.
+  const recipients=await query<{id:number;email:string}>(`SELECT id, email FROM mesh_users WHERE (id=$1 OR (role IN ('mandoob','contributor') AND is_seed=false)) AND id<>$2`,[q.author_id, user.id]);
   const mail = meshOutdatedEmail(qid, q.title);
   for(const r of recipients){
     await createNotification(r.id, "outdated_flag", qid, null, user.id);

@@ -35,6 +35,11 @@ export default function MeshHome() {
         <Search size={18} className="mesh-hero-search-icon" />
         <input placeholder={t("home.searchPh")} aria-label={t("nav.searchAria")} value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
+      {search.trim().length >= 3 && (
+        <p style={{ fontSize: 13.5, marginTop: 12, textAlign: "center" }}>
+          <Link href={`/ask?q=${encodeURIComponent(search.trim())}`} style={{ color: "var(--mesh-accent)", fontWeight: 600, textDecoration: "none" }}>{t("home.askThis")}</Link>
+        </p>
+      )}
       {demo && <p style={{ fontSize: 12, color: "var(--mesh-muted)", marginTop: 14, textAlign: "center" }}>{t("demo.note")}</p>}
       <section style={{ display: "grid", gap: 20, marginTop: 44 }} aria-label={t("home.categoriesAria")}>
         {MAIN_SLUGS.map((slug) => <CategoryCard key={slug} slug={slug} />)}

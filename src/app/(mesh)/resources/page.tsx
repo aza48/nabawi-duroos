@@ -52,7 +52,7 @@ function Inner() {
   const { t } = useMeshPrefs();
   const sp = useSearchParams();
   const { me } = useMeshMe();
-  const isWriter = !!me && (me.role === "mandoob" || me.role === "admin");
+  const isWriter = !!me && (me.role === "mandoob" || me.role === "contributor" || me.role === "admin");
   const [tab, setTab] = useState<"all" | "mine">(sp.get("tab") === "mine" ? "mine" : "all");
   const [items, setItems] = useState<ArticleItem[] | null>(null);
   const [state, setState] = useState<"loading" | "ready" | "demo">("loading");

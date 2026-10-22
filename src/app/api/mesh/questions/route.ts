@@ -4,6 +4,9 @@ import { dbConfigured, query } from "@/lib/db";
 import { ensureMesh } from "@/lib/mesh-db";
 import { getCurrentUser } from "@/lib/mesh-auth";
 import { noDb, bad, clean } from "@/lib/mesh-api";
+import { searchKeywords } from "@/lib/mesh-ask";
+import { createNotification } from "@/lib/mesh-lifecycle";
+import { sendMeshEmail, meshNewQuestionEmail } from "@/lib/mesh-email";
 
 export async function GET(req: NextRequest){
   if(!dbConfigured()) return noDb();
@@ -14,9 +17,20 @@ export async function GET(req: NextRequest){
   const offset = Math.max(0, parseInt(sp.get("offset")||"0",10)||0);
   const params: unknown[] = []; let where = "WHERE qq.deleted_at IS NULL";
   if(category){ params.push(category); where += ` AND (c.slug=$${params.length} OR pc.slug=$${params.length})`; }
-  if(q){ params.push(`%${q}%`); const i=params.length; where += ` AND (qq.title ILIKE $${i} OR qq.body ILIKE $${i} OR EXISTS (SELECT 1 FROM mesh_question_tags qt JOIN mesh_tags t ON t.id=qt.tag_id WHERE qt.question_id=qq.id AND t.name ILIKE $${i}) OR EXISTS (SELECT 1 FROM mesh_answers aa WHERE aa.question_id=qq.id AND aa.body ILIKE $${i}))`; }
+  // Code-only keyword matching: a natural-language query is split into significant words and a
+  // thread matches if ANY word appears in its title, body, tags or answers. sort=relevant ranks
+  // title hits above body hits and solved threads first — used by the ask page's live suggestions.
+  let scoreExpr = "";
+  if(q){
+    const words = searchKeywords(q).length ? searchKeywords(q) : [q];
+    const wordIdx: number[] = [];
+    for(const w of words){ params.push(`%${w}%`); wordIdx.push(params.length); }
+    const anyWord = (col: string) => wordIdx.map((i)=>`${col} ILIKE $${i}`).join(" OR ");
+    where += ` AND (${anyWord("qq.title")} OR ${anyWord("qq.body")} OR EXISTS (SELECT 1 FROM mesh_question_tags qt JOIN mesh_tags t ON t.id=qt.tag_id WHERE qt.question_id=qq.id AND (${anyWord("t.name")})) OR EXISTS (SELECT 1 FROM mesh_answers aa WHERE aa.question_id=qq.id AND (${anyWord("aa.body")})))`;
+    scoreExpr = wordIdx.map((i)=>`(CASE WHEN qq.title ILIKE $${i} THEN 2 ELSE 0 END + CASE WHEN qq.body ILIKE $${i} THEN 1 ELSE 0 END)`).join(" + ");
+  }
   if(sort==="unanswered") where += ` AND (SELECT count(*) FROM mesh_answers a2 WHERE a2.question_id=qq.id AND a2.deleted_at IS NULL)=0`;
-  const order = sort==="top" ? "vote_count DESC, qq.created_at DESC" : "qq.created_at DESC";
+  const order = sort==="top" ? "vote_count DESC, qq.created_at DESC" : sort==="relevant" && scoreExpr ? `(qq.accepted_answer_id IS NOT NULL) DESC, (${scoreExpr}) DESC, qq.created_at DESC` : "qq.created_at DESC";
   params.push(limit); params.push(offset);
   const rows = await query(`SELECT qq.id, qq.title, qq.body, qq.author_id, u.display_name AS author_name, u.role AS author_role, u.entry_year_hijri AS author_entry_year, u.country AS author_country, COALESCE(pc.slug, c.slug) AS category_slug, COALESCE(pc.name, c.name) AS category_name, c.slug AS raw_category_slug,
     (SELECT count(*)::int FROM mesh_votes v WHERE v.target_type='question' AND v.target_id=qq.id) AS vote_count,
@@ -34,7 +48,7 @@ export async function POST(req: NextRequest){
   const body = await req.json().catch(()=>({})) as Record<string,unknown>;
   const title = clean(body.title, 200); const text = clean(body.body, 5000); const catSlug = clean(body.categorySlug, 80); const subSlug = clean(body.subcategorySlug, 80);
   if(title.length<10) return bad("Title must be at least 10 characters");
-  if(text.length<20) return bad("Body must be at least 20 characters");
+  // Details are optional: a clear question on its own can be posted; the body only adds context.
   if(!catSlug) return bad("Category is required");
   const { queryOne } = await import("@/lib/db");
   const cat = await queryOne<{id:number}>(`SELECT id FROM mesh_categories WHERE slug=$1`, [subSlug||catSlug]);
@@ -46,5 +60,16 @@ export async function POST(req: NextRequest){
   for(const t of tags){ const name=clean(t,40); if(!name) continue; const slug=name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
     const tag = await queryOne<{id:number}>(`INSERT INTO mesh_tags (name,slug) VALUES ($1,$2) ON CONFLICT (slug) DO UPDATE SET name=EXCLUDED.name RETURNING id`,[name,slug]);
     if(tag) await query(`INSERT INTO mesh_question_tags (question_id,tag_id) VALUES ($1,$2) ON CONFLICT DO NOTHING`,[row.id,tag.id]); }
+  // Alert the team — admins, mandoobs and contributors (real accounts only, never the asker):
+  // one in-app notification + one email each, so new questions get a fast first answer.
+  // Best-effort: alerting must never fail the post itself.
+  try{
+    const staff = await query<{id:number;email:string}>(`SELECT id, email FROM mesh_users WHERE role IN ('admin','mandoob','contributor') AND is_seed=false AND suspended_at IS NULL AND id<>$1`, [user.id]);
+    const mail = meshNewQuestionEmail(row.id, title, user.display_name);
+    for(const s of staff){
+      await createNotification(s.id, "new_question", row.id, null, user.id);
+      if(s.email && !s.email.endsWith("@mesh.local")) { try{ await sendMeshEmail(s.email, mail.subject, mail.html); }catch{ /* non-fatal */ } }
+    }
+  }catch{ /* non-fatal */ }
   return NextResponse.json({ id: row.id }, { status: 201 });
 }

@@ -29,10 +29,11 @@ export function threadCapabilities(viewer: ViewerLike, q: QuestionLike): ThreadC
   const isOP = viewer.id === q.author_id;
   const isAdmin = viewer.role === "admin";
   const deleted = !!q.deleted_at;
-  const mandoobCountryMatch = viewer.role === "mandoob" && (q.author_country == null || q.author_country === viewer.country);
+  // Contributors hold the same permissions as mandoobs (team roles), including the country-matched reopen.
+  const teamCountryMatch = (viewer.role === "mandoob" || viewer.role === "contributor") && (q.author_country == null || q.author_country === viewer.country);
   return {
-    canReopen: !deleted && q.status === "resolved" && (isOP || isAdmin || mandoobCountryMatch),
-    canStaffUpdate: !deleted && q.status !== "open" && (isAdmin || viewer.role === "mandoob"),
+    canReopen: !deleted && q.status === "resolved" && (isOP || isAdmin || teamCountryMatch),
+    canStaffUpdate: !deleted && q.status !== "open" && (isAdmin || viewer.role === "mandoob" || viewer.role === "contributor"),
     canDelete: !deleted && (isOP || isAdmin),
     canLock: !deleted && isAdmin,
     canRestore: deleted && (isOP || isAdmin),

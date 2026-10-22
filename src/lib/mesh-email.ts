@@ -58,6 +58,29 @@ export function meshOutdatedEmail(questionId: number, title: string): { subject:
   return { subject, html };
 }
 
+/** Bilingual (EN first, AR below) alert to admins/mandoobs/contributors that a new question was posted. */
+export function meshNewQuestionEmail(questionId: number, title: string, askerName: string): { subject: string; html: string } {
+  const url = `https://nabawi-duroos.vercel.app/question/${questionId}`;
+  const subject = "MESH — new question waiting for an answer";
+  const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#FAFAFA;font-family:Inter,Alexandria,'Segoe UI',Arial,sans-serif;color:#171717">
+  <div style="max-width:520px;margin:0 auto;background:#ffffff;border:1px solid #EBEBEB;border-radius:12px;padding:28px">
+    <p style="font-size:20px;font-weight:800;margin:0 0 4px">MESH</p>
+    <p style="font-size:12px;color:#8F8F8F;margin:0 0 20px">Medinah English Students Hub</p>
+    <p style="font-size:15px;line-height:1.6">${esc(askerName)} just asked a new question:</p>
+    <p style="font-size:15px;font-weight:600;line-height:1.6;margin:12px 0">&ldquo;${esc(title)}&rdquo;</p>
+    <p style="margin:16px 0"><a href="${url}" style="color:#125934;font-weight:600">Open the question</a></p>
+    <p style="font-size:13px;color:#4D4D4D;line-height:1.6">You are receiving this because you help answer questions on MESH as an admin, mandoob or contributor. A fast first answer keeps the archive growing.</p>
+    <hr style="border:none;border-top:1px solid #EBEBEB;margin:24px 0" />
+    <div dir="rtl" lang="ar" style="text-align:right">
+      <p style="font-size:15px;line-height:1.8">طرح ${esc(askerName)} سؤالًا جديدًا:</p>
+      <p style="font-size:15px;font-weight:600;line-height:1.8;margin:12px 0">&laquo;${esc(title)}&raquo;</p>
+      <p style="margin:16px 0"><a href="${url}" style="color:#125934;font-weight:600">افتح السؤال</a></p>
+      <p style="font-size:13px;color:#4D4D4D;line-height:1.8">تصلك هذه الرسالة لأنك تساعد في الإجابة على الأسئلة في MESH بصفتك مسؤولًا أو مندوبًا أو مساهمًا. الإجابة السريعة الأولى تُبقي الأرشيف حيًّا ومتناميًا.</p>
+    </div>
+  </div></body></html>`;
+  return { subject, html };
+}
+
 /** Bilingual (EN first, AR below) 6-digit code email for signup verification and password reset. */
 export function meshCodeEmail(code: string, purpose: "signup" | "reset"): { subject: string; html: string } {
   const actionEn = purpose === "signup" ? "verify your MESH account" : "reset your MESH password";

@@ -7,7 +7,7 @@ import { UserChips } from "@/components/mesh/UserBadge";
 
 type Tab = "overview" | "users" | "reports" | "trash" | "audit";
 type Overview = {
-  users: { total: number; members: number; mandoobs: number; admins: number; suspended: number };
+  users: { total: number; members: number; mandoobs: number; contributors: number; admins: number; suspended: number };
   questions: { total: number; open: number; resolved: number; locked: number };
   answers: { total: number }; reports: { open: number }; flags: { outdated30d: number };
   trash: { questions: number; answers: number; total: number };
@@ -78,7 +78,7 @@ export default function AdminPage() {
 
   function OverviewTab({ o }: { o: Overview }) {
     const stats: [string, number][] = [
-      [t("admin.statUsers"), o.users.total], [t("admin.statMembers"), o.users.members], [t("admin.statMandoobs"), o.users.mandoobs],
+      [t("admin.statUsers"), o.users.total], [t("admin.statMembers"), o.users.members], [t("admin.statMandoobs"), o.users.mandoobs], [t("admin.statContributors"), o.users.contributors ?? 0],
       [t("admin.statAdmins"), o.users.admins], [t("admin.statSuspended"), o.users.suspended],
       [t("admin.statQuestions"), o.questions.total], [t("admin.statOpen"), o.questions.open], [t("admin.statResolved"), o.questions.resolved], [t("admin.statLocked"), o.questions.locked],
       [t("admin.statAnswers"), o.answers.total], [t("admin.statReportsOpen"), o.reports.open], [t("admin.statFlags30"), o.flags.outdated30d], [t("admin.statTrash"), o.trash.total],
@@ -154,16 +154,17 @@ export default function AdminPage() {
             <select className="mesh-input mesh-focus" style={{ minHeight: 38 }} value={role} onChange={(e) => setRole(e.target.value)} aria-label={t("admin.role")}>
               <option value="member">{t("admin.roleMember")}</option>
               <option value="mandoob">{t("admin.roleMandoob")}</option>
+              <option value="contributor">{t("admin.roleContributor")}</option>
               <option value="admin">{t("admin.roleAdmin")}</option>
             </select>
           </label>
-          {role === "mandoob" && (
+          {(role === "mandoob" || role === "contributor") && (
             <label style={{ display: "grid", gap: 4, fontSize: 12, color: "var(--mesh-muted)", fontWeight: 600 }}>{t("admin.country")}
               <input className="mesh-input mesh-focus" style={{ minHeight: 38 }} value={country} onChange={(e) => setCountry(e.target.value)} placeholder={t("settings.countryPh")} />
             </label>
           )}
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <button className="mesh-btn mesh-btn-primary mesh-btn-sm mesh-focus" onClick={() => patch(u.id, { role, ...(role === "mandoob" ? { country } : {}) })}>{t("admin.save")}</button>
+            <button className="mesh-btn mesh-btn-primary mesh-btn-sm mesh-focus" onClick={() => patch(u.id, { role, ...((role === "mandoob" || role === "contributor") ? { country } : {}) })}>{t("admin.save")}</button>
             <button className="mesh-btn mesh-btn-outline mesh-btn-sm mesh-focus" onClick={() => patch(u.id, { suspended: !u.suspended_at })}>{u.suspended_at ? t("admin.unsuspend") : t("admin.suspend")}</button>
             {!u.is_seed && <button className="mesh-btn mesh-btn-outline mesh-btn-sm mesh-focus" style={{ color: "var(--mesh-error)" }} onClick={() => remove(u)}>{t("admin.deleteUser")}</button>}
           </div>
