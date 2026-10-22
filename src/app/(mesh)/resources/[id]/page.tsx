@@ -1,107 +1,68 @@
-"use client";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
-import { ArrowLeft, Clock, Heart, Pencil, Trash2 } from "lucide-react";
-import { relativeTime } from "@/data/mesh-seed";
-import { useMeshPrefs } from "@/lib/mesh-i18n";
-import { AuthorName } from "@/components/mesh/UserBadge";
-import { useMeshMe } from "@/components/mesh/MeshShell";
+import type { Metadata } from "next";
+import ArticleReader from "@/components/mesh/ArticleReader";
+import { dbConfigured, queryOne } from "@/lib/db";
+import { ensureMesh } from "@/lib/mesh-db";
+import { excerptOf } from "@/lib/mesh-sanitize";
+import { articleUrl, articleOgImage } from "@/lib/mesh-share";
 
-type Article = {
-  id: number; author_id: number | null; title: string; banner: string | null; body_html: string;
-  reading_minutes: number; status: string; is_seed: boolean; created_at: string; updated_at: string;
-  author_name: string; author_role: string | null; author_country: string | null;
-  like_count: number; liked_by_me: boolean;
+export const dynamic = "force-dynamic";
+
+const GENERIC: Metadata = {
+  title: "Article · MESH Resources",
+  description: "Guides and walkthroughs from MESH — Medinah English Students Hub.",
 };
 
-export default function ArticlePage() {
-  const { lang, t } = useMeshPrefs();
-  const params = useParams();
-  const router = useRouter();
-  const { me } = useMeshMe();
-  const id = String(params.id);
-  const [article, setArticle] = useState<Article | null>(null);
-  const [state, setState] = useState<"loading" | "ready" | "notfound" | "demo">("loading");
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
-  const [deleting, setDeleting] = useState(false);
+/** Link embeds (X, WhatsApp, Telegram…): banner image, title, and the first
+ *  couple of lines of the article as the description. Published articles only —
+ *  a draft's title and text must never leak into a public preview. */
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const id = parseInt(params.id, 10);
+  if (!id || !dbConfigured()) return GENERIC;
+  try {
+    await ensureMesh();
+    const row = await queryOne<{
+      title: string; banner: string | null; body_html: string; status: string;
+      created_at: string; updated_at: string; author_name: string;
+    }>(
+      `SELECT a.title, a.banner, a.body_html, a.status, a.created_at, a.updated_at,
+         COALESCE(u.display_name, 'Deleted User') AS author_name
+       FROM mesh_articles a LEFT JOIN mesh_users u ON u.id = a.author_id
+       WHERE a.id = $1`,
+      [id]
+    );
+    if (!row || row.status !== "published") return GENERIC;
 
-  useEffect(() => {
-    fetch(`/api/mesh/articles/${id}`).then(async (r) => {
-      if (r.status === 404) { setState("notfound"); return; }
-      if (!r.ok) { setState("demo"); return; }
-      const d = await r.json();
-      setArticle(d.article);
-      setLiked(!!d.article.liked_by_me);
-      setLikeCount(d.article.like_count ?? 0);
-      setState("ready");
-    }).catch(() => setState("demo"));
-  }, [id]);
-
-  async function toggleLike() {
-    if (!me) { router.push(`/login?next=/resources/${id}`); return; }
-    const r = await fetch(`/api/mesh/articles/${id}/like`, { method: "POST" }).catch(() => null);
-    if (r && r.status === 401) { router.push(`/login?next=/resources/${id}`); return; }
-    if (r && r.ok) { const d = await r.json(); setLiked(d.liked); setLikeCount(d.like_count); }
+    const description = excerptOf(row.body_html, 200);
+    const image = articleOgImage(id, row.banner);
+    const url = articleUrl(id);
+    const title = row.title;
+    return {
+      title: `${title} · MESH`,
+      description,
+      alternates: { canonical: url },
+      openGraph: {
+        type: "article",
+        siteName: "MESH — Medinah English Students Hub",
+        title,
+        description,
+        url,
+        publishedTime: new Date(row.created_at).toISOString(),
+        modifiedTime: new Date(row.updated_at).toISOString(),
+        authors: [row.author_name],
+        images: [{ url: image, width: 1200, height: 480, alt: title }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [image],
+      },
+    };
+  } catch {
+    return GENERIC;
   }
+}
 
-  async function remove() {
-    if (!window.confirm(t("res.deleteConfirm")) || deleting) return;
-    setDeleting(true);
-    const r = await fetch(`/api/mesh/articles/${id}`, { method: "DELETE" }).catch(() => null);
-    setDeleting(false);
-    if (r && r.ok) router.push("/resources");
-  }
-
-  const canManage = !!article && !!me && (me.role === "admin" || me.id === article.author_id);
-  const wasEdited = !!article && new Date(article.updated_at).getTime() - new Date(article.created_at).getTime() > 60_000;
-
-  return (
-    <div className="mesh-container" style={{ padding: "30px 0 56px", maxWidth: 820 }}>
-      <Link href="/resources" style={{ display: "inline-flex", gap: 7, alignItems: "center", fontSize: 14, fontWeight: 600, color: "var(--mesh-accent)", textDecoration: "none" }}>
-        <ArrowLeft size={15} className="mesh-flip-rtl" /> {t("res.back")}
-      </Link>
-
-      {state === "loading" && <p style={{ color: "var(--mesh-secondary)", marginTop: 28 }}>{t("common.loading")}</p>}
-      {state === "notfound" && <div className="mesh-card" style={{ padding: 26, marginTop: 24 }}><p style={{ margin: 0, fontWeight: 600 }}>{t("res.notFound")}</p></div>}
-      {state === "demo" && <div className="mesh-card" style={{ padding: 26, marginTop: 24 }}><p style={{ margin: 0, fontSize: 14, color: "var(--mesh-secondary)" }}>{t("demo.note")}</p></div>}
-
-      {state === "ready" && article && (
-        <article style={{ marginTop: 22 }}>
-          {article.status === "draft" && (
-            <div style={{ background: "var(--mesh-pale)", border: "1px solid var(--mesh-soft)", color: "var(--mesh-accent)", fontSize: 13.5, padding: "10px 14px", borderRadius: 10, marginBottom: 18 }}>
-              <strong>{t("res.draft")}.</strong> {t("res.draftNote")}
-            </div>
-          )}
-          {article.banner && <img src={article.banner} alt="" className="mesh-article-banner" style={{ borderRadius: 16, marginBottom: 26 }} />}
-          <h1 style={{ fontSize: 34, lineHeight: 1.2, margin: "0 0 14px" }}>{article.title}</h1>
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center", fontSize: 13, color: "var(--mesh-muted)", paddingBottom: 20, borderBottom: "1px solid var(--mesh-hairline)" }}>
-            <Link href={article.author_id ? `/profile/${article.author_id}` : "#"} style={{ color: "inherit", textDecoration: "none" }}>
-              <AuthorName name={article.author_name} role={article.author_role} country={article.author_country} />
-            </Link>
-            <span>{relativeTime(article.created_at, lang)}</span>
-            {wasEdited && <span>{t("res.updated")} {relativeTime(article.updated_at, lang)}</span>}
-            <span style={{ display: "inline-flex", gap: 5, alignItems: "center" }}><Clock size={13} /> {t("res.minRead").replace("{n}", String(article.reading_minutes))}</span>
-            {article.is_seed && <span style={{ fontSize: 11, color: "var(--mesh-muted)", border: "1px solid var(--mesh-hairline)", padding: "1px 6px", borderRadius: 999 }}>{t("disc.sample")}</span>}
-            {canManage && (
-              <span style={{ marginInlineStart: "auto", display: "inline-flex", gap: 8 }}>
-                <Link href={`/resources/write?edit=${article.id}`} className="mesh-btn mesh-btn-outline mesh-btn-sm mesh-focus"><Pencil size={13} /> {t("res.edit")}</Link>
-                <button onClick={remove} disabled={deleting} className="mesh-btn mesh-btn-outline mesh-btn-sm mesh-focus" style={{ color: "var(--mesh-error)" }}><Trash2 size={13} /> {t("res.delete")}</button>
-              </span>
-            )}
-          </div>
-
-          {/* body_html is sanitized server-side on every write (allowlist, no styles) */}
-          <div className="mesh-article-body" style={{ marginTop: 26 }} dangerouslySetInnerHTML={{ __html: article.body_html }} />
-
-          <div style={{ marginTop: 36, paddingTop: 22, borderTop: "1px solid var(--mesh-hairline)" }}>
-            <button onClick={toggleLike} className={`mesh-btn mesh-focus ${liked ? "mesh-btn-primary" : "mesh-btn-outline"}`} aria-pressed={liked} title={me ? t("res.like") : t("res.loginToLike")}>
-              <Heart size={16} fill={liked ? "currentColor" : "none"} /> {likeCount} · {t("res.like")}
-            </button>
-          </div>
-        </article>
-      )}
-    </div>
-  );
+export default function ArticlePage({ params }: { params: { id: string } }) {
+  return <ArticleReader id={String(params.id)} />;
 }

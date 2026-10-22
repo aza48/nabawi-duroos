@@ -94,6 +94,19 @@
 .mesh-article-card:hover{border-color:var(--mesh-border-strong);transform:translateY(-2px)}
 .mesh-article-banner{width:100%;aspect-ratio:5/2;object-fit:cover;display:block}
 .mesh-article-banner-empty{width:100%;aspect-ratio:5/2;background:var(--mesh-pale);color:var(--mesh-accent);display:grid;place-items:center}
+/* Article actions: Like + Share pills side by side (under the byline, and again at the foot) */
+.mesh-article-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.mesh-article-actions:not(.mesh-article-actions-bottom){padding-bottom:18px;border-bottom:1px solid var(--mesh-hairline)}
+.mesh-article-actions-bottom{margin-top:38px;padding-top:22px;border-top:1px solid var(--mesh-hairline)}
+/* Article page only: small buttons (Edit/Delete) join the pill system */
+.mesh-article-page .mesh-btn-sm{border-radius:999px}
+/* Share button + X-style menu */
+.mesh-share-wrap{position:relative;display:inline-block}
+.mesh-share-menu{position:absolute;top:calc(100% + 8px);inset-inline-start:0;z-index:50;display:block;min-width:232px;background:var(--mesh-surface);border:1px solid var(--mesh-hairline);border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.24);padding:6px}
+.mesh-share-item{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border:none;background:none;border-radius:9px;font-family:inherit;font-size:14px;font-weight:550;color:var(--mesh-text);cursor:pointer;text-align:start;white-space:nowrap}
+.mesh-share-item:hover{background:var(--mesh-pale)}
+.mesh-share-iconbtn{display:inline-grid;place-items:center;width:32px;height:32px;min-width:32px;border-radius:999px;border:none;background:transparent;color:var(--mesh-muted);cursor:pointer;font-family:inherit;padding:0}
+.mesh-share-iconbtn:hover{background:var(--mesh-pale);color:var(--mesh-text)}
 /* Article body typography — used by the reader page AND the editor surface,
    so what authors see while writing is what readers get. */
 .mesh-article-body{font-size:17px;line-height:1.8;color:var(--mesh-text);overflow-wrap:break-word}

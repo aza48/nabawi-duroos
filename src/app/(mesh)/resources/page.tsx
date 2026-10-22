@@ -7,6 +7,7 @@ import { relativeTime } from "@/data/mesh-seed";
 import { useMeshPrefs } from "@/lib/mesh-i18n";
 import { AuthorName } from "@/components/mesh/UserBadge";
 import { useMeshMe } from "@/components/mesh/MeshShell";
+import ShareButton from "@/components/mesh/ShareButton";
 
 type ArticleItem = {
   id: number; author_id: number | null; title: string; banner: string | null; excerpt: string;
@@ -35,8 +36,11 @@ function ArticleCard({ item }: { item: ArticleItem }) {
           <AuthorName name={item.author_name} role={item.author_role} country={item.author_country} />
           <span>{relativeTime(item.created_at, lang)}</span>
           <span style={{ display: "inline-flex", gap: 5, alignItems: "center" }}><Clock size={13} /> {t("res.minRead").replace("{n}", String(item.reading_minutes))}</span>
-          <span style={{ display: "inline-flex", gap: 5, alignItems: "center", marginInlineStart: "auto", color: item.liked_by_me ? "var(--mesh-accent)" : undefined }}>
-            <Heart size={14} fill={item.liked_by_me ? "currentColor" : "none"} /> {item.like_count}
+          <span style={{ display: "inline-flex", gap: 4, alignItems: "center", marginInlineStart: "auto" }}>
+            <span style={{ display: "inline-flex", gap: 5, alignItems: "center", color: item.liked_by_me ? "var(--mesh-accent)" : undefined }}>
+              <Heart size={14} fill={item.liked_by_me ? "currentColor" : "none"} /> {item.like_count}
+            </span>
+            <ShareButton variant="icon" articleId={item.id} title={item.title} text={item.excerpt} />
           </span>
         </div>
       </div>
