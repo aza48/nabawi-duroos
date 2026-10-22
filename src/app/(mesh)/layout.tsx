@@ -4,6 +4,7 @@ import "../globals.css";
 import "./mesh.css";
 import MeshShell from "@/components/mesh/MeshShell";
 import { MeshPrefsProvider, MeshRoot } from "@/lib/mesh-i18n";
+import { siteUrl } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ const arabic = Alexandria({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nabawi-duroos.vercel.app"),
+  metadataBase: new URL(siteUrl()),
   title: "MESH — Medinah English Students Hub",
   description: "Practical answers, local knowledge, and advice from students in Madinah.",
   manifest: "/manifest.webmanifest",

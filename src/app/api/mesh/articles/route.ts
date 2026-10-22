@@ -4,6 +4,8 @@ import { ensureMesh } from "@/lib/mesh-db";
 import { getCurrentUser } from "@/lib/mesh-auth";
 import { noDb, bad } from "@/lib/mesh-api";
 import { articleSelect, articleListItem, parseArticleInput, type ArticleRow } from "@/lib/mesh-articles";
+import { pingIndexNow } from "@/lib/indexnow";
+import { abs } from "@/lib/site";
 
 export async function GET(req: NextRequest) {
   if (!dbConfigured()) return noDb(); try { await ensureMesh(); } catch { return noDb(); }
@@ -43,5 +45,7 @@ export async function POST(req: NextRequest) {
     [user.id, title, banner, bodyHtml, status]
   );
   if (!row) return bad("Could not create article", 500);
+  // Instant-indexing ping when an article is born published (fire-and-forget).
+  if (status === "published") pingIndexNow([abs(`/resources/${row.id}`)]);
   return NextResponse.json({ id: row.id, status, updated_at: row.updated_at }, { status: 201 });
 }

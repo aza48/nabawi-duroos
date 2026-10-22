@@ -1,0 +1,42 @@
+# MESH — Medinah English Students Hub
+
+> MESH is a community question-and-answer site and guide archive for English-speaking international students in Madinah (Medina), Saudi Arabia — including students of the Islamic University of Madinah. Members ask and answer practical questions about arriving, settling, studying and eventually leaving, and experienced students (mandoobs) publish longer guides. Everything is peer knowledge shared from personal experience — helpful and current, but not official guidance. The site also hosts Nabawi Duroos, a schedule of Islamic lessons (duroos) at Madinah masjids with alerts for cancellations and changes.
+
+## Main
+
+- [MESH home — recent questions and categories](https://medinahub.org/): The front page of the community.
+- [Nabawi Duroos — lesson schedules](https://medinahub.org/duroos): Weekly duroos schedules for Masjid Nabawi, Masjid Quba, the Islamic University and other Madinah masjids, with cancellation and change alerts.
+- [Resources — guides and walkthroughs](https://medinahub.org/resources): Longer articles written by experienced students.
+- [Browse all questions](https://medinahub.org/browse): Every discussion, searchable and filterable by category.
+
+## Categories
+
+- [Getting Started](https://medinahub.org/category/getting-started): Admissions, paperwork, residency, and your first steps in Madinah.
+- [Getting Settled](https://medinahub.org/category/getting-settled): Housing, getting connected, navigating the city, and daily life.
+- [Getting Ready to Leave](https://medinahub.org/category/getting-ready-to-leave): Travel plans, final paperwork, closing accounts, and moving on.
+- [Admissions and Enrollment](https://medinahub.org/category/admissions-enrollment)
+- [Visa and Iqama](https://medinahub.org/category/visa-iqama)
+- [Nafath and Absher](https://medinahub.org/category/nafath-absher)
+- [University Registration](https://medinahub.org/category/university-registration)
+- [Documents and Requirements](https://medinahub.org/category/documents-requirements)
+- [First Arrival](https://medinahub.org/category/first-arrival)
+- [Housing and Accommodation](https://medinahub.org/category/housing-accommodation)
+- [Transport](https://medinahub.org/category/transport)
+- [Mobile Networks and SIM Cards](https://medinahub.org/category/sim-cards)
+- [Banking and Payments](https://medinahub.org/category/banking-payments)
+- [Shopping and Groceries](https://medinahub.org/category/shopping-groceries)
+- [Food and Daily Essentials](https://medinahub.org/category/food-essentials)
+- [Healthcare and Practical Services](https://medinahub.org/category/healthcare-services)
+- [Life in Madinah](https://medinahub.org/category/life-in-madinah)
+- [Travel Planning](https://medinahub.org/category/travel-planning)
+- [University Clearance](https://medinahub.org/category/university-clearance)
+- [Residency and Exit Procedures](https://medinahub.org/category/exit-procedures)
+- [Closing Accounts and Services](https://medinahub.org/category/closing-accounts)
+- [Housing Handover](https://medinahub.org/category/housing-handover)
+- [Final Documents](https://medinahub.org/category/final-documents)
+- [Moving and Luggage](https://medinahub.org/category/moving-luggage)
+
+## About
+
+- [About MESH](https://medinahub.org/about): What the community is and who it is for.
+- [Community guidelines](https://medinahub.org/guidelines): How to ask and answer well.

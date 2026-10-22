@@ -8,6 +8,7 @@ import {
   SubscriberRow,
 } from "../../../../../../lib/db";
 import { alertEmail, sendEmail } from "../../../../../../lib/email";
+import { siteUrl } from "../../../../../../lib/site";
 import { findBookScope, findShaykhScope } from "../../../../../../lib/scopes";
 
 export const runtime = "nodejs";
@@ -50,8 +51,7 @@ export async function POST(
       [ann.shaykh_id, ann.book_id]
     );
 
-    const origin = new URL(req.url).origin;
-    const siteBase = process.env.NEXT_PUBLIC_SITE_URL || origin;
+    const siteBase = siteUrl();
     const shaykhScope = findShaykhScope(ann.shaykh_id);
     const bookScope = ann.book_id ? findBookScope(ann.book_id) : undefined;
 

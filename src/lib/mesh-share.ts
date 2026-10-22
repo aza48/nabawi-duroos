@@ -6,7 +6,9 @@
  * (/api/mesh/articles/[id]/banner), which serves the stored image bytes
  * at a normal public URL. */
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://nabawi-duroos.vercel.app").replace(/\/$/, "");
+import { siteUrl } from "./site";
+
+export const SITE_URL = siteUrl();
 
 /** Absolute canonical URL for an article page. */
 export function articleUrl(id: number | string): string {

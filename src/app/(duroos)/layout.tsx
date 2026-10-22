@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Alexandria, Inter } from "next/font/google";
 import "../globals.css";
+import { siteUrl } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,10 +17,17 @@ const arabic = Alexandria({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl()),
   title: "دروس المسجد النبوي — Nabawi Duroos",
   description:
-    "مجمّع دروس المسجد النبوي وقباء والجامعة الإسلامية: جدول أسبوعي دائم مع تحديثات مباشرة من قنوات تيليجرام العامة",
+    "Lesson schedules (duroos) for Madinah masjids — Masjid Nabawi, Quba and more, with alerts for cancellations and changes.",
+  alternates: { canonical: "/duroos" },
   manifest: "/manifest.webmanifest",
+  openGraph: {
+    title: "دروس المسجد النبوي — Nabawi Duroos",
+    description:
+      "مجمّع دروس المسجد النبوي وقباء والجامعة الإسلامية: جدول أسبوعي دائم مع تحديثات مباشرة من قنوات تيليجرام العامة",
+  },
 };
 
 export default function DuroosRootLayout({

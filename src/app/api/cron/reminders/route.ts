@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { dbConfigured, initDb, query, SubscriberRow, SubscriptionRow } from "../../../../lib/db";
 import { reminderEmail, sendEmail } from "../../../../lib/email";
+import { siteUrl } from "../../../../lib/site";
 import { lessonsHappeningOn } from "../../../../lib/reminders";
 import { riyadhToday, todayLabel } from "../../../../lib/dates";
 import { lessonShaykhScopeId } from "../../../../lib/scopes";
@@ -38,8 +39,7 @@ export async function GET(req: NextRequest) {
     const subscribers = await query<SubscriberRow>(
       `SELECT * FROM subscribers WHERE status = 'confirmed'`
     );
-    const origin = new URL(req.url).origin;
-    const siteBase = process.env.NEXT_PUBLIC_SITE_URL || origin;
+    const siteBase = siteUrl();
     const label = todayLabel();
 
     let sent = 0;

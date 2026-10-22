@@ -1,4 +1,4 @@
-# Contributing to Medina Hub
+# Contributing to MESH
 
 Thanks for helping. This repo holds one Next.js app with two products:
 

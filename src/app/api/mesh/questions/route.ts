@@ -7,6 +7,8 @@ import { noDb, bad, clean } from "@/lib/mesh-api";
 import { searchKeywords } from "@/lib/mesh-ask";
 import { createNotification } from "@/lib/mesh-lifecycle";
 import { sendMeshEmail, meshNewQuestionEmail } from "@/lib/mesh-email";
+import { pingIndexNow } from "@/lib/indexnow";
+import { abs } from "@/lib/site";
 
 export async function GET(req: NextRequest){
   if(!dbConfigured()) return noDb();
@@ -71,5 +73,7 @@ export async function POST(req: NextRequest){
       if(s.email && !s.email.endsWith("@mesh.local")) { try{ await sendMeshEmail(s.email, mail.subject, mail.html); }catch{ /* non-fatal */ } }
     }
   }catch{ /* non-fatal */ }
+  // Instant-indexing ping for the new question (fire-and-forget, production only).
+  pingIndexNow([abs(`/question/${row.id}`)]);
   return NextResponse.json({ id: row.id }, { status: 201 });
 }

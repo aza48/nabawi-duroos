@@ -6,6 +6,8 @@ import { noDb, bad } from "@/lib/mesh-api";
 import { audit } from "@/lib/mesh-admin";
 import { articleSelect, articleDetail, parseArticlePatch, type ArticleRow } from "@/lib/mesh-articles";
 import { plainTextOf } from "@/lib/mesh-sanitize";
+import { pingIndexNow } from "@/lib/indexnow";
+import { abs } from "@/lib/site";
 
 async function loadArticle(id: number, viewerId: number): Promise<ArticleRow | null> {
   return queryOne<ArticleRow>(articleSelect("$2") + ` WHERE a.id = $1`, [id, viewerId]);
@@ -60,6 +62,10 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
       id,
     ]
   );
+  // Instant-indexing ping when this edit publishes the article (fire-and-forget).
+  if (nextStatus === "published" && (row.status !== "published" || patch.status === "published")) {
+    pingIndexNow([abs(`/resources/${id}`)]);
+  }
   return NextResponse.json({ id, status: nextStatus, updated_at: updated?.updated_at ?? null });
 }
 
