@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Megaphone, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Megaphone, X } from "lucide-react";
 import { useLang } from "../lib/i18n";
 import { Announcement, AnnouncementRow, Localized, MASJIDS } from "../lib/types";
 import { findBookScope, findShaykhScope } from "../lib/scopes";
@@ -28,14 +28,21 @@ import { ANNOUNCEMENTS } from "../data/announcements";
  *  - it has an eventDate and that date is today or later (Asia/Riyadh), or
  *  - it has no eventDate and it is not marked expired.
  *
- * All active items are grouped into ONE card, one bullet each. Dismissing
- * stores the shown item ids (DB numeric ids and static string ids share the
- * same localStorage key); a new id re-triggers the card on a later visit.
+ * Presentation:
+ *  - One active item: a single card showing the item, with its flyer poster
+ *    above the text when the announcement carries one (`image`).
+ *  - Several active items at once: a carousel — one slide per announcement,
+ *    each slide showing that announcement's own flyer (when it has one) with
+ *    its text, plus prev/next arrows and dots. Dismissing (✕ or backdrop)
+ *    dismisses every currently shown item, as before.
+ * Dismissing stores the shown item ids (DB numeric ids and static string
+ * ids share the same localStorage key); a new id re-triggers the card on a
+ * later visit.
  *
- * Presentation: a centered modal — a full-viewport backdrop blurs the page
- * behind it (clicking the backdrop dismisses, same as the ✕ button), and
- * the card itself is frosted "liquid glass" tinted from the active masjid
- * theme variables. The glass treatment lives only in this component.
+ * The modal itself is a centered modal — a full-viewport backdrop blurs the
+ * page behind it (clicking the backdrop dismisses, same as the ✕ button),
+ * and the card itself is frosted "liquid glass" tinted from the active
+ * masjid theme variables. The glass treatment lives only in this component.
  */
 
 const DISMISS_KEY = "duroos_dismissed_lectures";
@@ -50,6 +57,7 @@ interface Bullet {
   title: string;
   meta: string[];
   body?: string;
+  image?: string;
 }
 
 function isDbActive(row: AnnouncementRow, todayIso: string): boolean {
@@ -132,11 +140,18 @@ export function LectureAlert() {
       id: a.id,
       title: t(a.text),
       meta,
+      image: a.image,
     };
   });
 
   const active = [...dbBullets, ...staticBullets];
   const visible = dismissed !== null && active.length > 0;
+
+  // Carousel position when several lectures are active at once. Clamped so
+  // a shrinking list can never point past the last slide.
+  const [slide, setSlide] = useState(0);
+  const slideIndex = active.length > 0 ? Math.min(slide, active.length - 1) : 0;
+  const current = active[slideIndex];
 
   // Lock background scroll while the modal is open; restore on close/unmount.
   useEffect(() => {
@@ -209,26 +224,100 @@ export function LectureAlert() {
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <ul className="mt-4 space-y-3">
-              {active.map((b) => (
-                <li key={b.key} className="flex gap-2.5">
-                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-accent)]" />
-                  <div>
-                    <p className="text-[15px] font-semibold leading-relaxed text-[var(--ink)]">
-                      {b.title}
+            {active.length === 1 ? (
+              <>
+                {active[0].image ? (
+                  <img
+                    src={active[0].image}
+                    alt=""
+                    className="mx-auto mt-4 max-h-[52vh] w-auto rounded-[16px] border border-[var(--ceramic)] object-contain"
+                  />
+                ) : null}
+                <ul className="mt-4 space-y-3">
+                  {active.map((b) => (
+                    <li key={b.key} className="flex gap-2.5">
+                      <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-accent)]" />
+                      <div>
+                        <p className="text-[15px] font-semibold leading-relaxed text-[var(--ink)]">
+                          {b.title}
+                        </p>
+                        <p className="mt-0.5 text-sm leading-relaxed text-[var(--ink-soft)]">
+                          {b.meta.join(" · ")}
+                        </p>
+                        {b.body ? (
+                          <p className="mt-0.5 text-sm leading-relaxed text-[var(--ink-soft)]">
+                            {b.body}
+                          </p>
+                        ) : null}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : current ? (
+              <div className="mt-4">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={current.key}
+                    initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 24 }}
+                    animate={reduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+                    exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: -24 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                  >
+                    {current.image ? (
+                      <img
+                        src={current.image}
+                        alt=""
+                        className="mx-auto max-h-[52vh] w-auto rounded-[16px] border border-[var(--ceramic)] object-contain"
+                      />
+                    ) : null}
+                    <p className="mt-4 text-[15px] font-semibold leading-relaxed text-[var(--ink)]">
+                      {current.title}
                     </p>
                     <p className="mt-0.5 text-sm leading-relaxed text-[var(--ink-soft)]">
-                      {b.meta.join(" · ")}
+                      {current.meta.join(" · ")}
                     </p>
-                    {b.body ? (
+                    {current.body ? (
                       <p className="mt-0.5 text-sm leading-relaxed text-[var(--ink-soft)]">
-                        {b.body}
+                        {current.body}
                       </p>
                     ) : null}
+                  </motion.div>
+                </AnimatePresence>
+                <div className="mt-5 flex items-center justify-between gap-3">
+                  <button
+                    onClick={() =>
+                      setSlide((s) => (s - 1 + active.length) % active.length)
+                    }
+                    aria-label={ui("previous")}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--ceramic)] text-[var(--ink-soft)] transition-transform active:scale-95"
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </button>
+                  <div className="flex items-center gap-1.5" role="tablist">
+                    {active.map((b, i) => (
+                      <button
+                        key={b.key}
+                        onClick={() => setSlide(i)}
+                        aria-label={`${i + 1} / ${active.length}`}
+                        className={`h-2 rounded-full transition-all ${
+                          i === slideIndex
+                            ? "w-5 bg-[var(--brand-accent)]"
+                            : "w-2 bg-[var(--ceramic)]"
+                        }`}
+                      />
+                    ))}
                   </div>
-                </li>
-              ))}
-            </ul>
+                  <button
+                    onClick={() => setSlide((s) => (s + 1) % active.length)}
+                    aria-label={ui("next")}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--ceramic)] text-[var(--ink-soft)] transition-transform active:scale-95"
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            ) : null}
           </motion.aside>
         </motion.div>
       ) : null}

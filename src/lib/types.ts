@@ -64,6 +64,8 @@ export interface Announcement {
   /** ISO "YYYY-MM-DD" (Asia/Riyadh semantics) of a one-off event, e.g. a lecture. */
   eventDate?: string;
   masjidId?: MasjidId;
+  /** Site-relative path to the announcement flyer poster, e.g. "/images/flyer-....jpg". */
+  image?: string;
   channelNote?: Localized;
 }
 

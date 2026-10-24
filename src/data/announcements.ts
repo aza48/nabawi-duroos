@@ -43,6 +43,24 @@ export const TELEGRAM_SOURCES: TelegramSource[] = [
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "lecture-balawi-ubudiyyah-day-14480513",
+    shaykh: L("د. غالب بن غازي الصاعدي", "Dr. Ghalib ibn Ghazi al-Sa'idi"),
+    text: L(
+      "يوم علمي: تتمة شرح رسالة العبودية — في مسجد البلوي (جامع حماد البلوي)، بعد صلاة العصر والمغرب والعشاء، يوم [السبت ١٣/٥/١٤٤٨]",
+      "A scientific day: continuation of the commentary on Risalat al-'Ubudiyyah — at Masjid al-Balawi (Jami' Hammad al-Balawi), after Asr, Maghrib and Isha prayers, on [Saturday 13/5/1448]"
+    ),
+    postedHijri: L("١٣/٥/١٤٤٨هـ", "13/5/1448 AH"),
+    postedGregorian: L("٢٤ أكتوبر ٢٠٢٦", "24 October 2026"),
+    source: "@khizana_62",
+    sourceName: L("قناة خزانة العلم", "Khazanat al-Ilm channel"),
+    type: "lecture",
+    expired: false,
+    eventDate: "2026-10-24",
+    masjidId: "balawi",
+    image: "/images/flyer-balawi-ubudiyyah-day-14480513.jpg",
+    channelNote: L("إعلان بصيغة يوم علمي كامل (عصر ومغرب وعشاء) — من @khizana_62 (المنشور 10933)", "Announced as a full scientific day (Asr, Maghrib and Isha) — from @khizana_62 (post 10933)"),
+  },
+  {
     id: "quba-sufi-hamawiyyah-cancelled-12-5-1448",
     shaykh: L("أ. د. عبد القادر بن عطا صوفي", "Prof. Dr. Abdulqadir ibn Ata Sufi"),
     text: L(

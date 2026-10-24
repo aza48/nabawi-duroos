@@ -179,6 +179,8 @@ const UI = {
   },
   upcomingLectures: { ar: "محاضرات قادمة", en: "Upcoming lectures" },
   dismiss: { ar: "إغلاق", en: "Dismiss" },
+  previous: { ar: "السابق", en: "Previous" },
+  next: { ar: "التالي", en: "Next" },
   hijrahStreamNote: {
     ar: "يبثّ أ. د. طارق القحطاني دروسه من هذا المسجد مباشرة عبر قناته على تيليجرام",
     en: "Prof. Tariq al-Qahtani livestreams his lessons from this masjid via his Telegram channel",

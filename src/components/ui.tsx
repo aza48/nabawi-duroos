@@ -214,6 +214,15 @@ export function AnnouncementCard({ a }: { a: Announcement }) {
       </p>
       <p className="mt-2 text-[15px] leading-loose text-[var(--ink)]">{t(a.text)}</p>
 
+      {a.image ? (
+        <img
+          src={a.image}
+          alt=""
+          loading="lazy"
+          className="mx-auto mt-4 max-h-[420px] w-auto rounded-card border border-[var(--ceramic)] object-contain"
+        />
+      ) : null}
+
       {a.channelNote ? (
         <p className="mt-3 rounded-card bg-[var(--ceramic)] px-3 py-2 text-xs leading-relaxed text-[var(--ink-soft)]">
           {t(a.channelNote)}
