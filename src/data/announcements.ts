@@ -43,6 +43,24 @@ export const TELEGRAM_SOURCES: TelegramSource[] = [
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "lecture-quba-saidi-14480513",
+    shaykh: L("أ. د. عبدالله بن محمد الساعدي", "Prof. Dr. Abdullah ibn Muhammad al-Sa'idi"),
+    text: L(
+      "كلمة بعنوان: أسباب حفظ الله لعبده — في مسجد قباء، بعد صلاة المغرب، يوم [السبت ١٣/٥/١٤٤٨]",
+      "A word titled: Reasons for Allah's Protection of His Servant — at Masjid Quba, after Maghrib prayer, on [Saturday 13/5/1448]"
+    ),
+    postedHijri: L("١٣/٥/١٤٤٨هـ", "13/5/1448 AH"),
+    postedGregorian: L("٢٤ أكتوبر ٢٠٢٦", "24 October 2026"),
+    source: "@khizana_62",
+    sourceName: L("قناة خزانة العلم", "Khazanat al-Ilm channel"),
+    type: "lecture",
+    expired: false,
+    eventDate: "2026-10-24",
+    masjidId: "quba",
+    image: "/images/flyer-quba-saidi-lecture-14480513.jpg",
+    channelNote: L("من @khizana_62 (المنشور 10941)", "From @khizana_62 (post 10941)"),
+  },
+  {
     id: "lecture-balawi-ubudiyyah-day-14480513",
     shaykh: L("د. غالب بن غازي الصاعدي", "Dr. Ghalib ibn Ghazi al-Sa'idi"),
     text: L(
