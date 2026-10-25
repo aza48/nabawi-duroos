@@ -43,6 +43,23 @@ export const TELEGRAM_SOURCES: TelegramSource[] = [
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "suhaymi-week-cancelled-14-15-5-1448",
+    shaykh: L("أ. د. صالح بن سعد السحيمي", "Prof. Dr. Salih ibn Sa'd al-Suhaymi"),
+    text: L(
+      "يعتذر الشيخ أ. د. صالح بن سعد السحيمي عن دروس هذا الأسبوع: درس [الأحد ١٤/٥/١٤٤٨] ودرس [الاثنين ١٥/٥/١٤٤٨] من شرح المعتقد الصحيح، بعد صلاة المغرب في المسجد النبوي",
+      "Shaykh Prof. Dr. Salih ibn Sa'd al-Suhaymi has excused himself from this week's lessons: the [Sunday 14/5/1448] and [Monday 15/5/1448] lessons of Sharh al-Mu'taqad as-Sahih, after Maghrib prayer at the Prophet's Mosque"
+    ),
+    postedHijri: L("١٤/٥/١٤٤٨هـ", "14/5/1448 AH"),
+    postedGregorian: L("٢٥ أكتوبر ٢٠٢٦", "25 October 2026"),
+    source: "@sohaymi",
+    sourceName: L("فوائد الشيخ د. صالح السحيمي", "Beneficial lessons of Dr. Salih al-Suhaymi"),
+    type: "cancellation",
+    expired: false,
+    eventDate: "2026-10-25",
+    masjidId: "nabawi",
+    channelNote: L("إلغاء لأسبوع واحد فقط — من @sohaymi (المنشور 6142)", "Single-week cancellation only — from @sohaymi (post 6142)"),
+  },
+  {
     id: "lecture-quba-saidi-14480513",
     shaykh: L("أ. د. عبدالله بن محمد الساعدي", "Prof. Dr. Abdullah ibn Muhammad al-Sa'idi"),
     text: L(
