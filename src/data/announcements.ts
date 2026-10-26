@@ -43,6 +43,24 @@ export const TELEGRAM_SOURCES: TelegramSource[] = [
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "lecture-quba-tuwaijri-14480517",
+    shaykh: L("أ. د. علي بن غازي التويجري", "Prof. Dr. Ali ibn Ghazi al-Tuwaijri"),
+    text: L(
+      "محاضرة بعنوان: بيان حرمة مكة والمدينة في القرآن والسنة وخطورة الاعتداء عليهما — في مسجد قباء، بعد صلاة المغرب، يوم [الأربعاء ١٧/٥/١٤٤٨]",
+      "A lecture titled: Explaining the Sanctity of Makkah and Madinah in the Quran and Sunnah and the Danger of Violating Them — at Masjid Quba, after Maghrib prayer, on [Wednesday 17/5/1448]"
+    ),
+    postedHijri: L("١٥/٥/١٤٤٨هـ", "15/5/1448 AH"),
+    postedGregorian: L("٢٦ أكتوبر ٢٠٢٦", "26 October 2026"),
+    source: "@khizana_62",
+    sourceName: L("قناة خزانة العلم", "Khazanat al-Ilm channel"),
+    type: "lecture",
+    expired: false,
+    eventDate: "2026-10-28",
+    masjidId: "quba",
+    image: "/images/flyer-quba-tuwaijri-lecture-14480517.jpg",
+    channelNote: L("من @khizana_62 (المنشور 10970)", "From @khizana_62 (post 10970)"),
+  },
+  {
     id: "suhaymi-week-cancelled-14-15-5-1448",
     shaykh: L("أ. د. صالح بن سعد السحيمي", "Prof. Dr. Salih ibn Sa'd al-Suhaymi"),
     text: L(
