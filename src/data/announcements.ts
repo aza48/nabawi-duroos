@@ -43,6 +43,24 @@ export const TELEGRAM_SOURCES: TelegramSource[] = [
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "lecture-ibrahim-muhaymid-14480517",
+    shaykh: L("د. إبراهيم المحيميد", "Dr. Ibrahim al-Muhaymid"),
+    text: L(
+      "محاضرة بعنوان: خطر الحوثيين على المجتمعات — في جامع الشيخ محمد بن إبراهيم (الجامعة الإسلامية)، بعد صلاة العشاء، يوم [الأربعاء ١٧/٥/١٤٤٨]",
+      "A lecture titled: The Danger of the Houthis to Societies — at Jami al-Shaykh Muhammad ibn Ibrahim (Islamic University), after Isha prayer, on [Wednesday 17/5/1448]"
+    ),
+    postedHijri: L("١٧/٥/١٤٤٨هـ", "17/5/1448 AH"),
+    postedGregorian: L("٢٨ أكتوبر ٢٠٢٦", "28 October 2026"),
+    source: "@drosalmadina",
+    sourceName: L("دروس المدينة النبوية", "Duroos al-Madinah an-Nabawiyyah"),
+    type: "lecture",
+    expired: false,
+    eventDate: "2026-10-28",
+    masjidId: "ibrahim",
+    image: "/images/flyer-ibrahim-muhaymid-lecture-14480517.jpg",
+    channelNote: L("من @drosalmadina (المنشور 12553)", "From @drosalmadina (post 12553)"),
+  },
+  {
     id: "lecture-quba-tuwaijri-14480517",
     shaykh: L("أ. د. علي بن غازي التويجري", "Prof. Dr. Ali ibn Ghazi al-Tuwaijri"),
     text: L(
