@@ -43,6 +43,22 @@ export const TELEGRAM_SOURCES: TelegramSource[] = [
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "abadr-tawhid-cancelled-18-5-1448",
+    shaykh: L("أ. د. عبد الرزاق بن عبد المحسن البدر", "Prof. Dr. Abdurrazzaq ibn Abdulmuhsin al-Badr"),
+    text: L(
+      "يعتذر شيخنا أ. د. عبد الرزاق بن عبد المحسن البدر عن درس شرح كتاب التوحيد بعد صلاة المغرب في المسجد النبوي، يوم [الخميس ١٨/٥/١٤٤٨]",
+      "Our shaykh Prof. Dr. Abdurrazzaq ibn Abdulmuhsin al-Badr has excused himself from his Kitab al-Tawhid lesson after Maghrib prayer at the Prophet's Mosque, on [Thursday 18/5/1448]"
+    ),
+    postedHijri: L("١٧/٥/١٤٤٨هـ", "17/5/1448 AH"),
+    postedGregorian: L("٢٨ أكتوبر ٢٠٢٦", "28 October 2026"),
+    source: "@admin",
+    sourceName: L("إدارة الموقع", "Site admin"),
+    type: "cancellation",
+    expired: false,
+    eventDate: "2026-10-29",
+    masjidId: "nabawi",
+  },
+  {
     id: "lecture-ibrahim-muhaymid-14480517",
     shaykh: L("د. إبراهيم المحيميد", "Dr. Ibrahim al-Muhaymid"),
     text: L(
