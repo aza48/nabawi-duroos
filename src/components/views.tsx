@@ -566,6 +566,7 @@ export function mapDbAnnouncement(row: AnnouncementRow): Announcement {
     sourceName: L("إدارة التطبيق", "App admin"),
     type: DB_TYPE_MAP[row.type] ?? "info",
     expired: !!row.lesson_date && row.lesson_date < todayIso,
+    image: row.image ?? undefined,
   };
 }
 

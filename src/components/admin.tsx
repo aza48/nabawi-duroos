@@ -5,6 +5,7 @@ import { Check, Megaphone, Send, Trash2 } from "lucide-react";
 import { useLang } from "../lib/i18n";
 import { ANNOUNCEMENT_TYPES, AnnouncementRow } from "../lib/types";
 import { BookScope, listBookScopes, listShaykhScopes } from "../lib/scopes";
+import { compressImageFile } from "./mesh/imageCompress";
 import { PillButton } from "./ui";
 
 /**
@@ -28,6 +29,22 @@ export function AdminAnnouncements() {
   const [bodyAr, setBodyAr] = useState("");
   const [bodyEn, setBodyEn] = useState("");
   const [lessonDate, setLessonDate] = useState("");
+  const [image, setImage] = useState("");
+
+  const onFlyerFile = async (file: File | undefined) => {
+    if (!file) return;
+    setMsg("");
+    try {
+      const dataUrl = await compressImageFile(file, 1000);
+      if (dataUrl.length > 1000000) {
+        setMsg(ui("flyerTooLarge"));
+        return;
+      }
+      setImage(dataUrl);
+    } catch {
+      setMsg("✗");
+    }
+  };
 
   const load = useCallback(async () => {
     try {
@@ -47,7 +64,7 @@ export function AdminAnnouncements() {
     void load();
   }, [load]);
 
-  const create = async () => {
+  const create = async (publishNow: boolean) => {
     setMsg("");
     const res = await fetch("/api/admin/announcements", {
       method: "POST",
@@ -61,6 +78,7 @@ export function AdminAnnouncements() {
         body_ar: bodyAr,
         body_en: bodyEn,
         lesson_date: lessonDate || null,
+        image: image || null,
       }),
     });
     if (!res.ok) {
@@ -68,8 +86,19 @@ export function AdminAnnouncements() {
       return;
     }
     const data = (await res.json()) as { announcement: AnnouncementRow };
-    setRows((r) => [data.announcement, ...r]);
-    setTitleAr(""); setTitleEn(""); setBodyAr(""); setBodyEn(""); setLessonDate("");
+    let row = data.announcement;
+    if (publishNow) {
+      const pub = await fetch(`/api/admin/announcements/${row.id}/publish`, { method: "POST" });
+      if (!pub.ok) {
+        setMsg("✗");
+        return;
+      }
+      const pubData = (await pub.json()) as { announcement: AnnouncementRow; sent: number };
+      row = pubData.announcement;
+      setMsg(`${ui("sentTo")} ${pubData.sent} ${ui("subscribersWord")}`);
+    }
+    setRows((r) => [row, ...r]);
+    setTitleAr(""); setTitleEn(""); setBodyAr(""); setBodyEn(""); setLessonDate(""); setImage("");
   };
 
   const publish = async (id: number) => {
@@ -173,7 +202,27 @@ export function AdminAnnouncements() {
           <textarea value={bodyEn} onChange={(e) => setBodyEn(e.target.value)} placeholder={ui("bodyEn")} dir="ltr" rows={3} className={areaCls} />
         </div>
         <div className="mt-4">
-          <PillButton onClick={create}>{ui("createDraft")}</PillButton>
+          <label className="block text-sm text-[var(--ink-soft)]">
+            {ui("uploadFlyer")}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => void onFlyerFile(e.target.files?.[0])}
+              className="mt-1 block w-full text-sm text-[var(--ink-soft)]"
+            />
+          </label>
+          {image ? (
+            <div className="mt-3 flex items-start gap-3">
+              <img src={image} alt="" className="max-h-48 rounded-card object-contain" />
+              <button onClick={() => setImage("")} className="text-sm font-medium text-[var(--status-cancel-tx)]">
+                {ui("removeFlyer")}
+              </button>
+            </div>
+          ) : null}
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <PillButton onClick={() => void create(true)}>{ui("postNow")}</PillButton>
+          <PillButton onClick={() => void create(false)}>{ui("createDraft")}</PillButton>
         </div>
         {msg ? <p className="mt-3 text-sm text-[var(--brand-accent)]">{msg}</p> : null}
       </div>
@@ -207,6 +256,9 @@ export function AdminAnnouncements() {
                 <p className="text-sm leading-loose text-[var(--ink-soft)]">{a.body_ar}</p>
                 <p className="mt-1 text-sm font-medium text-[var(--ink)]" dir="ltr">{a.title_en}</p>
                 <p className="text-sm leading-loose text-[var(--ink-soft)]" dir="ltr">{a.body_en}</p>
+                {a.image ? (
+                  <img src={a.image} alt="" className="mt-3 max-h-48 rounded-card object-contain" />
+                ) : null}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {a.status !== "published" ? (
                     <button onClick={() => publish(a.id)} className="inline-flex h-10 items-center gap-1.5 rounded-pill bg-[var(--brand-accent)] px-4 text-sm font-semibold text-white active:scale-95">

@@ -88,6 +88,9 @@ async function doInit(): Promise<void> {
       published_at timestamptz,
       sent_at timestamptz
     )`);
+  // Flyer support for DB announcements (added 2026-10-28): image stored as a
+  // client-compressed JPEG data URI, same approach as MESH article banners.
+  await query(`ALTER TABLE announcements ADD COLUMN IF NOT EXISTS image text`);
   await query(`
     CREATE TABLE IF NOT EXISTS email_log (
       id serial PRIMARY KEY,

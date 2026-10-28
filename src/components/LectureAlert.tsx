@@ -121,6 +121,7 @@ export function LectureAlert() {
         title: lang === "ar" ? row.title_ar : row.title_en,
         meta,
         body: body ? body : undefined,
+        image: row.image ?? undefined,
       };
     });
 

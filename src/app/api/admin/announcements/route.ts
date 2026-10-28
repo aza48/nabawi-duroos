@@ -52,6 +52,7 @@ export async function POST(req: NextRequest) {
   const bodyAr = str(body.body_ar);
   const bodyEn = str(body.body_en);
   const lessonDate = str(body.lesson_date) || null;
+  const image = typeof body.image === "string" ? body.image : "";
 
   if (!findShaykhScope(shaykhId)) {
     return NextResponse.json({ error: "invalid_shaykh" }, { status: 400 });
@@ -68,14 +69,17 @@ export async function POST(req: NextRequest) {
   if (lessonDate && !/^\d{4}-\d{2}-\d{2}$/.test(lessonDate)) {
     return NextResponse.json({ error: "invalid_date" }, { status: 400 });
   }
+  if (image && (!image.startsWith("data:image/") || image.length > 1000000)) {
+    return NextResponse.json({ error: "invalid_image" }, { status: 400 });
+  }
 
   try {
     await initDb();
     const row = await queryOne<AnnouncementRow>(
       `INSERT INTO announcements
-         (shaykh_id, book_id, type, title_ar, title_en, body_ar, body_en, lesson_date)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-      [shaykhId, bookId, type, titleAr, titleEn, bodyAr, bodyEn, lessonDate]
+         (shaykh_id, book_id, type, title_ar, title_en, body_ar, body_en, lesson_date, image)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+      [shaykhId, bookId, type, titleAr, titleEn, bodyAr, bodyEn, lessonDate, image || null]
     );
     return NextResponse.json({ announcement: row }, { status: 201 });
   } catch (e) {

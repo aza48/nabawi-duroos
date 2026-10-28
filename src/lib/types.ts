@@ -195,4 +195,6 @@ export interface AnnouncementRow {
   created_at: string;
   published_at: string | null;
   sent_at: string | null;
+  /** Optional flyer poster as a JPEG data URI (client-compressed on upload). */
+  image: string | null;
 }
