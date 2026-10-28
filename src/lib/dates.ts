@@ -58,9 +58,12 @@ export function hijriBracketEn(date: Date): string {
   return `[${WEEKDAYS_EN[h.weekday]} ${h.day}/${h.month}/${h.year} AH]`;
 }
 
-/** Bracketed absolute lesson date for a stored "YYYY-MM-DD" (or ISO) value. */
-export function lessonDateBracket(iso: string): Localized {
-  const d = parsePlainDate(iso.slice(0, 10));
+/** Bracketed absolute lesson date for a stored "YYYY-MM-DD" (or ISO) value.
+ * Accepts a Date object too: pg returns DATE columns as Date instances, and
+ * calling .slice on one threw inside the /admin publish email builder. */
+export function lessonDateBracket(iso: string | Date): Localized {
+  const s = iso instanceof Date ? iso.toISOString().slice(0, 10) : iso.slice(0, 10);
+  const d = parsePlainDate(s);
   return { ar: hijriBracketAr(d), en: hijriBracketEn(d) };
 }
 
