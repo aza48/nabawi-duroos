@@ -127,11 +127,11 @@ export const SHAYKH_PROFILES: Record<string, ShaykhProfile> = {
       L("قناته على تيليجرام: @dr_maherkhujah", "His Telegram channel: @dr_maherkhujah"),
     ],
   },
-  "الشيخ عبد السلام بن محمد الشويعر": {
-    photo: "/images/abdussalam-ash-shuwayir.png",
+  "أ. د. عبد السلام بن سالم السحيمي": {
+    photo: "/images/abdussalam-as-suhaymi.png",
     role: L(
-      "أستاذ الفقه المقارن والمدرس بالحرمين الشريفين",
-      "Professor of Comparative Fiqh and teacher in the Two Holy Mosques"
+      "الأستاذ بقسم الفقه بكلية الشريعة بالجامعة الإسلامية بالمدينة المنورة والمدرس بالمسجد النبوي",
+      "Professor in the Department of Fiqh at the College of Shariah, Islamic University of Madinah, and teacher at the Prophet's Mosque"
     ),
     facts: [
       L(
@@ -146,6 +146,7 @@ export const SHAYKH_PROFILES: Record<string, ShaykhProfile> = {
         "تُقام دروسه في التوسعة الشمالية بالمسجد النبوي — يمين الداخل من باب الملك فهد (٢١)",
         "His lessons are held in the Northern Expansion of the Prophet's Mosque — right of those entering from King Fahd Gate (21)"
       ),
+      L("حسابه الرسمي على إكس: @Alsuhaimy_net", "His official X account: @Alsuhaimy_net"),
     ],
   },
   "أ. د. محمد بن بخيت الحجيلي": {

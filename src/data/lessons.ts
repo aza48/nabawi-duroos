@@ -115,10 +115,10 @@ export const LESSONS: Lesson[] = [
     topic: "sirah",
     status: "active",
   },
-  // — Abdussalam al-Shuway'ir
+  // — Abdussalam al-Suhaymi
   {
     id: "shuwayir-rawd",
-    shaykh: L("الشيخ عبد السلام بن محمد الشويعر", "Shaykh Abdussalam ibn Muhammad al-Shuway'ir"),
+    shaykh: L("أ. د. عبد السلام بن سالم السحيمي", "Prof. Dr. Abdussalam ibn Salim al-Suhaymi"),
     book: L("كتاب الروض المربع شرح زاد المستقنع", "Ar-Rawd al-Murbi' — Explanation of Zad al-Mustaqni'"),
     masjid: "nabawi",
     days: [3],
@@ -130,7 +130,7 @@ export const LESSONS: Lesson[] = [
   },
   {
     id: "shuwayir-wasitiyyah",
-    shaykh: L("الشيخ عبد السلام بن محمد الشويعر", "Shaykh Abdussalam ibn Muhammad al-Shuway'ir"),
+    shaykh: L("أ. د. عبد السلام بن سالم السحيمي", "Prof. Dr. Abdussalam ibn Salim al-Suhaymi"),
     book: L("كتاب العقيدة الواسطية", "Al-Aqidah al-Wasitiyyah"),
     bookAuthor: L("شيخ الإسلام ابن تيمية", "Shaykh al-Islam Ibn Taymiyyah"),
     masjid: "nabawi",
