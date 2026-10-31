@@ -197,4 +197,7 @@ export interface AnnouncementRow {
   sent_at: string | null;
   /** Optional flyer poster as a JPEG data URI (client-compressed on upload). */
   image: string | null;
+  /** Guest speaker display names — set only when shaykh_id is "guest". */
+  shaykh_name_ar: string | null;
+  shaykh_name_en: string | null;
 }

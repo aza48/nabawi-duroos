@@ -91,6 +91,10 @@ async function doInit(): Promise<void> {
   // Flyer support for DB announcements (added 2026-10-28): image stored as a
   // client-compressed JPEG data URI, same approach as MESH article banners.
   await query(`ALTER TABLE announcements ADD COLUMN IF NOT EXISTS image text`);
+  // Guest speakers (added 2026-10-31): a one-off speaker with no standing
+  // lesson gets shaykh_id = 'guest' and his name stored on the row itself.
+  await query(`ALTER TABLE announcements ADD COLUMN IF NOT EXISTS shaykh_name_ar text`);
+  await query(`ALTER TABLE announcements ADD COLUMN IF NOT EXISTS shaykh_name_en text`);
   await query(`
     CREATE TABLE IF NOT EXISTS email_log (
       id serial PRIMARY KEY,

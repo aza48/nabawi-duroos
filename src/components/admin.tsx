@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Check, Megaphone, Send, Trash2 } from "lucide-react";
 import { useLang } from "../lib/i18n";
 import { ANNOUNCEMENT_TYPES, AnnouncementRow } from "../lib/types";
-import { BookScope, listBookScopes, listShaykhScopes } from "../lib/scopes";
+import { BookScope, dbShaykhName, GUEST_SHAYKH_ID, listBookScopes, listShaykhScopes } from "../lib/scopes";
 import { compressImageFile } from "./mesh/imageCompress";
 import { PillButton } from "./ui";
 
@@ -22,6 +22,8 @@ export function AdminAnnouncements() {
   const shaykhs = listShaykhScopes();
   const books = listBookScopes();
   const [shaykhId, setShaykhId] = useState(shaykhs[0]?.id ?? "");
+  const [guestNameAr, setGuestNameAr] = useState("");
+  const [guestNameEn, setGuestNameEn] = useState("");
   const [bookId, setBookId] = useState("");
   const [type, setType] = useState<string>("cancelled");
   const [titleAr, setTitleAr] = useState("");
@@ -66,11 +68,18 @@ export function AdminAnnouncements() {
 
   const create = async (publishNow: boolean) => {
     setMsg("");
+    const isGuest = shaykhId === GUEST_SHAYKH_ID;
+    if (isGuest && (!guestNameAr.trim() || !guestNameEn.trim())) {
+      setMsg("✗");
+      return;
+    }
     const res = await fetch("/api/admin/announcements", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         shaykh_id: shaykhId,
+        shaykh_name_ar: isGuest ? guestNameAr.trim() : null,
+        shaykh_name_en: isGuest ? guestNameEn.trim() : null,
         book_id: bookId || null,
         type,
         title_ar: titleAr,
@@ -99,6 +108,7 @@ export function AdminAnnouncements() {
     }
     setRows((r) => [row, ...r]);
     setTitleAr(""); setTitleEn(""); setBodyAr(""); setBodyEn(""); setLessonDate(""); setImage("");
+    setGuestNameAr(""); setGuestNameEn("");
   };
 
   const publish = async (id: number) => {
@@ -171,11 +181,18 @@ export function AdminAnnouncements() {
           <label className="block text-sm text-[var(--ink-soft)]">
             {ui("annShaykh")}
             <select value={shaykhId} onChange={(e) => { setShaykhId(e.target.value); setBookId(""); }} className={inputCls}>
+              <option value={GUEST_SHAYKH_ID}>{ui("annGuestShaykh")}</option>
               {shaykhs.map((s) => (
                 <option key={s.id} value={s.id}>{t(s.name)}</option>
               ))}
             </select>
           </label>
+          {shaykhId === GUEST_SHAYKH_ID ? (
+            <>
+              <input value={guestNameAr} onChange={(e) => setGuestNameAr(e.target.value)} placeholder={ui("guestNameAr")} dir="rtl" className={inputCls} />
+              <input value={guestNameEn} onChange={(e) => setGuestNameEn(e.target.value)} placeholder={ui("guestNameEn")} dir="ltr" className={inputCls} />
+            </>
+          ) : null}
           <label className="block text-sm text-[var(--ink-soft)]">
             {ui("annBook")}
             <select value={bookId} onChange={(e) => setBookId(e.target.value)} className={inputCls}>
@@ -235,7 +252,6 @@ export function AdminAnnouncements() {
           </p>
         ) : (
           rows.map((a) => {
-            const sh = shaykhs.find((s) => s.id === a.shaykh_id);
             const bk = a.book_id ? books.find((b) => b.id === a.book_id) : undefined;
             return (
               <div key={a.id} className="rounded-card bg-[var(--card)] p-5 shadow-soft">
@@ -249,7 +265,7 @@ export function AdminAnnouncements() {
                   {a.lesson_date ? <span className="text-xs text-[var(--ink-soft)]">{a.lesson_date}</span> : null}
                 </div>
                 <p className="mt-2 font-semibold text-[var(--ink)]">
-                  {sh ? t(sh.name) : a.shaykh_id}
+                  {t(dbShaykhName(a))}
                   {bk ? <span className="text-[var(--ink-soft)]"> — {t(bk.book)}</span> : null}
                 </p>
                 <p className="mt-1 text-sm font-medium text-[var(--ink)]">{a.title_ar}</p>

@@ -43,7 +43,7 @@ import {
   SHAYKH_TELEGRAM,
   streamInfoForShaykh,
 } from "../data/streams";
-import { findBookScope, findShaykhScope, shaykhScopeId } from "../lib/scopes";
+import { dbShaykhName, findBookScope, findShaykhScope, shaykhScopeId } from "../lib/scopes";
 import { gregorianLong, hijriPlain, lessonDateBracket, riyadhToday } from "../lib/dates";
 import { useDbAnnouncements } from "../lib/useDbAnnouncements";
 import { eventsForMasjid, MasjidEvent } from "../data/events";
@@ -548,7 +548,7 @@ const DB_TYPE_MAP: Record<string, AnnouncementType> = {
 
 /** Map a published DB announcement row onto the static feed's card shape. */
 export function mapDbAnnouncement(row: AnnouncementRow): Announcement {
-  const shaykh = findShaykhScope(row.shaykh_id)?.name ?? { ar: row.shaykh_id, en: row.shaykh_id };
+  const shaykh = dbShaykhName(row);
   const book = row.book_id ? findBookScope(row.book_id)?.book : undefined;
   const published = row.published_at ? new Date(row.published_at) : new Date(row.created_at);
   const dateBracket = row.lesson_date ? lessonDateBracket(row.lesson_date) : null;

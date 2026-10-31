@@ -7,7 +7,7 @@ import {
   query,
   queryOne,
 } from "../../../../lib/db";
-import { findBookScope, findShaykhScope } from "../../../../lib/scopes";
+import { findBookScope, findShaykhScope, GUEST_SHAYKH_ID } from "../../../../lib/scopes";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -45,6 +45,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "bad_json" }, { status: 400 });
   }
   const shaykhId = str(body.shaykh_id);
+  const guestNameAr = str(body.shaykh_name_ar);
+  const guestNameEn = str(body.shaykh_name_en);
+  const isGuest = shaykhId === GUEST_SHAYKH_ID;
   const bookId = str(body.book_id) || null;
   const type = str(body.type);
   const titleAr = str(body.title_ar);
@@ -54,8 +57,14 @@ export async function POST(req: NextRequest) {
   const lessonDate = str(body.lesson_date) || null;
   const image = typeof body.image === "string" ? body.image : "";
 
-  if (!findShaykhScope(shaykhId)) {
+  if (!isGuest && !findShaykhScope(shaykhId)) {
     return NextResponse.json({ error: "invalid_shaykh" }, { status: 400 });
+  }
+  if (isGuest && (!guestNameAr || !guestNameEn)) {
+    return NextResponse.json({ error: "missing_guest_name" }, { status: 400 });
+  }
+  if (isGuest && bookId) {
+    return NextResponse.json({ error: "invalid_book" }, { status: 400 });
   }
   if (bookId && !findBookScope(bookId)) {
     return NextResponse.json({ error: "invalid_book" }, { status: 400 });
@@ -77,9 +86,9 @@ export async function POST(req: NextRequest) {
     await initDb();
     const row = await queryOne<AnnouncementRow>(
       `INSERT INTO announcements
-         (shaykh_id, book_id, type, title_ar, title_en, body_ar, body_en, lesson_date, image)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
-      [shaykhId, bookId, type, titleAr, titleEn, bodyAr, bodyEn, lessonDate, image || null]
+         (shaykh_id, book_id, type, title_ar, title_en, body_ar, body_en, lesson_date, image, shaykh_name_ar, shaykh_name_en)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`,
+      [shaykhId, bookId, type, titleAr, titleEn, bodyAr, bodyEn, lessonDate, image || null, isGuest ? guestNameAr : null, isGuest ? guestNameEn : null]
     );
     return NextResponse.json({ announcement: row }, { status: 201 });
   } catch (e) {

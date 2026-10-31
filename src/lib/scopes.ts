@@ -88,3 +88,27 @@ export function isValidScope(scopeType: string, scopeId: string): boolean {
   if (scopeType === "book") return !!findBookScope(scopeId);
   return false;
 }
+
+/**
+ * Sentinel shaykh_id for announcements by a guest / one-off speaker who has
+ * no standing lesson and therefore no subscription scope. The display name is
+ * stored on the announcement row itself (shaykh_name_ar / shaykh_name_en);
+ * the publish fan-out simply matches no subscribers for this scope.
+ */
+export const GUEST_SHAYKH_ID = "guest";
+
+/** Display name for a DB announcement's shaykh: the stored guest name when
+ *  present, otherwise the subscription scope's name, otherwise the raw id. */
+export function dbShaykhName(row: {
+  shaykh_id: string;
+  shaykh_name_ar?: string | null;
+  shaykh_name_en?: string | null;
+}): Localized {
+  if (row.shaykh_name_ar || row.shaykh_name_en) {
+    return {
+      ar: row.shaykh_name_ar ?? (row.shaykh_name_en as string),
+      en: row.shaykh_name_en ?? (row.shaykh_name_ar as string),
+    };
+  }
+  return findShaykhScope(row.shaykh_id)?.name ?? { ar: row.shaykh_id, en: row.shaykh_id };
+}

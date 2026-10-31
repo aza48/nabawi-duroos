@@ -9,7 +9,7 @@ import {
 } from "../../../../../../lib/db";
 import { alertEmail, sendEmail } from "../../../../../../lib/email";
 import { siteUrl } from "../../../../../../lib/site";
-import { findBookScope, findShaykhScope } from "../../../../../../lib/scopes";
+import { dbShaykhName, findBookScope, findShaykhScope } from "../../../../../../lib/scopes";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -63,7 +63,7 @@ export async function POST(
       const unsubscribeUrl = `${siteBase}/api/unsubscribe?token=${sub.manage_token}`;
       const mail = alertEmail({
         announcement: ann,
-        shaykhName: shaykhScope?.name ?? { ar: ann.shaykh_id, en: ann.shaykh_id },
+        shaykhName: shaykhScope?.name ?? dbShaykhName(ann),
         bookName: bookScope?.book ?? null,
         manageUrl,
         unsubscribeUrl,

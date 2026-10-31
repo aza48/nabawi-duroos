@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Megaphone, X } from "lucide-react";
 import { useLang } from "../lib/i18n";
 import { Announcement, AnnouncementRow, Localized, MASJIDS } from "../lib/types";
-import { findBookScope, findShaykhScope } from "../lib/scopes";
+import { dbShaykhName, findBookScope, findShaykhScope } from "../lib/scopes";
 import { lessonDateBracket, riyadhToday } from "../lib/dates";
 import { useDbAnnouncements } from "../lib/useDbAnnouncements";
 import { ANNOUNCEMENTS } from "../data/announcements";
@@ -107,10 +107,10 @@ export function LectureAlert() {
   const dbBullets: Bullet[] = rows
     .filter((r) => isDbActive(r, todayIso) && !dismissedList.includes(r.id))
     .map((row) => {
-      const shaykh = findShaykhScope(row.shaykh_id)?.name;
+      const shaykh = dbShaykhName(row);
       const masjid = masjidFor(row);
       const meta = [
-        shaykh ? t(shaykh) : row.shaykh_id,
+        t(shaykh),
         masjid ? t(masjid) : null,
         row.lesson_date ? t(lessonDateBracket(row.lesson_date)) : null,
       ].filter((x): x is string => !!x);
