@@ -15,6 +15,8 @@ export const DEFAULT_SOURCES: { handle: string; name: string; broad?: true }[] =
   { handle: "rehyli", name: "Prof. Dr. Ibrahim al-Ruhayli (official)" },
   { handle: "dr_maherkhujah", name: "Prof. Dr. Mahir Khujah (official)" },
   { handle: "khizana_62", name: "Khizanat al-Ilm" },
+  { handle: "dr_elbukhary", name: "Prof. Dr. Abdullah al-Bukhari (official)" },
+  { handle: "Duroos_alhramain", name: "Duroos al-Haramayn" },
   { handle: "sohaymi", name: "Shaykh Salih al-Suhaymi (benefits)", broad: true },
   { handle: "Miraathalanbeyaa", name: "Miraath al-Anbiya", broad: true },
   { handle: "almanashet", name: "Women's da'wah activities in Madinah", broad: true },

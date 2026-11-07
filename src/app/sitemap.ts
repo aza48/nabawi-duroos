@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...both("/live", 0.5, "weekly"),
     { url: abs("/guides"), priority: 0.9, changeFrequency: "weekly" },
     { url: abs("/programs"), priority: 0.9, changeFrequency: "weekly" },
-    ...PROGRAMS.map((p) => ({ url: abs(`/programs/${p.slug}`), lastModified: new Date(p.checked), priority: p.recommended ? 0.9 : 0.7 })),
+    ...PROGRAMS.map((p) => ({ url: abs(`/programs/${p.slug}`), lastModified: new Date(p.checked), priority: 0.7 })),
     { url: abs("/library"), priority: 0.8, changeFrequency: "weekly" },
     { url: abs("/discounts"), priority: 0.7, changeFrequency: "monthly" },
     { url: abs("/search"), priority: 0.4, changeFrequency: "monthly" },

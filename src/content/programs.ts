@@ -10,7 +10,8 @@ export type Program = {
   name: string;
   nameAr: string;
   kind: "arabic" | "degree" | "sisters" | "masjid";
-  recommended?: boolean;
+  /** The next start date, when the institute publishes one. */
+  nextIntake?: string;
   tagline: string;
   audience: Audience[];
   price: string;
@@ -39,13 +40,13 @@ export const PROGRAMS: Program[] = [
     name: "Madinah Arabic Program (MAP)",
     nameAr: "برنامج المدينة للغة العربية",
     kind: "arabic",
-    recommended: true,
+    nextIntake: "21 January to 20 February 2027",
     tagline: "A month of Arabic on the Islamic University campus, with your stay, transport and an Umrah arranged for you.",
     audience: ["men", "women", "families"],
     price: "From £2,699 (international) or SAR 10,999 (Saudi residents)",
     where: "Islamic University of Madinah campus",
     overview: [
-      "MAP is the easiest way to taste student life in Madinah before committing to years here. You study the same Madinah Books method the University uses for non-Arabs, taught on campus by University lecturers who specialise in teaching non-native speakers.",
+      "MAP is a one-month Arabic programme held on the Islamic University campus. Classes use the same Madinah Books method the University uses for non-Arabs, taught on campus by University lecturers who specialise in teaching non-native speakers.",
       "Everything around the classes is handled: a room near campus, a daily shuttle to the University and to Masjid an-Nabawi, a guided Umrah, outings to historical sites, and a mushrif for every group of about ten students who helps you join halaqat in the Haram and settle in.",
       "Brothers and sisters study in fully separate classes, with separate housing and transport. The certificate is attested by the University and the Ministry of Education. It is not the same as being enrolled at the University, but students say it helps a lot when applying later.",
     ],
