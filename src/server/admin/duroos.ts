@@ -36,7 +36,7 @@ const overrideInput = z
   })
   .refine((v) => !v.endsOn || v.endsOn >= v.startsOn, { message: "End date is before start date", path: ["endsOn"] });
 
-export async function addOverride(db: Db, actor: Actor, input: z.input<typeof overrideInput>, origin: "admin" | "watcher_approved" = "admin") {
+export async function addOverride(db: Db, actor: Actor | "system", input: z.input<typeof overrideInput>, origin: "admin" | "watcher_approved" | "watcher_auto" = "admin") {
   assertCan(actor, "duroos.write");
   const v = overrideInput.parse(input);
   const [lesson] = await db.select({ id: lessons.id }).from(lessons).where(eq(lessons.slug, v.lessonSlug));

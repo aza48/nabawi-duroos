@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const GEMINI_MODEL = "gemini-2.5-flash";
+/** Tried in order; a busy or retired model falls through to the next. Override with GEMINI_MODEL. */
+export const GEMINI_MODELS = ["gemini-3.8-flash", "gemini-flash-latest"];
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 
@@ -87,17 +88,23 @@ export async function readPostWithGemini(
     const img = await imagePart(post.imageUrl, f);
     if (img) parts.push(img);
   }
-  const res = await f(`https://generativelanguage.googleapis.com/v1beta/models/${opts.model ?? GEMINI_MODEL}:generateContent`, {
-    method: "POST",
-    headers: { "content-type": "application/json", "x-goog-api-key": opts.apiKey },
-    body: JSON.stringify({
-      contents: [{ role: "user", parts }],
-      generationConfig: { responseMimeType: "application/json", responseSchema: RESPONSE_SCHEMA, temperature: 0 },
-    }),
+  const body = JSON.stringify({
+    contents: [{ role: "user", parts }],
+    generationConfig: { responseMimeType: "application/json", responseSchema: RESPONSE_SCHEMA, temperature: 0 },
   });
-  if (!res.ok) throw new Error(`gemini_http_${res.status}`);
-  const body = (await res.json()) as { candidates?: { content?: { parts?: { text?: string }[] } }[] };
-  const raw = body.candidates?.[0]?.content?.parts?.[0]?.text;
+  const models = opts.model ? [opts.model] : process.env.GEMINI_MODEL ? [process.env.GEMINI_MODEL, ...GEMINI_MODELS] : GEMINI_MODELS;
+  let res: Response | null = null;
+  for (const m of models) {
+    res = await f(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-goog-api-key": opts.apiKey },
+      body,
+    });
+    if (res.ok || ![404, 429, 500, 503].includes(res.status)) break;
+  }
+  if (!res || !res.ok) throw new Error(`gemini_http_${res?.status ?? 0}`);
+  const reply = (await res.json()) as { candidates?: { content?: { parts?: { text?: string }[] } }[] };
+  const raw = reply.candidates?.[0]?.content?.parts?.[0]?.text;
   if (!raw) return null;
   try {
     return parseAiResponse(JSON.parse(raw));
