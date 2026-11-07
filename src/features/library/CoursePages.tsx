@@ -23,7 +23,7 @@ export function CurriculumNote({ addHref }: { addHref: string }) {
       <div>
         <p className="font-heading text-lg font-bold">Your class may use a different book</p>
         <p className="mt-1 max-w-2xl text-sm text-muted">
-          Students collected these files over several years. Some are older editions, and different classes can set different books for the same course. If your class uses a book that is missing here, send us your class timetable and the book your teacher set, and we will add it. Summaries that helped you are welcome too.
+          Some of these books are older editions, and classes can set different books for the same course. If your class uses a book that is not listed, send us your class timetable and the book your teacher set, and we will add it. Summaries that helped you are welcome too.
         </p>
       </div>
       <a href={addHref} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-ink transition hover:brightness-110 md:mt-0">
@@ -197,7 +197,7 @@ export function ReaderView({ hit, addHref }: { hit: FileHit; addHref: string }) 
               </ul>
             </div>
           )}
-          <p className="text-xs text-muted">The file is kept on Google Drive by the students who shared it. If it doesn't load, use Open full screen.</p>
+          <p className="text-xs text-muted">If the file is slow to load, open it full screen.</p>
         </aside>
       </div>
       <div className="mt-8"><CurriculumNote addHref={addHref} /></div>

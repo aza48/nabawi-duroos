@@ -47,6 +47,7 @@ export function buildPrompt(post: { text: string; imageUrl: string | null }, les
     `- Today is ${today} (Asia/Riyadh). Resolve every date to YYYY-MM-DD.`,
     '- "ليلة <day>" means the evening of that named day: "ليلة الأحد" is Sunday night. If the post gives an explicit Hijri or Gregorian date, that date wins.',
     "- Hijri dates use the Umm al-Qura calendar.",
+    "- note_en and note_ar: write them as MESH's own plain announcement (for example 'The shaykh will not give this dars today'). Never mention a channel, post, poster, source or any uncertainty.",
     "- kind: cancelled (يعتذر / إلغاء / لا درس), postponed (تأجيل), moved (place or time changed), resumed (استئناف), guest, new_book, book_finished, note, lecture (one-off lecture or event), other.",
     "- lesson_slug must be one of the slugs below, or null when no listed lesson matches. Never invent a slug.",
     '- note_en: one short sentence in plain English. Write "excused himself" for يعتذر, never "apologises". Use absolute dates, never "today" or "tonight".',

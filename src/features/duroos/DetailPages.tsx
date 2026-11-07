@@ -17,10 +17,14 @@ import { ShaykhBadge } from "./ShaykhBadge";
 type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>;
 type Shaykh = NonNullable<Awaited<ReturnType<typeof getShaykh>>>;
 
-function daysText(l: Pick<Lesson, "days" | "daysLabelEn" | "daysLabelAr">, locale: Locale): string {
-  if (locale === "ar" && l.daysLabelAr) return l.daysLabelAr;
-  if (locale === "en" && l.daysLabelEn) return l.daysLabelEn;
-  if (!l.days.length) return t(locale, "daysNotStated");
+/** Research wording that must never reach visitors (it stays in the admin area). */
+const BACKSTAGE = /source|stated|instance|inferred|channel|post|poster|unclear|not clear|reported|المصدر|المصادر|مذكور|القناة|المنشور|أُعلن عن درس/i;
+const publicLabel = (x: string | null | undefined) => (x && !BACKSTAGE.test(x) ? x : null);
+
+function daysText(l: Pick<Lesson, "days" | "daysLabelEn" | "daysLabelAr"> & { frequencyEn?: string | null; frequencyAr?: string | null }, locale: Locale): string {
+  const label = publicLabel(locale === "ar" ? l.daysLabelAr : l.daysLabelEn);
+  if (label) return label;
+  if (!l.days.length) return publicLabel(locale === "ar" ? l.frequencyAr : l.frequencyEn) ?? t(locale, "daysNotStated");
   return l.days.map((d) => t(locale, DAY_LONG_KEYS[d])).join(locale === "ar" ? "، " : ", ");
 }
 
@@ -125,8 +129,6 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
               <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={`${t(locale, "adhan")} ${formatClock(adhan, locale)}. ${t(locale, "afterIqamah")}.`} />
               <Item icon={<MapPin size={18} />} label={t(locale, "location")} value={placeText(ar ? l.masjid.nameAr : l.masjid.nameEn, ar ? l.locationAr : l.locationEn, ar)} />
             </dl>
-            {(ar ? l.noteAr : l.noteEn) && <p className="mt-4 rounded-2xl bg-bg-2 p-4 text-sm">{ar ? l.noteAr : l.noteEn}</p>}
-            {(ar ? l.sequenceAr : l.sequenceEn) && <p className="mt-3 text-sm text-muted">{ar ? l.sequenceAr : l.sequenceEn}</p>}
             <h2 className="mt-10 mb-3 font-heading text-2xl font-bold">{t(locale, "history")}</h2>
             {l.history.length === 0 ? (
               <p className="text-sm text-muted">{t(locale, "noHistory")}</p>
@@ -137,7 +139,7 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
                     <span className="font-semibold">{t(locale, (h.kind === "cancelled" ? "cancelled" : h.kind === "postponed" ? "postponed" : h.kind === "resumed" ? "resumed" : h.kind === "moved" ? "moved" : "on"))}</span>
                     {", "}
                     {formatHijri(h.startsOn, locale, { bracket: true, weekday: true })}
-                    {(ar ? h.noteAr : h.noteEn) && <p className="text-muted">{ar ? h.noteAr : h.noteEn}</p>}
+                    {publicLabel(ar ? h.noteAr : h.noteEn) && <p className="text-muted">{ar ? h.noteAr : h.noteEn}</p>}
                     {h.revokedAt && <p className="text-xs text-muted">{ar ? "أُلغي هذا التحديث" : "This change was withdrawn"}</p>}
                   </li>
                 ))}
@@ -211,11 +213,6 @@ export function UpdatesPage({ current, history, locale }: { current: Announcemen
       {a.imageUrl && <Image src={a.imageUrl} alt="" width={600} height={800} className="mt-3 h-auto w-full rounded-xl" />}
       <p className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted">
         {a.eventDate && <span>{formatHijri(a.eventDate, locale, { bracket: true, weekday: true })}</span>}
-        {a.sourceUrl && (
-          <a href={a.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline">
-            {t(locale, "source")}: {a.sourceHandle}
-          </a>
-        )}
       </p>
     </article>
   );

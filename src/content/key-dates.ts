@@ -21,7 +21,7 @@ export type KeyDate = {
 
 export const KEY_DATES: KeyDate[] = [
   { id: "withdraw-uni-1", kind: "deadline", minor: true, term: "first", title: "Requests to withdraw from the University", titleAr: "طلبات الانسحاب من الجامعة", start: "2026-08-09", end: "2026-11-28", hijri: "26 Safar to 18 Jumada al-Akhirah 1448" },
-  { id: "excuse-1", kind: "deadline", minor: true, term: "first", title: "Excuse from the semester, or drop a course", titleAr: "طلبات الاعتذار عن الفصل والانسحاب من مقرر", start: "2026-08-16", end: "2026-11-06", hijri: "3 Rabi al-Awwal to 26 Jumada al-Ula 1448", note: "The University's portal gives 6 November as the last day." },
+  { id: "excuse-1", kind: "deadline", minor: true, term: "first", title: "Excuse from the semester, or drop a course", titleAr: "طلبات الاعتذار عن الفصل والانسحاب من مقرر", start: "2026-08-16", end: "2026-11-06", hijri: "3 Rabi al-Awwal to 26 Jumada al-Ula 1448", },
   { id: "reenrol-1", kind: "deadline", minor: true, term: "first", title: "Re-enrolment requests", titleAr: "طلبات إعادة الانتظام", start: "2026-09-06", end: "2026-10-22", hijri: "24 Rabi al-Awwal to 11 Jumada al-Ula 1448" },
   { id: "extra-chance", kind: "deadline", minor: true, term: "second", title: "Extra chance requests for dismissed students", titleAr: "طلبات الفرص الإضافية للمفصولين أكاديميًا", start: "2026-12-11", end: "2026-12-14", hijri: "2 to 5 Rajab 1448" },
   { id: "postpone-2", kind: "deadline", minor: true, term: "second", title: "Postponing your studies (ta'jeel) or an internal transfer", titleAr: "طلبات تأجيل الدراسة والتحويل الداخلي", start: "2026-12-13", end: "2026-12-19", hijri: "4 to 10 Rajab 1448" },

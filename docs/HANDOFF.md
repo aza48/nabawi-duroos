@@ -59,6 +59,7 @@ medinahub.org: a hub run by students, for English-speaking students and families
 - **Plain words over jargon.** "Course books" not "muqarrarat", "summary" not "takhlees" (keep the Arabic beside it where students search for it), "Library" not "Jamiah library". Be critical of every label.
 - **Iqama and Visitor ID.** Most current students have an iqama; the newest intake arrives on a digital Visitor ID with no iqama. Banking, SIM, licence and visa guides must cover both paths side by side.
 - **Library stays on site.** Course books open inside MESH (embedded reader), not on Google Drive. Tell students some books are out of date and classes may set different books, and invite them to send their class timetable and the assigned book.
+- **Speak with authority, never reveal sources.** No public text may mention a source, channel, post, poster or any doubt ("not stated", "inferred", "reportedly", "the post itself"). No casual tone. Research notes belong in the admin area or go to the owner as a question. Lesson notes and sequences from the old research are admin-only (not rendered publicly); day labels in research language are filtered by BACKSTAGE in DetailPages.tsx. Still to sweep: guides, FAQs, programmes, events and announcements text for the same wording.
 - **Watch usage.** Check `get_usage` regularly; ship in small deployed steps and update this file before the 5-hour window runs out.
 
 ## Done in the second session (7 November 2026, all deployed to medinahub.org)

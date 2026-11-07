@@ -127,7 +127,7 @@ export function UniversityCalendar() {
       ))}
       </div>
       {shown.length === 0 && <p className="mt-8 text-muted">Nothing left in this list for the year. Tap "Show past dates" to see what has passed.</p>}
-      <p className="mt-8 text-sm text-muted">From the University's academic calendar for 1448. Islamic dates follow Umm al-Qura and are confirmed by moon sighting.</p>
+      <p className="mt-8 text-sm text-muted">Islamic dates follow the Umm al-Qura calendar and are confirmed by moon sighting.</p>
     </div>
   );
 }
