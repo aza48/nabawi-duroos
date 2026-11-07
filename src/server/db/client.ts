@@ -41,6 +41,12 @@ export function getDb(): Promise<Db> {
         const { importLegacy } = await import("@/server/seed/import-legacy");
         await importLegacy(db);
       }
+      if (process.env.NODE_ENV === "development") {
+        // Local only: a one-time owner invite so the admin app can be tried.
+        const { createInvite } = await import("@/server/admin/invites");
+        const { url } = await createInvite(db, "system", { email: "dev@mesh.local", role: "owner" }, "http://localhost:3100");
+        console.log(`\n[MESH dev] Owner invite: ${url}\n`);
+      }
       return db;
     })();
     g.__meshDb.catch(() => {
