@@ -201,7 +201,7 @@ Rules: include a lesson on `iso` iff status `active`, `weekdayOf(iso)` ∈ `days
 - `listFaqs(db, { category? })`, `getFaq(db, slug)`, `listGuides(db, { stage? })`, `getGuide(db, slug)` — published only
 - API routes return `{ data, generatedAt }` JSON, `Cache-Control: public, s-maxage=60, stale-while-revalidate=300`; 404 `{ error: "not_found" }`.
 
-- [ ] Step 1: Tests on imported test DB: `getToday(db, new Date("2026-11-07T09:30:00Z")).lessons` contains `ruh-dalil` with `phase "upcoming"` and `adhanAt` equal to `prayerTimes("2026-11-07").asr`; `getShaykh(db, <ruhayli slug>).lessons.length === 3`; `getLesson(db,"nope") === null`; `listFaqs` returns `[]` on empty DB.
+- [ ] Step 1: Tests on imported test DB: `getToday(db, new Date("2026-11-07T09:30:00Z")).lessons` contains `ruh-dalil` with `phase "upcoming"` and `adhanAt` equal to `prayerTimes("2026-11-07").asr`; `getShaykh(db, "sulayman-ibn-saleemullah-al-ruhayli").lessons.length === 4`; `getLesson(db,"nope") === null`; `listFaqs` returns `[]` on empty DB.
 - [ ] Step 2 FAIL → Step 3 implement → Step 4 PASS; `curl localhost:3000/api/v1/duroos/today` returns JSON with `data.lessons`. Commit `feat: duroos/content queries and v1 JSON API`.
 
 ### Task 7: Design system & shell
