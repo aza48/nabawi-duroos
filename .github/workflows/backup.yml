@@ -1,0 +1,36 @@
+name: Nightly database backup
+
+# 03:00 Madinah time every night, and on demand from the Actions tab.
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Install pg_dump 17
+        run: |
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl -fsSL -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client-17
+      - name: Dump the public schema
+        env:
+          BACKUP_DATABASE_URL: ${{ secrets.BACKUP_DATABASE_URL }}
+        run: |
+          stamp=$(date -u +%Y-%m-%d)
+          /usr/lib/postgresql/17/bin/pg_dump "$BACKUP_DATABASE_URL" --schema=public --no-owner --no-privileges -Fc -f "mesh-$stamp.dump"
+          ls -lh "mesh-$stamp.dump"
+          echo "STAMP=$stamp" >> "$GITHUB_ENV"
+      - name: Keep it for 90 days
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-db-${{ env.STAMP }}
+          path: mesh-*.dump
+          retention-days: 90
