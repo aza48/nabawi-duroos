@@ -1,7 +1,9 @@
 import { z } from "zod";
 
 /** Tried in order; a busy or retired model falls through to the next. Override with GEMINI_MODEL. */
-export const GEMINI_MODELS = ["gemini-3.8-flash", "gemini-flash-latest"];
+/** Tried in order. Each model has its own free daily quota (as low as 20 requests), so falling
+ *  through on 429 multiplies the free capacity. Retired models (404) are skipped the same way. */
+export const GEMINI_MODELS = ["gemini-3.8-flash", "gemini-3-flash-preview", "gemini-flash-latest", "gemini-3.1-flash-lite", "gemini-flash-lite-latest"];
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 

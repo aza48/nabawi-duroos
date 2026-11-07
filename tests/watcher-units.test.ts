@@ -5,7 +5,7 @@ import { resetTestDb } from "@/server/db/client";
 import { sources } from "@/server/db/schema";
 import { seedSources } from "@/server/watcher/sources";
 import { parseChannelHtml } from "@/server/watcher/telegram";
-import { buildPrompt, parseAiResponse, readPostWithGemini, type AiParse } from "@/server/watcher/ai";
+import { buildPrompt, GEMINI_MODELS, parseAiResponse, readPostWithGemini, type AiParse } from "@/server/watcher/ai";
 import { decide, type DecideContext } from "@/server/watcher/decide";
 
 const fixture = readFileSync(path.join(process.cwd(), "tests/fixtures/tg-drosalmadina.html"), "utf8");
@@ -64,6 +64,13 @@ describe("AI reader", () => {
     expect(url).not.toContain("KEY");
     expect((init.headers as Record<string, string>)["x-goog-api-key"]).toBe("KEY");
     expect(JSON.parse(String(init.body)).generationConfig.responseMimeType).toBe("application/json");
+  });
+  it("moves to the next model when one has used up its free daily quota", async () => {
+    const ok = new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text: JSON.stringify(good) }] } }] }));
+    const fetchMock = vi.fn(async (url: string) => (url.includes(GEMINI_MODELS[0]) || url.includes(GEMINI_MODELS[1]) ? new Response("{}", { status: 429 }) : ok));
+    expect(await readPostWithGemini({ text: "x", imageUrl: null }, [], "2026-11-07", { apiKey: "K", fetch: fetchMock as never })).toEqual(good);
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(GEMINI_MODELS.length).toBeGreaterThanOrEqual(4);
   });
   it("returns null when the model replies with garbage", async () => {
     const fetchMock = vi.fn(async () => new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text: "sorry" }] } }] })));
