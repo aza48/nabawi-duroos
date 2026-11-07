@@ -48,3 +48,20 @@ export async function adminAnnouncement(db: Db, slug: string) {
   const s = a.shaykhId ? (await db.select({ slug: shaykhs.slug }).from(shaykhs).where(eq(shaykhs.id, a.shaykhId)))[0] : null;
   return { ...a, shaykhSlug: s?.slug ?? null };
 }
+
+export async function adminFaqs(db: Db) {
+  const { faqs } = await import("@/server/db/schema");
+  return db.select().from(faqs).orderBy(desc(faqs.updatedAt));
+}
+export async function adminGuides(db: Db) {
+  const { guides } = await import("@/server/db/schema");
+  return db.select().from(guides).orderBy(desc(guides.updatedAt));
+}
+export async function adminFaq(db: Db, slug: string) {
+  const { faqs } = await import("@/server/db/schema");
+  return (await db.select().from(faqs).where(eq(faqs.slug, slug)))[0] ?? null;
+}
+export async function adminGuide(db: Db, slug: string) {
+  const { guides } = await import("@/server/db/schema");
+  return (await db.select().from(guides).where(eq(guides.slug, slug)))[0] ?? null;
+}
