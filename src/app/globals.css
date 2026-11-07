@@ -1,57 +1,70 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 /* ---------- Design tokens ----------
    Light "Warm Paper" is always the default; dark "Madinah Night" only when the
    visitor picks it with the theme button (data-theme="dark"). */
 :root {
   color-scheme: light;
-  --bg: #f6f1e7;
-  --bg-2: #efe7d8;
-  --card: #fffdf8;
-  --border: #e6dccb;
-  --ink: #22302a;
-  --muted: #637068;
-  --primary: #1e4d3b;
-  --primary-ink: #f6f1e7;
-  --accent: #c2522f;
-  --on: #1e6b45;
-  --on-bg: #dcebdf;
-  --cancel: #a8401f;
-  --cancel-bg: #f7ddd2;
+  /* Haram palette: marble courtyard, Green Dome, brass doors. */
+  --bg: #f8f6f1;
+  --bg-2: #efeae0;
+  --card: #ffffff;
+  --border: #e4ddcf;
+  --ink: #13221c;
+  --muted: #5d6a63;
+  --primary: #145c3e;
+  --brand: #145c3e;
+  --brand-deep: #0e4630;
+  --gold-bright: #e2b23a;
+  --primary-ink: #ffffff;
+  --primary-soft: #e3efe8;
+  --accent: #a87a22;
+  --on: #17734d;
+  --on-bg: #ddefe4;
+  --cancel: #b4233f;
+  --cancel-bg: #fbe3e7;
   --amber: #8a5a00;
   --amber-bg: #f6e7c4;
-  --gold: #7a5c12;
-  --gold-bg: #f1e4c2;
-  --live: #c2522f;
+  --gold: #8a6416;
+  --gold-bg: #f4e9cf;
+  --live: #d02f4a;
   --wa: #25d366;
-  --shadow: 0 1px 2px rgb(34 48 42 / 0.06), 0 6px 18px rgb(34 48 42 / 0.06);
-  --font-heading: var(--font-newsreader), Georgia, serif;
-  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --shadow: 0 1px 2px rgb(19 34 28 / 0.05), 0 8px 24px -8px rgb(19 34 28 / 0.12);
+  --shadow-lg: 0 2px 4px rgb(19 34 28 / 0.04), 0 24px 48px -16px rgb(15 90 67 / 0.25);
+  --pattern: rgb(15 90 67 / 0.07);
+  --font-heading: var(--font-display), system-ui, sans-serif;
+  --font-body: var(--font-text), system-ui, sans-serif;
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0c1714;
-  --bg-2: #0f1d19;
-  --card: #13221d;
-  --border: #22392f;
-  --ink: #ece6d6;
-  --muted: #9aa69f;
-  --primary: #d9b76c;
-  --primary-ink: #0c1714;
-  --accent: #d9b76c;
+  /* Madinah Night */
+  --bg: #0a1512;
+  --bg-2: #0f1e19;
+  --card: #12231d;
+  --border: #21382f;
+  --ink: #eee9dc;
+  --muted: #9aa79f;
+  --primary: #d8b566;
+  --brand: #0f3d2b;
+  --brand-deep: #0a2c1f;
+  --gold-bright: #e2b23a;
+  --primary-ink: #0a1512;
+  --primary-soft: #2a2614;
+  --accent: #d8b566;
   --on: #7fe0a8;
-  --on-bg: #1a3a2b;
-  --cancel: #ff9c8f;
-  --cancel-bg: #4a1d19;
+  --on-bg: #17362a;
+  --cancel: #ff8a9b;
+  --cancel-bg: #45161f;
   --amber: #f3c46b;
   --amber-bg: #3d3015;
   --gold: #e3c27a;
   --gold-bg: #2f2816;
-  --live: #ff7a6b;
+  --live: #ff6b7f;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
-  --font-heading: var(--font-fraunces), Georgia, serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
+  --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.3), 0 24px 48px -16px rgb(0 0 0 / 0.6);
+  --pattern: rgb(216 181 102 / 0.07);
 }
 
 :root[lang="ar"] {
@@ -68,6 +81,10 @@
   --color-muted: var(--muted);
   --color-primary: var(--primary);
   --color-primary-ink: var(--primary-ink);
+  --color-primary-soft: var(--primary-soft);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-gold-bright: var(--gold-bright);
   --color-accent: var(--accent);
   --color-on: var(--on);
   --color-on-bg: var(--on-bg);
@@ -136,3 +153,45 @@ a { -webkit-tap-highlight-color: transparent; }
 .article :where(th, td) { border: 1px solid var(--border); padding: 0.45rem 0.6rem; text-align: start; vertical-align: top; }
 .article :where(th) { background: var(--bg-2); font-weight: 600; }
 .article :where(h2 + p, h3 + p) { margin-top: 0; }
+
+/* ---------- MESH lattice (from the logo) ---------- */
+.lattice { position: relative; isolation: isolate; }
+.lattice::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--lattice-color, rgb(255 255 255 / 0.09));
+  -webkit-mask: var(--lattice-svg) 0 0 / 64px 64px repeat;
+  mask: var(--lattice-svg) 0 0 / 64px 64px repeat;
+}
+:root {
+  --lattice-svg: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Cg fill=%27none%27 stroke=%27black%27 stroke-width=%271%27%3E%3Cpath d=%27M0 0H64V64H0z%27/%3E%3Cpath d=%27M32 6L58 32L32 58L6 32z%27/%3E%3Cpath d=%27M32 0V64M0 32H64%27 stroke-opacity=%27.35%27/%3E%3C/g%3E%3C/svg%3E");
+}
+.lattice-soft { --lattice-color: var(--pattern); }
+
+/* MESH wordmark */
+.wordmark { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; line-height: 0.9; }
+.brand-line { letter-spacing: 0.18em; font-weight: 600; }
+
+/* Container (in a layer so utilities like max-w-3xl can narrow it) */
+@layer components {
+  .shell { margin-inline: auto; width: 100%; max-width: 80rem; padding-inline: 1rem; }
+  @media (min-width: 768px) { .shell { padding-inline: 2rem; } }
+}
+
+/* Sky behind the day arc, shifting with the time of day */
+.sky { transition: background 1.2s ease; }
+.sky[data-phase="night"]     { background: radial-gradient(60% 90% at 88% 100%, rgb(70 110 170 / 0.45), transparent 70%); }
+.sky[data-phase="dawn"]      { background: radial-gradient(60% 90% at 10% 100%, rgb(255 190 140 / 0.35), transparent 70%); }
+.sky[data-phase="day"]       { background: radial-gradient(70% 90% at 50% 100%, rgb(255 244 200 / 0.22), transparent 70%); }
+.sky[data-phase="afternoon"] { background: radial-gradient(60% 90% at 68% 100%, rgb(240 190 90 / 0.35), transparent 70%); }
+.sky[data-phase="dusk"]      { background: radial-gradient(60% 90% at 82% 100%, rgb(235 120 110 / 0.38), transparent 70%); }
+
+@keyframes sun-in { from { opacity: 0; transform: translate(-50%, -50%) scale(0.4); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@keyframes glow { 0%, 100% { box-shadow: 0 0 0 6px rgb(226 178 58 / 0.25), 0 0 24px 6px rgb(226 178 58 / 0.45); } 50% { box-shadow: 0 0 0 10px rgb(226 178 58 / 0.12), 0 0 36px 10px rgb(226 178 58 / 0.35); } }
+.sun { animation: sun-in 0.9s cubic-bezier(.2,.8,.2,1) both, glow 4s ease-in-out 1s infinite; }
+@keyframes live-ring { 0% { box-shadow: 0 0 0 0 rgb(208 47 74 / 0.5); } 100% { box-shadow: 0 0 0 10px rgb(208 47 74 / 0); } }
+.live-ring { animation: live-ring 1.8s ease-out infinite; }
+.tabular { font-variant-numeric: tabular-nums; }

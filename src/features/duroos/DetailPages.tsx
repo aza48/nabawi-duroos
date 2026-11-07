@@ -26,7 +26,7 @@ function daysText(l: Pick<Lesson, "days" | "daysLabelEn" | "daysLabelAr">, local
 export function ShaykhPage({ shaykh: s, locale }: { shaykh: Shaykh; locale: Locale }) {
   const ar = locale === "ar";
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="shell max-w-3xl pt-6 md:pt-10">
       <DuroosNav locale={locale} />
       <div className="card flex gap-4 p-4">
         {s.photo ? (
@@ -86,7 +86,7 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
   const today = riyadhDateIso();
   const adhan = prayerTimes(today)[l.prayer];
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="shell max-w-3xl pt-6 md:pt-10">
       <DuroosNav locale={locale} />
       <p className="ar-text text-2xl font-bold leading-snug">{l.bookAr}</p>
       {!ar && <h1 className="mt-1 text-2xl font-semibold leading-tight">{l.bookEn}</h1>}
@@ -175,7 +175,7 @@ export function UpdatesPage({ current, history, locale }: { current: Announcemen
     </article>
   );
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="shell max-w-3xl pt-6 md:pt-10">
       <DuroosNav locale={locale} />
       <h1 className="mb-4 text-3xl font-semibold">{t(locale, "updates")}</h1>
       {current.length === 0 ? <EmptyState title={t(locale, "noUpdates")} /> : <div className="grid gap-2.5">{current.map((a) => <Card key={a.slug} a={a} />)}</div>}
@@ -194,7 +194,7 @@ export function LivePage({ streams, locale }: { streams: StreamRow[]; locale: Lo
   const yt = streams.find((s) => s.slug === "nabawi-youtube");
   const others = streams.filter((s) => s.slug !== "nabawi-youtube");
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="shell max-w-3xl pt-6 md:pt-10">
       <DuroosNav locale={locale} />
       <h1 className="mb-1 text-3xl font-semibold">{t(locale, "livestreams")}</h1>
       {yt && (

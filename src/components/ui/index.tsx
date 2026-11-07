@@ -45,3 +45,16 @@ export function PageTitle({ title, subtitle }: { title: React.ReactNode; subtitl
     </div>
   );
 }
+
+/** The green MESH band that opens every top-level page. */
+export function PageBand({ title, subtitle, children }: { title: React.ReactNode; subtitle?: React.ReactNode; children?: React.ReactNode }) {
+  return (
+    <section className="lattice overflow-hidden bg-brand text-white">
+      <div className="shell py-10 md:py-16">
+        <h1 className="font-heading text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">{title}</h1>
+        {subtitle && <p className="mt-3 max-w-2xl text-base text-white/80 md:text-lg">{subtitle}</p>}
+        {children}
+      </div>
+    </section>
+  );
+}

@@ -40,7 +40,7 @@ export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids
 
   return (
     <div>
-      <div className="-mx-4 flex gap-1.5 overflow-x-auto px-4 pb-2 [scrollbar-width:none]">
+      <div className="-mx-4 flex gap-1.5 overflow-x-auto px-4 pb-2 [scrollbar-width:none] lg:hidden">
         {DAY_KEYS.map((k, i) => (
           <button
             key={k}
@@ -72,6 +72,9 @@ export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids
         ))}
       </div>
 
+      <WeekGrid week={week} masjid={masjid} today={today} locale={locale} base={base} />
+
+      <div className="lg:hidden">
       {PRAYERS.map((p) => {
         const group = rows.filter((r) => r.prayer === p);
         if (!group.length) return null;
@@ -89,6 +92,7 @@ export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids
         );
       })}
       {rows.length === 0 && <p className="card p-4 text-center text-sm text-muted">{t(locale, "noLessonsToday")}</p>}
+      </div>
 
       {unstated.length > 0 && (
         <section className="mt-8">
@@ -117,4 +121,60 @@ function Row({ r, locale, base }: { r: ScheduleRow; locale: Locale; base: string
       </p>
     </Link>
   );
+}
+
+/** Madinah's week starts on Saturday. */
+const WEEK_ORDER = [6, 0, 1, 2, 3, 4, 5];
+
+function WeekGrid({ week, masjid, today, locale, base }: { week: Week; masjid: string; today: number; locale: Locale; base: string }) {
+  const ar = locale === "ar";
+  return (
+    <div className="hidden overflow-hidden rounded-3xl border border-line bg-card shadow-[var(--shadow)] lg:block">
+      <div className="grid grid-cols-[110px_repeat(7,minmax(0,1fr))]">
+        <div className="border-b border-line bg-bg-2" />
+        {WEEK_ORDER.map((d) => (
+          <div
+            key={d}
+            className={`border-b border-s border-line px-3 py-3 text-center font-heading text-sm font-semibold ${d === today ? "bg-primary text-primary-ink" : "bg-bg-2"}`}
+          >
+            {t(locale, DAY_KEYS[d])}
+            {d === today && <span className="block text-[11px] font-medium opacity-80">{t(locale, "today")}</span>}
+          </div>
+        ))}
+        {PRAYERS.map((p) => (
+          <div key={p} className="contents">
+            <div className="flex flex-col justify-center border-b border-line bg-bg-2 px-3 py-4">
+              <span className="text-xs text-muted">{t(locale, "after")}</span>
+              <span className="font-heading text-base font-bold text-primary">{t(locale, p)}</span>
+            </div>
+            {WEEK_ORDER.map((d) => {
+              const cell = (week.byDay[d] ?? []).filter((r) => r.prayer === p && (masjid === "all" || r.masjidId === masjid));
+              return (
+                <div key={d} className={`min-h-24 space-y-1.5 border-b border-s border-line p-1.5 ${d === today ? "bg-primary-soft/50" : ""}`}>
+                  {cell.map((r) => (
+                    <Link
+                      key={r.slug}
+                      href={`${base}/lesson/${r.slug}`}
+                      title={`${ar ? r.shaykh.nameAr : r.shaykh.nameEn}: ${ar ? r.bookAr : r.bookEn}`}
+                      className="block rounded-lg border border-line bg-bg px-2 py-1.5 transition-colors hover:border-primary hover:bg-card"
+                    >
+                      <span className="block truncate text-[11.5px] font-semibold leading-tight">{shortName(ar ? r.shaykh.nameAr : r.shaykh.nameEn)}</span>
+                      <span className="ar-text block truncate text-[13px] leading-snug">{r.bookAr}</span>
+                      <span className="block truncate text-[10.5px] text-muted">{ar ? r.masjid.shortAr : r.masjid.shortEn}</span>
+                    </Link>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** "Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli" becomes "Sulayman al-Ruhayli". */
+function shortName(name: string): string {
+  const words = name.replace(/^((Prof\.|Dr\.|Shaykh|الشيخ|د\.|أ\.د\.)\s*)+/, "").split(/\s+/);
+  return words.length > 2 ? `${words[0]} ${words[words.length - 1]}` : words.join(" ");
 }

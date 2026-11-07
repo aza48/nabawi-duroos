@@ -40,9 +40,12 @@ export function scheduleRoute(locale: Locale) {
     const db = await getDb();
     const [week, masjids] = await Promise.all([getWeek(db), listMasjids(db)]);
     return (
-      <div className="mx-auto max-w-2xl">
+      <div className="shell pt-6 md:pt-10">
         <DuroosNav locale={locale} />
-        <h1 className="mb-3 text-3xl font-semibold">{t(locale, "weeklySchedule")}</h1>
+        <h1 className="mt-6 mb-2 font-heading text-4xl font-bold md:text-5xl">{t(locale, "weeklySchedule")}</h1>
+        <p className="mb-6 max-w-2xl text-muted">
+          {locale === "ar" ? "كل الدروس الثابتة في الأسبوع. اضغط على أي درس لتفاصيله." : "Every regular dars in the week. Tap any one for its place, books and recent changes."}
+        </p>
         <ScheduleBrowser week={week} masjids={masjids} locale={locale} />
       </div>
     );

@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { BookOpen, CircleCheck, Flag } from "lucide-react";
+import { ArrowUpRight, Bell, BookOpen, CalendarDays, CircleCheck, Flag, Languages, Radio, ScrollText } from "lucide-react";
 import type { FaqRow, GuideRow } from "@/server/content/queries";
 import { FAQ_CATEGORIES, GUIDE_STAGES } from "@/server/content/queries";
 import { sanitizeArticleHtml } from "@/lib/sanitize";
-import { EmptyState, PageTitle } from "@/components/ui";
+import { PageBand } from "@/components/ui";
+import { STAGE_ICON } from "@/features/home/HomePage";
+import { FaqExplorer } from "./FaqExplorer";
 import { AskOnWhatsApp, WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 
@@ -11,35 +13,16 @@ const verified = (d: Date | null) =>
   d ? `Last verified ${new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(d)}` : null;
 
 export function AskPage({ faqs, whatsappUrl }: { faqs: FaqRow[]; whatsappUrl: string }) {
-  const byCat = FAQ_CATEGORIES.map((c) => ({ ...c, items: faqs.filter((f) => f.category === c.id) })).filter((c) => c.items.length);
   return (
-    <div className="mx-auto max-w-2xl">
-      <PageTitle title="Ask" subtitle="Verified answers to the questions students ask most, kept up to date by the MESH team." />
-      <AskOnWhatsApp url={whatsappUrl} />
-      <div className="mt-6">
-        {byCat.length === 0 ? (
-          <EmptyState
-            title="The first answers are being written"
-            body="Questions asked in the WhatsApp group are turned into verified answers here. Ask yours in the group."
-          />
-        ) : (
-          byCat.map((c) => (
-            <section key={c.id} className="mb-6">
-              <h2 className="mb-2 text-lg font-semibold">{c.label}</h2>
-              <ul className="card divide-y divide-line">
-                {c.items.map((f) => (
-                  <li key={f.slug}>
-                    <Link href={`/ask/${f.slug}`} className="block p-3.5 font-medium hover:text-primary">
-                      {f.question}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))
-        )}
+    <>
+      <PageBand title="Questions, answered" subtitle="Verified answers to what students ask most, kept up to date by the MESH team." />
+      <div className="shell mt-8 md:mt-12">
+        <FaqExplorer items={faqs.map((f) => ({ slug: f.slug, question: f.question, category: f.category }))} categories={FAQ_CATEGORIES} />
+        <div className="mt-10 max-w-3xl lg:ms-[288px]">
+          <AskOnWhatsApp url={whatsappUrl} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -54,7 +37,7 @@ function OutdatedNote({ whatsappUrl }: { whatsappUrl: string }) {
 export function FaqPage({ faq, whatsappUrl }: { faq: FaqRow; whatsappUrl: string }) {
   const cat = FAQ_CATEGORIES.find((c) => c.id === faq.category);
   return (
-    <article className="mx-auto max-w-2xl">
+    <article className="shell max-w-3xl pt-6 md:pt-10">
       <Link href="/ask" className="text-sm font-medium text-muted">← {cat?.label ?? "Ask"}</Link>
       <h1 className="mt-2 text-3xl font-semibold leading-tight">{faq.question}</h1>
       {verified(faq.lastVerifiedAt) && (
@@ -70,41 +53,64 @@ export function FaqPage({ faq, whatsappUrl }: { faq: FaqRow; whatsappUrl: string
 }
 
 export function GuidesPage({ guides }: { guides: GuideRow[] }) {
+  const stages = GUIDE_STAGES.map((st) => ({ ...st, items: guides.filter((g) => g.stage === st.id) }));
   return (
-    <div className="mx-auto max-w-2xl">
-      <PageTitle title="Guides" subtitle="Step-by-step help for every stage of life in Madinah." />
-      {GUIDE_STAGES.map((s) => {
-        const items = guides.filter((g) => g.stage === s.id);
-        return (
-          <section key={s.id} className="mb-7">
-            <h2 className="text-xl font-semibold">{s.label}</h2>
-            <p className="mb-2.5 text-sm text-muted">{s.blurb}</p>
-            {items.length === 0 ? (
-              <p className="card border-dashed p-3.5 text-sm text-muted">Coming soon.</p>
-            ) : (
-              <div className="grid gap-2.5 sm:grid-cols-2">
-                {items.map((g) => (
-                  <Link key={g.slug} href={`/guides/${g.slug}`} className="card block p-4 transition hover:border-primary">
-                    <p className="font-semibold leading-snug">{g.title}</p>
-                    <p className="mt-1 line-clamp-2 text-sm text-muted">{g.summary}</p>
-                    <p className="mt-2 flex items-center gap-1 text-xs text-muted">
-                      <BookOpen size={12} /> {g.readingMinutes} min read
-                    </p>
-                  </Link>
-                ))}
+    <>
+      <PageBand title="Life in Madinah" subtitle="Step-by-step guides, from the day your visa arrives to the day you fly home.">
+        <nav aria-label="Stages" className="mt-8 flex flex-wrap gap-2">
+          {stages.map((st) => {
+            const Icon = STAGE_ICON[st.id];
+            return (
+              <a key={st.id} href={`#${st.id}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
+                <Icon size={16} className="text-gold-bright" /> {st.label}
+                <span className="text-white/60 tabular">{st.items.length}</span>
+              </a>
+            );
+          })}
+        </nav>
+      </PageBand>
+      <div className="shell mt-10 space-y-14 md:mt-14">
+        {stages.map((st) => {
+          const Icon = STAGE_ICON[st.id];
+          return (
+            <section key={st.id} id={st.id} className="scroll-mt-24">
+              <div className="mb-5 flex items-center gap-4">
+                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-primary text-primary-ink">
+                  <Icon size={22} />
+                </span>
+                <div>
+                  <h2 className="font-heading text-2xl font-bold md:text-3xl">{st.label}</h2>
+                  <p className="text-sm text-muted md:text-base">{st.blurb}</p>
+                </div>
               </div>
-            )}
-          </section>
-        );
-      })}
-    </div>
+              {st.items.length === 0 ? (
+                <p className="rounded-2xl border border-dashed border-line bg-card p-5 text-sm text-muted">Being written. Ask in the WhatsApp group meanwhile.</p>
+              ) : (
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {st.items.map((g) => (
+                    <Link key={g.slug} href={`/guides/${g.slug}`} className="group flex flex-col rounded-2xl border border-line bg-card p-5 transition-colors hover:border-primary/50">
+                      <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary">{g.title}</span>
+                      <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">{g.summary}</span>
+                      <span className="mt-auto flex items-center gap-3 pt-4 text-xs text-muted">
+                        <span className="flex items-center gap-1"><BookOpen size={13} /> {g.readingMinutes} min</span>
+                        {g.lastVerifiedAt && <span className="flex items-center gap-1 text-on"><CircleCheck size={13} /> Verified</span>}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </section>
+          );
+        })}
+      </div>
+    </>
   );
 }
 
 export function GuidePage({ guide, whatsappUrl }: { guide: GuideRow; whatsappUrl: string }) {
   const stage = GUIDE_STAGES.find((s) => s.id === guide.stage);
   return (
-    <article className="mx-auto max-w-2xl">
+    <article className="shell max-w-3xl pt-6 md:pt-10">
       <Link href="/guides" className="text-sm font-medium text-muted">← {stage?.label ?? "Guides"}</Link>
       <h1 className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">{guide.title}</h1>
       <p className="mt-2 text-lg text-muted">{guide.summary}</p>
@@ -130,57 +136,63 @@ const RULES = [
 ];
 
 export function MorePage({ whatsappUrl }: { whatsappUrl: string }) {
-  const links = [
-    { href: "/duroos/updates", label: "Duroos updates", note: "Cancellations, new books, lectures" },
-    { href: "/duroos/live", label: "Livestreams", note: "Watch the Prophet's Mosque duroos live" },
-    { href: "/duroos/schedule", label: "Weekly schedule", note: "Every dars, every masjid" },
-    { href: "/ar/duroos", label: "الدروس بالعربية", note: "The duroos section in Arabic" },
+  const tiles = [
+    { href: "/duroos/schedule", label: "Weekly schedule", note: "Every dars, every masjid, in one grid", icon: CalendarDays },
+    { href: "/duroos/live", label: "Live streams", note: "Watch the Haram duroos live", icon: Radio },
+    { href: "/duroos/updates", label: "Duroos updates", note: "Cancellations, new books, lectures", icon: ScrollText },
+    { href: "/ar/duroos", label: "الدروس بالعربية", note: "The duroos section in Arabic", icon: Languages },
   ];
   return (
-    <div className="mx-auto max-w-2xl">
-      <PageTitle title="More" />
-      <ul className="card divide-y divide-line">
-        {links.map((l) => (
-          <li key={l.href}>
-            <Link href={l.href} className="block p-3.5">
-              <span className="block font-semibold">{l.label}</span>
-              <span className="block text-sm text-muted">{l.note}</span>
+    <>
+      <PageBand title="More from MESH" subtitle="Alerts, the schedule, livestreams, and what the group is about." />
+      <div className="shell mt-10 md:mt-14">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {tiles.map(({ href, label, note, icon: Icon }) => (
+            <Link key={href} href={href} className="group rounded-2xl border border-line bg-card p-5 transition-colors hover:border-primary/50">
+              <span className="grid size-10 place-items-center rounded-xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-ink">
+                <Icon size={20} />
+              </span>
+              <span className="mt-4 block font-heading text-lg font-semibold">{label}</span>
+              <span className="mt-1 block text-sm text-muted">{note}</span>
             </Link>
-          </li>
-        ))}
-      </ul>
-
-      <section id="alerts" className="mt-8">
-        <h2 className="text-xl font-semibold">Phone alerts</h2>
-        <p className="mt-1 text-sm text-muted">Free, no account. Follow a single shaykh from his page.</p>
-        <AlertsButton topic="daily" label="Morning brief: today's duroos and changes" />
-        <AlertsButton topic="all" label="Every cancellation and change" />
-      </section>
-
-      <section id="about" className="mt-8">
-        <h2 className="text-xl font-semibold">About MESH</h2>
-        <p className="mt-2">
-          MESH (Medina English Student Hub) is run by students, for English-speaking students in Madinah.
-          Announcements, events and everyday help happen in the WhatsApp group. This website keeps the verified
-          answers, the guides and the live duroos schedule in one place.
-        </p>
-      </section>
-
-      <section id="rules" className="mt-8">
-        <h2 className="text-xl font-semibold">Group rules</h2>
-        <ul className="mt-2 grid gap-1.5">
-          {RULES.map((r) => (
-            <li key={r} className="flex gap-2">
-              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
-              {r}
-            </li>
           ))}
-        </ul>
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-          className="mt-5 inline-flex items-center gap-2 rounded-full bg-wa px-5 py-3 font-semibold text-white">
-          <WhatsAppIcon size={18} /> Join the MESH group
-        </a>
-      </section>
-    </div>
+        </div>
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <section id="alerts" className="rounded-3xl border border-line bg-card p-6 md:p-8">
+            <span className="grid size-11 place-items-center rounded-2xl bg-gold-bg text-gold"><Bell size={21} /></span>
+            <h2 className="mt-4 font-heading text-2xl font-bold">Phone alerts</h2>
+            <p className="mt-1 text-muted">Free, no account. To follow one shaykh, use the button on his page.</p>
+            <AlertsButton topic="daily" label="Morning brief: today's duroos and changes" />
+            <AlertsButton topic="all" label="Every cancellation and change" />
+          </section>
+
+          <div className="space-y-10">
+            <section id="about">
+              <h2 className="font-heading text-2xl font-bold">About MESH</h2>
+              <p className="mt-3 leading-relaxed">
+                MESH (Medina English Student Hub) is run by students, for English-speaking students in Madinah.
+                Announcements, events and everyday help happen in the WhatsApp group. This website keeps the verified
+                answers, the guides and the live duroos schedule in one place.
+              </p>
+            </section>
+            <section id="rules">
+              <h2 className="font-heading text-2xl font-bold">Group rules</h2>
+              <ul className="mt-3 grid gap-2">
+                {RULES.map((r) => (
+                  <li key={r} className="flex gap-3">
+                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-gold-bright" />
+                    {r}
+                  </li>
+                ))}
+              </ul>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-wa px-5 py-3 font-semibold text-white transition hover:brightness-105">
+                <WhatsAppIcon size={18} /> Join the MESH group <ArrowUpRight size={16} />
+              </a>
+            </section>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
