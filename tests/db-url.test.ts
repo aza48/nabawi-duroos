@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { driverFor, sessionUrl } from "@/server/db/url";
+import { driverFor, sessionUrl, usesLiveDb } from "@/server/db/url";
 
 const SUPA = "postgresql://postgres.abcdefghij:pw@aws-0-eu-central-1.pooler.supabase.com:6543/postgres";
 
@@ -12,5 +12,10 @@ describe("database url", () => {
   it("turns the Supabase transaction pooler into the session pooler for migrations", () => {
     expect(sessionUrl(SUPA)).toBe(SUPA.replace(":6543/", ":5432/"));
     expect(sessionUrl("postgres://u:p@localhost:5432/mesh")).toBe("postgres://u:p@localhost:5432/mesh");
+  });
+  it("knows when pages read the live database (so detail pages are built on first visit, not at build time)", () => {
+    expect(usesLiveDb({ DATABASE_URL: SUPA, VERCEL_ENV: "production" })).toBe(true);
+    expect(usesLiveDb({ DATABASE_URL: SUPA, VERCEL_ENV: "preview" })).toBe(false);
+    expect(usesLiveDb({})).toBe(false);
   });
 });

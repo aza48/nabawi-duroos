@@ -21,13 +21,23 @@ async function createNeon(url: string): Promise<Db> {
   return drizzle(neon(url), { schema }) as unknown as Db;
 }
 
-/** Supabase (or any standard Postgres). prepare:false is required behind Supabase's transaction pooler. */
+/**
+ * Supabase (or any standard Postgres) through node-postgres. Its pool waits for a free
+ * connection instead of pipelining queries onto a busy one, which Supabase's transaction
+ * pooler cannot handle (queries hang). Unnamed statements only, so it is pooler-safe.
+ */
 async function createPostgres(url: string): Promise<Db> {
-  const { default: postgres } = await import("postgres");
-  const { drizzle } = await import("drizzle-orm/postgres-js");
+  const { Pool } = await import("pg");
+  const { drizzle } = await import("drizzle-orm/node-postgres");
   const local = ["localhost", "127.0.0.1"].includes(new URL(url).hostname);
-  const client = postgres(url, { prepare: false, max: 3, idle_timeout: 20, connect_timeout: 10, ssl: local ? false : "require" });
-  return drizzle(client, { schema }) as unknown as Db;
+  const pool = new Pool({
+    connectionString: url,
+    max: 5,
+    idleTimeoutMillis: 20_000,
+    connectionTimeoutMillis: 10_000,
+    ssl: local ? false : { rejectUnauthorized: false },
+  });
+  return drizzle(pool, { schema }) as unknown as Db;
 }
 
 export async function connect(url: string): Promise<Db> {

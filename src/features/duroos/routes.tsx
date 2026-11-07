@@ -1,3 +1,4 @@
+import { usesLiveDb } from "@/server/db/url";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDb } from "@/server/db/client";
@@ -76,6 +77,7 @@ export function shaykhRoute(locale: Locale) {
     };
   }
   async function generateStaticParams() {
+    if (usesLiveDb()) return []; // built on first visit, then cached
     return (await listShaykhs(await getDb())).map((s) => ({ slug: s.slug }));
   }
   return { Page, generateMetadata, generateStaticParams };
@@ -101,6 +103,7 @@ export function lessonRoute(locale: Locale) {
     };
   }
   async function generateStaticParams() {
+    if (usesLiveDb()) return []; // built on first visit, then cached
     const db = await getDb();
     return (await db.select({ slug: lessons.slug }).from(lessons)).map((r) => ({ slug: r.slug }));
   }

@@ -7,3 +7,8 @@ export function driverFor(url: string): "neon" | "postgres" {
 export function sessionUrl(url: string): string {
   return url.replace(/:6543\//, ":5432/");
 }
+
+/** True when this deployment reads the live database (previews get their own seeded copy). */
+export function usesLiveDb(env: Record<string, string | undefined> = process.env): boolean {
+  return !!env.DATABASE_URL && env.VERCEL_ENV !== "preview";
+}
