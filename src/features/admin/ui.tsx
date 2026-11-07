@@ -24,3 +24,32 @@ export const btnGhost =
 export function ErrorNote({ children }: { children: React.ReactNode }) {
   return <p role="alert" className="mt-3 rounded-xl bg-cancel-bg px-3 py-2 text-sm text-cancel">{children}</p>;
 }
+
+export function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
+  return (
+    <label className="block">
+      <span className={labelCls}>{label}</span>
+      {children}
+      {hint && <span className="mt-1 block text-xs text-muted">{hint}</span>}
+    </label>
+  );
+}
+
+export function SubNav({ items, active }: { items: { href: string; label: string }[]; active: string }) {
+  return (
+    <div className="-mx-4 mb-4 flex gap-2 overflow-x-auto px-4 [scrollbar-width:none]">
+      {items.map((i) => (
+        <Link key={i.href} href={i.href} aria-current={i.href === active ? "page" : undefined}
+          className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold ${i.href === active ? "bg-primary text-primary-ink" : "border border-line bg-card text-muted"}`}>
+          {i.label}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+export const DUROOS_NAV = [
+  { href: "/admin/duroos", label: "Lessons" },
+  { href: "/admin/duroos/shaykhs", label: "Shuyukh" },
+  { href: "/admin/duroos/announcements", label: "Updates" },
+];
