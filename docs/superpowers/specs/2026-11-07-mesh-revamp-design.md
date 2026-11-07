@@ -2,7 +2,7 @@
 
 **Date:** 2026-11-07 (27/5/1448)
 **Owner:** Muhaymin (site owner) · original code by aza48
-**Status:** Draft for owner approval
+**Status:** Approved by owner 2026-11-07
 
 ---
 
@@ -158,9 +158,15 @@ Migrated forum questions keep a redirect map `old id → new /ask/slug`.
 - **Real "today"**: computed in Asia/Riyadh, never hard-coded.
 - **Prayer-anchored times → clock times.** Lessons are "after Asr" etc. The site
   computes Madinah prayer times (Umm al-Qura method, offline library) to show
-  "After Asr · ≈ 3:32 pm · in 2h 10m" and a live/next indicator. Lessons start
-  after the *iqamah*, not the adhan, so each masjid has admin-editable iqamah
-  offsets per prayer (and a Ramadan set) — times are shown with "≈".
+  "After Asr · Adhan 3:12 pm · in 2h 10m". **The countdown is always to the
+  adhan** (owner's rule: students should come early), with a small note
+  "starts right after the iqamah". No iqamah guessing.
+- **"Live now" detection:** each lesson can have broadcast sources (YouTube,
+  Mixlr, Telegram, an official website stream). A live checker polls them
+  (YouTube channel live page, Mixlr's public live status, etc.); when a
+  broadcast is live, the lesson shows **LIVE NOW** with a link straight to that
+  exact broadcast. Sources that can't be checked automatically fall back to a
+  plain "Listen/Watch" link.
 - **Recurrence that matches reality**: weekly days, "daily except Fri/Sat",
   monthly markers, and **Hijri date ranges** (e.g. Quba's 1/4–30/6/1448
   period); lessons automatically disappear when their period ends.
@@ -183,9 +189,11 @@ Migrated forum questions keep a redirect map `old id → new /ask/slug`.
    what change? which absolute date(s)? confidence*, plus a draft English
    translation following the house rules (يعتذر → "excused himself"; relative
    words → bracketed absolute Hijri dates).
-   **Arabic night convention:** "ليلة الأحد" is *Saturday night* (the night
-   belongs to the following day). The parser and its test suite must get this
-   right; it is the single most likely source of a wrong auto-publish.
+   **Night wording (owner's rule):** in modern usage "ليلة الأحد" means
+   *Sunday night* — the evening of that named day. When a post also gives an
+   explicit Hijri/Gregorian date, the explicit date always wins. A post whose
+   weekday and date contradict each other goes to the inbox, never
+   auto-publishes. Covered by a dedicated test suite.
 5. Matching against known shaykhs/lessons in the DB. The AI never decides on
    its own: its output must resolve to a lesson that exists, a change type from
    a fixed list, and a concrete date — otherwise it goes to the inbox.
