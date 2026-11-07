@@ -55,3 +55,30 @@ Admin → More → Channels.
 ```bash
 DATABASE_URL=... BETTER_AUTH_URL=https://medinahub.org npm run admin:invite -- you@example.com owner
 ```
+
+## Phone notifications (free web push)
+
+1. Create production keys once: `npx web-push generate-vapid-keys`.
+2. In Vercel add `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (the public key) and `VAPID_PRIVATE_KEY` (the private key), then redeploy.
+3. Students tap "Alert me…" on a shaykh or lesson page, or turn on the morning brief / all changes on the More page.
+   On iPhone, alerts work after MESH is added to the Home Screen (the button explains this).
+4. Every lesson change (from an admin or the watcher) notifies phones following that shaykh or "all changes".
+
+## Morning brief
+
+Add a second trigger to the same Cloudflare Worker, or a separate one, calling
+`https://medinahub.org/api/cron/daily` with the same `Authorization: Bearer <CRON_SECRET>` header,
+on cron `30 1 * * *` (04:30 Riyadh, before Fajr).
+
+## Calendar feeds
+
+Anyone can subscribe: `webcal://medinahub.org/api/v1/calendar/all.ics`, or per shaykh
+(`shaykh-<slug>.ics`), masjid (`masjid-<id>.ics`) or lesson (`lesson-<slug>.ics`). The buttons on
+shaykh and lesson pages do this. Calendars refresh every few hours and show cancellations.
+
+## Going live (database switch)
+
+1. Ask aza48 for the live `DATABASE_URL` and put it in `.env.production.local` (git-ignored).
+2. `npm run go-live` (dry run, changes nothing) and read the plan.
+3. `npm run go-live -- --apply --owner you@example.com` and open the printed owner invite.
+4. Add all the Vercel variables above, then merge `revamp` into `main`.

@@ -5,6 +5,7 @@ import { FAQ_CATEGORIES, GUIDE_STAGES } from "@/server/content/queries";
 import { sanitizeArticleHtml } from "@/lib/sanitize";
 import { EmptyState, PageTitle } from "@/components/ui";
 import { AskOnWhatsApp, WhatsAppIcon } from "@/components/shell/WhatsApp";
+import { AlertsButton } from "@/features/duroos/AlertsButton";
 
 const verified = (d: Date | null) =>
   d ? `Last verified ${new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(d)}` : null;
@@ -148,6 +149,13 @@ export function MorePage({ whatsappUrl }: { whatsappUrl: string }) {
           </li>
         ))}
       </ul>
+
+      <section id="alerts" className="mt-8">
+        <h2 className="text-xl font-semibold">Phone alerts</h2>
+        <p className="mt-1 text-sm text-muted">Free, no account. Follow a single shaykh from his page.</p>
+        <AlertsButton topic="daily" label="Morning brief: today's duroos and changes" />
+        <AlertsButton topic="all" label="Every cancellation and change" />
+      </section>
 
       <section id="about" className="mt-8">
         <h2 className="text-xl font-semibold">About MESH</h2>

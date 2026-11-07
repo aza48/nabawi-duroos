@@ -11,6 +11,7 @@ import { DuroosNav } from "./DuroosNav";
 import { DAY_LONG_KEYS, t } from "./strings";
 import { duroosPath } from "./DarsCard";
 import { CalendarButton } from "./CalendarButton";
+import { AlertsButton } from "./AlertsButton";
 
 type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>;
 type Shaykh = NonNullable<Awaited<ReturnType<typeof getShaykh>>>;
@@ -63,6 +64,7 @@ export function ShaykhPage({ shaykh: s, locale }: { shaykh: Shaykh; locale: Loca
           </Link>
         ))}
       </div>
+      <AlertsButton topic={`shaykh:${s.slug}`} label={ar ? "تنبيه عند إلغاء أو تغيير دروسه" : "Alert me when his duroos change"} locale={locale} />
       <CalendarButton feed={`shaykh-${s.slug}`} locale={locale} />
       {s.channels.length > 0 && (
         <>
@@ -119,6 +121,7 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
           <Radio size={17} /> {l.stream.isLive ? t(locale, "watchLive") : t(locale, "listen")}
         </a>
       )}
+      <AlertsButton topic={`shaykh:${l.shaykh.slug}`} label={ar ? "تنبيه عند إلغاء أو تغيير الدرس" : "Alert me if this dars changes"} locale={locale} />
       <CalendarButton feed={`lesson-${l.slug}`} locale={locale} />
       <h2 className="mt-7 mb-2 text-lg font-semibold">{t(locale, "history")}</h2>
       {l.history.length === 0 ? (

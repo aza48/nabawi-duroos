@@ -56,6 +56,14 @@ export async function addOverride(db: Db, actor: Actor | "system", input: z.inpu
     .returning();
   await record(db, actor, { action: "create", entity: "override", entityId: String(row.id), before: null, after: { ...row, lessonSlug: v.lessonSlug } });
   refreshPublic([...DUROOS_PATHS, `/duroos/lesson/${v.lessonSlug}`, `/ar/duroos/lesson/${v.lessonSlug}`]);
+  // Phone alerts are best-effort: a push failure never blocks the change itself.
+  try {
+    const { getPushSender, notifyOverride } = await import("@/server/push");
+    const send = await getPushSender();
+    if (send) await notifyOverride(db, { lessonSlug: v.lessonSlug, kind: v.kind, startsOn: v.startsOn, noteEn: row.noteEn }, send);
+  } catch {
+    /* ignore */
+  }
   return row;
 }
 

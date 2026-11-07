@@ -346,3 +346,13 @@ export const lessonLive = pgTable("lesson_live", {
   postUrl: text("post_url").notNull(),
   startedAt: timestamp("started_at", { withTimezone: true }).notNull(),
 });
+
+/** Phone push subscriptions (no account): topics like "all", "daily", "shaykh:<slug>". */
+export const pushSubscriptions = pgTable("push_subscriptions", {
+  id: serial("id").primaryKey(),
+  endpoint: text("endpoint").notNull().unique(),
+  p256dh: text("p256dh").notNull(),
+  auth: text("auth").notNull(),
+  topics: text("topics").array().notNull().default([]),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
