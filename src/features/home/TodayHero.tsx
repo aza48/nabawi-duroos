@@ -6,6 +6,7 @@ import { addDays } from "@/lib/time/riyadh";
 import { PRAYERS, prayerTimes } from "@/lib/time/prayer";
 import { DayArc, type ArcCounts } from "./DayArc";
 import { NextPrayer } from "./NextPrayer";
+import { WeatherChip } from "./WeatherChip";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
@@ -47,10 +48,13 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
       <div className="shell pt-8 pb-6 md:pt-12 md:pb-8">
         <div className="grid items-end gap-6 lg:grid-cols-[1fr_340px] lg:gap-10">
           <div>
-            <p className="text-sm text-white/75 md:text-base">
-              {ar ? today.hijri.ar.split(" ")[0] : weekday}
-              {ar ? "، " : ", "}
-              {ar ? today.gregorian.ar : today.gregorian.en}
+            <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white/75 md:text-base">
+              <span>
+                {ar ? today.hijri.ar.split(" ")[0] : weekday}
+                {ar ? "، " : ", "}
+                {ar ? today.gregorian.ar : today.gregorian.en}
+              </span>
+              <WeatherChip locale={locale} />
             </p>
             <h1 className="mt-2 font-heading text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl xl:text-7xl">
               {title ?? (ar ? today.hijri.ar.replace(/^\S+\s/, "") : formatHijriLong(today.date))}

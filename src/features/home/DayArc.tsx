@@ -7,6 +7,7 @@ import { toArabicDigits } from "@/lib/locale";
 import { formatClock } from "@/lib/time/riyadh";
 import { PRAYERS, type Prayer } from "@/lib/time/prayer";
 import { t } from "@/features/duroos/strings";
+import { useWeather } from "./useWeather";
 
 export type ArcCounts = Record<Prayer, { total: number; live: number; cancelled: number }>;
 export type SkyPhase = "night" | "dawn" | "day" | "afternoon" | "dusk";
@@ -36,6 +37,15 @@ function pointAt(f: number) {
   const a = (1 - f) * (1 - f), b = 2 * (1 - f) * f, c = f * f;
   return { x: a * P0.x + b * P1.x + c * P2.x, y: a * P0.y + b * P1.y + c * P2.y };
 }
+/**
+ * The part of the arc already travelled, as its own quadratic curve (de Casteljau split at f).
+ * Drawing it this way stays exact however the SVG is stretched, unlike a dash along the path.
+ */
+export function travelledPath(f: number): string {
+  const q1 = { x: P0.x + f * (P1.x - P0.x), y: P0.y + f * (P1.y - P0.y) };
+  const end = pointAt(f);
+  return `M${P0.x} ${P0.y} Q${q1.x.toFixed(2)} ${q1.y.toFixed(2)} ${end.x.toFixed(2)} ${end.y.toFixed(2)}`;
+}
 /** Arabic reads right to left, so the day runs from the right. */
 const pct = (pt: { x: number; y: number }, rtl = false) => ({ left: `${(rtl ? 1000 - pt.x : pt.x) / 10}%`, top: `${(pt.y / 220) * 100}%` });
 
@@ -52,24 +62,17 @@ export function DayArc({ prayers, counts, locale }: { prayers: Record<Prayer, st
   const progress = now === null ? 0 : arcFraction(now, prayers);
   const sun = pointAt(progress);
   const num = (n: number) => (ar ? toArabicDigits(n) : String(n));
+  const weather = useWeather();
 
   return (
     <div>
-      <div className="sky pointer-events-none absolute inset-0 -z-10" data-phase={phase} aria-hidden="true" />
+      <div className="sky pointer-events-none absolute inset-0 -z-10" data-phase={phase} data-weather={weather?.kind ?? "clear"} aria-hidden="true" />
       <div className="relative h-44 md:h-56">
         <svg viewBox="0 0 1000 220" preserveAspectRatio="none" className="absolute inset-0 size-full" style={ar ? { transform: "scaleX(-1)" } : undefined} aria-hidden="true">
           <path d={`M${P0.x} ${P0.y} Q${P1.x} ${P1.y} ${P2.x} ${P2.y}`} fill="none" stroke="rgb(255 255 255 / 0.22)" strokeWidth="2" strokeDasharray="2 7" vectorEffect="non-scaling-stroke" />
-          <path
-            d={`M${P0.x} ${P0.y} Q${P1.x} ${P1.y} ${P2.x} ${P2.y}`}
-            fill="none"
-            stroke="var(--gold-bright)"
-            strokeWidth="3"
-            strokeLinecap="round"
-            pathLength={1}
-            strokeDasharray={`${progress} 1`}
-            vectorEffect="non-scaling-stroke"
-            style={{ transition: "stroke-dasharray 1.2s cubic-bezier(.2,.8,.2,1)" }}
-          />
+          {progress > 0 && (
+            <path d={travelledPath(progress)} fill="none" stroke="var(--gold-bright)" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+          )}
           <line x1="0" y1="200" x2="1000" y2="200" stroke="rgb(255 255 255 / 0.18)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
         </svg>
 
