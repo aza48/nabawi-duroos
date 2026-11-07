@@ -76,8 +76,8 @@ describe("lookups", () => {
     const all = await listAnnouncements(db, { limit: 100, includeArchived: true, now });
     expect(all.some((a) => a.eventDate && a.eventDate < "2026-11-07")).toBe(true);
   });
-  it("returns empty content lists on a fresh database", async () => {
+  it("starts with no answers and the 17 guides from the previous MESH site", async () => {
     expect(await listFaqs(db)).toEqual([]);
-    expect(await listGuides(db)).toEqual([]);
+    expect(await listGuides(db)).toHaveLength(17);
   });
 });

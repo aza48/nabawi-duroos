@@ -4,6 +4,7 @@ import { announcements, events, lessons, masjids, shaykhs, streams } from "@/ser
 import { getSetting, setSetting, WHATSAPP_INVITE_DEFAULT } from "@/server/settings";
 import { hijriIsoBounds } from "@/lib/time/hijri";
 import { cleanRow } from "@/lib/text";
+import { importOldMesh } from "./import-old-mesh";
 import { LESSONS } from "./legacy/lessons";
 import { SHAYKH_PROFILES } from "./legacy/profiles";
 import { ANNOUNCEMENTS } from "./legacy/announcements";
@@ -209,6 +210,8 @@ export async function importLegacy(db: Db) {
   for (const s of streamRows) {
     await db.insert(streams).values(s).onConflictDoUpdate({ target: streams.slug, set: s });
   }
+
+  await importOldMesh(db);
 
   if ((await getSetting(db, "whatsapp_invite_url")) === null) {
     await setSetting(db, "whatsapp_invite_url", WHATSAPP_INVITE_DEFAULT);

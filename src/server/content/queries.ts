@@ -16,7 +16,8 @@ export const FAQ_CATEGORIES = [
 
 export const GUIDE_STAGES: { id: GuideStage; label: string; blurb: string }[] = [
   { id: "getting-started", label: "Getting started", blurb: "Admission, visa & iqama, Nafath, Absher, registration" },
-  { id: "getting-settled", label: "Getting settled", blurb: "Housing, transport, SIM cards, banking, groceries" },
+  { id: "getting-settled", label: "Getting settled", blurb: "Housing, emergency numbers, sport, food, licences, business" },
+  { id: "study", label: "Study & university", blurb: "Semester breaks, the calendar, moving up, postgraduate, resources" },
   { id: "family", label: "Family life", blurb: "Spouse visas, schools, clinics, sisters' classes" },
   { id: "leaving", label: "Leaving Madinah", blurb: "Exit procedures, final paperwork, closing accounts" },
 ];

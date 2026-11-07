@@ -75,7 +75,7 @@ const guideInput = z.object({
   title: z.string().trim().min(3).max(200),
   summary: z.string().trim().min(3).max(400),
   bodyHtml: z.string().min(1).max(300_000),
-  stage: z.enum(["getting-started", "getting-settled", "family", "leaving"]),
+  stage: z.enum(["getting-started", "getting-settled", "study", "family", "leaving"]),
   coverUrl: z.string().max(500).optional().nullable(),
   readingMinutes: z.number().int().min(1).max(120).optional(),
   status: z.enum(["draft", "published"]),

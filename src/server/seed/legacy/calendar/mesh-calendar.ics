@@ -1,0 +1,533 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//MESH//Medina English Student Hub//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:MESH: university and Islamic dates
+BEGIN:VEVENT
+UID:1448-1-reenrol@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20261023
+SUMMARY:Re-enrolment requests
+DESCRIPTION:طلبات إعادة الانتظام\n24 Rabi al-Awwal 1448 
+ to 11 Jumada al-Ula 1448\nFirst semester\, from the Islamic University ac
+ ademic calendar.\nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#14
+ 48-1-reenrol
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-1-reenrol
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Re-enrolment requests
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-1-itithaar@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20260816
+DTEND;VALUE=DATE:20261106
+SUMMARY:Requests to be excused from the semester / withdraw from a course
+DESCRIPTION:طلبات الاعتذار عن الفصل الدراسي / 
+ والانسحاب من مقرر\n3 Rabi al-Awwal 1448 to 25 Jumada al-Ul
+ a 1448\nFirst semester\, from the Islamic University academic calendar.\n
+ https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-1-itithaar
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-1-itithaar
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Requests to be excused from the semester / withdraw 
+ from a course
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-1-withdraw-university@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20260809
+DTEND;VALUE=DATE:20261129
+SUMMARY:Requests to withdraw from the university
+DESCRIPTION:طلبات الانسحاب من الجامعة\n26 Safar 1448
+  to 18 Jumada al-Akhirah 1448\nFirst semester\, from the Islamic Universi
+ ty academic calendar.\nhttps://mesh.obi2b-contact-alt.workers.dev/calenda
+ r/#1448-1-withdraw-university
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-1-withdraw-u
+ niversity
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Requests to withdraw from the university
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-1-finals@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:Start of final exams
+DESCRIPTION:بداية الاختبارات النهائية\n19 Jumada al
+ -Akhirah 1448\nFirst semester\, from the Islamic University academic cale
+ ndar.\nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-1-finals
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-1-finals
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Start of final exams
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-extra-chances@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261215
+SUMMARY:Requests for additional chances for academically dismissed student
+ s
+DESCRIPTION:طلبات الفرص الإضافية للمفصولين أك
+ اديميًا\n2 Rajab 1448 to 5 Rajab 1448\nSecond semester\, from the 
+ Islamic University academic calendar.\nhttps://mesh.obi2b-contact-alt.wor
+ kers.dev/calendar/#1448-2-extra-chances
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-extra-chan
+ ces
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Requests for additional chances for academically dis
+ missed students
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-postpone-transfer@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261220
+SUMMARY:Requests to postpone studies / internal transfer
+DESCRIPTION:طلبات تأجيل الدراسة / والتحويل الد
+ اخلي\n4 Rajab 1448 to 10 Rajab 1448\nSecond semester\, from the Islam
+ ic University academic calendar.\nhttps://mesh.obi2b-contact-alt.workers.
+ dev/calendar/#1448-2-postpone-transfer
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-postpone-t
+ ransfer
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Requests to postpone studies / internal transfer
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-1-break@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261220
+SUMMARY:End of semester holiday
+DESCRIPTION:إجازة نهاية الفصل الدراسي\n6 Rajab 1448 
+ to 10 Rajab 1448\nFirst semester\, from the Islamic University academic c
+ alendar.\nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-1-bre
+ ak
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-1-break
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: End of semester holiday
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-drop-add@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20261217
+DTEND;VALUE=DATE:20261222
+SUMMARY:Drop\, add and change of sections
+DESCRIPTION:الحذف والإضافة وتغيير الشعب\n8 Rajab 1
+ 448 to 12 Rajab 1448\nSecond semester\, from the Islamic University acade
+ mic calendar.\nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-
+ 2-drop-add
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-drop-add
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Drop\, add and change of sections
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-withdraw-university@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20261217
+DTEND;VALUE=DATE:20270425
+SUMMARY:Requests to withdraw from the university
+DESCRIPTION:طلبات الانسحاب من الجامعة\n8 Rajab 1448 
+ to 17 Dhul Qadah 1448\nSecond semester\, from the Islamic University acad
+ emic calendar.\nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#1448
+ -2-withdraw-university
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-withdraw-u
+ niversity
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Requests to withdraw from the university
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-itithaar@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20270314
+SUMMARY:Requests to be excused from the semester / withdraw from a course
+DESCRIPTION:طلبات الاعتذار عن الفصل الدراسي / 
+ والانسحاب من مقرر\n11 Rajab 1448 to 5 Shawwal 1448\nSecond
+  semester\, from the Islamic University academic calendar.\nhttps://mesh.
+ obi2b-contact-alt.workers.dev/calendar/#1448-2-itithaar
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-itithaar
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Requests to be excused from the semester / withdraw 
+ from a course
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-start@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+SUMMARY:Start of study
+DESCRIPTION:بداية الدراسة\n11 Rajab 1448\nSecond semester\, fr
+ om the Islamic University academic calendar.\nhttps://mesh.obi2b-contact-
+ alt.workers.dev/calendar/#1448-2-start
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-start
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Start of study
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-winter-holiday@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270108
+DTEND;VALUE=DATE:20270117
+SUMMARY:Winter holiday
+DESCRIPTION:إجازة الشتاء\n30 Rajab 1448 to 8 Shaban 1448\nSecon
+ d semester\, from the Islamic University academic calendar.\nhttps://mesh
+ .obi2b-contact-alt.workers.dev/calendar/#1448-2-winter-holiday
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-winter-hol
+ iday
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Winter holiday
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-reenrol@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270124
+DTEND;VALUE=DATE:20270412
+SUMMARY:Re-enrolment requests for the next semester
+DESCRIPTION:طلبات إعادة الانتظام للفصل القادم
+ \n16 Shaban 1448 to 4 Dhul Qadah 1448\nSecond semester\, from the Islamic
+  University academic calendar.\nhttps://mesh.obi2b-contact-alt.workers.de
+ v/calendar/#1448-2-reenrol
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-reenrol
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Re-enrolment requests for the next semester
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:islamic-1448-ramadan@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270208
+DTEND;VALUE=DATE:20270209
+SUMMARY:Start of Ramadan
+DESCRIPTION:بداية شهر رمضان\n1 Ramadan 1448\nExpected date: c
+ onfirmed by moon sighting.\nhttps://mesh.obi2b-contact-alt.workers.dev/ca
+ lendar/#islamic-1448-ramadan
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#islamic-1448-rama
+ dan
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Start of Ramadan
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-founding-day@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270219
+DTEND;VALUE=DATE:20270223
+SUMMARY:Founding Day holiday
+DESCRIPTION:إجازة يوم التأسيس\n12 Ramadan 1448 to 15 Ramada
+ n 1448\nSecond semester\, from the Islamic University academic calendar.\
+ nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-founding-day
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-founding-d
+ ay
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Founding Day holiday
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-eid-al-fitr@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270226
+DTEND;VALUE=DATE:20270314
+SUMMARY:Eid al-Fitr holiday
+DESCRIPTION:إجازة عيد الفطر\n19 Ramadan 1448 to 5 Shawwal 144
+ 8\nSecond semester\, from the Islamic University academic calendar.\nhttp
+ s://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-eid-al-fitr
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-eid-al-fit
+ r
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Eid al-Fitr holiday
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:islamic-1448-last-ten-nights@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:Last ten days of Ramadan begin
+DESCRIPTION:العشر الأواخر من رمضان\n21 Ramadan 1448\nEx
+ pected date: confirmed by moon sighting.\nhttps://mesh.obi2b-contact-alt.
+ workers.dev/calendar/#islamic-1448-last-ten-nights
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#islamic-1448-last
+ -ten-nights
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Last ten days of Ramadan begin
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:islamic-1448-eid-al-fitr@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270309
+DTEND;VALUE=DATE:20270310
+SUMMARY:Eid al-Fitr
+DESCRIPTION:عيد الفطر\n1 Shawwal 1448\nExpected date: confirmed by
+  moon sighting.\nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#isl
+ amic-1448-eid-al-fitr
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#islamic-1448-eid-
+ al-fitr
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Eid al-Fitr
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-finals@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270425
+DTEND;VALUE=DATE:20270426
+SUMMARY:Start of final exams
+DESCRIPTION:بداية الاختبارات النهائية\n18 Dhul Qada
+ h 1448\nSecond semester\, from the Islamic University academic calendar.\
+ nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-finals
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-finals
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Start of final exams
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:islamic-1448-dhul-hijjah@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270507
+DTEND;VALUE=DATE:20270508
+SUMMARY:First ten days of Dhul Hijjah begin
+DESCRIPTION:عشر ذي الحجة\n1 Dhul Hijjah 1448\nExpected date: con
+ firmed by moon sighting.\nhttps://mesh.obi2b-contact-alt.workers.dev/cale
+ ndar/#islamic-1448-dhul-hijjah
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#islamic-1448-dhul
+ -hijjah
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: First ten days of Dhul Hijjah begin
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-eid-al-adha@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270511
+DTEND;VALUE=DATE:20270523
+SUMMARY:Eid al-Adha holiday
+DESCRIPTION:إجازة عيد الأضحى\n5 Dhul Hijjah 1448 to 16 Dhul 
+ Hijjah 1448\nSecond semester\, from the Islamic University academic calen
+ dar.\nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-eid-al-
+ adha
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-eid-al-adh
+ a
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Eid al-Adha holiday
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:islamic-1448-arafah@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270516
+SUMMARY:Day of Arafah
+DESCRIPTION:يوم عرفة\n9 Dhul Hijjah 1448\nExpected date: confirmed 
+ by moon sighting.\nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#i
+ slamic-1448-arafah
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#islamic-1448-araf
+ ah
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Day of Arafah
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:islamic-1448-eid-al-adha@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270516
+DTEND;VALUE=DATE:20270517
+SUMMARY:Eid al-Adha
+DESCRIPTION:عيد الأضحى\n10 Dhul Hijjah 1448\nExpected date: confi
+ rmed by moon sighting.\nhttps://mesh.obi2b-contact-alt.workers.dev/calend
+ ar/#islamic-1448-eid-al-adha
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#islamic-1448-eid-
+ al-adha
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Eid al-Adha
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-2-year-end@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270603
+DTEND;VALUE=DATE:20270604
+SUMMARY:Start of the end-of-year holiday
+DESCRIPTION:بداية إجازة نهاية العام الدراسي\n28
+  Dhul Hijjah 1448\nSecond semester\, from the Islamic University academic
+  calendar.\nFrom the end of working hours.\nhttps://mesh.obi2b-contact-al
+ t.workers.dev/calendar/#1448-2-year-end
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-2-year-end
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Start of the end-of-year holiday
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-s-start@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270606
+DTEND;VALUE=DATE:20270607
+SUMMARY:Start of study
+DESCRIPTION:بداية الدراسة\n1 Muharram 1449\nSummer semester\, 
+ from the Islamic University academic calendar.\nhttps://mesh.obi2b-contac
+ t-alt.workers.dev/calendar/#1448-s-start
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-s-start
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Start of study
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:islamic-1449-islamic-new-year@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270606
+DTEND;VALUE=DATE:20270607
+SUMMARY:Islamic New Year 1449
+DESCRIPTION:رأس السنة الهجرية ١٤٤٩\n1 Muharram 1449\nEx
+ pected date: confirmed by moon sighting.\nhttps://mesh.obi2b-contact-alt.
+ workers.dev/calendar/#islamic-1449-islamic-new-year
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#islamic-1449-isla
+ mic-new-year
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Islamic New Year 1449
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:islamic-1449-ashura@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270615
+DTEND;VALUE=DATE:20270616
+SUMMARY:Day of Ashura
+DESCRIPTION:يوم عاشوراء\n10 Muharram 1449\nExpected date: confir
+ med by moon sighting.\nhttps://mesh.obi2b-contact-alt.workers.dev/calenda
+ r/#islamic-1449-ashura
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#islamic-1449-ashu
+ ra
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Day of Ashura
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1448-s-finals@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270727
+DTEND;VALUE=DATE:20270728
+SUMMARY:Start of final exams
+DESCRIPTION:بداية الاختبارات النهائية\n23 Safar 144
+ 9\nSummer semester\, from the Islamic University academic calendar.\nhttp
+ s://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-s-finals
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1448-s-finals
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Start of final exams
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1449-start@mesh
+DTSTAMP:20261022T051646Z
+DTSTART;VALUE=DATE:20270822
+DTEND;VALUE=DATE:20270823
+SUMMARY:Start of study for the academic year 1449
+DESCRIPTION:بداية الدراسة للعام الدراسي 1449هـ\n
+ 20 Rabi al-Awwal 1449\nSummer semester\, from the Islamic University acad
+ emic calendar.\nhttps://mesh.obi2b-contact-alt.workers.dev/calendar/#1449
+ -start
+URL:https://mesh.obi2b-contact-alt.workers.dev/calendar/#1449-start
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tomorrow: Start of study for the academic year 1449
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

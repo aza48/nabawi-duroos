@@ -6,11 +6,11 @@ import { deleteGuideAction, saveGuideAction } from "@/app/(admin)/admin/actions"
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 import { RichText } from "./RichText";
 
-type Stage = "getting-started" | "getting-settled" | "family" | "leaving";
+type Stage = "getting-started" | "getting-settled" | "study" | "family" | "leaving";
 type G = { slug?: string; title: string; summary: string; bodyHtml: string; stage: Stage; status: "draft" | "published" };
 
 const STAGES: { id: Stage; label: string }[] = [
-  { id: "getting-started", label: "Getting started" }, { id: "getting-settled", label: "Getting settled" },
+  { id: "getting-started", label: "Getting started" }, { id: "getting-settled", label: "Getting settled" }, { id: "study", label: "Study & university" },
   { id: "family", label: "Family life" }, { id: "leaving", label: "Leaving Madinah" },
 ];
 

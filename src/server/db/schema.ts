@@ -7,7 +7,7 @@ export type OverrideOrigin = "admin" | "watcher_auto" | "watcher_approved" | "le
 export type AnnouncementStatus = "draft" | "published" | "archived";
 export type ContentStatus = "draft" | "published";
 export type StreamKind = "youtube" | "mixlr" | "telegram" | "web";
-export type GuideStage = "getting-started" | "getting-settled" | "family" | "leaving";
+export type GuideStage = "getting-started" | "getting-settled" | "study" | "family" | "leaving";
 export type Bilingual = { en: string; ar: string };
 
 const created = () => timestamp("created_at", { withTimezone: true }).notNull().defaultNow();
