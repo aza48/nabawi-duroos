@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /* ---------- Design tokens ----------
-   Light "Warm Paper" is the default; dark "Madinah Night" applies when the
-   phone prefers dark (and no manual choice was made) or data-theme="dark". */
+   Light "Warm Paper" is always the default; dark "Madinah Night" only when the
+   visitor picks it with the theme button (data-theme="dark"). */
 :root {
   color-scheme: light;
   --bg: #f6f1e7;
@@ -52,32 +52,6 @@
   --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
   --font-heading: var(--font-fraunces), Georgia, serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    color-scheme: dark;
-    --bg: #0c1714;
-    --bg-2: #0f1d19;
-    --card: #13221d;
-    --border: #22392f;
-    --ink: #ece6d6;
-    --muted: #9aa69f;
-    --primary: #d9b76c;
-    --primary-ink: #0c1714;
-    --accent: #d9b76c;
-    --on: #7fe0a8;
-    --on-bg: #1a3a2b;
-    --cancel: #ff9c8f;
-    --cancel-bg: #4a1d19;
-    --amber: #f3c46b;
-    --amber-bg: #3d3015;
-    --gold: #e3c27a;
-    --gold-bg: #2f2816;
-    --live: #ff7a6b;
-    --font-heading: var(--font-fraunces), Georgia, serif;
-    --font-body: var(--font-inter), system-ui, sans-serif;
-  }
 }
 
 :root[lang="ar"] {

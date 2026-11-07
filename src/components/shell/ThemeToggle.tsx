@@ -5,8 +5,7 @@ import { useEffect, useState } from "react";
 
 function currentTheme(): "light" | "dark" {
   const set = document.documentElement.getAttribute("data-theme");
-  if (set === "light" || set === "dark") return set;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return set === "dark" ? "dark" : "light";
 }
 
 export function ThemeToggle({ label = "Switch theme" }: { label?: string }) {

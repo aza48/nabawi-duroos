@@ -44,7 +44,18 @@ async function lessonContext(db: Db) {
 }
 
 /** One pass over every channel. Network calls are injected so tests never touch the internet. */
-export async function runWatcher(db: Db, deps: WatcherDeps, now: Date = new Date()): Promise<RunResult> {
+/** Seconds a run may spend before leaving the remaining posts for the next run (the function limit is 60s). */
+export const RUN_BUDGET_MS = 35_000;
+
+export async function runWatcher(
+  db: Db,
+  deps: WatcherDeps,
+  now: Date = new Date(),
+  opts: { budgetMs?: number; clock?: () => number } = {}
+): Promise<RunResult> {
+  const clock = opts.clock ?? Date.now;
+  const startedAt = clock();
+  const budgetMs = opts.budgetMs ?? RUN_BUDGET_MS;
   const today = riyadhDateIso(now);
   const cutoff = new Date(now.getTime() - RECENT_DAYS * 86_400_000);
   const ctx = await lessonContext(db);
@@ -89,7 +100,7 @@ export async function runWatcher(db: Db, deps: WatcherDeps, now: Date = new Date
         result.ignored++;
         continue;
       }
-      if (aiBudget <= 0) {
+      if (aiBudget <= 0 || clock() - startedAt > budgetMs) {
         if (!existing) await db.insert(channelPosts).values({ sourceHandle: src.handle, postId: p.postId, url: p.url, text: p.text, imageUrl: p.imageUrl, postedAt: p.postedAt, textHash, status: "new" });
         continue;
       }
@@ -168,13 +179,13 @@ export async function dismissSuggestion(db: Db, actor: Actor, id: number) {
 export function liveDeps(apiKey: string): WatcherDeps {
   return {
     fetchHtml: async (handle) => {
-      const res = await fetch(previewUrl(handle), { headers: { "user-agent": "Mozilla/5.0 (MESH channel reader)" }, cache: "no-store" });
+      const res = await fetch(previewUrl(handle), { headers: { "user-agent": "Mozilla/5.0 (MESH channel reader)" }, cache: "no-store", signal: AbortSignal.timeout(10_000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return res.text();
     },
     readPost: async (post, lessonsList, today) => {
       const { readPostWithGemini } = await import("./ai");
-      return readPostWithGemini(post, lessonsList, today, { apiKey });
+      return readPostWithGemini(post, lessonsList, today, { apiKey, fetch: (url, init) => fetch(url, { ...init, signal: AbortSignal.timeout(12_000) }) });
     },
   };
 }

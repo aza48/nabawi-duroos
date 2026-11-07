@@ -123,3 +123,17 @@ describe("suggestions", () => {
     expect(after.status).toBe("dismissed");
   });
 });
+
+describe("time budget", () => {
+  it("stops calling the AI once the run's time budget is spent and leaves the rest for the next run", async () => {
+    const tdb = await resetTestDb();
+    await importLegacy(tdb);
+    const read = vi.fn(async () => other);
+    let t = 0;
+    const clock = () => (t += 20_000); // each check of the clock is 20 seconds later
+    await runWatcher(tdb, { fetchHtml: async (h) => (h === "drosalmadina" ? post(11, "أ") + post(12, "ب") + post(13, "ج") : "<html></html>"), readPost: read }, NOW, { budgetMs: 35_000, clock });
+    expect(read.mock.calls.length).toBeLessThan(3);
+    const waiting = await tdb.select().from(channelPosts).where(eq(channelPosts.status, "new"));
+    expect(waiting.length).toBeGreaterThan(0);
+  });
+});
