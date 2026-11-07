@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { resetTestDb, type Db } from "@/server/db/client";
 import { importLegacy } from "@/server/seed/import-legacy";
 import { lessonOverrides, lessons } from "@/server/db/schema";
-import { buildIcs, lessonFeed } from "@/server/calendar";
+import { buildIcs, datesFeed, lessonFeed } from "@/server/calendar";
 
 let db: Db;
 beforeAll(async () => {
@@ -27,6 +27,17 @@ describe("buildIcs", () => {
     expect(ics).toContain("SUMMARY:Book\\, part 1\\; notes");
     expect(ics).toContain("DESCRIPTION:Line one\\nLine two");
     expect(ics).toContain("DTSTART:20261112T121500Z");
+  });
+});
+
+describe("datesFeed", () => {
+  it("turns the University calendar into whole-day events with an exclusive end", () => {
+    const ics = buildIcs(datesFeed().title, datesFeed().events);
+    const finals = ics.slice(ics.indexOf("UID:date-finals-1@"));
+    expect(finals).toContain("DTSTART;VALUE=DATE:20261129");
+    expect(finals).toContain("DTEND;VALUE=DATE:20261215");
+    expect(ics).toContain("UID:date-eid-fitr@medinahub.org");
+    expect(ics.split("\r\n").every((line) => line.length <= 75)).toBe(true);
   });
 });
 

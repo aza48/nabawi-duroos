@@ -9,6 +9,7 @@ describe("keyDatesState", () => {
     expect(s.current).toBeNull();
     expect(s.next?.id).toBe("finals-1");
     expect(s.following.map((e) => e.id)).toEqual(["break-1", "sem-2", "winter"]);
+    expect(s.islamic).toHaveLength(3);
     expect(s.islamic[0].id).toBe("ramadan");
     expect(s.islamic.every((e) => e.kind === "islamic")).toBe(true);
   });

@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Moon, PencilLine, Sun, GraduationCap, BookOpenCheck } from "lucide-react";
+import { BookOpenCheck, CalendarPlus, GraduationCap, Moon, PencilLine, Sun } from "lucide-react";
 import { KEY_DATES, endOf, keyDatesState, startOf, type KeyDate } from "@/content/key-dates";
+import { SITE_URL } from "@/lib/site";
 
 const KIND: Record<KeyDate["kind"], { label: string; icon: typeof Moon; tone: string }> = {
   exams: { label: "Exams", icon: PencilLine, tone: "bg-cancel-bg text-cancel" },
@@ -15,6 +16,8 @@ const tz = { timeZone: "Asia/Riyadh" } as const;
 const fmt = (iso: string, o: Intl.DateTimeFormatOptions = { weekday: "short", day: "numeric", month: "short" }) => new Intl.DateTimeFormat("en-GB", { ...o, ...tz }).format(startOf(iso));
 const days = (ms: number) => Math.max(0, Math.ceil(ms / 86_400_000));
 const pad = (n: number) => String(n).padStart(2, "0");
+/** webcal:// subscribes on phones, and the feed keeps itself up to date. */
+const DATES_FEED = `${SITE_URL.replace(/^https?:/, "webcal:")}/api/v1/calendar/dates.ics`;
 
 /** "Coming up": the next University date leads, the next three follow, Islamic dates count down at the side. */
 export function KeyDates() {
@@ -51,40 +54,48 @@ export function KeyDates() {
             </span>
             <span className="text-xs text-muted">{lead.hijri}</span>
           </div>
-          <div className="mt-4 flex items-end justify-between gap-4">
-            <div className="min-w-0">
-              <p className="font-heading text-2xl font-bold leading-tight md:text-3xl">{lead.title}</p>
-              <p className="mt-1 text-sm text-muted">
-                {fmt(lead.start)}
-                {lead.end ? ` to ${fmt(lead.end)}` : ""}
+          <p className="mt-4 font-heading text-2xl font-bold leading-tight md:text-3xl">{lead.title}</p>
+          <p className="mt-1 text-sm text-muted">
+            {fmt(lead.start)}
+            {lead.end ? ` to ${fmt(lead.end)}` : ""}
+          </p>
+          <div className="mt-5" role="timer" aria-label={`${days(left)} ${current ? "days left" : "days to go"}`}>
+            <div className="grid grid-cols-4 gap-2" dir="ltr">
+              {[
+                [Math.floor(left / 86_400_000), "days"],
+                [Math.floor((left % 86_400_000) / 3_600_000), "hours"],
+                [Math.floor((left % 3_600_000) / 60_000), "min"],
+                [Math.floor((left % 60_000) / 1000), "sec"],
+              ].map(([n, unit], i) => (
+                <span key={unit} className={`rounded-2xl px-2 py-3 text-center ${i === 0 ? "bg-primary text-primary-ink" : "bg-bg-2"}`}>
+                  <span className="block font-heading text-3xl font-bold leading-none tabular md:text-4xl">{i === 0 ? n : pad(n as number)}</span>
+                  <span className={`mt-1 block text-xs ${i === 0 ? "text-primary-ink/80" : "text-muted"}`}>{unit}</span>
+                </span>
+              ))}
+            </div>
+            {progress !== null && (
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-bg-2" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100} aria-label="How far through it we are">
+                <div className="h-full rounded-full bg-primary" style={{ width: `${progress}%` }} />
+              </div>
+            )}
+          </div>
+          <a href={DATES_FEED} className="mt-4 flex items-center justify-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-semibold transition hover:border-primary hover:text-primary">
+            <CalendarPlus size={16} /> Add University dates to my calendar
+          </a>
+          {(current?.after || (!current && rest[0])) && (
+            <div className="mt-auto pt-5">
+              <p className="border-t border-line pt-4 text-sm">
+                <span className="font-semibold">Then: </span>
+                {current?.after ?? `${rest[0].title}, ${fmt(rest[0].start)}.`}
               </p>
             </div>
-            <p className="shrink-0 text-end">
-              <span className="block font-heading text-5xl font-bold leading-none tabular text-primary">{days(left)}</span>
-              <span className="text-sm text-muted">{current ? "days left" : "days to go"}</span>
-            </p>
-          </div>
-          {progress !== null ? (
-            <div className="mt-5 h-2 overflow-hidden rounded-full bg-bg-2">
-              <div className="h-full rounded-full bg-primary" style={{ width: `${progress}%` }} />
-            </div>
-          ) : (
-            <p className="mt-5 font-mono text-sm tabular text-muted" dir="ltr" aria-label="Time remaining">
-              {Math.floor(left / 86_400_000)}d {pad(Math.floor((left % 86_400_000) / 3_600_000))}h {pad(Math.floor((left % 3_600_000) / 60_000))}m {pad(Math.floor((left % 60_000) / 1000))}s
-            </p>
-          )}
-          {(current?.after || (!current && rest[0])) && (
-            <p className="mt-auto border-t border-line pt-4 text-sm">
-              <span className="font-semibold">Then: </span>
-              {current?.after ?? `${rest[0].title}, ${fmt(rest[0].start)}.`}
-            </p>
           )}
         </article>
 
         {/* The next three University dates as a timeline */}
-        <article className="rounded-3xl border border-line bg-card p-6">
+        <article className="flex flex-col rounded-3xl border border-line bg-card p-6">
           <p className="text-sm font-semibold text-muted">After that</p>
-          <ol className="relative mt-4 space-y-5 before:absolute before:inset-y-2 before:start-[22px] before:w-px before:bg-line">
+          <ol className="relative mt-4 flex flex-1 flex-col justify-between gap-5 before:absolute before:inset-y-2 before:start-[22px] before:w-px before:bg-line">
             {rest.map((d) => {
               const kk = KIND[d.kind];
               return (
@@ -108,13 +119,13 @@ export function KeyDates() {
         </article>
 
         {/* Islamic dates: small counters */}
-        <article className="lattice overflow-hidden rounded-3xl bg-brand-deep p-6 text-white md:col-span-2 xl:col-span-1">
+        <article className="lattice flex flex-col overflow-hidden rounded-3xl bg-brand-deep p-6 text-white md:col-span-2 xl:col-span-1">
           <p className="flex items-center gap-2 text-sm font-semibold text-white/75">
             <Moon size={15} className="text-gold-bright" /> Islamic dates
           </p>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
+          <ul className="mt-4 grid flex-1 content-between gap-3 sm:grid-cols-3 xl:grid-cols-1">
             {islamic.map((d) => (
-              <li key={d.id} className="flex items-center justify-between gap-3 rounded-2xl bg-white/8 px-4 py-3 ring-1 ring-white/10">
+              <li key={d.id} className="flex items-center justify-between gap-3 rounded-2xl bg-white/8 px-4 py-3 ring-1 xl:py-2.5 ring-white/10">
                 <span className="min-w-0">
                   <span className="block font-semibold leading-snug">{d.title}</span>
                   <span className="block text-xs text-white/65">{d.hijri}</span>
@@ -126,7 +137,7 @@ export function KeyDates() {
               </li>
             ))}
           </ul>
-          <p className="mt-3 text-[11px] text-white/55">Expected dates, confirmed by moon sighting.</p>
+          <p className="mt-4 text-[11px] text-white/55">Expected dates, confirmed by moon sighting.</p>
         </article>
       </div>
     </section>

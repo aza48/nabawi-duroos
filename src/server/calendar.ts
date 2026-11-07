@@ -5,9 +5,12 @@ import { lessonsForDate, type OverrideLike } from "@/server/duroos/schedule";
 import { prayerTimes } from "@/lib/time/prayer";
 import { addDays } from "@/lib/time/riyadh";
 import { SITE_URL } from "@/lib/site";
+import { KEY_DATES, startOf, type KeyDate } from "@/content/key-dates";
 
 export type CalEvent = {
   uid: string; start: Date; end: Date; summary: string; description: string; location: string; url: string; cancelled: boolean;
+  /** Whole-day event: start and end are read as Madinah dates, end exclusive. */
+  allDay?: { from: string; toExclusive: string };
 };
 
 const esc = (s: string) => s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
@@ -36,7 +39,10 @@ export function buildIcs(title: string, events: CalEvent[], now: Date = new Date
   ];
   for (const e of events) {
     lines.push(
-      "BEGIN:VEVENT", `UID:${e.uid}`, `DTSTAMP:${stamp(now)}`, `DTSTART:${stamp(e.start)}`, `DTEND:${stamp(e.end)}`,
+      "BEGIN:VEVENT", `UID:${e.uid}`, `DTSTAMP:${stamp(now)}`,
+      ...(e.allDay
+        ? [`DTSTART;VALUE=DATE:${e.allDay.from.replace(/-/g, "")}`, `DTEND;VALUE=DATE:${e.allDay.toExclusive.replace(/-/g, "")}`, "TRANSP:TRANSPARENT"]
+        : [`DTSTART:${stamp(e.start)}`, `DTEND:${stamp(e.end)}`]),
       `SUMMARY:${esc(e.summary)}`, `DESCRIPTION:${esc(e.description)}`, `LOCATION:${esc(e.location)}`, `URL:${e.url}`,
       `STATUS:${e.cancelled ? "CANCELLED" : "CONFIRMED"}`, "END:VEVENT"
     );
@@ -99,4 +105,23 @@ export async function lessonFeed(db: Db, filter: FeedFilter, fromIso: string, da
     : filter.masjidId && picked[0] ? `MESH: duroos at ${picked[0].masjid.nameEn}`
     : "MESH: all duroos";
   return { title, events };
+}
+
+/** The University calendar and the expected Islamic dates as whole-day events. */
+export function datesFeed(dates: KeyDate[] = KEY_DATES): { title: string; events: CalEvent[] } {
+  const events = dates.map((d): CalEvent => {
+    const toExclusive = addDays(d.end ?? d.start, 1);
+    return {
+      uid: `date-${d.id}@medinahub.org`,
+      start: startOf(d.start),
+      end: startOf(toExclusive),
+      allDay: { from: d.start, toExclusive },
+      summary: d.title,
+      description: [d.titleAr, d.hijri, d.note ?? "", d.after ?? ""].filter(Boolean).join("\n"),
+      location: "Madinah",
+      url: `${SITE_URL}/guides/university-calendar-1448`,
+      cancelled: false,
+    };
+  });
+  return { title: "MESH: University and Islamic dates", events };
 }
