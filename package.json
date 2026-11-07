@@ -17,9 +17,11 @@
     "seed": "tsx src/server/seed/run.ts"
   },
   "dependencies": {
+    "@better-auth/passkey": "^1.7.18",
     "@electric-sql/pglite": "^0.5.15",
     "@neondatabase/serverless": "^1.2.0",
     "adhan": "^4.4.6",
+    "better-auth": "^1.7.18",
     "drizzle-orm": "^0.45.4",
     "lucide-react": "^1.70.0",
     "next": "^16.4.5",
