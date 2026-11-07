@@ -12,3 +12,8 @@ export function toArabicDigits(s: string | number): string {
 
 export const WEEKDAYS_EN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] as const;
 export const WEEKDAYS_AR = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"] as const;
+
+/** Attributes for the <html> element of a locale's root layout. */
+export function htmlAttrs(locale: Locale): { lang: Locale; dir: "ltr" | "rtl" } {
+  return { lang: locale, dir: dir(locale) };
+}
