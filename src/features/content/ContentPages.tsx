@@ -1,3 +1,4 @@
+import { UniversityCalendar } from "./UniversityCalendar";
 import Link from "next/link";
 import { ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, CircleCheck, Flag, GraduationCap, Languages, Library, Radio, ScrollText } from "lucide-react";
 import type { FaqRow, GuideRow } from "@/server/content/queries";
@@ -129,7 +130,9 @@ export function GuidesPage({ guides }: { guides: GuideRow[] }) {
 export function GuidePage({ guide, whatsappUrl }: { guide: GuideRow; whatsappUrl: string }) {
   const stage = GUIDE_STAGES.find((st) => st.id === guide.stage);
   const Icon = STAGE_ICON[guide.stage] ?? BookOpen;
-  const { html, toc, steps } = enhanceGuideHtml(sanitizeArticleHtml(guide.bodyHtml));
+  const isCalendar = guide.slug === "university-calendar-1448";
+  const { html, toc, steps: rawSteps } = enhanceGuideHtml(sanitizeArticleHtml(guide.bodyHtml));
+  const steps = isCalendar ? 0 : rawSteps;
   const stepTexts = [...html.matchAll(/<li data-step="\d+">([\s\S]*?)<\/li>/g)].map((m) => plain(m[1]));
   const ld = {
     "@context": "https://schema.org",
@@ -158,14 +161,14 @@ export function GuidePage({ guide, whatsappUrl }: { guide: GuideRow; whatsappUrl
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl">{guide.title}</h1>
           <p className="mt-4 max-w-2xl text-white/85 md:text-lg">{guide.summary}</p>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
-            <span className="flex items-center gap-1.5"><BookOpen size={15} /> {guide.readingMinutes} min read</span>
+            {!isCalendar && <span className="flex items-center gap-1.5"><BookOpen size={15} /> {guide.readingMinutes} min read</span>}
             {steps > 0 && <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {steps} steps to tick off</span>}
             {verified(guide.lastVerifiedAt) && <span className="flex items-center gap-1.5 text-gold-bright"><CircleCheck size={15} /> {verified(guide.lastVerifiedAt)}</span>}
           </p>
         </div>
       </section>
-      <div className={`shell mt-8 grid gap-10 md:mt-10 ${toc.length > 1 ? "lg:grid-cols-[240px_minmax(0,1fr)]" : ""}`}>
-        {toc.length > 1 && (
+      <div className={`shell mt-8 grid gap-10 md:mt-10 ${toc.length > 1 && !isCalendar ? "lg:grid-cols-[240px_minmax(0,1fr)]" : ""}`}>
+        {toc.length > 1 && !isCalendar && (
           <nav aria-label="On this page" className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
             <p className="text-sm font-semibold text-muted">On this page</p>
             <ul className="mt-3 space-y-1 border-s border-line">
@@ -179,10 +182,12 @@ export function GuidePage({ guide, whatsappUrl }: { guide: GuideRow; whatsappUrl
             </ul>
           </nav>
         )}
-        <article className="max-w-3xl">
-          <GuideBody html={html} slug={guide.slug} steps={steps} />
-          <OutdatedNote whatsappUrl={whatsappUrl} />
-          <div className="mt-6"><AskOnWhatsApp url={whatsappUrl} /></div>
+        <article className={isCalendar ? "min-w-0" : "max-w-3xl"}>
+          {guide.slug === "university-calendar-1448" ? <UniversityCalendar /> : <GuideBody html={html} slug={guide.slug} steps={steps} />}
+          <div className={isCalendar ? "max-w-3xl" : undefined}>
+            <OutdatedNote whatsappUrl={whatsappUrl} />
+            <div className="mt-6"><AskOnWhatsApp url={whatsappUrl} /></div>
+          </div>
         </article>
       </div>
     </>

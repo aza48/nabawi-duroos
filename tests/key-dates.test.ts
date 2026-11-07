@@ -23,6 +23,14 @@ describe("keyDatesState", () => {
     expect(s.current?.id).toBe("eid-fitr-holiday");
     expect(s.current?.after).toMatch(/Classes resume/);
   });
+  it("keeps request windows off the home card but in the data", () => {
+    const s = keyDatesState(at("2026-12-14"), KEY_DATES);
+    expect([s.current, s.next, ...s.following].some((e) => e?.minor)).toBe(false);
+    expect(KEY_DATES.find((e) => e.id === "drop-add-2")).toMatchObject({ start: "2026-12-17", end: "2026-12-21" });
+  });
+  it("tags every University date with its term", () => {
+    expect(KEY_DATES.filter((e) => e.kind !== "islamic" && !e.term)).toEqual([]);
+  });
   it("keeps University dates out of the Islamic counters and vice versa", () => {
     const s = keyDatesState(at("2026-11-07"), KEY_DATES);
     expect([s.next, ...s.following].some((e) => e?.kind === "islamic")).toBe(false);
