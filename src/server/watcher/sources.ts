@@ -1,18 +1,43 @@
+import { eq, sql } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
-import { sources } from "@/server/db/schema";
+import { channelPosts, sources } from "@/server/db/schema";
 
-/** The public channels MESH reads. Everything starts in shadow mode (autoPublish off). */
-export const DEFAULT_SOURCES: { handle: string; name: string }[] = [
+/**
+ * The public Telegram channels MESH reads, in the order they are read. Everything starts in
+ * shadow mode (autoPublish off). "Core" channels are about the duroos we track, so every post
+ * goes to the AI, flyer images included. "Broad" channels post a lot of other material, so only
+ * posts that pass the free keyword check in prefilter.ts reach the AI and its small daily quota.
+ */
+export const DEFAULT_SOURCES: { handle: string; name: string; broad?: true }[] = [
   { handle: "drosalmadina", name: "Duroos al-Madinah an-Nabawiyyah" },
-  { handle: "khizana_62", name: "Khizanat al-Ilm" },
-  { handle: "sohaymi", name: "Shaykh Salih al-Suhaymi (official)" },
-  { handle: "dr_maherkhujah", name: "Prof. Dr. Mahir Khujah (official)" },
-  { handle: "Sulalruhaily", name: "Shaykh Sulayman al-Ruhayli (official)" },
+  { handle: "Sualruhaily", name: "Shaykh Sulayman al-Ruhayli (official)" },
   { handle: "twijri", name: "Prof. Dr. Ali al-Tuwaijri (official)" },
+  { handle: "rehyli", name: "Prof. Dr. Ibrahim al-Ruhayli (official)" },
+  { handle: "dr_maherkhujah", name: "Prof. Dr. Mahir Khujah (official)" },
+  { handle: "khizana_62", name: "Khizanat al-Ilm" },
+  { handle: "sohaymi", name: "Shaykh Salih al-Suhaymi (benefits)", broad: true },
+  { handle: "Miraathalanbeyaa", name: "Miraath al-Anbiya", broad: true },
+  { handle: "almanashet", name: "Women's da'wah activities in Madinah", broad: true },
+  { handle: "Dawah_Madina", name: "Da'wah and Guidance Society, Madinah", broad: true },
+  { handle: "Abo3omr_ALArjon", name: "Shaykh Abdulaziz al-Arjun", broad: true },
 ];
+
+/** Handles that were wrong or have gone quiet. Removed when nothing refers to them. */
+export const RETIRED_SOURCES = ["Sulalruhaily"];
+
+const BROAD = new Set(DEFAULT_SOURCES.filter((s) => s.broad).map((s) => s.handle.toLowerCase()));
+export const isBroadSource = (handle: string) => BROAD.has(handle.toLowerCase());
+
+const ORDER = new Map(DEFAULT_SOURCES.map((s, i) => [s.handle.toLowerCase(), i]));
+/** Core channels first, so the busy ones never use up the AI budget before them. */
+export const sourceRank = (handle: string) => ORDER.get(handle.toLowerCase()) ?? DEFAULT_SOURCES.length;
 
 export async function seedSources(db: Db): Promise<void> {
   for (const s of DEFAULT_SOURCES) {
-    await db.insert(sources).values({ ...s, trusted: true, autoPublish: false }).onConflictDoNothing({ target: sources.handle });
+    await db.insert(sources).values({ handle: s.handle, name: s.name, trusted: true, autoPublish: false }).onConflictDoNothing({ target: sources.handle });
+  }
+  for (const handle of RETIRED_SOURCES) {
+    const [used] = await db.select({ n: sql<number>`count(*)::int` }).from(channelPosts).where(eq(channelPosts.sourceHandle, handle));
+    if (!used?.n) await db.delete(sources).where(eq(sources.handle, handle));
   }
 }

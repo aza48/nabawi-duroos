@@ -136,4 +136,21 @@ describe("time budget", () => {
     const waiting = await tdb.select().from(channelPosts).where(eq(channelPosts.status, "new"));
     expect(waiting.length).toBeGreaterThan(0);
   });
+
 });
+
+describe("busy channels", () => {
+  it("skips posts with no schedule words without asking the AI, and reads the rest", async () => {
+    const at = "2026-11-07T06:00:00+00:00";
+    const msg = (id: number, text: string) => `<div class="tgme_widget_message" data-post="almanashet/${id}"><div class="tgme_widget_message_text">${text}</div><time datetime="${at}"></time></div>`;
+    pages.almanashet = msg(10, "اللهم بارك لنا في يوم الجمعة") + msg(11, "يعتذر الشيخ عن المحاضرة اليوم");
+    const before = readPost.mock.calls.length;
+    await runWatcher(db, deps(), NOW);
+    const asked = readPost.mock.calls.slice(before).map((c) => c[0].text);
+    expect(asked).toContain("يعتذر الشيخ عن المحاضرة اليوم");
+    expect(asked).not.toContain("اللهم بارك لنا في يوم الجمعة");
+    const [skipped] = await db.select().from(channelPosts).where(eq(channelPosts.postId, "almanashet/10"));
+    expect(skipped).toMatchObject({ status: "ignored", reason: "No schedule words. Skipped without AI." });
+  });
+});
+

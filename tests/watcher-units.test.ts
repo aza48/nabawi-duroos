@@ -3,7 +3,8 @@ import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { resetTestDb } from "@/server/db/client";
 import { sources } from "@/server/db/schema";
-import { seedSources } from "@/server/watcher/sources";
+import { DEFAULT_SOURCES, isBroadSource, seedSources, sourceRank } from "@/server/watcher/sources";
+import { worthReading } from "@/server/watcher/prefilter";
 import { parseChannelHtml } from "@/server/watcher/telegram";
 import { buildPrompt, GEMINI_MODELS, parseAiResponse, readPostWithGemini, type AiParse } from "@/server/watcher/ai";
 import { decide, type DecideContext } from "@/server/watcher/decide";
@@ -11,12 +12,42 @@ import { decide, type DecideContext } from "@/server/watcher/decide";
 const fixture = readFileSync(path.join(process.cwd(), "tests/fixtures/tg-drosalmadina.html"), "utf8");
 
 describe("sources", () => {
-  it("seeds the six channels, all in shadow mode", async () => {
+  it("seeds every channel in shadow mode, with the corrected al-Ruhayli handle", async () => {
     const db = await resetTestDb();
     await seedSources(db);
     const rows = await db.select().from(sources);
-    expect(rows.map((r) => r.handle).sort()).toEqual(["Sulalruhaily", "dr_maherkhujah", "drosalmadina", "khizana_62", "sohaymi", "twijri"]);
+    expect(rows.map((r) => r.handle).sort()).toEqual(DEFAULT_SOURCES.map((s) => s.handle).sort());
+    expect(rows.map((r) => r.handle)).toContain("Sualruhaily");
+    expect(rows.map((r) => r.handle)).not.toContain("Sulalruhaily");
     expect(rows.every((r) => r.trusted && !r.autoPublish)).toBe(true);
+  });
+  it("removes a retired handle that nothing refers to", async () => {
+    const db = await resetTestDb();
+    await db.insert(sources).values({ handle: "Sulalruhaily", name: "old" });
+    await seedSources(db);
+    expect((await db.select().from(sources)).map((r) => r.handle)).not.toContain("Sulalruhaily");
+  });
+  it("reads core channels before busy ones", () => {
+    expect(sourceRank("drosalmadina")).toBeLessThan(sourceRank("Miraathalanbeyaa"));
+    expect(isBroadSource("almanashet")).toBe(true);
+    expect(isBroadSource("drosalmadina")).toBe(false);
+  });
+});
+
+describe("worthReading", () => {
+  const lessons = [{ shaykhAr: "أ.د. سليمان بن سليم الله الرحيلي" }, { shaykhAr: "الشيخ صالح بن سعد السحيمي" }];
+  it("lets through schedule changes and new announcements", () => {
+    expect(worthReading("يعتذر فضيلة الشيخ عن درس اليوم", lessons)).toBe(true);
+    expect(worthReading("تأجيل الدرس إلى الأسبوع القادم", lessons)).toBe(true);
+    expect(worthReading("محاضرة بعنوان: فضل العلم، بعد المغرب", lessons)).toBe(true);
+    expect(worthReading("يُستأنف الدرس بإذن الله يوم الأحد", lessons)).toBe(true);
+  });
+  it("lets through posts that name a shaykh we track", () => {
+    expect(worthReading("من فوائد الشيخ السحيمي حفظه الله", lessons)).toBe(true);
+  });
+  it("skips general benefits and reminders", () => {
+    expect(worthReading("قال ابن القيم رحمه الله: القلب يمرض كما يمرض البدن", lessons)).toBe(false);
+    expect(worthReading("اللهم بارك لنا في يوم الجمعة", lessons)).toBe(false);
   });
 });
 

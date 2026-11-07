@@ -1,3 +1,5 @@
+import { isBroadSource, sourceRank } from "./sources";
+import { worthReading } from "./prefilter";
 import { createHash } from "node:crypto";
 import { and, desc, eq, inArray } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
@@ -61,7 +63,7 @@ export async function runWatcher(
   const ctx = await lessonContext(db);
   const result: RunResult = { sources: 0, newPosts: 0, suggested: 0, published: 0, ignored: 0, errors: 0 };
   let aiBudget = MAX_AI_PER_RUN;
-  const allSources = await db.select().from(sources);
+  const allSources = (await db.select().from(sources)).sort((a, b) => sourceRank(a.handle) - sourceRank(b.handle));
 
   for (const src of allSources) {
     result.sources++;
@@ -97,6 +99,14 @@ export async function runWatcher(
             .onConflictDoUpdate({ target: lessonLive.lessonSlug, set: { url: link, postUrl: p.url, startedAt: p.postedAt } });
         }
         await db.insert(channelPosts).values({ sourceHandle: src.handle, postId: p.postId, url: p.url, text: p.text, imageUrl: p.imageUrl, postedAt: p.postedAt, textHash, status: "ignored", reason: slug ? `Live broadcast notice: ${slug}` : "Live broadcast notice (lesson not recognised)" });
+        result.ignored++;
+        continue;
+      }
+      // Busy channels: skip posts with no schedule words without spending an AI read.
+      if (isBroadSource(src.handle) && !worthReading(p.text, ctx.candidates)) {
+        const skipped = { sourceHandle: src.handle, postId: p.postId, url: p.url, text: p.text, imageUrl: p.imageUrl, postedAt: p.postedAt, textHash, status: "ignored" as const, reason: "No schedule words. Skipped without AI.", updatedAt: now };
+        if (existing) await db.update(channelPosts).set(skipped).where(eq(channelPosts.id, existing.id));
+        else await db.insert(channelPosts).values(skipped);
         result.ignored++;
         continue;
       }

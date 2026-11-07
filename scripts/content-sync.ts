@@ -1,4 +1,4 @@
-/** Applies migrations, then publishes the latest MESH guides, FAQs and book links to the live database: npm run content:sync */
+/** Applies migrations, then publishes the latest MESH guides, FAQs, book links and watched channels to the live database: npm run content:sync */
 import { readFileSync } from "node:fs";
 
 try {
@@ -20,6 +20,9 @@ async function main() {
   const db = await getDb();
   console.log("Published:", await syncContent2026(db));
   console.log("Duroos with a book link:", await syncBookLinks(db));
+  const { seedSources } = await import("@/server/watcher/sources");
+  await seedSources(db);
+  console.log("Watched channels refreshed");
   process.exit(0);
 }
 
