@@ -44,3 +44,18 @@ export async function getGuide(db: Db, slug: string): Promise<GuideRow | null> {
   const [g] = await db.select().from(guides).where(and(eq(guides.slug, slug), eq(guides.status, "published")));
   return g ?? null;
 }
+
+/** Everything saved but not yet published, newest first (admin inbox). */
+export async function listDrafts(db: Db) {
+  const { announcements } = await import("@/server/db/schema");
+  const [a, f, g] = await Promise.all([
+    db.select({ slug: announcements.slug, title: announcements.titleEn, at: announcements.postedAt }).from(announcements).where(eq(announcements.status, "draft")),
+    db.select({ slug: faqs.slug, title: faqs.question, at: faqs.updatedAt }).from(faqs).where(eq(faqs.status, "draft")),
+    db.select({ slug: guides.slug, title: guides.title, at: guides.updatedAt }).from(guides).where(eq(guides.status, "draft")),
+  ]);
+  return [
+    ...a.map((x) => ({ ...x, kind: "Update", href: `/admin/duroos/announcements/${x.slug}` })),
+    ...f.map((x) => ({ ...x, kind: "Answer", href: `/admin/content/faq/${x.slug}` })),
+    ...g.map((x) => ({ ...x, kind: "Guide", href: `/admin/content/guide/${x.slug}` })),
+  ].sort((x, y) => y.at.getTime() - x.at.getTime());
+}
