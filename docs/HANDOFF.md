@@ -71,17 +71,19 @@ medinahub.org: a hub run by students, for English-speaking students and families
 - Programmes: impartial listing, no "first recommendation", `nextIntake` field for any programme.
 - Audit and research: `docs/audit/AUDIT.md` is the ranked audit list (with status); persona reports in `docs/audit/personas/`, technical crawl in `docs/audit/technical.md`; research in `docs/research/` (IU official, living in Madinah, study programmes, multilingual community, group chat 2026, and study-in-saudi-telegram.md when its agent finished).
 
-## In progress when this session stopped
-- **Library rebuild.** `src/content/library-books.json` holds 1,682 files crawled from the public Drive folders (8 collections; the Higher Diploma, school and other-universities folders are empty). `src/content/library-books.ts` has the types, `COLLECTIONS`, `levelLabel`, `subjectHint`, `fileIndex`, `searchFiles` and `driveLinks`. Still to build:
-  1. `/library` hub: college cards with file counts, the Ma'had, a GET search form to `/library/search?q=` (server-side `searchFiles`, no client bundle), then the existing official links, channels and manuscripts. Rename "Muqarrarat" to "Course books". Fix OFFICIAL links: the University's own X is @iu_edu (not @iu_edu_en or @iu_ed), and Study in Saudi is studyinsaudi.sa.
-  2. `/library/[slug]`: levels (`levelLabel`) as sections, subjects as cards with the Arabic name plus `subjectHint`, files listed with type and date, a filter box.
-  3. `/library/read/[id]`: an embedded Drive preview iframe (`driveLinks(id).preview`), title and breadcrumb, Download and Open buttons, the other files in that subject, previous and next.
-  4. On college pages and the reader: the curriculum note (some books are out of date, classes may set different books, send us your class timetable and the assigned book via `whatsappLink(help, ...)`) and "have a summary that helped you? send it".
-  5. Update `src/server/search/docs.ts` (it imports MUQARRARAT and MAHAD) to index collections and subjects, and add library pages to the sitemap.
-  The crawler is `drive-crawl.cjs` and the builder `build-library.cjs` in the old scratchpad; copy them into `scripts/` if you need to refresh the data. Hosting the PDFs ourselves was not done: embedding keeps people on MESH without re-hosting University books (copyright) or paying for gigabytes of storage.
+## Library (done in the second session, live)
+- /library hub, /library/[slug] per college and the Ma'had (levels, subjects with English hints), /library/read/[id] reader with the Drive preview embedded (CSP frame-src allows drive.google.com), /library/search (server-side, Arabic and English). Data: src/content/library-books.json (1,682 files) and library-books.ts. To refresh, copy drive-crawl.cjs and build-library.cjs from the old scratchpad into scripts/.
+- Still to do: add library pages to the sitemap; a client-side filter on long college pages if students ask.
+
+## Open questions for the owner
+- Shaykh photos: the owner now asks for a photo of each shaykh. The earlier rule was name badges by default because many mashayikh dislike being photographed. Ask which shuyukh are fine, and use only photos from their own official channels or ones the owner supplies.
+- Shaykh Mis'ad's page slug is still masad-ibn-musaid-al-husaini (name fixed, slug kept so links don't break). Add a redirect if the slug changes.
+
+## Research still landing
+- docs/research/study-in-saudi-telegram.md: an agent was mining all 745 posts of t.me/notjustmadinah when the session stopped. If the file exists, commit it and use it; if not, re-run the scrape (tg-history.cjs) and analysis.
 
 ## To do next (in this order)
-1. Finish the library (above).
+1. Library sitemap entries; owner decision on shaykh photos.
 2. Work down `docs/audit/AUDIT.md`: undergraduate admission guide with the agents warning, search synonyms and ranking (see the terms in `docs/research/community-multilingual.md`), Open Graph for guides, stale facts and the research corrections (bus 3.45 SAR, Haramain from 162 SAR plus VAT, Haram Institute registration in Safar, old visa lines, Al-Fusha, Ahlul Athar link), sisters at the Haram duroos, a Ma'had hub, tap targets, 404 pages, titles.
 3. Content from `docs/research/group-chat-2026.md`: Visitor ID guide (both iqama and Visitor ID paths), Ejar for students through an accredited agent, Absher and Nafath activation fix (call 920020405 for a support ticket), finals timetable location, stipend timing (around the 25th to 27th), Nabawi library rules, Blackboard phishing warning, duroos sequence changes (Ruhayli, Badr, Qasim, Suhaymi, Hujayli), new shaykh pages (az-Zahim, al-Ghamidi), price benchmarks. Rawdah hours from Nusuk (Grok pack, check them).
 4. **Admin fields** (in `src/features/admin`):

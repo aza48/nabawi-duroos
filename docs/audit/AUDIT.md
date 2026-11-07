@@ -13,20 +13,20 @@ Status: **done** (fixed and deployed), **next** (being worked on), **todo**.
 | # | Problem | Where | Status |
 |---|---|---|---|
 | 1 | Day arc line stopped after Asr even at night (dash measured in screen pixels on a stretched SVG) | Home and Duroos hero | done |
-| 2 | Topic chips make the page 815 px wide on a 390 px phone, cutting off the FAQ list | /ask | next |
-| 3 | The calendar guide is broken: raw "At a glance" text, empty month cards with tick boxes, dates jammed together ("Until22Oct 2026Thu"), dead "Add to calendar" text. It is the only full page of dates | /guides/university-calendar-1448 | next |
+| 2 | Topic chips make the page 815 px wide on a 390 px phone, cutting off the FAQ list | /ask | done |
+| 3 | The calendar guide is broken: raw "At a glance" text, empty month cards with tick boxes, dates jammed together ("Until22Oct 2026Thu"), dead "Add to calendar" text. It is the only full page of dates | /guides/university-calendar-1448 | done |
 | 4 | The al-Ruhayli Telegram channel was never read (wrong handle in code) | watcher | done |
-| 5 | Library sends people to Google Drive folders, Arabic only, with no levels or subjects on the site | /library | next |
+| 5 | Library sends people to Google Drive folders, Arabic only, with no levels or subjects on the site | /library | done |
 | 6 | No undergraduate admission guide (window, age 17 to 25, certificate under 5 years, documents, Manhati vs final acceptance, agents scam). Searches for "age limit", "admission requirements", "قبول" find nothing | content | todo |
-| 7 | /ar returns 404 | /ar | next |
+| 7 | /ar returns 404 | /ar | done |
 
 ## High
 | # | Problem | Where | Status |
 |---|---|---|---|
-| 8 | Every guide and FAQ says "Last verified" today, because each content sync stamps the current date. Destroys trust and contradicts programme pages | sync.ts | next |
+| 8 | Every guide and FAQ says "Last verified" today, because each content sync stamps the current date. Destroys trust and contradicts programme pages | sync.ts | done (only today's 10 new guides carry today's date; future syncs keep dates) |
 | 9 | Search: noisy ranking (long guides match everything), misses synonyms and transliterations (fiqh, aqeedah, eid, ta jeel, tazkiyah, mukafaa spellings, optician, gym, paediatrician, childcare), never says "nothing found" for weak matches | src/lib/search | todo |
-| 10 | Floating WhatsApp button covers content and links on every page; white on WhatsApp green is 1.98:1 contrast | layout | next |
-| 11 | Sticky "0 of N steps done" bar takes about 90 px on phones on every guide, including ones that are not procedures | GuideBody | next |
+| 10 | Floating WhatsApp button covers content and links on every page; white on WhatsApp green is 1.98:1 contrast | layout | done |
+| 11 | Sticky "0 of N steps done" bar takes about 90 px on phones on every guide, including ones that are not procedures | GuideBody | done |
 | 12 | Guides and shaykh pages have no Open Graph or Twitter tags; Article JSON-LD lacks image | guides/[slug] | todo |
 | 13 | Stale facts 6 to 19 months old: Mutun al-Ijaz, Ahlul Athar, IU page, library, childbirth costs | content | todo |
 | 14 | Wrong facts found by research: bus fare 3.45 SAR (not 3), Haramain fares from 162 SAR before VAT, Haram Institute registration ran 5 to 20 Safar (not Dhul Qa'dah), old visa lines (UK e-Waiver etc.), "studyinsaudi.moe.gov.sa" should be studyinsaudi.sa, the @MadinahUniversity YouTube channel is not the University's, "Al-Fusha Academy" is a school, arabic.ahlulathar.net is an India-based Zoom course | content | todo |
@@ -48,7 +48,7 @@ Status: **done** (fixed and deployed), **next** (being worked on), **todo**.
 | 26 | Long guides hide "On this page" on phones | todo |
 | 27 | Library sits under More while Study takes a nav slot; Ma'had and Kulliyah students need Library first | todo |
 | 28 | Phone hero takes about 660 px before any duroos | todo |
-| 29 | Jargon in labels and copy for second-language readers ("muqarrarat", "takhlees", dense ta'jeel text) | next |
+| 29 | Jargon in labels and copy for second-language readers ("muqarrarat", "takhlees", dense ta'jeel text) | partly done (library and programmes) |
 
 ## Content to add (from research and the group chat)
 - Undergraduate admission, step by step, with the agents warning (see 6).
