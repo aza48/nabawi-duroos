@@ -5,11 +5,11 @@ import { announcements, auditLog, faqs, guides, lessonOverrides, lessons, settin
 import { assertCan, type Actor } from "@/server/auth/permissions";
 
 export type AuditRow = typeof auditLog.$inferSelect;
-export type Entity = "lesson" | "shaykh" | "override" | "announcement" | "faq" | "guide" | "setting";
+export type Entity = "lesson" | "shaykh" | "override" | "announcement" | "faq" | "guide" | "setting" | "admin";
 
 type Target = { table: PgTable; key: string; column: string; numericId?: boolean };
 
-const TARGETS: Record<Entity, Target> = {
+const TARGETS: Partial<Record<Entity, Target>> = {
   lesson: { table: lessons, key: "slug", column: "slug" },
   shaykh: { table: shaykhs, key: "slug", column: "slug" },
   override: { table: lessonOverrides, key: "id", column: "id", numericId: true },
@@ -62,6 +62,7 @@ export async function undo(db: Db, actor: Actor, auditId: number): Promise<UndoR
   if (entry.undoneAt) return { ok: false, error: "already_undone" };
 
   const t = TARGETS[entry.entity as Entity];
+  if (!t) return { ok: false, error: "not_undoable" };
   const col = (t.table as unknown as Record<string, Parameters<typeof eq>[0]>)[t.key];
   const id = t.numericId ? Number(entry.entityId) : entry.entityId;
   const [current] = await db.select().from(t.table).where(eq(col, id));
