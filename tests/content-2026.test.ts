@@ -34,3 +34,20 @@ describe("syncContent2026", () => {
     expect(all).not.toMatch(new RegExp(`[${String.fromCharCode(0x2014)}${String.fromCharCode(0x2013)}]`));
   });
 });
+
+describe("syncBookLinks", () => {
+  it("fills in reader links for known books, and never overwrites one an admin set", async () => {
+    const { importLegacy } = await import("@/server/seed/import-legacy");
+    const { lessons } = await import("@/server/db/schema");
+    const { syncBookLinks, BOOK_LINKS } = await import("@/server/seed/content/book-links");
+    const db = await resetTestDb();
+    await importLegacy(db);
+    await db.update(lessons).set({ bookUrl: "https://example.org/my-edition" }).where(eq(lessons.slug, "ruh-dalil"));
+    const n = await syncBookLinks(db);
+    expect(n).toBeGreaterThan(20);
+    const [tawhid] = await db.select().from(lessons).where(eq(lessons.slug, "ruh-tawhid"));
+    expect(tawhid.bookUrl).toBe(`https://app.turath.io/book/${BOOK_LINKS["ruh-tawhid"]}`);
+    const [dalil] = await db.select().from(lessons).where(eq(lessons.slug, "ruh-dalil"));
+    expect(dalil.bookUrl).toBe("https://example.org/my-edition");
+  });
+});

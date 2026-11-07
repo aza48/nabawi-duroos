@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays, ExternalLink, MapPin, Radio, UserRound } from "lucide-react";
+import { BookOpen, CalendarDays, Clock3, ExternalLink, MapPin, Radio } from "lucide-react";
 import type { getLesson, getShaykh, AnnouncementRow, StreamRow } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { formatClock, riyadhDateIso } from "@/lib/time/riyadh";
@@ -12,6 +12,7 @@ import { DAY_LONG_KEYS, t } from "./strings";
 import { duroosPath } from "./DarsCard";
 import { CalendarButton } from "./CalendarButton";
 import { AlertsButton } from "./AlertsButton";
+import { ShaykhBadge } from "./ShaykhBadge";
 
 type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>;
 type Shaykh = NonNullable<Awaited<ReturnType<typeof getShaykh>>>;
@@ -26,58 +27,72 @@ function daysText(l: Pick<Lesson, "days" | "daysLabelEn" | "daysLabelAr">, local
 export function ShaykhPage({ shaykh: s, locale }: { shaykh: Shaykh; locale: Locale }) {
   const ar = locale === "ar";
   return (
-    <div className="shell max-w-3xl pt-6 md:pt-10">
-      <DuroosNav locale={locale} />
-      <div className="card flex gap-4 p-4">
-        {s.photo ? (
-          <Image src={s.photo} alt={ar ? s.nameAr : s.nameEn} width={96} height={96} className="size-24 shrink-0 rounded-2xl object-cover" />
-        ) : (
-          <div className="grid size-24 shrink-0 place-items-center rounded-2xl bg-bg-2 text-muted">
-            <UserRound size={36} />
+    <>
+      <section className="lattice overflow-hidden bg-brand text-white">
+        <div className="shell flex flex-col gap-6 py-10 sm:flex-row sm:items-center md:py-14">
+          <ShaykhBadge nameAr={s.nameAr} photo={s.photo} size="lg" />
+          <div className="min-w-0">
+            <h1 className="font-heading text-3xl font-bold leading-tight md:text-5xl">{ar ? s.nameAr : s.nameEn}</h1>
+            {!ar && <p className="ar-text mt-1 text-xl text-white/80">{s.nameAr}</p>}
+            {(ar ? s.roleAr : s.roleEn) && <p className="mt-3 max-w-2xl text-white/85">{ar ? s.roleAr : s.roleEn}</p>}
           </div>
-        )}
-        <div className="min-w-0">
-          <h1 className="text-2xl font-semibold leading-tight">{ar ? s.nameAr : s.nameEn}</h1>
-          {!ar && <p className="ar-text mt-0.5 text-muted">{s.nameAr}</p>}
-          {(ar ? s.roleAr : s.roleEn) && <p className="mt-1.5 text-sm">{ar ? s.roleAr : s.roleEn}</p>}
+        </div>
+      </section>
+      <div className="shell mt-6 md:mt-8">
+        <DuroosNav locale={locale} />
+        <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <div>
+            {s.facts.length > 0 && (
+              <ul className="mb-8 grid gap-2">
+                {s.facts.map((f, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-gold-bright" />
+                    {ar ? f.ar : f.en}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <h2 className="mb-4 font-heading text-2xl font-bold">{t(locale, "lessons")}</h2>
+            <div className="grid gap-3 md:grid-cols-2">
+              {s.lessons.map((l) => (
+                <Link key={l.slug} href={duroosPath(locale, `/lesson/${l.slug}`)} className="group flex flex-col rounded-2xl border border-line bg-card p-4 transition-colors hover:border-primary/50">
+                  <p className="ar-text text-lg leading-snug">{l.bookAr}</p>
+                  {!ar && <p className="mt-0.5 text-sm text-muted group-hover:text-ink">{l.bookEn}</p>}
+                  <p className="mt-auto flex flex-wrap items-center gap-x-2 pt-3 text-xs text-muted">
+                    <span>{daysText(l, locale)}</span>
+                    <span>{t(locale, "after")} {t(locale, l.prayer)}</span>
+                    <span>{ar ? l.masjid.shortAr : l.masjid.shortEn}</span>
+                    {l.bookUrl && <span className="flex items-center gap-1 text-primary"><BookOpen size={12} /> {ar ? "الكتاب" : "Book"}</span>}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+          <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+            <div className="rounded-3xl border border-line bg-card p-5">
+              <p className="font-heading text-lg font-bold">{ar ? "تابع دروسه" : "Follow his duroos"}</p>
+              <AlertsButton topic={`shaykh:${s.slug}`} label={ar ? "تنبيه عند إلغاء أو تغيير دروسه" : "Alert me when his duroos change"} locale={locale} />
+              <CalendarButton feed={`shaykh-${s.slug}`} locale={locale} />
+            </div>
+            {s.channels.length > 0 && (
+              <div className="rounded-3xl border border-line bg-card p-5">
+                <p className="font-heading text-lg font-bold">{t(locale, "channels")}</p>
+                <ul className="mt-3 space-y-2">
+                  {s.channels.map((c) => (
+                    <li key={c.slug}>
+                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 rounded-xl bg-bg-2 px-3.5 py-2.5 text-sm font-semibold transition hover:bg-primary hover:text-primary-ink">
+                        {ar ? c.labelAr : c.labelEn}
+                        <ExternalLink size={14} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </aside>
         </div>
       </div>
-      {s.facts.length > 0 && (
-        <ul className="mt-3 grid gap-1.5 text-sm">
-          {s.facts.map((f, i) => (
-            <li key={i} className="flex gap-2">
-              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
-              {ar ? f.ar : f.en}
-            </li>
-          ))}
-        </ul>
-      )}
-      <h2 className="mt-7 mb-2.5 text-xl font-semibold">{t(locale, "lessons")}</h2>
-      <div className="grid gap-2">
-        {s.lessons.map((l) => (
-          <Link key={l.slug} href={duroosPath(locale, `/lesson/${l.slug}`)} className="card block p-3.5 transition hover:border-primary">
-            <p className="ar-text text-[15px]">{l.bookAr}</p>
-            {!ar && <p className="text-sm text-muted">{l.bookEn}</p>}
-            <p className="mt-1.5 text-xs text-muted">
-              {daysText(l, locale)} · {t(locale, "after")} {t(locale, l.prayer)} · {ar ? l.masjid.shortAr : l.masjid.shortEn}
-            </p>
-          </Link>
-        ))}
-      </div>
-      <AlertsButton topic={`shaykh:${s.slug}`} label={ar ? "تنبيه عند إلغاء أو تغيير دروسه" : "Alert me when his duroos change"} locale={locale} />
-      <CalendarButton feed={`shaykh-${s.slug}`} locale={locale} />
-      {s.channels.length > 0 && (
-        <>
-          <h2 className="mt-7 mb-2.5 text-xl font-semibold">{t(locale, "channels")}</h2>
-          {s.channels.map((c) => (
-            <a key={c.slug} href={c.url} target="_blank" rel="noopener noreferrer" className="card flex items-center justify-between p-3.5 text-sm font-semibold">
-              {ar ? c.labelAr : c.labelEn}
-              <ExternalLink size={15} className="text-muted" />
-            </a>
-          ))}
-        </>
-      )}
-    </div>
+    </>
   );
 }
 
@@ -85,71 +100,93 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
   const ar = locale === "ar";
   const today = riyadhDateIso();
   const adhan = prayerTimes(today)[l.prayer];
+  const streamHref = l.stream ? (l.stream.isLive && l.stream.liveUrl ? l.stream.liveUrl : l.stream.url) : null;
+  const streamKind = l.stream ? ({ youtube: ar ? "فيديو على يوتيوب" : "Video on YouTube", mixlr: ar ? "صوت على Mixlr" : "Audio on Mixlr", web: ar ? "بث على الموقع" : "Broadcast online" } as Record<string, string>)[l.stream.kind] ?? (ar ? "بث مباشر" : "Live broadcast") : null;
   return (
-    <div className="shell max-w-3xl pt-6 md:pt-10">
-      <DuroosNav locale={locale} />
-      <p className="ar-text text-2xl font-bold leading-snug">{l.bookAr}</p>
-      {!ar && <h1 className="mt-1 text-2xl font-semibold leading-tight">{l.bookEn}</h1>}
-      {ar && <h1 className="sr-only">{l.bookAr}</h1>}
-      {(ar ? l.bookAuthorAr : l.bookAuthorEn) && (
-        <p className="mt-1 text-sm text-muted">
-          {t(locale, "by")} {ar ? l.bookAuthorAr : l.bookAuthorEn}
-        </p>
-      )}
-      <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="card mt-4 flex items-center gap-3 p-3 transition hover:border-primary">
-        {l.shaykh.photo ? (
-          <Image src={l.shaykh.photo} alt="" width={48} height={48} className="size-12 rounded-xl object-cover" />
-        ) : (
-          <span className="grid size-12 place-items-center rounded-xl bg-bg-2 text-muted"><UserRound size={22} /></span>
-        )}
-        <span className="font-semibold">{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
-      </Link>
-      <dl className="card mt-3 divide-y divide-line">
-        <Item icon={<CalendarDays size={16} />} label={t(locale, "days")} value={daysText(l, locale)} />
-        <Item
-          icon={<Radio size={16} />}
-          label={`${t(locale, "after")} ${t(locale, l.prayer)}`}
-          value={`${t(locale, "adhan")} ${formatClock(adhan, locale)} · ${t(locale, "afterIqamah")}`}
-        />
-        <Item icon={<MapPin size={16} />} label={t(locale, "location")} value={`${ar ? l.masjid.nameAr : l.masjid.nameEn}${ar ? "، " : ", "}${ar ? l.locationAr : l.locationEn}`} />
-      </dl>
-      {(ar ? l.noteAr : l.noteEn) && <p className="mt-3 rounded-xl bg-bg-2 p-3 text-sm">{ar ? l.noteAr : l.noteEn}</p>}
-      {(ar ? l.sequenceAr : l.sequenceEn) && <p className="mt-2 text-sm text-muted">{ar ? l.sequenceAr : l.sequenceEn}</p>}
-      {l.stream && (
-        <a href={l.stream.isLive && l.stream.liveUrl ? l.stream.liveUrl : l.stream.url} target="_blank" rel="noopener noreferrer"
-          className="mt-4 flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 font-semibold text-primary-ink">
-          <Radio size={17} /> {l.stream.isLive ? t(locale, "watchLive") : t(locale, "listen")}
-        </a>
-      )}
-      <AlertsButton topic={`shaykh:${l.shaykh.slug}`} label={ar ? "تنبيه عند إلغاء أو تغيير الدرس" : "Alert me if this dars changes"} locale={locale} />
-      <CalendarButton feed={`lesson-${l.slug}`} locale={locale} />
-      <h2 className="mt-7 mb-2 text-lg font-semibold">{t(locale, "history")}</h2>
-      {l.history.length === 0 ? (
-        <p className="text-sm text-muted">{t(locale, "noHistory")}</p>
-      ) : (
-        <ul className="card divide-y divide-line">
-          {l.history.map((h) => (
-            <li key={h.id} className="p-3 text-sm">
-              <span className="font-semibold">{t(locale, (h.kind === "cancelled" ? "cancelled" : h.kind === "postponed" ? "postponed" : h.kind === "resumed" ? "resumed" : h.kind === "moved" ? "moved" : "on"))}</span>{" "}
-              · {formatHijri(h.startsOn, locale, { bracket: true, weekday: true })}
-              {(ar ? h.noteAr : h.noteEn) && <p className="text-muted">{ar ? h.noteAr : h.noteEn}</p>}
-              {h.revokedAt && <p className="text-xs text-muted">{ar ? "أُلغي هذا التحديث" : "This change was withdrawn"}</p>}
-            </li>
-          ))}
-        </ul>
-      )}
-      <p className="mt-6 text-xs text-muted">{t(locale, "today")}: {formatHijri(today, locale, { weekday: true })}</p>
-    </div>
+    <>
+      <section className="lattice overflow-hidden bg-brand text-white">
+        <div className="shell py-10 md:py-14">
+          <p className="ar-text text-3xl font-bold leading-snug md:text-5xl">{l.bookAr}</p>
+          {!ar && <h1 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-4xl">{l.bookEn}</h1>}
+          {ar && <h1 className="sr-only">{l.bookAr}</h1>}
+          {(ar ? l.bookAuthorAr : l.bookAuthorEn) && <p className="mt-2 text-white/75">{t(locale, "by")} {ar ? l.bookAuthorAr : l.bookAuthorEn}</p>}
+          <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="mt-6 inline-flex items-center gap-3 rounded-2xl bg-white/10 py-2 pe-5 ps-2 ring-1 ring-white/15 transition hover:bg-white/15">
+            <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
+            <span className="font-semibold">{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
+          </Link>
+        </div>
+      </section>
+      <div className="shell mt-6 md:mt-8">
+        <DuroosNav locale={locale} />
+        <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <div>
+            <dl className="divide-y divide-line overflow-hidden rounded-3xl border border-line bg-card">
+              <Item icon={<CalendarDays size={18} />} label={t(locale, "days")} value={daysText(l, locale)} />
+              <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={`${t(locale, "adhan")} ${formatClock(adhan, locale)}. ${t(locale, "afterIqamah")}.`} />
+              <Item icon={<MapPin size={18} />} label={t(locale, "location")} value={`${ar ? l.masjid.nameAr : l.masjid.nameEn}${ar ? "، " : ", "}${ar ? l.locationAr : l.locationEn}`} />
+            </dl>
+            {(ar ? l.noteAr : l.noteEn) && <p className="mt-4 rounded-2xl bg-bg-2 p-4 text-sm">{ar ? l.noteAr : l.noteEn}</p>}
+            {(ar ? l.sequenceAr : l.sequenceEn) && <p className="mt-3 text-sm text-muted">{ar ? l.sequenceAr : l.sequenceEn}</p>}
+            <h2 className="mt-10 mb-3 font-heading text-2xl font-bold">{t(locale, "history")}</h2>
+            {l.history.length === 0 ? (
+              <p className="text-sm text-muted">{t(locale, "noHistory")}</p>
+            ) : (
+              <ul className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-card">
+                {l.history.map((h) => (
+                  <li key={h.id} className="p-4 text-sm">
+                    <span className="font-semibold">{t(locale, (h.kind === "cancelled" ? "cancelled" : h.kind === "postponed" ? "postponed" : h.kind === "resumed" ? "resumed" : h.kind === "moved" ? "moved" : "on"))}</span>
+                    {", "}
+                    {formatHijri(h.startsOn, locale, { bracket: true, weekday: true })}
+                    {(ar ? h.noteAr : h.noteEn) && <p className="text-muted">{ar ? h.noteAr : h.noteEn}</p>}
+                    {h.revokedAt && <p className="text-xs text-muted">{ar ? "أُلغي هذا التحديث" : "This change was withdrawn"}</p>}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="mt-6 text-xs text-muted">{t(locale, "today")}: {formatHijri(today, locale, { weekday: true })}</p>
+          </div>
+          <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+            {l.bookUrl && (
+              <a href={l.bookUrl} target="_blank" rel="noopener noreferrer" className="group block rounded-3xl border border-line bg-card p-5 transition-colors hover:border-primary/50">
+                <span className="flex items-center gap-3">
+                  <span className="grid size-11 place-items-center rounded-2xl bg-gold-bg text-gold"><BookOpen size={20} /></span>
+                  <span>
+                    <span className="block font-heading text-lg font-bold">{ar ? "اقرأ الكتاب" : "Read the book"}</span>
+                    <span className="block text-sm text-muted">{ar ? "قارئ إلكتروني مع ملف PDF" : "Online reader, with a PDF to download"}</span>
+                  </span>
+                </span>
+                <span className="mt-3 flex items-center gap-1.5 text-sm font-semibold text-primary">turath.io <ExternalLink size={13} /></span>
+              </a>
+            )}
+            {l.stream && streamHref && (
+              <a href={streamHref} target="_blank" rel="noopener noreferrer" className={`block rounded-3xl p-5 transition ${l.stream.isLive ? "bg-live text-white" : "border border-line bg-card hover:border-primary/50"}`}>
+                <span className="flex items-center gap-3">
+                  <span className={`grid size-11 place-items-center rounded-2xl ${l.stream.isLive ? "bg-white/20" : "bg-primary-soft text-primary"}`}><Radio size={20} /></span>
+                  <span>
+                    <span className="block font-heading text-lg font-bold">{l.stream.isLive ? t(locale, "watchLive") : ar ? "أين يُبث" : "Where it's broadcast"}</span>
+                    <span className={`block text-sm ${l.stream.isLive ? "text-white/85" : "text-muted"}`}>{streamKind}{(ar ? l.stream.labelAr : l.stream.labelEn) ? `: ${ar ? l.stream.labelAr : l.stream.labelEn}` : ""}</span>
+                  </span>
+                </span>
+              </a>
+            )}
+            <div className="rounded-3xl border border-line bg-card p-5">
+              <AlertsButton topic={`shaykh:${l.shaykh.slug}`} label={ar ? "تنبيه عند إلغاء أو تغيير الدرس" : "Alert me if this dars changes"} locale={locale} />
+              <CalendarButton feed={`lesson-${l.slug}`} locale={locale} />
+            </div>
+          </aside>
+        </div>
+      </div>
+    </>
   );
 }
 
 function Item({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <div className="flex gap-3 p-3.5">
+    <div className="flex gap-4 p-4 md:p-5">
       <span className="mt-0.5 text-primary">{icon}</span>
       <div>
-        <dt className="text-xs font-semibold uppercase tracking-wide text-muted">{label}</dt>
-        <dd className="text-sm">{value}</dd>
+        <dt className="text-sm font-semibold text-muted">{label}</dt>
+        <dd className="mt-0.5">{value}</dd>
       </div>
     </div>
   );

@@ -120,7 +120,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
       <div className="border-t border-white/10">
         <div className="shell flex flex-wrap items-center justify-between gap-3 py-5 text-sm text-white/70">
           <p>
-            {ar ? "تحتاج مساعدة أو عندك اقتراح؟ تواصل معنا على " : "Need any assistance, or have a suggestion? Reach out on "}
+            {ar ? "تحتاج مساعدة أو عندك اقتراح؟ راسل مالك الموقع على واتساب: " : "Need any assistance, or have a suggestion? Please message the owner on WhatsApp at "}
             <a href={`https://wa.me/${helpContact.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold-bright hover:underline" dir="ltr">
               {helpContact}
             </a>

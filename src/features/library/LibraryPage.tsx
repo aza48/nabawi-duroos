@@ -56,7 +56,7 @@ export function LibraryPage({ takhleesHref, helpContact }: { takhleesHref: strin
             <div>
               <p className="font-heading text-2xl font-bold">Have a takhlees you think will benefit?</p>
               <p className="mt-2 max-w-xl text-white/80">
-                Please send it to {helpContact} and we will review and upload it. May Allah write your reward!
+                Please send it to the owner on WhatsApp at <span dir="ltr" className="font-semibold text-gold-bright">{helpContact}</span> and we will review and upload it. May Allah write your reward!
               </p>
             </div>
             <a href={takhleesHref} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex shrink-0 items-center gap-2 rounded-full bg-gold-bright px-5 py-3 font-bold text-brand-deep transition hover:brightness-105 md:mt-0">

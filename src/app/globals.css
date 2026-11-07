@@ -177,8 +177,9 @@ a { -webkit-tap-highlight-color: transparent; }
 
 /* Container (in a layer so utilities like max-w-3xl can narrow it) */
 @layer components {
-  .shell { margin-inline: auto; width: 100%; max-width: 80rem; padding-inline: 1rem; }
+  .shell { margin-inline: auto; width: 100%; max-width: 88rem; padding-inline: 1rem; }
   @media (min-width: 768px) { .shell { padding-inline: 2rem; } }
+  @media (min-width: 1700px) { .shell { max-width: 100rem; padding-inline: 3rem; } }
 }
 
 /* Sky behind the day arc, shifting with the time of day */

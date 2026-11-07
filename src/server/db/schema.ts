@@ -63,6 +63,8 @@ export const lessons = pgTable(
     noteAr: text("note_ar"),
     sequenceEn: text("sequence_en"),
     sequenceAr: text("sequence_ar"),
+    /** Where to read the book being taught (an online reader with a PDF). */
+    bookUrl: text("book_url"),
     status: text("status").$type<LessonStatus>().notNull().default("active"),
     validFrom: date("valid_from"),
     validTo: date("valid_to"),

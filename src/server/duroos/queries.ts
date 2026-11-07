@@ -14,7 +14,7 @@ export type StreamRow = typeof streams.$inferSelect;
 export type AnnouncementRow = typeof announcements.$inferSelect;
 export type OverrideRow = typeof lessonOverrides.$inferSelect;
 
-export type StreamRef = { url: string; kind: StreamRow["kind"]; isLive: boolean; liveUrl: string | null };
+export type StreamRef = { url: string; kind: StreamRow["kind"]; isLive: boolean; liveUrl: string | null; labelEn?: string; labelAr?: string };
 
 export type ScheduleRow = LessonRow & {
   shaykh: Pick<ShaykhRow, "slug" | "nameEn" | "nameAr" | "photo">;
@@ -58,7 +58,7 @@ function pickStream(all: StreamRow[], l: { masjidId: string; shaykhId: number })
     all.find((x) => x.masjidId === l.masjidId && x.kind === "youtube") ??
     all.find((x) => x.masjidId === l.masjidId) ??
     all.find((x) => x.shaykhId === l.shaykhId);
-  return s ? { url: s.url, kind: s.kind, isLive: s.isLive, liveUrl: s.liveUrl } : null;
+  return s ? { url: s.url, kind: s.kind, isLive: s.isLive, liveUrl: s.liveUrl, labelEn: s.labelEn, labelAr: s.labelAr } : null;
 }
 
 function toOverrideLike(o: OverrideRow): OverrideLike {
