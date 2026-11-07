@@ -8,3 +8,7 @@ dist/
 *.log
 .DS_Store
 data/pending.json
+.data/
+.superpowers/
+next-env.d.ts
+*.tsbuildinfo

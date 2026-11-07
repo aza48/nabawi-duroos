@@ -112,7 +112,7 @@ Old `src/**` (except data moved to `src/server/seed/legacy/`), `scripts/poll-tel
 
 **Interfaces:** Produces scripts `dev`, `build`, `start`, `test` (`vitest run`), `typecheck` (`tsc --noEmit`), `db:generate` (`drizzle-kit generate`), `seed` (`tsx src/server/seed/run.ts`).
 
-- [ ] Step 1: Write `tests/smoke.test.ts` asserting `import("@/server/seed/legacy/lessons")` exposes `LESSONS` with length 90.
+- [ ] Step 1: Write `tests/smoke.test.ts` asserting `import("@/server/seed/legacy/lessons")` exposes `LESSONS` with length 45.
 - [ ] Step 2: Install deps at the versions in Tech Stack (+ `tsx`, `@types/node`, `@types/react`, `@tailwindcss/postcss`); path alias `@/*` → `src/*`.
 - [ ] Step 3: Run `npm test` → PASS; `npm run typecheck` → 0 errors; `npm run build` → success.
 - [ ] Step 4: Commit `chore: scaffold MESH v2 on Next 16, move verified legacy data`.
@@ -168,7 +168,7 @@ Old `src/**` (except data moved to `src/server/seed/legacy/`), `scripts/poll-tel
 
 Rules: masjids from legacy `MASJIDS` (7). Shaykhs deduplicated by Arabic name; slug from English name (lowercase, strip honorifics "Prof. Dr.", "Shaykh", "Dr.", dashes). Profiles joined by Arabic name. Lesson slug = legacy `id`. Legacy `status` `cancelled|paused|guest` → lesson `active` + no override unless the legacy note states dates (keep `note_*`). Quba lessons get `valid_from/valid_to` from `QUBA_PERIOD` (1/4/1448–30/6/1448 via `hijriIsoBounds`). Announcements → `status: "archived"` if `expired` else `"published"`, `origin` n/a. Streams from `NABAWI_YOUTUBE` (kind youtube, `check_url` = live URL), `DAR_HIJRAH_STREAM` (telegram) and the Telegram channel list in `streams.ts`. Setting `whatsapp_invite_url` seeded with the Global Constraints value.
 
-- [ ] Step 1: Tests on `resetTestDb()`: counts `{ masjids: 7, lessons: 90 }`, shaykhs ≥ 20 and every lesson has a shaykh; running twice yields the same counts; `ruh-dalil` has `days [4,5,6]`, prayer `asr`, masjid `nabawi`; one Quba lesson has `valid_to` equal to `hijriIsoBounds(1448,6,30)`; setting `whatsapp_invite_url` equals the constant; shaykh "al-Ruhayli" has a photo path.
+- [ ] Step 1: Tests on `resetTestDb()`: counts `{ masjids: 7, lessons: 45 }`, shaykhs ≥ 20 and every lesson has a shaykh; running twice yields the same counts; `ruh-dalil` has `days [4,5,6]`, prayer `asr`, masjid `nabawi`; one Quba lesson has `valid_to` equal to `hijriIsoBounds(1448,6,30)`; setting `whatsapp_invite_url` equals the constant; shaykh "al-Ruhayli" has a photo path.
 - [ ] Step 2: FAIL → Step 3 implement (`run.ts` = getDb + migrate + importLegacy, logs counts) → Step 4 PASS. Commit `feat: import verified legacy schedule data`.
 
 ### Task 5: Schedule engine (pure)
