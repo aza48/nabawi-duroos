@@ -1,0 +1,130 @@
+/**
+ * The course books students have collected for each college and the Ma'had, read from the public
+ * Google Drive folders they live in (refresh with scripts/library-crawl). Every file opens on a
+ * MESH reader page, so nobody has to dig through Drive.
+ */
+import data from "./library-books.json";
+import { normalize } from "@/lib/search/normalize";
+
+export type LibFile = { id: string; t: string; k: "pdf" | "img" | "video" | "audio" | "doc" | "other"; m?: string };
+export type LibFolder = { id: string; t: string; f: LibNode[] };
+export type LibNode = LibFile | LibFolder;
+export const isFolder = (n: LibNode): n is LibFolder => "f" in n;
+
+export type Collection = {
+  slug: string;
+  title: string;
+  titleAr: string;
+  group: "college" | "mahad";
+  blurb: string;
+  /** The Drive folder the files come from, for "see the source". */
+  source: string;
+};
+
+export const COLLECTIONS: Collection[] = [
+  { slug: "sharia", title: "Sharia", titleAr: "كلية الشريعة", group: "college", blurb: "Fiqh, usul al-fiqh, the evidences and the legal verses and hadith, level by level.", source: "1RXBfiSCzB0oh1Z3esU96xeWA0TVUgX18" },
+  { slug: "hadith", title: "Hadith and Islamic Studies", titleAr: "كلية الحديث الشريف والدراسات الإسلامية", group: "college", blurb: "Hadith texts, mustalah, takhrij and the narrators, level by level.", source: "1KXm3_LkFeHRBWKuH_VjYWnwKbQJ8ZEqO" },
+  { slug: "dawah", title: "Da'wah and Usul ad-Din", titleAr: "كلية الدعوة وأصول الدين", group: "college", blurb: "Aqeedah, sects and religions, and da'wah methods, level by level.", source: "1MYxRBxcSXh33t8YdguvvxDFOJzB9Bbis" },
+  { slug: "quran", title: "Qur'an and Islamic Studies", titleAr: "كلية القرآن الكريم والدراسات الإسلامية", group: "college", blurb: "Tafsir, Qur'anic sciences, tajwid and the qira'at, level by level.", source: "18uSzFiDHqIJAAenxzNzzKsVNqkmFnA1p" },
+  { slug: "arabic", title: "Arabic Language", titleAr: "كلية اللغة العربية", group: "college", blurb: "Nahw, sarf, balaghah and literature, level by level.", source: "1fz6awGKUbvuaKCHVP6t0R2E_9aeYChxA" },
+  { slug: "law", title: "Law", titleAr: "الأنظمة والقانون", group: "college", blurb: "Saudi systems and law courses.", source: "1bODk8LjJ9O-5F9f0Owlo8oMNBiH0qcyg" },
+  { slug: "education", title: "Education", titleAr: "كلية التربية", group: "college", blurb: "Education college course files.", source: "1rp4AsqG_wZ2Az0FRMrTzsmFpKgY8RShC" },
+  { slug: "mahad", title: "Arabic Language Institute (Ma'had)", titleAr: "معهد تعليم اللغة العربية لغير الناطقين بها", group: "mahad", blurb: "The textbooks for every level, the new six-level books, the student guide, regulations and extra practice.", source: "1yqzf3ud2WA-YkVUWoF2lVneLNxZof7mx" },
+];
+
+const TREES = data as unknown as Record<string, LibFolder>;
+export const treeOf = (slug: string): LibFolder | null => (TREES[slug]?.f.length ? TREES[slug] : null);
+export const LIVE_COLLECTIONS = COLLECTIONS.filter((c) => treeOf(c.slug));
+
+export const countFiles = (n: LibNode): number => (isFolder(n) ? n.f.reduce((a, c) => a + countFiles(c), 0) : 1);
+
+/** "المستوى 3" reads as "Level 3"; other folder names stay as they are. */
+const ORDINALS: Record<string, number> = { الاول: 1, الأول: 1, الثاني: 2, الثالث: 3, الرابع: 4, الخامس: 5, السادس: 6, السابع: 7, الثامن: 8 };
+export function levelLabel(t: string): string | null {
+  const s = t.replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d))).trim();
+  const m = /^المستوى\s*(\d+|\S+)$/.exec(s);
+  if (!m) return null;
+  const n = /^\d+$/.test(m[1]) ? Number(m[1]) : ORDINALS[m[1]];
+  return n ? `Level ${n}` : null;
+}
+
+/** A plain English hint for an Arabic subject name, so non-Arab students know what a folder holds. */
+const HINTS: [RegExp, string][] = [
+  [/أصول الفقه/, "Usul al-fiqh (principles of fiqh)"],
+  [/القواعد الفقهية/, "Legal maxims"],
+  [/آيات الأحكام/, "Tafsir of the legal verses"],
+  [/أحاديث الأحكام/, "Hadith of rulings"],
+  [/أدلة الأحكام/, "Evidences for rulings"],
+  [/الحكم الشرعي/, "The Sharia ruling (usul)"],
+  [/الفرائض|المواريث/, "Inheritance (fara'id)"],
+  [/فقه/, "Fiqh"],
+  [/التوحيد/, "Tawhid (creed)"],
+  [/العقيدة/, "Aqeedah (creed)"],
+  [/مصطلح/, "Hadith terminology (mustalah)"],
+  [/التخريج|دراسة الأسانيد/, "Takhrij and isnad study"],
+  [/الجرح والتعديل|الرجال/, "Narrator criticism"],
+  [/الحديث/, "Hadith"],
+  [/علوم القرآن/, "Qur'anic sciences"],
+  [/التجويد/, "Tajwid"],
+  [/القراءات/, "The qira'at"],
+  [/التفسير|تفسير/, "Tafsir"],
+  [/القرآن/, "Qur'an"],
+  [/النحو/, "Arabic grammar (nahw)"],
+  [/الصرف/, "Morphology (sarf)"],
+  [/البلاغة/, "Rhetoric (balaghah)"],
+  [/العروض/, "Prosody"],
+  [/الأدب/, "Arabic literature"],
+  [/التحرير|الكتابة|الإملاء/, "Arabic writing"],
+  [/السيرة/, "Sirah"],
+  [/الفرق|الأديان|المذاهب/, "Sects and religions"],
+  [/الدعوة/, "Da'wah"],
+  [/القيم/, "Islamic values"],
+  [/الثقافة/, "Islamic culture"],
+  [/تاريخ/, "History"],
+  [/مناهج البحث/, "Research methods"],
+  [/الأنظمة|القضاء|القضائية|الدعوى/, "Saudi law and the courts"],
+  [/الاقتصاد/, "Economics"],
+  [/الإنجليزية/, "English"],
+  [/الحاسب/, "Computing"],
+  [/التربية/, "Education"],
+  [/النفس/, "Psychology"],
+];
+export const subjectHint = (t: string): string | null => HINTS.find(([re]) => re.test(t))?.[1] ?? null;
+
+export type FileHit = { file: LibFile; collection: Collection; path: LibFolder[] };
+
+/** Every file with its collection and the folders above it. Built once per server instance. */
+let index: Map<string, FileHit> | null = null;
+export function fileIndex(): Map<string, FileHit> {
+  if (index) return index;
+  index = new Map();
+  for (const c of LIVE_COLLECTIONS) {
+    const walk = (n: LibNode, path: LibFolder[]) => {
+      if (isFolder(n)) n.f.forEach((x) => walk(x, [...path, n]));
+      else index!.set(n.id, { file: n, collection: c, path });
+    };
+    walk(treeOf(c.slug)!, []);
+  }
+  return index;
+}
+
+const fold = (s: string) => normalize(s.replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d))));
+
+/** Files whose name, subject, level or college match every word typed. */
+export function searchFiles(q: string, limit = 60): FileHit[] {
+  const words = fold(q).split(" ").filter(Boolean);
+  if (!words.length) return [];
+  const out: FileHit[] = [];
+  for (const hit of fileIndex().values()) {
+    const hay = fold([hit.file.t, ...hit.path.map((p) => `${p.t} ${levelLabel(p.t) ?? ""} ${subjectHint(p.t) ?? ""}`), hit.collection.title, hit.collection.titleAr].join(" "));
+    if (words.every((w) => hay.includes(w))) out.push(hit);
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+
+export const driveLinks = (id: string) => ({
+  preview: `https://drive.google.com/file/d/${id}/preview`,
+  view: `https://drive.google.com/file/d/${id}/view`,
+  download: `https://drive.google.com/uc?export=download&id=${id}`,
+});
