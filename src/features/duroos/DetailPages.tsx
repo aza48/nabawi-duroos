@@ -10,6 +10,7 @@ import { EmptyState } from "@/components/ui";
 import { DuroosNav } from "./DuroosNav";
 import { DAY_LONG_KEYS, t } from "./strings";
 import { duroosPath } from "./DarsCard";
+import { CalendarButton } from "./CalendarButton";
 
 type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>;
 type Shaykh = NonNullable<Awaited<ReturnType<typeof getShaykh>>>;
@@ -62,6 +63,7 @@ export function ShaykhPage({ shaykh: s, locale }: { shaykh: Shaykh; locale: Loca
           </Link>
         ))}
       </div>
+      <CalendarButton feed={`shaykh-${s.slug}`} locale={locale} />
       {s.channels.length > 0 && (
         <>
           <h2 className="mt-7 mb-2.5 text-xl font-semibold">{t(locale, "channels")}</h2>
@@ -117,6 +119,7 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
           <Radio size={17} /> {l.stream.isLive ? t(locale, "watchLive") : t(locale, "listen")}
         </a>
       )}
+      <CalendarButton feed={`lesson-${l.slug}`} locale={locale} />
       <h2 className="mt-7 mb-2 text-lg font-semibold">{t(locale, "history")}</h2>
       {l.history.length === 0 ? (
         <p className="text-sm text-muted">{t(locale, "noHistory")}</p>
