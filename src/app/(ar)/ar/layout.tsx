@@ -4,7 +4,7 @@ import { fontVariables } from "../../fonts";
 import { ThemeScript } from "@/components/shell/ThemeScript";
 import { SiteShell } from "@/components/shell/SiteShell";
 import { getDb } from "@/server/db/client";
-import { getWhatsAppUrl } from "@/server/settings";
+import { getHelpContact, getWhatsAppUrl } from "@/server/settings";
 import { SITE_URL } from "@/lib/site";
 import { htmlAttrs } from "@/lib/locale";
 
@@ -24,14 +24,15 @@ export const viewport: Viewport = {
 
 
 export default async function ArabicLayout({ children }: { children: React.ReactNode }) {
-  const whatsappUrl = await getWhatsAppUrl(await getDb());
+  const db = await getDb();
+  const [whatsappUrl, helpContact] = await Promise.all([getWhatsAppUrl(db), getHelpContact(db)]);
   return (
     <html {...htmlAttrs("ar")} className={fontVariables} suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
       <body>
-        <SiteShell locale="ar" whatsappUrl={whatsappUrl}>
+        <SiteShell locale="ar" whatsappUrl={whatsappUrl} helpContact={helpContact}>
           {children}
         </SiteShell>
       </body>

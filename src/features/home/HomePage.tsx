@@ -6,6 +6,7 @@ import type { GuideStage } from "@/server/db/schema";
 import { WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { TodayHero } from "./TodayHero";
 import { DuroosByPrayer } from "./DuroosByPrayer";
+import { KeyDates } from "./KeyDates";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
@@ -28,6 +29,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
   return (
     <>
       <TodayHero today={today} locale="en" />
+      <KeyDates />
 
       <div className="shell mt-10 grid gap-10 md:mt-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
         <div id="live">

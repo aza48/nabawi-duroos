@@ -38,7 +38,7 @@ export type TodayLesson = {
   stream: StreamRef | null;
 };
 
-async function scheduleRows(db: Db): Promise<ScheduleRow[]> {
+export async function scheduleRows(db: Db): Promise<ScheduleRow[]> {
   const rows = await db
     .select({ lesson: lessons, shaykh: shaykhs, masjid: masjids })
     .from(lessons)

@@ -15,7 +15,7 @@ export function WhatsAppFab({ url }: { url: string }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Join the MESH WhatsApp group"
-      className="fixed end-4 z-40 grid size-14 place-items-center rounded-full bg-wa text-white shadow-lg shadow-black/25 transition hover:scale-105 md:bottom-6"
+      className="fixed end-4 z-40 grid size-14 place-items-center rounded-full bg-wa text-white shadow-lg shadow-black/25 transition hover:scale-105 lg:bottom-6"
       style={{ bottom: "calc(5.25rem + env(safe-area-inset-bottom))" }}
     >
       <WhatsAppIcon size={28} />

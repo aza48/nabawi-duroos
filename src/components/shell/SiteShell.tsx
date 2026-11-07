@@ -4,14 +4,17 @@ import { BottomNav, DesktopNav } from "./BottomNav";
 import { ThemeToggle } from "./ThemeToggle";
 import { WhatsAppFab, WhatsAppIcon } from "./WhatsApp";
 import { Wordmark } from "./Wordmark";
+import { SearchPalette } from "@/features/search/SearchUI";
 
 export function SiteShell({
   locale,
   whatsappUrl,
+  helpContact,
   children,
 }: {
   locale: Locale;
   whatsappUrl: string;
+  helpContact: string;
   children: React.ReactNode;
 }) {
   const ar = locale === "ar";
@@ -27,11 +30,12 @@ export function SiteShell({
           </Link>
           <DesktopNav locale={locale} />
           <div className="flex items-center gap-2">
+            <SearchPalette />
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden items-center gap-2 rounded-full bg-wa px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105 lg:flex"
+              className="hidden items-center gap-2 rounded-full bg-wa px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105 xl:flex"
             >
               <WhatsAppIcon size={17} /> {ar ? "انضم للمجموعة" : "Join the group"}
             </a>
@@ -39,17 +43,17 @@ export function SiteShell({
           </div>
         </div>
       </header>
-      <main id="main" className="pb-safe md:pb-0">
+      <main id="main" className="pb-safe lg:pb-0">
         {children}
       </main>
-      <Footer locale={locale} whatsappUrl={whatsappUrl} />
+      <Footer locale={locale} whatsappUrl={whatsappUrl} helpContact={helpContact} />
       <WhatsAppFab url={whatsappUrl} />
       <BottomNav locale={locale} />
     </>
   );
 }
 
-function Footer({ locale, whatsappUrl }: { locale: Locale; whatsappUrl: string }) {
+function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsappUrl: string; helpContact: string }) {
   const ar = locale === "ar";
   const cols = [
     {
@@ -64,15 +68,18 @@ function Footer({ locale, whatsappUrl }: { locale: Locale; whatsappUrl: string }
     {
       title: ar ? "الحياة في المدينة" : "Life in Madinah",
       links: [
+        [ar ? "الدراسة في المدينة" : "Study programmes", "/programs"],
         [ar ? "الأدلة" : "Guides", "/guides"],
+        [ar ? "مكتبة الجامعة" : "Jamiah library", "/library"],
+        [ar ? "الخصومات" : "Student discounts", "/discounts"],
         [ar ? "الأسئلة الشائعة" : "Questions", "/ask"],
         [ar ? "المزيد" : "More", "/more"],
       ],
     },
   ];
   return (
-    <footer className="lattice mt-16 hidden bg-brand-deep text-white md:block">
-      <div className="shell grid grid-cols-[1.4fr_1fr_1fr_1.2fr] gap-10 py-14">
+    <footer className="lattice mt-16 bg-brand-deep text-white">
+      <div className="shell grid gap-8 py-12 sm:grid-cols-2 md:py-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
         <div>
           <Wordmark tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">
@@ -111,7 +118,15 @@ function Footer({ locale, whatsappUrl }: { locale: Locale; whatsappUrl: string }
         </div>
       </div>
       <div className="border-t border-white/10">
-        <p className="shell py-5 text-xs text-white/55">medinahub.org</p>
+        <div className="shell flex flex-wrap items-center justify-between gap-3 py-5 text-sm text-white/70">
+          <p>
+            {ar ? "تحتاج مساعدة أو عندك اقتراح؟ تواصل معنا على " : "Need any assistance, or have a suggestion? Reach out on "}
+            <a href={`https://wa.me/${helpContact.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold-bright hover:underline" dir="ltr">
+              {helpContact}
+            </a>
+          </p>
+          <p className="text-xs text-white/50">medinahub.org</p>
+        </div>
       </div>
     </footer>
   );

@@ -1,11 +1,17 @@
 import Link from "next/link";
-import { ArrowUpRight, Bell, BookOpen, CalendarDays, CircleCheck, Flag, Languages, Radio, ScrollText } from "lucide-react";
+import { ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, CircleCheck, Flag, GraduationCap, Languages, Library, Radio, ScrollText } from "lucide-react";
 import type { FaqRow, GuideRow } from "@/server/content/queries";
 import { FAQ_CATEGORIES, GUIDE_STAGES } from "@/server/content/queries";
 import { sanitizeArticleHtml } from "@/lib/sanitize";
 import { PageBand } from "@/components/ui";
 import { STAGE_ICON } from "@/features/home/HomePage";
 import { FaqExplorer } from "./FaqExplorer";
+import { GuideBody } from "./GuideBody";
+import { enhanceGuideHtml } from "@/lib/guide-html";
+import { JsonLd, ORG_ID, breadcrumbs } from "@/components/JsonLd";
+import { abs } from "@/lib/site";
+
+const plain = (html: string) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 import { AskOnWhatsApp, WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 
@@ -15,6 +21,13 @@ const verified = (d: Date | null) =>
 export function AskPage({ faqs, whatsappUrl }: { faqs: FaqRow[]; whatsappUrl: string }) {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.question, url: abs(`/ask/${f.slug}`), acceptedAnswer: { "@type": "Answer", text: plain(f.answerHtml) } })),
+        }}
+      />
       <PageBand title="Questions, answered" subtitle="Verified answers to what students ask most, kept up to date by the MESH team." />
       <div className="shell mt-8 md:mt-12">
         <FaqExplorer items={faqs.map((f) => ({ slug: f.slug, question: f.question, category: f.category }))} categories={FAQ_CATEGORIES} />
@@ -38,6 +51,12 @@ export function FaqPage({ faq, whatsappUrl }: { faq: FaqRow; whatsappUrl: string
   const cat = FAQ_CATEGORIES.find((c) => c.id === faq.category);
   return (
     <article className="shell max-w-3xl pt-6 md:pt-10">
+      <JsonLd
+        data={[
+          { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [{ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: plain(faq.answerHtml) } }], dateModified: faq.updatedAt },
+          breadcrumbs([["Ask", "/ask"], [faq.question, `/ask/${faq.slug}`]]),
+        ]}
+      />
       <Link href="/ask" className="text-sm font-medium text-muted">← {cat?.label ?? "Ask"}</Link>
       <h1 className="mt-2 text-3xl font-semibold leading-tight">{faq.question}</h1>
       {verified(faq.lastVerifiedAt) && (
@@ -108,22 +127,65 @@ export function GuidesPage({ guides }: { guides: GuideRow[] }) {
 }
 
 export function GuidePage({ guide, whatsappUrl }: { guide: GuideRow; whatsappUrl: string }) {
-  const stage = GUIDE_STAGES.find((s) => s.id === guide.stage);
+  const stage = GUIDE_STAGES.find((st) => st.id === guide.stage);
+  const Icon = STAGE_ICON[guide.stage] ?? BookOpen;
+  const { html, toc, steps } = enhanceGuideHtml(sanitizeArticleHtml(guide.bodyHtml));
+  const stepTexts = [...html.matchAll(/<li data-step="\d+">([\s\S]*?)<\/li>/g)].map((m) => plain(m[1]));
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": steps > 0 ? ["Article", "HowTo"] : "Article",
+    headline: guide.title,
+    name: guide.title,
+    description: guide.summary,
+    url: abs(`/guides/${guide.slug}`),
+    inLanguage: "en",
+    datePublished: guide.createdAt,
+    dateModified: guide.lastVerifiedAt ?? guide.updatedAt,
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    about: { "@type": "City", name: "Madinah" },
+    timeRequired: `PT${guide.readingMinutes}M`,
+    ...(steps > 0 ? { step: stepTexts.map((t, i) => ({ "@type": "HowToStep", position: i + 1, text: t })) } : {}),
+  };
   return (
-    <article className="shell max-w-3xl pt-6 md:pt-10">
-      <Link href="/guides" className="text-sm font-medium text-muted">← {stage?.label ?? "Guides"}</Link>
-      <h1 className="mt-2 text-3xl font-semibold leading-tight md:text-4xl">{guide.title}</h1>
-      <p className="mt-2 text-lg text-muted">{guide.summary}</p>
-      <p className="mt-2 flex flex-wrap items-center gap-x-3 text-sm text-muted">
-        <span className="flex items-center gap-1"><BookOpen size={14} /> {guide.readingMinutes} min read</span>
-        {verified(guide.lastVerifiedAt) && (
-          <span className="flex items-center gap-1 text-on"><CircleCheck size={14} /> {verified(guide.lastVerifiedAt)}</span>
+    <>
+      <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], [stage?.label ?? "Guides", `/guides#${guide.stage}`], [guide.title, `/guides/${guide.slug}`]])]} />
+      <section className="lattice overflow-hidden bg-brand text-white">
+        <div className="shell py-10 md:py-14">
+          <Link href={`/guides#${guide.stage}`} className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white">
+            <Icon size={15} className="text-gold-bright" /> {stage?.label ?? "Guides"}
+          </Link>
+          <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl">{guide.title}</h1>
+          <p className="mt-4 max-w-2xl text-white/85 md:text-lg">{guide.summary}</p>
+          <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
+            <span className="flex items-center gap-1.5"><BookOpen size={15} /> {guide.readingMinutes} min read</span>
+            {steps > 0 && <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {steps} steps to tick off</span>}
+            {verified(guide.lastVerifiedAt) && <span className="flex items-center gap-1.5 text-gold-bright"><CircleCheck size={15} /> {verified(guide.lastVerifiedAt)}</span>}
+          </p>
+        </div>
+      </section>
+      <div className={`shell mt-8 grid gap-10 md:mt-10 ${toc.length > 1 ? "lg:grid-cols-[240px_minmax(0,1fr)]" : ""}`}>
+        {toc.length > 1 && (
+          <nav aria-label="On this page" className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
+            <p className="text-sm font-semibold text-muted">On this page</p>
+            <ul className="mt-3 space-y-1 border-s border-line">
+              {toc.map((t) => (
+                <li key={t.id}>
+                  <a href={`#${t.id}`} className="-ms-px block border-s-2 border-transparent py-1.5 ps-4 text-sm text-muted transition hover:border-primary hover:text-ink">
+                    {t.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         )}
-      </p>
-      <div className="article mt-6 text-[1.02rem]" dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(guide.bodyHtml) }} />
-      <OutdatedNote whatsappUrl={whatsappUrl} />
-      <div className="mt-6"><AskOnWhatsApp url={whatsappUrl} /></div>
-    </article>
+        <article className="max-w-3xl">
+          <GuideBody html={html} slug={guide.slug} steps={steps} />
+          <OutdatedNote whatsappUrl={whatsappUrl} />
+          <div className="mt-6"><AskOnWhatsApp url={whatsappUrl} /></div>
+        </article>
+      </div>
+    </>
   );
 }
 
@@ -137,6 +199,9 @@ const RULES = [
 
 export function MorePage({ whatsappUrl }: { whatsappUrl: string }) {
   const tiles = [
+    { href: "/programs", label: "Study in Madinah", note: "Arabic institutes, degrees and sisters' marakiz", icon: GraduationCap },
+    { href: "/library", label: "Jamiah library", note: "Muqarrarat, Ma'had books, manuscripts", icon: Library },
+    { href: "/discounts", label: "Student discounts", note: "Clinics, schools, gyms, car rental and more", icon: BadgePercent },
     { href: "/duroos/schedule", label: "Weekly schedule", note: "Every dars, every masjid, in one grid", icon: CalendarDays },
     { href: "/duroos/live", label: "Live streams", note: "Watch the Haram duroos live", icon: Radio },
     { href: "/duroos/updates", label: "Duroos updates", note: "Cancellations, new books, lectures", icon: ScrollText },

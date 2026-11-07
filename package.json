@@ -17,7 +17,8 @@
     "seed": "tsx src/server/seed/run.ts",
     "admin:invite": "tsx --tsconfig tsconfig.json scripts/admin-invite.ts",
     "watch:once": "tsx --tsconfig tsconfig.json scripts/watch-once.ts",
-    "go-live": "tsx --tsconfig tsconfig.json scripts/go-live.ts"
+    "go-live": "tsx --tsconfig tsconfig.json scripts/go-live.ts",
+    "content:sync": "tsx --tsconfig tsconfig.json scripts/content-sync.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "^1.7.18",
@@ -31,6 +32,7 @@
     "drizzle-orm": "^0.45.4",
     "lucide-react": "^1.70.0",
     "marked": "^18.1.3",
+    "minisearch": "^7.2.0",
     "next": "^16.4.5",
     "node-html-parser": "^9.0.7",
     "pg": "^8.23.1",

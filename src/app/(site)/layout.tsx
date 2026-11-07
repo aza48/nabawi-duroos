@@ -4,17 +4,21 @@ import { fontVariables } from "../fonts";
 import { ThemeScript } from "@/components/shell/ThemeScript";
 import { SiteShell } from "@/components/shell/SiteShell";
 import { getDb } from "@/server/db/client";
-import { getWhatsAppUrl } from "@/server/settings";
+import { getHelpContact, getWhatsAppUrl } from "@/server/settings";
 import { SITE_URL } from "@/lib/site";
+import { JsonLd, siteJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "MESH | Medina English Student Hub", template: "%s · MESH" },
+  title: { default: "MESH | Medina English Student Hub: duroos, study and life in Madinah", template: "%s | MESH Madinah" },
   description:
     "The hub for English-speaking students in Madinah: live duroos schedules of the mashayikh, settling-in guides, answers to common questions, and the MESH WhatsApp group.",
   applicationName: "MESH",
   appleWebApp: { capable: true, title: "MESH", statusBarStyle: "default" },
   openGraph: { siteName: "MESH", type: "website", locale: "en_GB" },
+  twitter: { card: "summary_large_image" },
+  keywords: ["Madinah", "Medina", "Islamic University of Madinah", "IUM", "duroos", "Masjid an-Nabawi", "Arabic in Madinah", "students in Madinah", "living in Madinah", "hijrah to Madinah", "MESH"],
+  alternates: { languages: { en: "/", ar: "/ar/duroos" } },
 };
 
 export const viewport: Viewport = {
@@ -25,14 +29,16 @@ export const viewport: Viewport = {
 };
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const whatsappUrl = await getWhatsAppUrl(await getDb());
+  const db = await getDb();
+  const [whatsappUrl, helpContact] = await Promise.all([getWhatsAppUrl(db), getHelpContact(db)]);
   return (
     <html lang="en" dir="ltr" className={fontVariables} suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
       <body>
-        <SiteShell locale="en" whatsappUrl={whatsappUrl}>
+        <SiteShell locale="en" whatsappUrl={whatsappUrl} helpContact={helpContact}>
+          <JsonLd data={siteJsonLd(whatsappUrl)} />
           {children}
         </SiteShell>
       </body>

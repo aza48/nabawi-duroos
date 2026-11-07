@@ -19,3 +19,16 @@ export async function setSetting(db: Db, key: string, value: unknown): Promise<v
 export async function getWhatsAppUrl(db: Db): Promise<string> {
   return (await getSetting<string>(db, "whatsapp_invite_url")) ?? WHATSAPP_INVITE_DEFAULT;
 }
+
+/** The number shown for help, suggestions and takhlees submissions. Change it in Admin > Settings. */
+export const HELP_CONTACT_DEFAULT = "+1 234 567 9076";
+
+export async function getHelpContact(db: Db): Promise<string> {
+  return (await getSetting<string>(db, "help_contact")) ?? HELP_CONTACT_DEFAULT;
+}
+
+/** wa.me link for a phone number written any way ("+1 234 567 9076"). */
+export function whatsappLink(phone: string, text?: string): string {
+  const digits = phone.replace(/\D/g, "");
+  return `https://wa.me/${digits}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+}

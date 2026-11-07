@@ -1,0 +1,44 @@
+import type { Db } from "@/server/db/client";
+import { listFaqs, listGuides } from "@/server/content/queries";
+import { listShaykhs, scheduleRows } from "@/server/duroos/queries";
+import { PROGRAMS } from "@/content/programs";
+import { CHANNELS, MAHAD, MUQARRARAT, OFFICIAL } from "@/content/library";
+import { DISCOUNTS } from "@/content/discounts";
+import type { SearchDoc } from "@/lib/search/engine";
+
+const plain = (html: string, max = 1200) => html.replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim().slice(0, max);
+const DAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+const PAGES: SearchDoc[] = [
+  { id: "page-duroos", type: "page", title: "Today's duroos", subtitle: "Live schedule of the mashayikh, today", text: "lessons today haram nabawi quba cancelled live", url: "/duroos" },
+  { id: "page-schedule", type: "page", title: "Weekly schedule", subtitle: "Every regular dars by day and prayer", text: "week timetable", url: "/duroos/schedule" },
+  { id: "page-live", type: "page", title: "Live streams", subtitle: "Watch the Haram duroos live", text: "broadcast youtube mixlr audio video", url: "/duroos/live" },
+  { id: "page-updates", type: "page", title: "Duroos updates", subtitle: "Cancellations, postponements and new books", text: "cancelled postponed changes", url: "/duroos/updates" },
+  { id: "page-programs", type: "page", title: "Study in Madinah", subtitle: "Arabic institutes, degrees and sisters' marakiz compared", text: "learn arabic course", url: "/programs" },
+  { id: "page-library", type: "page", title: "The Jamiah library", subtitle: "Muqarrarat, Ma'had books, manuscripts", text: "pdf books takhlees", url: "/library" },
+  { id: "page-discounts", type: "page", title: "Student discounts", subtitle: "Offers with your University card", text: "deals offers", url: "/discounts" },
+  { id: "page-alerts", type: "page", title: "Phone alerts", subtitle: "Free notifications when a dars changes", text: "notifications push morning brief", url: "/more#alerts" },
+  { id: "page-group", type: "page", title: "Join the MESH WhatsApp group", subtitle: "Announcements, events and daily help", text: "whatsapp community", url: "/more#rules" },
+];
+
+/** Everything searchable on the site, in one list. */
+export async function buildSearchDocs(db: Db): Promise<SearchDoc[]> {
+  const [guides, faqs, shaykhs, lessons] = await Promise.all([listGuides(db), listFaqs(db), listShaykhs(db), scheduleRows(db)]);
+  return [
+    ...PAGES,
+    ...guides.map((g) => ({ id: `guide-${g.slug}`, type: "guide" as const, title: g.title, subtitle: g.summary, text: plain(g.bodyHtml), url: `/guides/${g.slug}` })),
+    ...faqs.map((f) => ({ id: `faq-${f.slug}`, type: "faq" as const, title: f.question, subtitle: plain(f.answerHtml, 160), text: plain(f.answerHtml), url: `/ask/${f.slug}` })),
+    ...PROGRAMS.map((p) => ({ id: `program-${p.slug}`, type: "program" as const, title: p.name, subtitle: `${p.tagline} ${p.price}`, text: `${p.nameAr} ${p.overview.join(" ")} ${(p.levels ?? []).join(" ")} ${p.audience.join(" ")}`, url: `/programs/${p.slug}` })),
+    ...shaykhs.map((s) => ({ id: `shaykh-${s.slug}`, type: "shaykh" as const, title: s.nameEn, subtitle: s.nameAr, text: `${s.roleEn ?? ""} ${s.roleAr ?? ""} ${lessons.filter((l) => l.shaykh.slug === s.slug).map((l) => `${l.bookEn} ${l.bookAr}`).join(" ")}`, url: `/duroos/shaykh/${s.slug}` })),
+    ...lessons.map((l) => ({
+      id: `dars-${l.slug}`,
+      type: "dars" as const,
+      title: l.bookEn,
+      subtitle: `${l.shaykh.nameEn}, after ${l.prayer}, ${l.masjid.shortEn}${l.days.length ? `, ${l.days.map((d) => DAY[d]).join(" ")}` : ""}`,
+      text: `${l.bookAr} ${l.shaykh.nameAr} ${l.masjid.nameEn} ${l.masjid.nameAr} ${l.locationEn} ${l.prayer}`,
+      url: `/duroos/lesson/${l.slug}`,
+    })),
+    ...[...MUQARRARAT, ...MAHAD, ...OFFICIAL, ...CHANNELS].map((x, i) => ({ id: `lib-${i}`, type: "library" as const, title: x.title, subtitle: x.titleAr ?? x.note, text: `${x.note ?? ""} ${x.titleAr ?? ""} ${MUQARRARAT.includes(x) ? "muqarrarat college books" : ""}`, url: x.href })),
+    ...DISCOUNTS.flatMap((g) => g.offers.map((o, i) => ({ id: `deal-${g.id}-${i}`, type: "discount" as const, title: o.nameEn ?? o.name, subtitle: o.deal, text: `${o.name} ${g.label}`, url: `/discounts` }))),
+  ];
+}
