@@ -79,3 +79,17 @@ export function getAuth(): Promise<Auth> {
   if (!g.__meshAuth) g.__meshAuth = getDb().then((db) => createAuth(db));
   return g.__meshAuth;
 }
+
+/**
+ * Better Auth's admin plugin endpoints (list users, set role, impersonate…)
+ * are never needed over HTTP: MESH manages admins through its own services,
+ * which also enforce two-step sign-in. Blocking them removes that surface.
+ */
+export function isBlockedAuthPath(pathname: string): boolean {
+  return /^\/api\/auth\/admin(\/|$)/.test(pathname);
+}
+
+export async function handleAuthRequest(auth: Auth, req: Request): Promise<Response> {
+  if (isBlockedAuthPath(new URL(req.url).pathname)) return new Response("Not found", { status: 404 });
+  return auth.handler(req);
+}

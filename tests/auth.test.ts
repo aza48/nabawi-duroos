@@ -29,6 +29,16 @@ describe("admin authentication", () => {
     expect((r.response as { twoFactorRedirect?: boolean }).twoFactorRedirect).toBe(true);
   });
 
+  it("blocks Better Auth's built-in admin endpoints over HTTP (MESH uses its own checked services)", async () => {
+    const { handleAuthRequest } = await import("@/server/auth/auth");
+    for (const p of ["admin/list-users", "admin/set-role", "admin/impersonate-user", "admin/create-user"]) {
+      const res = await handleAuthRequest(auth, new Request(`${BASE}/api/auth/${p}`, { method: "POST", headers: { origin: BASE } }));
+      expect(res.status).toBe(404);
+    }
+    const ok = await handleAuthRequest(auth, new Request(`${BASE}/api/auth/get-session`, { headers: { origin: BASE } }));
+    expect(ok.status).not.toBe(404);
+  });
+
   it("rate limits repeated failed sign-ins from one address", async () => {
     await createAdmin(auth, "target@example.com");
     const attempt = () =>
