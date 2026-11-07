@@ -22,6 +22,18 @@ describe("database", () => {
     expect(row.validTo).toBeNull();
   });
 
+  it("stores admin users with safe defaults: editor role, 2FA off, not banned", async () => {
+    const { user, twoFactor } = await import("@/server/db/schema");
+    const db = await resetTestDb();
+    const now = new Date();
+    await db.insert(user).values({ id: "u1", name: "Test", email: "t@example.com", emailVerified: true, createdAt: now, updatedAt: now });
+    await db.insert(twoFactor).values({ id: "tf1", secret: "s", backupCodes: "b", userId: "u1" });
+    const [u] = await db.select().from(user).where(eq(user.id, "u1"));
+    expect(u.role).toBe("editor");
+    expect(u.twoFactorEnabled).toBe(false);
+    expect(u.banned).toBe(false);
+  });
+
   it("refuses to run in production without DATABASE_URL", async () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("DATABASE_URL", "");
