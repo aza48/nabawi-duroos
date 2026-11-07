@@ -1,6 +1,6 @@
 import { and, asc, desc, eq, gte, inArray, isNull, lte, or } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
-import { announcements, lessonOverrides, lessons, masjids, shaykhs, streams } from "@/server/db/schema";
+import { announcements, lessonLive, lessonOverrides, lessons, masjids, shaykhs, streams } from "@/server/db/schema";
 import { getSetting } from "@/server/settings";
 import { formatGregorian, formatHijri } from "@/lib/time/hijri";
 import { PRAYERS, prayerTimes, type Prayer } from "@/lib/time/prayer";
@@ -78,12 +78,19 @@ async function overridesOn(db: Db, iso: string): Promise<OverrideLike[]> {
 
 export async function getToday(db: Db, now: Date = new Date()) {
   const date = riyadhDateIso(now);
-  const [rows, overrides, allStreams, lastCheckedAt] = await Promise.all([
+  const [rows, overrides, allStreams, lastCheckedAt, liveRows] = await Promise.all([
     scheduleRows(db),
     overridesOn(db, date),
     db.select().from(streams),
     getSetting<string>(db, "watcher_last_checked_at"),
+    db.select().from(lessonLive),
   ]);
+  // A "live broadcast started" notice keeps a dars live for up to 3 hours, the same day.
+  const liveNow = new Map(
+    liveRows
+      .filter((r) => now.getTime() - r.startedAt.getTime() < 3 * 3_600_000 && riyadhDateIso(r.startedAt) === date)
+      .map((r) => [r.lessonSlug, r.url])
+  );
   const times = prayerTimes(date);
   const lessonsToday: TodayLesson[] = lessonsForDate(date, rows, overrides).map(({ lesson: l, status, override }) => ({
     slug: l.slug,
@@ -93,13 +100,15 @@ export async function getToday(db: Db, now: Date = new Date()) {
     masjid: l.masjid,
     prayer: l.prayer,
     adhanAt: times[l.prayer].toISOString(),
-    phase: lessonPhase(now, date, l.prayer),
+    phase: liveNow.has(l.slug) && status !== "cancelled" ? "live" : lessonPhase(now, date, l.prayer),
     status,
     locationEn: l.locationEn,
     locationAr: l.locationAr,
     overrideNoteEn: override?.noteEn ?? null,
     overrideNoteAr: override?.noteAr ?? null,
-    stream: pickStream(allStreams, l),
+    stream: liveNow.has(l.slug)
+      ? { url: liveNow.get(l.slug)!, kind: "web" as const, isLive: true, liveUrl: liveNow.get(l.slug)! }
+      : pickStream(allStreams, l),
   }));
   return {
     date,

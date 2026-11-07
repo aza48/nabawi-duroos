@@ -1,7 +1,8 @@
 import { createHash } from "node:crypto";
 import { and, desc, eq, inArray } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
-import { channelPosts, lessons, masjids, shaykhs, sources } from "@/server/db/schema";
+import { channelPosts, lessonLive, lessons, masjids, shaykhs, sources } from "@/server/db/schema";
+import { isLiveNotice, matchLiveLesson, pickLiveLink } from "./live-notice";
 import { assertCan, type Actor } from "@/server/auth/permissions";
 import { addOverride } from "@/server/admin/duroos";
 import { setSetting } from "@/server/settings";
@@ -26,7 +27,7 @@ const hash = (s: string) => createHash("sha256").update(s).digest("hex");
 
 async function lessonContext(db: Db) {
   const rows = await db
-    .select({ slug: lessons.slug, days: lessons.days, prayer: lessons.prayer, bookEn: lessons.bookEn, bookAr: lessons.bookAr, shaykh: shaykhs.nameEn, shaykhAr: shaykhs.nameAr, masjid: masjids.shortEn })
+    .select({ masjidId: lessons.masjidId, slug: lessons.slug, days: lessons.days, prayer: lessons.prayer, bookEn: lessons.bookEn, bookAr: lessons.bookAr, shaykh: shaykhs.nameEn, shaykhAr: shaykhs.nameAr, masjid: masjids.shortEn })
     .from(lessons)
     .innerJoin(shaykhs, eq(lessons.shaykhId, shaykhs.id))
     .innerJoin(masjids, eq(lessons.masjidId, masjids.id))
@@ -38,6 +39,7 @@ async function lessonContext(db: Db) {
       label: `${r.shaykh} (${r.shaykhAr}): ${r.bookEn} / ${r.bookAr}, ${r.masjid}, after ${r.prayer}, ${r.days.length ? r.days.map((d) => DAY[d]).join(" ") : "days not stated"}`,
     })),
     days: Object.fromEntries(rows.map((r) => [r.slug, r.days])) as Record<string, number[]>,
+    candidates: rows.map((r) => ({ slug: r.slug, bookAr: r.bookAr, shaykhAr: r.shaykhAr, masjidId: r.masjidId })),
   };
 }
 
@@ -73,6 +75,20 @@ export async function runWatcher(db: Db, deps: WatcherDeps, now: Date = new Date
         continue;
       }
       if (existing?.status === "dismissed") continue;
+
+      // "Live broadcast started": no AI needed. Mark the dars live with its stream link.
+      if (isLiveNotice(p.text)) {
+        if (existing) continue;
+        const slug = matchLiveLesson(p.text, ctx.candidates);
+        const link = pickLiveLink(p.links);
+        if (slug && link) {
+          await db.insert(lessonLive).values({ lessonSlug: slug, url: link, postUrl: p.url, startedAt: p.postedAt })
+            .onConflictDoUpdate({ target: lessonLive.lessonSlug, set: { url: link, postUrl: p.url, startedAt: p.postedAt } });
+        }
+        await db.insert(channelPosts).values({ sourceHandle: src.handle, postId: p.postId, url: p.url, text: p.text, imageUrl: p.imageUrl, postedAt: p.postedAt, textHash, status: "ignored", reason: slug ? `Live broadcast notice: ${slug}` : "Live broadcast notice (lesson not recognised)" });
+        result.ignored++;
+        continue;
+      }
       if (aiBudget <= 0) {
         if (!existing) await db.insert(channelPosts).values({ sourceHandle: src.handle, postId: p.postId, url: p.url, text: p.text, imageUrl: p.imageUrl, postedAt: p.postedAt, textHash, status: "new" });
         continue;

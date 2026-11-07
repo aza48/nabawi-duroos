@@ -338,3 +338,11 @@ export const channelPosts = pgTable(
   },
   (t) => [index("channel_posts_status_idx").on(t.status, t.postedAt)]
 );
+
+/** The latest "live broadcast started" notice per lesson. */
+export const lessonLive = pgTable("lesson_live", {
+  lessonSlug: text("lesson_slug").primaryKey(),
+  url: text("url").notNull(),
+  postUrl: text("post_url").notNull(),
+  startedAt: timestamp("started_at", { withTimezone: true }).notNull(),
+});

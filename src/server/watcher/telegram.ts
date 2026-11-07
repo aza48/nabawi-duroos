@@ -1,6 +1,6 @@
 import { parse } from "node-html-parser";
 
-export type ChannelPost = { postId: string; url: string; text: string; imageUrl: string | null; postedAt: Date };
+export type ChannelPost = { postId: string; url: string; text: string; imageUrl: string | null; postedAt: Date; links: string[] };
 
 /** Public channel preview page; no login, no API key. */
 export const previewUrl = (handle: string) => `https://t.me/s/${encodeURIComponent(handle)}`;
@@ -19,7 +19,8 @@ export function parseChannelHtml(html: string, handle: string): ChannelPost[] {
     const imageUrl = /url\('([^']+)'\)/.exec(style)?.[1] ?? null;
     const dt = el.querySelector("time[datetime]")?.getAttribute("datetime");
     if (!dt) continue;
-    out.push({ postId, url: `https://t.me/${postId}`, text: decoded, imageUrl, postedAt: new Date(dt) });
+    const links = textEl ? textEl.querySelectorAll("a[href]").map((a) => a.getAttribute("href")!).filter(Boolean) : [];
+    out.push({ postId, url: `https://t.me/${postId}`, text: decoded, imageUrl, postedAt: new Date(dt), links });
   }
   return out;
 }

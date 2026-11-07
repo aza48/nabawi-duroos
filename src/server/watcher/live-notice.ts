@@ -1,0 +1,65 @@
+/**
+ * "🔴 بدأ البث المباشر" posts: a dars has just gone live. These are read
+ * without AI: the book title in «», the shaykh's name and the masjid pick the
+ * lesson, and the best stream link is kept.
+ */
+
+export type LessonForMatch = { slug: string; bookAr: string; shaykhAr: string; masjidId: string };
+
+export function normalizeArabic(s: string): string {
+  return s
+    .replace(/[ـ‌-‏ً-ٰٟ]/g, "")
+    .replace(/[أإآ]/g, "ا")
+    .replace(/ة/g, "ه")
+    .replace(/ى/g, "ي")
+    .replace(/عبد\s+/g, "عبد")
+    .replace(/[^ء-ي0-9a-z]+/gi, " ")
+    .trim();
+}
+
+export function isLiveNotice(text: string): boolean {
+  return /بدا البث المباشر/.test(normalizeArabic(text));
+}
+
+const BOOK_STOP = new Set(["شرح", "كتاب", "من", "في", "على", "لشيخ", "الشيخ", "الاسلام", "تقريرات", "سماحه"]);
+const NAME_STOP = new Set(["بن", "ابن", "الشيخ", "الله", "اد", "د", "ا"]);
+const tokens = (s: string, stop: Set<string>) => normalizeArabic(s).split(" ").filter((t) => t.length >= 3 && !stop.has(t));
+
+/** The lesson a live notice is about, or null when it isn't clear. */
+export function matchLiveLesson(text: string, lessons: LessonForMatch[]): string | null {
+  const title = /«([^»]+)»/.exec(text)?.[1];
+  if (!title) return null;
+  const titleTokens = tokens(title, BOOK_STOP);
+  if (!titleTokens.length) return null;
+  const norm = ` ${normalizeArabic(text)} `;
+  const atQuba = norm.includes("قباء");
+  const atNabawi = norm.includes("المسجد النبوي");
+
+  const scored = lessons
+    .map((l) => {
+      const book = new Set(tokens(l.bookAr, BOOK_STOP));
+      const overlap = titleTokens.filter((t) => book.has(t)).length / titleTokens.length;
+      const nameHits = tokens(l.shaykhAr, NAME_STOP).filter((t) => norm.includes(` ${t} `)).length;
+      let place = 0;
+      if (atQuba) place = l.masjidId === "quba" ? 1 : -2;
+      else if (atNabawi) place = l.masjidId === "nabawi" ? 1 : -2;
+      return { slug: l.slug, overlap, score: overlap * 3 + Math.min(nameHits, 3) * 0.6 + place };
+    })
+    .filter((s) => s.overlap >= 0.5)
+    .sort((a, b) => b.score - a.score);
+
+  if (!scored.length) return null;
+  if (scored.length > 1 && scored[0].score - scored[1].score < 0.3) return null;
+  return scored[0].slug;
+}
+
+/** Best link to the broadcast itself: video, then audio, then a Telegram livestream. */
+export function pickLiveLink(links: string[]): string | null {
+  const rank = (u: string) =>
+    /youtube\.com\/(live|watch)|youtu\.be\//i.test(u) ? 0
+    : /mixlr\.com/i.test(u) ? 1
+    : /t\.me\/[^/?]+\?livestream/i.test(u) ? 2
+    : null;
+  const ranked = links.map((u) => ({ u, r: rank(u) })).filter((x) => x.r !== null).sort((a, b) => a.r! - b.r!);
+  return ranked[0]?.u ?? null;
+}
