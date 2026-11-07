@@ -30,6 +30,7 @@
   --gold-bg: #f4e9cf;
   --live: #d02f4a;
   --wa: #25d366;
+  --wa-ink: #04331b;
   --shadow: 0 1px 2px rgb(19 34 28 / 0.05), 0 8px 24px -8px rgb(19 34 28 / 0.12);
   --shadow-lg: 0 2px 4px rgb(19 34 28 / 0.04), 0 24px 48px -16px rgb(15 90 67 / 0.25);
   --pattern: rgb(15 90 67 / 0.07);
@@ -96,6 +97,7 @@
   --color-gold-bg: var(--gold-bg);
   --color-live: var(--live);
   --color-wa: var(--wa);
+  --color-wa-ink: var(--wa-ink);
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
   --font-arabic: var(--font-amiri), serif;

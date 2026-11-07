@@ -251,7 +251,7 @@ export function MorePage({ whatsappUrl }: { whatsappUrl: string }) {
                   </li>
                 ))}
               </ul>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-wa px-5 py-3 font-semibold text-white transition hover:brightness-105">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full bg-wa px-5 py-3 font-semibold text-wa-ink transition hover:brightness-105">
                 <WhatsAppIcon size={18} /> Join the MESH group <ArrowUpRight size={16} />
               </a>
             </section>

@@ -27,3 +27,13 @@ describe("day arc", () => {
     expect(travelledPath(0.5).endsWith("500.00 75.00")).toBe(true);
   });
 });
+
+import { placeText } from "@/features/duroos/DetailPages";
+describe("placeText", () => {
+  it("doesn't repeat the masjid's name", () => {
+    expect(placeText("Masjid Quba", "Masjid Quba")).toBe("Masjid Quba");
+    expect(placeText("Masjid Quba", "Quba, Masjid Quba")).toBe("Quba, Masjid Quba");
+    expect(placeText("المسجد النبوي", "الحصوة الثانية", true)).toBe("المسجد النبوي، الحصوة الثانية");
+    expect(placeText("Masjid an-Nabawi", "Second Haswa, in front of Bab Uthman")).toBe("Masjid an-Nabawi, Second Haswa, in front of Bab Uthman");
+  });
+});

@@ -8,21 +8,6 @@ export function WhatsAppIcon({ size = 20 }: { size?: number }) {
   );
 }
 
-export function WhatsAppFab({ url }: { url: string }) {
-  return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Join the MESH WhatsApp group"
-      className="fixed end-4 z-40 grid size-14 place-items-center rounded-full bg-wa text-white shadow-lg shadow-black/25 transition hover:scale-105 lg:bottom-6"
-      style={{ bottom: "calc(5.25rem + env(safe-area-inset-bottom))" }}
-    >
-      <WhatsAppIcon size={28} />
-    </a>
-  );
-}
-
 export function WhatsAppBanner({ url }: { url: string }) {
   return (
     <a
@@ -31,7 +16,7 @@ export function WhatsAppBanner({ url }: { url: string }) {
       rel="noopener noreferrer"
       className="flex items-center gap-3 rounded-2xl bg-primary p-3.5 text-primary-ink shadow-md transition hover:brightness-105"
     >
-      <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-wa text-white">
+      <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-wa text-wa-ink">
         <WhatsAppIcon size={24} />
       </span>
       <span className="min-w-0 flex-1">
@@ -51,7 +36,7 @@ export function AskOnWhatsApp({ url, compact = false }: { url: string; compact?:
       rel="noopener noreferrer"
       className={`card flex items-center gap-3 ${compact ? "p-3" : "p-4"} transition hover:border-wa`}
     >
-      <span className="grid size-10 shrink-0 place-items-center rounded-full bg-wa text-white">
+      <span className="grid size-10 shrink-0 place-items-center rounded-full bg-wa text-wa-ink">
         <WhatsAppIcon size={20} />
       </span>
       <span className="min-w-0 flex-1">

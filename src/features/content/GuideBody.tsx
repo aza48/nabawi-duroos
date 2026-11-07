@@ -93,7 +93,7 @@ export function GuideBody({ html, slug, steps }: { html: string; slug: string; s
   return (
     <>
       {steps > 0 && (
-        <div className="sticky top-[72px] z-20 -mx-4 mb-6 border-b border-line bg-bg/90 px-4 py-3 backdrop-blur md:top-[80px] md:mx-0 md:rounded-2xl md:border md:px-5">
+        <div className="mb-6 rounded-2xl border border-line bg-card px-4 py-3 md:px-5">
           <div className="flex items-center justify-between gap-3 text-sm">
             <span className="font-semibold">
               {done.length === steps ? "All steps done. Barakallahu feek!" : `${done.length} of ${steps} steps done`}
@@ -107,7 +107,7 @@ export function GuideBody({ html, slug, steps }: { html: string; slug: string; s
           <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-bg-2">
             <div className="h-full rounded-full bg-primary transition-[width] duration-500" style={{ width: `${pct}%` }} />
           </div>
-          <p className="mt-1.5 text-xs text-muted">Tap a step to tick it off. Your progress is saved on this device.</p>
+          {done.length === 0 && <p className="mt-1.5 text-xs text-muted">Tap a step to tick it off. It's saved on this phone.</p>}
         </div>
       )}
       <div ref={ref} className="article guide text-[1.04rem]" dangerouslySetInnerHTML={{ __html: html }} />

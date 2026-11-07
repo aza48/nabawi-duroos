@@ -123,7 +123,7 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
             <dl className="divide-y divide-line overflow-hidden rounded-3xl border border-line bg-card">
               <Item icon={<CalendarDays size={18} />} label={t(locale, "days")} value={daysText(l, locale)} />
               <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={`${t(locale, "adhan")} ${formatClock(adhan, locale)}. ${t(locale, "afterIqamah")}.`} />
-              <Item icon={<MapPin size={18} />} label={t(locale, "location")} value={`${ar ? l.masjid.nameAr : l.masjid.nameEn}${ar ? "، " : ", "}${ar ? l.locationAr : l.locationEn}`} />
+              <Item icon={<MapPin size={18} />} label={t(locale, "location")} value={placeText(ar ? l.masjid.nameAr : l.masjid.nameEn, ar ? l.locationAr : l.locationEn, ar)} />
             </dl>
             {(ar ? l.noteAr : l.noteEn) && <p className="mt-4 rounded-2xl bg-bg-2 p-4 text-sm">{ar ? l.noteAr : l.noteEn}</p>}
             {(ar ? l.sequenceAr : l.sequenceEn) && <p className="mt-3 text-sm text-muted">{ar ? l.sequenceAr : l.sequenceEn}</p>}
@@ -180,6 +180,14 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
   );
 }
 
+/** "Masjid Quba" plus the spot inside it, without repeating the masjid's name. */
+export function placeText(masjid: string, spot: string | null | undefined, ar = false): string {
+  const clean = (x: string) => x.replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
+  if (!spot || clean(spot) === clean(masjid) || clean(masjid).includes(clean(spot))) return masjid;
+  if (clean(spot).includes(clean(masjid))) return spot;
+  return `${masjid}${ar ? "، " : ", "}${spot}`;
+}
+
 function Item({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="flex gap-4 p-4 md:p-5">
@@ -215,10 +223,11 @@ export function UpdatesPage({ current, history, locale }: { current: Announcemen
     <div className="shell max-w-3xl pt-6 md:pt-10">
       <DuroosNav locale={locale} />
       <h1 className="mb-4 text-3xl font-semibold">{t(locale, "updates")}</h1>
-      {current.length === 0 ? <EmptyState title={t(locale, "noUpdates")} /> : <div className="grid gap-2.5">{current.map((a) => <Card key={a.slug} a={a} />)}</div>}
+      {current.length === 0 ? (earlier.length === 0 && <EmptyState title={t(locale, "noUpdates")} />) : <div className="grid gap-2.5">{current.map((a) => <Card key={a.slug} a={a} />)}</div>}
       {earlier.length > 0 && (
         <>
-          <h2 className="mt-8 mb-2.5 text-sm font-bold uppercase tracking-wide text-muted">{t(locale, "earlier")}</h2>
+          {current.length === 0 && <p className="mb-4 text-muted">{ar ? "لا تغييرات حالية. كل الدروس على موعدها المعتاد." : "Nothing changed right now. Every dars is on as usual."}</p>}
+          <h2 className="mt-8 mb-2.5 text-sm font-bold text-muted">{t(locale, "earlier")}</h2>
           <div className="grid gap-2.5">{earlier.map((a) => <Card key={a.slug} a={a} faded />)}</div>
         </>
       )}

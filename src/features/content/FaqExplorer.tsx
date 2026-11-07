@@ -19,8 +19,8 @@ export function FaqExplorer({ items, categories }: { items: Item[]; categories: 
   const used = categories.filter((c) => items.some((f) => f.category === c.id));
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-12">
-      <nav aria-label="Topics" className="lg:sticky lg:top-24 lg:self-start">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-12">
+      <nav aria-label="Topics" className="min-w-0 lg:sticky lg:top-24 lg:self-start">
         <ul className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] lg:mx-0 lg:flex-col lg:gap-1 lg:px-0">
           {[{ id: "all", label: "All topics" }, ...used].map((c) => {
             const n = c.id === "all" ? items.length : items.filter((f) => f.category === c.id).length;

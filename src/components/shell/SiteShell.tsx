@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Locale } from "@/lib/locale";
 import { BottomNav, DesktopNav } from "./BottomNav";
 import { ThemeToggle } from "./ThemeToggle";
-import { WhatsAppFab, WhatsAppIcon } from "./WhatsApp";
+import { WhatsAppIcon } from "./WhatsApp";
 import { Wordmark } from "./Wordmark";
 import { SearchPalette } from "@/features/search/SearchUI";
 
@@ -35,9 +35,10 @@ export function SiteShell({
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden items-center gap-2 rounded-full bg-wa px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105 xl:flex"
+              aria-label={ar ? "انضم لمجموعة MESH على واتساب" : "Join the MESH WhatsApp group"}
+              className="flex h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-wa px-3 text-sm font-semibold text-wa-ink transition hover:brightness-105 xl:px-4"
             >
-              <WhatsAppIcon size={17} /> {ar ? "انضم للمجموعة" : "Join the group"}
+              <WhatsAppIcon size={18} /> <span className="hidden xl:inline">{ar ? "انضم للمجموعة" : "Join the group"}</span>
             </a>
             <ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} />
           </div>
@@ -47,7 +48,6 @@ export function SiteShell({
         {children}
       </main>
       <Footer locale={locale} whatsappUrl={whatsappUrl} helpContact={helpContact} />
-      <WhatsAppFab url={whatsappUrl} />
       <BottomNav locale={locale} />
     </>
   );
@@ -111,7 +111,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-wa px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-wa px-4 py-2 text-sm font-semibold text-wa-ink transition hover:brightness-105"
           >
             <WhatsAppIcon size={17} /> {ar ? "انضم الآن" : "Join on WhatsApp"}
           </a>

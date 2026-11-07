@@ -54,7 +54,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
             rel="noopener noreferrer"
             className="lattice block overflow-hidden rounded-3xl bg-brand-deep p-6 text-white shadow-[var(--shadow-lg)] transition hover:brightness-110"
           >
-            <span className="grid size-12 place-items-center rounded-2xl bg-wa">
+            <span className="grid size-12 place-items-center rounded-2xl bg-wa text-wa-ink">
               <WhatsAppIcon size={26} />
             </span>
             <p className="mt-4 font-heading text-2xl font-bold leading-tight">The MESH group</p>
