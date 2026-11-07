@@ -80,7 +80,10 @@ everyone is on a phone.
 ### Non-goals
 - No public forum, no community answers, no visitor accounts.
 - No SMS and no paid WhatsApp Business API messaging (not free → scrapped).
-- No native App Store / Play Store apps (the installable web app covers it).
+- No native App Store / Play Store apps **in this project** — but a native app
+  is planned next, so v2 is built **API-first** (see §10) so the app can reuse
+  every piece of data, logic and notification without a rewrite.
+- No buy/sell classifieds or lost & found — those stay in WhatsApp.
 - No full Arabic version of guides/FAQ/deals (only Duroos is bilingual).
 - Not reading X/Twitter at launch (paid API); Telegram public previews only.
 
@@ -118,7 +121,7 @@ every screen.
 | **Duroos** (bilingual) | Today · Weekly schedule (by masjid / by day / by prayer) · Shaykh pages (photo, verified facts, all lessons, past books) · Book pages · Announcements feed · Livestreams · Seasonal (Ramadan/Hajj) schedules · Follow a shaykh/book (alerts) · Add to calendar |
 | **Guides** | Long-form articles grouped by life stage: *Getting started* (admission, visa & iqama, Nafath, Absher, registration) · *Getting settled* (housing, transport, SIM, banking, groceries) · *Family life* (spouse visas, schools, clinics, sisters' classes) · *Leaving Madinah* (exit, final paperwork, closing accounts) |
 | **Ask** (FAQ) | Searchable saved Q&As by category, each with "last verified" date · Ends with **"Have a question? Post it in the MESH WhatsApp chat →"** |
-| **More** | Deals & shopping · Events · Livestreams · About MESH · Group rules · Contact · Settings (theme, language for Duroos, notifications) |
+| **More** | Arrival checklist · Jāmiʿah calendar · Places & deals · Getting around · Events · Important numbers · Livestreams · About MESH · Group rules · Contact · Settings (theme, language for Duroos, notifications, daily brief) |
 
 ### URL map (all real, shareable, SEO-indexed pages)
 
@@ -155,7 +158,12 @@ Migrated forum questions keep a redirect map `old id → new /ask/slug`.
 - **Real "today"**: computed in Asia/Riyadh, never hard-coded.
 - **Prayer-anchored times → clock times.** Lessons are "after Asr" etc. The site
   computes Madinah prayer times (Umm al-Qura method, offline library) to show
-  "After Asr · ≈ 3:12 pm · in 2h 10m" and a live/next indicator.
+  "After Asr · ≈ 3:32 pm · in 2h 10m" and a live/next indicator. Lessons start
+  after the *iqamah*, not the adhan, so each masjid has admin-editable iqamah
+  offsets per prayer (and a Ramadan set) — times are shown with "≈".
+- **Recurrence that matches reality**: weekly days, "daily except Fri/Sat",
+  monthly markers, and **Hijri date ranges** (e.g. Quba's 1/4–30/6/1448
+  period); lessons automatically disappear when their period ends.
 - **Overrides layered on the weekly timetable**: cancelled / postponed / moved /
   guest / resumed / new book / book finished — each with a date range, source
   post link, and who/what published it.
@@ -164,15 +172,24 @@ Migrated forum questions keep a redirect map `old id → new /ask/slug`.
 
 ### 5.2 Channel watcher (automatic updates)
 1. A scheduled job reads each source's public preview page
-   (`t.me/s/<channel>` — no Telegram login, ever), every ~5 minutes.
-2. New posts are stored raw (text, images, link, timestamp).
-3. **AI parsing** (Claude API, small/fast model) reads each Arabic post and
+   (`t.me/s/<channel>` — no Telegram login, ever), every ~2–5 minutes.
+2. New posts are stored raw (text, images, link, timestamp). **Edited and
+   deleted posts are detected too** — a correction or a deleted cancellation
+   re-runs the pipeline and can revert an auto-published change.
+3. **Flyers are read as images.** Many announcements are image-only posters;
+   the AI reads the image (vision) as well as any caption.
+4. **AI parsing** (Claude API, small/fast model) reads each Arabic post and
    returns structured output: *is this about a lesson? which shaykh/lesson?
    what change? which absolute date(s)? confidence*, plus a draft English
    translation following the house rules (يعتذر → "excused himself"; relative
    words → bracketed absolute Hijri dates).
-4. Matching against known shaykhs/lessons in the DB.
-5. **Publish rule (owner's decision — hybrid):**
+   **Arabic night convention:** "ليلة الأحد" is *Saturday night* (the night
+   belongs to the following day). The parser and its test suite must get this
+   right; it is the single most likely source of a wrong auto-publish.
+5. Matching against known shaykhs/lessons in the DB. The AI never decides on
+   its own: its output must resolve to a lesson that exists, a change type from
+   a fixed list, and a concrete date — otherwise it goes to the inbox.
+6. **Publish rule (owner's decision — hybrid):**
    - **Auto-publish** when **all** hold: source is marked *trusted* (the
      shuyukh's own official channels and the big aggregator channels such as
      خزانة العلم and دروس المدينة) · change is a simple
@@ -180,8 +197,18 @@ Migrated forum questions keep a redirect map `old id → new /ask/slug`.
      is high · date resolves unambiguously.
    - **Otherwise** → admin inbox + push notification to admins.
    - Every auto-publish also notifies admins with a one-tap **Undo**.
-6. Lectures with flyers (one-off events) always go to the inbox as a
+7. Lectures with flyers (one-off events) always go to the inbox as a
    ready-made draft (flyer attached, fields filled) for one-tap publish.
+8. **Shadow mode first.** For the first 1–2 weeks after launch the watcher
+   only *suggests*; admins see what it *would* have auto-published and its
+   accuracy is measured. Auto-publish is switched on per source once it has
+   proven itself.
+9. **Heartbeat.** Every run records "last checked". If the watcher hasn't
+   succeeded for 30 minutes, admins get a push alert, and the public site shows
+   "last checked HH:MM" honestly instead of implying it's live.
+10. **Prompt-injection safe.** Channel text is untrusted data: the model has no
+    tools, returns only a fixed schema, and its output is validated against the
+    DB before anything happens.
 
 Initial sources (admin-editable, each with a *trusted* toggle):
 `@drosalmadina`, `@khizana_62`, `@sohaymi`, `@dr_maherkhujah`,
@@ -234,7 +261,36 @@ the hybrid rule above. All other editorial rules carry over unchanged.
 No visitor account: push subscriptions are per-device; email follows use the
 existing token-link manage page.
 
-### 5.10 Additions proposed by Claude
+### 5.10 What makes MESH indispensable (Claude's audit)
+
+The question behind every feature: *what does a Western student in Madinah
+need, every week, that nobody gives them in one reliable place?* Duroos and
+FAQ are the core; these turn MESH into the thing people open daily:
+
+- **Daily brief** — an optional morning push: "Today in Madinah: 7 duroos,
+  1 cancelled, lecture at Quba after Isha." The habit-forming feature.
+- **Arrival checklist** — an interactive step-by-step for new students
+  (Iqama → Nafath → Absher → bank → SIM → university registration), each step
+  linking to its guide; progress saved on the device. Nothing else does this.
+- **Jāmiʿah calendar** — admin-maintained key dates of the Islamic University
+  year (term start, exams, holidays, registration windows, other dates
+  students rely on), each with its source. Calendar-subscribable.
+- **Places directory** (merged with Deals) — admin-curated, map-linked places
+  students actually need: clinics with English-speaking doctors, bookshops,
+  tailors, barbers, phone shops, movers, groceries — with any student deal
+  shown on the place.
+- **Getting around** — university bus times and routes to the Haram/Quba,
+  and practical transport guides.
+- **Important numbers** — emergency, hospitals, embassy links, university
+  offices; cached offline.
+- **"What students search for but can't find"** — every search with no result
+  is logged anonymously and shown to admins as a ranked list: a ready-made
+  to-do list for new FAQs and guides.
+- **Freshness enforcement** — every guide/FAQ has a review interval; when it
+  goes stale it lands in the admin inbox for re-verification, and visitors see
+  the honest "last verified" date.
+
+### 5.11 Additions proposed by Claude
 - **Share cards**: every lesson, announcement, guide and FAQ gets an
   auto-generated preview image so links look great inside WhatsApp.
 - **Instant search** across duroos, guides, FAQ and deals (typo-tolerant,
@@ -288,6 +344,15 @@ Mobile-first admin app at `/admin`, same design system.
 - **Audit log** of all admin actions; owner can revoke any admin instantly.
 - Database: least-privilege connection, backups/point-in-time restore via Neon.
 - Dependency updates automated (Dependabot) and a security scan before launch.
+- **Recovery codes** for every admin's 2FA, and an owner "break-glass"
+  procedure documented, so losing a phone never locks the owner out.
+- **Bot protection** (free Cloudflare Turnstile) on every public form
+  (follow/subscribe, report outdated) — no CAPTCHAs for normal visitors.
+- CSP uses per-request nonces (no `unsafe-inline` scripts).
+- **Error and uptime monitoring** with alerts to admins (free tiers), including
+  the watcher heartbeat (§5.2).
+- **Nightly database export** stored off-platform, in addition to Neon's own
+  restore window.
 
 ---
 
@@ -334,15 +399,31 @@ Mobile-first admin app at `/admin`, same design system.
   rate-limiting (e.g. Better Auth), admin-only.
 - **File storage:** Vercel Blob (or equivalent free tier) + Next image
   optimization.
-- **Scheduler:** the watcher must run every ~5 min. Vercel's free plan limits
-  cron frequency, so the trigger is a **GitHub Actions scheduled workflow**
-  (free) calling a secret-protected endpoint; Vercel Cron handles daily jobs
-  (digests, expiry). Upgrade path: Cloudflare Workers cron for tighter timing.
+- **API-first (native app ready):** all reads and writes go through a typed,
+  versioned JSON API (`/api/v1/...`) with business logic in a shared server
+  layer — web pages and the future native app use the same API. Auth tokens,
+  push registration and deep links (`medinahub.org/duroos/lesson/x`) are
+  designed so an iOS/Android app (e.g. Expo/React Native) plugs in later.
+- **Speed:** public pages are pre-rendered and served from the CDN; when an
+  admin (or the watcher) publishes, only the affected pages are refreshed
+  instantly (on-demand revalidation). Target: home screen interactive in under
+  2 s on a mid-range Android over 4G.
+- **Scheduler:** the watcher must run every few minutes, reliably. Vercel's
+  free plan limits cron frequency, and GitHub Actions schedules are often
+  delayed 10–30 min and are auto-disabled on quiet repos — so the trigger is a
+  **Cloudflare Workers cron** (free, runs every minute) calling a
+  secret-protected endpoint. Vercel Cron handles daily jobs (digests, expiry,
+  stale-content checks, backups).
 - **AI:** Anthropic Claude API, small/fast model, structured output; every
   parse logged with its input for review.
 - **Push:** standard Web Push with VAPID keys + service worker.
 - **Email:** Brevo.
-- **Search:** Postgres full-text + trigram (Arabic + English).
+- **Search:** Postgres full-text + trigram (Arabic + English), with Arabic
+  normalization (أ/إ/آ→ا, ة→ه, ى→ي, diacritics stripped) and transliteration
+  variants (Ruhayli/Ruhaili/Ruhaily) so names are always found.
+- **Email volume:** Brevo's free tier has a daily cap. Push is the primary
+  alert channel; email alerts are digested per subscriber and sending is
+  monitored so the cap is never silently hit.
 - **Testing:** unit tests for date/prayer/override/parse-matching logic;
   end-to-end tests for key visitor and admin flows on a mobile viewport.
 - **Data migration:** one-off scripts to import the static TS data, real
@@ -363,10 +444,12 @@ Mobile-first admin app at `/admin`, same design system.
 **Minimum for cut-over** (Claude's call): Home · full Duroos (bilingual, live
 today, overrides, shaykh/lesson pages, updates feed, livestreams) · channel
 watcher + admin inbox + auto-publish · Ask (FAQ) · Guides · admin core
-(roles, 2FA, editors, activity log/undo) · web push + email alerts · WhatsApp
-everywhere · redirects · security headers. **Fast follow-ups after cut-over:**
-Deals, Events, calendar feeds, Seasonal view, instant search polish, offline
-cache, share-card images.
+(roles, 2FA, editors, activity log/undo) · web push + email alerts · daily
+brief · WhatsApp everywhere · search (with "no result" log) · important
+numbers · redirects · security headers · monitoring + heartbeat.
+**Fast follow-ups after cut-over (in this order):** Arrival checklist ·
+Jāmiʿah calendar · Places & deals · Events · calendar feeds · Getting around ·
+Seasonal view · offline cache · share-card images · freshness enforcement.
 
 ---
 
@@ -388,8 +471,13 @@ cache, share-card images.
 - Home order: WhatsApp → today's duroos → start-here guides → announcements →
   deals.
 - Forum seed/sample content deleted; real forum posts become FAQ drafts.
-- Channel watcher triggered by GitHub Actions every ~5 min (the repo is
-  public, so Actions minutes are free).
+- Channel watcher triggered by a free Cloudflare Workers cron (reliable,
+  every minute) — not GitHub Actions, whose schedules lag and auto-disable.
+- Watcher starts in shadow mode; auto-publish enabled per source once proven.
+- API-first architecture so the planned native app reuses everything.
+- Indispensable-features set in §5.10 (daily brief, arrival checklist,
+  Jāmiʿah calendar, places directory, getting around, important numbers,
+  search-gap log, freshness enforcement).
 - Existing MESH member accounts: real posts are migrated anonymized into FAQ
   drafts; mandoob/admin members are invited as admins; all other member
   accounts and their personal data are deleted after migration (members get a
@@ -402,13 +490,18 @@ cache, share-card images.
 
 ## 14. Open questions for the owner
 
-1. **Accounts & access.** Who controls the Vercel project, the Neon database,
-   the Brevo account and the `medinahub.org` domain? The builder needs preview
-   deployments, environment variables and read access to production data for
-   migration. Also: the owner's GitHub account (iumuhaymin) currently has
-   read-only access to `aza48/nabawi-duroos`.
-2. **AI running cost.** The channel watcher and paste-to-draft use the Claude
-   API, a small pay-as-you-go cost. Whose account and card holds the API key?
+1. **Accounts & access** — answered: aza48 controls Vercel (and so the Neon
+   DB and Brevo), the owner controls the `medinahub.org` domain. Access is
+   requested in stages, only when needed:
+   - *Now:* write/admin access for `iumuhaymin` on the GitHub repo.
+   - *Before data migration:* a read-only connection string to the
+     production Neon database (or a Neon branch).
+   - *Before launch:* Vercel access (project transfer to the owner, or aza48
+     adds the new environment variables himself) and the Brevo API key.
+   - *Owner's own, free:* a Cloudflare account (watcher cron + Turnstile).
+2. **AI running cost** — still open: the channel watcher and paste-to-draft
+   use the Claude API (small pay-as-you-go). Whose account holds the key? Not
+   needed until the watcher is built.
 
 ## 15. Left to the builder
 
