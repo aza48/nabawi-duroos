@@ -14,11 +14,14 @@ const owner = ac.newRole({ ...adminAc.statements });
 const noAdminPowers = ac.newRole({ user: [], session: [] });
 export const AUTH_ROLES = { owner, editor: noAdminPowers, duroos_editor: noAdminPowers, content_editor: noAdminPowers };
 
+/** Previews hold demo data only; a random per-instance secret means no preview session can be forged. */
+const PREVIEW_SECRET = crypto.randomUUID() + crypto.randomUUID();
 const DEV_SECRET = "mesh-local-development-secret-not-for-production-use";
 
 function secret(): string {
   const s = process.env.BETTER_AUTH_SECRET;
   if (s) return s;
+  if (process.env.VERCEL_ENV === "preview") return PREVIEW_SECRET;
   if (process.env.NODE_ENV === "production" && process.env.MESH_LOCAL_DB !== "1") {
     throw new Error("BETTER_AUTH_SECRET is required in production");
   }
@@ -26,7 +29,10 @@ function secret(): string {
 }
 
 export function createAuth(db: Db, opts: { baseURL?: string } = {}) {
-  const baseURL = opts.baseURL ?? process.env.BETTER_AUTH_URL ?? "http://localhost:3000";
+  const baseURL =
+    opts.baseURL ??
+    process.env.BETTER_AUTH_URL ??
+    (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
   const url = new URL(baseURL);
   const turnstile = process.env.TURNSTILE_SECRET_KEY;
   return betterAuth({

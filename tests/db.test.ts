@@ -34,6 +34,15 @@ describe("database", () => {
     expect(u.banned).toBe(false);
   });
 
+  it("never connects a Vercel preview to the live database", async () => {
+    vi.stubEnv("VERCEL_ENV", "preview");
+    vi.stubEnv("DATABASE_URL", "postgres://live-db.invalid/neondb");
+    const { getDb } = await import("@/server/db/client");
+    const db = await getDb();
+    expect(await db.select().from(masjids)).toEqual([]);
+    delete (globalThis as { __meshDb?: unknown }).__meshDb;
+  });
+
   it("refuses to run in production without DATABASE_URL", async () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("DATABASE_URL", "");

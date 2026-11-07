@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   serverExternalPackages: ["@electric-sql/pglite"],
+  // Previews and local builds run migrations from these files at runtime.
+  outputFileTracingIncludes: { "/**": ["./drizzle/**/*"] },
   experimental: { globalNotFound: true },
   async redirects() {
     return LEGACY_REDIRECTS;

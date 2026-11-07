@@ -31,9 +31,11 @@ const g = globalThis as unknown as { __meshDb?: Promise<Db> };
 export function getDb(): Promise<Db> {
   if (!g.__meshDb) {
     g.__meshDb = (async () => {
-      const url = process.env.DATABASE_URL;
+      // Preview deployments get their own seeded copy and never touch the live database.
+      const preview = process.env.VERCEL_ENV === "preview";
+      const url = preview ? undefined : process.env.DATABASE_URL;
       if (url) return createNeon(url);
-      if (process.env.NODE_ENV === "production" && process.env.MESH_LOCAL_DB !== "1") {
+      if (process.env.NODE_ENV === "production" && process.env.MESH_LOCAL_DB !== "1" && !preview) {
         throw new Error("DATABASE_URL is required in production");
       }
       const db = await createPglite();
