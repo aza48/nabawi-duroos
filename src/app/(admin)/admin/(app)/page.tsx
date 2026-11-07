@@ -12,12 +12,29 @@ import { ChangeDarsButton } from "@/features/admin/ChangeDarsSheet";
 import { ActivityList } from "@/features/admin/ActivityList";
 import { StatusTag } from "@/features/duroos/StatusTag";
 import { timeAgo } from "@/features/admin/time";
+import { desc, inArray } from "drizzle-orm";
+import { channelPosts } from "@/server/db/schema";
+import type { AiParse } from "@/server/watcher/ai";
+import { Suggestions, type SuggestionCard } from "@/features/admin/watcher/Suggestions";
 
 export default async function Inbox() {
   const actor = await requireAdmin();
   const db = await getDb();
-  const [today, drafts, activity] = await Promise.all([getToday(db), listDrafts(db), listActivity(db, { limit: 8 })]);
+  const [today, drafts, activity, pendingPosts] = await Promise.all([
+    getToday(db), listDrafts(db), listActivity(db, { limit: 8 }),
+    db.select().from(channelPosts).where(inArray(channelPosts.status, ["suggested", "error"])).orderBy(desc(channelPosts.postedAt)).limit(20),
+  ]);
   const duroos = can(actor.role, "duroos.write");
+  const lastChecked = today.lastCheckedAt ? new Date(today.lastCheckedAt) : null;
+  const watcherStale = !lastChecked || Date.now() - lastChecked.getTime() > 30 * 60_000;
+  const cards: SuggestionCard[] = pendingPosts.map((p) => {
+    const r = p.parse as AiParse | null;
+    return {
+      id: p.id, channel: p.sourceHandle, when: timeAgo(p.postedAt), url: p.url, text: p.text, imageUrl: p.imageUrl,
+      reading: r ? `${r.kind.replace("_", " ")}${r.lesson_slug ? ` · ${r.lesson_slug}` : ""}${r.dates.length ? ` · ${r.dates.join(", ")}` : ""} (${Math.round(r.confidence * 100)}% sure)${r.note_en ? `. ${r.note_en}` : ""}` : null,
+      reason: p.reason, wouldAuto: p.wouldAuto, failed: p.status === "error",
+    };
+  });
   const actions = [
     duroos && { href: "/admin/duroos", label: "Change a dars", icon: CalendarX2 },
     can(actor.role, "announcements.write") && { href: "/admin/duroos/announcements/new", label: "Post an update", icon: Megaphone },
@@ -38,6 +55,21 @@ export default async function Inbox() {
           </Link>
         ))}
       </div>
+
+      {duroos && (
+        <section className="mt-7">
+          <div className="mb-2 flex items-baseline justify-between">
+            <h2 className="text-lg font-semibold">From the channels {cards.length > 0 && <span className="text-sm font-normal text-muted">({cards.length})</span>}</h2>
+            <Link href="/admin/sources" className="text-sm text-muted">Channels</Link>
+          </div>
+          {watcherStale && (
+            <p className="mb-2 rounded-xl bg-amber-bg px-3 py-2 text-sm text-amber">
+              {lastChecked ? `The channel watcher last ran ${timeAgo(lastChecked)}.` : "The channel watcher hasn't run yet."} New posts aren&apos;t being picked up.
+            </p>
+          )}
+          {cards.length ? <Suggestions items={cards} /> : <p className="card p-3.5 text-sm text-muted">Nothing waiting. New posts that need a person appear here.</p>}
+        </section>
+      )}
 
       {duroos && (
         <section className="mt-7">

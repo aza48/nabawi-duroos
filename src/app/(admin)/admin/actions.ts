@@ -22,6 +22,8 @@ const FRIENDLY: Record<string, string> = {
   already_undone: "That change was already undone.",
   missing_row: "That item has since been deleted, so it can't be undone.",
   not_undoable: "That change can't be undone.",
+  needs_lesson_and_date: "The AI couldn't tell which lesson or date. Use Change a dars instead.",
+  suggestion_not_found: "That suggestion was already handled.",
 };
 
 function explain(e: unknown): string {
@@ -98,4 +100,28 @@ export async function setRoleAction(input: Parameters<typeof setRole>[3]) {
 }
 export async function revokeAdminAction(userId: string) {
   return run("admins.manage", async (db, a) => { await revokeAdmin(db, await getAuth(), a, { userId }); });
+}
+
+/* Channel watcher */
+export async function approveSuggestionAction(id: number) {
+  return run("duroos.write", async (db, a) => {
+    const { approveSuggestion } = await import("@/server/watcher/run");
+    await approveSuggestion(db, a, id, {});
+  });
+}
+export async function dismissSuggestionAction(id: number) {
+  return run("duroos.write", async (db, a) => {
+    const { dismissSuggestion } = await import("@/server/watcher/run");
+    await dismissSuggestion(db, a, id);
+  });
+}
+export async function setSourceAction(input: { handle: string; trusted?: boolean; autoPublish?: boolean }) {
+  return run("settings.write", async (db) => {
+    const { sources } = await import("@/server/db/schema");
+    const { eq } = await import("drizzle-orm");
+    const patch: { trusted?: boolean; autoPublish?: boolean } = {};
+    if (typeof input.trusted === "boolean") patch.trusted = input.trusted;
+    if (typeof input.autoPublish === "boolean") patch.autoPublish = input.autoPublish;
+    await db.update(sources).set(patch).where(eq(sources.handle, input.handle));
+  });
 }
