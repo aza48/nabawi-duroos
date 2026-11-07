@@ -2,7 +2,8 @@ import type { Db } from "@/server/db/client";
 import { listFaqs, listGuides } from "@/server/content/queries";
 import { listShaykhs, scheduleRows } from "@/server/duroos/queries";
 import { PROGRAMS } from "@/content/programs";
-import { CHANNELS, MAHAD, MUQARRARAT, OFFICIAL } from "@/content/library";
+import { CHANNELS, MAHAD_EXTRA, OFFICIAL } from "@/content/library";
+import { LIVE_COLLECTIONS, isFolder, levelLabel, subjectHint, treeOf, type LibFolder } from "@/content/library-books";
 import { DISCOUNTS } from "@/content/discounts";
 import type { SearchDoc } from "@/lib/search/engine";
 
@@ -38,7 +39,17 @@ export async function buildSearchDocs(db: Db): Promise<SearchDoc[]> {
       text: `${l.bookAr} ${l.shaykh.nameAr} ${l.masjid.nameEn} ${l.masjid.nameAr} ${l.locationEn} ${l.prayer}`,
       url: `/duroos/lesson/${l.slug}`,
     })),
-    ...[...MUQARRARAT, ...MAHAD, ...OFFICIAL, ...CHANNELS].map((x, i) => ({ id: `lib-${i}`, type: "library" as const, title: x.title, subtitle: x.titleAr ?? x.note, text: `${x.note ?? ""} ${x.titleAr ?? ""} ${MUQARRARAT.includes(x) ? "muqarrarat college books" : ""}`, url: x.href })),
+    ...[...MAHAD_EXTRA, ...OFFICIAL, ...CHANNELS].map((x, i) => ({ id: `lib-${i}`, type: "library" as const, title: x.title, subtitle: x.titleAr ?? x.note, text: `${x.note ?? ""} ${x.titleAr ?? ""}`, url: x.href })),
+    ...LIVE_COLLECTIONS.map((c) => ({ id: `col-${c.slug}`, type: "library" as const, title: `${c.title} course books`, subtitle: c.titleAr, text: `${c.blurb} curriculum course books muqarrarat المقررات books levels summaries takhlees تلخيص`, url: `/library/${c.slug}` })),
+    ...LIVE_COLLECTIONS.flatMap((c) => {
+      const out: { id: string; type: "library"; title: string; subtitle: string; text: string; url: string }[] = [];
+      for (const level of treeOf(c.slug)!.f.filter(isFolder)) {
+        for (const sub of level.f.filter(isFolder) as LibFolder[]) {
+          out.push({ id: `sub-${sub.id}`, type: "library", title: sub.t, subtitle: `${c.title}, ${levelLabel(level.t) ?? level.t}`, text: `${subjectHint(sub.t) ?? ""} ${c.title} ${level.t} course book`, url: `/library/${c.slug}#f-${level.id}` });
+        }
+      }
+      return out;
+    }),
     ...DISCOUNTS.flatMap((g) => g.offers.map((o, i) => ({ id: `deal-${g.id}-${i}`, type: "discount" as const, title: o.nameEn ?? o.name, subtitle: o.deal, text: `${o.name} ${g.label}`, url: `/discounts` }))),
   ];
 }

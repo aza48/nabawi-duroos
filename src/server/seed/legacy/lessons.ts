@@ -262,7 +262,7 @@ export const LESSONS: Lesson[] = [
   // ==================== مسجد قباء ====================
   {
     id: "quba-husaini-tafsir",
-    shaykh: L("د. مسعد بن مساعد الحسيني", "Dr. Mas'ad ibn Musa'id al-Husaini"),
+    shaykh: L("د. مسعد بن مساعد الحسيني", "Dr. Mis'ad ibn Musa'id al-Husaini"),
     book: L("تيسير الكريم الرحمن في تفسير كلام المنان للسعدي", "Taysir al-Karim ar-Rahman fi Tafsir Kalam al-Mannan of as-Sa'di"),
     masjid: "quba",
     days: [6],

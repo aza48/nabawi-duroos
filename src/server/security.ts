@@ -16,7 +16,7 @@ export function publicCsp(isDev: boolean): string {
     "img-src 'self' data: blob: https:",
     "font-src 'self'",
     `connect-src 'self'${isDev ? " ws:" : ""}`,
-    "frame-src https://www.youtube-nocookie.com https://challenges.cloudflare.com",
+    "frame-src https://www.youtube-nocookie.com https://challenges.cloudflare.com https://drive.google.com",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
