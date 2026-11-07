@@ -14,7 +14,8 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
-    "seed": "tsx src/server/seed/run.ts"
+    "seed": "tsx src/server/seed/run.ts",
+    "admin:invite": "tsx --tsconfig tsconfig.json scripts/admin-invite.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "^1.7.18",
