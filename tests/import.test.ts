@@ -61,6 +61,15 @@ describe("importLegacy", () => {
     expect(yt.url).toBe("https://www.youtube.com/@wmngovksa/live");
   });
 
+  it("stores no em dashes in any displayed text", async () => {
+    const { announcements, events } = await import("@/server/db/schema");
+    const tables = [masjids, shaykhs, lessons, announcements, events, streams];
+    for (const t of tables) {
+      const rows = await db.select().from(t);
+      expect(JSON.stringify(rows)).not.toMatch(/[—]/);
+    }
+  });
+
   it("every lesson points at an existing masjid", async () => {
     const ids = new Set((await db.select({ id: masjids.id }).from(masjids)).map((r) => r.id));
     const all = await db.select({ m: lessons.masjidId }).from(lessons);

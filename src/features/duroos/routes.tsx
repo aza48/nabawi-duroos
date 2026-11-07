@@ -28,7 +28,7 @@ export function todayRoute(locale: Locale) {
     description:
       locale === "ar"
         ? "دروس اليوم في المسجد النبوي ومساجد المدينة، مع حالة كل درس ووقت الأذان."
-        : "Today's duroos at al-Masjid an-Nabawi, Quba and the masjids of Madinah — live status, adhan times and changes.",
+        : "Today's duroos at al-Masjid an-Nabawi, Quba and other masjids in Madinah, with live status, adhan times and changes.",
     alternates: canonicalFor(locale, ""),
   };
   return { Page, metadata };
@@ -95,7 +95,7 @@ export function lessonRoute(locale: Locale) {
       title: locale === "ar" ? l.bookAr : l.bookEn,
       description:
         locale === "ar"
-          ? `${l.bookAr} — ${l.shaykh.nameAr}، ${l.masjid.nameAr}.`
+          ? `${l.bookAr}، ${l.shaykh.nameAr}، ${l.masjid.nameAr}.`
           : `${l.bookEn} with ${l.shaykh.nameEn} at ${l.masjid.nameEn}: days, time, place and latest changes.`,
       alternates: canonicalFor(locale, `/lesson/${slug}`),
     };

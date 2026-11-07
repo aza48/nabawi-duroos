@@ -3,6 +3,7 @@ import type { Db } from "@/server/db/client";
 import { announcements, events, lessons, masjids, shaykhs, streams } from "@/server/db/schema";
 import { getSetting, setSetting, WHATSAPP_INVITE_DEFAULT } from "@/server/settings";
 import { hijriIsoBounds } from "@/lib/time/hijri";
+import { cleanRow } from "@/lib/text";
 import { LESSONS } from "./legacy/lessons";
 import { SHAYKH_PROFILES } from "./legacy/profiles";
 import { ANNOUNCEMENTS } from "./legacy/announcements";
@@ -51,7 +52,7 @@ export async function importLegacy(db: Db) {
   // Masjids
   let sort = 0;
   for (const [id, m] of Object.entries(MASJIDS)) {
-    const v = { id, nameEn: m.en, nameAr: m.ar, shortEn: m.short.en, shortAr: m.short.ar, sort: sort++ };
+    const v = cleanRow({ id, nameEn: m.en, nameAr: m.ar, shortEn: m.short.en, shortAr: m.short.ar, sort: sort++ });
     await db.insert(masjids).values(v).onConflictDoUpdate({ target: masjids.id, set: v });
   }
 
@@ -60,7 +61,7 @@ export async function importLegacy(db: Db) {
   for (const l of LESSONS) {
     if (shaykhIdByAr.has(l.shaykh.ar)) continue;
     const p = SHAYKH_PROFILES[l.shaykh.ar];
-    const v = {
+    const v = cleanRow({
       slug: shaykhSlug(l.shaykh.en),
       nameEn: l.shaykh.en,
       nameAr: l.shaykh.ar,
@@ -68,7 +69,7 @@ export async function importLegacy(db: Db) {
       roleEn: p?.role.en ?? null,
       roleAr: p?.role.ar ?? null,
       facts: p?.facts ?? [],
-    };
+    });
     const [row] = await db
       .insert(shaykhs)
       .values(v)
@@ -82,7 +83,7 @@ export async function importLegacy(db: Db) {
   const qubaTo = hijriIsoBounds(1448, 6, 30);
   const lessonIdBySlug = new Map<string, number>();
   for (const [i, l] of LESSONS.entries()) {
-    const v = {
+    const v = cleanRow({
       slug: l.id,
       shaykhId: shaykhIdByAr.get(l.shaykh.ar)!,
       masjidId: l.masjid,
@@ -112,7 +113,7 @@ export async function importLegacy(db: Db) {
       validFrom: l.masjid === "quba" ? qubaFrom : null,
       validTo: l.masjid === "quba" ? qubaTo : null,
       sort: i,
-    };
+    });
     const [row] = await db
       .insert(lessons)
       .values(v)
@@ -125,15 +126,15 @@ export async function importLegacy(db: Db) {
   for (const a of ANNOUNCEMENTS) {
     const shaykhId = shaykhIdByAr.get(a.shaykh.ar) ?? null;
     const posted = Date.parse(a.postedGregorian.en);
-    const v = {
+    const v = cleanRow({
       slug: a.id,
       shaykhId,
       guestNameEn: shaykhId ? null : a.shaykh.en,
       guestNameAr: shaykhId ? null : a.shaykh.ar,
       masjidId: a.masjidId ?? null,
       type: a.type,
-      titleEn: `${TYPE_LABEL_EN[a.type] ?? "Notice"} — ${a.shaykh.en}`,
-      titleAr: `${TYPE_LABEL_AR[a.type] ?? "إعلان"} — ${a.shaykh.ar}`,
+      titleEn: `${TYPE_LABEL_EN[a.type] ?? "Notice"}: ${a.shaykh.en}`,
+      titleAr: `${TYPE_LABEL_AR[a.type] ?? "إعلان"}: ${a.shaykh.ar}`,
       bodyEn: a.text.en,
       bodyAr: a.text.ar,
       eventDate: a.eventDate ?? null,
@@ -143,13 +144,13 @@ export async function importLegacy(db: Db) {
       postedAt: Number.isNaN(posted) ? new Date() : new Date(posted),
       status: a.expired ? ("archived" as const) : ("published" as const),
       publishedAt: Number.isNaN(posted) ? new Date() : new Date(posted),
-    };
+    });
     await db.insert(announcements).values(v).onConflictDoUpdate({ target: announcements.slug, set: v });
   }
 
   // Past events
   for (const e of EVENTS) {
-    const v = {
+    const v = cleanRow({
       slug: e.id,
       masjidId: e.masjid,
       kind: e.kind,
@@ -164,12 +165,12 @@ export async function importLegacy(db: Db) {
       startsOn: e.dateIso,
       endsOn: e.endIso,
       sourceUrl: e.source,
-    };
+    });
     await db.insert(events).values(v).onConflictDoUpdate({ target: events.slug, set: v });
   }
 
   // Streams and channel link-outs
-  const streamRows: (typeof streams.$inferInsert)[] = [
+  const streamRows: (typeof streams.$inferInsert)[] = ([
     {
       slug: "nabawi-youtube",
       labelEn: NABAWI_YOUTUBE.channelName.en,
@@ -204,7 +205,7 @@ export async function importLegacy(db: Db) {
         url: c.url,
         shaykhId: shaykhIdByAr.get(ar)!,
       })),
-  ];
+  ] as (typeof streams.$inferInsert)[]).map((r) => cleanRow(r));
   for (const s of streamRows) {
     await db.insert(streams).values(s).onConflictDoUpdate({ target: streams.slug, set: s });
   }

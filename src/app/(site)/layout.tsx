@@ -9,12 +9,12 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "MESH — Medina English Student Hub", template: "%s · MESH" },
+  title: { default: "MESH | Medina English Student Hub", template: "%s · MESH" },
   description:
     "The hub for English-speaking students in Madinah: live duroos schedules of the mashayikh, settling-in guides, answers to common questions, and the MESH WhatsApp group.",
   applicationName: "MESH",
   appleWebApp: { capable: true, title: "MESH", statusBarStyle: "default" },
-  openGraph: { siteName: "MESH — Medina English Student Hub", type: "website", locale: "en_GB" },
+  openGraph: { siteName: "MESH", type: "website", locale: "en_GB" },
 };
 
 export const viewport: Viewport = {

@@ -10,7 +10,7 @@ import { htmlAttrs } from "@/lib/locale";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "دروس المدينة — MESH", template: "%s · MESH" },
+  title: { default: "دروس المدينة | MESH", template: "%s · MESH" },
   description: "جدول دروس المسجد النبوي ومساجد المدينة المنورة، محدّث مباشرة من القنوات الرسمية.",
   openGraph: { siteName: "MESH", type: "website", locale: "ar_SA" },
 };

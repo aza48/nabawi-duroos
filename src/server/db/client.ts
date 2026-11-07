@@ -24,8 +24,8 @@ async function createNeon(url: string): Promise<Db> {
 const g = globalThis as unknown as { __meshDb?: Promise<Db> };
 
 /**
- * Neon when DATABASE_URL is set. Without it, an in-memory PGlite database —
- * migrated and seeded with the verified legacy data — for development, local
+ * Neon when DATABASE_URL is set. Without it, an in-memory PGlite database,
+ * migrated and seeded with the verified legacy data: for development, local
  * builds (MESH_LOCAL_DB=1) and tests. Production without a URL fails loudly.
  */
 export function getDb(): Promise<Db> {

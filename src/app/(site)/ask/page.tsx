@@ -6,7 +6,7 @@ import { AskPage } from "@/features/content/ContentPages";
 
 export const revalidate = 300;
 export const metadata: Metadata = {
-  title: "Ask — verified answers",
+  title: "Questions and answers",
   description: "Verified answers to the questions English-speaking students in Madinah ask most.",
   alternates: { canonical: "/ask" },
 };

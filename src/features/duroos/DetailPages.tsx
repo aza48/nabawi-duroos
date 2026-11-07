@@ -107,7 +107,7 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
           label={`${t(locale, "after")} ${t(locale, l.prayer)}`}
           value={`${t(locale, "adhan")} ${formatClock(adhan, locale)} · ${t(locale, "afterIqamah")}`}
         />
-        <Item icon={<MapPin size={16} />} label={t(locale, "location")} value={`${ar ? l.masjid.nameAr : l.masjid.nameEn} — ${ar ? l.locationAr : l.locationEn}`} />
+        <Item icon={<MapPin size={16} />} label={t(locale, "location")} value={`${ar ? l.masjid.nameAr : l.masjid.nameEn}${ar ? "، " : ", "}${ar ? l.locationAr : l.locationEn}`} />
       </dl>
       {(ar ? l.noteAr : l.noteEn) && <p className="mt-3 rounded-xl bg-bg-2 p-3 text-sm">{ar ? l.noteAr : l.noteEn}</p>}
       {(ar ? l.sequenceAr : l.sequenceEn) && <p className="mt-2 text-sm text-muted">{ar ? l.sequenceAr : l.sequenceEn}</p>}

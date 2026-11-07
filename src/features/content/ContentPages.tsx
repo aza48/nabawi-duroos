@@ -13,7 +13,7 @@ export function AskPage({ faqs, whatsappUrl }: { faqs: FaqRow[]; whatsappUrl: st
   const byCat = FAQ_CATEGORIES.map((c) => ({ ...c, items: faqs.filter((f) => f.category === c.id) })).filter((c) => c.items.length);
   return (
     <div className="mx-auto max-w-2xl">
-      <PageTitle title="Ask" subtitle="Verified answers to the questions students ask most — kept up to date by the MESH team." />
+      <PageTitle title="Ask" subtitle="Verified answers to the questions students ask most, kept up to date by the MESH team." />
       <AskOnWhatsApp url={whatsappUrl} />
       <div className="mt-6">
         {byCat.length === 0 ? (
@@ -152,9 +152,9 @@ export function MorePage({ whatsappUrl }: { whatsappUrl: string }) {
       <section id="about" className="mt-8">
         <h2 className="text-xl font-semibold">About MESH</h2>
         <p className="mt-2">
-          MESH — the Medina English Student Hub — is run by students, for English-speaking students in Madinah. The
-          WhatsApp group is where announcements, events and everyday help happen; this website is where the verified
-          answers, guides and the live duroos schedule are kept.
+          MESH (Medina English Student Hub) is run by students, for English-speaking students in Madinah.
+          Announcements, events and everyday help happen in the WhatsApp group. This website keeps the verified
+          answers, the guides and the live duroos schedule in one place.
         </p>
       </section>
 

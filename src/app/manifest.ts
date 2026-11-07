@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "MESH — Medina English Student Hub",
+    name: "MESH: Medina English Student Hub",
     short_name: "MESH",
     description: "Live duroos schedules, guides and answers for English-speaking students in Madinah.",
     start_url: "/",

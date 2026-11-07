@@ -45,7 +45,7 @@ export function formatHijri(
   return s;
 }
 
-/** "27 Jumada al-Ula 1448" — long English Hijri label. */
+/** "27 Jumada al-Ula 1448": long English Hijri label. */
 export function formatHijriLong(iso: string): string {
   const h = hijriOf(iso);
   return `${h.day} ${HIJRI_MONTHS_EN[h.month - 1]} ${h.year}`;

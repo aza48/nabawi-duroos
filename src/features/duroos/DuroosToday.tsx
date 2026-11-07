@@ -16,7 +16,7 @@ export function DuroosToday({ today, locale }: { today: Today; locale: Locale })
     <div className="mx-auto max-w-2xl">
       <DuroosNav locale={locale} />
       <p className="text-xs font-medium uppercase tracking-wide text-muted">
-        {ar ? `${today.hijri.ar} — ${today.gregorian.ar}` : `${today.hijri.en} · ${today.gregorian.en}`}
+        {ar ? `${today.hijri.ar} · ${today.gregorian.ar}` : `${today.hijri.en} · ${today.gregorian.en}`}
       </p>
       <h1 className="mt-1 text-3xl font-semibold">{t(locale, "todaysDuroos")}</h1>
       <p className="mt-1.5 mb-4 flex items-center gap-1.5 text-sm text-muted">
