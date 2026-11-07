@@ -21,10 +21,43 @@ async function createNeon(url: string): Promise<Db> {
   return drizzle(neon(url), { schema }) as unknown as Db;
 }
 
+/** Supabase (or any standard Postgres). prepare:false is required behind Supabase's transaction pooler. */
+async function createPostgres(url: string): Promise<Db> {
+  const { default: postgres } = await import("postgres");
+  const { drizzle } = await import("drizzle-orm/postgres-js");
+  const local = ["localhost", "127.0.0.1"].includes(new URL(url).hostname);
+  const client = postgres(url, { prepare: false, max: 3, idle_timeout: 20, connect_timeout: 10, ssl: local ? false : "require" });
+  return drizzle(client, { schema }) as unknown as Db;
+}
+
+export async function connect(url: string): Promise<Db> {
+  const { driverFor } = await import("./url");
+  return driverFor(url) === "neon" ? createNeon(url) : createPostgres(url);
+}
+
+/** Runs the Drizzle migrations against a live database (Supabase via its session pooler, or Neon). */
+export async function migrateLive(url: string): Promise<void> {
+  const { driverFor, sessionUrl } = await import("./url");
+  if (driverFor(url) === "neon") {
+    const { migrate } = await import("drizzle-orm/neon-http/migrator");
+    await migrate((await createNeon(url)) as never, { migrationsFolder: MIGRATIONS });
+    return;
+  }
+  const { default: postgres } = await import("postgres");
+  const { drizzle } = await import("drizzle-orm/postgres-js");
+  const { migrate } = await import("drizzle-orm/postgres-js/migrator");
+  const client = postgres(sessionUrl(url), { max: 1, ssl: "require", onnotice: () => {} });
+  try {
+    await migrate(drizzle(client), { migrationsFolder: MIGRATIONS });
+  } finally {
+    await client.end();
+  }
+}
+
 const g = globalThis as unknown as { __meshDb?: Promise<Db> };
 
 /**
- * Neon when DATABASE_URL is set. Without it, an in-memory PGlite database,
+ * The live database (Supabase, or Neon) when DATABASE_URL is set. Without it, an in-memory PGlite database,
  * migrated and seeded with the verified legacy data: for development, local
  * builds (MESH_LOCAL_DB=1) and tests. Production without a URL fails loudly.
  */
@@ -34,7 +67,7 @@ export function getDb(): Promise<Db> {
       // Preview deployments get their own seeded copy and never touch the live database.
       const preview = process.env.VERCEL_ENV === "preview";
       const url = preview ? undefined : process.env.DATABASE_URL;
-      if (url) return createNeon(url);
+      if (url) return connect(url);
       if (process.env.NODE_ENV === "production" && process.env.MESH_LOCAL_DB !== "1" && !preview) {
         throw new Error("DATABASE_URL is required in production");
       }
