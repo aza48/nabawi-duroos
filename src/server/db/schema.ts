@@ -302,3 +302,39 @@ export const auditLog = pgTable(
   },
   (t) => [index("audit_created_idx").on(t.createdAt)]
 );
+
+/* ---------- Channel watcher ---------- */
+
+export type PostStatus = "new" | "ignored" | "suggested" | "published" | "dismissed" | "error";
+
+export const sources = pgTable("sources", {
+  handle: text("handle").primaryKey(),
+  name: text("name").notNull(),
+  trusted: boolean("trusted").notNull().default(true),
+  autoPublish: boolean("auto_publish").notNull().default(false),
+  lastCheckedAt: timestamp("last_checked_at", { withTimezone: true }),
+  lastError: text("last_error"),
+});
+
+export const channelPosts = pgTable(
+  "channel_posts",
+  {
+    id: serial("id").primaryKey(),
+    sourceHandle: text("source_handle").notNull().references(() => sources.handle),
+    postId: text("post_id").notNull().unique(),
+    url: text("url").notNull(),
+    text: text("text").notNull(),
+    imageUrl: text("image_url"),
+    postedAt: timestamp("posted_at", { withTimezone: true }).notNull(),
+    textHash: text("text_hash").notNull(),
+    status: text("status").$type<PostStatus>().notNull().default("new"),
+    parse: jsonb("parse"),
+    wouldAuto: boolean("would_auto").notNull().default(false),
+    reason: text("reason"),
+    overrideId: integer("override_id"),
+    decidedBy: text("decided_by"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("channel_posts_status_idx").on(t.status, t.postedAt)]
+);

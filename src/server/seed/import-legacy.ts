@@ -5,6 +5,7 @@ import { getSetting, setSetting, WHATSAPP_INVITE_DEFAULT } from "@/server/settin
 import { hijriIsoBounds } from "@/lib/time/hijri";
 import { cleanRow } from "@/lib/text";
 import { importOldMesh } from "./import-old-mesh";
+import { seedSources } from "@/server/watcher/sources";
 import { LESSONS } from "./legacy/lessons";
 import { SHAYKH_PROFILES } from "./legacy/profiles";
 import { ANNOUNCEMENTS } from "./legacy/announcements";
@@ -212,6 +213,7 @@ export async function importLegacy(db: Db) {
   }
 
   await importOldMesh(db);
+  await seedSources(db);
 
   if ((await getSetting(db, "whatsapp_invite_url")) === null) {
     await setSetting(db, "whatsapp_invite_url", WHATSAPP_INVITE_DEFAULT);

@@ -15,6 +15,13 @@
       "when": 1794040415759,
       "tag": "0001_auth_admin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794055108072,
+      "tag": "0002_watcher",
+      "breakpoints": true
     }
   ]
 }
