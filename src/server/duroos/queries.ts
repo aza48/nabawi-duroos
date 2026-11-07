@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, gte, inArray, isNull, lte } from "drizzle-orm";
+import { and, asc, desc, eq, gte, inArray, isNull, lte, or } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { announcements, lessonOverrides, lessons, masjids, shaykhs, streams } from "@/server/db/schema";
 import { getSetting } from "@/server/settings";
@@ -142,17 +142,32 @@ export async function getShaykh(db: Db, slug: string) {
   return { ...s, lessons: rows, channels };
 }
 
+/** Undated announcements stay in the current feed this long. */
+const UNDATED_FRESH_DAYS = 14;
+
+/**
+ * The current feed: published announcements whose event is today or later,
+ * plus undated ones posted in the last two weeks. `includeArchived` returns the
+ * full history (published + archived), newest first.
+ */
 export async function listAnnouncements(
   db: Db,
-  opts: { limit?: number; includeArchived?: boolean } = {}
+  opts: { limit?: number; includeArchived?: boolean; now?: Date } = {}
 ): Promise<AnnouncementRow[]> {
-  const statuses: AnnouncementRow["status"][] = opts.includeArchived ? ["published", "archived"] : ["published"];
-  return db
-    .select()
-    .from(announcements)
-    .where(inArray(announcements.status, statuses))
-    .orderBy(desc(announcements.postedAt))
-    .limit(opts.limit ?? 20);
+  const now = opts.now ?? new Date();
+  const where = opts.includeArchived
+    ? inArray(announcements.status, ["published", "archived"])
+    : and(
+        eq(announcements.status, "published"),
+        or(
+          gte(announcements.eventDate, riyadhDateIso(now)),
+          and(
+            isNull(announcements.eventDate),
+            gte(announcements.postedAt, new Date(now.getTime() - UNDATED_FRESH_DAYS * 86_400_000))
+          )
+        )
+      );
+  return db.select().from(announcements).where(where).orderBy(desc(announcements.postedAt)).limit(opts.limit ?? 20);
 }
 
 export async function getAnnouncement(db: Db, slug: string): Promise<AnnouncementRow | null> {

@@ -69,6 +69,13 @@ describe("lookups", () => {
     expect(pub.every((a) => a.status === "published")).toBe(true);
     expect(all.length).toBeGreaterThanOrEqual(pub.length);
   });
+  it("keeps announcements whose event date has passed out of the current feed", async () => {
+    const now = new Date("2026-11-07T09:30:00Z");
+    const current = await listAnnouncements(db, { limit: 100, now });
+    expect(current.every((a) => !a.eventDate || a.eventDate >= "2026-11-07")).toBe(true);
+    const all = await listAnnouncements(db, { limit: 100, includeArchived: true, now });
+    expect(all.some((a) => a.eventDate && a.eventDate < "2026-11-07")).toBe(true);
+  });
   it("returns empty content lists on a fresh database", async () => {
     expect(await listFaqs(db)).toEqual([]);
     expect(await listGuides(db)).toEqual([]);

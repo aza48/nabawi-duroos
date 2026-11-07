@@ -157,3 +157,4 @@ a { -webkit-tap-highlight-color: transparent; }
 .article :where(a) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .article :where(img) { border-radius: 12px; margin: 1rem 0; }
 .article :where(blockquote) { border-inline-start: 3px solid var(--accent); padding-inline-start: 1rem; color: var(--muted); }
+:root[dir="ltr"] .ar-text { text-align: left; }
