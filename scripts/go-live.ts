@@ -22,7 +22,7 @@ async function main() {
   const ownerIdx = args.indexOf("--owner");
   const owner = ownerIdx >= 0 ? args[ownerIdx + 1] : null;
   if (!process.env.DATABASE_URL) throw new Error("Put the live DATABASE_URL in .env.production.local first.");
-  process.env.NODE_ENV = "production";
+  (process.env as Record<string, string>).NODE_ENV = "production";
 
   const { getDb } = await import("@/server/db/client");
   const { goLive } = await import("@/server/seed/go-live");

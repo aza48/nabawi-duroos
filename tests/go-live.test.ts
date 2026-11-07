@@ -28,16 +28,16 @@ describe("goLive", () => {
     const db = await oldSiteDb();
     const report = await goLive(db, { apply: false, migrate: runMigrations });
     expect(report.steps.join("\n")).toMatch(/rename the old announcements table/i);
-    const t = await db.execute(sql`SELECT to_regclass('public.lessons') AS t`);
+    const t: any = await db.execute(sql`SELECT to_regclass('public.lessons') AS t`);
     expect((t.rows[0] as { t: string | null }).t).toBeNull();
   });
 
   it("keeps the old data, creates the new tables, seeds the schedule and carries over published announcements", async () => {
     const db = await oldSiteDb();
     const report = await goLive(db, { apply: true, migrate: runMigrations });
-    const legacy = await db.execute(sql`SELECT count(*)::int AS n FROM legacy_announcements`);
+    const legacy: any = await db.execute(sql`SELECT count(*)::int AS n FROM legacy_announcements`);
     expect((legacy.rows[0] as { n: number }).n).toBe(2);
-    const subs = await db.execute(sql`SELECT count(*)::int AS n FROM subscribers`);
+    const subs: any = await db.execute(sql`SELECT count(*)::int AS n FROM subscribers`);
     expect((subs.rows[0] as { n: number }).n).toBe(1);
     expect(report.counts.lessons).toBe(45);
     const carried = await db.select().from(schema.announcements);
