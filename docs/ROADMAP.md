@@ -21,9 +21,19 @@ Last updated 7 November 2026 (27/5/1448).
 - Activity feed with one-tap undo for every change.
 - Security: login rate limits, strict security headers, admin hidden from search engines.
 
+**Plan 3a: channel watcher (done, in shadow mode)**
+- Reads the six Telegram channels; Gemini reads each new post and flyer. Clear cancellations from trusted channels publish themselves once a channel leaves shadow mode; everything else goes to the admin Inbox with Publish or Dismiss.
+- "Live now": detects the Prophet's Mosque YouTube live stream and links to the exact broadcast.
+- Watcher heartbeat warning in the Inbox; per-channel switches in Admin, More, Channels.
+- 17 guides imported from the previous MESH site, plus a new "Study & university" section.
+- Note: Google's free Gemini tier was overloaded (503) for most calls on 7 Nov. Failed posts are retried automatically; if it stays unreliable, move to a paid tier.
+
 ## Remaining before launch
 
-### Plan 3: automatic updates and notifications
+### Plan 3b: notifications and more live signals
+0. Use the channels' "live broadcast started" posts (بدأ البث المباشر) to mark each dars LIVE with its own link, without AI.
+
+### Plan 3 (original list: items 1 to 6 are now done)
 1. Channel watcher: read the public Telegram channels every few minutes.
 2. AI reading of Arabic posts and flyer images, matched to the right lesson and date.
 3. Hybrid publishing: trusted channels publish automatically, anything unsure goes to the admin inbox.
