@@ -76,11 +76,13 @@ medinahub.org: a hub run by students, for English-speaking students and families
 - Still to do: add library pages to the sitemap; a client-side filter on long college pages if students ask.
 
 ## Open questions for the owner
-- Shaykh photos: the owner now asks for a photo of each shaykh. The earlier rule was name badges by default because many mashayikh dislike being photographed. Ask which shuyukh are fine, and use only photos from their own official channels or ones the owner supplies.
+## Shaykh photos (owner decision, 7 November 2026: "all shuyukh with their photos")
+- This replaces the old "badge by default" rule. Every shaykh (31 in src/server/seed/legacy/lessons.ts) should get a photo, but only a verified one: a wrong face is worse than none.
+- Plan (scheduled to run in this session at 01:07 on 8 November, after the usage reset; run it yourself if that session is gone): a workflow with one researcher per shaykh (sources: his official Telegram channel or website, IU or Presidency pages, official news, Wikimedia), then two independent verifiers that must match the face against a second independent source, then square webp files in public/shaykhs/<slug>.webp, shaykhs.photo set in the seed and on the live DB, sources recorded in docs/research/shaykh-photos.md. ShaykhBadge stays as the fallback. Tell the owner which shaykhs still lack a verified photo so they can supply one.
 - Shaykh Mis'ad's page slug is still masad-ibn-musaid-al-husaini (name fixed, slug kept so links don't break). Add a redirect if the slug changes.
 
-## Research still landing
-- docs/research/study-in-saudi-telegram.md: an agent was mining all 745 posts of t.me/notjustmadinah when the session stopped. If the file exists, commit it and use it; if not, re-run the scrape (tg-history.cjs) and analysis.
+## Research to act on
+- docs/research/study-in-saudi-telegram.md (745 posts of t.me/notjustmadinah). Key changes for the site: IU did not open in the Sep to Oct 2026 Study in Saudi window (next expected around April 2027); offers must be accepted within 5 days; IU now needs a second Minhati application, a Teams interview and an Arabic placement test; new students get an electronic study visa (no iqama, no exit and re-entry); deferral is effectively gone under that visa; housing is no longer promised to new intakes; residential IU is men only (women: online degree, or other universities); the Ma'had replaced the Madinah Books with new textbooks in October 2025; online IU courses closed 7 November 2026. Open conflicts it flags: deferral (IU page says 2 years), housing, and the istiqdam deposit (10,000 vs 30,000 SAR).
 
 ## To do next (in this order)
 1. Library sitemap entries; owner decision on shaykh photos.
