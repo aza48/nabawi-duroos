@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Copy, Fingerprint } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
-import { inviteAdminAction, revokeAdminAction, setRoleAction, setWhatsAppUrlAction } from "@/app/(admin)/admin/actions";
+import { inviteAdminAction, revokeAdminAction, setHelpContactAction, setRoleAction, setWhatsAppUrlAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 
 export function WhatsAppForm({ current }: { current: string }) {
@@ -21,6 +21,26 @@ export function WhatsAppForm({ current }: { current: string }) {
         <input className={inputCls} value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://chat.whatsapp.com/…" required />
       </Field>
       <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : "Save link"}</button>
+      {msg && <p className="text-center text-sm text-on">{msg}</p>}
+      {error && <ErrorNote>{error}</ErrorNote>}
+    </form>
+  );
+}
+
+export function HelpContactForm({ current }: { current: string }) {
+  const [phone, setPhone] = useState(current);
+  const [msg, setMsg] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [pending, start] = useTransition();
+  return (
+    <form className="grid gap-3" onSubmit={(e) => { e.preventDefault(); setMsg(null); setError(null); start(async () => {
+      const r = await setHelpContactAction(phone.trim());
+      if (r.ok) setMsg("Saved. The help number on every page now uses this."); else setError(r.error);
+    }); }}>
+      <Field label="Help number (WhatsApp)" hint="Shown wherever the site says to message for help, suggestions or takhlees. Include the country code.">
+        <input className={inputCls} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+1 234 567 9076" inputMode="tel" required />
+      </Field>
+      <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : "Save number"}</button>
       {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>

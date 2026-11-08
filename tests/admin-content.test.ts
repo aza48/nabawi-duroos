@@ -2,10 +2,10 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { eq } from "drizzle-orm";
 import { resetTestDb, type Db } from "@/server/db/client";
 import { createAuth, type Auth } from "@/server/auth/auth";
-import { deleteFaq, saveFaq, saveGuide, setWhatsAppUrl } from "@/server/admin/content";
+import { deleteFaq, saveFaq, saveGuide, setHelpContact, setWhatsAppUrl } from "@/server/admin/content";
 import { listAdmins, revokeAdmin, setRole } from "@/server/admin/admins";
 import { getFaq, listFaqs } from "@/server/content/queries";
-import { getWhatsAppUrl } from "@/server/settings";
+import { getWhatsAppUrl, getHelpContact } from "@/server/settings";
 import { checkAdmin } from "@/server/auth/check";
 import { session, user } from "@/server/db/schema";
 import type { Actor } from "@/server/auth/permissions";
@@ -66,6 +66,12 @@ describe("settings", () => {
   });
   it("rejects anything that is not a WhatsApp group link", async () => {
     await expect(setWhatsAppUrl(db, editor, { url: "https://evil.example.com/join" })).rejects.toThrow();
+  });
+  it("saves the help number and rejects one without a country code", async () => {
+    await setHelpContact(db, editor, { phone: "+966 55 123 4567" });
+    expect(await getHelpContact(db)).toBe("+966 55 123 4567");
+    await expect(setHelpContact(db, editor, { phone: "call me" })).rejects.toThrow();
+    await expect(setHelpContact(db, content, { phone: "+1 234 567 9076" })).rejects.toThrow("forbidden");
   });
   it("keeps content editors out of settings", async () => {
     await expect(setWhatsAppUrl(db, content, { url: "https://chat.whatsapp.com/X1" })).rejects.toThrow("forbidden");
