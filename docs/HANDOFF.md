@@ -55,7 +55,7 @@ Worktree note: this work was done in `.claude/worktrees/mesh-website-audit-73b81
 
 ## Prompt for the next AI session (copy this whole block as the first message)
 
-You are continuing work on MESH (medinahub.org), a Next.js 16 site for English-speaking students in Madinah, owned by Muhaymin. Work autonomously, one small tested deployed step at a time, and stop at a safe point near 90% of the 5-hour usage window (call get_usage between steps), leaving this file current.
+You are continuing work on MESH (medinahub.org), a Next.js 16 site for English-speaking students in Madinah, owned by Muhaymin. Work autonomously, one small tested deployed step at a time, and stop at a safe point near 95% of the 5-hour usage window (call get_usage between steps), leaving this file current.
 
 Read in this order, fully: `CLAUDE.md`, `CONTRIBUTING.md`, `docs/HANDOFF.md` (this file; the top section is the latest state), `docs/audit/deep-2026-11-08/README.md` (the ranked plan; every row has a status), then the report named on the row you pick up (`security.md`, `duroos.md`, `frontend.md`, `personas.md` in the same folder). Follow every owner rule in HANDOFF: no em or en dashes anywhere, no AI-sounding copy, speak with authority and never name sources, impartial, no adverts, temporary content logged in `docs/EXPIRING.md`, unsure means ask (put the question in `scripts/open-questions.json`, never guess), never print or commit secrets.
 
@@ -68,11 +68,11 @@ Known constraints: the permission classifier refuses production database reads a
 Do next, in this order (plan rows; each is small unless marked):
 1. A real privacy page at `/privacy` (remove the redirect in `src/lib/redirects.ts`; say what the tracker in `src/components/shell/Tracker.tsx` stores, for how long, and how to opt out; link it from the footer and More; respect `navigator.globalPrivacyControl`). Then update `docs/WHAT-CHANGED.md`.
 2. Row 18: TLS verification to Supabase once the owner has added `DATABASE_CA` to Vercel (switch `src/server/db/client.ts` to `{ ca, rejectUnauthorized: true }`).
-3. Content (0h, L): a "Living on the Visitor ID" guide (what works and what does not, one consistent name; zaer and hawiya synonyms are already in search), campus practicals, women's gates and sections at the Haram, a real privacy page at `/privacy` (tracking is on and `/privacy` redirects to `/more`). New facts only from `docs/research/` or official sources; otherwise an open question.
+3. Content (0h, L): a "Living on the Visitor ID" guide (what works and what does not, one consistent name; zaer and hawiya synonyms are already in search), campus practicals, women's gates and sections at the Haram. New facts only from `docs/research/` or official sources; otherwise an open question.
 4. Content (0i, L): Arabic versions of the guides and FAQs, `/ar/mahad`, an Arabic home page.
 5. If asked, re-run the three cut-short audits: content and copy, live crawl with screenshots at 390 and 1440, admin phone click-through.
 
-Report at the end: what landed (sha per row), what is left, and the owner's blocked list, all in this file. Keep HANDOFF.md free of dashes and secrets.
+Report at the end: what landed (sha per row), what is left, and the owner's blocked list, all in this file, plus a plain-words entry in `docs/WHAT-CHANGED.md`. Keep both free of dashes and secrets. The owner said 90% is too early: work until about 95% of the window, then stop.
 
 
 Last rewritten 8 November 2026, about 09:15 Riyadh, at the end of the 7 and 8 November sessions. This file is the single source of truth for continuing the work. If you are a fresh Claude Code session, also read `docs/START-HERE.md`.
