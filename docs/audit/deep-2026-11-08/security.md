@@ -72,7 +72,6 @@ None found.
   - Move the DDL into a Drizzle migration and drop `ensureAnalytics` from the hot path.
   - Move the purge to `/api/cron/daily`.
   - Add per-IP rate limiting (WAF), and validate that `path` starts with `/` and matches a known route shape.
-  - Respect `navigator.globalPrivacyControl` and DNT in `Tracker.tsx`.
 - **Size:** M
 
 ### M7. A pg Pool with no `error` handler can crash the instance, and TLS certificate checks are off

@@ -41,7 +41,6 @@ Two Claude sessions worked from a full review of the site. Everything below is l
 
 ## What is still open (for the next session)
 
-- A real privacy page at /privacy.
 - New guides: living on a Visitor ID, campus practicals (buses, mat'am, clinic), women's gates and sections at the Haram.
 - Arabic versions of the guides and FAQs, an Arabic Ma'had page and an Arabic home page.
 

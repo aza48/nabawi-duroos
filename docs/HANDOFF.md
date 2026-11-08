@@ -16,10 +16,9 @@ What landed (sha per row)
 - Tests: 321 passing in 44 files (was 294 in 42). New: timeKnown, deterministic watcher checks, announcement overrides, rate limit, track flood, API routes.
 
 Left from the queue (in order)
-1. A real privacy page at `/privacy` (today `src/lib/redirects.ts` sends it to `/more`; the tracker in `src/components/shell/Tracker.tsx` stores a random id, city and region, no IP). Write what is collected, why, how long (180 days), and how to opt out; link it from the footer and the More page; respect `navigator.globalPrivacyControl` in the tracker.
-2. Row 18: TLS verification once the owner adds `DATABASE_CA` (see the blocked list).
-3. Content 0h and 0i: a "Living on the Visitor ID" guide, campus practicals, women's gates and sections at the Haram, a real `/privacy` page (tracking is on and `/privacy` redirects to `/more`), then Arabic guides and FAQs, `/ar/mahad`, an Arabic home page. New facts only from `docs/research/` or official sources; otherwise an open question.
-4. Optional: the three cut-short audits (content and copy, live crawl with screenshots, admin phone click-through).
+1. Row 18: TLS verification once the owner adds `DATABASE_CA` (see the blocked list).
+2. Content 0h and 0i: a "Living on the Visitor ID" guide, campus practicals, women's gates and sections at the Haram, then Arabic guides and FAQs, `/ar/mahad`, an Arabic home page. New facts only from `docs/research/` or official sources; otherwise an open question.
+3. Optional: the three cut-short audits (content and copy, live crawl with screenshots, admin phone click-through).
 
 New for the owner's blocked list (in addition to the six items below)
 7. The three lessons with unconfirmed times (`balawi-saidi-tahrir`, `hijrah-tariq-fath`, both "Evening" or "Livestreamed"; `balawi-ghalib-ubudiyyah` has a real label) are detected from their current labels. If you edit those labels in Admin, keep the word "Evening" alone or write "Evening, time not confirmed", or the adhan time comes back.
@@ -48,7 +47,7 @@ Blocked here, for the owner (the permission classifier refuses production reads 
 Next steps, in order (each: tests, typecheck, commit, `git push mine HEAD:main`, `git push origin HEAD:revamp`, check medinahub.org, tick the row)
 1. Plan item 4 (lessons with unknown times show a precise adhan time: add a timeKnown flag, render timeLabel, prayerNote, sequence and note publicly), item 14 (deterministic date and shaykh check before auto-publish), item 37 (a cancellation announcement should also change the schedule).
 2. The rest of item 16 (a per-IP rate limit on push subscribe; key validation and batching landed in 5f7ccf4), item 17 (track endpoint rate limit and no DDL on cold start), 35 (AI back-off and the run budget), 38 (list endpoints and a date parameter for the native app).
-3. Items 25 (search palette as a native dialog with combobox semantics), 28 (adhan and minisearch out of the shared client bundle; split the company guide), 30 (structured data clean-up and sitemap lastmod), the rest of 31 and 32, and 0h (Visitor ID guide, campus practicals, women's gates, privacy page) and 0i (Arabic guides and FAQs, /ar/mahad, an Arabic home page).
+3. Items 25 (search palette as a native dialog with combobox semantics), 28 (adhan and minisearch out of the shared client bundle; split the company guide), 30 (structured data clean-up and sitemap lastmod), the rest of 31 and 32, and 0h (Visitor ID guide, campus practicals, women's gates) and 0i (Arabic guides and FAQs, /ar/mahad, an Arabic home page).
 4. Re-run the three audit reviews that were cut short last time (content and copy, live crawl with screenshots, admin phone click-through) if wanted.
 
 Worktree note: this work was done in `.claude/worktrees/mesh-website-audit-73b810` on branch `claude/mesh-website-audit-73b810`, pushed to `mine/main` and `origin/revamp`. The main checkout's `revamp` branch is behind: fast-forward it (`git merge --ff-only origin/revamp` from the main folder) before working there. `next build` in the worktree needs `--webpack` (Turbopack cannot resolve the junctioned node_modules); Vercel builds are unaffected.
@@ -66,11 +65,10 @@ Each step: edit, add or update tests, `npx tsc --noEmit`, `npx vitest run`, comm
 Known constraints: the permission classifier refuses production database reads and writes from these sessions, including read-only scripts; anything that needs a live row goes under "Blocked here, for the owner" in HANDOFF instead. A function exported from a "use client" file cannot be called from a server component (this broke one build; shared helpers live in plain modules such as `src/features/duroos/paths.ts`). Dev server: `npm run dev` on port 3100 with `WATCHPACK_POLLING=true`; never `next build` while it runs.
 
 Do next, in this order (plan rows; each is small unless marked):
-1. A real privacy page at `/privacy` (remove the redirect in `src/lib/redirects.ts`; say what the tracker in `src/components/shell/Tracker.tsx` stores, for how long, and how to opt out; link it from the footer and More; respect `navigator.globalPrivacyControl`). Then update `docs/WHAT-CHANGED.md`.
-2. Row 18: TLS verification to Supabase once the owner has added `DATABASE_CA` to Vercel (switch `src/server/db/client.ts` to `{ ca, rejectUnauthorized: true }`).
-3. Content (0h, L): a "Living on the Visitor ID" guide (what works and what does not, one consistent name; zaer and hawiya synonyms are already in search), campus practicals, women's gates and sections at the Haram. New facts only from `docs/research/` or official sources; otherwise an open question.
-4. Content (0i, L): Arabic versions of the guides and FAQs, `/ar/mahad`, an Arabic home page.
-5. If asked, re-run the three cut-short audits: content and copy, live crawl with screenshots at 390 and 1440, admin phone click-through.
+1. Row 18: TLS verification to Supabase once the owner has added `DATABASE_CA` to Vercel (switch `src/server/db/client.ts` to `{ ca, rejectUnauthorized: true }`).
+2. Content (0h, L): a "Living on the Visitor ID" guide (what works and what does not, one consistent name; zaer and hawiya synonyms are already in search), campus practicals, women's gates and sections at the Haram. New facts only from `docs/research/` or official sources; otherwise an open question.
+3. Content (0i, L): Arabic versions of the guides and FAQs, `/ar/mahad`, an Arabic home page.
+4. If asked, re-run the three cut-short audits: content and copy, live crawl with screenshots at 390 and 1440, admin phone click-through.
 
 Report at the end: what landed (sha per row), what is left, and the owner's blocked list, all in this file, plus a plain-words entry in `docs/WHAT-CHANGED.md`. Keep both free of dashes and secrets. The owner said 90% is too early: work until about 95% of the window, then stop.
 

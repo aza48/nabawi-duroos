@@ -71,7 +71,7 @@ Top 3:
 Top 3:
 1. A comparison table of institutes: hours, length, levels, fee, next start, online, visa needed or sponsored.
 2. A plain "how MESH checks information" note, and dates shown on list cards.
-3. A real, named contact route (email or verified WhatsApp) and a privacy line.
+3. A real, named contact route (email or verified WhatsApp).
 
 ---
 
@@ -173,7 +173,7 @@ Top 3:
 | 2 | Free bus stops and times, mat'am hours and rules, University clinic place and hours, gate hours | P1, P5 | Student life at the IU guide and the bus/mat'am FAQs (replace "ask in the group") |
 | 3 | Arabic content for guides and FAQs, Arabic Ma'had hub, Arabic home | P2, P6 | /ar/guides, /ar/ask, /ar/mahad, /ar |
 | 4 | Women at the Haram: gates, sections, Rawdah for women, children and strollers, where to sit for each dars | P4 | Masjid an-Nabawi first-visit guide or a new sisters' Haram page; linked from /duroos/sisters |
-| 5 | A real contact and "who we are / how we check": named role, email, what "Verified" and "Last verified" mean, privacy line | P3, P5 | /more#about, footer, a short /about page |
+| 5 | A real contact and "who we are / how we check": named role, email, what "Verified" and "Last verified" mean | P3, P5 | /more#about, footer, a short /about page |
 | 6 | For parents: what the scholarship covers, a scholarship student's real monthly spend, safety and emergency contacts | P5 | New "For families back home" page |
 | 7 | Programme start dates and visa route for each private institute; a comparison table | P3 | /programs and each programme page |
 | 8 | Family visas now (istiqdam status), Ejar rule made consistent | P4, P1 | Visas guide, istiqdam FAQ |

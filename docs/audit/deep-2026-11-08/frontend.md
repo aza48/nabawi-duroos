@@ -279,7 +279,7 @@ Counts: **Critical 1, High 7, Medium 16, Low 12.**
 - **Fix:** Keep the date visually large, but make it a `p`. Add an h1 such as "Today in Madinah: duroos, prayer times and student guides", visible or `sr-only`.
 - **Size:** S
 
-### L6. No privacy page while visitor tracking is on
+### L6. No privacy page while visitor tracking is on (deferred by the owner until near launch: do not build)
 - **Where:** `components/shell/Tracker.tsx:27-34,80-85` (stores `mesh_vid` and `mesh_sid` in localStorage and sends path, referrer, width and language); `lib/redirects.ts:31` (`/privacy` redirects to `/more`)
 - **What:** The data is anonymous, but there is nowhere that says what is collected. The footer has no privacy link.
 - **Fix:** Add a short `/privacy` section, for example `/more#privacy`, and a footer link.
