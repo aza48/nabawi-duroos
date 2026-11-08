@@ -10,7 +10,7 @@ import { DuroosCarousel } from "./DuroosCarousel";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
-/** Today's duroos as one card per prayer. Each prayer's lessons sit in a swipeable rail. */
+/** Today's duroos as one card per prayer. On phones each prayer shows its priority lesson with a button for the rest; wider screens use a swipeable rail. */
 export function DuroosCards({ today, locale }: { today: Today; locale: Locale }) {
   const ar = locale === "ar";
 
@@ -40,6 +40,10 @@ export function DuroosCards({ today, locale }: { today: Today; locale: Locale })
         const group = today.lessons.filter((l) => l.prayer === p);
         if (!group.length) return null;
         const many = group.length >= 3;
+        const isNext = (l: (typeof group)[number]) => l.adhanAt === nextTime && l.phase === "upcoming" && notCancelled(l.status);
+        const others = group.length - 1;
+        const moreLabel = ar ? `عرض ${toArabicDigits(others)} ${others === 1 ? "درس آخر" : "دروس أخرى"}` : `Show ${others} more`;
+        const lessLabel = ar ? "إخفاء" : "Show less";
         return (
           <section key={p} id={`after-${p}`} className="scroll-mt-28 overflow-hidden rounded-3xl border border-line/70 border-s-4 border-s-primary bg-bg shadow-[var(--shadow)]">
             <div className="flex items-center gap-3 px-5 pb-1 pt-4 sm:px-6">
@@ -55,12 +59,15 @@ export function DuroosCards({ today, locale }: { today: Today; locale: Locale })
             <div className="px-5 pb-5 pt-2 sm:px-6">
               <DuroosCarousel
                 many={many}
+                meta={group.map((l) => ({ liveFrom: l.liveFrom, liveUntil: l.liveUntil, adhanAt: l.adhanAt, timeKnown: l.timeKnown, off: !notCancelled(l.status), phase: l.phase }))}
+                moreLabel={moreLabel}
+                lessLabel={lessLabel}
                 items={group.map((l) => (
                   <DarsMiniCard
                     key={l.slug}
                     lesson={l}
                     locale={locale}
-                    isNext={l.adhanAt === nextTime && l.phase === "upcoming" && notCancelled(l.status)}
+                    isNext={isNext(l)}
                   />
                 ))}
               />
