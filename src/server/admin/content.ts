@@ -9,7 +9,6 @@ import { getSetting, setSetting } from "@/server/settings";
 import { record } from "./audit";
 import { slugify } from "./duroos";
 import { refreshPublic, withArabic } from "./refresh";
-import { revalidatePath } from "next/cache";
 
 const WORDS_PER_MINUTE = 200;
 

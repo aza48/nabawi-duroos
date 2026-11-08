@@ -38,6 +38,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 - Nothing yet.
 
 ## Log (newest first)
+- 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit findings 24, 31 (part) and 32: the flyer download keeps its own 8 s timeout inside the watcher's 12 s wrapper (`AbortSignal.any`); the admin Updates list shows the Riyadh date; removed dead `getAnnouncement`, `listSuggestions`, the `addDays` re-export and an unused import (checked that no branch uses them). Legacy seed exports left alone.
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit finding 4 (deep audit row 19 was marked done but was still partly broken): undo restores only the fields the change touched, refuses with a clear message when one of them was edited again since, refreshes the public pages of what it undid (both languages), and explains a refused delete ("Other items still use this") instead of "Something went wrong". Two new messages in `FRIENDLY` in `src/app/(admin)/admin/actions.ts`.
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit finding 22: the morning phone alert names the first dars with a confirmed time only, and prints the prayer as "Maghrib" not "maghrib".
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit finding 19: saving or deleting a guide, answer or the WhatsApp setting now also refreshes the Arabic twins (`withArabic` in `src/server/admin/refresh.ts`).

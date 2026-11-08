@@ -1,14 +1,14 @@
 import { isBroadSource, sourceRank } from "./sources";
 import { worthReading } from "./prefilter";
 import { createHash } from "node:crypto";
-import { and, desc, eq, gte, inArray, lte, ne } from "drizzle-orm";
+import { and, eq, gte, inArray, lte, ne } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { channelPosts, lessonLive, lessons, masjids, shaykhs, sources } from "@/server/db/schema";
 import { isLiveNotice, matchLiveLesson, pickLiveLink } from "./live-notice";
 import { assertCan, type Actor } from "@/server/auth/permissions";
 import { addOverride } from "@/server/admin/duroos";
 import { setSetting } from "@/server/settings";
-import { addDays, riyadhDateIso } from "@/lib/time/riyadh";
+import { riyadhDateIso } from "@/lib/time/riyadh";
 import { parseChannelHtml, previewUrl, type ChannelPost } from "./telegram";
 import { decide } from "./decide";
 import type { AiParse } from "./ai";
@@ -202,10 +202,6 @@ export async function runWatcher(
 
 /* ---------------- Admin review ---------------- */
 
-export async function listSuggestions(db: Db, limit = 30) {
-  return db.select().from(channelPosts).where(eq(channelPosts.status, "suggested")).orderBy(desc(channelPosts.postedAt)).limit(limit);
-}
-
 export async function approveSuggestion(
   db: Db,
   actor: Actor,
@@ -242,9 +238,8 @@ export function liveDeps(apiKey: string): WatcherDeps {
     },
     readPost: async (post, lessonsList, today) => {
       const { readPostWithGemini } = await import("./ai");
-      return readPostWithGemini(post, lessonsList, today, { apiKey, fetch: (url, init) => fetch(url, { ...init, signal: AbortSignal.timeout(12_000) }) });
+      return readPostWithGemini(post, lessonsList, today, { apiKey, fetch: (url, init) => fetch(url, { ...init, signal: init?.signal ? AbortSignal.any([init.signal, AbortSignal.timeout(12_000)]) : AbortSignal.timeout(12_000) }) });
     },
   };
 }
 
-export { addDays };
