@@ -11,30 +11,49 @@
 8. Model: always work on Claude Opus 5.5 at high effort, or Claude Fable 5.1 when a task needs it. Never a smaller model.
 9. Cloud agents: nobody can see a cloud session, its files or its chat. Only the repo `iumuhaymin/medinahub` is shared. Commit and push everything you want others to know (code, half-done work on your own branch, notes, reports), and write your handoff in the repo, never only in the chat. Cloud containers are deleted when the session ends, so anything not pushed is lost.
 
-## 9 November 2026, about 03:00 Riyadh: cloud agent 2 (branch `claude/stoic-curie-w1ar9c`)
-Everything is pushed to the branch, never to `main`. Only `docs/AI-LOG.md` and `docs/HANDOFF.md` overlap with the other agents' branches; no code conflicts. tsc is clean and 364 tests pass. Each fix has a test that fails on the old code.
-- Coordination docs: `ce350fa`, `58e06bd`, `e000f5d` (standing instructions 8 and 9; restarts follow the usage reset; cloud agents wake their own session).
-- Audits: `docs/audit/content-2026-11-09.md` (content and copy, with its status against PR 14), `docs/audit/crawl-local-2026-11-09.md` (all 320 pages at 390 and 1440 px), `docs/audit/code-2026-11-09.md` (32 findings and 4 test gaps, each with an owner area).
-- Fixes:
-  - `012af74`: dashes in library book titles.
-  - `2c8fe8e`: the rate limiter's sweep wiped the assistant and push limits.
-  - `da6a7c6`: the watcher ignored a repeated weekly cancellation. This changes watcher behaviour, so the owner should review it.
-  - `8cd7bd4`: editing a published cancellation left the old date cancelled.
-  - `d52589a`: admin invites are now audited, `/\` links are refused, and impossible `?date=` values are refused.
-  - `24b6af1`: content edits refresh the Arabic pages too.
-  - `ef34052`: the morning alert gives a clock time only for a dars with a confirmed time.
+## 9 November 2026, about 02:40 Riyadh: cloud agent 2 (branch `claude/stoic-curie-w1ar9c`)
+Everything is pushed to the branch, never to `main`. Only `docs/AI-LOG.md` and `docs/HANDOFF.md` overlap with the other agents' branches. tsc is clean and 369 tests pass. Each code fix has a test that fails on the old code. Full list with shas: the log lines in `docs/AI-LOG.md` dated 9 Nov for cloud agent 2.
 
-Next for this agent (code audit, unclaimed files):
-1. Finding 4: undo overwrites later edits and refreshes no page.
-2. Finding 24: the flyer timeout.
-3. Finding 31: dead code.
-4. Finding 32: Riyadh dates on the admin Updates list.
-5. Then a fresh audit pass: accessibility at 390 px with screenshots, and the admin on a phone.
+Audits (reports in `docs/audit/`):
+- `content-2026-11-09.md`: content and copy, with the status of each finding against PR 14.
+- `crawl-local-2026-11-09.md`: all 320 pages at 390 and 1440 px.
+- `code-2026-11-09.md`: 32 findings and 4 test gaps, each with its owner area.
+- `a11y-2026-11-09.md`: axe on 153 pages.
 
-Not mine (owner or other agents):
-- Code audit findings 5, 6 and 11 to 13: fonts, the bundle split, and contrast. These touch the desktop agent's UI files or the brand colours.
-- Findings 7 and 8: assistant tests (cloud agent 1) and the CSV export (desktop agent).
-- The nine database-only guides: the owner, in Admin.
+Fixes (code audit finding numbers in brackets):
+- Rate limiter (3).
+- Watcher duplicate rule (1). This changes watcher behaviour, so the owner should review it.
+- Editing a published cancellation (2).
+- Undo: touched fields only, refused after a newer edit, refreshes pages, explains foreign-key refusals (4).
+- Admin invites audited (9).
+- `/\` links refused (10).
+- Impossible `?date=` refused (21).
+- Arabic pages refreshed on content edits (19).
+- The morning push never gives a clock time for an unconfirmed dars (22).
+- Flyer timeout (24).
+- Dead code removed (31).
+- Riyadh dates on the admin Updates list (32).
+- Arabic fonts no longer preloaded (5).
+- Suggestion approve and dismiss race (18).
+- The watch cron works without an AI key (25).
+- Library book titles.
+- Accessibility: guide step tick buttons and valid lesson details lists, with screenshots.
+
+Next for this agent:
+1. Admin on a phone (the third audit cut short on 8 Nov). Sign in on a local build with a test owner, click through every admin page at 390 px, then report and fix.
+2. Re-check open PRs (14, 15) against these fixes once they merge.
+3. Then a fresh pass over everything.
+
+Left for others, with reasons:
+- Code findings 6 (STAGE_ICON) and accessibility item 6: wait for PR 14, which edits `ContentPages.tsx`.
+- 7 (assistant tests): cloud agent 1.
+- 8 (CSV formulas): desktop agent.
+- 11 to 13 and accessibility item 3: contrast and brand colours, the owner's call.
+- 14 (theme toggle): desktop agent's shell.
+- 20 (envelope for push routes): the client code depends on it.
+- 26 and 27 (watcher date heuristics, Ramadan correction): the owner should decide.
+- 29 (server-only): would break the tsx scripts and vitest.
+- Accessibility items 4 and 5: cloud agent 1.
 
 ## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
 Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
