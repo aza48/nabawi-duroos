@@ -52,21 +52,20 @@ export function createRetriever(chunks: Chunk[]) {
     const query = searchQuery(q);
     if (!query.trim()) return [];
     const terms = keyTerms(q);
-    const hits = ms.search(query, {
+    const results = ms.search(query, {
       boostDocument: (id) => {
         const c = byId.get(String(id));
         if (!c) return 1;
         // Passages that contain every topic word of the question rank above partial matches.
-        const hay = normalize(`${c.title} ${c.section ?? ""} ${c.text}`);
-        const covered = terms.length ? terms.filter((t) => hay.includes(t)).length / terms.length : 0;
-        return kindBoost[c.kind] * (1 + covered);
+        const covered = terms.length ? hits(terms, c) / terms.length : 0;
+        return kindBoost[c.kind] * (1 + 2 * covered);
       },
     });
-    if (!hits.length) return [];
-    const top = hits[0].score;
+    if (!results.length) return [];
+    const top = results[0].score;
     const out: Passage[] = [];
     const seen = new Map<string, number>();
-    for (const h of hits) {
+    for (const h of results) {
       if (h.score < top * 0.22) break;
       const c = byId.get(String(h.id));
       if (!c) continue;
@@ -88,9 +87,11 @@ export function coverage(q: string, c: Pick<Chunk, "title" | "section" | "text">
   return hits(terms, c) / terms.length;
 }
 
+/** A topic word counts when it, or one of its synonyms (so an Arabic word can match English text), is in the passage. */
 function hits(terms: string[], c: Pick<Chunk, "title" | "section" | "text">): number {
-  const hay = normalize(`${c.title} ${c.section ?? ""} ${c.text}`);
-  return terms.filter((t) => hay.includes(t) || (t.length > 4 && hay.includes(t.slice(0, -1)))).length;
+  const hay = ` ${normalize(`${c.title} ${c.section ?? ""} ${c.text}`)} `;
+  const has = (w: string) => hay.includes(w.length <= 3 ? ` ${w} ` : w) || (w.length > 4 && hay.includes(w.slice(0, -1)));
+  return terms.filter((t) => has(t) || expandQuery(t).split(" ").slice(1).some((x) => x.length > 2 && has(x))).length;
 }
 
 /**

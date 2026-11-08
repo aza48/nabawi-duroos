@@ -29,7 +29,8 @@ const DAY_NAME = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 
 const DUROOS = /\b(dars|darss|duroos|durus|doroos|lesson|lessons|halaqa|halaqah|halaqat|class|classes|lecture|lectures|majlis)\b|درس|دروس|حلق|محاضر/;
 const WHEN = /\b(today|tonight|now|right now|currently|tomorrow|this (morning|evening|afternoon)|live|on now|happening)\b|اليوم|الليله|الان|غدا|بكره|مباشر/;
-const TIMES = /\b(prayer times?|salah times?|salat times?|adhan|azan|athan|iqamah?|when is (fajr|dhuhr|zuhr|asr|maghrib|isha))\b|مواقيت|موعد (الصلاه|الاذان)|اذان/;
+// "Iqama" alone is the residence permit, so only "iqamah time" counts as a prayer question.
+const TIMES = /\b(prayer times?|salah times?|salat times?|adhan|azan|athan|iqamah times?|when is (fajr|dhuhr|zuhr|asr|maghrib|isha))\b|مواقيت|موعد (الصلاه|الاذان)|اذان/;
 
 export type LiveIntent = { duroos: { date: string; prayers: Prayer[] } | null; prayerTimes: boolean };
 

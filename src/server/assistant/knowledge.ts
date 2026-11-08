@@ -195,7 +195,8 @@ export async function buildKnowledge(db: Db): Promise<Chunk[]> {
   };
   return [
     ...siteChunks(),
-    ...guides.flatMap((g) => chunkGuide(g)),
+    // The calendar guide's page is drawn from the key dates (indexed below), not from its stored body.
+    ...guides.flatMap((g) => (g.slug === "university-calendar-1448" ? chunkGuide({ ...g, bodyHtml: "" }) : chunkGuide(g))),
     ...companyChunks(),
     ...faqs.map((f) => ({
       id: `faq-${f.slug}`,
