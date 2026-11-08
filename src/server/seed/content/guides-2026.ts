@@ -89,6 +89,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Order your mada debit card.</li>
 </ol>
 <blockquote><p>Tip: A mada card is worth having. Some shops take only mada or cash, foreign cards are sometimes blocked by bank security checks, and you need a local card to pay bills and government fees.</p></blockquote>
+<p>Already have a SIM? See <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a> for codes, SIM checks and updating your Absher number.</p>
 <p>University students get their bank card through the University's steps for new students (see "First steps for new students").</p>`,
   },
   {
@@ -210,7 +211,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Al Nahdi and Nahhas pharmacies are open almost round the clock and most staff speak English.</li>
 </ul>
 <h2>Gyms</h2>
-<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's (Fitness Time Ladies and others) 250 to 500. Martial arts clubs are 150 to 300 SAR. Students get 50% off at the Islamic University sports club.</p>`,
+<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's (Fitness Time Ladies and others) 250 to 500. Martial arts clubs are 150 to 300 SAR. Students get 50% off at the Islamic University sports club. Classes and trips are listed in <a href="/guides/sports-and-activities">Sport, fitness and outdoor activities</a>.</p>`,
   },
   {
     slug: "visas-for-family-and-visitors",
@@ -221,7 +222,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <blockquote><p>Important: Visa rules change often. Everything here was checked in late 2025 and 2026. Confirm on <a href="https://visa.mofa.gov.sa/">visa.mofa.gov.sa</a> before you book anything.</p></blockquote>
 <h2>Staying on a visa</h2>
 <ul>
-<li><strong>Tourist eVisa:</strong> open to citizens of about 68 countries, including the UK, the US, Canada and most of Europe. It costs SAR 535 online or SAR 480 on arrival at an international airport, includes compulsory health insurance, and is valid for one year with multiple entries, up to 90 days in the country. It cannot be extended. Check the rules for your passport on <a href="https://visa.visitsaudi.com/">visa.visitsaudi.com</a>.</li>
+<li><strong>Tourist eVisa:</strong> open to citizens of about 68 countries, including the UK, the US, Canada and most of Europe, with Bosnia and Herzegovina, Mexico, North Macedonia and Serbia added on 5 November 2026. It costs SAR 535 online or SAR 480 on arrival at an international airport, includes compulsory health insurance, and is valid for one year with multiple entries, up to 90 days in the country. It cannot be extended. Check the rules for your passport on <a href="https://visa.visitsaudi.com/">visa.visitsaudi.com</a>.</li>
 <li><strong>Extending a visit visa:</strong> the host (a Saudi or an iqama holder) files the extension on Absher, from 7 days before expiry to 3 days after. It costs about SAR 100 each time, and the total stay is capped at 180 days.</li>
 <li><strong>Family visit visa:</strong> the sponsor needs a professional iqama with at least 90 days left and a documented salary. Student and dependant iqamas cannot sponsor one.</li>
 </ul>
@@ -331,6 +332,153 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Plan to arrive in the semester you are offered. Under the new educational visa, asking to arrive later can send your application back.</p>
 <blockquote><p>Tip: Questions about your own application? Ask in the MESH WhatsApp group, where students who applied this year share each step as it happens.</p></blockquote>`,
   },
+  {
+    slug: "having-a-baby-in-madinah",
+    stage: "family",
+    title: "Having a baby in Madinah",
+    summary: "Hospitals compared for fees, husbands and companions, female-only staff and free delivery for University wives. Checked April 2025.",
+    bodyHtml: `
+<blockquote><p>Important: this comparison was last checked in April 2025. Prices and visiting rules change, and a husband's access to the labour room is always decided by the staff and doctors on duty. Phone the hospital when you book and again near your due date.</p></blockquote>
+<h2>Free delivery for University wives</h2>
+<p>Wives of University students can deliver free of charge at <strong>Uhud Hospital</strong>. She needs her own iqama. It is the only hospital that offers this.</p>
+<h2>Fees for a delivery (SAR)</h2>
+<table><thead><tr><th>Hospital</th><th>Natural delivery</th><th>C-section</th></tr></thead><tbody>
+<tr><td>Dr. Sulaiman Al Ahmadi Hospital</td><td>3,500</td><td>7,000, plus 3,000 for each later caesarean</td></tr>
+<tr><td>Hayat National</td><td>4,500 (changes with an epidural)</td><td>10,350, including all medication, a 3 day stay and follow-up with the doctor and the paediatrician</td></tr>
+<tr><td>Madina National Hospital</td><td>4,715, plus a 125 check-up fee and a 264 ultrasound fee</td><td>Ask the hospital</td></tr>
+<tr><td>Mouwasat</td><td>About 6,000</td><td>Ask the hospital</td></tr>
+<tr><td>Safa Al Madinah</td><td>3,500, plus a 115 check-up fee</td><td>Ask the hospital</td></tr>
+<tr><td>Saudi German</td><td>5,000</td><td>About 10,000, plus 3,000 for each later caesarean</td></tr>
+<tr><td>Uhud (private, paying patients)</td><td>3,500, plus a 100 check-up fee</td><td>7,000, plus a 100 check-up fee</td></tr>
+<tr><td>UMMC (formerly Dar)</td><td>3,000</td><td>6,000</td></tr>
+<tr><td>Wilaada (expats who are not students)</td><td>5,000</td><td>Ask the hospital</td></tr>
+<tr><td>Zahra</td><td>4,100</td><td>9,000</td></tr>
+</tbody></table>
+<h2>Husbands and companions</h2>
+<p>Every hospital below decides this case by case, so a husband can be turned away on the day.</p>
+<ul>
+<li><strong>Female-only staff:</strong> Zahra.</li>
+<li><strong>Husband allowed during labour:</strong> Hayat National, Madina National Hospital, Mouwasat, Saudi German and Zahra.</li>
+<li><strong>Husband allowed during the delivery itself:</strong> Hayat National and Mouwasat.</li>
+<li><strong>Husband allowed to stay with you day and night after the delivery:</strong> Hayat National, Madina National Hospital, Mouwasat, Saudi German and Zahra.</li>
+<li><strong>Birth companion programme</strong> (a female companion stays through the delivery, after getting a security pass first): Uhud and Zahra.</li>
+</ul>
+<h2>Which doctor delivers</h2>
+<p>At Dr. Sulaiman Al Ahmadi Hospital, Madina National Hospital, Mouwasat, Uhud and Wilaada, the doctor on duty usually delivers your baby, so you generally cannot choose.</p>
+<blockquote><p>Tip: Book antenatal visits early, ask the hospital for its current delivery price in writing, and ask what is included before you decide.</p></blockquote>`,
+  },
+  {
+    slug: "sports-and-activities",
+    stage: "getting-settled",
+    title: "Sport, fitness and outdoor activities",
+    summary: "Jiu-jitsu and fitness classes for children and adults at the University sports center, gym access, and outdoor trips, with schedules and prices.",
+    bodyHtml: `
+<p>Gyms in Madinah are men-only or women-only (see Everyday apps and services for usual prices). This page lists organised classes and trips for students and families. Details checked 8 November 2026.</p>
+<h2>Jiu-jitsu, grappling and fitness at the Islamic University Sports Center</h2>
+<p>Sunnah Strength runs classes for children and adults at the University's sports center. The coach is an American sports and fitness coach, a NASM and ASEP certified trainer and a jiu-jitsu black belt. The programme suits beginners and covers jiu-jitsu, grappling and wrestling, strength and fitness training, plyometrics, self-defence and sparring, and team-building challenges.</p>
+<h3>Children</h3>
+<p>Boys aged 5 to 14 and girls aged 5 to 11.</p>
+<table><thead><tr><th>Days</th><th>Time</th></tr></thead><tbody>
+<tr><td>Sunday, Tuesday and Thursday</td><td>2:00 to 3:00 pm</td></tr>
+<tr><td>Monday and Wednesday (new)</td><td>5:30 to 6:30 pm</td></tr>
+<tr><td>Saturday</td><td>10:00 am</td></tr>
+</tbody></table>
+<p>Monthly tuition: 275 SAR for one child, 250 SAR each for two or more children, and 200 SAR each for four or more children.</p>
+<h3>Adults (15 and over)</h3>
+<table><thead><tr><th>Days</th><th>Time</th></tr></thead><tbody>
+<tr><td>Sunday, Tuesday and Thursday</td><td>1:00 to 2:00 pm</td></tr>
+<tr><td>Monday and Wednesday (evening class)</td><td>6:30 to 7:30 pm</td></tr>
+</tbody></table>
+<p>Monthly tuition: 200 to 250 SAR. Adults aged 18 and over in the programme can also use the University gym facilities, including the CrossFit area and the pool and sauna.</p>
+<p>Siblings, families and Islamic University students get discounts, so ask when you register. Private one-to-one training and swim lessons are also offered.</p>
+<p>To register or ask a question, call or message on WhatsApp: <strong>+966 56 171 7539</strong>.</p>
+<h2>Coming up: Muslim Scouts camping trip</h2>
+<p>Blossom Star Tours is running a camping trip for fathers, sons and brothers on <strong>20 and 21 November 2026</strong> at Mundasa, Madinah. Activities include camping and survival skills, navigation and finding the qiblah, wudu, tayammum and Islamic rulings, father and son activities, jiu-jitsu, archery, a barbecue and campfire, Qur'an recitation, Islamic reminders, stories from the seerah, how to pitch a tent and practising the adhan for boys.</p>
+<ul>
+<li><strong>Adults:</strong> 130 SAR.</li>
+<li><strong>University students and children aged 14 and under:</strong> 70 SAR.</li>
+<li><strong>Families of three or more:</strong> discounts are available.</li>
+</ul>
+<p>There are only 25 places.</p>`,
+  },
+  {
+    slug: "phone-sims-and-absher",
+    stage: "getting-settled",
+    title: "Your phone number, SIM checks and Absher",
+    summary: "Find your own number and balance, see how many SIMs are registered on your iqama, remove one you do not know, and update your Absher mobile number.",
+    bodyHtml: `
+<p>Checked November 2026. Operators sometimes change their codes, so ask the operator if one stops working.</p>
+<h2>Codes for your own number and balance</h2>
+<table><thead><tr><th>Operator</th><th>Your number</th><th>Balance</th><th>Customer care</th></tr></thead><tbody>
+<tr><td>Mobily</td><td>*222#</td><td>*1411#</td><td>1100</td></tr>
+<tr><td>STC</td><td>*150#</td><td>*166#</td><td>900</td></tr>
+<tr><td>Zain</td><td>*144#</td><td>*142#</td><td>959</td></tr>
+</tbody></table>
+<p>Dial the code from the SIM you want to check. Zain also shows your data balance if you send BC by SMS to 959.</p>
+<h2>See how many SIMs are registered on your iqama</h2>
+<p>The Communications, Space and Technology Commission (CST) runs a platform called Mutasil that lists the lines registered under your iqama. Only active, authenticated numbers show up. If one you use is missing, ask its operator to check its authentication.</p>
+<ol>
+<li><strong>Sign in to Mutasil with Nafath.</strong> Your registered numbers appear straight away.</li>
+<li><strong>Use the My Numbers Inquiry without signing in.</strong> Choose English, enter your iqama number and date of birth, answer Yes to having a mobile number, enter that number and the captcha, then press Inquire. Type in the code sent to your phone and press Submit.</li>
+<li><strong>No access to your registered number?</strong> Answer No to having a mobile number. You get a short summary, with fewer details.</li>
+<li><strong>The CST app:</strong> sign in and open My Numbers (Argami).</li>
+<li><strong>Tawakkalna:</strong> sign in and open the mobile number inquiry.</li>
+</ol>
+<blockquote><p>Note: These steps use an iqama number. If you are here on a Visitor ID, ask your operator in a branch which lines are registered to your passport.</p></blockquote>
+<h2>A number you do not recognise</h2>
+<ol>
+<li>Contact the operator (STC 900, Mobily 1100, Zain 959, or a branch) with your iqama details ready, and ask them to cancel it.</li>
+<li>File a complaint and keep the reference number.</li>
+<li>If the operator has not fixed it within five working days, escalate to CST through its telecom complaints service.</li>
+<li>Check Mutasil again to confirm the number is gone.</li>
+</ol>
+<h2>Update your mobile number in Absher</h2>
+<p>Absher sends its verification codes to the number on file, so update it when you change your SIM. The new number must be active and able to receive SMS.</p>
+<ul>
+<li><strong>Absher app:</strong> before logging in, open Digital Identity Management, choose Change Mobile Number, enter your iqama or ID number and date of birth, enter the new number and finish the biometric check.</li>
+<li><strong>Nafath app:</strong> open Digital Identity Account Management, choose Digital Identity Mobile Number Update, enter the details and finish the biometric check.</li>
+<li><strong>Absher kiosk</strong> (at Jawazat offices, malls, airports and government service centres): choose your language, enter your iqama or ID number, choose Update Mobile Number, scan your fingerprint, then enter the new number and the code sent to it. This is the way to go if you no longer have your old number.</li>
+</ul>
+<p>Trouble activating Absher or Nafath in the first place? See the FAQ on activation problems.</p>`,
+  },
+  {
+    slug: "iqama-and-exit-reentry-fees",
+    stage: "getting-settled",
+    title: "Iqama, exit and re-entry, and dependent fees",
+    summary: "What Jawazat charges for the iqama, exit and re-entry visas, adding family and transfers. Checked November 2026.",
+    bodyHtml: `
+<blockquote><p>Important: these are Jawazat service fees, checked in November 2026. Other charges such as health insurance can apply separately, so confirm the final amount on Absher before you pay.</p></blockquote>
+<p>Students on a study visa pay nothing for their own iqama. The fees below matter mostly for families and for anyone who travels.</p>
+<h2>Iqama</h2>
+<table><thead><tr><th>Who</th><th>Fee (SAR)</th></tr></thead><tbody>
+<tr><td>Student with a study visa</td><td>Free</td></tr>
+<tr><td>Dependent aged 18 and over, issue or renewal</td><td>500</td></tr>
+<tr><td>Domestic worker, farmer or shepherd</td><td>600</td></tr>
+<tr><td>Worker of a company or establishment</td><td>650</td></tr>
+</tbody></table>
+<h2>Exit and re-entry visa</h2>
+<table><thead><tr><th>Visa</th><th>Fee (SAR)</th></tr></thead><tbody>
+<tr><td>Single, up to 2 months, one trip</td><td>200</td></tr>
+<tr><td>Each extra month on a single visa</td><td>100</td></tr>
+<tr><td>Multiple, up to 3 months, several trips</td><td>500</td></tr>
+<tr><td>Each extra month on a multiple visa</td><td>200</td></tr>
+<tr><td>Final exit</td><td>Free</td></tr>
+</tbody></table>
+<p>Extra months must fall within the validity of your iqama.</p>
+<h2>Adding family</h2>
+<ul>
+<li>Adding a dependent or newborn born inside Saudi Arabia: free.</li>
+<li>Adding a dependent or newborn born outside Saudi Arabia: 2,000 SAR.</li>
+</ul>
+<h2>Visit visas</h2>
+<ul>
+<li>Extending a visit visa: 100 SAR each time.</li>
+<li>Transit visa: 300 SAR.</li>
+</ul>
+<h2>Sponsorship transfer</h2>
+<p>The first transfer costs 2,000 SAR, the second 4,000 SAR, and the third and every later one 6,000 SAR.</p>
+<p>Visitor ID students pay none of the iqama fees above until they hold an iqama. See Visas for family members and visitors for the visit visa rules.</p>`,
+  },
 ];
 
 export type SeedFaq = { slug: string; question: string; category: string; answerHtml: string; tags?: string[] };
@@ -359,4 +507,9 @@ export const FAQS_2026: SeedFaq[] = [
   { slug: "library-bags-laptops", category: "university", question: "Can I take a bag or laptop into the libraries?", answerHtml: "<p><strong>University Central Library:</strong> laptops are allowed but bags are not, so take the laptop out first. There are sockets. The private study rooms are for graduate students.</p><p><strong>Masjid an-Nabawi library:</strong> no bags, no food and no laptops without a permit. Tablets and notebooks are fine. The rules are applied strictly after about 2 pm. Leave your bag at the free left-luggage at the front left of the mosque, for up to 4 hours with a ticket.</p>", tags: ["library", "laptop", "haram", "study"] },
   { slug: "blackboard-phishing", category: "university", question: "Someone posted a link in my Blackboard class chat. Is it safe?", answerHtml: "<p>Do not open it. Fake accounts posing as students post links named things like \"timetable\" or \"class WhatsApp group\". Opening one can hand over your University account, and with it they can withdraw you from your courses. Report the account, leave the group, and warn your class.</p>", tags: ["blackboard", "security", "phishing", "account"] },
   { slug: "leaving-steps", category: "leaving", question: "What do I need to do when I graduate?", answerHtml: "<p>Hand back your room, return your student card, get your final exit visa, collect your degree, legalise your documents, and book your ticket. The full checklist is in <a href=\"/guides/graduate-procedures\">Graduating</a>.</p>" },
+  { slug: "check-sims-on-iqama", category: "getting-settled", question: "How do I see how many SIMs are registered under my iqama?", answerHtml: "<p>Sign in to Mutasil with Nafath, or use the My Numbers Inquiry with your iqama number, date of birth and a code sent to your registered phone. The CST app and Tawakkalna also show your numbers. If you find one you do not know, ask its operator to cancel it. Steps are in <a href=\"/guides/phone-sims-and-absher\">Your phone number, SIM checks and Absher</a>.</p>", tags: ["sim", "iqama", "mutasil", "cst"] },
+  { slug: "change-absher-mobile", category: "getting-settled", question: "How do I change the mobile number on my Absher account?", answerHtml: "<p>Three ways: in the Absher app (Digital Identity Management, then Change Mobile Number), in the Nafath app (Digital Identity Mobile Number Update), or at an Absher kiosk in a Jawazat office, mall or airport. The app methods need a biometric check, and the kiosk works even if you lost your old number. Details: <a href=\"/guides/phone-sims-and-absher\">Your phone number, SIM checks and Absher</a>.</p>", tags: ["absher", "nafath", "mobile number"] },
+  { slug: "short-address", category: "getting-settled", question: "What is a short address and how do I find mine?", answerHtml: "<p>It is an eight character code, four letters then four digits, that stands for your full National Address. It is used for deliveries and some official forms. You need a registered National Address first. Then find the code in Absher (My Services, then National Address Services), on the Saudi Post website after signing in with Nafath, or in the Saudi Post app. If you move, update your National Address, because the code changes with it.</p>", tags: ["national address", "short address", "delivery", "saudi post"] },
+  { slug: "check-health-insurance", category: "getting-settled", question: "How do I check that my health insurance is valid?", answerHtml: "<p>Iqama holders can check on the Council of Health Insurance website, on the Insurance Authority website (free, and the one that works from abroad), in the Tawakkalna app, in Absher (health insurance validity inquiry) or in the CHI Daman app. Enter your 10 digit iqama number and check the insurer and expiry date. Insurance expiry is separate from your iqama expiry. If nothing shows, retry and then ask your insurer.</p>", tags: ["insurance", "chi", "health", "iqama"] },
+  { slug: "send-money-home", category: "getting-settled", question: "How do I send money home from Madinah?", answerHtml: "<p>Apps and services in common use include Alinma, Barq, D360, Enjaz, Mobily Pay, SNB NEO, STC Pay and STC Bank, Tahweel Al Rajhi, Tiqmo and urpay. What you can use depends on your ID and bank account. Fees, exchange rates and speed differ and change, so compare the final amount your family receives after fees, not the headline rate. Checked November 2026.</p>", tags: ["remittance", "money transfer", "bank", "apps"] },
 ];

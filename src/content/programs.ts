@@ -282,6 +282,26 @@ export const PROGRAMS: Program[] = [
     checked: "2026-07-01",
   },
   {
+    slug: "dar-tawheed-sunnah",
+    name: "Dar at-Tawheed wa as-Sunnah (women)",
+    nameAr: "دار التوحيد والسنة",
+    kind: "sisters",
+    tagline: "A new women's centre in Suqman for Qur'an, tajweed, Arabic and the classical texts, with a nursery and kindergarten.",
+    audience: ["women", "children"],
+    price: "Ask the centre",
+    where: "Suqman district",
+    overview: [
+      "Sisters and girls study the Qur'an, tajweed, the Arabic language and the essential Islamic texts (mutun). The centre also teaches al-Qa'idah an-Nuraniyyah, and runs a nursery for ages 1 to 3 and a kindergarten for ages 4 to 6.",
+      "Classes began on 1 November 2026. Registration is in person at the centre between 7:00 and 11:00 in the morning, and places are limited, so ask whether any remain.",
+    ],
+    contact: [
+      { label: "WhatsApp (Arabic)", href: "https://wa.me/966568683622" },
+      { label: "WhatsApp (Russian)", href: "https://wa.me/966551867298" },
+      { label: "Phone +966 14 846 7950", href: "tel:+966148467950" },
+    ],
+    checked: "2026-11-08",
+  },
+  {
     slug: "nabawi-women",
     name: "Masjid an-Nabawi programmes for women",
     nameAr: "معهد وكلية المسجد النبوي للنساء",

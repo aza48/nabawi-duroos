@@ -58,3 +58,11 @@ Answer these when you can; each answer lets MESH state something with authority 
 - Shaykh profile 'facts' (seed data in src/server/seed/legacy/profiles.ts, editable in admin) are shown on shaykh pages without any wording filter. They are outside my area, so I did not check them for source or hedge wording. Should someone review them, or should the BACKSTAGE filter also be applied to them?
 - Announcement titles and bodies on the Updates page and on the home page 'Latest updates' are shown exactly as stored. If the watcher or a researcher wrote source wording into one, it will appear. Should announcements be filtered too, or is the watcher now trusted to write clean text?
 - The University calendar labels Islamic dates as "Islamic, expected" and the home page says "Expected dates, confirmed by moon sighting." I kept both as protective wording under rule 4. Please confirm you are happy with "expected".
+
+### Added 8 November 2026 (intake desk)
+- Camping trip (20 and 21 November 2026, guide sports-and-activities): the poster only has a QR code for booking. What phone number or link should readers use? Until then the guide gives no booking route. The section is due to be removed on 21 November (see docs/EXPIRING.md).
+- Having a baby in Madinah: the sister's write-up was last updated on 21 April 2025. Can someone confirm the fees and visiting rules again? I left out her individual doctor recommendations (ticks next to named doctors) because MESH does not recommend individuals. Do you want a neutral list of doctors by hospital instead?
+- Having a baby in Madinah: the note "Uhud hospital (closed March 20)" under the birth companion programme was unclear, so I left it out. Does it mean the programme is closed at Uhud?
+- Sports guide: are adult classes at the University Sports Center open to women? The poster does not say, and girls are only listed for the children's classes.
+- Dar at-Tawheed wa as-Sunnah: what are the fees, and is registration still open? The page says to ask the centre.
+- Fees guide and phone guide are based on published guides dated July to September 2026. Please confirm the exit and re-entry fees on Absher when you next use it.

@@ -18,6 +18,7 @@ medinahub.org: a hub run by students, for English-speaking students and families
 - **Shaykh photos:** only verified ones (a wrong face is worse than none). `ShaykhBadge` (calligraphic name) is the fallback.
 - **Iqama and Visitor ID:** banking, SIM, licence and visa guides cover both paths side by side.
 - **Freshness:** facts that change (fees, dates) show when they were last checked.
+- **Temporary information expires.** Discounts, offers, sales, trips, registration windows and one-off events must be removed or updated as soon as their period ends; everything on the site must be up to date. Log every temporary item in `docs/EXPIRING.md` with its expiry date and location, and sweep that table at the start of every session and before every deploy.
 - **Free notifications only.** Keep the site API-first (`/api/v1`) for a later native app.
 - **Safety:** never push to `main` without `tsc` and `vitest` passing. Previews never touch the live database. Never print or commit secrets.
 - **Usage:** call `get_usage` between steps; stop at a safe point, commit, push and update this file before the window runs out.
