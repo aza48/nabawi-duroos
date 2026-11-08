@@ -13,17 +13,23 @@ import { ActivityList } from "@/features/admin/ActivityList";
 import { StatusTag } from "@/features/duroos/StatusTag";
 import { timeAgo } from "@/features/admin/time";
 import { desc, inArray } from "drizzle-orm";
-import { channelPosts } from "@/server/db/schema";
+import { channelPosts, lessons } from "@/server/db/schema";
+import { needsAttention } from "@/server/admin/attention";
+import { NeedsYou } from "@/features/admin/NeedsYou";
+import { plainReading } from "@/features/admin/watcher/reading";
 import type { AiParse } from "@/server/watcher/ai";
 import { Suggestions, type SuggestionCard } from "@/features/admin/watcher/Suggestions";
 
 export default async function Inbox() {
   const actor = await requireAdmin();
   const db = await getDb();
-  const [today, drafts, activity, pendingPosts] = await Promise.all([
+  const [today, drafts, activity, pendingPosts, attention, lessonNames] = await Promise.all([
     getToday(db), listDrafts(db), listActivity(db, { limit: 8 }),
     db.select().from(channelPosts).where(inArray(channelPosts.status, ["suggested", "error"])).orderBy(desc(channelPosts.postedAt)).limit(20),
+    needsAttention(db),
+    db.select({ slug: lessons.slug, bookEn: lessons.bookEn }).from(lessons),
   ]);
+  const bookOf = new Map(lessonNames.map((l) => [l.slug, l.bookEn]));
   const duroos = can(actor.role, "duroos.write");
   const lastChecked = today.lastCheckedAt ? new Date(today.lastCheckedAt) : null;
   const watcherStale = !lastChecked || Date.now() - lastChecked.getTime() > 30 * 60_000;
@@ -31,7 +37,7 @@ export default async function Inbox() {
     const r = p.parse as AiParse | null;
     return {
       id: p.id, channel: p.sourceHandle, when: timeAgo(p.postedAt), url: p.url, text: p.text, imageUrl: p.imageUrl,
-      reading: r ? `${r.kind.replace("_", " ")}${r.lesson_slug ? ` · ${r.lesson_slug}` : ""}${r.dates.length ? ` · ${r.dates.join(", ")}` : ""} (${Math.round(r.confidence * 100)}% sure)${r.note_en ? `. ${r.note_en}` : ""}` : null,
+      reading: r ? plainReading(r, r.lesson_slug ? bookOf.get(r.lesson_slug) : undefined) : null,
       reason: p.reason, wouldAuto: p.wouldAuto, failed: p.status === "error",
     };
   });
@@ -46,6 +52,7 @@ export default async function Inbox() {
     <div className="mx-auto max-w-2xl">
       <p className="text-xs font-medium uppercase tracking-wide text-muted">{today.hijri.en} · {today.gregorian.en}</p>
       <h1 className="mt-1 text-2xl font-semibold">Inbox</h1>
+      <NeedsYou items={duroos ? attention : attention.filter((a) => ["drafts", "content", "programmes"].includes(a.key))} />
 
       <div className="mt-4 grid grid-cols-2 gap-2.5">
         {actions.map(({ href, label, icon: Icon }) => (
@@ -57,7 +64,7 @@ export default async function Inbox() {
       </div>
 
       {duroos && (
-        <section className="mt-7">
+        <section id="channels" className="mt-7 scroll-mt-20">
           <div className="mb-2 flex items-baseline justify-between">
             <h2 className="text-lg font-semibold">From the channels {cards.length > 0 && <span className="text-sm font-normal text-muted">({cards.length})</span>}</h2>
             <Link href="/admin/sources" className="text-sm text-muted">Channels</Link>
@@ -94,7 +101,7 @@ export default async function Inbox() {
       )}
 
       {drafts.length > 0 && (
-        <section className="mt-7">
+        <section id="drafts" className="mt-7 scroll-mt-20">
           <h2 className="mb-2 text-lg font-semibold">Waiting to publish</h2>
           <ul className="card divide-y divide-line">
             {drafts.slice(0, 6).map((d) => (
