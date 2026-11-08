@@ -347,7 +347,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Wives of University students can deliver free of charge at <strong>Uhud Hospital</strong>. She needs her own iqama. It is the only hospital that offers this.</p>
 <h2>Fees for a delivery (SAR)</h2>
 <table><thead><tr><th>Hospital</th><th>Natural delivery</th><th>C-section</th></tr></thead><tbody>
-<tr><td>Dr. Sulaiman Al Ahmadi Hospital</td><td>3,500</td><td>7,000, plus 3,000 for each later caesarean</td></tr>
+<tr><td>Dr. Hamid Suliman Al Ahmadi Hospital</td><td>3,500</td><td>7,000, plus 3,000 for each later caesarean</td></tr>
 <tr><td>Hayat National</td><td>4,500 (changes with an epidural)</td><td>10,350, including all medication, a 3 day stay and follow-up with the doctor and the paediatrician</td></tr>
 <tr><td>Madina National Hospital</td><td>4,715, plus a 125 check-up fee and a 264 ultrasound fee</td><td>Ask the hospital</td></tr>
 <tr><td>Mouwasat</td><td>About 6,000</td><td>Ask the hospital</td></tr>
@@ -368,7 +368,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Birth companion programme</strong> (a female companion stays through the delivery, after getting a security pass first): Uhud and Zahra.</li>
 </ul>
 <h2>Which doctor delivers</h2>
-<p>At Dr. Sulaiman Al Ahmadi Hospital, Madina National Hospital, Mouwasat, Uhud and Wilaada, the doctor on duty usually delivers your baby, so you generally cannot choose.</p>
+<p>At Dr. Hamid Suliman Al Ahmadi Hospital, Madina National Hospital, Mouwasat, Uhud and Wilaada, the doctor on duty usually delivers your baby, so you generally cannot choose.</p>
 <blockquote><p>Tip: Book antenatal visits early, ask the hospital for its current delivery price in writing, and ask what is included before you decide.</p></blockquote>`,
   },
   {
@@ -418,7 +418,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>STC</td><td>*150#</td><td>*166#</td><td>900</td></tr>
 <tr><td>Zain</td><td>*144#</td><td>*142#</td><td>959</td></tr>
 </tbody></table>
-<p>Dial the code from the SIM you want to check. Zain also shows your data balance if you send BC by SMS to 959.</p>
+<p>Dial the code from the SIM you want to check.</p>
 <h2>See how many SIMs are registered on your iqama</h2>
 <p>The Communications, Space and Technology Commission (CST) runs a platform called Mutasil that lists the lines registered under your iqama. Only active, authenticated numbers show up. If one you use is missing, ask its operator to check its authentication.</p>
 <ol>
@@ -477,10 +477,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Visit visas</h2>
 <ul>
 <li>Extending a visit visa: 100 SAR each time.</li>
-<li>Transit visa: 300 SAR.</li>
 </ul>
-<h2>Sponsorship transfer</h2>
-<p>The first transfer costs 2,000 SAR, the second 4,000 SAR, and the third and every later one 6,000 SAR.</p>
+<p>Other charges can apply, for example the monthly levy for dependants and higher fees for extending a re-entry visa while you are abroad. Ask on Absher before you pay.</p>
 <p>Visitor ID students pay none of the iqama fees above until they hold an iqama. See Visas for family members and visitors for the visit visa rules.</p>`,
   },
   {
@@ -496,8 +494,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td><strong>The Prophet's ﷺ chamber</strong></td><td>The resting place of the Prophet ﷺ, Abu Bakr and Umar. Visitors give salam quietly and briefly, keep moving and do not block those behind them.</td></tr>
 <tr><td><strong>The minbar and the mihrab</strong></td><td>The pulpit and the prayer niche that mark the edge of the Rawdah.</td></tr>
 <tr><td><strong>The Green Dome</strong></td><td>The dome over the chamber. The open courtyard on the south side gives the best view.</td></tr>
-<tr><td><strong>King Fahd Holy Qur'an Library</strong></td><td>A multi-floor library inside the complex with rare and historic copies of the Qur'an. Hours vary and it closes around prayer times.</td></tr>
-<tr><td><strong>Prophetic Biography Museum</strong></td><td>A multimedia exhibition on the life of the Prophet ﷺ and the story of the masjid, next to the western courtyards. A good first orientation for children.</td></tr>
+<tr><td><strong>The Prophet's Mosque Library</strong></td><td>A library of rare manuscripts and classical texts for researchers and students, entered from the King Saud gate. Hours vary and it closes around prayer times.</td></tr>
+<tr><td><strong>Prophetic Biography Museum</strong></td><td>A multimedia exhibition on the life of the Prophet ﷺ and the story of the masjid, across from the masjid. A good first orientation for children.</td></tr>
 <tr><td><strong>The courtyard umbrellas</strong></td><td>Large automatic parasols that open at dawn and close at dusk, so the courtyards stay shaded for prayer.</td></tr>
 <tr><td><strong>Wudu areas and toilets</strong></td><td>Large facilities around the edge of the masjid, some underground and reached by ramps in the courtyards. They are cleanest just after a prayer and busiest just before.</td></tr>
 </tbody></table>
@@ -505,7 +503,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <ol>
 <li>Install the <strong>Nusuk</strong> app and sign in. Booking is free.</li>
 <li>Choose a slot. Men and women have separate slots and separate times.</li>
-<li>Book 1 to 2 days ahead in quiet weeks. In Ramadan, the Hajj season and school holidays, book 1 to 2 weeks ahead or more.</li>
+<li>Book as early as the app allows. Slots go quickly, most of all in Ramadan, the Hajj season and school holidays.</li>
+<li>Each person can book one Rawdah permit in any 365 days.</li>
 <li>Keep the app open when you are at the masjid, because short-notice slots are sometimes released during the day.</li>
 <li>Arrive at your booked time and follow the stewards. A visit inside the Rawdah is about 10 to 15 minutes.</li>
 </ol>
@@ -542,17 +541,17 @@ export const GUIDES_2026: SeedGuide[] = [
 <ul>
 <li><strong>Masjid Quba</strong> (about 4 km): the first masjid of Islam. Two rak'ahs after wudu at home carry the reward of an Umrah. Many people walk there on Saturdays along the Quba walkway, which is around 3 km and takes about 45 minutes.</li>
 <li><strong>Masjid al-Jumu'ah</strong> (about 4 to 5 km): where the first Friday prayer was held in Madinah, on the way between the Haram and Quba.</li>
-<li><strong>Masjid al-Qiblatayn</strong> (about 5 to 6 km): where the direction of prayer changed from Jerusalem to Makkah. Both original mihrabs are kept.</li>
+<li><strong>Masjid al-Qiblatayn</strong> (about 5 to 6 km, north-west of the Haram): where the direction of prayer changed from Jerusalem to Makkah.</li>
 <li><strong>Quba gardens:</strong> Bir Ariis and Bir al-Khatim are in the gardens near Quba, and the square around the masjid has family cafés.</li>
 </ul>
 <h2>Khandaq and Mount Sala'</h2>
-<p>The Battle of the Trench took place in 5 AH around Mount Sala' (Sal'). Seven small masjids stand on its slope, including Masjid al-Fath, where the Prophet ﷺ made du'a, and masjids named for Salman al-Farisi and Umar ibn al-Khattab. The walk through the area takes about 40 minutes.</p>
+<p>The Battle of the Trench took place in 5 AH around Mount Sala' (Sal'). A group of small masjids known as the Seven Masjids stands on its slope, although six remain today. They include Masjid al-Fath, where the Prophet ﷺ made du'a, and masjids named for Salman al-Farisi and Umar ibn al-Khattab. The walk through the area takes about 40 minutes.</p>
 <h2>Uhud</h2>
 <p>Mount Uhud, about 5 km north of the Haram, is where the Battle of Uhud took place in 3 AH. The Shuhada cemetery at its foot holds seventy martyrs, including Hamzah ibn Abd al-Muttalib. A walk around the foot of the mountain takes about an hour. Masjid al-Mustarah is nearby.</p>
 <h2>Wells and farms</h2>
 <ul>
 <li><strong>Bir Rumah (the well of Uthman):</strong> bought and given for the public by Uthman ibn Affan. It still gives water, and the dates of the surrounding farm are sold for charity.</li>
-<li><strong>Bir Hā' (the garden of Abu Talhah)</strong> and the wells of Anas ibn Malik and Ghars are in working farms. Visits are by permission of the owner.</li>
+<li>The wells of Anas ibn Malik and Ghars are in working farms. Visits are by permission of the owner.</li>
 <li><strong>Aliyat al-Madinah</strong> is the old farming belt. Some farms welcome visitors in the date harvest, late summer.</li>
 </ul>
 <h2>Further out</h2>
@@ -571,7 +570,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>Badr</td><td>about 130 km</td><td>1.5 to 2 h</td><td>The battlefield of the Battle of Badr, with a visitor centre and signs in Arabic and English. Leave after Fajr and be back by Maghrib. Take water and food, as services are limited.</td></tr>
 <tr><td>Khaybar</td><td>about 160 km</td><td>about 2 h</td><td>The oasis and fortifications of the Battle of Khaybar, palm groves and the black lava fields. A 4WD helps in the lava fields.</td></tr>
 <tr><td>Yanbu</td><td>about 230 km</td><td>2.5 to 3 h</td><td>Red Sea beaches, snorkelling and a corniche. Many people go for a Friday and Saturday.</td></tr>
-<tr><td>AlUla and Hegra</td><td>about 340 km</td><td>3.5 to 4 h</td><td>The UNESCO World Heritage tombs of Hegra, the old town and the sandstone landscape. Plan two or three days and book entry through the official AlUla site.</td></tr>
+<tr><td>AlUla and Hegra</td><td>about 340 km</td><td>3.5 to 4 h</td><td>The UNESCO World Heritage tombs of Hegra, the old town and the sandstone landscape. Plan two or three days. Hegra is visited on guided tours, so book ahead.</td></tr>
 <tr><td>Jeddah (Al-Balad)</td><td>about 420 km</td><td>4 to 5 h</td><td>The old town, corniche and seafood. The Haramain train takes about 2 hours.</td></tr>
 <tr><td>Tabuk</td><td>about 700 km</td><td>7 to 8 h</td><td>The Tabuk fort and the route to the north-west coast. A flight is the practical choice.</td></tr>
 </tbody></table>
@@ -606,7 +605,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Late September to mid November and late February to March have the best mix of weather and calm.</li>
 </ul>
 <h2>Camping</h2>
-<p>Camping in open desert and wadis is a favourite weekend activity. Day or weekend camping in open areas is generally fine, but protected reserves need permission from the authority that runs them, and the signed heritage zones around Uhud must be respected.</p>
+<p>Camping in open desert and wadis is a favourite weekend activity, but it is regulated. Camping in areas with natural vegetation needs a licence, protected areas need a permit, and fines can reach several thousand riyals. Check the current rules before you go, and respect the signed heritage zones around Uhud.</p>
 <ul>
 <li><strong>Fires:</strong> charcoal and gas stoves are the norm. Never light a fire inside a protected reserve or a city park, and check for fire restrictions in summer.</li>
 <li><strong>Rubbish:</strong> take everything back with you, including charcoal ash and food scraps. Bring big bin bags.</li>
@@ -662,9 +661,10 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Emergency numbers</h2>
 <table><thead><tr><th>Number</th><th>For</th></tr></thead><tbody>
 <tr><td><strong>997</strong></td><td>Ambulance (Saudi Red Crescent)</td></tr>
+<tr><td><strong>911</strong></td><td>Unified emergency number, which also works in Madinah</td></tr>
 <tr><td><strong>999</strong></td><td>Police</td></tr>
 <tr><td><strong>998</strong></td><td>Civil Defence (fire)</td></tr>
-<tr><td><strong>937</strong></td><td>Ministry of Health advice line, 24 hours, in Arabic and English</td></tr>
+<tr><td><strong>937</strong></td><td>Ministry of Health advice line, 24 hours, in several languages</td></tr>
 </tbody></table>
 <h2>Where to go</h2>
 <ul>
@@ -676,7 +676,6 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Main hospitals</h2>
 <p>Listed alphabetically. Prices and services differ, so ask before booking.</p>
 <ul>
-<li>Dr. Sulaiman Al Habib Hospital (private)</li>
 <li>Hayat National Hospital (private)</li>
 <li>King Fahd Hospital (government)</li>
 <li>Madina National Hospital (private)</li>
@@ -707,9 +706,9 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>The universities</h2>
 <table><thead><tr><th>University</th><th>Type</th><th>Known for</th></tr></thead><tbody>
 <tr><td><strong>Islamic University of Madinah</strong></td><td>Public, founded 1961</td><td>Shariah, Qur'an, hadith, da'wah and Arabic, with scholarships for students from around the world. See <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</td></tr>
-<tr><td><strong>Prince Mugrin University</strong></td><td>Private, founded 2014</td><td>Business and hospitality, engineering and technology, computing, and architecture and design. Teaching is mainly in English and students pay tuition.</td></tr>
-<tr><td><strong>Saudi Electronic University, Madinah branch</strong></td><td>Public, online and blended</td><td>Business administration, computing and information sciences, health sciences, and education and language studies, mixing online study with some on-campus sessions.</td></tr>
-<tr><td><strong>Taibah University</strong></td><td>Public, founded 2003</td><td>A full range of colleges including medicine, engineering, computer science, pharmacy, education, Shariah and business, with its own teaching hospital.</td></tr>
+<tr><td><strong>Prince Mugrin University</strong></td><td>Private</td><td>Business and hospitality, engineering and technology, computing, and architecture and design. Teaching is mainly in English and students pay tuition.</td></tr>
+<tr><td><strong>Saudi Electronic University, Madinah branch</strong></td><td>Public, online and blended</td><td>Business administration, computing and information sciences, and health sciences, mixing online study with some on-campus sessions.</td></tr>
+<tr><td><strong>Taibah University</strong></td><td>Public, founded 2003</td><td>A full range of colleges including medicine, engineering, computer science, pharmacy, education, Shariah and business.</td></tr>
 </tbody></table>
 <h2>Choosing</h2>
 <ul>
@@ -755,6 +754,6 @@ export const FAQS_2026: SeedFaq[] = [
   { slug: "short-address", category: "getting-settled", question: "What is a short address and how do I find mine?", answerHtml: "<p>It is an eight character code, four letters then four digits, that stands for your full National Address. It is used for deliveries and some official forms. You need a registered National Address first. Then find the code in Absher (My Services, then National Address Services), on the Saudi Post website after signing in with Nafath, or in the Saudi Post app. If you move, update your National Address, because the code changes with it.</p>", tags: ["national address", "short address", "delivery", "saudi post"] },
   { slug: "check-health-insurance", category: "getting-settled", question: "How do I check that my health insurance is valid?", answerHtml: "<p>Iqama holders can check on the Council of Health Insurance website, on the Insurance Authority website (free, and the one that works from abroad), in the Tawakkalna app, in Absher (health insurance validity inquiry) or in the CHI Daman app. Enter your 10 digit iqama number and check the insurer and expiry date. Insurance expiry is separate from your iqama expiry. If nothing shows, retry and then ask your insurer.</p>", tags: ["insurance", "chi", "health", "iqama"] },
   { slug: "send-money-home", category: "getting-settled", question: "How do I send money home from Madinah?", answerHtml: "<p>Apps and services in common use include Alinma, Barq, D360, Enjaz, Mobily Pay, SNB NEO, STC Pay and STC Bank, Tahweel Al Rajhi, Tiqmo and urpay. What you can use depends on your ID and bank account. Fees, exchange rates and speed differ and change, so compare the final amount your family receives after fees, not the headline rate. Checked November 2026.</p>", tags: ["remittance", "money transfer", "bank", "apps"] },
-  { slug: "emergency-numbers", category: "getting-settled", question: "What are the emergency numbers in Saudi Arabia?", answerHtml: "<p>Ambulance (Saudi Red Crescent): <strong>997</strong>. Police: <strong>999</strong>. Civil Defence (fire): <strong>998</strong>. The Ministry of Health advice line is <strong>937</strong>, 24 hours, in Arabic and English. More in <a href=\"/guides/doctors-hospitals-and-pharmacies\">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>", tags: ["emergency", "ambulance", "police", "health"] },
+  { slug: "emergency-numbers", category: "getting-settled", question: "What are the emergency numbers in Saudi Arabia?", answerHtml: "<p>Ambulance (Saudi Red Crescent): <strong>997</strong>. Police: <strong>999</strong>. Civil Defence (fire): <strong>998</strong>. The unified emergency number <strong>911</strong> also works in Madinah. The Ministry of Health advice line is <strong>937</strong>, 24 hours, in several languages. More in <a href=\"/guides/doctors-hospitals-and-pharmacies\">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>", tags: ["emergency", "ambulance", "police", "health"] },
   { slug: "best-time-to-visit-madinah", category: "getting-settled", question: "What is the best time of year in Madinah?", answerHtml: "<p>November to February has the best weather (about 12 to 24°C) but is the busiest Umrah period. Late September to mid November and late February to March mix good weather with calmer crowds. Summer reaches 45°C, so do outdoor things early or late. See <a href=\"/guides/seasons-and-camping\">Madinah by season, and where to camp</a>.</p>", tags: ["weather", "season", "summer", "winter"] },
 ];
