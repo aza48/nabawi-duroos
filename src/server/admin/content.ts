@@ -78,7 +78,7 @@ const guideInput = z.object({
   summary: z.string().trim().min(3).max(400),
   bodyHtml: z.string().min(1).max(300_000),
   stage: z.enum(["getting-started", "getting-settled", "study", "family", "leaving"]),
-  coverUrl: z.string().trim().max(500).regex(/^(https:\/\/[^\s/]+\S*|\/(?!\/)\S*)?$/, "Use an https:// link or a /path on MESH").transform((v) => v || null).optional().nullable(),
+  coverUrl: z.string().trim().max(500).regex(/^(https:\/\/[^\s/]+\S*|\/(?![\/\\])\S*)?$/, "Use an https:// link or a /path on MESH").transform((v) => v || null).optional().nullable(),
   readingMinutes: z.number().int().min(1).max(120).optional(),
   status: z.enum(["draft", "published"]),
   markVerified: z.boolean().optional(),

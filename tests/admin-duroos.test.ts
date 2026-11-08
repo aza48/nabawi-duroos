@@ -84,6 +84,7 @@ describe("lessons, shaykhs and announcements", () => {
     await updateShaykh(db, duroosEditor, { slug, photo: "" });
     expect((await db.select().from(shaykhs).where(eq(shaykhs.slug, slug)))[0].photo).toBeNull();
     await expect(updateShaykh(db, duroosEditor, { slug, photo: "javascript:alert(1)" })).rejects.toThrow();
+    await expect(updateShaykh(db, duroosEditor, { slug, photo: "/\\evil.com" })).rejects.toThrow();
     const l = await updateLesson(db, duroosEditor, { slug: "ruh-dalil", bookUrl: "https://example.org/book.pdf" });
     expect(l.bookUrl).toBe("https://example.org/book.pdf");
     await expect(updateLesson(db, duroosEditor, { slug: "ruh-dalil", bookUrl: "http://insecure.example" })).rejects.toThrow();

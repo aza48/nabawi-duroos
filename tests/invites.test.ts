@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { resetTestDb, type Db } from "@/server/db/client";
 import { createAuth, type Auth } from "@/server/auth/auth";
 import { acceptInvite, createInvite } from "@/server/admin/invites";
-import { adminInvites, user } from "@/server/db/schema";
+import { adminInvites, auditLog, user } from "@/server/db/schema";
 import type { Actor } from "@/server/auth/permissions";
 import { BASE } from "./helpers/auth";
 
@@ -31,6 +31,10 @@ describe("admin invites", () => {
     expect(u.role).toBe("duroos_editor");
     expect(u.email).toBe("new@example.com");
     await expect(acceptInvite(db, auth, { token, name: "Again", password: "a-strong-password-1" })).rejects.toThrow("invite_used");
+    const log = await db.select().from(auditLog).where(eq(auditLog.entity, "admin"));
+    expect(log.some((l) => l.entityId.startsWith("invite:") && l.actorId === owner.id)).toBe(true);
+    expect(log.some((l) => l.entityId === userId && l.action === "create")).toBe(true);
+    expect(JSON.stringify(log)).not.toContain(token);
   });
 
   it("rejects an expired invite", async () => {

@@ -51,6 +51,7 @@ describe("/api/v1 for a native app", () => {
     expect(far.status).toBe(400);
     expect((await far.json()).error).toBe("bad_request");
     expect((await get(GET as never, "https://medinahub.org/api/v1/duroos/today?date=12-11-2026")).status).toBe(400);
+    expect((await get(GET as never, "https://medinahub.org/api/v1/duroos/today?date=2026-11-31")).status).toBe(400);
   });
 
   it("lists lessons with filters, and masjids and streams", async () => {

@@ -15,7 +15,7 @@ const optUrl = z
   .string()
   .trim()
   .max(500)
-  .regex(/^(https:\/\/[^\s/]+\S*|\/(?!\/)\S*)?$/, "Use an https:// link or a /path on MESH")
+  .regex(/^(https:\/\/[^\s/]+\S*|\/(?![\/\\])\S*)?$/, "Use an https:// link or a /path on MESH")
   .transform((v) => v || null)
   .optional()
   .nullable();
