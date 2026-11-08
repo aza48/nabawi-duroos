@@ -2,6 +2,13 @@
 
 Last updated 7 November 2026 (second session) by Claude. This file is the source of truth for continuing the work.
 
+## Overnight progress (8 November 2026, stopped at 83% of the 5-hour window)
+- Done and deployed: authority sweep of all public text (code files and 86 live database edits, facts checked; the course-descriptions guide was set to draft because it was leftover scraped widget text); library pages in the sitemap; search synonyms from the multilingual research.
+- Shaykh photos: workflow finished. 5 of 31 passed two-source verification; the list, sources and local file paths are in docs/research/shaykh-photos.md (full results in the scratchpad photos/results.json). NEXT: resize the 5 to public/shaykhs/<slug>.webp with sharp, set shaykhs.photo in the seed and live DB, deploy, and give the owner the list of 26 without a verified photo.
+- Owner questions collected by the sweep (33) are in the scratchpad sweep/result.json under "questions"; copy the important ones into docs/IDEAS-FOR-OWNER.md.
+- Remote Control is blocked by the organization's policy (claude.ai Team admin setting), not by this PC.
+- Then continue the plan below from stage 1 (open audit items and research content), then stages 2 to 4.
+
 ## Overnight plan the owner approved (7 November 2026, run in this order, autonomously)
 The owner is asleep and wants to wake up to finished work. Work in small, tested, deployed steps (tsc, vitest, push to `mine revamp:main` and `origin revamp`, check medinahub.org). Call `get_usage` between steps; if the 5-hour window passes about 85%, stop at a safe point, commit, update this file, and schedule a one-shot CronCreate a few minutes after the reset time to continue.
 1. **Pick up where the last session stopped.** Read this file, `docs/audit/AUDIT.md` and `docs/research/*`. Then: shaykh photos for all 31 shuyukh (the workflow plan in "Shaykh photos" below); the authority wording sweep of guides, FAQs, programmes, events and announcements (no sources, no doubt, no casual tone); library sitemap entries; the open audit items (admission guide with the agents warning, search synonyms and ranking, Open Graph, stale facts and research corrections, sisters at the Haram duroos, Ma'had hub, tap targets, 404 pages, titles); content from the research (Visitor ID and iqama paths side by side, Study in Saudi changes, group chat facts, Rawdah hours). Use Workflows for the big fan-outs (ultracode is on).
