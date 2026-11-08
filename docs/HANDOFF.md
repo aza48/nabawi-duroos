@@ -65,7 +65,12 @@ medinahub.org: a hub run by students, for English-speaking students and families
 - **Admin:** Face ID passkey as the main sign-in second factor, password reset links, book link on the dars form, photo link on the shaykh form, help number made fixed and removed from Settings, admin audit written.
 - **Watcher:** correct al-Ruhayli handle and several new channels; busy channels pass a free keyword check before any AI read. Only Telegram is watched (X needs a paid API).
 
-## MESH WhatsApp number (built 8 November, waiting on the owner's Meta setup)
+## WhatsApp exports (the owner's chosen workflow)
+- The owner exports chats from WhatsApp (Export chat, without media) and puts the zip in Downloads. Run `node scripts/whatsapp-new.cjs "<zip>"` to get only the messages since the last processed export (written to a temp whatsapp-new.txt), process them (FAQs, guides, duroos changes, research notes, following every owner rule), then run it again with `--commit` to mark them read. Cursors live in data/whatsapp-cursors.json (chat names and times only). The MESH group is read up to 7 November 2026, 21:31.
+- Never read a whole export again when the tool can give the new part; conserve tokens.
+
+## MESH WhatsApp number (built 8 November; ON HOLD by owner decision)
+- The owner wants coexistence on +966 53 196 3439 (no deleting chats) and Claude, not Gemini, as the reader. That needs a Meta partner with coexistence (for example 360dialog, monthly fee; the number then loses group chats and calls) plus an Anthropic API key with billing. The owner chose manual exports instead for now.
 - Webhook live at https://medinahub.org/api/v1/whatsapp/webhook (src/server/whatsapp/inbox.ts). Only messages from WHATSAPP_OWNERS are processed; others get no reply. Forwarded text or images go through the watcher reader and decide(): clear schedule changes auto-publish (undo in Activity), everything else goes to the admin inbox; the sender gets a plain WhatsApp reply.
 - Business number +966 53 196 3439; owner number +1 234 567 9076 (WHATSAPP_OWNERS=12345679076).
 - Vercel env still to add by the owner: WHATSAPP_TOKEN, WHATSAPP_PHONE_NUMBER_ID, WHATSAPP_APP_SECRET, WHATSAPP_VERIFY_TOKEN, WHATSAPP_OWNERS. Then redeploy, then set the webhook in Meta and subscribe to messages.
