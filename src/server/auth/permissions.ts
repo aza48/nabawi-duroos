@@ -7,10 +7,12 @@ export type Permission =
   | "content.write"
   | "settings.write"
   | "admins.manage"
-  | "activity.undo";
+  | "activity.undo"
+  /** Visitor analytics: the owner only, never editors. */
+  | "analytics.view";
 
 const GRANTS: Record<Role, Permission[]> = {
-  owner: ["duroos.write", "announcements.write", "content.write", "settings.write", "admins.manage", "activity.undo"],
+  owner: ["duroos.write", "announcements.write", "content.write", "settings.write", "admins.manage", "activity.undo", "analytics.view"],
   editor: ["duroos.write", "announcements.write", "content.write", "settings.write", "activity.undo"],
   duroos_editor: ["duroos.write", "announcements.write"],
   content_editor: ["content.write"],

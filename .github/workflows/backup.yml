@@ -34,3 +34,10 @@ jobs:
           name: mesh-db-${{ env.STAMP }}
           path: mesh-*.dump
           retention-days: 90
+      - name: Keep the first backup of each month for 400 days
+        if: ${{ endsWith(env.STAMP, '-01') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-db-monthly-${{ env.STAMP }}
+          path: mesh-*.dump
+          retention-days: 400

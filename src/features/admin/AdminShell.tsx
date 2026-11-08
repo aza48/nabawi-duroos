@@ -16,7 +16,8 @@ const TABS = [
   { href: "/admin/more", label: "More", icon: Settings },
 ];
 
-export function AdminShell({ name, roleLabel, canUndo = false, children }: { name: string; roleLabel: string; canUndo?: boolean; children: React.ReactNode }) {
+export function AdminShell({ name, roleLabel, canUndo = false, canSeeVisitors = false, children }: { name: string; roleLabel: string; canUndo?: boolean; canSeeVisitors?: boolean; children: React.ReactNode }) {
+  const tabs = canSeeVisitors ? TABS : TABS.filter((t) => t.href !== "/admin/analytics");
   const path = usePathname() ?? "/admin";
   const router = useRouter();
   const active = (t: (typeof TABS)[number]) => (t.exact ? path === t.href : path.startsWith(t.href));
@@ -30,7 +31,7 @@ export function AdminShell({ name, roleLabel, canUndo = false, children }: { nam
         <div className="mx-auto flex h-14 max-w-4xl items-center justify-between gap-3 px-4">
           <Link href="/admin" className="font-heading text-xl font-semibold text-primary">MESH <span className="text-sm font-medium text-muted">Admin</span></Link>
           <nav className="hidden gap-1 md:flex">
-            {TABS.map((t) => (
+            {tabs.map((t) => (
               <Link key={t.href} href={t.href} className={`rounded-full px-3 py-1.5 text-sm font-semibold ${active(t) ? "bg-primary text-primary-ink" : "text-muted hover:text-ink"}`}>{t.label}</Link>
             ))}
           </nav>
@@ -41,10 +42,10 @@ export function AdminShell({ name, roleLabel, canUndo = false, children }: { nam
           </div>
         </div>
       </header>
-      <main className="mx-auto max-w-4xl px-4 pt-4 pb-safe md:pb-16"><AdminFeedbackProvider canUndo={canUndo}>{children}</AdminFeedbackProvider></main>
+      <main className={`mx-auto px-4 pt-4 pb-safe md:pb-16 ${path.startsWith("/admin/analytics") ? "max-w-7xl" : "max-w-4xl"}`}><AdminFeedbackProvider canUndo={canUndo}>{children}</AdminFeedbackProvider></main>
       <nav aria-label="Admin" className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card/95 backdrop-blur md:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         <ul className="flex justify-around">
-          {TABS.map((t) => {
+          {tabs.map((t) => {
             const Icon = t.icon;
             return (
               <li key={t.href} className="flex-1">
