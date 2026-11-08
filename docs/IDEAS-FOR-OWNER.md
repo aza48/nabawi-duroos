@@ -66,3 +66,7 @@ Answer these when you can; each answer lets MESH state something with authority 
 - Sports guide: are adult classes at the University Sports Center open to women? The poster does not say, and girls are only listed for the children's classes.
 - Dar at-Tawheed wa as-Sunnah: what are the fees, and is registration still open? The page says to ask the centre.
 - Fees guide and phone guide are based on published guides dated July to September 2026. Please confirm the exit and re-entry fees on Absher when you next use it.
+- MesaFind-style visitor pages (museums, markets, parks, off-roading, photography spots, guided tours, events, flights, hotels, restaurants, Quran reader) were not added: they are tourist listings with prices that cannot be checked, or already covered. Do you want a "Things to do" page for families with museum and park opening hours once someone has checked them?
+- Property: the Holy City rules on foreign ownership could not be stated with authority. Do you want a short "Can I buy a home in Madinah?" guide once the current rule is confirmed? The portals Aqar, Bayut and Property Finder are worth adding to the flat guide at the next sync of that guide.
+- Healthcare: one source says all visitors get free emergency care at government hospitals. The site says there is no free healthcare on a visit visa. Which is right for emergencies?
+- Public WhatsApp and Telegram groups listed elsewhere (housing, mums, sports) were not copied. Do you want a neutral "Community groups" page with only groups you have checked?

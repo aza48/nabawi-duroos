@@ -479,6 +479,242 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>The first transfer costs 2,000 SAR, the second 4,000 SAR, and the third and every later one 6,000 SAR.</p>
 <p>Visitor ID students pay none of the iqama fees above until they hold an iqama. See Visas for family members and visitors for the visit visa rules.</p>`,
   },
+  {
+    slug: "masjid-an-nabawi-first-visit",
+    stage: "getting-settled",
+    title: "Visiting Masjid an-Nabawi: a first-visit guide",
+    summary: "What is inside the Prophet's Masjid, how to book the Rawdah, how to visit Al-Baqi', and the small habits that make a visit calm.",
+    bodyHtml: `
+<p>The masjid was first built by the Prophet ﷺ and his Companions in the first year after the Hijrah, and it has been expanded many times since. Most students and families go several times a week. These notes help the first few visits go smoothly.</p>
+<h2>What to find inside</h2>
+<table><thead><tr><th>Place</th><th>What it is</th></tr></thead><tbody>
+<tr><td><strong>The Rawdah</strong> (الروضة الشريفة)</td><td>The space between the Prophet's ﷺ chamber and his minbar, marked by green carpet. Entry is by booking only.</td></tr>
+<tr><td><strong>The Prophet's ﷺ chamber</strong></td><td>The resting place of the Prophet ﷺ, Abu Bakr and Umar. Visitors give salam quietly and briefly, keep moving and do not block those behind them.</td></tr>
+<tr><td><strong>The minbar and the mihrab</strong></td><td>The pulpit and the prayer niche that mark the edge of the Rawdah.</td></tr>
+<tr><td><strong>The Green Dome</strong></td><td>The dome over the chamber. The open courtyard on the south side gives the best view.</td></tr>
+<tr><td><strong>King Fahd Holy Qur'an Library</strong></td><td>A multi-floor library inside the complex with rare and historic copies of the Qur'an. Hours vary and it closes around prayer times.</td></tr>
+<tr><td><strong>Prophetic Biography Museum</strong></td><td>A multimedia exhibition on the life of the Prophet ﷺ and the story of the masjid, next to the western courtyards. A good first orientation for children.</td></tr>
+<tr><td><strong>The courtyard umbrellas</strong></td><td>Large automatic parasols that open at dawn and close at dusk, so the courtyards stay shaded for prayer.</td></tr>
+<tr><td><strong>Wudu areas and toilets</strong></td><td>Large facilities around the edge of the masjid, some underground and reached by ramps in the courtyards. They are cleanest just after a prayer and busiest just before.</td></tr>
+</tbody></table>
+<h2>Booking the Rawdah</h2>
+<ol>
+<li>Install the <strong>Nusuk</strong> app and sign in. Booking is free.</li>
+<li>Choose a slot. Men and women have separate slots and separate times.</li>
+<li>Book 1 to 2 days ahead in quiet weeks. In Ramadan, the Hajj season and school holidays, book 1 to 2 weeks ahead or more.</li>
+<li>Keep the app open when you are at the masjid, because short-notice slots are sometimes released during the day.</li>
+<li>Arrive at your booked time and follow the stewards. A visit inside the Rawdah is about 10 to 15 minutes.</li>
+</ol>
+<h2>Al-Baqi' cemetery</h2>
+<p>Al-Baqi' is just east of the masjid, across the road. It is open to men only, usually after Fajr and after Asr. Bring your iqama or passport for the security check at the entrance.</p>
+<h2>Small things that help</h2>
+<ul>
+<li>Come 20 to 30 minutes before a prayer if you want a place near the middle.</li>
+<li>Carry a small bag with a zip. Larger bags are checked at security, and shoes go on shelves. The free left-luggage and bag rules are in the library FAQ.</li>
+<li>Bring a small prayer mat for the open courtyards, because the marble gets hot at midday in summer.</li>
+<li>Phone signal can drop at busy times. Agree a meeting point with your family before you separate.</li>
+<li>Note the number of the gate you came in through. The masjid is huge and the exits look alike. Gate numbers can change during building work, so go by the signs.</li>
+<li>Volunteers in beige vests near the main gates speak many languages and will point you the right way.</li>
+</ul>
+<blockquote><p>Tip: For the daily lessons inside the masjid, see the <a href="/duroos">Duroos</a> page. For the free Qur'an and mutun halaqat, see <a href="/programs">Study in Madinah</a>.</p></blockquote>
+<p>See also <a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba from Madinah</a> and <a href="/guides/historic-sites-and-masjids">Historic sites and masjids of Madinah</a>.</p>`,
+  },
+  {
+    slug: "historic-sites-and-masjids",
+    stage: "getting-settled",
+    title: "Historic sites and masjids of Madinah",
+    summary: "The masjids, battle sites, wells and farms worth visiting, grouped by area with approximate distances from the Haram.",
+    bodyHtml: `
+<p>Distances are approximate and measured from Masjid an-Nabawi. Most sites are a short taxi or ride-app trip, and several can be combined in one outing. Early morning or after Asr is best in the warm months.</p>
+<h2>Close to the Haram</h2>
+<table><thead><tr><th>Place</th><th>About</th></tr></thead><tbody>
+<tr><td>Masjid al-Ghamamah</td><td>Where the Prophet ﷺ prayed for rain. A short walk south-west of the masjid.</td></tr>
+<tr><td>Masjid Abu Bakr as-Siddiq</td><td>Next to Masjid al-Ghamamah.</td></tr>
+<tr><td>Masjid Ali ibn Abi Talib</td><td>A small masjid within walking distance.</td></tr>
+<tr><td>Masjid Bilal al-Habashi</td><td>Named for the Prophet's ﷺ muezzin, about 1 km away.</td></tr>
+<tr><td>Masjid as-Suqya and its well</td><td>Where the Prophet ﷺ camped before Badr, about 2 km away.</td></tr>
+</tbody></table>
+<h2>Quba and the south</h2>
+<ul>
+<li><strong>Masjid Quba</strong> (about 4 km): the first masjid of Islam. Two rak'ahs after wudu at home carry the reward of an Umrah. Many people walk there on Saturdays along the Quba walkway, which is around 3 km and takes about 45 minutes.</li>
+<li><strong>Masjid al-Jumu'ah</strong> (about 4 to 5 km): where the first Friday prayer was held in Madinah, on the way between the Haram and Quba.</li>
+<li><strong>Masjid al-Qiblatayn</strong> (about 5 to 6 km): where the direction of prayer changed from Jerusalem to Makkah. Both original mihrabs are kept.</li>
+<li><strong>Quba gardens:</strong> Bir Ariis and Bir al-Khatim are in the gardens near Quba, and the square around the masjid has family cafés.</li>
+</ul>
+<h2>Khandaq and Mount Sala'</h2>
+<p>The Battle of the Trench took place in 5 AH around Mount Sala' (Sal'). Seven small masjids stand on its slope, including Masjid al-Fath, where the Prophet ﷺ made du'a, and masjids named for Salman al-Farisi and Umar ibn al-Khattab. The walk through the area takes about 40 minutes.</p>
+<h2>Uhud</h2>
+<p>Mount Uhud, about 5 km north of the Haram, is where the Battle of Uhud took place in 3 AH. The Shuhada cemetery at its foot holds seventy martyrs, including Hamzah ibn Abd al-Muttalib. A walk around the foot of the mountain takes about an hour. Masjid al-Mustarah is nearby.</p>
+<h2>Wells and farms</h2>
+<ul>
+<li><strong>Bir Rumah (the well of Uthman):</strong> bought and given for the public by Uthman ibn Affan. It still gives water, and the dates of the surrounding farm are sold for charity.</li>
+<li><strong>Bir Hā' (the garden of Abu Talhah)</strong> and the wells of Anas ibn Malik and Ghars are in working farms. Visits are by permission of the owner.</li>
+<li><strong>Aliyat al-Madinah</strong> is the old farming belt. Some farms welcome visitors in the date harvest, late summer.</li>
+</ul>
+<h2>Further out</h2>
+<p>Badr, Khaybar, Yanbu, AlUla and other places are covered in <a href="/guides/day-trips-from-madinah">Day trips from Madinah</a>.</p>
+<blockquote><p>Note: Sites inside working farms are not open to everyone. Ask first, and leave nothing behind.</p></blockquote>`,
+  },
+  {
+    slug: "day-trips-from-madinah",
+    stage: "getting-settled",
+    title: "Day trips and weekends away from Madinah",
+    summary: "Badr, Khaybar, Yanbu, AlUla, Jeddah and more, with distance, drive time and the best months to go.",
+    bodyHtml: `
+<p>Distances and times are by road from Madinah. For anywhere over 300 km, a flight or the Haramain train is often easier. Checked November 2026.</p>
+<table><thead><tr><th>Place</th><th>Distance</th><th>Drive</th><th>Good for</th></tr></thead><tbody>
+<tr><td>Wadi al-Jinn</td><td>about 30 km</td><td>about 40 min</td><td>A half-day outing to the valley where cars seem to roll uphill. Any car will do and you need no guide.</td></tr>
+<tr><td>Badr</td><td>about 130 km</td><td>1.5 to 2 h</td><td>The battlefield of the Battle of Badr, with a visitor centre and signs in Arabic and English. Leave after Fajr and be back by Maghrib. Take water and food, as services are limited.</td></tr>
+<tr><td>Khaybar</td><td>about 160 km</td><td>about 2 h</td><td>The oasis and fortifications of the Battle of Khaybar, palm groves and the black lava fields. A 4WD helps in the lava fields.</td></tr>
+<tr><td>Yanbu</td><td>about 230 km</td><td>2.5 to 3 h</td><td>Red Sea beaches, snorkelling and a corniche. Many people go for a Friday and Saturday.</td></tr>
+<tr><td>AlUla and Hegra</td><td>about 340 km</td><td>3.5 to 4 h</td><td>The UNESCO World Heritage tombs of Hegra, the old town and the sandstone landscape. Plan two or three days and book entry through the official AlUla site.</td></tr>
+<tr><td>Jeddah (Al-Balad)</td><td>about 420 km</td><td>4 to 5 h</td><td>The old town, corniche and seafood. The Haramain train takes about 2 hours.</td></tr>
+<tr><td>Tabuk</td><td>about 700 km</td><td>7 to 8 h</td><td>The Tabuk fort and the route to the north-west coast. A flight is the practical choice.</td></tr>
+</tbody></table>
+<blockquote><p>Tip: October to April is the best time for every trip above. In summer, set out at dawn and avoid the middle of the day.</p></blockquote>
+<h2>Before you go</h2>
+<ol>
+<li>Fill the tank and carry at least 10 litres of water per person for desert roads.</li>
+<li>Check the weather. Heavy rain can cause flash floods in wadis in winter.</li>
+<li>Tell someone your route. Mobile signal fades more than 30 km from the city.</li>
+<li>Keep your iqama or passport and your car papers with you for police checkpoints.</li>
+</ol>
+<p>Hiring a car needs a licence your country is recognised for, and some companies ask for residency. See <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>`,
+  },
+  {
+    slug: "seasons-and-camping",
+    stage: "getting-settled",
+    title: "Madinah by season, and where to camp",
+    summary: "What each season feels like, when the crowds peak, and the rules and places for camping around the city.",
+    bodyHtml: `
+<h2>The year in Madinah</h2>
+<table><thead><tr><th>Season</th><th>Typical temperatures</th><th>What it is like</th></tr></thead><tbody>
+<tr><td>Winter, November to February</td><td>12 to 24°C</td><td>Cool and dry, the best weather for walking and trips. Nights are cold in the open courtyards, so bring a layer for Maghrib and Isha. It is also the busiest Umrah period.</td></tr>
+<tr><td>Spring, March to May</td><td>18 to 35°C</td><td>Pleasant in March and early April, hot by late May. Dust storms can come, mostly from March to May.</td></tr>
+<tr><td>Summer, June to August</td><td>32 to 45°C</td><td>Very hot. Do outdoor things before 9 am or after 6 pm and drink water all day. The date harvest runs in late summer.</td></tr>
+<tr><td>Autumn, September to October</td><td>25 to 38°C</td><td>The heat breaks and crowds are lighter, especially after the Hajj season.</td></tr>
+</tbody></table>
+<h2>When it is busiest</h2>
+<ul>
+<li><strong>Hajj</strong> (8 to 13 Dhul Hijjah, moving earlier each year): hotels are at their highest prices and traffic around the Haram is heavy.</li>
+<li><strong>The last 10 nights of Ramadan:</strong> huge crowds for Tahajjud. Daytime is quiet, and life and shopping start after Maghrib.</li>
+<li><strong>December to February:</strong> the main Umrah season, with high but steadier numbers.</li>
+<li>Late September to mid November and late February to March have the best mix of weather and calm.</li>
+</ul>
+<h2>Camping</h2>
+<p>Camping in open desert and wadis is a favourite weekend activity. Day or weekend camping in open areas is generally fine, but protected reserves need permission from the authority that runs them, and the signed heritage zones around Uhud must be respected.</p>
+<ul>
+<li><strong>Fires:</strong> charcoal and gas stoves are the norm. Never light a fire inside a protected reserve or a city park, and check for fire restrictions in summer.</li>
+<li><strong>Rubbish:</strong> take everything back with you, including charcoal ash and food scraps. Bring big bin bags.</li>
+<li><strong>Water and safety:</strong> carry at least 10 litres per person per day, tell someone your route, and avoid wadis when rain is forecast.</li>
+<li><strong>Wildlife:</strong> shake out your shoes in the morning and keep away from stray dogs and camels.</li>
+<li><strong>Jumu'ah:</strong> plan to be back in Madinah or at a nearby village masjid for Friday prayer.</li>
+</ul>
+<h3>Places people camp</h3>
+<table><thead><tr><th>Place</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Al-Hamra desert, north of the city</td><td>Open red sand, no shade or water. 4WD advised.</td></tr>
+<tr><td>King Fahd Park</td><td>Day use only. Picnic shelters and barbecue areas.</td></tr>
+<tr><td>Road towards Khaybar</td><td>Higher, rocky ground that is cooler on summer evenings. Check the weather for flash floods.</td></tr>
+<tr><td>Wadi al-Aqiq</td><td>Flat, firm sand stretches within about 30 km of the Haram. Best from October to March.</td></tr>
+<tr><td>Wadi al-Naqi</td><td>A wide sandy wadi south of the city that families like. Best from October to April.</td></tr>
+<tr><td>Foothills of Mount Uhud</td><td>Public side only, away from the heritage zones.</td></tr>
+</tbody></table>
+<h3>Gear</h3>
+<p>Amazon.sa, Decathlon (online) and Noon deliver to Madinah in 1 to 3 days. Traditional camping gear such as charcoal grills, dallah pots and floor mats is sold in the shops around Souq al-Manakhah.</p>
+<p>Organised trips are listed in <a href="/guides/sports-and-activities">Sport, fitness and outdoor activities</a>.</p>`,
+  },
+  {
+    slug: "dates-of-madinah",
+    stage: "getting-settled",
+    title: "Dates of Madinah: the varieties and how to buy",
+    summary: "The main varieties sold in Madinah, what each is like, and how to buy good dates to eat or take home.",
+    bodyHtml: `
+<p>Madinah's date farms are among the oldest in Arabia. Every souk sells many varieties, and the choice can be bewildering at first. This guide lists the ones you will see.</p>
+<table><thead><tr><th>Variety</th><th>What it is like</th></tr></thead><tbody>
+<tr><td><strong>Ajwa</strong> (عجوة)</td><td>The best known of all. Nearly black, soft, a little chewy, with a deep sweetness. Grown almost only in the Madinah area. It is the date of the Sunnah of eating seven in the morning.</td></tr>
+<tr><td><strong>Anbara</strong> (عنبرة)</td><td>Long, plump and golden, with a caramel and honey flavour. The most expensive of the common varieties and a favourite for gifts.</td></tr>
+<tr><td><strong>Khalas</strong> (خلاص)</td><td>Light brown and soft with a buttery sweetness. It comes originally from Al-Hasa. Popular for stuffing with almonds or cream cheese.</td></tr>
+<tr><td><strong>Mabroum</strong> (مبروم)</td><td>Long and reddish brown, firmer and less syrupy. A popular choice for iftar.</td></tr>
+<tr><td><strong>Safawi</strong> (صفاوي)</td><td>Dark brown to black like Ajwa but smaller, drier and less sweet. Keeps well.</td></tr>
+<tr><td><strong>Saghai</strong> (صغاي)</td><td>Yellow tipped and brown bodied, crunchy when fresh and softer with storage. An everyday family date, good value.</td></tr>
+<tr><td><strong>Sukkari</strong> (سكري)</td><td>Golden and honey sweet, soft, very rich. Best fresh in the late summer harvest, in small servings.</td></tr>
+</tbody></table>
+<h2>Buying well</h2>
+<ul>
+<li><strong>Buy in Madinah.</strong> Good dates are usually cheaper here than back home for the same grade.</li>
+<li><strong>Start with a sampler box.</strong> Many shops sell a mixed box of several varieties. Try that first, then buy a kilo of the ones you liked.</li>
+<li><strong>Check your Ajwa.</strong> Good Ajwa is firm and slightly dry with a wrinkled skin. Very soft, shiny, sticky ones are often another variety.</li>
+<li><strong>Go in the late afternoon.</strong> Shops are cooler and quieter, and sellers have more time for you.</li>
+<li><strong>Taking them on a plane?</strong> Ask the shop to vacuum pack them for travel.</li>
+<li><strong>Harvest season:</strong> the main harvest is late summer. Some farms in the Aliyat al-Madinah area welcome visitors then.</li>
+</ul>`,
+  },
+  {
+    slug: "doctors-hospitals-and-pharmacies",
+    stage: "getting-settled",
+    title: "Doctors, hospitals, pharmacies and emergency numbers",
+    summary: "Emergency numbers, where to go for care, the main hospitals and pharmacy chains, and health apps.",
+    bodyHtml: `
+<h2>Emergency numbers</h2>
+<table><thead><tr><th>Number</th><th>For</th></tr></thead><tbody>
+<tr><td><strong>997</strong></td><td>Ambulance (Saudi Red Crescent)</td></tr>
+<tr><td><strong>999</strong></td><td>Police</td></tr>
+<tr><td><strong>998</strong></td><td>Civil Defence (fire)</td></tr>
+<tr><td><strong>937</strong></td><td>Ministry of Health advice line, 24 hours, in Arabic and English</td></tr>
+</tbody></table>
+<h2>Where to go</h2>
+<ul>
+<li><strong>University students:</strong> start with the University clinic, which covers students. Many private clinics also give students big discounts (see <a href="/discounts">Student discounts</a>).</li>
+<li><strong>Minor illness:</strong> a private clinic is quickest. A GP visit usually costs 100 to 200 SAR (see <a href="/guides/cost-of-living">What it costs to live in Madinah</a>).</li>
+<li><strong>Emergencies:</strong> go to the nearest hospital emergency department, or call 997.</li>
+<li><strong>Visitors:</strong> on a visit visa you pay for care yourself, so keep health insurance and some money aside.</li>
+</ul>
+<h2>Main hospitals</h2>
+<p>Listed alphabetically. Prices and services differ, so ask before booking.</p>
+<ul>
+<li>Dr. Sulaiman Al Habib Hospital (private)</li>
+<li>Hayat National Hospital (private)</li>
+<li>King Fahd Hospital (government)</li>
+<li>Madina National Hospital (private)</li>
+<li>Mouwasat Hospital (private)</li>
+<li>Saudi German Hospital (private)</li>
+<li>Uhud Hospital</li>
+<li>Zahra Hospital (private)</li>
+</ul>
+<p>Delivery fees, husband and companion rules, and the free option for University wives are in <a href="/guides/having-a-baby-in-madinah">Having a baby in Madinah</a>.</p>
+<h2>Pharmacies</h2>
+<p>Al Dawaa and Al Nahdi are the two big chains, with branches across the city and some open round the clock. Most staff speak English. Bring the box or the name of the medicine you take, and a copy of the prescription for anything stronger than basics.</p>
+<h2>Health apps</h2>
+<ul>
+<li><strong>Altibbi:</strong> video consultations and a medical information library.</li>
+<li><strong>Cura:</strong> video consultations with doctors in many specialties, with prescriptions delivered.</li>
+<li><strong>Sehhaty:</strong> the Ministry of Health app for residents, for appointments and records.</li>
+</ul>
+<h2>Insurance</h2>
+<p>To check that your health insurance is valid, see the FAQ on checking insurance.</p>`,
+  },
+  {
+    slug: "other-universities-in-madinah",
+    stage: "study",
+    title: "Other universities in Madinah",
+    summary: "Prince Mugrin, Saudi Electronic University and Taibah University: what each offers, and where the Islamic University fits.",
+    bodyHtml: `
+<p>The Islamic University is the main route for international students, with a full scholarship and the Ma'had al-Lughah for Arabic. Madinah has other universities too. Admission rules, fees and languages of teaching differ for each, so always check the university's own admissions page before applying.</p>
+<h2>The universities</h2>
+<table><thead><tr><th>University</th><th>Type</th><th>Known for</th></tr></thead><tbody>
+<tr><td><strong>Islamic University of Madinah</strong></td><td>Public, founded 1961</td><td>Shariah, Qur'an, hadith, da'wah and Arabic, with scholarships for students from around the world. See <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</td></tr>
+<tr><td><strong>Prince Mugrin University</strong></td><td>Private, founded 2014</td><td>Business and hospitality, engineering and technology, computing, and architecture and design. Teaching is mainly in English and students pay tuition.</td></tr>
+<tr><td><strong>Saudi Electronic University, Madinah branch</strong></td><td>Public, online and blended</td><td>Business administration, computing and information sciences, health sciences, and education and language studies, mixing online study with some on-campus sessions.</td></tr>
+<tr><td><strong>Taibah University</strong></td><td>Public, founded 2003</td><td>A full range of colleges including medicine, engineering, computer science, pharmacy, education, Shariah and business, with its own teaching hospital.</td></tr>
+</tbody></table>
+<h2>Choosing</h2>
+<ul>
+<li><strong>Want Islamic sciences and Arabic?</strong> The Islamic University is built for that. Other routes are in <a href="/programs">Study in Madinah</a>.</li>
+<li><strong>Want a professional degree in English?</strong> Look at private universities such as Prince Mugrin.</li>
+<li><strong>Need flexible hours?</strong> Online and blended programmes suit people who work or have family duties.</li>
+<li><strong>Staying on a visa?</strong> Degree study needs a student visa. See <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</li>
+</ul>`,
+  },
 ];
 
 export type SeedFaq = { slug: string; question: string; category: string; answerHtml: string; tags?: string[] };
@@ -512,4 +748,6 @@ export const FAQS_2026: SeedFaq[] = [
   { slug: "short-address", category: "getting-settled", question: "What is a short address and how do I find mine?", answerHtml: "<p>It is an eight character code, four letters then four digits, that stands for your full National Address. It is used for deliveries and some official forms. You need a registered National Address first. Then find the code in Absher (My Services, then National Address Services), on the Saudi Post website after signing in with Nafath, or in the Saudi Post app. If you move, update your National Address, because the code changes with it.</p>", tags: ["national address", "short address", "delivery", "saudi post"] },
   { slug: "check-health-insurance", category: "getting-settled", question: "How do I check that my health insurance is valid?", answerHtml: "<p>Iqama holders can check on the Council of Health Insurance website, on the Insurance Authority website (free, and the one that works from abroad), in the Tawakkalna app, in Absher (health insurance validity inquiry) or in the CHI Daman app. Enter your 10 digit iqama number and check the insurer and expiry date. Insurance expiry is separate from your iqama expiry. If nothing shows, retry and then ask your insurer.</p>", tags: ["insurance", "chi", "health", "iqama"] },
   { slug: "send-money-home", category: "getting-settled", question: "How do I send money home from Madinah?", answerHtml: "<p>Apps and services in common use include Alinma, Barq, D360, Enjaz, Mobily Pay, SNB NEO, STC Pay and STC Bank, Tahweel Al Rajhi, Tiqmo and urpay. What you can use depends on your ID and bank account. Fees, exchange rates and speed differ and change, so compare the final amount your family receives after fees, not the headline rate. Checked November 2026.</p>", tags: ["remittance", "money transfer", "bank", "apps"] },
+  { slug: "emergency-numbers", category: "getting-settled", question: "What are the emergency numbers in Saudi Arabia?", answerHtml: "<p>Ambulance (Saudi Red Crescent): <strong>997</strong>. Police: <strong>999</strong>. Civil Defence (fire): <strong>998</strong>. The Ministry of Health advice line is <strong>937</strong>, 24 hours, in Arabic and English. More in <a href=\"/guides/doctors-hospitals-and-pharmacies\">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>", tags: ["emergency", "ambulance", "police", "health"] },
+  { slug: "best-time-to-visit-madinah", category: "getting-settled", question: "What is the best time of year in Madinah?", answerHtml: "<p>November to February has the best weather (about 12 to 24°C) but is the busiest Umrah period. Late September to mid November and late February to March mix good weather with calmer crowds. Summer reaches 45°C, so do outdoor things early or late. See <a href=\"/guides/seasons-and-camping\">Madinah by season, and where to camp</a>.</p>", tags: ["weather", "season", "summer", "winter"] },
 ];
