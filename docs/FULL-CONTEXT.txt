@@ -1,0 +1,279 @@
+MESH (medinahub.org): FULL CONTEXT FOR A NEW CLAUDE ACCOUNT
+Written 8 November 2026 by the previous Claude Code session, so a new session can continue seamlessly.
+Read this whole file first, then docs/HANDOFF.md, CLAUDE.md and CONTRIBUTING.md.
+
+======================================================================
+1. WHAT MESH IS
+======================================================================
+medinahub.org is MESH, the Medina English Student Hub: run by students, for English-speaking
+students and families in Madinah. Maintainer and owner: Muhaymin (GitHub iumuhaymin).
+It offers:
+- Live duroos schedules of the mashayikh at Masjid an-Nabawi, Quba and city masjids, kept current by a
+  Telegram watcher (AI reads channel posts, publishes clear changes or queues them for admins).
+- Dars pages, shaykh pages (20 of 31 shuyukh have verified photos; the rest show a calligraphic name
+  badge), a weekly schedule with filters, a Sisters section, a Live page.
+- Study in Madinah: the University, Arabic institutes, marakiz, sisters' programmes (impartial,
+  alphabetical, fees and dates, "last checked" dates).
+- Guides (arrival, iqama and Visitor ID, banking, SIM, housing, transport, healthcare, family, university
+  rules, calendar), FAQs ("Ask"), student discounts, key dates with countdowns and a subscribable
+  calendar feed (/api/v1/calendar/dates.ics).
+- A course-book library: 1,682 files for every college and the Ma'had, by level and subject, read
+  inside MESH through an embedded Google Drive reader, with search (/library, /library/<college>,
+  /library/read/<id>, /library/search).
+- Arabic version under /ar (duroos, programmes, guides, ask, library, discounts, more) with a header
+  language switch that remembers the choice.
+- An admin panel (/admin): invite-only, Face ID passkey second factor, "Needs you" home block, watcher
+  inbox, content editing, search, activity log with undo, confirm sheet and undo toast, a "Questions for
+  you" page where admins answer open questions.
+- It promotes the MESH WhatsApp group.
+
+======================================================================
+2. THE OWNER'S RULES (follow all of them, always)
+======================================================================
+Copy and tone
+- No em dashes or en dashes anywhere (a test in tests/copy.test.ts scans visible text).
+- No AI-sounding copy. Plain, warm, specific, professional English. Not casual.
+- Speak with authority. Public text NEVER mentions a source, channel, post, poster or other website,
+  and never shows doubt ("reportedly", "not stated", "unconfirmed", "inferred", "as last reported").
+  The owner wants visitors to feel MESH has the information, not to leave for other sources.
+- Unsure means ask, never guess: leave the fact out and add a question for admins
+  (scripts/open-questions.json, then npm run questions:add -- scripts/open-questions.json; it appears in
+  Admin > More > Questions for you). Answers are only saved; run npm run questions:pull to write them to
+  docs/ADMIN-ANSWERS.md, then interpret them and publish properly.
+- Research notes and admin-only notes never appear publicly.
+- Plain words over jargon ("Course books" not "muqarrarat"; keep the Arabic beside it where students
+  search for it).
+- Rewrite everything in MESH's own words. Never copy sites or PDFs.
+
+Impartiality and promotion
+- Impartial: never recommend, feature or rank one markaz, institute, business or doctor. List
+  alphabetically. Say MESH is student-run and independent. MESH must never be held accountable:
+  protective lines like "confirm fees with the institute before you pay" are fine.
+- No adverts or short-term promotions. No one-off trips, tours, sales or events that read like adverts,
+  even when the owner pastes a poster. Only long-term real services and neutral facts.
+- Never advertise or name other sites' businesses or groups as promotion.
+
+Design
+- Light theme by default; dark ("Madinah Night") only via the theme button.
+- Brand: deep green #145c3e, gold #e2b23a, heavy white wordmark, diamond lattice pattern.
+- Mobile first, but desktop must use the space with NO big empty areas.
+- Check every visual change at 2000, 1440, 1024, 390 and 360 px.
+- No filler features. Every element must help someone do something. (The owner rejected a decorative
+  "Get ready" checklist as useless.) The owner wants the site rich, beautiful and interactive, with
+  useful links everywhere they belong.
+- English and Arabic both work (RTL).
+
+Facts and freshness
+- Facts that change (fees, dates) show when they were last checked.
+- Temporary information expires: discounts, offers, trips, registration windows and one-off events
+  must be removed or updated as soon as their period ends. Log every temporary item in
+  docs/EXPIRING.md and sweep that table at the start of every session and before every deploy.
+- Iqama and Visitor ID: most current students hold an iqama; the newest intake arrives on a digital
+  Visitor ID with an electronic study visa (no iqama, no exit and re-entry). Banking, SIM, licence and
+  visa guides cover both paths side by side.
+- Shaykh photos: only verified photos (two independent sources, a wrong face is worse than none). The
+  owner wants every shaykh pictured where a verified photo exists. ShaykhBadge is the fallback.
+
+Names and contacts
+- The owner's name (Muhaymin) is fine in code and docs. It never appears on the public site.
+- Public help text: "please message Admin on WhatsApp at +1 234 567 9076" (a real number, fixed in code
+  as HELP_CONTACT_DEFAULT in src/server/settings.ts, deliberately not editable in the admin).
+- The owner has a private spare number; never put it anywhere public or in docs.
+
+Engineering
+- Never push to main without npx tsc --noEmit and npx vitest run passing.
+- Never print or commit secrets.
+- Free notifications only. Keep the site API-first (/api/v1) for a later native app.
+- Previews never touch the live database.
+
+How the owner likes to work
+- Autonomous: the owner gave standing permission to continue work without asking, including restarting
+  after usage resets. Ask only for genuine decisions (money, deleting data, outward actions).
+- Conserve tokens. Prefer targeted greps and small reads over reading big files. Use cheaper models for
+  side work where quality allows. Watch usage (get_usage) and stop at a safe point near the limit,
+  commit, push and update docs/HANDOFF.md.
+- Never delete the owner's data or chats; prefer unpublishing (status draft) to deleting.
+- Short, clear replies. The owner often reads on a phone.
+
+======================================================================
+3. ACCOUNTS, INFRASTRUCTURE AND SECRETS (locations only, never values)
+======================================================================
+- Code: GitHub iumuhaymin/medinahub (private). main deploys to production on Vercel automatically.
+  Working branch: revamp. Remotes: "mine" = iumuhaymin/medinahub, "origin" = aza48/nabawi-duroos (a
+  mirror; aza48 wrote the original code). Deploy: git push mine revamp:main, then git push origin revamp.
+  The GitHub CLI (gh) on this PC is logged in as iumuhaymin, independent of the Claude account.
+- Hosting: Vercel project "medinahub" (team "MESH", Hobby plan), functions in fra1. Domain medinahub.org
+  (Namecheap DNS). Vercel CLI is not logged in; env changes are made in the Vercel dashboard.
+- Database: Supabase project cbkxuwccuidwyvggghri (Frankfurt, Postgres 17). Connection string only in
+  the git-ignored .env.production.local and in Vercel env DATABASE_URL. Scripts load it from
+  .env.production.local.
+- Scheduler: Supabase pg_cron calls /api/cron/watch every 3 minutes (Telegram watcher) and
+  /api/cron/daily at 01:30 UTC, with Bearer CRON_SECRET.
+- Backups: .github/workflows/backup.yml nightly, 90 days of artifacts, repo secret BACKUP_DATABASE_URL.
+- AI in the product: Gemini free key (GEMINI_API_KEY), about 20 requests a day per model, the code falls
+  through five models. The owner considers Gemini weak; an Anthropic API key (billing) would allow Claude
+  as the reader for the watcher and the WhatsApp number.
+- Secrets live only in .env.local, .env.production.local, .env.launch (all git-ignored) and Vercel env.
+- Admin accounts: invite only. npm run admin:invite -- <email> owner (with the live DATABASE_URL).
+- Claude Remote Control was blocked by the organisation policy on the old account; on the old account it
+  later showed as active on side sessions. Check on the new account.
+
+======================================================================
+4. STACK AND CODE MAP
+======================================================================
+- Next.js 16 (App Router, proxy.ts only guards /admin), React 19, TypeScript 5.9, Tailwind 4.
+  IMPORTANT: this Next.js version has breaking changes; read node_modules/next/dist/docs/ before writing
+  framework code (AGENTS.md says so).
+- Drizzle ORM over a pg Pool to Supabase's transaction pooler (do not use postgres-js; it hangs).
+  PGlite in memory for dev, tests and previews.
+- Better Auth: invites, roles (owner, editor, duroos_editor, content_editor), passkeys, TOTP fallback,
+  reset links, audit log with undo.
+- MiniSearch with an Arabic and transliteration normaliser and synonyms (src/lib/search/normalize.ts).
+- Vitest: about 260 tests, all passing at this handoff.
+
+Folders
+- src/app/(site): English public pages. src/app/(ar)/ar: Arabic pages. src/app/(admin)/admin: admin.
+  src/app/api: /api/v1 (weather, calendar feeds, whatsapp webhook, duroos) and cron routes.
+- src/content: programs.ts, library.ts, library-books.json (+ library-books.ts helpers), discounts.ts,
+  key-dates.ts (29 official 1448 dates; request windows have minor: true and stay off the home card).
+  These are still code files, not editable in the admin.
+- src/server: db (schema, client), auth, admin (content, audit, describe, attention.ts for "Needs you",
+  questions.ts), duroos (queries, schedule), content, watcher (telegram.ts, ai.ts, decide.ts,
+  prefilter.ts, sources.ts, run.ts), whatsapp/inbox.ts, settings.ts, seed/content (guides-2026.ts,
+  sync.ts, book-links.ts, al-midad.ts), seed/legacy (the original verified data, old-mesh.md).
+- src/features: home (TodayHero, DayArc, HeroSky, sky.ts, NextPrayer, KeyDates, WeatherChip), duroos
+  (DetailPages, DarsCard, ShaykhBadge, ScheduleBrowser, strings.ts with BACKSTAGE filter), programs,
+  library (LibraryPage, CoursePages), discounts, search (SearchUI palette Ctrl+K), content (ContentPages,
+  GuideBody, FaqExplorer, UniversityCalendar), admin (AdminShell, NeedsYou, Filterable, ActivityList,
+  forms, watcher/Suggestions and reading.ts).
+- src/lib: guide-html.ts (interactive guides), text.ts (metaTitle, metaDescription), weather.ts,
+  related.ts, maps.ts, ai-policy.ts (blocks AI training crawlers), llms.ts.
+- scripts: content-sync.ts, admin-invite.ts, admin-reset.ts, go-live.ts, questions.ts,
+  open-questions.json, watch-once.ts, whatsapp-new.cjs.
+- data/whatsapp-cursors.json: how far each exported WhatsApp chat has been read.
+
+Commands
+- npm run dev (port 3100; set WATCHPACK_POLLING=true because OneDrive breaks file watching).
+- npx tsc --noEmit and npx vitest run before every push.
+- npm run content:sync applies migrations to live and upserts seeded guides, FAQs, book links,
+  watched channels. Use --only=slug1,slug2 to touch only those rows. Never run a full sync without
+  checking it will not overwrite live-only edits.
+- npx drizzle-kit generate --name <x> for a migration; it must reach live before code reads new columns.
+- npm run questions:add / questions:pull for admin questions.
+- Screenshots: headless Edge via playwright-core at
+  C:/Users/akhmu/AppData/Local/npm-cache/_npx/e78b33305587cb7c/node_modules/playwright-core
+  (chromium.launch({ channel: "msedge" }), waitUntil "load", reducedMotion "reduce" for full pages).
+
+======================================================================
+5. WHAT WAS DONE ON 7 AND 8 NOVEMBER 2026 (all live)
+======================================================================
+See docs/HANDOFF.md "Done on 7 and 8 November" and "Design session progress" for detail. Highlights:
+- Brand redesign; live hero sky that follows prayer times and live Madinah weather (stars, real moon
+  phase, clouds, rain, haze, minarets and Green Dome); interactive day arc; Coming up countdowns.
+- Authority sweep of all public text (86 live edits); fact corrections from research (bus 3.45 SAR,
+  Haramain from 162 SAR plus VAT, Haram Institute registration in Safar, studyinsaudi.sa).
+- Rebuilt 1448 calendar page; library on site; impartial programmes; admission guide with a paid-agents
+  warning; many new guides and FAQs from research and the MESH group chat.
+- Watcher fixes (the al-Ruhayli handle was wrong) and new Telegram channels; busy channels pass a free
+  keyword check before any AI read.
+- Admin: Needs you block, plain-language watcher cards, search, activity by day, confirm sheet and undo
+  toast, Questions for you page, Face ID sign-in.
+- SEO: Open Graph and share images for guides, short unique lesson titles, MESH 404 page, sitemap with
+  about 1,970 URLs including the library, AI training crawlers blocked.
+- Repo tidied for contributors: CLAUDE.md, CONTRIBUTING.md, README, no secrets or personal paths.
+
+======================================================================
+6. OPEN WORK AND KNOWN GAPS (start here after the audit)
+======================================================================
+From docs/READINESS.md, docs/HANDOFF.md "Next steps", docs/audit/AUDIT.md and ADMIN-AUDIT.md:
+1. Programmes, discounts, key dates and the library are code files; move them into DB tables with
+   admin editing and audit (start with discounts). Needs a migration applied to live first.
+2. Arabic: no Arabic home page (/ar redirects to /ar/duroos); library college and reader pages, /mahad,
+   /search and search results are still English only.
+3. Study page has no sort or compare; duroos cannot filter by level or language (AUDIT 18, 19).
+4. Stale or conflicting facts (AUDIT 13, 16): Mutun al-Ijaz price, women's areas and gates at the Haram,
+   older childbirth and library facts. Check docs/IDEAS-FOR-OWNER.md and Admin > Questions for you.
+5. 11 shuyukh without a verified photo (docs/research/shaykh-photos.md).
+6. Design next: books on dars pages linked to the library where the same book exists; empty space beside
+   short programme pages; the same section header on library and study pages.
+7. Watcher accuracy with Gemini is unverified; the admin panel was never clicked through on a real phone.
+8. WhatsApp number: webhook built (src/server/whatsapp/inbox.ts, /api/v1/whatsapp/webhook) but ON HOLD.
+   The owner wants coexistence on his own number (no deleting chats) and Claude as the reader; that
+   needs a Meta coexistence partner (for example 360dialog, monthly fee, the number loses group chats and
+   calls) plus an Anthropic API key. For now the owner exports chats manually (section 7).
+9. Old git history still contains some local paths and names from before the cleanup; no secrets were
+   ever committed. Rewriting history would affect the mirror, so it was left.
+
+======================================================================
+7. WORKFLOWS THE OWNER USES
+======================================================================
+- WhatsApp exports: the owner exports a chat (Export chat, without media) to Downloads and says "new
+  export". Run node scripts/whatsapp-new.cjs "<zip>" to get only messages since the last processed
+  export, process them into the right places following every rule, then run it again with --commit.
+  The MESH group is read up to 7 November 2026, 21:31. Never re-read a whole export.
+- Pasted articles: sort into guide, FAQ, programme, discount, key date or duroos; rewrite in MESH's words;
+  test; content:sync --only=<slug>; commit; push; check live; reply with the link.
+- Live database writes: scripts and content:sync use .env.production.local. Side sessions on the old
+  account were blocked from production by their permission settings and could not route the work to
+  another session; the main session ran them after the owner said so. Set permissions on the new account
+  so the working session can run content:sync and reviewed scripts, or the owner must approve each.
+- Shared folder: several sessions may share this checkout and one git index. Stage files by explicit
+  path, never git add -A, never stash, reset, switch branches or force push.
+
+======================================================================
+8. RESEARCH ALREADY GATHERED (do not redo; use it)
+======================================================================
+docs/research/: iu-official.md, living-in-madinah.md, study-programmes.md, community-multilingual.md
+(58 student questions, search terms in 10 languages), group-chat-2026.md (mined from the MESH group,
+no names), study-in-saudi-telegram.md (745 posts of the Study in Saudi channel: admissions changes, the
+electronic study visa, deferral and housing changes, men-only residential IU, Ma'had new textbooks),
+al-midad-import.md, shaykh-photos.md, grok-pack-review.md.
+docs/audit/: AUDIT.md (29 items with statuses), technical.md (229-page crawl), ADMIN-AUDIT.md,
+personas/ (four role-play tester reports). docs/READINESS.md: the stage-by-stage readiness review.
+docs/IDEAS-FOR-OWNER.md: decided items, open questions and a ranked ideas list.
+Open research conflicts: deferral (IU page says up to 2 years; students on the new visa report none),
+housing for new intakes, the family residency deposit (10,000 vs 30,000 SAR).
+
+======================================================================
+9. GOTCHAS
+======================================================================
+- tsconfig.tsbuildinfo is ignored; do not commit it.
+- Dev server: restart it and delete .next/dev if pages look stale; never run next build while dev runs.
+- Git Bash: apostrophes in node -e break; write scripts to files. Use MSYS_NO_PATHCONV=1.
+- Escaping: when generating TS through scripts, regex escapes like \p{L} get mangled; prefer the Edit
+  tool for regexes.
+- React: store a function in state with setX(() => fn).
+- Duroos pages never reach networkidle in headless Edge; wait for "load".
+- Full-page screenshots need reducedMotion "reduce" or scroll-reveal cards stay hidden.
+- The CSP (src/server/security.ts) must list any new iframe origin (Drive and YouTube are allowed).
+- Shaykh Mis'ad's slug stays masad-ibn-musaid-al-husaini so links do not break.
+- Scheduled restarts (CronCreate) live only in the session that made them; switching accounts drops them.
+
+======================================================================
+10. THE DEEP AUDIT THE OWNER WANTS NOW ("make it 100x better")
+======================================================================
+Goal: an extremely deep audit of everything, then make MESH dramatically better in information,
+aesthetics and functionality, while keeping every rule above.
+Suggested approach:
+1. Read this file, docs/HANDOFF.md, docs/READINESS.md, docs/audit/*, docs/IDEAS-FOR-OWNER.md and
+   docs/EXPIRING.md. Sweep EXPIRING.md first.
+2. Run tsc and vitest; crawl the live sitemap at phone and desktop sizes; screenshot key pages at the
+   five widths in light and dark and in Arabic; check console errors, overflow, contrast, tap targets,
+   speed, SEO, structured data, links.
+3. Role-play the real users: a new Kulliyah student, a Ma'had student with weak English, a markaz
+   student planning to apply, a sister with children, a parent abroad, an Arabic-first visitor, an admin
+   on a phone. Note every point of friction and every missing piece of information.
+4. Review the code for correctness, security (auth, admin actions, webhooks, CSP), data integrity
+   (duroos schedule logic, overrides, watcher decisions), performance and maintainability.
+5. Verify facts against current official sources and the research files; never publish a guess.
+6. Produce a ranked plan, then implement in small tested deployed steps (verify each on medinahub.org),
+   and keep docs/HANDOFF.md current.
+Ideas the owner has asked for or approved in spirit: a richer, more beautiful and interactive site;
+every shaykh with a verified photo; admin editing for every kind of content; Arabic parity; more
+up-to-date practical information; links between everything (duroos, shaykhs, masjids, books, guides).
+
+Start-of-session checklist
+- get_usage; git status; git log --oneline -15; read this file and docs/HANDOFF.md.
+- Sweep docs/EXPIRING.md.
+- Check Admin > Questions for you via npm run questions:pull for new owner answers.
+- Then continue with section 10 and section 6.
