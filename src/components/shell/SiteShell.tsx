@@ -25,7 +25,7 @@ export function SiteShell({
         {ar ? "تخطَّ إلى المحتوى" : "Skip to content"}
       </a>
       <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/85 backdrop-blur-md">
-        <div className="shell flex h-16 items-center justify-between gap-2 sm:gap-4 md:h-[72px]">
+        <div className="shell flex h-16 items-center justify-between gap-2 sm:gap-4 md:h-[72px] lg:gap-3 xl:gap-4">
           <Link href={ar ? "/ar" : "/"} aria-label={ar ? "الصفحة الرئيسية لـ MESH" : "MESH home"} className="shrink-0">
             <Wordmark />
           </Link>

@@ -42,7 +42,14 @@ export function LanguageSwitch() {
       className="flex h-11 items-center gap-1.5 rounded-full border border-line bg-card px-3.5 text-sm font-semibold text-ink transition hover:border-primary sm:px-3"
     >
       <Languages size={17} className="hidden text-primary sm:block" />
-      <span>{ar ? "English" : "عربي"}</span>
+      {ar ? (
+        <>
+          <span className="sm:hidden">EN</span>
+          <span className="hidden sm:inline">English</span>
+        </>
+      ) : (
+        <span>عربي</span>
+      )}
     </Link>
   );
 }
