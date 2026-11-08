@@ -35,6 +35,10 @@ describe("checkAdmin", () => {
   it("sends signed-out visitors to sign in", () => expect(checkAdmin(null)).toBe("signed_out"));
   it("requires two-factor before anything else", () =>
     expect(checkAdmin({ role: "owner", twoFactorEnabled: false, banned: false })).toBe("needs_2fa"));
+  it("accepts a passkey as the second factor", () =>
+    expect(checkAdmin({ role: "owner", twoFactorEnabled: false, hasPasskey: true, banned: false })).toBe("ok"));
+  it("still requires a second factor when there is neither TOTP nor a passkey", () =>
+    expect(checkAdmin({ role: "owner", twoFactorEnabled: false, hasPasskey: false, banned: false })).toBe("needs_2fa"));
   it("blocks banned admins even with 2FA", () =>
     expect(checkAdmin({ role: "owner", twoFactorEnabled: true, banned: true })).toBe("banned"));
   it("checks the permission", () =>

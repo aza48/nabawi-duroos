@@ -22,7 +22,10 @@ export function LoginForm({ notice }: { notice?: string }) {
     setError(null);
     const { data, error } = await authClient.signIn.email({ email, password });
     setBusy(false);
-    if (error) return setError(error.status === 429 ? "Too many attempts. Wait a minute and try again." : "Email or password is incorrect.");
+    if (error) {
+      if (error.code === "USE_PASSKEY") return setError("This account signs in with Face ID or fingerprint. Use the button above.");
+      return setError(error.status === 429 ? "Too many attempts. Wait a minute and try again." : "Email or password is incorrect.");
+    }
     if ((data as { twoFactorRedirect?: boolean } | null)?.twoFactorRedirect) return setStep("code");
     router.push("/admin/setup-2fa");
   }
@@ -43,7 +46,7 @@ export function LoginForm({ notice }: { notice?: string }) {
   async function passkeySignIn() {
     setError(null);
     const res = await authClient.signIn.passkey();
-    if (res?.error) return setError("Passkey sign-in was cancelled or isn't set up on this device.");
+    if (res?.error) return setError("Face ID or fingerprint sign-in was cancelled or isn't set up on this device.");
     router.push("/admin");
     router.refresh();
   }
@@ -67,10 +70,10 @@ export function LoginForm({ notice }: { notice?: string }) {
 
   return (
     <div className="grid gap-4">
-      <button type="button" onClick={passkeySignIn} className={`${btnGhost} w-full py-3`}>
-        <Fingerprint size={18} /> Sign in with a passkey
+      <button type="button" onClick={passkeySignIn} className={`${btnPrimary} w-full py-3`}>
+        <Fingerprint size={18} /> Sign in with Face ID or fingerprint
       </button>
-      <div className="flex items-center gap-3 text-xs text-muted"><span className="h-px flex-1 bg-line" />or<span className="h-px flex-1 bg-line" /></div>
+      <div className="flex items-center gap-3 text-xs text-muted"><span className="h-px flex-1 bg-line" />or use your email and password<span className="h-px flex-1 bg-line" /></div>
       <form onSubmit={submitPassword} className="grid gap-4">
         <div>
           <label htmlFor="email" className={labelCls}>Email</label>
@@ -80,9 +83,16 @@ export function LoginForm({ notice }: { notice?: string }) {
           <label htmlFor="password" className={labelCls}>Password</label>
           <input id="password" type="password" className={inputCls} autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
-        <button className={btnPrimary} disabled={busy}><KeyRound size={17} />{busy ? "Signing in…" : "Continue"}</button>
+        <button className={btnGhost} disabled={busy}><KeyRound size={17} />{busy ? "Signing in…" : "Continue"}</button>
       </form>
       {error && <ErrorNote>{error}</ErrorNote>}
+      <details className="text-sm">
+        <summary className="cursor-pointer font-medium text-muted underline">Forgot your password?</summary>
+        <p className="mt-2 text-muted">
+          If you set up Face ID or fingerprint, use the button at the top: no password needed. Otherwise, ask the site owner for a
+          password reset link. It works once and lasts 24 hours.
+        </p>
+      </details>
     </div>
   );
 }

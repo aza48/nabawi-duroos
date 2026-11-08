@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import QRCode from "qrcode";
-import { Copy, ShieldCheck } from "lucide-react";
+import { Copy, Fingerprint, ShieldCheck } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { btnGhost, btnPrimary, ErrorNote, inputCls, labelCls } from "./ui";
 
@@ -29,6 +29,16 @@ export function TwoFactorSetup() {
     setQr(await QRCode.toDataURL(data.totpURI, { margin: 1, width: 220 }));
   }
 
+  async function addPasskey() {
+    setBusy(true);
+    setError(null);
+    const res = await authClient.passkey.addPasskey({ name: "MESH admin" });
+    setBusy(false);
+    if (res?.error) return setError("Face ID or fingerprint setup was cancelled or isn't available on this device. Try again, or use an authenticator app below.");
+    router.push("/admin");
+    router.refresh();
+  }
+
   async function verify(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
@@ -42,18 +52,22 @@ export function TwoFactorSetup() {
 
   if (!qr) {
     return (
-      <form onSubmit={start} className="grid gap-4">
-        <p className="text-sm">
-          Every MESH admin uses two-step sign-in. You need an authenticator app such as Google Authenticator, Microsoft
-          Authenticator or 1Password.
-        </p>
-        <div>
-          <label htmlFor="pw" className={labelCls}>Confirm your password</label>
-          <input id="pw" type="password" className={inputCls} autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <button className={btnPrimary} disabled={busy}>{busy ? "Preparing…" : "Set up two-step sign-in"}</button>
+      <div className="grid gap-4">
+        <p className="text-sm">Every MESH admin needs a second step when signing in. The easiest is your phone or laptop&apos;s Face ID or fingerprint.</p>
+        <button type="button" onClick={addPasskey} className={`${btnPrimary} w-full py-3`} disabled={busy}>
+          <Fingerprint size={18} /> {busy ? "Waiting for your device…" : "Use Face ID or fingerprint (recommended)"}
+        </button>
+        <div className="flex items-center gap-3 text-xs text-muted"><span className="h-px flex-1 bg-line" />or use an authenticator app<span className="h-px flex-1 bg-line" /></div>
+        <form onSubmit={start} className="grid gap-4">
+          <p className="text-sm text-muted">Works with Google Authenticator, Microsoft Authenticator or 1Password.</p>
+          <div>
+            <label htmlFor="pw" className={labelCls}>Confirm your password</label>
+            <input id="pw" type="password" className={inputCls} autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          </div>
+          <button className={btnGhost} disabled={busy}>{busy ? "Preparing…" : "Set up an authenticator app"}</button>
+        </form>
         {error && <ErrorNote>{error}</ErrorNote>}
-      </form>
+      </div>
     );
   }
 

@@ -54,3 +54,34 @@ describe("admin authentication", () => {
     expect(statuses).toContain(429);
   });
 });
+
+describe("password reset links", () => {
+  it("creates a one-time /admin/reset link that sets a new 8+ character password", async () => {
+    const { createResetLink } = await import("@/server/auth/reset");
+    const a = await createAdmin(auth, "forgot@example.com");
+    const url = await createResetLink(db, a.email, BASE);
+    expect(url).toMatch(/^http:\/\/localhost:3000\/admin\/reset\?token=/);
+    const token = new URL(url!).searchParams.get("token")!;
+    await expect(auth.api.resetPassword({ body: { token, newPassword: "short" } })).rejects.toThrow();
+    await auth.api.resetPassword({ body: { token, newPassword: "new-pass1" } });
+    const r = await signIn(auth, a.email, "new-pass1");
+    expect((r.response as { user?: { email: string } }).user?.email).toBe(a.email);
+    await expect(auth.api.resetPassword({ body: { token, newPassword: "another-pass" } })).rejects.toThrow();
+  });
+
+  it("returns no link for an unknown email", async () => {
+    const { createResetLink } = await import("@/server/auth/reset");
+    expect(await createResetLink(db, "nobody@example.com", BASE)).toBeNull();
+  });
+});
+
+describe("passkey as the second factor", () => {
+  it("does not let a password alone open a session once a passkey is the only second factor", async () => {
+    const { passkey } = await import("@/server/db/schema");
+    const a = await createAdmin(auth, "faceid@example.com");
+    await db.insert(passkey).values({
+      id: "pk-test", userId: a.id, publicKey: "x", credentialID: "cred-test", counter: 0, deviceType: "singleDevice", backedUp: false,
+    });
+    await expect(signIn(auth, a.email, a.password)).rejects.toThrow();
+  });
+});

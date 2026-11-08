@@ -35,7 +35,7 @@ export async function createInvite(
 const acceptInput = z.object({
   token: z.string().min(1),
   name: z.string().trim().min(2).max(60),
-  password: z.string().min(10).max(128),
+  password: z.string().min(8).max(128),
 });
 
 export async function acceptInvite(

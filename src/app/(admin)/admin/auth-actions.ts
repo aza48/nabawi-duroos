@@ -16,6 +16,6 @@ export async function acceptInviteAction(input: { token: string; name: string; p
     return { ok: true };
   } catch (e) {
     const key = e instanceof Error ? e.message : "";
-    return { ok: false, error: MESSAGES[key] ?? "Please check your name (2+ characters) and password (10+ characters)." };
+    return { ok: false, error: MESSAGES[key] ?? "Please check your name (2+ characters) and password (8+ characters)." };
   }
 }

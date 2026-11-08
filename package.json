@@ -16,6 +16,7 @@
     "db:generate": "drizzle-kit generate",
     "seed": "tsx src/server/seed/run.ts",
     "admin:invite": "tsx --tsconfig tsconfig.json scripts/admin-invite.ts",
+    "admin:reset": "tsx --tsconfig tsconfig.json scripts/admin-reset.ts",
     "watch:once": "tsx --tsconfig tsconfig.json scripts/watch-once.ts",
     "go-live": "tsx --tsconfig tsconfig.json scripts/go-live.ts",
     "content:sync": "tsx --tsconfig tsconfig.json scripts/content-sync.ts"

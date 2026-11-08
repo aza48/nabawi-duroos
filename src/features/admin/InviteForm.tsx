@@ -16,7 +16,7 @@ export function InviteForm({ token, email }: { token: string; email: string }) {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
-    if (password.length < 10) return setError("Use at least 10 characters for your password.");
+    if (password.length < 8) return setError("Use at least 8 characters for your password.");
     setBusy(true);
     const res = await acceptInviteAction({ token, name, password });
     if (!res.ok) {
@@ -37,7 +37,7 @@ export function InviteForm({ token, email }: { token: string; email: string }) {
       <div>
         <label htmlFor="pw" className={labelCls}>Choose a password</label>
         <input id="pw" type="password" className={inputCls} autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <p className="mt-1 text-xs text-muted">At least 10 characters. A short sentence works well.</p>
+        <p className="mt-1 text-xs text-muted">At least 8 characters.</p>
       </div>
       <button className={btnPrimary} disabled={busy}>{busy ? "Creating your account…" : "Create account"}</button>
       {error && <ErrorNote>{error}</ErrorNote>}
