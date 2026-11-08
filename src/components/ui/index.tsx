@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight, type LucideIcon } from "lucide-react";
 
 export function Section({
   title,
@@ -81,5 +81,53 @@ export function Breadcrumbs({ items, tone = "page", rtl = false }: { items: [lab
         ))}
       </ol>
     </nav>
+  );
+}
+
+/**
+ * The site's section header: the gold bar from the MESH logo, an icon tile, the title, an optional
+ * line under it, and an optional link on the end ("Weekly schedule", "All guides").
+ */
+export function SectionHeader({
+  id,
+  title,
+  subtitle,
+  icon: Icon,
+  action,
+  rtl = false,
+}: {
+  id?: string;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
+  icon?: LucideIcon;
+  action?: { href: string; label: string };
+  rtl?: boolean;
+}) {
+  return (
+    <div className="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
+      <div className="flex min-w-0 items-center gap-3.5">
+        {Icon && (
+          <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-primary text-primary-ink shadow-[var(--shadow)] md:size-12" aria-hidden="true">
+            <Icon size={22} />
+          </span>
+        )}
+        <div className="min-w-0">
+          <span className="mb-1.5 block h-1 w-9 rounded-full bg-gold-bright" aria-hidden="true" />
+          <h2 id={id} className="font-heading text-[1.75rem] font-bold leading-tight md:text-4xl">
+            {title}
+          </h2>
+          {subtitle && <p className="mt-1.5 max-w-xl text-muted">{subtitle}</p>}
+        </div>
+      </div>
+      {action && (
+        <Link
+          href={action.href}
+          className="group inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold text-primary transition hover:border-primary/50 hover:bg-primary-soft"
+        >
+          {action.label}
+          <ArrowRight size={15} aria-hidden="true" className={`transition group-hover:translate-x-0.5 ${rtl ? "rotate-180 group-hover:-translate-x-0.5" : ""}`} />
+        </Link>
+      )}
+    </div>
   );
 }

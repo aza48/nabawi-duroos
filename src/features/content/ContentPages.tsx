@@ -4,7 +4,7 @@ import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, C
 import type { FaqRow, GuideRow } from "@/server/content/queries";
 import { FAQ_CATEGORIES, GUIDE_STAGES } from "@/server/content/queries";
 import { sanitizeArticleHtml } from "@/lib/sanitize";
-import { Breadcrumbs, PageBand } from "@/components/ui";
+import { Breadcrumbs, PageBand, SectionHeader } from "@/components/ui";
 import { related, type RelItem } from "@/lib/related";
 import { STAGE_ICON } from "@/features/home/HomePage";
 import { FaqExplorer } from "./FaqExplorer";
@@ -181,15 +181,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
           const Icon = STAGE_ICON[st.id];
           return (
             <section key={st.id} id={st.id} className="scroll-mt-24">
-              <div className="mb-5 flex items-center gap-4">
-                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-primary text-primary-ink">
-                  <Icon size={22} />
-                </span>
-                <div>
-                  <h2 className="font-heading text-2xl font-bold md:text-3xl">{st.label}</h2>
-                  <p className="text-sm text-muted md:text-base">{st.blurb}</p>
-                </div>
-              </div>
+              <SectionHeader title={st.label} subtitle={st.blurb} icon={Icon} rtl={ar} />
               {st.items.length === 0 ? (
                 <p className="rounded-2xl border border-dashed border-line bg-card p-5 text-sm text-muted">{ar ? "هذا القسم قيد الكتابة. إلى ذلك الحين، اسأل في مجموعة واتساب." : "This section is being written. In the meantime, ask in the WhatsApp group."}</p>
               ) : (

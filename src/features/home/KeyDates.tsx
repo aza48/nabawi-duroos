@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BookOpenCheck, CalendarPlus, GraduationCap, Moon, PencilLine, Sun } from "lucide-react";
+import { BookOpenCheck, CalendarDays, CalendarPlus, GraduationCap, Moon, PencilLine, Sun } from "lucide-react";
+import { SectionHeader } from "@/components/ui";
 import { KEY_DATES, endOf, keyDatesState, startOf, type KeyDate } from "@/content/key-dates";
 import { SITE_URL } from "@/lib/site";
 
@@ -40,12 +41,9 @@ export function KeyDates() {
 
   return (
     <section aria-labelledby="coming-up" className="shell mt-10 md:mt-14">
-      <div className="flex items-baseline justify-between gap-4">
-        <h2 id="coming-up" className="font-heading text-3xl font-bold md:text-4xl">Coming up</h2>
-        <a href="/guides/university-calendar-1448" className="shrink-0 text-sm font-semibold text-primary hover:underline">Full calendar</a>
-      </div>
+      <SectionHeader id="coming-up" title="Coming up" icon={CalendarDays} action={{ href: "/guides/university-calendar-1448", label: "Full calendar" }} />
 
-      <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-[1.25fr_1fr_0.85fr]">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-[1.25fr_1fr_0.85fr]">
         {/* Lead: what's on now, or the next University date */}
         <article className={`flex flex-col rounded-3xl border bg-card p-6 shadow-[var(--shadow)] ${current ? "border-primary" : "border-line"}`}>
           <div className="flex items-center gap-2">

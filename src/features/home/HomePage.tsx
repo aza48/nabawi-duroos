@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { ArrowUpRight, BookOpen, GraduationCap, KeyRound, Luggage, Plane, RefreshCw, Users } from "lucide-react";
+import { ArrowUpRight, BookOpen, BookOpenText, Compass, GraduationCap, KeyRound, Luggage, Plane, RefreshCw, Users } from "lucide-react";
 import type { getToday, AnnouncementRow } from "@/server/duroos/queries";
 import type { GuideRow } from "@/server/content/queries";
 import type { GuideStage } from "@/server/db/schema";
 import { WhatsAppIcon } from "@/components/shell/WhatsApp";
+import { SectionHeader } from "@/components/ui";
 import { TodayHero } from "./TodayHero";
 import { DuroosByPrayer } from "./DuroosByPrayer";
 import { KeyDates } from "./KeyDates";
@@ -33,12 +34,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
 
       <div className="shell mt-10 grid gap-10 md:mt-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
         <div id="live">
-          <div className="mb-6 flex items-end justify-between gap-4">
-            <h2 className="font-heading text-3xl font-bold md:text-4xl">Today&apos;s duroos</h2>
-            <Link href="/duroos/schedule" className="shrink-0 text-sm font-semibold text-primary hover:underline">
-              Weekly schedule
-            </Link>
-          </div>
+          <SectionHeader title="Today's duroos" icon={BookOpenText} action={{ href: "/duroos/schedule", label: "Weekly schedule" }} />
           <DuroosByPrayer today={today} locale="en" />
           {today.lastCheckedAt && (
             <p className="mt-6 flex items-center gap-1.5 text-xs text-muted">
@@ -94,15 +90,12 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
       </div>
 
       <section className="shell mt-16 md:mt-24">
-        <div className="mb-6 flex items-end justify-between gap-4">
-          <div>
-            <h2 className="font-heading text-3xl font-bold md:text-4xl">Settling in Madinah</h2>
-            <p className="mt-2 max-w-xl text-muted">Step-by-step help, from the day your visa arrives to the day you leave.</p>
-          </div>
-          <Link href="/guides" className="shrink-0 text-sm font-semibold text-primary hover:underline">
-            All guides
-          </Link>
-        </div>
+        <SectionHeader
+          title="Settling in Madinah"
+          subtitle="Step-by-step help, from the day your visa arrives to the day you leave."
+          icon={Compass}
+          action={{ href: "/guides", label: "All guides" }}
+        />
         {guides.length === 0 ? (
           <p className="rounded-2xl border border-dashed border-line bg-card p-6 text-center text-muted">Guides are being written. In the meantime, ask in the WhatsApp group.</p>
         ) : (
