@@ -32,8 +32,8 @@ export function DarsMiniCard({ lesson: l, locale, isNext, single = true }: { les
 
   return (
     <article className={`@container lift flex h-full flex-col rounded-2xl border border-line bg-card p-4 shadow-[var(--shadow)] ${done ? "opacity-60" : ""}`}>
-      <div className={`flex items-center gap-3 sm:gap-4 ${single ? "@[28rem]:items-stretch @[28rem]:gap-8" : ""}`}>
-        <div className={`min-w-0 flex-1 ${single ? "@[28rem]:min-w-[10rem]" : ""}`}>
+      <div className={`flex flex-1 items-center gap-3 sm:gap-4 ${single ? "@[28rem]:items-stretch @[28rem]:gap-8" : ""}`}>
+        <div className={`flex min-w-0 flex-1 flex-col ${single ? "@[28rem]:min-w-[10rem]" : ""}`}>
           <div className="flex min-h-[1.625rem] flex-wrap items-center gap-2">
             {live ? (
               <LiveBadge locale={locale} href={liveHref} />
@@ -62,7 +62,7 @@ export function DarsMiniCard({ lesson: l, locale, isNext, single = true }: { les
             {title}
           </Link>
 
-          <p className="mt-2 flex items-center gap-1.5 text-[13px] text-muted">
+          <p className="mt-auto flex items-center gap-1.5 pt-2 text-[13px] text-muted">
             <MapPin size={14} className="shrink-0" />
             <span className="min-w-0 truncate">
               <a
@@ -85,7 +85,7 @@ export function DarsMiniCard({ lesson: l, locale, isNext, single = true }: { les
               <span className="@[28rem]:hidden">
                 <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
               </span>
-              <span className="hidden aspect-square shrink-0 @[28rem]:block @[28rem]:max-h-28">
+              <span className="hidden aspect-square shrink-0 @[28rem]:block @[28rem]:max-h-44">
                 <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} fill />
               </span>
             </>
