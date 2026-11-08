@@ -68,7 +68,7 @@ DATABASE_URL=... BETTER_AUTH_URL=https://medinahub.org npm run admin:invite -- y
 
 Add a second trigger to the same Cloudflare Worker, or a separate one, calling
 `https://medinahub.org/api/cron/daily` with the same `Authorization: Bearer <CRON_SECRET>` header,
-on cron `30 1 * * *` (04:30 Riyadh, before Fajr).
+on cron `30 1 * * *` (04:30 Riyadh, before Fajr). The same call does the daily housekeeping first: it creates the analytics tables if they are missing and deletes visits older than 180 days, so none of that runs inside a visitor's request.
 
 ## Calendar feeds
 
