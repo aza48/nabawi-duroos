@@ -317,3 +317,15 @@ a { -webkit-tap-highlight-color: transparent; }
 [data-for="children"] [data-aud]:not([data-aud~="children"]), [data-for="children"] [data-auds]:not([data-auds~="children"]) { display: none; }
 [data-for="online"] [data-aud]:not([data-aud~="online"]), [data-for="online"] [data-auds]:not([data-auds~="online"]) { display: none; }
 [data-for="families"] [data-aud]:not([data-aud~="families"]), [data-for="families"] [data-auds]:not([data-auds~="families"]) { display: none; }
+
+/* Tap targets (audit 20). Pills and chips are at least 40px high. On touch screens, plain text links
+   get a 40px high hit area: the padding is cancelled by a negative margin, so nothing moves. */
+@layer base {
+  :where(a, button).rounded-full:not([class*="size-"], [class*=" h-"], [class^="h-"]) { min-height: 40px; }
+  @media (pointer: coarse) {
+    a:not([class*="flex"], [class*="block"], [class*="grid"], [class*="inline-"], [class*="p-"], [class*="py-"], [class*="px-"], [class*="m-"], [class*="my-"], [class*="mt-"], [class*="mb-"], [class*="bg-"], [class*="absolute"], [class*="rounded"]) {
+      padding-block: 10px;
+      margin-block: -10px;
+    }
+  }
+}

@@ -39,7 +39,7 @@ Status: **done** (fixed and deployed), **next** (being worked on), **todo**.
 |---|---|---|
 | 18 | /programs promises "compared side by side" but has no filter, sort or comparison; prices in mixed units; only MAP has hours and intake | partly done (8 Nov: Study page filters by who it is for; sort, side-by-side compare and common price units still to do) |
 | 19 | Duroos cannot be filtered by prayer, level or language | partly done (8 Nov: schedule filters by prayer; level and language need new lesson fields) |
-| 20 | Tap targets under 40 px on most pages (nav pills 38 px, inline links 18 to 21 px) | todo |
+| 20 | Tap targets under 40 px on most pages (nav pills 38 px, inline links 18 to 21 px) | done 8 Nov: globals.css base layer, pills and chips min 40px high, touch-screen text links get a 40px hit area (padding with matching negative margin, no layout shift). Prayer chips under 40 wide not changed |
 | 21 | Stock Next.js 404 for unknown lesson slugs; custom 404 has no search or nav | done |
 | 22 | 32 titles over 60 characters, duplicate titles and descriptions on two lessons, 31 descriptions over 160 | done 8 Nov: central metaTitle (45 plus " | MESH Madinah") and metaDescription (160) in src/lib/text.ts used by every generator; lesson titles and descriptions now name the prayer so same-book duroos differ |
 | 23 | /duroos/updates says "No updates yet" and then lists earlier updates | done |
