@@ -443,3 +443,27 @@ a { -webkit-tap-highlight-color: transparent; }
 .lift { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
 @media (hover: hover) { .lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); } }
 .lift:active { transform: translateY(0) scale(0.985); box-shadow: none; }
+
+/* ---------- Page transitions (PageTransition.tsx) ---------- */
+::view-transition-old(.page-out) { animation: 140ms ease-in both page-fade reverse; }
+::view-transition-new(.page-in) { animation: 260ms cubic-bezier(.2,.8,.2,1) 60ms both page-fade, 320ms cubic-bezier(.2,.8,.2,1) 60ms both page-rise; }
+@keyframes page-fade { from { opacity: 0; } }
+@keyframes page-rise { from { translate: 0 10px; } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*), ::view-transition-new(*), ::view-transition-group(*) { animation-duration: 0s !important; animation-delay: 0s !important; }
+}
+
+/* ---------- Scroll reveals ----------
+   Cards and section blocks rise softly as they scroll into view. Pure CSS (scroll-driven animation):
+   anything already on screen at load is past the range and shows at once; browsers without support,
+   and visitors who prefer less motion, simply see everything. */
+@supports (animation-timeline: view()) {
+  @media screen and (prefers-reduced-motion: no-preference) {
+    main :is(.lift, .card, .reveal) {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+@keyframes reveal { from { opacity: 0; translate: 0 18px; } }
