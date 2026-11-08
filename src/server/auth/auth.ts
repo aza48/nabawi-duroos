@@ -1,10 +1,12 @@
 import { betterAuth } from "better-auth";
+import { APIError, createAuthMiddleware } from "better-auth/api";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { admin, captcha, twoFactor } from "better-auth/plugins";
 import { nextCookies } from "better-auth/next-js";
 import { passkey } from "@better-auth/passkey";
 import { createAccessControl } from "better-auth/plugins/access";
 import { adminAc, defaultStatements } from "better-auth/plugins/admin/access";
+import { eq } from "drizzle-orm";
 import { getDb, type Db } from "@/server/db/client";
 import * as schema from "@/server/db/schema";
 
@@ -83,6 +85,19 @@ export function createAuth(db: Db, opts: { baseURL?: string; onResetLink?: (emai
     },
     telemetry: { enabled: false },
     advanced: { useSecureCookies: url.protocol === "https:" },
+    hooks: {
+      // A passkey is this account's second factor. Better Auth's two-factor step only runs for
+      // authenticator-app users, so a password alone would otherwise open a full session.
+      before: createAuthMiddleware(async (ctx) => {
+        if (ctx.path !== "/sign-in/email") return;
+        const email = String((ctx.body as { email?: unknown } | undefined)?.email ?? "").trim().toLowerCase();
+        if (!email) return;
+        const [u] = await db.select({ id: schema.user.id, twoFactorEnabled: schema.user.twoFactorEnabled }).from(schema.user).where(eq(schema.user.email, email));
+        if (!u || u.twoFactorEnabled) return;
+        const [pk] = await db.select({ id: schema.passkey.id }).from(schema.passkey).where(eq(schema.passkey.userId, u.id)).limit(1);
+        if (pk) throw new APIError("FORBIDDEN", { message: "This account signs in with Face ID or a fingerprint. Use the passkey button.", code: "PASSKEY_REQUIRED" });
+      }),
+    },
     plugins: [
       twoFactor({ issuer: "MESH Admin" }),
       admin({ ac, roles: AUTH_ROLES, defaultRole: "editor", adminRoles: ["owner"] }),

@@ -22,7 +22,14 @@ export function LoginForm({ notice }: { notice?: string }) {
     setError(null);
     const { data, error } = await authClient.signIn.email({ email, password });
     setBusy(false);
-    if (error) return setError(error.status === 429 ? "Too many attempts. Wait a minute and try again." : "Email or password is incorrect.");
+    if (error)
+      return setError(
+        error.status === 429
+          ? "Too many attempts. Wait a minute and try again."
+          : error.status === 403 && /passkey|Face ID/i.test(error.message ?? "")
+            ? "This account signs in with Face ID or a fingerprint. Use the passkey button below."
+            : "Email or password is incorrect."
+      );
     if ((data as { twoFactorRedirect?: boolean } | null)?.twoFactorRedirect) return setStep("code");
     router.push("/admin/setup-2fa");
   }

@@ -76,13 +76,14 @@ describe("password reset links", () => {
 });
 
 describe("passkey as the second factor", () => {
-  it("lets a passkey admin also sign in with their password", async () => {
+  it("refuses a password-only sign-in for a passkey admin, so the passkey is really a second factor", async () => {
     const { passkey } = await import("@/server/db/schema");
     const a = await createAdmin(auth, "faceid@example.com");
+    const before = await signIn(auth, a.email, a.password);
+    expect((before.response as { user?: { email: string } }).user?.email).toBe(a.email);
     await db.insert(passkey).values({
       id: "pk-test", userId: a.id, publicKey: "x", credentialID: "cred-test", counter: 0, deviceType: "singleDevice", backedUp: false,
     });
-    const r = await signIn(auth, a.email, a.password);
-    expect((r.response as { user?: { email: string } }).user?.email).toBe(a.email);
+    await expect(signIn(auth, a.email, a.password)).rejects.toMatchObject({ status: "FORBIDDEN" });
   });
 });
