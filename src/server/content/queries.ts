@@ -35,7 +35,13 @@ export async function getFaq(db: Db, slug: string): Promise<FaqRow | null> {
 }
 
 /** Guides that were replaced and must never show, even if a row is still in the database. */
-export const RETIRED_GUIDES = ["starting-a-business"];
+export const RETIRED_GUIDES = [
+  "starting-a-business", // replaced by the MESH company guide
+  "restaurants", // empty placeholder
+  "emergency-numbers", // covered by doctors-hospitals-and-pharmacies and the FAQ
+  "arabic-learning-resources", // three links only
+  "sports-and-martial-arts", // replaced by sports-and-activities
+];
 
 export async function listGuides(db: Db, opts: { stage?: GuideStage } = {}): Promise<GuideRow[]> {
   const live = and(eq(guides.status, "published"), notInArray(guides.slug, RETIRED_GUIDES));

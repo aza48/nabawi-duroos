@@ -8,6 +8,10 @@ export const LEGACY_REDIRECTS: { source: string; destination: string; permanent:
   // Old business guide (named an outside provider): replaced by the MESH company guide.
   { source: "/guides/starting-a-business", destination: "/guides/start-a-company-in-saudi", permanent: true },
   { source: "/daily-life/starting-a-business", destination: "/guides/start-a-company-in-saudi", permanent: true },
+  // Thin guides retired: send old links to the closest useful page.
+  { source: "/guides/restaurants", destination: "/guides", permanent: true },
+  { source: "/guides/emergency-numbers", destination: "/guides/doctors-hospitals-and-pharmacies", permanent: true },
+  { source: "/guides/arabic-learning-resources", destination: "/library", permanent: true },
   { source: "/mesh", destination: "/", permanent: true },
   { source: "/mesh/:path*", destination: "/:path*", permanent: true },
   { source: "/browse", destination: "/ask", permanent: true },

@@ -19,9 +19,7 @@ const STAGE_BY_PATH: Record<string, GuideStage> = {
   "admissions/tajeel-and-itithaar": "study",
   calendar: "study",
   "visas/drivers-license": "getting-settled",
-  "daily-life/emergency-numbers": "getting-settled",
   "daily-life/finding-an-apartment": "getting-settled",
-  "daily-life/sports-and-martial-arts": "getting-settled",
   "family/childbirth-options": "family",
   "family/kids-activities": "family",
   "family/sisters-studying-in-madinah": "family",
@@ -29,8 +27,6 @@ const STAGE_BY_PATH: Record<string, GuideStage> = {
   "graduates/graduating-from-mahad": "study",
   "graduates/postgraduate-admission-1448": "study",
   "study/course-descriptions-aqeedah-dawah": "study",
-  "study/arabic-learning-resources": "study",
-  restaurants: "getting-settled",
 };
 
 const SLUG_OVERRIDE: Record<string, string> = { calendar: "university-calendar-1448" };
