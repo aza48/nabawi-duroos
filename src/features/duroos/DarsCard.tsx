@@ -8,10 +8,7 @@ import { Countdown, useLivePhase } from "./Countdown";
 import { LiveBadge, SistersTag, StatusTag } from "./StatusTag";
 import { publicLabel } from "./strings";
 import { mapUrl } from "@/lib/maps";
-
-export function duroosPath(locale: Locale, rest = ""): string {
-  return `${locale === "ar" ? "/ar" : ""}/duroos${rest}`;
-}
+import { duroosPath } from "./paths";
 
 export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: Locale }) {
   const ar = locale === "ar";

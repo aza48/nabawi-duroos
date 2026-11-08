@@ -10,7 +10,7 @@ import { Breadcrumbs, EmptyState } from "@/components/ui";
 import { DuroosNav } from "./DuroosNav";
 import { DAY_LONG_KEYS, publicLabel, t } from "./strings";
 import { SistersTag } from "./StatusTag";
-import { duroosPath } from "./DarsCard";
+import { duroosPath } from "./paths";
 import { mapUrl } from "@/lib/maps";
 import { CalendarButton } from "./CalendarButton";
 import { AlertsButton } from "./AlertsButton";

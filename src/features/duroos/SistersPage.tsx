@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/locale";
 import type { Weekday } from "@/lib/time/riyadh";
 import { EmptyState } from "@/components/ui";
 import { DuroosNav } from "./DuroosNav";
-import { duroosPath } from "./DarsCard";
+import { duroosPath } from "./paths";
 import { SistersTag } from "./StatusTag";
 import { DAY_LONG_KEYS, t } from "./strings";
 
