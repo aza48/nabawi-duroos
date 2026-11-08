@@ -138,7 +138,12 @@ export async function getLesson(db: Db, slug: string) {
     db.select().from(lessonOverrides).where(eq(lessonOverrides.lessonId, l.id)).orderBy(desc(lessonOverrides.createdAt)).limit(10),
     db.select().from(streams),
   ]);
-  return { ...l, history, stream: pickStream(allStreams, l) };
+  const stream = pickStream(allStreams, l);
+  // The shaykh's own channels (Telegram, YouTube, Mixlr), shown as "usually live on" beside the main broadcast.
+  const channels = allStreams
+    .filter((x) => x.shaykhId === l.shaykhId && x.url !== stream?.url)
+    .map((x) => ({ url: x.url, kind: x.kind, labelEn: x.labelEn, labelAr: x.labelAr }));
+  return { ...l, history, stream, channels };
 }
 
 export async function listShaykhs(db: Db) {

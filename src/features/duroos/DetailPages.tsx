@@ -164,11 +164,25 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
                 <span className="flex items-center gap-3">
                   <span className={`grid size-11 place-items-center rounded-2xl ${l.stream.isLive ? "bg-white/20" : "bg-primary-soft text-primary"}`}><Radio size={20} /></span>
                   <span>
-                    <span className="block font-heading text-lg font-bold">{l.stream.isLive ? t(locale, "watchLive") : ar ? "أين يُبث" : "Where it's broadcast"}</span>
+                    <span className="block font-heading text-lg font-bold">{l.stream.isLive ? t(locale, "watchLive") : ar ? "يُبث عادةً على" : "Usually live on"}</span>
                     <span className={`block text-sm ${l.stream.isLive ? "text-white/85" : "text-muted"}`}>{streamKind}{(ar ? l.stream.labelAr : l.stream.labelEn) ? `: ${ar ? l.stream.labelAr : l.stream.labelEn}` : ""}</span>
                   </span>
                 </span>
               </a>
+            )}
+            {l.channels.length > 0 && (
+              <div className="rounded-3xl border border-line bg-card p-5">
+                <p className="font-heading text-lg font-bold">{l.stream ? (ar ? "وعلى قنوات الشيخ" : "Also on the shaykh's channels") : ar ? "يُبث عادةً على" : "Usually live on"}</p>
+                <ul className="mt-2 grid gap-1 text-sm">
+                  {l.channels.map((c) => (
+                    <li key={c.url}>
+                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center gap-1.5 font-semibold text-primary hover:underline">
+                        {ar ? c.labelAr : c.labelEn} <ExternalLink size={13} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
             <div className="rounded-3xl border border-line bg-card p-5">
               <AlertsButton topic={`shaykh:${l.shaykh.slug}`} label={ar ? "تنبيه عند إلغاء أو تغيير الدرس" : "Alert me if this dars changes"} locale={locale} />
