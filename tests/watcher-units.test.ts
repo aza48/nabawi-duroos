@@ -135,3 +135,18 @@ describe("decide", () => {
     expect(decide({ ...good, about_lesson: false, kind: "other", lesson_slug: null }, ctx()).action).toBe("ignore");
   });
 });
+
+describe("prefilter and live-notice wordings from the audit", () => {
+  it("lets suspension, return, move, holiday, absence and live wordings through", async () => {
+    const { worthReading } = await import("@/server/watcher/prefilter");
+    const { isLiveNotice } = await import("@/server/watcher/live-notice");
+    for (const t of ["تعليق الدرس حتى إشعار آخر", "عودة الدرس يوم السبت", "الدرس منقول إلى الروضة", "يُستكمل الدرس بعد العشاء", "عطلة نهاية الفصل", "غياب الشيخ هذا الأسبوع", "البث المباشر الآن لدرس الشيخ"]) {
+      expect(worthReading(t, [])).toBe(true);
+    }
+    expect(isLiveNotice("بدأ البث المباشر لدرس الشيخ")).toBe(true);
+    expect(isLiveNotice("يبث الآن مباشر درس الشيخ")).toBe(true);
+    expect(isLiveNotice("البث المباشر الآن")).toBe(true);
+    expect(isLiveNotice("سيكون الدرس مباشرة بعد المغرب")).toBe(false);
+    expect(isLiveNotice("رابط البث المباشر للدرس")).toBe(false);
+  });
+});

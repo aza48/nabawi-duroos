@@ -37,6 +37,8 @@ async function createPostgres(url: string): Promise<Db> {
     connectionTimeoutMillis: 10_000,
     ssl: local ? false : { rejectUnauthorized: false },
   });
+  // node-postgres emits "error" on the pool when the pooler drops an idle client; unhandled, that kills the process.
+  pool.on("error", (e) => console.error("pg pool", e.message));
   return drizzle(pool, { schema }) as unknown as Db;
 }
 

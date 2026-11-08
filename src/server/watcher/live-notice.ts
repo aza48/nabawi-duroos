@@ -18,7 +18,9 @@ export function normalizeArabic(s: string): string {
 }
 
 export function isLiveNotice(text: string): boolean {
-  return /بدا البث المباشر/.test(normalizeArabic(text));
+  const n = normalizeArabic(text);
+  // A start verb and "live", or "live now". A bare "البث المباشر" (a link to the stream) is not a start notice.
+  return /(بدا|بدات|يبدا|انطلق|انطلاق|يبث الان|الان يبث)[^.]{0,40}?مباشر|البث المباشر الان|مباشر الان/.test(n);
 }
 
 const BOOK_STOP = new Set(["شرح", "كتاب", "من", "في", "على", "لشيخ", "الشيخ", "الاسلام", "تقريرات", "سماحه"]);

@@ -1,4 +1,4 @@
-import { eq, like } from "drizzle-orm";
+import { and, eq, isNull, like } from "drizzle-orm";
 import { z } from "zod";
 import type { Db } from "@/server/db/client";
 import { announcements, lessonOverrides, lessons, masjids, shaykhs } from "@/server/db/schema";
@@ -50,6 +50,13 @@ export async function addOverride(db: Db, actor: Actor | "system", input: z.inpu
   const v = overrideInput.parse(input);
   const [lesson] = await db.select({ id: lessons.id }).from(lessons).where(eq(lessons.slug, v.lessonSlug));
   if (!lesson) throw new Error("lesson_not_found");
+  const endsOn = v.endsOn ?? v.startsOn;
+  const [dup] = await db
+    .select()
+    .from(lessonOverrides)
+    .where(and(eq(lessonOverrides.lessonId, lesson.id), eq(lessonOverrides.kind, v.kind), eq(lessonOverrides.startsOn, v.startsOn), eq(lessonOverrides.endsOn, endsOn), isNull(lessonOverrides.revokedAt)))
+    .limit(1);
+  if (dup) return dup;
   const [row] = await db
     .insert(lessonOverrides)
     .values({

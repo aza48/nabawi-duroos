@@ -1,7 +1,7 @@
 import { isBroadSource, sourceRank } from "./sources";
 import { worthReading } from "./prefilter";
 import { createHash } from "node:crypto";
-import { and, desc, eq, inArray } from "drizzle-orm";
+import { and, desc, eq, inArray, ne } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { channelPosts, lessonLive, lessons, masjids, shaykhs, sources } from "@/server/db/schema";
 import { isLiveNotice, matchLiveLesson, pickLiveLink } from "./live-notice";
@@ -63,6 +63,7 @@ export async function runWatcher(
   const ctx = await lessonContext(db);
   const result: RunResult = { sources: 0, newPosts: 0, suggested: 0, published: 0, ignored: 0, errors: 0 };
   let aiBudget = MAX_AI_PER_RUN;
+  let fetchedAny = false;
   const allSources = (await db.select().from(sources)).sort((a, b) => sourceRank(a.handle) - sourceRank(b.handle));
 
   for (const src of allSources) {
@@ -73,6 +74,7 @@ export async function runWatcher(
     try {
       posts = parseChannelHtml(await deps.fetchHtml(src.handle), src.handle).filter((p) => p.postedAt >= cutoff);
       await db.update(sources).set({ lastCheckedAt: now, lastError: null }).where(eq(sources.handle, src.handle));
+      fetchedAny = true;
     } catch (e) {
       result.errors++;
       await db.update(sources).set({ lastError: String(e instanceof Error ? e.message : e).slice(0, 300) }).where(eq(sources.handle, src.handle));
@@ -90,6 +92,24 @@ export async function runWatcher(
         continue;
       }
       if (existing?.status === "dismissed") continue;
+
+      // The same notice forwarded to a second channel: copy the first decision instead of reading it again
+      // (and never publishing it twice).
+      if (!existing) {
+        const [twin] = await db
+          .select()
+          .from(channelPosts)
+          .where(and(eq(channelPosts.textHash, textHash), ne(channelPosts.status, "new"), ne(channelPosts.status, "error")))
+          .limit(1);
+        if (twin) {
+          await db.insert(channelPosts).values({
+            sourceHandle: src.handle, postId: p.postId, url: p.url, text: p.text, imageUrl: p.imageUrl, postedAt: p.postedAt, textHash,
+            status: "ignored", reason: `Same post as ${twin.sourceHandle} (${twin.status}); not read twice.`, updatedAt: now,
+          });
+          result.ignored++;
+          continue;
+        }
+      }
 
       // "Live broadcast started": no AI needed. Mark the dars live with its stream link.
       // Only a trusted source may do this: the link becomes a public button.
@@ -153,7 +173,9 @@ export async function runWatcher(
     }
   }
 
-  await setSetting(db, "watcher_last_checked_at", now.toISOString());
+  // "Last checked" is only true when at least one channel was really read.
+  if (fetchedAny) await setSetting(db, "watcher_last_checked_at", now.toISOString());
+  else await setSetting(db, "watcher_last_error", `No channel could be read at ${now.toISOString()}`);
   return result;
 }
 
