@@ -68,13 +68,17 @@ export function AskPage({ faqs, whatsappUrl, locale = "en" }: { faqs: FaqRow[]; 
   const ar = locale === "ar";
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.question, url: abs(`/ask/${f.slug}`), acceptedAnswer: { "@type": "Answer", text: plain(f.answerHtml) } })),
-        }}
-      />
+      {/* Each answer's FAQPage markup lives on its own page only; the list is an ItemList. The Arabic pages canonicalise to English and carry none. */}
+      {!ar && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Questions, answered",
+            itemListElement: faqs.map((f, i) => ({ "@type": "ListItem", position: i + 1, name: f.question, url: abs(`/ask/${f.slug}`) })),
+          }}
+        />
+      )}
       <PageBand
         title={ar ? "أسئلة وأجوبة" : "Questions, answered"}
         subtitle={ar ? "أجوبة موثّقة لأكثر ما يسأل عنه الطلاب، يحدّثها فريق MESH باستمرار." : "Verified answers to what students ask most, kept up to date by the MESH team."}
@@ -108,12 +112,14 @@ export function FaqPage({ faq, whatsappUrl, locale = "en", guides = [], faqs = [
   return (
     <div className={`shell pt-6 md:pt-10 ${relFaqs.length ? "xl:grid xl:grid-cols-[minmax(0,48rem)_300px] xl:justify-center xl:gap-14" : ""}`}>
     <article className="mx-auto max-w-3xl xl:mx-0">
-      <JsonLd
-        data={[
-          { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [{ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: plain(faq.answerHtml) } }], dateModified: faq.updatedAt },
-          breadcrumbs([["Ask", "/ask"], [faq.question, `/ask/${faq.slug}`]]),
-        ]}
-      />
+      {!ar && (
+        <JsonLd
+          data={[
+            { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [{ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: plain(faq.answerHtml) } }], dateModified: faq.updatedAt },
+            breadcrumbs([["Ask", "/ask"], [faq.question, `/ask/${faq.slug}`]]),
+          ]}
+        />
+      )}
       <Breadcrumbs
         rtl={ar}
         items={[
@@ -221,14 +227,15 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
   const relGuides = related(me, guides.map(asGuide), 4);
   const relFaqs = related(me, faqs.map(asFaq), 5);
   const hasToc = toc.length > 1 && !isCalendar;
-  const stepTexts = [...html.matchAll(/<li data-step="\d+">([\s\S]*?)<\/li>/g)].map((m) => plain(m[1]));
+  // Article only: HowTo rich results were withdrawn, and Article needs an image.
   const ld = {
     "@context": "https://schema.org",
-    "@type": steps > 0 ? ["Article", "HowTo"] : "Article",
+    "@type": "Article",
     headline: guide.title,
     name: guide.title,
     description: guide.summary,
     url: abs(`/guides/${guide.slug}`),
+    image: abs(`/guides/${guide.slug}/opengraph-image`),
     inLanguage: "en",
     datePublished: guide.createdAt,
     dateModified: guide.lastVerifiedAt ?? guide.updatedAt,
@@ -236,11 +243,10 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
     publisher: { "@id": ORG_ID },
     about: { "@type": "City", name: "Madinah" },
     timeRequired: `PT${guide.readingMinutes}M`,
-    ...(steps > 0 ? { step: stepTexts.map((t, i) => ({ "@type": "HowToStep", position: i + 1, text: t })) } : {}),
   };
   return (
     <>
-      <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], [stage?.label ?? "Guides", `/guides#${guide.stage}`], [guide.title, `/guides/${guide.slug}`]])]} />
+      {!ar && <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], [stage?.label ?? "Guides", `/guides#${guide.stage}`], [guide.title, `/guides/${guide.slug}`]])]} />}
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-14">
           <div className="flex items-center gap-2">

@@ -6,7 +6,7 @@ import { MapPin } from "lucide-react";
 import type { ScheduleRow } from "@/server/duroos/queries";
 import type { MasjidRow } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
-import { PRAYERS } from "@/lib/time/prayer";
+import { PRAYERS } from "@/lib/time/prayers";
 import { DAY_KEYS, t } from "./strings";
 import { SistersTag } from "./StatusTag";
 

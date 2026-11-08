@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type CSSProperties } from "react";
-import type { Prayer } from "@/lib/time/prayer";
+import type { Prayer } from "@/lib/time/prayers";
 import { useWeather } from "./useWeather";
 import { moonPath, moonPhase, skyColours, sunIsUp } from "./sky";
 

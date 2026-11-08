@@ -3,7 +3,7 @@ import type { getToday } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { toArabicDigits } from "@/lib/locale";
 import { formatClock } from "@/lib/time/riyadh";
-import { PRAYERS } from "@/lib/time/prayer";
+import { PRAYERS } from "@/lib/time/prayers";
 import { DarsCard } from "@/features/duroos/DarsCard";
 import { t } from "@/features/duroos/strings";
 

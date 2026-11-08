@@ -34,9 +34,11 @@ export function siteJsonLd(whatsappUrl: string) {
 }
 
 export function breadcrumbs(items: [string, string][]) {
+  // The trail always starts at Home, so search engines see the whole path.
+  const trail: [string, string][] = items[0]?.[1] === "/" ? items : [["Home", "/"], ...items];
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map(([name, path], i) => ({ "@type": "ListItem", position: i + 1, name, item: abs(path) })),
+    itemListElement: trail.map(([name, path], i) => ({ "@type": "ListItem", position: i + 1, name, item: abs(path) })),
   };
 }

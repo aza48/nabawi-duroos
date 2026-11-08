@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BadgePercent, BookOpen, CornerDownLeft, FileText, GraduationCap, Landmark, Library, MessageCircleQuestion, Search, User, X } from "lucide-react";
-import { createSearch, type SearchDoc, type SearchHit, type SearchType } from "@/lib/search/engine";
+import type { createSearch, SearchDoc, SearchHit, SearchType } from "@/lib/search/engine";
 import { localizeUrl } from "@/lib/locale";
 
 const TYPE: Record<SearchType, { label: string; ar: string; icon: typeof Search }> = {
@@ -28,9 +28,9 @@ const POPULAR = ["Iqama", "MAP Arabic", "Ta'jeel", "Cost of living", "Bank card"
 
 let cache: Promise<ReturnType<typeof createSearch>> | null = null;
 function loadSearch() {
-  cache ??= fetch("/api/v1/search")
-    .then((r) => r.json())
-    .then((j: { data: SearchDoc[] }) => createSearch(j.data))
+  // The engine (minisearch) is loaded only when the search is first opened, never in the shared bundle.
+  cache ??= Promise.all([fetch("/api/v1/search").then((r) => r.json()), import("@/lib/search/engine")])
+    .then(([j, mod]: [{ data: SearchDoc[] }, typeof import("@/lib/search/engine")]) => mod.createSearch(j.data))
     .catch((e) => {
       cache = null;
       throw e;

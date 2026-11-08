@@ -5,7 +5,7 @@ import { ArrowDown } from "lucide-react";
 import type { Locale } from "@/lib/locale";
 import { toArabicDigits } from "@/lib/locale";
 import { formatClock } from "@/lib/time/riyadh";
-import { PRAYERS, type Prayer } from "@/lib/time/prayer";
+import { PRAYERS, type Prayer } from "@/lib/time/prayers";
 import { t } from "@/features/duroos/strings";
 import { useWeather } from "./useWeather";
 import { MoonDisc, useNow } from "./HeroSky";

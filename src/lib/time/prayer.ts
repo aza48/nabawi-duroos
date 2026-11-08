@@ -2,11 +2,12 @@ import { CalculationMethod, Coordinates, PrayerTimes } from "adhan";
 import { addDays, riyadhDateIso } from "./riyadh";
 import { hijriOf } from "./hijri";
 
-export type Prayer = "fajr" | "dhuhr" | "asr" | "maghrib" | "isha";
-export const PRAYERS: Prayer[] = ["fajr", "dhuhr", "asr", "maghrib", "isha"];
+import { PRAYERS, type Prayer } from "./prayers";
 
-/** Al-Masjid an-Nabawi */
-const MADINAH = new Coordinates(24.4672, 39.6111);
+export { PRAYERS, type Prayer };
+
+/** Al-Masjid an-Nabawi, created on first use. */
+let madinah: Coordinates | null = null;
 
 const cache = new Map<string, Record<Prayer, Date>>();
 
@@ -23,7 +24,8 @@ export function prayerTimes(iso: string): Record<Prayer, Date> {
   const params = CalculationMethod.UmmAlQura();
   params.ishaInterval = ishaIntervalFor(iso);
   // adhan reads the calendar fields of the Date in local time.
-  const pt = new PrayerTimes(MADINAH, new Date(y, m - 1, d), params);
+  madinah ??= new Coordinates(24.4672, 39.6111);
+  const pt = new PrayerTimes(madinah, new Date(y, m - 1, d), params);
   const out = { fajr: pt.fajr, dhuhr: pt.dhuhr, asr: pt.asr, maghrib: pt.maghrib, isha: pt.isha };
   cache.set(iso, out);
   return out;

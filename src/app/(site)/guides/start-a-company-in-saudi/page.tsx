@@ -24,19 +24,18 @@ export default async function Page() {
   const steps = PLAN.flatMap((p) => p.items);
   const ld = {
     "@context": "https://schema.org",
-    "@type": ["Article", "HowTo"],
+    "@type": "Article",
     headline: TITLE,
     name: TITLE,
     description: SUMMARY,
     url: abs(`/guides/${SLUG}`),
+    image: abs("/opengraph-image"),
     inLanguage: "en",
     datePublished: "2026-11-08",
     dateModified: "2026-11-08",
     author: { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
     about: { "@type": "Country", name: "Saudi Arabia" },
-    totalTime: "P10W",
-    step: steps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.title, text: s.body })),
   };
   return (
     <>

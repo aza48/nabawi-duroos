@@ -1,4 +1,4 @@
-import type { Prayer } from "@/lib/time/prayer";
+import type { Prayer } from "@/lib/time/prayers";
 import type { WeatherKind } from "@/lib/weather";
 
 /** The hero sky's colours at a moment: zenith, middle and horizon, plus how bright the stars are. */
