@@ -128,6 +128,18 @@ describe("suggestions", () => {
     const [after] = await db.select().from(channelPosts).where(eq(channelPosts.id, p.id));
     expect(after.status).toBe("dismissed");
   });
+
+  it("a second approve or a late dismiss of a handled post is refused and changes nothing", async () => {
+    const [p] = await db.insert(channelPosts).values({
+      sourceHandle: "drosalmadina", postId: "drosalmadina/98", url: "https://t.me/drosalmadina/98", text: "y",
+      postedAt: NOW, textHash: "h98", status: "suggested", parse: { ...cancel, dates: ["2026-11-19"] },
+    }).returning();
+    const o = await approveSuggestion(db, owner, p.id, {});
+    await expect(approveSuggestion(db, owner, p.id, {})).rejects.toThrow("suggestion_not_found");
+    await expect(dismissSuggestion(db, owner, p.id)).rejects.toThrow("suggestion_not_found");
+    const [after] = await db.select().from(channelPosts).where(eq(channelPosts.id, p.id));
+    expect(after).toMatchObject({ status: "published", overrideId: o.id });
+  });
 });
 
 describe("time budget", () => {

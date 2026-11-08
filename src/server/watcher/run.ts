@@ -215,17 +215,36 @@ export async function approveSuggestion(
   const lessonSlug = edits.lessonSlug ?? parse.lesson_slug ?? undefined;
   const startsOn = edits.startsOn ?? parse.dates?.[0];
   if (!lessonSlug || !startsOn) throw new Error("needs_lesson_and_date");
-  const o = await addOverride(db, actor, {
-    lessonSlug, kind: (edits.kind ?? parse.kind ?? "note") as "cancelled", startsOn, endsOn: edits.endsOn,
-    noteEn: parse.note_en || null, noteAr: parse.note_ar || null, sourceUrl: p.url,
-  }, "watcher_approved");
-  await db.update(channelPosts).set({ status: "published", overrideId: o.id, decidedBy: actor.name, updatedAt: new Date() }).where(eq(channelPosts.id, id));
+  // Claim the post first, so two admins (or a stale tab) cannot both approve it or race a dismiss.
+  const claimed = await db
+    .update(channelPosts)
+    .set({ status: "published", decidedBy: actor.name, updatedAt: new Date() })
+    .where(and(eq(channelPosts.id, id), inArray(channelPosts.status, ["suggested", "error"])))
+    .returning({ id: channelPosts.id });
+  if (!claimed.length) throw new Error("suggestion_not_found");
+  let o: Awaited<ReturnType<typeof addOverride>>;
+  try {
+    o = await addOverride(db, actor, {
+      lessonSlug, kind: (edits.kind ?? parse.kind ?? "note") as "cancelled", startsOn, endsOn: edits.endsOn,
+      noteEn: parse.note_en || null, noteAr: parse.note_ar || null, sourceUrl: p.url,
+    }, "watcher_approved");
+  } catch (e) {
+    await db.update(channelPosts).set({ status: p.status, decidedBy: p.decidedBy, updatedAt: p.updatedAt }).where(eq(channelPosts.id, id));
+    throw e;
+  }
+  await db.update(channelPosts).set({ overrideId: o.id }).where(eq(channelPosts.id, id));
   return o;
 }
 
 export async function dismissSuggestion(db: Db, actor: Actor, id: number) {
   assertCan(actor, "duroos.write");
-  await db.update(channelPosts).set({ status: "dismissed", decidedBy: actor.name, updatedAt: new Date() }).where(eq(channelPosts.id, id));
+  // Only a post still waiting for a decision: a dismiss racing an approve must not hide a live change.
+  const done = await db
+    .update(channelPosts)
+    .set({ status: "dismissed", decidedBy: actor.name, updatedAt: new Date() })
+    .where(and(eq(channelPosts.id, id), inArray(channelPosts.status, ["suggested", "error"])))
+    .returning({ id: channelPosts.id });
+  if (!done.length) throw new Error("suggestion_not_found");
 }
 
 /** Production wiring: real network calls. */
