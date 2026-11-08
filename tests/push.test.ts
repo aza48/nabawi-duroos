@@ -61,3 +61,13 @@ describe("sending", () => {
     expect((await db.select().from(pushSubscriptions)).some((s) => s.endpoint.includes("fcm"))).toBe(false);
   });
 });
+
+describe("junk subscriptions", () => {
+  it("refuses keys that are not a 65-byte P-256 point and a 16-byte secret", async () => {
+    const { subscribePush } = await import("@/server/push");
+    const { getDb } = await import("@/server/db/client");
+    const db = await getDb();
+    await expect(subscribePush(db, { endpoint: "https://fcm.googleapis.com/fcm/send/x", keys: { p256dh: "short-but-twenty-chars-long", auth: "tBHIAAAAAAAAAAAAAAAAAA" }, topics: ["all"] })).rejects.toThrow();
+    await expect(subscribePush(db, { endpoint: "https://fcm.googleapis.com/fcm/send/x", keys: { p256dh: "BNcR".padEnd(87, "A"), auth: "not base64url!!" }, topics: ["all"] })).rejects.toThrow();
+  });
+});

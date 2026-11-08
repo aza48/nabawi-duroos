@@ -10,14 +10,31 @@ import { formatClock } from "@/lib/time/riyadh";
 const PUSH_HOSTS = [/^fcm\.googleapis\.com$/, /^web\.push\.apple\.com$/, /^updates\.push\.services\.mozilla\.com$/, /\.notify\.windows\.com$/, /^android\.googleapis\.com$/];
 
 const topic = z.string().regex(/^(all|daily|shaykh:[a-z0-9-]{3,80})$/);
+
+/** Decoded length of a base64url string, or -1 when it is not base64url at all. */
+function b64Bytes(s: string): number {
+  if (!/^[A-Za-z0-9_-]+={0,2}$/.test(s)) return -1;
+  return Buffer.from(s.replace(/-/g, "+").replace(/_/g, "/"), "base64").length;
+}
+/** Browser push keys have fixed sizes: a 65-byte P-256 point and a 16-byte auth secret. Anything else can never be delivered to. */
+const p256dhKey = z.string().max(200).refine((s) => b64Bytes(s) === 65, "Not a browser push key");
+const authKey = z.string().max(100).refine((s) => b64Bytes(s) === 16, "Not a browser push auth secret");
+
 const subInput = z.object({
-  endpoint: z.url().max(1000).refine((u) => {
-    const url = new URL(u);
-    return url.protocol === "https:" && PUSH_HOSTS.some((h) => h.test(url.hostname));
+  endpoint: z.string().max(1000).refine((u) => {
+    try {
+      const url = new URL(u);
+      return url.protocol === "https:" && PUSH_HOSTS.some((h) => h.test(url.hostname));
+    } catch {
+      return false;
+    }
   }, "Not a browser push service"),
-  keys: z.object({ p256dh: z.string().min(20).max(200), auth: z.string().min(8).max(100) }),
+  keys: z.object({ p256dh: p256dhKey, auth: authKey }),
   topics: z.array(topic).min(1).max(20),
 });
+
+/** Pushes go out in batches, so one broadcast never opens thousands of connections at once. */
+const SEND_BATCH = 50;
 
 export async function subscribePush(db: Db, input: unknown) {
   const v = subInput.parse(input);
@@ -50,17 +67,22 @@ async function sendToTopics(db: Db, topics: string[], payload: object, send: Pus
   const subs = await db.select().from(pushSubscriptions).where(arrayOverlaps(pushSubscriptions.topics, topics));
   const body = JSON.stringify(payload);
   let delivered = 0;
-  await Promise.all(
-    subs.map(async (s) => {
-      try {
-        await send(s.endpoint, body, { p256dh: s.p256dh, auth: s.auth });
-        delivered++;
-      } catch (e) {
-        const code = (e as { statusCode?: number }).statusCode;
-        if (code === 404 || code === 410) await unsubscribePush(db, s.endpoint);
-      }
-    })
-  );
+  for (let i = 0; i < subs.length; i += SEND_BATCH) {
+    await Promise.all(
+      subs.slice(i, i + SEND_BATCH).map(async (s) => {
+        try {
+          await send(s.endpoint, body, { p256dh: s.p256dh, auth: s.auth });
+          delivered++;
+        } catch (e) {
+          // Gone (404, 410), rejected by the push service (other 4xx) or a key the library cannot
+          // encrypt for: the subscription is dead and is removed. Network trouble (no status) is kept.
+          const code = (e as { statusCode?: number }).statusCode;
+          const dead = (code !== undefined && code >= 400 && code < 500 && code !== 429) || /p256dh|auth|key|base64/i.test(String((e as Error).message ?? ""));
+          if (dead) await unsubscribePush(db, s.endpoint);
+        }
+      })
+    );
+  }
   return delivered;
 }
 
