@@ -687,6 +687,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Delivery fees, husband and companion rules, and the free option for University wives are in <a href="/guides/having-a-baby-in-madinah">Having a baby in Madinah</a>.</p>
 <h2>Pharmacies</h2>
 <p>Al Dawaa and Al Nahdi are the two big chains, with branches across the city and some open round the clock. Most staff speak English. Bring the box or the name of the medicine you take, and a copy of the prescription for anything stronger than basics.</p>
+<p>Prescriptions from other countries are not accepted, and only doctors licensed in Saudi Arabia can prescribe. Some medicines are controlled. If you take regular medicine, bring a letter from your doctor naming the drug, the dose and the amount.</p>
 <h2>Health apps</h2>
 <ul>
 <li><strong>Altibbi:</strong> video consultations and a medical information library.</li>
