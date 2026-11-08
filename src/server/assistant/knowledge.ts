@@ -1,7 +1,8 @@
 import { parse, type HTMLElement } from "node-html-parser";
 import type { Db } from "@/server/db/client";
 import * as COMPANY from "@/features/guides/company/content";
-import { listFaqs, listGuides, FAQ_CATEGORIES, GUIDE_STAGES } from "@/server/content/queries";
+import { listFaqs, listGuides, FAQ_CATEGORIES } from "@/server/content/queries";
+import { GUIDE_TOPICS } from "@/lib/guide-topics";
 import { listShaykhs, scheduleRows } from "@/server/duroos/queries";
 import { PROGRAMS } from "@/content/programs";
 import { KEY_DATES } from "@/content/key-dates";
@@ -181,7 +182,7 @@ function siteChunks(): Chunk[] {
     },
     { id: "page-duroos", kind: "page", title: "Duroos in Madinah", text: "Today's duroos of the mashayikh in Masjid an-Nabawi, Masjid Quba and other masjids are at /duroos with live status, cancellations and changes. The weekly schedule by day and prayer is at /duroos/schedule. Live broadcasts are at /duroos/live. Cancellations, postponements and new books are at /duroos/updates. Duroos for sisters are at /duroos/sisters. Free phone alerts when a dars changes can be turned on at /more#alerts.", url: "/duroos" },
     { id: "page-library", kind: "page", title: "The Jamiah library", text: `Islamic University course books (muqarrarat) and Ma'had books by level are in the MESH library at /library, readable on the site. Collections: ${LIVE_COLLECTIONS.map((c) => c.title).join(", ")}. The Ma'had hub at /mahad has books by level, answer keys, the rules and what happens if you fail a level. Official links: ${OFFICIAL.map((o) => `${o.title} (${o.href})`).join("; ")}.`, url: "/library" },
-    { id: "page-guides", kind: "page", title: "Guides", text: `MESH guides cover: ${GUIDE_STAGES.map((s) => `${s.label} (${s.blurb})`).join("; ")}. Questions and answers by topic: ${FAQ_CATEGORIES.map((c) => c.label).join(", ")}, at /ask.`, url: "/guides" },
+    { id: "page-guides", kind: "page", title: "Guides", text: `MESH guides, by topic: ${GUIDE_TOPICS.map((t) => `${t.label} (${t.blurb})`).join("; ")}. Questions and answers by topic: ${FAQ_CATEGORIES.map((c) => c.label).join(", ")}, at /ask.`, url: "/guides" },
   ];
 }
 
