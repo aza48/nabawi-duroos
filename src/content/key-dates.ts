@@ -20,6 +20,8 @@ export type KeyDate = {
 };
 
 export const KEY_DATES: KeyDate[] = [
+  { id: "postpone-1", kind: "deadline", minor: true, term: "first", title: "Postponing your studies (ta'jeel)", titleAr: "طلبات تأجيل الدراسة", start: "2026-08-02", end: "2026-09-01", hijri: "19 Safar to 19 Rabi al-Awwal 1448" },
+  { id: "drop-add-1", kind: "deadline", minor: true, term: "first", title: "Drop, add and change sections", titleAr: "الحذف والإضافة وتغيير الشعب", start: "2026-08-10", end: "2026-08-30", hijri: "27 Safar to 17 Rabi al-Awwal 1448" },
   { id: "withdraw-uni-1", kind: "deadline", minor: true, term: "first", title: "Requests to withdraw from the University", titleAr: "طلبات الانسحاب من الجامعة", start: "2026-08-09", end: "2026-11-28", hijri: "26 Safar to 18 Jumada al-Akhirah 1448" },
   { id: "excuse-1", kind: "deadline", minor: true, term: "first", title: "Excuse from the semester, or drop a course", titleAr: "طلبات الاعتذار عن الفصل والانسحاب من مقرر", start: "2026-08-16", end: "2026-11-06", hijri: "3 Rabi al-Awwal to 26 Jumada al-Ula 1448", },
   { id: "reenrol-1", kind: "deadline", minor: true, term: "first", title: "Re-enrolment requests", titleAr: "طلبات إعادة الانتظام", start: "2026-09-06", end: "2026-10-22", hijri: "24 Rabi al-Awwal to 11 Jumada al-Ula 1448" },
