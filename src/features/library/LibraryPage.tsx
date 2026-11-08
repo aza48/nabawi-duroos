@@ -1,11 +1,9 @@
 import { ArrowUpRight, FileText, Folder, Globe, MonitorPlay, Send } from "lucide-react";
 import { PageBand } from "@/components/ui";
 import Link from "next/link";
-import { CHANNELS, MAHAD_EXTRA, OFFICIAL, type LibraryLink, type Manuscript } from "@/content/library";
+import { CHANNELS, MAHAD_EXTRA, OFFICIAL, type LibraryLink } from "@/content/library";
 import { LIVE_COLLECTIONS, countFiles, treeOf } from "@/content/library-books";
 import { CurriculumNote, LibrarySearchForm, firstLevelCount } from "./CoursePages";
-import manuscripts from "@/content/manuscripts.json";
-import { ManuscriptDirectory } from "./ManuscriptDirectory";
 import { EnglishNote } from "@/components/EnglishNote";
 import type { Locale } from "@/lib/locale";
 
@@ -42,12 +40,11 @@ const SECTIONS = [
   { id: "mahad-extra", label: "Ma'had extras", ar: "إضافات المعهد" },
   { id: "official", label: "Official links", ar: "روابط رسمية" },
   { id: "channels", label: "Channels", ar: "قنوات" },
-  { id: "manuscripts", label: "Manuscripts", ar: "المخطوطات" },
 ];
 
 const L = {
-  en: { title: "Library", sub: "Course books and summaries for every college and the Ma'had, readable right here, plus official links and 300+ manuscript libraries.", sections: "Sections", books: "Course books by college", booksSub: "Every file opens here on MESH. Pick your college, then your level.", files: "files", levels: "levels", official: "Official links", channels: "Channels worth following", channelsSub: "People who live here and keep their information current.", ms: "Manuscript libraries on Telegram", msSub: "Over 300 channels sharing scans from manuscript collections around the world, from Istanbul to Timbuktu. List checked 1 January 2026." },
-  ar: { title: "المكتبة", sub: "مقررات كل الكليات والمعهد وملخصاتها، تُقرأ هنا مباشرة، مع الروابط الرسمية وأكثر من ٣٠٠ مكتبة مخطوطات.", sections: "الأقسام", books: "المقررات حسب الكلية", booksSub: "كل ملف يُفتح هنا في MESH. اختر كليتك ثم مستواك.", files: "ملفًا", levels: "مستويات", official: "روابط رسمية", channels: "قنوات تستحق المتابعة", channelsSub: "أناس يعيشون هنا ويحدّثون معلوماتهم باستمرار.", ms: "مكتبات المخطوطات على تيليجرام", msSub: "أكثر من ٣٠٠ قناة تنشر صور مخطوطات من مكتبات العالم، من إسطنبول إلى تمبكتو. رُوجعت القائمة في ١ يناير ٢٠٢٦." },
+  en: { title: "Library", sub: "Course books and summaries for every college and the Ma'had, readable right here, plus official links and channels worth following.", sections: "Sections", books: "Course books by college", booksSub: "Every file opens here on MESH. Pick your college, then your level.", files: "files", levels: "levels", official: "Official links", channels: "Channels worth following", channelsSub: "People who live here and keep their information current." },
+  ar: { title: "المكتبة", sub: "مقررات كل الكليات والمعهد وملخصاتها، تُقرأ هنا مباشرة، مع الروابط الرسمية وقنوات تستحق المتابعة.", sections: "الأقسام", books: "المقررات حسب الكلية", booksSub: "كل ملف يُفتح هنا في MESH. اختر كليتك ثم مستواك.", files: "ملفًا", levels: "مستويات", official: "روابط رسمية", channels: "قنوات تستحق المتابعة", channelsSub: "أناس يعيشون هنا ويحدّثون معلوماتهم باستمرار." },
 };
 
 export function LibraryPage({ takhleesHref, locale = "en" }: { takhleesHref: string; helpContact?: string; locale?: Locale }) {
@@ -124,12 +121,6 @@ export function LibraryPage({ takhleesHref, locale = "en" }: { takhleesHref: str
           <div className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             {CHANNELS.map((l) => <LinkCard key={l.href} l={l} ar={ar} />)}
           </div>
-        </section>
-
-        <section id="manuscripts" className="scroll-mt-24">
-          <h2 className="font-heading text-3xl font-bold">{t.ms}</h2>
-          <p className="mt-2 mb-6 max-w-2xl text-muted">{t.msSub}</p>
-          <ManuscriptDirectory items={manuscripts as Manuscript[]} />
         </section>
       </div>
     </>

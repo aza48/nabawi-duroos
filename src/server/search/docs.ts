@@ -16,7 +16,7 @@ const PAGES: SearchDoc[] = [
   { id: "page-live", type: "page", title: "Live streams", subtitle: "Watch the Haram duroos live", text: "broadcast youtube mixlr audio video", url: "/duroos/live" },
   { id: "page-updates", type: "page", title: "Duroos updates", subtitle: "Cancellations, postponements and new books", text: "cancelled postponed changes", url: "/duroos/updates" },
   { id: "page-programs", type: "page", title: "Study in Madinah", subtitle: "Arabic institutes, degrees and sisters' marakiz compared", text: "learn arabic course", url: "/programs" },
-  { id: "page-library", type: "page", title: "The Jamiah library", subtitle: "Muqarrarat, Ma'had books, manuscripts", text: "pdf books takhlees", url: "/library" },
+  { id: "page-library", type: "page", title: "The Jamiah library", subtitle: "Muqarrarat and Ma'had books", text: "pdf books takhlees", url: "/library" },
   { id: "page-discounts", type: "page", title: "Student discounts", subtitle: "Offers with your University card", text: "deals offers", url: "/discounts" },
   { id: "page-alerts", type: "page", title: "Phone alerts", subtitle: "Free notifications when a dars changes", text: "notifications push morning brief", url: "/more#alerts" },
   { id: "page-group", type: "page", title: "Join the MESH WhatsApp group", subtitle: "Announcements, events and daily help", text: "whatsapp community", url: "/more#rules" },

@@ -6,7 +6,7 @@ import { LibraryPage } from "@/features/library/LibraryPage";
 export const revalidate = 300;
 export const metadata: Metadata = {
   title: "The Jamiah library",
-  description: "Islamic University course texts for every college, Ma'had books and guides, official links, and 300+ manuscript libraries.",
+  description: "Islamic University course texts for every college, Ma'had books and guides, and official links.",
   alternates: { canonical: "/library" },
 };
 

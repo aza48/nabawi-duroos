@@ -51,7 +51,7 @@ export async function buildLlmsTxt(db: Db, full = false): Promise<string> {
   out.push(
     "",
     "## More",
-    `- [The Jamiah library](${abs("/library")}): Islamic University course texts (muqarrarat) by college, Ma'had books and guides, and 300+ manuscript libraries.`,
+    `- [The Jamiah library](${abs("/library")}): Islamic University course texts (muqarrarat) by college, Ma'had books and guides.`,
     `- [Student discounts](${abs("/discounts")}): offers for Islamic University students and staff at clinics, schools, car rentals, restaurants and gyms.`,
     `- [Scholars](${abs("/duroos")}): ${shaykhs.length} mashayikh with their regular duroos, for example ${shaykhs
       .slice(0, 4)

@@ -56,7 +56,7 @@ medinahub.org: a hub run by students, for English-speaking students and families
 
 ## Map of the code
 - `src/app/(site)`: English public pages. `src/app/(ar)/ar`: Arabic pages (duroos, sisters, programs, guides, ask, library, discounts, more). `src/app/(admin)/admin`: admin (login, invite, reset, setup-2fa, and `(app)` for the signed-in area). `src/app/api`: `/api/v1` and cron routes.
-- `src/content/`: programs.ts, library.ts and library-books.json (1,682 files), manuscripts.json, discounts.ts, key-dates.ts. These are still code files, not admin-editable.
+- `src/content/`: programs.ts, library.ts and library-books.json (1,682 files), discounts.ts, key-dates.ts. These are still code files, not admin-editable.
 - `src/server/`: `db` (schema, client), `auth`, `admin` (content, audit, describe), `duroos`, `content`, `watcher` (Telegram reader, Gemini parse, `prefilter.ts`), `settings.ts`, `seed/content` (guides-2026.ts, sync.ts, book-links.ts, al-midad.ts).
 - `src/features/`: home (TodayHero, DayArc, NextPrayer, KeyDates), duroos (DetailPages, ShaykhBadge, ScheduleBrowser, sisters variant), programs, library, discounts, search (Ctrl+K palette), content (guide reader, FAQ explorer), admin (AdminShell, forms, watcher Suggestions, ActivityList, SettingsForms).
 - `src/lib/guide-html.ts` makes guides interactive; `src/lib/text.ts` has `metaTitle` and `metaDescription`.
