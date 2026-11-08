@@ -246,6 +246,7 @@ export function GuidePage({ guide, whatsappUrl, locale = "en" }: { guide: GuideR
 }
 
 const RULES = [
+  "The group is only for English-speaking Western students",
   "Keep posts relevant: announcements, posts from the scholars of the Sunnah in Madinah, or student-related info only",
   "Share only verified information",
   "No debates or arguments",
@@ -254,6 +255,7 @@ const RULES = [
 ];
 
 const RULES_AR = [
+  "المجموعة خاصة بالطلاب الغربيين الناطقين بالإنجليزية فقط",
   "التزم بموضوع المجموعة: الإعلانات، ومنشورات علماء السنة في المدينة، وما يخص الطلاب فقط",
   "لا تنشر إلا معلومة موثّقة",
   "لا جدال ولا خصومات",

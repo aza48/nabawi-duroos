@@ -111,6 +111,9 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
           <p className="mt-3 text-sm text-white/75">
             {ar ? "الإعلانات والفعاليات والمساعدة اليومية." : "Announcements, events and daily help from students who have been here longer."}
           </p>
+          <p className="mt-2 text-sm font-semibold text-white">
+            {ar ? "المجموعة خاصة بالطلاب الغربيين الناطقين بالإنجليزية فقط." : "Only for English-speaking Western students."}
+          </p>
           <a
             href={whatsappUrl}
             target="_blank"
