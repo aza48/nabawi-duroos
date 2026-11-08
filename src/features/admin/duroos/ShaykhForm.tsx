@@ -6,7 +6,7 @@ import { Plus, Trash2 } from "lucide-react";
 import { updateShaykhAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 
-type S = { slug: string; nameEn: string; nameAr: string; roleEn: string | null; roleAr: string | null; facts: { en: string; ar: string }[] };
+type S = { slug: string; nameEn: string; nameAr: string; roleEn: string | null; roleAr: string | null; photo?: string | null; facts: { en: string; ar: string }[] };
 
 export function ShaykhForm({ shaykh }: { shaykh: S }) {
   const router = useRouter();
@@ -21,7 +21,7 @@ export function ShaykhForm({ shaykh }: { shaykh: S }) {
     setError(null);
     setMsg(null);
     start(async () => {
-      const r = await updateShaykhAction({ slug: v.slug, nameEn: v.nameEn, nameAr: v.nameAr, roleEn: v.roleEn || null, roleAr: v.roleAr || null, facts: v.facts });
+      const r = await updateShaykhAction({ slug: v.slug, nameEn: v.nameEn, nameAr: v.nameAr, roleEn: v.roleEn || null, roleAr: v.roleAr || null, photo: v.photo?.trim() || null, facts: v.facts });
       if (!r.ok) return setError(r.error);
       setMsg("Saved.");
       router.refresh();
@@ -34,6 +34,13 @@ export function ShaykhForm({ shaykh }: { shaykh: S }) {
       <Field label="Name (Arabic)"><input dir="rtl" className={inputCls} value={v.nameAr} onChange={(e) => setV({ ...v, nameAr: e.target.value })} required /></Field>
       <Field label="Role line (English)"><input className={inputCls} value={v.roleEn ?? ""} onChange={(e) => setV({ ...v, roleEn: e.target.value })} /></Field>
       <Field label="Role line (Arabic)"><input dir="rtl" className={inputCls} value={v.roleAr ?? ""} onChange={(e) => setV({ ...v, roleAr: e.target.value })} /></Field>
+      <Field label="Photo link (optional)" hint="Only a photo the shaykh's own official channel publishes. Leave empty to show the calligraphic name badge.">
+        <input className={inputCls} inputMode="url" value={v.photo ?? ""} onChange={(e) => setV({ ...v, photo: e.target.value })} placeholder="https://… or /shaykhs/…" />
+      </Field>
+      {v.photo?.trim() && /^(https:\/\/|\/)/.test(v.photo.trim()) && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={v.photo.trim()} alt="" className="h-20 w-20 rounded-full object-cover ring-1 ring-line" />
+      )}
       <div>
         <p className="mb-1.5 text-sm font-semibold">Verified facts</p>
         <p className="mb-2 text-xs text-muted">Only facts from a reliable source.</p>

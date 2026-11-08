@@ -9,6 +9,15 @@ import { DUROOS_PATHS, refreshPublic } from "./refresh";
 
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD");
 const optText = z.string().trim().max(2000).optional().nullable();
+/** A link: https:// anywhere, or a /path on MESH. Empty clears it. */
+const optUrl = z
+  .string()
+  .trim()
+  .max(500)
+  .regex(/^(https:\/\/\S+|\/\S*)?$/, "Use an https:// link or a /path on MESH")
+  .transform((v) => v || null)
+  .optional()
+  .nullable();
 const en = (s: string | null | undefined) => (s ? cleanText(s.trim(), "en") : null);
 const ar = (s: string | null | undefined) => (s ? cleanText(s.trim(), "ar") : null);
 
@@ -84,6 +93,7 @@ const lessonFields = {
   bookAr: z.string().trim().min(1).max(300),
   bookAuthorEn: optText,
   bookAuthorAr: optText,
+  bookUrl: optUrl,
   topic: z.string().trim().min(1).max(40),
   prayer: z.enum(["fajr", "dhuhr", "asr", "maghrib", "isha"]),
   days: z.array(z.number().int().min(0).max(6)).max(7),
@@ -156,6 +166,7 @@ const shaykhUpdate = z.object({
   nameAr: z.string().trim().min(2).max(200).optional(),
   roleEn: optText,
   roleAr: optText,
+  photo: optUrl,
   facts: z.array(z.object({ en: z.string().trim().max(600), ar: z.string().trim().max(600) })).max(20).optional(),
 });
 

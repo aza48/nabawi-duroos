@@ -77,6 +77,18 @@ describe("lessons, shaykhs and announcements", () => {
     expect(s.roleEn).toBe("Professor at IUM");
   });
 
+  it("sets and clears a shaykh photo and a dars book link, and rejects unsafe links", async () => {
+    const slug = "sulayman-ibn-saleemullah-al-ruhayli";
+    await updateShaykh(db, duroosEditor, { slug, photo: "/shaykhs/ruhayli.jpg" });
+    expect((await db.select().from(shaykhs).where(eq(shaykhs.slug, slug)))[0].photo).toBe("/shaykhs/ruhayli.jpg");
+    await updateShaykh(db, duroosEditor, { slug, photo: "" });
+    expect((await db.select().from(shaykhs).where(eq(shaykhs.slug, slug)))[0].photo).toBeNull();
+    await expect(updateShaykh(db, duroosEditor, { slug, photo: "javascript:alert(1)" })).rejects.toThrow();
+    const l = await updateLesson(db, duroosEditor, { slug: "ruh-dalil", bookUrl: "https://example.org/book.pdf" });
+    expect(l.bookUrl).toBe("https://example.org/book.pdf");
+    await expect(updateLesson(db, duroosEditor, { slug: "ruh-dalil", bookUrl: "http://insecure.example" })).rejects.toThrow();
+  });
+
   it("publishes an announcement that then appears in the current feed", async () => {
     const a = await saveAnnouncement(db, duroosEditor, {
       titleEn: "Lecture tonight", titleAr: "محاضرة الليلة", bodyEn: "After Isha at Quba.", bodyAr: "بعد العشاء في قباء.",

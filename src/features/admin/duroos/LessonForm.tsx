@@ -6,7 +6,7 @@ import { createLessonAction, updateLessonAction } from "@/app/(admin)/admin/acti
 import { btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 
 type Lesson = {
-  slug?: string; bookEn: string; bookAr: string; bookAuthorEn: string | null; bookAuthorAr: string | null; topic: string;
+  slug?: string; bookEn: string; bookAr: string; bookAuthorEn: string | null; bookAuthorAr: string | null; bookUrl?: string | null; topic: string;
   prayer: "fajr" | "dhuhr" | "asr" | "maghrib" | "isha"; days: number[]; locationEn: string; locationAr: string;
   noteEn: string | null; noteAr: string | null; status: "active" | "paused" | "finished";
   validFrom: string | null; validTo: string | null; masjidId: string;
@@ -37,7 +37,7 @@ export function LessonForm({
     setError(null);
     setMsg(null);
     const fields = {
-      bookEn: v.bookEn, bookAr: v.bookAr, bookAuthorEn: v.bookAuthorEn || null, bookAuthorAr: v.bookAuthorAr || null,
+      bookEn: v.bookEn, bookAr: v.bookAr, bookAuthorEn: v.bookAuthorEn || null, bookAuthorAr: v.bookAuthorAr || null, bookUrl: v.bookUrl?.trim() || null,
       topic: v.topic, prayer: v.prayer, days: v.days, locationEn: v.locationEn, locationAr: v.locationAr,
       noteEn: v.noteEn || null, noteAr: v.noteAr || null, status: v.status,
       validFrom: v.validFrom || null, validTo: v.validTo || null, masjidId: v.masjidId,
@@ -70,6 +70,7 @@ export function LessonForm({
       <div className="grid grid-cols-2 gap-3">
         <Field label="Author (English)"><input className={inputCls} value={v.bookAuthorEn ?? ""} onChange={(e) => set("bookAuthorEn", e.target.value)} /></Field>
         <Field label="Author (Arabic)"><input dir="rtl" className={inputCls} value={v.bookAuthorAr ?? ""} onChange={(e) => set("bookAuthorAr", e.target.value)} /></Field>
+        <Field label="Link to the book (optional)" hint="A PDF or the MESH Library page, shown on the dars page. https:// or /library/…"><input className={inputCls} inputMode="url" value={v.bookUrl ?? ""} onChange={(e) => set("bookUrl", e.target.value)} placeholder="https://…" /></Field>
       </div>
       <div className="grid grid-cols-2 gap-3">
         <Field label="Masjid">

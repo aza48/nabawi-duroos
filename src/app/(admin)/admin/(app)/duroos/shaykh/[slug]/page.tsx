@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <div className="mx-auto max-w-2xl">
       <Link href="/admin/duroos/shaykhs" className="text-sm text-muted">← Shuyukh</Link>
       <h1 className="mt-1 mb-4 text-2xl font-semibold">{s.nameEn}</h1>
-      <ShaykhForm shaykh={{ slug: s.slug, nameEn: s.nameEn, nameAr: s.nameAr, roleEn: s.roleEn, roleAr: s.roleAr, facts: s.facts }} />
+      <ShaykhForm shaykh={{ slug: s.slug, nameEn: s.nameEn, nameAr: s.nameAr, roleEn: s.roleEn, roleAr: s.roleAr, photo: s.photo, facts: s.facts }} />
     </div>
   );
 }
