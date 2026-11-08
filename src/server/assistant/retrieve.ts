@@ -15,10 +15,13 @@ const STOP = new Set(
 
 export type Passage = Chunk & { score: number };
 
+/** The Arabic article in transliteration ("al-Tawhid", "at-Tawhid", "an-Nawawi"): never a topic on its own. */
+const ARTICLES = new Set(["al", "el", "at", "an", "ad", "ar", "as", "ash", "az", "ath", "adh"]);
+
 const keyTerms = (q: string) =>
   normalize(q)
-    .split(" ")
-    .filter((w) => w && !STOP.has(w));
+    .split(/[\s-]+/)
+    .filter((w) => w && !STOP.has(w) && !ARTICLES.has(w));
 
 /** The question reduced to its topic words, with the site's synonyms added. */
 export function searchQuery(q: string): string {
@@ -28,7 +31,7 @@ export function searchQuery(q: string): string {
 
 export function createRetriever(chunks: Chunk[]) {
   const ms = new MiniSearch<Chunk>({
-    fields: ["title", "section", "text"],
+    fields: ["title", "section", "text", "keywords"],
     storeFields: ["id"],
     processTerm: (t) => {
       const n = normalize(t);
@@ -36,7 +39,7 @@ export function createRetriever(chunks: Chunk[]) {
     },
     tokenize: (s) => normalize(s).split(/[\s-]+/),
     searchOptions: {
-      boost: { title: 2.4, section: 1.8, text: 1 },
+      boost: { title: 2.4, section: 1.8, text: 1, keywords: 1.5 },
       prefix: (term) => term.length >= 4,
       fuzzy: (term) => (term.length >= 6 ? 0.2 : false),
       combineWith: "OR",
@@ -44,7 +47,8 @@ export function createRetriever(chunks: Chunk[]) {
   });
   ms.addAll(chunks);
   const byId = new Map(chunks.map((c) => [c.id, c]));
-  const kindBoost: Record<Chunk["kind"], number> = { faq: 1.2, guide: 1.1, program: 1.05, date: 1.05, page: 1, shaykh: 1, dars: 0.95, library: 0.9, discount: 0.85 };
+  // Site-wide blurbs (page) only win when nothing specific does.
+  const kindBoost: Record<Chunk["kind"], number> = { faq: 1.2, guide: 1.1, program: 1.05, date: 1.05, page: 0.8, shaykh: 1, dars: 0.95, library: 0.9, discount: 0.85 };
 
   /**
    * The best passages for a question: at most `perPage` from one page so one long guide cannot
@@ -99,8 +103,8 @@ export function termHits(terms: string[], text: string): number {
   return terms.filter((t) => has(t) || expandQuery(t).split(" ").slice(1).some((x) => x.length > 2 && has(x))).length;
 }
 
-function hits(terms: string[], c: Pick<Chunk, "title" | "section" | "text">): number {
-  return termHits(terms, `${c.title} ${c.section ?? ""} ${c.text}`);
+function hits(terms: string[], c: Pick<Chunk, "title" | "section" | "text" | "keywords">): number {
+  return termHits(terms, `${c.title} ${c.section ?? ""} ${c.text} ${c.keywords ?? ""}`);
 }
 
 /**

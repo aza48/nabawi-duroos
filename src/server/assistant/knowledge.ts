@@ -28,6 +28,8 @@ export type Chunk = {
   section?: string;
   text: string;
   url: string;
+  /** Extra search words that are not shown (an FAQ's tags). */
+  keywords?: string;
 };
 
 const MAX = 1100;
@@ -205,6 +207,7 @@ export async function buildKnowledge(db: Db): Promise<Chunk[]> {
       title: f.question,
       text: squash(f.answerHtml.replace(/<li>/g, " • ").replace(/<\/(p|li|h\d)>/g, "\n").replace(/<[^>]+>/g, " ")).slice(0, MAX * 2),
       url: `/ask/${f.slug}`,
+      keywords: (f.tags ?? []).join(" "),
     })),
     ...programChunks(),
     ...dateChunks(),

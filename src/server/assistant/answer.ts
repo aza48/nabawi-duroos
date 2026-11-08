@@ -174,7 +174,7 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   const chunks = opts.knowledge ?? (await getKnowledge(db));
   const found = createRetriever(chunks)(searchText, 6);
   const livePassages: Chunk[] = [];
-  if (live.duroos) livePassages.push(await duroosPassage(db, live.duroos, now, ar));
+  if (live.duroos) livePassages.push(await duroosPassage(db, live.duroos, now, ar, searchText));
   if (live.prayerTimes) livePassages.push(prayerTimesPassage(now, ar));
   const passages: Chunk[] = [...livePassages, ...found];
   const strong = livePassages.length > 0 || found.slice(0, 3).some((p) => answers(searchText, p));
@@ -222,7 +222,14 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
     return { answer: notFound(lang), sources: [], related: relatedOf(found, new Set()), mode: "none", found: false, lang };
   }
 
-  // 4. The best sentences of the best passages.
+  // 4. Several duroos match ("who teaches Kitab at-Tawhid"): list them all.
+  const duroos = found.filter((p) => p.kind === "dars" && answers(searchText, p));
+  if (found[0].kind === "dars" && duroos.length > 1) {
+    const list = duroos.slice(0, 5);
+    return { answer: list.map((p) => `- ${p.text}`).join("\n"), sources: uniqueSources(list), related: relatedOf(found, new Set()), mode: "extract", found: true, lang };
+  }
+
+  // 5. The best sentences of the best passages.
   const top = found.slice(0, 2);
   const sources = uniqueSources(top);
   return { answer: composeExtractive(searchText, top, lang), sources, related: relatedOf(found, new Set(sources.map((s) => page(s.url)))), mode: "extract", found: true, lang };

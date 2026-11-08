@@ -185,6 +185,24 @@ describe("assistant answers", () => {
     expect(r.answer).toMatch(/After Maghrib/);
   });
 
+  it("narrows a live answer to the shaykh named in the question", async () => {
+    const r = await ask("Is Shaykh Abdurrazzaq al-Badr teaching after Maghrib today?", { now: new Date("2026-11-10T12:00:00Z") });
+    expect(r.mode).toBe("live");
+    expect(r.answer).toMatch(/Abdurrazzaq/);
+    expect(r.answer).not.toMatch(/Hudhayfi/);
+  });
+
+  it("lists every dars of a book that several mashayikh teach", async () => {
+    const r = await ask("Who teaches Kitab at-Tawhid?");
+    expect(r.answer.split("\n").filter((l) => l.startsWith("- ")).length).toBeGreaterThan(1);
+  });
+
+  it("finds an answer by its tags (mat'am)", async () => {
+    const r = await ask("what are the mataam prices");
+    expect(r.found).toBe(true);
+    expect(r.sources.map((s) => s.url).join(" ")).toMatch(/mataam|campus-life/);
+  });
+
   it("keeps the topic of a short follow-up", async () => {
     const r = await ask("and for families?", {}, [{ role: "user", text: "How much does it cost to live in Madinah?" }, { role: "assistant", text: "..." }]);
     expect(r.sources[0]?.url ?? "").toMatch(/cost-of-living/);
