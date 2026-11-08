@@ -27,7 +27,7 @@ export function DiscountsBrowser({ groups, locale = "en" }: { groups: OfferGroup
         <label className="flex flex-1 items-center gap-3 rounded-2xl border border-line bg-card px-4 py-3 focus-within:border-primary">
           <Search size={19} className="shrink-0 text-muted" />
           <span className="sr-only">{ar ? "ابحث في العروض" : "Search offers"}</span>
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={ar ? "أسنان، نظارات، تأجير سيارات، مغسلة..." : "Dentist, glasses, car rental, laundry..."} className="w-full bg-transparent outline-none placeholder:text-muted" />
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={ar ? "أسنان، نظارات، تأجير سيارات، مغسلة..." : "Dentist, glasses, car rental, laundry..."} className="w-full bg-transparent text-base text-ink outline-none placeholder:text-muted" />
         </label>
         <button
           type="button"

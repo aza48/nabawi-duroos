@@ -52,7 +52,7 @@ export function FaqExplorer({ items, categories, locale = "en" }: { items: Item[
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={ar ? "Iqama, bus, Absher, rent... (الأسئلة بالإنجليزية)" : "Iqama, bus, Absher, rent, wife's visa..."}
-            className="w-full bg-transparent text-base outline-none placeholder:text-muted"
+            className="w-full bg-transparent text-base text-ink outline-none placeholder:text-muted"
           />
         </label>
         {shown.length === 0 ? (

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BadgePercent, BookOpen, CornerDownLeft, FileText, GraduationCap, Landmark, Library, MessageCircleQuestion, Search, User, X } from "lucide-react";
@@ -135,13 +136,19 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
   }, [open]);
   useEffect(() => setCursor(0), [q]);
 
+  // Leaving the search (tap outside, X or Escape) cancels it, so it opens empty next time.
+  const close = useCallback(() => {
+    setOpen(false);
+    setQ("");
+  }, []);
+
   const pick = useCallback(
     (h: SearchHit) => {
-      setOpen(false);
+      close();
       if (/^https?:/.test(h.url)) window.open(h.url, "_blank", "noopener");
       else router.push(h.url);
     },
-    [router]
+    [router, close]
   );
 
   return (
@@ -156,9 +163,10 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
         <span className="hidden md:inline lg:hidden xl:inline">{t.search}</span>
         <kbd className="ms-auto hidden rounded-md border border-line px-1.5 text-[11px] md:inline lg:hidden xl:inline" dir="ltr">Ctrl K</kbd>
       </button>
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-ink/40 p-3 pt-[8vh] backdrop-blur-sm md:pt-[12vh]" onClick={() => setOpen(false)}>
-          <div role="dialog" aria-modal="true" aria-label={t.search} onClick={(e) => e.stopPropagation()} className="flex max-h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-line bg-card shadow-[var(--shadow-lg)]">
+      {open &&
+        createPortal(
+        <div className="fixed inset-0 z-50 flex cursor-pointer items-start justify-center bg-ink/40 p-3 pt-[8vh] backdrop-blur-sm md:pt-[12vh]" onClick={(e) => { if (e.target === e.currentTarget) close(); }}>
+          <div role="dialog" aria-modal="true" aria-label={t.search} onClick={(e) => e.stopPropagation()} className="flex max-h-[80vh] w-full max-w-2xl cursor-auto flex-col overflow-hidden rounded-3xl border border-line bg-card shadow-[var(--shadow-lg)]">
             <div className="flex items-center gap-3 border-b border-line px-4">
               <Search size={20} className="shrink-0 text-primary" />
               <input
@@ -169,13 +177,13 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
                   if (e.key === "ArrowDown") { e.preventDefault(); setCursor((c) => Math.min(c + 1, flat.length - 1)); }
                   else if (e.key === "ArrowUp") { e.preventDefault(); setCursor((c) => Math.max(c - 1, 0)); }
                   else if (e.key === "Enter" && flat[cursor]) { e.preventDefault(); pick(flat[cursor]); }
-                  else if (e.key === "Escape") setOpen(false);
+                  else if (e.key === "Escape") close();
                 }}
                 placeholder={t.placeholder}
-                className="h-14 w-full bg-transparent text-base outline-none placeholder:text-muted focus-visible:outline-none"
+                className="h-14 w-full bg-transparent text-base text-ink outline-none placeholder:text-muted focus-visible:outline-none"
                 aria-label={t.searchMesh}
               />
-              <button type="button" onClick={() => setOpen(false)} aria-label={t.close} className="grid size-8 place-items-center rounded-full text-muted hover:bg-bg-2">
+              <button type="button" onClick={close} aria-label={t.close} className="grid size-8 place-items-center rounded-full text-muted hover:bg-bg-2">
                 <X size={18} />
               </button>
             </div>
@@ -205,8 +213,9 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
               </Link>
             )}
           </div>
-        </div>
-      )}
+        </div>,
+          document.body
+        )}
     </>
   );
 }
@@ -225,7 +234,7 @@ export function SearchPage({ initial }: { initial: string }) {
       <label className="flex items-center gap-3 rounded-2xl border border-line bg-card px-4 shadow-[var(--shadow)] focus-within:border-primary">
         <Search size={20} className="shrink-0 text-primary" />
         <span className="sr-only">Search MESH</span>
-        <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Iqama, MAP, ta'jeel, الرحيلي..." className="h-14 w-full bg-transparent text-lg outline-none placeholder:text-muted" />
+        <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Iqama, MAP, ta'jeel, الرحيلي..." className="h-14 w-full bg-transparent text-lg text-ink outline-none placeholder:text-muted" />
       </label>
       <div className="mt-6">
         {failed ? <p className="text-muted">Search couldn&apos;t load. Check your connection and try again.</p> : !ready ? <p className="text-muted">Loading search...</p> : <Results hits={hits} q={q} cursor={-1} onPick={(h) => router.push(h.url)} />}

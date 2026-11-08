@@ -6,6 +6,7 @@ import { LanguageSwitch } from "./LanguageSwitch";
 import { WhatsAppIcon } from "./WhatsApp";
 import { Wordmark } from "./Wordmark";
 import { SearchPalette } from "@/features/search/SearchUI";
+import { Tracker } from "./Tracker";
 
 export function SiteShell({
   locale,
@@ -48,6 +49,7 @@ export function SiteShell({
           </div>
         </div>
       </header>
+      <Tracker />
       <main id="main" className="pb-safe lg:pb-0">
         {children}
       </main>
