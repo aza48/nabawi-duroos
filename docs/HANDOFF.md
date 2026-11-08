@@ -93,15 +93,12 @@ All in `docs/IDEAS-FOR-OWNER.md`, including: Quba weekly duroos days (Al-Midad a
 
 ## Next steps (single ranked list)
 1. **Live DB sync** for the waiting guides and FAQs above, with the owner's OK.
-2. **Admin "Needs you" home block:** counts for pending suggestions, failed sources, stale facts and broken links, each linking to the fix (ADMIN-AUDIT 1, 2, 6).
-3. **Admin search** on Content, Shaykhs and Activity (ADMIN-AUDIT 4).
-4. **Admin confirm and undo:** in-page confirm sheet and an Undo toast instead of `window.confirm` (ADMIN-AUDIT 5).
-5. **Plain-language watcher cards** and activity grouped by day (ADMIN-AUDIT 8, 9). Also check that Gemini readings are accurate.
-6. **Programmes, discounts, key dates and library into DB tables with admin editing**, in that order starting with discounts, only once a migration can be applied to live.
-7. **Arabic, remaining:** an Arabic home page (`/ar` still redirects to `/ar/duroos`), library college and reader pages, `/mahad`, `/search`, English bits on `/ar/library`, search results linking to Arabic pages.
-8. **Open audit items** in `docs/audit/AUDIT.md`: 13 remaining stale facts, 16 women's areas and gates, 18 programme sort and compare, 19 dars level and language.
-9. **More content:** Visitor ID and iqama guide, Ejar through an accredited agent, stipend timing, Nabawi library rules, Rawdah hours, Ma'had life, healthcare.
-10. **Small polish:** strip of normal background between the pink sisters area and the footer on tall screens.
+2. **Done, do not redo:** admin "Needs you" home block and plain-language watcher cards (d2dd19b), admin search on Content, Shuyukh and Activity plus activity grouped by day (92a7dd5), in-page confirm sheet and Undo toast (87a5a97). Still open from ADMIN-AUDIT: check that Gemini readings are accurate, and a gold accent for attention counts if it is not there yet.
+3. **Programmes, discounts, key dates and library into DB tables with admin editing**, in that order starting with discounts, only once a migration can be applied to live.
+4. **Arabic, remaining:** an Arabic home page (`/ar` still redirects to `/ar/duroos`), library college and reader pages, `/mahad`, `/search`, English bits on `/ar/library`, search results linking to Arabic pages.
+5. **Open audit items** in `docs/audit/AUDIT.md`: 13 remaining stale facts, 16 women's areas and gates, 18 programme sort and compare, 19 dars level and language.
+6. **More content:** Visitor ID and iqama guide, Ejar through an accredited agent, stipend timing, Nabawi library rules, Rawdah hours, Ma'had life, healthcare.
+7. **Small polish:** strip of normal background between the pink sisters area and the footer on tall screens.
 
 ## Gotchas
 - **Shared folder:** several sessions may share this checkout and one git index. Stage files by explicit path, never `git add -A`; a `git commit` picks up whatever another session staged. Never stash, reset or switch branches.
