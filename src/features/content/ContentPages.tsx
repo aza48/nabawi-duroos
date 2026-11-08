@@ -87,6 +87,7 @@ export function GuidesPage({ guides }: { guides: GuideRow[] }) {
               </a>
             );
           })}
+          <Link href="/mahad" className="inline-flex items-center gap-2 rounded-full bg-gold-bright px-4 py-2 text-sm font-semibold text-brand-deep transition hover:bg-gold">Ma&apos;had hub</Link>
         </nav>
       </PageBand>
       <div className="shell mt-10 space-y-14 md:mt-14">

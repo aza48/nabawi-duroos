@@ -73,6 +73,7 @@ export function LibraryPage({ takhleesHref }: { takhleesHref: string; helpContac
 
         <section id="mahad-extra" className="scroll-mt-24">
           <h2 className="font-heading text-2xl font-bold">More for Ma&apos;had students</h2>
+          <p className="mt-1 text-muted">All of it by level, with the answer keys and the rules for failing a level, in the <Link href="/mahad" className="font-semibold text-primary hover:underline">Ma&apos;had hub</Link>.</p>
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             {MAHAD_EXTRA.map((l) => <LinkCard key={l.href} l={l} />)}
           </div>
