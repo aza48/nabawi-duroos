@@ -29,16 +29,16 @@ export function NextPrayer({ prayers, tomorrowFajr, locale }: { prayers: Record<
   const clock = `${h}:${pad(m)}:${pad(s)}`;
 
   return (
-    <div className="rounded-3xl bg-white/10 p-5 text-white ring-1 ring-white/15 backdrop-blur-sm md:p-6">
+    <div className="grid grid-cols-[1fr_auto] items-center gap-x-4 rounded-3xl bg-white/10 px-5 py-4 text-white ring-1 ring-white/15 backdrop-blur-sm md:block md:p-6">
       <p className="text-sm text-white/75">
         {ar ? "الأذان القادم" : "Next adhan"}
         {!next && now !== null && (ar ? " (غدًا)" : " (tomorrow)")}
       </p>
-      <p className="mt-1 font-heading text-3xl font-bold md:text-4xl">{t(locale, name)}</p>
-      <p className="mt-3 font-heading text-4xl font-bold tabular text-gold-bright md:text-5xl" dir="ltr" aria-live="off">
+      <p className="font-heading text-2xl font-bold md:mt-1 md:text-4xl">{t(locale, name)}</p>
+      <p className="col-start-2 row-span-3 row-start-1 font-heading text-3xl font-bold tabular text-gold-bright md:mt-3 md:text-5xl" dir="ltr" aria-live="off">
         {left === null ? " " : ar ? toArabicDigits(clock) : clock}
       </p>
-      <p className="mt-1 text-sm text-white/70" dir={ar ? "rtl" : "ltr"}>
+      <p className="text-sm text-white/70 md:mt-1" dir={ar ? "rtl" : "ltr"}>
         {ar ? "عند " : "at "}
         <span dir="ltr">{formatClock(new Date(target), locale)}</span>
       </p>

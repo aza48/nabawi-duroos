@@ -45,8 +45,8 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
 
   return (
     <section className="lattice overflow-hidden bg-brand text-white">
-      <div className="shell pt-8 pb-6 md:pt-12 md:pb-8">
-        <div className="grid items-end gap-6 lg:grid-cols-[1fr_340px] lg:gap-10">
+      <div className="shell pt-6 pb-6 md:pt-12 md:pb-8">
+        <div className="grid items-end gap-4 md:gap-6 lg:grid-cols-[1fr_340px] lg:gap-10">
           <div>
             <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white/75 md:text-base">
               <span>
@@ -71,7 +71,7 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
           </div>
           <NextPrayer prayers={today.prayers} tomorrowFajr={tomorrowFajr} locale={locale} />
         </div>
-        <div className="mt-6 md:mt-8">
+        <div className="mt-6 hidden sm:block md:mt-8">
           <DayArc prayers={today.prayers} counts={arcCounts(today)} locale={locale} />
         </div>
       </div>
