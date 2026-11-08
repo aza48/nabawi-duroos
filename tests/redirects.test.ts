@@ -17,7 +17,6 @@ const EXPECTED: [string, string][] = [
   ["/guidelines", "/more#rules"],
   ["/about", "/more#about"],
   ["/manage", "/more"],
-  ["/privacy", "/more"],
 ];
 
 describe("legacy redirects", () => {

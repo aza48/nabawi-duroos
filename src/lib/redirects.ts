@@ -28,5 +28,4 @@ export const LEGACY_REDIRECTS: { source: string; destination: string; permanent:
   { source: "/guidelines", destination: "/more#rules", permanent: true },
   { source: "/about", destination: "/more#about", permanent: true },
   { source: "/manage", destination: "/more", permanent: true },
-  { source: "/privacy", destination: "/more", permanent: true },
 ];

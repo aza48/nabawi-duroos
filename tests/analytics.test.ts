@@ -82,6 +82,18 @@ describe("track endpoint limits", () => {
     }
     expect((await analyticsReport(db, 7)).pageviews).toBe(before + TRACK_LIMIT.max);
   });
+  it("ignores a browser that sends Global Privacy Control", async () => {
+    const { POST } = await import("@/app/api/v1/track/route");
+    const res = await POST(new Request("https://medinahub.org/api/v1/track", {
+      method: "POST",
+      body: JSON.stringify({ t: "pv", v: "visitor_gpcgpcgp", s: "session_gpcgpcgp", e: "page_gpc_aaaa", path: "/guides" }),
+      headers: { "user-agent": PHONE, host: "medinahub.org", "sec-gpc": "1" },
+    }));
+    expect(res.status).toBe(204);
+    const report = await analyticsReport(db, 1);
+    expect(report.pages.some((p) => p.path === "/guides")).toBe(false);
+  });
+
   it("refuses a path that is not on this site", async () => {
     expect((await track({ t: "pv", v: "visitor_aaaaaaaa", s: "session_aaaaaaaa", e: "page_bad_aaaa", path: "https://evil.example/" })).status).toBe(400);
     expect((await track({ t: "pv", v: "visitor_aaaaaaaa", s: "session_aaaaaaaa", e: "page_bad_bbbb", path: "//evil.example/" })).status).toBe(400);
