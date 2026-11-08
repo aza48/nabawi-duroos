@@ -128,6 +128,7 @@ describe("assistant rules", () => {
     expect(detectLive("duroos on friday", today).duroos?.date).toBe("2026-11-13");
     expect(detectLive("دروس بعد العشاء اليوم", today).duroos).toEqual({ date: today, prayers: ["isha"] });
     expect(detectLive("what is the cost of living", today).duroos).toBeNull();
+    expect(detectLive("what duroos are on tonight", today).duroos).toEqual({ date: today, prayers: ["maghrib", "isha"] });
     expect(detectLive("prayer times today", today).prayerTimes).toBe(true);
   });
 

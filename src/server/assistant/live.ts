@@ -37,7 +37,14 @@ export type LiveIntent = { duroos: { date: string; prayers: Prayer[] } | null; p
 /** Reads what live data a question needs, if any. `today` is the Riyadh date. */
 export function detectLive(question: string, today: string): LiveIntent {
   const q = normalize(question);
-  const prayers = PRAYERS.filter((p) => PRAYER_WORDS[p].test(q));
+  const named = PRAYERS.filter((p) => PRAYER_WORDS[p].test(q));
+  // "Tonight" is the evening duroos; "this morning" is after Fajr; "this afternoon" after Dhuhr and Asr.
+  const prayers: Prayer[] = named.length
+    ? named
+    : /\b(tonight|this evening)\b|الليله|المساء/.test(q) ? ["maghrib", "isha"]
+    : /\bthis morning\b|الصباح/.test(q) ? ["fajr"]
+    : /\bthis afternoon\b|الظهيره/.test(q) ? ["dhuhr", "asr"]
+    : [];
   const wantsTimes = TIMES.test(q);
   let date: string | null = null;
   if (/\b(tomorrow)\b|غدا|بكره/.test(q)) date = addDays(today, 1);

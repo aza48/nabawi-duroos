@@ -170,8 +170,9 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   }
 
   // A short follow-up ("how much does it cost?") is searched together with the previous question.
-  const lastUser = [...history].reverse().find((t) => t.role === "user")?.text ?? "";
-  const searchText = keyTerms(q).length < 3 && lastUser ? `${lastUser} ${q}` : q;
+  // Short follow-ups ("do I need an iqama for that?") are searched with the two questions before them.
+  const earlier = history.filter((t) => t.role === "user").slice(-2).map((t) => t.text).join(" ");
+  const searchText = keyTerms(q).length < 3 && earlier ? `${earlier} ${q}` : q;
   const today = riyadhDateIso(now);
   const live = detectLive(searchText, today);
   const cacheable = !live.duroos && !live.prayerTimes && history.length === 0;
