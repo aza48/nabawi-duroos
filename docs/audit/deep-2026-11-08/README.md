@@ -53,7 +53,7 @@ Reports: `security.md` (0 critical, 1 high, 8 medium, 10 low), `duroos.md` (0 cr
 |---|---|---|---|---|
 | 33 | Heartbeat says "last checked" even when every channel fetch failed | duroos M5 | S | done 7c7fe13 |
 | 34 | Same post forwarded to two channels is read twice and can create two overrides and two pushes | duroos M6 | S | done 7c7fe13 |
-| 35 | Quota exhaustion retried forever with no back-off; a run can exceed 60 s | duroos M7, security L4 | S | todo |
+| 35 | Quota exhaustion retried forever with no back-off; a run can exceed 60 s | duroos M7, security L4 | S | partly 9f1673e (budget covers fetches, 30-minute back-off; refreshStreams still has no fetch timeout) |
 | 36 | Keyword prefilter misses تعليق, منقول, يستكمل, عطلة, غياب and "البث المباشر الآن" | duroos M10 | S | done 7c7fe13 |
 | 37 | A cancellation announcement does not change the schedule, so Updates and the dars card can disagree | duroos M9 | M | todo |
 | 38 | Public API is not ready for a native app: no list endpoints, no date parameter, inconsistent envelope | duroos M4 | L | todo |
