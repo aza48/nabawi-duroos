@@ -8,7 +8,7 @@ export function AssistantPage({ locale = "en" }: { locale?: Locale }) {
   return (
     <>
       <PageBand
-        title={<span className="inline-flex items-center gap-3"><MessageCircleQuestion className="size-9 text-gold-bright md:size-12" /> {ar ? "اسأل MESH" : "Ask MESH"}</span>}
+        title={<span className="inline-flex items-center gap-3"><MessageCircleQuestion className="size-9 text-gold-bright md:size-12" /> {ar ? "مساعد MESH" : "Ask the Meshaykh"}</span>}
         subtitle={ar ? "أجوبة سريعة عن الجامعة والتأشيرات والسكن والبنوك والدروس في المدينة." : "Quick answers about the University, visas, housing, banks and the duroos in Madinah."}
       />
       <div className="shell mt-8 md:mt-12">
