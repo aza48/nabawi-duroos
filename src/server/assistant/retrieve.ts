@@ -100,9 +100,23 @@ export function coverage(q: string, c: Pick<Chunk, "title" | "section" | "text">
  * so an Arabic question can match English text.
  */
 export function termHits(terms: string[], text: string): number {
-  const hay = ` ${normalize(text)} `;
+  const norm = normalize(text);
+  const hay = ` ${norm} `;
+  let words: string[] | null = null;
   const has = (w: string) => hay.includes(w.length <= 3 ? ` ${w} ` : w) || (w.length > 4 && hay.includes(w.slice(0, -1)));
-  return terms.filter((t) => has(t) || expandQuery(t).split(" ").slice(1).some((x) => x.length > 2 && has(x))).length;
+  // A typo ("stipnd") counts when a word in the text is one letter away; only for longer words.
+  const near = (w: string) => w.length >= 5 && (words ??= [...new Set(norm.split(/[\s-]+/))]).some((x) => Math.abs(x.length - w.length) <= 1 && oneEdit(w, x));
+  return terms.filter((t) => has(t) || expandQuery(t).split(" ").slice(1).some((x) => x.length > 2 && has(x)) || near(t)).length;
+}
+
+/** True when a and b differ by at most one inserted, deleted or changed letter. */
+export function oneEdit(a: string, b: string): boolean {
+  if (a === b) return true;
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  while (i < a.length && i < b.length && a[i] === b[i]) i++;
+  if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1);
+  return a.length > b.length ? a.slice(i + 1) === b.slice(i) : a.slice(i) === b.slice(i + 1);
 }
 
 function hits(terms: string[], c: Pick<Chunk, "title" | "section" | "text" | "keywords">): number {

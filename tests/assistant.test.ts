@@ -2,7 +2,7 @@ import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { resetTestDb, type Db } from "@/server/db/client";
 import { importLegacy } from "@/server/seed/import-legacy";
 import { buildKnowledge, chunkGuide, type Chunk } from "@/server/assistant/knowledge";
-import { createRetriever } from "@/server/assistant/retrieve";
+import { createRetriever, oneEdit } from "@/server/assistant/retrieve";
 import { askMesh, sameQuestion, cleanDashes, isRulingQuestion, langOf, parseReply, resetAnswerCache, unsupportedNumbers, type AskOptions } from "@/server/assistant/answer";
 import { systemPrompt } from "@/server/assistant/prompt";
 import { detectLive } from "@/server/assistant/live";
@@ -58,6 +58,7 @@ export const EVAL: [question: string, expected: RegExp][] = [
   ["how do I get from the airport to the haram", /getting-around|haramain-train/],
   ["كم تكلفة المعيشة في المدينة", /cost-of-living|monthly-budget/],
   ["متى الاختبارات النهائية", /university-calendar-1448/],
+  ["ما هي مكافأة الطالب الشهرية", /stipend/],
   ["what should i bring when i move to madinah", /what-to-bring-to-madinah/],
   ["how do I renew my iqama", /student-iqama-renewal|iqama/],
   ["how many classes can I miss", /how-many-classes-can-i-miss|exams-results-and-attendance/],
@@ -231,6 +232,25 @@ describe("assistant answers", () => {
     const r = await ask("what are the mataam prices");
     expect(r.found).toBe(true);
     expect(r.sources.map((s) => s.url).join(" ")).toMatch(/mataam|campus-life/);
+  });
+
+  it("greets back instead of saying it has no answer", async () => {
+    const r = await ask("Assalamu alaikum");
+    expect(r.found).toBe(true);
+    expect(r.answer).toMatch(/alaikum/i);
+    expect((await ask("السلام عليكم")).lang).toBe("ar");
+  });
+
+  it("forgives a one-letter typo", async () => {
+    const r = await ask("stipnd amount");
+    expect(r.found).toBe(true);
+    expect(oneEdit("stipnd", "stipend")).toBe(true);
+    expect(oneEdit("visa", "fees")).toBe(false);
+  });
+
+  it("does not answer from a generic site blurb that only half matches", async () => {
+    const r = await ask("where is the nearest mosque to the university");
+    expect(r.sources.map((s) => s.url)).not.toContain("/library");
   });
 
   it("keeps the topic of a short follow-up", async () => {

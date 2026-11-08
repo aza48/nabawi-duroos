@@ -5,7 +5,7 @@ import { cleanText } from "@/lib/text";
 import { normalize } from "@/lib/search/normalize";
 import { riyadhDateIso } from "@/lib/time/riyadh";
 import { getKnowledge, type Chunk } from "./knowledge";
-import { answers, createRetriever, keyTerms, termHits, type Passage } from "./retrieve";
+import { answers, coverage, createRetriever, keyTerms, termHits, type Passage } from "./retrieve";
 import { detectLive, duroosPassage, prayerTimesPassage, todayPassage } from "./live";
 import { composeExtractive, notFound } from "./compose";
 import { systemPrompt, userTurn } from "./prompt";
@@ -53,6 +53,18 @@ export function langOf(text: string): "en" | "ar" {
 const RULING = /\b(is it|is this|are they|it is|is)\s+(halal|haram|permissible|permitted|allowed in islam|makruh|makrooh|sunnah|bidah|bida|shirk|kufr|obligatory|fard|wajib)\b|\b(ruling|fatwa|fatwah|hukm|islamic verdict)\b|حكم|يجوز|فتوي|حلال ام حرام|هل يحرم/;
 export function isRulingQuestion(q: string): boolean {
   return RULING.test(normalize(q));
+}
+
+/** A greeting with no question in it ("salam", "hello", "السلام عليكم"). */
+const GREETING = /^(hi|hello|hey|salam|salaam|assalamu? ?alaikum|as salamu alaikum|assalamualaikum|asalamualaikum|wa ?alaikum ?(as)? ?salam|good (morning|evening|afternoon)|thanks?|thank you|jazakallah ?(khair|khayr)?|السلام عليكم|سلام|مرحبا|اهلا|شكرا|جزاك الله خيرا)[\s!.,?]*$/;
+export function isGreeting(q: string): boolean {
+  return GREETING.test(normalize(q).replace(/\s+/g, " ").trim()) || GREETING.test(q.trim().toLowerCase());
+}
+
+function greetingReply(lang: "en" | "ar"): string {
+  return lang === "ar"
+    ? "وعليكم السلام ورحمة الله. أنا مساعد MESH، أجيب عن الدراسة والحياة في المدينة: الجامعة والتأشيرات والإقامة والبنوك والسكن والدروس. اسألني ما تريد."
+    : "Wa alaikum assalam. I'm the MESH assistant: ask me anything about studying and living in Madinah, from the University, visas, the iqama, banks and housing to tonight's duroos.";
 }
 
 function rulingReply(lang: "en" | "ar"): string {
@@ -165,6 +177,10 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   const ar = lang === "ar";
   const history = (input.history ?? []).slice(-6).map((t) => ({ role: t.role, text: t.text.slice(0, 1200) }));
 
+  if (isGreeting(q)) {
+    return { answer: greetingReply(lang), sources: [], related: [], mode: "guard", found: true, lang };
+  }
+
   if (isRulingQuestion(q)) {
     return { answer: rulingReply(lang), sources: [{ title: ar ? "الدروس" : "Duroos", url: "/duroos" }], related: [], mode: "guard", found: true, lang };
   }
@@ -186,7 +202,8 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   if (live.duroos) livePassages.push(await duroosPassage(db, live.duroos, now, ar, searchText));
   if (live.prayerTimes) livePassages.push(prayerTimesPassage(now, ar));
   const passages: Chunk[] = [...livePassages, ...found];
-  const strong = livePassages.length > 0 || found.slice(0, 3).some((p) => answers(searchText, p));
+  // A site-wide blurb (kind "page") only counts as an answer when it holds every topic word.
+  const strong = livePassages.length > 0 || found.slice(0, 3).some((p) => (p.kind === "page" ? coverage(searchText, p) === 1 : answers(searchText, p)));
   const context = [...passages, todayPassage(now, ar)];
 
   // 1. The question is one MESH has already answered: give that verified answer as it is.
@@ -247,7 +264,7 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   }
 
   // 6. The best sentences of the best passages.
-  const top = found.slice(0, 2);
+  const top = found.filter((p) => p.kind !== "page" || coverage(searchText, p) === 1).slice(0, 2);
   const sources = uniqueSources(top);
   return { answer: composeExtractive(searchText, top, lang), sources, related: relatedOf(found, new Set(sources.map((s) => page(s.url)))), mode: "extract", found: true, lang };
 }
