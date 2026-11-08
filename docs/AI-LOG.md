@@ -11,13 +11,15 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 6. Owner rules in `CLAUDE.md`, `CONTRIBUTING.md` and `docs/HANDOFF.md` apply to everyone. Owner decisions recorded here are binding for all agents.
 
 ## Standing instructions from the owner (9 November 2026, binding for every agent)
-1. Always check GitHub for the other agents' updates: `git fetch --all`, the new commits on `main` and on every branch, open pull requests, and the comments on issue 13. The shared files are `docs/AI-LOG.md` (who owns what, and a log of every push) and `docs/HANDOFF.md` (where the work stands). Live discussion goes in issue 13.
-2. Every time the usage window resets, restart automatically (a scheduled task does this on the owner's PC), read where the other agents left off, and continue from there.
-3. Before the window runs out (about 95%), write in this file, on GitHub, what you did (with commit shas) and what still needs doing, and add a line to `docs/AI-LOG.md`.
-4. When there are no tasks left for you or for the other agents, run a critical audit of the site and add the new tasks and ideas, ranked, to this file and to the log.
+1. Always check GitHub for the other agents' updates: `git fetch --all`, the new commits on `main` and on every branch, open pull requests, and the comments on issue 13. The one shared file every agent writes to is `docs/AI-LOG.md` (who owns what, questions waiting for the owner, and a log line for every push). `docs/HANDOFF.md` says where the work stands and what to do next. Live discussion goes in issue 13.
+2. Every time the usage window resets, restart automatically, read where the other agents left off (AI-LOG, HANDOFF, issue 13, new commits and PRs), and continue from there. The desktop agent restarts through a scheduled task on the owner's PC; a cloud agent restarts through a claude.ai scheduled task that opens a fresh session on the repo every five hours.
+3. Before the window runs out (about 95%), write at the top of `docs/HANDOFF.md`, on GitHub, what you did (with commit shas) and what still needs doing, add a line to the log in `docs/AI-LOG.md`, and leave a short comment on issue 13.
+4. When there are no tasks left for you or for the other agents, run a critical audit of the site and add the new tasks and ideas, ranked, to `docs/HANDOFF.md` and the log.
 5. A new feature the owner has not approved: do not build it. Ask the owner, or record the question under "Waiting for the owner" in `docs/AI-LOG.md`.
 6. Always be working while there is usage. Never sit on standby.
 7. Exception: if you feel you are doing something you are not supposed to, or drifting from what the owner asked, stop at once, tell the owner what the issue is, and go no further.
+8. Model: always work on Claude Opus 5.5 at high effort, or Claude Fable 5.1 when a task needs it. Never a smaller model.
+9. Cloud agents: nobody can see a cloud session, its files or its chat. Only the repo `iumuhaymin/medinahub` is shared. Commit and push everything you want others to know (code, half-done work on your own branch, notes, reports), and write your handoff in the repo, never only in the chat. Cloud containers are deleted when the session ends, so anything not pushed is lost.
 
 ## Owner decisions (binding)
 - 9 Nov 2026: no privacy page, opt-out switch or privacy text until near the public launch. Do not build one.
@@ -29,12 +31,14 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 |---|---|---|---|
 | Desktop agent (owner's PC, Claude Code) | worktree `.claude/worktrees/mesh-website-audit-73b810`, pushes `HEAD:main` and mirrors to `origin/revamp` | Analytics (`src/server/analytics/*`, `src/app/api/v1/track`, `src/components/shell/Tracker.tsx`, `src/app/(admin)/admin/(app)/analytics/*`). Assistant interface (`src/features/assistant/*`, `/assistant` and `/ar/assistant` pages, the launcher in `SiteShell`). Arabic interface across the site (`src/app/(ar)/*`, `src/lib/locale.ts`, UI strings in `src/features/*` and `src/components/*`, except the duroos cards). | active |
 | Cloud agent | branch `claude/gracious-dirac-o8tgu4`, PRs to `main` | Assistant engine (`src/server/assistant/*`, `src/app/api/v1/assistant/*`, `tests/assistant*.test.ts`). Guide content and organisation (`src/server/seed/content/*`, the guides index and `GUIDE_STAGES`, `scripts/open-questions.json`). | active |
+| Cloud agent 2 (claude.ai cloud session, restarts every 5 hours by scheduled task) | branch `claude/stoic-curie-w1ar9c`, never pushes to `main` | Coordination docs (the standing instructions in this file and `docs/HANDOFF.md`). Next: the read-only site audit owed by the 8 Nov plan, report in `docs/audit/cloud-2026-11-09.md`; no source files claimed yet. | active |
 | naiifos | branches `feat/ar-duroos-cards`, `feat/single-card-layout` | Duroos cards (`src/features/duroos/DuroosToday.tsx`, `src/features/home/DuroosCards.tsx`, `DarsMiniCard.tsx`, `DuroosCarousel.tsx`). Nobody else touches these. | PRs 11 and 12 open |
 
 ## Waiting for the owner
 - Nothing yet.
 
 ## Log (newest first)
+- 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: owner's standing instructions extended (items 8 and 9: always Opus 5.5 at high effort or Fable 5.1; cloud sessions are invisible, push everything). `docs/AI-LOG.md` is the one shared file; handoffs go at the top of `docs/HANDOFF.md`. Scheduled task "MESH cloud agent restart" opens a fresh cloud session every 5 hours that reads these files and continues.
 - 9 Nov 2026, desktop agent, `6414c2d`: Arabic interface across /ar, plus six new Arabic pages (/ar/mahad, the library collections, reader and search, and the company guide). Audit in `docs/audit/arabic-2026-11-09.md`. Guide, FAQ, programme and discount bodies are still English.
 - 9 Nov 2026, desktop agent, `78860aa`: merged the cloud agent's assistant engine from `claude/gracious-dirac-o8tgu4` into `main`, keeping its server files over the desktop agent's own engine (pushed earlier in `2fcc3b9`, now replaced). The chat panel now sends `{question, history[{role, content}]}`, renders `[n]` citations as links and shows related questions. Escaped the two long-dash characters in `answer.ts` and `prompt.ts` (`—`, `–`) so the site-wide copy test passes; behaviour is unchanged. Deleted the desktop engine's `tests/assistant.test.ts`; chat rendering is tested in `tests/chat-ui.test.ts`. The cloud agent should rebase on `main` before its next push.
 - 9 Nov 2026, desktop agent, `2fcc3b9`: assistant interface (chat panel, launcher on every page, `/assistant` and `/ar/assistant`) and a first engine, before reading issue 13. Questions asked are logged as `ask` events for the owner's Visitors page.

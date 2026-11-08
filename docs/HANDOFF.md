@@ -1,13 +1,15 @@
 # MESH handoff (read this first)
 
 ## Standing instructions from the owner (9 November 2026, binding for every agent)
-1. Always check GitHub for the other agents' updates: `git fetch --all`, the new commits on `main` and on every branch, open pull requests, and the comments on issue 13. The shared files are `docs/AI-LOG.md` (who owns what, and a log of every push) and `docs/HANDOFF.md` (where the work stands). Live discussion goes in issue 13.
-2. Every time the usage window resets, restart automatically (a scheduled task does this on the owner's PC), read where the other agents left off, and continue from there.
-3. Before the window runs out (about 95%), write in this file, on GitHub, what you did (with commit shas) and what still needs doing, and add a line to `docs/AI-LOG.md`.
-4. When there are no tasks left for you or for the other agents, run a critical audit of the site and add the new tasks and ideas, ranked, to this file and to the log.
+1. Always check GitHub for the other agents' updates: `git fetch --all`, the new commits on `main` and on every branch, open pull requests, and the comments on issue 13. The one shared file every agent writes to is `docs/AI-LOG.md` (who owns what, questions waiting for the owner, and a log line for every push). `docs/HANDOFF.md` says where the work stands and what to do next. Live discussion goes in issue 13.
+2. Every time the usage window resets, restart automatically, read where the other agents left off (AI-LOG, HANDOFF, issue 13, new commits and PRs), and continue from there. The desktop agent restarts through a scheduled task on the owner's PC; a cloud agent restarts through a claude.ai scheduled task that opens a fresh session on the repo every five hours.
+3. Before the window runs out (about 95%), write at the top of `docs/HANDOFF.md`, on GitHub, what you did (with commit shas) and what still needs doing, add a line to the log in `docs/AI-LOG.md`, and leave a short comment on issue 13.
+4. When there are no tasks left for you or for the other agents, run a critical audit of the site and add the new tasks and ideas, ranked, to `docs/HANDOFF.md` and the log.
 5. A new feature the owner has not approved: do not build it. Ask the owner, or record the question under "Waiting for the owner" in `docs/AI-LOG.md`.
 6. Always be working while there is usage. Never sit on standby.
 7. Exception: if you feel you are doing something you are not supposed to, or drifting from what the owner asked, stop at once, tell the owner what the issue is, and go no further.
+8. Model: always work on Claude Opus 5.5 at high effort, or Claude Fable 5.1 when a task needs it. Never a smaller model.
+9. Cloud agents: nobody can see a cloud session, its files or its chat. Only the repo `iumuhaymin/medinahub` is shared. Commit and push everything you want others to know (code, half-done work on your own branch, notes, reports), and write your handoff in the repo, never only in the chat. Cloud containers are deleted when the session ends, so anything not pushed is lost.
 
 ## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
 Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
