@@ -16,8 +16,8 @@ beforeAll(async () => {
 
 describe("importLegacy", () => {
   it("imports every masjid and lesson", () => {
-    expect(first.masjids).toBe(7);
-    expect(first.lessons).toBe(45);
+    expect(first.masjids).toBe(10);
+    expect(first.lessons).toBe(52);
     expect(first.shaykhs).toBeGreaterThanOrEqual(15);
   });
 
@@ -25,7 +25,7 @@ describe("importLegacy", () => {
     const again = await importLegacy(db);
     expect(again).toEqual(first);
     const [{ n }] = await db.select({ n: count() }).from(lessons);
-    expect(n).toBe(45);
+    expect(n).toBe(52);
   });
 
   it("keeps the verified details of al-Ruhayli's Dalil al-Talib lesson", async () => {
@@ -43,7 +43,7 @@ describe("importLegacy", () => {
   it("gives Quba lessons their 1/4–30/6/1448 validity period", async () => {
     const rows = await db.select().from(lessons).where(eq(lessons.masjidId, "quba"));
     expect(rows.length).toBeGreaterThan(0);
-    for (const r of rows) {
+    for (const r of rows.filter((x) => !x.slug.startsWith("sisters-"))) {
       expect(r.validFrom).toBe(hijriIsoBounds(1448, 4, 1));
       expect(r.validTo).toBe(hijriIsoBounds(1448, 6, 30));
     }
@@ -51,7 +51,7 @@ describe("importLegacy", () => {
 
   it("leaves non-Quba lessons open-ended", async () => {
     const rows = await db.select().from(lessons).where(isNull(lessons.validTo));
-    expect(rows.every((r) => r.masjidId !== "quba")).toBe(true);
+    expect(rows.every((r) => r.masjidId !== "quba" || r.slug.startsWith("sisters-"))).toBe(true);
   });
 
   it("seeds the WhatsApp invite link and the Nabawi YouTube stream", async () => {
@@ -74,5 +74,20 @@ describe("importLegacy", () => {
     const ids = new Set((await db.select({ id: masjids.id }).from(masjids)).map((r) => r.id));
     const all = await db.select({ m: lessons.masjidId }).from(lessons);
     expect(all.every((r) => ids.has(r.m))).toBe(true);
+  });
+});
+
+describe("Al-Midad import", () => {
+  it("adds the sisters' duroos and fills al-Badr's tafsir days without touching admin edits", async () => {
+    const [t] = await db.select().from(lessons).where(eq(lessons.slug, "abadr-tafsir"));
+    expect(t.days).toEqual([0, 1, 2, 3, 4, 5]);
+    const [s] = await db.select().from(lessons).where(eq(lessons.slug, "sisters-talhi-ighathah"));
+    expect(s.masjidId).toBe("quba");
+    expect(s.prayer).toBe("maghrib");
+    await db.update(lessons).set({ days: [1] }).where(eq(lessons.slug, "abadr-tafsir"));
+    const { syncAlMidad } = await import("@/server/seed/content/al-midad");
+    expect(await syncAlMidad(db)).toEqual({ added: 0, updated: 0 });
+    const [t2] = await db.select().from(lessons).where(eq(lessons.slug, "abadr-tafsir"));
+    expect(t2.days).toEqual([1]);
   });
 });

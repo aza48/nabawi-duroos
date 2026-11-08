@@ -7,6 +7,7 @@ import { cleanRow } from "@/lib/text";
 import { importOldMesh } from "./import-old-mesh";
 import { syncContent2026 } from "./content/sync";
 import { syncBookLinks } from "./content/book-links";
+import { syncAlMidad } from "./content/al-midad";
 import { seedSources } from "@/server/watcher/sources";
 import { LESSONS } from "./legacy/lessons";
 import { SHAYKH_PROFILES } from "./legacy/profiles";
@@ -217,6 +218,7 @@ export async function importLegacy(db: Db) {
   await importOldMesh(db);
   await syncContent2026(db);
   await syncBookLinks(db);
+  await syncAlMidad(db);
   await seedSources(db);
 
   if ((await getSetting(db, "whatsapp_invite_url")) === null) {

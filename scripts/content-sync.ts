@@ -20,6 +20,8 @@ async function main() {
   const db = await getDb();
   console.log("Published:", await syncContent2026(db));
   console.log("Duroos with a book link:", await syncBookLinks(db));
+  const { syncAlMidad } = await import("@/server/seed/content/al-midad");
+  console.log("Al-Midad duroos:", await syncAlMidad(db));
   const { seedSources } = await import("@/server/watcher/sources");
   await seedSources(db);
   console.log("Watched channels refreshed");
