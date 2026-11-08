@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
-import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useNow } from "@/features/duroos/Countdown";
 import { phaseAt } from "@/server/duroos/schedule";
 
@@ -44,12 +44,31 @@ export function DuroosCarousel({
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
 
+  const [edge, setEdge] = useState({ start: true, end: false });
+
   const onScroll = () => {
     const el = railRef.current;
     if (!el || count < 2) return;
     const step = el.scrollWidth / count;
     setActive(Math.min(count - 1, Math.max(0, Math.round(Math.abs(el.scrollLeft) / step))));
+    const pos = Math.abs(el.scrollLeft);
+    setEdge({ start: pos < 4, end: pos + el.clientWidth >= el.scrollWidth - 4 });
   };
+
+  useEffect(onScroll, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /** Mouse users have no swipe and the scrollbar is hidden, so the arrows move one card at a time. */
+  const go = (dir: 1 | -1) => {
+    const el = railRef.current;
+    if (!el) return;
+    const rtl = getComputedStyle(el).direction === "rtl";
+    const first = el.firstElementChild as HTMLElement | null;
+    const stepPx = (first?.offsetWidth ?? el.clientWidth * 0.6) + 16;
+    el.scrollBy({ left: dir * (rtl ? -1 : 1) * stepPx, behavior: "smooth" });
+  };
+
+  const arrow =
+    "grid size-9 place-items-center rounded-full border border-line bg-card text-primary shadow-[var(--shadow)] transition hover:bg-primary hover:text-primary-ink disabled:opacity-40 disabled:hover:bg-card disabled:hover:text-primary";
 
   const wide =
     count === 1
@@ -90,10 +109,18 @@ export function DuroosCarousel({
       )}
 
       {count > 1 && many && (
-        <div aria-hidden="true" className="mt-3 hidden items-center justify-center gap-1.5 md:flex">
-          {items.map((_, i) => (
-            <span key={i} className={`h-1.5 rounded-full transition-all ${i === active ? "w-5 bg-primary" : "w-1.5 bg-line"}`} />
-          ))}
+        <div className="mt-3 hidden items-center justify-center gap-3 md:flex">
+          <button type="button" aria-label="Previous" onClick={() => go(-1)} disabled={edge.start} className={arrow}>
+            <ChevronLeft size={18} className="rtl:rotate-180" />
+          </button>
+          <div aria-hidden="true" className="flex items-center gap-1.5">
+            {items.map((_, i) => (
+              <span key={i} className={`h-1.5 rounded-full transition-all ${i === active ? "w-5 bg-primary" : "w-1.5 bg-line"}`} />
+            ))}
+          </div>
+          <button type="button" aria-label="Next" onClick={() => go(1)} disabled={edge.end} className={arrow}>
+            <ChevronRight size={18} className="rtl:rotate-180" />
+          </button>
         </div>
       )}
     </div>
