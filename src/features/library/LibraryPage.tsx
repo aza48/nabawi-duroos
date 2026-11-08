@@ -5,7 +5,7 @@ import { CHANNELS, MAHAD_EXTRA, OFFICIAL, type LibraryLink } from "@/content/lib
 import { LIVE_COLLECTIONS, countFiles, treeOf } from "@/content/library-books";
 import { CurriculumNote, LibrarySearchForm, firstLevelCount } from "./CoursePages";
 import { EnglishNote } from "@/components/EnglishNote";
-import type { Locale } from "@/lib/locale";
+import { toArabicDigits, type Locale } from "@/lib/locale";
 
 const ICON: Record<LibraryLink["kind"], typeof Folder> = { folder: Folder, pdf: FileText, site: Globe, youtube: MonitorPlay, telegram: Send, x: Globe, whatsapp: Send };
 
@@ -17,18 +17,15 @@ function LinkCard({ l, ar = false }: { l: LibraryLink; ar?: boolean }) {
         <Icon size={19} />
       </span>
       <span className="min-w-0 flex-1">
-        {ar && l.titleAr ? (
-          <>
-            <span className="ar-text block font-semibold leading-snug group-hover:text-primary">{l.titleAr}</span>
-            <span className="block text-sm text-muted" dir="auto" lang="en">{l.title}</span>
-          </>
+        {ar ? (
+          <span className="ar-text block font-semibold leading-snug group-hover:text-primary" dir="auto">{l.titleAr ?? l.title}</span>
         ) : (
           <>
             <span className="block font-semibold leading-snug group-hover:text-primary" dir="auto">{l.title}</span>
             {l.titleAr && <span className="ar-text block text-[15px] text-muted">{l.titleAr}</span>}
           </>
         )}
-        {l.note && <span className="mt-0.5 block text-sm text-muted" dir="auto">{l.note}</span>}
+        {(ar ? l.noteAr : l.note) && <span className="mt-0.5 block text-sm text-muted" dir="auto">{ar ? l.noteAr : l.note}</span>}
       </span>
       <ArrowUpRight size={16} className="mt-1 shrink-0 text-muted rtl:-scale-x-100" />
     </a>
@@ -73,11 +70,11 @@ export function LibraryPage({ takhleesHref, locale = "en" }: { takhleesHref: str
               const tree = treeOf(c.slug)!;
               const levels = firstLevelCount(tree);
               return (
-                <Link key={c.slug} href={`/library/${c.slug}`} className={`group flex flex-col rounded-2xl border p-5 transition-colors hover:border-primary/50 ${c.group === "mahad" ? "border-primary/40 bg-primary-soft/40" : "border-line bg-card"}`}>
+                <Link key={c.slug} href={`${ar ? "/ar" : ""}/library/${c.slug}`} className={`group flex flex-col rounded-2xl border p-5 transition-colors hover:border-primary/50 ${c.group === "mahad" ? "border-primary/40 bg-primary-soft/40" : "border-line bg-card"}`}>
                   {ar ? (
                     <>
                       <span className="ar-text text-xl font-bold leading-snug group-hover:text-primary">{c.titleAr}</span>
-                      <span className="text-sm text-muted" dir="auto" lang="en">{c.title}</span>
+                      <span className="mt-2 text-sm text-muted">{c.blurbAr}</span>
                     </>
                   ) : (
                     <>
@@ -87,7 +84,7 @@ export function LibraryPage({ takhleesHref, locale = "en" }: { takhleesHref: str
                     </>
                   )}
                   <span className="mt-auto pt-4 text-sm font-semibold text-primary">
-                    {countFiles(tree)} {t.files}{levels ? `${ar ? "، " : ", "}${levels} ${t.levels}` : ""}
+                    {ar ? toArabicDigits(countFiles(tree)) : countFiles(tree)} {t.files}{levels ? `${ar ? "، " : ", "}${ar ? toArabicDigits(levels) : levels} ${t.levels}` : ""}
                   </span>
                 </Link>
               );
@@ -99,7 +96,7 @@ export function LibraryPage({ takhleesHref, locale = "en" }: { takhleesHref: str
         <section id="mahad-extra" className="scroll-mt-24">
           <h2 className="font-heading text-2xl font-bold">{ar ? "المزيد لطلاب المعهد" : <>More for Ma&apos;had students</>}</h2>
           {ar ? (
-            <p className="mt-1 text-muted">كل ذلك مرتبًا حسب المستوى، مع مفاتيح الإجابات وقواعد الرسوب في المستوى، في <Link href="/mahad" className="font-semibold text-primary hover:underline">دليل المعهد</Link>.</p>
+            <p className="mt-1 text-muted">كل ذلك مرتبًا حسب المستوى، مع مفاتيح الإجابات وقواعد الرسوب في المستوى، في <Link href="/ar/mahad" className="font-semibold text-primary hover:underline">دليل المعهد</Link>.</p>
           ) : (
             <p className="mt-1 text-muted">All of it by level, with the answer keys and the rules for failing a level, in the <Link href="/mahad" className="font-semibold text-primary hover:underline">Ma&apos;had hub</Link>.</p>
           )}

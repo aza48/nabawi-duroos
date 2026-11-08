@@ -51,7 +51,7 @@ export function ProgramsIndex({ locale = "en" }: { locale?: Locale }) {
     <>
       <PageBand title={t.title} subtitle={t.sub} />
       <div className="shell mt-10 md:mt-14">
-        <nav aria-label="Jump to" className="flex flex-wrap gap-2">
+        <nav aria-label={ar ? "انتقل إلى" : "Jump to"} className="flex flex-wrap gap-2">
           {PROGRAM_KINDS.filter((k) => PROGRAMS.some((p) => p.kind === k.id)).map((k) => (
             <a key={k.id} href={`#${k.id}`} className="min-h-10 rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold text-muted transition hover:text-ink">
               {ar ? k.labelAr : k.label} <span className="tabular opacity-70">{PROGRAMS.filter((p) => p.kind === k.id).length}</span>
@@ -69,10 +69,7 @@ export function ProgramsIndex({ locale = "en" }: { locale?: Locale }) {
                 {items.map((p) => (
                   <Link key={p.slug} href={`${t.base}/programs/${p.slug}`} data-aud={p.audience.join(" ")} className="group flex flex-col rounded-2xl border border-line bg-card p-5 lift hover:border-primary/50">
                     {ar ? (
-                      <>
-                        <span className="ar-text text-xl font-bold leading-snug group-hover:text-primary">{p.nameAr}</span>
-                        <span className="text-sm text-muted" dir="auto" lang="en">{p.name}</span>
-                      </>
+                      <span className="ar-text text-xl font-bold leading-snug group-hover:text-primary">{p.nameAr}</span>
                     ) : (
                       <>
                         <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary">{p.name}</span>
@@ -124,7 +121,7 @@ export function ProgramPage({ p, locale = "en" }: { p: Program; locale?: Locale 
     ...(p.levels ? [{ id: "levels", label: t.levels, content: <div {...en} className="max-w-3xl"><List items={p.levels} /></div> }] : []),
     ...(p.included ? [{ id: "fees", label: t.fees, content: <div {...en} className="max-w-3xl"><p className="mb-5 font-heading text-2xl font-bold">{p.price}</p><List items={p.included} /></div> }] : []),
     ...(p.steps ? [{ id: "apply", label: t.apply, content: <div {...en} className="max-w-3xl"><List items={p.steps} numbered /></div> }] : []),
-    ...(p.videos?.length ? [{ id: "videos", label: `${t.videos} (${p.videos.length})`, content: <div className="grid gap-5 md:grid-cols-2">{p.videos.map((v) => <VideoEmbed key={v.id} id={v.id} title={v.title} />)}</div> }] : []),
+    ...(p.videos?.length ? [{ id: "videos", label: `${t.videos} (${p.videos.length})`, content: <div className="grid gap-5 md:grid-cols-2">{p.videos.map((v) => <VideoEmbed key={v.id} id={v.id} title={v.title} locale={locale} />)}</div> }] : []),
   ];
   const ld = {
     "@context": "https://schema.org",
@@ -141,15 +138,12 @@ export function ProgramPage({ p, locale = "en" }: { p: Program; locale?: Locale 
   };
   return (
     <>
-      <JsonLd data={[ld, breadcrumbs([["Study in Madinah", "/programs"], [p.name, `/programs/${p.slug}`]])]} />
+      {!ar && <JsonLd data={[ld, breadcrumbs([["Study in Madinah", "/programs"], [p.name, `/programs/${p.slug}`]])]} />}
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-14">
           <Breadcrumbs tone="band" rtl={ar} items={[[ar ? "الرئيسية" : "Home", ar ? "/ar" : "/"], [t.title, `${t.base}/programs`]]} />
           {ar ? (
-            <>
-              <h1 className="ar-text mt-3 text-4xl font-bold leading-snug md:text-6xl">{p.nameAr}</h1>
-              <p className="mt-2 text-xl text-white/80" dir="auto" lang="en">{p.name}</p>
-            </>
+            <h1 className="ar-text mt-3 text-4xl font-bold leading-snug md:text-6xl">{p.nameAr}</h1>
           ) : (
             <>
               <h1 className="mt-3 font-heading text-4xl font-bold leading-[1.05] md:text-6xl">{p.name}</h1>

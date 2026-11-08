@@ -17,19 +17,20 @@ export type Collection = {
   titleAr: string;
   group: "college" | "mahad";
   blurb: string;
+  blurbAr: string;
   /** The Drive folder the files come from, for "see the source". */
   source: string;
 };
 
 export const COLLECTIONS: Collection[] = [
-  { slug: "sharia", title: "Sharia", titleAr: "كلية الشريعة", group: "college", blurb: "Fiqh, usul al-fiqh, the evidences and the legal verses and hadith, level by level.", source: "1RXBfiSCzB0oh1Z3esU96xeWA0TVUgX18" },
-  { slug: "hadith", title: "Hadith and Islamic Studies", titleAr: "كلية الحديث الشريف والدراسات الإسلامية", group: "college", blurb: "Hadith texts, mustalah, takhrij and the narrators, level by level.", source: "1KXm3_LkFeHRBWKuH_VjYWnwKbQJ8ZEqO" },
-  { slug: "dawah", title: "Da'wah and Usul ad-Din", titleAr: "كلية الدعوة وأصول الدين", group: "college", blurb: "Aqeedah, sects and religions, and da'wah methods, level by level.", source: "1MYxRBxcSXh33t8YdguvvxDFOJzB9Bbis" },
-  { slug: "quran", title: "Qur'an and Islamic Studies", titleAr: "كلية القرآن الكريم والدراسات الإسلامية", group: "college", blurb: "Tafsir, Qur'anic sciences, tajwid and the qira'at, level by level.", source: "18uSzFiDHqIJAAenxzNzzKsVNqkmFnA1p" },
-  { slug: "arabic", title: "Arabic Language", titleAr: "كلية اللغة العربية", group: "college", blurb: "Nahw, sarf, balaghah and literature, level by level.", source: "1fz6awGKUbvuaKCHVP6t0R2E_9aeYChxA" },
-  { slug: "law", title: "Law", titleAr: "الأنظمة والقانون", group: "college", blurb: "Saudi systems and law courses.", source: "1bODk8LjJ9O-5F9f0Owlo8oMNBiH0qcyg" },
-  { slug: "education", title: "Education", titleAr: "كلية التربية", group: "college", blurb: "Education college course files.", source: "1rp4AsqG_wZ2Az0FRMrTzsmFpKgY8RShC" },
-  { slug: "mahad", title: "Arabic Language Institute (Ma'had)", titleAr: "معهد تعليم اللغة العربية لغير الناطقين بها", group: "mahad", blurb: "The textbooks for every level, the new six-level books, the student guide, regulations and extra practice.", source: "1yqzf3ud2WA-YkVUWoF2lVneLNxZof7mx" },
+  { slug: "sharia", title: "Sharia", titleAr: "كلية الشريعة", group: "college", blurb: "Fiqh, usul al-fiqh, the evidences and the legal verses and hadith, level by level.", blurbAr: "الفقه وأصوله والأدلة وآيات الأحكام وأحاديثها، مستوى بعد مستوى.", source: "1RXBfiSCzB0oh1Z3esU96xeWA0TVUgX18" },
+  { slug: "hadith", title: "Hadith and Islamic Studies", titleAr: "كلية الحديث الشريف والدراسات الإسلامية", group: "college", blurb: "Hadith texts, mustalah, takhrij and the narrators, level by level.", blurbAr: "متون الحديث والمصطلح والتخريج والرجال، مستوى بعد مستوى.", source: "1KXm3_LkFeHRBWKuH_VjYWnwKbQJ8ZEqO" },
+  { slug: "dawah", title: "Da'wah and Usul ad-Din", titleAr: "كلية الدعوة وأصول الدين", group: "college", blurb: "Aqeedah, sects and religions, and da'wah methods, level by level.", blurbAr: "العقيدة والفرق والأديان ومناهج الدعوة، مستوى بعد مستوى.", source: "1MYxRBxcSXh33t8YdguvvxDFOJzB9Bbis" },
+  { slug: "quran", title: "Qur'an and Islamic Studies", titleAr: "كلية القرآن الكريم والدراسات الإسلامية", group: "college", blurb: "Tafsir, Qur'anic sciences, tajwid and the qira'at, level by level.", blurbAr: "التفسير وعلوم القرآن والتجويد والقراءات، مستوى بعد مستوى.", source: "18uSzFiDHqIJAAenxzNzzKsVNqkmFnA1p" },
+  { slug: "arabic", title: "Arabic Language", titleAr: "كلية اللغة العربية", group: "college", blurb: "Nahw, sarf, balaghah and literature, level by level.", blurbAr: "النحو والصرف والبلاغة والأدب، مستوى بعد مستوى.", source: "1fz6awGKUbvuaKCHVP6t0R2E_9aeYChxA" },
+  { slug: "law", title: "Law", titleAr: "الأنظمة والقانون", group: "college", blurb: "Saudi systems and law courses.", blurbAr: "مقررات الأنظمة السعودية والقانون.", source: "1bODk8LjJ9O-5F9f0Owlo8oMNBiH0qcyg" },
+  { slug: "education", title: "Education", titleAr: "كلية التربية", group: "college", blurb: "Education college course files.", blurbAr: "ملفات مقررات كلية التربية.", source: "1rp4AsqG_wZ2Az0FRMrTzsmFpKgY8RShC" },
+  { slug: "mahad", title: "Arabic Language Institute (Ma'had)", titleAr: "معهد تعليم اللغة العربية لغير الناطقين بها", group: "mahad", blurb: "The textbooks for every level, the new six-level books, the student guide, regulations and extra practice.", blurbAr: "كتب كل مستوى، وسلسلة المستويات الست الجديدة، ودليل الطالب، واللوائح، وتمارين إضافية.", source: "1yqzf3ud2WA-YkVUWoF2lVneLNxZof7mx" },
 ];
 
 /**
@@ -74,6 +75,19 @@ export function levelLabel(t: string): string | null {
   const n = /^\d+$/.test(m[1]) ? Number(m[1]) : ORDINALS[m[1]];
   return n ? `Level ${n}` : null;
 }
+
+/** Arabic names for the few folders that were uploaded with English names (the Ma'had's top folders). */
+const FOLDER_AR: Record<string, string> = {
+  "Textbooks for all four levels": "كتب المستويات الأربعة",
+  "The new books, six levels": "الكتب الجديدة ذات المستويات الست",
+  "Student guide": "دليل الطالب",
+  "Study and exam regulations": "لائحة الدراسة والاختبارات",
+  "Course descriptions": "توصيف المقررات",
+  "How-to videos: excuses, withdrawal, deferral, Blackboard": "مقاطع إرشادية: الأعذار والانسحاب والتأجيل وBlackboard",
+  "Extra material, old and new curriculum": "مواد إضافية للمنهج القديم والجديد",
+};
+/** A folder's name for Arabic readers: its Arabic name where it was uploaded in English. */
+export const folderNameAr = (t: string): string => FOLDER_AR[t] ?? t;
 
 /** A plain English hint for an Arabic subject name, so non-Arab students know what a folder holds. */
 const HINTS: [RegExp, string][] = [

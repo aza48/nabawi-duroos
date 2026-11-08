@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "MESH: Medina English Student Hub";
+export const alt = "شعار MESH على خلفية خضراء";
 
 /** The share card: the MESH logo lockup on the brand green lattice. */
 export default function OpenGraphImage() {
