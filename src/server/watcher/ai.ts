@@ -66,6 +66,8 @@ export function buildPrompt(post: { text: string; imageUrl: string | null }, les
 type FetchLike = (url: string, init: RequestInit) => Promise<Response>;
 
 async function imagePart(url: string, f: FetchLike) {
+  const inline = /^data:([^;,]+);base64,(.+)$/.exec(url);
+  if (inline) return { inline_data: { mime_type: inline[1], data: inline[2] } };
   try {
     const res = await f(url, { method: "GET" });
     if (!res.ok) return null;

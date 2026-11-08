@@ -27,7 +27,7 @@ export type RunResult = { sources: number; newPosts: number; suggested: number; 
 
 const hash = (s: string) => createHash("sha256").update(s).digest("hex");
 
-async function lessonContext(db: Db) {
+export async function lessonContext(db: Db) {
   const rows = await db
     .select({ masjidId: lessons.masjidId, slug: lessons.slug, days: lessons.days, prayer: lessons.prayer, bookEn: lessons.bookEn, bookAr: lessons.bookAr, shaykh: shaykhs.nameEn, shaykhAr: shaykhs.nameAr, masjid: masjids.shortEn })
     .from(lessons)
@@ -66,6 +66,8 @@ export async function runWatcher(
   const allSources = (await db.select().from(sources)).sort((a, b) => sourceRank(a.handle) - sourceRank(b.handle));
 
   for (const src of allSources) {
+    // Forwarded WhatsApp messages arrive through the webhook, not from a channel page.
+    if (src.handle === "wa-forward") continue;
     result.sources++;
     let posts: ChannelPost[];
     try {
