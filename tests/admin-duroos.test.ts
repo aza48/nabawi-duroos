@@ -137,6 +137,18 @@ describe("a published schedule update also changes the schedule (audit M9)", () 
     expect(sat.scheduleUpdated).toBe(false);
     expect((await getToday(db, new Date("2026-11-28T09:30:00Z"))).lessons.filter((l) => l.status !== "on")).toHaveLength(0);
   });
+  it("an edit that moves the date or takes the update down undoes the old schedule change", async () => {
+    const statusOn = async (iso: string) => (await getToday(db, new Date(`${iso}T09:30:00Z`))).lessons.find((l) => l.slug === "ruh-dalil")?.status;
+    const base = { titleEn: "Dalil al-Talib cancelled", titleAr: "إلغاء درس دليل الطالب", bodyEn: "x", bodyAr: "x", type: "cancellation", lessonSlug: "ruh-dalil" } as const;
+    const a = await saveAnnouncement(db, duroosEditor, { ...base, eventDate: "2026-12-04", status: "published" });
+    expect(await statusOn("2026-12-04")).toBe("cancelled");
+    const moved = await saveAnnouncement(db, duroosEditor, { ...base, slug: a.slug, eventDate: "2026-12-11", status: "published" });
+    expect(moved.scheduleUpdated).toBe(true);
+    expect(await statusOn("2026-12-04")).toBe("on");
+    expect(await statusOn("2026-12-11")).toBe("cancelled");
+    await saveAnnouncement(db, duroosEditor, { ...base, slug: a.slug, eventDate: "2026-12-11", status: "draft" });
+    expect(await statusOn("2026-12-11")).toBe("on");
+  });
   it("leaves the schedule alone for drafts and for plain notices", async () => {
     const d = await saveAnnouncement(db, duroosEditor, {
       titleEn: "Maybe cancelled", titleAr: "ربما", bodyEn: "x", bodyAr: "x", type: "cancellation", eventDate: "2026-12-03", lessonSlug: "ruh-dalil", status: "draft",
