@@ -65,6 +65,12 @@ medinahub.org: a hub run by students, for English-speaking students and families
 - **Admin:** Face ID passkey as the main sign-in second factor, password reset links, book link on the dars form, photo link on the shaykh form, help number made fixed and removed from Settings, admin audit written.
 - **Watcher:** correct al-Ruhayli handle and several new channels; busy channels pass a free keyword check before any AI read. Only Telegram is watched (X needs a paid API).
 
+## MESH WhatsApp number (built 8 November, waiting on the owner's Meta setup)
+- Webhook live at https://medinahub.org/api/v1/whatsapp/webhook (src/server/whatsapp/inbox.ts). Only messages from WHATSAPP_OWNERS are processed; others get no reply. Forwarded text or images go through the watcher reader and decide(): clear schedule changes auto-publish (undo in Activity), everything else goes to the admin inbox; the sender gets a plain WhatsApp reply.
+- Business number +966 53 196 3439; owner number +1 234 567 9076 (WHATSAPP_OWNERS=12345679076).
+- Vercel env still to add by the owner: WHATSAPP_TOKEN, WHATSAPP_PHONE_NUMBER_ID, WHATSAPP_APP_SECRET, WHATSAPP_VERIFY_TOKEN, WHATSAPP_OWNERS. Then redeploy, then set the webhook in Meta and subscribe to messages.
+- Next: route general information (discounts, guide facts, events) into drafts of the right type instead of the generic inbox; consider an Anthropic key for a higher daily reading limit than the free Gemini tier.
+
 ## Waiting on a live database step (not done; needs the owner's OK to run against live)
 - Seeded but not live: the admission guide with the paid agents warning and five group-chat FAQs. Safe command (touches only these rows): `npm run content:sync -- --only=applying-to-the-islamic-university,absher-nafath-activation,find-my-timetable,rent-on-student-visa,library-bags-laptops,blackboard-phishing`.
 - Visa guide lines (tourist eVisa, extensions, family visit visa) are rewritten in `src/server/seed/content/guides-2026.ts` but not live. A full `content:sync` upserts every seeded guide; first check it will not revert live-only edits from the authority sweep, or sync that guide alone with `--only`.
