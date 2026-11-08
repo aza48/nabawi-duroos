@@ -3,7 +3,7 @@ import { resetTestDb, type Db } from "@/server/db/client";
 import { importLegacy } from "@/server/seed/import-legacy";
 import { buildKnowledge, chunkGuide, type Chunk } from "@/server/assistant/knowledge";
 import { createRetriever } from "@/server/assistant/retrieve";
-import { askMesh, cleanDashes, isRulingQuestion, langOf, parseReply, resetAnswerCache, unsupportedNumbers, type AskOptions } from "@/server/assistant/answer";
+import { askMesh, sameQuestion, cleanDashes, isRulingQuestion, langOf, parseReply, resetAnswerCache, unsupportedNumbers, type AskOptions } from "@/server/assistant/answer";
 import { systemPrompt } from "@/server/assistant/prompt";
 import { detectLive } from "@/server/assistant/live";
 import { extract } from "@/server/assistant/compose";
@@ -207,6 +207,20 @@ describe("assistant answers", () => {
   it("lists every dars of a book that several mashayikh teach", async () => {
     const r = await ask("Who teaches Kitab at-Tawhid?");
     expect(r.answer.split("\n").filter((l) => l.startsWith("- ")).length).toBeGreaterThan(1);
+  });
+
+  it("answers a question MESH already answered from that FAQ, without a model call", async () => {
+    let called = false;
+    const r = await ask("How much is the University stipend?", { writer: async () => ((called = true), null) });
+    expect(called).toBe(false);
+    expect(r.sources[0].url).toMatch(/^\/ask\//);
+    expect(r.answer).toMatch(/stipend/i);
+    expect(r.answer).not.toMatch(/\s[,.]/);
+  });
+
+  it("tells a matching FAQ from a merely related one", () => {
+    expect(sameQuestion("How much is the stipend?", "How much is the University stipend?")).toBe(true);
+    expect(sameQuestion("Does the stipend stop during ta'jeel?", "How much is the University stipend?")).toBe(false);
   });
 
   it("finds an answer by its tags (mat'am)", async () => {

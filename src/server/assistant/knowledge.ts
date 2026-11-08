@@ -36,7 +36,14 @@ const MAX = 1100;
 const DAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const PRAYER = { fajr: "Fajr", dhuhr: "Dhuhr", asr: "Asr", maghrib: "Maghrib", isha: "Isha" } as const;
 
-const squash = (s: string) => s.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
+const squash = (s: string) =>
+  s
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&[a-z]+;/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([,.;:!?)])/g, "$1")
+    .trim();
 
 /** Plain text of an element, with list items and table cells kept apart so sentences do not run together. */
 function textOf(el: HTMLElement): string {
@@ -205,7 +212,8 @@ export async function buildKnowledge(db: Db): Promise<Chunk[]> {
       id: `faq-${f.slug}`,
       kind: "faq" as const,
       title: f.question,
-      text: squash(f.answerHtml.replace(/<li>/g, " • ").replace(/<\/(p|li|h\d)>/g, "\n").replace(/<[^>]+>/g, " ")).slice(0, MAX * 2),
+      // Inline tags (bold, links) go without a gap so "<b>Personal</b>, then" stays "Personal, then".
+      text: squash(f.answerHtml.replace(/<li>/g, " • ").replace(/<\/(p|li|h\d)>/g, " ").replace(/<\/?(strong|b|em|i|a|span|code)\b[^>]*>/g, "").replace(/<[^>]+>/g, " ")).slice(0, MAX * 2),
       url: `/ask/${f.slug}`,
       keywords: (f.tags ?? []).join(" "),
     })),

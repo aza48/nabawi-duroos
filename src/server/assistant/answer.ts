@@ -5,7 +5,7 @@ import { cleanText } from "@/lib/text";
 import { normalize } from "@/lib/search/normalize";
 import { riyadhDateIso } from "@/lib/time/riyadh";
 import { getKnowledge, type Chunk } from "./knowledge";
-import { answers, createRetriever, keyTerms, type Passage } from "./retrieve";
+import { answers, createRetriever, keyTerms, termHits, type Passage } from "./retrieve";
 import { detectLive, duroosPassage, prayerTimesPassage, todayPassage } from "./live";
 import { composeExtractive, notFound } from "./compose";
 import { systemPrompt, userTurn } from "./prompt";
@@ -105,6 +105,14 @@ export function citations(text: string, passages: Chunk[]): { text: string; cite
   return { text: out.trim(), cited };
 }
 
+/** Whether a question asks the same thing as an FAQ's question: nearly all words shared, both ways. */
+export function sameQuestion(q: string, faqQuestion: string): boolean {
+  const a = keyTerms(q);
+  const b = keyTerms(faqQuestion);
+  if (!a.length || !b.length) return false;
+  return termHits(a, faqQuestion) / a.length >= 0.75 && termHits(b, q) / b.length >= 0.5;
+}
+
 const sourceOf = (c: Chunk): Source => ({ title: c.title, ...(c.section ? { section: c.section } : {}), url: c.url });
 const page = (url: string) => url.split("#")[0];
 
@@ -180,7 +188,15 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   const strong = livePassages.length > 0 || found.slice(0, 3).some((p) => answers(searchText, p));
   const context = [...passages, todayPassage(now, ar)];
 
-  // 1. A free model writes the answer from the passages.
+  // 1. The question is one MESH has already answered: give that verified answer as it is.
+  // No model call, so the free quota is kept for harder questions.
+  const faq = found[0]?.kind === "faq" && !livePassages.length && history.length === 0 ? found[0] : null;
+  if (faq && sameQuestion(q, faq.title)) {
+    const result: AskResult = { answer: faq.text, sources: uniqueSources([faq]), related: relatedOf(found, new Set([page(faq.url)])), mode: "extract", found: true, lang };
+    return lang === "en" ? result : { ...result, answer: `${ar ? "هذا ما في MESH (بالإنجليزية):" : ""}\n\n${faq.text}`.trim() };
+  }
+
+  // 2. A free model writes the answer from the passages.
   if (passages.length) {
     const writer = opts.writer ?? ((m: ChatMessage[]) => write(m));
     const messages: ChatMessage[] = [
@@ -211,25 +227,25 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
     }
   }
 
-  // 2. Live data answers on its own.
+  // 3. Live data answers on its own.
   if (livePassages.length) {
     return { answer: livePassages.map((p) => p.text).join("\n\n"), sources: uniqueSources(livePassages), related: relatedOf(found, new Set()), mode: "live", found: true, lang };
   }
 
-  // 3. Nothing close enough: say so, with the help line.
+  // 4. Nothing close enough: say so, with the help line.
   if (!strong) {
     void noteUnanswered(db, q);
     return { answer: notFound(lang), sources: [], related: relatedOf(found, new Set()), mode: "none", found: false, lang };
   }
 
-  // 4. Several duroos match ("who teaches Kitab at-Tawhid"): list them all.
+  // 5. Several duroos match ("who teaches Kitab at-Tawhid"): list them all.
   const duroos = found.filter((p) => p.kind === "dars" && answers(searchText, p));
   if (found[0].kind === "dars" && duroos.length > 1) {
     const list = duroos.slice(0, 5);
     return { answer: list.map((p) => `- ${p.text}`).join("\n"), sources: uniqueSources(list), related: relatedOf(found, new Set()), mode: "extract", found: true, lang };
   }
 
-  // 5. The best sentences of the best passages.
+  // 6. The best sentences of the best passages.
   const top = found.slice(0, 2);
   const sources = uniqueSources(top);
   return { answer: composeExtractive(searchText, top, lang), sources, related: relatedOf(found, new Set(sources.map((s) => page(s.url)))), mode: "extract", found: true, lang };
