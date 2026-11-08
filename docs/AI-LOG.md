@@ -32,6 +32,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 | naiifos | branches `feat/ar-duroos-cards`, `feat/single-card-layout` | Duroos cards (`src/features/duroos/DuroosToday.tsx`, `src/features/home/DuroosCards.tsx`, `DarsMiniCard.tsx`, `DuroosCarousel.tsx`). Nobody else touches these. | PRs 11 and 12 open |
 
 ## Waiting for the owner
+- Arabic guide and FAQ bodies: approve the storage plan on issue #13 (nullable Arabic columns on `guides` and `faqs`, a migration the owner applies to production first, an Arabic tab in the admin forms). Cloud agent 1 waits for a yes before starting.
 - Content gaps the assistant found, to research and write next (cloud agent, guide content): a "What to bring when you move to Madinah" packing list; renewing a student iqama (who does it, when, cost: currently an open question). Ma'had rules are on /mahad but not yet searchable by the assistant (asked the desktop agent on #13 to export the page copy).
 - Free AI keys for the assistant (Vercel, Production), any or all: `GROQ_API_KEY` (console.groq.com), `CEREBRAS_API_KEY` (cloud.cerebras.ai), `ASSISTANT_GEMINI_API_KEY` (aistudio.google.com, in a new project so it has its own quota), `MISTRAL_API_KEY`, `OPENROUTER_API_KEY`. Then redeploy. Until then the assistant uses the watcher's Gemini key on its lite models only, then the site's own sentences.
 - `npm run content:sync` to publish the cloud agent's fact-checked and new guides (see the log line for `047e7c4`). Production database steps stay with the owner or the desktop agent.
