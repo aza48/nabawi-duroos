@@ -155,7 +155,7 @@ describe("assistant answers", () => {
   });
 
   it("uses the model's answer, renumbers its [n] markers to match the sources, and removes long dashes", async () => {
-    const r = await ask("How much is rent for a flat?", { writer: async () => ({ text: JSON.stringify({ answer: "Rent varies by area [2] \u2014 ask early [1, 99].", sources: [2, 1], found: true }) }) });
+    const r = await ask("Tell me about renting a furnished flat near the Haram and what it involves", { writer: async () => ({ text: JSON.stringify({ answer: "Rent varies by area [2] \u2014 ask early [1, 99].", sources: [2, 1], found: true }) }) });
     expect(r.mode).toBe("ai");
     expect(r.answer).toBe("Rent varies by area [1], ask early [2].");
     expect(r.sources).toHaveLength(2);
@@ -167,7 +167,7 @@ describe("assistant answers", () => {
   });
 
   it("passes on the model's 'not found' with no sources", async () => {
-    const r = await ask("How much is rent for a flat?", { writer: async () => ({ text: JSON.stringify({ answer: "MESH does not cover this yet. Please message Admin on WhatsApp at +1 234 567 9076.", sources: [], found: false }) }) });
+    const r = await ask("Tell me about renting a furnished flat near the Haram and what it involves", { writer: async () => ({ text: JSON.stringify({ answer: "MESH does not cover this yet. Please message Admin on WhatsApp at +1 234 567 9076.", sources: [], found: false }) }) });
     expect(r.found).toBe(false);
     expect(r.sources).toEqual([]);
   });

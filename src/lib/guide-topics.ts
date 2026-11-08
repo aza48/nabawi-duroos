@@ -16,7 +16,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "ابدأ هنا",
     blurb: "Applying, arriving and your first weeks: the steps in the order you will need them.",
     blurbAr: "التقديم والوصول وأسابيعك الأولى، بالترتيب الذي ستحتاجه.",
-    slugs: ["applying-to-the-islamic-university", "first-30-days-in-madinah", "new-student-steps", "living-on-a-visitor-id", "sim-internet-bank"],
+    slugs: ["applying-to-the-islamic-university", "what-to-bring-to-madinah", "first-30-days-in-madinah", "new-student-steps", "living-on-a-visitor-id", "sim-internet-bank"],
   },
   {
     id: "papers",
@@ -45,6 +45,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
       "scholarship-stipend-and-allowances",
       "university-offices-and-contacts",
       "university-calendar-1448",
+      "exams-results-and-attendance",
       "graduating-from-mahad",
       "tajeel-and-itithaar",
       "etimad-account",

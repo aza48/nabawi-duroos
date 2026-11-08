@@ -191,8 +191,8 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
 
   // 1. The question is one MESH has already answered: give that verified answer as it is.
   // No model call, so the free quota is kept for harder questions.
-  const faq = found[0]?.kind === "faq" && !livePassages.length && history.length === 0 ? found[0] : null;
-  if (faq && sameQuestion(q, faq.title)) {
+  const faq = !livePassages.length && history.length === 0 ? found.slice(0, 3).find((p) => p.kind === "faq" && sameQuestion(q, p.title)) : undefined;
+  if (faq) {
     const result: AskResult = { answer: faq.text, sources: uniqueSources([faq]), related: relatedOf(found, new Set([page(faq.url)])), mode: "extract", found: true, lang };
     return lang === "en" ? result : { ...result, answer: `${ar ? "هذا ما في MESH (بالإنجليزية):" : ""}\n\n${faq.text}`.trim() };
   }
