@@ -16,7 +16,7 @@ import { mapUrl } from "@/lib/maps";
  * photo (or calligraphic name badge) and name on the end side. Shows only one language's
  * title, following the page locale.
  */
-export function DarsMiniCard({ lesson: l, locale, isNext }: { lesson: TodayLesson; locale: Locale; isNext: boolean }) {
+export function DarsMiniCard({ lesson: l, locale, isNext, single = false }: { lesson: TodayLesson; locale: Locale; isNext: boolean; single?: boolean }) {
   const ar = locale === "ar";
   const cancelled = l.status === "cancelled" || l.status === "postponed";
   // The phase is recomputed on the client so a cached page never shows a stale badge.
@@ -32,8 +32,8 @@ export function DarsMiniCard({ lesson: l, locale, isNext }: { lesson: TodayLesso
 
   return (
     <article className={`lift flex h-full flex-col rounded-2xl border border-line bg-card p-4 shadow-[var(--shadow)] ${done ? "opacity-60" : ""}`}>
-      <div className="flex items-center gap-3 sm:gap-4">
-        <div className="min-w-0 flex-1">
+      <div className={`flex items-center gap-3 sm:gap-4 ${single ? "md:items-end md:justify-start md:gap-12" : ""}`}>
+        <div className={`min-w-0 ${single ? "flex-1 md:flex-initial" : "flex-1"}`}>
           <div className="flex min-h-[1.625rem] flex-wrap items-center gap-2">
             {live ? (
               <LiveBadge locale={locale} href={liveHref} />
@@ -80,10 +80,21 @@ export function DarsMiniCard({ lesson: l, locale, isNext }: { lesson: TodayLesso
         </div>
 
         <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="group flex shrink-0 items-center gap-3">
-          <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
-          <span className="block max-w-[6rem] sm:max-w-[9rem]">
+          {single ? (
+            <>
+              <span className="md:hidden">
+                <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
+              </span>
+              <span className="hidden md:block">
+                <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="md" />
+              </span>
+            </>
+          ) : (
+            <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
+          )}
+          <span className={`block ${single ? "max-w-[6rem] sm:max-w-[9rem] md:max-w-[17rem]" : "max-w-[6rem] sm:max-w-[9rem]"}`}>
             <span className="block text-[11px] text-muted">{t(locale, "shaykh")}</span>
-            <span className="line-clamp-2 text-sm font-bold leading-snug group-hover:text-primary">{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
+            <span className={`text-sm font-bold leading-snug group-hover:text-primary ${single ? "md:text-base" : "line-clamp-2"}`}>{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
           </span>
         </Link>
       </div>
