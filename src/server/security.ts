@@ -52,7 +52,7 @@ export const BASE_HEADERS: { key: string; value: string }[] = [
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
 ];
 
-export const ADMIN_OPEN_PATHS = ["/admin/login", "/admin/invite", "/admin/setup-2fa"];
+export const ADMIN_OPEN_PATHS = ["/admin/login", "/admin/invite", "/admin/setup-2fa", "/admin/reset"];
 
 /** Better Auth's session cookie, plain on http and __Secure- prefixed on https. */
 export function hasSessionCookie(cookieNames: string[]): boolean {

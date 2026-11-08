@@ -32,8 +32,8 @@ describe("admin proxy", () => {
     expect(res.status).toBe(307);
     expect(res.headers.get("location")).toBe("http://localhost:3000/admin/login");
   });
-  it("lets the sign-in, invite and 2FA pages through without a session", () => {
-    for (const p of ["/admin/login", "/admin/invite?token=x", "/admin/setup-2fa"]) {
+  it("lets the sign-in, invite, 2FA and password reset pages through without a session", () => {
+    for (const p of ["/admin/login", "/admin/invite?token=x", "/admin/setup-2fa", "/admin/reset?token=x"]) {
       expect(proxy(new NextRequest(`http://localhost:3000${p}`)).headers.get("location")).toBeNull();
     }
   });
