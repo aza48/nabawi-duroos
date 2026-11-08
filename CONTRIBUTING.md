@@ -2,7 +2,7 @@
 
 MESH (medinahub.org) is one Next.js app for English-speaking students and families in Madinah: live duroos schedules, study programmes, guides, answers, a course-book library, discounts and key dates, with an Arabic version under `/ar`.
 
-Start with `docs/HANDOFF.md`: it explains the stack, the map of the code, the commands and the rules below in more detail.
+Most contributors work through their own Claude agents: `CLAUDE.md` is loaded automatically and points here. Start with `docs/HANDOFF.md`: it explains the stack, the map of the code, the commands and the rules below in more detail.
 
 ## Run it locally
 
