@@ -329,3 +329,6 @@ a { -webkit-tap-highlight-color: transparent; }
     }
   }
 }
+
+/* Arabic pages: short English lines (names, prices, places) keep English punctuation but line up on the right with the Arabic. */
+[dir="rtl"] [dir="auto"] { text-align: right; }

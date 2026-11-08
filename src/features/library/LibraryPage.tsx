@@ -22,7 +22,7 @@ function LinkCard({ l, ar = false }: { l: LibraryLink; ar?: boolean }) {
         {ar && l.titleAr ? (
           <>
             <span className="ar-text block font-semibold leading-snug group-hover:text-primary">{l.titleAr}</span>
-            <span className="block text-sm text-muted" dir="ltr" lang="en">{l.title}</span>
+            <span className="block text-sm text-muted" dir="auto" lang="en">{l.title}</span>
           </>
         ) : (
           <>
@@ -80,7 +80,7 @@ export function LibraryPage({ takhleesHref, locale = "en" }: { takhleesHref: str
                   {ar ? (
                     <>
                       <span className="ar-text text-xl font-bold leading-snug group-hover:text-primary">{c.titleAr}</span>
-                      <span className="text-sm text-muted" dir="ltr" lang="en">{c.title}</span>
+                      <span className="text-sm text-muted" dir="auto" lang="en">{c.title}</span>
                     </>
                   ) : (
                     <>

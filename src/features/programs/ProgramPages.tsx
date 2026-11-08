@@ -70,7 +70,7 @@ export function ProgramsIndex({ locale = "en" }: { locale?: Locale }) {
                     {ar ? (
                       <>
                         <span className="ar-text text-xl font-bold leading-snug group-hover:text-primary">{p.nameAr}</span>
-                        <span className="text-sm text-muted" dir="ltr" lang="en">{p.name}</span>
+                        <span className="text-sm text-muted" dir="auto" lang="en">{p.name}</span>
                       </>
                     ) : (
                       <>
@@ -147,7 +147,7 @@ export function ProgramPage({ p, locale = "en" }: { p: Program; locale?: Locale 
           {ar ? (
             <>
               <h1 className="ar-text mt-3 text-4xl font-bold leading-snug md:text-6xl">{p.nameAr}</h1>
-              <p className="mt-2 text-xl text-white/80" dir="ltr" lang="en">{p.name}</p>
+              <p className="mt-2 text-xl text-white/80" dir="auto" lang="en">{p.name}</p>
             </>
           ) : (
             <>
