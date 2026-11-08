@@ -199,13 +199,13 @@ export const PROGRAMS: Program[] = [
       "The portal now lets you choose up to 25 programmes across 10 or more universities. There are three funding types: fully funded (stipend, housing, flights), partly funded, and fully self-paid.",
     ],
     steps: [
-      "Create an account on studyinsaudi.moe.gov.sa when applications open.",
+      "Create an account on studyinsaudi.sa when applications open.",
       "Prepare your documents and their translations.",
       "Choose your programmes. You can edit until the closing date, then the application number is issued.",
       "Submit, then watch your email and the portal for results.",
     ],
     contact: [
-      { label: "Study in Saudi portal", href: "https://studyinsaudi.moe.gov.sa/" },
+      { label: "Study in Saudi portal", href: "https://studyinsaudi.sa/" },
       { label: "iu.edu.sa", href: "https://iu.edu.sa/" },
     ],
     videos: [{ id: "_yKUpFGZgv8", title: "The Study in Saudi portal, step by step" }],
@@ -292,7 +292,7 @@ export const PROGRAMS: Program[] = [
     where: "Women's sections of Masjid an-Nabawi",
     overview: [
       "The Ma'had (western women's side, gates 13 to 17) runs a three-year middle school diploma and a three-year high school diploma in classical texts. Juz 'Amma is required for the first, seven ajza' for the second.",
-      "The Kulliyah (eastern women's side, gates 25 to 30) is a four-year Shariah bachelor's. Registration opens once a year, usually in Dhul Qa'dah, with a written exam and an interview. Good Arabic is required.",
+      "The Kulliyah (eastern women's side, gates 25 to 30) is a four-year Shariah bachelor's. Registration opens once a year in Safar (for 1448 it ran from 5 to 20 Safar), followed by a written exam and an interview. Non-Saudi applicants need a valid iqama. Good Arabic is required.",
     ],
     contact: [
       { label: "Website", href: "https://gph.edu.sa/public/?page=ins" },

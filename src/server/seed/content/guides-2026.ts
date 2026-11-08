@@ -43,7 +43,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Mobile:</strong> 100 to 150 SAR on STC, Mobily or Zain.</li>
 </ul>
 <h2>Getting around</h2>
-<p>A city bus ride is 3 SAR, a Careem or Uber ride across town is 10 to 30 SAR, and petrol is about 2.18 SAR a litre for 91 and 2.33 for 95. See the getting-around guide for the details.</p>
+<p>A city bus ride is 3.45 SAR, a Careem or Uber ride across town is 10 to 30 SAR, and petrol is about 2.18 SAR a litre for 91 and 2.33 for 95. See the getting-around guide for the details.</p>
 <h2>Health</h2>
 <p>On a visit or business visa there is no free healthcare. A GP visit is 100 to 200 SAR, a specialist 150 to 300, a dental check and clean 150 to 250, and an emergency visit 300 to 500. Keep 500 to 800 SAR aside for surprises. University students are covered by the University clinic, and many private clinics give students and staff big discounts (see Student discounts).</p>
 <h2>A realistic monthly budget</h2>
@@ -100,7 +100,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Madinah is compact. Most trips take 10 to 15 minutes by car.</p>
 <h2>In the city</h2>
 <ul>
-<li><strong>City buses:</strong> 3 SAR a ride on all the main roads. Download the Madinah Bus app for routes and tickets.</li>
+<li><strong>City buses:</strong> 3.45 SAR a ride on all the main roads, and 11.50 SAR on the airport route (400). Cash is not accepted on board: pay in the Madinah Bus app, which also sells day, week and month passes (10, 60 and 240 SAR).</li>
 <li><strong>Ride apps:</strong> Careem, Uber, Jeeny and Bolt. Expect 10 to 30 SAR across town. Bolt lets you choose a male or female driver.</li>
 <li><strong>Quba walkway:</strong> small shuttles run along the Mamsha between the Haram and Masjid Quba for about 10 SAR.</li>
 </ul>
@@ -109,7 +109,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Petrol costs about 2.18 SAR a litre for 91 and 2.33 for 95.</p>
 <h2>To Makkah for Umrah</h2>
 <table><thead><tr><th>How</th><th>Time</th><th>Cost (SAR)</th></tr></thead><tbody>
-<tr><td>Haramain high-speed train</td><td>about 2 h 20 min</td><td>from 160 economy</td></tr>
+<tr><td>Haramain high-speed train</td><td>about 2 h 20 min</td><td>from 162 SAR economy, plus VAT</td></tr>
 <tr><td>Shared taxi from the stands near Masjid Bilal or Top 10</td><td>4.5 to 5 h</td><td>about 50 per seat</td></tr>
 <tr><td>Bus</td><td>5 to 6 h</td><td>50 to 80</td></tr>
 <tr><td>Own car (about 420 km)</td><td>4.5 to 5 h</td><td>petrol</td></tr>
@@ -177,7 +177,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Al-Baqi'</h2>
 <p>Jannat al-Baqi' is next to the south-eastern side of the Haram, where many Companions and members of the Prophet's ﷺ family are buried.</p>
 <h2>Umrah from Madinah</h2>
-<p>Makkah is about 420 km away: around 2 hours 20 minutes on the Haramain train (from 160 SAR) or 4.5 to 5 hours by road. The miqat for people leaving Madinah is Dhul Hulayfah (Abyar Ali). See "Getting around Madinah, and to Makkah" for the options.</p>
+<p>Makkah is about 420 km away: around 2 hours 20 minutes on the Haramain train (from 162 SAR plus VAT) or 4.5 to 5 hours by road. The miqat for people leaving Madinah is Dhul Hulayfah (Abyar Ali). See "Getting around Madinah, and to Makkah" for the options.</p>
 <blockquote><p>Tip: Umrah in Ramadan is equal in reward to Hajj, so trains and buses fill up. Book well ahead.</p></blockquote>`,
   },
   {
@@ -294,7 +294,7 @@ export type SeedFaq = { slug: string; question: string; category: string; answer
 
 export const FAQS_2026: SeedFaq[] = [
   { slug: "join-mesh-group", category: "getting-started", question: "How do I join the MESH WhatsApp group?", answerHtml: "<p>Tap any \"Join the group\" button on this site. Keep posts relevant, share only verified information, and no debates. The full rules are on the More page.</p>" },
-  { slug: "how-to-apply-iu", category: "getting-started", question: "How do I apply to the Islamic University of Madinah?", answerHtml: "<p>Through the national Study in Saudi portal (studyinsaudi.moe.gov.sa) when applications open. You can choose up to 25 programmes across several universities and edit your application until the deadline. See <a href=\"/programs/iu-madinah\">Islamic University of Madinah</a> for the steps and a video walkthrough.</p>" },
+  { slug: "how-to-apply-iu", category: "getting-started", question: "How do I apply to the Islamic University of Madinah?", answerHtml: "<p>Through the national Study in Saudi portal (studyinsaudi.sa) when applications open. You can choose up to 25 programmes across several universities and edit your application until the deadline. See <a href=\"/programs/iu-madinah\">Islamic University of Madinah</a> for the steps and a video walkthrough.</p>" },
   { slug: "stipend-amount", category: "university", question: "How much is the University stipend?", answerHtml: "<p>Fully funded scholarship students receive a monthly stipend (mukafa'ah) of 840 SAR, as well as housing and flights. The stipend stops during ta'jeel or i'tithaar.</p>" },
   { slug: "learn-arabic-before-iu", category: "getting-started", question: "Where can I learn Arabic in Madinah before getting into the University?", answerHtml: "<p>There are several options. Year-round institutes such as Ahlul Athar, Mutun al-Ijaz and Taba charge from about 350 SAR a month. The <a href=\"/programs/map\">Madinah Arabic Program</a> runs one-month intensives on the University campus. More options, with fees and dates, are on <a href=\"/programs\">Study in Madinah</a>.</p>" },
   { slug: "sisters-study", category: "family", question: "Where can sisters study Arabic and Islamic sciences?", answerHtml: "<p>There are free marakiz for sisters (Mishkat, Taibah, Academiyah al-Ma'rifah), the Masjid an-Nabawi Ma'had and Kulliyah for women, and paid options such as Al-Fusha Academy, Taba (now open to women) and MAP's sisters' classes. See <a href=\"/programs\">Study in Madinah</a>.</p>" },
