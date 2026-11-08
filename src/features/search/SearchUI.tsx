@@ -50,29 +50,40 @@ function useSearch(q: string, active: boolean) {
   return { hits, ready: !!engine, failed };
 }
 
-function Results({ hits, q, cursor, onPick, compact, locale = "en" }: { hits: SearchHit[]; q: string; cursor: number; onPick: (h: SearchHit) => void; compact?: boolean; locale?: "en" | "ar" }) {
+/** The id of a result's option element, for aria-activedescendant. */
+export const optionId = (h: SearchHit) => `mesh-search-opt-${h.id.replace(/[^A-Za-z0-9_-]/g, "_")}`;
+
+/** "12 results" for the live region. */
+export function resultsSummary(n: number, locale: "en" | "ar"): string {
+  if (locale === "ar") return n === 0 ? "لا نتائج" : n === 1 ? "نتيجة واحدة" : n === 2 ? "نتيجتان" : `${n} نتائج`;
+  return n === 1 ? "1 result" : `${n} results`;
+}
+
+function Results({ hits, q, cursor, onPick, compact, locale = "en", listId, wide }: { hits: SearchHit[]; q: string; cursor: number; onPick: (h: SearchHit) => void; compact?: boolean; locale?: "en" | "ar"; listId?: string; wide?: boolean }) {
   const groups = ORDER.map((t) => ({ t, items: hits.filter((h) => h.type === t).slice(0, compact ? 5 : 12) })).filter((g) => g.items.length);
   const flat = groups.flatMap((g) => g.items);
   if (!q.trim()) return null;
-  if (!flat.length) return <p className="px-2 py-8 text-center text-muted">{T[locale].none(q)}</p>;
+  if (!flat.length) return <p className="px-2 py-8 text-center text-muted" role="status">{T[locale].none(q)}</p>;
   return (
-    <div className="space-y-5">
+    <div id={listId} role="listbox" aria-label={T[locale].search} className={wide ? "lg:columns-2 lg:gap-8" : "space-y-5"}>
+      <p className="sr-only" aria-live="polite">{resultsSummary(flat.length, locale)}</p>
       {groups.map(({ t, items }) => {
         const { label: en, ar, icon: Icon } = TYPE[t];
         const label = locale === "ar" ? ar : en;
         return (
-          <section key={t}>
-            <p className="mb-1.5 px-2 text-xs font-semibold text-muted">{label}</p>
-            <ul>
+          <section key={t} role="group" aria-label={label} className={wide ? "mb-6 break-inside-avoid" : undefined}>
+            <p className="mb-1.5 px-2 text-xs font-semibold text-muted" aria-hidden="true">{label}</p>
+            <ul role="presentation">
               {items.map((h) => {
                 const i = flat.indexOf(h);
                 const ext = /^https?:/.test(h.url);
                 return (
-                  <li key={h.id}>
+                  <li key={h.id} role="option" id={optionId(h)} aria-selected={i === cursor}>
                     <a
                       href={localizeUrl(h.url, locale)}
                       target={ext ? "_blank" : undefined}
                       rel={ext ? "noopener noreferrer" : undefined}
+                      tabIndex={-1}
                       onClick={(e) => {
                         if (!ext) {
                           e.preventDefault();
@@ -114,9 +125,13 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
   const [q, setQ] = useState("");
   const [cursor, setCursor] = useState(0);
   const input = useRef<HTMLInputElement>(null);
+  const dialog = useRef<HTMLDialogElement>(null);
+  /** Whatever had focus when the palette opened; it gets focus back on close. */
+  const opener = useRef<HTMLElement | null>(null);
   const router = useRouter();
   const { hits, ready, failed } = useSearch(q, open);
   const flat = flatten(hits, true);
+  const LIST_ID = "mesh-search-results";
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -131,9 +146,19 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+  // A native modal dialog gives the focus trap, Escape and inertness of the page behind it.
   useEffect(() => {
-    if (open) setTimeout(() => input.current?.focus(), 10);
-    document.documentElement.style.overflow = open ? "hidden" : "";
+    const d = dialog.current;
+    if (!open || !d) return;
+    opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    if (!d.open) d.showModal();
+    setTimeout(() => input.current?.focus(), 10);
+    document.documentElement.style.overflow = "hidden";
+    return () => {
+      document.documentElement.style.overflow = "";
+      if (d.open) d.close();
+      opener.current?.focus();
+    };
   }, [open]);
   useEffect(() => setCursor(0), [q]);
 
@@ -166,8 +191,14 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
       </button>
       {open &&
         createPortal(
-        <div className="fixed inset-0 z-50 flex cursor-pointer items-start justify-center bg-ink/40 p-3 pt-[8vh] backdrop-blur-sm md:pt-[12vh]" onClick={(e) => { if (e.target === e.currentTarget) close(); }}>
-          <div role="dialog" aria-modal="true" aria-label={t.search} onClick={(e) => e.stopPropagation()} className="flex max-h-[80vh] w-full max-w-2xl cursor-auto flex-col overflow-hidden rounded-3xl border border-line bg-card shadow-[var(--shadow-lg)]">
+        <dialog
+          ref={dialog}
+          aria-label={t.search}
+          onClose={close}
+          onClick={(e) => { if (e.target === e.currentTarget) close(); }}
+          className="fixed inset-0 m-0 flex h-full max-h-none w-full max-w-none cursor-pointer items-start justify-center bg-ink/40 p-3 pt-[8vh] backdrop-blur-sm backdrop:bg-transparent md:pt-[12vh]"
+        >
+          <div onClick={(e) => e.stopPropagation()} className="flex max-h-[80vh] w-full max-w-2xl cursor-auto flex-col overflow-hidden rounded-3xl border border-line bg-card text-ink shadow-[var(--shadow-lg)]">
             <div className="flex items-center gap-3 border-b border-line px-4">
               <Search size={20} className="shrink-0 text-primary" />
               <input
@@ -178,13 +209,18 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
                   if (e.key === "ArrowDown") { e.preventDefault(); setCursor((c) => Math.min(c + 1, flat.length - 1)); }
                   else if (e.key === "ArrowUp") { e.preventDefault(); setCursor((c) => Math.max(c - 1, 0)); }
                   else if (e.key === "Enter" && flat[cursor]) { e.preventDefault(); pick(flat[cursor]); }
-                  else if (e.key === "Escape") close();
                 }}
                 placeholder={t.placeholder}
                 className="h-14 w-full bg-transparent text-base text-ink outline-none placeholder:text-muted focus-visible:outline-none"
                 aria-label={t.searchMesh}
+                role="combobox"
+                aria-autocomplete="list"
+                aria-expanded={ready && !!q.trim() && flat.length > 0}
+                aria-controls={LIST_ID}
+                aria-activedescendant={flat[cursor] ? optionId(flat[cursor]) : undefined}
+                autoComplete="off"
               />
-              <button type="button" onClick={close} aria-label={t.close} className="grid size-8 place-items-center rounded-full text-muted hover:bg-bg-2">
+              <button type="button" onClick={close} aria-label={t.close} className="grid size-10 shrink-0 place-items-center rounded-full text-muted hover:bg-bg-2">
                 <X size={18} />
               </button>
             </div>
@@ -194,18 +230,18 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
                   <p className="text-xs font-semibold text-muted">{t.popular}</p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {popular.map((p) => (
-                      <button key={p} type="button" onClick={() => setQ(p)} className="rounded-full bg-bg-2 px-3 py-1.5 text-sm font-medium hover:bg-primary-soft hover:text-primary">
+                      <button key={p} type="button" onClick={() => setQ(p)} className="min-h-10 rounded-full bg-bg-2 px-3 py-1.5 text-sm font-medium hover:bg-primary-soft hover:text-primary">
                         {p}
                       </button>
                     ))}
                   </div>
                 </div>
               ) : failed ? (
-                <p className="p-6 text-center text-muted">{t.failed}</p>
+                <p className="p-6 text-center text-muted" role="alert">{t.failed}</p>
               ) : !ready ? (
-                <p className="p-6 text-center text-muted">{t.loading}</p>
+                <p className="p-6 text-center text-muted" role="status" aria-live="polite">{t.loading}</p>
               ) : (
-                <Results hits={hits} q={q} cursor={cursor} onPick={pick} compact locale={locale} />
+                <Results hits={hits} q={q} cursor={cursor} onPick={pick} compact locale={locale} listId={LIST_ID} />
               )}
             </div>
             {q.trim() && ready && (
@@ -214,7 +250,7 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
               </Link>
             )}
           </div>
-        </div>,
+        </dialog>,
           document.body
         )}
     </>
@@ -233,14 +269,14 @@ export function SearchPage({ initial, locale = "en" }: { initial: string; locale
     return () => clearTimeout(id);
   }, [q, router, base]);
   return (
-    <div className="mx-auto max-w-3xl">
-      <label className="flex items-center gap-3 rounded-2xl border border-line bg-card px-4 shadow-[var(--shadow)] focus-within:border-primary">
+    <div className="mx-auto max-w-5xl">
+      <label className="mx-auto flex max-w-3xl items-center gap-3 rounded-2xl border border-line bg-card px-4 shadow-[var(--shadow)] focus-within:border-primary">
         <Search size={20} className="shrink-0 text-primary" />
         <span className="sr-only">{t.searchMesh}</span>
-        <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={locale === "ar" ? "الإقامة، المعهد، التأجيل، الرحيلي..." : "Iqama, MAP, ta'jeel, الرحيلي..."} className="h-14 w-full bg-transparent text-lg text-ink outline-none placeholder:text-muted" />
+        <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={locale === "ar" ? "الإقامة، المعهد، التأجيل، الرحيلي..." : "Iqama, MAP, ta'jeel, الرحيلي..."} className="h-14 w-full bg-transparent text-lg text-ink outline-none placeholder:text-muted" autoComplete="off" />
       </label>
       <div className="mt-6">
-        {failed ? <p className="text-muted">{t.failed}</p> : !ready ? <p className="text-muted">{t.loading}</p> : <Results hits={hits} q={q} cursor={-1} onPick={(h) => router.push(localizeUrl(h.url, locale))} locale={locale} />}
+        {failed ? <p className="text-muted" role="alert">{t.failed}</p> : !ready ? <p className="text-muted" role="status">{t.loading}</p> : <Results hits={hits} q={q} cursor={-1} onPick={(h) => router.push(localizeUrl(h.url, locale))} locale={locale} wide />}
         {!q.trim() && ready && (
           <div className="flex flex-wrap gap-2">
             {(locale === "ar" ? POPULAR_AR : POPULAR).map((p) => (

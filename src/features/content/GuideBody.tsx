@@ -17,7 +17,13 @@ function readDone(slug: string): number[] {
  * Renders an enhanced guide: numbered steps become tick-boxes (saved on this device),
  * with a progress bar, and video slots become tap-to-play YouTube players.
  */
-export function GuideBody({ html, slug, steps }: { html: string; slug: string; steps: number }) {
+const PROGRESS = {
+  en: { allDone: "All steps done. Barakallahu feek.", done: (d: number, n: number) => `${d} of ${n} steps done`, again: "Start again", hint: "Tap a step to tick it off. It's saved on this phone." },
+  ar: { allDone: "أتممت كل الخطوات. بارك الله فيك.", done: (d: number, n: number) => `${d} من ${n} خطوات`, again: "ابدأ من جديد", hint: "اضغط على خطوة لتعليمها. يُحفظ ذلك على هذا الهاتف." },
+};
+
+export function GuideBody({ html, slug, steps, locale = "en" }: { html: string; slug: string; steps: number; locale?: "en" | "ar" }) {
+  const p = PROGRESS[locale];
   const ref = useRef<HTMLDivElement>(null);
   const [done, setDone] = useState<number[]>([]);
 
@@ -96,18 +102,18 @@ export function GuideBody({ html, slug, steps }: { html: string; slug: string; s
         <div className="mb-6 rounded-2xl border border-line bg-card px-4 py-3 md:px-5">
           <div className="flex items-center justify-between gap-3 text-sm">
             <span className="font-semibold">
-              {done.length === steps ? "All steps done. Barakallahu feek." : `${done.length} of ${steps} steps done`}
+              {done.length === steps ? p.allDone : p.done(done.length, steps)}
             </span>
             {done.length > 0 && (
               <button type="button" onClick={reset} className="flex items-center gap-1 text-muted hover:text-ink">
-                <RotateCcw size={14} /> Start again
+                <RotateCcw size={14} /> {p.again}
               </button>
             )}
           </div>
           <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-bg-2">
             <div className="h-full rounded-full bg-primary transition-[width] duration-500" style={{ width: `${pct}%` }} />
           </div>
-          {done.length === 0 && <p className="mt-1.5 text-xs text-muted">Tap a step to tick it off. It's saved on this phone.</p>}
+          {done.length === 0 && <p className="mt-1.5 text-xs text-muted">{p.hint}</p>}
         </div>
       )}
       <div ref={ref} className="article guide text-[1.04rem]" dangerouslySetInnerHTML={{ __html: html }} />
