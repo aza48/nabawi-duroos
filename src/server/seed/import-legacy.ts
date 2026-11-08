@@ -1,4 +1,4 @@
-import { count } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { announcements, events, lessons, masjids, shaykhs, streams } from "@/server/db/schema";
 import { getSetting, setSetting, WHATSAPP_INVITE_DEFAULT } from "@/server/settings";
@@ -78,9 +78,10 @@ export async function importLegacy(db: Db) {
     const [row] = await db
       .insert(shaykhs)
       .values(v)
-      .onConflictDoUpdate({ target: shaykhs.slug, set: v })
+      .onConflictDoNothing({ target: shaykhs.slug })
       .returning({ id: shaykhs.id });
-    shaykhIdByAr.set(l.shaykh.ar, row.id);
+    const id = row?.id ?? (await db.select({ id: shaykhs.id }).from(shaykhs).where(eq(shaykhs.slug, v.slug)))[0]?.id;
+    if (id) shaykhIdByAr.set(l.shaykh.ar, id);
   }
 
   // Lessons
@@ -122,9 +123,10 @@ export async function importLegacy(db: Db) {
     const [row] = await db
       .insert(lessons)
       .values(v)
-      .onConflictDoUpdate({ target: lessons.slug, set: v })
+      .onConflictDoNothing({ target: lessons.slug })
       .returning({ id: lessons.id });
-    lessonIdBySlug.set(l.id, row.id);
+    const id = row?.id ?? (await db.select({ id: lessons.id }).from(lessons).where(eq(lessons.slug, v.slug)))[0]?.id;
+    if (id) lessonIdBySlug.set(l.id, id);
   }
 
   // Announcements (historic feed)
@@ -150,7 +152,7 @@ export async function importLegacy(db: Db) {
       status: a.expired ? ("archived" as const) : ("published" as const),
       publishedAt: Number.isNaN(posted) ? new Date() : new Date(posted),
     });
-    await db.insert(announcements).values(v).onConflictDoUpdate({ target: announcements.slug, set: v });
+    await db.insert(announcements).values(v).onConflictDoNothing({ target: announcements.slug });
   }
 
   // Past events
@@ -212,7 +214,7 @@ export async function importLegacy(db: Db) {
       })),
   ] as (typeof streams.$inferInsert)[]).map((r) => cleanRow(r));
   for (const s of streamRows) {
-    await db.insert(streams).values(s).onConflictDoUpdate({ target: streams.slug, set: s });
+    await db.insert(streams).values(s).onConflictDoNothing({ target: streams.slug });
   }
 
   await importOldMesh(db);

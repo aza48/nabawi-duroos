@@ -76,6 +76,10 @@ export type Outcome = { status: "published" | "suggested" | "error" | "duplicate
 /** Reads one forwarded message and acts on it. The owner forwarded it, so it is trusted. */
 export async function ingestForwarded(db: Db, msg: Incoming & { imageUrl: string | null }, readPost: WatcherDeps["readPost"], now = new Date()): Promise<Outcome> {
   await db.insert(sources).values({ handle: WA_SOURCE, name: "Forwarded on WhatsApp", trusted: true, autoPublish: true }).onConflictDoNothing({ target: sources.handle });
+  // The admin's switches for this source (Admin > Sources) decide trust and auto-publish, not this code.
+  const [srcRow] = await db.select({ trusted: sources.trusted, autoPublish: sources.autoPublish }).from(sources).where(eq(sources.handle, WA_SOURCE));
+  const trusted = srcRow?.trusted ?? true;
+  const autoPublish = srcRow?.autoPublish ?? false;
   const postId = `wa/${msg.id}`;
   const [seen] = await db.select({ id: channelPosts.id }).from(channelPosts).where(eq(channelPosts.postId, postId));
   if (seen) return { status: "duplicate", reply: "" };
@@ -97,11 +101,11 @@ export async function ingestForwarded(db: Db, msg: Incoming & { imageUrl: string
   }
 
   const reading = plainReading(parse, parse.lesson_slug ? ctx.list.find((l) => l.slug === parse!.lesson_slug)?.label.split(": ")[1]?.split(" / ")[0] : undefined);
-  const d = decide(parse, { today, trusted: true, autoPublish: true, lessonDays: ctx.days });
+  const d = decide(parse, { today, trusted, autoPublish, lessonDays: ctx.days });
   if (d.action === "auto") {
     const o = await addOverride(db, "system", {
       lessonSlug: parse.lesson_slug!, kind: parse.kind as "cancelled", startsOn: parse.dates[0],
-      noteEn: parse.note_en || null, noteAr: parse.note_ar || null, sourceUrl: null,
+      noteEn: null, noteAr: null, sourceUrl: null,
     }, "watcher_auto");
     await db.insert(channelPosts).values({ ...base, status: "published", parse, reason: d.reason, wouldAuto: true, overrideId: o.id, decidedBy: "MESH WhatsApp" });
     return { status: "published", reply: `Published. ${reading} You can undo it in Admin > Activity.` };

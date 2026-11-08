@@ -53,13 +53,33 @@ export function matchLiveLesson(text: string, lessons: LessonForMatch[]): string
   return scored[0].slug;
 }
 
-/** Best link to the broadcast itself: video, then audio, then a Telegram livestream. */
+/** Hosts a public "Live" button may point at. Anything else in a post is ignored. */
+const LIVE_HOSTS: [RegExp, number][] = [
+  [/^(www\.|m\.)?youtube\.com$/i, 0],
+  [/^youtu\.be$/i, 0],
+  [/^([a-z0-9-]+\.)?mixlr\.com$/i, 1],
+  [/^t\.me$/i, 2],
+];
+
+/** The rank of a link as a broadcast: video, then audio, then a Telegram livestream; null if it is not one. */
+function liveRank(raw: string): number | null {
+  let u: URL;
+  try {
+    u = new URL(raw);
+  } catch {
+    return null;
+  }
+  if (u.protocol !== "https:" && u.protocol !== "http:") return null;
+  const host = LIVE_HOSTS.find(([re]) => re.test(u.hostname));
+  if (!host) return null;
+  const r = host[1];
+  if (r === 0 && /youtube\.com$/i.test(u.hostname) && !/^\/(live|watch)/.test(u.pathname)) return null;
+  if (r === 2 && !(/^\/[^/]+$/.test(u.pathname) && u.searchParams.has("livestream"))) return null;
+  return r;
+}
+
+/** Best link to the broadcast itself: video, then audio, then a Telegram livestream. Only known broadcast hosts count. */
 export function pickLiveLink(links: string[]): string | null {
-  const rank = (u: string) =>
-    /youtube\.com\/(live|watch)|youtu\.be\//i.test(u) ? 0
-    : /mixlr\.com/i.test(u) ? 1
-    : /t\.me\/[^/?]+\?livestream/i.test(u) ? 2
-    : null;
-  const ranked = links.map((u) => ({ u, r: rank(u) })).filter((x) => x.r !== null).sort((a, b) => a.r! - b.r!);
+  const ranked = links.map((u) => ({ u, r: liveRank(u) })).filter((x) => x.r !== null).sort((a, b) => a.r! - b.r!);
   return ranked[0]?.u ?? null;
 }

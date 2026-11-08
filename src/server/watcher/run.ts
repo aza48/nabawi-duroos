@@ -92,15 +92,16 @@ export async function runWatcher(
       if (existing?.status === "dismissed") continue;
 
       // "Live broadcast started": no AI needed. Mark the dars live with its stream link.
+      // Only a trusted source may do this: the link becomes a public button.
       if (isLiveNotice(p.text)) {
         if (existing) continue;
-        const slug = matchLiveLesson(p.text, ctx.candidates);
-        const link = pickLiveLink(p.links);
+        const slug = src.trusted ? matchLiveLesson(p.text, ctx.candidates) : null;
+        const link = src.trusted ? pickLiveLink(p.links) : null;
         if (slug && link) {
           await db.insert(lessonLive).values({ lessonSlug: slug, url: link, postUrl: p.url, startedAt: p.postedAt })
             .onConflictDoUpdate({ target: lessonLive.lessonSlug, set: { url: link, postUrl: p.url, startedAt: p.postedAt } });
         }
-        await db.insert(channelPosts).values({ sourceHandle: src.handle, postId: p.postId, url: p.url, text: p.text, imageUrl: p.imageUrl, postedAt: p.postedAt, textHash, status: "ignored", reason: slug ? `Live broadcast notice: ${slug}` : "Live broadcast notice (lesson not recognised)" });
+        await db.insert(channelPosts).values({ sourceHandle: src.handle, postId: p.postId, url: p.url, text: p.text, imageUrl: p.imageUrl, postedAt: p.postedAt, textHash, status: "ignored", reason: !src.trusted ? "Live broadcast notice from an untrusted source (not applied)" : slug ? `Live broadcast notice: ${slug}` : "Live broadcast notice (lesson not recognised)" });
         result.ignored++;
         continue;
       }
@@ -137,9 +138,10 @@ export async function runWatcher(
         const d = decide(parse, { today, trusted: src.trusted, autoPublish: src.autoPublish, lessonDays: ctx.days });
         row = { ...base, status: d.action === "ignore" ? "ignored" : "suggested", parse, reason: d.reason, wouldAuto: d.wouldAuto };
         if (d.action === "auto") {
+          // The AI's own wording never reaches the public page or a push alert: the status and date say it all.
           const o = await addOverride(db, "system", {
             lessonSlug: parse.lesson_slug!, kind: parse.kind as "cancelled", startsOn: parse.dates[0],
-            noteEn: parse.note_en || null, noteAr: parse.note_ar || null, sourceUrl: p.url,
+            noteEn: null, noteAr: null, sourceUrl: p.url,
           }, "watcher_auto");
           row = { ...row, status: "published", overrideId: o.id, decidedBy: "MESH watcher" };
           result.published++;

@@ -63,3 +63,14 @@ describe("watcher with live notices", () => {
     expect(liveTexts).toEqual([]);
   });
 });
+
+describe("pickLiveLink only trusts known broadcast hosts", () => {
+  it("rejects look-alike links that merely contain youtube.com", () => {
+    expect(pickLiveLink(["https://evil.example/?youtube.com/watch"])).toBeNull();
+    expect(pickLiveLink(["https://youtube.com.evil.example/live/x"])).toBeNull();
+    expect(pickLiveLink(["https://mixlr.com.evil.example/"])).toBeNull();
+    expect(pickLiveLink(["javascript:alert(1)"])).toBeNull();
+    expect(pickLiveLink(["https://www.youtube.com/@channel"])).toBeNull();
+    expect(pickLiveLink(["https://x.mixlr.com/", "https://www.youtube.com/watch?v=abc"])).toBe("https://www.youtube.com/watch?v=abc");
+  });
+});
