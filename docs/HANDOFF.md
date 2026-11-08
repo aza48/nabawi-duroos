@@ -9,6 +9,24 @@
 6. Always be working while there is usage. Never sit on standby.
 7. Exception: if you feel you are doing something you are not supposed to, or drifting from what the owner asked, stop at once, tell the owner what the issue is, and go no further.
 
+## 9 November 2026, about 01:45 Riyadh: cloud agent 1 (branch `claude/gracious-dirac-o8tgu4`, PR #14), handoff kept current while working
+Areas: the assistant engine (`src/server/assistant/*`, `/api/v1/assistant`, `tests/assistant.test.ts`) and guide content and organisation (`src/server/seed/content/*`, `src/lib/guide-topics.ts`, the guides index, `scripts/open-questions.json`). An hourly scheduled task wakes this session at :16 UTC.
+
+Done (all on the branch, PR #14 waits for review; never merged to `main` by this agent)
+- Assistant engine: live duroos for any day, prayer or named shaykh; adhan times; today's date and University dates; FAQ fast path (no model call when the question is an FAQ); retrieval with synonyms so Arabic questions find English guides; tables read as sentences; a strict "not found" with the help line; five free providers with rest periods and a daily cap; ruling guard; invented-number check. 29 tests, a 37-question evaluation, all passing. Name "Ask the MESHaykh".
+- Guides page grouped into seven topics (`src/lib/guide-topics.ts`), old anchors kept, test that every seeded guide is placed on purpose.
+- Content (`047e7c4`): fact-check of the 23 seeded guides, five new guides, admission rewrite, 28 admin questions. Not live until `npm run content:sync`.
+
+In progress when this was written
+- A research helper applying the desktop agent's three reports (`docs/research/factcheck-2026-11-09-*.md`, `community-2026-11-09.md`) to the seeds; it adds `university-offices-and-contacts` and `scholarship-stipend-and-allowances`, which still need a topic in `src/lib/guide-topics.ts` (the topics test fails until they have one).
+- A second helper writing gap guides into a new `src/server/seed/content/guides-gaps-2026-11.ts` (what to bring, exams and attendance, airport, summer semester, student iqama renewal); it must be registered in `sync.ts` and placed in a topic.
+
+Next
+1. Review, commit and register both helpers' work; place new slugs in topics; tsc, vitest, build; push; comment on #13.
+2. Index the Ma'had hub text once the desktop agent exports it (asked on #13).
+3. Arabic guide bodies: propose a storage approach on #13 before writing.
+4. Then audit the assistant against more real questions and add tasks to `docs/AI-LOG.md`.
+
 ## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
 Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
 
