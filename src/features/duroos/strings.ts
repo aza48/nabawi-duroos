@@ -34,10 +34,8 @@ const en = {
   earlier: "Earlier",
   latestUpdates: "Latest updates",
   noUpdates: "No updates yet.",
-  source: "Source",
   updatedFrom: "Updated",
   ago: "ago",
-  fromChannel: "from",
   shaykhs: "Shuyukh",
   allMasjids: "All masjids",
   readInArabic: "عربي",
@@ -93,10 +91,8 @@ const ar: Record<Key, string> = {
   earlier: "سابقًا",
   latestUpdates: "آخر التحديثات",
   noUpdates: "لا توجد تحديثات بعد.",
-  source: "المصدر",
   updatedFrom: "حُدّث",
   ago: "مضت",
-  fromChannel: "من",
   shaykhs: "المشايخ",
   allMasjids: "كل المساجد",
   readInArabic: "عربي",
@@ -122,6 +118,12 @@ export type StringKey = Key;
 export function t(locale: Locale, key: Key): string {
   return STRINGS[locale][key];
 }
+
+/** Research wording that must never reach visitors (it stays in the admin area). */
+const BACKSTAGE = /source|stated|instance|inferred|channel|\bposts?\b|poster|unclear|not clear|reported|المصدر|المصادر|مذكور|القناة|المنشور|أُعلن عن درس/i;
+
+/** A label or note from the data, or null when it carries research wording. */
+export const publicLabel = (x: string | null | undefined) => (x && !BACKSTAGE.test(x) ? x : null);
 
 export const DAY_KEYS: Key[] = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 export const DAY_LONG_KEYS: Key[] = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];

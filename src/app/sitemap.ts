@@ -5,6 +5,7 @@ import { listShaykhs } from "@/server/duroos/queries";
 import { listFaqs, listGuides } from "@/server/content/queries";
 import { abs } from "@/lib/site";
 import { PROGRAMS } from "@/content/programs";
+import { LIVE_COLLECTIONS, fileIndex } from "@/content/library-books";
 
 export const revalidate = 3600;
 
@@ -30,6 +31,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: abs("/programs"), priority: 0.9, changeFrequency: "weekly" },
     ...PROGRAMS.map((p) => ({ url: abs(`/programs/${p.slug}`), lastModified: new Date(p.checked), priority: 0.7 })),
     { url: abs("/library"), priority: 0.8, changeFrequency: "weekly" },
+    ...LIVE_COLLECTIONS.map((c) => ({ url: abs(`/library/${c.slug}`), priority: 0.7, changeFrequency: "monthly" as const })),
+    ...[...fileIndex().keys()].map((id) => ({ url: abs(`/library/read/${id}`), priority: 0.4, changeFrequency: "yearly" as const })),
     { url: abs("/discounts"), priority: 0.7, changeFrequency: "monthly" },
     { url: abs("/search"), priority: 0.4, changeFrequency: "monthly" },
     { url: abs("/ask"), priority: 0.8, changeFrequency: "daily" },

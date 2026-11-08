@@ -42,7 +42,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
           <DuroosByPrayer today={today} locale="en" />
           {today.lastCheckedAt && (
             <p className="mt-6 flex items-center gap-1.5 text-xs text-muted">
-              <RefreshCw size={12} /> Checked against the official channels {timeAgo(today.lastCheckedAt)}
+              <RefreshCw size={12} /> Last checked {timeAgo(today.lastCheckedAt)}
             </p>
           )}
         </div>
@@ -100,7 +100,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
           </Link>
         </div>
         {guides.length === 0 ? (
-          <p className="rounded-2xl border border-dashed border-line bg-card p-6 text-center text-muted">Guides are being written. Ask in the WhatsApp group meanwhile.</p>
+          <p className="rounded-2xl border border-dashed border-line bg-card p-6 text-center text-muted">Guides are being written. In the meantime, ask in the WhatsApp group.</p>
         ) : (
           <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
             {guides.slice(0, 8).map((g) => {

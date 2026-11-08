@@ -4,6 +4,7 @@ import type { TodayLesson } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { Countdown } from "./Countdown";
 import { LiveBadge, StatusTag } from "./StatusTag";
+import { publicLabel } from "./strings";
 
 export function duroosPath(locale: Locale, rest = ""): string {
   return `${locale === "ar" ? "/ar" : ""}/duroos${rest}`;
@@ -15,6 +16,7 @@ export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: L
   const live = l.phase === "live" && !cancelled;
   const done = l.phase === "done" && !live;
   const liveHref = l.stream?.isLive ? l.stream.liveUrl ?? l.stream.url : null;
+  const note = publicLabel(ar ? l.overrideNoteAr ?? l.overrideNoteEn : l.overrideNoteEn ?? l.overrideNoteAr);
   const edge = live ? "before:bg-live" : cancelled ? "before:bg-cancel" : l.status !== "on" ? "before:bg-amber" : "before:bg-primary/70";
   return (
     <article
@@ -50,9 +52,7 @@ export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: L
           </a>
         )}
       </div>
-      {(l.overrideNoteEn || l.overrideNoteAr) && (
-        <p className="mt-2.5 rounded-lg bg-bg-2 px-2.5 py-1.5 text-xs">{ar ? l.overrideNoteAr ?? l.overrideNoteEn : l.overrideNoteEn ?? l.overrideNoteAr}</p>
-      )}
+      {note && <p className="mt-2.5 rounded-lg bg-bg-2 px-2.5 py-1.5 text-xs">{note}</p>}
     </article>
   );
 }

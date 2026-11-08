@@ -8,7 +8,7 @@ import { formatHijri } from "@/lib/time/hijri";
 import { prayerTimes } from "@/lib/time/prayer";
 import { EmptyState } from "@/components/ui";
 import { DuroosNav } from "./DuroosNav";
-import { DAY_LONG_KEYS, t } from "./strings";
+import { DAY_LONG_KEYS, publicLabel, t } from "./strings";
 import { duroosPath } from "./DarsCard";
 import { CalendarButton } from "./CalendarButton";
 import { AlertsButton } from "./AlertsButton";
@@ -16,10 +16,6 @@ import { ShaykhBadge } from "./ShaykhBadge";
 
 type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>;
 type Shaykh = NonNullable<Awaited<ReturnType<typeof getShaykh>>>;
-
-/** Research wording that must never reach visitors (it stays in the admin area). */
-const BACKSTAGE = /source|stated|instance|inferred|channel|post|poster|unclear|not clear|reported|المصدر|المصادر|مذكور|القناة|المنشور|أُعلن عن درس/i;
-const publicLabel = (x: string | null | undefined) => (x && !BACKSTAGE.test(x) ? x : null);
 
 function daysText(l: Pick<Lesson, "days" | "daysLabelEn" | "daysLabelAr"> & { frequencyEn?: string | null; frequencyAr?: string | null }, locale: Locale): string {
   const label = publicLabel(locale === "ar" ? l.daysLabelAr : l.daysLabelEn);

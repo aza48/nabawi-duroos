@@ -36,7 +36,7 @@ export function ProgramsIndex() {
   const byName = (x: Program, y: Program) => x.name.localeCompare(y.name);
   return (
     <>
-      <PageBand title="Study in Madinah" subtitle="Every Arabic institute, degree, sisters' markaz and Haram halaqah we know of, with fees, dates and how to apply." />
+      <PageBand title="Study in Madinah" subtitle="Arabic institutes, degrees, sisters' marakiz and Haram halaqat, with fees, dates and how to apply." />
       <div className="shell mt-10 md:mt-14">
         <nav aria-label="Jump to" className="flex flex-wrap gap-2">
           {PROGRAM_KINDS.filter((k) => PROGRAMS.some((p) => p.kind === k.id)).map((k) => (
@@ -70,7 +70,7 @@ export function ProgramsIndex() {
           );
         })}
         <p className="mt-12 rounded-2xl bg-bg-2 p-5 text-sm text-muted">
-          MESH is run by students and is not connected to any institute listed here. We list every programme we know of, in alphabetical order, and share what each one publishes, with the date we last checked. Fees and dates change, so confirm with the institute before you pay, and tell us in the WhatsApp group if something is out of date.
+          MESH is run by students and is not connected to any institute listed here. Programmes are listed in alphabetical order, each with the date it was last checked. Fees and dates change, so confirm with the institute before you pay, and tell us in the WhatsApp group if something is out of date.
         </p>
       </div>
     </>

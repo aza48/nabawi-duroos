@@ -48,7 +48,7 @@ export const PROGRAMS: Program[] = [
     overview: [
       "MAP is a one-month Arabic programme held on the Islamic University campus. Classes use the same Madinah Books method the University uses for non-Arabs, taught on campus by University lecturers who specialise in teaching non-native speakers.",
       "Everything around the classes is handled: a room near campus, a daily shuttle to the University and to Masjid an-Nabawi, a guided Umrah, outings to historical sites, and a mushrif for every group of about ten students who helps you join halaqat in the Haram and settle in.",
-      "Brothers and sisters study in fully separate classes, with separate housing and transport. The certificate is attested by the University and the Ministry of Education. It is not the same as being enrolled at the University, but students say it helps a lot when applying later.",
+      "Brothers and sisters study in fully separate classes, with separate housing and transport. The certificate is attested by the University and the Ministry of Education. It is not the same as being enrolled at the University, but it is a strong addition to a later application.",
     ],
     levels: [
       "Level 1: for complete or near beginners. Reading, writing, listening and speaking.",
@@ -113,7 +113,7 @@ export const PROGRAMS: Program[] = [
       { label: "WhatsApp +966 53 275 0874", href: "https://wa.me/966532750874" },
       { label: "Study-tour registration", href: "https://ktabaa.com/request" },
     ],
-    videos: [{ id: "LjKrX5LdkbU", title: "Taba Institute: full guide (Study in Saudi)" }],
+    videos: [{ id: "LjKrX5LdkbU", title: "Taba Institute: full guide" }],
     checked: "2026-10-20",
   },
   {
@@ -148,7 +148,7 @@ export const PROGRAMS: Program[] = [
     where: "Al-Anabis, about 25 to 30 minutes' walk from the Haram",
     overview: [
       "Founded in 2025 by the former director of Markaz al-Furqan in Egypt. The course runs through the Silsilat al-Mutun series in 14 levels of five weeks each, followed by optional courses in morphology and grammar.",
-      "Classes are for men, plus children aged 6 to 10. Courses for women are planned. The certificate is recognised by the Ministry of Education, and a recommendation for university admission may be possible.",
+      "Classes are for men, plus children aged 6 to 10. Courses for women are planned. The certificate is recognised by the Ministry of Education.",
     ],
     contact: [{ label: "WhatsApp +966 54 357 7389", href: "https://wa.me/966543577389" }],
     videos: [{ id: "cnwiSZGgrUQ", title: "Mutun al-Ijaz overview" }],
@@ -161,11 +161,11 @@ export const PROGRAMS: Program[] = [
     kind: "arabic",
     tagline: "In-person Arabic for sisters and children, using al-Arabiyyah Bayna Yadayk.",
     audience: ["women", "children", "men"],
-    price: "Roughly 750 to 1,000 SAR a month (2,400 for the intensive)",
+    price: "750 to 1,000 SAR a month (2,400 for the intensive)",
     where: "Madinah",
     overview: [
       "For a long time this was the main in-person Arabic option for sisters. Adults follow al-Arabiyyah Bayna Yadayk after a placement test. Children from age 5 start with letters and build up to reading.",
-      "Students describe the pace as gentler than the men's institutes. Fees have risen over the last year and reports differ, so confirm before registering.",
+      "The pace is gentler than at the men's institutes. Fees have risen over the last year, so confirm the current fee before registering.",
     ],
     levels: ["Standard: 2 hours a day", "Intensive: 4 hours a day"],
     videos: [{ id: "jM9Xfvp3BJU", title: "Al-Fusha Academy overview" }],
@@ -176,11 +176,11 @@ export const PROGRAMS: Program[] = [
     name: "As-Safwah Institute",
     nameAr: "معهد الصفوة",
     kind: "arabic",
-    tagline: "An affordable Arabic and Qur'an institute, reviewed in detail by Study in Saudi.",
+    tagline: "An affordable Arabic and Qur'an institute for brothers.",
     audience: ["men"],
-    price: "Affordable. See the video and the institute for current fees.",
+    price: "Lower than most private institutes. Confirm current fees with the institute.",
     where: "Madinah",
-    overview: ["Arabic and Qur'an classes with a lower price than most private institutes. Watch the full review for levels, timings and fees, and check the linked details before enrolling."],
+    overview: ["Arabic and Qur'an classes at a lower price than most private institutes. The video below covers levels, timings and fees. Confirm the details with the institute before enrolling."],
     contact: [{ label: "Details file", href: "https://drive.google.com/drive/folders/1LTz0wGBkf_odujJrdF0ZmgjjFsrQqmj3" }],
     videos: [{ id: "-GmAnmT6goQ", title: "As-Safwah complete review (2026)" }],
     checked: "2026-06-19",
@@ -200,14 +200,13 @@ export const PROGRAMS: Program[] = [
     ],
     steps: [
       "Create an account on studyinsaudi.moe.gov.sa when applications open.",
-      "Prepare your documents and translations (see the Study in Saudi list).",
+      "Prepare your documents and their translations.",
       "Choose your programmes. You can edit until the closing date, then the application number is issued.",
       "Submit, then watch your email and the portal for results.",
     ],
     contact: [
       { label: "Study in Saudi portal", href: "https://studyinsaudi.moe.gov.sa/" },
       { label: "iu.edu.sa", href: "https://iu.edu.sa/" },
-      { label: "Study in Saudi on Telegram", href: "https://t.me/notjustmadinah" },
     ],
     videos: [{ id: "_yKUpFGZgv8", title: "The Study in Saudi portal, step by step" }],
     checked: "2026-04-27",
@@ -247,7 +246,7 @@ export const PROGRAMS: Program[] = [
     price: "Free (small one-off book fee)",
     where: "Al-Aridh (Rabwah)",
     overview: [
-      "A two-year programme built on al-Arabiyyah Bayna Yadayk plus Islamic studies. Sisters single it out for conversational Arabic and a warm atmosphere. Grammar is lighter, so add your own practice.",
+      "A two-year programme built on al-Arabiyyah Bayna Yadayk plus Islamic studies. It is known for conversational Arabic and a warm atmosphere. Grammar is lighter, so add your own practice.",
       "Classes are in the morning, with a free nursery. Bring your passport and iqama or visa. A placement test is only needed to skip ahead.",
     ],
     checked: "2026-07-01",
@@ -263,7 +262,7 @@ export const PROGRAMS: Program[] = [
     where: "Hayy Taibah",
     overview: [
       "Four levels over two years using Bayna Yadayk, with Qur'an, writing, fiqh, aqeedah, seerah, hadith and tafseer added as you go up. Strong on grammar and comprehension, weaker on speaking.",
-      "Morning classes, a placement test, and a paid bus. Mothers report the nursery is small and screen-heavy.",
+      "Morning classes, a placement test, and a paid bus. The nursery is small and relies heavily on screens.",
     ],
     checked: "2026-07-01",
   },
@@ -297,7 +296,7 @@ export const PROGRAMS: Program[] = [
     ],
     contact: [
       { label: "Website", href: "https://gph.edu.sa/public/?page=ins" },
-      { label: "Telegram", href: "https://t.me/almaehad_1" },
+      { label: "Telegram channel", href: "https://t.me/almaehad_1" },
     ],
     checked: "2026-07-01",
   },

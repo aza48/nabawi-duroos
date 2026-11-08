@@ -21,7 +21,7 @@ export async function buildLlmsTxt(db: Db, full = false): Promise<string> {
   const out: string[] = [
     "# MESH: Medina English Student Hub",
     "",
-    "> MESH (medinahub.org) is run by students, for English-speaking students and families in Madinah (Medina), Saudi Arabia. It keeps a live schedule of the duroos (Islamic lessons) of the scholars at Masjid an-Nabawi, Masjid Quba and other masjids, updated from the official channels every few minutes; step-by-step guides to university and everyday life; a comparison of Arabic institutes and study programmes; the Islamic University of Madinah course texts; student discounts; and verified answers to common questions. Information is checked by students and dated; fees and rules change, so confirm with the official source.",
+    "> MESH (medinahub.org) is run by students, for English-speaking students and families in Madinah (Medina), Saudi Arabia. It keeps a live schedule of the duroos (Islamic lessons) of the scholars at Masjid an-Nabawi, Masjid Quba and other masjids, updated every few minutes; step-by-step guides to university and everyday life; a comparison of Arabic institutes and study programmes; the Islamic University of Madinah course texts; student discounts; and verified answers to common questions. Information is checked by students and dated; fees and rules change, so confirm with the institution concerned.",
     "",
     "## Live duroos",
     `- [Today's duroos](${abs("/duroos")}): every dars today, grouped by prayer, with live status, cancellations and adhan times (Umm al-Qura, Madinah).`,
@@ -56,9 +56,9 @@ export async function buildLlmsTxt(db: Db, full = false): Promise<string> {
   );
   if (full) {
     out.push("", "---", "", "# Full text of every guide");
-    for (const g of guides) out.push("", `## ${g.title}`, `Source: ${abs(`/guides/${g.slug}`)}`, "", g.summary, "", text(g.bodyHtml));
+    for (const g of guides) out.push("", `## ${g.title}`, `URL: ${abs(`/guides/${g.slug}`)}`, "", g.summary, "", text(g.bodyHtml));
     out.push("", "# Full answers");
-    for (const f of faqs) out.push("", `## ${f.question}`, `Source: ${abs(`/ask/${f.slug}`)}`, "", text(f.answerHtml));
+    for (const f of faqs) out.push("", `## ${f.question}`, `URL: ${abs(`/ask/${f.slug}`)}`, "", text(f.answerHtml));
   }
   return out.join("\n") + "\n";
 }

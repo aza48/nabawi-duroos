@@ -96,7 +96,7 @@ export function GuideBody({ html, slug, steps }: { html: string; slug: string; s
         <div className="mb-6 rounded-2xl border border-line bg-card px-4 py-3 md:px-5">
           <div className="flex items-center justify-between gap-3 text-sm">
             <span className="font-semibold">
-              {done.length === steps ? "All steps done. Barakallahu feek!" : `${done.length} of ${steps} steps done`}
+              {done.length === steps ? "All steps done. Barakallahu feek." : `${done.length} of ${steps} steps done`}
             </span>
             {done.length > 0 && (
               <button type="button" onClick={reset} className="flex items-center gap-1 text-muted hover:text-ink">

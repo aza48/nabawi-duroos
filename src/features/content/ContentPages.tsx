@@ -104,7 +104,7 @@ export function GuidesPage({ guides }: { guides: GuideRow[] }) {
                 </div>
               </div>
               {st.items.length === 0 ? (
-                <p className="rounded-2xl border border-dashed border-line bg-card p-5 text-sm text-muted">Being written. Ask in the WhatsApp group meanwhile.</p>
+                <p className="rounded-2xl border border-dashed border-line bg-card p-5 text-sm text-muted">This section is being written. In the meantime, ask in the WhatsApp group.</p>
               ) : (
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {st.items.map((g) => (

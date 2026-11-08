@@ -49,3 +49,16 @@ describe("search", () => {
     expect(search("  ")).toEqual([]);
   });
 });
+
+import { expandQuery as expandMore } from "@/lib/search/normalize";
+describe("student vocabulary", () => {
+  it("connects the spellings students actually type", () => {
+    expect(expandMore("mukafah")).toContain("stipend");
+    expect(expandMore("tazkia")).toContain("recommendation");
+    expect(expandMore("ta jeel")).toContain("tajeel");
+    expect(expandMore("paediatrician")).toContain("doctor");
+    expect(expandMore("optician")).toContain("glasses");
+    expect(expandMore("salary")).toContain("stipend");
+    expect(expandMore("aqidah")).toContain("tawhid");
+  });
+});

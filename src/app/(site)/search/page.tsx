@@ -12,7 +12,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ q
   const { q } = await searchParams;
   return (
     <>
-      <PageBand title="Search MESH" subtitle="Duroos, mashayikh, guides, answers, institutes, the library and discounts. English, Arabic, or however you spell it." />
+      <PageBand title="Search MESH" subtitle="Duroos, mashayikh, guides, answers, institutes, the library and discounts, in English or Arabic." />
       <div className="shell mt-8 md:mt-12">
         <SearchPage initial={q ?? ""} />
       </div>

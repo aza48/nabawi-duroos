@@ -15,7 +15,7 @@ export const GUIDES_2026: SeedGuide[] = [
     title: "What it costs to live in Madinah",
     summary: "Rent, food, bills, transport and a realistic monthly budget, for a single student and for a family.",
     bodyHtml: `
-<p>Madinah is one of the cheapest big cities in the Kingdom to live in. A two-bedroom flat here usually costs about half what it would in Jeddah or Riyadh. The figures below are what students and families report paying in late 2025 and 2026. Treat them as ranges, not quotes.</p>
+<p>Madinah is one of the cheapest big cities in the Kingdom to live in. A two-bedroom flat here usually costs about half what it would in Jeddah or Riyadh. The figures below are typical prices for late 2025 and 2026. Treat them as ranges, not quotes.</p>
 <h2>Rent</h2>
 <table><thead><tr><th>Home</th><th>Who it suits</th><th>Monthly (SAR)</th></tr></thead><tbody>
 <tr><td>Studio</td><td>One person or a couple</td><td>1,500 to 2,500</td></tr>
@@ -88,7 +88,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Open the account in the bank's app or at a branch, verifying your identity through Nafath or Absher.</li>
 <li>Order your mada debit card.</li>
 </ol>
-<blockquote><p>Tip: A mada card is worth having. Some shops take only mada or cash, foreign cards sometimes get blocked for "security", and you need a local card to pay bills and government fees.</p></blockquote>
+<blockquote><p>Tip: A mada card is worth having. Some shops take only mada or cash, foreign cards are sometimes blocked by bank security checks, and you need a local card to pay bills and government fees.</p></blockquote>
 <p>University students get their bank card through the University's steps for new students (see "First steps for new students").</p>`,
   },
   {
@@ -139,7 +139,7 @@ export const GUIDES_2026: SeedGuide[] = [
     title: "Kindergartens and schools for your children",
     summary: "What you need to enrol, typical fees, daily times, and Qur'an circles in local masjids.",
     bodyHtml: `
-<p>Madinah has plenty of private kindergartens and schools, and many accept children whose parents are on a visit visa, not only iqama holders. Families report that confident, polite persistence works.</p>
+<p>Madinah has plenty of private kindergartens and schools, and many accept children whose parents are on a visit visa, not only iqama holders. If a school hesitates, ask again politely and persist.</p>
 <h2>Kindergarten</h2>
 <ul>
 <li><strong>Age:</strong> from 3.</li>
@@ -184,7 +184,7 @@ export const GUIDES_2026: SeedGuide[] = [
     slug: "everyday-apps-and-services",
     stage: "getting-settled",
     title: "Everyday apps and services",
-    summary: "The apps people in Madinah actually use for food, repairs, cleaning, shopping and laundry, with typical prices.",
+    summary: "The apps residents of Madinah use for food, repairs, cleaning, shopping and laundry, with typical prices.",
     bodyHtml: `
 <h2>Food</h2>
 <ul>
@@ -236,7 +236,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Iqamas come through employment, or through Premium Residency (about 100,000 SAR a year, or 800,000 SAR for life).</p>
 <h2>University students' families</h2>
 <p>Students' spouse and family visas go through the University and its own procedures. Ask at the student affairs office (Wihda 22) and in the MESH group, where married students share the current steps.</p>
-<blockquote><p>Tip: People who have done it advise coming on a visa for a few months first, getting to know the city, and only then spending on an iqama.</p></blockquote>`,
+<blockquote><p>Tip: Come on a visa for a few months first, get to know the city, and only then spend on an iqama.</p></blockquote>`,
   },
   {
     slug: "finding-an-apartment",
@@ -253,7 +253,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </ul>
 <blockquote><p>Tip: If it's your first time, stay in a hotel or a short let (Booking, Airbnb or Gathern) for a week or two and look in person. You'll see the building, test the air conditioning and negotiate directly.</p></blockquote>
 <h2>Furnished or empty</h2>
-<p>For 3 to 6 months, take furnished. For a year or more, an empty flat is 40 to 50% cheaper and you can furnish it cheaply at Haraj market. Most good newer buildings are a 8 to 15 minute drive from the Haram rather than walking distance.</p>
+<p>For 3 to 6 months, take furnished. For a year or more, an empty flat is 40 to 50% cheaper and you can furnish it cheaply at Haraj market. Most good newer buildings are an 8 to 15 minute drive from the Haram rather than walking distance.</p>
 <h2>The contract</h2>
 <p><strong>Ejar</strong> is the official system that legally protects both sides, but it needs an iqama. Most rentals in Madinah are private paper agreements, which carry no legal protection. Owners usually want 6 or 12 months up front, or two payments a year.</p>
 <h2>Checklist before you pay</h2>
@@ -267,7 +267,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Check windows shut tightly against sand, and ask for window guards if you have children.</li>
 <li>Agree in writing who pays for small repairs, water and electricity.</li>
 </ol>
-<blockquote><p>Note: One resident's power was cut soon after moving in because the previous tenant owed over 3,000 riyals. Ten minutes checking the meter saves weeks of trouble.</p></blockquote>`,
+<blockquote><p>Note: If the previous tenant left an unpaid electricity bill, your power can be cut soon after you move in. Ten minutes checking the meter saves weeks of trouble.</p></blockquote>`,
   },
   {
     slug: "drivers-license",
@@ -296,14 +296,14 @@ export const FAQS_2026: SeedFaq[] = [
   { slug: "join-mesh-group", category: "getting-started", question: "How do I join the MESH WhatsApp group?", answerHtml: "<p>Tap any \"Join the group\" button on this site. Keep posts relevant, share only verified information, and no debates. The full rules are on the More page.</p>" },
   { slug: "how-to-apply-iu", category: "getting-started", question: "How do I apply to the Islamic University of Madinah?", answerHtml: "<p>Through the national Study in Saudi portal (studyinsaudi.moe.gov.sa) when applications open. You can choose up to 25 programmes across several universities and edit your application until the deadline. See <a href=\"/programs/iu-madinah\">Islamic University of Madinah</a> for the steps and a video walkthrough.</p>" },
   { slug: "stipend-amount", category: "university", question: "How much is the University stipend?", answerHtml: "<p>Fully funded scholarship students receive a monthly stipend (mukafa'ah) of 840 SAR, as well as housing and flights. The stipend stops during ta'jeel or i'tithaar.</p>" },
-  { slug: "learn-arabic-before-iu", category: "getting-started", question: "Where can I learn Arabic in Madinah before getting into the University?", answerHtml: "<p>There are several options. Year-round institutes such as Ahlul Athar, Mutun al-Ijaz and Taba charge from about 350 SAR a month. The <a href=\"/programs/map\">Madinah Arabic Program</a> runs one-month intensives on the University campus. Every option we know of, with fees and dates, is on <a href=\"/programs\">Study in Madinah</a>.</p>" },
+  { slug: "learn-arabic-before-iu", category: "getting-started", question: "Where can I learn Arabic in Madinah before getting into the University?", answerHtml: "<p>There are several options. Year-round institutes such as Ahlul Athar, Mutun al-Ijaz and Taba charge from about 350 SAR a month. The <a href=\"/programs/map\">Madinah Arabic Program</a> runs one-month intensives on the University campus. More options, with fees and dates, are on <a href=\"/programs\">Study in Madinah</a>.</p>" },
   { slug: "sisters-study", category: "family", question: "Where can sisters study Arabic and Islamic sciences?", answerHtml: "<p>There are free marakiz for sisters (Mishkat, Taibah, Academiyah al-Ma'rifah), the Masjid an-Nabawi Ma'had and Kulliyah for women, and paid options such as Al-Fusha Academy, Taba (now open to women) and MAP's sisters' classes. See <a href=\"/programs\">Study in Madinah</a>.</p>" },
   { slug: "monthly-budget", category: "getting-settled", question: "How much money do I need per month in Madinah?", answerHtml: "<p>Roughly 2,900 to 6,100 SAR for a single person renting their own place, and 6,300 to 12,800 SAR for a family of three or four. Scholarship students in the halls spend far less. Full breakdown: <a href=\"/guides/cost-of-living\">What it costs to live in Madinah</a>.</p>" },
   { slug: "bank-account-without-iqama", category: "getting-settled", question: "Can I open a Saudi bank account without an iqama?", answerHtml: "<p>Yes, since September 2025 visitors with a Visitor ID, a Saudi mobile number and Nafath or Absher verification can open an account and get a mada card. See <a href=\"/guides/sim-internet-bank\">SIM card, internet and a Saudi bank card</a>.</p>" },
   { slug: "home-internet-no-iqama", category: "getting-settled", question: "How do I get home internet without an iqama?", answerHtml: "<p>Fixed home internet needs an iqama, so most people use a portable router with an unlimited-data SIM from STC, Mobily or Zain.</p>" },
   { slug: "drive-on-visit-visa", category: "getting-settled", question: "Can I drive on a visit visa?", answerHtml: "<p>Yes, with your own licence if Saudi Arabia recognises it. To get a Saudi licence or register a car you need an iqama. See <a href=\"/guides/drivers-license\">Getting a Saudi driving licence</a>.</p>" },
   { slug: "rawdah-booking", category: "duroos", question: "How do I visit the Rawdah?", answerHtml: "<p>Book a slot in the Nusuk app and arrive at your booked time. Pray, make du'a calmly, and make room for others.</p>" },
-  { slug: "duroos-english", category: "duroos", question: "Are there duroos in English in the Haram?", answerHtml: "<p>Almost all duroos are in Arabic, which is great listening practice. English lessons are rare. Take a notebook, write down words, and look them up later. Today's duroos are on the <a href=\"/duroos\">Duroos</a> page.</p>" },
+  { slug: "duroos-english", category: "duroos", question: "Are there duroos in English in the Haram?", answerHtml: "<p>Almost all duroos are in Arabic, which is excellent listening practice. English lessons are rare. Take a notebook, write down words, and look them up later. Today's duroos are on the <a href=\"/duroos\">Duroos</a> page.</p>" },
   { slug: "do-i-register-for-duroos", category: "duroos", question: "Do I need to register to attend the duroos?", answerHtml: "<p>No. The duroos of the mashayikh are open to everyone. Only the Qur'an and mutun halaqat need registration.</p>" },
   { slug: "tajeel-vs-itithaar", category: "university", question: "What's the difference between ta'jeel and i'tithaar?", answerHtml: "<p>Ta'jeel is a planned semester off, requested in a short window before the semester. It doesn't count against your studies or your four-year limit. I'tithaar is withdrawing during a semester for an accepted excuse. That semester counts, and your deadline doesn't move. Details: <a href=\"/guides/tajeel-and-itithaar\">Taking a semester off</a>.</p>" },
   { slug: "etimad-what-for", category: "university", question: "What is Etimad and why do I need it?", answerHtml: "<p>It's the government platform where your University travel orders and ticket letters go. Set it up once and make sure your details match your passport exactly. See <a href=\"/guides/etimad-account\">Setting up your Etimad account</a>.</p>" },
