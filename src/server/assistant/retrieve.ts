@@ -64,7 +64,9 @@ export function createRetriever(chunks: Chunk[]) {
         if (!c) return 1;
         // Passages that contain every topic word of the question rank above partial matches.
         const covered = terms.length ? hits(terms, c) / terms.length : 0;
-        return kindBoost[c.kind] * (1 + 2 * covered);
+        // A page whose title is about the question beats one that mentions the words in passing.
+        const titled = terms.length ? termHits(terms, c.title) / terms.length : 0;
+        return kindBoost[c.kind] * (1 + 2 * covered + 1.5 * titled);
       },
     });
     if (!results.length) return [];

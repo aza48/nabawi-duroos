@@ -73,7 +73,7 @@ const GROUPS: string[][] = [
   ["cost", "costs", "price", "prices", "expensive", "budget", "living costs", "cost of living", "تكلفه", "سعر", "اسعار", "ميزانيه", "مصاريف"],
   ["cost of living", "living costs", "living expenses", "monthly budget", "معيشه", "تكاليف المعيشه"],
   ["makkah", "mecca", "makka", "macca", "مكه"],
-  ["pack", "packing", "packing list", "what to bring", "suitcase", "moving", "relocating", "relocation", "move to madinah", "ماذا احضر", "تجهيز السفر"],
+  ["pack", "packing", "packing list", "what to bring", "suitcase", "move", "moving", "relocating", "relocation", "move to madinah", "ماذا احضر", "تجهيز السفر"],
   ["mataam", "matam", "mat am", "mataim", "cafeteria", "canteen", "dining hall", "meals", "مطعم"],
   ["train", "haramain", "haramain train", "قطار"],
   ["school", "schools", "madrasa", "مدرسه", "مدارس"],
