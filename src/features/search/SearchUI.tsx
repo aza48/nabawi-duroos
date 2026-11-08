@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BadgePercent, BookOpen, CornerDownLeft, FileText, GraduationCap, Landmark, Library, MessageCircleQuestion, Search, User, X } from "lucide-react";
 import { createSearch, type SearchDoc, type SearchHit, type SearchType } from "@/lib/search/engine";
+import { localizeUrl } from "@/lib/locale";
 
 const TYPE: Record<SearchType, { label: string; ar: string; icon: typeof Search }> = {
   page: { label: "Pages", ar: "الصفحات", icon: FileText },
@@ -69,7 +70,7 @@ function Results({ hits, q, cursor, onPick, compact, locale = "en" }: { hits: Se
                 return (
                   <li key={h.id}>
                     <a
-                      href={h.url}
+                      href={localizeUrl(h.url, locale)}
                       target={ext ? "_blank" : undefined}
                       rel={ext ? "noopener noreferrer" : undefined}
                       onClick={(e) => {
@@ -146,9 +147,9 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
     (h: SearchHit) => {
       close();
       if (/^https?:/.test(h.url)) window.open(h.url, "_blank", "noopener");
-      else router.push(h.url);
+      else router.push(localizeUrl(h.url, locale));
     },
-    [router, close]
+    [router, close, locale]
   );
 
   return (
@@ -208,7 +209,7 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
               )}
             </div>
             {q.trim() && ready && (
-              <Link href={`/search?q=${encodeURIComponent(q)}`} onClick={() => setOpen(false)} className="border-t border-line px-5 py-3 text-sm font-semibold text-primary hover:bg-bg-2">
+              <Link href={`${locale === "ar" ? "/ar" : ""}/search?q=${encodeURIComponent(q)}`} onClick={() => setOpen(false)} className="border-t border-line px-5 py-3 text-sm font-semibold text-primary hover:bg-bg-2">
                 {t.all(q)}
               </Link>
             )}
@@ -221,26 +222,28 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
 }
 
 /** The full results page at /search?q=... */
-export function SearchPage({ initial }: { initial: string }) {
+export function SearchPage({ initial, locale = "en" }: { initial: string; locale?: "en" | "ar" }) {
   const [q, setQ] = useState(initial);
   const router = useRouter();
+  const t = T[locale];
+  const base = locale === "ar" ? "/ar/search" : "/search";
   const { hits, ready, failed } = useSearch(q, true);
   useEffect(() => {
-    const t = setTimeout(() => router.replace(q ? `/search?q=${encodeURIComponent(q)}` : "/search", { scroll: false }), 300);
-    return () => clearTimeout(t);
-  }, [q, router]);
+    const id = setTimeout(() => router.replace(q ? `${base}?q=${encodeURIComponent(q)}` : base, { scroll: false }), 300);
+    return () => clearTimeout(id);
+  }, [q, router, base]);
   return (
     <div className="mx-auto max-w-3xl">
       <label className="flex items-center gap-3 rounded-2xl border border-line bg-card px-4 shadow-[var(--shadow)] focus-within:border-primary">
         <Search size={20} className="shrink-0 text-primary" />
-        <span className="sr-only">Search MESH</span>
-        <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Iqama, MAP, ta'jeel, الرحيلي..." className="h-14 w-full bg-transparent text-lg text-ink outline-none placeholder:text-muted" />
+        <span className="sr-only">{t.searchMesh}</span>
+        <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={locale === "ar" ? "الإقامة، المعهد، التأجيل، الرحيلي..." : "Iqama, MAP, ta'jeel, الرحيلي..."} className="h-14 w-full bg-transparent text-lg text-ink outline-none placeholder:text-muted" />
       </label>
       <div className="mt-6">
-        {failed ? <p className="text-muted">Search couldn&apos;t load. Check your connection and try again.</p> : !ready ? <p className="text-muted">Loading search...</p> : <Results hits={hits} q={q} cursor={-1} onPick={(h) => router.push(h.url)} />}
+        {failed ? <p className="text-muted">{t.failed}</p> : !ready ? <p className="text-muted">{t.loading}</p> : <Results hits={hits} q={q} cursor={-1} onPick={(h) => router.push(localizeUrl(h.url, locale))} locale={locale} />}
         {!q.trim() && ready && (
           <div className="flex flex-wrap gap-2">
-            {POPULAR.map((p) => (
+            {(locale === "ar" ? POPULAR_AR : POPULAR).map((p) => (
               <button key={p} type="button" onClick={() => setQ(p)} className="rounded-full bg-card px-3.5 py-2 text-sm font-medium ring-1 ring-line hover:text-primary">
                 {p}
               </button>

@@ -17,6 +17,7 @@ const PAGES: SearchDoc[] = [
   { id: "page-live", type: "page", title: "Live streams", subtitle: "Watch the Haram duroos live", text: "broadcast youtube mixlr audio video", url: "/duroos/live" },
   { id: "page-updates", type: "page", title: "Duroos updates", subtitle: "Cancellations, postponements and new books", text: "cancelled postponed changes", url: "/duroos/updates" },
   { id: "page-programs", type: "page", title: "Study in Madinah", subtitle: "Arabic institutes, degrees and sisters' marakiz compared", text: "learn arabic course", url: "/programs" },
+  { id: "page-mahad", type: "page", title: "Ma'had hub", subtitle: "Books by level, answer keys, rules and what happens if you fail a level", text: "mahad arabic language institute levels textbooks answer keys fail level mustawa", url: "/mahad" },
   { id: "page-library", type: "page", title: "The Jamiah library", subtitle: "Muqarrarat and Ma'had books", text: "pdf books takhlees", url: "/library" },
   { id: "page-discounts", type: "page", title: "Student discounts", subtitle: "Offers with your University card", text: "deals offers", url: "/discounts" },
   { id: "page-alerts", type: "page", title: "Phone alerts", subtitle: "Free notifications when a dars changes", text: "notifications push morning brief", url: "/more#alerts" },

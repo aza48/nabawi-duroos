@@ -19,3 +19,18 @@ describe("locale", () => {
     expect(t("en", "afterIqamah")).toBe("Starts right after the iqamah");
   });
 });
+
+describe("localizeUrl", () => {
+  it("sends Arabic readers to Arabic twins and leaves English-only pages alone", async () => {
+    const { localizeUrl } = await import("@/lib/locale");
+    expect(localizeUrl("/guides/iqama", "ar")).toBe("/ar/guides/iqama");
+    expect(localizeUrl("/duroos/lesson/x", "ar")).toBe("/ar/duroos/lesson/x");
+    expect(localizeUrl("/more#alerts", "ar")).toBe("/ar/more#alerts");
+    expect(localizeUrl("/library", "ar")).toBe("/ar/library");
+    expect(localizeUrl("/library/sharia", "ar")).toBe("/library/sharia");
+    expect(localizeUrl("/mahad", "ar")).toBe("/mahad");
+    expect(localizeUrl("/", "ar")).toBe("/ar");
+    expect(localizeUrl("https://example.com", "ar")).toBe("https://example.com");
+    expect(localizeUrl("/guides/iqama", "en")).toBe("/guides/iqama");
+  });
+});

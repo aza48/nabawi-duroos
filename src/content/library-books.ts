@@ -32,7 +32,34 @@ export const COLLECTIONS: Collection[] = [
   { slug: "mahad", title: "Arabic Language Institute (Ma'had)", titleAr: "معهد تعليم اللغة العربية لغير الناطقين بها", group: "mahad", blurb: "The textbooks for every level, the new six-level books, the student guide, regulations and extra practice.", source: "1yqzf3ud2WA-YkVUWoF2lVneLNxZof7mx" },
 ];
 
-const TREES = data as unknown as Record<string, LibFolder>;
+/**
+ * Drive file names arrive as they were uploaded: "Emailing القراءة م1", "التدريبات م٥ merged",
+ * copy counters like "(2) (1)", stray bidi marks and ".pdf". Readers should see the book's name.
+ */
+export function cleanTitle(t: string): string {
+  let s = t
+    .replace(/[\u200e\u200f\u202a-\u202e\u2066-\u2069]/g, "")
+    .replace(/^\s*Emailing\s+/i, "")
+    .replace(/^\s*بدون حذف\s+/, "")
+    .replace(/(^|\s)merged?(?=\s|$)/gi, " ")
+    .replace(/\.(pdf|docx?|pptx?)\s*$/i, "")
+    .replace(/\s*doc\s*$/i, "")
+    .replace(/(\s*\(\s*\d+\s*\))+\s*$/g, "")
+    .replace(/(\s*\(\s*\d+\s*\))+(?=-\d+\s*$)/g, "")
+    .replace(/-\d+\s*$/, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (/^IMG[\s_-]*\d{8}/i.test(t)) s = "Photo";
+  return s || t.trim();
+}
+
+function cleanTree(n: LibFolder): LibFolder {
+  return { ...n, t: cleanTitle(n.t), f: n.f.map((c) => (isFolder(c) ? cleanTree(c) : { ...c, t: cleanTitle(c.t) })) };
+}
+
+const TREES = Object.fromEntries(
+  Object.entries(data as unknown as Record<string, LibFolder>).map(([k, v]) => [k, cleanTree(v)])
+) as Record<string, LibFolder>;
 export const treeOf = (slug: string): LibFolder | null => (TREES[slug]?.f.length ? TREES[slug] : null);
 export const LIVE_COLLECTIONS = COLLECTIONS.filter((c) => treeOf(c.slug));
 

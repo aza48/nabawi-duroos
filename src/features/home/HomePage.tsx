@@ -8,6 +8,7 @@ import { SectionHeader } from "@/components/ui";
 import { TodayHero } from "./TodayHero";
 import { DuroosByPrayer } from "./DuroosByPrayer";
 import { KeyDates } from "./KeyDates";
+import { TimeAgo } from "./TimeAgo";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
@@ -18,13 +19,6 @@ export const STAGE_ICON: Record<GuideStage, typeof Plane> = {
   family: Users,
   leaving: Luggage,
 };
-
-function timeAgo(iso: string): string {
-  const mins = Math.max(1, Math.round((Date.now() - new Date(iso).getTime()) / 60_000));
-  if (mins < 60) return `${mins} min ago`;
-  const h = Math.round(mins / 60);
-  return h < 24 ? `${h} h ago` : `${Math.round(h / 24)} d ago`;
-}
 
 export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today; guides: GuideRow[]; updates: AnnouncementRow[]; whatsappUrl: string }) {
   return (
@@ -38,7 +32,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
           <DuroosByPrayer today={today} locale="en" />
           {today.lastCheckedAt && (
             <p className="mt-6 flex items-center gap-1.5 text-xs text-muted">
-              <RefreshCw size={12} /> Last checked {timeAgo(today.lastCheckedAt)}
+              <RefreshCw size={12} /> Last checked <TimeAgo iso={today.lastCheckedAt} />
             </p>
           )}
         </div>

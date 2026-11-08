@@ -25,7 +25,7 @@ export function normalize(s: string): string {
 /** Each group lists words that should find each other. The first is the canonical spelling. */
 const GROUPS: string[][] = [
   ["iqama", "iqamah", "ikama", "ikamah", "igama", "muqeem", "residency", "residence permit", "izin tinggal", "اقامه", "اقامہ"],
-  ["visitor id", "hawiyat zair", "hawiya zair", "digital id", "study visa", "student visa", "educational visa", "هويه زائر", "تاشيره دراسيه"],
+  ["visitor id", "visitor", "zair", "zaer", "zaair", "zaeer", "hawiya", "hawiyah", "hawiyat zair", "hawiya zair", "zair id", "zaer id", "digital id", "study visa", "student visa", "educational visa", "هويه زائر", "تاشيره دراسيه"],
   ["tazkiyah", "tazkiya", "tazkia", "recommendation", "recommendation letter", "reference letter", "surat rekomendasi", "تزكيه", "توصيه", "تزکیہ"],
   ["admission", "apply", "application", "applying", "acceptance", "accepted", "qubool", "dakhla", "minhati", "manhati", "studyinsaudi", "study in saudi", "pendaftaran", "قبول", "منحتي", "داخلہ"],
   ["absher", "abshir", "ابشر"],
