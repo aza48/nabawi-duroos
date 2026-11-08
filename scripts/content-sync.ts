@@ -1,4 +1,7 @@
-/** Applies migrations, then publishes the latest MESH guides, FAQs, book links and watched channels to the live database: npm run content:sync */
+/**
+ * Applies migrations, then publishes the latest MESH guides, FAQs, book links and watched channels to the live database: npm run content:sync
+ * To publish only some guides or FAQs (leaving every other live row as it is): npm run content:sync -- --only=slug-one,slug-two
+ */
 import { readFileSync } from "node:fs";
 
 try {
@@ -18,6 +21,11 @@ async function main() {
   const { syncContent2026 } = await import("@/server/seed/content/sync");
   const { syncBookLinks } = await import("@/server/seed/content/book-links");
   const db = await getDb();
+  const only = process.argv.find((a) => a.startsWith("--only="))?.slice(7).split(",").filter(Boolean);
+  if (only?.length) {
+    console.log("Published only", only.join(", "), await syncContent2026(db, new Date(), { only }));
+    process.exit(0);
+  }
   console.log("Published:", await syncContent2026(db));
   console.log("Duroos with a book link:", await syncBookLinks(db));
   const { syncAlMidad } = await import("@/server/seed/content/al-midad");

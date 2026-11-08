@@ -7,8 +7,11 @@ import { FAQS_2026, GUIDES_2026 } from "./guides-2026";
 const minutes = (html: string) => Math.max(1, Math.ceil(html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length / 200));
 
 /** Upserts the November 2026 guides and FAQs as published and verified. Safe to run repeatedly. */
-export async function syncContent2026(db: Db, now: Date = new Date()): Promise<{ guides: number; faqs: number }> {
-  for (const g of GUIDES_2026) {
+export async function syncContent2026(db: Db, now: Date = new Date(), opts: { only?: string[] } = {}): Promise<{ guides: number; faqs: number }> {
+  const pick = <T extends { slug: string }>(xs: T[]) => (opts.only ? xs.filter((x) => opts.only!.includes(x.slug)) : xs);
+  const guideList = pick(GUIDES_2026);
+  const faqList = pick(FAQS_2026);
+  for (const g of guideList) {
     const row = {
       slug: g.slug,
       title: cleanText(g.title, "en"),
@@ -32,7 +35,7 @@ export async function syncContent2026(db: Db, now: Date = new Date()): Promise<{
         },
       });
   }
-  for (const f of FAQS_2026) {
+  for (const f of faqList) {
     const row = { slug: f.slug, question: cleanText(f.question, "en"), category: f.category, answerHtml: f.answerHtml, tags: f.tags ?? [], status: "published" as const, lastVerifiedAt: now };
     await db
       .insert(faqs)
@@ -46,5 +49,5 @@ export async function syncContent2026(db: Db, now: Date = new Date()): Promise<{
         },
       });
   }
-  return { guides: GUIDES_2026.length, faqs: FAQS_2026.length };
+  return { guides: guideList.length, faqs: faqList.length };
 }

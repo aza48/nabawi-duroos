@@ -17,7 +17,7 @@ Status: **done** (fixed and deployed), **next** (being worked on), **todo**.
 | 3 | The calendar guide is broken: raw "At a glance" text, empty month cards with tick boxes, dates jammed together ("Until22Oct 2026Thu"), dead "Add to calendar" text. It is the only full page of dates | /guides/university-calendar-1448 | done |
 | 4 | The al-Ruhayli Telegram channel was never read (wrong handle in code) | watcher | done |
 | 5 | Library sends people to Google Drive folders, Arabic only, with no levels or subjects on the site | /library | done |
-| 6 | No undergraduate admission guide (window, age 17 to 25, certificate under 5 years, documents, Manhati vs final acceptance, agents scam). Searches for "age limit", "admission requirements", "قبول" find nothing | content | todo |
+| 6 | No undergraduate admission guide (window, age 17 to 25, certificate under 5 years, documents, Manhati vs final acceptance, agents scam). Searches for "age limit", "admission requirements", "قبول" find nothing | content | written 8 Nov in guides-2026.ts (applying-to-the-islamic-university, with the paid agents warning). NOT live yet: the live write was blocked by the permission classifier. Owner: run `npm run content:sync -- --only=applying-to-the-islamic-university` (touches only that row) |
 | 7 | /ar returns 404 | /ar | done |
 
 ## High
