@@ -6,7 +6,7 @@ import type { GuideStage } from "@/server/db/schema";
 import { WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { SectionHeader } from "@/components/ui";
 import { TodayHero } from "./TodayHero";
-import { DuroosByPrayer } from "./DuroosByPrayer";
+import { DuroosCards } from "./DuroosCards";
 import { KeyDates } from "./KeyDates";
 import { TimeAgo } from "./TimeAgo";
 
@@ -26,10 +26,10 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
       <TodayHero today={today} locale="en" />
       <KeyDates initialNow={Date.now()} />
 
-      <div className="shell mt-10 grid gap-10 md:mt-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
-        <div id="live">
+      <div className="shell mt-10 grid grid-cols-1 gap-10 md:mt-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
+        <div id="live" className="min-w-0">
           <SectionHeader title="Today's duroos" icon={BookOpenText} action={{ href: "/duroos/schedule", label: "Weekly schedule" }} />
-          <DuroosByPrayer today={today} locale="en" />
+          <DuroosCards today={today} locale="en" />
           {today.lastCheckedAt && (
             <p className="mt-6 flex items-center gap-1.5 text-xs text-muted">
               <RefreshCw size={12} /> Last checked <TimeAgo iso={today.lastCheckedAt} />
