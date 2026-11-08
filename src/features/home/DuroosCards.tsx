@@ -68,7 +68,6 @@ export function DuroosCards({ today, locale }: { today: Today; locale: Locale })
                     lesson={l}
                     locale={locale}
                     isNext={isNext(l)}
-                    single={group.length === 1}
                   />
                 ))}
               />

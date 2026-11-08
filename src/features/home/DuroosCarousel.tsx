@@ -74,7 +74,7 @@ export function DuroosCarousel({
     count === 1
       ? "md:w-full"
       : many
-      ? "md:min-w-0 md:snap-start md:basis-[64%]"
+      ? "md:min-w-0 md:snap-start md:basis-[min(100%,max(64%,34rem))]"
       : "md:min-w-0 md:snap-start md:basis-[calc(50%-0.5rem)]";
 
   const rail =
