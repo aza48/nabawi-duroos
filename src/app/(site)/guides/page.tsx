@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDb } from "@/server/db/client";
 import { listGuides } from "@/server/content/queries";
 import { GuidesPage } from "@/features/content/ContentPages";
+import { GUIDE_CARD } from "@/features/guides/company/content";
 
 export const revalidate = 300;
 export const metadata: Metadata = {
@@ -11,5 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  return <GuidesPage guides={await listGuides(await getDb())} />;
+  const guides = await listGuides(await getDb());
+  return <GuidesPage guides={[GUIDE_CARD, ...guides.filter((g) => g.slug !== GUIDE_CARD.slug)]} />;
 }

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { SLUG as COMPANY_SLUG } from "@/features/guides/company/content";
 import { getDb } from "@/server/db/client";
 import { lessons } from "@/server/db/schema";
 import { listShaykhs } from "@/server/duroos/queries";
@@ -29,6 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...both("/live", 0.5, "weekly"),
     ...both("/sisters", 0.7, "weekly"),
     { url: abs("/guides"), priority: 0.9, changeFrequency: "weekly" },
+    { url: abs(`/guides/${COMPANY_SLUG}`), lastModified: new Date("2026-11-08"), priority: 0.7 },
     { url: abs("/programs"), priority: 0.9, changeFrequency: "weekly" },
     ...PROGRAMS.map((p) => ({ url: abs(`/programs/${p.slug}`), lastModified: new Date(p.checked), priority: 0.7 })),
     { url: abs("/library"), priority: 0.8, changeFrequency: "weekly" },
@@ -44,6 +46,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...shaykhRows.flatMap((s) => both(`/shaykh/${s.slug}`, 0.6, "weekly")),
     ...lessonRows.flatMap((l) => both(`/lesson/${l.slug}`, 0.6, "daily")),
     ...faqRows.map((f) => ({ url: abs(`/ask/${f.slug}`), lastModified: f.updatedAt, priority: 0.7 })),
-    ...guideRows.map((g) => ({ url: abs(`/guides/${g.slug}`), lastModified: g.updatedAt, priority: 0.7 })),
+    ...guideRows.filter((g) => g.slug !== COMPANY_SLUG).map((g) => ({ url: abs(`/guides/${g.slug}`), lastModified: g.updatedAt, priority: 0.7 })),
   ];
 }
