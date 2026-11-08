@@ -254,8 +254,21 @@ export function LivePage({ streams, locale }: { streams: StreamRow[]; locale: Lo
               {ar ? yt.labelAr : yt.labelEn} <ExternalLink size={15} className="text-muted" />
             </a>
           </div>
+          <p className="mt-2 text-sm text-muted">
+            {ar
+              ? "إذا ظهرت رسالة أن الفيديو غير متاح فلا يوجد بث الآن. افتح القناة على يوتيوب لآخر التسجيلات، أو استمع عبر القنوات أدناه."
+              : "If the video says it is unavailable, nothing is being broadcast right now. Open the channel on YouTube for the latest recordings, or listen on the channels below."}
+          </p>
         </>
       )}
+      <section aria-labelledby="sisters" className="mt-7 rounded-2xl border border-line bg-card p-4">
+        <h2 id="sisters" className="text-lg font-semibold">{ar ? "للأخوات" : "For sisters"}</h2>
+        <p className="mt-1.5 text-sm text-muted">
+          {ar
+            ? "تستطيع الأخوات متابعة الدروس مباشرة عبر البث الرسمي والقنوات الصوتية أدناه، من البيت أو من مصليات النساء في المسجد، باستخدام سماعات الأذن."
+            : "Sisters can follow the duroos live through the official stream and the audio channels below, at home or from the women's prayer areas of the masjid with earphones."}
+        </p>
+      </section>
       <h2 className="mt-7 mb-2.5 text-lg font-semibold">{t(locale, "channels")}</h2>
       <div className="grid gap-2">
         {others.map((s) => (

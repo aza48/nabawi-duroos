@@ -221,11 +221,11 @@ export const GUIDES_2026: SeedGuide[] = [
 <blockquote><p>Important: Visa rules change often. Everything here was checked in late 2025 and 2026. Confirm on <a href="https://visa.mofa.gov.sa/">visa.mofa.gov.sa</a> before you book anything.</p></blockquote>
 <h2>Staying on a visa</h2>
 <ul>
-<li><strong>UK citizens:</strong> the e-Waiver visa (around £32) is issued online in minutes and allows up to 6 months at a time. Families leave for a nearby country and come back on a fresh one.</li>
-<li><strong>US citizens:</strong> a multiple-entry business visa valid for 10 years, up to 180 days per stay.</li>
-<li><strong>Other Europeans and Canadians:</strong> a multiple-entry business visa of 1 to 5 years, up to 90 days per stay.</li>
+<li><strong>Tourist eVisa:</strong> open to citizens of about 68 countries, including the UK, the US, Canada and most of Europe. It costs SAR 535 online or SAR 480 on arrival at an international airport, includes compulsory health insurance, and is valid for one year with multiple entries, up to 90 days in the country. It cannot be extended. Check the rules for your passport on <a href="https://visa.visitsaudi.com/">visa.visitsaudi.com</a>.</li>
+<li><strong>Extending a visit visa:</strong> the host (a Saudi or an iqama holder) files the extension on Absher, from 7 days before expiry to 3 days after. It costs about SAR 100 each time, and the total stay is capped at 180 days.</li>
+<li><strong>Family visit visa:</strong> the sponsor needs a professional iqama with at least 90 days left and a documented salary. Student and dependant iqamas cannot sponsor one.</li>
 </ul>
-<p>On a visa you may live here, study at language centres and work online for clients abroad. You may not take a job with a Saudi employer.</p>
+<p>On a visit visa you may live here and take short courses at language centres. You may not work, and degree study needs a student visa.</p>
 <h2>What an iqama adds</h2>
 <ul>
 <li>A registered rental contract on Ejar.</li>
