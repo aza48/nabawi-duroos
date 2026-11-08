@@ -2,6 +2,24 @@
 
 Last updated 7 November 2026 (second session) by Claude. This file is the source of truth for continuing the work.
 
+## Audit-items session (8 November 2026, about 07:10 to 08:00 Riyadh, stopped at 86% weekly usage)
+- Deployed and checked live on medinahub.org: 27 Library in the phone nav (Study moved to More), 28 phone hero 621 to about 310 px (compact next adhan card, day arc from sm up), 26 collapsible "On this page" on phones, 16 Live page sisters note and unavailable-stream fallback, 19 schedule filter by prayer, 25 guide and FAQ pages cached (edge HIT), 18 Study page filter by who it is for, 13 Ahlul Athar fee and location.
+- 14 visa lines are rewritten in src/server/seed/content/guides-2026.ts (tourist eVisa, extensions, family visit visa) but NOT on the live DB yet. `npm run content:sync` upserts every seeded guide and FAQ, and reading the live DB to confirm it would not revert the overnight live-only edits was blocked by the permission classifier. Next session: confirm, then run it.
+- Al-Fusha question added to docs/IDEAS-FOR-OWNER.md. No arabic.ahlulathar.net link exists in the code.
+- Still open: 6 admission guide, 17 Ma'had hub, rest of 13 (Mutun al-Ijaz price conflict, IU page, library, childbirth costs need fresh sources), 16 women's areas and gates (need verified facts; the Al-Midad session is building /duroos/sisters), 18 sort, compare and price units, 19 level and language (needs lesson fields).
+- Note: my pushes to `mine revamp:main` also carried the Al-Midad session's commit dcb2ae3 to production (tests passed with it).
+
+## Morning session, 8 November 2026 (Al-Midad import and Sisters section, stopped at about 08:15 Riyadh, weekly usage 86%)
+- **Al-Midad import: DONE and live.** 7 new duroos (2 for everyone, 5 women's), 6 new teachers, 3 new masjids, and al-Badr's Tafsir as-Sa'di now has its days (Sunday to Friday after Fajr) and exact spot. Diff and every open question: `docs/research/al-midad-import.md`. Code: `src/server/seed/content/al-midad.ts` (`syncAlMidad`, run by `npm run content:sync` and the seed; it only inserts and fills gaps, never overwrites admin edits).
+- **Sisters section: DONE and deployed.** `lessons.audience` (all, men, women; migration 0006, already applied to live). `/duroos/sisters` and `/ar/duroos/sisters` in a petal-pink MESH variant (`[data-variant="sisters"]` in globals.css, light and dark), a pink "Sisters" tab in the duroos nav, and a pink Sisters tag on women's duroos in today's cards, the weekly schedule, shaykh pages and the lesson page (which also turns pink). In the sitemap.
+- **Not done here:** step 3 audit items (27, 28, 26, 13, 14) were being worked by the parallel audit session, so they were left to it.
+- **Questions for the owner:**
+  1. Quba weekly duroos: Al-Midad and our seed disagree on days and prayers for Maher and Mu'adh Khujah, al-Ghamidi, Abu Battin and al-Shamani (Al-Midad looks shifted by about a day). Which is right? Nothing was changed.
+  2. List online women's duroos (Iman al-Marzuq on Zoom, Kuwait time; her event's title and description also name different books)?
+  3. Add one-off lectures from Al-Midad to the events list?
+  4. Make Al-Midad a recurring source (a daily read that proposes changes in the admin inbox, like the Telegram watcher)? Not built.
+- Shared-folder gotcha: two sessions share one git index here. Stage by explicit path; a `git commit` picks up whatever the other session staged.
+
 ## Overnight progress (8 November 2026, stopped at 83% of the 5-hour window)
 - Done and deployed: authority sweep of all public text (code files and 86 live database edits, facts checked; the course-descriptions guide was set to draft because it was leftover scraped widget text); library pages in the sitemap; search synonyms from the multilingual research.
 - Shaykh photos: DONE. 20 of 31 shuyukh are pictured (19 from the October verification in public/images, plus Anis ibn Ahmad Tahir in public/shaykhs). The 11 without a photo are listed in docs/research/shaykh-photos.md for the owner.
