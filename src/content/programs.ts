@@ -123,8 +123,8 @@ export const PROGRAMS: Program[] = [
     kind: "arabic",
     tagline: "One of the most affordable serious Arabic courses in the city, with month-long levels.",
     audience: ["men", "women", "online", "children"],
-    price: "350 SAR a month",
-    where: "About 25 to 30 minutes' walk from Masjid an-Nabawi",
+    price: "350 SAR a level of about one month (450 SAR without the discount conditions)",
+    where: "Madinah, a short taxi ride from Masjid an-Nabawi (about 5 SAR)",
     overview: [
       "Opened in 2025, Ahlul Athar runs a 13-level series for non-Arabs, each level lasting a month, with its own books reviewed by university professors. There is a separate track in grammar, morphology, rhetoric and spelling for Arabic speakers.",
       "Brothers study in person or online. Sisters currently study online only. Motivated children aged 7 to 10 can join adult groups.",
