@@ -2,14 +2,11 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { admin, captcha, twoFactor } from "better-auth/plugins";
 import { nextCookies } from "better-auth/next-js";
-import { APIError } from "better-auth/api";
-import { eq } from "drizzle-orm";
 import { passkey } from "@better-auth/passkey";
 import { createAccessControl } from "better-auth/plugins/access";
 import { adminAc, defaultStatements } from "better-auth/plugins/admin/access";
 import { getDb, type Db } from "@/server/db/client";
 import * as schema from "@/server/db/schema";
-import { hasPasskey } from "./passkeys";
 
 /** Better Auth user-management powers: owner only. Content permissions live in permissions.ts. */
 const ac = createAccessControl(defaultStatements);
@@ -68,20 +65,6 @@ export function createAuth(db: Db, opts: { baseURL?: string; onResetLink?: (emai
       revokeSessionsOnPasswordReset: true,
       sendResetPassword: async ({ user, token }) => {
         opts.onResetLink?.(user.email, resetLink(baseURL, token));
-      },
-    },
-    databaseHooks: {
-      session: {
-        create: {
-          /** A passkey is this account's second factor, so a password alone must not open a session. */
-          before: async (session, ctx) => {
-            if (ctx?.path !== "/sign-in/email") return;
-            const [u] = await db.select({ tfa: schema.user.twoFactorEnabled }).from(schema.user).where(eq(schema.user.id, session.userId));
-            if (!u?.tfa && (await hasPasskey(db, session.userId))) {
-              throw new APIError("FORBIDDEN", { message: "Use Face ID or fingerprint to sign in to this account.", code: "USE_PASSKEY" });
-            }
-          },
-        },
       },
     },
     session: { expiresIn: 60 * 60 * 24 * 7, updateAge: 60 * 60 * 24 },

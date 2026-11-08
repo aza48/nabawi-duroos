@@ -76,12 +76,13 @@ describe("password reset links", () => {
 });
 
 describe("passkey as the second factor", () => {
-  it("does not let a password alone open a session once a passkey is the only second factor", async () => {
+  it("lets a passkey admin also sign in with their password", async () => {
     const { passkey } = await import("@/server/db/schema");
     const a = await createAdmin(auth, "faceid@example.com");
     await db.insert(passkey).values({
       id: "pk-test", userId: a.id, publicKey: "x", credentialID: "cred-test", counter: 0, deviceType: "singleDevice", backedUp: false,
     });
-    await expect(signIn(auth, a.email, a.password)).rejects.toThrow();
+    const r = await signIn(auth, a.email, a.password);
+    expect((r.response as { user?: { email: string } }).user?.email).toBe(a.email);
   });
 });

@@ -22,10 +22,7 @@ export function LoginForm({ notice }: { notice?: string }) {
     setError(null);
     const { data, error } = await authClient.signIn.email({ email, password });
     setBusy(false);
-    if (error) {
-      if (error.code === "USE_PASSKEY") return setError("This account signs in with Face ID or fingerprint. Use the button above.");
-      return setError(error.status === 429 ? "Too many attempts. Wait a minute and try again." : "Email or password is incorrect.");
-    }
+    if (error) return setError(error.status === 429 ? "Too many attempts. Wait a minute and try again." : "Email or password is incorrect.");
     if ((data as { twoFactorRedirect?: boolean } | null)?.twoFactorRedirect) return setStep("code");
     router.push("/admin/setup-2fa");
   }
