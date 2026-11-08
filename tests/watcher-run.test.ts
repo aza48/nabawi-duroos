@@ -68,7 +68,7 @@ describe("runWatcher", () => {
 
   it("publishes automatically once the channel leaves shadow mode", async () => {
     await db.update(sources).set({ autoPublish: true }).where(eq(sources.handle, "drosalmadina"));
-    pages.drosalmadina = post(4, "يعتذر الشيخ عن الدرس");
+    pages.drosalmadina = post(4, "يعتذر الشيخ سليمان الرحيلي عن درس الخميس ٢/٦/١٤٤٨");
     const r = await runWatcher(db, deps(), NOW);
     expect(r.published).toBe(1);
     const [p4] = await db.select().from(channelPosts).where(eq(channelPosts.postId, "drosalmadina/4"));

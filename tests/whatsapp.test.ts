@@ -31,7 +31,7 @@ describe("ingestForwarded", () => {
     const db = await resetTestDb();
     await importLegacy(db);
     const parse: AiParse = { about_lesson: true, lesson_slug: "ruh-dalil", kind: "cancelled", dates: ["2026-11-12"], note_en: "The shaykh will not give this dars today", note_ar: "", confidence: 0.95 };
-    const out = await ingestForwarded(db, { id: "wamid.9", from: "966501234567", at: new Date("2026-11-08T08:00:00Z"), text: "يعتذر الشيخ عن درس الخميس", imageId: null, forwarded: true, imageUrl: null }, async () => parse, new Date("2026-11-08T09:00:00Z"));
+    const out = await ingestForwarded(db, { id: "wamid.9", from: "966501234567", at: new Date("2026-11-08T08:00:00Z"), text: "يعتذر الشيخ سليمان الرحيلي عن درس الخميس", imageId: null, forwarded: true, imageUrl: null }, async () => parse, new Date("2026-11-08T09:00:00Z"));
     expect(out.status).toBe("published");
     expect(out.reply).toMatch(/^Published\. Looks like: lesson cancelled/);
     const [row] = await db.select().from(channelPosts).where(eq(channelPosts.postId, "wa/wamid.9"));

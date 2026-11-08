@@ -43,3 +43,16 @@ export async function seedSources(db: Db): Promise<void> {
     if (!used?.n) await db.delete(sources).where(eq(sources.handle, handle));
   }
 }
+
+/** Channels run by one shaykh: a post there is about him even when it does not name him. */
+const OWN_CHANNEL: Record<string, RegExp> = {
+  sualruhaily: /Sulayman.*Ruhayli/i,
+  twijri: /Ali.*Tuwaijri/i,
+  rehyli: /Ibrahim.*Ruhayli/i,
+  dr_maherkhujah: /Mahir.*Khujah/i,
+  dr_elbukhary: /Abdullah.*Bukhari/i,
+  sohaymi: /Salih.*Suhaymi/i,
+  abo3omr_alarjon: /Abdulaziz.*Arjun/i,
+};
+
+export const isOwnChannel = (handle: string, shaykhEn: string): boolean => OWN_CHANNEL[handle.toLowerCase()]?.test(shaykhEn) ?? false;

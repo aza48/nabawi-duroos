@@ -41,6 +41,7 @@ export async function lessonContext(db: Db) {
       label: `${r.shaykh} (${r.shaykhAr}): ${r.bookEn} / ${r.bookAr}, ${r.masjid}, after ${r.prayer}, ${r.days.length ? r.days.map((d) => DAY[d]).join(" ") : "days not stated"}`,
     })),
     days: Object.fromEntries(rows.map((r) => [r.slug, r.days])) as Record<string, number[]>,
+    shaykhs: Object.fromEntries(rows.map((r) => [r.slug, { ar: r.shaykhAr, en: r.shaykh }])) as Record<string, { ar: string; en: string }>,
     candidates: rows.map((r) => ({ slug: r.slug, bookAr: r.bookAr, shaykhAr: r.shaykhAr, masjidId: r.masjidId })),
   };
 }
@@ -162,7 +163,10 @@ export async function runWatcher(
         result.errors++;
         row = { ...base, status: "error", parse: null, reason: failure, wouldAuto: false };
       } else {
-        const d = decide(parse, { today, trusted: src.trusted, autoPublish: src.autoPublish, lessonDays: ctx.days });
+        const d = decide(parse, {
+          today, trusted: src.trusted, autoPublish: src.autoPublish, lessonDays: ctx.days,
+          text: p.text, imageOnly: !p.text.trim() && !!p.imageUrl, lessonShaykhs: ctx.shaykhs, sourceHandle: src.handle,
+        });
         row = { ...base, status: d.action === "ignore" ? "ignored" : "suggested", parse, reason: d.reason, wouldAuto: d.wouldAuto };
         if (d.action === "auto") {
           // The AI's own wording never reaches the public page or a push alert: the status and date say it all.

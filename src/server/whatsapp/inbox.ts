@@ -101,7 +101,10 @@ export async function ingestForwarded(db: Db, msg: Incoming & { imageUrl: string
   }
 
   const reading = plainReading(parse, parse.lesson_slug ? ctx.list.find((l) => l.slug === parse!.lesson_slug)?.label.split(": ")[1]?.split(" / ")[0] : undefined);
-  const d = decide(parse, { today, trusted, autoPublish, lessonDays: ctx.days });
+  const d = decide(parse, {
+    today, trusted, autoPublish, lessonDays: ctx.days,
+    text: msg.text, imageOnly: !msg.text.trim() && !!msg.imageUrl, lessonShaykhs: ctx.shaykhs, sourceHandle: WA_SOURCE,
+  });
   if (d.action === "auto") {
     const o = await addOverride(db, "system", {
       lessonSlug: parse.lesson_slug!, kind: parse.kind as "cancelled", startsOn: parse.dates[0],
