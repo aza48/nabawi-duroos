@@ -8,7 +8,7 @@ import { cleanText } from "@/lib/text";
 import { getSetting, setSetting } from "@/server/settings";
 import { record } from "./audit";
 import { slugify } from "./duroos";
-import { refreshPublic } from "./refresh";
+import { refreshPublic, withArabic } from "./refresh";
 import { revalidatePath } from "next/cache";
 
 const WORDS_PER_MINUTE = 200;
@@ -52,13 +52,13 @@ export async function saveFaq(db: Db, actor: Actor, input: z.input<typeof faqInp
     if (!before) throw new Error("faq_not_found");
     const [after] = await db.update(faqs).set(fields).where(eq(faqs.slug, v.slug)).returning();
     await record(db, actor, { action: "update", entity: "faq", entityId: v.slug, before, after });
-    refreshPublic(["/ask", `/ask/${v.slug}`]);
+    refreshPublic(withArabic(["/ask", `/ask/${v.slug}`]));
     return after;
   }
   const slug = await freeSlug(db, faqs, slugify(v.question));
   const [row] = await db.insert(faqs).values({ ...fields, slug }).returning();
   await record(db, actor, { action: "create", entity: "faq", entityId: slug, before: null, after: row });
-  refreshPublic(["/ask", "/"]);
+  refreshPublic(withArabic(["/ask", "/"]));
   return row;
 }
 
@@ -68,7 +68,7 @@ export async function deleteFaq(db: Db, actor: Actor, input: { slug: string }) {
   if (!before) throw new Error("faq_not_found");
   await db.delete(faqs).where(eq(faqs.slug, input.slug));
   const auditId = await record(db, actor, { action: "delete", entity: "faq", entityId: input.slug, before, after: null });
-  refreshPublic(["/ask", `/ask/${input.slug}`]);
+  refreshPublic(withArabic(["/ask", `/ask/${input.slug}`]));
   return auditId;
 }
 
@@ -105,13 +105,13 @@ export async function saveGuide(db: Db, actor: Actor, input: z.input<typeof guid
     if (!before) throw new Error("guide_not_found");
     const [after] = await db.update(guides).set(fields).where(eq(guides.slug, v.slug)).returning();
     await record(db, actor, { action: "update", entity: "guide", entityId: v.slug, before, after });
-    refreshPublic(["/guides", `/guides/${v.slug}`, "/"]);
+    refreshPublic(withArabic(["/guides", `/guides/${v.slug}`, "/"]));
     return after;
   }
   const slug = await freeSlug(db, guides, slugify(v.title));
   const [row] = await db.insert(guides).values({ ...fields, slug }).returning();
   await record(db, actor, { action: "create", entity: "guide", entityId: slug, before: null, after: row });
-  refreshPublic(["/guides", "/"]);
+  refreshPublic(withArabic(["/guides", "/"]));
   return row;
 }
 
@@ -121,7 +121,7 @@ export async function deleteGuide(db: Db, actor: Actor, input: { slug: string })
   if (!before) throw new Error("guide_not_found");
   await db.delete(guides).where(eq(guides.slug, input.slug));
   const auditId = await record(db, actor, { action: "delete", entity: "guide", entityId: input.slug, before, after: null });
-  refreshPublic(["/guides", `/guides/${input.slug}`, "/"]);
+  refreshPublic(withArabic(["/guides", `/guides/${input.slug}`, "/"]));
   return auditId;
 }
 
@@ -136,6 +136,6 @@ export async function setWhatsAppUrl(db: Db, actor: Actor, input: { url: string 
     action: "update", entity: "setting", entityId: "whatsapp_invite_url",
     before: { key: "whatsapp_invite_url", value: before }, after: { key: "whatsapp_invite_url", value: url },
   });
-  refreshPublic(["/", "/duroos", "/ar/duroos", "/ask", "/guides", "/more"]);
+  refreshPublic(withArabic(["/", "/duroos", "/ask", "/guides", "/more"]));
 }
 

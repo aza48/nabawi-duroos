@@ -24,3 +24,10 @@ describe("library titles", () => {
     expect(cleanTitle("١٢")).toBe("١٢");
   });
 });
+
+describe("refresh paths", () => {
+  it("adds the Arabic twin of every public page once", async () => {
+    const { withArabic } = await import("@/server/admin/refresh");
+    expect(withArabic(["/guides", "/guides/x", "/", "/ar/duroos"])).toEqual(["/guides", "/ar/guides", "/guides/x", "/ar/guides/x", "/", "/ar", "/ar/duroos"]);
+  });
+});
