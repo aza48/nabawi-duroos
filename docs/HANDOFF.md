@@ -84,7 +84,7 @@ medinahub.org: a hub run by students, for English-speaking students and families
 - Next: route general information (discounts, guide facts, events) into drafts of the right type instead of the generic inbox; consider an Anthropic key for a higher daily reading limit than the free Gemini tier.
 
 ## Waiting on a live database step (not done; needs the owner's OK to run against live)
-- Seeded but not live: the admission guide with the paid agents warning and five group-chat FAQs. Safe command (touches only these rows): `npm run content:sync -- --only=applying-to-the-islamic-university,absher-nafath-activation,find-my-timetable,rent-on-student-visa,library-bags-laptops,blackboard-phishing`.
+- DONE (checked live 8 Nov): the admission guide (/guides/applying-to-the-islamic-university) and the five group-chat FAQs (absher-nafath-activation, find-my-timetable, rent-on-student-visa, library-bags-laptops, blackboard-phishing) are on medinahub.org.
 - Visa guide lines (tourist eVisa, extensions, family visit visa) are rewritten in `src/server/seed/content/guides-2026.ts` but not live. A full `content:sync` upserts every seeded guide; first check it will not revert live-only edits from the authority sweep, or sync that guide alone with `--only`.
 - Moving programmes, library, discounts and key dates into DB tables with admin editing was not started: it needs a migration on live first, and live DB access was blocked by the permission classifier in these sessions.
 
