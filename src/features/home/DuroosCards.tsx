@@ -41,7 +41,7 @@ export function DuroosCards({ today, locale }: { today: Today; locale: Locale })
         if (!group.length) return null;
         const many = group.length >= 3;
         return (
-          <section key={p} id={`after-${p}`} className="scroll-mt-28 overflow-hidden rounded-3xl border border-line bg-bg-2">
+          <section key={p} id={`after-${p}`} className="scroll-mt-28 overflow-hidden rounded-3xl border border-line/70 border-s-4 border-s-primary bg-bg shadow-[var(--shadow)]">
             <div className="flex items-center gap-3 px-5 pb-1 pt-4 sm:px-6">
               <h2 className="font-heading text-xl font-bold sm:text-2xl">
                 {t(locale, "after")} {t(locale, p)}

@@ -23,7 +23,7 @@ export function DuroosCarousel({ many, items }: { many: boolean; items: ReactNod
     count === 1
       ? "w-full shrink-0"
       : many
-      ? "min-w-0 snap-start shrink-0 basis-[86%] sm:basis-[58%] md:basis-[22rem]"
+      ? "min-w-0 snap-start shrink-0 basis-[86%] sm:basis-[58%] md:basis-[64%]"
       : "min-w-0 snap-start shrink-0 basis-[86%] sm:basis-[58%] md:basis-[calc(50%-0.5rem)]";
 
   const rail =

@@ -40,7 +40,7 @@ export function DarsMiniCard({ lesson: l, locale, isNext }: { lesson: TodayLesso
             ) : cancelled ? (
               <StatusTag status={l.status} locale={locale} />
             ) : next ? (
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-on-bg px-2.5 py-1 text-[11px] font-bold text-on">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-soft px-2.5 py-1 text-[11px] font-bold text-primary">
                 <Clock3 size={12} /> {t(locale, "upNext")}
               </span>
             ) : done ? (
@@ -57,7 +57,7 @@ export function DarsMiniCard({ lesson: l, locale, isNext }: { lesson: TodayLesso
 
           <Link
             href={duroosPath(locale, `/lesson/${l.slug}`)}
-            className={`mt-2.5 line-clamp-2 font-bold leading-snug hover:text-primary ${ar ? "ar-text text-[19px]" : "font-heading text-[17px]"} ${cancelled ? "line-through decoration-cancel/60" : ""}`}
+            className={`mt-2.5 line-clamp-3 font-bold leading-snug hover:text-primary ${ar ? "ar-text text-[19px]" : "font-heading text-[17px]"} ${cancelled ? "line-through decoration-cancel/60" : ""}`}
           >
             {title}
           </Link>
