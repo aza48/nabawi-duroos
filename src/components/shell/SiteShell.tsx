@@ -111,6 +111,9 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
           <p className="mt-3 text-sm text-white/75">
             {ar ? "الإعلانات والفعاليات والمساعدة اليومية." : "Announcements, events and daily help from students who have been here longer."}
           </p>
+          <p className="mt-2 text-sm font-semibold text-white">
+            {ar ? "المجموعة خاصة بالطلاب الغربيين الناطقين بالإنجليزية فقط." : "Only for English-speaking Western students."}
+          </p>
           <a
             href={whatsappUrl}
             target="_blank"
@@ -136,8 +139,8 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
         </div>
         <p className="shell pb-5 text-xs leading-relaxed text-white/50">
           {ar
-            ? "© مركز MESH. محتوى الموقع محمي بحقوق النشر. يمكنك الاقتباس منه مع ذكر الرابط، ولا يجوز نسخه أو استخدامه لتدريب نماذج الذكاء الاصطناعي دون إذن."
-            : "© MESH. All content is protected by copyright. Quote it with a link back; do not copy it in bulk or use it to train AI models without permission."}
+            ? "© مركز MESH. محتوى الموقع محمي بحقوق النشر."
+            : "© MESH. All content is protected by copyright."}
         </p>
       </div>
     </footer>
