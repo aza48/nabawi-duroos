@@ -28,7 +28,8 @@ export function WhatsAppBanner({ url }: { url: string }) {
   );
 }
 
-export function AskOnWhatsApp({ url, compact = false }: { url: string; compact?: boolean }) {
+export function AskOnWhatsApp({ url, compact = false, locale = "en" }: { url: string; compact?: boolean; locale?: "en" | "ar" }) {
+  const ar = locale === "ar";
   return (
     <a
       href={url}
@@ -40,10 +41,10 @@ export function AskOnWhatsApp({ url, compact = false }: { url: string; compact?:
         <WhatsAppIcon size={20} />
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block font-semibold">Have a question?</span>
-        <span className="block text-sm text-muted">Post it in the MESH WhatsApp chat</span>
+        <span className="block font-semibold">{ar ? "عندك سؤال؟" : "Have a question?"}</span>
+        <span className="block text-sm text-muted">{ar ? "اكتبه في مجموعة MESH على واتساب" : "Post it in the MESH WhatsApp chat"}</span>
       </span>
-      <ArrowUpRight size={18} className="text-muted" />
+      <ArrowUpRight size={18} className="text-muted rtl:-scale-x-100" />
     </a>
   );
 }

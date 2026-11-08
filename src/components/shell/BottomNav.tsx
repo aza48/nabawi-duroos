@@ -9,7 +9,7 @@ import type { Locale } from "@/lib/locale";
 export function navItems(locale: Locale) {
   const ar = locale === "ar";
   return [
-    { href: "/", label: ar ? "الرئيسية" : "Home", icon: House, mobile: true, match: (p: string) => p === "/" || p === "/ar" },
+    { href: ar ? "/ar" : "/", label: ar ? "الرئيسية" : "Home", icon: House, mobile: true, match: (p: string) => p === "/" || p === "/ar" },
     {
       href: ar ? "/ar/duroos" : "/duroos",
       label: ar ? "الدروس" : "Duroos",
@@ -17,11 +17,11 @@ export function navItems(locale: Locale) {
       mobile: true,
       match: (p: string) => p.startsWith("/duroos") || p.startsWith("/ar/duroos"),
     },
-    { href: "/library", label: ar ? "المكتبة" : "Library", icon: Library, mobile: true, match: (p: string) => p.startsWith("/library") },
-    { href: "/guides", label: ar ? "الأدلة" : "Guides", icon: BookOpen, mobile: true, match: (p: string) => p.startsWith("/guides") },
-    { href: "/programs", label: ar ? "الدراسة" : "Study", icon: GraduationCap, mobile: false, match: (p: string) => p.startsWith("/programs") },
-    { href: "/ask", label: ar ? "الأسئلة" : "Ask", icon: MessageCircleQuestion, mobile: false, match: (p: string) => p.startsWith("/ask") },
-    { href: "/more", label: ar ? "المزيد" : "More", icon: LayoutGrid, mobile: true, match: (p: string) => p.startsWith("/more") },
+    { href: ar ? "/ar/library" : "/library", label: ar ? "المكتبة" : "Library", icon: Library, mobile: true, match: (p: string) => /^(\/ar)?\/library/.test(p) },
+    { href: ar ? "/ar/guides" : "/guides", label: ar ? "الأدلة" : "Guides", icon: BookOpen, mobile: true, match: (p: string) => /^(\/ar)?\/guides/.test(p) },
+    { href: ar ? "/ar/programs" : "/programs", label: ar ? "الدراسة" : "Study", icon: GraduationCap, mobile: false, match: (p: string) => /^(\/ar)?\/programs/.test(p) },
+    { href: ar ? "/ar/ask" : "/ask", label: ar ? "الأسئلة" : "Ask", icon: MessageCircleQuestion, mobile: false, match: (p: string) => /^(\/ar)?\/ask/.test(p) },
+    { href: ar ? "/ar/more" : "/more", label: ar ? "المزيد" : "More", icon: LayoutGrid, mobile: true, match: (p: string) => /^(\/ar)?\/more/.test(p) },
   ];
 }
 

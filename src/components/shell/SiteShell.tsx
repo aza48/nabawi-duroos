@@ -26,7 +26,7 @@ export function SiteShell({
       </a>
       <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/85 backdrop-blur-md">
         <div className="shell flex h-16 items-center justify-between gap-2 sm:gap-4 md:h-[72px]">
-          <Link href="/" aria-label="MESH home" className="shrink-0">
+          <Link href={ar ? "/ar" : "/"} aria-label={ar ? "الصفحة الرئيسية لـ MESH" : "MESH home"} className="shrink-0">
             <Wordmark />
           </Link>
           <DesktopNav locale={locale} />
@@ -72,12 +72,12 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
     {
       title: ar ? "الحياة في المدينة" : "Life in Madinah",
       links: [
-        [ar ? "الدراسة في المدينة" : "Study programmes", "/programs"],
-        [ar ? "الأدلة" : "Guides", "/guides"],
-        [ar ? "مكتبة الجامعة" : "Jamiah library", "/library"],
-        [ar ? "الخصومات" : "Student discounts", "/discounts"],
-        [ar ? "الأسئلة الشائعة" : "Questions", "/ask"],
-        [ar ? "المزيد" : "More", "/more"],
+        [ar ? "الدراسة في المدينة" : "Study programmes", ar ? "/ar/programs" : "/programs"],
+        [ar ? "الأدلة" : "Guides", ar ? "/ar/guides" : "/guides"],
+        [ar ? "المكتبة" : "Library", ar ? "/ar/library" : "/library"],
+        [ar ? "الخصومات" : "Student discounts", ar ? "/ar/discounts" : "/discounts"],
+        [ar ? "الأسئلة الشائعة" : "Questions", ar ? "/ar/ask" : "/ask"],
+        [ar ? "المزيد" : "More", ar ? "/ar/more" : "/more"],
       ],
     },
   ];

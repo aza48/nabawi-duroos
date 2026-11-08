@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import { fontVariables } from "../fonts";
 import { ThemeScript } from "@/components/shell/ThemeScript";
+import { LanguageScript } from "@/components/shell/LanguageScript";
 import { SiteShell } from "@/components/shell/SiteShell";
 import { getDb } from "@/server/db/client";
 import { getHelpContact, getWhatsAppUrl } from "@/server/settings";
@@ -35,6 +36,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     <html lang="en" dir="ltr" className={fontVariables} suppressHydrationWarning>
       <head>
         <ThemeScript />
+        <LanguageScript />
       </head>
       <body>
         <SiteShell locale="en" whatsappUrl={whatsappUrl} helpContact={helpContact}>
