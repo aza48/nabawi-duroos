@@ -142,7 +142,7 @@ export function SearchPalette() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Search MESH"
-        className="flex h-10 items-center gap-2 rounded-full border border-line bg-card px-3 text-sm text-muted transition hover:text-ink md:min-w-44"
+        className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-line bg-card px-3 text-sm text-muted transition hover:text-ink md:min-w-44"
       >
         <Search size={17} />
         <span className="hidden md:inline">Search</span>

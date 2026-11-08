@@ -36,7 +36,7 @@ export function SiteShell({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={ar ? "انضم لمجموعة MESH على واتساب" : "Join the MESH WhatsApp group"}
-              className="flex h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-wa px-3 text-sm font-semibold text-wa-ink transition hover:brightness-105 xl:px-4"
+              className="flex h-11 min-w-11 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-wa px-3 text-sm font-semibold text-wa-ink transition hover:brightness-105 xl:px-4"
             >
               <WhatsAppIcon size={18} /> <span className="hidden xl:inline">{ar ? "انضم للمجموعة" : "Join the group"}</span>
             </a>
