@@ -54,9 +54,12 @@ export const isStatusKind = (kind: OverrideKind): boolean => kind in STATUS_KIND
  * no countdown, no live badge and no calendar event for it.
  */
 const TIME_NOT_CONFIRMED = /no prayer time|time not confirmed|لم يُ?ذكر وقت|الوقت غير مؤكد/i;
+/** A label that is only "Evening" or "Livestreamed" (the live rows' short form) says the same thing. */
+const BARE_EVENING = /^(evening|livestreamed|مساءً?|يُ?بث مباشرة)[.。]?$/i;
 
 export function timeKnown(l: { timeLabelEn?: string | null; timeLabelAr?: string | null }): boolean {
-  return !TIME_NOT_CONFIRMED.test(l.timeLabelEn ?? "") && !TIME_NOT_CONFIRMED.test(l.timeLabelAr ?? "");
+  const unknown = (s: string | null | undefined) => !!s && (TIME_NOT_CONFIRMED.test(s) || BARE_EVENING.test(s.trim()));
+  return !unknown(l.timeLabelEn) && !unknown(l.timeLabelAr);
 }
 
 const prayerOrder = (p: Prayer) => PRAYERS.indexOf(p);

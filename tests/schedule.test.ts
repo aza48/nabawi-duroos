@@ -143,6 +143,11 @@ describe("timeKnown", () => {
     expect(timeKnown({ timeLabelEn: "Evening, time not confirmed", timeLabelAr: "مساءً، الوقت غير مؤكد" })).toBe(false);
     expect(timeKnown({ timeLabelEn: null, timeLabelAr: "لم يُذكر وقت الصلاة في المنشورات" })).toBe(false);
   });
+  it("is false for the short labels the live rows carry: Evening, Livestreamed", () => {
+    expect(timeKnown({ timeLabelEn: "Evening", timeLabelAr: "مساءً" })).toBe(false);
+    expect(timeKnown({ timeLabelEn: "Livestreamed", timeLabelAr: "يُبث مباشرة" })).toBe(false);
+    expect(timeKnown({ timeLabelEn: "Study day, sessions after Asr, Maghrib and Isha" })).toBe(true);
+  });
   it("is true without a label or with a label that only adds detail", () => {
     expect(timeKnown({ timeLabelEn: null, timeLabelAr: null })).toBe(true);
     expect(timeKnown({ timeLabelEn: "A day of lessons, with sessions after Asr, Maghrib and Isha" })).toBe(true);

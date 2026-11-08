@@ -182,7 +182,7 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
               {(l.current || l.notYetStarted) && (l.timeKnown ? (
                 <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={timeText(l, adhan, locale)} link={{ href: duroosPath(locale, `/schedule?prayer=${l.prayer}`), label: ar ? `كل الدروس بعد ${t(locale, l.prayer)}` : `All duroos after ${t(locale, l.prayer)}`, internal: true }} />
               ) : (
-                <Item icon={<Clock3 size={18} />} label={t(locale, "time")} value={publicLabel(ar ? l.timeLabelAr : l.timeLabelEn) ?? t(locale, "timeNotConfirmed")} />
+                <Item icon={<Clock3 size={18} />} label={t(locale, "time")} value={t(locale, "timeNotConfirmed")} />
               ))}
               <Item icon={<MapPin size={18} />} label={t(locale, "location")} value={placeText(ar ? l.masjid.nameAr : l.masjid.nameEn, ar ? l.locationAr : l.locationEn, ar)} link={{ href: mapUrl(l.masjid.nameEn), label: ar ? "افتح في الخرائط" : "Open in Maps" }} />
               {sequenceItems(ar ? l.sequenceAr : l.sequenceEn).length > 0 && (
