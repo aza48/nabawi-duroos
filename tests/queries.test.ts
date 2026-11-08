@@ -76,13 +76,13 @@ describe("lookups", () => {
     const all = await listAnnouncements(db, { limit: 100, includeArchived: true, now });
     expect(all.some((a) => a.eventDate && a.eventDate < "2026-11-07")).toBe(true);
   });
-  it("starts with the 17 guides from the previous MESH site plus the 2026 guides and answers", async () => {
+  it("starts with the 16 guides kept from the previous MESH site plus the 2026 guides and answers", async () => {
     const { GUIDES_2026: BASE_GUIDES, FAQS_2026: BASE_FAQS } = await import("@/server/seed/content/guides-2026");
     const { GUIDES_STUDENT_LIFE, FAQS_STUDENT_LIFE } = await import("@/server/seed/content/guides-student-life");
     const GUIDES_2026 = [...BASE_GUIDES, ...GUIDES_STUDENT_LIFE];
     const FAQS_2026 = [...BASE_FAQS, ...FAQS_STUDENT_LIFE];
     const rewritten = GUIDES_2026.filter((g) => ["drivers-license", "finding-an-apartment"].includes(g.slug)).length;
     expect(await listFaqs(db)).toHaveLength(FAQS_2026.length);
-    expect(await listGuides(db)).toHaveLength(17 + GUIDES_2026.length - rewritten);
+    expect(await listGuides(db)).toHaveLength(16 + GUIDES_2026.length - rewritten);
   });
 });

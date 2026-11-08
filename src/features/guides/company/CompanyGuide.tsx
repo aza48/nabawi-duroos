@@ -3,24 +3,28 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle, ArrowUpRight, BadgeCheck, Banknote, Building2, Calculator, Check, ChevronDown, CircleCheck, Clock,
-  FileText, Globe2, Landmark, Lightbulb, ListChecks, Plane, RotateCcw, Scale, Sparkles, Users,
+  FileText, Flag, Globe2, Landmark, Lightbulb, ListChecks, Newspaper, Plane, Receipt, RotateCcw, Scale, Sparkles, Star, Users,
 } from "lucide-react";
 import {
-  AFTER_CR, BANK_DOCS, BANKS, CHECKED, COMPARE, COSTS, DOCUMENTS, FAMILY, GLOSSARY, LICENCES, LINKS, MISTAKES, PLAN,
-  STARTS, TIMELINE, TRANSFER_FEES,
+  AFTER_CR, APOSTILLE, BANK_DOCS, BANKS, CHANGES_2025, CHECKED, COMPARE, DOCUMENTS, FAMILY, GLOSSARY, LINKS, MISTAKES,
+  PATHS, PLAN, PREMIUM, SETUP_COSTS, STARTS, TAX, TIMELINE, TRANSFER_FEES, US_TAX, YEARLY,
 } from "./content";
 
 const SECTIONS = [
+  { id: "changes", label: "What changed in 2025" },
   { id: "start", label: "Your starting point" },
-  { id: "licence", label: "Which licence" },
+  { id: "licence", label: "What kind of company" },
   { id: "timeline", label: "Timeline" },
   { id: "documents", label: "Documents" },
   { id: "cost", label: "Cost calculator" },
   { id: "after-cr", label: "After the CR" },
   { id: "family", label: "Iqama and family" },
+  { id: "tax", label: "Taxes" },
+  { id: "us-tax", label: "If you're American" },
   { id: "banks", label: "Bank account" },
-  { id: "mistakes", label: "12 mistakes" },
+  { id: "mistakes", label: "Mistakes to avoid" },
   { id: "uae", label: "Saudi or UAE" },
+  { id: "premium", label: "Premium Residency" },
   { id: "plan", label: "Your action plan" },
   { id: "glossary", label: "Words and links" },
 ];
@@ -71,6 +75,7 @@ export function CompanyGuide({ footer }: { footer?: React.ReactNode }) {
         </nav>
 
         <Intro />
+        <Changes />
         <StartingPoint />
         <LicenceFinder />
         <Timeline />
@@ -78,9 +83,12 @@ export function CompanyGuide({ footer }: { footer?: React.ReactNode }) {
         <CostCalculator />
         <AfterCr />
         <Family />
+        <Taxes />
+        <UsTax />
         <Banks />
         <Mistakes />
         <SaudiOrUae />
+        <Premium />
         <ActionPlan />
         <Glossary />
         {footer}
@@ -110,19 +118,20 @@ function Tip({ children, tone = "gold" }: { children: React.ReactNode; tone?: "g
 }
 
 function Intro() {
+  const setup = SETUP_COSTS.reduce((t, c) => t + c.sar, 0);
   return (
     <section className="space-y-5">
       <p className="text-lg leading-relaxed">
-        Agencies will tell you a MISA company is too complicated to do yourself and quote 30,000 to 50,000 SAR. It is not. It is a checklist: a fixed order of portals, a handful of documents, and a few traps that are easy to avoid once you know them.
+        Agencies will tell you a Saudi company is too complicated to set up yourself and quote 30,000 to 50,000 SAR. It is not. It is a checklist: a fixed order of government websites, a handful of documents, and a few traps that are easy to avoid once you know them.
       </p>
       <p className="leading-relaxed text-muted">
-        This guide walks you through it in order, with the fees founders in Madinah actually paid. If you can follow instructions and use a translation app, you can do this yourself, including from outside the Kingdom.
+        Your own company can also be your route to residency: it sponsors your iqama (residence permit), and then your wife and children. This guide walks you through it in order, in plain English, with the fees founders in Madinah actually paid. You can start it from outside the Kingdom.
       </p>
       <div className="grid gap-3 sm:grid-cols-3">
         {[
-          { big: "≈ 12,000", small: "SAR in government fees, year 1", icon: Banknote },
-          { big: "≈ 7 weeks", small: "from MISA application to a working bank account", icon: Clock },
-          { big: "8 to 10 hrs", small: "of actual portal work. The rest is waiting", icon: Sparkles },
+          { big: `≈ ${Math.round(setup / 1000).toLocaleString("en-GB")},000`, small: "SAR to set up, before any iqama transfer", icon: Banknote },
+          { big: "≈ 7 weeks", small: "from registration to a working bank account", icon: Clock },
+          { big: "8 to 10 hrs", small: "of actual online paperwork. The rest is waiting", icon: Sparkles },
         ].map(({ big, small, icon: Icon }) => (
           <div key={big} className="rounded-2xl border border-line bg-card p-4">
             <Icon size={18} className="text-primary" />
@@ -132,8 +141,24 @@ function Intro() {
         ))}
       </div>
       <Tip>
-        Ministries change their screens and fees often. If a portal shows something different from this guide, <b>follow the portal</b>, and tell us in the group so we can update this page.
+        Ministries change their screens and fees often. If a government site shows something different from this guide, <b>follow the site</b>, and tell us in the group so we can update this page.
       </Tip>
+    </section>
+  );
+}
+
+function Changes() {
+  return (
+    <section className="space-y-5">
+      <H2 id="changes" icon={Newspaper} kicker="Read this first" title="What changed in 2025" sub="Older guides, agencies and videos still describe the old system. These are the changes that matter to you." />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {CHANGES_2025.map((c) => (
+          <div key={c.title} className="rounded-2xl border border-primary/30 bg-primary-soft p-4">
+            <p className="flex items-center gap-2 font-semibold"><CircleCheck size={17} className="text-primary" /> {c.title}</p>
+            <p className="mt-1.5 text-sm leading-relaxed">{c.body}</p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
@@ -144,12 +169,12 @@ function StartingPoint() {
   return (
     <section className="space-y-5">
       <H2 id="start" icon={Plane} kicker="Step 0" title="Where are you starting from?" sub="Your first step depends on where you are today. Every path ends in the same place: an iqama through your own company." />
-      <div role="tablist" aria-label="Starting point" className="grid gap-2 sm:grid-cols-3">
+      <div role="tablist" aria-label="Starting point" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {STARTS.map((x) => (
           <button key={x.id} role="tab" aria-selected={pick === x.id} onClick={() => setPick(x.id)}
-            className={`rounded-2xl border p-4 text-start transition ${pick === x.id ? "border-primary bg-primary text-primary-ink shadow-md" : "border-line bg-card hover:border-primary/50"}`}>
+            className={`rounded-2xl border p-3.5 text-start transition ${pick === x.id ? "border-primary bg-primary text-primary-ink shadow-md" : "border-line bg-card hover:border-primary/50"}`}>
             <span className={`text-xs font-semibold uppercase tracking-wide ${pick === x.id ? "opacity-80" : "text-gold"}`}>{x.short}</span>
-            <span className="mt-1 block font-semibold leading-snug">{x.label}</span>
+            <span className="mt-1 block text-sm font-semibold leading-snug">{x.label}</span>
           </button>
         ))}
       </div>
@@ -163,6 +188,7 @@ function StartingPoint() {
           <p className="mt-2 leading-relaxed">{s.iqama}</p>
         </div>
       </div>
+      {s.warn && <Tip tone="warn">{s.warn}</Tip>}
     </section>
   );
 }
@@ -176,17 +202,17 @@ function LicenceFinder() {
     if (a.what === "goods") return "trading";
     if (a.what === "making") return "industrial";
     if (a.what === "profession") return "professional";
-    if (a.what === "property") return "realestate";
-    return a.abroad ? "service" : "entrepreneur";
+    if (a.what === "property") return "property";
+    return a.abroad ? "service" : "startup";
   }, [a]);
-  const lic = LICENCES.find((l) => l.id === result);
+  const p = PATHS.find((l) => l.id === result);
   const opt = (on: boolean) => `rounded-full border px-4 py-2 text-sm font-semibold transition ${on ? "border-primary bg-primary text-primary-ink" : "border-line bg-card hover:border-primary/50"}`;
   return (
     <section className="space-y-5">
-      <H2 id="licence" icon={BadgeCheck} kicker="Step 1" title="Which licence do you need?" sub="Picking the wrong licence is the most expensive mistake. Two questions find yours." />
+      <H2 id="licence" icon={BadgeCheck} kicker="Step 1" title="What kind of company are you setting up?" sub="What your company does decides the rules you follow. Two questions point you the right way." />
       <div className="space-y-5 rounded-3xl border border-line bg-card p-5 md:p-6">
         <div>
-          <p className="font-semibold">1. Do you own a company abroad that is at least a year old?</p>
+          <p className="font-semibold">1. Do you own a company back home (any size), registered at least a year ago?</p>
           <div className="mt-3 flex flex-wrap gap-2">
             <button className={opt(a.abroad === true)} onClick={() => setA({ ...a, abroad: true })}>Yes</button>
             <button className={opt(a.abroad === false)} onClick={() => setA({ ...a, abroad: false })}>No, not yet</button>
@@ -196,8 +222,8 @@ function LicenceFinder() {
           <p className="font-semibold">2. What will the Saudi company mainly do?</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {([
-              ["services", "Services, online, consulting, teaching"],
-              ["goods", "Sell physical goods"],
+              ["services", "Services, online work, consulting, teaching"],
+              ["goods", "Sell physical products"],
               ["making", "Make or manufacture"],
               ["profession", "Law, accounting, engineering, health"],
               ["property", "Real estate"],
@@ -206,38 +232,37 @@ function LicenceFinder() {
             ))}
           </div>
         </div>
-        {lic ? (
+        {p ? (
           <div className="rounded-2xl bg-brand p-5 text-white" aria-live="polite">
-            <p className="text-sm font-semibold uppercase tracking-wide text-gold-bright">Your licence</p>
-            <p className="mt-1 font-heading text-3xl font-bold">{lic.name}</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-gold-bright">Your route</p>
+            <p className="mt-1 font-heading text-3xl font-bold">{p.name}</p>
             <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-              <div><dt className="text-white/60">Best for</dt><dd className="mt-0.5">{lic.bestFor}</dd></div>
-              <div><dt className="text-white/60">Capital</dt><dd className="mt-0.5">{lic.capital}</dd></div>
-              <div><dt className="text-white/60">Yearly fee</dt><dd className="mt-0.5">{lic.fee}</dd></div>
-              <div><dt className="text-white/60">You will need</dt><dd className="mt-0.5">{lic.needs}</dd></div>
+              <div><dt className="text-white/60">Good for</dt><dd className="mt-0.5">{p.bestFor}</dd></div>
+              <div><dt className="text-white/60">Money in the company</dt><dd className="mt-0.5">{p.capital}</dd></div>
+              <div className="sm:col-span-2"><dt className="text-white/60">You will need</dt><dd className="mt-0.5">{p.needs}</dd></div>
             </dl>
-            {lic.note && <p className="mt-4 rounded-xl bg-white/10 p-3 text-sm">{lic.note}</p>}
-            {a.abroad === false && lic.id !== "entrepreneur" && (
-              <p className="mt-3 rounded-xl bg-white/10 p-3 text-sm">This licence expects a parent company abroad. Register one at home first, or speak to a Saudi accelerator about the Entrepreneur route.</p>
+            {p.note && <p className="mt-4 rounded-xl bg-white/10 p-3 text-sm">{p.note}</p>}
+            {a.abroad === false && p.id !== "startup" && (
+              <p className="mt-3 rounded-xl bg-white/10 p-3 text-sm">Without a company back home, either register a simple one there first, ask MISA about registering as an individual, or talk to a Saudi accelerator about the startup route.</p>
             )}
           </div>
         ) : (
-          <p className="text-sm text-muted">Answer both questions to see your licence.</p>
+          <p className="text-sm text-muted">Answer both questions to see your route.</p>
         )}
       </div>
       <details className="group rounded-2xl border border-line bg-card">
         <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 font-semibold [&::-webkit-details-marker]:hidden">
-          Compare all six licences <ChevronDown size={18} className="text-muted transition group-open:rotate-180" />
+          Compare all six <ChevronDown size={18} className="text-muted transition group-open:rotate-180" />
         </summary>
         <div className="overflow-x-auto border-t border-line">
           <table className="w-full min-w-[560px] text-sm">
             <thead className="bg-bg-2 text-left text-xs uppercase tracking-wide text-muted">
-              <tr><th className="p-3">Licence</th><th className="p-3">Best for</th><th className="p-3">Capital</th><th className="p-3">Yearly fee</th></tr>
+              <tr><th className="p-3">Type</th><th className="p-3">Good for</th><th className="p-3">You will need</th></tr>
             </thead>
             <tbody className="divide-y divide-line">
-              {LICENCES.map((l) => (
+              {PATHS.map((l) => (
                 <tr key={l.id} className={l.id === result ? "bg-primary-soft" : ""}>
-                  <td className="p-3 font-semibold">{l.name}</td><td className="p-3">{l.bestFor}</td><td className="p-3">{l.capital}</td><td className="p-3">{l.fee}</td>
+                  <td className="p-3 font-semibold">{l.name}</td><td className="p-3">{l.bestFor}</td><td className="p-3">{l.needs}</td>
                 </tr>
               ))}
             </tbody>
@@ -245,7 +270,7 @@ function LicenceFinder() {
         </div>
       </details>
       <Tip>
-        <b>One licence, one category.</b> Within a category you can list several activities on the same licence, but each must be named. Activities from different categories (for example food manufacturing and e-learning) need two licences, or a holding company with two companies under it. Hajj and Umrah operators need extra ministry approvals and a Saudi partner is strongly advised; expect 6 to 9 months.
+        <b>One company, several activities.</b> You can list several related activities on one registration, but each must be named. Very different activities (for example food production and online teaching) can need separate approvals or two companies. Hajj and Umrah services need extra ministry approvals and usually a Saudi partner; expect 6 to 9 months.
       </Tip>
     </section>
   );
@@ -255,7 +280,7 @@ function Timeline() {
   const [open, setOpen] = useState(0);
   return (
     <section className="space-y-5">
-      <H2 id="timeline" icon={Clock} kicker="Step 2" title="About 7 weeks, end to end" sub="Day 0 is your MISA application. Tap a stage for the details." />
+      <H2 id="timeline" icon={Clock} kicker="Step 2" title="About 7 weeks, end to end" sub="Day 0 is your MISA registration. Tap a stage for the details." />
       <ol className="relative space-y-3 border-s-2 border-line ps-6">
         {TIMELINE.map((t, i) => {
           const on = open === i;
@@ -284,9 +309,9 @@ function Timeline() {
       </ol>
       <div className="rounded-3xl border border-line bg-card p-5 md:p-6">
         <p className="flex items-center gap-2 font-heading text-xl font-bold"><AlertTriangle size={20} className="text-cancel" /> The name trap</p>
-        <p className="mt-2 text-sm leading-relaxed text-muted">You apply to MISA before you have a Saudi trade name, so the licence carries your overseas company's name. The CR will only issue if both names match. The fix is free; you just have to know it exists.</p>
+        <p className="mt-2 text-sm leading-relaxed text-muted">You register with MISA before you have a Saudi company name, so the registration carries your overseas company's name. The CR will only be issued if both names match. The fix is free; you just have to know it exists.</p>
         <ol className="mt-4 grid gap-2 sm:grid-cols-5">
-          {["Apply to MISA in your parent's name", "MISA approves", "Reserve your Saudi trade name", "Amend MISA to that name (free, 1 hour)", "File the CR"].map((s, i) => (
+          {["Register with MISA in your parent company's name", "MISA confirms", "Reserve your Saudi company name", "Update the name on MISA (free, 1 hour)", "File the CR"].map((s, i) => (
             <li key={s} className="rounded-xl bg-bg-2 p-3 text-sm">
               <span className="font-heading text-lg font-bold text-gold">{i + 1}</span>
               <span className="block leading-snug">{s}</span>
@@ -334,54 +359,60 @@ function Checklist({ storageKey, items }: { storageKey: string; items: { id: str
 function Documents() {
   return (
     <section className="space-y-5">
-      <H2 id="documents" icon={FileText} kicker="Before day 0" title="Documents to prepare before the portal" sub="Tick them off as you go. Your progress is saved on this phone." />
+      <H2 id="documents" icon={FileText} kicker="Before day 0" title="Documents to prepare first" sub="Tick them off as you go. Your progress is saved on this phone." />
       <Tip>
-        <b>Order for every document:</b> notarise at home, then apostille, then a certified Arabic translation in Saudi Arabia. Saudi Arabia joined the Apostille Convention in December 2022, so if your country is a member (the UK, US, Australia, Canada and most of Europe are) the apostille is enough and you can skip the Saudi embassy. Countries outside the convention still go through the embassy, which adds 2 to 4 weeks.
+        <b>The order for every document:</b> notarize it at home, get an apostille (an international certificate that makes it valid abroad), then have it translated into Arabic by a certified translator in Saudi Arabia. Saudi Arabia has accepted apostilles since December 2022, so you no longer need the Saudi embassy step if your country is part of the Apostille Convention. Some agencies and older websites still say otherwise.
       </Tip>
       <Checklist storageKey="mesh-company-docs" items={DOCUMENTS} />
+      <details className="group rounded-2xl border border-line bg-card">
+        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 font-semibold [&::-webkit-details-marker]:hidden">
+          Where to get an apostille <ChevronDown size={18} className="text-muted transition group-open:rotate-180" />
+        </summary>
+        <ul className="divide-y divide-line border-t border-line text-sm">
+          {APOSTILLE.map((x) => (
+            <li key={x.who} className="p-4"><b>{x.who}</b><p className="mt-1 leading-relaxed text-muted">{x.how}</p></li>
+          ))}
+          <li className="p-4 text-muted">Other countries: search the Hague Conference (HCCH) list to see whether yours is a member. If it is not, documents go through the Saudi embassy instead, which adds 2 to 4 weeks.</li>
+        </ul>
+      </details>
     </section>
   );
 }
 
 function CostCalculator() {
   const [transfer, setTransfer] = useState(0);
-  const [chamber, setChamber] = useState(true);
+  const [family, setFamily] = useState(0);
   const [office, setOffice] = useState<"saudi" | "office" | "none">("none");
-  const base = COSTS.filter((c) => !c.optional || chamber).reduce((t, c) => t + (c.sar ?? 0), 0);
-  const total = base + TRANSFER_FEES[transfer].sar;
-  const monthly = office === "saudi" ? 4500 : office === "office" ? 4500 : 0;
+  const setup = SETUP_COSTS.reduce((t, c) => t + c.sar, 0) + TRANSFER_FEES[transfer].sar;
+  const yearly = YEARLY.iqama + YEARLY.levyMonthly * 12 + YEARLY.muqeem + family * (YEARLY.dependantMonthly * 12);
   const agencyLow = 30000, agencyHigh = 50000;
   return (
     <section className="space-y-5">
-      <H2 id="cost" icon={Calculator} kicker="The real cost" title="What you will actually pay" sub="Adjust it to your situation. These are government and service fees founders paid in 2026." />
+      <H2 id="cost" icon={Calculator} kicker="The real cost" title="What you will actually pay" sub="Adjust it to your situation. Figures are what founders in Madinah paid in 2026." />
       <div className="rounded-3xl border border-line bg-card p-5 md:p-6">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <label className="block text-sm">
-            <span className="font-semibold">Iqama</span>
-            <select value={transfer} onChange={(e) => setTransfer(Number(e.target.value))} className="mt-1.5 w-full rounded-xl border border-line bg-bg px-3 py-2.5 text-base text-ink">
-              {TRANSFER_FEES.map((t, i) => <option key={t.label} value={i}>{t.label}{t.sar ? ` (${sar(t.sar)})` : ""}</option>)}
-            </select>
-          </label>
-          <label className="flex items-center gap-3 self-end rounded-xl border border-line px-3 py-2.5 text-sm">
-            <input type="checkbox" checked={chamber} onChange={(e) => setChamber(e.target.checked)} className="size-5 accent-[var(--primary)]" />
-            Include Chamber of Commerce (yearly)
-          </label>
-        </div>
-        <ul className="mt-5 divide-y divide-line text-sm">
-          {COSTS.filter((c) => !c.optional || chamber).map((c) => (
+        <p className="font-heading text-xl font-bold">Setting up</p>
+        <label className="mt-4 block text-sm">
+          <span className="font-semibold">Your iqama</span>
+          <select value={transfer} onChange={(e) => setTransfer(Number(e.target.value))} className="mt-1.5 w-full rounded-xl border border-line bg-bg px-3 py-2.5 text-base text-ink">
+            {TRANSFER_FEES.map((t, i) => <option key={t.label} value={i}>{t.label}{t.sar ? ` (${sar(t.sar)})` : ""}</option>)}
+          </select>
+        </label>
+        <ul className="mt-4 divide-y divide-line text-sm">
+          {SETUP_COSTS.map((c) => (
             <li key={c.id} className="flex items-start justify-between gap-3 py-2.5">
               <span>{c.label}{c.note && <span className="block text-xs text-muted">{c.note}</span>}</span>
-              <span className="shrink-0 tabular-nums font-medium">{sar(c.sar ?? 0)}</span>
+              <span className="shrink-0 tabular-nums font-medium">{sar(c.sar)}</span>
             </li>
           ))}
           {TRANSFER_FEES[transfer].sar > 0 && (
             <li className="flex justify-between gap-3 py-2.5"><span>Iqama transfer</span><span className="tabular-nums font-medium">{sar(TRANSFER_FEES[transfer].sar)}</span></li>
           )}
+          <li className="flex justify-between gap-3 py-2.5 text-muted"><span>Chamber of Commerce</span><span>Free for 3 years</span></li>
         </ul>
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
           <div className="rounded-2xl bg-brand p-4 text-white">
             <p className="text-sm text-white/70">Doing it yourself</p>
-            <p className="font-heading text-3xl font-bold tabular-nums">{sar(total)}</p>
+            <p className="font-heading text-3xl font-bold tabular-nums">{sar(setup)}</p>
           </div>
           <div className="rounded-2xl bg-bg-2 p-4">
             <p className="text-sm text-muted">Typical agency quote</p>
@@ -390,21 +421,47 @@ function CostCalculator() {
         </div>
         <div className="mt-4">
           <div className="flex h-3 overflow-hidden rounded-full bg-bg-2">
-            <div className="bg-primary" style={{ width: `${Math.min(100, (total / agencyHigh) * 100)}%` }} />
+            <div className="bg-primary" style={{ width: `${Math.min(100, (setup / agencyHigh) * 100)}%` }} />
           </div>
-          <p className="mt-2 text-sm text-muted">You keep roughly <b className="text-ink">{sar(Math.max(0, agencyLow - total))}</b> to <b className="text-ink">{sar(Math.max(0, agencyHigh - total))}</b>.</p>
+          <p className="mt-2 text-sm text-muted">You keep roughly <b className="text-ink">{sar(Math.max(0, agencyLow - setup))}</b> to <b className="text-ink">{sar(Math.max(0, agencyHigh - setup))}</b>.</p>
         </div>
       </div>
 
       <div className="rounded-3xl border border-line bg-card p-5 md:p-6">
-        <p className="font-heading text-xl font-bold">The Balady trap: office or first hire?</p>
+        <p className="font-heading text-xl font-bold">Every year after</p>
+        <p className="mt-1 text-sm text-muted">Agencies rarely mention these. Budget for them from day one.</p>
+        <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-line px-3 py-2.5 text-sm">
+          <span className="font-semibold">Wife and children on your iqama</span>
+          <span className="flex items-center gap-2">
+            <button onClick={() => setFamily((f) => Math.max(0, f - 1))} aria-label="Fewer" className="grid size-9 place-items-center rounded-full border border-line text-lg">−</button>
+            <span className="w-6 text-center text-base font-semibold tabular-nums">{family}</span>
+            <button onClick={() => setFamily((f) => Math.min(12, f + 1))} aria-label="More" className="grid size-9 place-items-center rounded-full border border-line text-lg">+</button>
+          </span>
+        </div>
+        <ul className="mt-3 divide-y divide-line text-sm">
+          <li className="flex justify-between gap-3 py-2.5"><span>Iqama renewal<span className="block text-xs text-muted">Yours, every year</span></span><span className="tabular-nums font-medium">{sar(YEARLY.iqama)}</span></li>
+          <li className="flex justify-between gap-3 py-2.5"><span>Work permit levy<span className="block text-xs text-muted">About 800 SAR a month for each foreign worker on the company, usually including you. 700 SAR if Saudis are at least half your staff.</span></span><span className="shrink-0 tabular-nums font-medium">{sar(YEARLY.levyMonthly * 12)}</span></li>
+          <li className="flex justify-between gap-3 py-2.5"><span>Muqeem subscription</span><span className="tabular-nums font-medium">{sar(YEARLY.muqeem)}</span></li>
+          {family > 0 && (
+            <li className="flex justify-between gap-3 py-2.5"><span>Family fee<span className="block text-xs text-muted">400 SAR a month for each family member</span></span><span className="shrink-0 tabular-nums font-medium">{sar(family * YEARLY.dependantMonthly * 12)}</span></li>
+          )}
+          <li className="flex justify-between gap-3 py-2.5 text-muted"><span>Accountant for your yearly tax return</span><span>Ask for quotes</span></li>
+        </ul>
+        <div className="mt-4 rounded-2xl bg-gold-bg p-4">
+          <p className="text-sm text-muted">Roughly each year, before staff salaries</p>
+          <p className="font-heading text-3xl font-bold tabular-nums">{sar(yearly)}</p>
+        </div>
+      </div>
+
+      <div className="rounded-3xl border border-line bg-card p-5 md:p-6">
+        <p className="font-heading text-xl font-bold">The Balady trap: rent an office or hire a Saudi?</p>
         <p className="mt-2 text-sm leading-relaxed text-muted">
-          Run a service business from home and you may hit a wall at the iqama transfer: the system expects a municipal (Balady) licence, which needs physical premises. There are two ways through.
+          Run a service business from home and you may hit a wall at the iqama transfer: the system expects a city business license (Balady), which needs a physical office or shop. There are two ways through.
         </p>
         <div className="mt-4 grid gap-2 sm:grid-cols-2">
           {([
-            ["office", "Rent a serviced office", "About 4,000 to 5,000 SAR a month. Gives you an address for Balady, but it does not help your Nitaqat rating."],
-            ["saudi", "Hire a Saudi employee", "For example 4,000 SAR salary plus about 12% GOSI, so about 4,500 SAR a month. Lifts your Nitaqat within about a week and unblocks the transfer. You will need a Saudi hire to grow anyway."],
+            ["office", "Rent a serviced office", "About 4,000 to 5,000 SAR a month. Gives you an address for Balady, but does nothing for your Saudization rating."],
+            ["saudi", "Hire a Saudi employee", "For example a 4,000 SAR salary plus about 12% social insurance (GOSI), so about 4,500 SAR a month. Lifts your Saudization rating within about a week and unblocks the transfer. You will need a Saudi hire to grow anyway."],
           ] as const).map(([k, t, d]) => (
             <button key={k} onClick={() => setOffice(office === k ? "none" : k)} aria-pressed={office === k}
               className={`rounded-2xl border p-4 text-start text-sm transition ${office === k ? "border-primary bg-primary-soft" : "border-line hover:border-primary/50"}`}>
@@ -415,11 +472,63 @@ function CostCalculator() {
         </div>
         {office !== "none" && (
           <p className="mt-3 text-sm">{office === "saudi"
-            ? <>About <b>{sar(monthly)}</b> a month, and it counts towards Saudization. Usually the better choice.</>
-            : <>About <b>{sar(monthly)}</b> a month, with no Nitaqat benefit. You will likely still need a Saudi hire later.</>}</p>
+            ? <>About <b>4,500 SAR</b> a month, and it counts towards Saudization. Usually the better choice.</>
+            : <>About <b>4,000 to 5,000 SAR</b> a month, with no Saudization benefit. You will likely still need a Saudi hire later.</>}</p>
         )}
       </div>
-      <p className="text-xs text-muted">Fees checked {CHECKED}. The MISA first-year fee has been waived for most investors recently; the standard licence fee is about 62,000 SAR a year. Confirm the current fee on investsaudi.sa before you budget.</p>
+      <p className="text-xs text-muted">Fees checked {CHECKED}. Confirm each fee on the government site before you pay.</p>
+    </section>
+  );
+}
+
+function Taxes() {
+  return (
+    <section className="space-y-5">
+      <H2 id="tax" icon={Receipt} kicker="Saudi taxes" title="What your company pays" sub="ZATCA, the Saudi tax authority, opens your file automatically. Keep simple monthly books from day one." />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {TAX.map((t) => (
+          <div key={t.title} className="rounded-2xl border border-line bg-card p-4">
+            <p className="font-semibold">{t.title}</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted">{t.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function UsTax() {
+  return (
+    <section className="space-y-5">
+      <H2 id="us-tax" icon={Flag} kicker="For US citizens" title="Your US filings" sub="Owning a Saudi company adds forms to your US tax return from the first year. Missing them is expensive." />
+      <ol className="space-y-2">
+        {US_TAX.map((t, i) => (
+          <li key={t.title} className="flex gap-3 rounded-2xl border border-line bg-card p-4">
+            <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary text-sm font-bold text-primary-ink">{i + 1}</span>
+            <span><b className="block">{t.title}</b><span className="mt-1 block text-sm leading-relaxed text-muted">{t.body}</span></span>
+          </li>
+        ))}
+      </ol>
+      <Tip>
+        Speak to a US tax preparer who works with Americans abroad <b>before</b> you set up. How the company is classified changes which forms you file and how its profits are taxed. Other nationalities: check your own country's rules on owning a company abroad.
+      </Tip>
+    </section>
+  );
+}
+
+function Premium() {
+  return (
+    <section className="space-y-5">
+      <H2 id="premium" icon={Star} kicker="Another route" title="Premium Residency" sub="A residence permit that does not depend on an employer or a company sponsor. Holders do not pay the monthly worker and family fees." />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {PREMIUM.map((p) => (
+          <div key={p.name} className="rounded-2xl border border-line bg-card p-4">
+            <p className="font-semibold">{p.name}</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted">{p.body}</p>
+          </div>
+        ))}
+      </div>
+      <p className="text-sm text-muted">Each category has an application fee (4,000 SAR at the time of writing) and its own conditions. For most students and graduates, a small company of your own is the realistic route; Premium Residency is worth knowing about as you grow.</p>
     </section>
   );
 }
@@ -427,7 +536,7 @@ function CostCalculator() {
 function AfterCr() {
   return (
     <section className="space-y-5">
-      <H2 id="after-cr" icon={Landmark} kicker="Week 3 onwards" title="After the CR: simpler than you think" sub="Your CR is the trigger. Three systems open by themselves within about an hour; the rest you do at your own pace." />
+      <H2 id="after-cr" icon={Landmark} kicker="Week 3 onwards" title="After the CR: simpler than you think" sub="Your CR is the trigger. Three government systems open by themselves within about an hour; the rest you do at your own pace." />
       <div className="grid gap-3 sm:grid-cols-2">
         {AFTER_CR.map((x) => (
           <div key={x.name} className="rounded-2xl border border-line bg-card p-4">
@@ -439,9 +548,6 @@ function AfterCr() {
           </div>
         ))}
       </div>
-      <Tip>
-        <b>Tax, in short:</b> foreign-owned companies pay 20% corporate income tax on profit. Any Saudi or GCC-owned share pays 2.5% zakat instead. File through ZATCA once a year, and keep simple monthly books from day one.
-      </Tip>
     </section>
   );
 }
@@ -492,7 +598,7 @@ function Mistakes() {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <section className="space-y-5">
-      <H2 id="mistakes" icon={AlertTriangle} kicker="Avoid these" title="12 mistakes that cost founders time and money" sub="Most of the fixes are free. You just have to know them." />
+      <H2 id="mistakes" icon={AlertTriangle} kicker="Avoid these" title="13 mistakes that cost founders time and money" sub="Most of the fixes are free. You just have to know them." />
       <div className="grid gap-2 sm:grid-cols-2">
         {MISTAKES.map((m, i) => {
           const on = open === i;
@@ -520,7 +626,7 @@ function SaudiOrUae() {
       <div className="overflow-x-auto rounded-2xl border border-line bg-card">
         <table className="w-full min-w-[520px] text-sm">
           <thead className="bg-bg-2 text-left text-xs uppercase tracking-wide text-muted">
-            <tr><th className="p-3" /><th className="p-3">Saudi (MISA company)</th><th className="p-3">UAE (free zone)</th></tr>
+            <tr><th className="p-3" /><th className="p-3">Saudi company</th><th className="p-3">UAE (free zone)</th></tr>
           </thead>
           <tbody className="divide-y divide-line">
             {COMPARE.map((r, i) => (
@@ -531,7 +637,7 @@ function SaudiOrUae() {
           </tbody>
         </table>
       </div>
-      <p className="text-sm leading-relaxed text-muted">The UAE wins on tax. Saudi Arabia wins if you are building a life here and selling into the local market. Do not count on the first-year waiver lasting.</p>
+      <p className="text-sm leading-relaxed text-muted">The UAE wins on tax. Saudi Arabia wins if you are building a life here and selling into the local market. With the old licence fee gone, Saudi running costs are far lower than they were.</p>
     </section>
   );
 }
@@ -542,7 +648,7 @@ function ActionPlan() {
   const done = all.filter((i) => ticks.includes(i.id)).length;
   return (
     <section className="space-y-5">
-      <H2 id="plan" icon={ListChecks} kicker="Your plan" title="Do it yourself, step by step" sub="Fourteen steps from today to a working company. Tick them off; your progress is saved on this phone." />
+      <H2 id="plan" icon={ListChecks} kicker="Your plan" title="Do it yourself, step by step" sub="Every step from today to a working company. Tick them off; your progress is saved on this phone." />
       <div className="sticky top-16 z-10 -mx-1 rounded-2xl border border-line bg-card/95 p-3 backdrop-blur">
         <div className="flex items-center gap-3">
           <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-bg-2">
@@ -598,7 +704,7 @@ function Glossary() {
           </a>
         ))}
       </div>
-      <p className="text-sm text-muted">Checked {CHECKED}. This guide is general information from founders who have done it, not legal or tax advice. For anything unusual, speak to a licensed Saudi lawyer or accountant.</p>
+      <p className="text-sm text-muted">Checked {CHECKED}. This guide is general information, not legal or tax advice. For anything unusual, speak to a licensed Saudi lawyer or accountant.</p>
     </section>
   );
 }

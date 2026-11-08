@@ -22,7 +22,6 @@ const STAGE_BY_PATH: Record<string, GuideStage> = {
   "daily-life/emergency-numbers": "getting-settled",
   "daily-life/finding-an-apartment": "getting-settled",
   "daily-life/sports-and-martial-arts": "getting-settled",
-  "daily-life/starting-a-business": "getting-settled",
   "family/childbirth-options": "family",
   "family/kids-activities": "family",
   "family/sisters-studying-in-madinah": "family",

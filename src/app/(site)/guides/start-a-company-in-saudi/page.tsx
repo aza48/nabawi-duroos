@@ -12,7 +12,7 @@ import { CHECKED, PLAN, SLUG, SUMMARY, TITLE } from "@/features/guides/company/c
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Start your own company in Saudi Arabia (MISA licence guide)",
+  title: "Start your own company in Saudi Arabia (MISA registration guide)",
   description: SUMMARY,
   alternates: { canonical: `/guides/${SLUG}` },
   openGraph: { type: "article", title: TITLE, description: SUMMARY, url: `/guides/${SLUG}`, siteName: "MESH" },
@@ -48,10 +48,10 @@ export default async function Page() {
           </Link>
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl">{TITLE}</h1>
           <p className="mt-4 max-w-2xl text-white/85 md:text-lg">
-            You don&apos;t need an agency. You need a map. Set up a MISA-licensed company and residency for your family, step by step, for a fraction of what agencies charge.
+            You don&apos;t need an agency. You need a map. Set up your own Saudi company and residency for your family, step by step, for a fraction of what agencies charge. Updated for the 2025 rule changes.
           </p>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
-            <span className="flex items-center gap-1.5"><BookOpen size={15} /> 12 min read</span>
+            <span className="flex items-center gap-1.5"><BookOpen size={15} /> 15 min read</span>
             <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {steps.length} steps to tick off</span>
             <span className="flex items-center gap-1.5 text-gold-bright"><CircleCheck size={15} /> Checked {CHECKED}</span>
           </p>

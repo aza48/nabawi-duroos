@@ -1,4 +1,4 @@
-import { and, asc, desc, eq } from "drizzle-orm";
+import { and, asc, desc, eq, notInArray } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { faqs, guides, type GuideStage } from "@/server/db/schema";
 
@@ -34,14 +34,17 @@ export async function getFaq(db: Db, slug: string): Promise<FaqRow | null> {
   return f ?? null;
 }
 
+/** Guides that were replaced and must never show, even if a row is still in the database. */
+export const RETIRED_GUIDES = ["starting-a-business"];
+
 export async function listGuides(db: Db, opts: { stage?: GuideStage } = {}): Promise<GuideRow[]> {
-  const where = opts.stage
-    ? and(eq(guides.status, "published"), eq(guides.stage, opts.stage))
-    : eq(guides.status, "published");
+  const live = and(eq(guides.status, "published"), notInArray(guides.slug, RETIRED_GUIDES));
+  const where = opts.stage ? and(live, eq(guides.stage, opts.stage)) : live;
   return db.select().from(guides).where(where).orderBy(desc(guides.updatedAt));
 }
 
 export async function getGuide(db: Db, slug: string): Promise<GuideRow | null> {
+  if (RETIRED_GUIDES.includes(slug)) return null;
   const [g] = await db.select().from(guides).where(and(eq(guides.slug, slug), eq(guides.status, "published")));
   return g ?? null;
 }
