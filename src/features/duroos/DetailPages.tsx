@@ -215,14 +215,33 @@ function Item({ icon, label, value }: { icon: React.ReactNode; label: string; va
   );
 }
 
+/** Plain text with its web addresses made into links (update bodies are typed as text). */
+export function Linkified({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(https?:\/\/[^\s<]+[^\s<.,;:!?)])/g).map((part, i) =>
+        i % 2 ? (
+          <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="break-all font-semibold text-primary underline underline-offset-2" dir="ltr">
+            {part.replace(/^https?:\/\//, "")}
+          </a>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
 export function UpdatesPage({ current, history, locale }: { current: AnnouncementRow[]; history: AnnouncementRow[]; locale: Locale }) {
   const ar = locale === "ar";
   const currentSlugs = new Set(current.map((a) => a.slug));
   const earlier = history.filter((a) => !currentSlugs.has(a.slug));
   const Card = ({ a, faded }: { a: AnnouncementRow; faded?: boolean }) => (
-    <article className={`card p-4 ${faded ? "opacity-70" : ""}`}>
+    <article id={a.slug} className={`card scroll-mt-28 p-4 ${faded ? "opacity-70" : ""}`}>
       <h3 className="font-semibold leading-snug">{ar ? a.titleAr : a.titleEn}</h3>
-      <p className="mt-1 whitespace-pre-line text-sm">{ar ? a.bodyAr : a.bodyEn}</p>
+      <p className="mt-1 whitespace-pre-line text-sm leading-relaxed">
+        <Linkified text={ar ? a.bodyAr : a.bodyEn} />
+      </p>
       {a.imageUrl && <Image src={a.imageUrl} alt="" width={600} height={800} className="mt-3 h-auto w-full rounded-xl" />}
       <p className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted">
         {a.eventDate && <span>{formatHijri(a.eventDate, locale, { bracket: true, weekday: true })}</span>}

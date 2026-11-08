@@ -9,6 +9,8 @@ export type Weather = {
   label: string;
   labelAr: string;
   isDay: boolean;
+  /** The WMO weather code, so the sky can tell a few clouds from overcast. */
+  code: number;
   humidity: number;
   windKmh: number;
   at: string;
@@ -43,6 +45,7 @@ export function parseOpenMeteo(json: OpenMeteo): Weather | null {
     tempC: Math.round(c.temperature_2m),
     feelsC: Math.round(c.apparent_temperature),
     isDay,
+    code: c.weather_code,
     humidity: Math.round(c.relative_humidity_2m),
     windKmh: Math.round(c.wind_speed_10m),
     at: c.time,

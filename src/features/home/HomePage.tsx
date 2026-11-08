@@ -48,6 +48,29 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
         </div>
 
         <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+          <section className="rounded-3xl border border-line bg-card p-5">
+            <div className="flex items-baseline justify-between">
+              <h2 className="font-heading text-lg font-bold">Latest updates</h2>
+              <Link href="/duroos/updates" className="text-sm font-semibold text-primary hover:underline">
+                All
+              </Link>
+            </div>
+            {updates.length === 0 ? (
+              <p className="mt-3 text-sm text-muted">No changes announced. Every dars is on as usual.</p>
+            ) : (
+              <ul className="mt-3 divide-y divide-line">
+                {updates.slice(0, 4).map((a) => (
+                  <li key={a.slug} className="py-3 first:pt-1 last:pb-0">
+                    <Link href={`/duroos/updates#${a.slug}`} className="group block">
+                      <span className="block text-sm font-semibold leading-snug group-hover:text-primary">{a.titleEn}</span>
+                      <span className="mt-0.5 line-clamp-2 block text-sm text-muted">{a.bodyEn}</span>
+                      {a.bodyEn.length > 110 && <span className="mt-1 inline-block text-xs font-semibold text-primary">Read in full</span>}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
           <a
             href={whatsappUrl}
             target="_blank"
@@ -66,26 +89,6 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
             </span>
           </a>
 
-          <section className="rounded-3xl border border-line bg-card p-5">
-            <div className="flex items-baseline justify-between">
-              <h2 className="font-heading text-lg font-bold">Latest updates</h2>
-              <Link href="/duroos/updates" className="text-sm font-semibold text-primary hover:underline">
-                All
-              </Link>
-            </div>
-            {updates.length === 0 ? (
-              <p className="mt-3 text-sm text-muted">No changes announced. Every dars is on as usual.</p>
-            ) : (
-              <ul className="mt-3 divide-y divide-line">
-                {updates.slice(0, 4).map((a) => (
-                  <li key={a.slug} className="py-3 first:pt-1 last:pb-0">
-                    <p className="text-sm font-semibold leading-snug">{a.titleEn}</p>
-                    <p className="mt-0.5 line-clamp-2 text-sm text-muted">{a.bodyEn}</p>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
         </aside>
       </div>
 

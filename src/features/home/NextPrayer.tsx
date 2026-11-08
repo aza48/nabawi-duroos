@@ -29,7 +29,7 @@ export function NextPrayer({ prayers, tomorrowFajr, locale }: { prayers: Record<
   const clock = `${h}:${pad(m)}:${pad(s)}`;
 
   return (
-    <div className="grid grid-cols-[1fr_auto] items-center gap-x-4 rounded-3xl bg-white/10 px-5 py-4 text-white ring-1 ring-white/15 backdrop-blur-sm md:block md:p-6">
+    <div className="grid grid-cols-[1fr_auto] items-center gap-x-4 next-adhan rounded-3xl px-5 py-4 text-white ring-1 ring-white/20 backdrop-blur-md md:block md:p-6">
       <p className="text-sm text-white/75">
         {ar ? "الأذان القادم" : "Next adhan"}
         {!next && now !== null && (ar ? " (غدًا)" : " (tomorrow)")}

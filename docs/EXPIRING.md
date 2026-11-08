@@ -16,6 +16,7 @@ How to keep it so:
 | Childbirth fees and visiting rules (checked April 2025) | guide `having-a-baby-in-madinah` | Recheck now, then every 6 months | Update figures and the checked date |
 | Jawazat fees (checked November 2026) | guide `iqama-and-exit-reentry-fees` | May 2027 | Recheck and update the date |
 | Gym class prices and schedule (checked 8 November 2026) | guide `sports-and-activities` | February 2027 | Recheck |
+| "Final exam schedules are out" update with the steps to find them | announcement `final-exam-schedules-released-1448` (Latest updates on the home page and /duroos/updates) | 14 December 2026 (last exam day) | Archive the update in Admin |
 
 ## Removed
 
