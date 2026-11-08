@@ -192,7 +192,7 @@ export const PROGRAMS: Program[] = [
     kind: "degree",
     tagline: "The full scholarship: Arabic Ma'had, then a degree, with housing, a stipend and flights.",
     audience: ["men", "women"],
-    price: "Free on scholarship, with a monthly stipend of 840 SAR",
+    price: "Free on scholarship, with a monthly stipend",
     where: "Al-Jami'ah district",
     overview: [
       "Most English-speaking students here came on the University scholarship. You apply through the national Study in Saudi portal, usually starting in the Arabic Language Institute (Ma'had) before moving to a college.",

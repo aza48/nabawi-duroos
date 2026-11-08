@@ -263,5 +263,195 @@
   "topic": "Phone",
   "question": "Can Visitor ID holders use the CST Mutasil My Numbers service with their border number to see the lines registered to them?",
   "context": "The SIM guide tells Visitor ID holders to ask their operator in a branch."
+ },
+ {
+  "topic": "University",
+  "question": "What monthly stipend do you receive now, and in which college? Is it 840, 850 or 1,000 SAR, and did it change in 1447 or 1448?",
+  "context": "The University's 1445 student guide lists 850 SAR for the Islamic and Arabic colleges and 1,000 SAR for engineering, science and computing. Students quote 840 SAR. The guides now give no figure and say the rate depends on the college. src/content/programs.ts still shows 840 SAR."
+ },
+ {
+  "topic": "University",
+  "question": "Are the yearly books allowance (one month's stipend) and the yearly award for an Excellent grade (1,000 SAR) still paid?",
+  "context": "Both are in the 1445 student guide but not in the 1448 admission guide. Left off the site until confirmed."
+ },
+ {
+  "topic": "University",
+  "question": "When a student graduates, is the graduation allowance three months' stipend, the 150 SAR paid at Al-Otair in the old graduation guide, or both?",
+  "context": "The 1445 and 1448 University guides name a three month graduation allowance for shipping books. The old graduation guide mentions only 150 SAR."
+ },
+ {
+  "topic": "University",
+  "question": "Does the University still give new students a stipend bank card through an office (names on a sheet after 2 to 3 weeks), or do they only open their own bank account and add the IBAN under Rewards?",
+  "context": "First steps for new students was rewritten to the University's October 2025 order: own bank account, then an IBAN update request in the Academic System. The old card office step was dropped."
+ },
+ {
+  "topic": "University",
+  "question": "Where do new students who missed orientation week collect their student card, and is 'Maktab 22' the same building as 'Wihda 22'?",
+  "context": "The guides now say the card is printed during orientation week, or on the spot at the student card office for latecomers, without naming the building."
+ },
+ {
+  "topic": "University",
+  "question": "Is there an 'Educational Visa Unit' at the University? Is a Tawasul request to the Deanship of Admission and Registration, subject 'Educational visa', the right route, and how long do replies take?",
+  "context": "No official page names the unit, so the Visitor ID guide no longer mentions it and only gives the Tawasul route."
+ },
+ {
+  "topic": "University",
+  "question": "Do Visitor ID graduates still need a final exit visa or a Passports clearance before they receive their degree and final ticket?",
+  "context": "The old graduation guide says the final exit visa is needed for the degree. It was written before the Visitor ID."
+ },
+ {
+  "topic": "University",
+  "question": "Does the three-semester limit on ta'jeel and i'tithaar run across the Ma'had and the Kulliyah together, or separately for each?",
+  "context": "The old guide said moving from the Ma'had to the Kulliyah resets ta'jeel. The 1445 rules say three semesters over the whole programme. The rewritten guide states only the three-semester limit."
+ },
+ {
+  "topic": "University",
+  "question": "Do the 2026 rules for student tickets (capital cities only, valid 3 months, no refunds, no-show loses the ticket) apply every year, or only to summer 2026?",
+  "context": "Travel Management's poster says 'this year'. The Etimad guide lists them as the rules for 2026 tickets."
+ },
+ {
+  "topic": "University",
+  "question": "Must new students bring original certificates certified by the Saudi embassy or cultural attache when they arrive?",
+  "context": "An older University page on steps after final acceptance says so. Not on the site."
+ },
+ {
+  "topic": "Sport",
+  "question": "What do students pay at the University sports club now for one month and for a year?",
+  "context": "The site now says only that students pay reduced rates. The last official price sheet is from 2022 (125 SAR a month, 1,000 SAR a year)."
+ },
+ {
+  "topic": "University",
+  "question": "Is the Central Library open on Fridays and Saturdays, and what are its Ramadan hours? Is there a separate section or time for sisters?",
+  "context": "The site gives 6:00 am to midnight, Sunday to Thursday, from the library's 1447 to 1448 poster."
+ },
+ {
+  "topic": "University",
+  "question": "Can Visitor ID students, married students or partial scholarship students eat at the mat'am, and do they book on restaurant.iu.edu.sa the same way?",
+  "context": "The official guides say the subsidised meals are for external scholarship students."
+ },
+ {
+  "topic": "University",
+  "question": "Are family units in University housing still offered to married full scholarship students, and how does one apply?",
+  "context": "The 1445 student guide says family housing is given when units are available. The site now says family units are offered only when one is free."
+ },
+ {
+  "topic": "University",
+  "question": "Does the Medical Center treat Visitor ID students free from their first day, and does it treat wives and children who are on visit visas?",
+  "context": "The 1445 student guide says treatment covers the student and his family. The site says only that care is free for scholarship students."
+ },
+ {
+  "topic": "University",
+  "question": "Has the University announced the 1449 postgraduate application window, and where will it be announced?",
+  "context": "Last year's window opened on 16 November 2025. Nothing announced by 8 November 2026."
+ },
+ {
+  "topic": "Visas",
+  "question": "How long is a student's Visitor ID valid, who renews it, and what happens to the bank account, mada card and SIM on the day it expires?",
+  "context": "The Visitor ID guide now has a 'Before your Visitor ID runs out' checklist but gives no validity period."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is there a 180 day stay limit within the one year educational visa, with fines after 180 days?",
+  "context": "Asked in the group in June 2026 with no answer. Not on the site."
+ },
+ {
+  "topic": "Visas",
+  "question": "Can a student on the educational visa (Visitor ID) register for Hajj in Nusuk at resident prices? Has anyone done so for 1447 or 1448?",
+  "context": "The Visitor ID guide now tells students to ask the University before registering. Earlier it said Hajj was not open on a Visitor ID."
+ },
+ {
+  "topic": "Visas",
+  "question": "Which banks have opened accounts for members on a Visitor ID since September 2025, with what papers, and was the online route through Nafath accepted?",
+  "context": "The site follows the University's October 2025 guidance: branch with the Visitor ID in Absher, or online through Nafath."
+ },
+ {
+  "topic": "Visas",
+  "question": "Do students from earlier intakes who hold a student iqama still pay nothing for it?",
+  "context": "The iqama fees guide says so. Not confirmed for 2026."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is the tourist eVisa today about SAR 535 in total online and SAR 480 on arrival, and did the four new countries become eligible on 5 November 2026?",
+  "context": "The site now says 'early November 2026' and 'about SAR 535'."
+ },
+ {
+  "topic": "Visas",
+  "question": "What does extending a visit visa on Absher cost now, and can it be filed a few days after the expiry date?",
+  "context": "The site now says at least 7 days before expiry and about 100 SAR, confirmed on Absher. The old '3 days after expiry' was removed."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is the fee to add a newborn to an iqama 2,000 SAR even when the baby is born in Saudi Arabia, and is the iqama fee for a dependant aged 18 or over 500 SAR?",
+  "context": "The iqama fees guide says free for a baby born in the Kingdom and 500 SAR for a dependant over 18. Outside sources disagree on both."
+ },
+ {
+  "topic": "Driving",
+  "question": "Which countries' licences did Madinah traffic swap without a driving test this year?",
+  "context": "The driving guide lists the UK, the US, Canada, Australia, most of Europe and the Gulf. No official list was found."
+ },
+ {
+  "topic": "Haram",
+  "question": "Does Nusuk still allow only one scheduled Rawdah permit in any 365 days?",
+  "context": "Sources disagree. The guides now say the app shows how many permits you can book."
+ },
+ {
+  "topic": "Haram",
+  "question": "Which gate do women with a Rawdah permit use, and where do they queue?",
+  "context": "The women's guide said the southern courtyards opposite gate 37. That was removed until confirmed."
+ },
+ {
+  "topic": "Haram",
+  "question": "From what age can children enter the Rawdah with their mother, and does a child need a separate permit?",
+  "context": "Not on the site."
+ },
+ {
+  "topic": "Haram",
+  "question": "Can strollers go into the women's halls, or only the courtyards? Is there a place to leave a stroller?",
+  "context": "Not on the site."
+ },
+ {
+  "topic": "Haram",
+  "question": "Where exactly is the free left-luggage centre at Masjid an-Nabawi, and where is lost property handed in and collected?",
+  "context": "The site now gives no location. Reports place the luggage centre between courtyard exits 365 and 366, and a lost property office near gates 366 and 367."
+ },
+ {
+  "topic": "Haram",
+  "question": "Is the children's hospitality centre at the Haram free, from what age does it take children, and what are its hours?",
+  "context": "The site says it takes boys up to 6 and girls up to 9. Sources disagree on the fee (free or first hour free), the lower age (18 months or 3 years) and the number of centres."
+ },
+ {
+  "topic": "Haram",
+  "question": "How does a sister ask for a wheelchair or an electric cart at the Haram, from which gate, and is ID needed?",
+  "context": "The site says wheelchairs are lent from the Gates Management Office at Gate 7."
+ },
+ {
+  "topic": "Haram",
+  "question": "Are there women-only wudu areas separate from the toilet blocks at Masjid an-Nabawi, and where?",
+  "context": "Not on the site."
+ },
+ {
+  "topic": "Haram",
+  "question": "Do the Masjid an-Nabawi Ma'had and Kulliyah have a women's section taking students for 1449, and which sisters qualify?",
+  "context": "The guides say they do. The Authority's own pages mention only Saudis and residents and say nothing about a women's section."
+ },
+ {
+  "topic": "Haram",
+  "question": "Is booking on the Baqi' portal (ekram.amana-md.gov.sa) required for every visit, and at what times is al-Baqi' open?",
+  "context": "The site now points to the portal and no longer gives the after Fajr and after Asr times."
+ },
+ {
+  "topic": "Haram",
+  "question": "For the Masjid an-Nabawi Institute, is the certificate grade needed 'good' or 'very good'?",
+  "context": "The institute guide says 'good or better'. The Authority's FAQ says 'very good'."
+ },
+ {
+  "topic": "Schools",
+  "question": "Do schools in Madinah enrol children whose parents are on a Visitor ID or a visit visa? Which school, which year, and what papers were asked for?",
+  "context": "The schools guide says many do. One outside source says a residence permit is needed."
+ },
+ {
+  "topic": "Phones",
+  "question": "Which operator codes and numbers did you confirm: Mobily 1100 and *222#, STC *150#, Zain 959 (voice)?",
+  "context": "The phone guide lists them. Only the balance codes and STC 900 are confirmed."
  }
 ]

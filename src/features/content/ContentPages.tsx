@@ -35,6 +35,7 @@ const TOPIC_ICON: Record<GuideTopicId, typeof BookOpen> = {
   papers: FileText,
   home: KeyRound,
   study: GraduationCap,
+  "more-study": Library,
   haram: Landmark,
   family: Users,
   explore: Compass,

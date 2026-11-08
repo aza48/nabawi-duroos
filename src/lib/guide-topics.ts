@@ -5,7 +5,7 @@
  *
  * The order of slugs inside a topic is the reading order shown on the guides page.
  */
-export type GuideTopicId = "getting-started" | "papers" | "home" | "study" | "haram" | "family" | "explore";
+export type GuideTopicId = "getting-started" | "papers" | "home" | "study" | "more-study" | "haram" | "family" | "explore";
 
 export type GuideTopic = { id: GuideTopicId; label: string; labelAr: string; blurb: string; blurbAr: string; slugs: string[] };
 
@@ -36,22 +36,29 @@ export const GUIDE_TOPICS: GuideTopic[] = [
   },
   {
     id: "study",
-    label: "Study and graduation",
-    labelAr: "الدراسة والتخرج",
-    blurb: "Campus life, the calendar, the Ma'had, semesters off, postgraduate study, tickets home and graduating.",
-    blurbAr: "الحياة في الجامعة والتقويم والمعهد وتأجيل الدراسة والدراسات العليا وتذاكر السفر والتخرج.",
+    label: "Life at the University",
+    labelAr: "الحياة في الجامعة",
+    blurb: "Campus life, your stipend, University offices, the calendar, the Ma'had, semesters off, tickets home and graduating.",
+    blurbAr: "الحياة في الجامعة والمكافأة ومكاتب الجامعة والتقويم والمعهد وتأجيل الدراسة وتذاكر السفر والتخرج.",
     slugs: [
       "campus-life-islamic-university",
+      "scholarship-stipend-and-allowances",
+      "university-offices-and-contacts",
       "university-calendar-1448",
       "graduating-from-mahad",
       "tajeel-and-itithaar",
       "etimad-account",
       "course-descriptions-aqeedah-dawah",
-      "postgraduate-admission-1448",
-      "masjid-an-nabawi-institute-and-college",
-      "other-universities-in-madinah",
       "graduate-procedures",
     ],
+  },
+  {
+    id: "more-study",
+    label: "Other ways to study",
+    labelAr: "طرق أخرى للدراسة",
+    blurb: "Postgraduate study, the Masjid an-Nabawi Institute and College, and the other universities in Madinah.",
+    blurbAr: "الدراسات العليا ومعهد المسجد النبوي وكليته والجامعات الأخرى في المدينة.",
+    slugs: ["postgraduate-admission-1448", "masjid-an-nabawi-institute-and-college", "other-universities-in-madinah"],
   },
   {
     id: "haram",
