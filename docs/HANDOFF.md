@@ -1,5 +1,20 @@
 # MESH handoff (read this first)
 
+## 8 November 2026, evening: deep audit done, implementation not started (STOPPED at 96% of the 5-hour usage window)
+Read `docs/audit/deep-2026-11-08/README.md` first: it is the ranked plan (Tier 0 to Tier 4, about 50 items, each with report, size and a status column). The full evidence is beside it: `security.md`, `duroos.md`, `frontend.md`, `personas.md`, and `raw/` (crawl.csv of 662 live pages at 390 and 1440 px, api.json, links.txt).
+
+What was done this session
+- Worktree branch `claude/mesh-website-audit-73b810` fast-forwarded to 4c156d6, node_modules linked, env files copied (see the memory note "worktree setup and deploy"). Baseline: `npx tsc --noEmit` clean, `npx vitest run` 41 files, 279 tests, all passing. Live site: every key page 200 in under 1.2 s, headers strong. docs/EXPIRING.md swept: nothing expired. `npm run questions:pull`: no new admin answers.
+- Seven parallel reviews. Four finished (security, duroos logic, frontend and SEO, live role-play of seven users). Three were stopped at the usage limit before writing their reports: content and copy audit, live crawl (its raw data is saved under `raw/`; its screenshots at five widths are not in the repo), admin phone click-through (it had taken 47 screenshots of a local in-memory admin; no report). Re-run those three if wanted; the briefs are in this session's transcript, and the key facts they would check are already in the plan.
+- No code changed. Nothing deployed except these docs.
+
+Next steps, in order (each: tests, typecheck, commit, `git push mine HEAD:main`, `git push origin HEAD:revamp`, check medinahub.org, tick the row in the README)
+1. Tier 0 and Tier 1 small fixes: wrong LIVE NOW window (0a), the override that flips a cancelled dars to ON (1), Ramadan Isha (2), home "Coming up" layout shift (3), paused and finished lessons shown as running (5), Arabic 404 (7), the postgraduate guide overflow (0b), al-Qasim's book change and the raw "ON," label (0c), the content contradictions (0d), raw Ma'had file names and the "[a day in early 5/1448 AH]" update (0e).
+2. Tier 2 trust: live-link allow-list and trust check (10), server-built auto-publish notes (11), WhatsApp auto-publish switch (12), public API DTOs without source fields (13), seed must not revert live edits (15), then the passkey second-factor gap (9).
+3. Tier 3: hreflang (21), focus ring (22), library reader caching (23), remotePatterns (24), contrast and tap targets (27).
+4. Then the rest by tier, and the older "Next steps" below (admin editing for programmes, discounts, key dates and library; Arabic parity; the missing information in 0h).
+
+
 Last rewritten 8 November 2026, about 09:15 Riyadh, at the end of the 7 and 8 November sessions. This file is the single source of truth for continuing the work. If you are a fresh Claude Code session, also read `docs/START-HERE.md`.
 
 ## Restart plan (8 November, owner's standing permission)
