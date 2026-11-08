@@ -3,6 +3,7 @@
  *
  *   npm run questions:add -- scripts/open-questions.json   add open questions from a JSON file (safe to repeat)
  *   npm run questions:pull                                 export answered questions to docs/ADMIN-ANSWERS.md
+ *   npx tsx --tsconfig tsconfig.json scripts/questions.ts close "<text>"   close open questions that contain this text
  *
  * An answer is never published automatically. After `questions:pull`, Claude reads
  * docs/ADMIN-ANSWERS.md, interprets each answer, writes the content in MESH's own words and
@@ -51,7 +52,12 @@ async function main() {
       writeFileSync(NOTES, cur.replace("## To process\n", `## To process\n${text}`));
       console.log(`${rows.length} answers written to ${NOTES}. Read them, then publish.`);
     }
-  } else throw new Error("Use: questions add <file.json> | questions pull");
+  } else if (cmd === "close") {
+    const { adminQuestions } = await import("@/server/db/schema");
+    const { like, eq, and } = await import("drizzle-orm");
+    const r = await db.update(adminQuestions).set({ status: "closed" }).where(and(like(adminQuestions.question, `%${file}%`), eq(adminQuestions.status, "open"))).returning({ id: adminQuestions.id });
+    console.log(`${r.length} questions closed`);
+  } else throw new Error("Use: questions add <file.json> | questions pull | questions close <text in the question>");
   process.exit(0);
 }
 

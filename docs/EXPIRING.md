@@ -11,7 +11,6 @@ How to keep it so:
 
 | Item | Where | Expires | Action when expired |
 | --- | --- | --- | --- |
-| Muslim Scouts camping trip, 20 and 21 November 2026 | guide `sports-and-activities`, section "Coming up" | 21 November 2026 | Delete the section and the sentence in the summary, then sync the guide |
 | Dar at-Tawheed registration hours and "places are limited" | `src/content/programs.ts`, slug `dar-tawheed-sunnah` | Ask the centre in December 2026 | Reword to the current intake |
 | Childbirth fees and visiting rules (checked April 2025) | guide `having-a-baby-in-madinah` | Recheck now, then every 6 months | Update figures and the checked date |
 | Jawazat fees (checked November 2026) | guide `iqama-and-exit-reentry-fees` | May 2027 | Recheck and update the date |
@@ -20,4 +19,4 @@ How to keep it so:
 
 ## Removed
 
-Nothing yet.
+Camping trip section (guide `sports-and-activities`): removed 8 November 2026 on the owner's instruction. Rule: no short-term promotions or event adverts; only long-term, real, in-person classes and facts.

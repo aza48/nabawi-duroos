@@ -211,7 +211,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Al Nahdi and Nahhas pharmacies are open almost round the clock and most staff speak English.</li>
 </ul>
 <h2>Gyms</h2>
-<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's (Fitness Time Ladies and others) 250 to 500. Martial arts clubs are 150 to 300 SAR. Students get 50% off at the Islamic University sports club. Classes and trips are listed in <a href="/guides/sports-and-activities">Sport, fitness and outdoor activities</a>.</p>`,
+<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's (Fitness Time Ladies and others) 250 to 500. Martial arts clubs are 150 to 300 SAR. Students get 50% off at the Islamic University sports club. Classes and trips are listed in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>`,
   },
   {
     slug: "visas-for-family-and-visitors",
@@ -374,10 +374,10 @@ export const GUIDES_2026: SeedGuide[] = [
   {
     slug: "sports-and-activities",
     stage: "getting-settled",
-    title: "Sport, fitness and outdoor activities",
-    summary: "Jiu-jitsu and fitness classes for children and adults at the University sports center, gym access, and outdoor trips, with schedules and prices.",
+    title: "Sport and fitness classes",
+    summary: "Jiu-jitsu and fitness classes for children and adults at the University sports center, with gym access, schedules and prices.",
     bodyHtml: `
-<p>Gyms in Madinah are men-only or women-only (see Everyday apps and services for usual prices). This page lists organised classes and trips for students and families. Details checked 8 November 2026.</p>
+<p>Gyms in Madinah are men-only or women-only (see Everyday apps and services for usual prices). This page lists regular classes for students and families. Details checked 8 November 2026.</p>
 <h2>Jiu-jitsu, grappling and fitness at the Islamic University Sports Center</h2>
 <p>Sunnah Strength runs classes for children and adults at the University's sports center. The coach is an American sports and fitness coach, a NASM and ASEP certified trainer and a jiu-jitsu black belt. The programme suits beginners and covers jiu-jitsu, grappling and wrestling, strength and fitness training, plyometrics, self-defence and sparring, and team-building challenges.</p>
 <h3>Children</h3>
@@ -395,15 +395,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </tbody></table>
 <p>Monthly tuition: 200 to 250 SAR. Adults aged 18 and over in the programme can also use the University gym facilities, including the CrossFit area and the pool and sauna.</p>
 <p>Siblings, families and Islamic University students get discounts, so ask when you register. Private one-to-one training and swim lessons are also offered.</p>
-<p>To register or ask a question, call or message on WhatsApp: <strong>+966 56 171 7539</strong>.</p>
-<h2>Coming up: Muslim Scouts camping trip</h2>
-<p>Blossom Star Tours is running a camping trip for fathers, sons and brothers on <strong>20 and 21 November 2026</strong> at Mundasa, Madinah. Activities include camping and survival skills, navigation and finding the qiblah, wudu, tayammum and Islamic rulings, father and son activities, jiu-jitsu, archery, a barbecue and campfire, Qur'an recitation, Islamic reminders, stories from the seerah, how to pitch a tent and practising the adhan for boys.</p>
-<ul>
-<li><strong>Adults:</strong> 130 SAR.</li>
-<li><strong>University students and children aged 14 and under:</strong> 70 SAR.</li>
-<li><strong>Families of three or more:</strong> discounts are available.</li>
-</ul>
-<p>There are only 25 places.</p>`,
+<p>To register or ask a question, call or message on WhatsApp: <strong>+966 56 171 7539</strong>.</p>`,
   },
   {
     slug: "phone-sims-and-absher",
@@ -623,8 +615,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>Foothills of Mount Uhud</td><td>Public side only, away from the heritage zones.</td></tr>
 </tbody></table>
 <h3>Gear</h3>
-<p>Amazon.sa, Decathlon (online) and Noon deliver to Madinah in 1 to 3 days. Traditional camping gear such as charcoal grills, dallah pots and floor mats is sold in the shops around Souq al-Manakhah.</p>
-<p>Organised trips are listed in <a href="/guides/sports-and-activities">Sport, fitness and outdoor activities</a>.</p>`,
+<p>Camping gear is sold online and in the shops around Souq al-Manakhah, including charcoal grills, dallah pots and floor mats.</p>
+`,
   },
   {
     slug: "dates-of-madinah",

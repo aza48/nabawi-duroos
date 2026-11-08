@@ -31,7 +31,7 @@ export const GUIDES_STUDENT_LIFE: SeedGuide[] = [
 <h2>Health</h2>
 <p>The University clinic covers students. For hospitals, pharmacies and emergency numbers, see <a href="/guides/doctors-hospitals-and-pharmacies">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>
 <h2>Sport</h2>
-<p>Students get 50% off at the Islamic University sports club, and there are classes at the sports center. See <a href="/guides/sports-and-activities">Sport, fitness and outdoor activities</a>.</p>
+<p>Students get 50% off at the Islamic University sports club, and there are classes at the sports center. See <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>
 <h2>Contacting the University</h2>
 <p>Student care: <strong>920022042</strong>, or email <strong>care@iu.edu.sa</strong>. Your own application is on the Study in Saudi and Minhati portals, so keep those logins safe.</p>`,
   },
