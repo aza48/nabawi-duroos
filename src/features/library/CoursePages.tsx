@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/ui";
 import { ArrowLeft, ArrowRight, BookOpen, Download, ExternalLink, FileAudio, FileImage, FileText, FileVideo, Folder, Search, Send } from "lucide-react";
 import {
   countFiles,
@@ -99,7 +100,10 @@ export function CollectionView({ collection, tree, addHref }: { collection: Coll
     <>
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-14">
-          <Link href="/library" className="inline-flex items-center gap-1.5 text-sm text-white/75 hover:text-white"><BookOpen size={15} className="text-gold-bright" /> Library</Link>
+          <div className="flex items-center gap-2">
+            <BookOpen size={15} className="shrink-0 text-gold-bright" aria-hidden="true" />
+            <Breadcrumbs tone="band" items={[["Home", "/"], ["Library", "/library"]]} />
+          </div>
           <h1 className="mt-3 font-heading text-4xl font-bold leading-[1.05] md:text-6xl">{collection.title}</h1>
           <p className="ar-text mt-2 text-xl text-white/80">{collection.titleAr}</p>
           <p className="mt-4 max-w-2xl text-white/85">{countFiles(tree)} files. {collection.blurb}</p>
@@ -153,17 +157,14 @@ export function ReaderView({ hit, addHref }: { hit: FileHit; addHref: string }) 
   const hint = subjectHint(parent.t);
   return (
     <div className="shell pt-6 md:pt-8">
-      <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
-        <Link href="/library" className="hover:text-ink">Library</Link>
-        <span>›</span>
-        <Link href={`/library/${collection.slug}`} className="hover:text-ink">{collection.title}</Link>
-        {path.slice(1).map((p) => (
-          <span key={p.id} className="flex items-center gap-2">
-            <span>›</span>
-            <Link href={`/library/${collection.slug}#f-${path[1].id}`} dir="auto" className="ar-text hover:text-ink">{levelLabel(p.t) ?? p.t}</Link>
-          </span>
-        ))}
-      </nav>
+      <Breadcrumbs
+        items={[
+          ["Home", "/"],
+          ["Library", "/library"],
+          [collection.title, `/library/${collection.slug}`],
+          ...path.slice(1).map((p): [string, string] => [levelLabel(p.t) ?? p.t, `/library/${collection.slug}#f-${path[1].id}`]),
+        ]}
+      />
       <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
           <h1 dir="auto" className="ar-text font-heading text-2xl font-bold leading-snug md:text-4xl">{file.t}</h1>

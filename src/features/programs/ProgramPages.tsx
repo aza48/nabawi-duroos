@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/ui";
 import { ArrowUpRight, Baby, CalendarCheck, Check, Laptop, MapPin, User, UserRound, Users, Wallet } from "lucide-react";
 import { PageBand } from "@/components/ui";
 import { Tabs } from "@/components/Tabs";
@@ -143,7 +144,7 @@ export function ProgramPage({ p, locale = "en" }: { p: Program; locale?: Locale 
       <JsonLd data={[ld, breadcrumbs([["Study in Madinah", "/programs"], [p.name, `/programs/${p.slug}`]])]} />
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-14">
-          <Link href={`${t.base}/programs`} className="text-sm text-white/75 hover:text-white">{t.title}</Link>
+          <Breadcrumbs tone="band" rtl={ar} items={[[ar ? "الرئيسية" : "Home", ar ? "/ar" : "/"], [t.title, `${t.base}/programs`]]} />
           {ar ? (
             <>
               <h1 className="ar-text mt-3 text-4xl font-bold leading-snug md:text-6xl">{p.nameAr}</h1>

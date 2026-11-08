@@ -65,10 +65,10 @@ export function FaqExplorer({ items, categories, locale = "en" }: { items: Item[
             {ar ? "لا توجد نتيجة بعد. اسأل في مجموعة واتساب، وقد يصبح سؤالك الجواب التالي هنا." : "Nothing matches yet. Ask it in the WhatsApp group and it may become the next answer here."}
           </p>
         ) : (
-          <ul className="mt-5 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-card">
+          <ul className="mt-5 grid gap-px overflow-hidden rounded-2xl border border-line bg-line xl:grid-cols-2 xl:[&>li:last-child:nth-child(odd)]:col-span-2">
             {shown.map((f) => (
-              <li key={f.slug}>
-                <Link href={`${ar ? "/ar" : ""}/ask/${f.slug}`} className="group flex items-center gap-3 px-5 py-4 transition-colors hover:bg-bg-2">
+              <li key={f.slug} className="bg-card">
+                <Link href={`${ar ? "/ar" : ""}/ask/${f.slug}`} className="group flex h-full items-center gap-3 px-5 py-4 transition-colors hover:bg-bg-2">
                   <span className="flex-1 font-medium leading-snug group-hover:text-primary" dir="auto">{f.question}</span>
                   <ChevronRight size={18} className="shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-primary rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5" />
                 </Link>

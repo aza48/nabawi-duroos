@@ -265,7 +265,7 @@ export function UpdatesPage({ current, history, locale }: { current: Announcemen
   const currentSlugs = new Set(current.map((a) => a.slug));
   const earlier = history.filter((a) => !currentSlugs.has(a.slug));
   const Card = ({ a, faded }: { a: AnnouncementRow; faded?: boolean }) => (
-    <article id={a.slug} className={`card scroll-mt-28 p-4 ${faded ? "opacity-70" : ""}`}>
+    <article id={a.slug} className={`card mb-3 break-inside-avoid scroll-mt-28 p-4 ${faded ? "opacity-75" : ""}`}>
       <h3 className="font-semibold leading-snug">{ar ? a.titleAr : a.titleEn}</h3>
       <p className="mt-1 whitespace-pre-line text-sm leading-relaxed">
         <Linkified text={ar ? a.bodyAr : a.bodyEn} />
@@ -277,15 +277,15 @@ export function UpdatesPage({ current, history, locale }: { current: Announcemen
     </article>
   );
   return (
-    <div className="shell max-w-3xl pt-6 md:pt-10">
+    <div className="shell pt-6 md:pt-10">
       <DuroosNav locale={locale} />
-      <h1 className="mb-4 text-3xl font-semibold">{t(locale, "updates")}</h1>
-      {current.length === 0 ? (earlier.length === 0 && <EmptyState title={t(locale, "noUpdates")} />) : <div className="grid gap-2.5">{current.map((a) => <Card key={a.slug} a={a} />)}</div>}
+      <h1 className="mt-6 mb-4 font-heading text-3xl font-bold md:text-4xl">{t(locale, "updates")}</h1>
+      {current.length === 0 ? (earlier.length === 0 && <EmptyState title={t(locale, "noUpdates")} />) : <div className="gap-3 md:columns-2 xl:columns-3">{current.map((a) => <Card key={a.slug} a={a} />)}</div>}
       {earlier.length > 0 && (
         <>
           {current.length === 0 && <p className="mb-4 text-muted">{ar ? "لا تغييرات حالية. كل الدروس على موعدها المعتاد." : "Nothing changed right now. Every dars is on as usual."}</p>}
           <h2 className="mt-8 mb-2.5 text-sm font-bold text-muted">{t(locale, "earlier")}</h2>
-          <div className="grid gap-2.5">{earlier.map((a) => <Card key={a.slug} a={a} faded />)}</div>
+          <div className="gap-3 md:columns-2 xl:columns-3">{earlier.map((a) => <Card key={a.slug} a={a} faded />)}</div>
         </>
       )}
     </div>
