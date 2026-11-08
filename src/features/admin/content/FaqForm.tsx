@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { deleteFaqAction, saveFaqAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 import { RichText } from "./RichText";
+import { useFeedback } from "../Feedback";
 
 type Category = "getting-started" | "getting-settled" | "family" | "university" | "duroos" | "leaving";
 type F = { slug?: string; question: string; answerHtml: string; category: Category; tags: string[]; status: "draft" | "published" };
@@ -17,6 +18,7 @@ const CATEGORIES: { id: Category; label: string }[] = [
 
 export function FaqForm({ value }: { value: F }) {
   const router = useRouter();
+  const { confirm, notify } = useFeedback();
   const [v, setV] = useState<F>(value);
   const [tags, setTags] = useState(value.tags.join(", "));
   const [verified, setVerified] = useState(true);
@@ -62,7 +64,15 @@ export function FaqForm({ value }: { value: F }) {
       </div>
       {value.slug && (
         <button type="button" className="text-sm text-cancel underline" disabled={pending}
-          onClick={() => { if (confirm("Delete this answer? You can undo it from Activity.")) start(async () => { await deleteFaqAction(value.slug!); router.push("/admin/content"); }); }}>
+          onClick={async () => {
+            if (!(await confirm({ title: "Delete this answer?", body: "It disappears from the site straight away. You can bring it back with Undo.", confirmLabel: "Delete", danger: true }))) return;
+            start(async () => {
+              const r = await deleteFaqAction(value.slug!);
+              if (!r.ok) return setError(r.error);
+              notify("Answer deleted", { undoAuditId: r.data });
+              router.push("/admin/content");
+            });
+          }}>
           Delete answer
         </button>
       )}

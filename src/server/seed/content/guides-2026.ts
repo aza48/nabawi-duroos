@@ -48,14 +48,14 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>On a visit or business visa there is no free healthcare. A GP visit is 100 to 200 SAR, a specialist 150 to 300, a dental check and clean 150 to 250, and an emergency visit 300 to 500. Keep 500 to 800 SAR aside for surprises. University students are covered by the University clinic, and many private clinics give students and staff big discounts (see Student discounts).</p>
 <h2>A realistic monthly budget</h2>
 <table><thead><tr><th></th><th>Single person</th><th>Family of 3 or 4</th></tr></thead><tbody>
-<tr><td>Rent</td><td>1,000 to 2,000</td><td>3,000 to 4,000</td></tr>
+<tr><td>Rent (shared room or small flat)</td><td>1,000 to 2,000</td><td>3,000 to 4,000</td></tr>
 <tr><td>Groceries and household</td><td>1,000</td><td>2,000</td></tr>
 <tr><td>Bills</td><td>300 to 600</td><td>400 to 800</td></tr>
 <tr><td>Transport</td><td>300 to 1,000</td><td>300 to 1,000</td></tr>
 <tr><td>Medical</td><td>0 to 600</td><td>0 to 1,000</td></tr>
 <tr><td>Study and books</td><td>200 to 1,200</td><td>200 to 2,000</td></tr>
 <tr><td>Everything else</td><td>100 to 300</td><td>400 to 2,000</td></tr>
-<tr><td><strong>Total (SAR)</strong></td><td><strong>about 2,900 to 6,100</strong></td><td><strong>about 6,300 to 12,800</strong></td></tr>
+<tr><td><strong>Total (SAR)</strong></td><td><strong>about 2,900 to 6,700</strong></td><td><strong>about 6,300 to 12,800</strong></td></tr>
 </tbody></table>
 <blockquote><p>Note: Students on the University scholarship live in the halls of residence and receive a monthly stipend, so their costs are far lower than this.</p></blockquote>
 <h2>Saving money</h2>
@@ -84,7 +84,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Since September 2025 the Saudi Central Bank lets visitors with a Visitor ID open an account and get a debit card, which used to need an iqama.</p>
 <ol>
 <li>Make sure you have a Saudi mobile number in your name.</li>
-<li>Get your Visitor ID and activate Nafath or Absher if you can.</li>
+<li>Get your Visitor ID and activate Nafath or Absher. The bank uses it to verify you.</li>
 <li>Open the account in the bank's app or at a branch, verifying your identity through Nafath or Absher.</li>
 <li>Order your mada debit card.</li>
 </ol>
@@ -250,7 +250,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Through people:</strong> the most reliable way. Ask in the MESH group and among students and brothers already here.</li>
 <li><strong>WhatsApp and Telegram groups:</strong> up-to-date listings and direct contact. For example, Shoqaq Madinah (students' rentals) and LM Renting in Madinah.</li>
 <li><strong>Haraj.com.sa:</strong> big, but prices tend to be inflated and most landlords speak only Arabic.</li>
-<li><strong>Agencies for English speakers:</strong> LiveinMadinah and Find Baity help with searching and setting up.</li>
+<li><strong>Agents:</strong> some real-estate offices work in English. Use an accredited agent from Ejar's official list.</li>
 </ul>
 <blockquote><p>Tip: If it's your first time, stay in a hotel or a short let (Booking, Airbnb or Gathern) for a week or two and look in person. You'll see the building, test the air conditioning and negotiate directly.</p></blockquote>
 <h2>Furnished or empty</h2>
@@ -327,6 +327,10 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Pay the educational visa fee when the payment link arrives. The visa comes by email, with no embassy visit. You must be outside Saudi Arabia when you submit the visa application.</li>
 <li>Request your arrival ticket through Minhati once the visa is issued.</li>
 </ol>
+<h2>Housing, deferral and family</h2>
+<p><strong>Housing:</strong> scholarship students are housed by default, either inside the Jamiah or in the Rabwa halls (الربوة). See <a href="/ask/is-housing-included">Is housing included?</a></p>
+<p><strong>Deferral:</strong> the University allows new students to defer for up to two years. See <a href="/ask/defer-my-place">Can I defer my place?</a> for what students on the new visa report.</p>
+<p><strong>Bringing your family:</strong> see <a href="/ask/istiqdam-deposit">Can I sponsor my family, and what is the deposit?</a></p>
 <h2>Initial acceptance is not final</h2>
 <p>Initial acceptance means the University has put your name forward. Final acceptance means the Ministry has approved it, and that is the only stage that leads to a visa. Do not resign from work, give up your home or book flights on initial acceptance alone. Some people with initial acceptance are moved to a later semester, and some are offered a year of online Arabic first.</p>
 <p>Plan to arrive in the semester you are offered. Under the new educational visa, asking to arrive later can send your application back.</p>
@@ -720,12 +724,15 @@ export const GUIDES_2026: SeedGuide[] = [
 export type SeedFaq = { slug: string; question: string; category: string; answerHtml: string; tags?: string[] };
 
 export const FAQS_2026: SeedFaq[] = [
+  { slug: "defer-my-place", category: "university", question: "Can I defer my place at the University?", answerHtml: "<p>Yes. The University allows new students to defer for up to two years. Request it through the University before the semester starts. There have been reports that students who came on the new electronic study visa were told deferral was not available to them, so check your own case before you plan around it.</p>" },
+  { slug: "is-housing-included", category: "university", question: "Is housing included for scholarship students?", answerHtml: "<p>Yes. Scholarship students are housed by default, either inside the Jamiah or in the Rabwa halls (الربوة). The University's housing office allocates your room.</p>" },
+  { slug: "istiqdam-deposit", category: "family", question: "Can I sponsor my family, and what is the deposit?", answerHtml: "<p>Students can ask the University to sponsor a family member (istiqdam). The latest amount quoted for the family residency deposit is 30,000 SAR (November 2025). Earlier reports quoted 10,000 SAR (January 2025). Confirm the amount, and whether requests are open, with the University before you pay.</p>" },
   { slug: "join-mesh-group", category: "getting-started", question: "How do I join the MESH WhatsApp group?", answerHtml: "<p>Tap any \"Join the group\" button on this site. Keep posts relevant, share only verified information, and no debates. The full rules are on the More page.</p>" },
   { slug: "how-to-apply-iu", category: "getting-started", question: "How do I apply to the Islamic University of Madinah?", answerHtml: "<p>Through the national Study in Saudi portal (studyinsaudi.sa) when applications open. You can choose up to 25 programmes across several universities and edit your application until the deadline. See <a href=\"/programs/iu-madinah\">Islamic University of Madinah</a> for the steps and a video walkthrough.</p>" },
   { slug: "stipend-amount", category: "university", question: "How much is the University stipend?", answerHtml: "<p>Fully funded scholarship students receive a monthly stipend (mukafa'ah) of 840 SAR, as well as housing and flights. The stipend stops during ta'jeel or i'tithaar.</p>" },
   { slug: "learn-arabic-before-iu", category: "getting-started", question: "Where can I learn Arabic in Madinah before getting into the University?", answerHtml: "<p>There are several options. Year-round institutes such as Ahlul Athar, Mutun al-Ijaz and Taba charge from about 350 SAR a month. The <a href=\"/programs/map\">Madinah Arabic Program</a> runs one-month intensives on the University campus. More options, with fees and dates, are on <a href=\"/programs\">Study in Madinah</a>.</p>" },
-  { slug: "sisters-study", category: "family", question: "Where can sisters study Arabic and Islamic sciences?", answerHtml: "<p>There are free marakiz for sisters (Mishkat, Taibah, Academiyah al-Ma'rifah), the Masjid an-Nabawi Ma'had and Kulliyah for women, and paid options such as Al-Fusha Academy, Taba (now open to women) and MAP's sisters' classes. See <a href=\"/programs\">Study in Madinah</a>.</p>" },
-  { slug: "monthly-budget", category: "getting-settled", question: "How much money do I need per month in Madinah?", answerHtml: "<p>Roughly 2,900 to 6,100 SAR for a single person renting their own place, and 6,300 to 12,800 SAR for a family of three or four. Scholarship students in the halls spend far less. Full breakdown: <a href=\"/guides/cost-of-living\">What it costs to live in Madinah</a>.</p>" },
+  { slug: "sisters-study", category: "family", question: "Where can sisters study Arabic and Islamic sciences?", answerHtml: "<p>There are free marakiz for sisters (Mishkat, Taibah, Academiyah al-Ma'rifah), the Masjid an-Nabawi Ma'had and Kulliyah for women, and paid options such as Fusha, Taba (now open to women) and MAP's sisters' classes. See <a href=\"/programs\">Study in Madinah</a>.</p>" },
+  { slug: "monthly-budget", category: "getting-settled", question: "How much money do I need per month in Madinah?", answerHtml: "<p>Roughly 2,900 to 6,700 SAR for a single person renting their own place, and 6,300 to 12,800 SAR for a family of three or four. Scholarship students in the halls spend far less. Full breakdown: <a href=\"/guides/cost-of-living\">What it costs to live in Madinah</a>.</p>" },
   { slug: "bank-account-without-iqama", category: "getting-settled", question: "Can I open a Saudi bank account without an iqama?", answerHtml: "<p>Yes, since September 2025 visitors with a Visitor ID, a Saudi mobile number and Nafath or Absher verification can open an account and get a mada card. See <a href=\"/guides/sim-internet-bank\">SIM card, internet and a Saudi bank card</a>.</p>" },
   { slug: "home-internet-no-iqama", category: "getting-settled", question: "How do I get home internet without an iqama?", answerHtml: "<p>Fixed home internet needs an iqama, so most people use a portable router with an unlimited-data SIM from STC, Mobily or Zain.</p>" },
   { slug: "drive-on-visit-visa", category: "getting-settled", question: "Can I drive on a visit visa?", answerHtml: "<p>Yes, with your own licence if Saudi Arabia recognises it. To get a Saudi licence or register a car you need an iqama. See <a href=\"/guides/drivers-license\">Getting a Saudi driving licence</a>.</p>" },

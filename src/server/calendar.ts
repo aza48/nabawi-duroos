@@ -107,7 +107,7 @@ export async function lessonFeed(db: Db, filter: FeedFilter, fromIso: string, da
   return { title, events };
 }
 
-/** The University calendar and the expected Islamic dates as whole-day events. */
+/** The University calendar and the Islamic dates as whole-day events. */
 export function datesFeed(dates: KeyDate[] = KEY_DATES): { title: string; events: CalEvent[] } {
   const events = dates.map((d): CalEvent => {
     const toExclusive = addDays(d.end ?? d.start, 1);

@@ -4,6 +4,7 @@
  * the closest new section.
  */
 export const LEGACY_REDIRECTS: { source: string; destination: string; permanent: true }[] = [
+  { source: "/guides/sports-and-martial-arts", destination: "/guides/sports-and-activities", permanent: true },
   { source: "/mesh", destination: "/", permanent: true },
   { source: "/mesh/:path*", destination: "/:path*", permanent: true },
   { source: "/browse", destination: "/ask", permanent: true },

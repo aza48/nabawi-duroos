@@ -137,7 +137,6 @@ export function KeyDates() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-[11px] text-white/55">Expected dates, confirmed by moon sighting.</p>
         </article>
       </div>
     </section>

@@ -1,13 +1,20 @@
 # For the owner: questions and ideas
 
-Answer these when you can; each answer lets MESH state something with authority or fix a page. Ideas for new features are added at the end as the work continues.
+Answer these when you can; each answer lets MESH state something with authority or fix a page. The owner answered the earlier questions on 8 November 2026; what was decided and applied is in the next section, and only what is still open stays below.
 
-## Decisions the research could not settle
-- **Deferral:** the University page says new students can defer up to 2 years, but students on the new electronic study visa report no deferral. Which should MESH say?
-- **Housing:** the 2025 intake was told housing is not included, but later reports say unmarried students get free housing. Which is current?
-- **Family residency deposit (istiqdam):** quoted as 10,000 SAR (Jan 2025) and 30,000 SAR (Nov 2025). Which is current?
-- **Al-Fusha Academy (Study page):** no Arabic-for-foreigners "Al-Fusha Academy" could be found; alfusha.edu.sa is Al-Fusha Private Schools (nursery to secondary). The group chat lists an institute called "Fusha" at 1,000 to 2,400 SAR. What is its exact name and contact, and does it teach sisters?
-- **Second semester start:** confirm 20 December 2026 against the official calendar image.
+## Decided and applied (8 November 2026)
+- **Deferral:** MESH states what the University says (new students may defer up to two years) and adds that some students on the new electronic study visa report it was not available. FAQ "Can I defer my place at the University?".
+- **Housing:** scholarship students are housed by default, inside the Jamiah or in the Rabwa halls. FAQ "Is housing included for scholarship students?".
+- **Family residency deposit (istiqdam):** the latest figure (30,000 SAR, November 2025), with a note that earlier reports said 10,000 SAR (January 2025). FAQ "Can I sponsor my family, and what is the deposit?".
+- **Second semester:** 20 December 2026 confirmed against the owner's calendar, and every other date in the calendar matches it too.
+- **Islamic dates:** no more "expected" wording; they follow Umm al-Qura and moon sighting is assumed.
+- **Latest update:** "Final exam schedules are now released, may Allah grant you success!" is in the live-fix script (`node scripts/content-fixes.cjs`).
+- **No recommending anyone:** the childbirth doctors list states facts only, with no "(recommended)" tags.
+- **No links to competitors:** the sports list copied from another community site is removed; its address goes to our own sports guide.
+- **Dated information:** guides built on old information say so at the top (sisters' schools: December 2023; childbirth and having a baby: April 2025).
+- **Sisters Studying in Madinah:** credited at the bottom of the guide, with a note to message their admins for corrections. The Alfiyyat Ibn Malik line is back as "may also be required (not confirmed)".
+- **Other calls made:** cost-of-living single total now adds up (2,900 to 6,700); "Check first" on the business mistakes box is now "Common mistakes"; the consulate example no longer states Jeddah's hours; the private paid certificate service number is gone; apartment agencies are no longer named; step 2 of the bank guide says Nafath or Absher is needed; the Fiqh PhD total stays 66,000.
+- **Fusha:** now called "Fusha", with a note that it is not the Al-Fusha private schools. The exact name and contact are still welcome (see below).
 
 ## Shaykh photos
 - 20 of 31 shuyukh are pictured. The 11 without a verified photo are listed in docs/research/shaykh-photos.md, with any single-source photos the researchers found. Send photos or approve those.
@@ -15,27 +22,12 @@ Answer these when you can; each answer lets MESH state something with authority 
 ## Questions from the wording sweep
 
 ### Guides (part 1)
-- cost-of-living: the single-person budget total says 'about 2,900 to 6,100', but the rows add up to 2,900 to 6,700 (2,000 + 1,000 + 600 + 1,000 + 600 + 1,200 + 300). Which figure is correct? Also, the single-person rent row (1,000 to 2,000) is lower than the studio rent range (1,500 to 2,500). Is that intended, for example a shared room?
-- childbirth-options: Dr Ghada Ramzi had two ticks, and the edit shows her as plain '(recommended)' like the others. Did the double tick mean something extra, such as 'highly recommended', that you want shown?
-- sports-and-martial-arts: every contact-details link points to hijrahnow.com/madinah, a third-party site, which shows where this list came from. Keep those links, or put the contact details directly on MESH?
-- university-calendar-1448: the bodyHtml looks like text copied from the rendered calendar page ('At a glanceAll dates29', 'Add to calendar' repeated, 'Nothing in this period. Try a longer range.'). Is the page drawn by a calendar component that ignores bodyHtml? If not, the body needs rebuilding.
 - tajeel-and-itithaar: does the X under حذف in the portal actually delete a submitted request? The edit no longer says it does, because that was never confirmed.
 - tajeel-and-itithaar: the table says 'You may need to' for handing back the dorm room and leaving Saudi under i'tithaar. Can you confirm when this applies, so it can be stated plainly?
-- starting-a-business: the 'Check first' label sits on a box that lists common mistakes. Would 'Common mistakes' be a better label?
 
 ### Guides (part 2)
-- sisters-studying-in-madinah: I removed the Masjid an-Nabawi Ma'had line saying a portion of Alfiyyat Ibn Malik 'may also be required' for Thanawiyyah entry, because it was marked unconfirmed in 2023. Is it required now? If so, it can go back as a plain fact.
-- sisters-studying-in-madinah: the downloadable PDF was compiled by the Sisters Studying in Madinah (S.S.I.M) team, who asked for corrections to go to their WhatsApp group admins. I removed that credit from the page. Do you want to keep a short credit to them, or ask their permission to host the sheet without it?
-- postgraduate-admission-1448: the official guide prints the Fiqh PhD total as 660,000; the table shows 66,000, which matches 11,000 a semester for 6 semesters. Can you confirm 66,000 with the Deanship of Graduate Studies?
-- graduate-procedures: the consulate example (about 40 minutes; open Sunday to Thursday, 8:30am to 5pm; Lapor Diri) seems to describe the Indonesian Consulate General in Jeddah. Should the page name that consulate, or should the opening hours be removed because they do not apply to every consulate?
-- graduate-procedures: the page publishes a private WhatsApp number (+966 56 820 2297) for a paid certificate collection and legalisation service. Do you want to keep listing it?
-- sisters-studying-in-madinah: this guide says its information dates from December 2023. Is a fresh check of fees and requirements planned?
 
 ### Guides (part 3)
-- Visas guide (visas-for-family-and-visitors): the page says people on a visit visa "may ... work online for clients abroad". Can MESH state this as a firm rule? If not, should the sentence be cut back to living and studying at language centres?
-- SIM and bank guide (sim-internet-bank): step 2 says "activate Nafath or Absher if you can", but step 3 says you verify your identity through Nafath or Absher. Is Nafath or Absher required to open the account? If it is, "if you can" should go.
-- Apartment guide (finding-an-apartment): the edit keeps the claim that unpaid bills of over 3,000 riyals are "not unusual". This generalises from a single case. Would you rather drop the figure and keep only the advice to check the meter?
-- Apartment guide: should the page name specific WhatsApp/Telegram groups (Shoqaq Madinah, LM Renting in Madinah) and agencies (LiveinMadinah, Find Baity)? Naming them could read as an endorsement. They are kept for now because they tell readers where to look, not where a fact came from.
 
 ### FAQs, announcements, events, shaykh facts
 - abadr-tafsir (Tafsir as-Sa'di after Fajr, Prophet's Mosque, western side): which weekdays is this lesson held? The day label was a research note and is now cleared. The shaykh's fact says 'daily except Friday and Saturday', but it is unclear whether that covers the Fajr tafsir as well as the Maghrib Kitab al-Tawhid.
@@ -52,12 +44,10 @@ Answer these when you can; each answer lets MESH state something with authority 
 - Library page (src/content/library.ts CHANNELS): it still lists "Study in Saudi (Madi Abu Yahya)" on YouTube, "Study in Saudi on Telegram" and "Study in Saudi on X" as channels worth following. They are shown as recommendations, not as citations, so I left them. But these are also MESH's research sources. Keep them or remove them?
 - As-Safwah: the contact link "Details file" points to a Google Drive folder, and the embedded video is the Study in Saudi review (titled "As-Safwah complete review (2026)"). I kept both because they give readers the levels and fees. Is the Drive folder the institute's own, or should it come off? Also, can you confirm a current monthly fee so the price line can state a figure?
 - Manarat al-Ilm video titled "What students think after joining": I kept it as a video title. Rename it if you read it as attributing to students.
-- Finding a flat: the anecdote's figure (previous tenant owed over 3,000 riyals) was dropped along with the anecdote. Restore it only if you want a concrete example.
 
 ### Site interface
 - Shaykh profile 'facts' (seed data in src/server/seed/legacy/profiles.ts, editable in admin) are shown on shaykh pages without any wording filter. They are outside my area, so I did not check them for source or hedge wording. Should someone review them, or should the BACKSTAGE filter also be applied to them?
 - Announcement titles and bodies on the Updates page and on the home page 'Latest updates' are shown exactly as stored. If the watcher or a researcher wrote source wording into one, it will appear. Should announcements be filtered too, or is the watcher now trusted to write clean text?
-- The University calendar labels Islamic dates as "Islamic, expected" and the home page says "Expected dates, confirmed by moon sighting." I kept both as protective wording under rule 4. Please confirm you are happy with "expected".
 
 ### Added 8 November 2026 (intake desk)
 - Camping trip (20 and 21 November 2026, guide sports-and-activities): the poster only has a QR code for booking. What phone number or link should readers use? Until then the guide gives no booking route. The section is due to be removed on 21 November (see docs/EXPIRING.md).
@@ -70,3 +60,32 @@ Answer these when you can; each answer lets MESH state something with authority 
 - Property: the Holy City rules on foreign ownership could not be stated with authority. Do you want a short "Can I buy a home in Madinah?" guide once the current rule is confirmed? The portals Aqar, Bayut and Property Finder are worth adding to the flat guide at the next sync of that guide.
 - Healthcare: one source says all visitors get free emergency care at government hospitals. The site says there is no free healthcare on a visit visa. Which is right for emergencies?
 - Public WhatsApp and Telegram groups listed elsewhere (housing, mums, sports) were not copied. Do you want a neutral "Community groups" page with only groups you have checked?
+
+### Student life research (8 November 2026), please confirm before these go on the site
+- Arrival and graduation payments: a student-run site says new scholarship students get a one-off arrival payment of 1,680 SAR (two monthly stipends) and a graduation payment of 2,520 SAR (three stipends) for shipping belongings. Is this right and current?
+- Free buses to the Haram: what are the pick-up points and times, and do they run every day, including Friday?
+- Mat'am: where is it, and what are the opening hours for breakfast, lunch and dinner? (Prices are on the site now: 1, 2 and 2 SAR.)
+- Rooms: how many students share a room in the Jamiah and in the Rabwa halls? Do newer blocks have air conditioning?
+- Married students: one source says family housing can be applied for after a probation period, another says there is none. Which is right?
+- University sports club: which facilities do students get (indoor hall, outdoor and covered pools, pitches, gym)? Only the 50% discount is on the site now.
+- Class hours: older notes say morning classes run 7:30 am to 12:30 pm with about 22 hours a week on campus. Is that still true?
+- The University's official guide PDFs (student guide 1445 AH, admission guide 1448 AH, procedural guide for educational-visa students) could not be opened from here. If you save them in the repo folder docs/research I can read them and fill gaps with official facts.
+- Student care contact on the University's own page: 920022042 and care@iu.edu.sa (published on the site now).
+
+### AI protection (8 November 2026)
+- robots.txt now refuses AI training crawlers and welcomes search and assistant agents that link back; named training crawlers also get a 403; every page carries a rights-reserved header (TDMRep) and the footer states the copyright policy. This stops honest crawlers, not a determined scraper using a disguised browser. For stronger protection, turn on Bot Protection and the AI bots rule under Firewall in the Vercel dashboard (project medinahub), which only you can do.
+
+## Still open from the first round
+- **Fusha:** the exact name, contact, and whether it teaches sisters.
+- **Mutun al-Ijaz:** price (550 or 400 SAR a month) and whether the institute gives a recommendation for university admission.
+- **Study in Saudi channels** on the Library page: keep as channels to follow, or remove?
+
+## Ideas, ranked by what they give students
+1. **Admin editing for programmes, discounts, key dates and the library.** Fees and dates change and today need a developer. Start with discounts, then key dates, programmes, library. Needs one database migration on live first.
+2. **Arabic home page and the remaining Arabic pages** (`/ar` still goes to duroos; library colleges, reader, `/mahad`, search).
+3. **Compare programmes side by side** with common price units, and a sort by name or price.
+4. **Filter duroos by level and language** (needs two new lesson fields).
+5. **A "Start here" path for a new student** covering the first 30 days (arrive, SIM and bank, Absher and Nafath, accommodation, timetable, first duroos) as one checklist that remembers what is done.
+6. **Reminders for key dates** (exam windows, ta'jeel requests) by free notification.
+7. **Women's areas and gates at the Haram**, with verified facts, for sisters and families.
+8. **A page in the admin listing every fact older than six months**, each with a one-tap "still correct" button.

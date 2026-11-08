@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { deleteGuideAction, saveGuideAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 import { RichText } from "./RichText";
+import { useFeedback } from "../Feedback";
 
 type Stage = "getting-started" | "getting-settled" | "study" | "family" | "leaving";
 type G = { slug?: string; title: string; summary: string; bodyHtml: string; stage: Stage; status: "draft" | "published" };
@@ -16,6 +17,7 @@ const STAGES: { id: Stage; label: string }[] = [
 
 export function GuideForm({ value }: { value: G }) {
   const router = useRouter();
+  const { confirm, notify } = useFeedback();
   const [v, setV] = useState<G>(value);
   const [verified, setVerified] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -59,7 +61,15 @@ export function GuideForm({ value }: { value: G }) {
       </div>
       {value.slug && (
         <button type="button" className="text-sm text-cancel underline" disabled={pending}
-          onClick={() => { if (confirm("Delete this guide? You can undo it from Activity.")) start(async () => { await deleteGuideAction(value.slug!); router.push("/admin/content"); }); }}>
+          onClick={async () => {
+            if (!(await confirm({ title: "Delete this guide?", body: "It disappears from the site straight away. You can bring it back with Undo.", confirmLabel: "Delete", danger: true }))) return;
+            start(async () => {
+              const r = await deleteGuideAction(value.slug!);
+              if (!r.ok) return setError(r.error);
+              notify("Guide deleted", { undoAuditId: r.data });
+              router.push("/admin/content");
+            });
+          }}>
           Delete guide
         </button>
       )}

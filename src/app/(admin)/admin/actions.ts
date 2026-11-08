@@ -73,13 +73,13 @@ export async function saveFaqAction(input: Parameters<typeof saveFaq>[2]) {
   return run("content.write", async (db, a) => (await saveFaq(db, a, input)).slug);
 }
 export async function deleteFaqAction(slug: string) {
-  return run("content.write", async (db, a) => { await deleteFaq(db, a, { slug }); });
+  return run("content.write", (db, a) => deleteFaq(db, a, { slug }));
 }
 export async function saveGuideAction(input: Parameters<typeof saveGuide>[2]) {
   return run("content.write", async (db, a) => (await saveGuide(db, a, input)).slug);
 }
 export async function deleteGuideAction(slug: string) {
-  return run("content.write", async (db, a) => { await deleteGuide(db, a, { slug }); });
+  return run("content.write", (db, a) => deleteGuide(db, a, { slug }));
 }
 
 /* Settings, activity, admins */

@@ -43,9 +43,13 @@ describe("FAQs and guides", () => {
     expect((await listFaqs(db)).map((x) => x.slug)).toContain(f.slug);
   });
 
-  it("deletes a FAQ", async () => {
-    await deleteFaq(db, content, { slug: "how-do-i-activate-absher" });
+  it("deletes a FAQ and returns the activity id the Undo button uses", async () => {
+    const auditId = await deleteFaq(db, content, { slug: "how-do-i-activate-absher" });
+    expect(typeof auditId).toBe("number");
     expect(await getFaq(db, "how-do-i-activate-absher")).toBeNull();
+    const { undo } = await import("@/server/admin/audit");
+    expect(await undo(db, owner, auditId)).toEqual({ ok: true });
+    expect(await getFaq(db, "how-do-i-activate-absher")).not.toBeNull();
   });
 
   it("computes reading time for guides", async () => {

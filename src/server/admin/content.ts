@@ -67,8 +67,9 @@ export async function deleteFaq(db: Db, actor: Actor, input: { slug: string }) {
   const [before] = await db.select().from(faqs).where(eq(faqs.slug, input.slug));
   if (!before) throw new Error("faq_not_found");
   await db.delete(faqs).where(eq(faqs.slug, input.slug));
-  await record(db, actor, { action: "delete", entity: "faq", entityId: input.slug, before, after: null });
+  const auditId = await record(db, actor, { action: "delete", entity: "faq", entityId: input.slug, before, after: null });
   refreshPublic(["/ask", `/ask/${input.slug}`]);
+  return auditId;
 }
 
 const guideInput = z.object({
@@ -119,8 +120,9 @@ export async function deleteGuide(db: Db, actor: Actor, input: { slug: string })
   const [before] = await db.select().from(guides).where(eq(guides.slug, input.slug));
   if (!before) throw new Error("guide_not_found");
   await db.delete(guides).where(eq(guides.slug, input.slug));
-  await record(db, actor, { action: "delete", entity: "guide", entityId: input.slug, before, after: null });
+  const auditId = await record(db, actor, { action: "delete", entity: "guide", entityId: input.slug, before, after: null });
   refreshPublic(["/guides", `/guides/${input.slug}`, "/"]);
+  return auditId;
 }
 
 const whatsappInput = z.object({ url: z.string().regex(/^https:\/\/chat\.whatsapp\.com\/[A-Za-z0-9]+$/, "Paste a WhatsApp group invite link") });

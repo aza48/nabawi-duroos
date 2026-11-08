@@ -21,7 +21,7 @@ const KIND = {
   holiday: { label: "Holiday", icon: Sun, tone: "bg-amber-bg text-amber" },
   study: { label: "Classes", icon: GraduationCap, tone: "bg-primary-soft text-primary" },
   deadline: { label: "Request window", icon: ClipboardList, tone: "bg-bg-2 text-ink" },
-  islamic: { label: "Islamic, expected", icon: Moon, tone: "bg-gold-bg text-gold" },
+  islamic: { label: "Islamic dates", icon: Moon, tone: "bg-gold-bg text-gold" },
 } as const;
 const TERM = { first: "First semester", second: "Second semester", summer: "Summer semester" } as const;
 
@@ -38,7 +38,7 @@ function when(d: KeyDate, now: number): { text: string; state: "past" | "now" | 
   return { text: n === 1 ? "Tomorrow" : `In ${n} days`, state: n <= 14 ? "soon" : "later" };
 }
 
-/** The whole 1448 University calendar with the expected Islamic dates, filterable, with live countdowns. */
+/** The whole 1448 University calendar with the Islamic dates, filterable, with live countdowns. */
 export function UniversityCalendar() {
   const [now, setNow] = useState<number | null>(null);
   const [filter, setFilter] = useState<Filter>("all");
@@ -127,7 +127,7 @@ export function UniversityCalendar() {
       ))}
       </div>
       {shown.length === 0 && <p className="mt-8 text-muted">Nothing left in this list for the year. Tap "Show past dates" to see what has passed.</p>}
-      <p className="mt-8 text-sm text-muted">Islamic dates follow the Umm al-Qura calendar and are confirmed by moon sighting.</p>
+      <p className="mt-8 text-sm text-muted">Islamic dates follow the Umm al-Qura calendar.</p>
     </div>
   );
 }

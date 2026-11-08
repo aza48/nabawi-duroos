@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Activity, FileText, Inbox, Landmark, LogOut, Settings } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { ThemeToggle } from "@/components/shell/ThemeToggle";
+import { AdminFeedbackProvider } from "@/features/admin/Feedback";
 
 const TABS = [
   { href: "/admin", label: "Inbox", icon: Inbox, exact: true },
@@ -14,7 +15,7 @@ const TABS = [
   { href: "/admin/more", label: "More", icon: Settings },
 ];
 
-export function AdminShell({ name, roleLabel, children }: { name: string; roleLabel: string; children: React.ReactNode }) {
+export function AdminShell({ name, roleLabel, canUndo = false, children }: { name: string; roleLabel: string; canUndo?: boolean; children: React.ReactNode }) {
   const path = usePathname() ?? "/admin";
   const router = useRouter();
   const active = (t: (typeof TABS)[number]) => (t.exact ? path === t.href : path.startsWith(t.href));
@@ -39,7 +40,7 @@ export function AdminShell({ name, roleLabel, children }: { name: string; roleLa
           </div>
         </div>
       </header>
-      <main className="mx-auto max-w-4xl px-4 pt-4 pb-safe md:pb-16">{children}</main>
+      <main className="mx-auto max-w-4xl px-4 pt-4 pb-safe md:pb-16"><AdminFeedbackProvider canUndo={canUndo}>{children}</AdminFeedbackProvider></main>
       <nav aria-label="Admin" className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card/95 backdrop-blur md:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         <ul className="flex justify-around">
           {TABS.map((t) => {

@@ -6,6 +6,7 @@ import { Copy, Fingerprint } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { inviteAdminAction, revokeAdminAction, setRoleAction, setWhatsAppUrlAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
+import { useFeedback } from "../Feedback";
 
 export function WhatsAppForm({ current }: { current: string }) {
   const [url, setUrl] = useState(current);
@@ -53,6 +54,7 @@ const ROLES = [
 ] as const;
 
 export function AdminsManager({ admins, selfId }: { admins: Admin[]; selfId: string }) {
+  const { confirm, notify } = useFeedback();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<(typeof ROLES)[number]["id"]>("duroos_editor");
@@ -102,7 +104,15 @@ export function AdminsManager({ admins, selfId }: { admins: Admin[]; selfId: str
                     {ROLES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
                   </select>
                   <button type="button" className="shrink-0 rounded-full border border-line px-3 text-xs font-semibold text-cancel" disabled={pending}
-                    onClick={() => { if (confirm(`Remove ${a.name}? They are signed out everywhere immediately.`)) start(async () => { await revokeAdminAction(a.id); router.refresh(); }); }}>
+                    onClick={async () => {
+                      if (!(await confirm({ title: `Remove ${a.name}?`, body: "They are signed out on every device straight away and can no longer open the admin. You can invite them again later.", confirmLabel: "Remove", danger: true }))) return;
+                      start(async () => {
+                        const r = await revokeAdminAction(a.id);
+                        if (!r.ok) return setError(r.error);
+                        notify(`${a.name} removed`);
+                        router.refresh();
+                      });
+                    }}>
                     Remove
                   </button>
                 </div>
