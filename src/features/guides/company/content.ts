@@ -1,344 +1,386 @@
 /**
- * "Start your own company in Saudi Arabia" guide content.
+ * "Start your own company in Saudi Arabia": MESH's own guide.
  *
- * Checked against the 2025 Investment Law (registration replaced the MISA licence,
- * in force February 2025), the Commercial Register Law (in force April 2025), the
- * Chambers of Commerce Law (3-year fee exemption for new members), ZATCA tax rules,
- * the HCCH apostille status table, residence-based tax rules in Western countries and IRS figures for 2026. Day-to-day fees are what
- * founders in Madinah paid in 2026; the page tells readers to confirm on each portal.
+ * Checked against the 2025 Investment Law (MISA registration replaced the licence), the
+ * Commercial Register Law (April 2025), the Chambers of Commerce Law (3-year exemption),
+ * ZATCA rules (VAT, e-invoicing waves, 120-day returns), GOSI rates, the HCCH apostille
+ * table, residence-based tax rules in Western countries and IRS figures for 2026.
+ * Fees are rounded and change often; the page tells readers to confirm on each portal.
  */
 
 export const SLUG = "start-a-company-in-saudi";
 export const TITLE = "Start your own company in Saudi Arabia";
 export const SUMMARY =
-  "Set up your own Saudi company and get residency for you and your family without paying an agency 30,000 to 50,000 SAR. What changed in 2025, the order of steps, real costs, documents, banks, US tax filings, and the mistakes that cost founders time.";
+  "A plain-English guide to owning a Saudi company as a Western resident: the 2025 rules, each phase from paperwork at home to your first invoice, what it costs to set up and keep running, taxes in Saudi Arabia and back home, and bringing your family.";
 export const CHECKED = "8 November 2026";
 
+export const FIT = [
+  { id: "f1", title: "You have something to invoice", body: "Clients who will pay your Saudi company for a service: teaching, design, software, translation, consulting. A company with no revenue still has yearly costs." },
+  { id: "f2", title: "You can carry the yearly costs before profit", body: "Iqama, work permit and family fees arrive whether or not the business earns. Use the calculator below to see your number." },
+  { id: "f3", title: "You are ready to hire a Saudi as you grow", body: "Saudization rules shape which visas and transfers your company can use. One Saudi employee changes a lot." },
+  { id: "f4", title: "You are not relying on a scholarship iqama", body: "An iqama has one sponsor. If the University sponsors you, read the student note below first." },
+  { id: "f5", title: "You are happy with yearly paperwork", body: "Tax returns, registration updates and renewals every year. An accountant can do most of it for you." },
+];
+
+export const NOT_FREELANCE =
+  "Why not just freelance? Saudi Arabia's freelance document (freelance.sa) is for Saudi nationals. Foreign residents need a sponsor for any paid work: an employer, their own company, or Premium Residency. Working for local clients without the right status can lead to fines and losing your residency.";
+
 export const CHANGES_2025 = [
-  { title: "No more MISA licence", body: "Since February 2025, foreign investors register with the Ministry of Investment (MISA) instead of applying for a licence. The old yearly licence fee of about 62,000 SAR is no longer charged. People still say \"MISA licence\" out of habit." },
-  { title: "Your registration must stay current", body: "Update your MISA registration once a year, and whenever owners, capital or business activities change." },
-  { title: "Commercial registrations no longer expire", body: "Since April 2025 your company registration (CR) has no expiry date. Instead, you confirm its details online once a year. Miss that by 90 days and the CR is suspended, which can freeze your bank account." },
-  { title: "Chamber of Commerce free for 3 years", body: "New companies pay no Chamber of Commerce fee for their first 3 years." },
+  { title: "Registration, not a licence", body: "Since February 2025, foreign owners register with the Ministry of Investment (MISA) instead of buying an investment licence, and the large yearly licence fee has gone. Many websites still describe the old licence." },
+  { title: "Keep your registration current", body: "Update your MISA registration once a year, and whenever owners, capital or activities change." },
+  { title: "Company registrations no longer expire", body: "Since April 2025 the commercial registration (CR) has no expiry date. Instead, confirm its details online once a year. Leave it more than 90 days late and the CR is suspended, which can freeze your bank account." },
+  { title: "No Chamber fee for 3 years", body: "New companies pay no Chamber of Commerce subscription for their first 3 years." },
+];
+
+export type Situation = { id: string; label: string; first: string; residency: string; warn?: string };
+
+export const SITUATIONS: Situation[] = [
+  {
+    id: "abroad",
+    label: "Living outside Saudi Arabia",
+    first: "Everything up to the company registration can be done online from home. Certify your documents locally before you start.",
+    residency: "Your new company requests a work visa for you as General Manager. You collect it at a Saudi consulate, travel in on it, complete the medical and fingerprints, and receive your iqama.",
+  },
+  {
+    id: "visit",
+    label: "Here on a visit or Umrah visa",
+    first: "You can register the company while you are here; the portals do not depend on your visa type.",
+    residency: "A visit visa cannot become an iqama. When your work visa is ready, you leave, have it stamped at a Saudi consulate abroad, and come back on it.",
+  },
+  {
+    id: "employee",
+    label: "Working here for someone else",
+    first: "Register the company alongside your job. Nothing changes for you until you move your iqama.",
+    residency: "Your employer releases you and your iqama is transferred to your own company. Transfer fees rise with each transfer you have made, and your company's Saudization rating may need to be healthy first.",
+  },
+  {
+    id: "student",
+    label: "On a University scholarship",
+    first: "While you study, the University is your sponsor, and an iqama can only have one.",
+    residency: "Moving your iqama to your own company means leaving University sponsorship, with its housing, stipend and student status. Most students wait until graduation.",
+    warn: "Speak to the University before you register a company that depends on your iqama.",
+  },
 ];
 
 export type Path = { id: string; name: string; bestFor: string; needs: string; capital: string; note?: string };
 
-/** What the MISA registration has to fit. Activities, not licence fees, decide the rules now. */
 export const PATHS: Path[] = [
   {
     id: "service",
     name: "Services company",
-    bestFor: "Consulting, IT, software, design, marketing, translation, training, online teaching",
-    needs: "Usually a parent company abroad (any small company registered at home), its registration papers, articles and latest financial statements. Some founders register as an individual instead and show proof of personal funds; ask MISA which applies to you.",
-    capital: "No legal minimum for an LLC. Banks often expect a working balance.",
-    note: "The most common route for students and graduates.",
+    bestFor: "Teaching, translation, design, software, marketing, consulting and other work you invoice for",
+    needs: "Usually a company you already own at home, with its registration, founding rules and latest accounts. Some founders register as individuals with proof of personal funds; ask MISA which route fits you.",
+    capital: "No legal minimum for an LLC, but keep enough in the account to look like a working business.",
+    note: "The usual choice for students, graduates and remote professionals.",
   },
   {
     id: "startup",
     name: "Startup route",
-    bestFor: "Founders with no company abroad yet, building something new and scalable",
-    needs: "A support letter from a recognised Saudi accelerator, incubator or startup programme, which backs your application.",
+    bestFor: "A new, scalable product with no company behind it yet",
+    needs: "Backing from a recognised Saudi accelerator, incubator or startup programme.",
     capital: "Often none",
-    note: "Renewals ask you to show real activity. Treat it as a launchpad and plan to move onto the standard route within 2 or 3 years.",
+    note: "Programmes expect real progress at each renewal. Plan your move to a standard registration early.",
   },
   {
     id: "trading",
-    name: "Trading (selling physical goods)",
-    bestFor: "Wholesale or retail of products",
-    needs: "Fully foreign-owned trading has carried heavy conditions (very large capital and companies in several countries). With a Saudi partner owning 25% or more, the bar is far lower.",
-    capital: "High when 100% foreign-owned",
-    note: "Selling your own digital services online is not trading. Check the exact activity on the portal before you apply.",
+    name: "Selling physical goods",
+    bestFor: "Importing, wholesale or retail",
+    needs: "Fully foreign-owned trading carries much stricter conditions, including far higher capital. A Saudi partner can make it simpler.",
+    capital: "High when fully foreign-owned",
+    note: "Selling your own services online is not trading. Choose activities carefully.",
   },
   {
     id: "industrial",
     name: "Manufacturing",
-    bestFor: "Making, packing or assembling products, food production",
-    needs: "A Ministry of Industry licence as well as the MISA registration.",
+    bestFor: "Producing, packing or assembling goods",
+    needs: "An industrial licence from the Ministry of Industry as well as the MISA registration.",
     capital: "Set by the industrial licence",
   },
   {
     id: "professional",
-    name: "Licensed professions",
+    name: "Licensed profession",
     bestFor: "Law, accounting, engineering, healthcare",
-    needs: "Approval from the profession's Saudi body (for example SOCPA for accountants, the Saudi Council of Engineers, the Saudi Commission for Health Specialties).",
+    needs: "Approval from the profession's Saudi body, such as SOCPA (accountants), the Saudi Council of Engineers or the Saudi Commission for Health Specialties.",
     capital: "Set by the profession's body",
   },
   {
     id: "property",
     name: "Real estate",
-    bestFor: "Property development or brokerage",
-    needs: "Real Estate General Authority (REGA) approval. Real estate activity inside Makkah and Madinah is restricted for non-Saudis.",
+    bestFor: "Development, brokerage, property management",
+    needs: "Approval from the Real Estate General Authority (REGA). Property activity inside Makkah and Madinah is restricted for non-Saudis.",
     capital: "Varies",
   },
 ];
 
-export type Stage = { when: string; title: string; time: string; body: string; tip?: string };
+export type Phase = { id: string; name: string; time: string; steps: string[]; watch: string };
 
-export const TIMELINE: Stage[] = [
+export const PHASES: Phase[] = [
   {
-    when: "Before day 0",
-    title: "Get your documents certified and translated",
-    time: "1 to 4 weeks",
-    body: "Get your home documents certified, then apostilled (the international certificate that makes them valid abroad), then translated into Arabic by a certified translator in Saudi Arabia. Budget about 1,500 SAR.",
-    tip: "This is the step people forget. Start it the day you decide.",
+    id: "home",
+    name: "Paperwork at home",
+    time: "2 to 4 weeks",
+    steps: [
+      "Decide exactly what the company will do. Activities are chosen from a fixed national list, and changing them later costs time.",
+      "Gather your home company's papers, or prepare the personal route if MISA allows it.",
+      "Certify private documents with a notary or lawyer, then apostille everything.",
+    ],
+    watch: "Translations into Arabic must be done by a certified translator in Saudi Arabia, so keep apostilled originals safe for that step.",
   },
   {
-    when: "Day 0",
-    title: "Register with MISA",
-    time: "1 day",
-    body: "Apply on investsaudi.sa. If you are using a parent company, apply in its legal name. You do not have a Saudi company name yet, and that is expected.",
+    id: "register",
+    name: "Register the company",
+    time: "2 to 4 weeks",
+    steps: [
+      "Register with MISA on investsaudi.sa and choose your activities.",
+      "Reserve your Saudi company name, in Arabic and English, at the Saudi Business Center.",
+      "Make sure the name on your MISA registration matches the reserved name exactly. Updating it on investsaudi.sa is free.",
+      "Form the LLC and receive your commercial registration (CR). Saudi articles of association are produced for you.",
+      "Order the official CR extract; banks and many offices ask for it.",
+    ],
+    watch: "A mismatch between the MISA name and the reserved name stops the CR. Check spelling, spacing and Arabic letters.",
   },
   {
-    when: "Week 1 to 2",
-    title: "MISA confirms your registration",
-    time: "Usually 1 to 2 weeks",
-    body: "You receive the registration under your overseas or personal name. Pay the processing fee (founders paid around 500 SAR in 2026).",
+    id: "accounts",
+    name: "Switch on government accounts",
+    time: "About a week",
+    steps: [
+      "GOSI (social insurance), Qiwa (labor) and ZATCA (tax) open automatically after the CR. Log in to each and confirm the details.",
+      "Register the company's National Address with Saudi Post.",
+      "Activate Absher Business for the company's government services.",
+      "Subscribe to Muqeem to manage iqamas.",
+    ],
+    watch: "Use a company email and phone number you will keep. Every portal sends codes to them for years.",
   },
   {
-    when: "Week 2 to 3",
-    title: "Reserve your Saudi company name, then update MISA",
-    time: "Same day",
-    body: "Reserve the name your company will use in Saudi Arabia through the Saudi Business Center. Then log back into investsaudi.sa and change the name on your registration to match. It is free and takes about an hour.",
-    tip: "Skip this and the company registration will be refused because the names do not match.",
-  },
-  {
-    when: "Week 3 to 4",
-    title: "Commercial Registration (CR)",
-    time: "3 to 5 days",
-    body: "File your LLC through the Saudi Business Center. The CR is your official company registration, like a certificate of incorporation back home. Saudi articles of association are generated for you. Your files with GOSI, Qiwa and ZATCA open within about an hour. Order the official CR extract (100 SAR) the same day.",
-  },
-  {
-    when: "Week 5 to 7",
-    title: "Residency and bank account",
-    time: "2 to 4 weeks, in parallel",
-    body: "Sort out your iqama (residence permit) through your new company, set your job title to General Manager, print the physical iqama card, then open the company bank account.",
-    tip: "Banks want the physical iqama card, so order it early.",
+    id: "residency",
+    name: "Residency and bank",
+    time: "3 to 6 weeks",
+    steps: [
+      "Issue your General Manager work visa through Qiwa, or transfer your existing iqama.",
+      "Medical, fingerprints, then your iqama. Set your job title to your real role.",
+      "Order the printed iqama card; banks ask for it.",
+      "Open the company bank account. The General Manager signs in person.",
+    ],
+    watch: "Health insurance from an approved insurer is required for you and your family's iqamas. Arrange it before renewals fall due.",
   },
 ];
 
 export type Cost = { id: string; label: string; sar: number; note?: string };
 
-/** One-off set-up costs founders paid in 2026. */
 export const SETUP_COSTS: Cost[] = [
-  { id: "docs", label: "Notarize, apostille and translate documents", sar: 1500, note: "Varies by country and number of documents" },
+  { id: "docs", label: "Certifying documents at home and Arabic translation", sar: 1500, note: "Depends on your country and how many documents" },
   { id: "misa", label: "MISA registration processing", sar: 500 },
-  { id: "sbc", label: "Saudi Business Center, LLC set-up", sar: 1775 },
-  { id: "cr", label: "Commercial Registration", sar: 1163 },
-  { id: "extract", label: "Official CR extract (banks need it)", sar: 100 },
-  { id: "muqeem", label: "Muqeem subscription (iqama management system)", sar: 1265 },
-  { id: "occupation", label: "Change of job title on your iqama", sar: 1000 },
-  { id: "print", label: "Physical iqama card print", sar: 575 },
-  { id: "qiwa", label: "Labor office registration (Qiwa)", sar: 90 },
+  { id: "company", label: "Company formation and CR at the Saudi Business Center", sar: 3000 },
+  { id: "extract", label: "Official CR extract", sar: 100 },
+  { id: "iqama", label: "Muqeem subscription, job title change and printed iqama", sar: 2800 },
+  { id: "misc", label: "Labor office and small government fees", sar: 200 },
 ];
 
-/** Iqama transfer fee by how many times you have transferred before. */
 export const TRANSFER_FEES = [
   { label: "New iqama, no transfer", sar: 0 },
-  { label: "1st transfer", sar: 2000 },
-  { label: "2nd transfer", sar: 4000 },
-  { label: "3rd or later", sar: 6000 },
+  { label: "Transfer, 1st time", sar: 2000 },
+  { label: "Transfer, 2nd time", sar: 4000 },
+  { label: "Transfer, 3rd time or more", sar: 6000 },
 ];
 
-/** Yearly running costs. */
 export const YEARLY = {
   iqama: 650,
   levyMonthly: 800,
   dependantMonthly: 400,
-  muqeem: 1265,
+  muqeem: 1300,
 };
 
-export type Start = { id: string; label: string; short: string; first: string; iqama: string; warn?: string };
-
-export const STARTS: Start[] = [
-  {
-    id: "abroad",
-    label: "Outside Saudi Arabia",
-    short: "Most common",
-    first: "Do all the certifying and translation at home, then register with MISA online. You do not need to fly in yet.",
-    iqama: "Once your company registration, GOSI and Qiwa are live, your company issues you a work visa as General Manager. Get it stamped at a Saudi consulate, fly in, do fingerprints and the medical, and your iqama follows in 2 to 4 weeks.",
-  },
-  {
-    id: "visit",
-    label: "In Saudi on a visit or Umrah visa",
-    short: "Start from here",
-    first: "You can register with MISA from inside the Kingdom. The portal does not check your visa type.",
-    iqama: "You cannot get an iqama on a visit visa. Once your company issues your General Manager visa, leave, collect it at a Saudi consulate (home or a nearby country), come back on it, and the iqama follows in 2 to 4 weeks.",
-  },
-  {
-    id: "iqama",
-    label: "In Saudi on an employer's iqama",
-    short: "Transfer",
-    first: "Set up the company as normal. You do not need to leave, but your current employer has to release you.",
-    iqama: "Transfer your iqama to your own company through Muqeem. Expect about 2,000 to 6,000 SAR in transfer fees depending on how many times you have transferred, and your company may need a Saudi employee before the transfer goes through.",
-  },
-  {
-    id: "student",
-    label: "On a University student iqama",
-    short: "Read first",
-    first: "An iqama has only one sponsor. While you are a scholarship student, your sponsor is the University.",
-    iqama: "Moving your iqama to your own company means leaving University sponsorship, with everything that comes with it (housing, stipend, student status). Many students wait until they graduate. Speak to the University before you start.",
-    warn: "Do not register a company that depends on your student iqama without checking with the University first.",
-  },
+export const DOCS_HOME = [
+  { id: "h1", title: "Home company registration", body: "Certificate of incorporation (for a US LLC, the certificate of formation or articles of organization), plus a recent certificate of good standing." },
+  { id: "h2", title: "Founding rules", body: "Articles of association, bylaws or, for a US LLC, the operating agreement." },
+  { id: "h3", title: "Latest accounts", body: "Last year's financial statements. A young company can often use an accountant's letter." },
+  { id: "h4", title: "Owners' decision", body: "A signed resolution approving the Saudi company and naming you General Manager." },
+  { id: "h5", title: "Passport and CV", body: "Yours, as General Manager. Spell your name the same way everywhere." },
+  { id: "h6", title: "Family certificates", body: "Marriage and children's birth certificates, if your family will join you. Apostille them now to save a second round." },
 ];
 
-export const DOCUMENTS = [
-  { id: "cr", title: "Parent company registration", body: "Your home company's certificate of incorporation (called a certificate of formation or articles of organization for a US LLC), plus a recent certificate of good standing from the company registry. No company yet? A simple limited company or LLC at home can be your parent." },
-  { id: "fin", title: "Latest financial statements", body: "Last year's accounts. For a young company, an accountant's letter is often accepted." },
-  { id: "aoa", title: "Parent articles of association", body: "Your company's founding rules. Most countries call them articles of association or bylaws; for a US LLC it is the operating agreement. Names must match the registration exactly." },
-  { id: "res", title: "Board or member resolution", body: "A signed decision by the company's owners approving the Saudi company and naming you General Manager." },
-  { id: "gm", title: "Your passport and CV", body: "As General Manager. The Arabic spelling of your name must match across every document and visa." },
-  { id: "poa", title: "Power of attorney (only if needed)", body: "Only if someone in Saudi Arabia will sign for you. Certified like the rest." },
-  { id: "ar", title: "Arabic company name, checked", body: "Pay a Saudi lawyer (about 500 to 1,500 SAR) to check the Arabic name. The Arabic version is the legally binding one." },
+export const DOCS_KSA = [
+  { id: "k1", title: "Certified Arabic translations", body: "Of everything you apostilled, by a certified translator in Saudi Arabia." },
+  { id: "k2", title: "Checked Arabic company name", body: "A Saudi lawyer's review of the Arabic name costs a few hundred riyals and avoids a binding mistake." },
+  { id: "k3", title: "Power of attorney (if needed)", body: "Only if someone here will sign for you while you are abroad." },
 ];
 
 export const APOSTILLE_RULE =
-  "Every country in the Apostille Convention has an official issuer, usually the foreign ministry or a state, provincial or regional office. Documents issued by a government office (company registry records, birth and marriage certificates) can usually be apostilled as they are. Private documents (board resolutions, copies, your CV) need a notary or lawyer to certify them first.";
+  "Every country in the Apostille Convention has an official issuer, usually the foreign ministry or a state, provincial or regional office. Documents issued by a government office (company registry records, birth and marriage certificates) can usually be apostilled as they are. Private documents (resolutions, copies, your CV) need a notary or lawyer to certify them first. Saudi Arabia has accepted apostilles since December 2022, so the Saudi embassy step is no longer needed for member countries.";
 
-/** Where a country differs from the general rule, or where readers most often ask. */
 export const APOSTILLE = [
-  { who: "United States", how: "Two issuers: the Secretary of State of the state that issued the document (company filings, birth and marriage certificates), or the US Department of State for federal documents such as FBI background checks." },
-  { who: "United Kingdom", how: "The Legalisation Office of the Foreign, Commonwealth and Development Office (FCDO). Company documents usually need a solicitor or notary to certify them first." },
-  { who: "Canada", how: "Only a member since January 2024, so older guides still describe embassy legalisation. Global Affairs Canada issues apostilles, and some provinces issue their own." },
+  { who: "United States", how: "Two issuers: the Secretary of State of the state that issued the document, or the US Department of State for federal documents such as FBI background checks." },
+  { who: "United Kingdom", how: "The FCDO Legalisation Office. Company documents usually need a solicitor or notary to certify them first." },
+  { who: "Canada", how: "A member only since January 2024, so older advice still describes embassy legalisation. Global Affairs Canada and some provinces issue apostilles." },
   { who: "Europe, Australia, New Zealand", how: "Members. The foreign ministry, or a court or regional office in some European countries, issues them." },
 ];
 
-export const AFTER_CR = [
-  { name: "GOSI", what: "Social insurance", body: "Social insurance on salaries, like Social Security or National Insurance back home. Opens by itself within about an hour of your CR. Log in to activate it. Needed before you hire anyone.", auto: true },
-  { name: "Qiwa", what: "Labor ministry portal", body: "Work visas, employment contracts and your Saudization rating (Nitaqat). Opens by itself.", auto: true },
-  { name: "ZATCA", what: "Tax authority", body: "The Saudi tax authority (like the IRS, HMRC or CRA): corporate tax, zakat and VAT (sales tax). Opens by itself. Log in and confirm your details.", auto: true },
-  { name: "National Address", what: "Saudi Post (SPL)", body: "Your officially registered address. Free, and a home address is fine. Banks and government services require it." },
-  { name: "Chamber of Commerce", what: "Business association", body: "In most Western countries a chamber of commerce is a voluntary business club (Germany and France are exceptions, where membership is compulsory). In Saudi Arabia, membership comes with your CR, and the Chamber certifies company documents for you. New companies pay no fee for 3 years." },
-  { name: "Annual CR confirmation", what: "Ministry of Commerce", body: "Once a year, confirm your company's details online. Miss it by 90 days and the CR is suspended." },
-  { name: "Muqeem", what: "Iqama management", body: "Renewals, adding family members, job-title changes and physical iqama prints." },
-  { name: "Mudad", what: "Payroll system", body: "Only once you have staff on payroll. It also records your own salary, which matters for family visas." },
-  { name: "Balady", what: "City business license", body: "Only if you work from a physical shop or office. Many online and service businesses never need it." },
+export const RUNNING = [
+  { when: "Every month", items: [
+    "Pay salaries through the bank and upload them to Mudad (the wage protection system).",
+    "Pay GOSI contributions: 2% for foreign staff, about 12% from the employer for Saudi staff.",
+    "Keep your books up to date and your company and personal money separate.",
+  ] },
+  { when: "Every quarter", items: [
+    "File the VAT return if you are registered, by the end of the following month. Companies above 40 million SAR file monthly.",
+  ] },
+  { when: "All the time", items: [
+    "Issue invoices from e-invoicing software that meets ZATCA's Fatoora rules once you are VAT-registered. ZATCA tells each business when it must connect its system.",
+    "Record every employment contract on Qiwa.",
+  ] },
+  { when: "Every year", items: [
+    "File your corporate tax or zakat return within 120 days of your financial year end.",
+    "Confirm your CR details online and update your MISA registration.",
+    "Renew iqamas and health insurance, and from year 4 the Chamber subscription.",
+  ] },
 ];
 
-export const FAMILY = [
-  { title: "GOSI and Qiwa are live", time: "1 to 2 days after the CR", body: "No work visa can be issued until your company's labor file exists." },
-  { title: "Your General Manager visa", time: "2 to 4 weeks", body: "Issue it on Qiwa, get it stamped at a Saudi consulate, and enter on it." },
-  { title: "Your iqama", time: "2 to 4 weeks after entry", body: "Fingerprints, medical, then the iqama card. You are now a resident." },
-  { title: "Wife and children", time: "4 to 6 weeks", body: "Your recorded salary has to meet the minimum for family sponsorship (founders were asked for about 4,000 SAR a month). Then apply for their visas and iqamas. You will need your marriage and children's birth certificates apostilled and translated too." },
+export const NITAQAT = [
+  { title: "What it is", body: "A rating for every company based on how many Saudis it employs compared with foreigners, shown as a color band." },
+  { title: "Why it matters", body: "Your band decides which services you can use: new work visas, iqama transfers and renewals. Low bands lose access." },
+  { title: "What counts", body: "A Saudi employee paid at least 4,000 SAR a month counts fully. Contracts must be recorded on Qiwa and salaries paid through Mudad." },
+  { title: "Premises", body: "Some activities need a municipal (Balady) licence, which needs a real shop or office. If you work from home, ask the Saudi Business Center which activities can be registered without one before you choose." },
 ];
 
 export const BANKS = [
-  { name: "Al Rajhi Bank", good: "Largest branch network, fully Sharia-compliant, strong small-business team.", watch: "Heavy document checks. Turns away crypto, money transfer and gaming businesses.", time: "4 to 6 weeks" },
-  { name: "Alinma Bank", good: "Fully Sharia-compliant, with branches in Madinah that handle new company accounts.", watch: "Experience varies by branch. Ask for the business banking officer.", time: "1 to 3 weeks" },
-  { name: "Riyad Bank", good: "Experienced small-business team, reasonable document demands.", watch: "Varies by branch. Ask for a relationship manager rather than walking in.", time: "4 to 7 weeks" },
-  { name: "Saudi National Bank (SNB)", good: "Strong English-language business banking and online portal. Good for transfers from abroad.", watch: "Often asks for a higher opening balance (around 100,000 SAR). It stays your money to use.", time: "5 to 8 weeks" },
+  { name: "Al Rajhi Bank", type: "Islamic" },
+  { name: "Alinma Bank", type: "Islamic" },
+  { name: "Arab National Bank (ANB)", type: "Conventional, with Islamic products" },
+  { name: "Bank Albilad", type: "Islamic" },
+  { name: "Bank AlJazira", type: "Islamic" },
+  { name: "Banque Saudi Fransi", type: "Conventional, with Islamic products" },
+  { name: "Riyad Bank", type: "Conventional, with Islamic products" },
+  { name: "Saudi Awwal Bank (SAB)", type: "Conventional, with Islamic products" },
+  { name: "Saudi National Bank (SNB)", type: "Conventional, with Islamic products" },
+];
+
+export const BANK_ASK = [
+  "Do you open accounts for companies owned by foreign residents, and how long does it usually take?",
+  "Is there a minimum opening or monthly balance?",
+  "Is online banking available in English, with more than one user?",
+  "Can you provide a business card, payment terminal or online payment link?",
+  "Can I receive international transfers, and what do they cost?",
 ];
 
 export const BANK_DOCS = [
-  { title: "CR certificate", body: "السجل التجاري. Bring it, but it is not enough on its own." },
-  { title: "Official CR extract", body: "مستخرج السجل. Ordered on the Ministry of Commerce portal, 100 SAR. Banks treat it as a separate document." },
-  { title: "Saudi articles of association", body: "عقد التأسيس. Issued with your CR. You do not draft it yourself." },
-  { title: "Parent company's articles", body: "Apostilled and translated. The work you did before day 0 pays off here." },
-  { title: "National Address", body: "العنوان الوطني. From Saudi Post. Free, and required." },
-  { title: "Physical iqama card", body: "أصل الإقامة. Showing your new job title and your own company. Banks refuse the digital copy." },
-  { title: "MISA registration", body: "Download the latest PDF from investsaudi.sa." },
+  { title: "Commercial registration and CR extract", body: "Both. The extract is ordered online for 100 SAR." },
+  { title: "Saudi articles of association", body: "Issued with your CR." },
+  { title: "Home company documents", body: "Apostilled and translated, if a parent company owns the Saudi company." },
+  { title: "MISA registration", body: "The latest copy from investsaudi.sa." },
+  { title: "National Address", body: "The company's, from Saudi Post." },
+  { title: "Printed iqama", body: "Showing your own company as sponsor and your current job title." },
+];
+
+export const GROW = [
+  { title: "A .sa website", body: "Saudi domains are registered through SaudiNIC and need your CR." },
+  { title: "Protect your name", body: "Register your brand as a trademark with the Saudi Authority for Intellectual Property (SAIP)." },
+  { title: "Take payments online", body: "Payment gateways ask for your CR, VAT certificate (if registered) and a bank letter." },
+  { title: "Selling online", body: "Online stores register their e-commerce activity through the Saudi Business Center." },
+];
+
+export const FAMILY = [
+  "Your recorded salary must meet the minimum for family sponsorship.",
+  "Apostilled and translated marriage and birth certificates.",
+  "Health insurance for each family member.",
+  "A family fee of 400 SAR a month for each dependant, paid with iqama renewals.",
+  "Family visas are requested online once your own iqama is issued.",
 ];
 
 export const TAX = [
-  { title: "Corporate income tax: 20%", body: "On the profit of the foreign-owned share of your company. Filed with ZATCA once a year." },
-  { title: "Zakat: 2.5%", body: "Applies instead of income tax to any share owned by Saudi or GCC nationals. The zakat base is calculated differently from profit." },
-  { title: "VAT: 15%", body: "A sales tax on most goods and services. You must register once sales pass 375,000 SAR a year, and may register from 187,500 SAR. Registering late carries a 10,000 SAR fine." },
-  { title: "Dividends sent abroad: 5% withheld", body: "When the company pays profits to a shareholder outside Saudi Arabia (for example your parent company), 5% is withheld." },
-  { title: "No personal income tax", body: "Saudi Arabia does not tax your salary. Your home country might." },
+  { title: "Corporate income tax: 20%", body: "On the profit of the foreign-owned share of your company." },
+  { title: "Zakat: 2.5%", body: "In place of income tax on any share owned by Saudi or GCC nationals." },
+  { title: "VAT: 15%", body: "Registration is compulsory once sales pass 375,000 SAR a year and voluntary from 187,500 SAR. Registering late carries a 10,000 SAR fine." },
+  { title: "Dividends paid abroad: 5% withheld", body: "When profits go to a shareholder outside Saudi Arabia, such as your home company." },
+  { title: "No personal income tax", body: "Your salary is not taxed in Saudi Arabia. Your home country may see it differently; see below." },
 ];
 
 export const HOME_TAX = [
-  { title: "Most countries tax where you live, not your passport", body: "The UK, Canada, Australia, Ireland and most of Europe tax you based on residence. Once you have properly left and become non-resident, your Saudi salary is usually not taxed at home. You still owe tax on income from back home, such as rent." },
-  { title: "Leaving has to be done properly", body: "Each country has its own residence test (the UK's statutory residence test, for example). Keeping a home, family or long visits back home can leave you resident. Tell your tax office you have moved." },
-  { title: "Some countries tax you on the way out", body: "Canada, for example, can tax gains on certain assets on the day you leave (departure tax). Check before you move, not after." },
-  { title: "Owning a company abroad while still resident", body: "If you remain tax-resident at home, rules on controlled foreign companies can tax your Saudi company's profits there. This applies in the UK, Canada, Australia and across the EU." },
+  { title: "Most countries tax where you live", body: "The UK, Canada, Australia, Ireland and most of Europe tax by residence, not passport. Once you have properly left, your Saudi salary is usually not taxed at home. Income from home, such as rent, still is." },
+  { title: "Leaving has to be done properly", body: "Each country has its own residence test. Keeping a home, family or long stays there can leave you resident. Tell your tax office you have moved." },
+  { title: "Some countries tax you as you leave", body: "Canada, for example, can tax gains on certain assets on the day you emigrate (departure tax)." },
+  { title: "Owning a company abroad while still resident", body: "If you remain resident at home, controlled foreign company rules can tax your Saudi company's profits there. The UK, Canada, Australia and EU countries all have them." },
 ];
 
-/** The big exception: the US taxes its citizens wherever they live. */
 export const US_TAX = [
-  { title: "You still file a US return", body: "US citizens are taxed on worldwide income wherever they live. There is no income tax treaty between the US and Saudi Arabia." },
-  { title: "Foreign earned income exclusion", body: "Up to $132,900 of salary earned abroad can be excluded for 2026 (Form 2555), if you meet the physical presence or residence test. It covers salary, not company profits or dividends." },
-  { title: "FBAR (FinCEN 114)", body: "If your foreign accounts total more than $10,000 at any point in the year, report them. This includes the company account, because you can sign on it." },
-  { title: "Form 5471 or 8858", body: "Owning a foreign company triggers an information return. A Saudi LLC is usually treated as a corporation (Form 5471). You can elect to treat a one-owner company as disregarded (Form 8832, then Form 8858). Penalties for missing these start at $10,000." },
-  { title: "Profits you leave in the company", body: "US rules (GILTI and Subpart F) can tax some profits of a foreign company you control even if you do not pay them out. Saudi corporate tax paid can often be credited." },
+  { title: "You still file a US return", body: "The US taxes its citizens wherever they live, and has no income tax treaty with Saudi Arabia." },
+  { title: "Foreign earned income exclusion", body: "Up to $132,900 of salary earned abroad in 2026 (Form 2555), if you pass the physical presence or residence test. It does not cover company profits or dividends." },
+  { title: "FBAR (FinCEN 114)", body: "Report foreign accounts if together they exceed $10,000 at any point in the year, including the company account you can sign on." },
+  { title: "Form 5471 or 8858", body: "Owning a foreign company means an information return each year. Penalties for missing it start at $10,000." },
+  { title: "Profits left in the company", body: "GILTI and Subpart F rules can tax some profits of a foreign company you control even if they are not paid out. Saudi tax paid can often be credited." },
 ];
 
 export const PREMIUM = [
-  { name: "Entrepreneur", body: "For founders backed by an accredited investor or incubator. Funding thresholds apply." },
+  { name: "Entrepreneur", body: "For founders backed by an approved investor or incubator." },
   { name: "Business investor", body: "Investing at least 7,000,000 SAR in a Saudi company." },
   { name: "Real estate owner", body: "Owning residential property worth at least 4,000,000 SAR." },
-  { name: "Special talent and gifted", body: "For specialists in fields like health, science, research, culture and sport." },
+  { name: "Special talent", body: "For specialists in health, science, research, culture and sport." },
 ];
 
-export const MISTAKES = [
-  { title: "Registering the wrong activity", body: "Your MISA registration and CR list specific activities. Pick what you will actually sell. Changing it later costs time and fees." },
-  { title: "Skipping the name update on MISA", body: "Your CR will not issue if the MISA name and your reserved Saudi name differ. The fix is free and takes an hour." },
-  { title: "A careless Arabic name", body: "The Arabic company name is the binding one. Have a lawyer check it. Do not trust machine translation." },
-  { title: "Taking only the CR certificate to the bank", body: "Banks also want the official CR extract (100 SAR)." },
-  { title: "Forgetting the physical iqama card", body: "After a transfer, banks need the printed card showing your new employer. Order it through Muqeem." },
-  { title: "Wrong job title on the iqama", body: "It must say General Manager (or your actual role). Change it in Muqeem before the bank or GOSI ask." },
-  { title: "Applying to one bank at a time", body: "Apply to two at once. Start the day your CR extract is issued." },
-  { title: "Hiring two foreigners first", body: "Your Saudization (Nitaqat) rating drops straight away. Hire your first Saudi before your second foreigner." },
-  { title: "Making your wife the General Manager on paper", body: "The General Manager is personally liable for tax and labor breaches. It is not a formality." },
-  { title: "Missing the yearly confirmations", body: "Confirm your CR every year and keep your MISA registration updated. A suspended CR can freeze your bank account." },
-  { title: "Leaving VAT too late", body: "Register as soon as you expect to pass 375,000 SAR in a year. Late registration costs 10,000 SAR, and back-dated VAT is painful." },
-  { title: "English-only contracts", body: "Saudi courts work from the Arabic text. Negotiate the Arabic version, not a translation of the English." },
-  { title: "Forgetting your home country's tax rules", body: "Tell your home tax office you have moved, and check its rules on owning a company abroad. US citizens: FBAR and Form 5471 apply from the year you open the company." },
+export const PITFALLS = [
+  { phase: "Before you start", title: "Choosing activities in a hurry", body: "Activities decide your rules, licences and whether you need premises. Read the list properly." },
+  { phase: "Before you start", title: "Assuming a student iqama can carry a company", body: "It cannot without leaving University sponsorship." },
+  { phase: "Registering", title: "Names that do not match", body: "MISA, the reserved name and the CR must agree letter for letter." },
+  { phase: "Registering", title: "An unchecked Arabic name", body: "The Arabic name is the binding one. Avoid machine translation." },
+  { phase: "Residency", title: "The wrong job title on your iqama", body: "Banks, GOSI and visa services check it. Fix it in Muqeem early." },
+  { phase: "Residency", title: "Letting insurance or iqamas lapse", body: "Late renewals bring fines and block other services." },
+  { phase: "Running it", title: "Mixing personal and company money", body: "It makes tax returns painful and weakens the protection of the LLC." },
+  { phase: "Running it", title: "Hiring without Qiwa and Mudad", body: "Unrecorded contracts and unpaid salaries through the system both count against you." },
+  { phase: "Running it", title: "Ignoring VAT and e-invoicing", body: "Watch your sales against the thresholds and use compliant invoicing software." },
+  { phase: "Running it", title: "Forgetting the yearly confirmations", body: "A suspended CR can freeze your bank account." },
+  { phase: "Back home", title: "Not telling your home tax office", body: "And for US citizens, missing FBAR or Form 5471." },
 ];
 
 export const PLAN = [
-  { phase: "This week", items: [
-    { id: "p1", title: "Decide what your company will do", body: "Use the finder above. Most students and graduates need a services company." },
-    { id: "p2", title: "Check your iqama situation", body: "Student, employee or visitor? Your starting point changes the first steps." },
-    { id: "p3", title: "Set up or confirm your parent company", body: "Any simple company at home works. If you have none, register one now." },
-    { id: "p4", title: "Start the apostille and translation", body: "Company registration, articles, financial statements, resolution and your passport." },
+  { phase: "Decide", items: [
+    { id: "d1", title: "Check you are a good fit", body: "Revenue, yearly costs, your iqama situation." },
+    { id: "d2", title: "Choose your company type and activities", body: "Use the finder and the national activity list." },
+    { id: "d3", title: "Speak to a tax adviser for your home country", body: "Before you move money or sign anything." },
   ] },
-  { phase: "Next 30 days", items: [
-    { id: "p5", title: "Register on investsaudi.sa", body: "In your parent company's name, or your own if MISA allows it." },
-    { id: "p6", title: "Pay the processing fee when confirmed", body: "Usually within 1 to 2 weeks." },
-    { id: "p7", title: "Reserve your Saudi company name", body: "Through the Saudi Business Center." },
-    { id: "p8", title: "Update the name on your MISA registration", body: "Free, about an hour." },
-    { id: "p9", title: "File the CR and order the CR extract", body: "3 to 5 days, then 100 SAR for the extract." },
-    { id: "p10", title: "Log in to GOSI, Qiwa and ZATCA", body: "They open by themselves within about an hour of the CR." },
-    { id: "p11", title: "Register your National Address", body: "Free through Saudi Post." },
+  { phase: "Prepare", items: [
+    { id: "p1", title: "Collect and certify documents at home", body: "Then apostille them." },
+    { id: "p2", title: "Translate them in Saudi Arabia", body: "By a certified translator." },
+    { id: "p3", title: "Have the Arabic company name checked", body: "By a Saudi lawyer." },
   ] },
-  { phase: "Getting operational", items: [
-    { id: "p12", title: "Hire your first Saudi if you need to", body: "Lifts your Nitaqat rating within about a week and can unblock an iqama transfer." },
-    { id: "p13", title: "Iqama, job title, physical card", body: "All through Muqeem." },
-    { id: "p14", title: "Open the bank account", body: "Two banks at once. The General Manager signs in person." },
-    { id: "p15", title: "Set reminders for yearly tasks", body: "CR confirmation, MISA update, iqama renewal, zakat and tax return, and your home-country filings." },
+  { phase: "Register", items: [
+    { id: "r1", title: "Register with MISA", body: "On investsaudi.sa." },
+    { id: "r2", title: "Reserve the company name", body: "At the Saudi Business Center, and match it on MISA." },
+    { id: "r3", title: "Form the LLC and receive the CR", body: "Then order the CR extract." },
+    { id: "r4", title: "Activate GOSI, Qiwa, ZATCA and Absher Business", body: "Plus the National Address and Muqeem." },
   ] },
-];
-
-export const COMPARE = [
-  { row: "Company tax", ksa: "20% on the foreign-owned share", uae: "9% on profit above AED 375,000" },
-  { row: "Sales tax (VAT)", ksa: "15%", uae: "5%" },
-  { row: "Market", ksa: "About 35 million people and heavy government spending", uae: "About 10 million, mostly expatriates" },
-  { row: "Government contracts", ksa: "Full access to tenders", uae: "Limited from a free zone" },
-  { row: "Living in Madinah", ksa: "You are already here", uae: "A different life entirely" },
+  { phase: "Settle", items: [
+    { id: "s1", title: "Your work visa or iqama transfer", body: "Then medical, fingerprints and iqama." },
+    { id: "s2", title: "Printed iqama and correct job title", body: "Through Muqeem." },
+    { id: "s3", title: "Company bank account", body: "Apply to two banks at once." },
+    { id: "s4", title: "Family visas", body: "Once your own iqama is issued." },
+  ] },
+  { phase: "Run", items: [
+    { id: "u1", title: "Accounting and invoicing set up", body: "Including e-invoicing once VAT-registered." },
+    { id: "u2", title: "Calendar the yearly tasks", body: "Tax return, CR confirmation, MISA update, renewals." },
+  ] },
 ];
 
 export const GLOSSARY = [
-  { term: "MISA", def: "Ministry of Investment. Foreign owners register with it before setting up a company. Portal: investsaudi.sa." },
-  { term: "CR (Commercial Registration)", def: "Your company's official registration, like a certificate of incorporation. السجل التجاري." },
+  { term: "MISA", def: "Ministry of Investment. Foreign owners register with it before forming a company. Portal: investsaudi.sa." },
+  { term: "CR (commercial registration)", def: "Your company's official registration, like a certificate of incorporation. السجل التجاري." },
   { term: "LLC", def: "Limited liability company. The usual structure; one owner is enough." },
-  { term: "Articles of association", def: "A company's founding rules. Some countries call them bylaws; for a US LLC it is the operating agreement." },
-  { term: "General Manager", def: "The person legally in charge of the company, usually you. Your iqama comes through this role." },
-  { term: "Iqama", def: "Saudi residence permit. It is tied to one sponsor: an employer, the University, or your own company." },
-  { term: "Apostille", def: "An international certificate that makes a document from one country valid in another. Saudi Arabia has accepted them since December 2022." },
-  { term: "Notarize", def: "Have a notary (or in some countries a lawyer or solicitor) confirm your signature or certify a copy. Needed for private documents before an apostille." },
-  { term: "Saudi Business Center", def: "Government one-stop shop where you reserve your name and file the CR. business.sa." },
-  { term: "Chamber of Commerce", def: "The local business association. Voluntary in most Western countries, but in Saudi Arabia membership comes with your CR, and it certifies company documents." },
-  { term: "GOSI", def: "Social insurance contributions on salaries, like Social Security or National Insurance." },
+  { term: "Articles of association", def: "A company's founding rules. Also called bylaws; for a US LLC, the operating agreement." },
+  { term: "General Manager", def: "The person legally running the company, usually you. Your iqama comes through this role." },
+  { term: "Iqama", def: "Saudi residence permit, tied to one sponsor." },
+  { term: "Apostille", def: "An international certificate that makes an official document from one country valid in another." },
+  { term: "Saudi Business Center", def: "Government one-stop shop for company names and registrations. business.sa." },
+  { term: "Absher Business", def: "The company's account for government services such as visas and iqamas." },
+  { term: "Chamber of Commerce", def: "Local business association. Voluntary in most Western countries; in Saudi Arabia membership comes with your CR." },
+  { term: "GOSI", def: "Social insurance on salaries, like Social Security or National Insurance." },
   { term: "Qiwa", def: "Labor ministry portal for work visas, contracts and Nitaqat." },
-  { term: "Nitaqat", def: "Saudization rating: a color band based on how many Saudis you employ. It decides which visa and transfer services you can use." },
+  { term: "Nitaqat", def: "Saudization rating that decides which visa and iqama services your company can use." },
+  { term: "Mudad", def: "Wage protection system. Salaries are paid through it." },
   { term: "ZATCA", def: "Zakat, Tax and Customs Authority. The Saudi equivalent of the IRS, HMRC or CRA." },
-  { term: "Zakat", def: "2.5% levy on the Saudi or GCC-owned share of a company, in place of income tax." },
-  { term: "VAT", def: "Value added tax, a 15% sales tax collected at each step of a sale." },
-  { term: "Muqeem", def: "Platform companies use to manage their foreigners' iqamas." },
-  { term: "Mudad", def: "Payroll system that records salaries paid." },
-  { term: "Balady", def: "City business license for physical premises." },
-  { term: "National Address", def: "Your official address registered with Saudi Post." },
-  { term: "Levy (expat fee)", def: "Monthly government fee for each foreign worker (about 800 SAR) and each foreign family member (400 SAR)." },
+  { term: "Fatoora", def: "ZATCA's e-invoicing system and rules." },
+  { term: "Zakat", def: "2.5% levy on the Saudi or GCC-owned share of a company." },
+  { term: "VAT", def: "Value added tax, a 15% sales tax." },
+  { term: "Muqeem", def: "Platform companies use to manage their foreign staff's iqamas." },
+  { term: "Balady", def: "Municipal licence for physical premises." },
+  { term: "Levy", def: "Monthly government fees for each foreign worker and each family member." },
 ];
 
 export const LINKS = [
@@ -349,12 +391,13 @@ export const LINKS = [
   { label: "GOSI", href: "https://www.gosi.gov.sa" },
   { label: "ZATCA", href: "https://zatca.gov.sa" },
   { label: "Muqeem", href: "https://muqeem.sa" },
-  { label: "Saudi Post National Address", href: "https://splonline.com.sa" },
+  { label: "Absher", href: "https://www.absher.sa" },
   { label: "Mudad", href: "https://mudad.com.sa" },
+  { label: "Saudi Post National Address", href: "https://splonline.com.sa" },
   { label: "Balady", href: "https://balady.gov.sa" },
+  { label: "SAIP (trademarks)", href: "https://www.saip.gov.sa" },
+  { label: "Apostille Convention members", href: "https://www.hcch.net/en/instruments/conventions/status-table/?cid=41" },
   { label: "IRS: US citizens abroad", href: "https://www.irs.gov/individuals/international-taxpayers/us-citizens-and-resident-aliens-abroad" },
-  { label: "Apostille Convention members (HCCH)", href: "https://www.hcch.net/en/instruments/conventions/status-table/?cid=41" },
-  { label: "US apostilles (USA.gov)", href: "https://www.usa.gov/authenticate-us-document" },
 ];
 
 /** Shown in the guides list, search and sitemap alongside the guides stored in the database. */
@@ -375,7 +418,7 @@ export const GUIDE_CARD = {
 
 /** Plain text for site search. */
 export const SEARCH_TEXT = [
-  "MISA investment registration licence license company business LLC CR commercial registration iqama GOSI Qiwa ZATCA VAT zakat Muqeem Nitaqat bank account apostille startup entrepreneur premium residency FBAR 5471 US tax",
+  "MISA investment registration company business LLC CR commercial registration iqama GOSI Qiwa ZATCA VAT zakat e-invoicing Fatoora Muqeem Mudad Nitaqat bank account apostille startup premium residency freelance FBAR 5471 tax",
   ...PATHS.map((p) => `${p.name} ${p.bestFor}`),
-  ...MISTAKES.map((m) => m.title),
+  ...PITFALLS.map((m) => m.title),
 ].join(" ");

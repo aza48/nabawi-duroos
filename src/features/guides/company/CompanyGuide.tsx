@@ -2,30 +2,33 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
-  AlertTriangle, ArrowUpRight, BadgeCheck, Banknote, Building2, Calculator, Check, ChevronDown, CircleCheck, Clock,
-  FileText, Flag, Globe2, Landmark, Lightbulb, ListChecks, Newspaper, Plane, Receipt, RotateCcw, Scale, Sparkles, Star, Users,
+  AlertTriangle, ArrowUpRight, BadgeCheck, Banknote, Calculator, CalendarClock, Check, ChevronDown, CircleCheck,
+  Compass, FileText, Flag, Globe2, Landmark, Lightbulb, ListChecks, Newspaper, Receipt, RotateCcw, Rocket, Star, Users,
+  UserCheck,
 } from "lucide-react";
 import {
-  AFTER_CR, APOSTILLE, APOSTILLE_RULE, BANK_DOCS, BANKS, CHANGES_2025, CHECKED, COMPARE, DOCUMENTS, FAMILY, GLOSSARY, HOME_TAX, LINKS, MISTAKES,
-  PATHS, PLAN, PREMIUM, SETUP_COSTS, STARTS, TAX, TIMELINE, TRANSFER_FEES, US_TAX, YEARLY,
+  APOSTILLE, APOSTILLE_RULE, BANK_ASK, BANK_DOCS, BANKS, CHANGES_2025, CHECKED, DOCS_HOME, DOCS_KSA, FAMILY, FIT, GLOSSARY,
+  GROW, HOME_TAX, LINKS, NITAQAT, NOT_FREELANCE, PATHS, PHASES, PITFALLS, PLAN, PREMIUM, RUNNING, SETUP_COSTS, SITUATIONS,
+  TAX, TRANSFER_FEES, US_TAX, YEARLY,
 } from "./content";
 
 const SECTIONS = [
-  { id: "changes", label: "What changed in 2025" },
-  { id: "start", label: "Your starting point" },
-  { id: "licence", label: "What kind of company" },
-  { id: "timeline", label: "Timeline" },
+  { id: "fit", label: "Is it right for you?" },
+  { id: "changes", label: "The 2025 rules" },
+  { id: "situation", label: "Your situation" },
+  { id: "type", label: "Type of company" },
+  { id: "phases", label: "The four phases" },
   { id: "documents", label: "Documents" },
-  { id: "cost", label: "Cost calculator" },
-  { id: "after-cr", label: "After the CR" },
-  { id: "family", label: "Iqama and family" },
-  { id: "tax", label: "Taxes" },
-  { id: "us-tax", label: "Taxes back home" },
-  { id: "banks", label: "Bank account" },
-  { id: "mistakes", label: "Mistakes to avoid" },
-  { id: "uae", label: "Saudi or UAE" },
+  { id: "cost", label: "What it costs" },
+  { id: "nitaqat", label: "Saudization" },
+  { id: "bank", label: "Your bank" },
+  { id: "family", label: "Your family" },
+  { id: "running", label: "Running it" },
+  { id: "tax", label: "Saudi taxes" },
+  { id: "home-tax", label: "Taxes back home" },
   { id: "premium", label: "Premium Residency" },
-  { id: "plan", label: "Your action plan" },
+  { id: "pitfalls", label: "Pitfalls" },
+  { id: "plan", label: "Your checklist" },
   { id: "glossary", label: "Words and links" },
 ];
 
@@ -75,21 +78,22 @@ export function CompanyGuide({ footer }: { footer?: React.ReactNode }) {
         </nav>
 
         <Intro />
+        <Fit />
         <Changes />
-        <StartingPoint />
-        <LicenceFinder />
-        <Timeline />
+        <Situation />
+        <TypeFinder />
+        <Phases />
         <Documents />
-        <CostCalculator />
-        <AfterCr />
+        <Costs />
+        <Nitaqat />
+        <Bank />
         <Family />
+        <Running />
         <Taxes />
-        <UsTax />
-        <Banks />
-        <Mistakes />
-        <SaudiOrUae />
+        <HomeTax />
         <Premium />
-        <ActionPlan />
+        <Pitfalls />
+        <Plan />
         <Glossary />
         {footer}
       </div>
@@ -97,7 +101,7 @@ export function CompanyGuide({ footer }: { footer?: React.ReactNode }) {
   );
 }
 
-function H2({ id, icon: Icon, kicker, title, sub }: { id: string; icon: typeof Clock; kicker: string; title: string; sub?: string }) {
+function H2({ id, icon: Icon, kicker, title, sub }: { id: string; icon: typeof Compass; kicker: string; title: string; sub?: string }) {
   return (
     <header id={id} className="scroll-mt-28">
       <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-gold"><Icon size={16} /> {kicker}</p>
@@ -110,216 +114,19 @@ function H2({ id, icon: Icon, kicker, title, sub }: { id: string; icon: typeof C
 function Tip({ children, tone = "gold" }: { children: React.ReactNode; tone?: "gold" | "warn" }) {
   const warn = tone === "warn";
   return (
-    <div className={`flex gap-3 rounded-2xl p-4 text-sm leading-relaxed ${warn ? "bg-cancel-bg text-ink" : "bg-gold-bg text-ink"}`}>
+    <div className={`flex gap-3 rounded-2xl p-4 text-sm leading-relaxed ${warn ? "bg-cancel-bg" : "bg-gold-bg"}`}>
       {warn ? <AlertTriangle size={18} className="mt-0.5 shrink-0 text-cancel" /> : <Lightbulb size={18} className="mt-0.5 shrink-0 text-gold" />}
       <div>{children}</div>
     </div>
   );
 }
 
-function Intro() {
-  const setup = SETUP_COSTS.reduce((t, c) => t + c.sar, 0);
+function Card({ title, children }: { title: React.ReactNode; children: React.ReactNode }) {
   return (
-    <section className="space-y-5">
-      <p className="text-lg leading-relaxed">
-        Agencies will tell you a Saudi company is too complicated to set up yourself and quote 30,000 to 50,000 SAR. It is not. It is a checklist: a fixed order of government websites, a handful of documents, and a few traps that are easy to avoid once you know them.
-      </p>
-      <p className="leading-relaxed text-muted">
-        Your own company can also be your route to residency: it sponsors your iqama (residence permit), and then your wife and children. This guide walks you through it in order, in plain English, with the fees founders in Madinah actually paid. You can start it from outside the Kingdom.
-      </p>
-      <div className="grid gap-3 sm:grid-cols-3">
-        {[
-          { big: `≈ ${Math.round(setup / 1000).toLocaleString("en-GB")},000`, small: "SAR to set up, before any iqama transfer", icon: Banknote },
-          { big: "≈ 7 weeks", small: "from registration to a working bank account", icon: Clock },
-          { big: "8 to 10 hrs", small: "of actual online paperwork. The rest is waiting", icon: Sparkles },
-        ].map(({ big, small, icon: Icon }) => (
-          <div key={big} className="rounded-2xl border border-line bg-card p-4">
-            <Icon size={18} className="text-primary" />
-            <p className="mt-2 font-heading text-2xl font-bold">{big}</p>
-            <p className="text-sm text-muted">{small}</p>
-          </div>
-        ))}
-      </div>
-      <Tip>
-        Ministries change their screens and fees often. If a government site shows something different from this guide, <b>follow the site</b>, and tell us in the group so we can update this page.
-      </Tip>
-    </section>
-  );
-}
-
-function Changes() {
-  return (
-    <section className="space-y-5">
-      <H2 id="changes" icon={Newspaper} kicker="Read this first" title="What changed in 2025" sub="Older guides, agencies and videos still describe the old system. These are the changes that matter to you." />
-      <div className="grid gap-3 sm:grid-cols-2">
-        {CHANGES_2025.map((c) => (
-          <div key={c.title} className="rounded-2xl border border-primary/30 bg-primary-soft p-4">
-            <p className="flex items-center gap-2 font-semibold"><CircleCheck size={17} className="text-primary" /> {c.title}</p>
-            <p className="mt-1.5 text-sm leading-relaxed">{c.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function StartingPoint() {
-  const [pick, setPick] = useState(STARTS[0].id);
-  const s = STARTS.find((x) => x.id === pick)!;
-  return (
-    <section className="space-y-5">
-      <H2 id="start" icon={Plane} kicker="Step 0" title="Where are you starting from?" sub="Your first step depends on where you are today. Every path ends in the same place: an iqama through your own company." />
-      <div role="tablist" aria-label="Starting point" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        {STARTS.map((x) => (
-          <button key={x.id} role="tab" aria-selected={pick === x.id} onClick={() => setPick(x.id)}
-            className={`rounded-2xl border p-3.5 text-start transition ${pick === x.id ? "border-primary bg-primary text-primary-ink shadow-md" : "border-line bg-card hover:border-primary/50"}`}>
-            <span className={`text-xs font-semibold uppercase tracking-wide ${pick === x.id ? "opacity-80" : "text-gold"}`}>{x.short}</span>
-            <span className="mt-1 block text-sm font-semibold leading-snug">{x.label}</span>
-          </button>
-        ))}
-      </div>
-      <div className="grid gap-3 md:grid-cols-2">
-        <div className="rounded-2xl border border-line bg-card p-5">
-          <p className="text-sm font-semibold text-muted">Your first step</p>
-          <p className="mt-2 leading-relaxed">{s.first}</p>
-        </div>
-        <div className="rounded-2xl border border-line bg-card p-5">
-          <p className="text-sm font-semibold text-muted">How you get the iqama</p>
-          <p className="mt-2 leading-relaxed">{s.iqama}</p>
-        </div>
-      </div>
-      {s.warn && <Tip tone="warn">{s.warn}</Tip>}
-    </section>
-  );
-}
-
-type Answer = { abroad?: boolean; what?: "services" | "goods" | "making" | "profession" | "property" };
-
-function LicenceFinder() {
-  const [a, setA] = useState<Answer>({});
-  const result = useMemo(() => {
-    if (a.what == null || a.abroad == null) return null;
-    if (a.what === "goods") return "trading";
-    if (a.what === "making") return "industrial";
-    if (a.what === "profession") return "professional";
-    if (a.what === "property") return "property";
-    return a.abroad ? "service" : "startup";
-  }, [a]);
-  const p = PATHS.find((l) => l.id === result);
-  const opt = (on: boolean) => `rounded-full border px-4 py-2 text-sm font-semibold transition ${on ? "border-primary bg-primary text-primary-ink" : "border-line bg-card hover:border-primary/50"}`;
-  return (
-    <section className="space-y-5">
-      <H2 id="licence" icon={BadgeCheck} kicker="Step 1" title="What kind of company are you setting up?" sub="What your company does decides the rules you follow. Two questions point you the right way." />
-      <div className="space-y-5 rounded-3xl border border-line bg-card p-5 md:p-6">
-        <div>
-          <p className="font-semibold">1. Do you own a company back home (any size), registered at least a year ago?</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <button className={opt(a.abroad === true)} onClick={() => setA({ ...a, abroad: true })}>Yes</button>
-            <button className={opt(a.abroad === false)} onClick={() => setA({ ...a, abroad: false })}>No, not yet</button>
-          </div>
-        </div>
-        <div>
-          <p className="font-semibold">2. What will the Saudi company mainly do?</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {([
-              ["services", "Services, online work, consulting, teaching"],
-              ["goods", "Sell physical products"],
-              ["making", "Make or manufacture"],
-              ["profession", "Law, accounting, engineering, health"],
-              ["property", "Real estate"],
-            ] as const).map(([k, label]) => (
-              <button key={k} className={opt(a.what === k)} onClick={() => setA({ ...a, what: k })}>{label}</button>
-            ))}
-          </div>
-        </div>
-        {p ? (
-          <div className="rounded-2xl bg-brand p-5 text-white" aria-live="polite">
-            <p className="text-sm font-semibold uppercase tracking-wide text-gold-bright">Your route</p>
-            <p className="mt-1 font-heading text-3xl font-bold">{p.name}</p>
-            <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-              <div><dt className="text-white/60">Good for</dt><dd className="mt-0.5">{p.bestFor}</dd></div>
-              <div><dt className="text-white/60">Money in the company</dt><dd className="mt-0.5">{p.capital}</dd></div>
-              <div className="sm:col-span-2"><dt className="text-white/60">You will need</dt><dd className="mt-0.5">{p.needs}</dd></div>
-            </dl>
-            {p.note && <p className="mt-4 rounded-xl bg-white/10 p-3 text-sm">{p.note}</p>}
-            {a.abroad === false && p.id !== "startup" && (
-              <p className="mt-3 rounded-xl bg-white/10 p-3 text-sm">Without a company back home, either register a simple one there first, ask MISA about registering as an individual, or talk to a Saudi accelerator about the startup route.</p>
-            )}
-          </div>
-        ) : (
-          <p className="text-sm text-muted">Answer both questions to see your route.</p>
-        )}
-      </div>
-      <details className="group rounded-2xl border border-line bg-card">
-        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 font-semibold [&::-webkit-details-marker]:hidden">
-          Compare all six <ChevronDown size={18} className="text-muted transition group-open:rotate-180" />
-        </summary>
-        <div className="overflow-x-auto border-t border-line">
-          <table className="w-full min-w-[560px] text-sm">
-            <thead className="bg-bg-2 text-left text-xs uppercase tracking-wide text-muted">
-              <tr><th className="p-3">Type</th><th className="p-3">Good for</th><th className="p-3">You will need</th></tr>
-            </thead>
-            <tbody className="divide-y divide-line">
-              {PATHS.map((l) => (
-                <tr key={l.id} className={l.id === result ? "bg-primary-soft" : ""}>
-                  <td className="p-3 font-semibold">{l.name}</td><td className="p-3">{l.bestFor}</td><td className="p-3">{l.needs}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </details>
-      <Tip>
-        <b>One company, several activities.</b> You can list several related activities on one registration, but each must be named. Very different activities (for example food production and online teaching) can need separate approvals or two companies. Hajj and Umrah services need extra ministry approvals and usually a Saudi partner; expect 6 to 9 months.
-      </Tip>
-    </section>
-  );
-}
-
-function Timeline() {
-  const [open, setOpen] = useState(0);
-  return (
-    <section className="space-y-5">
-      <H2 id="timeline" icon={Clock} kicker="Step 2" title="About 7 weeks, end to end" sub="Day 0 is your MISA registration. Tap a stage for the details." />
-      <ol className="relative space-y-3 border-s-2 border-line ps-6">
-        {TIMELINE.map((t, i) => {
-          const on = open === i;
-          return (
-            <li key={t.title} className="relative">
-              <span className={`absolute -start-[33px] top-4 grid size-4 place-items-center rounded-full ring-4 ring-bg ${on ? "bg-primary" : "bg-gold-bright"}`} />
-              <button onClick={() => setOpen(on ? -1 : i)} aria-expanded={on}
-                className={`w-full rounded-2xl border p-4 text-start transition ${on ? "border-primary bg-card shadow-md" : "border-line bg-card hover:border-primary/50"}`}>
-                <span className="flex flex-wrap items-baseline justify-between gap-2">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-gold">{t.when}</span>
-                  <span className="text-xs text-muted">{t.time}</span>
-                </span>
-                <span className="mt-1 flex items-center justify-between gap-2 font-semibold">
-                  {t.title} <ChevronDown size={18} className={`shrink-0 text-muted transition ${on ? "rotate-180" : ""}`} />
-                </span>
-                {on && (
-                  <span className="mt-3 block space-y-3 text-sm leading-relaxed">
-                    <span className="block">{t.body}</span>
-                    {t.tip && <span className="flex gap-2 rounded-xl bg-gold-bg p-3"><Lightbulb size={16} className="mt-0.5 shrink-0 text-gold" />{t.tip}</span>}
-                  </span>
-                )}
-              </button>
-            </li>
-          );
-        })}
-      </ol>
-      <div className="rounded-3xl border border-line bg-card p-5 md:p-6">
-        <p className="flex items-center gap-2 font-heading text-xl font-bold"><AlertTriangle size={20} className="text-cancel" /> The name trap</p>
-        <p className="mt-2 text-sm leading-relaxed text-muted">You register with MISA before you have a Saudi company name, so the registration carries your overseas company's name. The CR will only be issued if both names match. The fix is free; you just have to know it exists.</p>
-        <ol className="mt-4 grid gap-2 sm:grid-cols-5">
-          {["Register with MISA in your parent company's name", "MISA confirms", "Reserve your Saudi company name", "Update the name on MISA (free, 1 hour)", "File the CR"].map((s, i) => (
-            <li key={s} className="rounded-xl bg-bg-2 p-3 text-sm">
-              <span className="font-heading text-lg font-bold text-gold">{i + 1}</span>
-              <span className="block leading-snug">{s}</span>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
+    <div className="rounded-2xl border border-line bg-card p-4">
+      <p className="font-semibold">{title}</p>
+      <div className="mt-1.5 text-sm leading-relaxed text-muted">{children}</div>
+    </div>
   );
 }
 
@@ -356,40 +163,216 @@ function Checklist({ storageKey, items }: { storageKey: string; items: { id: str
   );
 }
 
+function Intro() {
+  const setup = SETUP_COSTS.reduce((t, c) => t + c.sar, 0);
+  return (
+    <section className="space-y-5">
+      <p className="text-lg leading-relaxed">
+        Owning a small Saudi company is one of the few ways a Western resident can sponsor their own iqama, and their family&apos;s, without depending on an employer. The process is long but not mysterious: a set of government portals, used in the right order.
+      </p>
+      <p className="leading-relaxed text-muted">
+        This guide follows that order, from the papers you prepare at home to the yearly tasks once you are trading. It is written for people who will do most of it themselves, and it explains every Saudi term in plain English.
+      </p>
+      <div className="grid gap-3 sm:grid-cols-3">
+        {[
+          { big: `≈ ${sar(Math.round(setup / 1000) * 1000)}`, small: "to set up, before any iqama transfer", icon: Banknote },
+          { big: "2 to 3 months", small: "from paperwork at home to a working bank account", icon: CalendarClock },
+          { big: "4 phases", small: "prepare, register, switch on, settle", icon: Compass },
+        ].map(({ big, small, icon: Icon }) => (
+          <div key={small} className="rounded-2xl border border-line bg-card p-4">
+            <Icon size={18} className="text-primary" />
+            <p className="mt-2 font-heading text-2xl font-bold">{big}</p>
+            <p className="text-sm text-muted">{small}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Fit() {
+  return (
+    <section className="space-y-5">
+      <H2 id="fit" icon={UserCheck} kicker="Start here" title="Is a company right for you?" sub="Tick what applies. Five ticks means you are ready to plan." />
+      <Checklist storageKey="mesh-company-fit" items={FIT} />
+      <Tip>{NOT_FREELANCE}</Tip>
+    </section>
+  );
+}
+
+function Changes() {
+  return (
+    <section className="space-y-5">
+      <H2 id="changes" icon={Newspaper} kicker="Up to date" title="The 2025 rules" sub="The system changed in 2025. If a website, video or agency describes something different, it may be out of date." />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {CHANGES_2025.map((c) => (
+          <div key={c.title} className="rounded-2xl border border-primary/30 bg-primary-soft p-4">
+            <p className="flex items-center gap-2 font-semibold"><CircleCheck size={17} className="text-primary" /> {c.title}</p>
+            <p className="mt-1.5 text-sm leading-relaxed">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Situation() {
+  const [pick, setPick] = useState(SITUATIONS[0].id);
+  const s = SITUATIONS.find((x) => x.id === pick)!;
+  return (
+    <section className="space-y-5">
+      <H2 id="situation" icon={Users} kicker="Your situation" title="Where are you today?" sub="Choose the closest. It changes how you get your iqama, not how you register." />
+      <div role="tablist" aria-label="Your situation" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+        {SITUATIONS.map((x) => (
+          <button key={x.id} role="tab" aria-selected={pick === x.id} onClick={() => setPick(x.id)}
+            className={`rounded-2xl border p-3.5 text-start text-sm font-semibold leading-snug transition ${pick === x.id ? "border-primary bg-primary text-primary-ink shadow-md" : "border-line bg-card hover:border-primary/50"}`}>
+            {x.label}
+          </button>
+        ))}
+      </div>
+      <div className="grid gap-3 md:grid-cols-2">
+        <Card title="First">{s.first}</Card>
+        <Card title="Your residency">{s.residency}</Card>
+      </div>
+      {s.warn && <Tip tone="warn">{s.warn}</Tip>}
+    </section>
+  );
+}
+
+type Answer = { home?: boolean; what?: "services" | "goods" | "making" | "profession" | "property" };
+
+function TypeFinder() {
+  const [a, setA] = useState<Answer>({});
+  const result = useMemo(() => {
+    if (a.what == null || a.home == null) return null;
+    if (a.what === "goods") return "trading";
+    if (a.what === "making") return "industrial";
+    if (a.what === "profession") return "professional";
+    if (a.what === "property") return "property";
+    return a.home ? "service" : "startup";
+  }, [a]);
+  const p = PATHS.find((l) => l.id === result);
+  const opt = (on: boolean) => `rounded-full border px-4 py-2 text-sm font-semibold transition ${on ? "border-primary bg-primary text-primary-ink" : "border-line bg-card hover:border-primary/50"}`;
+  return (
+    <section className="space-y-5">
+      <H2 id="type" icon={BadgeCheck} kicker="Your company" title="What type of company?" sub="What you sell decides the rules you follow." />
+      <div className="space-y-5 rounded-3xl border border-line bg-card p-5 md:p-6">
+        <div>
+          <p className="font-semibold">Do you already own a registered company in your home country?</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button className={opt(a.home === true)} onClick={() => setA({ ...a, home: true })}>Yes</button>
+            <button className={opt(a.home === false)} onClick={() => setA({ ...a, home: false })}>No</button>
+          </div>
+        </div>
+        <div>
+          <p className="font-semibold">What will the Saudi company mostly do?</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {([
+              ["services", "Services or online work"],
+              ["goods", "Sell physical products"],
+              ["making", "Make products"],
+              ["profession", "A licensed profession"],
+              ["property", "Property"],
+            ] as const).map(([k, label]) => (
+              <button key={k} className={opt(a.what === k)} onClick={() => setA({ ...a, what: k })}>{label}</button>
+            ))}
+          </div>
+        </div>
+        {p ? (
+          <div className="rounded-2xl bg-brand p-5 text-white" aria-live="polite">
+            <p className="text-sm font-semibold uppercase tracking-wide text-gold-bright">Best fit</p>
+            <p className="mt-1 font-heading text-3xl font-bold">{p.name}</p>
+            <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+              <div><dt className="text-white/60">Good for</dt><dd className="mt-0.5">{p.bestFor}</dd></div>
+              <div><dt className="text-white/60">Money in the company</dt><dd className="mt-0.5">{p.capital}</dd></div>
+              <div className="sm:col-span-2"><dt className="text-white/60">You will need</dt><dd className="mt-0.5">{p.needs}</dd></div>
+            </dl>
+            {p.note && <p className="mt-4 rounded-xl bg-white/10 p-3 text-sm">{p.note}</p>}
+            {a.home === false && p.id !== "startup" && (
+              <p className="mt-3 rounded-xl bg-white/10 p-3 text-sm">With no company at home, you can register a simple one there first, ask MISA about the personal route, or approach a Saudi startup programme.</p>
+            )}
+          </div>
+        ) : (
+          <p className="text-sm text-muted">Answer both to see your best fit.</p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function Phases() {
+  const [open, setOpen] = useState(0);
+  return (
+    <section className="space-y-5">
+      <H2 id="phases" icon={Compass} kicker="Step by step" title="The four phases" sub="Each phase unlocks the next. Tap one to see what happens and what to watch for." />
+      <ol className="space-y-3">
+        {PHASES.map((ph, i) => {
+          const on = open === i;
+          return (
+            <li key={ph.id} className={`overflow-hidden rounded-3xl border transition ${on ? "border-primary bg-card shadow-md" : "border-line bg-card"}`}>
+              <button onClick={() => setOpen(on ? -1 : i)} aria-expanded={on} className="flex w-full items-center gap-4 p-4 text-start md:p-5">
+                <span className={`grid size-11 shrink-0 place-items-center rounded-2xl font-heading text-lg font-bold ${on ? "bg-primary text-primary-ink" : "bg-primary-soft text-primary"}`}>{i + 1}</span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-heading text-xl font-bold">{ph.name}</span>
+                  <span className="text-sm text-muted">{ph.time}</span>
+                </span>
+                <ChevronDown size={20} className={`shrink-0 text-muted transition ${on ? "rotate-180" : ""}`} />
+              </button>
+              {on && (
+                <div className="space-y-4 border-t border-line p-4 md:p-5">
+                  <ul className="space-y-2.5">
+                    {ph.steps.map((s) => (
+                      <li key={s} className="flex gap-3 text-sm leading-relaxed">
+                        <CircleCheck size={17} className="mt-0.5 shrink-0 text-primary" /> {s}
+                      </li>
+                    ))}
+                  </ul>
+                  <Tip tone="warn">{ph.watch}</Tip>
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+      <p className="text-sm text-muted">Most people take 2 to 3 months in total. Having documents ready before you start is what makes it fast.</p>
+    </section>
+  );
+}
+
 function Documents() {
   return (
     <section className="space-y-5">
-      <H2 id="documents" icon={FileText} kicker="Before day 0" title="Documents to prepare first" sub="Tick them off as you go. Your progress is saved on this phone." />
-      <Tip>
-        <b>The order for every document:</b> certify it at home if needed, get an apostille (an international certificate that makes it valid abroad), then have it translated into Arabic by a certified translator in Saudi Arabia. Saudi Arabia has accepted apostilles since December 2022, so you no longer need the Saudi embassy step if your country is part of the Apostille Convention. Some agencies and older websites still say otherwise.
-      </Tip>
-      <Checklist storageKey="mesh-company-docs" items={DOCUMENTS} />
+      <H2 id="documents" icon={FileText} kicker="Paperwork" title="Documents" sub="Two lists: what you prepare at home, and what you finish in Saudi Arabia. Ticks are saved on this phone." />
+      <h3 className="font-heading text-xl font-bold">At home</h3>
+      <Checklist storageKey="mesh-company-docs-home" items={DOCS_HOME} />
       <details className="group rounded-2xl border border-line bg-card">
         <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 font-semibold [&::-webkit-details-marker]:hidden">
-          Where to get an apostille <ChevronDown size={18} className="text-muted transition group-open:rotate-180" />
+          How apostilles work <ChevronDown size={18} className="text-muted transition group-open:rotate-180" />
         </summary>
         <p className="border-t border-line p-4 text-sm leading-relaxed">{APOSTILLE_RULE}</p>
         <ul className="divide-y divide-line border-t border-line text-sm">
           {APOSTILLE.map((x) => (
             <li key={x.who} className="p-4"><b>{x.who}</b><p className="mt-1 leading-relaxed text-muted">{x.how}</p></li>
           ))}
-          <li className="p-4 text-muted">Not sure about your country? Check the Hague Conference (HCCH) members list, linked at the bottom of this page. If your country is not a member, documents go through the Saudi embassy instead, which adds 2 to 4 weeks.</li>
+          <li className="p-4 text-muted">Not sure about your country? Check the members list linked at the bottom of this page. Non-members go through the Saudi embassy instead, which takes longer.</li>
         </ul>
       </details>
+      <h3 className="pt-2 font-heading text-xl font-bold">In Saudi Arabia</h3>
+      <Checklist storageKey="mesh-company-docs-ksa" items={DOCS_KSA} />
     </section>
   );
 }
 
-function CostCalculator() {
+function Costs() {
   const [transfer, setTransfer] = useState(0);
   const [family, setFamily] = useState(0);
-  const [office, setOffice] = useState<"saudi" | "office" | "none">("none");
+  const [saudis, setSaudis] = useState(0);
   const setup = SETUP_COSTS.reduce((t, c) => t + c.sar, 0) + TRANSFER_FEES[transfer].sar;
-  const yearly = YEARLY.iqama + YEARLY.levyMonthly * 12 + YEARLY.muqeem + family * (YEARLY.dependantMonthly * 12);
-  const agencyLow = 30000, agencyHigh = 50000;
+  const saudiYear = saudis * 4000 * 12 * 1.12;
+  const yearly = YEARLY.iqama + YEARLY.levyMonthly * 12 + YEARLY.muqeem + family * YEARLY.dependantMonthly * 12;
   return (
     <section className="space-y-5">
-      <H2 id="cost" icon={Calculator} kicker="The real cost" title="What you will actually pay" sub="Adjust it to your situation. Figures are what founders in Madinah paid in 2026." />
+      <H2 id="cost" icon={Calculator} kicker="Money" title="What it costs" sub="Rounded figures from 2026. Adjust them to your situation." />
       <div className="rounded-3xl border border-line bg-card p-5 md:p-6">
         <p className="font-heading text-xl font-bold">Setting up</p>
         <label className="mt-4 block text-sm">
@@ -402,7 +385,7 @@ function CostCalculator() {
           {SETUP_COSTS.map((c) => (
             <li key={c.id} className="flex items-start justify-between gap-3 py-2.5">
               <span>{c.label}{c.note && <span className="block text-xs text-muted">{c.note}</span>}</span>
-              <span className="shrink-0 tabular-nums font-medium">{sar(c.sar)}</span>
+              <span className="shrink-0 tabular-nums font-medium">≈ {sar(c.sar)}</span>
             </li>
           ))}
           {TRANSFER_FEES[transfer].sar > 0 && (
@@ -410,74 +393,115 @@ function CostCalculator() {
           )}
           <li className="flex justify-between gap-3 py-2.5 text-muted"><span>Chamber of Commerce</span><span>Free for 3 years</span></li>
         </ul>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl bg-brand p-4 text-white">
-            <p className="text-sm text-white/70">Doing it yourself</p>
-            <p className="font-heading text-3xl font-bold tabular-nums">{sar(setup)}</p>
-          </div>
-          <div className="rounded-2xl bg-bg-2 p-4">
-            <p className="text-sm text-muted">Typical agency quote</p>
-            <p className="font-heading text-3xl font-bold tabular-nums">30,000 to 50,000 SAR</p>
-          </div>
-        </div>
-        <div className="mt-4">
-          <div className="flex h-3 overflow-hidden rounded-full bg-bg-2">
-            <div className="bg-primary" style={{ width: `${Math.min(100, (setup / agencyHigh) * 100)}%` }} />
-          </div>
-          <p className="mt-2 text-sm text-muted">You keep roughly <b className="text-ink">{sar(Math.max(0, agencyLow - setup))}</b> to <b className="text-ink">{sar(Math.max(0, agencyHigh - setup))}</b>.</p>
+        <div className="mt-4 rounded-2xl bg-brand p-4 text-white">
+          <p className="text-sm text-white/70">Roughly, to set up</p>
+          <p className="font-heading text-3xl font-bold tabular-nums">{sar(setup)}</p>
+          <p className="mt-1 text-xs text-white/70">Agencies typically charge several times this for the same steps.</p>
         </div>
       </div>
 
       <div className="rounded-3xl border border-line bg-card p-5 md:p-6">
-        <p className="font-heading text-xl font-bold">Every year after</p>
-        <p className="mt-1 text-sm text-muted">Agencies rarely mention these. Budget for them from day one.</p>
-        <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-line px-3 py-2.5 text-sm">
-          <span className="font-semibold">Wife and children on your iqama</span>
-          <span className="flex items-center gap-2">
-            <button onClick={() => setFamily((f) => Math.max(0, f - 1))} aria-label="Fewer" className="grid size-9 place-items-center rounded-full border border-line text-lg">−</button>
-            <span className="w-6 text-center text-base font-semibold tabular-nums">{family}</span>
-            <button onClick={() => setFamily((f) => Math.min(12, f + 1))} aria-label="More" className="grid size-9 place-items-center rounded-full border border-line text-lg">+</button>
-          </span>
-        </div>
+        <p className="font-heading text-xl font-bold">Every year</p>
+        <p className="mt-1 text-sm text-muted">The costs people forget to plan for.</p>
+        {[
+          ["Family members on your iqama", family, setFamily, 12],
+          ["Saudi employees", saudis, setSaudis, 10],
+        ].map(([label, val, set, max]) => (
+          <div key={label as string} className="mt-3 flex items-center justify-between gap-3 rounded-xl border border-line px-3 py-2.5 text-sm">
+            <span className="font-semibold">{label as string}</span>
+            <span className="flex items-center gap-2">
+              <button onClick={() => (set as (f: (n: number) => number) => void)((n) => Math.max(0, n - 1))} aria-label={`Fewer ${label}`} className="grid size-9 place-items-center rounded-full border border-line text-lg">−</button>
+              <span className="w-6 text-center text-base font-semibold tabular-nums">{val as number}</span>
+              <button onClick={() => (set as (f: (n: number) => number) => void)((n) => Math.min(max as number, n + 1))} aria-label={`More ${label}`} className="grid size-9 place-items-center rounded-full border border-line text-lg">+</button>
+            </span>
+          </div>
+        ))}
         <ul className="mt-3 divide-y divide-line text-sm">
-          <li className="flex justify-between gap-3 py-2.5"><span>Iqama renewal<span className="block text-xs text-muted">Yours, every year</span></span><span className="tabular-nums font-medium">{sar(YEARLY.iqama)}</span></li>
-          <li className="flex justify-between gap-3 py-2.5"><span>Work permit levy<span className="block text-xs text-muted">About 800 SAR a month for each foreign worker on the company, usually including you. 700 SAR if Saudis are at least half your staff.</span></span><span className="shrink-0 tabular-nums font-medium">{sar(YEARLY.levyMonthly * 12)}</span></li>
-          <li className="flex justify-between gap-3 py-2.5"><span>Muqeem subscription</span><span className="tabular-nums font-medium">{sar(YEARLY.muqeem)}</span></li>
-          {family > 0 && (
-            <li className="flex justify-between gap-3 py-2.5"><span>Family fee<span className="block text-xs text-muted">400 SAR a month for each family member</span></span><span className="shrink-0 tabular-nums font-medium">{sar(family * YEARLY.dependantMonthly * 12)}</span></li>
-          )}
-          <li className="flex justify-between gap-3 py-2.5 text-muted"><span>Accountant for your yearly tax return</span><span>Ask for quotes</span></li>
+          <li className="flex justify-between gap-3 py-2.5"><span>Your iqama renewal</span><span className="tabular-nums font-medium">{sar(YEARLY.iqama)}</span></li>
+          <li className="flex justify-between gap-3 py-2.5"><span>Work permit levy<span className="block text-xs text-muted">About 800 SAR a month per foreign worker, usually including you</span></span><span className="shrink-0 tabular-nums font-medium">{sar(YEARLY.levyMonthly * 12)}</span></li>
+          <li className="flex justify-between gap-3 py-2.5"><span>Muqeem subscription</span><span className="tabular-nums font-medium">≈ {sar(YEARLY.muqeem)}</span></li>
+          {family > 0 && <li className="flex justify-between gap-3 py-2.5"><span>Family fee<span className="block text-xs text-muted">400 SAR a month each</span></span><span className="shrink-0 tabular-nums font-medium">{sar(family * YEARLY.dependantMonthly * 12)}</span></li>}
+          {saudis > 0 && <li className="flex justify-between gap-3 py-2.5"><span>Saudi staff<span className="block text-xs text-muted">At 4,000 SAR a month each, plus about 12% GOSI</span></span><span className="shrink-0 tabular-nums font-medium">≈ {sar(Math.round(saudiYear))}</span></li>}
+          <li className="flex justify-between gap-3 py-2.5 text-muted"><span>Accountant, health insurance</span><span>Get quotes</span></li>
         </ul>
         <div className="mt-4 rounded-2xl bg-gold-bg p-4">
-          <p className="text-sm text-muted">Roughly each year, before staff salaries</p>
-          <p className="font-heading text-3xl font-bold tabular-nums">{sar(yearly)}</p>
+          <p className="text-sm text-muted">Roughly each year</p>
+          <p className="font-heading text-3xl font-bold tabular-nums">{sar(Math.round(yearly + saudiYear))}</p>
         </div>
       </div>
+      <p className="text-xs text-muted">Fees checked {CHECKED}. Government fees change; confirm each one on the portal before paying.</p>
+    </section>
+  );
+}
 
-      <div className="rounded-3xl border border-line bg-card p-5 md:p-6">
-        <p className="font-heading text-xl font-bold">The Balady trap: rent an office or hire a Saudi?</p>
-        <p className="mt-2 text-sm leading-relaxed text-muted">
-          Run a service business from home and you may hit a wall at the iqama transfer: the system expects a city business license (Balady), which needs a physical office or shop. There are two ways through.
-        </p>
-        <div className="mt-4 grid gap-2 sm:grid-cols-2">
-          {([
-            ["office", "Rent a serviced office", "About 4,000 to 5,000 SAR a month. Gives you an address for Balady, but does nothing for your Saudization rating."],
-            ["saudi", "Hire a Saudi employee", "For example a 4,000 SAR salary plus about 12% social insurance (GOSI), so about 4,500 SAR a month. Lifts your Saudization rating within about a week and unblocks the transfer. You will need a Saudi hire to grow anyway."],
-          ] as const).map(([k, t, d]) => (
-            <button key={k} onClick={() => setOffice(office === k ? "none" : k)} aria-pressed={office === k}
-              className={`rounded-2xl border p-4 text-start text-sm transition ${office === k ? "border-primary bg-primary-soft" : "border-line hover:border-primary/50"}`}>
-              <span className="flex items-center gap-2 font-semibold">{k === "saudi" ? <Users size={16} className="text-primary" /> : <Building2 size={16} className="text-primary" />} {t}</span>
-              <span className="mt-1.5 block leading-relaxed text-muted">{d}</span>
-            </button>
-          ))}
-        </div>
-        {office !== "none" && (
-          <p className="mt-3 text-sm">{office === "saudi"
-            ? <>About <b>4,500 SAR</b> a month, and it counts towards Saudization. Usually the better choice.</>
-            : <>About <b>4,000 to 5,000 SAR</b> a month, with no Saudization benefit. You will likely still need a Saudi hire later.</>}</p>
-        )}
+function Nitaqat() {
+  return (
+    <section className="space-y-5">
+      <H2 id="nitaqat" icon={Landmark} kicker="Hiring" title="Saudization (Nitaqat), explained" sub="The rule that surprises most new owners." />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {NITAQAT.map((n) => <Card key={n.title} title={n.title}>{n.body}</Card>)}
       </div>
-      <p className="text-xs text-muted">Fees checked {CHECKED}. Confirm each fee on the government site before you pay.</p>
+    </section>
+  );
+}
+
+function Bank() {
+  return (
+    <section className="space-y-5">
+      <H2 id="bank" icon={Banknote} kicker="Banking" title="Choosing your bank" sub="Experience depends more on the branch and the officer than on the bank. Apply to two at once." />
+      <div className="rounded-3xl border border-line bg-card p-5 md:p-6">
+        <p className="font-semibold">Questions to ask before you apply</p>
+        <ul className="mt-3 space-y-2 text-sm">
+          {BANK_ASK.map((q) => <li key={q} className="flex gap-2"><CircleCheck size={16} className="mt-0.5 shrink-0 text-primary" />{q}</li>)}
+        </ul>
+      </div>
+      <div className="grid gap-2 sm:grid-cols-3">
+        {BANKS.map((b) => (
+          <div key={b.name} className="rounded-2xl border border-line bg-card p-3.5">
+            <p className="text-sm font-semibold">{b.name}</p>
+            <p className="text-xs text-muted">{b.type}</p>
+          </div>
+        ))}
+      </div>
+      <p className="text-sm text-muted">Banks offering business accounts, listed alphabetically. MESH is not connected to any of them.</p>
+      <h3 className="pt-2 font-heading text-xl font-bold">What to bring</h3>
+      <Checklist storageKey="mesh-company-bank-docs" items={BANK_DOCS.map((d, i) => ({ id: `b${i}`, ...d }))} />
+      <Tip>The General Manager signs in person, with original documents. Plan to be in the Kingdom for it.</Tip>
+    </section>
+  );
+}
+
+function Family() {
+  return (
+    <section className="space-y-5">
+      <H2 id="family" icon={Users} kicker="Family" title="Bringing your family" sub="Once your own iqama is issued, your company can sponsor your wife and children." />
+      <ul className="space-y-2">
+        {FAMILY.map((f) => (
+          <li key={f} className="flex gap-3 rounded-2xl border border-line bg-card p-4 text-sm leading-relaxed"><CircleCheck size={17} className="mt-0.5 shrink-0 text-primary" />{f}</li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function Running() {
+  return (
+    <section className="space-y-5">
+      <H2 id="running" icon={CalendarClock} kicker="After you open" title="Running your company" sub="The rhythm of a small Saudi company, by month, quarter and year." />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {RUNNING.map((r) => (
+          <div key={r.when} className="rounded-2xl border border-line bg-card p-4">
+            <p className="text-sm font-semibold uppercase tracking-wide text-gold">{r.when}</p>
+            <ul className="mt-2 space-y-2 text-sm leading-relaxed">
+              {r.items.map((it) => <li key={it} className="flex gap-2"><Check size={15} className="mt-1 shrink-0 text-primary" />{it}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <h3 className="pt-2 font-heading text-xl font-bold">Growing</h3>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {GROW.map((g) => <Card key={g.title} title={<span className="flex items-center gap-2"><Rocket size={15} className="text-primary" />{g.title}</span>}>{g.body}</Card>)}
+      </div>
     </section>
   );
 }
@@ -485,34 +509,24 @@ function CostCalculator() {
 function Taxes() {
   return (
     <section className="space-y-5">
-      <H2 id="tax" icon={Receipt} kicker="Saudi taxes" title="What your company pays" sub="ZATCA, the Saudi tax authority, opens your file automatically. Keep simple monthly books from day one." />
+      <H2 id="tax" icon={Receipt} kicker="Saudi taxes" title="What your company pays" sub="ZATCA, the Saudi tax authority, opens your file automatically." />
       <div className="grid gap-3 sm:grid-cols-2">
-        {TAX.map((t) => (
-          <div key={t.title} className="rounded-2xl border border-line bg-card p-4">
-            <p className="font-semibold">{t.title}</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted">{t.body}</p>
-          </div>
-        ))}
+        {TAX.map((t) => <Card key={t.title} title={t.title}>{t.body}</Card>)}
       </div>
     </section>
   );
 }
 
-function UsTax() {
+function HomeTax() {
   return (
     <section className="space-y-5">
-      <H2 id="us-tax" icon={Flag} kicker="Your home country" title="Taxes back home" sub="Saudi Arabia does not tax your salary, but your home country might. Sort this out before you move, not after." />
+      <H2 id="home-tax" icon={Flag} kicker="Your home country" title="Taxes back home" sub="Sort this out before you move, not after." />
       <div className="grid gap-3 sm:grid-cols-2">
-        {HOME_TAX.map((t) => (
-          <div key={t.title} className="rounded-2xl border border-line bg-card p-4">
-            <p className="font-semibold">{t.title}</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted">{t.body}</p>
-          </div>
-        ))}
+        {HOME_TAX.map((t) => <Card key={t.title} title={t.title}>{t.body}</Card>)}
       </div>
       <div className="rounded-3xl border border-amber/40 bg-amber-bg p-5 md:p-6">
         <p className="font-heading text-xl font-bold">The exception: US citizens</p>
-        <p className="mt-1 text-sm text-muted">The US taxes its citizens wherever they live, so moving does not end your US filings. Owning a Saudi company adds forms from the first year, and missing them is expensive.</p>
+        <p className="mt-1 text-sm text-muted">Moving abroad does not end US filings, and owning a foreign company adds forms from the first year.</p>
         <ol className="mt-4 space-y-2">
           {US_TAX.map((t, i) => (
             <li key={t.title} className="flex gap-3 rounded-2xl bg-card p-4">
@@ -522,9 +536,7 @@ function UsTax() {
           ))}
         </ol>
       </div>
-      <Tip>
-        Whatever your passport, speak to a tax adviser who works with people living abroad <b>before</b> you set up. How you leave, and how the company is set up, decides what you owe back home.
-      </Tip>
+      <Tip>Whatever your passport, speak to a tax adviser who works with people abroad <b>before</b> you set up.</Tip>
     </section>
   );
 }
@@ -532,168 +544,78 @@ function UsTax() {
 function Premium() {
   return (
     <section className="space-y-5">
-      <H2 id="premium" icon={Star} kicker="Another route" title="Premium Residency" sub="A residence permit that does not depend on an employer or a company sponsor. Holders do not pay the monthly worker and family fees." />
+      <H2 id="premium" icon={Star} kicker="Another route" title="Premium Residency" sub="Residency with no employer or company sponsor, and no monthly worker or family fees." />
       <div className="grid gap-3 sm:grid-cols-2">
-        {PREMIUM.map((p) => (
-          <div key={p.name} className="rounded-2xl border border-line bg-card p-4">
-            <p className="font-semibold">{p.name}</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted">{p.body}</p>
-          </div>
-        ))}
+        {PREMIUM.map((p) => <Card key={p.name} title={p.name}>{p.body}</Card>)}
       </div>
-      <p className="text-sm text-muted">Each category has an application fee (4,000 SAR at the time of writing) and its own conditions. For most students and graduates, a small company of your own is the realistic route; Premium Residency is worth knowing about as you grow.</p>
+      <p className="text-sm text-muted">Each category has an application fee and its own conditions. For most students and graduates, a small company is the realistic first step.</p>
     </section>
   );
 }
 
-function AfterCr() {
+function Pitfalls() {
+  const groups = [...new Set(PITFALLS.map((p) => p.phase))];
   return (
     <section className="space-y-5">
-      <H2 id="after-cr" icon={Landmark} kicker="Week 3 onwards" title="After the CR: simpler than you think" sub="Your CR is the trigger. Three government systems open by themselves within about an hour; the rest you do at your own pace." />
-      <div className="grid gap-3 sm:grid-cols-2">
-        {AFTER_CR.map((x) => (
-          <div key={x.name} className="rounded-2xl border border-line bg-card p-4">
-            <div className="flex items-start justify-between gap-2">
-              <p className="font-semibold">{x.name} <span className="font-normal text-muted">· {x.what}</span></p>
-              {x.auto && <span className="shrink-0 rounded-full bg-on-bg px-2 py-0.5 text-xs font-semibold text-on">Automatic</span>}
-            </div>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted">{x.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Family() {
-  return (
-    <section className="space-y-5">
-      <H2 id="family" icon={Users} kicker="Residency" title="Your iqama, then your family" sub="The business gets you and your family residency, but only in this order. Skip a step and you wait weeks." />
-      <ol className="grid gap-3 sm:grid-cols-2">
-        {FAMILY.map((f, i) => (
-          <li key={f.title} className="rounded-2xl border border-line bg-card p-4">
-            <span className="flex items-center gap-3">
-              <span className="grid size-8 place-items-center rounded-full bg-primary font-heading font-bold text-primary-ink">{i + 1}</span>
-              <span><b className="block leading-tight">{f.title}</b><span className="text-xs text-gold">{f.time}</span></span>
-            </span>
-            <p className="mt-2 text-sm leading-relaxed text-muted">{f.body}</p>
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
-
-function Banks() {
-  return (
-    <section className="space-y-5">
-      <H2 id="banks" icon={Banknote} kicker="The slowest step" title="Opening the company bank account" sub="The bank is where most timelines stall. Apply to two banks at once, and start the day your CR Extract is issued." />
-      <div className="grid gap-3 sm:grid-cols-2">
-        {BANKS.map((b) => (
-          <div key={b.name} className="rounded-2xl border border-line bg-card p-4">
-            <div className="flex items-baseline justify-between gap-2">
-              <p className="font-semibold">{b.name}</p>
-              <span className="text-xs text-muted">{b.time}</span>
-            </div>
-            <p className="mt-2 text-sm leading-relaxed">{b.good}</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted">{b.watch}</p>
-          </div>
-        ))}
-      </div>
-      <p className="text-sm text-muted">Listed alphabetically. MESH is not connected to any bank. Every bank needs the General Manager to sign in person, so plan one trip around it.</p>
-      <h3 className="pt-2 font-heading text-xl font-bold">What to bring</h3>
-      <Checklist storageKey="mesh-company-bank" items={BANK_DOCS.map((d, i) => ({ id: `b${i}`, ...d }))} />
-    </section>
-  );
-}
-
-function Mistakes() {
-  const [open, setOpen] = useState<number | null>(null);
-  return (
-    <section className="space-y-5">
-      <H2 id="mistakes" icon={AlertTriangle} kicker="Avoid these" title="13 mistakes that cost founders time and money" sub="Most of the fixes are free. You just have to know them." />
-      <div className="grid gap-2 sm:grid-cols-2">
-        {MISTAKES.map((m, i) => {
-          const on = open === i;
-          return (
-            <button key={m.title} onClick={() => setOpen(on ? null : i)} aria-expanded={on}
-              className={`rounded-2xl border p-4 text-start transition ${on ? "border-cancel/50 bg-cancel-bg" : "border-line bg-card hover:border-cancel/40"}`}>
-              <span className="flex items-start gap-3">
-                <span className="font-heading text-2xl font-bold leading-none text-gold">{i + 1}</span>
-                <span className="flex-1 font-semibold leading-snug">{m.title}</span>
-                <ChevronDown size={18} className={`mt-0.5 shrink-0 text-muted transition ${on ? "rotate-180" : ""}`} />
-              </span>
-              {on && <span className="mt-2 block ps-9 text-sm leading-relaxed">{m.body}</span>}
-            </button>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function SaudiOrUae() {
-  return (
-    <section className="space-y-5">
-      <H2 id="uae" icon={Scale} kicker="Honest comparison" title="Saudi Arabia or a UAE free zone?" />
-      <div className="overflow-x-auto rounded-2xl border border-line bg-card">
-        <table className="w-full min-w-[520px] text-sm">
-          <thead className="bg-bg-2 text-left text-xs uppercase tracking-wide text-muted">
-            <tr><th className="p-3" /><th className="p-3">Saudi company</th><th className="p-3">UAE (free zone)</th></tr>
-          </thead>
-          <tbody className="divide-y divide-line">
-            {COMPARE.map((r, i) => (
-              <tr key={r.row} className={i === COMPARE.length - 1 ? "bg-primary-soft font-semibold" : ""}>
-                <td className="p-3 font-semibold">{r.row}</td><td className="p-3">{r.ksa}</td><td className="p-3">{r.uae}</td>
-              </tr>
+      <H2 id="pitfalls" icon={AlertTriangle} kicker="Avoid these" title="Pitfalls, phase by phase" />
+      {groups.map((g) => (
+        <div key={g}>
+          <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-gold">{g}</p>
+          <ul className="space-y-2">
+            {PITFALLS.filter((p) => p.phase === g).map((p) => (
+              <li key={p.title} className="rounded-2xl border border-line bg-card p-4">
+                <p className="font-semibold">{p.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{p.body}</p>
+              </li>
             ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="text-sm leading-relaxed text-muted">The UAE wins on tax. Saudi Arabia wins if you are building a life here and selling into the local market. With the old licence fee gone, Saudi running costs are far lower than they were.</p>
+          </ul>
+        </div>
+      ))}
     </section>
   );
 }
 
-function ActionPlan() {
+function Plan() {
   const all = PLAN.flatMap((p) => p.items);
-  const { ticks, toggle, reset } = useTicks("mesh-company-plan");
+  const { ticks, toggle, reset } = useTicks("mesh-company-checklist");
   const done = all.filter((i) => ticks.includes(i.id)).length;
   return (
     <section className="space-y-5">
-      <H2 id="plan" icon={ListChecks} kicker="Your plan" title="Do it yourself, step by step" sub="Every step from today to a working company. Tick them off; your progress is saved on this phone." />
+      <H2 id="plan" icon={ListChecks} kicker="Your checklist" title="From idea to open" sub="Every step in one list. Your progress is saved on this phone." />
       <div className="sticky top-16 z-10 -mx-1 rounded-2xl border border-line bg-card/95 p-3 backdrop-blur">
         <div className="flex items-center gap-3">
           <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-bg-2">
             <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${(done / all.length) * 100}%` }} />
           </div>
           <span className="text-sm font-semibold tabular-nums">{done}/{all.length}</span>
-          {done > 0 && <button onClick={reset} aria-label="Reset plan" className="text-muted hover:text-ink"><RotateCcw size={15} /></button>}
+          {done > 0 && <button onClick={reset} aria-label="Reset checklist" className="text-muted hover:text-ink"><RotateCcw size={15} /></button>}
         </div>
-        {done === all.length && <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-on"><CircleCheck size={16} /> Mabrook. Your company is up and running.</p>}
+        {done === all.length && <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-on"><CircleCheck size={16} /> Mabrook. Your company is open.</p>}
       </div>
-      {PLAN.map((p) => (
-        <div key={p.phase}>
-          <h3 className="mb-2 font-heading text-xl font-bold">{p.phase}</h3>
-          <ul className="space-y-2">
-            {p.items.map((i) => {
-              const on = ticks.includes(i.id);
-              return (
-                <li key={i.id}>
-                  <button onClick={() => toggle(i.id)} aria-pressed={on}
-                    className={`flex w-full gap-3 rounded-2xl border p-4 text-start transition ${on ? "border-on/40 bg-on-bg" : "border-line bg-card hover:border-primary/50"}`}>
-                    <span className={`mt-0.5 grid size-6 shrink-0 place-items-center rounded-full border-2 ${on ? "border-on bg-on text-white" : "border-line"}`}>{on && <Check size={14} strokeWidth={3} />}</span>
-                    <span>
-                      <span className={`block font-semibold ${on ? "line-through opacity-70" : ""}`}>{i.title}</span>
-                      <span className="mt-0.5 block text-sm text-muted">{i.body}</span>
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ))}
+      <div className="grid gap-4 sm:grid-cols-2">
+        {PLAN.map((p) => (
+          <div key={p.phase}>
+            <h3 className="mb-2 font-heading text-lg font-bold">{p.phase}</h3>
+            <ul className="space-y-2">
+              {p.items.map((i) => {
+                const on = ticks.includes(i.id);
+                return (
+                  <li key={i.id}>
+                    <button onClick={() => toggle(i.id)} aria-pressed={on}
+                      className={`flex w-full gap-3 rounded-2xl border p-3.5 text-start transition ${on ? "border-on/40 bg-on-bg" : "border-line bg-card hover:border-primary/50"}`}>
+                      <span className={`mt-0.5 grid size-6 shrink-0 place-items-center rounded-full border-2 ${on ? "border-on bg-on text-white" : "border-line"}`}>{on && <Check size={14} strokeWidth={3} />}</span>
+                      <span>
+                        <span className={`block text-sm font-semibold ${on ? "line-through opacity-70" : ""}`}>{i.title}</span>
+                        <span className="mt-0.5 block text-xs text-muted">{i.body}</span>
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
@@ -717,7 +639,7 @@ function Glossary() {
           </a>
         ))}
       </div>
-      <p className="text-sm text-muted">Checked {CHECKED}. This guide is general information, not legal or tax advice. For anything unusual, speak to a licensed Saudi lawyer or accountant.</p>
+      <p className="text-sm text-muted">Checked {CHECKED}. General information, not legal or tax advice. For anything unusual, speak to a licensed Saudi lawyer or accountant.</p>
     </section>
   );
 }
