@@ -3,14 +3,15 @@ import type { Db } from "@/server/db/client";
 import { faqs, guides } from "@/server/db/schema";
 import { cleanText } from "@/lib/text";
 import { FAQS_2026, GUIDES_2026 } from "./guides-2026";
+import { FAQS_STUDENT_LIFE, GUIDES_STUDENT_LIFE } from "./guides-student-life";
 
 const minutes = (html: string) => Math.max(1, Math.ceil(html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length / 200));
 
 /** Upserts the November 2026 guides and FAQs as published and verified. Safe to run repeatedly. */
 export async function syncContent2026(db: Db, now: Date = new Date(), opts: { only?: string[] } = {}): Promise<{ guides: number; faqs: number }> {
   const pick = <T extends { slug: string }>(xs: T[]) => (opts.only ? xs.filter((x) => opts.only!.includes(x.slug)) : xs);
-  const guideList = pick(GUIDES_2026);
-  const faqList = pick(FAQS_2026);
+  const guideList = pick([...GUIDES_2026, ...GUIDES_STUDENT_LIFE]);
+  const faqList = pick([...FAQS_2026, ...FAQS_STUDENT_LIFE]);
   for (const g of guideList) {
     const row = {
       slug: g.slug,

@@ -124,7 +124,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
       <div className="border-t border-white/10">
         <div className="shell flex flex-wrap items-center justify-between gap-3 py-5 text-sm text-white/70">
           <p>
-            {ar ? "تحتاج مساعدة أو عندك اقتراح؟ راسل مالك الموقع على واتساب: " : "Need any assistance, or have a suggestion? Please message the owner on WhatsApp at "}
+            {ar ? "تحتاج مساعدة أو عندك اقتراح؟ راسل المشرف على واتساب: " : "Need any assistance, or have a suggestion? Please message Admin on WhatsApp at "}
             <a href={`https://wa.me/${helpContact.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold-bright hover:underline" dir="ltr">
               {helpContact}
             </a>
@@ -134,6 +134,11 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
             <span className="text-xs text-white/50">medinahub.org</span>
           </span>
         </div>
+        <p className="shell pb-5 text-xs leading-relaxed text-white/50">
+          {ar
+            ? "© مركز MESH. محتوى الموقع محمي بحقوق النشر. يمكنك الاقتباس منه مع ذكر الرابط، ولا يجوز نسخه أو استخدامه لتدريب نماذج الذكاء الاصطناعي دون إذن."
+            : "© MESH. All content is protected by copyright. Quote it with a link back; do not copy it in bulk or use it to train AI models without permission."}
+        </p>
       </div>
     </footer>
   );

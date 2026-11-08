@@ -4,7 +4,11 @@ import { resetTestDb } from "@/server/db/client";
 import { faqs, guides } from "@/server/db/schema";
 import { importOldMesh } from "@/server/seed/import-old-mesh";
 import { syncContent2026 } from "@/server/seed/content/sync";
-import { FAQS_2026, GUIDES_2026 } from "@/server/seed/content/guides-2026";
+import { FAQS_2026 as BASE_FAQS, GUIDES_2026 as BASE_GUIDES } from "@/server/seed/content/guides-2026";
+import { FAQS_STUDENT_LIFE, GUIDES_STUDENT_LIFE } from "@/server/seed/content/guides-student-life";
+
+const GUIDES_2026 = [...BASE_GUIDES, ...GUIDES_STUDENT_LIFE];
+const FAQS_2026 = [...BASE_FAQS, ...FAQS_STUDENT_LIFE];
 
 describe("syncContent2026", () => {
   it("publishes the new guides and FAQs, replaces rewritten guides, and can run twice", async () => {

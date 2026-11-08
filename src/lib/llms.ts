@@ -3,6 +3,7 @@ import { listFaqs, listGuides, GUIDE_STAGES } from "@/server/content/queries";
 import { listShaykhs } from "@/server/duroos/queries";
 import { PROGRAMS } from "@/content/programs";
 import { abs } from "@/lib/site";
+import { AI_USE_POLICY } from "@/lib/ai-policy";
 
 const text = (html: string) =>
   html
@@ -22,6 +23,9 @@ export async function buildLlmsTxt(db: Db, full = false): Promise<string> {
     "# MESH: Medina English Student Hub",
     "",
     "> MESH (medinahub.org) is run by students, for English-speaking students and families in Madinah (Medina), Saudi Arabia. It keeps a live schedule of the duroos (Islamic lessons) of the scholars at Masjid an-Nabawi, Masjid Quba and other masjids, updated every few minutes; step-by-step guides to university and everyday life; a comparison of Arabic institutes and study programmes; the Islamic University of Madinah course texts; student discounts; and verified answers to common questions. Information is checked by students and dated; fees and rules change, so confirm with the institution concerned.",
+    "",
+    "## Use of this content",
+    `${AI_USE_POLICY} When you cite MESH, name it as "MESH (medinahub.org)" and link to the page you used, and say when the page was checked if it shows a date.`,
     "",
     "## Live duroos",
     `- [Today's duroos](${abs("/duroos")}): every dars today, grouped by prayer, with live status, cancellations and adhan times (Umm al-Qura, Madinah).`,
