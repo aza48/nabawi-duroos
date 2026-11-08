@@ -69,7 +69,6 @@ export function HeroSky({ prayers }: { prayers: Record<Prayer, string> }) {
       )}
       {kind === "storm" && <div className="sky-flash" />}
       {kind === "fog" && <div className="sky-haze" />}
-      <span className="sky-m wordmark">M</span>
       <Skyline />
       {now !== null && (
         <span className="sky-body sm:hidden">
@@ -94,6 +93,24 @@ function minaret(x: number, top: number) {
   );
 }
 
+const GATE_TOP = "M4 28Q4 6 27 4Q44 6 50 22Q56 6 73 4Q96 6 96 28";
+
+/** Far off on the plain, a gate of two arches side by side: its roofline is the M of MESH, edged in gold. */
+function Gate() {
+  return (
+    <svg className="sky-gate" viewBox="0 0 100 62">
+      <path
+        d={`${GATE_TOP}V62H4ZM14 62V33Q14 17 27 16Q40 17 40 33V62ZM60 62V33Q60 17 73 16Q86 17 86 33V62Z`}
+        fillRule="evenodd"
+        className="gate-body"
+      />
+      <path d="M14 62V33Q14 17 27 16Q40 17 40 33V62M60 62V33Q60 17 73 16Q86 17 86 33V62" className="gate-inner" />
+      <path d={GATE_TOP} className="gate-edge" />
+      <path d={GATE_TOP} className="gate-glint" pathLength="100" />
+    </svg>
+  );
+}
+
 /** Jabal Uhud on the horizon and the minarets and domes of the Prophet's Masjid, in brand green. */
 function Skyline() {
   return (
@@ -103,6 +120,9 @@ function Skyline() {
           d="M0 80V50C70 44 120 28 190 31C260 34 290 18 360 22C430 26 460 44 530 41C600 38 640 16 720 14C790 12 830 32 890 36C940 39 970 30 1000 32V80Z"
           className="ridge-far"
         />
+      </svg>
+      <Gate />
+      <svg className="sky-ridge" viewBox="0 0 1000 80" preserveAspectRatio="none">
         <path d="M0 80V64C90 58 170 52 260 56C360 60 420 50 520 54C640 58 720 48 820 54C900 58 960 54 1000 56V80Z" className="ridge-near" />
       </svg>
       <svg className="sky-masjid" viewBox="0 0 260 90" preserveAspectRatio="xMidYMax meet">
