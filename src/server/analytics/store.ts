@@ -1,6 +1,5 @@
 import { sql } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
-import { RETENTION_DAYS } from "@/lib/privacy";
 
 /**
  * First-party visitor analytics. Anonymous: a random id per browser, no IP address, no name.
@@ -55,8 +54,8 @@ const DDL = [
 
 let ready: Promise<void> | null = null;
 
-/** How long visits are kept (the public figure on /privacy). */
-export { RETENTION_DAYS };
+/** How long visits are kept. */
+export const RETENTION_DAYS = 180;
 
 /** Deletes visits older than the retention period. Run from the daily cron, never inside a visitor's request. */
 export async function purgeAnalytics(db: Db): Promise<void> {

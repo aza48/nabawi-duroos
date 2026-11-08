@@ -2,13 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { OPT_OUT_KEY, trackingAllowed } from "@/lib/privacy";
 
 /**
  * Anonymous visitor analytics for the admin Analytics page.
  * Sends page views, time on page, scroll depth and clicks to /api/v1/track.
  * Uses a random id kept in this browser; no name, email or IP address is stored.
- * Off when the reader opted out on /privacy, when the browser sends Global Privacy Control, and for automated browsers.
  */
 
 const ENDPOINT = "/api/v1/track";
@@ -72,8 +70,7 @@ export function Tracker() {
   // One page view per route, with time on page counted only while the tab is visible.
   useEffect(() => {
     if (!pathname || pathname.startsWith("/admin")) return;
-    const nav = navigator as Navigator & { globalPrivacyControl?: boolean };
-    if (!trackingAllowed({ gpc: nav.globalPrivacyControl, webdriver: nav.webdriver, optOut: store()?.getItem(OPT_OUT_KEY) })) return;
+    if (navigator.webdriver) return;
     vRef.current ??= visitor();
     const v = vRef.current;
     const s = session();

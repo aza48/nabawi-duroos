@@ -414,10 +414,6 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
                   answers, the guides and the live duroos schedule in one place.
                 </p>
               )}
-              <p className="mt-3 text-sm text-muted">
-                {ar ? "ما يحتفظ به الموقع عن زيارتك وكيف توقفه: " : "What this site keeps about your visit, and how to switch it off: "}
-                <Link href={ar ? "/ar/privacy" : "/privacy"} className="font-semibold text-primary underline-offset-2 hover:underline">{ar ? "صفحة الخصوصية" : "Privacy"}</Link>
-              </p>
             </section>
             <section id="rules">
               <h2 className="font-heading text-2xl font-bold">{ar ? "قواعد المجموعة" : "Group rules"}</h2>

@@ -3,7 +3,6 @@ import { z } from "zod";
 import { getDb } from "@/server/db/client";
 import { ensureAnalytics, isBot, parseUa, refHost } from "@/server/analytics/store";
 import { allow, clientIp } from "@/server/rate-limit";
-import { gpcHeader } from "@/lib/privacy";
 
 export const dynamic = "force-dynamic";
 
@@ -49,7 +48,7 @@ async function withTables<T>(db: Awaited<ReturnType<typeof getDb>>, work: () => 
 
 export async function POST(req: Request) {
   const ua = req.headers.get("user-agent") ?? "";
-  if (isBot(ua) || gpcHeader(req.headers)) return empty();
+  if (isBot(ua)) return empty();
   if (!allow(`track:${clientIp(req)}`, TRACK_LIMIT.max, TRACK_LIMIT.windowMs)) return empty();
   let data: z.infer<typeof body>;
   try {

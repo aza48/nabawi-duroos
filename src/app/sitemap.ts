@@ -53,7 +53,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...pair("/discounts", 0.7, "monthly"),
     ...pair("/ask", 0.8, "daily"),
     ...pair("/more", 0.3, "weekly"),
-    ...pair("/privacy", 0.2, "yearly", new Date("2026-11-09")),
     { url: abs("/mahad"), priority: 0.7, changeFrequency: "monthly" },
     ...LIVE_COLLECTIONS.map((c): Entry => ({ url: abs(`/library/${c.slug}`), priority: 0.7, changeFrequency: "monthly" })),
     ...shaykhRows.flatMap((s) => both(`/shaykh/${s.slug}`, 0.6, "weekly")),

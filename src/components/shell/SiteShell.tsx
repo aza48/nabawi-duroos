@@ -136,7 +136,6 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
           </p>
           <span className="flex items-center gap-3">
             <span className="sm:hidden"><ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} /></span>
-            <Link href={ar ? "/ar/privacy" : "/privacy"} className="text-xs text-white/70 underline-offset-2 hover:text-white hover:underline">{ar ? "الخصوصية" : "Privacy"}</Link>
             <span className="text-xs text-white/70">medinahub.org</span>
           </span>
         </div>
