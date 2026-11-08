@@ -6,3 +6,14 @@ export function timeAgo(d: Date, now: Date = new Date()): string {
   if (h < 24) return `${h} h ago`;
   return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", timeZone: "Asia/Riyadh" }).format(d);
 }
+
+/** "Today", "Yesterday" or a date, in Madinah time, for grouping lists by day. */
+export function dayLabel(d: Date, now: Date = new Date()): string {
+  const key = (x: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Riyadh" }).format(x);
+  const today = key(now);
+  const yesterday = key(new Date(now.getTime() - 86_400_000));
+  const k = key(d);
+  if (k === today) return "Today";
+  if (k === yesterday) return "Yesterday";
+  return new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "numeric", month: "long", timeZone: "Asia/Riyadh" }).format(d);
+}

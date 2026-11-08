@@ -4,6 +4,7 @@ import { requireAdmin } from "@/server/auth/session";
 import { getDb } from "@/server/db/client";
 import { adminShaykhs } from "@/server/admin/queries";
 import { DUROOS_NAV, SubNav } from "@/features/admin/ui";
+import { Filterable } from "@/features/admin/Filterable";
 
 export const metadata: Metadata = { title: "Shuyukh" };
 
@@ -14,9 +15,10 @@ export default async function Page() {
     <div className="mx-auto max-w-2xl">
       <SubNav items={DUROOS_NAV} active="/admin/duroos/shaykhs" />
       <h1 className="mb-3 text-2xl font-semibold">Shuyukh</h1>
+      <Filterable placeholder="Search by name, in English or Arabic">
       <ul className="card divide-y divide-line">
         {rows.map((s) => (
-          <li key={s.slug}>
+          <li key={s.slug} data-item>
             <Link href={`/admin/duroos/shaykh/${s.slug}`} className="block p-3">
               <p className="text-sm font-semibold">{s.nameEn}</p>
               <p className="ar-text text-sm text-muted">{s.nameAr}</p>
@@ -24,6 +26,7 @@ export default async function Page() {
           </li>
         ))}
       </ul>
+      </Filterable>
     </div>
   );
 }

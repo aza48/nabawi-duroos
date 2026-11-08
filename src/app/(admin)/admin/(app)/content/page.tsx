@@ -5,6 +5,7 @@ import { requireAdmin } from "@/server/auth/session";
 import { getDb } from "@/server/db/client";
 import { adminFaqs, adminGuides } from "@/server/admin/queries";
 import { btnGhost } from "@/features/admin/ui";
+import { Filterable } from "@/features/admin/Filterable";
 
 export const metadata: Metadata = { title: "Content" };
 
@@ -19,6 +20,7 @@ export default async function Page() {
   return (
     <div className="mx-auto max-w-2xl">
       <h1 className="mb-4 text-2xl font-semibold">Content</h1>
+      <Filterable placeholder="Search answers and guides">
 
       <section>
         <div className="mb-2 flex items-center justify-between">
@@ -28,7 +30,7 @@ export default async function Page() {
         <p className="mb-2 text-sm text-muted">Turn questions that keep coming up in the WhatsApp group into a clear, checked answer.</p>
         <ul className="card divide-y divide-line">
           {faqs.map((f) => (
-            <li key={f.slug}><Link href={`/admin/content/faq/${f.slug}`} className="flex items-center gap-3 p-3">
+            <li key={f.slug} data-item><Link href={`/admin/content/faq/${f.slug}`} className="flex items-center gap-3 p-3">
               <span className="min-w-0 flex-1 truncate text-sm font-medium">{f.question}</span><Badge status={f.status} />
             </Link></li>
           ))}
@@ -43,13 +45,14 @@ export default async function Page() {
         </div>
         <ul className="card divide-y divide-line">
           {guides.map((g) => (
-            <li key={g.slug}><Link href={`/admin/content/guide/${g.slug}`} className="flex items-center gap-3 p-3">
+            <li key={g.slug} data-item><Link href={`/admin/content/guide/${g.slug}`} className="flex items-center gap-3 p-3">
               <span className="min-w-0 flex-1 truncate text-sm font-medium">{g.title}</span><Badge status={g.status} />
             </Link></li>
           ))}
           {!guides.length && <li className="p-3 text-sm text-muted">No guides yet.</li>}
         </ul>
       </section>
+      </Filterable>
     </div>
   );
 }

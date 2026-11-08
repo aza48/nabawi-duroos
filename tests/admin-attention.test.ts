@@ -35,3 +35,13 @@ describe("plainReading", () => {
     expect(t).not.toMatch(/ruh-dalil|%/);
   });
 });
+
+import { dayLabel } from "@/features/admin/time";
+describe("dayLabel", () => {
+  it("groups activity as Today, Yesterday, then dates", () => {
+    const now = new Date("2026-11-08T09:00:00Z");
+    expect(dayLabel(new Date("2026-11-08T06:00:00Z"), now)).toBe("Today");
+    expect(dayLabel(new Date("2026-11-07T10:00:00Z"), now)).toBe("Yesterday");
+    expect(dayLabel(new Date("2026-11-05T10:00:00Z"), now)).toBe("Thursday 5 November");
+  });
+});

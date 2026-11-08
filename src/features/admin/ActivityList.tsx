@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Undo2 } from "lucide-react";
 import { undoAction } from "@/app/(admin)/admin/actions";
 
-export type ActivityItem = { id: number; text: string; when: string; undoable: boolean; undone: boolean };
+export type ActivityItem = { id: number; text: string; when: string; undoable: boolean; undone: boolean; day?: string };
 
 export function ActivityList({ items, canUndo }: { items: ActivityItem[]; canUndo: boolean }) {
   const router = useRouter();
@@ -29,8 +29,10 @@ export function ActivityList({ items, canUndo }: { items: ActivityItem[]; canUnd
     <>
       {error && <p role="alert" className="mb-2 rounded-xl bg-cancel-bg px-3 py-2 text-sm text-cancel">{error}</p>}
       <ul className="card divide-y divide-line">
-        {items.map((i) => (
-          <li key={i.id} className="flex items-center gap-3 p-3">
+        {items.map((i, n) => (
+          <li key={i.id} data-item className="p-3">
+            {i.day && i.day !== items[n - 1]?.day && <p className="-mx-3 -mt-3 mb-3 bg-bg-2 px-3 py-1.5 text-xs font-bold text-muted">{i.day}</p>}
+            <div className="flex items-center gap-3">
             <div className="min-w-0 flex-1">
               <p className={`text-sm ${i.undone ? "text-muted line-through" : ""}`}>{i.text}</p>
               <p className="text-xs text-muted">{i.when}</p>
@@ -41,6 +43,7 @@ export function ActivityList({ items, canUndo }: { items: ActivityItem[]; canUnd
                 <Undo2 size={13} /> {busyId === i.id ? "…" : "Undo"}
               </button>
             )}
+            </div>
           </li>
         ))}
       </ul>
