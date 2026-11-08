@@ -106,6 +106,8 @@
   --font-body: var(--font-alexandria), system-ui, sans-serif;
   --font-heading: var(--font-amiri), var(--font-alexandria), serif;
 }
+/* Amiri's ascenders, descenders and harakat need room: tight English leading clips two-line Arabic titles. */
+:root[lang="ar"] :is(h1, h2, h3, .font-heading) { line-height: 1.4; }
 
 @theme inline {
   --color-bg: var(--bg);

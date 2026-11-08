@@ -40,7 +40,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...LIVE_COLLECTIONS.map((c) => ({ url: abs(`/library/${c.slug}`), priority: 0.7, changeFrequency: "monthly" as const })),
     ...[...fileIndex().keys()].map((id) => ({ url: abs(`/library/read/${id}`), priority: 0.4, changeFrequency: "yearly" as const })),
     { url: abs("/discounts"), priority: 0.7, changeFrequency: "monthly" },
-    { url: abs("/search"), priority: 0.4, changeFrequency: "monthly" },
     { url: abs("/ask"), priority: 0.8, changeFrequency: "daily" },
     { url: abs("/more"), priority: 0.3, changeFrequency: "weekly" },
     ...shaykhRows.flatMap((s) => both(`/shaykh/${s.slug}`, 0.6, "weekly")),

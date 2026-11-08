@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Search",
   description: "Search every dars, shaykh, guide, answer, study programme, library item and discount on MESH, in English or Arabic.",
   alternates: { canonical: "/search", languages: { en: "/search", ar: "/ar/search", "x-default": "/search" } },
+  robots: { index: false, follow: true },
 };
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ q?: string }> }) {

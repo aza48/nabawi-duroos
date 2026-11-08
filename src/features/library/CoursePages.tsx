@@ -18,23 +18,27 @@ const FILE_ICON = { pdf: FileText, img: FileImage, video: FileVideo, audio: File
 const KIND_LABEL = { pdf: "PDF", img: "Image", video: "Video", audio: "Audio", doc: "Document", other: "File" } as const;
 
 /** The honest note every course page carries, with a way to add what is missing. */
-export function CurriculumNote({ addHref }: { addHref: string }) {
+export function CurriculumNote({ addHref, locale = "en" }: { addHref: string; locale?: "en" | "ar" }) {
+  const ar = locale === "ar";
   return (
     <div className="rounded-3xl border border-line bg-card p-5 md:flex md:items-center md:justify-between md:gap-6 md:p-6">
       <div>
-        <p className="font-heading text-lg font-bold">Your class may use a different book</p>
+        <p className="font-heading text-lg font-bold">{ar ? "قد تدرس شعبتك كتابًا آخر" : "Your class may use a different book"}</p>
         <p className="mt-1 max-w-2xl text-sm text-muted">
-          Some of these books are older editions, and classes can set different books for the same course. If your class uses a book that is not listed, send us your class timetable and the book your teacher set, and we will add it. Summaries that helped you are welcome too.
+          {ar
+            ? "بعض هذه الكتب طبعات قديمة، وقد تقرر الشعب كتبًا مختلفة للمقرر نفسه. إن كانت شعبتك تدرس كتابًا غير موجود هنا فأرسل لنا جدولك والكتاب الذي حدده الأستاذ وسنضيفه. والملخصات التي أفادتك مرحب بها أيضًا."
+            : "Some of these books are older editions, and classes can set different books for the same course. If your class uses a book that is not listed, send us your class timetable and the book your teacher set, and we will add it. Summaries that helped you are welcome too."}
         </p>
       </div>
       <a href={addHref} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-ink transition hover:brightness-110 md:mt-0">
-        <Send size={15} /> Send a book or summary
+        <Send size={15} /> {ar ? "أرسل كتابًا أو ملخصًا" : "Send a book or summary"}
       </a>
     </div>
   );
 }
 
-export function LibrarySearchForm({ q = "", collection }: { q?: string; collection?: Collection }) {
+export function LibrarySearchForm({ q = "", collection, locale = "en" }: { q?: string; collection?: Collection; locale?: "en" | "ar" }) {
+  const ar = locale === "ar";
   return (
     <form action="/library/search" method="get" role="search" className="flex w-full max-w-2xl items-center gap-2 rounded-full border border-line bg-card p-1.5 ps-4 shadow-sm">
       <Search size={18} className="shrink-0 text-muted" />
@@ -42,11 +46,15 @@ export function LibrarySearchForm({ q = "", collection }: { q?: string; collecti
       <input
         name="q"
         defaultValue={q}
-        placeholder={collection ? `Search ${collection.title} books, in Arabic or English` : "Search every course book, in Arabic or English"}
-        aria-label="Search the course books"
+        placeholder={
+          ar
+            ? collection ? `ابحث في كتب ${collection.titleAr}، بالعربية أو الإنجليزية` : "ابحث في كل كتب المقررات، بالعربية أو الإنجليزية"
+            : collection ? `Search ${collection.title} books, in Arabic or English` : "Search every course book, in Arabic or English"
+        }
+        aria-label={ar ? "ابحث في كتب المقررات" : "Search the course books"}
         className="min-w-0 flex-1 bg-transparent py-2 text-base text-ink caret-primary outline-none placeholder:text-muted"
       />
-      <button type="submit" className="min-h-10 shrink-0 rounded-full bg-primary px-5 text-sm font-semibold text-primary-ink">Search</button>
+      <button type="submit" className="min-h-10 shrink-0 rounded-full bg-primary px-5 text-sm font-semibold text-primary-ink">{ar ? "بحث" : "Search"}</button>
     </form>
   );
 }

@@ -53,7 +53,7 @@ export function LibraryPage({ takhleesHref, locale = "en" }: { takhleesHref: str
   return (
     <>
       <PageBand title={t.title} subtitle={t.sub}>
-        <div className="mt-8"><LibrarySearchForm /></div>
+        <div className="mt-8"><LibrarySearchForm locale={locale} /></div>
         <nav aria-label={t.sections} className="mt-5 flex flex-wrap gap-2">
           {SECTIONS.map((s) => (
             <a key={s.id} href={`#${s.id}`} className="rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
@@ -93,7 +93,7 @@ export function LibraryPage({ takhleesHref, locale = "en" }: { takhleesHref: str
               );
             })}
           </div>
-          <div className="mt-6"><CurriculumNote addHref={takhleesHref} /></div>
+          <div className="mt-6"><CurriculumNote addHref={takhleesHref} locale={locale} /></div>
         </section>
 
         <section id="mahad-extra" className="scroll-mt-24">

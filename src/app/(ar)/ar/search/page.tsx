@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "بحث",
   description: "ابحث في الدروس والمشايخ والأدلة والأسئلة والمعاهد والمكتبة والخصومات على MESH، بالعربية أو الإنجليزية.",
   alternates: { canonical: "/ar/search", languages: { en: "/search", ar: "/ar/search" } },
+  robots: { index: false, follow: true },
 };
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ q?: string }> }) {

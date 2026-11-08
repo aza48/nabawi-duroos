@@ -145,9 +145,10 @@ export function DayArc({ prayers, counts, lessons, locale }: { prayers: Record<P
               aria-expanded={isOpen}
               aria-label={`${t(locale, p)}, ${formatClock(new Date(atIso), locale)}`}
               onPointerDown={(e) => (pointer.current = e.pointerType)}
-              onClick={() => {
-                // A mouse already sees the list on hover, so its click jumps to the duroos; a tap opens the list.
-                if (pointer.current === "mouse" && c.total > 0) {
+              onClick={(e) => {
+                // A mouse already sees the list on hover, so its click jumps to the duroos; a tap or a keyboard
+                // Enter (detail 0, no pointer) opens the list.
+                if (pointer.current === "mouse" && e.detail > 0 && c.total > 0) {
                   document.getElementById(`after-${p}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
                 } else setOpen((o) => (o === p ? null : p));
               }}

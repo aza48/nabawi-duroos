@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const p = PROGRAMS.find((x) => x.slug === slug);
   return p
-    ? { title: metaTitle(p.nameAr), description: metaDescription(p.tagline), alternates: { canonical: `/ar/programs/${p.slug}`, languages: { en: `/programs/${p.slug}`, ar: `/ar/programs/${p.slug}` } } }
+    ? { title: metaTitle(p.nameAr), description: metaDescription(`${p.nameAr}: التفاصيل والرسوم والمدة ولمن يناسب، ضمن دليل MESH لبرامج الدراسة في المدينة المنورة.`), alternates: { canonical: `/ar/programs/${p.slug}`, languages: { en: `/programs/${p.slug}`, ar: `/ar/programs/${p.slug}` } } }
     : {};
 }
 

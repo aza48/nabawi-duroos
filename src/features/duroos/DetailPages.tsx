@@ -343,9 +343,11 @@ export function LivePage({ streams, locale }: { streams: StreamRow[]; locale: Lo
   const yt = streams.find((s) => s.slug === "nabawi-youtube");
   const others = streams.filter((s) => s.slug !== "nabawi-youtube");
   return (
-    <div className="shell max-w-3xl pt-6 md:pt-10">
+    <div className="shell pt-6 md:pt-10">
       <DuroosNav locale={locale} />
       <h1 className="mb-1 text-3xl font-semibold">{t(locale, "livestreams")}</h1>
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start lg:gap-10">
+      <div>
       {yt && (
         <>
           <p className="mb-3 text-sm text-muted">{t(locale, "officialStream")}</p>
@@ -371,7 +373,9 @@ export function LivePage({ streams, locale }: { streams: StreamRow[]; locale: Lo
           </p>
         </>
       )}
-      <section aria-labelledby="sisters" className="mt-7 rounded-2xl border border-line bg-card p-4">
+      </div>
+      <div>
+      <section aria-labelledby="sisters" className="mt-7 rounded-2xl border border-line bg-card p-4 lg:mt-0">
         <h2 id="sisters" className="text-lg font-semibold">{ar ? "للأخوات" : "For sisters"}</h2>
         <p className="mt-1.5 text-sm text-muted">
           {ar
@@ -387,6 +391,8 @@ export function LivePage({ streams, locale }: { streams: StreamRow[]; locale: Lo
             <ExternalLink size={15} className="text-muted" />
           </a>
         ))}
+      </div>
+      </div>
       </div>
     </div>
   );
