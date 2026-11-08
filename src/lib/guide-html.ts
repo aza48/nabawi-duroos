@@ -2,7 +2,7 @@ import { parse } from "node-html-parser";
 
 export type TocItem = { id: string; text: string };
 
-const slugify = (s: string) =>
+export const slugify = (s: string) =>
   s
     .toLowerCase()
     .replace(/&[a-z]+;/g, "")
