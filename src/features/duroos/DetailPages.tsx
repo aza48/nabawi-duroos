@@ -58,21 +58,22 @@ export function ShaykhPage({ shaykh: s, locale }: { shaykh: Shaykh; locale: Loca
               </ul>
             )}
             <h2 className="mb-4 font-heading text-2xl font-bold">{t(locale, "lessons")}</h2>
+            {s.lessons.length === 0 && <p className="text-sm text-muted">{ar ? "لا دروس جارية حاليًا." : "No duroos are running at the moment."}</p>}
             <div className="grid gap-3 md:grid-cols-2">
               {s.lessons.map((l) => (
-                <Link key={l.slug} href={duroosPath(locale, `/lesson/${l.slug}`)} className="group flex flex-col rounded-2xl border border-line bg-card p-4 lift hover:border-primary/50">
-                  {l.audience === "women" && <span className="mb-1.5"><SistersTag locale={locale} /></span>}
-                  <p className="ar-text text-lg leading-snug">{l.bookAr}</p>
-                  {!ar && <p className="mt-0.5 text-sm text-muted group-hover:text-ink">{l.bookEn}</p>}
-                  <p className="mt-auto flex flex-wrap items-center gap-x-2 pt-3 text-xs text-muted">
-                    <span>{daysText(l, locale)}</span>
-                    <span>{t(locale, "after")} {t(locale, l.prayer)}</span>
-                    <span>{ar ? l.masjid.shortAr : l.masjid.shortEn}</span>
-                    {l.bookUrl && <span className="flex items-center gap-1 text-primary"><BookOpen size={12} /> {ar ? "الكتاب" : "Book"}</span>}
-                  </p>
-                </Link>
+                <ShaykhLessonCard key={l.slug} l={l} locale={locale} />
               ))}
             </div>
+            {s.earlier.length > 0 && (
+              <>
+                <h2 className="mt-10 mb-4 font-heading text-xl font-bold text-muted">{t(locale, "earlierDuroos")}</h2>
+                <div className="grid gap-3 opacity-75 md:grid-cols-2">
+                  {s.earlier.map((l) => (
+                    <ShaykhLessonCard key={l.slug} l={l} locale={locale} earlier />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
           <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-3xl border border-line bg-card p-5">
@@ -100,6 +101,39 @@ export function ShaykhPage({ shaykh: s, locale }: { shaykh: Shaykh; locale: Loca
       </div>
     </>
   );
+}
+
+function ShaykhLessonCard({ l, locale, earlier }: { l: Shaykh["lessons"][number]; locale: Locale; earlier?: boolean }) {
+  const ar = locale === "ar";
+  return (
+    <Link href={duroosPath(locale, `/lesson/${l.slug}`)} className="group flex flex-col rounded-2xl border border-line bg-card p-4 lift hover:border-primary/50">
+      {l.audience === "women" && <span className="mb-1.5"><SistersTag locale={locale} /></span>}
+      <p className="ar-text text-lg leading-snug">{l.bookAr}</p>
+      {!ar && <p className="mt-0.5 text-sm text-muted group-hover:text-ink">{l.bookEn}</p>}
+      <p className="mt-auto flex flex-wrap items-center gap-x-2 pt-3 text-xs text-muted">
+        {earlier ? (
+          <span>{lessonStateText(l, locale)}</span>
+        ) : (
+          <>
+            <span>{daysText(l, locale)}</span>
+            <span>{t(locale, "after")} {t(locale, l.prayer)}</span>
+          </>
+        )}
+        <span>{ar ? l.masjid.shortAr : l.masjid.shortEn}</span>
+        {l.bookUrl && <span className="flex items-center gap-1 text-primary"><BookOpen size={12} /> {ar ? "الكتاب" : "Book"}</span>}
+      </p>
+    </Link>
+  );
+}
+
+/** "Paused", "Finished", "Ended on ..." or "Starts on ..." for a dars that is not running today. */
+function lessonStateText(l: Pick<Lesson, "status" | "validFrom" | "validTo">, locale: Locale): string {
+  const today = riyadhDateIso();
+  if (l.status === "paused") return t(locale, "pausedBanner");
+  if (l.status === "finished") return t(locale, "finishedBanner");
+  if (l.validFrom && l.validFrom > today) return `${t(locale, "startsBanner")} ${formatHijri(l.validFrom, locale, { bracket: true })}.`;
+  if (l.validTo && l.validTo < today) return `${t(locale, "endedBanner")} ${formatHijri(l.validTo, locale, { bracket: true })}.`;
+  return t(locale, "finishedBanner");
 }
 
 export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Locale }) {
@@ -138,9 +172,16 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
         <DuroosNav locale={locale} />
         <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
           <div>
+            {!l.current && (
+              <p className="mb-4 rounded-2xl border border-amber/40 bg-amber-bg px-4 py-3 text-sm font-semibold text-amber" role="status">
+                {lessonStateText(l, locale)}
+              </p>
+            )}
             <dl className="divide-y divide-line overflow-hidden rounded-3xl border border-line bg-card">
               <Item icon={<CalendarDays size={18} />} label={t(locale, "days")} value={daysText(l, locale)} />
-              <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={`${t(locale, "adhan")} ${formatClock(adhan, locale)}. ${t(locale, "afterIqamah")}.`} link={{ href: duroosPath(locale, `/schedule?prayer=${l.prayer}`), label: ar ? `كل الدروس بعد ${t(locale, l.prayer)}` : `All duroos after ${t(locale, l.prayer)}`, internal: true }} />
+              {(l.current || l.notYetStarted) && (
+                <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={`${t(locale, "adhan")} ${formatClock(adhan, locale)}. ${t(locale, "afterIqamah")}.`} link={{ href: duroosPath(locale, `/schedule?prayer=${l.prayer}`), label: ar ? `كل الدروس بعد ${t(locale, l.prayer)}` : `All duroos after ${t(locale, l.prayer)}`, internal: true }} />
+              )}
               <Item icon={<MapPin size={18} />} label={t(locale, "location")} value={placeText(ar ? l.masjid.nameAr : l.masjid.nameEn, ar ? l.locationAr : l.locationEn, ar)} link={{ href: mapUrl(l.masjid.nameEn), label: ar ? "افتح في الخرائط" : "Open in Maps" }} />
             </dl>
             <h2 className="mt-10 mb-3 font-heading text-2xl font-bold">{t(locale, "history")}</h2>
@@ -150,10 +191,11 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
               <ul className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-card">
                 {l.history.map((h) => (
                   <li key={h.id} className="p-4 text-sm">
-                    <span className="font-semibold">{t(locale, (h.kind === "cancelled" ? "cancelled" : h.kind === "postponed" ? "postponed" : h.kind === "resumed" ? "resumed" : h.kind === "moved" ? "moved" : "on"))}</span>
+                    <span className="font-semibold">{t(locale, h.kind)}</span>
                     {", "}
                     {formatHijri(h.startsOn, locale, { bracket: true, weekday: true })}
-                    {publicLabel(ar ? h.noteAr : h.noteEn) && <p className="text-muted">{ar ? h.noteAr : h.noteEn}</p>}
+                    {h.endsOn !== h.startsOn && <> {ar ? "إلى" : "to"} {formatHijri(h.endsOn, locale, { bracket: true, weekday: true })}</>}
+                    {publicLabel(ar ? h.noteAr ?? h.noteEn : h.noteEn ?? h.noteAr) && <p className="text-muted">{publicLabel(ar ? h.noteAr ?? h.noteEn : h.noteEn ?? h.noteAr)}</p>}
                     {h.revokedAt && <p className="text-xs text-muted">{ar ? "أُلغي هذا التحديث" : "This change was withdrawn"}</p>}
                   </li>
                 ))}
@@ -201,7 +243,7 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
             )}
             <div className="rounded-3xl border border-line bg-card p-5">
               <AlertsButton topic={`shaykh:${l.shaykh.slug}`} label={ar ? "تنبيه عند إلغاء أو تغيير الدرس" : "Alert me if this dars changes"} locale={locale} />
-              <CalendarButton feed={`lesson-${l.slug}`} locale={locale} />
+              {(l.current || l.notYetStarted) && <CalendarButton feed={`lesson-${l.slug}`} locale={locale} />}
             </div>
           </aside>
         </div>

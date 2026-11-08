@@ -1,5 +1,6 @@
 import { CalculationMethod, Coordinates, PrayerTimes } from "adhan";
 import { addDays, riyadhDateIso } from "./riyadh";
+import { hijriOf } from "./hijri";
 
 export type Prayer = "fajr" | "dhuhr" | "asr" | "maghrib" | "isha";
 export const PRAYERS: Prayer[] = ["fajr", "dhuhr", "asr", "maghrib", "isha"];
@@ -9,13 +10,20 @@ const MADINAH = new Coordinates(24.4672, 39.6111);
 
 const cache = new Map<string, Record<Prayer, Date>>();
 
+/** Umm al-Qura sets Isha at Maghrib plus 90 minutes, and plus 120 minutes in Ramadan. */
+export function ishaIntervalFor(iso: string): number {
+  return hijriOf(iso).month === 9 ? 120 : 90;
+}
+
 /** Adhan times (Umm al-Qura method) in Madinah for a plain ISO date. */
 export function prayerTimes(iso: string): Record<Prayer, Date> {
   const hit = cache.get(iso);
   if (hit) return hit;
   const [y, m, d] = iso.split("-").map(Number);
+  const params = CalculationMethod.UmmAlQura();
+  params.ishaInterval = ishaIntervalFor(iso);
   // adhan reads the calendar fields of the Date in local time.
-  const pt = new PrayerTimes(MADINAH, new Date(y, m - 1, d), CalculationMethod.UmmAlQura());
+  const pt = new PrayerTimes(MADINAH, new Date(y, m - 1, d), params);
   const out = { fajr: pt.fajr, dhuhr: pt.dhuhr, asr: pt.asr, maghrib: pt.maghrib, isha: pt.isha };
   cache.set(iso, out);
   return out;

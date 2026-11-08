@@ -9,6 +9,7 @@ import { HeroSky } from "./HeroSky";
 import { mapUrl } from "@/lib/maps";
 import { NextPrayer } from "./NextPrayer";
 import { WeatherChip } from "./WeatherChip";
+import { LiveNowChip } from "@/features/duroos/Countdown";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
@@ -79,12 +80,11 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
             </h1>
             <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-base text-white/90 md:text-lg">
               <span>{summary}</span>
-              {live > 0 && (
-                <a href="#live" className="inline-flex items-center gap-2 rounded-full bg-live px-3 py-1 text-sm font-semibold text-white">
-                  <span className="live-dot size-2 rounded-full bg-white" />
-                  {ar ? `${n(live)} مباشر الآن` : `${live} live now`}
-                </a>
-              )}
+              <LiveNowChip
+                initial={live}
+                locale={locale}
+                items={today.lessons.map((l) => ({ liveFrom: l.liveFrom, liveUntil: l.liveUntil, off: l.status === "cancelled" || l.status === "postponed" }))}
+              />
             </p>
           </div>
           <NextPrayer prayers={today.prayers} tomorrowFajr={tomorrowFajr} locale={locale} />

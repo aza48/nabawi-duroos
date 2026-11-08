@@ -1,8 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { MapPin, Radio } from "lucide-react";
 import type { TodayLesson } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
-import { Countdown } from "./Countdown";
+import { Countdown, useLivePhase } from "./Countdown";
 import { LiveBadge, SistersTag, StatusTag } from "./StatusTag";
 import { publicLabel } from "./strings";
 import { mapUrl } from "@/lib/maps";
@@ -14,8 +16,10 @@ export function duroosPath(locale: Locale, rest = ""): string {
 export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: Locale }) {
   const ar = locale === "ar";
   const cancelled = l.status === "cancelled" || l.status === "postponed";
-  const live = l.phase === "live" && !cancelled;
-  const done = l.phase === "done" && !live;
+  // The phase is recomputed on the client, so a cached page never shows LIVE after the dars ended.
+  const phase = useLivePhase(l.phase, l);
+  const live = phase === "live" && !cancelled;
+  const done = phase === "done" && !live;
   const liveHref = l.stream?.isLive ? l.stream.liveUrl ?? l.stream.url : null;
   const note = publicLabel(ar ? l.overrideNoteAr ?? l.overrideNoteEn : l.overrideNoteEn ?? l.overrideNoteAr);
   const edge = live ? "before:bg-live" : cancelled ? "before:bg-cancel" : l.status !== "on" ? "before:bg-amber" : "before:bg-primary/70";
@@ -56,7 +60,7 @@ export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: L
         </span>
         {!cancelled && !done && (
           <span className="ms-auto rounded-full bg-bg-2 px-2 py-0.5 font-semibold text-ink tabular">
-            <Countdown adhanAt={l.adhanAt} locale={locale} />
+            <Countdown adhanAt={l.adhanAt} liveFrom={l.liveFrom} liveUntil={l.liveUntil} locale={locale} />
           </span>
         )}
         {liveHref && !live && (

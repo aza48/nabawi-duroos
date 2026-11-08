@@ -5,7 +5,7 @@ import { getSetting } from "@/server/settings";
 import { formatGregorian, formatHijri } from "@/lib/time/hijri";
 import { PRAYERS, prayerTimes, type Prayer } from "@/lib/time/prayer";
 import { riyadhDateIso, type Weekday } from "@/lib/time/riyadh";
-import { lessonPhase, lessonsForDate, weekSchedule, type DayStatus, type OverrideLike } from "./schedule";
+import { isCurrent, lessonPhase, lessonsForDate, liveWindow, weekSchedule, type DayStatus, type OverrideLike } from "./schedule";
 
 export type LessonRow = typeof lessons.$inferSelect;
 export type ShaykhRow = typeof shaykhs.$inferSelect;
@@ -29,6 +29,9 @@ export type TodayLesson = {
   masjid: Pick<MasjidRow, "id" | "nameEn" | "nameAr" | "shortEn" | "shortAr">;
   prayer: Prayer;
   adhanAt: string;
+  /** The dars counts as live between these two instants (ISO). */
+  liveFrom: string;
+  liveUntil: string;
   phase: "done" | "live" | "upcoming";
   status: DayStatus;
   locationEn: string;
@@ -86,14 +89,18 @@ export async function getToday(db: Db, now: Date = new Date()) {
     getSetting<string>(db, "watcher_last_checked_at"),
     db.select().from(lessonLive),
   ]);
-  // A "live broadcast started" notice keeps a dars live for up to 3 hours, the same day.
+  // A "live broadcast started" notice from the same day keeps a dars live for up to 3 hours,
+  // but never past the end of its own live window (the next adhan).
   const liveNow = new Map(
     liveRows
       .filter((r) => now.getTime() - r.startedAt.getTime() < 3 * 3_600_000 && riyadhDateIso(r.startedAt) === date)
       .map((r) => [r.lessonSlug, r.url])
   );
   const times = prayerTimes(date);
-  const lessonsToday: TodayLesson[] = lessonsForDate(date, rows, overrides).map(({ lesson: l, status, override }) => ({
+  const lessonsToday: TodayLesson[] = lessonsForDate(date, rows, overrides).map(({ lesson: l, status, override }) => {
+    const window = liveWindow(date, l.prayer);
+    const noticed = liveNow.has(l.slug) && status !== "cancelled" && now < window.until;
+    return {
     slug: l.slug,
     shaykh: l.shaykh,
     bookEn: l.bookEn,
@@ -101,7 +108,9 @@ export async function getToday(db: Db, now: Date = new Date()) {
     masjid: l.masjid,
     prayer: l.prayer,
     adhanAt: times[l.prayer].toISOString(),
-    phase: liveNow.has(l.slug) && status !== "cancelled" ? "live" : lessonPhase(now, date, l.prayer),
+    liveFrom: (noticed ? now : window.from).toISOString(),
+    liveUntil: window.until.toISOString(),
+    phase: noticed ? "live" : lessonPhase(now, date, l.prayer),
     status,
     locationEn: l.locationEn,
     locationAr: l.locationAr,
@@ -111,7 +120,8 @@ export async function getToday(db: Db, now: Date = new Date()) {
       ? { url: liveNow.get(l.slug)!, kind: "web" as const, isLive: true, liveUrl: liveNow.get(l.slug)! }
       : pickStream(allStreams, l),
     audience: l.audience,
-  }));
+    };
+  });
   return {
     date,
     hijri: { en: formatHijri(date, "en", { weekday: true }), ar: formatHijri(date, "ar", { weekday: true }) },
@@ -143,7 +153,10 @@ export async function getLesson(db: Db, slug: string) {
   const channels = allStreams
     .filter((x) => x.shaykhId === l.shaykhId && x.url !== stream?.url)
     .map((x) => ({ url: x.url, kind: x.kind, labelEn: x.labelEn, labelAr: x.labelAr }));
-  return { ...l, history, stream, channels };
+  // Paused, finished and out-of-period lessons are shown as such, not as running.
+  const today = riyadhDateIso();
+  const current = isCurrent(l, today);
+  return { ...l, history, stream, channels, current, notYetStarted: current ? false : Boolean(l.validFrom && l.validFrom > today) };
 }
 
 export async function listShaykhs(db: Db) {
@@ -153,9 +166,11 @@ export async function listShaykhs(db: Db) {
 export async function getShaykh(db: Db, slug: string) {
   const [s] = await db.select().from(shaykhs).where(eq(shaykhs.slug, slug));
   if (!s) return null;
+  const today = riyadhDateIso();
   const rows = (await scheduleRows(db)).filter((r) => r.shaykhId === s.id);
   const channels = await db.select().from(streams).where(eq(streams.shaykhId, s.id));
-  return { ...s, lessons: rows, channels };
+  // Current duroos first; paused, finished and out-of-period ones are listed under "Earlier duroos".
+  return { ...s, lessons: rows.filter((r) => isCurrent(r, today)), earlier: rows.filter((r) => !isCurrent(r, today)), channels };
 }
 
 /** Undated announcements stay in the current feed this long. */

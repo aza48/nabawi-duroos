@@ -59,3 +59,12 @@ describe("prayer times (Madinah, Umm al-Qura)", () => {
     expect(riyadhDateIso(n.at)).toBe("2026-11-08");
   });
 });
+
+describe("Ramadan Isha", () => {
+  it("puts Isha 120 minutes after Maghrib in Ramadan 1448 and 90 minutes otherwise", () => {
+    const ramadan = prayerTimes("2027-02-17");
+    expect((ramadan.isha.getTime() - ramadan.maghrib.getTime()) / 60_000).toBe(120);
+    const shaban = prayerTimes("2027-02-01");
+    expect((shaban.isha.getTime() - shaban.maghrib.getTime()) / 60_000).toBe(90);
+  });
+});
