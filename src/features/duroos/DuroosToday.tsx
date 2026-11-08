@@ -1,7 +1,7 @@
 import type { getToday } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { TodayHero } from "@/features/home/TodayHero";
-import { DuroosByPrayer } from "@/features/home/DuroosByPrayer";
+import { DuroosCards } from "@/features/home/DuroosCards";
 import { DuroosNav } from "./DuroosNav";
 import { t } from "./strings";
 
@@ -14,7 +14,7 @@ export function DuroosToday({ today, locale }: { today: Today; locale: Locale })
       <div className="shell pt-6 md:pt-8" id="live">
         <DuroosNav locale={locale} />
         <div className="mt-4 max-w-5xl">
-          <DuroosByPrayer today={today} locale={locale} />
+          <DuroosCards today={today} locale={locale} />
         </div>
       </div>
     </>

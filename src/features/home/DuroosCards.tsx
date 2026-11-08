@@ -27,7 +27,7 @@ export function DuroosCards({ today, locale }: { today: Today; locale: Locale })
   const upcomingTimes = today.lessons.filter((l) => l.phase === "upcoming" && l.timeKnown && notCancelled(l.status)).map((l) => l.adhanAt);
   const nextTime = upcomingTimes.length ? upcomingTimes.reduce((a, b) => (a < b ? a : b)) : null;
 
-  const count = (n: number) => (ar ? `${toArabicDigits(n)} دروس` : `${n} ${n === 1 ? "dars" : "duroos"}`);
+  const count = (n: number) => (ar ? (n === 1 ? "درس واحد" : n === 2 ? "درسان" : `${toArabicDigits(n)} دروس`) : `${n} ${n === 1 ? "dars" : "duroos"}`);
 
   return (
     <div className="space-y-4">
