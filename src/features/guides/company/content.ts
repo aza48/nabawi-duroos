@@ -4,7 +4,7 @@
  * Checked against the 2025 Investment Law (registration replaced the MISA licence,
  * in force February 2025), the Commercial Register Law (in force April 2025), the
  * Chambers of Commerce Law (3-year fee exemption for new members), ZATCA tax rules,
- * the HCCH apostille status table and IRS figures for 2026. Day-to-day fees are what
+ * the HCCH apostille status table, residence-based tax rules in Western countries and IRS figures for 2026. Day-to-day fees are what
  * founders in Madinah paid in 2026; the page tells readers to confirm on each portal.
  */
 
@@ -79,7 +79,7 @@ export const TIMELINE: Stage[] = [
     when: "Before day 0",
     title: "Get your documents certified and translated",
     time: "1 to 4 weeks",
-    body: "Notarize your home documents, get them apostilled (the international certificate that makes them valid abroad), then have them translated into Arabic by a certified translator in Saudi Arabia. Budget about 1,500 SAR.",
+    body: "Get your home documents certified, then apostilled (the international certificate that makes them valid abroad), then translated into Arabic by a certified translator in Saudi Arabia. Budget about 1,500 SAR.",
     tip: "This is the step people forget. Start it the day you decide.",
   },
   {
@@ -105,7 +105,7 @@ export const TIMELINE: Stage[] = [
     when: "Week 3 to 4",
     title: "Commercial Registration (CR)",
     time: "3 to 5 days",
-    body: "File your LLC through the Saudi Business Center. The CR is your official company registration, like a certificate of formation. Saudi articles of association are generated for you. Your files with GOSI, Qiwa and ZATCA open within about an hour. Order the official CR extract (100 SAR) the same day.",
+    body: "File your LLC through the Saudi Business Center. The CR is your official company registration, like a certificate of incorporation back home. Saudi articles of association are generated for you. Your files with GOSI, Qiwa and ZATCA open within about an hour. Order the official CR extract (100 SAR) the same day.",
   },
   {
     when: "Week 5 to 7",
@@ -182,28 +182,32 @@ export const STARTS: Start[] = [
 ];
 
 export const DOCUMENTS = [
-  { id: "cr", title: "Parent company registration", body: "Your home company's registration certificate (in the US, the certificate of formation or articles of organization, plus a recent certificate of good standing). No company yet? A simple LLC or limited company at home can be your parent." },
+  { id: "cr", title: "Parent company registration", body: "Your home company's certificate of incorporation (called a certificate of formation or articles of organization for a US LLC), plus a recent certificate of good standing from the company registry. No company yet? A simple limited company or LLC at home can be your parent." },
   { id: "fin", title: "Latest financial statements", body: "Last year's accounts. For a young company, an accountant's letter is often accepted." },
-  { id: "aoa", title: "Parent articles of association", body: "The founding rules of your company (in a US LLC, the operating agreement). Names must match the registration exactly." },
+  { id: "aoa", title: "Parent articles of association", body: "Your company's founding rules. Most countries call them articles of association or bylaws; for a US LLC it is the operating agreement. Names must match the registration exactly." },
   { id: "res", title: "Board or member resolution", body: "A signed decision by the company's owners approving the Saudi company and naming you General Manager." },
   { id: "gm", title: "Your passport and CV", body: "As General Manager. The Arabic spelling of your name must match across every document and visa." },
   { id: "poa", title: "Power of attorney (only if needed)", body: "Only if someone in Saudi Arabia will sign for you. Certified like the rest." },
   { id: "ar", title: "Arabic company name, checked", body: "Pay a Saudi lawyer (about 500 to 1,500 SAR) to check the Arabic name. The Arabic version is the legally binding one." },
 ];
 
+export const APOSTILLE_RULE =
+  "Every country in the Apostille Convention has an official issuer, usually the foreign ministry or a state, provincial or regional office. Documents issued by a government office (company registry records, birth and marriage certificates) can usually be apostilled as they are. Private documents (board resolutions, copies, your CV) need a notary or lawyer to certify them first.";
+
+/** Where a country differs from the general rule, or where readers most often ask. */
 export const APOSTILLE = [
-  { who: "Americans", how: "Documents issued by a state (company filings, birth and marriage certificates) are apostilled by that state's Secretary of State. Federal documents (FBI background checks, IRS letters) go to the US Department of State, Office of Authentications." },
-  { who: "UK", how: "The Legalisation Office of the Foreign, Commonwealth and Development Office (FCDO) issues apostilles, online or by post." },
-  { who: "Canada", how: "Canada joined the Apostille Convention in January 2024. Global Affairs Canada or your province's authority issues them." },
-  { who: "Australia", how: "The Department of Foreign Affairs and Trade (DFAT) issues apostilles." },
+  { who: "United States", how: "Two issuers: the Secretary of State of the state that issued the document (company filings, birth and marriage certificates), or the US Department of State for federal documents such as FBI background checks." },
+  { who: "United Kingdom", how: "The Legalisation Office of the Foreign, Commonwealth and Development Office (FCDO). Company documents usually need a solicitor or notary to certify them first." },
+  { who: "Canada", how: "Only a member since January 2024, so older guides still describe embassy legalisation. Global Affairs Canada issues apostilles, and some provinces issue their own." },
+  { who: "Europe, Australia, New Zealand", how: "Members. The foreign ministry, or a court or regional office in some European countries, issues them." },
 ];
 
 export const AFTER_CR = [
-  { name: "GOSI", what: "Social insurance", body: "Like Social Security contributions in the US. Opens by itself within about an hour of your CR. Log in to activate it. Needed before you hire anyone.", auto: true },
+  { name: "GOSI", what: "Social insurance", body: "Social insurance on salaries, like Social Security or National Insurance back home. Opens by itself within about an hour of your CR. Log in to activate it. Needed before you hire anyone.", auto: true },
   { name: "Qiwa", what: "Labor ministry portal", body: "Work visas, employment contracts and your Saudization rating (Nitaqat). Opens by itself.", auto: true },
-  { name: "ZATCA", what: "Tax authority", body: "Saudi Arabia's IRS: corporate tax, zakat and VAT (sales tax). Opens by itself. Log in and confirm your details.", auto: true },
+  { name: "ZATCA", what: "Tax authority", body: "The Saudi tax authority (like the IRS, HMRC or CRA): corporate tax, zakat and VAT (sales tax). Opens by itself. Log in and confirm your details.", auto: true },
   { name: "National Address", what: "Saudi Post (SPL)", body: "Your officially registered address. Free, and a home address is fine. Banks and government services require it." },
-  { name: "Chamber of Commerce", what: "Business association", body: "In the US a chamber is a voluntary club. In Saudi Arabia, membership comes with your CR, and the Chamber certifies company documents for you. New companies pay no fee for 3 years." },
+  { name: "Chamber of Commerce", what: "Business association", body: "In most Western countries a chamber of commerce is a voluntary business club (Germany and France are exceptions, where membership is compulsory). In Saudi Arabia, membership comes with your CR, and the Chamber certifies company documents for you. New companies pay no fee for 3 years." },
   { name: "Annual CR confirmation", what: "Ministry of Commerce", body: "Once a year, confirm your company's details online. Miss it by 90 days and the CR is suspended." },
   { name: "Muqeem", what: "Iqama management", body: "Renewals, adding family members, job-title changes and physical iqama prints." },
   { name: "Mudad", what: "Payroll system", body: "Only once you have staff on payroll. It also records your own salary, which matters for family visas." },
@@ -242,6 +246,14 @@ export const TAX = [
   { title: "No personal income tax", body: "Saudi Arabia does not tax your salary. Your home country might." },
 ];
 
+export const HOME_TAX = [
+  { title: "Most countries tax where you live, not your passport", body: "The UK, Canada, Australia, Ireland and most of Europe tax you based on residence. Once you have properly left and become non-resident, your Saudi salary is usually not taxed at home. You still owe tax on income from back home, such as rent." },
+  { title: "Leaving has to be done properly", body: "Each country has its own residence test (the UK's statutory residence test, for example). Keeping a home, family or long visits back home can leave you resident. Tell your tax office you have moved." },
+  { title: "Some countries tax you on the way out", body: "Canada, for example, can tax gains on certain assets on the day you leave (departure tax). Check before you move, not after." },
+  { title: "Owning a company abroad while still resident", body: "If you remain tax-resident at home, rules on controlled foreign companies can tax your Saudi company's profits there. This applies in the UK, Canada, Australia and across the EU." },
+];
+
+/** The big exception: the US taxes its citizens wherever they live. */
 export const US_TAX = [
   { title: "You still file a US return", body: "US citizens are taxed on worldwide income wherever they live. There is no income tax treaty between the US and Saudi Arabia." },
   { title: "Foreign earned income exclusion", body: "Up to $132,900 of salary earned abroad can be excluded for 2026 (Form 2555), if you meet the physical presence or residence test. It covers salary, not company profits or dividends." },
@@ -270,7 +282,7 @@ export const MISTAKES = [
   { title: "Missing the yearly confirmations", body: "Confirm your CR every year and keep your MISA registration updated. A suspended CR can freeze your bank account." },
   { title: "Leaving VAT too late", body: "Register as soon as you expect to pass 375,000 SAR in a year. Late registration costs 10,000 SAR, and back-dated VAT is painful." },
   { title: "English-only contracts", body: "Saudi courts work from the Arabic text. Negotiate the Arabic version, not a translation of the English." },
-  { title: "Forgetting your home country's tax rules", body: "Americans especially: FBAR and Form 5471 apply from the year you open the company." },
+  { title: "Forgetting your home country's tax rules", body: "Tell your home tax office you have moved, and check its rules on owning a company abroad. US citizens: FBAR and Form 5471 apply from the year you open the company." },
 ];
 
 export const PLAN = [
@@ -307,19 +319,19 @@ export const COMPARE = [
 
 export const GLOSSARY = [
   { term: "MISA", def: "Ministry of Investment. Foreign owners register with it before setting up a company. Portal: investsaudi.sa." },
-  { term: "CR (Commercial Registration)", def: "Your company's official registration, like a certificate of formation. السجل التجاري." },
+  { term: "CR (Commercial Registration)", def: "Your company's official registration, like a certificate of incorporation. السجل التجاري." },
   { term: "LLC", def: "Limited liability company. The usual structure; one owner is enough." },
-  { term: "Articles of association", def: "A company's founding rules. In a US LLC, the operating agreement plays this role." },
+  { term: "Articles of association", def: "A company's founding rules. Some countries call them bylaws; for a US LLC it is the operating agreement." },
   { term: "General Manager", def: "The person legally in charge of the company, usually you. Your iqama comes through this role." },
   { term: "Iqama", def: "Saudi residence permit. It is tied to one sponsor: an employer, the University, or your own company." },
   { term: "Apostille", def: "An international certificate that makes a document from one country valid in another. Saudi Arabia has accepted them since December 2022." },
-  { term: "Notarize", def: "Have a notary public confirm your signature or certify a copy. The first step before an apostille." },
+  { term: "Notarize", def: "Have a notary (or in some countries a lawyer or solicitor) confirm your signature or certify a copy. Needed for private documents before an apostille." },
   { term: "Saudi Business Center", def: "Government one-stop shop where you reserve your name and file the CR. business.sa." },
-  { term: "Chamber of Commerce", def: "The local business association. Membership comes with your CR in Saudi Arabia, and it certifies company documents." },
-  { term: "GOSI", def: "Social insurance contributions on salaries, like Social Security." },
+  { term: "Chamber of Commerce", def: "The local business association. Voluntary in most Western countries, but in Saudi Arabia membership comes with your CR, and it certifies company documents." },
+  { term: "GOSI", def: "Social insurance contributions on salaries, like Social Security or National Insurance." },
   { term: "Qiwa", def: "Labor ministry portal for work visas, contracts and Nitaqat." },
   { term: "Nitaqat", def: "Saudization rating: a color band based on how many Saudis you employ. It decides which visa and transfer services you can use." },
-  { term: "ZATCA", def: "Zakat, Tax and Customs Authority. Saudi Arabia's IRS." },
+  { term: "ZATCA", def: "Zakat, Tax and Customs Authority. The Saudi equivalent of the IRS, HMRC or CRA." },
   { term: "Zakat", def: "2.5% levy on the Saudi or GCC-owned share of a company, in place of income tax." },
   { term: "VAT", def: "Value added tax, a 15% sales tax collected at each step of a sale." },
   { term: "Muqeem", def: "Platform companies use to manage their foreigners' iqamas." },
@@ -341,6 +353,7 @@ export const LINKS = [
   { label: "Mudad", href: "https://mudad.com.sa" },
   { label: "Balady", href: "https://balady.gov.sa" },
   { label: "IRS: US citizens abroad", href: "https://www.irs.gov/individuals/international-taxpayers/us-citizens-and-resident-aliens-abroad" },
+  { label: "Apostille Convention members (HCCH)", href: "https://www.hcch.net/en/instruments/conventions/status-table/?cid=41" },
   { label: "US apostilles (USA.gov)", href: "https://www.usa.gov/authenticate-us-document" },
 ];
 

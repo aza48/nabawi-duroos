@@ -6,7 +6,7 @@ import {
   FileText, Flag, Globe2, Landmark, Lightbulb, ListChecks, Newspaper, Plane, Receipt, RotateCcw, Scale, Sparkles, Star, Users,
 } from "lucide-react";
 import {
-  AFTER_CR, APOSTILLE, BANK_DOCS, BANKS, CHANGES_2025, CHECKED, COMPARE, DOCUMENTS, FAMILY, GLOSSARY, LINKS, MISTAKES,
+  AFTER_CR, APOSTILLE, APOSTILLE_RULE, BANK_DOCS, BANKS, CHANGES_2025, CHECKED, COMPARE, DOCUMENTS, FAMILY, GLOSSARY, HOME_TAX, LINKS, MISTAKES,
   PATHS, PLAN, PREMIUM, SETUP_COSTS, STARTS, TAX, TIMELINE, TRANSFER_FEES, US_TAX, YEARLY,
 } from "./content";
 
@@ -20,7 +20,7 @@ const SECTIONS = [
   { id: "after-cr", label: "After the CR" },
   { id: "family", label: "Iqama and family" },
   { id: "tax", label: "Taxes" },
-  { id: "us-tax", label: "If you're American" },
+  { id: "us-tax", label: "Taxes back home" },
   { id: "banks", label: "Bank account" },
   { id: "mistakes", label: "Mistakes to avoid" },
   { id: "uae", label: "Saudi or UAE" },
@@ -361,18 +361,19 @@ function Documents() {
     <section className="space-y-5">
       <H2 id="documents" icon={FileText} kicker="Before day 0" title="Documents to prepare first" sub="Tick them off as you go. Your progress is saved on this phone." />
       <Tip>
-        <b>The order for every document:</b> notarize it at home, get an apostille (an international certificate that makes it valid abroad), then have it translated into Arabic by a certified translator in Saudi Arabia. Saudi Arabia has accepted apostilles since December 2022, so you no longer need the Saudi embassy step if your country is part of the Apostille Convention. Some agencies and older websites still say otherwise.
+        <b>The order for every document:</b> certify it at home if needed, get an apostille (an international certificate that makes it valid abroad), then have it translated into Arabic by a certified translator in Saudi Arabia. Saudi Arabia has accepted apostilles since December 2022, so you no longer need the Saudi embassy step if your country is part of the Apostille Convention. Some agencies and older websites still say otherwise.
       </Tip>
       <Checklist storageKey="mesh-company-docs" items={DOCUMENTS} />
       <details className="group rounded-2xl border border-line bg-card">
         <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 font-semibold [&::-webkit-details-marker]:hidden">
           Where to get an apostille <ChevronDown size={18} className="text-muted transition group-open:rotate-180" />
         </summary>
+        <p className="border-t border-line p-4 text-sm leading-relaxed">{APOSTILLE_RULE}</p>
         <ul className="divide-y divide-line border-t border-line text-sm">
           {APOSTILLE.map((x) => (
             <li key={x.who} className="p-4"><b>{x.who}</b><p className="mt-1 leading-relaxed text-muted">{x.how}</p></li>
           ))}
-          <li className="p-4 text-muted">Other countries: search the Hague Conference (HCCH) list to see whether yours is a member. If it is not, documents go through the Saudi embassy instead, which adds 2 to 4 weeks.</li>
+          <li className="p-4 text-muted">Not sure about your country? Check the Hague Conference (HCCH) members list, linked at the bottom of this page. If your country is not a member, documents go through the Saudi embassy instead, which adds 2 to 4 weeks.</li>
         </ul>
       </details>
     </section>
@@ -500,17 +501,29 @@ function Taxes() {
 function UsTax() {
   return (
     <section className="space-y-5">
-      <H2 id="us-tax" icon={Flag} kicker="For US citizens" title="Your US filings" sub="Owning a Saudi company adds forms to your US tax return from the first year. Missing them is expensive." />
-      <ol className="space-y-2">
-        {US_TAX.map((t, i) => (
-          <li key={t.title} className="flex gap-3 rounded-2xl border border-line bg-card p-4">
-            <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary text-sm font-bold text-primary-ink">{i + 1}</span>
-            <span><b className="block">{t.title}</b><span className="mt-1 block text-sm leading-relaxed text-muted">{t.body}</span></span>
-          </li>
+      <H2 id="us-tax" icon={Flag} kicker="Your home country" title="Taxes back home" sub="Saudi Arabia does not tax your salary, but your home country might. Sort this out before you move, not after." />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {HOME_TAX.map((t) => (
+          <div key={t.title} className="rounded-2xl border border-line bg-card p-4">
+            <p className="font-semibold">{t.title}</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted">{t.body}</p>
+          </div>
         ))}
-      </ol>
+      </div>
+      <div className="rounded-3xl border border-amber/40 bg-amber-bg p-5 md:p-6">
+        <p className="font-heading text-xl font-bold">The exception: US citizens</p>
+        <p className="mt-1 text-sm text-muted">The US taxes its citizens wherever they live, so moving does not end your US filings. Owning a Saudi company adds forms from the first year, and missing them is expensive.</p>
+        <ol className="mt-4 space-y-2">
+          {US_TAX.map((t, i) => (
+            <li key={t.title} className="flex gap-3 rounded-2xl bg-card p-4">
+              <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary text-sm font-bold text-primary-ink">{i + 1}</span>
+              <span><b className="block">{t.title}</b><span className="mt-1 block text-sm leading-relaxed text-muted">{t.body}</span></span>
+            </li>
+          ))}
+        </ol>
+      </div>
       <Tip>
-        Speak to a US tax preparer who works with Americans abroad <b>before</b> you set up. How the company is classified changes which forms you file and how its profits are taxed. Other nationalities: check your own country's rules on owning a company abroad.
+        Whatever your passport, speak to a tax adviser who works with people living abroad <b>before</b> you set up. How you leave, and how the company is set up, decides what you owe back home.
       </Tip>
     </section>
   );
