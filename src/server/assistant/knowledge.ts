@@ -41,8 +41,26 @@ function textOf(el: HTMLElement): string {
   if (tag === "li") return `• ${squash(el.text)}`;
   if (tag === "tr") return el.querySelectorAll("th,td").map((c) => squash(c.text)).filter(Boolean).join(" | ");
   if (tag === "ul" || tag === "ol") return el.querySelectorAll(":scope > li").map((li, i) => `${tag === "ol" ? `${i + 1}.` : "•"} ${squash(li.text)}`).join("\n");
-  if (tag === "table") return el.querySelectorAll("tr").map((r) => textOf(r)).join("\n");
+  if (tag === "table") return tableText(el);
   return squash(el.text);
+}
+
+/**
+ * A table as readable lines: each row becomes "• first cell: header two value two; header three
+ * value three", so a passage about bus and train fares still reads as sentences.
+ */
+function tableText(table: HTMLElement): string {
+  const rows = table.querySelectorAll("tr").map((r) => r.querySelectorAll("th,td").map((c) => squash(c.text)));
+  const headed = table.querySelectorAll("tr")[0]?.querySelectorAll("th").length > 0;
+  const head = headed ? rows[0] : [];
+  return rows
+    .slice(headed ? 1 : 0)
+    .filter((r) => r.some(Boolean))
+    .map((r) => {
+      const rest = r.slice(1).map((c, i) => (head[i + 1] ? `${head[i + 1]} ${c}` : c)).filter((x) => x.trim());
+      return `• ${r[0]}${rest.length ? `: ${rest.join("; ")}` : ""}`;
+    })
+    .join("\n");
 }
 
 /** Splits a long section into windows of whole blocks, each under MAX characters where possible. */

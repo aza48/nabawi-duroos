@@ -46,6 +46,12 @@ export function extract(question: string, p: Chunk, max = 520): string {
     }
     if (len >= max * 0.8) break;
   }
+  // A heading line ("Start of final exams:") means nothing without what follows it.
+  for (const i of [...picked]) if (/:$/.test(all[i]) && !(all[i + 1] && picked.has(i + 1))) {
+    if (all[i + 1] && len + all[i + 1].length <= max * 1.2) picked.add(i + 1);
+    else picked.delete(i);
+  }
+  if (!picked.size) picked.add(ranked[0].i);
   // A list line that opens the answer needs the sentence that introduces it.
   const first = Math.min(...picked);
   if (/^(•|\d+\.)\s/.test(all[first]) && first > 0 && !/^(•|\d+\.)\s/.test(all[first - 1])) picked.add(first - 1);
