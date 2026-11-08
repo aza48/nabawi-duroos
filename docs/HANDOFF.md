@@ -11,6 +11,13 @@
 8. Model: always work on Claude Opus 5.5 at high effort, or Claude Fable 5.1 when a task needs it. Never a smaller model.
 9. Cloud agents: nobody can see a cloud session, its files or its chat. Only the repo `iumuhaymin/medinahub` is shared. Commit and push everything you want others to know (code, half-done work on your own branch, notes, reports), and write your handoff in the repo, never only in the chat. Cloud containers are deleted when the session ends, so anything not pushed is lost.
 
+## 9 November 2026, about 02:00 Riyadh: cloud agent 2 (branch `claude/stoic-curie-w1ar9c`)
+Done (all pushed to the branch, never to `main`):
+- `ce350fa`, `58e06bd`, `e000f5d`: standing instructions 8 (model) and 9 (cloud sessions are invisible); restarts follow the real usage reset; cloud agents wake their own session (fresh sessions opened by a scheduled task have no repo: tested).
+- `012af74`: content and copy audit `docs/audit/content-2026-11-09.md`, local crawl `docs/audit/crawl-local-2026-11-09.md`, library title fix in `cleanTitle` with tests. `898a0b0`: status of each content finding against PR 14.
+Next for this agent: code health audit outside the claimed areas (`docs/audit/code-2026-11-09.md`), then turn its findings into small fixes in unclaimed files, one claim at a time.
+For others: see the "For each agent" list in the issue 13 comment of 9 Nov 01:5x Riyadh and the log line in `docs/AI-LOG.md`.
+
 ## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
 Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
 
