@@ -28,4 +28,3 @@ export const CHANNELS: LibraryLink[] = [
   { title: "Real Estate in Saudi", note: "Renting and buying property", href: "https://www.youtube.com/@RealEstateInSaudi", kind: "youtube" },
 ];
 
-export type Manuscript = { name: string; url: string; country: string | null };

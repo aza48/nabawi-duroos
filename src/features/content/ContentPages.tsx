@@ -268,7 +268,7 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
   const tiles = ar
     ? [
         { href: "/ar/programs", label: "الدراسة في المدينة", note: "معاهد العربية والدرجات الجامعية ومراكز الأخوات", icon: GraduationCap },
-        { href: "/ar/library", label: "المكتبة", note: "مقررات الجامعة وكتب المعهد والمخطوطات", icon: Library },
+        { href: "/ar/library", label: "المكتبة", note: "مقررات الجامعة وكتب المعهد", icon: Library },
         { href: "/ar/discounts", label: "خصومات الطلاب", note: "عيادات ومدارس ونوادٍ وتأجير سيارات وغيرها", icon: BadgePercent },
         { href: "/ar/duroos/schedule", label: "جدول الأسبوع", note: "كل الدروس في كل المساجد في جدول واحد", icon: CalendarDays },
         { href: "/ar/duroos/live", label: "البث المباشر", note: "تابع دروس الحرم مباشرة", icon: Radio },
@@ -277,7 +277,7 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
       ]
     : [
         { href: "/programs", label: "Study in Madinah", note: "Arabic institutes, degrees and sisters' marakiz", icon: GraduationCap },
-        { href: "/library", label: "Jamiah library", note: "Muqarrarat, Ma'had books, manuscripts", icon: Library },
+        { href: "/library", label: "Jamiah library", note: "Muqarrarat and Ma'had books", icon: Library },
         { href: "/discounts", label: "Student discounts", note: "Clinics, schools, gyms, car rental and more", icon: BadgePercent },
         { href: "/duroos/schedule", label: "Weekly schedule", note: "Every dars, every masjid, in one grid", icon: CalendarDays },
         { href: "/duroos/live", label: "Live streams", note: "Watch the Haram duroos live", icon: Radio },

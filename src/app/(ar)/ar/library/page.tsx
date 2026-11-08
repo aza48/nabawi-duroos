@@ -6,7 +6,7 @@ import { LibraryPage } from "@/features/library/LibraryPage";
 export const revalidate = 300;
 export const metadata: Metadata = {
   title: "المكتبة",
-  description: "مقررات الجامعة الإسلامية لكل كلية، وكتب المعهد، والروابط الرسمية، وأكثر من ٣٠٠ مكتبة مخطوطات.",
+  description: "مقررات الجامعة الإسلامية لكل كلية، وكتب المعهد، والروابط الرسمية.",
   alternates: { canonical: "/ar/library", languages: { en: "/library", ar: "/ar/library" } },
 };
 
