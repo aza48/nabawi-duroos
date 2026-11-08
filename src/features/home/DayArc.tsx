@@ -57,6 +57,20 @@ const popSide = (left: number) => (left < 22 ? "start-pin" : left > 78 ? "end-pi
 
 type Key = Prayer | "now";
 
+/**
+ * A popover opens above its marker. This caps its height to the room left between the marker and the
+ * top of the hero, so a long list scrolls inside instead of being cut off on any screen size.
+ */
+function fitAbove(gap: number) {
+  return (el: HTMLDivElement | null) => {
+    const hero = el?.closest("section");
+    const anchor = el?.parentElement;
+    if (!el || !hero || !anchor) return;
+    const room = anchor.getBoundingClientRect().top - hero.getBoundingClientRect().top - gap - 8;
+    el.style.maxHeight = `${Math.max(120, room)}px`;
+  };
+}
+
 export function DayArc({ prayers, counts, lessons, locale }: { prayers: Record<Prayer, string>; counts: ArcCounts; lessons: ArcLesson[]; locale: Locale }) {
   const ar = locale === "ar";
   const now = useNow(15_000);
@@ -160,7 +174,7 @@ export function DayArc({ prayers, counts, lessons, locale }: { prayers: Record<P
             </button>
 
             {isOpen && (
-              <div className={`pop arc-pop ${popSide(left)} ${above ? "top-full mt-2" : "bottom-full mb-2"}`} role="dialog" aria-label={`${t(locale, "after")} ${t(locale, p)}`}>
+              <div ref={fitAbove(8)} className={`pop arc-pop ${popSide(left)} bottom-full mb-2 overflow-y-auto overscroll-contain`} role="dialog" aria-label={`${t(locale, "after")} ${t(locale, p)}`}>
                 <p className="flex items-baseline gap-2 border-b border-line pb-2">
                   <span className="font-heading text-base font-bold">
                     {t(locale, "after")} {t(locale, p)}
@@ -221,7 +235,7 @@ export function DayArc({ prayers, counts, lessons, locale }: { prayers: Record<P
             {up ? <span className="sun-disc" /> : <MoonDisc phase={phase} size={34} className="moon-glow" />}
           </button>
           {open === "now" && (
-            <div className={`pop arc-pop ${popSide(xPct(sun.x, ar))} bottom-full mb-6 w-60`} role="dialog" aria-label={ar ? "الآن" : "Now"}>
+            <div ref={fitAbove(24)} className={`pop arc-pop ${popSide(xPct(sun.x, ar))} bottom-full mb-6 w-60 overflow-y-auto overscroll-contain`} role="dialog" aria-label={ar ? "الآن" : "Now"}>
               <p className="flex items-baseline justify-between border-b border-line pb-2">
                 <span className="font-heading text-base font-bold">{ar ? "الآن في المدينة" : "Now in Madinah"}</span>
                 <span className="text-sm text-muted tabular" dir="ltr">
