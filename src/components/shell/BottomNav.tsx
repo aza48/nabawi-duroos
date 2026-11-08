@@ -17,9 +17,9 @@ export function navItems(locale: Locale) {
       mobile: true,
       match: (p: string) => p.startsWith("/duroos") || p.startsWith("/ar/duroos"),
     },
-    { href: "/programs", label: ar ? "الدراسة" : "Study", icon: GraduationCap, mobile: true, match: (p: string) => p.startsWith("/programs") },
+    { href: "/library", label: ar ? "المكتبة" : "Library", icon: Library, mobile: true, match: (p: string) => p.startsWith("/library") },
     { href: "/guides", label: ar ? "الأدلة" : "Guides", icon: BookOpen, mobile: true, match: (p: string) => p.startsWith("/guides") },
-    { href: "/library", label: ar ? "المكتبة" : "Library", icon: Library, mobile: false, match: (p: string) => p.startsWith("/library") },
+    { href: "/programs", label: ar ? "الدراسة" : "Study", icon: GraduationCap, mobile: false, match: (p: string) => p.startsWith("/programs") },
     { href: "/ask", label: ar ? "الأسئلة" : "Ask", icon: MessageCircleQuestion, mobile: false, match: (p: string) => p.startsWith("/ask") },
     { href: "/more", label: ar ? "المزيد" : "More", icon: LayoutGrid, mobile: true, match: (p: string) => p.startsWith("/more") },
   ];
