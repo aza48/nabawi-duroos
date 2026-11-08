@@ -1,11 +1,11 @@
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq, isNull } from "drizzle-orm";
 import type { PgTable } from "drizzle-orm/pg-core";
 import type { Db } from "@/server/db/client";
-import { announcements, auditLog, faqs, guides, lessonOverrides, lessons, settings, shaykhs } from "@/server/db/schema";
+import { announcements, auditLog, faqs, guides, lessonOverrides, lessons, settings, shaykhs, sources } from "@/server/db/schema";
 import { assertCan, type Actor } from "@/server/auth/permissions";
 
 export type AuditRow = typeof auditLog.$inferSelect;
-export type Entity = "lesson" | "shaykh" | "override" | "announcement" | "faq" | "guide" | "setting" | "admin";
+export type Entity = "lesson" | "shaykh" | "override" | "announcement" | "faq" | "guide" | "setting" | "source" | "admin";
 
 type Target = { table: PgTable; key: string; column: string; numericId?: boolean };
 
@@ -17,6 +17,7 @@ const TARGETS: Partial<Record<Entity, Target>> = {
   faq: { table: faqs, key: "slug", column: "slug" },
   guide: { table: guides, key: "slug", column: "slug" },
   setting: { table: settings, key: "key", column: "key" },
+  source: { table: sources, key: "handle", column: "handle" },
 };
 
 export async function record(
@@ -63,28 +64,46 @@ export async function undo(db: Db, actor: Actor, auditId: number): Promise<UndoR
 
   const t = TARGETS[entry.entity as Entity];
   if (!t) return { ok: false, error: "not_undoable" };
-  const col = (t.table as unknown as Record<string, Parameters<typeof eq>[0]>)[t.key];
-  const id = t.numericId ? Number(entry.entityId) : entry.entityId;
-  const [current] = await db.select().from(t.table).where(eq(col, id));
+  const target: Target = t;
+  const col = (target.table as unknown as Record<string, Parameters<typeof eq>[0]>)[target.key];
+  const id = target.numericId ? Number(entry.entityId) : entry.entityId;
+  const [current] = await db.select().from(target.table).where(eq(col, id));
 
+  // Claim the undo first, so two clicks (or two admins) cannot apply it twice.
+  const claimed = await db.update(auditLog).set({ undoneAt: new Date() }).where(and(eq(auditLog.id, entry.id), isNull(auditLog.undoneAt))).returning({ id: auditLog.id });
+  if (!claimed.length) return { ok: false, error: "already_undone" };
+  const release = () => db.update(auditLog).set({ undoneAt: null }).where(eq(auditLog.id, entry.id));
+
+  try {
+    const applied = await apply();
+    if (!applied.ok) {
+      await release();
+      return applied;
+    }
+  } catch (e) {
+    await release();
+    throw e;
+  }
+  await record(db, actor, { action: "undo", entity: entry.entity as Entity, entityId: entry.entityId, before: entry.after, after: entry.before, undoOf: entry.id });
+  return { ok: true };
+
+  async function apply(): Promise<UndoResult> {
   if (entry.action === "create") {
     if (!current) return { ok: false, error: "missing_row" };
     if (entry.entity === "override") {
       await db.update(lessonOverrides).set({ revokedAt: new Date() }).where(eq(lessonOverrides.id, Number(id)));
     } else {
-      await db.delete(t.table).where(eq(col, id));
+      await db.delete(target.table).where(eq(col, id));
     }
   } else if (entry.action === "update") {
     if (!current) return { ok: false, error: "missing_row" };
-    await db.update(t.table).set(revive(entry.before as Record<string, unknown>)).where(eq(col, id));
+    await db.update(target.table).set(revive(entry.before as Record<string, unknown>)).where(eq(col, id));
   } else if (entry.action === "delete") {
     if (current) return { ok: false, error: "not_undoable" };
-    await db.insert(t.table).values(revive(entry.before as Record<string, unknown>));
+    await db.insert(target.table).values(revive(entry.before as Record<string, unknown>));
   } else {
     return { ok: false, error: "not_undoable" };
   }
-
-  await db.update(auditLog).set({ undoneAt: new Date() }).where(eq(auditLog.id, entry.id));
-  await record(db, actor, { action: "undo", entity: entry.entity as Entity, entityId: entry.entityId, before: entry.after, after: entry.before, undoOf: entry.id });
   return { ok: true };
+  }
 }

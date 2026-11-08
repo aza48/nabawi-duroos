@@ -256,7 +256,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Furnished or empty</h2>
 <p>For 3 to 6 months, take furnished. For a year or more, an empty flat is 40 to 50% cheaper and you can furnish it cheaply at Haraj market. Most good newer buildings are an 8 to 15 minute drive from the Haram rather than walking distance.</p>
 <h2>The contract</h2>
-<p><strong>Ejar</strong> is the official system that legally protects both sides, but it needs an iqama. Most rentals in Madinah are private paper agreements, which carry no legal protection. Owners usually want 6 or 12 months up front, or two payments a year.</p>
+<p><strong>Ejar</strong> is the official system that legally protects both sides. With an iqama you register the contract yourself; on a student visa, an accredited Ejar agent registers it for you (see the answer on renting on a student visa). Many rentals in Madinah are still private paper agreements, which carry no legal protection. Owners usually want 6 or 12 months up front, or two payments a year.</p>
 <h2>Checklist before you pay</h2>
 <ol>
 <li>Look for damp, cracks or mould, especially in bathrooms.</li>

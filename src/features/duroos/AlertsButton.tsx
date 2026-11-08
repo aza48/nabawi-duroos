@@ -19,7 +19,7 @@ function keyBytes(base64: string): Uint8Array {
   return Uint8Array.from(raw, (c) => c.charCodeAt(0));
 }
 
-type State = "loading" | "unsupported" | "ios-install" | "off" | "on" | "blocked";
+type State = "loading" | "unsupported" | "ios-install" | "off" | "on" | "blocked" | "dismissed" | "failed";
 
 /** Follow a topic ("shaykh:<slug>", "daily" or "all") with phone notifications. No account needed. */
 export function AlertsButton({ topic, label, locale = "en" }: { topic: string; label: string; locale?: Locale }) {
@@ -55,14 +55,17 @@ export function AlertsButton({ topic, label, locale = "en" }: { topic: string; l
         setState("off");
         return;
       }
-      if ((await Notification.requestPermission()) !== "granted") return setState("blocked");
+      const permission = await Notification.requestPermission();
+      if (permission === "denied") return setState("blocked");
+      if (permission !== "granted") return setState("dismissed");
       const sub = (await reg.pushManager.getSubscription()) ?? (await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(VAPID) as BufferSource }));
       const next = [...new Set([...current, topic])];
       const res = await fetch("/api/v1/push/subscribe", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ ...sub.toJSON(), topics: next }) });
-      if (res.ok) {
-        saveTopics(next);
-        setState("on");
-      }
+      if (!res.ok) return setState("failed");
+      saveTopics(next);
+      setState("on");
+    } catch {
+      setState("failed");
     } finally {
       setBusy(false);
     }
@@ -77,7 +80,20 @@ export function AlertsButton({ topic, label, locale = "en" }: { topic: string; l
       </p>
     );
   if (state === "blocked")
-    return <p className="mt-3 text-sm text-muted">{ar ? "التنبيهات محظورة في إعدادات المتصفح." : "Notifications are blocked in your browser settings."}</p>;
+    return <p className="mt-3 text-sm text-muted">{ar ? "التنبيهات محظورة في إعدادات المتصفح. اسمح بها لموقع medinahub.org ثم أعد المحاولة." : "Notifications are blocked in your browser settings. Allow them for medinahub.org, then try again."}</p>;
+  if (state === "dismissed" || state === "failed")
+    return (
+      <div className="mt-3">
+        <p className="text-sm text-muted">
+          {state === "dismissed"
+            ? ar ? "لم يُسمح بالتنبيهات. اضغط مرة أخرى واختر «السماح» عندما يسأل المتصفح." : "Notifications were not allowed. Tap again and choose Allow when your browser asks."
+            : ar ? "تعذّر تفعيل التنبيهات الآن. تحقّق من الاتصال وحاول مرة أخرى." : "Alerts could not be switched on just now. Check your connection and try again."}
+        </p>
+        <button type="button" onClick={() => setState("off")} className="mt-1.5 text-sm font-semibold text-primary underline-offset-2 hover:underline">
+          {ar ? "حاول مرة أخرى" : "Try again"}
+        </button>
+      </div>
+    );
   return (
     <button type="button" onClick={toggle} disabled={busy} aria-pressed={state === "on"}
       className={`mt-3 flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 font-semibold ${state === "on" ? "bg-on-bg text-on" : "bg-primary text-primary-ink"}`}>

@@ -14,10 +14,12 @@ const optUrl = z
   .string()
   .trim()
   .max(500)
-  .regex(/^(https:\/\/\S+|\/\S*)?$/, "Use an https:// link or a /path on MESH")
+  .regex(/^(https:\/\/[^\s/]+\S*|\/(?!\/)\S*)?$/, "Use an https:// link or a /path on MESH")
   .transform((v) => v || null)
   .optional()
   .nullable();
+/** A web address only: never javascript:, data: or a protocol-relative //host. */
+const httpUrl = z.string().trim().max(1000).regex(/^https?:\/\/[^\s/]+\S*$/, "Use a full http(s):// link");
 const en = (s: string | null | undefined) => (s ? cleanText(s.trim(), "en") : null);
 const ar = (s: string | null | undefined) => (s ? cleanText(s.trim(), "ar") : null);
 
@@ -41,7 +43,7 @@ const overrideInput = z
     endsOn: isoDate.optional(),
     noteEn: optText,
     noteAr: optText,
-    sourceUrl: z.url().optional().nullable(),
+    sourceUrl: httpUrl.optional().nullable(),
   })
   .refine((v) => !v.endsOn || v.endsOn >= v.startsOn, { message: "End date is before start date", path: ["endsOn"] });
 
@@ -202,8 +204,8 @@ const announcementInput = z.object({
   eventDate: isoDate.optional().nullable(),
   shaykhSlug: z.string().optional().nullable(),
   masjidId: z.string().optional().nullable(),
-  sourceUrl: z.url().optional().nullable(),
-  imageUrl: z.string().max(500).optional().nullable(),
+  sourceUrl: httpUrl.optional().nullable(),
+  imageUrl: optUrl,
   status: z.enum(["draft", "published", "archived"]),
 });
 

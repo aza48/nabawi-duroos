@@ -118,13 +118,19 @@ export async function dismissSuggestionAction(id: number) {
   });
 }
 export async function setSourceAction(input: { handle: string; trusted?: boolean; autoPublish?: boolean }) {
-  return run("settings.write", async (db) => {
+  return run("settings.write", async (db, actor) => {
     const { sources } = await import("@/server/db/schema");
     const { eq } = await import("drizzle-orm");
     const patch: { trusted?: boolean; autoPublish?: boolean } = {};
     if (typeof input.trusted === "boolean") patch.trusted = input.trusted;
     if (typeof input.autoPublish === "boolean") patch.autoPublish = input.autoPublish;
-    await db.update(sources).set(patch).where(eq(sources.handle, input.handle));
+    const [before] = await db.select().from(sources).where(eq(sources.handle, input.handle));
+    const [after] = await db.update(sources).set(patch).where(eq(sources.handle, input.handle)).returning();
+    // Turning auto-publish on is a real change: it shows in Activity and can be undone.
+    if (before && after) {
+      const { record } = await import("@/server/admin/audit");
+      await record(db, actor, { action: "update", entity: "source", entityId: input.handle, before, after });
+    }
   });
 }
 
