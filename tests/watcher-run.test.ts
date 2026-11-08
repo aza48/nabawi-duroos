@@ -160,3 +160,30 @@ describe("busy channels", () => {
   });
 });
 
+
+describe("the same notice twice", () => {
+  const notice = "يعتذر الشيخ عن درس الأحد";
+  const at = (iso: string, handle: string, id: number) =>
+    `<div class="tgme_widget_message" data-post="${handle}/${id}"><div class="tgme_widget_message_text">${notice}</div><time datetime="${iso}"></time></div>`;
+
+  it("a copy forwarded to another channel the same day is not read twice", async () => {
+    pages.drosalmadina = at("2026-11-07T06:00:00+00:00", "drosalmadina", 20);
+    pages.almanashet = at("2026-11-07T07:00:00+00:00", "almanashet", 20);
+    const before = readPost.mock.calls.length;
+    await runWatcher(db, deps(), NOW);
+    expect(readPost.mock.calls.slice(before).filter((c) => c[0].text === notice)).toHaveLength(1);
+    const rows = await db.select().from(channelPosts).where(eq(channelPosts.text, notice));
+    expect(rows.filter((r) => r.status === "ignored" && r.reason?.startsWith("Same post as"))).toHaveLength(1);
+  });
+
+  it("the same notice from the same channel a week later is read", async () => {
+    const later = new Date(NOW.getTime() + 7 * 86_400_000);
+    pages.drosalmadina = at("2026-11-14T06:00:00+00:00", "drosalmadina", 30);
+    pages.almanashet = "<html></html>";
+    const before = readPost.mock.calls.length;
+    await runWatcher(db, deps(), later);
+    expect(readPost.mock.calls.slice(before).map((c) => c[0].text)).toContain(notice);
+    const [row] = await db.select().from(channelPosts).where(eq(channelPosts.postId, "drosalmadina/30"));
+    expect(row.reason ?? "").not.toMatch(/^Same post as/);
+  });
+});

@@ -1,7 +1,7 @@
 import { isBroadSource, sourceRank } from "./sources";
 import { worthReading } from "./prefilter";
 import { createHash } from "node:crypto";
-import { and, desc, eq, inArray, ne } from "drizzle-orm";
+import { and, desc, eq, gte, inArray, lte, ne } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { channelPosts, lessonLive, lessons, masjids, shaykhs, sources } from "@/server/db/schema";
 import { isLiveNotice, matchLiveLesson, pickLiveLink } from "./live-notice";
@@ -69,6 +69,8 @@ export async function runWatcher(
 
   /** A post that failed is retried after this long, not on every run. */
   const ERROR_RETRY_MS = 30 * 60_000;
+  /** A forwarded copy of a notice counts as the same post only within this many hours of the first. */
+  const TWIN_WINDOW_MS = 48 * 3_600_000;
 
   for (const src of allSources) {
     // Forwarded WhatsApp messages arrive through the webhook, not from a channel page.
@@ -102,12 +104,20 @@ export async function runWatcher(
       if (existing?.status === "dismissed") continue;
 
       // The same notice forwarded to a second channel: copy the first decision instead of reading it again
-      // (and never publishing it twice).
+      // (and never publishing it twice). Only another channel, within two days: the same short notice
+      // posted again on a later week ("the shaykh excuses himself today") is a new notice and is read.
       if (!existing) {
         const [twin] = await db
           .select()
           .from(channelPosts)
-          .where(and(eq(channelPosts.textHash, textHash), ne(channelPosts.status, "new"), ne(channelPosts.status, "error")))
+          .where(and(
+            eq(channelPosts.textHash, textHash),
+            ne(channelPosts.sourceHandle, src.handle),
+            gte(channelPosts.postedAt, new Date(p.postedAt.getTime() - TWIN_WINDOW_MS)),
+            lte(channelPosts.postedAt, new Date(p.postedAt.getTime() + TWIN_WINDOW_MS)),
+            ne(channelPosts.status, "new"),
+            ne(channelPosts.status, "error"),
+          ))
           .limit(1);
         if (twin) {
           await db.insert(channelPosts).values({
