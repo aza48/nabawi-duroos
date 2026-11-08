@@ -1,4 +1,5 @@
 import type { Db } from "@/server/db/client";
+import * as COMPANY from "@/features/guides/company/content";
 import { listFaqs, listGuides } from "@/server/content/queries";
 import { listShaykhs, scheduleRows } from "@/server/duroos/queries";
 import { PROGRAMS } from "@/content/programs";
@@ -27,6 +28,7 @@ export async function buildSearchDocs(db: Db): Promise<SearchDoc[]> {
   const [guides, faqs, shaykhs, lessons] = await Promise.all([listGuides(db), listFaqs(db), listShaykhs(db), scheduleRows(db)]);
   return [
     ...PAGES,
+    { id: `guide-${COMPANY.SLUG}`, type: "guide" as const, title: COMPANY.TITLE, subtitle: COMPANY.SUMMARY, text: COMPANY.SEARCH_TEXT, url: `/guides/${COMPANY.SLUG}` },
     ...guides.map((g) => ({ id: `guide-${g.slug}`, type: "guide" as const, title: g.title, subtitle: g.summary, text: plain(g.bodyHtml), url: `/guides/${g.slug}` })),
     ...faqs.map((f) => ({ id: `faq-${f.slug}`, type: "faq" as const, title: f.question, subtitle: plain(f.answerHtml, 160), text: plain(f.answerHtml), url: `/ask/${f.slug}` })),
     ...PROGRAMS.map((p) => ({ id: `program-${p.slug}`, type: "program" as const, title: p.name, subtitle: `${p.tagline} ${p.price}`, text: `${p.nameAr} ${p.overview.join(" ")} ${(p.levels ?? []).join(" ")} ${p.audience.join(" ")}`, url: `/programs/${p.slug}` })),
