@@ -6,6 +6,10 @@ import { getWhatsAppUrl } from "@/server/settings";
 import { GuidePage } from "@/features/content/ContentPages";
 
 export const revalidate = 300;
+/** Built on first visit, then cached and refreshed every 5 minutes. */
+export function generateStaticParams() {
+  return [];
+}
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
