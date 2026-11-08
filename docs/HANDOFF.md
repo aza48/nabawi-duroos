@@ -2,6 +2,10 @@
 
 Last rewritten 8 November 2026, about 09:15 Riyadh, at the end of the 7 and 8 November sessions. This file is the single source of truth for continuing the work. If you are a fresh Claude Code session, also read `docs/START-HERE.md`.
 
+## Restart plan (8 November, owner's standing permission)
+- After each usage reset the main session wakes (scheduled), tells the side sessions to continue (mesh-articles: article intake; mesh-design: beauty and interactivity, starting with the hero sky; mesh-readiness: review, done), then continues its own gaps from docs/READINESS.md. If the main session is gone, a fresh session should do the same: read this file and docs/READINESS.md and continue.
+- 8 November live content applied by the main session: 4 guides, 5 FAQs, scripts/content-fixes.cjs (calendar, childbirth, business, sisters, graduation; sports list unpublished; exam schedules announcement).
+
 ## What MESH is
 medinahub.org: a hub run by students, for English-speaking students and families in Madinah. Live duroos schedules of the mashayikh (kept current by a Telegram watcher), study programmes, guides to university and everyday life, a library of IU course books, student discounts, key dates and verified FAQs, in English with a growing Arabic version under `/ar`. It promotes the MESH WhatsApp group (link editable in Admin > Settings).
 
@@ -107,3 +111,10 @@ All in `docs/IDEAS-FOR-OWNER.md`, including: Quba weekly duroos days (Al-Midad a
 - **React:** store a function in state with `setX(() => fn)`.
 - **Migrations** must reach live before code that selects new columns.
 - Shaykh Mis'ad's slug stays `masad-ibn-musaid-al-husaini` so links don't break; add a redirect if it changes.
+
+## Design session progress (8 November, afternoon)
+- **Hero sky (done, live):** `src/features/home/sky.ts` blends sky colours between keyframes anchored to the prayer times (night, Fajr, sunrise, morning, midday, Asr, golden hour, Maghrib, dusk); `HeroSky.tsx` draws stars, the real moon phase, clouds by WMO code, rain, lightning, haze, Uhud, the minarets and Green Dome, and the gold-edged gate of two arches (the MESH M). CSS is under "The hero sky" in `globals.css`. Phones get a small sun or moon in the top corner.
+- **Day arc:** hover or tap a prayer to list its duroos (links to dars and shaykh pages); a mouse click jumps to `#after-<prayer>`. The sun or moon shows the time and weather details; the weather chip opens the same. Popovers open upwards and cap their height to the room above (`fitAbove`), checked at 2000, 1440, 1024 and 700 px on /, /duroos and /ar/duroos.
+- **Home:** Latest updates now sit above the MESH group card and link to `/duroos/updates#<slug>`; web addresses in update bodies are clickable (`Linkified` in `DetailPages.tsx`).
+- **Waiting on the owner:** run `node scripts/exam-schedule-steps.cjs` once to add the steps for finding the final exam schedule to the live update (the permission check blocks sessions from writing to the live database). It is in `docs/EXPIRING.md` for 14 December.
+- **Next for design:** richer cards and hover states, scroll reveals, section headers, consistent icons; links everywhere (shaykh names, masjid maps, books to the library, prayers to the schedule); related guides and answers; breadcrumbs; useful use of wide-screen space.
