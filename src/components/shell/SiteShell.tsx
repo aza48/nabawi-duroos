@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "@/lib/locale";
 import { BottomNav, DesktopNav } from "./BottomNav";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageSwitch } from "./LanguageSwitch";
 import { WhatsAppIcon } from "./WhatsApp";
 import { Wordmark } from "./Wordmark";
 import { SearchPalette } from "@/features/search/SearchUI";
@@ -40,6 +41,7 @@ export function SiteShell({
             >
               <WhatsAppIcon size={18} /> <span className="hidden xl:inline">{ar ? "انضم للمجموعة" : "Join the group"}</span>
             </a>
+            <LanguageSwitch />
             <ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} />
           </div>
         </div>
