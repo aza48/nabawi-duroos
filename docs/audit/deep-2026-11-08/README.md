@@ -26,7 +26,7 @@ Reports: `security.md` (0 critical, 1 high, 8 medium, 10 low), `duroos.md` (0 cr
 | 13 | Public API returns whole rows: sourceHandle, sourceUrl, origin and internal research wording leak (announcements and lessons routes) | security M4, duroos M3 | S | done 5d37881 |
 | 14 | Auto-publish trusts Gemini's date conversion and shaykh choice with no deterministic check; several shuyukh share family names (decide.ts) | duroos H3 | M | todo |
 | 15 | Re-running the seed or go-live silently reverts admin edits in production (seed/run.ts upserts) | duroos H4 | S | done 5d37881 |
-| 16 | Push subscriptions: junk keys never cleaned up, unbounded fan-out, no rate limit (push.ts:18,53-63) | security M5 | M | todo |
+| 16 | Push subscriptions: junk keys never cleaned up, unbounded fan-out, no rate limit (push.ts:18,53-63) | security M5 | M | partly 5f7ccf4 (key validation, batching, cleanup; per-IP rate limit still to do) |
 | 17 | Track endpoint: no rate limit, DDL on cold start, purge inside visitor requests (track/route.ts, analytics/store.ts) | security M6 | M | todo |
 | 18 | pg Pool has no error handler (a dropped idle connection can crash the instance) and TLS verification is off (db/client.ts:29-41) | security M7 | S | partly 7c7fe13 (error handler; TLS verification still off: needs DATABASE_CA from the owner) |
 | 19 | Undo can run twice, restores the whole old row (lost update) and refreshes no public page; source toggle is not audited | security L3, duroos M8 | S | done e532dfb |
