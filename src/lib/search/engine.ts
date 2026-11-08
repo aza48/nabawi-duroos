@@ -79,5 +79,5 @@ export function weighQuery(q: string): { query: string; typed: string[][]; weigh
   const added = expandQuery(own.join(" ")).split(" ").filter((x) => x && !own.includes(x));
   const typed = own.map((w) => [w, ...added.filter((x) => isSpelling(w, x))]);
   const full = new Set(typed.flat());
-  return { query: [...own, ...added].join(" "), typed, weight: (term) => (full.has(term) ? 1 : 0.3) };
+  return { query: [...own, ...added].join(" "), typed, weight: (term) => (full.has(term) ? 1 : 0.5) };
 }
