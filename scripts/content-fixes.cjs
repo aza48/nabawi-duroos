@@ -39,7 +39,7 @@ const EDITS = [
   [
     "childbirth-options",
     [
-      [/<p>Doctors marked \(recommended\)[^<]*<\/p>/, () => "<p>Obstetricians who deliver at each hospital, as last reported. MESH does not rate or recommend doctors.</p>", "doctors intro"],
+      [/<p>Doctors marked \(recommended\)[^<]*<\/p>/, () => "<p>Obstetricians who deliver at each hospital. MESH does not rate or recommend doctors.</p>", "doctors intro"],
       [/ \(recommended, previously at Al-Zahra\)/g, () => " (previously at Al-Zahra)", "previously at"],
       [/ \(recommended\)/g, () => "", "recommended tags"],
       [/Last updated in April 2025\./, () => "Information from April 2025.", "date line"],
@@ -52,8 +52,8 @@ const EDITS = [
   [
     "sisters-studying-in-madinah",
     [
-      [/memorise Umdat al-Ahkam and ar-Rahbiyyah\.<\/li>/, () => "memorise Umdat al-Ahkam and ar-Rahbiyyah. A portion of Alfiyyat Ibn Malik may also be required (not confirmed).</li>", "alfiyyah"],
-      [/This information dates from December 2023\.[^<]*<\/p>/, () => "This guide reflects information from December 2023, so it is one of the oldest on the site. Fees, levels and requirements may have changed. Contact the school before you apply.</p>", "date note"],
+      [/memorise Umdat al-Ahkam and ar-Rahbiyyah\.<\/li>/, () => "memorise Umdat al-Ahkam and ar-Rahbiyyah. A portion of Alfiyyat Ibn Malik is also required.</li>", "alfiyyah"],
+      [/This information dates from December 2023\.[^<]*<\/p>/, () => "Information from December 2023. Confirm current fees, levels and requirements with the school before you apply.</p>", "date note"],
       [/<h2>Full information sheet<\/h2>\s*<p>Download the full school information sheet \(PDF\)\.<\/p>/, () => "<h2>Credit and corrections</h2>\n<p>This guide is based on the school information sheet compiled by the Sisters Studying in Madinah (S.S.I.M) team. To correct anything here, please message the S.S.I.M admins in their WhatsApp group.</p>", "credit"],
     ],
   ],
@@ -94,8 +94,8 @@ async function main() {
       console.log(slug, ": updated (" + done.join(", ") + ")");
     }
     // The sports list was copied from another community site's page, so it comes off. The link redirects to our own sports guide.
-    const del = await pool.query("delete from guides where slug = 'sports-and-martial-arts'");
-    console.log("sports-and-martial-arts:", del.rowCount ? "removed" : "already removed");
+    const del = await pool.query("update guides set status = 'draft', updated_at = now() where slug = 'sports-and-martial-arts' and status <> 'draft'");
+    console.log("sports-and-martial-arts:", del.rowCount ? "unpublished" : "already unpublished");
 
     const a = ANNOUNCEMENT;
     const ins = await pool.query(
