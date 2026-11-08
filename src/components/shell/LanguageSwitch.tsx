@@ -22,9 +22,9 @@ export function LanguageSwitch() {
       hrefLang={ar ? "en" : "ar"}
       lang={ar ? "en" : "ar"}
       aria-label={ar ? "Switch to English" : "التبديل إلى العربية"}
-      className="flex h-11 items-center gap-1.5 rounded-full border border-line bg-card px-3 text-sm font-semibold text-ink transition hover:border-primary"
+      className="flex h-11 items-center gap-1.5 rounded-full border border-line bg-card px-3.5 sm:px-3 text-sm font-semibold text-ink transition hover:border-primary"
     >
-      <Languages size={17} className="text-primary" />
+      <Languages size={17} className="hidden text-primary sm:block" />
       <span>{ar ? "English" : "عربي"}</span>
     </Link>
   );

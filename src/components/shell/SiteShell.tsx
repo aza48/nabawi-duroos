@@ -25,13 +25,13 @@ export function SiteShell({
         {ar ? "تخطَّ إلى المحتوى" : "Skip to content"}
       </a>
       <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/85 backdrop-blur-md">
-        <div className="shell flex h-16 items-center justify-between gap-4 md:h-[72px]">
+        <div className="shell flex h-16 items-center justify-between gap-2 sm:gap-4 md:h-[72px]">
           <Link href="/" aria-label="MESH home" className="shrink-0">
             <Wordmark />
           </Link>
           <DesktopNav locale={locale} />
-          <div className="flex items-center gap-2">
-            <SearchPalette />
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <SearchPalette locale={locale} />
             <a
               href={whatsappUrl}
               target="_blank"
@@ -42,7 +42,9 @@ export function SiteShell({
               <WhatsAppIcon size={18} /> <span className="hidden xl:inline">{ar ? "انضم للمجموعة" : "Join the group"}</span>
             </a>
             <LanguageSwitch />
-            <ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} />
+            <span className="hidden sm:contents">
+              <ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} />
+            </span>
           </div>
         </div>
       </header>
@@ -127,7 +129,10 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
               {helpContact}
             </a>
           </p>
-          <p className="text-xs text-white/50">medinahub.org</p>
+          <span className="flex items-center gap-3">
+            <span className="sm:hidden"><ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} /></span>
+            <span className="text-xs text-white/50">medinahub.org</span>
+          </span>
         </div>
       </div>
     </footer>
