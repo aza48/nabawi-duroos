@@ -38,6 +38,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 - Nothing yet.
 
 ## Log (newest first)
+- 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit finding 22: the morning phone alert names the first dars with a confirmed time only, and prints the prayer as "Maghrib" not "maghrib".
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit finding 19: saving or deleting a guide, answer or the WhatsApp setting now also refreshes the Arabic twins (`withArabic` in `src/server/admin/refresh.ts`).
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit findings 9, 10 and 21: admin invites (created and accepted) are now in Activity, never with the token; link fields refuse `/\\evil.com` (browsers read it as off-site); `?date=` refuses impossible dates such as 2026-11-31. Tests for each.
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: admin fix (code audit finding 2): editing a published cancellation, postponement or resumption so that it moves date, changes type or dars, or goes back to draft or archived now revokes the override the earlier version made (only `origin: admin` overrides on that exact date). Before, the old date stayed cancelled. Test in `tests/admin-duroos.test.ts`.
