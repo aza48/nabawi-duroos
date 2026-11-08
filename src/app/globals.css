@@ -409,6 +409,12 @@ a { -webkit-tap-highlight-color: transparent; }
 }
 .guide ol.steps > li.is-done > :not(ul):not(ol) { text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent); }
 .guide ol.steps > li > p:last-child { margin-bottom: 0; }
+/* The tick button sits over the circle drawn by ::before, with a 40px tap area. */
+.guide ol.steps > li > .step-tick {
+  position: absolute; inset-inline-start: 0.35rem; top: 0.4rem; width: 2.5rem; height: 2.5rem;
+  border-radius: 999px; background: transparent; border: 0; padding: 0; cursor: pointer;
+}
+.guide ol.steps > li > .step-tick:focus-visible { outline: 3px solid var(--primary); outline-offset: 1px; }
 .guide blockquote.callout {
   border: 0; border-radius: 14px; padding: 0.9rem 1.1rem; color: var(--ink);
   background: var(--gold-bg); border-inline-start: 4px solid var(--gold-bright);
