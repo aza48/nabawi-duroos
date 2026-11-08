@@ -32,8 +32,8 @@ export function DarsMiniCard({ lesson: l, locale, isNext, single = false }: { le
 
   return (
     <article className={`lift flex h-full flex-col rounded-2xl border border-line bg-card p-4 shadow-[var(--shadow)] ${done ? "opacity-60" : ""}`}>
-      <div className={`flex items-center gap-3 sm:gap-4 ${single ? "md:items-end md:justify-start md:gap-12" : ""}`}>
-        <div className={`min-w-0 ${single ? "flex-1 md:flex-initial" : "flex-1"}`}>
+      <div className={`flex items-center gap-3 sm:gap-4 ${single ? "md:items-stretch md:gap-8" : ""}`}>
+        <div className={`min-w-0 flex-1`}>
           <div className="flex min-h-[1.625rem] flex-wrap items-center gap-2">
             {live ? (
               <LiveBadge locale={locale} href={liveHref} />
@@ -79,7 +79,7 @@ export function DarsMiniCard({ lesson: l, locale, isNext, single = false }: { le
           </p>
         </div>
 
-        <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="group flex shrink-0 items-center gap-3">
+        <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className={`group flex shrink-0 items-center gap-3 ${single ? "md:items-end md:border-s md:border-line md:ps-8" : ""}`}>
           {single ? (
             <>
               <span className="md:hidden">
