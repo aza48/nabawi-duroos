@@ -43,6 +43,18 @@ export function DuroosCarousel({
   const railRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  /** Folding a long list makes the page shorter, which would throw the reader down the page. Keep this prayer's card in view instead. */
+  const toggle = () => {
+    const closing = open;
+    setOpen(!open);
+    if (!closing) return;
+    const card = rootRef.current?.closest("section");
+    requestAnimationFrame(() => {
+      if (card && card.getBoundingClientRect().top < 0) card.scrollIntoView({ block: "start" });
+    });
+  };
 
   const [edge, setEdge] = useState({ start: true, end: false });
 
@@ -81,7 +93,7 @@ export function DuroosCarousel({
     "flex flex-col gap-3 md:flex-row md:snap-x md:snap-mandatory md:gap-4 md:overflow-x-auto md:pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
 
   return (
-    <div>
+    <div ref={rootRef}>
       <div ref={railRef} onScroll={onScroll} className={rail}>
         {items.map((node, i) => {
           const hiddenOnPhone = !open && i !== priority;
@@ -99,7 +111,7 @@ export function DuroosCarousel({
       {count > 1 && (
         <button
           type="button"
-          onClick={() => setOpen((v) => !v)}
+          onClick={toggle}
           aria-expanded={open}
           className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl border border-line bg-card py-2.5 text-sm font-semibold text-primary shadow-[var(--shadow)] md:hidden"
         >
