@@ -2,7 +2,7 @@ import { HELP_CONTACT_DEFAULT } from "@/server/settings";
 import type { Chunk } from "./knowledge";
 
 /** The assistant's public name. A play on "mashayikh": it is MESH, not a shaykh, and says so. */
-export const BOT_NAME = { en: "Ask the Meshaykh", ar: "مساعد MESH" } as const;
+export const BOT_NAME = { en: "Ask the MESHaykh", ar: "مساعد MESH" } as const;
 
 export function systemPrompt(lang: "en" | "ar"): string {
   return [

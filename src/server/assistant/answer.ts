@@ -12,7 +12,7 @@ import { systemPrompt, userTurn } from "./prompt";
 import { write, type ChatMessage } from "./llm";
 
 /**
- * Ask the Meshaykh: answers one question from MESH's own content.
+ * Ask the MESHaykh: answers one question from MESH's own content.
  *
  * 1. A question asking for a religious ruling gets a fixed, kind reply (no model is asked).
  * 2. Live data (duroos on a given day or after a prayer, adhan times, today's date and the next
