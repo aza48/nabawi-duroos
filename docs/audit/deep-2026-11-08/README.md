@@ -63,3 +63,16 @@ All Low items stay in the three reports; do them opportunistically when touching
 
 ## Order of work
 Tier 1 items 1, 2, 3, 5, 7 first (each small, each a visible wrong). Then Tier 2 items 10 to 13 and 15 (small, close the trust gaps), then 9. Then Tier 3 items 21 to 24 and 27. Then the rest by tier. Each step: tests, typecheck, commit, push to mine main and origin revamp, confirm on medinahub.org, tick the row.
+
+## Tier 0 (added from the live role-play, personas.md): what real users hit on 8 November
+| # | Item | Size | Status |
+|---|---|---|---|
+| 0a | Wrong "LIVE NOW": at 20:20, 70 minutes after Isha, two after-Maghrib lessons still showed LIVE and the home page said "4 live now" (the live window starts at the adhan and runs 90 min, duroos L4; fix the window to start at the dars and end sooner) | S | todo |
+| 0b | /guides/postgraduate-admission-1448 scrolls sideways on a 390 px phone (409 px wide) | S | todo |
+| 0c | Al-Qasim's book change: English says 22 Nov, Arabic says today, English shows a raw "ON," label, the calendar feed still says the old book; not in Updates | S | todo |
+| 0d | Contradictions: Ejar (iqama needed vs through an agent), two childbirth guides, al-Badr days ("daily except Fri and Sat" vs "Sunday to Friday"), "Wihda 22" vs "Maktab 22"; footer says the group is "Only for English-speaking Western students" | S each | todo |
+| 0e | Ma'had book titles are raw file names ("Emailing ...", "merged"); updates feed shows "[a day in early 5/1448 AH]" and Hijri only | S | todo |
+| 0f | "Alert me" fails silently without notification permission; calendar links are webcal:// only (dead on most Android phones) | S | todo |
+| 0g | Search ranking: "kitab at-tawhid" and "tawheed" return guides first; /mahad is not indexed; "zaer", "hawiya" find nothing | M | todo |
+| 0h | Missing information, ranked: living on a Visitor ID instead of an iqama (several pages still assume an iqama; "Zaair ID" vs "Visitor ID" naming); campus practicals (bus stops and times, mat'am hours, University clinic); women's gates and sections at the Haram, children and strollers; what "Verified" means and a real-looking contact; a parents' page; privacy text (/privacy redirects to /more while tracking is on) | M to L | todo |
+| 0i | Arabic stops at the duroos: all 34 guides and 39 FAQs are English with Arabic menus, /ar/mahad is a 404, /ar has no home page | L | todo |

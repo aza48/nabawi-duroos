@@ -1,0 +1,48 @@
+{
+ "uniqueHrefs": 2612,
+ "uniqueUrls": 2084,
+ "bad": [
+  {
+   "url": "https://medinahub.org/ar/guides/start-a-company-in-saudi",
+   "status": 404,
+   "chain": [
+    404
+   ],
+   "from": [
+    "https://medinahub.org/guides/start-a-company-in-saudi"
+   ]
+  }
+ ],
+ "redirects": [
+  {
+   "url": "https://medinahub.org/ar",
+   "chain": [
+    308,
+    200
+   ],
+   "final": "https://medinahub.org/ar/duroos",
+   "from": [
+    "https://medinahub.org/",
+    "https://medinahub.org/ar/duroos",
+    "https://medinahub.org/ar/duroos/schedule"
+   ]
+  }
+ ],
+ "missingAnchors": [
+  {
+   "href": "https://medinahub.org/library#muqarrarat",
+   "checkedVia": "rendered DOM",
+   "from": [
+    "https://medinahub.org/ask/muqarrarat"
+   ]
+  },
+  {
+   "href": "https://medinahub.org/library#mahad",
+   "checkedVia": "rendered DOM",
+   "from": [
+    "https://medinahub.org/ask/mahad-books"
+   ]
+  }
+ ],
+ "anchorsChecked": 531
+}
