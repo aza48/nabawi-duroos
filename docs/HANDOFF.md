@@ -137,7 +137,7 @@ medinahub.org: a hub run by students, for English-speaking students and families
 4. **Admin fields** (in `src/features/admin`):
    - lesson form: `bookUrl`
    - shaykh form: photo upload or URL (already has `photo`)
-   - settings: `help_contact` (read by `getHelpContact`)
+   - settings: `help_contact` is no longer read; `getHelpContact` always returns the fixed +1 234 567 9076 (not editable in the admin, owner's choice)
    - admin pages to edit programmes, library and discounts, which are currently code files in `src/content`; move them to DB tables with admin CRUD and audit
 5. **Where each dars is live:** streams exist per masjid. Add per-shaykh channels (YouTube, Mixlr, Telegram) and show "usually live on" for each dars.
 6. **Full Arabic version** (least urgent, per the owner): one switch that remembers the choice (cookie plus localStorage) and turns every page and UI string to Arabic, in RTL. Duroos already have /ar. Content needs Arabic fields or translations.

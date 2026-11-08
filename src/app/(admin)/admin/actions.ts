@@ -7,7 +7,7 @@ import { requireAdmin } from "@/server/auth/session";
 import { Forbidden, type Permission } from "@/server/auth/permissions";
 import { undo } from "@/server/admin/audit";
 import { addOverride, createLesson, revokeOverride, saveAnnouncement, updateLesson, updateShaykh } from "@/server/admin/duroos";
-import { deleteFaq, deleteGuide, saveFaq, saveGuide, setHelpContact, setWhatsAppUrl } from "@/server/admin/content";
+import { deleteFaq, deleteGuide, saveFaq, saveGuide, setWhatsAppUrl } from "@/server/admin/content";
 import { revokeAdmin, setRole } from "@/server/admin/admins";
 import { createInvite } from "@/server/admin/invites";
 import { SITE_URL } from "@/lib/site";
@@ -85,9 +85,6 @@ export async function deleteGuideAction(slug: string) {
 /* Settings, activity, admins */
 export async function setWhatsAppUrlAction(url: string) {
   return run("settings.write", async (db, a) => { await setWhatsAppUrl(db, a, { url }); });
-}
-export async function setHelpContactAction(phone: string) {
-  return run("settings.write", async (db, a) => { await setHelpContact(db, a, { phone }); });
 }
 export async function undoAction(auditId: number) {
   return run("activity.undo", async (db, a) => {

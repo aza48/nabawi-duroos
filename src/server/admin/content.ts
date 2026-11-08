@@ -137,21 +137,3 @@ export async function setWhatsAppUrl(db: Db, actor: Actor, input: { url: string 
   refreshPublic(["/", "/duroos", "/ar/duroos", "/ask", "/guides", "/more"]);
 }
 
-const helpContactInput = z.object({ phone: z.string().trim().regex(/^\+[0-9][0-9 ]{6,20}$/, "Write the number with its country code, like +1 234 567 9076") });
-
-/** The help number shown across the site (footer, library, suggestions). Every page reads it through the layout. */
-export async function setHelpContact(db: Db, actor: Actor, input: { phone: string }) {
-  assertCan(actor, "settings.write");
-  const { phone } = helpContactInput.parse(input);
-  const before = await getSetting(db, "help_contact");
-  await setSetting(db, "help_contact", phone);
-  await record(db, actor, {
-    action: "update", entity: "setting", entityId: "help_contact",
-    before: { key: "help_contact", value: before }, after: { key: "help_contact", value: phone },
-  });
-  try {
-    revalidatePath("/", "layout");
-  } catch {
-    /* not inside a Next request */
-  }
-}
