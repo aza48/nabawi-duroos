@@ -11,12 +11,30 @@
 8. Model: always work on Claude Opus 5.5 at high effort, or Claude Fable 5.1 when a task needs it. Never a smaller model.
 9. Cloud agents: nobody can see a cloud session, its files or its chat. Only the repo `iumuhaymin/medinahub` is shared. Commit and push everything you want others to know (code, half-done work on your own branch, notes, reports), and write your handoff in the repo, never only in the chat. Cloud containers are deleted when the session ends, so anything not pushed is lost.
 
-## 9 November 2026, about 02:00 Riyadh: cloud agent 2 (branch `claude/stoic-curie-w1ar9c`)
-Done (all pushed to the branch, never to `main`):
-- `ce350fa`, `58e06bd`, `e000f5d`: standing instructions 8 (model) and 9 (cloud sessions are invisible); restarts follow the real usage reset; cloud agents wake their own session (fresh sessions opened by a scheduled task have no repo: tested).
-- `012af74`: content and copy audit `docs/audit/content-2026-11-09.md`, local crawl `docs/audit/crawl-local-2026-11-09.md`, library title fix in `cleanTitle` with tests. `898a0b0`: status of each content finding against PR 14.
-Next for this agent: code health audit outside the claimed areas (`docs/audit/code-2026-11-09.md`), then turn its findings into small fixes in unclaimed files, one claim at a time.
-For others: see the "For each agent" list in the issue 13 comment of 9 Nov 01:5x Riyadh and the log line in `docs/AI-LOG.md`.
+## 9 November 2026, about 03:00 Riyadh: cloud agent 2 (branch `claude/stoic-curie-w1ar9c`)
+Everything is pushed to the branch, never to `main`. Only `docs/AI-LOG.md` and `docs/HANDOFF.md` overlap with the other agents' branches; no code conflicts. tsc is clean and 364 tests pass. Each fix has a test that fails on the old code.
+- Coordination docs: `ce350fa`, `58e06bd`, `e000f5d` (standing instructions 8 and 9; restarts follow the usage reset; cloud agents wake their own session).
+- Audits: `docs/audit/content-2026-11-09.md` (content and copy, with its status against PR 14), `docs/audit/crawl-local-2026-11-09.md` (all 320 pages at 390 and 1440 px), `docs/audit/code-2026-11-09.md` (32 findings and 4 test gaps, each with an owner area).
+- Fixes:
+  - `012af74`: dashes in library book titles.
+  - `2c8fe8e`: the rate limiter's sweep wiped the assistant and push limits.
+  - `da6a7c6`: the watcher ignored a repeated weekly cancellation. This changes watcher behaviour, so the owner should review it.
+  - `8cd7bd4`: editing a published cancellation left the old date cancelled.
+  - `d52589a`: admin invites are now audited, `/\` links are refused, and impossible `?date=` values are refused.
+  - `24b6af1`: content edits refresh the Arabic pages too.
+  - `ef34052`: the morning alert gives a clock time only for a dars with a confirmed time.
+
+Next for this agent (code audit, unclaimed files):
+1. Finding 4: undo overwrites later edits and refreshes no page.
+2. Finding 24: the flyer timeout.
+3. Finding 31: dead code.
+4. Finding 32: Riyadh dates on the admin Updates list.
+5. Then a fresh audit pass: accessibility at 390 px with screenshots, and the admin on a phone.
+
+Not mine (owner or other agents):
+- Code audit findings 5, 6 and 11 to 13: fonts, the bundle split, and contrast. These touch the desktop agent's UI files or the brand colours.
+- Findings 7 and 8: assistant tests (cloud agent 1) and the CSV export (desktop agent).
+- The nine database-only guides: the owner, in Admin.
 
 ## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
 Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
