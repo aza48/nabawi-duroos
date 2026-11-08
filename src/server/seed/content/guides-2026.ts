@@ -18,6 +18,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Madinah is one of the cheapest big cities in the Kingdom to live in. A two-bedroom flat here usually costs about half what it would in Jeddah or Riyadh. The figures below are typical prices for late 2025 and 2026. Treat them as ranges, not quotes.</p>
 <h2>Rent</h2>
 <table><thead><tr><th>Home</th><th>Who it suits</th><th>Monthly (SAR)</th></tr></thead><tbody>
+<tr><td>Bed or room in a shared flat</td><td>A single student</td><td>300 to 1,000</td></tr>
 <tr><td>Studio</td><td>One person or a couple</td><td>1,500 to 2,500</td></tr>
 <tr><td>Two bedrooms</td><td>A small family</td><td>2,000 to 3,500</td></tr>
 <tr><td>Three or four bedrooms</td><td>A family with children</td><td>3,000 to 4,500</td></tr>
@@ -28,7 +29,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <blockquote><p>Tip: Landlords who rent directly usually want 6 or 12 months paid up front. Middlemen rent month by month, furnished, for a higher price.</p></blockquote>
 <h2>Food</h2>
 <table><thead><tr><th>Item</th><th>Typical price (SAR)</th></tr></thead><tbody>
-<tr><td>Bread, one pack</td><td>5</td></tr><tr><td>Milk, 1 litre</td><td>6</td></tr>
+<tr><td>Bread, one pack</td><td>3 to 5</td></tr><tr><td>Milk, 1 litre</td><td>6</td></tr>
 <tr><td>Chicken, 1 kg</td><td>25 to 30</td></tr><tr><td>Beef, 1 kg</td><td>40 to 50</td></tr>
 <tr><td>Rice, 5 kg</td><td>50</td></tr><tr><td>Eggs, 30</td><td>25</td></tr>
 <tr><td>Drinking water, 19 litres</td><td>8</td></tr><tr><td>Fruit and vegetables, per kg</td><td>4 to 12</td></tr>
@@ -43,9 +44,9 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Mobile:</strong> 100 to 150 SAR on STC, Mobily or Zain.</li>
 </ul>
 <h2>Getting around</h2>
-<p>A city bus ride is 3.45 SAR, a Careem or Uber ride across town is 10 to 30 SAR, and petrol is about 2.18 SAR a litre for 91 and 2.33 for 95. See the getting-around guide for the details.</p>
+<p>A city bus ride is 3.45 SAR, a Careem or Uber ride across town is 10 to 30 SAR, and petrol is 2.18 SAR a litre for 91 and 2.33 for 95 (November 2026). See the getting-around guide for the details.</p>
 <h2>Health</h2>
-<p>On a visit or business visa there is no free healthcare. A GP visit is 100 to 200 SAR, a specialist 150 to 300, a dental check and clean 150 to 250, and an emergency visit 300 to 500. Keep 500 to 800 SAR aside for surprises. University students are covered by the University clinic, and many private clinics give students and staff big discounts (see Student discounts).</p>
+<p>On a visit or business visa there is no free healthcare. The insurance that comes with the visa covers emergencies only, so routine visits are paid by you. A GP visit is 100 to 200 SAR, a specialist 150 to 300, a dental check and clean 150 to 250, and an emergency visit 300 to 500. Keep 500 to 800 SAR aside for surprises. University students are covered by the University clinic, and many private clinics give students and staff big discounts (see Student discounts).</p>
 <h2>A realistic monthly budget</h2>
 <table><thead><tr><th></th><th>Single person</th><th>Family of 3 or 4</th></tr></thead><tbody>
 <tr><td>Rent (shared room or small flat)</td><td>1,000 to 2,000</td><td>3,000 to 4,000</td></tr>
@@ -57,6 +58,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>Everything else</td><td>100 to 300</td><td>400 to 2,000</td></tr>
 <tr><td><strong>Total (SAR)</strong></td><td><strong>about 2,900 to 6,700</strong></td><td><strong>about 6,300 to 12,800</strong></td></tr>
 </tbody></table>
+<p>The family budget does not include school fees. Kindergarten alone is around 4,000 SAR a year per child (see Kindergartens and schools).</p>
 <blockquote><p>Note: Students on the University scholarship live in the halls of residence and receive a monthly stipend, so their costs are far lower than this.</p></blockquote>
 <h2>Saving money</h2>
 <ul>
@@ -72,7 +74,7 @@ export const GUIDES_2026: SeedGuide[] = [
     summary: "Which network to pick, how to get internet without an iqama, and how visitors can now open a bank account.",
     bodyHtml: `
 <h2>A SIM card</h2>
-<p>All you need is your passport with a valid visa (or your iqama). You can buy one at the airport, in malls, or at STC, Mobily and Zain shops.</p>
+<p>All you need is your passport with a valid visa (or your iqama). You can buy one at the airport, in malls, or at STC, Mobily and Zain shops. The shop scans your fingerprint and registers the line to you: to your passport and border number (the entry number on your visa) if you are on a visa or Visitor ID, or to your iqama if you have one. Buy a real Saudi SIM rather than a data-only eSIM, because banks and Absher send their codes by SMS.</p>
 <ul>
 <li><strong>STC</strong> has the most stable coverage.</li>
 <li><strong>Mobily</strong> has good data bundles.</li>
@@ -81,13 +83,22 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Internet at home</h2>
 <p>Fixed home internet (about 250 to 300 SAR a month) needs an iqama. Without one, buy a portable router, put an unlimited-data SIM in it, and you have Wi-Fi for the whole flat.</p>
 <h2>A local bank account</h2>
-<p>Since September 2025 the Saudi Central Bank lets visitors with a Visitor ID open an account and get a debit card, which used to need an iqama.</p>
+<p>Since September 2025 the Saudi Central Bank lets visitors with a Visitor ID open an account and get a debit card, which used to need an iqama. The steps differ for the two groups.</p>
+<h3>With an iqama</h3>
+<ol>
+<li>Make sure you have a Saudi mobile number registered to your iqama.</li>
+<li>Open the account in the bank's app, signing in with Nafath, or at a branch with your iqama.</li>
+<li>Order your mada debit card.</li>
+</ol>
+<h3>With a Visitor ID</h3>
 <ol>
 <li>Make sure you have a Saudi mobile number in your name.</li>
 <li>Get your Visitor ID and activate Nafath or Absher. The bank uses it to verify you.</li>
-<li>Open the account in the bank's app or at a branch, verifying your identity through Nafath or Absher.</li>
+<li>Register your National Address with Saudi Post and print the proof. The bank needs your address in Saudi Arabia as well as your home address abroad.</li>
+<li>Go to a branch with your passport, a printed copy of your visa, your Visitor ID and your National Address, and be ready to state the purpose of your stay. Each bank sets its own extra conditions, so if one branch turns you away, try another bank.</li>
 <li>Order your mada debit card.</li>
 </ol>
+<p>A Visitor ID account works only while your Visitor ID and your stay are valid. When the ID expires the bank stops the account, so renew your visa in good time.</p>
 <blockquote><p>Tip: A mada card is worth having. Some shops take only mada or cash, foreign cards are sometimes blocked by bank security checks, and you need a local card to pay bills and government fees.</p></blockquote>
 <p>Already have a SIM? See <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a> for codes, SIM checks and updating your Absher number.</p>
 <p>University students get their bank card through the University's steps for new students (see "First steps for new students").</p>`,
@@ -101,20 +112,28 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Madinah is compact. Most trips take 10 to 15 minutes by car.</p>
 <h2>In the city</h2>
 <ul>
-<li><strong>City buses:</strong> 3.45 SAR a ride on all the main roads, and 11.50 SAR on the airport route (400). Cash is not accepted on board: pay in the Madinah Bus app, which also sells day, week and month passes (10, 60 and 240 SAR).</li>
-<li><strong>Ride apps:</strong> Careem, Uber, Jeeny and Bolt. Expect 10 to 30 SAR across town. Bolt lets you choose a male or female driver.</li>
+<li><strong>City buses:</strong> 3.45 SAR a ride on the city routes. The airport route has its own fare, shown in the Madinah Bus app. Each ticket is for one bus, so changing bus means paying again. Cash is not accepted on board: tap a mada, Visa or Mastercard card or your phone, or pay in the Madinah Bus app, which also sells day, week and month passes (10, 60 and 240 SAR). Customer service: 920000877.</li>
+<li><strong>From the Haramain station:</strong> the station is in Al Hadra, about 9 km from the Haram. Express bus route 300 runs between the station and the central bus station by the Prophet's Mosque, or take a ride app.</li>
+<li><strong>Ride apps:</strong> Bolt, Careem, Jeeny and Uber. Expect 10 to 30 SAR across town, and more just after the prayers at the Haram, especially Jumu'ah, when prices surge.</li>
 <li><strong>Quba walkway:</strong> small shuttles run along the Mamsha between the Haram and Masjid Quba for about 10 SAR.</li>
 </ul>
 <h2>Driving</h2>
-<p>On a visit visa you can drive with your own licence if Saudi Arabia recognises your country's licence. Buying or registering a car needs an iqama. Most rental companies also ask for residency, but private rentals are common, and students rent out their cars over the summer for 1,500 to 3,500 SAR a month.</p>
-<p>Petrol costs about 2.18 SAR a litre for 91 and 2.33 for 95.</p>
+<p>On a visit visa you can drive with your own licence if Saudi Arabia recognises your country's licence. Bring an International Driving Permit too, because rental companies usually ask for one, and always carry the original licence, not a photo of it. Buying or registering a car needs an iqama. Most rental companies also ask for residency, but private rentals are common, and students rent out their cars over the summer for 1,500 to 3,500 SAR a month.</p>
+<p>Petrol costs 2.18 SAR a litre for 91 and 2.33 for 95 (November 2026). Traffic fines appear in Absher under Violations.</p>
 <h2>To Makkah for Umrah</h2>
 <table><thead><tr><th>How</th><th>Time</th><th>Cost (SAR)</th></tr></thead><tbody>
-<tr><td>Haramain high-speed train</td><td>about 2 h 20 min</td><td>from 162 SAR economy, plus VAT</td></tr>
-<tr><td>Shared taxi from the stands near Masjid Bilal or Top 10</td><td>4.5 to 5 h</td><td>about 50 per seat</td></tr>
-<tr><td>Bus</td><td>5 to 6 h</td><td>50 to 80</td></tr>
+<tr><td>Haramain high-speed train</td><td>about 2 h 20 min</td><td>base fare 162 economy, plus 15% VAT; fares change with demand</td></tr>
+<tr><td>Shared taxi from the stands near Masjid Bilal or Top 10</td><td>4.5 to 5 h</td><td>40 to 50 per seat</td></tr>
+<tr><td>Intercity coach</td><td>6 to 7 h</td><td>about 85 to 100</td></tr>
 <tr><td>Own car (about 420 km)</td><td>4.5 to 5 h</td><td>petrol</td></tr>
 </tbody></table>
+<h3>Riding the Haramain train</h3>
+<ul>
+<li>Book on the Haramain railway's website or app, or in the Nusuk app, and read the change and refund rules before you pay.</li>
+<li>Each traveller enters an ID when booking (iqama, passport or Saudi ID). Carry that same ID on the day, because it is checked against the ticket.</li>
+<li>Each passenger may bring one bag of up to 25 kg (65 by 55 by 35 cm) and one small hand bag. Extra luggage is not allowed on board.</li>
+<li>There is a security check before the platform, so arrive at least 30 minutes early.</li>
+</ul>
 <blockquote><p>Tip: Train fares rise with demand, so book early for Ramadan, Fridays and holidays.</p></blockquote>`,
   },
   {
@@ -132,7 +151,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Back on the site, open <strong>Travel orders</strong> (أوامر الإركاب), then your <strong>Profile</strong>.</li>
 <li>Press <strong>Edit profile</strong> and check every detail exactly matches your passport, then save. A confirmation message means you're done.</li>
 </ol>
-<blockquote><p>Note: A spelling mismatch between Etimad and your passport is the most common reason a ticket gets stuck. Fix it before you request your ticket.</p></blockquote>`,
+<blockquote><p>Note: A spelling mismatch between Etimad and your passport is the most common reason a ticket gets stuck. Fix it before you request your ticket.</p></blockquote>
+<p>Do the first sign-in while you are in Saudi Arabia, through Nafath. After that the account also works from abroad.</p>`,
   },
   {
     slug: "kindergartens-and-schools",
@@ -171,14 +191,18 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>The Rawdah</h2>
 <ol>
 <li>Install the <strong>Nusuk</strong> app and sign in.</li>
-<li>Book a Rawdah slot. Slots open in advance and go quickly.</li>
+<li>Book a Rawdah slot. Booking is free, slots open in advance and go quickly, and each person can book one Rawdah permit in any 365 days. Men and women have separate times.</li>
 <li>Arrive at the time on your booking and follow the stewards.</li>
 <li>Pray two rak'ahs and make du'a calmly, then make room for others.</li>
 </ol>
 <h2>Al-Baqi'</h2>
 <p>Jannat al-Baqi' is next to the south-eastern side of the Haram, where many Companions and members of the Prophet's ﷺ family are buried.</p>
 <h2>Umrah from Madinah</h2>
-<p>Makkah is about 420 km away: around 2 hours 20 minutes on the Haramain train (from 162 SAR plus VAT) or 4.5 to 5 hours by road. The miqat for people leaving Madinah is Dhul Hulayfah (Abyar Ali). See "Getting around Madinah, and to Makkah" for the options.</p>
+<ol>
+<li><strong>Book an Umrah permit in Nusuk</strong> before you travel. It is free. Iqama holders sign in with Nafath, and visitors register with their passport and visa details. You can hold only one active permit at a time, and its time cannot be changed, so cancel it in the app and book again if your plans move.</li>
+<li><strong>Enter ihram at the miqat.</strong> For people leaving Madinah it is Dhul Hulayfah (Abyar Ali), about 14 km from the Prophet's Mosque on the road to Makkah. Buses and cars stop there.</li>
+<li><strong>Travel to Makkah,</strong> about 420 km away: around 2 hours 20 minutes on the Haramain train (base fare 162 SAR plus VAT) or 4.5 to 5 hours by road. See "Getting around Madinah, and to Makkah" for the options.</li>
+</ol>
 <blockquote><p>Tip: Umrah in Ramadan is equal in reward to Hajj, so trains and buses fill up. Book well ahead.</p></blockquote>`,
   },
   {
@@ -190,7 +214,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Food</h2>
 <ul>
 <li><strong>HungerStation</strong> and <strong>Keeta</strong> for delivery, usually in 20 to 30 minutes.</li>
-<li><strong>Barakah</strong> for restaurants' end-of-day food at 50 to 70% off.</li>
+<li><strong>Barakah</strong> for unsold food from restaurants, bakeries and shops at 50 to 70% off, collected at a set time. Orders can be cancelled by the shop up to an hour before pick-up.</li>
 </ul>
 <h2>Shopping</h2>
 <ul>
@@ -200,15 +224,15 @@ export const GUIDES_2026: SeedGuide[] = [
 </ul>
 <h2>Repairs and cleaning</h2>
 <ul>
-<li><strong>Dari</strong>: electricians, plumbers, AC technicians and furniture assembly, booked and paid in the app.</li>
-<li><strong>Maharah</strong>: cleaners, nannies and cooks, one-off or live-in. A live-in helper costs about 2,000 to 3,500 SAR a month.</li>
-<li><strong>Roha</strong>: cleaning, nannies and long-term helpers.</li>
+<li><strong>Dari</strong>: cleaning, electricians, plumbers, AC technicians and furniture assembly, booked and paid in the app.</li>
+<li><strong>Maharah</strong>: cleaners, nannies and cooks, by the hour or live-in. A live-in helper costs about 2,000 to 3,500 SAR a month.</li>
+<li><strong>Raha</strong>: domestic helpers by the hour (usually a four-hour visit) or on monthly contracts.</li>
 </ul>
 <h2>Laundry, barbers and pharmacies</h2>
 <ul>
 <li>Laundries are on almost every street and open 15 to 16 hours a day: about 2 SAR to wash or iron a thobe, 5 SAR for an abaya.</li>
 <li>Men's haircut 10 to 50 SAR. Women's 40 to 80 SAR.</li>
-<li>Al Nahdi and Nahhas pharmacies are open almost round the clock and most staff speak English.</li>
+<li>Al Dawaa and Al Nahdi pharmacies have branches all over the city, some open round the clock, and most staff speak English.</li>
 </ul>
 <h2>Gyms</h2>
 <p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's (Fitness Time Ladies and others) 250 to 500. Martial arts clubs are 150 to 300 SAR. Students get 50% off at the Islamic University sports club. Classes and trips are listed in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>`,
@@ -219,24 +243,24 @@ export const GUIDES_2026: SeedGuide[] = [
     title: "Visas for family members and visitors",
     summary: "The options people use to bring family over or stay for months, and what an iqama adds. Rules change, so always check the official site.",
     bodyHtml: `
-<blockquote><p>Important: Visa rules change often. Everything here was checked in late 2025 and 2026. Confirm on <a href="https://visa.mofa.gov.sa/">visa.mofa.gov.sa</a> before you book anything.</p></blockquote>
+<blockquote><p>Important: Visa rules change often. Everything here was checked in November 2026. Confirm on <a href="https://visa.mofa.gov.sa/">visa.mofa.gov.sa</a> before you book anything.</p></blockquote>
 <h2>Staying on a visa</h2>
 <ul>
-<li><strong>Tourist eVisa:</strong> open to citizens of about 68 countries, including the UK, the US, Canada and most of Europe, with Bosnia and Herzegovina, Mexico, North Macedonia and Serbia added on 5 November 2026. It costs SAR 535 online or SAR 480 on arrival at an international airport, includes compulsory health insurance, and is valid for one year with multiple entries, up to 90 days in the country. It cannot be extended. Check the rules for your passport on <a href="https://visa.visitsaudi.com/">visa.visitsaudi.com</a>.</li>
-<li><strong>Extending a visit visa:</strong> the host (a Saudi or an iqama holder) files the extension on Absher, from 7 days before expiry to 3 days after. It costs about SAR 100 each time, and the total stay is capped at 180 days.</li>
-<li><strong>Family visit visa:</strong> the sponsor needs a professional iqama with at least 90 days left and a documented salary. Student and dependant iqamas cannot sponsor one.</li>
+<li><strong>Tourist eVisa:</strong> open to citizens of 72 countries, including the UK, the US, Canada and most of Europe. Bosnia and Herzegovina, Mexico, North Macedonia and Serbia were added on 5 November 2026. It costs SAR 535 online or SAR 480 on arrival at an international airport (paid by card at the airport kiosks), includes compulsory health insurance, and is valid for one year with multiple entries, up to 90 days in the country. It cannot be extended inside the Kingdom. It covers Umrah with a Nusuk permit, but not Hajj. Check the rules for your passport on <a href="https://visa.visitsaudi.com/">visa.visitsaudi.com</a>, and apply only there, not through agents who add their own fees.</li>
+<li><strong>Extending a visit visa:</strong> the host (a Saudi or an iqama holder) files the extension on Absher, from 7 days before expiry to 3 days after. Filing after the expiry date brings a fine, so file early. It costs SAR 100 each time, the visitor's medical insurance must cover the new dates, and the total stay is capped at 180 days from the first entry.</li>
+<li><strong>Family visit visa:</strong> an iqama holder applies on the Ministry of Foreign Affairs visa platform for close relatives such as a spouse, children or parents. The government fee is SAR 300 for a single entry or SAR 500 for multiple entries, plus medical insurance. Approval is decided case by case.</li>
 </ul>
 <p>On a visit visa you may live here and take short courses at language centres. You may not work, and degree study needs a student visa.</p>
 <h2>What an iqama adds</h2>
 <ul>
-<li>A registered rental contract on Ejar.</li>
 <li>A Saudi driving licence and a car in your name.</li>
 <li>Bringing your spouse and children on dependant visas.</li>
 <li>Long stays without visa runs.</li>
 </ul>
-<p>Iqamas come through employment, or through Premium Residency (about 100,000 SAR a year, or 800,000 SAR for life).</p>
+<p>A registered rental contract on Ejar is open to iqama holders and to students on the educational visa, whose contract an accredited agent registers. See <a href="/guides/finding-an-apartment">Finding and renting a flat</a>.</p>
+<p>Iqamas come through employment, or through Premium Residency: 100,000 SAR a year, or 800,000 SAR once for an unlimited residency. Five other Premium Residency products, for skilled professionals, gifted people, investors, entrepreneurs and property owners, each have their own conditions.</p>
 <h2>University students' families</h2>
-<p>Students' spouse and family visas go through the University and its own procedures. Ask at the student affairs office (Wihda 22) and in the MESH group, where married students share the current steps.</p>
+<p>Students' spouse and family visas go through the University and its own procedures, and the rules differ for students with an iqama and students on the educational visa with a Visitor ID. Ask at the student affairs office (Wihda 22) or through the Tawasul system before you plan, and message Admin on WhatsApp at +1 234 567 9076 if you need help finding the right office.</p>
 <blockquote><p>Tip: Come on a visa for a few months first, get to know the city, and only then spend on an iqama.</p></blockquote>`,
   },
   {
@@ -248,15 +272,16 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Where to look</h2>
 <ul>
 <li><strong>Through people:</strong> the most reliable way. Ask in the MESH group and among students and brothers already here.</li>
-<li><strong>WhatsApp and Telegram groups:</strong> up-to-date listings and direct contact. For example, Shoqaq Madinah (students' rentals) and LM Renting in Madinah.</li>
-<li><strong>Haraj.com.sa:</strong> big, but prices tend to be inflated and most landlords speak only Arabic.</li>
-<li><strong>Agents:</strong> some real-estate offices work in English. Use an accredited agent from Ejar's official list.</li>
+<li><strong>WhatsApp and Telegram groups:</strong> up-to-date listings and direct contact with landlords and students who are leaving.</li>
+<li><strong>Property sites and apps:</strong> Aqar, Bayut and Haraj are the biggest. Prices on them tend to be inflated and many landlords speak only Arabic.</li>
+<li><strong>Agents:</strong> some real-estate offices work in English. Use an agent from Ejar's official list of accredited agents, and check their FAL licence number in the FAL app or on the Real Estate General Authority's website before you pay anything.</li>
+<li><strong>Taking over a flat:</strong> students who are leaving often hand over their flat, sometimes with the furniture. Ask to see the contract and meet the landlord before you pay for the furniture or the remaining rent.</li>
 </ul>
 <blockquote><p>Tip: If it's your first time, stay in a hotel or a short let (Booking, Airbnb or Gathern) for a week or two and look in person. You'll see the building, test the air conditioning and negotiate directly.</p></blockquote>
 <h2>Furnished or empty</h2>
 <p>For 3 to 6 months, take furnished. For a year or more, an empty flat is 40 to 50% cheaper and you can furnish it cheaply at Haraj market. Most good newer buildings are an 8 to 15 minute drive from the Haram rather than walking distance.</p>
 <h2>The contract</h2>
-<p><strong>Ejar</strong> is the official system that legally protects both sides. With an iqama you register the contract yourself; on a student visa, an accredited Ejar agent registers it for you (see the answer on renting on a student visa). Many rentals in Madinah are still private paper agreements, which carry no legal protection. Owners usually want 6 or 12 months up front, or two payments a year.</p>
+<p><strong>Ejar</strong> is the official system of the Real Estate General Authority, and a registered contract legally protects both sides. You do not type the contract in yourself: an accredited agent, or a landlord who meets Ejar's conditions, creates it on Ejar, and you approve it from the link Ejar sends you by SMS. This works with an iqama, and on the educational visa with a Visitor ID (see the answer on renting on a student visa). The registration fee is 125 SAR a year, so check in the contract who pays it. Since September 2025 landlords must register their leases, and a tenant can ask for registration too. Many rentals in Madinah are still private paper agreements, which carry no legal protection. Owners usually want 6 or 12 months up front, or two payments a year, and some charge more when you pay in instalments, so ask for both prices. Ejar's helpline is 199011.</p>
 <h2>Checklist before you pay</h2>
 <ol>
 <li>Look for damp, cracks or mould, especially in bathrooms.</li>
@@ -267,6 +292,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Test the fridge, cooker, water heater and washing machine if they're included.</li>
 <li>Check windows shut tightly against sand, and ask for window guards if you have children.</li>
 <li>Agree in writing who pays for small repairs, water and electricity.</li>
+<li>Check whether you are renting from the owner or from someone subletting, and see the owner's papers or the agent's licence.</li>
+<li>If the building has a lift, make sure it works, especially with children or elderly parents.</li>
 </ol>
 <blockquote><p>Note: If the previous tenant left an unpaid electricity bill, your power can be cut soon after you move in. Ten minutes checking the meter saves weeks of trouble.</p></blockquote>`,
   },
@@ -276,20 +303,23 @@ export const GUIDES_2026: SeedGuide[] = [
     title: "Getting a Saudi driving licence with your foreign one",
     summary: "From translation to the driving school appointment, with the fee and what to bring. You need an iqama.",
     bodyHtml: `
-<p>With an iqama you can replace your home licence with a Saudi one. Holders of licences from around 47 countries can swap without a driving test. Others may be asked to sit a test at the driving school. Check your country on Absher before you start.</p>
+<p>With an iqama you can replace your home licence with a Saudi one. Holders of licences from a list of countries, including the UK, the US, Canada, Australia, most of Europe and the Gulf states, can swap without a driving test. Others are asked to go through the driving school's training and test. Check your country on Absher before you start. Once your iqama is issued, plan to switch within three months.</p>
 <ol>
-<li><strong>Translate your licence into Arabic</strong> at a certified translation office.</li>
+<li><strong>Translate your licence into Arabic</strong> at a certified translation office. Many offices work fully online and send back a signed and stamped PDF.</li>
 <li><strong>Book an appointment on absher.sa</strong> on a computer, not the app: Appointments (مواعيد), then Traffic, then <em>Replacement of driving licence</em> (استبدال رخصة القيادة). Choose <strong>المدرسة النموذجية</strong> (the model driving school).</li>
 <li><strong>Upload three PDFs:</strong> the translation, and the front and back of your original licence.</li>
 <li><strong>Do the medical check</strong> before your appointment, at the Regional Laboratory and Central Blood Bank (المختبر الإقليمي وبنك الدم المركزي). It's a short taxi ride from the University. They take a blood test and check your eyes, and send the result to the driving school themselves.</li>
-<li><strong>Pay the licence fee in your banking app:</strong> Payments, then Government payments, then Driving licence, then Issue licence. Enter your iqama number, choose private, then 5 years (200 SAR) or 10 years (400 SAR).</li>
+<li><strong>Pay the licence fee in your banking app:</strong> Payments, then Government payments, then Driving licence, then Issue licence. Enter your iqama number, choose private, then the length. The fee is 40 SAR a year: 5 years is 200 SAR and 10 years is 400 SAR. The medical check is paid separately at the centre.</li>
 <li><strong>Go to your appointment</strong> with your original licence, the translation, a photo, and your iqama (the card or the digital one in Absher).</li>
 <li><strong>Check Absher afterwards.</strong> Your Saudi licence appears there once it's issued.</li>
 </ol>
 <blockquote><p>Tip: The driving school may keep your original licence. Take photos of both sides first.</p></blockquote>
+<blockquote><p>Note: People near the driving school offer to book a slot for you for a small fee, but they ask for your Absher password or the code sent to your phone. Never share either. Book the appointment yourself on Absher.</p></blockquote>
+<p><strong>On a Visitor ID:</strong> the steps above need an iqama. Students on the educational visa drive on their home licence while it is recognised, with an International Driving Permit, and buying a car needs an iqama.</p>
 <blockquote><p>Note: If you held a Saudi licence before and came back on a new iqama, you don't start again. Transfer or renew it onto the new iqama through Absher.</p></blockquote>`,
   },
   {
+    // Superseded: the published version is GUIDE_REWRITES_2026_11 in guides-research-2026-11.ts (SEED_GUIDES keeps the later one). Edit that one.
     slug: "applying-to-the-islamic-university",
     stage: "getting-started",
     title: "Applying to the Islamic University",
@@ -324,17 +354,25 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Sit the online interview or the Arabic test if you are invited. The Arabic test is not pass or fail: it only places you in a Ma'had level.</li>
 <li>Initial acceptance appears on the portal. Confirm it within 5 days or the offer lapses.</li>
 <li>Final acceptance comes from the Ministry of Education, not the University. Only then fill in the visa form on the portal.</li>
-<li>Pay the educational visa fee when the payment link arrives. The visa comes by email, with no embassy visit. You must be outside Saudi Arabia when you submit the visa application.</li>
+<li>Pay the educational visa fee when the payment link arrives, and complete the medical check and fingerprints if the portal asks for them. Fingerprints can be given in the Saudi Visa Bio app or at an approved centre. The visa comes by email. You must be outside Saudi Arabia when you submit the visa application, or it is rejected.</li>
 <li>Request your arrival ticket through Minhati once the visa is issued.</li>
 </ol>
 <h2>Housing, deferral and family</h2>
 <p><strong>Housing:</strong> scholarship students are housed by default, either inside the Jamiah or in the Rabwa halls (الربوة). See <a href="/ask/is-housing-included">Is housing included?</a></p>
-<p><strong>Deferral:</strong> the University allows new students to defer for up to two years. See <a href="/ask/defer-my-place">Can I defer my place?</a> for what students on the new visa report.</p>
+<p><strong>Deferral:</strong> the University's rules allow up to two years after final acceptance, but under the educational visa you are expected to arrive in the semester you were accepted for. See <a href="/ask/defer-my-place">Can I defer my place?</a></p>
 <p><strong>Bringing your family:</strong> see <a href="/ask/istiqdam-deposit">Can I sponsor my family, and what is the deposit?</a></p>
 <h2>Initial acceptance is not final</h2>
 <p>Initial acceptance means the University has put your name forward. Final acceptance means the Ministry has approved it, and that is the only stage that leads to a visa. Do not resign from work, give up your home or book flights on initial acceptance alone. Some people with initial acceptance are moved to a later semester, and some are offered a year of online Arabic first.</p>
 <p>Plan to arrive in the semester you are offered. Under the new educational visa, asking to arrive later can send your application back.</p>
-<blockquote><p>Tip: Questions about your own application? Ask in the MESH WhatsApp group, where students who applied this year share each step as it happens.</p></blockquote>`,
+<h2>Common mistakes</h2>
+<ul>
+<li>Typing a name that differs from the passport by even one letter. It can block the visa later.</li>
+<li>Sending photos of documents instead of clear scans, or a photo that is not a plain passport-style picture on a white background.</li>
+<li>Leaving the police clearance to the last weeks. In some countries it takes a long time.</li>
+<li>Missing the 5 day window to confirm an offer, or the short deadline on the University's second application.</li>
+<li>Applying for the visa while visiting Saudi Arabia.</li>
+</ul>
+<blockquote><p>Tip: Questions about your own application? Message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
   },
   {
     slug: "having-a-baby-in-madinah",
@@ -353,7 +391,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>Mouwasat</td><td>About 6,000</td><td>Ask the hospital</td></tr>
 <tr><td>Safa Al Madinah</td><td>3,500, plus a 115 check-up fee</td><td>Ask the hospital</td></tr>
 <tr><td>Saudi German</td><td>5,000</td><td>About 10,000, plus 3,000 for each later caesarean</td></tr>
-<tr><td>Uhud (private, paying patients)</td><td>3,500, plus a 100 check-up fee</td><td>7,000, plus a 100 check-up fee</td></tr>
+<tr><td>Uhud (government hospital, paying patients)</td><td>3,500, plus a 100 check-up fee</td><td>7,000, plus a 100 check-up fee</td></tr>
 <tr><td>UMMC (formerly Dar)</td><td>3,000</td><td>6,000</td></tr>
 <tr><td>Wilaada (expats who are not students)</td><td>5,000</td><td>Ask the hospital</td></tr>
 <tr><td>Zahra</td><td>4,100</td><td>9,000</td></tr>
@@ -369,7 +407,8 @@ export const GUIDES_2026: SeedGuide[] = [
 </ul>
 <h2>Which doctor delivers</h2>
 <p>At Dr. Hamid Suliman Al Ahmadi Hospital, Madina National Hospital, Mouwasat, Uhud and Wilaada, the doctor on duty usually delivers your baby, so you generally cannot choose.</p>
-<blockquote><p>Tip: Book antenatal visits early, ask the hospital for its current delivery price in writing, and ask what is included before you decide.</p></blockquote>`,
+<blockquote><p>Tip: Book antenatal visits early, ask the hospital for its current delivery price in writing, and ask what is included before you decide.</p></blockquote>
+<p>On a visit visa, the insurance that comes with the visa pays for emergency pregnancy and childbirth care only up to a low limit (5,000 SAR), so plan to pay for a delivery yourself. After the birth, register the baby and add them to your file: see <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, and dependent fees</a>.</p>`,
   },
   {
     slug: "sports-and-activities",
@@ -417,7 +456,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Sign in to Mutasil with Nafath.</strong> Your registered numbers appear straight away.</li>
 <li><strong>Use the My Numbers Inquiry without signing in.</strong> Choose English, enter your iqama number and date of birth, answer Yes to having a mobile number, enter that number and the captcha, then press Inquire. Type in the code sent to your phone and press Submit.</li>
 <li><strong>No access to your registered number?</strong> Answer No to having a mobile number. You get a short summary, with fewer details.</li>
-<li><strong>The CST app:</strong> sign in and open My Numbers (Argami).</li>
+<li><strong>The CST app:</strong> sign in and open My Numbers (Argami). The service is free.</li>
 <li><strong>Tawakkalna:</strong> sign in and open the mobile number inquiry.</li>
 </ol>
 <blockquote><p>Note: These steps use an iqama number. If you are here on a Visitor ID, ask your operator in a branch which lines are registered to your passport.</p></blockquote>
@@ -429,7 +468,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Check Mutasil again to confirm the number is gone.</li>
 </ol>
 <h2>Update your mobile number in Absher</h2>
-<p>Absher sends its verification codes to the number on file, so update it when you change your SIM. The new number must be active and able to receive SMS.</p>
+<p>Absher sends its verification codes to the number on file, so update it when you change your SIM. The new number must be active, able to receive SMS, and registered to your own ID (or that of a close relative). Your bank keeps its own record of your number, so update it with the bank as well.</p>
 <ul>
 <li><strong>Absher app:</strong> before logging in, open Digital Identity Management, choose Change Mobile Number, enter your iqama or ID number and date of birth, enter the new number and finish the biometric check.</li>
 <li><strong>Nafath app:</strong> open Digital Identity Account Management, choose Digital Identity Mobile Number Update, enter the details and finish the biometric check.</li>
@@ -444,7 +483,7 @@ export const GUIDES_2026: SeedGuide[] = [
     summary: "What Jawazat charges for the iqama, exit and re-entry visas, adding family and transfers. Checked November 2026.",
     bodyHtml: `
 <blockquote><p>Important: these are Jawazat service fees, checked in November 2026. Other charges such as health insurance can apply separately, so confirm the final amount on Absher before you pay.</p></blockquote>
-<p>Students on a study visa pay nothing for their own iqama. The fees below matter mostly for families and for anyone who travels.</p>
+<p>Students on a study visa pay nothing for their own iqama. The fees below matter mostly for families and for anyone who travels. Fees are paid through Sadad in your banking app, under Government payments.</p>
 <h2>Iqama</h2>
 <table><thead><tr><th>Who</th><th>Fee (SAR)</th></tr></thead><tbody>
 <tr><td>Student with a study visa</td><td>Free</td></tr>
@@ -460,17 +499,17 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>Each extra month on a multiple visa</td><td>200</td></tr>
 <tr><td>Final exit</td><td>Free</td></tr>
 </tbody></table>
-<p>Extra months must fall within the validity of your iqama.</p>
+<p>Extra months must fall within the validity of your iqama. If you extend while you are already abroad, the extra months cost double: 200 SAR a month on a single visa and 400 SAR a month on a multiple visa. Fees are not refunded if you cancel the visa, so choose the length carefully.</p>
 <h2>Adding family</h2>
 <ul>
 <li>Adding a dependent or newborn born inside Saudi Arabia: free.</li>
-<li>Adding a dependent or newborn born outside Saudi Arabia: 2,000 SAR.</li>
+<li>A child born outside Saudi Arabia first needs an entry visa as a dependent: 2,000 SAR. Add the child within three months of arrival to avoid a fine.</li>
 </ul>
 <h2>Visit visas</h2>
 <ul>
 <li>Extending a visit visa: 100 SAR each time.</li>
 </ul>
-<p>Other charges can apply, for example the monthly levy for dependants and higher fees for extending a re-entry visa while you are abroad. Ask on Absher before you pay.</p>
+<p>Other charges can apply, for example the monthly levy for dependants on a work iqama (400 SAR per dependant a month) and Absher service charges. Absher shows the final amount before you pay.</p>
 <p>Visitor ID students pay none of the iqama fees above until they hold an iqama. See Visas for family members and visitors for the visit visa rules.</p>`,
   },
   {
@@ -486,8 +525,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td><strong>The Prophet's ﷺ chamber</strong></td><td>The resting place of the Prophet ﷺ, Abu Bakr and Umar. Visitors give salam quietly and briefly, keep moving and do not block those behind them.</td></tr>
 <tr><td><strong>The minbar and the mihrab</strong></td><td>The pulpit and the prayer niche that mark the edge of the Rawdah.</td></tr>
 <tr><td><strong>The Green Dome</strong></td><td>The dome over the chamber. The open courtyard on the south side gives the best view.</td></tr>
-<tr><td><strong>The Prophet's Mosque Library</strong></td><td>A library of rare manuscripts and classical texts for researchers and students, entered from the King Saud gate. Hours vary and it closes around prayer times.</td></tr>
-<tr><td><strong>Prophetic Biography Museum</strong></td><td>A multimedia exhibition on the life of the Prophet ﷺ and the story of the masjid, across from the masjid. A good first orientation for children.</td></tr>
+<tr><td><strong>The Prophet's Mosque Library</strong></td><td>A library of rare manuscripts and classical texts for researchers and students, on the west side of the masjid. The men's library is upstairs, reached by the escalator at Gate 10. Bags are not allowed, and laptops need a permit.</td></tr>
+<tr><td><strong>Museum of the Prophet's Biography</strong></td><td>A multimedia exhibition on the life of the Prophet ﷺ and Islamic civilisation, just south of the masjid. Entry is by ticket, booked online: 40 SAR for the standard ticket (November 2026), free for children under 7. A good first orientation for children.</td></tr>
 <tr><td><strong>The courtyard umbrellas</strong></td><td>Large automatic parasols that open at dawn and close at dusk, so the courtyards stay shaded for prayer.</td></tr>
 <tr><td><strong>Wudu areas and toilets</strong></td><td>Large facilities around the edge of the masjid, some underground and reached by ramps in the courtyards. They are cleanest just after a prayer and busiest just before.</td></tr>
 </tbody></table>
@@ -497,11 +536,11 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Choose a slot. Men and women have separate slots and separate times.</li>
 <li>Book as early as the app allows. Slots go quickly, most of all in Ramadan, the Hajj season and school holidays.</li>
 <li>Each person can book one Rawdah permit in any 365 days.</li>
-<li>Keep the app open when you are at the masjid, because short-notice slots are sometimes released during the day.</li>
+<li>Keep the app open with location on when you are at the masjid, because short-notice slots are released during the day for people nearby. You can also join the waiting list in the app.</li>
 <li>Arrive at your booked time and follow the stewards. A visit inside the Rawdah is about 10 to 15 minutes.</li>
 </ol>
 <h2>Al-Baqi' cemetery</h2>
-<p>Al-Baqi' is just east of the masjid, across the road. It is open to men only, usually after Fajr and after Asr. Bring your iqama or passport for the security check at the entrance.</p>
+<p>Al-Baqi' is just east of the masjid, across the courtyard. It is open to men only, for a while after Fajr and a shorter while after Asr, and the times move with the prayer times. Entry is free. Photos and filming are not allowed inside. Women can see it from outside the boundary.</p>
 <h2>Small things that help</h2>
 <ul>
 <li>Come 20 to 30 minutes before a prayer if you want a place near the middle.</li>
@@ -531,18 +570,18 @@ export const GUIDES_2026: SeedGuide[] = [
 </tbody></table>
 <h2>Quba and the south</h2>
 <ul>
-<li><strong>Masjid Quba</strong> (about 4 km): the first masjid of Islam. Two rak'ahs after wudu at home carry the reward of an Umrah. Many people walk there on Saturdays along the Quba walkway, which is around 3 km and takes about 45 minutes.</li>
+<li><strong>Masjid Quba</strong> (about 3.5 km): the first masjid of Islam. Two rak'ahs after wudu at home carry the reward of an Umrah. Many people walk there on Saturdays along the Quba walkway, which is around 3 km and takes about 45 minutes.</li>
 <li><strong>Masjid al-Jumu'ah</strong> (about 4 to 5 km): where the first Friday prayer was held in Madinah, on the way between the Haram and Quba.</li>
-<li><strong>Masjid al-Qiblatayn</strong> (about 5 to 6 km, north-west of the Haram): where the direction of prayer changed from Jerusalem to Makkah.</li>
 <li><strong>Quba gardens:</strong> Bir Ariis and Bir al-Khatim are in the gardens near Quba, and the square around the masjid has family cafés.</li>
 </ul>
-<h2>Khandaq and Mount Sala'</h2>
-<p>The Battle of the Trench took place in 5 AH around Mount Sala' (Sal'). A group of small masjids known as the Seven Masjids stands on its slope, although six remain today. They include Masjid al-Fath, where the Prophet ﷺ made du'a, and masjids named for Salman al-Farisi and Umar ibn al-Khattab. The walk through the area takes about 40 minutes.</p>
+<h2>Khandaq, Mount Sala' and Qiblatayn</h2>
+<p>The Battle of the Trench took place in 5 AH around Mount Sala' (Sal'), north-west of the Haram. The small masjids on its slope are still called the Seven Masjids, although several have been rebuilt or joined into larger ones and fewer stand today. The best known is Masjid al-Fath, where the Prophet ﷺ made du'a, and the large Masjid al-Khandaq stands beside the site. The walk through the area takes about 40 minutes.</p>
+<p><strong>Masjid al-Qiblatayn</strong> (about 4 km, north-west of the Haram, on Khalid ibn al-Walid Road) is where the direction of prayer changed from Jerusalem to Makkah. It is a short drive from the Seven Masjids, so the two make one outing.</p>
 <h2>Uhud</h2>
 <p>Mount Uhud, about 5 km north of the Haram, is where the Battle of Uhud took place in 3 AH. The Shuhada cemetery at its foot holds seventy martyrs, including Hamzah ibn Abd al-Muttalib. A walk around the foot of the mountain takes about an hour. Masjid al-Mustarah is nearby.</p>
 <h2>Wells and farms</h2>
 <ul>
-<li><strong>Bir Rumah (the well of Uthman):</strong> bought and given for the public by Uthman ibn Affan. It still gives water, and the dates of the surrounding farm are sold for charity.</li>
+<li><strong>Bir Rumah (the well of Uthman),</strong> about 6 km north-west of the Haram: bought and given for the public by Uthman ibn Affan. It still gives water to a working date farm whose dates are sold for charity. At times visitors can only see it from outside the fence.</li>
 <li>The wells of Anas ibn Malik and Ghars are in working farms. Visits are by permission of the owner.</li>
 <li><strong>Aliyat al-Madinah</strong> is the old farming belt. Some farms welcome visitors in the date harvest, late summer.</li>
 </ul>
@@ -559,10 +598,10 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Distances and times are by road from Madinah. For anywhere over 300 km, a flight or the Haramain train is often easier. Checked November 2026.</p>
 <table><thead><tr><th>Place</th><th>Distance</th><th>Drive</th><th>Good for</th></tr></thead><tbody>
 <tr><td>Wadi al-Jinn</td><td>about 30 km</td><td>about 40 min</td><td>A half-day outing to the valley where cars seem to roll uphill. Any car will do and you need no guide.</td></tr>
-<tr><td>Badr</td><td>about 130 km</td><td>1.5 to 2 h</td><td>The battlefield of the Battle of Badr, with a visitor centre and signs in Arabic and English. Leave after Fajr and be back by Maghrib. Take water and food, as services are limited.</td></tr>
-<tr><td>Khaybar</td><td>about 160 km</td><td>about 2 h</td><td>The oasis and fortifications of the Battle of Khaybar, palm groves and the black lava fields. A 4WD helps in the lava fields.</td></tr>
+<tr><td>Badr</td><td>about 150 km</td><td>1.5 to 2 h</td><td>The battlefield of the Battle of Badr, with a visitor centre and signs in Arabic and English. Leave after Fajr and be back by Maghrib. Take water and food, as services are limited.</td></tr>
+<tr><td>Khaybar</td><td>about 170 km</td><td>about 2 h</td><td>The oasis and fortifications of the Battle of Khaybar, palm groves and the black lava fields. A 4WD helps in the lava fields.</td></tr>
 <tr><td>Yanbu</td><td>about 230 km</td><td>2.5 to 3 h</td><td>Red Sea beaches, snorkelling and a corniche. Many people go for a Friday and Saturday.</td></tr>
-<tr><td>AlUla and Hegra</td><td>about 340 km</td><td>3.5 to 4 h</td><td>The UNESCO World Heritage tombs of Hegra, the old town and the sandstone landscape. Plan two or three days. Hegra is visited on guided tours, so book ahead.</td></tr>
+<tr><td>AlUla and Hegra</td><td>about 340 km</td><td>3.5 to 4 h</td><td>The UNESCO World Heritage tombs of Hegra, the old town and the sandstone landscape. Plan two or three days. Hegra is entered only on a timed guided tour booked through Experience AlUla (from about 95 SAR a person, November 2026), and private cars cannot drive inside, so book ahead.</td></tr>
 <tr><td>Jeddah (Al-Balad)</td><td>about 420 km</td><td>4 to 5 h</td><td>The old town, corniche and seafood. The Haramain train takes about 2 hours.</td></tr>
 <tr><td>Tabuk</td><td>about 700 km</td><td>7 to 8 h</td><td>The Tabuk fort and the route to the north-west coast. A flight is the practical choice.</td></tr>
 </tbody></table>
@@ -584,10 +623,10 @@ export const GUIDES_2026: SeedGuide[] = [
     bodyHtml: `
 <h2>The year in Madinah</h2>
 <table><thead><tr><th>Season</th><th>Typical temperatures</th><th>What it is like</th></tr></thead><tbody>
-<tr><td>Winter, November to February</td><td>12 to 24°C</td><td>Cool and dry, the best weather for walking and trips. Nights are cold in the open courtyards, so bring a layer for Maghrib and Isha. It is also the busiest Umrah period.</td></tr>
-<tr><td>Spring, March to May</td><td>18 to 35°C</td><td>Pleasant in March and early April, hot by late May. Dust storms can come, mostly from March to May.</td></tr>
-<tr><td>Summer, June to August</td><td>32 to 45°C</td><td>Very hot. Do outdoor things before 9 am or after 6 pm and drink water all day. The date harvest runs in late summer.</td></tr>
-<tr><td>Autumn, September to October</td><td>25 to 38°C</td><td>The heat breaks and crowds are lighter, especially after the Hajj season.</td></tr>
+<tr><td>Winter, November to February</td><td>12 to 24°C in January, warmer in November</td><td>Cool and mostly dry, the best weather for walking and trips. Nights are cold in the open courtyards, so bring a layer for Maghrib and Isha. Most of the year's little rain falls between November and January, sometimes in sudden heavy bursts. It is also the busiest Umrah period.</td></tr>
+<tr><td>Spring, March to May</td><td>15 to 40°C</td><td>Pleasant in March and early April, hot by May. Dust storms can come, mostly from March to May.</td></tr>
+<tr><td>Summer, June to August</td><td>28 to 44°C, hotter on the worst days</td><td>Very hot, with August the hottest month. Do outdoor things before 9 am or after 6 pm and drink water all day. The date harvest runs in late summer.</td></tr>
+<tr><td>Autumn, September to October</td><td>23 to 41°C</td><td>September is still very hot. The heat breaks during October and crowds are lighter.</td></tr>
 </tbody></table>
 <h2>When it is busiest</h2>
 <ul>
@@ -597,9 +636,9 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Late September to mid November and late February to March have the best mix of weather and calm.</li>
 </ul>
 <h2>Camping</h2>
-<p>Camping in open desert and wadis is a favourite weekend activity, but it is regulated. Camping in areas with natural vegetation needs a licence, protected areas need a permit, and fines can reach several thousand riyals. Check the current rules before you go, and respect the signed heritage zones around Uhud.</p>
+<p>Camping in open desert and wadis is a favourite weekend activity, but it is regulated. Camping in areas with natural vegetation needs a licence from the National Center for Vegetation Cover, issued on its Nabati platform, protected areas need a permit, and unlicensed camping in forests or national parks can be fined up to 3,000 SAR. Check the current rules before you go, and respect the signed heritage zones around Uhud.</p>
 <ul>
-<li><strong>Fires:</strong> charcoal and gas stoves are the norm. Never light a fire inside a protected reserve or a city park, and check for fire restrictions in summer.</li>
+<li><strong>Fires:</strong> gas stoves and bought, imported charcoal are the norm. Never buy or burn local firewood or charcoal made from local trees: it is banned, and fines start in the thousands of riyals for each cubic metre. Never light a fire inside a protected reserve or a city park, and check for fire restrictions in summer.</li>
 <li><strong>Rubbish:</strong> take everything back with you, including charcoal ash and food scraps. Bring big bin bags.</li>
 <li><strong>Water and safety:</strong> carry at least 10 litres per person per day, tell someone your route, and avoid wadis when rain is forecast.</li>
 <li><strong>Wildlife:</strong> shake out your shoes in the morning and keep away from stray dogs and camels.</li>
@@ -663,17 +702,18 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>University students:</strong> start with the University clinic, which covers students. Many private clinics also give students big discounts (see <a href="/discounts">Student discounts</a>).</li>
 <li><strong>Minor illness:</strong> a private clinic is quickest. A GP visit usually costs 100 to 200 SAR (see <a href="/guides/cost-of-living">What it costs to live in Madinah</a>).</li>
 <li><strong>Emergencies:</strong> go to the nearest hospital emergency department, or call 997.</li>
-<li><strong>Visitors:</strong> on a visit visa you pay for care yourself, so keep health insurance and some money aside.</li>
+<li><strong>Visitors:</strong> every visit visa comes with compulsory medical insurance, but it covers emergencies only, up to 100,000 SAR, with low limits for dental emergencies and childbirth. Routine visits are paid by you, and a private hospital may ask for payment up front, so keep some money aside or buy extra cover. If you extend your visa, the insurance must be extended too.</li>
 </ul>
 <h2>Main hospitals</h2>
-<p>Listed alphabetically. Prices and services differ, so ask before booking.</p>
+<p>Listed alphabetically. Prices and services differ, so ask before booking. Doctors usually speak English; reception and nursing staff less often.</p>
 <ul>
 <li>Hayat National Hospital (private)</li>
 <li>King Fahd Hospital (government)</li>
 <li>Madina National Hospital (private)</li>
+<li>Madinah Maternity and Children's Hospital (government)</li>
 <li>Mouwasat Hospital (private)</li>
 <li>Saudi German Hospital (private)</li>
-<li>Uhud Hospital</li>
+<li>Uhud Hospital (government)</li>
 <li>Zahra Hospital (private)</li>
 </ul>
 <p>Delivery fees, husband and companion rules, and the free option for University wives are in <a href="/guides/having-a-baby-in-madinah">Having a baby in Madinah</a>.</p>
@@ -693,20 +733,20 @@ export const GUIDES_2026: SeedGuide[] = [
     slug: "other-universities-in-madinah",
     stage: "study",
     title: "Other universities in Madinah",
-    summary: "Prince Mugrin, Saudi Electronic University and Taibah University: what each offers, and where the Islamic University fits.",
+    summary: "Prince Mugrin, Prince Musaid bin Abdulrahman (formerly the Saudi Electronic University) and Taibah University: what each offers, and where the Islamic University fits.",
     bodyHtml: `
 <p>The Islamic University is the main route for international students, with a full scholarship and the Ma'had al-Lughah for Arabic. Madinah has other universities too. Admission rules, fees and languages of teaching differ for each, so always check the university's own admissions page before applying.</p>
 <h2>The universities</h2>
 <table><thead><tr><th>University</th><th>Type</th><th>Known for</th></tr></thead><tbody>
 <tr><td><strong>Islamic University of Madinah</strong></td><td>Public, founded 1961</td><td>Shariah, Qur'an, hadith, da'wah and Arabic, with scholarships for students from around the world. See <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</td></tr>
-<tr><td><strong>Prince Mugrin University</strong></td><td>Private</td><td>Business and hospitality, engineering and technology, computing, and architecture and design. Teaching is mainly in English and students pay tuition.</td></tr>
-<tr><td><strong>Saudi Electronic University, Madinah branch</strong></td><td>Public, online and blended</td><td>Business administration, computing and information sciences, and health sciences, mixing online study with some on-campus sessions.</td></tr>
+<tr><td><strong>Prince Mugrin University</strong></td><td>Private, non-profit</td><td>Three colleges: business and tourism, computer science and cybersecurity, and engineering. Students pay tuition, and the university runs its own scholarship programme.</td></tr>
+<tr><td><strong>Prince Musaid bin Abdulrahman University, Madinah branch</strong></td><td>Public, blended</td><td>Known until September 2026 as the Saudi Electronic University. Business administration, computing and informatics, and health sciences, mixing online study with sessions at its Madinah centre.</td></tr>
 <tr><td><strong>Taibah University</strong></td><td>Public, founded 2003</td><td>A full range of colleges including medicine, engineering, computer science, pharmacy, education, Shariah and business.</td></tr>
 </tbody></table>
 <h2>Choosing</h2>
 <ul>
 <li><strong>Want Islamic sciences and Arabic?</strong> The Islamic University is built for that. Other routes are in <a href="/programs">Study in Madinah</a>.</li>
-<li><strong>Want a professional degree in English?</strong> Look at private universities such as Prince Mugrin.</li>
+<li><strong>Want a professional degree?</strong> Compare the programmes, fees and language of teaching on each university's admissions page. International applicants apply to most of them through the Study in Saudi portal.</li>
 <li><strong>Need flexible hours?</strong> Online and blended programmes suit people who work or have family duties.</li>
 <li><strong>Staying on a visa?</strong> Degree study needs a student visa. See <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</li>
 </ul>`,
@@ -716,19 +756,19 @@ export const GUIDES_2026: SeedGuide[] = [
 export type SeedFaq = { slug: string; question: string; category: string; answerHtml: string; tags?: string[] };
 
 export const FAQS_2026: SeedFaq[] = [
-  { slug: "defer-my-place", category: "university", question: "Can I defer my place at the University?", answerHtml: "<p>Yes. The University allows new students to defer for up to two years. Request it through the University before the semester starts. There have been reports that students who came on the new electronic study visa were told deferral was not available to them, so check your own case before you plan around it.</p>" },
+  { slug: "defer-my-place", category: "university", question: "Can I defer my place at the University?", answerHtml: "<p>The University's rules allow a deferral of up to two years after final acceptance. Under the educational visa, though, the visa application names the semester you will arrive, and asking to arrive later can send it back. Plan to arrive in the semester you are offered, and ask the University before you plan around a deferral.</p>" },
   { slug: "is-housing-included", category: "university", question: "Is housing included for scholarship students?", answerHtml: "<p>Yes. Scholarship students are housed by default, either inside the Jamiah or in the Rabwa halls (الربوة). The University's housing office allocates your room.</p>" },
-  { slug: "istiqdam-deposit", category: "family", question: "Can I sponsor my family, and what is the deposit?", answerHtml: "<p>Students can ask the University to sponsor a family member (istiqdam). The latest amount quoted for the family residency deposit is 30,000 SAR (November 2025). Earlier reports quoted 10,000 SAR (January 2025). Confirm the amount, and whether requests are open, with the University before you pay.</p>" },
+  { slug: "istiqdam-deposit", category: "family", question: "Can I sponsor my family, and what is the deposit?", answerHtml: "<p>Students with an iqama can ask the University to sponsor a wife and children on a family residency (istiqdam). The University sets the refundable deposit and decides when requests are open, so ask the student affairs office for both before you plan or pay. Students on the educational visa with a Visitor ID follow different rules, so ask the University which route applies to you.</p>" },
   { slug: "join-mesh-group", category: "getting-started", question: "How do I join the MESH WhatsApp group?", answerHtml: "<p>Tap any \"Join the group\" button on this site. Keep posts relevant, share only verified information, and no debates. The full rules are on the More page.</p>" },
   { slug: "how-to-apply-iu", category: "getting-started", question: "How do I apply to the Islamic University of Madinah?", answerHtml: "<p>Through the national Study in Saudi portal (studyinsaudi.sa) when applications open. You can choose up to 25 programmes across several universities and edit your application until the deadline. See <a href=\"/programs/iu-madinah\">Islamic University of Madinah</a> for the steps and a video walkthrough.</p>" },
   { slug: "stipend-amount", category: "university", question: "How much is the University stipend?", answerHtml: "<p>Fully funded scholarship students receive a monthly stipend (mukafa'ah) of 840 SAR, as well as housing and flights. The stipend stops during ta'jeel or i'tithaar.</p>" },
   { slug: "learn-arabic-before-iu", category: "getting-started", question: "Where can I learn Arabic in Madinah before getting into the University?", answerHtml: "<p>There are several options. Year-round institutes such as Ahlul Athar, Mutun al-Ijaz and Taba charge from about 350 SAR a month. The <a href=\"/programs/map\">Madinah Arabic Program</a> runs one-month intensives on the University campus. More options, with fees and dates, are on <a href=\"/programs\">Study in Madinah</a>.</p>" },
   { slug: "sisters-study", category: "family", question: "Where can sisters study Arabic and Islamic sciences?", answerHtml: "<p>There are free marakiz for sisters (Mishkat, Taibah, Academiyah al-Ma'rifah), the Masjid an-Nabawi Ma'had and Kulliyah for women, and paid options such as Fusha, Taba (now open to women) and MAP's sisters' classes. See <a href=\"/programs\">Study in Madinah</a>.</p>" },
   { slug: "monthly-budget", category: "getting-settled", question: "How much money do I need per month in Madinah?", answerHtml: "<p>Roughly 2,900 to 6,700 SAR for a single person renting their own place, and 6,300 to 12,800 SAR for a family of three or four. Scholarship students in the halls spend far less. Full breakdown: <a href=\"/guides/cost-of-living\">What it costs to live in Madinah</a>.</p>" },
-  { slug: "bank-account-without-iqama", category: "getting-settled", question: "Can I open a Saudi bank account without an iqama?", answerHtml: "<p>Yes, since September 2025 visitors with a Visitor ID, a Saudi mobile number and Nafath or Absher verification can open an account and get a mada card. See <a href=\"/guides/sim-internet-bank\">SIM card, internet and a Saudi bank card</a>.</p>" },
+  { slug: "bank-account-without-iqama", category: "getting-settled", question: "Can I open a Saudi bank account without an iqama?", answerHtml: "<p>Yes. Since September 2025 visitors with a Visitor ID can open an account and get a mada card. Bring your passport, visa, Visitor ID and proof of your National Address to a branch, with a Saudi mobile number in your name. The account works only while your Visitor ID is valid. See <a href=\"/guides/sim-internet-bank\">SIM card, internet and a Saudi bank card</a>.</p>" },
   { slug: "home-internet-no-iqama", category: "getting-settled", question: "How do I get home internet without an iqama?", answerHtml: "<p>Fixed home internet needs an iqama, so most people use a portable router with an unlimited-data SIM from STC, Mobily or Zain.</p>" },
   { slug: "drive-on-visit-visa", category: "getting-settled", question: "Can I drive on a visit visa?", answerHtml: "<p>Yes, with your own licence if Saudi Arabia recognises it. To get a Saudi licence or register a car you need an iqama. See <a href=\"/guides/drivers-license\">Getting a Saudi driving licence</a>.</p>" },
-  { slug: "rawdah-booking", category: "duroos", question: "How do I visit the Rawdah?", answerHtml: "<p>Book a slot in the Nusuk app and arrive at your booked time. Pray, make du'a calmly, and make room for others.</p>" },
+  { slug: "rawdah-booking", category: "duroos", question: "How do I visit the Rawdah?", answerHtml: "<p>Book a slot in the Nusuk app (free, one permit in any 365 days) and arrive at your booked time. Pray, make du'a calmly, and make room for others. More in <a href=\"/guides/masjid-an-nabawi-first-visit\">Visiting Masjid an-Nabawi</a>.</p>" },
   { slug: "duroos-english", category: "duroos", question: "Are there duroos in English in the Haram?", answerHtml: "<p>Almost all duroos are in Arabic, which is excellent listening practice. English lessons are rare. Take a notebook, write down words, and look them up later. Today's duroos are on the <a href=\"/duroos\">Duroos</a> page.</p>" },
   { slug: "do-i-register-for-duroos", category: "duroos", question: "Do I need to register to attend the duroos?", answerHtml: "<p>No. The duroos of the mashayikh are open to everyone. Only the Qur'an and mutun halaqat need registration.</p>" },
   { slug: "tajeel-vs-itithaar", category: "university", question: "What's the difference between ta'jeel and i'tithaar?", answerHtml: "<p>Ta'jeel is a planned semester off, requested in a short window before the semester. It doesn't count against your studies or your four-year limit. I'tithaar is withdrawing during a semester for an accepted excuse. That semester counts, and your deadline doesn't move. Details: <a href=\"/guides/tajeel-and-itithaar\">Taking a semester off</a>.</p>" },

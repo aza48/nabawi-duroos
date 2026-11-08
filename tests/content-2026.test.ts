@@ -3,12 +3,8 @@ import { eq } from "drizzle-orm";
 import { resetTestDb } from "@/server/db/client";
 import { faqs, guides } from "@/server/db/schema";
 import { importOldMesh } from "@/server/seed/import-old-mesh";
-import { syncContent2026 } from "@/server/seed/content/sync";
-import { FAQS_2026 as BASE_FAQS, GUIDES_2026 as BASE_GUIDES } from "@/server/seed/content/guides-2026";
-import { FAQS_STUDENT_LIFE, GUIDES_STUDENT_LIFE } from "@/server/seed/content/guides-student-life";
-
-const GUIDES_2026 = [...BASE_GUIDES, ...GUIDES_STUDENT_LIFE];
-const FAQS_2026 = [...BASE_FAQS, ...FAQS_STUDENT_LIFE];
+import { SEED_FAQS as FAQS_2026, SEED_GUIDES as GUIDES_2026, syncContent2026 } from "@/server/seed/content/sync";
+import { GUIDE_REWRITES_2026_11 } from "@/server/seed/content/guides-research-2026-11";
 
 describe("syncContent2026", () => {
   it("publishes the new guides and FAQs, replaces rewritten guides, and can run twice", async () => {
@@ -30,11 +26,15 @@ describe("syncContent2026", () => {
     const [driving] = await db.select().from(guides).where(eq(guides.slug, "drivers-license"));
     expect(driving.title).toMatch(/Saudi driving licence/);
 
+    const [applying] = await db.select().from(guides).where(eq(guides.slug, "applying-to-the-islamic-university"));
+    expect(applying.bodyHtml).toBe(GUIDE_REWRITES_2026_11[0].bodyHtml.trim());
+    expect(new Set(GUIDES_2026.map((g) => g.slug)).size).toBe(GUIDES_2026.length);
+
     const published = await db.select().from(faqs).where(eq(faqs.status, "published"));
     expect(published).toHaveLength(FAQS_2026.length);
   });
   it("never uses em or en dashes in the copy", () => {
-    const all = JSON.stringify([GUIDES_2026, FAQS_2026]);
+    const all = JSON.stringify([GUIDES_2026, FAQS_2026, GUIDE_REWRITES_2026_11]);
     expect(all).not.toMatch(new RegExp(`[${String.fromCharCode(0x2014)}${String.fromCharCode(0x2013)}]`));
   });
 });

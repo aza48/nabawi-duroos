@@ -123,5 +123,145 @@
   "topic": "Visas",
   "question": "What does an exit and re-entry visa cost when extended from abroad (reported double the in-Kingdom fee, 200 SAR a month for a single visa)?",
   "context": "The fees guide says higher fees apply but gives no figure."
+ },
+ {
+  "topic": "Visas",
+  "question": "What is the educational visa fee for new University students this year, and is it the same for every country?",
+  "context": "One student report gave USD 230 in August 2026, and another university quoted 800 SAR in 2025. The application guide says only that the fee is paid through the link that is sent."
+ },
+ {
+  "topic": "Visas",
+  "question": "Do students on the educational visa (Visitor ID) need an exit and re-entry visa or University permission to travel abroad, and is there a limit on how many days they can stay per entry (one report said 180 days)?",
+  "context": "The Visitor ID guide only tells students to check their visa covers the return date and to follow the University's travel notice."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is a medical examination actually required for the educational visa, and where is it done?",
+  "context": "Students report the medical step is often not enforced. The application guide says to do any medical step you are asked for."
+ },
+ {
+  "topic": "Visas",
+  "question": "Can students on the educational visa (Visitor ID) work part-time, for example up to 20 hours a week, and does it need University approval?",
+  "context": "Mentioned in a 2024 explainer of the new visa and by some outside guides. Others say students may not work. Left out of the Visitor ID guide."
+ },
+ {
+  "topic": "Visas",
+  "question": "Can a Visitor ID student sit a driving test or get a Saudi licence in any way, or get car insurance as a named driver?",
+  "context": "The Visitor ID guide says a Saudi licence and owning a car need an iqama. Students keep asking about insurance and rentals."
+ },
+ {
+  "topic": "Phones",
+  "question": "Are mobile lines registered on a Visitor ID suspended by the operators every 6 to 7 months, and what should students do when it happens?",
+  "context": "Three students reported this in September 2026. The guide only says to go to a branch if the line stops working."
+ },
+ {
+  "topic": "University",
+  "question": "Does the Study in Saudi application number begin with LPA, so the guide can tell applicants which number to keep?",
+  "context": "Only one source mentions the LPA prefix. The guide says 'keep your application number'."
+ },
+ {
+  "topic": "University",
+  "question": "Did the Islamic University take bachelor's applications in the Study in Saudi window of 16 September to 6 October 2026?",
+  "context": "One student source says the University's programmes were not listed in that window for the first time. The guide lists only the spring windows."
+ },
+ {
+  "topic": "University",
+  "question": "What are the University clinic's opening hours, and where should students go after hours or at weekends?",
+  "context": "Asked in the group and not answered. The first 30 days guide says to start with the University clinic."
+ },
+ {
+  "topic": "Women",
+  "question": "Can sisters on a visit visa or a Visitor ID register for the Masjid an-Nabawi Qur'an and mutun halaqat on reg.qm.edu.sa, or only iqama holders?",
+  "context": "The women's guide explains how to register but does not say who is eligible."
+ },
+ {
+  "topic": "Women",
+  "question": "What are the current women's Rawdah hours? News reports in October 2026 said after Fajr to 11 am and after Isha to 2 am (Friday after Fajr to 9 am), but the Haramain authority's page shows 5:30 to 11 am and 9:30 pm to midnight.",
+  "context": "The women's guide says only that women's slots are after Fajr and after Isha and that the app shows the open times."
+ },
+ {
+  "topic": "Women",
+  "question": "Which gate numbers lead to the women's sections today, and where do sisters sit to hear the main duroos clearly?",
+  "context": "Outside guides disagree (gates 12 to 14 and 23 to 30, or 13 to 17 and 25 to 30). The guide says to follow the signs."
+ },
+ {
+  "topic": "Transport",
+  "question": "Is there a direct Madinah Bus route from the Haramain station to Masjid an-Nabawi, and what is its number and fare?",
+  "context": "Reported as route 300 from 1 October 2026 at the 11.50 SAR fare. The train guide tells people to check the route map in the app."
+ },
+ {
+  "topic": "University",
+  "question": "Are new scholarship students (2025 and 2026 intakes) still housed in the halls by default, or were some intakes told that housing is not included?",
+  "context": "The applying and student life guides say scholarship students are housed by default. A student source says the 2025 intake was told benefits exclude housing while old halls are rebuilt, and a later post says unmarried students are housed. Fact-check November 2026."
+ },
+ {
+  "topic": "Family",
+  "question": "Is the University's istiqdam (family residency for a wife and children) open now, what is the deposit (10,000 or 30,000 SAR have both been quoted), and can students on the educational visa use it?",
+  "context": "The istiqdam FAQ now says only that the University sets the deposit and decides when requests are open. A group member said in October 2026 that istiqdam is closed for everyone."
+ },
+ {
+  "topic": "Visas",
+  "question": "Who can sponsor a family visit visa: any iqama holder, or only a professional or skilled iqama with a minimum salary? Can a student or dependant iqama sponsor one?",
+  "context": "The visa guide used to say student and dependant iqamas cannot sponsor. Outside guides disagree, so the guide now gives only the fee and the relatives covered."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is the tourist eVisa limited to 90 days per visit, or is there also a cap across the year (90 or 180 days in 12 months)?",
+  "context": "The official portal says up to 90 days in the country. Some guides add a 180 day yearly cap. The guide says up to 90 days in the country."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is the 30-day grace period to leave after a visit visa expires (started June 2025) still in place?",
+  "context": "Not on the site. Only 2025 reports were found."
+ },
+ {
+  "topic": "University",
+  "question": "Do students need to book mat'am meals a month ahead, and how and when is the booking made?",
+  "context": "Group members remind each other to reserve each month. The student life guide gives only the prices."
+ },
+ {
+  "topic": "Driving",
+  "question": "For the licence swap, is the medical check still done at the Regional Laboratory and Central Blood Bank, or at any approved medical centre? Does the University still translate licences?",
+  "context": "The driving licence guide names the Regional Laboratory. Outside guides say any approved centre, and a group member said the University stopped translating licences last year. The guide now says many translation offices work online."
+ },
+ {
+  "topic": "Driving",
+  "question": "How long can a visitor, or a student on a Visitor ID, drive on a home licence: three months, one year, or the length of the visa?",
+  "context": "Outside sources disagree. The getting around guide says only that a recognised licence can be used, with an International Driving Permit."
+ },
+ {
+  "topic": "Transport",
+  "question": "What are the current Haramain train child discounts (50 percent or 40 percent off economy), and can tickets bought at the station counter be changed or refunded?",
+  "context": "Sources disagree. The guide tells readers to read the change and refund rules before paying and leaves out the child discount."
+ },
+ {
+  "topic": "Transport",
+  "question": "Who runs the intercity coach from Madinah to Makkah now (SAPTCO or Darb Alwatan), from which station, and what is the fare?",
+  "context": "The guide now says about 85 to 100 SAR and 6 to 7 hours, from a March 2025 source."
+ },
+ {
+  "topic": "University",
+  "question": "Can students on a Visitor ID set up Etimad with Nafath like iqama holders, so they can request their University ticket?",
+  "context": "The Etimad guide assumes Nafath sign-in. Nafath for Visitor ID holders is not confirmed."
+ },
+ {
+  "topic": "Healthcare",
+  "question": "Can Visitor ID students and visit visa holders register in the Sehhaty app, and what can they use it for?",
+  "context": "The doctors guide lists Sehhaty as the app for residents. Guides disagree on visitor access."
+ },
+ {
+  "topic": "Haram",
+  "question": "What are the opening hours of the Prophet's Mosque Library (24 hours, or 8 am to 10 pm), and which gate leads to the women's library?",
+  "context": "The first visit guide now gives the men's entrance at Gate 10 and no hours."
+ },
+ {
+  "topic": "Study",
+  "question": "What is the main language of teaching at Prince Mugrin University, and are international students accepted with scholarships?",
+  "context": "The other universities guide used to say teaching is mainly in English. Only an outside directory says so, so it was removed."
+ },
+ {
+  "topic": "Phone",
+  "question": "Can Visitor ID holders use the CST Mutasil My Numbers service with their border number to see the lines registered to them?",
+  "context": "The SIM guide tells Visitor ID holders to ask their operator in a branch."
  }
 ]
