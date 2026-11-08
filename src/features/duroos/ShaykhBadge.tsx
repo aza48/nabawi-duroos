@@ -15,13 +15,15 @@ const SIZE = { sm: "size-12 text-lg rounded-xl", md: "size-16 text-xl rounded-2x
  * A shaykh's photo when one has been added, otherwise his given name in Arabic calligraphy on the
  * MESH green: many of the mashayikh prefer not to be photographed, so the name is the default.
  */
-export function ShaykhBadge({ nameAr, photo, size = "md" }: { nameAr: string; photo?: string | null; size?: keyof typeof SIZE }) {
+export function ShaykhBadge({ nameAr, photo, size = "md", fill = false }: { nameAr: string; photo?: string | null; size?: keyof typeof SIZE; fill?: boolean }) {
+  // fill: take the size of the parent box (used where the photo must match the height of the text beside it).
+  const box = fill ? "size-full text-3xl rounded-2xl" : SIZE[size];
   if (photo) {
     const px = size === "lg" ? 112 : size === "md" ? 64 : 48;
-    return <Image src={photo} alt="" width={px} height={px} unoptimized={/^https?:/.test(photo)} className={`${SIZE[size]} shrink-0 object-cover`} />;
+    return <Image src={photo} alt="" width={px} height={px} unoptimized={/^https?:/.test(photo)} className={`${box} shrink-0 object-cover`} />;
   }
   return (
-    <span className={`lattice grid shrink-0 place-items-center overflow-hidden bg-brand-deep font-arabic font-bold text-gold-bright ${SIZE[size]}`} aria-hidden="true">
+    <span className={`lattice grid shrink-0 place-items-center overflow-hidden bg-brand-deep font-arabic font-bold text-gold-bright ${box}`} aria-hidden="true">
       <span className="ar-text leading-none" style={{ textAlign: "center" }}>{givenNameAr(nameAr)}</span>
     </span>
   );
