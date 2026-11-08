@@ -51,6 +51,10 @@ export type Report = {
   searchesNoResults: Count[];
   recentSearches: { ts: string; query: string; results: number; path: string | null }[];
   searchCount: number;
+  // Questions asked to the Ask MESH assistant
+  questions: { ts: string; question: string; mode: string; found: boolean; path: string | null }[];
+  questionsUnanswered: Count[];
+  questionCount: number;
   // Audience, in detail
   regions: Count[];
   continents: Count[];
@@ -181,6 +185,14 @@ export async function analyticsReport(db: Db, days: number): Promise<Report> {
   }));
   const [searchTotal] = await q<{ n: unknown }>(sql`select count(*) as n from analytics_events where type = 'search' and ts >= ${since}`);
 
+  const questions = (await q<Record<string, unknown>>(sql`
+    select ts, label, target, value, path from analytics_events where type = 'ask' and ts >= ${since} order by ts desc limit 60`)).map((r) => ({
+    ts: new Date(String(r.ts)).toISOString(), question: String(r.label ?? ""), mode: String(r.target ?? ""), found: num(r.value) > 0, path: (r.path as string) ?? null,
+  }));
+  const questionsUnanswered = await count(sql`
+    select lower(label) as key, count(*) as n from analytics_events where type = 'ask' and ts >= ${since} and value = 0 group by 1 order by 2 desc limit 25`);
+  const [askTotal] = await q<{ n: unknown }>(sql`select count(*) as n from analytics_events where type = 'ask' and ts >= ${since}`);
+
   // Audience in detail
   const [regions, continents, timezones, deviceModels, osVersions, browserVersions, screens, connections, themes, installed, phoneLanguages, visitNumbers, tenure] = await Promise.all([
     by(sql`coalesce(region, '?') || coalesce(', ' || country, '')`, 20),
@@ -222,6 +234,7 @@ export async function analyticsReport(db: Db, days: number): Promise<Report> {
   return {
     sources, referrerUrls, campaignsFull, landingQueries,
     searches, searchesNoResults, recentSearches, searchCount: num(searchTotal?.n),
+    questions, questionsUnanswered, questionCount: num(askTotal?.n),
     regions, continents, timezones, places, deviceModels, osVersions, browserVersions, screens, connections, themes, installed, phoneLanguages, visitNumbers, tenure,
     vitals, slowPages, errors, monthly,
     days,
