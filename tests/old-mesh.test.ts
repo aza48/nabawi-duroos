@@ -9,7 +9,7 @@ const bySlug = Object.fromEntries(guides.map((g) => [g.slug, g]));
 
 describe("old MESH site import", () => {
   it("imports the real guides and skips index pages and tools", () => {
-    expect(guides).toHaveLength(17);
+    expect(guides).toHaveLength(16);
     for (const skipped of ["admissions", "study", "mind-map-maker", "exam-maker", "ask", "about"]) expect(bySlug[skipped]).toBeUndefined();
   });
 

@@ -5,6 +5,9 @@
  */
 export const LEGACY_REDIRECTS: { source: string; destination: string; permanent: true }[] = [
   { source: "/guides/sports-and-martial-arts", destination: "/guides/sports-and-activities", permanent: true },
+  // Old business guide (named an outside provider): replaced by the MESH company guide.
+  { source: "/guides/starting-a-business", destination: "/guides/start-a-company-in-saudi", permanent: true },
+  { source: "/daily-life/starting-a-business", destination: "/guides/start-a-company-in-saudi", permanent: true },
   { source: "/mesh", destination: "/", permanent: true },
   { source: "/mesh/:path*", destination: "/:path*", permanent: true },
   { source: "/browse", destination: "/ask", permanent: true },
