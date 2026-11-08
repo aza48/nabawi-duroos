@@ -33,7 +33,7 @@ export function DarsMiniCard({ lesson: l, locale, isNext, single = false }: { le
   return (
     <article className={`lift flex h-full flex-col rounded-2xl border border-line bg-card p-4 shadow-[var(--shadow)] ${done ? "opacity-60" : ""}`}>
       <div className={`flex items-center gap-3 sm:gap-4 ${single ? "md:items-stretch md:gap-8" : ""}`}>
-        <div className={`min-w-0 flex-1`}>
+        <div className={`min-w-0 flex-1 ${single ? "md:min-w-[14rem]" : ""}`}>
           <div className="flex min-h-[1.625rem] flex-wrap items-center gap-2">
             {live ? (
               <LiveBadge locale={locale} href={liveHref} />
@@ -79,20 +79,20 @@ export function DarsMiniCard({ lesson: l, locale, isNext, single = false }: { le
           </p>
         </div>
 
-        <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className={`group flex shrink-0 items-center gap-3 ${single ? "md:items-end md:border-s md:border-line md:ps-8" : ""}`}>
+        <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className={`group flex shrink-0 items-center gap-3 ${single ? "md:min-w-0 md:shrink md:items-stretch md:border-s md:border-line md:ps-8" : ""}`}>
           {single ? (
             <>
               <span className="md:hidden">
                 <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
               </span>
-              <span className="hidden md:block">
-                <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="md" />
+              <span className="hidden aspect-square shrink-0 md:block md:max-h-28">
+                <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} fill />
               </span>
             </>
           ) : (
             <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
           )}
-          <span className={`block ${single ? "max-w-[6rem] sm:max-w-[9rem] md:max-w-[17rem]" : "max-w-[6rem] sm:max-w-[9rem]"}`}>
+          <span className={`block ${single ? "md:self-center " : ""}${single ? "max-w-[6rem] sm:max-w-[9rem] md:max-w-[13rem] md:min-w-0" : "max-w-[6rem] sm:max-w-[9rem]"}`}>
             <span className="block text-[11px] text-muted">{t(locale, "shaykh")}</span>
             <span className={`text-sm font-bold leading-snug group-hover:text-primary ${single ? "md:text-base" : "line-clamp-2"}`}>{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
           </span>
