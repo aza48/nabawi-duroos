@@ -12,7 +12,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = (await params).slug;
   const g = await getGuide(await getDb(), slug);
   return g
-    ? { title: g.title, description: g.summary, alternates: { canonical: `/guides/${slug}` }, openGraph: g.coverUrl ? { images: [g.coverUrl] } : undefined }
+    ? {
+        title: g.title,
+        description: g.summary,
+        alternates: { canonical: `/guides/${slug}` },
+        openGraph: { type: "article", title: g.title, description: g.summary, url: `/guides/${slug}`, siteName: "MESH", ...(g.coverUrl ? { images: [g.coverUrl] } : {}) },
+        twitter: { card: "summary_large_image", title: g.title, description: g.summary },
+      }
     : {};
 }
 
