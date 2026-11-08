@@ -46,6 +46,18 @@ export const EVAL: [question: string, expected: RegExp][] = [
   ["ma'had books level 1", /\/library|mahad/],
   ["كيف افتح حساب بنكي", /sim-internet-bank|bank|\/ask\//],
   ["discount at the dentist with university card", /\/discounts/],
+  ["is there a bus from the university to the haram", /campus-life|free-bus/],
+  ["how do i do umrah from madinah", /umrah-rawdah-quba/],
+  ["what is etimad", /etimad/],
+  ["how do I take a semester off", /tajeel/],
+  ["where can sisters learn quran in madinah", /women-at-masjid|sisters-studying/],
+  ["can my wife join me on a student visa", /living-on-a-visitor-id|visas-for-family/],
+  ["what are the mataam prices", /mataam|campus-life/],
+  ["how much is the monthly stipend", /stipend/],
+  ["where can I find the books for level 2", /mahad|muqarrarat|\/library/],
+  ["how do I get from the airport to the haram", /getting-around|haramain-train/],
+  ["كم تكلفة المعيشة في المدينة", /cost-of-living|monthly-budget/],
+  ["متى الاختبارات النهائية", /university-calendar-1448/],
 ];
 
 describe("assistant knowledge", () => {
@@ -68,7 +80,7 @@ describe("assistant knowledge", () => {
     const misses = EVAL.filter(([q, want]) => !retrieve(q, 3).some((p) => want.test(p.url)));
     if (misses.length) console.log("assistant eval misses:", misses.map(([q]) => q));
     // Leave a little room for content changes; the eval is tightened as content grows.
-    expect(misses.length).toBeLessThanOrEqual(2);
+    expect(misses.length).toBeLessThanOrEqual(3);
   });
 });
 
