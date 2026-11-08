@@ -35,6 +35,7 @@ const SECTIONS = [
   ["overview", "Overview"],
   ["arrivals", "How they arrive"],
   ["searches", "Searches"],
+  ["questions", "Questions asked"],
   ["pages", "Pages and clicks"],
   ["audience", "Where and who"],
   ["devices", "Devices"],
@@ -189,6 +190,24 @@ function Body({ r }: { r: Report }) {
         </Grid>
       </Section>
 
+      <Section id="questions" title="Questions asked to Ask MESH">
+        <Grid>
+          <Panel title={`Latest questions (${fmt(r.questionCount)} in this period)`} wide>
+            {r.questions.length === 0 ? <Empty /> : (
+              <ul className="divide-y divide-line text-sm">
+                {r.questions.map((x, i) => (
+                  <li key={i} className="flex justify-between gap-3 py-1.5">
+                    <span className="min-w-0" dir="auto"><b className="block">{x.question}</b><span className="text-xs text-muted">{x.path}</span></span>
+                    <span className={`shrink-0 text-xs ${x.found ? "text-muted" : "font-semibold text-red-600"}`}>{x.found ? (x.mode === "ai" ? "Answered" : "Answered from pages") : "Not covered"} · {riyadh(x.ts, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Panel>
+          <Panel title="Questions MESH could not answer (content to add)"><Bars rows={r.questionsUnanswered} /></Panel>
+        </Grid>
+      </Section>
+
       <Section id="pages" title="Pages and clicks">
         <Panel title="Pages">
           <div className="overflow-x-auto">
@@ -335,6 +354,8 @@ function Body({ r }: { r: Report }) {
                         <span>Opened <b>{s.path}</b>{s.ms ? <span className="text-muted"> for {dur(s.ms / 1000)}</span> : null}</span>
                       ) : s.type === "search" ? (
                         <span>Searched <b dir="auto">{s.label}</b> <span className="text-muted">({s.value ?? 0} results)</span></span>
+                      ) : s.type === "ask" ? (
+                        <span>Asked MESH <b dir="auto">{s.label}</b> <span className="text-muted">({s.value ? "answered" : "not covered"})</span></span>
                       ) : s.type === "error" ? (
                         <span className="text-red-600">Script error: {s.label}</span>
                       ) : (

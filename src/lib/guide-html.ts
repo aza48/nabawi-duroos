@@ -2,7 +2,8 @@ import { parse } from "node-html-parser";
 
 export type TocItem = { id: string; text: string };
 
-const slugify = (s: string) =>
+/** The anchor id a guide h2 gets (also used by the assistant to link to a section). */
+export const slugify = (s: string) =>
   s
     .toLowerCase()
     .replace(/&[a-z]+;/g, "")

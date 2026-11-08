@@ -7,6 +7,7 @@ import { WhatsAppIcon } from "./WhatsApp";
 import { Wordmark } from "./Wordmark";
 import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
+import { AssistantLauncher } from "@/features/assistant/AssistantLauncher";
 
 export function SiteShell({
   locale,
@@ -50,6 +51,7 @@ export function SiteShell({
         </div>
       </header>
       <Tracker />
+      <AssistantLauncher locale={locale} />
       <main id="main" className="pb-safe lg:pb-0">
         {children}
       </main>

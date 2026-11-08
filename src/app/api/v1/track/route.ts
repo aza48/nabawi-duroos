@@ -11,7 +11,7 @@ const str = (n: number) => z.string().max(4000).transform((s) => s.slice(0, n)).
 const int = (max: number) => z.number().int().min(0).max(max).optional().nullable();
 
 const body = z.object({
-  t: z.enum(["pv", "hb", "click", "vital", "err", "search"]),
+  t: z.enum(["pv", "hb", "click", "vital", "err", "search", "ask"]),
   v: id,
   s: id,
   e: id,
