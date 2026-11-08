@@ -1,6 +1,6 @@
 import { UniversityCalendar } from "./UniversityCalendar";
 import Link from "next/link";
-import { ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, CircleCheck, Flag, GraduationCap, Languages, Library, Radio, ScrollText } from "lucide-react";
+import { ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, ChevronDown, CircleCheck, Flag, GraduationCap, Languages, Library, Radio, ScrollText } from "lucide-react";
 import type { FaqRow, GuideRow } from "@/server/content/queries";
 import { FAQ_CATEGORIES, GUIDE_STAGES } from "@/server/content/queries";
 import { sanitizeArticleHtml } from "@/lib/sanitize";
@@ -181,6 +181,23 @@ export function GuidePage({ guide, whatsappUrl }: { guide: GuideRow; whatsappUrl
               ))}
             </ul>
           </nav>
+        )}
+        {toc.length > 2 && !isCalendar && (
+          <details className="group rounded-2xl border border-line bg-card lg:hidden">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 text-sm font-semibold [&::-webkit-details-marker]:hidden">
+              On this page <span className="text-muted">({toc.length})</span>
+              <ChevronDown size={18} className="ms-auto text-muted transition group-open:rotate-180" />
+            </summary>
+            <ul className="border-t border-line px-2 py-2">
+              {toc.map((t) => (
+                <li key={t.id}>
+                  <a href={`#${t.id}`} className="block rounded-lg px-2 py-2.5 text-sm text-muted hover:bg-primary/5 hover:text-ink">
+                    {t.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
         )}
         <article className={isCalendar ? "min-w-0" : "max-w-3xl"}>
           {guide.slug === "university-calendar-1448" ? <UniversityCalendar /> : <GuideBody html={html} slug={guide.slug} steps={steps} />}

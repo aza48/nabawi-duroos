@@ -47,7 +47,7 @@ Status: **done** (fixed and deployed), **next** (being worked on), **todo**.
 | 25 | Guides and FAQ pages served no-store (no static params) | todo |
 | 26 | Long guides hide "On this page" on phones | todo |
 | 27 | Library sits under More while Study takes a nav slot; Ma'had and Kulliyah students need Library first | done (8 Nov) |
-| 28 | Phone hero takes about 660 px before any duroos | todo |
+| 28 | Phone hero takes about 660 px before any duroos | done (8 Nov, hero 621 to about 310 px at 375 wide) |
 | 29 | Jargon in labels and copy for second-language readers ("muqarrarat", "takhlees", dense ta'jeel text) | partly done (library and programmes) |
 
 ## Content to add (from research and the group chat)
