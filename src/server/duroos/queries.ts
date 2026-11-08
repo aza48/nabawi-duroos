@@ -2,9 +2,9 @@ import { and, asc, desc, eq, gte, inArray, isNull, lte, or } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { announcements, lessonLive, lessonOverrides, lessons, masjids, shaykhs, streams } from "@/server/db/schema";
 import { getSetting } from "@/server/settings";
-import { formatGregorian, formatHijri } from "@/lib/time/hijri";
+import { formatGregorian, formatHijri, hijriOf } from "@/lib/time/hijri";
 import { PRAYERS, prayerTimes, type Prayer } from "@/lib/time/prayer";
-import { riyadhDateIso, type Weekday } from "@/lib/time/riyadh";
+import { riyadhDateIso, weekdayOf, type Weekday } from "@/lib/time/riyadh";
 import { isCurrent, lessonPhase, lessonsForDate, liveWindow, timeKnown, weekSchedule, type DayStatus, type OverrideLike } from "./schedule";
 
 export type LessonRow = typeof lessons.$inferSelect;
@@ -82,8 +82,12 @@ async function overridesOn(db: Db, iso: string): Promise<OverrideLike[]> {
   return rows.map(toOverrideLike);
 }
 
-export async function getToday(db: Db, now: Date = new Date()) {
-  const date = riyadhDateIso(now);
+/**
+ * The duroos of one Riyadh date (today unless `dateIso` is given) with their live state
+ * relative to `now`: a past date is all "done", a future date all "upcoming".
+ */
+export async function getToday(db: Db, now: Date = new Date(), dateIso?: string) {
+  const date = dateIso ?? riyadhDateIso(now);
   const [rows, overrides, allStreams, lastCheckedAt, liveRows] = await Promise.all([
     scheduleRows(db),
     overridesOn(db, date),
@@ -127,9 +131,11 @@ export async function getToday(db: Db, now: Date = new Date()) {
     audience: l.audience,
     };
   });
+  const h = hijriOf(date);
   return {
     date,
-    hijri: { en: formatHijri(date, "en", { weekday: true }), ar: formatHijri(date, "ar", { weekday: true }) },
+    weekday: weekdayOf(date),
+    hijri: { en: formatHijri(date, "en", { weekday: true }), ar: formatHijri(date, "ar", { weekday: true }), day: h.day, month: h.month, year: h.year },
     gregorian: { en: formatGregorian(date, "en"), ar: formatGregorian(date, "ar") },
     prayers: Object.fromEntries(PRAYERS.map((p) => [p, times[p].toISOString()])) as Record<Prayer, string>,
     lessons: lessonsToday,
