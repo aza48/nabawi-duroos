@@ -58,6 +58,9 @@ export const EVAL: [question: string, expected: RegExp][] = [
   ["how do I get from the airport to the haram", /getting-around|haramain-train/],
   ["كم تكلفة المعيشة في المدينة", /cost-of-living|monthly-budget/],
   ["متى الاختبارات النهائية", /university-calendar-1448/],
+  ["what should i bring when i move to madinah", /what-to-bring-to-madinah/],
+  ["how do I renew my iqama", /student-iqama-renewal|iqama/],
+  ["how many classes can I miss", /how-many-classes-can-i-miss|exams-results-and-attendance/],
 ];
 
 describe("assistant knowledge", () => {
