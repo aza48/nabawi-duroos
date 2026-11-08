@@ -1,5 +1,22 @@
 # MESH handoff (read this first)
 
+## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
+Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
+
+Landed on `main` (all pushed; Vercel builds of 90f632f and 2fcc3b9 green, later ones not yet checked)
+- `afc27c0`, `2f002df`: a privacy page built by mistake was reverted, and the privacy page removed from every instruction file. Owner decision: no privacy page until near launch.
+- `90f632f`: analytics capture arrival (source type, full referrer, UTM, ad click ids), searches typed in the search bar and /search with result counts, device and browser versions, screen, connection, location from Vercel geo headers (no IP stored), visit number, Core Web Vitals and script errors. `analytics_daily` rollups kept for ever, raw 365 days, owner-only (`analytics.view`) dashboard with sections and CSV export, monthly 400-day backup in `.github/workflows/backup.yml`. New columns are added by `ensureAnalytics` (self-healing on the first failed insert, or by the daily cron).
+- `2fcc3b9`, `78860aa`: assistant. The cloud agent's engine (`src/server/assistant/*`) is merged and owns the server side; the desktop agent owns the interface (`src/features/assistant/*`, `/assistant`, `/ar/assistant`, the launcher in `SiteShell`). Name: "Ask the Meshaykh", Arabic "مساعد MESH". Questions are logged as `ask` events on the Visitors page.
+- `aced27b`: `docs/AI-LOG.md` coordination log; three research reports in `docs/research/` (`factcheck-2026-11-09-university.md`, `factcheck-2026-11-09-haram-and-daily-life.md`, `community-2026-11-09.md`) handed to the cloud agent, which owns guide content.
+
+Not finished, pick up here
+1. **Uncommitted Arabic work in this worktree.** An Arabic audit agent was still editing when usage ran out: `src/app/(ar)/*` (more, not-found, opengraph-image), `src/components/VideoEmbed.tsx`, `src/components/shell/BottomNav.tsx`, `LanguageSwitch.tsx`, `src/content/key-dates.ts`, `library-books.ts`, `library.ts`, `src/features/content/ContentPages.tsx`, `FaqExplorer.tsx`, `UniversityCalendar.tsx`, `src/features/library/*` (new `MahadPage.tsx`), `src/features/programs/ProgramPages.tsx`, `src/features/search/SearchUI.tsx`, `src/lib/locale.ts` (includes `assistant` in `AR_TWINS`, needed for the Arabic twin of /assistant), `src/lib/time/hijri.ts`, `tests/language-switch.test.ts`, `tests/locale.test.ts`. Its report should be in `docs/audit/arabic-2026-11-09.md`. Run `npx tsc --noEmit` and `npx vitest run`, review the diff, then commit by explicit path and push.
+2. Check the Vercel status of `78860aa` and `aced27b` and try /assistant live in English and Arabic at 390 px and 1440 px.
+3. Read new comments on issue 13 and update `docs/AI-LOG.md`.
+4. Arabic versions of guide and FAQ bodies: wait for the cloud agent's content edits, agree the storage on issue 13.
+5. Owner: add a free `GROQ_API_KEY` or `ASSISTANT_GEMINI_KEY` in Vercel so the assistant does not share the watcher's Gemini quota (see `src/server/assistant/llm.ts` for every supported key).
+
+
 ## 8 November 2026, night: second implementation session, 13 more plan rows live (stopped at 93% of the usage window)
 Read `docs/audit/deep-2026-11-08/README.md` first: every row has a status with its commit. This session worked in the worktree `.claude/worktrees/mesh-website-audit-73b810` and pushed every commit to `mine/main` (production, each built on Vercel and checked live) and `origin/revamp`.
 
