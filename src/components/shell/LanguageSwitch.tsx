@@ -3,21 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Languages } from "lucide-react";
+import { hasArabicTwin } from "@/lib/locale";
 
-/** Sections that have an Arabic page at the same path under /ar. */
-const TRANSLATED = [/^\/duroos(\/|$)/, /^\/programs(\/|$)/, /^\/guides(\/|$)/, /^\/ask(\/|$)/, /^\/library$/, /^\/discounts$/, /^\/more$/];
-/** English pages without their own Arabic version, mapped to the nearest Arabic section. */
-const NEAREST: [RegExp, string][] = [
-  [/^\/library\//, "/ar/library"],
-  [/^\/mahad(\/|$)/, "/ar/guides"],
-];
-
-/** The page's counterpart in the other language: /guides/x <-> /ar/guides/x, / <-> /ar; other pages go to the nearest Arabic section. */
+/** The page's counterpart in the other language: /guides/x <-> /ar/guides/x, / <-> /ar. Anything else goes to the other home page. */
 export function otherLanguagePath(path: string): string {
   if (path === "/ar" || path.startsWith("/ar/")) return path.slice(3) || "/";
   if (path === "/") return "/ar";
-  if (TRANSLATED.some((r) => r.test(path))) return `/ar${path}`;
-  return NEAREST.find(([r]) => r.test(path))?.[1] ?? "/ar";
+  return hasArabicTwin(path) ? `/ar${path}` : "/ar";
 }
 
 /** Remembers the reader's language, so the site opens in it next time (cookie plus localStorage). */

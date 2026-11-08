@@ -178,8 +178,8 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
               </a>
             );
           })}
-          <Link href="/mahad" hrefLang={ar ? "en" : undefined} className="inline-flex items-center gap-2 rounded-full bg-gold-bright px-4 py-2 text-sm font-semibold text-brand-deep transition hover:bg-gold">
-            {ar ? <>دليل المعهد <span className="font-normal text-brand-deep/70">(بالإنجليزية)</span></> : <>Ma&apos;had hub</>}
+          <Link href={ar ? "/ar/mahad" : "/mahad"} className="inline-flex items-center gap-2 rounded-full bg-gold-bright px-4 py-2 text-sm font-semibold text-brand-deep transition hover:bg-gold">
+            {ar ? "دليل المعهد" : <>Ma&apos;had hub</>}
           </Link>
         </nav>
       </PageBand>
@@ -307,9 +307,9 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
           </details>
         )}
         <article className={isCalendar ? "min-w-0" : "min-w-0 max-w-3xl"}>
-          {ar && <EnglishNote className="mb-6" />}
-          <div {...(ar ? EN : {})}>
-            {guide.slug === "university-calendar-1448" ? <UniversityCalendar /> : <GuideBody html={html} slug={guide.slug} steps={steps} locale={ar ? "ar" : "en"} />}
+          {ar && !isCalendar && <EnglishNote className="mb-6" />}
+          <div {...(ar && !isCalendar ? EN : {})}>
+            {guide.slug === "university-calendar-1448" ? <UniversityCalendar locale={locale} /> : <GuideBody html={html} slug={guide.slug} steps={steps} locale={ar ? "ar" : "en"} />}
           </div>
           <div className={isCalendar ? "max-w-3xl" : undefined}>
             <OutdatedNote whatsappUrl={whatsappUrl} locale={locale} />
@@ -360,7 +360,7 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
         { href: "/ar/duroos/schedule", label: "جدول الأسبوع", note: "كل الدروس في كل المساجد في جدول واحد", icon: CalendarDays },
         { href: "/ar/duroos/live", label: "البث المباشر", note: "تابع دروس الحرم مباشرة", icon: Radio },
         { href: "/ar/duroos/updates", label: "آخر التحديثات", note: "الإلغاءات والكتب الجديدة والمحاضرات", icon: ScrollText },
-        { href: "/more", label: "English", note: "This page in English", icon: Languages },
+        { href: "/more", label: "English", note: "هذه الصفحة بالإنجليزية", icon: Languages },
       ]
     : [
         { href: "/programs", label: "Study in Madinah", note: "Arabic institutes, degrees and sisters' marakiz", icon: GraduationCap },

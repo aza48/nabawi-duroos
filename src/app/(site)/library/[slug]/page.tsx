@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: metaTitle(`${c.title} course books`),
     description: metaDescription(`${countFiles(tree)} course books and summaries for ${c.title} (${c.titleAr}) at the Islamic University of Madinah, by level, readable on MESH.`),
-    alternates: { canonical: `/library/${c.slug}` },
+    alternates: { canonical: `/library/${c.slug}`, languages: { en: `/library/${c.slug}`, ar: `/ar/library/${c.slug}` } },
   };
 }
 
