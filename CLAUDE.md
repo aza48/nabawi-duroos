@@ -12,7 +12,7 @@ MESH (medinahub.org) is run by Muhaymin (GitHub `iumuhaymin`), the owner and fin
 ## Non-negotiables (details in CONTRIBUTING.md)
 - Run `npx tsc --noEmit` and `npx vitest run` before every commit; both must pass.
 - Public text: no em or en dashes, no AI-sounding copy, speak with authority, never mention sources or show doubt, impartial (never feature one markaz, institute, business or doctor), no adverts, rewrite and never copy.
-- The owner's name may appear in code and docs, but never on the public site. Public help text says to message Admin on WhatsApp.
+- Public help text says to message Admin on WhatsApp at +1 234 567 9076.
 - Light theme by default; MESH green `#145c3e`, gold `#e2b23a`, diamond lattice; mobile first with no empty areas on wide screens; English and Arabic both work.
 - Never commit secrets or `.env*` files (only `.env.example`). Never print secrets in output.
 - Do not write to the production database or run `npm run content:sync` unless the owner asks you to. Schema changes need a migration applied before the code that reads new columns.

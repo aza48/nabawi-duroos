@@ -38,6 +38,6 @@ Both must pass. Merging to `main` deploys to production automatically.
 
 1. Branch from `main` and keep each PR to one change.
 2. Fill in the PR template: what, why, how you tested, and screenshots for UI changes.
-3. A maintainer reviews every PR before it is merged.
+3. Muhaymin reviews every PR before it is merged.
 
 By contributing you agree your contribution is provided under the project's license.

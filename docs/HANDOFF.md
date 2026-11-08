@@ -11,7 +11,7 @@ medinahub.org: a hub run by students, for English-speaking students and families
 
 ## Owner's rules (always follow)
 - **Copy:** no em dashes or en dashes anywhere (a test scans for them) and no AI-sounding copy. Plain, warm, specific English.
-- **The owner's name (Muhaymin) never appears on the public site;** it is fine in code and docs. For help say "please message Admin on WhatsApp at +1 234 567 9076 (the number is a clickable WhatsApp link in the footer)". That number is real and fixed in code (`HELP_CONTACT_DEFAULT` in `src/server/settings.ts`); it is deliberately not editable in the admin.
+- **Help text:** say "please message Admin on WhatsApp at +1 234 567 9076 (the number is a clickable WhatsApp link in the footer)". That number is real and fixed in code (`HELP_CONTACT_DEFAULT` in `src/server/settings.ts`); it is deliberately not editable in the admin.
 - **Speak with authority, never reveal sources.** Public text never mentions a source, channel, post or doubt ("reportedly", "not stated"). Research notes stay admin-only or go to the owner as questions.
 - **Impartial.** Never recommend or feature one markaz, institute or business. List alphabetically; say MESH is student-run and independent.
 - **Plain words over jargon** ("Course books" not "muqarrarat"; keep the Arabic beside it where students search for it). No filler features.
