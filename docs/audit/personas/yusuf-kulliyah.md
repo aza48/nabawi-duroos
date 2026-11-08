@@ -1,7 +1,7 @@
 # Persona audit: Yusuf, first-year Kulliyah of Sharia (live site, 7 Nov 2026)
 
 Tested https://medinahub.org with headless Edge at 390x844 (phone) and 1440x1000 (laptop). Screenshots are in
-`C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/agents/yusuf/` (called SHOTS below).
+(a local working folder, not in the repo) (called SHOTS below).
 
 ## Goal results
 

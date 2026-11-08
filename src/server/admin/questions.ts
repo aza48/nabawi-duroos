@@ -12,7 +12,7 @@ const newQuestion = z.object({
   context: z.string().trim().max(2000).default(""),
 });
 
-/** Adds an open question for the admins. Used by Claude and by scripts; never touches public content. */
+/** Adds an open question for the admins. Used by maintainers and scripts; never touches public content. */
 export async function addQuestion(db: Db, input: z.input<typeof newQuestion>): Promise<QuestionRow> {
   const v = newQuestion.parse(input);
   const existing = await db.select().from(adminQuestions).where(eq(adminQuestions.question, v.question));
@@ -39,7 +39,7 @@ export async function countOpenQuestions(db: Db): Promise<number> {
 const answerInput = z.object({ id: z.number().int().positive(), answer: z.string().trim().min(1).max(4000) });
 
 /**
- * Saves an admin's answer. It is only stored: nothing on the public site changes until Claude
+ * Saves an admin's answer. It is only stored: nothing on the public site changes until a maintainer
  * has exported the answer, interpreted it and written the content.
  */
 export async function answerQuestion(db: Db, actor: Actor, input: z.input<typeof answerInput>): Promise<void> {
@@ -61,7 +61,7 @@ export async function closeQuestion(db: Db, actor: Actor, id: number): Promise<v
 
 /**
  * Takes every answered question that has not been exported, marks it exported and returns it.
- * Claude writes these to docs/ADMIN-ANSWERS.md, then interprets and publishes them.
+ * A maintainer exports these to docs/ADMIN-ANSWERS.md, then reviews and publishes them.
  */
 export async function pullAnswers(db: Db, now: Date = new Date()): Promise<QuestionRow[]> {
   const rows = await db.select().from(adminQuestions).where(eq(adminQuestions.status, "answered")).orderBy(asc(adminQuestions.answeredAt));

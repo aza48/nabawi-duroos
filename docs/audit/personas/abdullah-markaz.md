@@ -1,6 +1,6 @@
 # Persona audit: Abdullah (markaz student, future IU applicant)
 
-Tested https://medinahub.org on Saturday 7 November 2026 with headless Edge at 2000x1100, 1440x1000 and 390x844. Scripts and screenshots are in C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/agents/abdullah/ (screenshots in the shots folder). No repo files edited, no forms submitted.
+Tested https://medinahub.org on Saturday 7 November 2026 with headless Edge at 2000x1100, 1440x1000 and 390x844. Scripts and screenshots are in (a local working folder, not in the repo) (screenshots in the shots folder). No repo files edited, no forms submitted.
 
 Honesty note: I looked at screenshots of home (2000), /programs (1440), /programs/taba (2000), /duroos/schedule (2000), /ask (2000 and 390), /more (2000), /guides/finding-an-apartment (2000), /programs mobile. For the other pages (library, discounts, guides index, calendar guide, cost of living, visas, SIM, IU pages, shaykh pages) I read the full text and checked page height and horizontal overflow, but did not eyeball every layout. Screenshots for those exist in the shots folder at 2000, 1440 and 390 (full page) if you want to check them.
 

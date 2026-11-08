@@ -2,7 +2,7 @@
 
 Tested on https://medinahub.org on 7 Nov 2026 with headless Edge, 390x844, touch, Android user agent. One run on slow 3G (400 ms latency, about 50 KB/s).
 Screenshot folder (all file names below are inside it):
-`C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/agents/ibrahim/`
+(a local working folder, not in the repo)
 
 ## 1. Goals
 

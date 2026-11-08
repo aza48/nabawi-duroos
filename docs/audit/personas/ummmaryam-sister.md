@@ -1,7 +1,7 @@
 # Usability audit: Umm Maryam (sister, mother of two, phone only)
 
 Tested 7 November 2026 on https://medinahub.org, headless Edge, 390x844, touch, light and dark.
-Screenshots and scripts: `C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/agents/ummmaryam/` (called SHOTS below).
+Screenshots and scripts: (a local working folder, not in the repo) (called SHOTS below).
 
 ## Verdict in one paragraph
 

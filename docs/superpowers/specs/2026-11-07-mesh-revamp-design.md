@@ -1,7 +1,7 @@
 # MESH v2 — Complete Revamp Design
 
 **Date:** 2026-11-07 (27/5/1448)
-**Owner:** Muhaymin (site owner) · original code by aza48
+**Owner:** the site owner · original code by aza48
 **Status:** Approved by owner 2026-11-07
 
 ---

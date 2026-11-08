@@ -2,6 +2,7 @@
 
 The hub for English-speaking students in Madinah: live duroos schedules of the mashayikh (English and Arabic), settling-in guides, verified answers to common questions, and the way into the MESH WhatsApp group.
 
+- **Start here:** `docs/HANDOFF.md` (stack, code map, commands, house rules) and `CONTRIBUTING.md`
 - **Design:** `docs/superpowers/specs/2026-11-07-mesh-revamp-design.md`
 - **Status, what's left, and feature ideas:** `docs/ROADMAP.md`
 

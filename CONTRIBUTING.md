@@ -1,34 +1,43 @@
 # Contributing to MESH
 
-Thanks for helping. This repo holds one Next.js app with two products:
+MESH (medinahub.org) is one Next.js app for English-speaking students and families in Madinah: live duroos schedules, study programmes, guides, answers, a course-book library, discounts and key dates, with an Arabic version under `/ar`.
 
-- **MESH — Medinah English Students Hub** (`/`): a community forum for English-speaking students in Madinah.
-- **Nabawi Duroos** (`/duroos`): an Arabic-first aggregator of lesson schedules (duroos) for Madinah masjids, with email alerts for schedule changes.
+Start with `docs/HANDOFF.md`: it explains the stack, the map of the code, the commands and the rules below in more detail.
 
 ## Run it locally
 
 ```bash
 npm install
-npm run dev
+npm run dev -- -p 3100
 ```
 
-No secrets are needed to develop: without a database the forum runs in a clearly labelled demo mode and the duroos side runs from its static data files. If you want the full backend locally, copy `.env.example` to `.env.local` and fill in your **own** Neon/Brevo values — never anyone else's.
+No secrets are needed to develop. Without `DATABASE_URL` the site runs on an in-memory copy of the data (PGlite). To try the admin locally, put `BETTER_AUTH_URL=http://localhost:3100` in `.env.local`, restart, and open the one-time invite link printed in the terminal. Copy `.env.example` for the full list of settings and use your **own** values, never anyone else's.
 
-## Ground rules (please read — PRs that break these will be sent back)
+## Before every pull request
 
-1. **Schedule data must be evidence-based.** Duroos times, books and changes come from the masjids' public announcement channels. Never invent a weekday, prayer time, book or stream link that a source does not state. If a source doesn't say, the app says so honestly.
-2. **No Telegram accounts, ever.** Sources are read only via public channel previews. No logins, API keys, phone numbers or session files — in code, issues or PRs.
-3. **Announcements never auto-publish.** Channel posts go to an admin approval queue first; nothing reaches users or email subscribers without the admin approving it.
-4. **Translations:** a shaykh's يعتذر is rendered "he excused himself" (or plainly "cancelled/postponed") — never "apologizes". Displayed dates are absolute Hijri dates in brackets, never relative words like "today" or "tonight".
-5. **Design system stays intact:** warm Starbucks-inspired palette, 50px pill buttons, 12px cards, per-masjid themes on the duroos side, dark Vercel-style theme on MESH, **no gradients** (the one exception is the duroos lecture pop-up, which is intentionally frosted glass). Arabic uses Alexandria, Latin uses Inter. Keep both languages (AR/EN) working for anything user-facing.
-6. **No secrets in code or history.** Keys live in environment variables only.
+```bash
+npx tsc --noEmit
+npx vitest run
+```
+
+Both must pass. Merging to `main` deploys to production automatically.
+
+## House rules (pull requests that break these are sent back)
+
+1. **Copy:** plain, warm, professional English. No em dashes or en dashes anywhere (a test checks). No filler or AI-sounding phrasing.
+2. **Speak with authority.** Public text never mentions where information came from (channels, posts, other sites) and never shows doubt ("reportedly", "not stated"). Uncertain facts are left out and raised with the admins instead.
+3. **Impartial.** Never recommend or feature one markaz, institute, business or doctor over another. List alphabetically. No adverts.
+4. **Rewrite, never copy** text from other sites or PDFs.
+5. **Design:** light theme by default (dark is optional), MESH green `#145c3e` and gold `#e2b23a`, the diamond lattice. Mobile first, and wide screens must use the space. Check changes at 2000, 1440, 1024, 390 and 360 px.
+6. **Both languages:** anything user-facing should work in English and Arabic (RTL).
+7. **Shaykh photos:** only verified photos; the calligraphic name badge is the fallback.
+8. **No secrets in code, comments, issues or history.** Keys live only in environment variables (`.env.local` locally, Vercel in production). Never commit `.env*` files other than `.env.example`.
+9. **Live database:** only maintainers run `npm run content:sync` or scripts against production. Database schema changes need a migration (`npx drizzle-kit generate --name <x>`) that is applied before code that reads the new columns is deployed.
 
 ## Pull requests
 
-1. Fork the repo and branch from `main`.
-2. Keep the PR focused — one change per PR.
-3. Make sure `npm run build` and `npx tsc --noEmit` pass.
-4. Fill in the PR template (what, why, how you tested, screenshots for UI changes).
-5. The maintainer reviews every PR personally. Merging to `main` deploys to production automatically, so reviews are careful — please be patient and respond to requested changes on the same PR.
+1. Branch from `main` and keep each PR to one change.
+2. Fill in the PR template: what, why, how you tested, and screenshots for UI changes.
+3. A maintainer reviews every PR before it is merged.
 
 By contributing you agree your contribution is provided under the project's license.

@@ -10,23 +10,23 @@ Each accepted photo was found by one researcher and accepted by two independent 
 
 ## Accepted (5)
 
-- **Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli** (sulayman-ibn-saleemullah-al-ruhayli): C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/photos/sulayman-ibn-saleemullah-al-ruhayli/wiki_2024.jpg
+- **Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli** (sulayman-ibn-saleemullah-al-ruhayli): (a local working folder, not in the repo)
   - image: https://upload.wikimedia.org/wikipedia/commons/9/9b/الشيخ_سليمان_الرحيلي_2024.jpg
   - page: https://ar.wikipedia.org/wiki/سليمان_بن_سليم_الله_الرحيلي
   - second page: https://www.youtube.com/watch?v=0pyGa5JOirA
-- **Shaykh Anis ibn Ahmad Tahir** (anis-ibn-ahmad-tahir): C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/photos/anis-ibn-ahmad-tahir/yt_xKuvgCp-ZB8.jpg
+- **Shaykh Anis ibn Ahmad Tahir** (anis-ibn-ahmad-tahir): (a local working folder, not in the repo)
   - image: https://i.ytimg.com/vi/xKuvgCp-ZB8/maxresdefault.jpg
   - page: https://www.youtube.com/watch?v=xKuvgCp-ZB8
   - second page: https://www.youtube.com/watch?v=WUpCblFAq84
-- **Dr. Abdullatif ibn Shalwah al-Shamani** (abdullatif-ibn-shalwah-al-shamani): C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/photos/abdullatif-ibn-shalwah-al-shamani/second_presidency_youtube.jpg
+- **Dr. Abdullatif ibn Shalwah al-Shamani** (abdullatif-ibn-shalwah-al-shamani): (a local working folder, not in the repo)
   - image: https://i.ytimg.com/vi/uWBD855SIyQ/maxresdefault.jpg
   - page: https://www.youtube.com/watch?v=uWBD855SIyQ
   - second page: https://t.me/s/SheikhAbdulLateefShamani?before=2400 (post SheikhAbdulLateefShamani/2378)
-- **Prof. Dr. Ali ibn Ghazi al-Tuwaijri** (ali-ibn-ghazi-al-tuwaijri): C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/photos/ali-ibn-ghazi-al-tuwaijri/best-youtube.jpg
+- **Prof. Dr. Ali ibn Ghazi al-Tuwaijri** (ali-ibn-ghazi-al-tuwaijri): (a local working folder, not in the repo)
   - image: https://i.ytimg.com/vi/3JZUp_R3uMw/hqdefault.jpg
   - page: https://www.youtube.com/watch?v=3JZUp_R3uMw
   - second page: https://t.me/twijri/5209
-- **Prof. Dr. Ibrahim ibn Amir al-Ruhayli** (ibrahim-ibn-amir-al-ruhayli): C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/photos/ibrahim-ibn-amir-al-ruhayli/telegram_post.jpg
+- **Prof. Dr. Ibrahim ibn Amir al-Ruhayli** (ibrahim-ibn-amir-al-ruhayli): (a local working folder, not in the repo)
   - image: https://t.me/s/rehyli (post image: video thumbnail for the lecture series "Sharh Jawami al-Akhbar lil-Sa'di", part 8; the exact cdn4.telesco.pe URL changes with each fetch)
   - page: https://t.me/s/rehyli
   - second page: https://www.youtube.com/watch?v=-EAGSFD4skA
@@ -36,7 +36,7 @@ Each accepted photo was found by one researcher and accepted by two independent 
 - **Shaykh Saud ibn Abdulaziz al-Khallaf** (saud-ibn-abdulaziz-al-khallaf): Only one clear face photo found, so I am not returning a pair. The official Telegram channel is t.me/DrSaudAlKhalaf (its description reads "the only official scientific channel" for the shaykh). The Haramain Manarat page (manaratalharamain.gov.sa/sheikh/25) is unreachable from this machine because D
 - **Prof. Dr. Ali ibn Fahd Abu Battin** (ali-ibn-fahd-abu-battin): Both photos are official pages of the same body, the General Presidency for the Affairs of the Two Holy Mosques, on two different domains and pages (prh.gov.sa and alharamain.gov.sa). They are not independent sources. I found no official Telegram channel or personal site for him. The Islamic Univers
 - **Prof. Dr. Abdussalam ibn Salim al-Suhaymi** (abdussalam-ibn-salim-al-suhaymi): Two face photos found, but both come from the Presidency of Religious Affairs at the Two Holy Mosques (prh.gov.sa website and its "دروس المسجد النبوي" YouTube channel), so they are two different channels but one institution. His own Telegram (t.me/abdalsalamalsohaimi), X (@Alsuhaimy_net) and al-suha
-- **Dr. Salih ibn Sa'd al-Suhaymi** (salih-ibn-sad-al-suhaymi): Both photos are saved in C:/Users/akhmu/AppData/Local/Temp/claude/1b16e9379667e0a5/f8098e22-02f6-41ec-a78b-2f35c5c4b1b8/scratchpad/photos/salih-ibn-sad-al-suhaymi/. The Telegram profile photo (tg_channel.jpg) and the YouTube avatar of his official channel are only the "السحيمي" logo, and the X avata
+- **Dr. Salih ibn Sa'd al-Suhaymi** (salih-ibn-sad-al-suhaymi): Both photos are saved in (a local working folder, not in the repo) The Telegram profile photo (tg_channel.jpg) and the YouTube avatar of his official channel are only the "السحيمي" logo, and the X avata
 - **Shaykh Ali ibn Abdurrahman al-Hudhayfi** (ali-ibn-abdurrahman-al-hudhayfi): Only one photo was secured, so this is not a pass. The photo is a Wikimedia Commons file, Huthaify.jpg, dated 2019-12-04. It is in the Commons category "Ali al-Hudhayfi" and is the lead image of the English Wikipedia article "Ali ibn Abdur-Rahman al Hudhaify". It shows an elderly man with a white be
 - **Shaykh Abdulmuhsin ibn Muhammad al-Qasim** (abdulmuhsin-ibn-muhammad-al-qasim): No official Telegram channel with his face was found. t.me/FawaidAlQasim ("فوائد علمية", linked to his official site a-alqasim.com) has only a calligraphy logo. t.me/al_qassim ("تلاوات القاسم", @al_qasim_11) has a small stylized portrait, but nothing confirms the channel is official, and the portrai
 - **Shaykh Badr ibn Muqbil al-Badr** (badr-ibn-muqbil-al-badr): No photos were downloaded and nothing was verified. I ran Arabic and English searches for the full name "بدر بن مقبل البدر", plus variants with Masjid an-Nabawi, Quba and Telegram. None returned a scholar by that name, and I found no official Telegram channel, website, university page or presidency 

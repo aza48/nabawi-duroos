@@ -5,7 +5,7 @@
  *   npm run questions:pull                                 export answered questions to docs/ADMIN-ANSWERS.md
  *   npx tsx --tsconfig tsconfig.json scripts/questions.ts close "<text>"   close open questions that contain this text
  *
- * An answer is never published automatically. After `questions:pull`, Claude reads
+ * An answer is never published automatically. After `questions:pull`, a maintainer reads
  * docs/ADMIN-ANSWERS.md, interprets each answer, writes the content in MESH's own words and
  * publishes it, then moves the entry under "Processed" in that file.
  */

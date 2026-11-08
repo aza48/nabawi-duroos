@@ -187,7 +187,7 @@ export const settings = pgTable("settings", {
 
 /**
  * Things MESH could not confirm. Admins answer them one by one in the admin panel.
- * An answer is only saved: it never changes the public site. Claude exports answered
+ * An answer is only saved: it never changes the public site. A maintainer exports answered
  * questions to docs/ADMIN-ANSWERS.md (npm run questions:pull), interprets them, and then
  * writes and publishes the content properly.
  */
