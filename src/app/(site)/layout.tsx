@@ -10,7 +10,7 @@ import { JsonLd, siteJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "MESH | Medina English Student Hub: duroos, study and life in Madinah", template: "%s | MESH Madinah" },
+  title: { default: "MESH | Medina English Student Hub, Madinah", template: "%s | MESH Madinah" },
   description:
     "The hub for English-speaking students in Madinah: live duroos schedules of the mashayikh, settling-in guides, answers to common questions, and the MESH WhatsApp group.",
   applicationName: "MESH",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription, metaTitle } from "@/lib/text";
 import { notFound } from "next/navigation";
 import { PROGRAMS } from "@/content/programs";
 import { ProgramPage } from "@/features/programs/ProgramPages";
@@ -12,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const p = PROGRAMS.find((x) => x.slug === slug);
-  return p ? { title: p.name, description: p.tagline, alternates: { canonical: `/programs/${p.slug}` } } : {};
+  return p ? { title: metaTitle(p.name), description: metaDescription(p.tagline), alternates: { canonical: `/programs/${p.slug}` } } : {};
 }
 
 export default async function Page({ params }: Props) {

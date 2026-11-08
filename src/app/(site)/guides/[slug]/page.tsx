@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription, metaTitle } from "@/lib/text";
 import { notFound } from "next/navigation";
 import { getDb } from "@/server/db/client";
 import { getGuide } from "@/server/content/queries";
@@ -17,8 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const g = await getGuide(await getDb(), slug);
   return g
     ? {
-        title: g.title,
-        description: g.summary,
+        title: metaTitle(g.title),
+        description: metaDescription(g.summary ?? g.title),
         alternates: { canonical: `/guides/${slug}` },
         openGraph: { type: "article", title: g.title, description: g.summary, url: `/guides/${slug}`, siteName: "MESH", ...(g.coverUrl ? { images: [g.coverUrl] } : {}) },
         twitter: { card: "summary_large_image", title: g.title, description: g.summary },

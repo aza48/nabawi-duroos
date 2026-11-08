@@ -41,7 +41,7 @@ Status: **done** (fixed and deployed), **next** (being worked on), **todo**.
 | 19 | Duroos cannot be filtered by prayer, level or language | partly done (8 Nov: schedule filters by prayer; level and language need new lesson fields) |
 | 20 | Tap targets under 40 px on most pages (nav pills 38 px, inline links 18 to 21 px) | todo |
 | 21 | Stock Next.js 404 for unknown lesson slugs; custom 404 has no search or nav | done |
-| 22 | 32 titles over 60 characters, duplicate titles and descriptions on two lessons, 31 descriptions over 160 | todo |
+| 22 | 32 titles over 60 characters, duplicate titles and descriptions on two lessons, 31 descriptions over 160 | done 8 Nov: central metaTitle (45 plus " | MESH Madinah") and metaDescription (160) in src/lib/text.ts used by every generator; lesson titles and descriptions now name the prayer so same-book duroos differ |
 | 23 | /duroos/updates says "No updates yet" and then lists earlier updates | done |
 | 24 | Lesson pages say "Masjid Quba, Masjid Quba" | done |
 | 25 | Guides and FAQ pages served no-store (no static params) | done (8 Nov, cached on first visit, edge HIT confirmed) |

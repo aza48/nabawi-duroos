@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription, metaTitle } from "@/lib/text";
 import { notFound } from "next/navigation";
 import { COLLECTIONS, countFiles, treeOf } from "@/content/library-books";
 import { CollectionView } from "@/features/library/CoursePages";
@@ -17,8 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tree = c && treeOf(c.slug);
   if (!c || !tree) return {};
   return {
-    title: `${c.title} course books`,
-    description: `${countFiles(tree)} course books and summaries for ${c.title} (${c.titleAr}) at the Islamic University of Madinah, by level, readable on MESH.`,
+    title: metaTitle(`${c.title} course books`),
+    description: metaDescription(`${countFiles(tree)} course books and summaries for ${c.title} (${c.titleAr}) at the Islamic University of Madinah, by level, readable on MESH.`),
     alternates: { canonical: `/library/${c.slug}` },
   };
 }

@@ -10,6 +10,7 @@ import { ScheduleBrowser } from "./ScheduleBrowser";
 import { DuroosNav } from "./DuroosNav";
 import { LessonPage, LivePage, ShaykhPage, UpdatesPage } from "./DetailPages";
 import { t } from "./strings";
+import { clip, metaDescription, metaTitle } from "@/lib/text";
 
 type SlugProps = { params: Promise<{ slug: string }> };
 
@@ -73,8 +74,8 @@ export function shaykhRoute(locale: Locale) {
     if (!s) return {};
     const name = locale === "ar" ? s.nameAr : s.nameEn;
     return {
-      title: name,
-      description: locale === "ar" ? `دروس ${s.nameAr} ومواعيدها وأماكنها.` : `The duroos of ${s.nameEn}: books, days, times and places.`,
+      title: metaTitle(name),
+      description: metaDescription(locale === "ar" ? `دروس ${s.nameAr} ومواعيدها وأماكنها.` : `The duroos of ${s.nameEn}: books, days, times and places.`),
       alternates: canonicalFor(locale, `/shaykh/${slug}`),
       openGraph: s.photo ? { images: [s.photo] } : undefined,
     };
@@ -97,11 +98,12 @@ export function lessonRoute(locale: Locale) {
     const l = await getLesson(await getDb(), slug);
     if (!l) return {};
     return {
-      title: lessonTitle(locale === "ar" ? l.bookAr : l.bookEn, locale === "ar" ? l.shaykh.nameAr : l.shaykh.nameEn, locale),
-      description:
+      title: lessonTitle(locale === "ar" ? l.bookAr : l.bookEn, locale === "ar" ? l.shaykh.nameAr : l.shaykh.nameEn, locale, t(locale, l.prayer)),
+      description: metaDescription(
         locale === "ar"
-          ? `${l.bookAr}، ${l.shaykh.nameAr}، ${l.masjid.nameAr}.`
-          : `${l.bookEn} with ${l.shaykh.nameEn} at ${l.masjid.nameEn}: days, time, place and latest changes.`,
+          ? `${l.bookAr}، ${l.shaykh.nameAr}، ${l.masjid.nameAr}، بعد ${t(locale, l.prayer)}.`
+          : `${l.bookEn} with ${l.shaykh.nameEn} at ${l.masjid.nameEn}, after ${t(locale, l.prayer)}: days, time, place and latest changes.`,
+      ),
       alternates: canonicalFor(locale, `/lesson/${slug}`),
     };
   }
@@ -135,10 +137,9 @@ export function liveRoute(locale: Locale) {
 }
 
 /** Short, unique page titles: the book without "Explanation of", trimmed, plus the shaykh's family name. */
-export function lessonTitle(book: string, shaykh: string, locale: "en" | "ar"): string {
+export function lessonTitle(book: string, shaykh: string, locale: "en" | "ar", prayer?: string): string {
   const family = shaykh.trim().split(/\s+/).pop() ?? "";
   const base = locale === "ar" ? book.replace(/^شرح\s+/, "") : book.replace(/^(An )?Explanation of (the )?/i, "");
-  const max = 38;
-  const short = base.length <= max ? base : `${base.slice(0, base.lastIndexOf(" ", max)).replace(/[,،\s]+$/, "")}…`;
-  return locale === "ar" ? `${short}، ${family}` : `${short} with ${family}`;
+  const suffix = locale === "ar" ? `، ${family}${prayer ? `، ${prayer}` : ""}` : ` with ${family}${prayer ? `, ${prayer}` : ""}`;
+  return `${clip(base, Math.max(16, 45 - suffix.length))}${suffix}`;
 }

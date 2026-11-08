@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription, metaTitle } from "@/lib/text";
 import { notFound } from "next/navigation";
 import { fileIndex, levelLabel } from "@/content/library-books";
 import { ReaderView } from "@/features/library/CoursePages";
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const hit = fileIndex().get((await params).id);
   if (!hit) return {};
   const where = [hit.collection.title, ...hit.path.slice(1).map((p) => levelLabel(p.t) ?? p.t)].join(", ");
-  return { title: hit.file.t, description: `${hit.file.t}: ${where}. Read it on MESH.`, alternates: { canonical: `/library/read/${hit.file.id}` } };
+  return { title: metaTitle(hit.file.t), description: metaDescription(`${hit.file.t}: ${where}. Read it on MESH.`), alternates: { canonical: `/library/read/${hit.file.id}` } };
 }
 
 export default async function Page({ params }: Props) {

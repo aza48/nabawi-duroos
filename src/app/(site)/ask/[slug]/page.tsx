@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metaDescription, metaTitle } from "@/lib/text";
 import { notFound } from "next/navigation";
 import { getDb } from "@/server/db/client";
 import { getFaq } from "@/server/content/queries";
@@ -15,7 +16,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = (await params).slug;
   const f = await getFaq(await getDb(), slug);
-  return f ? { title: f.question, alternates: { canonical: `/ask/${slug}` } } : {};
+  return f ? { title: metaTitle(f.question), description: metaDescription(f.answerHtml.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ") || f.question), alternates: { canonical: `/ask/${slug}` } } : {};
 }
 
 export default async function Page({ params }: Props) {

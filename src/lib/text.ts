@@ -33,3 +33,17 @@ export function cleanRow<R extends Record<string, unknown>>(row: R): R {
   }
   return out as R;
 }
+
+/** Trim to at most `max` characters at a word boundary, ending with an ellipsis. */
+export function clip(s: string, max: number): string {
+  const v = s.replace(/\s+/g, " ").trim();
+  if (v.length <= max) return v;
+  const cut = v.slice(0, max - 1);
+  const at = cut.lastIndexOf(" ");
+  return `${(at > max / 2 ? cut.slice(0, at) : cut).replace(/[,،:;.\s]+$/, "")}…`;
+}
+
+/** Page titles: the site layout adds " | MESH Madinah" (15 characters), so 45 keeps the whole title within 60. */
+export const metaTitle = (s: string) => clip(s, 45);
+/** Meta descriptions: 160 characters at most. */
+export const metaDescription = (s: string) => clip(s, 160);
