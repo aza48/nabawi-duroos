@@ -12,7 +12,7 @@ import { CHECKED, PLAN, SLUG, SUMMARY, TITLE } from "@/features/guides/company/c
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Start your own company in Saudi Arabia (MISA registration guide)",
+  title: "Start your own company in Saudi Arabia (2025 rules)",
   description: SUMMARY,
   alternates: { canonical: `/guides/${SLUG}` },
   openGraph: { type: "article", title: TITLE, description: SUMMARY, url: `/guides/${SLUG}`, siteName: "MESH" },
@@ -35,7 +35,7 @@ export default async function Page() {
     author: { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
     about: { "@type": "Country", name: "Saudi Arabia" },
-    totalTime: "P7W",
+    totalTime: "P10W",
     step: steps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.title, text: s.body })),
   };
   return (
@@ -44,12 +44,11 @@ export default async function Page() {
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-16">
           <Link href="/guides#getting-settled" className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white">
-            <Briefcase size={15} className="text-gold-bright" /> Getting settled · Business
+            <Briefcase size={15} className="text-gold-bright" /> Getting settled · Work and business
           </Link>
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl">{TITLE}</h1>
           <p className="mt-4 max-w-2xl text-white/85 md:text-lg">
-            You don&apos;t need an agency. You need a map. Set up your own Saudi company and residency for your family, step by step, for a fraction of what agencies charge. Updated for the 2025 rule changes.
-          </p>
+            Your own company, your own residency. A plain-English path through the 2025 rules, from paperwork at home to your first invoice.</p>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
             <span className="flex items-center gap-1.5"><BookOpen size={15} /> 15 min read</span>
             <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {steps.length} steps to tick off</span>
