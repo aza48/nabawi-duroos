@@ -97,7 +97,13 @@ describe("temporary AI failures", () => {
     await runWatcher(db2, flaky, NOW);
     let [p] = await db2.select().from(channelPosts).where(eq(channelPosts.postId, "drosalmadina/50"));
     expect(p.status).toBe("error");
-    await runWatcher(db2, flaky, NOW);
+    // Three minutes later it is left alone (back-off), so a quota outage does not cost a read every run.
+    await runWatcher(db2, flaky, new Date(NOW.getTime() + 3 * 60_000));
+    [p] = await db2.select().from(channelPosts).where(eq(channelPosts.postId, "drosalmadina/50"));
+    expect(p.status).toBe("error");
+    expect(calls).toBe(1);
+    // Half an hour later it is retried and read.
+    await runWatcher(db2, flaky, new Date(NOW.getTime() + 31 * 60_000));
     [p] = await db2.select().from(channelPosts).where(eq(channelPosts.postId, "drosalmadina/50"));
     expect(p.status).toBe("suggested");
   });

@@ -66,9 +66,14 @@ export async function runWatcher(
   let fetchedAny = false;
   const allSources = (await db.select().from(sources)).sort((a, b) => sourceRank(a.handle) - sourceRank(b.handle));
 
+  /** A post that failed is retried after this long, not on every run. */
+  const ERROR_RETRY_MS = 30 * 60_000;
+
   for (const src of allSources) {
     // Forwarded WhatsApp messages arrive through the webhook, not from a channel page.
     if (src.handle === "wa-forward") continue;
+    // The budget covers the channel fetches too, so a run never outlives the function limit.
+    if (clock() - startedAt > budgetMs) break;
     result.sources++;
     let posts: ChannelPost[];
     try {
@@ -86,6 +91,8 @@ export async function runWatcher(
       const [existing] = await db.select().from(channelPosts).where(eq(channelPosts.postId, p.postId));
       // "new" and "error" posts are (re)tried; anything already decided is left alone unless edited.
       if (existing && existing.textHash === textHash && existing.status !== "new" && existing.status !== "error") continue;
+      // An AI error (quota, outage) is retried after a pause, so 429s do not multiply every three minutes.
+      if (existing && existing.status === "error" && existing.textHash === textHash && now.getTime() - existing.updatedAt.getTime() < ERROR_RETRY_MS) continue;
       if (existing && existing.status === "published" && existing.textHash !== textHash) {
         await db.update(channelPosts).set({ text: p.text, textHash, status: "suggested", reason: "Edited after it was published. Check the change is still right.", updatedAt: now }).where(eq(channelPosts.id, existing.id));
         result.suggested++;
