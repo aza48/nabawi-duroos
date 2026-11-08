@@ -21,7 +21,7 @@ export function ManuscriptDirectory({ items }: { items: Manuscript[] }) {
       <label className="flex items-center gap-3 rounded-2xl border border-line bg-card px-4 py-3 focus-within:border-primary">
         <Search size={19} className="shrink-0 text-muted" />
         <span className="sr-only">Search manuscript libraries</span>
-        <input value={q} onChange={(e) => { setQ(e.target.value); setLimit(24); }} placeholder="Library name, e.g. السليمانية or Topkapı" className="w-full bg-transparent outline-none placeholder:text-muted" />
+        <input value={q} onChange={(e) => { setQ(e.target.value); setLimit(24); }} placeholder="Library name, e.g. السليمانية or Topkapı" className="w-full bg-transparent text-base text-ink outline-none placeholder:text-muted" />
       </label>
       <div className="mt-3 flex flex-wrap gap-1.5">
         <button type="button" onClick={() => setCountry(null)} aria-pressed={!country} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${!country ? "bg-primary text-primary-ink" : "border border-line bg-card text-muted"}`}>

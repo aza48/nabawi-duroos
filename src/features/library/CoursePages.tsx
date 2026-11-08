@@ -43,7 +43,7 @@ export function LibrarySearchForm({ q = "", collection }: { q?: string; collecti
         defaultValue={q}
         placeholder={collection ? `Search ${collection.title} books, in Arabic or English` : "Search every course book, in Arabic or English"}
         aria-label="Search the course books"
-        className="min-w-0 flex-1 bg-transparent py-2 text-base outline-none placeholder:text-muted"
+        className="min-w-0 flex-1 bg-transparent py-2 text-base text-ink caret-primary outline-none placeholder:text-muted"
       />
       <button type="submit" className="min-h-10 shrink-0 rounded-full bg-primary px-5 text-sm font-semibold text-primary-ink">Search</button>
     </form>

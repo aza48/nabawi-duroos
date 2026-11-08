@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Activity, FileText, Inbox, Landmark, LogOut, Settings } from "lucide-react";
+import { Activity, BarChart3, FileText, Inbox, Landmark, LogOut, Settings } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { ThemeToggle } from "@/components/shell/ThemeToggle";
 import { AdminFeedbackProvider } from "@/features/admin/Feedback";
@@ -12,6 +12,7 @@ const TABS = [
   { href: "/admin/duroos", label: "Duroos", icon: Landmark },
   { href: "/admin/content", label: "Content", icon: FileText },
   { href: "/admin/activity", label: "Activity", icon: Activity },
+  { href: "/admin/analytics", label: "Visitors", icon: BarChart3 },
   { href: "/admin/more", label: "More", icon: Settings },
 ];
 
