@@ -6,7 +6,9 @@ Last updated 7 November 2026 (second session) by Claude. This file is the source
 - Done and deployed: authority sweep of all public text (code files and 86 live database edits, facts checked; the course-descriptions guide was set to draft because it was leftover scraped widget text); library pages in the sitemap; search synonyms from the multilingual research.
 - Shaykh photos: DONE. 20 of 31 shuyukh are pictured (19 from the October verification in public/images, plus Anis ibn Ahmad Tahir in public/shaykhs). The 11 without a photo are listed in docs/research/shaykh-photos.md for the owner.
 - Also done: research fact corrections (bus 3.45 SAR, Haramain from 162 SAR plus VAT, Haram Institute registration in Safar, studyinsaudi.sa), Open Graph and a share image for every guide, al-Ruhayli Telegram handle in his profile.
-- Owner questions collected by the sweep (33) are in the scratchpad sweep/result.json under "questions"; copy the important ones into docs/IDEAS-FOR-OWNER.md.
+- Owner questions (sweep and research conflicts) are now in docs/IDEAS-FOR-OWNER.md. Add feature ideas there at the end of stage 4.
+- Small-tasks pass also shipped: a MESH 404 page inside the site, short unique lesson titles (lessonTitle), 44px header buttons. AUDIT.md statuses are current (13 done).
+- NEXT (in order): remaining AUDIT items (6 admission guide, 13 stale facts, 14 visa lines and Al-Fusha and Ahlul Athar link, 16 sisters at the Haram duroos, 17 Ma'had hub, 18 programmes comparison, 19 duroos filters, 25 caching, 26 phone table of contents, 27 Library in the main nav, 28 shorter phone hero), research content (Visitor ID and iqama paths, Study in Saudi changes, group chat facts, Rawdah hours), then stage 2 admin panel, stage 3 audit, stage 4 ideas.
 - Remote Control is blocked by the organization's policy (claude.ai Team admin setting), not by this PC.
 - Then continue the plan below from stage 1 (open audit items and research content), then stages 2 to 4.
 
