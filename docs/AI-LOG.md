@@ -38,6 +38,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 - Nothing yet.
 
 ## Log (newest first)
+- 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit finding 4 (deep audit row 19 was marked done but was still partly broken): undo restores only the fields the change touched, refuses with a clear message when one of them was edited again since, refreshes the public pages of what it undid (both languages), and explains a refused delete ("Other items still use this") instead of "Something went wrong". Two new messages in `FRIENDLY` in `src/app/(admin)/admin/actions.ts`.
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit finding 22: the morning phone alert names the first dars with a confirmed time only, and prints the prayer as "Maghrib" not "maghrib".
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit finding 19: saving or deleting a guide, answer or the WhatsApp setting now also refreshes the Arabic twins (`withArabic` in `src/server/admin/refresh.ts`).
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: code audit findings 9, 10 and 21: admin invites (created and accepted) are now in Activity, never with the token; link fields refuse `/\\evil.com` (browsers read it as off-site); `?date=` refuses impossible dates such as 2026-11-31. Tests for each.

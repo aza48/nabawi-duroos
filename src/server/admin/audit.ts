@@ -3,6 +3,7 @@ import type { PgTable } from "drizzle-orm/pg-core";
 import type { Db } from "@/server/db/client";
 import { announcements, auditLog, faqs, guides, lessonOverrides, lessons, settings, shaykhs, sources } from "@/server/db/schema";
 import { assertCan, type Actor } from "@/server/auth/permissions";
+import { DUROOS_PATHS, refreshPublic, withArabic } from "./refresh";
 
 export type AuditRow = typeof auditLog.$inferSelect;
 export type Entity = "lesson" | "shaykh" | "override" | "announcement" | "faq" | "guide" | "setting" | "source" | "admin";
@@ -54,7 +55,22 @@ function revive(snapshot: Record<string, unknown>): Record<string, unknown> {
   return out;
 }
 
-export type UndoResult = { ok: true } | { ok: false; error: "already_undone" | "missing_row" | "not_undoable" };
+export type UndoResult = { ok: true } | { ok: false; error: "already_undone" | "missing_row" | "not_undoable" | "changed_since" | "in_use" };
+
+/** Public pages that show an entity, so an undo is seen at once and not after the cache expires. */
+function publicPaths(entity: Entity, key: string): string[] {
+  switch (entity) {
+    case "lesson": return [...DUROOS_PATHS, `/duroos/lesson/${key}`, `/ar/duroos/lesson/${key}`];
+    case "shaykh": return [...DUROOS_PATHS, `/duroos/shaykh/${key}`, `/ar/duroos/shaykh/${key}`];
+    case "override": case "announcement": return DUROOS_PATHS;
+    case "faq": return withArabic(["/ask", `/ask/${key}`]);
+    case "guide": return withArabic(["/guides", `/guides/${key}`, "/"]);
+    case "setting": return withArabic(["/", "/duroos", "/ask", "/guides", "/more"]);
+    default: return [];
+  }
+}
+
+const same = (a: unknown, b: unknown) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 
 export async function undo(db: Db, actor: Actor, auditId: number): Promise<UndoResult> {
   assertCan(actor, "activity.undo");
@@ -82,8 +98,12 @@ export async function undo(db: Db, actor: Actor, auditId: number): Promise<UndoR
     }
   } catch (e) {
     await release();
+    // A row other rows still point at (a lesson with updates, for example) cannot be removed.
+    const pgCode = (x: unknown) => (x && typeof x === "object" && "code" in x ? (x as { code?: string }).code : undefined);
+    if (pgCode(e) === "23503" || pgCode((e as { cause?: unknown })?.cause) === "23503") return { ok: false, error: "in_use" };
     throw e;
   }
+  refreshPublic(publicPaths(entry.entity as Entity, entry.entityId));
   await record(db, actor, { action: "undo", entity: entry.entity as Entity, entityId: entry.entityId, before: entry.after, after: entry.before, undoOf: entry.id });
   return { ok: true };
 
@@ -97,7 +117,16 @@ export async function undo(db: Db, actor: Actor, auditId: number): Promise<UndoR
     }
   } else if (entry.action === "update") {
     if (!current) return { ok: false, error: "missing_row" };
-    await db.update(target.table).set(revive(entry.before as Record<string, unknown>)).where(eq(col, id));
+    // Restore only the fields this change touched, and only while they still hold its values:
+    // writing the whole old row back would wipe any later edit to the same item.
+    const before = (entry.before ?? {}) as Record<string, unknown>;
+    const after = (entry.after ?? {}) as Record<string, unknown>;
+    const row = current as Record<string, unknown>;
+    const touched = Object.keys(before).filter((k) => k in row && k !== "updatedAt" && !same(before[k], after[k]));
+    if (touched.some((k) => !same(row[k], after[k]))) return { ok: false, error: "changed_since" };
+    if (touched.length) {
+      await db.update(target.table).set(revive(Object.fromEntries(touched.map((k) => [k, before[k]])))).where(eq(col, id));
+    }
   } else if (entry.action === "delete") {
     if (current) return { ok: false, error: "not_undoable" };
     await db.insert(target.table).values(revive(entry.before as Record<string, unknown>));

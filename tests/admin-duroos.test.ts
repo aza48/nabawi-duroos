@@ -150,6 +150,13 @@ describe("a published schedule update also changes the schedule (audit M9)", () 
     await saveAnnouncement(db, duroosEditor, { ...base, slug: a.slug, eventDate: "2026-12-11", status: "draft" });
     expect(await statusOn("2026-12-11")).toBe("on");
   });
+  it("undoing the creation of a dars that updates still point at is refused with a clear reason", async () => {
+    const { record } = await import("@/server/admin/audit");
+    const [l] = await db.select().from(lessons).where(eq(lessons.slug, "ruh-dalil"));
+    const id = await record(db, owner, { action: "create", entity: "lesson", entityId: "ruh-dalil", before: null, after: l });
+    expect(await undo(db, owner, id)).toEqual({ ok: false, error: "in_use" });
+    expect(await db.select().from(lessons).where(eq(lessons.slug, "ruh-dalil"))).toHaveLength(1);
+  });
   it("leaves the schedule alone for drafts and for plain notices", async () => {
     const d = await saveAnnouncement(db, duroosEditor, {
       titleEn: "Maybe cancelled", titleAr: "ربما", bodyEn: "x", bodyAr: "x", type: "cancellation", eventDate: "2026-12-03", lessonSlug: "ruh-dalil", status: "draft",

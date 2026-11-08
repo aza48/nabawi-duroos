@@ -23,6 +23,8 @@ const FRIENDLY: Record<string, string> = {
   already_undone: "That change was already undone.",
   missing_row: "That item has since been deleted, so it can't be undone.",
   not_undoable: "That change can't be undone.",
+  changed_since: "That item was edited again after this change. Undo would wipe the newer edit, so change it directly instead.",
+  in_use: "Other items still use this, so it can't be removed. Remove or move those first.",
   needs_lesson_and_date: "The AI couldn't tell which lesson or date. Use Change a dars instead.",
   suggestion_not_found: "That suggestion was already handled.",
   question_not_found: "That question no longer exists.",
