@@ -14,6 +14,9 @@ describe("library titles", () => {
     expect(cleanTitle("التدريبات م٥ merged")).toBe("التدريبات م٥");
     expect(cleanTitle("شرح شجرة الأسماء (2) (1)")).toBe("شرح شجرة الأسماء");
     expect(cleanTitle("ب محتوى مقرر القيم الإسلامية (1)-1")).toBe("ب محتوى مقرر القيم الإسلامية");
+    expect(cleanTitle("الميسر في غريب القرآن \u2013 الجزء الأول")).toBe("الميسر في غريب القرآن\u060c الجزء الأول");
+    expect(cleanTitle("علم-مقاصد-الشارع-\u2013-أ.د.-عبدالعزيز-بن-ربيعة")).toBe("علم مقاصد الشارع\u060c أ.د. عبدالعزيز بن ربيعة");
+    expect(cleanTitle("Tafsir \u2014 part one")).toBe("Tafsir, part one");
     expect(cleanTitle("‎⁨تشجير فقه المعاملات كامل⁩")).toBe("تشجير فقه المعاملات كامل");
     expect(cleanTitle("بدون حذف النصوص الأدبية المستوى 6")).toBe("النصوص الأدبية المستوى 6");
     expect(cleanTitle("7-الماتريدية(3)doc")).toBe("7-الماتريدية");
