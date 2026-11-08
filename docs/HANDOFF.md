@@ -1,158 +1,95 @@
 # MESH handoff (read this first)
 
-Last updated 7 November 2026 (second session) by Claude. This file is the source of truth for continuing the work.
-
-## Audit-items session (8 November 2026, about 07:10 to 08:00 Riyadh, stopped at 86% weekly usage)
-- Deployed and checked live on medinahub.org: 27 Library in the phone nav (Study moved to More), 28 phone hero 621 to about 310 px (compact next adhan card, day arc from sm up), 26 collapsible "On this page" on phones, 16 Live page sisters note and unavailable-stream fallback, 19 schedule filter by prayer, 25 guide and FAQ pages cached (edge HIT), 18 Study page filter by who it is for, 13 Ahlul Athar fee and location.
-- 14 visa lines are rewritten in src/server/seed/content/guides-2026.ts (tourist eVisa, extensions, family visit visa) but NOT on the live DB yet. `npm run content:sync` upserts every seeded guide and FAQ, and reading the live DB to confirm it would not revert the overnight live-only edits was blocked by the permission classifier. Next session: confirm, then run it.
-- Al-Fusha question added to docs/IDEAS-FOR-OWNER.md. No arabic.ahlulathar.net link exists in the code.
-- Still open: 6 admission guide, 17 Ma'had hub, rest of 13 (Mutun al-Ijaz price conflict, IU page, library, childbirth costs need fresh sources), 16 women's areas and gates (need verified facts; the Al-Midad session is building /duroos/sisters), 18 sort, compare and price units, 19 level and language (needs lesson fields).
-- Note: my pushes to `mine revamp:main` also carried the Al-Midad session's commit dcb2ae3 to production (tests passed with it).
-
-## Morning session, 8 November 2026 (Al-Midad import and Sisters section, stopped at about 08:15 Riyadh, weekly usage 86%)
-- **Al-Midad import: DONE and live.** 7 new duroos (2 for everyone, 5 women's), 6 new teachers, 3 new masjids, and al-Badr's Tafsir as-Sa'di now has its days (Sunday to Friday after Fajr) and exact spot. Diff and every open question: `docs/research/al-midad-import.md`. Code: `src/server/seed/content/al-midad.ts` (`syncAlMidad`, run by `npm run content:sync` and the seed; it only inserts and fills gaps, never overwrites admin edits).
-- **Sisters section: DONE and deployed.** `lessons.audience` (all, men, women; migration 0006, already applied to live). `/duroos/sisters` and `/ar/duroos/sisters` in a petal-pink MESH variant (`[data-variant="sisters"]` in globals.css, light and dark), a pink "Sisters" tab in the duroos nav, and a pink Sisters tag on women's duroos in today's cards, the weekly schedule, shaykh pages and the lesson page (which also turns pink). In the sitemap.
-- Checked live at 2000, 1440, 1024 and 375 px and in dark mode. Small polish left: on tall screens a strip of the normal page background shows between the pink area and the footer (the variant wraps the page content, not the layout's main).
-- **Not done here:** step 3 audit items (27, 28, 26, 13, 14) were being worked by the parallel audit session, so they were left to it.
-- **Questions for the owner:**
-  1. Quba weekly duroos: Al-Midad and our seed disagree on days and prayers for Maher and Mu'adh Khujah, al-Ghamidi, Abu Battin and al-Shamani (Al-Midad looks shifted by about a day). Which is right? Nothing was changed.
-  2. List online women's duroos (Iman al-Marzuq on Zoom, Kuwait time; her event's title and description also name different books)?
-  3. Add one-off lectures from Al-Midad to the events list?
-  4. Make Al-Midad a recurring source (a daily read that proposes changes in the admin inbox, like the Telegram watcher)? Not built.
-- Shared-folder gotcha: two sessions share one git index here. Stage by explicit path; a `git commit` picks up whatever the other session staged.
-
-## Overnight progress (8 November 2026, stopped at 83% of the 5-hour window)
-
-- **Admin session, 8 Nov about 09:00 Riyadh. Started at 96% of the 5-hour window, stopped at 98%.** Done and deployed: help number removed from Admin > Settings; `getHelpContact` always returns +1 234 567 9076 (commit 8791cc0). Wrote `docs/audit/ADMIN-AUDIT.md` (11 ranked findings). Nothing half done. Remaining ranked admin items, from that file: (1) "Needs you" block on the admin home with counts for pending suggestions, failed sources, stale facts, broken links; (2) search on Content, Shaykhs and Activity; (3) in-page confirm plus Undo toast instead of `window.confirm`; (4) plain-language watcher cards; (5) activity grouped by day; (6) gold accent for attention counts; (7) code-file content editing only after `npm run content:sync` runs against the live DB (not attempted).
-- **Test pass and Arabic session, 8 Nov about 08:15 to 09:00 Riyadh (5-hour window 69% to about 86%, weekly 90% to 92%). Stopped at a safe point: everything below is deployed and checked live; nothing is half done in the code.**
-  - **Test pass (headless Edge, every main page at 2000, 1440, 1024, 390 and 360, plus dark mode, /ar, Ctrl+K, calendar feeds, sitemap, llms.txt, robots, manifest, admin login).** Only real bug: the header overflowed at 1024 px and on phones after the language switch was added (theme button pushed off screen). Fixed: the search button is icon-only from lg to xl, the theme button moves to the footer bar below 640 px, the language button drops its icon on phones (and reads "EN" on Arabic phones). Everything else passed (no overflow, no console errors, no broken images). The checker script is `check.mjs` in that session's scratchpad: playwright-core with channel "msedge", `waitUntil: "load"` (networkidle hangs on duroos pages), and `MSYS_NO_PATHCONV=1` in Git Bash or "/" becomes a Windows path.
-  - **Arabic: DONE for Study, Guides, Library, Discounts, Ask and More.** New routes under `src/app/(ar)/ar/`: programs (+ [slug]), guides (+ [slug]), ask (+ [slug]), library, discounts, more. The page components take `locale` (ProgramsIndex, ProgramPage, GuidesPage, GuidePage, AskPage, FaqPage, MorePage, LibraryPage, DiscountsBrowser, FaqExplorer, AudienceFilter, AskOnWhatsApp, SearchPalette). Arabic names are used where the data has them (programme `nameAr`, library `titleAr`, discount `name`, stage and category `labelAr`/`blurbAr` in queries.ts). English bodies sit in `dir="ltr" lang="en"` with `EnglishNote` ("تفاصيل هذه الصفحة مكتوبة بالإنجليزية حاليًا."); short English lines use `dir="auto"` and a globals.css rule right-aligns them on Arabic pages. Arabic guide and FAQ detail pages set their canonical to the English page (the body is English). Arabic index pages and Arabic programme pages are in the sitemap.
-  - **Language memory: DONE.** The switch sets cookie `mesh-lang` and localStorage `mesh-lang`; `LanguageScript` (in the English root layout only) sends "/" to "/ar" before first paint when the choice is Arabic. Checked live. The Arabic logo, footer and bottom nav now link to Arabic pages. `otherLanguagePath` maps every translated page to its counterpart and the rest to the nearest Arabic section (/library/x to /ar/library, /mahad to /ar/guides, others to /ar); tests updated.
-  - **Arabic still to do (small):** /ar is still a redirect to /ar/duroos (no Arabic home page); library college and reader pages, /mahad and /search are English only; on /ar/library the search box and the curriculum note are still English; search results link to English pages.
-  - **Step 3 (programmes, library, discounts and key dates into DB tables with admin CRUD): NOT STARTED.** It needs a migration on the live DB before the code ships, and this session's permission classifier blocked every live DB read and write (even a read-only admin list and `npm run admin:invite`). Next session: get the owner to approve live DB access first, or have the owner run `npm run content:sync` after the migration is merged. Suggested order: discounts (smallest, one table `discount_offers` with group id, labels, name, nameEn, deal, students, sort), then key dates, then programmes, then library links.
-  - **Owner admin access:** the owner asked how to sign in. There is no shared password; accounts come from one-time invites. The owner was given a PowerShell one-liner to run `npm run admin:invite -- <email> owner` with DATABASE_URL from `.env.production.local`, and steps for adding a friend (Admin > Admins > Invite) and GitHub collaborator steps.
-- **Continuation session, 8 Nov about 07:30 to 07:50 Riyadh, weekly usage 87% to 89%. Stopped after finishing the whole list (items 1 to 9); nothing half done.** Deployed and checked live: AUDIT 15 (official semester 1 add/drop 10 to 30 Aug and ta'jeel 2 Aug to 1 Sep added; 6 Nov was already live; 20 Dec second-semester start kept, no official source to change it), AUDIT 22 (`metaTitle`/`metaDescription` in src/lib/text.ts used by every metadata generator; lesson titles name the prayer so same-book duroos differ), AUDIT 20 (globals.css base layer: pills min 40px, touch-screen text links get a 40px hit area with no layout shift), Admin > Settings help number (`setHelpContact`, audit log, undo), admin `bookUrl` on the dars form and photo link on the shaykh form, AUDIT 17 `/mahad` Ma'had hub (linked from Library, Guides, sitemap), "Usually live on" plus the shaykh's own channels on every dars page.
-- **Waiting on the owner (live DB write blocked by the permission classifier):** the admission guide (AUDIT 6) and five group-chat FAQs are in `src/server/seed/content/guides-2026.ts` but not live. `content:sync` now takes `--only`, which touches only the named rows, so it cannot revert live-only edits: `npm run content:sync -- --only=applying-to-the-islamic-university,absher-nafath-activation,find-my-timetable,rent-on-student-visa,library-bags-laptops,blackboard-phishing`. The AUDIT 14 visa lines still need the full-sync check noted above.
-- Done and deployed: authority sweep of all public text (code files and 86 live database edits, facts checked; the course-descriptions guide was set to draft because it was leftover scraped widget text); library pages in the sitemap; search synonyms from the multilingual research.
-- Shaykh photos: DONE. 20 of 31 shuyukh are pictured (19 from the October verification in public/images, plus Anis ibn Ahmad Tahir in public/shaykhs). The 11 without a photo are listed in docs/research/shaykh-photos.md for the owner.
-- Also done: research fact corrections (bus 3.45 SAR, Haramain from 162 SAR plus VAT, Haram Institute registration in Safar, studyinsaudi.sa), Open Graph and a share image for every guide, al-Ruhayli Telegram handle in his profile.
-- Owner questions (sweep and research conflicts) are now in docs/IDEAS-FOR-OWNER.md. Add feature ideas there at the end of stage 4.
-- Small-tasks pass also shipped: a MESH 404 page inside the site, short unique lesson titles (lessonTitle), 44px header buttons. AUDIT.md statuses are current (13 done).
-- NEXT (in order): remaining AUDIT items (6 admission guide, 13 stale facts, 14 visa lines and Al-Fusha and Ahlul Athar link, 16 sisters at the Haram duroos, 17 Ma'had hub, 18 programmes comparison, 19 duroos filters, 25 caching, 26 phone table of contents, 27 Library in the main nav, 28 shorter phone hero), research content (Visitor ID and iqama paths, Study in Saudi changes, group chat facts, Rawdah hours), then stage 2 admin panel, stage 3 audit, stage 4 ideas.
-- Remote Control is blocked by the organization's policy (claude.ai Team admin setting), not by this PC.
-- Then continue the plan below from stage 1 (open audit items and research content), then stages 2 to 4.
-
-## Overnight plan the owner approved (7 November 2026, run in this order, autonomously)
-The owner is asleep and wants to wake up to finished work. Work in small, tested, deployed steps (tsc, vitest, push to `mine revamp:main` and `origin revamp`, check medinahub.org). Call `get_usage` between steps; if the 5-hour window passes about 85%, stop at a safe point, commit, update this file, and schedule a one-shot CronCreate a few minutes after the reset time to continue.
-1. **Pick up where the last session stopped.** Read this file, `docs/audit/AUDIT.md` and `docs/research/*`. Then: shaykh photos for all 31 shuyukh (the workflow plan in "Shaykh photos" below); the authority wording sweep of guides, FAQs, programmes, events and announcements (no sources, no doubt, no casual tone); library sitemap entries; the open audit items (admission guide with the agents warning, search synonyms and ranking, Open Graph, stale facts and research corrections, sisters at the Haram duroos, Ma'had hub, tap targets, 404 pages, titles); content from the research (Visitor ID and iqama paths side by side, Study in Saudi changes, group chat facts, Rawdah hours). Use Workflows for the big fan-outs (ultracode is on).
-2. **Build the very best admin panel.** Everything an admin needs without touching code: edit duroos, shaykhs (photo upload, channels), masjids and streams; programmes, library collections, discounts and key dates moved from code files into DB tables with full CRUD; guides and FAQs with a rich editor and "mark verified"; the watcher inbox (approve or dismiss suggestions, see why, per-channel settings and health); settings (help contact, WhatsApp link); admin-only research notes on every item; audit log with undo; roles; a dashboard with what needs attention (stale facts, failed sources, pending suggestions, broken links). Mobile friendly, fast, in the MESH brand. Read `src/features/admin` and `src/app/(admin)` first.
-3. **Audit and test everything** (Workflow): every public page at 2000, 1440, 1024 and 390, the admin panel, search, feeds, the watcher, SEO, accessibility, dark mode, Arabic pages. Fix what fails.
-4. **If all green, push the limits.** Brainstorm across information, looks and features (look at the best student, city and university guide sites for ideas, and at MESH's goal: keep English-speaking students and families in Madinah on MESH for everything). Implement only what the owner would obviously say yes to. Write everything else as a short, ranked list in `docs/IDEAS-FOR-OWNER.md` for the owner to choose from in the morning.
+Last rewritten 8 November 2026, about 09:15 Riyadh, at the end of the 7 and 8 November sessions. This file is the single source of truth for continuing the work. If you are a fresh Claude Code session, also read `docs/START-HERE.md`.
 
 ## What MESH is
-medinahub.org: a hub run by students, for English-speaking students and families in Madinah. It covers live duroos schedules of the mashayikh (auto-updated from Telegram), study programmes, guides to university and everyday life, a library of IU course texts, student discounts and verified FAQs. It heavily promotes the MESH WhatsApp group: https://chat.whatsapp.com/KKNn4fLv51eIVq8OMLErL0
+medinahub.org: a hub run by students, for English-speaking students and families in Madinah. Live duroos schedules of the mashayikh (kept current by a Telegram watcher), study programmes, guides to university and everyday life, a library of IU course books, student discounts, key dates and verified FAQs, in English with a growing Arabic version under `/ar`. It promotes the MESH WhatsApp group (link editable in Admin > Settings).
 
 ## Owner's rules (always follow)
-- **Copy:** no em dashes or en dashes anywhere, and no AI-sounding copy. Plain, warm, specific English. There is a test that scans for dashes.
-- **Rewriting:** never copy PDFs or sites word for word. Rewrite in MESH's own words, and make it interactive and beautiful.
-- **Theme:** light is the default. Dark ("Madinah Night") appears only via the theme button.
-- **Layout:** mobile first, but desktop must use the space intentionally, with no big empty areas. Check every change at 2000, 1440, 1024 and 390 pixels wide.
-- **Brand:** match the MESH logo: deep green #145c3e, gold bar #e2b23a, heavy white wordmark, "MEDINA ENGLISH STUDENT HUB" with gold initials, and the diamond lattice pattern.
-- **Help number:** +1 234 567 9076 is real (it belongs to the owner). Say "please message the owner on WhatsApp at …". Never mention his name.
-- **Shaykh photos:** many mashayikh dislike being photographed. The default is a calligraphic Arabic name badge (`ShaykhBadge`). Add a photo only where admins upload one or the shaykh's own official channel publishes it.
-- **Freshness:** every fact that can change (fees, dates) shows when it was last checked.
-- **Notifications:** free only.
-- **Native app:** planned later, so keep the site API-first (`/api/v1`).
-- **Safety:** never push to `main` without tests passing. Previews never touch the live database.
+- **Copy:** no em dashes or en dashes anywhere (a test scans for them) and no AI-sounding copy. Plain, warm, specific English.
+- **Never mention the owner's name.** For help say "please message the owner on WhatsApp at +1 234 567 9076". That number is real and fixed in code (`HELP_CONTACT_DEFAULT` in `src/server/settings.ts`); it is deliberately not editable in the admin.
+- **Speak with authority, never reveal sources.** Public text never mentions a source, channel, post or doubt ("reportedly", "not stated"). Research notes stay admin-only or go to the owner as questions.
+- **Impartial.** Never recommend or feature one markaz, institute or business. List alphabetically; say MESH is student-run and independent.
+- **Plain words over jargon** ("Course books" not "muqarrarat"; keep the Arabic beside it where students search for it). No filler features.
+- **Rewrite, never copy** PDFs or sites word for word.
+- **Theme:** light by default; dark ("Madinah Night") only via the theme button.
+- **Layout:** mobile first; desktop uses the space with no big empty areas. Check at 2000, 1440, 1024, 390 and 360 px.
+- **Brand:** deep green #145c3e, gold #e2b23a, heavy white wordmark, diamond lattice pattern.
+- **Shaykh photos:** only verified ones (a wrong face is worse than none). `ShaykhBadge` (calligraphic name) is the fallback.
+- **Iqama and Visitor ID:** banking, SIM, licence and visa guides cover both paths side by side.
+- **Freshness:** facts that change (fees, dates) show when they were last checked.
+- **Free notifications only.** Keep the site API-first (`/api/v1`) for a later native app.
+- **Safety:** never push to `main` without `tsc` and `vitest` passing. Previews never touch the live database. Never print or commit secrets.
+- **Usage:** call `get_usage` between steps; stop at a safe point, commit, push and update this file before the window runs out.
 
-## Accounts and where things live (the owner controls all of them)
-- **Code:** GitHub `iumuhaymin/medinahub` (private). Branch `main` deploys to production on Vercel automatically. `revamp` is the working branch, also pushed to the friend's repo `aza48/nabawi-duroos` as a mirror. Push with `git push mine revamp:main` and `git push origin revamp`.
-- **Hosting:** Vercel project `medinahub` (team "MESH", Hobby). Functions run in fra1 (Frankfurt). Domain medinahub.org via Namecheap DNS.
-- **Database:** Supabase project `cbkxuwccuidwyvggghri` (Frankfurt, Postgres 17). The connection string is in the git-ignored `.env.production.local`, and the Vercel env holds DATABASE_URL.
-- **Scheduler:** Supabase `pg_cron` calls `/api/cron/watch` every 3 minutes (the Telegram watcher) and `/api/cron/daily` at 01:30 UTC (the morning push brief), with a Bearer CRON_SECRET.
-- **Backups:** the GitHub Action `.github/workflows/backup.yml` runs nightly and keeps 90 days of artifacts. The repo secret is BACKUP_DATABASE_URL.
-- **AI:** the Gemini free key in env GEMINI_API_KEY. The free tier allows about 20 requests a day per model, so the code falls through five models.
-- **Secrets:** they live only in `.env.local`, `.env.production.local`, `.env.launch` (all git-ignored) and Vercel env. Never commit them.
+## Accounts and where secrets live (the owner controls all of them)
+- **Code:** GitHub `iumuhaymin/medinahub` (private). `main` deploys to production on Vercel automatically. `revamp` is the working branch, mirrored to `aza48/nabawi-duroos`. Remotes: `mine` (medinahub) and `origin` (mirror). Deploy with `git push mine revamp:main` then `git push origin revamp`.
+- **Hosting:** Vercel project `medinahub` (team "MESH", Hobby), functions in fra1. Domain medinahub.org on Namecheap DNS.
+- **Database:** Supabase project `cbkxuwccuidwyvggghri` (Frankfurt, Postgres 17). Connection string only in git-ignored `.env.production.local` and Vercel env `DATABASE_URL`.
+- **Scheduler:** Supabase `pg_cron` calls `/api/cron/watch` every 3 minutes (Telegram watcher) and `/api/cron/daily` at 01:30 UTC (morning brief), with a Bearer `CRON_SECRET`.
+- **Backups:** `.github/workflows/backup.yml` nightly, 90 days of artifacts, repo secret `BACKUP_DATABASE_URL`.
+- **AI:** Gemini free key in `GEMINI_API_KEY` (about 20 requests a day per model; the code falls through five models).
+- **Secrets:** only in `.env.local`, `.env.production.local`, `.env.launch` (all git-ignored) and Vercel env.
+- **Admin accounts:** invite only, no shared password. First owner account: `npm run admin:invite -- <email> owner` with `DATABASE_URL` from `.env.production.local`. Others: Admin > More > Admins > Invite.
+- Remote Control is blocked by the organisation's claude.ai policy, not by this PC.
 
 ## Stack
-- **Framework:** Next.js 16 (App Router, proxy.ts), React 19, TypeScript 5.9, Tailwind 4.
-- **Data:** Drizzle ORM. The `pg` Pool talks to Supabase's transaction pooler. Don't use postgres-js: its pipelining hangs there. PGlite runs in-memory for dev, tests and previews.
-- **Auth and admin:** Better Auth with required TOTP 2FA, passkeys, roles (owner, editor, duroos_editor, content_editor) and an audit log with undo.
-- **Search:** MiniSearch with our own Arabic and transliteration normaliser and synonyms (`src/lib/search`).
-- **Tests:** Vitest. 220 or more tests, all passing at handoff.
+- Next.js 16 (App Router, `proxy.ts`), React 19, TypeScript 5.9, Tailwind 4.
+- Drizzle ORM over a `pg` Pool to Supabase's transaction pooler (do not use postgres-js; it hangs there). PGlite in memory for dev, tests and previews.
+- Better Auth: invites only, roles (owner, editor, duroos_editor, content_editor), second factor is a Face ID or fingerprint passkey (TOTP as fallback), 8-character minimum passwords, reset links, audit log with undo.
+- MiniSearch with an Arabic and transliteration normaliser and synonyms (`src/lib/search`).
+- Vitest: 250 tests, all passing at this handoff.
 
 ## Commands
-- `npm run dev`: dev server on port 3100. Use `WATCHPACK_POLLING=true` because OneDrive breaks file watching.
-- `npx vitest run`: all tests.
-- `npx tsc --noEmit`: type check.
-- `npm run content:sync`: applies DB migrations to live, then upserts the MESH guides, FAQs and book links. Run it **before** deploying code that needs a new column.
-- `npx drizzle-kit generate --name <x>`: creates a new migration after a schema change.
-- Screenshots: headless Edge via playwright-core (see the scratch scripts pattern). The in-app browser pane often times out.
+- `npm run dev`: dev server on port 3100. Set `WATCHPACK_POLLING=true` (OneDrive breaks file watching).
+- `npx tsc --noEmit` and `npx vitest run`: run both before every push.
+- `npm run content:sync`: applies migrations to live, then upserts the seeded guides, FAQs, book links and the Al-Midad import. `--only=slug1,slug2` touches only those rows. Run migrations **before** deploying code that reads new columns.
+- `npx drizzle-kit generate --name <x>`: new migration after a schema change.
+- Screenshots: headless Edge via playwright-core (`channel: "msedge"`, `waitUntil: "load"`; networkidle hangs on duroos pages). The in-app browser pane often times out.
 
 ## Map of the code
-- `src/content/`: programs.ts (MAP first), library.ts, manuscripts.json (308), discounts.ts, key-dates.ts (IU 1448 calendar and Islamic dates).
-- `src/server/seed/content/`: guides-2026.ts (10 guides, 18 FAQs), sync.ts, book-links.ts (dars to turath.io book ids).
-- `src/features/`:
-  - home: TodayHero, DayArc, NextPrayer, KeyDates, DuroosByPrayer
-  - programs, library, discounts, search (SearchUI palette with Ctrl+K)
-  - content (guides reader with tick-box steps, FAQ explorer)
-  - duroos (DetailPages, ShaykhBadge, ScheduleBrowser weekly grid)
-- `src/lib/guide-html.ts`: makes guides interactive. Numbered lists become steps, a paragraph holding only a YouTube link becomes a player, and "Tip:" blockquotes become callouts.
-- SEO: `src/app/sitemap.ts`, `robots.ts` (AI bots allowed), `llms.txt` and `llms-full.txt` routes, `components/JsonLd.tsx` (Organization, WebSite, Article/HowTo, FAQPage, Course), and opengraph-image.
+- `src/app/(site)`: English public pages. `src/app/(ar)/ar`: Arabic pages (duroos, sisters, programs, guides, ask, library, discounts, more). `src/app/(admin)/admin`: admin (login, invite, reset, setup-2fa, and `(app)` for the signed-in area). `src/app/api`: `/api/v1` and cron routes.
+- `src/content/`: programs.ts, library.ts and library-books.json (1,682 files), manuscripts.json, discounts.ts, key-dates.ts. These are still code files, not admin-editable.
+- `src/server/`: `db` (schema, client), `auth`, `admin` (content, audit, describe), `duroos`, `content`, `watcher` (Telegram reader, Gemini parse, `prefilter.ts`), `settings.ts`, `seed/content` (guides-2026.ts, sync.ts, book-links.ts, al-midad.ts).
+- `src/features/`: home (TodayHero, DayArc, NextPrayer, KeyDates), duroos (DetailPages, ShaykhBadge, ScheduleBrowser, sisters variant), programs, library, discounts, search (Ctrl+K palette), content (guide reader, FAQ explorer), admin (AdminShell, forms, watcher Suggestions, ActivityList, SettingsForms).
+- `src/lib/guide-html.ts` makes guides interactive; `src/lib/text.ts` has `metaTitle` and `metaDescription`.
+- SEO: `src/app/sitemap.ts`, `robots.ts`, `llms.txt` routes, `components/JsonLd.tsx`, Open Graph images.
+- Docs: `docs/audit/AUDIT.md` (public site audit with statuses), `docs/audit/ADMIN-AUDIT.md` (admin audit), `docs/audit/personas/`, `docs/research/` (IU official, living in Madinah, programmes, community terms, group chat 2026, Study in Saudi Telegram, Al-Midad import, shaykh photos), `docs/IDEAS-FOR-OWNER.md` (open questions and feature ideas for the owner).
 
-## New owner rules (7 November 2026, second session)
-- **Impartial, never accountable.** MESH never recommends or features one markaz, institute or business over another. List everything we know of, alphabetically; a place that publishes more simply gets more detail. Say plainly that MESH is student-run, not connected to any institute, and that people should confirm with the source.
-- **No filler features.** Every element must help someone do something (the owner rejected a "Get ready" checklist as useless). No empty areas on desktop.
-- **Plain words over jargon.** "Course books" not "muqarrarat", "summary" not "takhlees" (keep the Arabic beside it where students search for it), "Library" not "Jamiah library". Be critical of every label.
-- **Iqama and Visitor ID.** Most current students have an iqama; the newest intake arrives on a digital Visitor ID with no iqama. Banking, SIM, licence and visa guides must cover both paths side by side.
-- **Library stays on site.** Course books open inside MESH (embedded reader), not on Google Drive. Tell students some books are out of date and classes may set different books, and invite them to send their class timetable and the assigned book.
-- **Speak with authority, never reveal sources.** No public text may mention a source, channel, post, poster or any doubt ("not stated", "inferred", "reportedly", "the post itself"). No casual tone. Research notes belong in the admin area or go to the owner as a question. Lesson notes and sequences from the old research are admin-only (not rendered publicly); day labels in research language are filtered by BACKSTAGE in DetailPages.tsx. Still to sweep: guides, FAQs, programmes, events and announcements text for the same wording.
-- **Watch usage.** Check `get_usage` regularly; ship in small deployed steps and update this file before the 5-hour window runs out.
+## Done on 7 and 8 November (all deployed to medinahub.org)
+- **Brand and home:** redesign in the MESH brand, live day arc hero with sky that follows time of day and live weather, Coming up countdowns, subscribable University dates feed (`/api/v1/calendar/dates.ics`), shorter phone hero.
+- **Duroos:** book links for 35 duroos, dars and shaykh pages, "Usually live on" plus each shaykh's channels, filter by prayer, Live page fallback, Al-Midad import (7 duroos, 6 teachers, 3 masjids), Sisters section (`lessons.audience`, `/duroos/sisters` in a pink variant), 20 of 31 shuyukh with verified photos (the 11 without are in `docs/research/shaykh-photos.md`).
+- **Content:** study programmes (impartial, filter by who they are for), rebuilt 1448 calendar (29 official dates), library on site with embedded reader and search, discounts, Ma'had hub `/mahad`, 10+ guides and 18+ FAQs, authority sweep of all public text (86 live edits), fact corrections from research, Open Graph for every guide, short unique titles and descriptions, MESH 404 page.
+- **Arabic:** language switch in the header that remembers the choice (`mesh-lang` cookie and localStorage), Arabic Study, Guides, Library, Discounts, Ask and More pages.
+- **Accessibility and speed:** 40 to 44 px tap targets, header fits at 1024 px and on phones, guide and FAQ pages cached and refreshed every 5 minutes. Full test pass at five widths, dark mode and /ar found no other bugs.
+- **Admin:** Face ID passkey as the main sign-in second factor, password reset links, book link on the dars form, photo link on the shaykh form, help number made fixed and removed from Settings, admin audit written.
+- **Watcher:** correct al-Ruhayli handle and several new channels; busy channels pass a free keyword check before any AI read. Only Telegram is watched (X needs a paid API).
 
-## Done in the second session (7 November 2026, all deployed to medinahub.org)
-- Home "Coming up": full-width live countdown tiles and an "Add University dates to my calendar" button (webcal feed `/api/v1/calendar/dates.ics`, all-day events).
-- Day arc bug fixed (the gold line stopped after Asr because a dash on a stretched SVG is measured in screen pixels; it now draws the exact partial curve, `travelledPath`).
-- Hero sky follows the time of day (stars at night, dawn peach, afternoon gold, dusk rose) and Madinah's live weather (Open-Meteo through `/api/v1/weather`, CDN-cached 10 minutes), with the temperature beside the date.
-- Calendar guide rebuilt as `UniversityCalendar` (all 29 official 1448 dates, request windows with `minor: true` stay off the home card, filters, countdowns, two-column months, phone and Google subscribe).
-- Fixes: /ask overflow on phones, no floating WhatsApp button (header button at every size, dark text on WhatsApp green for contrast), guide progress bar no longer sticky, /ar redirects to /ar/duroos, "Masjid Quba, Masjid Quba" (`placeText`), honest updates empty state, content sync keeps "Last verified" unless content changes.
-- Watcher: the al-Ruhayli handle was wrong (`Sulalruhaily`, never read); now `Sualruhaily`. Added Miraathalanbeyaa, rehyli, almanashet, Dawah_Madina, Abo3omr_ALArjon, dr_elbukhary, Duroos_alhramain. Busy ("broad") channels pass a free keyword check (`prefilter.ts`) before any Gemini read; core channels go first. X accounts cannot be read for free (X returns 402), so only Telegram is watched.
-- Programmes: impartial listing, no "first recommendation", `nextIntake` field for any programme.
-- Audit and research: `docs/audit/AUDIT.md` is the ranked audit list (with status); persona reports in `docs/audit/personas/`, technical crawl in `docs/audit/technical.md`; research in `docs/research/` (IU official, living in Madinah, study programmes, multilingual community, group chat 2026, and study-in-saudi-telegram.md when its agent finished).
-
-## Library (done in the second session, live)
-- /library hub, /library/[slug] per college and the Ma'had (levels, subjects with English hints), /library/read/[id] reader with the Drive preview embedded (CSP frame-src allows drive.google.com), /library/search (server-side, Arabic and English). Data: src/content/library-books.json (1,682 files) and library-books.ts. To refresh, copy drive-crawl.cjs and build-library.cjs from the old scratchpad into scripts/.
-- Still to do: add library pages to the sitemap; a client-side filter on long college pages if students ask.
+## Waiting on a live database step (not done; needs the owner's OK to run against live)
+- Seeded but not live: the admission guide with the paid agents warning and five group-chat FAQs. Safe command (touches only these rows): `npm run content:sync -- --only=applying-to-the-islamic-university,absher-nafath-activation,find-my-timetable,rent-on-student-visa,library-bags-laptops,blackboard-phishing`.
+- Visa guide lines (tourist eVisa, extensions, family visit visa) are rewritten in `src/server/seed/content/guides-2026.ts` but not live. A full `content:sync` upserts every seeded guide; first check it will not revert live-only edits from the authority sweep, or sync that guide alone with `--only`.
+- Moving programmes, library, discounts and key dates into DB tables with admin editing was not started: it needs a migration on live first, and live DB access was blocked by the permission classifier in these sessions.
 
 ## Open questions for the owner
-## Shaykh photos (owner decision, 7 November 2026: "all shuyukh with their photos")
-- This replaces the old "badge by default" rule. Every shaykh (31 in src/server/seed/legacy/lessons.ts) should get a photo, but only a verified one: a wrong face is worse than none.
-- Plan (scheduled to run in this session at 01:07 on 8 November, after the usage reset; run it yourself if that session is gone): a workflow with one researcher per shaykh (sources: his official Telegram channel or website, IU or Presidency pages, official news, Wikimedia), then two independent verifiers that must match the face against a second independent source, then square webp files in public/shaykhs/<slug>.webp, shaykhs.photo set in the seed and on the live DB, sources recorded in docs/research/shaykh-photos.md. ShaykhBadge stays as the fallback. Tell the owner which shaykhs still lack a verified photo so they can supply one.
-- Shaykh Mis'ad's page slug is still masad-ibn-musaid-al-husaini (name fixed, slug kept so links don't break). Add a redirect if the slug changes.
+All in `docs/IDEAS-FOR-OWNER.md`, including: Quba weekly duroos days (Al-Midad and our seed disagree), online women's duroos, Al-Midad one-off lectures and a recurring Al-Midad source, Al-Fusha, research conflicts (deferral, housing, istiqdam deposit), and ranked feature ideas.
 
-## Research to act on
-- docs/research/study-in-saudi-telegram.md (745 posts of t.me/notjustmadinah). Key changes for the site: IU did not open in the Sep to Oct 2026 Study in Saudi window (next expected around April 2027); offers must be accepted within 5 days; IU now needs a second Minhati application, a Teams interview and an Arabic placement test; new students get an electronic study visa (no iqama, no exit and re-entry); deferral is effectively gone under that visa; housing is no longer promised to new intakes; residential IU is men only (women: online degree, or other universities); the Ma'had replaced the Madinah Books with new textbooks in October 2025; online IU courses closed 7 November 2026. Open conflicts it flags: deferral (IU page says 2 years), housing, and the istiqdam deposit (10,000 vs 30,000 SAR).
-
-## To do next (in this order)
-1. Library sitemap entries; owner decision on shaykh photos.
-2. Work down `docs/audit/AUDIT.md`: undergraduate admission guide with the agents warning, search synonyms and ranking (see the terms in `docs/research/community-multilingual.md`), Open Graph for guides, stale facts and the research corrections (bus 3.45 SAR, Haramain from 162 SAR plus VAT, Haram Institute registration in Safar, old visa lines, Al-Fusha, Ahlul Athar link), sisters at the Haram duroos, a Ma'had hub, tap targets, 404 pages, titles.
-3. Content from `docs/research/group-chat-2026.md`: Visitor ID guide (both iqama and Visitor ID paths), Ejar for students through an accredited agent, Absher and Nafath activation fix (call 920020405 for a support ticket), finals timetable location, stipend timing (around the 25th to 27th), Nabawi library rules, Blackboard phishing warning, duroos sequence changes (Ruhayli, Badr, Qasim, Suhaymi, Hujayli), new shaykh pages (az-Zahim, al-Ghamidi), price benchmarks. Rawdah hours from Nusuk (Grok pack, check them).
-4. **Admin fields** (in `src/features/admin`):
-   - lesson form: `bookUrl`
-   - shaykh form: photo upload or URL (already has `photo`)
-   - settings: `help_contact` is no longer read; `getHelpContact` always returns the fixed +1 234 567 9076 (not editable in the admin, owner's choice)
-   - admin pages to edit programmes, library and discounts, which are currently code files in `src/content`; move them to DB tables with admin CRUD and audit
-5. **Where each dars is live:** streams exist per masjid. Add per-shaykh channels (YouTube, Mixlr, Telegram) and show "usually live on" for each dars.
-6. **Full Arabic version** (least urgent, per the owner): one switch that remembers the choice (cookie plus localStorage) and turns every page and UI string to Arabic, in RTL. Duroos already have /ar. Content needs Arabic fields or translations.
-7. **More content:** more guides (Ma'had life, Nafath and Absher, healthcare, family visas detail), more FAQs, and a muqarrarat takhlees upload flow (WhatsApp now).
-8. **Research sources the owner gave** (rewrite, never copy):
-   - rewireabroad.com/country/saudi-arabia/city/medina, wise.com cost of living Medina, lovingmadinah.com, expatexchange.com, asmu.info
-   - x.com/iu_edu_en and x.com/study_in_saudi (X blocks scraping, so use their sites or Telegram instead)
-   - hijrahnow.com/madinah, the @MadinahUniversity YouTube channel (Study in Saudi, Madi Abu Yahya), map-arabic.com
-9. **Verify:** check that Gemini watcher readings are accurate. See the admin inbox suggestions.
+## Next steps (single ranked list)
+1. **Live DB sync** for the waiting guides and FAQs above, with the owner's OK.
+2. **Admin "Needs you" home block:** counts for pending suggestions, failed sources, stale facts and broken links, each linking to the fix (ADMIN-AUDIT 1, 2, 6).
+3. **Admin search** on Content, Shaykhs and Activity (ADMIN-AUDIT 4).
+4. **Admin confirm and undo:** in-page confirm sheet and an Undo toast instead of `window.confirm` (ADMIN-AUDIT 5).
+5. **Plain-language watcher cards** and activity grouped by day (ADMIN-AUDIT 8, 9). Also check that Gemini readings are accurate.
+6. **Programmes, discounts, key dates and library into DB tables with admin editing**, in that order starting with discounts, only once a migration can be applied to live.
+7. **Arabic, remaining:** an Arabic home page (`/ar` still redirects to `/ar/duroos`), library college and reader pages, `/mahad`, `/search`, English bits on `/ar/library`, search results linking to Arabic pages.
+8. **Open audit items** in `docs/audit/AUDIT.md`: 13 remaining stale facts, 16 women's areas and gates, 18 programme sort and compare, 19 dars level and language.
+9. **More content:** Visitor ID and iqama guide, Ejar through an accredited agent, stipend timing, Nabawi library rules, Rawdah hours, Ma'had life, healthcare.
+10. **Small polish:** strip of normal background between the pink sisters area and the footer on tall screens.
 
 ## Gotchas
-- **Dev server:** OneDrive breaks the watcher. Restart the dev server (and `rm -rf .next/dev`) if pages look stale. Never run `next build` while dev is running (they share `.next`).
-- **Shell quoting:** apostrophes in `node -e '...'` break Git Bash. Write scripts to files instead.
-- **Path conversion:** Git Bash rewrites `/path` arguments, so use `MSYS_NO_PATHCONV=1`.
-- **React state:** wrap a function in a setState updater: `setX(() => fn)`.
-- **Migrations:** they must reach live before code that selects new columns. Run `npm run content:sync` first.
+- **Shared folder:** several sessions may share this checkout and one git index. Stage files by explicit path, never `git add -A`; a `git commit` picks up whatever another session staged. Never stash, reset or switch branches.
+- `tsconfig.tsbuildinfo` changes whenever `tsc` runs; do not commit it.
+- **Dev server:** restart it (and `rm -rf .next/dev`) if pages look stale. Never run `next build` while dev is running.
+- **Git Bash:** apostrophes in `node -e '...'` break; write scripts to files. Use `MSYS_NO_PATHCONV=1` or `/path` becomes a Windows path.
+- **React:** store a function in state with `setX(() => fn)`.
+- **Migrations** must reach live before code that selects new columns.
+- Shaykh Mis'ad's slug stays `masad-ibn-musaid-al-husaini` so links don't break; add a redirect if it changes.
