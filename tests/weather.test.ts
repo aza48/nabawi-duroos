@@ -37,3 +37,13 @@ describe("placeText", () => {
     expect(placeText("Masjid an-Nabawi", "Second Haswa, in front of Bab Uthman")).toBe("Masjid an-Nabawi, Second Haswa, in front of Bab Uthman");
   });
 });
+
+import { lessonTitle } from "@/features/duroos/routes";
+describe("lessonTitle", () => {
+  it("keeps lesson titles short and unique", () => {
+    const t = lessonTitle("Explanation of Kitab al-Tawhid of Shaykh al-Islam Muhammad ibn Abd al-Wahhab", "Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli", "en");
+    expect(t.startsWith("Kitab al-Tawhid")).toBe(true);
+    expect(t.endsWith("with al-Ruhayli")).toBe(true);
+    expect(t.length).toBeLessThanOrEqual(60);
+  });
+});

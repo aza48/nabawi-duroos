@@ -97,7 +97,7 @@ export function lessonRoute(locale: Locale) {
     const l = await getLesson(await getDb(), slug);
     if (!l) return {};
     return {
-      title: locale === "ar" ? l.bookAr : l.bookEn,
+      title: lessonTitle(locale === "ar" ? l.bookAr : l.bookEn, locale === "ar" ? l.shaykh.nameAr : l.shaykh.nameEn, locale),
       description:
         locale === "ar"
           ? `${l.bookAr}، ${l.shaykh.nameAr}، ${l.masjid.nameAr}.`
@@ -132,4 +132,13 @@ export function liveRoute(locale: Locale) {
   }
   const metadata: Metadata = { title: t(locale, "livestreams"), alternates: canonicalFor(locale, "/live") };
   return { Page, metadata };
+}
+
+/** Short, unique page titles: the book without "Explanation of", trimmed, plus the shaykh's family name. */
+export function lessonTitle(book: string, shaykh: string, locale: "en" | "ar"): string {
+  const family = shaykh.trim().split(/\s+/).pop() ?? "";
+  const base = locale === "ar" ? book.replace(/^شرح\s+/, "") : book.replace(/^(An )?Explanation of (the )?/i, "");
+  const max = 38;
+  const short = base.length <= max ? base : `${base.slice(0, base.lastIndexOf(" ", max)).replace(/[,،\s]+$/, "")}…`;
+  return locale === "ar" ? `${short}، ${family}` : `${short} with ${family}`;
 }
