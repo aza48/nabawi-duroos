@@ -28,7 +28,7 @@ export const SHAYKH_PROFILES: Record<string, ShaykhProfile> = {
         "His lessons at the Prophet's Mosque include explanations of «Dalil al-Talib» and «Sahih al-Targhib wat-Tarhib» after Asr, and «Kitab al-Tawhid» after Fajr on Saturdays"
       ),
       L("موقعه الرسمي: sualruhaily.com", "His official website: sualruhaily.com"),
-      L("قناته على تيليجرام: @Sulalruhaily", "His Telegram channel: @Sulalruhaily"),
+      L("قناته على تيليجرام: @Sualruhaily", "His Telegram channel: @Sualruhaily"),
     ],
   },
   "أ. د. عبد الرزاق بن عبد المحسن البدر": {
@@ -320,5 +320,10 @@ export const SHAYKH_PROFILES: Record<string, ShaykhProfile> = {
         "His lesson series is filmed and published on the Khizanat al-'Ilm YouTube channel"
       ),
     ],
+  },
+  "الشيخ أنيس بن أحمد طاهر": {
+    photo: "/shaykhs/anis-ibn-ahmad-tahir.webp",
+    role: L("مدرّس في المسجد النبوي الشريف", "A teacher at the Prophet's Mosque"),
+    facts: [],
   },
 };

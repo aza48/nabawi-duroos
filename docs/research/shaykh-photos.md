@@ -1,4 +1,10 @@
-# Shaykh photos (verified 8 November 2026)
+# Shaykh photos
+
+**Status, 8 November 2026: 20 of 31 shuyukh have a photo on the site.** 19 came from the October 2026 verification (public/images, set through src/server/seed/legacy/profiles.ts and already live). This run added Shaykh Anis ibn Ahmad Tahir (public/shaykhs/anis-ibn-ahmad-tahir.webp). Its other four accepted photos duplicated existing ones, so the existing photos were kept.
+
+Still without a photo (11): Saud al-Khallaf, Ali Abu Battin, Badr al-Badr, Muadh Khujah, Husayn al-Tuwaijri, Muhammad al-Humaid, Abdullah al-Luhaydan, Abdullah ibn Abdurrahman al-Ruhayli, Misad al-Husaini, Abdulqadir Sufi, Maher al-Qahtani. The notes below say what the researchers found for each, including single-source photos the owner could approve.
+
+## This run (8 November 2026)
 
 Each accepted photo was found by one researcher and accepted by two independent checkers (face match and identity). Files are in the scratchpad photos folder listed by path; publish by resizing to public/shaykhs/<slug>.webp and setting shaykhs.photo.
 
