@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { lessonPhase, lessonsForDate, liveWindow, weekSchedule, type LessonLike, type OverrideLike } from "@/server/duroos/schedule";
+import { lessonPhase, lessonsForDate, liveWindow, timeKnown, weekSchedule, type LessonLike, type OverrideLike } from "@/server/duroos/schedule";
 import { prayerTimes } from "@/lib/time/prayer";
 import { addDays } from "@/lib/time/riyadh";
 
@@ -134,5 +134,17 @@ describe("liveWindow", () => {
   it("gives Isha a 90-minute window with no next adhan", () => {
     const w = liveWindow("2026-11-08", "isha");
     expect(w.until.getTime()).toBe(t.isha.getTime() + 90 * 60_000);
+  });
+});
+
+describe("timeKnown", () => {
+  it("is false for the wording the live rows carry and for the seed's wording", () => {
+    expect(timeKnown({ timeLabelEn: "Evening, no prayer time is stated in the channel posts" })).toBe(false);
+    expect(timeKnown({ timeLabelEn: "Evening, time not confirmed", timeLabelAr: "مساءً، الوقت غير مؤكد" })).toBe(false);
+    expect(timeKnown({ timeLabelEn: null, timeLabelAr: "لم يُذكر وقت الصلاة في المنشورات" })).toBe(false);
+  });
+  it("is true without a label or with a label that only adds detail", () => {
+    expect(timeKnown({ timeLabelEn: null, timeLabelAr: null })).toBe(true);
+    expect(timeKnown({ timeLabelEn: "A day of lessons, with sessions after Asr, Maghrib and Isha" })).toBe(true);
   });
 });

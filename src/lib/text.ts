@@ -18,6 +18,12 @@ export function cleanText<T extends string | null | undefined>(s: T, locale: Loc
     .replace(/,\s*,/g, ",") as T;
 }
 
+/** Research wording that must never reach visitors (it stays in the admin area). */
+const BACKSTAGE = /source|stated|instance|inferred|channel|\bposts?\b|poster|unclear|not clear|reported|المصدر|المصادر|مذكور|القناة|المنشور|أُعلن عن درس/i;
+
+/** A label or note from the data, or null when it carries research wording. */
+export const publicLabel = (x: string | null | undefined) => (x && !BACKSTAGE.test(x) ? x : null);
+
 /** Cleans every string field of a row; keys ending in "Ar" are treated as Arabic. */
 export function cleanRow<R extends Record<string, unknown>>(row: R): R {
   const out: Record<string, unknown> = {};

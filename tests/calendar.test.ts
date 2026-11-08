@@ -50,6 +50,12 @@ describe("lessonFeed", () => {
     expect(cancelled[0].uid).toBe("ruh-dalil-2026-11-12@medinahub.org");
     expect(buildIcs(feed.title, feed.events)).toContain("STATUS:CANCELLED");
   });
+  it("gives a dars with an unconfirmed time no timed event", async () => {
+    const feed = await lessonFeed(db, { lessonSlug: "balawi-saidi-tahrir" }, "2026-11-08", 14);
+    expect(feed.events).toHaveLength(0);
+    const masjid = await lessonFeed(db, { masjidId: "dar-hijrah" }, "2026-11-08", 14);
+    expect(masjid.events.some((e) => e.uid.startsWith("hijrah-tariq-fath-"))).toBe(false);
+  });
   it("builds a feed for one shaykh across masjids", async () => {
     const feed = await lessonFeed(db, { shaykhSlug: "sulayman-ibn-saleemullah-al-ruhayli" }, "2026-11-08", 7);
     expect(new Set(feed.events.map((e) => e.uid.split("-2026")[0]))).toEqual(new Set(["ruh-targhib", "ruh-dalil", "ruh-tawhid", "quba-ruh-kabair"]));

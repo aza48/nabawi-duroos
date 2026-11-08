@@ -6,7 +6,7 @@ import type { TodayLesson } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { Countdown, useLivePhase } from "./Countdown";
 import { LiveBadge, SistersTag, StatusTag } from "./StatusTag";
-import { publicLabel } from "./strings";
+import { publicLabel, t } from "./strings";
 import { mapUrl } from "@/lib/maps";
 import { duroosPath } from "./paths";
 
@@ -14,7 +14,9 @@ export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: L
   const ar = locale === "ar";
   const cancelled = l.status === "cancelled" || l.status === "postponed";
   // The phase is recomputed on the client, so a cached page never shows LIVE after the dars ended.
-  const phase = useLivePhase(l.phase, l);
+  // With an unconfirmed time the window is a guess, so the server's phase stands (live only on a broadcast notice).
+  const computed = useLivePhase(l.phase, l);
+  const phase = l.timeKnown ? computed : l.phase;
   const live = phase === "live" && !cancelled;
   const done = phase === "done" && !live;
   const liveHref = l.stream?.isLive ? l.stream.liveUrl ?? l.stream.url : null;
@@ -55,11 +57,12 @@ export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: L
             , {ar ? l.locationAr : l.locationEn}
           </span>
         </span>
-        {!cancelled && !done && (
+        {!cancelled && !done && l.timeKnown && (
           <span className="ms-auto rounded-full bg-bg-2 px-2 py-0.5 font-semibold text-ink tabular">
             <Countdown adhanAt={l.adhanAt} liveFrom={l.liveFrom} liveUntil={l.liveUntil} locale={locale} />
           </span>
         )}
+        {!cancelled && !l.timeKnown && <span className="ms-auto rounded-full bg-bg-2 px-2 py-0.5 font-semibold text-ink">{t(locale, "timeNotConfirmed")}</span>}
         {liveHref && !live && (
           <a href={liveHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-ink">
             <Radio size={13} /> {ar ? "بث" : "Stream"}

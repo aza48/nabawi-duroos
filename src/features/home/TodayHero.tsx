@@ -85,7 +85,7 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
               <LiveNowChip
                 initial={live}
                 locale={locale}
-                items={today.lessons.map((l) => ({ liveFrom: l.liveFrom, liveUntil: l.liveUntil, off: l.status === "cancelled" || l.status === "postponed" }))}
+                items={today.lessons.map((l) => ({ liveFrom: l.liveFrom, liveUntil: l.liveUntil, off: !l.timeKnown || l.status === "cancelled" || l.status === "postponed" }))}
               />
             </p>
           </div>

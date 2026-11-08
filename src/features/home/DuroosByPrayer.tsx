@@ -29,7 +29,8 @@ export function DuroosByPrayer({ today, locale }: { today: Today; locale: Locale
       {PRAYERS.map((p) => {
         const group = today.lessons.filter((l) => l.prayer === p);
         if (!group.length) return null;
-        const allDone = group.every((l) => l.phase === "done");
+        const timed = group.filter((l) => l.timeKnown);
+        const allDone = timed.length > 0 && timed.every((l) => l.phase === "done");
         return (
           <section key={p} id={`after-${p}`} className="scroll-mt-28">
             <div className="mb-3 flex items-baseline gap-3">

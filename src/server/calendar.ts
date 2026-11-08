@@ -1,7 +1,7 @@
 import { and, eq, gte, isNull, lte } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { lessonOverrides, lessons, masjids, shaykhs } from "@/server/db/schema";
-import { lessonsForDate, type OverrideLike } from "@/server/duroos/schedule";
+import { lessonsForDate, timeKnown, type OverrideLike } from "@/server/duroos/schedule";
 import { prayerTimes } from "@/lib/time/prayer";
 import { addDays } from "@/lib/time/riyadh";
 import { SITE_URL } from "@/lib/site";
@@ -60,8 +60,10 @@ export async function lessonFeed(db: Db, filter: FeedFilter, fromIso: string, da
     .from(lessons)
     .innerJoin(shaykhs, eq(lessons.shaykhId, shaykhs.id))
     .innerJoin(masjids, eq(lessons.masjidId, masjids.id));
+  // A dars whose time is not confirmed gets no timed event: a wrong time in a calendar is worse than none.
   const picked = rows.filter(
     (r) =>
+      timeKnown(r.lesson) &&
       (!filter.lessonSlug || r.lesson.slug === filter.lessonSlug) &&
       (!filter.shaykhSlug || r.shaykh.slug === filter.shaykhSlug) &&
       (!filter.masjidId || r.masjid.id === filter.masjidId)

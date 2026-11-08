@@ -48,6 +48,17 @@ const STATUS_KINDS: Partial<Record<OverrideKind, DayStatus>> = {
 
 export const isStatusKind = (kind: OverrideKind): boolean => kind in STATUS_KINDS;
 
+/**
+ * Time labels that say the prayer time is not confirmed. The prayer on such a
+ * lesson is only an evening grouping bucket, so the site shows no adhan time,
+ * no countdown, no live badge and no calendar event for it.
+ */
+const TIME_NOT_CONFIRMED = /no prayer time|time not confirmed|لم يُ?ذكر وقت|الوقت غير مؤكد/i;
+
+export function timeKnown(l: { timeLabelEn?: string | null; timeLabelAr?: string | null }): boolean {
+  return !TIME_NOT_CONFIRMED.test(l.timeLabelEn ?? "") && !TIME_NOT_CONFIRMED.test(l.timeLabelAr ?? "");
+}
+
 const prayerOrder = (p: Prayer) => PRAYERS.indexOf(p);
 const byPrayerThenSort = (a: LessonLike, b: LessonLike) =>
   prayerOrder(a.prayer) - prayerOrder(b.prayer) || a.sort - b.sort;

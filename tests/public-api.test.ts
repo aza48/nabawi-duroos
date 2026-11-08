@@ -21,8 +21,36 @@ describe("public API shapes", () => {
       masjid: { id: "nabawi", nameEn: "N", nameAr: "ن", shortEn: "N", shortAr: "ن" },
       bookEn: "b", bookAr: "ب", bookAuthorEn: null, bookAuthorAr: null, bookUrl: null, topic: "fiqh", prayer: "asr", days: [1],
       daysLabelEn: null, daysLabelAr: null, locationEn: "x", locationAr: "س", audience: "all", status: "active", validFrom: null, validTo: null,
-      timeLabelEn: "research wording", prayerNoteEn: "internal", noteEn: "internal", sequenceEn: "internal", id: 9, shaykhId: 1, masjidId: "nabawi", sort: 0,
+      timeLabelEn: "inferred from channel posts", prayerNoteEn: "the source says", noteEn: "unclear from the poster", sequenceEn: "reported by the channel", id: 9, shaykhId: 1, masjidId: "nabawi", sort: 0,
     } as never);
-    for (const k of ["timeLabelEn", "prayerNoteEn", "noteEn", "sequenceEn", "id", "shaykhId"]) expect(l).not.toHaveProperty(k);
+    for (const k of ["id", "shaykhId", "masjidId", "sort"]) expect(l).not.toHaveProperty(k);
+    // Research wording is blanked; the lesson is still timed because the label is not about a missing time.
+    for (const k of ["timeLabelEn", "prayerNoteEn", "noteEn", "sequenceEn"]) expect(l).toHaveProperty(k, null);
+    expect(l.timeKnown).toBe(true);
+  });
+
+  it("passes clean labels through and flags an unconfirmed time", () => {
+    const l = publicLesson({
+      slug: "l", shaykh: { slug: "s", nameEn: "n", nameAr: "ن", photo: null },
+      masjid: { id: "balawi", nameEn: "N", nameAr: "ن", shortEn: "N", shortAr: "ن" },
+      bookEn: "b", bookAr: "ب", bookAuthorEn: null, bookAuthorAr: null, bookUrl: null, topic: "fiqh", prayer: "maghrib", days: [0],
+      daysLabelEn: null, daysLabelAr: null, locationEn: "x", locationAr: "س", audience: "all", status: "active", validFrom: null, validTo: null,
+      timeLabelEn: "Evening, time not confirmed", timeLabelAr: "مساءً، الوقت غير مؤكد", prayerNoteEn: "continuing after Isha", noteEn: null,
+      sequenceEn: "Zad al-Mustaqni' → Bulugh al-Maram", id: 9, shaykhId: 1, masjidId: "balawi", sort: 0,
+    } as never);
+    expect(l.timeKnown).toBe(false);
+    expect(l.timeLabelEn).toBe("Evening, time not confirmed");
+    expect(l.prayerNoteEn).toBe("continuing after Isha");
+    expect(l.sequenceEn).toBe("Zad al-Mustaqni' → Bulugh al-Maram");
+  });
+});
+
+describe("sequenceItems", () => {
+  it("splits a rotating dars into its books and drops research wording", async () => {
+    const { sequenceItems } = await import("@/features/duroos/DetailPages");
+    expect(sequenceItems("Zad al-Mustaqni' → Bulugh al-Maram → Al-Waraqat")).toEqual(["Zad al-Mustaqni'", "Bulugh al-Maram", "Al-Waraqat"]);
+    expect(sequenceItems("زاد المستقنع ← بلوغ المرام")).toEqual(["زاد المستقنع", "بلوغ المرام"]);
+    expect(sequenceItems("inferred from channel posts")).toEqual([]);
+    expect(sequenceItems(null)).toEqual([]);
   });
 });

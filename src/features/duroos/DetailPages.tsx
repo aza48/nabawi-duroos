@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, CalendarDays, ChevronRight, Clock3, ExternalLink, MapPin, Radio } from "lucide-react";
+import { BookOpen, CalendarDays, ChevronRight, Clock3, ExternalLink, Info, ListOrdered, MapPin, Radio } from "lucide-react";
 import type { getLesson, getShaykh, AnnouncementRow, StreamRow } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { formatClock, riyadhDateIso } from "@/lib/time/riyadh";
@@ -179,10 +179,18 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
             )}
             <dl className="divide-y divide-line overflow-hidden rounded-3xl border border-line bg-card">
               <Item icon={<CalendarDays size={18} />} label={t(locale, "days")} value={daysText(l, locale)} />
-              {(l.current || l.notYetStarted) && (
-                <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={`${t(locale, "adhan")} ${formatClock(adhan, locale)}. ${t(locale, "afterIqamah")}.`} link={{ href: duroosPath(locale, `/schedule?prayer=${l.prayer}`), label: ar ? `كل الدروس بعد ${t(locale, l.prayer)}` : `All duroos after ${t(locale, l.prayer)}`, internal: true }} />
-              )}
+              {(l.current || l.notYetStarted) && (l.timeKnown ? (
+                <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={timeText(l, adhan, locale)} link={{ href: duroosPath(locale, `/schedule?prayer=${l.prayer}`), label: ar ? `كل الدروس بعد ${t(locale, l.prayer)}` : `All duroos after ${t(locale, l.prayer)}`, internal: true }} />
+              ) : (
+                <Item icon={<Clock3 size={18} />} label={t(locale, "time")} value={publicLabel(ar ? l.timeLabelAr : l.timeLabelEn) ?? t(locale, "timeNotConfirmed")} />
+              ))}
               <Item icon={<MapPin size={18} />} label={t(locale, "location")} value={placeText(ar ? l.masjid.nameAr : l.masjid.nameEn, ar ? l.locationAr : l.locationEn, ar)} link={{ href: mapUrl(l.masjid.nameEn), label: ar ? "افتح في الخرائط" : "Open in Maps" }} />
+              {sequenceItems(ar ? l.sequenceAr : l.sequenceEn).length > 0 && (
+                <Item icon={<ListOrdered size={18} />} label={t(locale, "bookSequence")} value={<BookSequence items={sequenceItems(ar ? l.sequenceAr : l.sequenceEn)} current={ar ? l.bookAr : l.bookEn} />} />
+              )}
+              {publicLabel(ar ? l.noteAr ?? l.noteEn : l.noteEn ?? l.noteAr) && (
+                <Item icon={<Info size={18} />} label={t(locale, "lessonNote")} value={publicLabel(ar ? l.noteAr ?? l.noteEn : l.noteEn ?? l.noteAr)!} />
+              )}
             </dl>
             <h2 className="mt-10 mb-3 font-heading text-2xl font-bold">{t(locale, "history")}</h2>
             {l.history.length === 0 ? (
@@ -243,12 +251,43 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
             )}
             <div className="rounded-3xl border border-line bg-card p-5">
               <AlertsButton topic={`shaykh:${l.shaykh.slug}`} label={ar ? "تنبيه عند إلغاء أو تغيير الدرس" : "Alert me if this dars changes"} locale={locale} />
-              {(l.current || l.notYetStarted) && <CalendarButton feed={`lesson-${l.slug}`} locale={locale} />}
+              {(l.current || l.notYetStarted) && l.timeKnown && <CalendarButton feed={`lesson-${l.slug}`} locale={locale} />}
             </div>
           </aside>
         </div>
       </div>
     </div>
+  );
+}
+
+/** "Adhan 5:38 pm. Starts right after the iqamah." plus the public time label and prayer note, when there are any. */
+function timeText(l: Pick<Lesson, "timeLabelEn" | "timeLabelAr" | "prayerNoteEn" | "prayerNoteAr">, adhan: Date, locale: Locale): string {
+  const ar = locale === "ar";
+  const sentence = (s: string | null) => (s ? `${s.charAt(0).toUpperCase()}${s.slice(1)}`.replace(/[.。]?$/, ".") : null);
+  return [
+    `${t(locale, "adhan")} ${formatClock(adhan, locale)}.`,
+    `${t(locale, "afterIqamah")}.`,
+    sentence(publicLabel(ar ? l.timeLabelAr : l.timeLabelEn)),
+    sentence(publicLabel(ar ? l.prayerNoteAr : l.prayerNoteEn)),
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
+/** The books of a rotating dars, split on the arrows the data uses, research wording left out. */
+export function sequenceItems(sequence: string | null | undefined): string[] {
+  const s = publicLabel(sequence);
+  return s ? s.split(/\s*[→←]\s*/).map((x) => x.trim()).filter(Boolean) : [];
+}
+
+function BookSequence({ items, current }: { items: string[]; current: string }) {
+  const norm = (x: string) => x.replace(/\s*\(.*?\)\s*/g, "").replace(/[^\p{L}\p{N}]+/gu, " ").trim().toLowerCase();
+  return (
+    <ol className="list-decimal space-y-0.5 ps-5">
+      {items.map((b, i) => (
+        <li key={i} className={norm(b) === norm(current) ? "font-semibold" : undefined}>{b}</li>
+      ))}
+    </ol>
   );
 }
 
@@ -260,7 +299,7 @@ export function placeText(masjid: string, spot: string | null | undefined, ar = 
   return `${masjid}${ar ? "، " : ", "}${spot}`;
 }
 
-function Item({ icon, label, value, link }: { icon: React.ReactNode; label: string; value: string; link?: { href: string; label: string; internal?: boolean } }) {
+function Item({ icon, label, value, link }: { icon: React.ReactNode; label: string; value: React.ReactNode; link?: { href: string; label: string; internal?: boolean } }) {
   return (
     <div className="flex gap-4 p-4 md:p-5">
       <span className="mt-0.5 text-primary">{icon}</span>

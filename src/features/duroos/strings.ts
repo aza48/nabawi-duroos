@@ -32,6 +32,10 @@ const en = {
   endedBanner: "This dars ended on",
   startsBanner: "This dars starts on",
   afterPrayer: "after the prayer",
+  time: "Time",
+  timeNotConfirmed: "Evening, time not confirmed",
+  bookSequence: "Books in order",
+  lessonNote: "Note",
   noLessonsToday: "No lessons are scheduled for today.",
   daysNotStated: "Announced each week",
   lessons: "Lessons",
@@ -99,6 +103,10 @@ const ar: Record<Key, string> = {
   endedBanner: "انتهى هذا الدرس في",
   startsBanner: "يبدأ هذا الدرس في",
   afterPrayer: "بعد الصلاة",
+  time: "الوقت",
+  timeNotConfirmed: "مساءً، الوقت غير مؤكد",
+  bookSequence: "ترتيب الكتب",
+  lessonNote: "ملاحظة",
   noLessonsToday: "لا توجد دروس مجدولة اليوم.",
   daysNotStated: "يُعلن موعده أسبوعيًا",
   lessons: "الدروس",
@@ -139,11 +147,7 @@ export function t(locale: Locale, key: Key): string {
   return STRINGS[locale][key];
 }
 
-/** Research wording that must never reach visitors (it stays in the admin area). */
-const BACKSTAGE = /source|stated|instance|inferred|channel|\bposts?\b|poster|unclear|not clear|reported|المصدر|المصادر|مذكور|القناة|المنشور|أُعلن عن درس/i;
-
-/** A label or note from the data, or null when it carries research wording. */
-export const publicLabel = (x: string | null | undefined) => (x && !BACKSTAGE.test(x) ? x : null);
+export { publicLabel } from "@/lib/text";
 
 export const DAY_KEYS: Key[] = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 export const DAY_LONG_KEYS: Key[] = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];

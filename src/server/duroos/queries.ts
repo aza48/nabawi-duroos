@@ -5,7 +5,7 @@ import { getSetting } from "@/server/settings";
 import { formatGregorian, formatHijri } from "@/lib/time/hijri";
 import { PRAYERS, prayerTimes, type Prayer } from "@/lib/time/prayer";
 import { riyadhDateIso, type Weekday } from "@/lib/time/riyadh";
-import { isCurrent, lessonPhase, lessonsForDate, liveWindow, weekSchedule, type DayStatus, type OverrideLike } from "./schedule";
+import { isCurrent, lessonPhase, lessonsForDate, liveWindow, timeKnown, weekSchedule, type DayStatus, type OverrideLike } from "./schedule";
 
 export type LessonRow = typeof lessons.$inferSelect;
 export type ShaykhRow = typeof shaykhs.$inferSelect;
@@ -28,6 +28,8 @@ export type TodayLesson = {
   bookAr: string;
   masjid: Pick<MasjidRow, "id" | "nameEn" | "nameAr" | "shortEn" | "shortAr">;
   prayer: Prayer;
+  /** False when the time is not confirmed: the prayer is only an evening bucket, so show no adhan time, countdown or live badge. */
+  timeKnown: boolean;
   adhanAt: string;
   /** The dars counts as live between these two instants (ISO). */
   liveFrom: string;
@@ -100,6 +102,7 @@ export async function getToday(db: Db, now: Date = new Date()) {
   const lessonsToday: TodayLesson[] = lessonsForDate(date, rows, overrides).map(({ lesson: l, status, override }) => {
     const window = liveWindow(date, l.prayer);
     const noticed = liveNow.has(l.slug) && status !== "cancelled" && now < window.until;
+    const known = timeKnown(l);
     return {
     slug: l.slug,
     shaykh: l.shaykh,
@@ -107,10 +110,12 @@ export async function getToday(db: Db, now: Date = new Date()) {
     bookAr: l.bookAr,
     masjid: l.masjid,
     prayer: l.prayer,
+    timeKnown: known,
     adhanAt: times[l.prayer].toISOString(),
     liveFrom: (noticed ? now : window.from).toISOString(),
     liveUntil: window.until.toISOString(),
-    phase: noticed ? "live" : lessonPhase(now, date, l.prayer),
+    // An unconfirmed time is never "live" on its own; only a broadcast notice can make it so.
+    phase: noticed ? "live" : known ? lessonPhase(now, date, l.prayer) : "upcoming",
     status,
     locationEn: l.locationEn,
     locationAr: l.locationAr,
@@ -156,7 +161,7 @@ export async function getLesson(db: Db, slug: string) {
   // Paused, finished and out-of-period lessons are shown as such, not as running.
   const today = riyadhDateIso();
   const current = isCurrent(l, today);
-  return { ...l, history, stream, channels, current, notYetStarted: current ? false : Boolean(l.validFrom && l.validFrom > today) };
+  return { ...l, history, stream, channels, current, notYetStarted: current ? false : Boolean(l.validFrom && l.validFrom > today), timeKnown: timeKnown(l) };
 }
 
 export async function listShaykhs(db: Db) {

@@ -523,9 +523,10 @@ export const LESSONS: Lesson[] = [
     masjid: "balawi",
     days: [0],
     // No prayer time is stated in the recording posts (evening marker only);
-    // "maghrib" is only a grouping bucket — timeLabel carries the honest text.
+    // "maghrib" is only a grouping bucket. This timeLabel wording makes
+    // timeKnown() false: no adhan time, countdown, live badge or calendar event.
     prayer: "maghrib",
-    timeLabel: L("مساءً — لم يُذكر وقت الصلاة في منشورات القناة", "Evening — no prayer time is stated in the channel posts"),
+    timeLabel: L("مساءً، الوقت غير مؤكد", "Evening, time not confirmed"),
     location: L("جامع حماد البلوي — حي الفيصلية", "Jami' Hammad al-Balawi — al-Faisaliyah District"),
     topic: "usul",
     status: "active",
@@ -542,7 +543,7 @@ export const LESSONS: Lesson[] = [
     masjid: "balawi",
     days: [6],
     prayer: "asr",
-    timeLabel: L("يوم علمي — جلسات بعد العصر والمغرب والعشاء", "Scholarly day — sessions after Asr, Maghrib and Isha"),
+    timeLabel: L("يوم علمي بجلسات بعد العصر والمغرب والعشاء", "A day of lessons, with sessions after Asr, Maghrib and Isha"),
     location: L("جامع حماد البلوي — حي الفيصلية", "Jami' Hammad al-Balawi — al-Faisaliyah District"),
     topic: "aqidah",
     status: "active",
@@ -579,9 +580,10 @@ export const LESSONS: Lesson[] = [
     masjid: "dar-hijrah",
     days: [3],
     // No prayer time is stated in the two livestream posts; "maghrib" is only
-    // a grouping bucket — timeLabel carries the honest text.
+    // a grouping bucket. This timeLabel wording makes timeKnown() false.
+    // The Telegram livestream is the shaykh's stream row, shown beside the dars.
     prayer: "maghrib",
-    timeLabel: L("لم يُذكر وقت الصلاة في المنشورات — يُبث مباشرة عبر قناة الشيخ على تيليجرام", "No prayer time is stated in the posts — livestreamed via the shaykh's Telegram channel"),
+    timeLabel: L("مساءً، الوقت غير مؤكد", "Evening, time not confirmed"),
     location: L("مسجد دار الهجرة — الفيصلية", "Masjid Dar al-Hijrah — al-Faisaliyah"),
     topic: "aqidah",
     status: "active",

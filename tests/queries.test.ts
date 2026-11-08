@@ -27,6 +27,18 @@ describe("getToday", () => {
     expect(dalil!.stream?.url).toBe("https://www.youtube.com/@wmngovksa/live");
   });
 
+  it("never shows a dars with an unconfirmed time as live, and marks it so", async () => {
+    // Sunday 8 November, one minute after the Maghrib iqamah: al-Balawi's Sunday series is in the maghrib bucket only as a guess.
+    const maghrib = prayerTimes("2026-11-08").maghrib.getTime();
+    const t = await getToday(db, new Date(maghrib + 11 * 60_000));
+    const guessed = t.lessons.find((l) => l.slug === "balawi-saidi-tahrir");
+    expect(guessed).toBeDefined();
+    expect(guessed!.timeKnown).toBe(false);
+    expect(guessed!.phase).toBe("upcoming");
+    const timed = t.lessons.find((l) => l.timeKnown && l.prayer === "maghrib" && l.status === "on");
+    expect(timed?.phase).toBe("live");
+  });
+
   it("uses the Riyadh date just after Riyadh midnight", async () => {
     const t = await getToday(db, new Date("2026-11-07T21:30:00Z"));
     expect(t.date).toBe("2026-11-08");
@@ -57,6 +69,11 @@ describe("lookups", () => {
     const l = await getLesson(db, "ruh-dalil");
     expect(l?.shaykh.nameEn).toContain("al-Ruhayli");
     expect(l?.masjid.id).toBe("nabawi");
+    expect(l?.timeKnown).toBe(true);
+  });
+  it("flags a lesson whose time is not confirmed", async () => {
+    const l = await getLesson(db, "hijrah-tariq-fath");
+    expect(l?.timeKnown).toBe(false);
   });
   it("groups the week and keeps unstated-day lessons", async () => {
     const w = await getWeek(db);

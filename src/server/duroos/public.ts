@@ -1,8 +1,11 @@
 import type { AnnouncementRow, OverrideRow, ScheduleRow, StreamRef } from "./queries";
+import { publicLabel } from "@/lib/text";
+import { timeKnown } from "./schedule";
 
 /**
  * What the public API (/api/v1) is allowed to say. Rows are never serialized whole:
- * sources, origins, internal ids and research wording stay inside.
+ * sources, origins, internal ids and research wording stay inside. Free-text
+ * labels pass only in their public form (null when they carry research wording).
  */
 export function publicLesson(l: ScheduleRow) {
   return {
@@ -16,9 +19,20 @@ export function publicLesson(l: ScheduleRow) {
     bookUrl: l.bookUrl,
     topic: l.topic,
     prayer: l.prayer,
+    timeKnown: timeKnown(l),
+    timeLabelEn: publicLabel(l.timeLabelEn),
+    timeLabelAr: publicLabel(l.timeLabelAr),
+    prayerNoteEn: publicLabel(l.prayerNoteEn),
+    prayerNoteAr: publicLabel(l.prayerNoteAr),
+    sequenceEn: publicLabel(l.sequenceEn),
+    sequenceAr: publicLabel(l.sequenceAr),
+    noteEn: publicLabel(l.noteEn),
+    noteAr: publicLabel(l.noteAr),
     days: l.days,
-    daysLabelEn: l.daysLabelEn,
-    daysLabelAr: l.daysLabelAr,
+    daysLabelEn: publicLabel(l.daysLabelEn),
+    daysLabelAr: publicLabel(l.daysLabelAr),
+    frequencyEn: publicLabel(l.frequencyEn),
+    frequencyAr: publicLabel(l.frequencyAr),
     locationEn: l.locationEn,
     locationAr: l.locationAr,
     audience: l.audience,
