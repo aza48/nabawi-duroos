@@ -21,6 +21,7 @@ export const GUIDES_STUDENT_LIFE: SeedGuide[] = [
 <p>The University runs free buses between the University and Masjid an-Nabawi, so you can pray at the Haram without paying for a taxi. Ask in the MESH group for the current pick-up points and times, as they change.</p>
 <h2>Housing</h2>
 <p>Scholarship students are housed by default, either inside the Jamiah or in the Rabwa halls (الربوة). See <a href="/ask/is-housing-included">Is housing included?</a>.</p>
+<p>Free housing is for unmarried students. Married students do not get free housing and rent a flat in the city. See <a href="/guides/finding-an-apartment">Finding and renting a flat</a> and <a href="/guides/cost-of-living">What it costs to live in Madinah</a>.</p>
 <h2>Money and flights</h2>
 <ul>
 <li>The monthly stipend is 840 SAR, paid during your studies (see the <a href="/ask/stipend-amount">stipend FAQ</a>).</li>
@@ -38,5 +39,6 @@ export const GUIDES_STUDENT_LIFE: SeedGuide[] = [
 
 export const FAQS_STUDENT_LIFE: SeedFaq[] = [
   { slug: "mataam-prices", category: "university", question: "How much do meals cost at the University mat'am?", answerHtml: "<p>Breakfast is 1 SAR, lunch 2 SAR and dinner 2 SAR. See <a href=\"/guides/campus-life-islamic-university\">Student life at the Islamic University</a>.</p>", tags: ["food", "mataam", "restaurant", "meals", "campus"] },
+  { slug: "married-students-housing", category: "family", question: "Do married students get free housing?", answerHtml: "<p>No. Free housing is for unmarried scholarship students. Married students rent a flat in the city. See <a href=\"/guides/finding-an-apartment\">Finding and renting a flat</a>.</p>", tags: ["married", "housing", "family", "students"] },
   { slug: "free-bus-to-haram", category: "university", question: "Is there a free bus from the University to the Haram?", answerHtml: "<p>Yes. The University runs free buses between the University and Masjid an-Nabawi. Ask in the MESH group for the current pick-up points and times, as they change.</p>", tags: ["bus", "transport", "haram", "campus"] },
 ];

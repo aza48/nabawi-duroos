@@ -19,6 +19,8 @@ medinahub.org: a hub run by students, for English-speaking students and families
 - **Iqama and Visitor ID:** banking, SIM, licence and visa guides cover both paths side by side.
 - **Freshness:** facts that change (fees, dates) show when they were last checked.
 - **Temporary information expires.** Discounts, offers, sales, trips, registration windows and one-off events must be removed or updated as soon as their period ends; everything on the site must be up to date. Log every temporary item in `docs/EXPIRING.md` with its expiry date and location, and sweep that table at the start of every session and before every deploy.
+- **Unsure means ask, never guess.** If a fact cannot be stated with authority, leave it out and add it as a question for the admins: put it in `scripts/open-questions.json` and run `npm run questions:add -- scripts/open-questions.json` (it appears in Admin > More > Questions for you). **An admin's answer is never published straight away.** It is only saved. Run `npm run questions:pull` to write new answers to `docs/ADMIN-ANSWERS.md`, then read each one, interpret it, write the content in MESH's own words, design and publish it properly, and move the entry under "Processed".
+- **Never advertise anyone.** Facts from other sites are used for their usefulness only. Never repeat their names, businesses, groups, prices lists as promotion, links, or advertisements.
 - **Free notifications only.** Keep the site API-first (`/api/v1`) for a later native app.
 - **Safety:** never push to `main` without `tsc` and `vitest` passing. Previews never touch the live database. Never print or commit secrets.
 - **Usage:** call `get_usage` between steps; stop at a safe point, commit, push and update this file before the window runs out.

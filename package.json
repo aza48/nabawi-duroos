@@ -19,7 +19,9 @@
     "admin:reset": "tsx --tsconfig tsconfig.json scripts/admin-reset.ts",
     "watch:once": "tsx --tsconfig tsconfig.json scripts/watch-once.ts",
     "go-live": "tsx --tsconfig tsconfig.json scripts/go-live.ts",
-    "content:sync": "tsx --tsconfig tsconfig.json scripts/content-sync.ts"
+    "content:sync": "tsx --tsconfig tsconfig.json scripts/content-sync.ts",
+    "questions:add": "tsx --tsconfig tsconfig.json scripts/questions.ts add",
+    "questions:pull": "tsx --tsconfig tsconfig.json scripts/questions.ts pull"
   },
   "dependencies": {
     "@better-auth/passkey": "^1.7.18",

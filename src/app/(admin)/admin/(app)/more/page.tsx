@@ -10,6 +10,7 @@ export const metadata: Metadata = { title: "More" };
 export default async function Page() {
   const actor = await requireAdmin();
   const links = [
+    can(actor.role, "content.write") && { href: "/admin/questions", label: "Questions for you", note: "Things MESH could not confirm. Your answers are saved, never published straight away" },
     can(actor.role, "settings.write") && { href: "/admin/settings", label: "Site settings", note: "WhatsApp group link" },
     can(actor.role, "settings.write") && { href: "/admin/sources", label: "Channels", note: "Telegram channels MESH reads, and automatic publishing" },
     can(actor.role, "admins.manage") && { href: "/admin/admins", label: "Admins", note: "Invite people, change roles, remove access" },

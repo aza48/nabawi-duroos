@@ -185,6 +185,31 @@ export const settings = pgTable("settings", {
   value: jsonb("value").notNull(),
 });
 
+/**
+ * Things MESH could not confirm. Admins answer them one by one in the admin panel.
+ * An answer is only saved: it never changes the public site. Claude exports answered
+ * questions to docs/ADMIN-ANSWERS.md (npm run questions:pull), interprets them, and then
+ * writes and publishes the content properly.
+ */
+export type QuestionStatus = "open" | "answered" | "exported" | "closed";
+export const adminQuestions = pgTable(
+  "admin_questions",
+  {
+    id: serial("id").primaryKey(),
+    topic: text("topic").notNull(),
+    question: text("question").notNull(),
+    /** What MESH already knows, so the admin can answer quickly. Never shown publicly. */
+    context: text("context").notNull().default(""),
+    status: text("status").$type<QuestionStatus>().notNull().default("open"),
+    answer: text("answer"),
+    answeredBy: text("answered_by"),
+    answeredAt: timestamp("answered_at", { withTimezone: true }),
+    exportedAt: timestamp("exported_at", { withTimezone: true }),
+    createdAt: created(),
+  },
+  (t) => [index("admin_questions_status_idx").on(t.status)]
+);
+
 /* ---------- Admin authentication (Better Auth) ----------
    Field set matches what Better Auth reports for: email+password,
    twoFactor, admin, passkey plugins and database rate limiting. */

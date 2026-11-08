@@ -1,0 +1,16 @@
+[
+  {"topic": "University", "question": "Is the one-off arrival payment for new scholarship students 1,680 SAR (two stipends), and the graduation payment 2,520 SAR (three stipends)?", "context": "A student-run site says so. Not confirmed anywhere official. Not on the site yet."},
+  {"topic": "University", "question": "Where do the free buses from the University to the Haram pick up, what times do they run, and do they run on Fridays?", "context": "The site says the buses are free. Stops and times are not published yet."},
+  {"topic": "University", "question": "Where is the mat'am, and when are breakfast, lunch and dinner served?", "context": "Prices are published: 1, 2 and 2 SAR."},
+  {"topic": "University", "question": "How many students share a room in the Jamiah and in the Rabwa halls, and do newer blocks have air conditioning?", "context": "Sources disagree, from 2 up to 6 per room."},
+  {"topic": "University", "question": "Which facilities does the University sports club give students (indoor hall, outdoor pool, covered pool, pitches, gym)?", "context": "Only the 50% student discount is published."},
+  {"topic": "Visas", "question": "Can MESH state firmly that someone on a visit visa may work online for clients abroad?", "context": "The visa guide currently says visit visa holders may do this. If not firm, the sentence will be cut back."},
+  {"topic": "Visas", "question": "Is Nafath or Absher required to open a bank account on a Visitor ID, or only helpful?", "context": "The SIM and bank guide step 2 was changed to say it is needed. Please confirm."},
+  {"topic": "Healthcare", "question": "Do visitors on a visit visa get free emergency care at government hospitals, or must they pay?", "context": "The site says there is no free healthcare on a visit visa. One outside source says emergencies are free for everyone."},
+  {"topic": "Having a baby", "question": "Are the childbirth fees and visiting rules on the site (checked April 2025) still right? Which hospitals have changed?", "context": "The guide is dated April 2025. The note about a birth companion programme at Uhud being closed was unclear and left out."},
+  {"topic": "Having a baby", "question": "Do you want a neutral list of women's doctors by hospital, as sisters often ask for?", "context": "Individual doctor recommendations are left out because MESH does not recommend individuals."},
+  {"topic": "Sport", "question": "Are the adult classes at the University Sports Center open to women, or only men?", "context": "The poster only lists girls in the children's classes."},
+  {"topic": "Sport", "question": "How can people book the Muslim Scouts camping trip on 20 and 21 November 2026?", "context": "The poster has only a QR code. The guide gives no booking route until this is answered."},
+  {"topic": "Study", "question": "What are the fees at Dar at-Tawheed wa as-Sunnah in Suqman, and are places still open?", "context": "Classes began on 1 November 2026. The page tells readers to ask the centre."},
+  {"topic": "Property", "question": "What is the current rule for foreigners buying a home in Madinah?", "context": "Rules differ for the Holy Cities and have been changing. Not stated on the site."}
+]

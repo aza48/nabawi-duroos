@@ -10,6 +10,7 @@ import { addOverride, createLesson, revokeOverride, saveAnnouncement, updateLess
 import { deleteFaq, deleteGuide, saveFaq, saveGuide, setWhatsAppUrl } from "@/server/admin/content";
 import { revokeAdmin, setRole } from "@/server/admin/admins";
 import { createInvite } from "@/server/admin/invites";
+import { answerQuestion, closeQuestion } from "@/server/admin/questions";
 import { SITE_URL } from "@/lib/site";
 
 export type ActionResult<T = undefined> = { ok: true; data?: T } | { ok: false; error: string };
@@ -24,6 +25,7 @@ const FRIENDLY: Record<string, string> = {
   not_undoable: "That change can't be undone.",
   needs_lesson_and_date: "The AI couldn't tell which lesson or date. Use Change a dars instead.",
   suggestion_not_found: "That suggestion was already handled.",
+  question_not_found: "That question no longer exists.",
 };
 
 function explain(e: unknown): string {
@@ -124,4 +126,12 @@ export async function setSourceAction(input: { handle: string; trusted?: boolean
     if (typeof input.autoPublish === "boolean") patch.autoPublish = input.autoPublish;
     await db.update(sources).set(patch).where(eq(sources.handle, input.handle));
   });
+}
+
+/* Questions for the admins: answers are saved only, never published straight away */
+export async function answerQuestionAction(id: number, answer: string) {
+  return run("content.write", async (db, a) => { await answerQuestion(db, a, { id, answer }); });
+}
+export async function closeQuestionAction(id: number) {
+  return run("content.write", async (db, a) => { await closeQuestion(db, a, id); });
 }
