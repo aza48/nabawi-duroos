@@ -21,14 +21,14 @@ const pad = (n: number) => String(n).padStart(2, "0");
 const DATES_FEED = `${SITE_URL.replace(/^https?:/, "webcal:")}/api/v1/calendar/dates.ics`;
 
 /** "Coming up": the next University date leads, the next three follow, Islamic dates count down at the side. */
-export function KeyDates() {
-  const [now, setNow] = useState<number | null>(null);
+export function KeyDates({ initialNow }: { initialNow: number }) {
+  // Rendered on the server with the server's clock (so the HTML is complete and nothing jumps), then ticking on the client.
+  const [now, setNow] = useState<number>(initialNow);
   useEffect(() => {
     setNow(Date.now());
     const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
   }, []);
-  if (now === null) return <div className="shell mt-10 h-64 md:mt-14" aria-hidden="true" />;
 
   const { current, next, following, islamic } = keyDatesState(new Date(now), KEY_DATES);
   const lead = current ?? next;

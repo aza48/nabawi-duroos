@@ -30,7 +30,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
   return (
     <>
       <TodayHero today={today} locale="en" />
-      <KeyDates />
+      <KeyDates initialNow={Date.now()} />
 
       <div className="shell mt-10 grid gap-10 md:mt-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
         <div id="live">

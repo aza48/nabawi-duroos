@@ -282,7 +282,7 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
           </nav>
         )}
         {toc.length > 2 && !isCalendar && (
-          <details className="group rounded-2xl border border-line bg-card lg:hidden">
+          <details className="group min-w-0 max-w-full rounded-2xl border border-line bg-card lg:hidden">
             <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 text-sm font-semibold [&::-webkit-details-marker]:hidden">
               {onPage} <span className="text-muted">({toc.length})</span>
               <ChevronDown size={18} className="ms-auto text-muted transition group-open:rotate-180" />
@@ -290,7 +290,7 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
             <ul className="border-t border-line px-2 py-2">
               {toc.map((t) => (
                 <li key={t.id}>
-                  <a href={`#${t.id}`} className="block rounded-lg px-2 py-2.5 text-sm text-muted hover:bg-primary/5 hover:text-ink">
+                  <a href={`#${t.id}`} dir="auto" className="block rounded-lg px-2 py-2.5 text-sm text-muted [overflow-wrap:anywhere] hover:bg-primary/5 hover:text-ink">
                     {t.text}
                   </a>
                 </li>
@@ -298,7 +298,7 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
             </ul>
           </details>
         )}
-        <article className={isCalendar ? "min-w-0" : "max-w-3xl"}>
+        <article className={isCalendar ? "min-w-0" : "min-w-0 max-w-3xl"}>
           {ar && <EnglishNote className="mb-6" />}
           <div {...(ar ? EN : {})}>
             {guide.slug === "university-calendar-1448" ? <UniversityCalendar /> : <GuideBody html={html} slug={guide.slug} steps={steps} />}

@@ -4,7 +4,7 @@ import { BookOpen, CalendarDays, ChevronRight, Clock3, ExternalLink, MapPin, Rad
 import type { getLesson, getShaykh, AnnouncementRow, StreamRow } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { formatClock, riyadhDateIso } from "@/lib/time/riyadh";
-import { formatHijri } from "@/lib/time/hijri";
+import { formatGregorian, formatHijri } from "@/lib/time/hijri";
 import { prayerTimes } from "@/lib/time/prayer";
 import { Breadcrumbs, EmptyState } from "@/components/ui";
 import { DuroosNav } from "./DuroosNav";
@@ -314,7 +314,11 @@ export function UpdatesPage({ current, history, locale }: { current: Announcemen
       </p>
       {a.imageUrl && <Image src={a.imageUrl} alt="" width={600} height={800} className="mt-3 h-auto w-full rounded-xl" />}
       <p className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted">
-        {a.eventDate && <span>{formatHijri(a.eventDate, locale, { bracket: true, weekday: true })}</span>}
+        {a.eventDate && (
+          <span>
+            {formatHijri(a.eventDate, locale, { bracket: true, weekday: true })}, {formatGregorian(a.eventDate, locale)}
+          </span>
+        )}
       </p>
     </article>
   );
