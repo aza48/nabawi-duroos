@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, Search } from "lucide-react";
 
 type Item = { slug: string; question: string; category: string };
@@ -12,6 +12,11 @@ export function FaqExplorer({ items, categories, locale = "en" }: { items: Item[
   const ar = locale === "ar";
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("all");
+  // A breadcrumb can link to a topic: /ask?c=university opens on that topic.
+  useEffect(() => {
+    const c = new URLSearchParams(window.location.search).get("c");
+    if (c && categories.some((x) => x.id === c)) setCat(c);
+  }, [categories]);
   const words = q.toLowerCase().split(/\s+/).filter(Boolean);
   const shown = useMemo(
     () => items.filter((f) => (cat === "all" || f.category === cat) && words.every((w) => f.question.toLowerCase().includes(w))),

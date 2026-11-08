@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { metaDescription, metaTitle } from "@/lib/text";
 import { notFound } from "next/navigation";
 import { getDb } from "@/server/db/client";
-import { getFaq } from "@/server/content/queries";
+import { getFaq, listFaqs, listGuides } from "@/server/content/queries";
 import { getWhatsAppUrl } from "@/server/settings";
 import { FaqPage } from "@/features/content/ContentPages";
 
@@ -23,5 +23,6 @@ export default async function Page({ params }: Props) {
   const db = await getDb();
   const faq = await getFaq(db, (await params).slug);
   if (!faq) notFound();
-  return <FaqPage faq={faq} whatsappUrl={await getWhatsAppUrl(db)} />;
+  const [whatsappUrl, guides, faqs] = await Promise.all([getWhatsAppUrl(db), listGuides(db), listFaqs(db)]);
+  return <FaqPage faq={faq} whatsappUrl={whatsappUrl} guides={guides} faqs={faqs} />;
 }

@@ -56,7 +56,7 @@ export function ShaykhPage({ shaykh: s, locale }: { shaykh: Shaykh; locale: Loca
             <h2 className="mb-4 font-heading text-2xl font-bold">{t(locale, "lessons")}</h2>
             <div className="grid gap-3 md:grid-cols-2">
               {s.lessons.map((l) => (
-                <Link key={l.slug} href={duroosPath(locale, `/lesson/${l.slug}`)} className="group flex flex-col rounded-2xl border border-line bg-card p-4 transition-colors hover:border-primary/50">
+                <Link key={l.slug} href={duroosPath(locale, `/lesson/${l.slug}`)} className="group flex flex-col rounded-2xl border border-line bg-card p-4 lift hover:border-primary/50">
                   {l.audience === "women" && <span className="mb-1.5"><SistersTag locale={locale} /></span>}
                   <p className="ar-text text-lg leading-snug">{l.bookAr}</p>
                   {!ar && <p className="mt-0.5 text-sm text-muted group-hover:text-ink">{l.bookEn}</p>}

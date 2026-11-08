@@ -1,10 +1,11 @@
 import { UniversityCalendar } from "./UniversityCalendar";
 import Link from "next/link";
-import { ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, ChevronDown, CircleCheck, Flag, GraduationCap, Languages, Library, Radio, ScrollText } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, ChevronDown, CircleCheck, CircleHelp, Flag, GraduationCap, Languages, Library, Radio, ScrollText } from "lucide-react";
 import type { FaqRow, GuideRow } from "@/server/content/queries";
 import { FAQ_CATEGORIES, GUIDE_STAGES } from "@/server/content/queries";
 import { sanitizeArticleHtml } from "@/lib/sanitize";
-import { PageBand } from "@/components/ui";
+import { Breadcrumbs, PageBand } from "@/components/ui";
+import { related, type RelItem } from "@/lib/related";
 import { STAGE_ICON } from "@/features/home/HomePage";
 import { FaqExplorer } from "./FaqExplorer";
 import { GuideBody } from "./GuideBody";
@@ -26,6 +27,42 @@ const verified = (d: Date | null, locale: Locale = "en") =>
     : null;
 
 const EN = { dir: "ltr", lang: "en" } as const;
+
+const asGuide = (g: GuideRow): RelItem => ({ slug: g.slug, title: g.title, text: g.summary, group: g.stage });
+const asFaq = (f: FaqRow): RelItem => ({ slug: f.slug, title: f.question, text: plain(f.answerHtml).slice(0, 400), group: f.category, tags: f.tags });
+
+/** "Related guides" or "Related answers": a short list of links at the end of a page (or in the side rail). */
+function RelatedList({ kind, items, locale, rail = false }: { kind: "guides" | "faqs"; items: RelItem[]; locale: Locale; rail?: boolean }) {
+  if (!items.length) return null;
+  const ar = locale === "ar";
+  const guides = kind === "guides";
+  const Icon = guides ? BookOpen : CircleHelp;
+  const base = `${ar ? "/ar" : ""}/${guides ? "guides" : "ask"}/`;
+  return (
+    <section aria-labelledby={`rel-${kind}`} className={rail ? "" : "mt-10"}>
+      <h2 id={`rel-${kind}`} className="flex items-center gap-2 font-heading text-lg font-bold">
+        <Icon size={18} className="text-accent" aria-hidden="true" />
+        {guides ? (ar ? "أدلة ذات صلة" : "Related guides") : ar ? "أسئلة ذات صلة" : "Related answers"}
+      </h2>
+      <ul className={`mt-3 grid gap-2 ${rail || !guides ? "" : "sm:grid-cols-2"}`}>
+        {items.map((it) => (
+          <li key={it.slug}>
+            <Link
+              href={base + it.slug}
+              className="lift group flex h-full items-start gap-3 rounded-2xl border border-line bg-card p-3.5 transition hover:border-primary/50"
+            >
+              <span className="min-w-0 flex-1">
+                <span className="block text-[15px] font-semibold leading-snug group-hover:text-primary" dir="auto">{it.title}</span>
+                {guides && !rail && <span className="mt-1 line-clamp-2 block text-sm text-muted" dir="auto">{it.text}</span>}
+              </span>
+              <ArrowRight size={16} aria-hidden="true" className={`mt-0.5 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-primary ${ar ? "rotate-180" : ""}`} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
 
 export function AskPage({ faqs, whatsappUrl, locale = "en" }: { faqs: FaqRow[]; whatsappUrl: string; locale?: Locale }) {
   const ar = locale === "ar";
@@ -61,18 +98,30 @@ function OutdatedNote({ whatsappUrl, locale = "en" }: { whatsappUrl: string; loc
   );
 }
 
-export function FaqPage({ faq, whatsappUrl, locale = "en" }: { faq: FaqRow; whatsappUrl: string; locale?: Locale }) {
+export function FaqPage({ faq, whatsappUrl, locale = "en", guides = [], faqs = [] }: { faq: FaqRow; whatsappUrl: string; locale?: Locale; guides?: GuideRow[]; faqs?: FaqRow[] }) {
   const ar = locale === "ar";
   const cat = FAQ_CATEGORIES.find((c) => c.id === faq.category);
+  const me = asFaq(faq);
+  const relFaqs = related(me, faqs.map(asFaq), 4);
+  const relGuides = related(me, guides.map(asGuide), 3);
+  const askHref = ar ? "/ar/ask" : "/ask";
   return (
-    <article className="shell max-w-3xl pt-6 md:pt-10">
+    <div className={`shell pt-6 md:pt-10 ${relFaqs.length ? "xl:grid xl:grid-cols-[minmax(0,48rem)_300px] xl:justify-center xl:gap-14" : ""}`}>
+    <article className="mx-auto max-w-3xl xl:mx-0">
       <JsonLd
         data={[
           { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [{ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: plain(faq.answerHtml) } }], dateModified: faq.updatedAt },
           breadcrumbs([["Ask", "/ask"], [faq.question, `/ask/${faq.slug}`]]),
         ]}
       />
-      <Link href={ar ? "/ar/ask" : "/ask"} className="text-sm font-medium text-muted">{ar ? "→" : "←"} {ar ? (cat?.labelAr ?? "أسئلة وأجوبة") : (cat?.label ?? "Ask")}</Link>
+      <Breadcrumbs
+        rtl={ar}
+        items={[
+          [ar ? "الرئيسية" : "Home", ar ? "/ar" : "/"],
+          [ar ? "أسئلة وأجوبة" : "Ask", askHref],
+          ...(cat ? ([[ar ? cat.labelAr : cat.label, `${askHref}?c=${cat.id}`]] as [string, string][]) : []),
+        ]}
+      />
       {ar && <EnglishNote className="mt-4" />}
       <div {...(ar ? EN : {})}>
         <h1 className="mt-2 text-3xl font-semibold leading-tight">{faq.question}</h1>
@@ -89,8 +138,18 @@ export function FaqPage({ faq, whatsappUrl, locale = "en" }: { faq: FaqRow; what
         </p>
       )}
       <OutdatedNote whatsappUrl={whatsappUrl} locale={locale} />
-      <div className="mt-6"><AskOnWhatsApp url={whatsappUrl} locale={locale} /></div>
+      <RelatedList kind="guides" items={relGuides} locale={locale} />
+      <div className="xl:hidden">
+        <RelatedList kind="faqs" items={relFaqs} locale={locale} />
+      </div>
+      <div className="mt-10"><AskOnWhatsApp url={whatsappUrl} locale={locale} /></div>
     </article>
+    {relFaqs.length > 0 && (
+      <aside className="hidden pt-9 xl:sticky xl:top-24 xl:block xl:self-start">
+        <RelatedList kind="faqs" items={relFaqs} locale={locale} rail />
+      </aside>
+    )}
+    </div>
   );
 }
 
@@ -136,7 +195,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
               ) : (
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {st.items.map((g) => (
-                    <Link key={g.slug} href={`${ar ? "/ar" : ""}/guides/${g.slug}`} className="group flex flex-col rounded-2xl border border-line bg-card p-5 transition-colors hover:border-primary/50">
+                    <Link key={g.slug} href={`${ar ? "/ar" : ""}/guides/${g.slug}`} className="lift group flex flex-col rounded-2xl border border-line bg-card p-5 hover:border-primary/50">
                       <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary" dir="auto">{g.title}</span>
                       <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted" dir="auto">{g.summary}</span>
                       <span className="mt-auto flex items-center gap-3 pt-4 text-xs text-muted">
@@ -155,7 +214,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
   );
 }
 
-export function GuidePage({ guide, whatsappUrl, locale = "en" }: { guide: GuideRow; whatsappUrl: string; locale?: Locale }) {
+export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs = [] }: { guide: GuideRow; whatsappUrl: string; locale?: Locale; guides?: GuideRow[]; faqs?: FaqRow[] }) {
   const ar = locale === "ar";
   const stage = GUIDE_STAGES.find((st) => st.id === guide.stage);
   const stageLabel = ar ? (stage?.labelAr ?? "الأدلة") : (stage?.label ?? "Guides");
@@ -164,6 +223,10 @@ export function GuidePage({ guide, whatsappUrl, locale = "en" }: { guide: GuideR
   const isCalendar = guide.slug === "university-calendar-1448";
   const { html, toc, steps: rawSteps } = enhanceGuideHtml(sanitizeArticleHtml(guide.bodyHtml));
   const steps = isCalendar ? 0 : rawSteps;
+  const me = asGuide(guide);
+  const relGuides = related(me, guides.map(asGuide), 4);
+  const relFaqs = related(me, faqs.map(asFaq), 5);
+  const hasToc = toc.length > 1 && !isCalendar;
   const stepTexts = [...html.matchAll(/<li data-step="\d+">([\s\S]*?)<\/li>/g)].map((m) => plain(m[1]));
   const ld = {
     "@context": "https://schema.org",
@@ -186,9 +249,18 @@ export function GuidePage({ guide, whatsappUrl, locale = "en" }: { guide: GuideR
       <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], [stage?.label ?? "Guides", `/guides#${guide.stage}`], [guide.title, `/guides/${guide.slug}`]])]} />
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-14">
-          <Link href={`${ar ? "/ar" : ""}/guides#${guide.stage}`} className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white">
-            <Icon size={15} className="text-gold-bright" /> {stageLabel}
-          </Link>
+          <div className="flex items-center gap-2">
+            <Icon size={15} className="shrink-0 text-gold-bright" aria-hidden="true" />
+            <Breadcrumbs
+              tone="band"
+              rtl={ar}
+              items={[
+                [ar ? "الرئيسية" : "Home", ar ? "/ar" : "/"],
+                [ar ? "الأدلة" : "Guides", `${ar ? "/ar" : ""}/guides`],
+                [stageLabel, `${ar ? "/ar" : ""}/guides#${guide.stage}`],
+              ]}
+            />
+          </div>
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl" dir="auto">{guide.title}</h1>
           <p className="mt-4 max-w-2xl text-white/85 md:text-lg" dir="auto">{guide.summary}</p>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
@@ -198,7 +270,11 @@ export function GuidePage({ guide, whatsappUrl, locale = "en" }: { guide: GuideR
           </p>
         </div>
       </section>
-      <div className={`shell mt-8 grid gap-10 md:mt-10 ${toc.length > 1 && !isCalendar ? "lg:grid-cols-[240px_minmax(0,1fr)]" : ""}`}>
+      <div
+        className={`shell mt-8 grid gap-10 md:mt-10 ${
+          isCalendar ? "" : hasToc ? `lg:grid-cols-[240px_minmax(0,1fr)] ${relFaqs.length ? "xl:grid-cols-[240px_minmax(0,1fr)_280px]" : ""}` : relFaqs.length ? "xl:grid-cols-[minmax(0,1fr)_300px]" : ""
+        }`}
+      >
         {toc.length > 1 && !isCalendar && (
           <nav aria-label={onPage} className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
             <p className="text-sm font-semibold text-muted">{onPage}</p>
@@ -237,9 +313,20 @@ export function GuidePage({ guide, whatsappUrl, locale = "en" }: { guide: GuideR
           </div>
           <div className={isCalendar ? "max-w-3xl" : undefined}>
             <OutdatedNote whatsappUrl={whatsappUrl} locale={locale} />
-            <div className="mt-6"><AskOnWhatsApp url={whatsappUrl} locale={locale} /></div>
+            <RelatedList kind="guides" items={relGuides} locale={locale} />
+            {relFaqs.length > 0 && (
+              <div className={isCalendar ? undefined : "xl:hidden"}>
+                <RelatedList kind="faqs" items={relFaqs} locale={locale} />
+              </div>
+            )}
+            <div className="mt-10"><AskOnWhatsApp url={whatsappUrl} locale={locale} /></div>
           </div>
         </article>
+        {!isCalendar && relFaqs.length > 0 && (
+          <aside className="hidden xl:sticky xl:top-28 xl:block xl:self-start">
+            <RelatedList kind="faqs" items={relFaqs} locale={locale} rail />
+          </aside>
+        )}
       </div>
     </>
   );
@@ -293,7 +380,7 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
       <div className="shell mt-10 md:mt-14">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {tiles.map(({ href, label, note, icon: Icon }) => (
-            <Link key={href} href={href} className="group rounded-2xl border border-line bg-card p-5 transition-colors hover:border-primary/50">
+            <Link key={href} href={href} className="lift group rounded-2xl border border-line bg-card p-5 hover:border-primary/50">
               <span className="grid size-10 place-items-center rounded-xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-ink">
                 <Icon size={20} />
               </span>

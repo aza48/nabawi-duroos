@@ -113,7 +113,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
                 <Link
                   key={g.slug}
                   href={`/guides/${g.slug}`}
-                  className="group flex min-h-36 flex-col rounded-2xl border border-line bg-card p-4 transition-colors hover:border-primary/50 md:min-h-40 md:p-5"
+                  className="lift group flex min-h-36 flex-col rounded-2xl border border-line bg-card p-4 hover:border-primary/50 md:min-h-40 md:p-5"
                 >
                   <span className="grid size-10 place-items-center rounded-xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-ink">
                     <Icon size={20} />

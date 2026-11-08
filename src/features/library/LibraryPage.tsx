@@ -12,7 +12,7 @@ const ICON: Record<LibraryLink["kind"], typeof Folder> = { folder: Folder, pdf: 
 function LinkCard({ l, ar = false }: { l: LibraryLink; ar?: boolean }) {
   const Icon = ICON[l.kind];
   return (
-    <a href={l.href} target="_blank" rel="noopener noreferrer" className="group flex items-start gap-3 rounded-2xl border border-line bg-card p-4 transition-colors hover:border-primary/50">
+    <a href={l.href} target="_blank" rel="noopener noreferrer" className="group flex items-start gap-3 rounded-2xl border border-line bg-card p-4 lift hover:border-primary/50">
       <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-ink">
         <Icon size={19} />
       </span>

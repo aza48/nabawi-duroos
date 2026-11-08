@@ -66,7 +66,7 @@ export function ProgramsIndex({ locale = "en" }: { locale?: Locale }) {
               <h2 className="mb-5 font-heading text-2xl font-bold md:text-3xl">{ar ? k.labelAr : k.label}</h2>
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {items.map((p) => (
-                  <Link key={p.slug} href={`${t.base}/programs/${p.slug}`} data-aud={p.audience.join(" ")} className="group flex flex-col rounded-2xl border border-line bg-card p-5 transition-colors hover:border-primary/50">
+                  <Link key={p.slug} href={`${t.base}/programs/${p.slug}`} data-aud={p.audience.join(" ")} className="group flex flex-col rounded-2xl border border-line bg-card p-5 lift hover:border-primary/50">
                     {ar ? (
                       <>
                         <span className="ar-text text-xl font-bold leading-snug group-hover:text-primary">{p.nameAr}</span>

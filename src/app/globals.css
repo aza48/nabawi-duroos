@@ -438,3 +438,8 @@ a { -webkit-tap-highlight-color: transparent; }
 
 /* Arabic pages: short English lines (names, prices, places) keep English punctuation but line up on the right with the Arabic. */
 [dir="rtl"] [dir="auto"] { text-align: right; }
+
+/* Cards that lift a little on hover and press in on tap. */
+.lift { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+@media (hover: hover) { .lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); } }
+.lift:active { transform: translateY(0) scale(0.985); box-shadow: none; }

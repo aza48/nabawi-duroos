@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { metaDescription, metaTitle } from "@/lib/text";
 import { getDb } from "@/server/db/client";
-import { getGuide } from "@/server/content/queries";
+import { getGuide, listFaqs, listGuides } from "@/server/content/queries";
 import { getWhatsAppUrl } from "@/server/settings";
 import { GuidePage } from "@/features/content/ContentPages";
 
@@ -23,5 +23,6 @@ export default async function Page({ params }: Props) {
   const db = await getDb();
   const guide = await getGuide(db, (await params).slug);
   if (!guide) notFound();
-  return <GuidePage guide={guide} whatsappUrl={await getWhatsAppUrl(db)} locale="ar" />;
+  const [whatsappUrl, guides, faqs] = await Promise.all([getWhatsAppUrl(db), listGuides(db), listFaqs(db)]);
+  return <GuidePage guide={guide} whatsappUrl={whatsappUrl} guides={guides} faqs={faqs} locale="ar" />;
 }

@@ -58,3 +58,28 @@ export function PageBand({ title, subtitle, children }: { title: React.ReactNode
     </section>
   );
 }
+
+/** Where this page sits, as links: Home › Section › Page. The last crumb is the page itself and is not a link. */
+export function Breadcrumbs({ items, tone = "page", rtl = false }: { items: [label: string, href?: string][]; tone?: "page" | "band"; rtl?: boolean }) {
+  const link = tone === "band" ? "text-white/75 hover:text-white" : "text-muted hover:text-primary";
+  return (
+    <nav aria-label={rtl ? "مسار الصفحة" : "Breadcrumb"} className="text-sm">
+      <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+        {items.map(([label, href], i) => (
+          <li key={i} className="flex min-w-0 items-center gap-1.5">
+            {i > 0 && <ChevronRight size={14} aria-hidden="true" className={`shrink-0 ${tone === "band" ? "text-white/45" : "text-muted/60"} ${rtl ? "rotate-180" : ""}`} />}
+            {href ? (
+              <Link href={href} className={`rounded transition-colors ${link}`}>
+                {label}
+              </Link>
+            ) : (
+              <span aria-current="page" className={`line-clamp-1 ${tone === "band" ? "text-white" : "text-ink"} font-medium`}>
+                {label}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
