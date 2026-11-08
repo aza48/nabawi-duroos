@@ -67,7 +67,10 @@ export async function updateShaykhAction(input: Parameters<typeof updateShaykh>[
   return run("duroos.write", async (db, a) => { await updateShaykh(db, a, input); });
 }
 export async function saveAnnouncementAction(input: Parameters<typeof saveAnnouncement>[2]) {
-  return run("announcements.write", async (db, a) => (await saveAnnouncement(db, a, input)).slug);
+  return run("announcements.write", async (db, a) => {
+    const r = await saveAnnouncement(db, a, input);
+    return { slug: r.slug, scheduleUpdated: r.scheduleUpdated };
+  });
 }
 
 /* Content */

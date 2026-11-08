@@ -46,7 +46,8 @@ export async function adminAnnouncement(db: Db, slug: string) {
   const [a] = await db.select().from(announcements).where(eq(announcements.slug, slug));
   if (!a) return null;
   const s = a.shaykhId ? (await db.select({ slug: shaykhs.slug }).from(shaykhs).where(eq(shaykhs.id, a.shaykhId)))[0] : null;
-  return { ...a, shaykhSlug: s?.slug ?? null };
+  const l = a.lessonId ? (await db.select({ slug: lessons.slug }).from(lessons).where(eq(lessons.id, a.lessonId)))[0] : null;
+  return { ...a, shaykhSlug: s?.slug ?? null, lessonSlug: l?.slug ?? null };
 }
 
 export async function adminFaqs(db: Db) {

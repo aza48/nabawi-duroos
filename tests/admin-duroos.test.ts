@@ -108,3 +108,44 @@ describe("lessons, shaykhs and announcements", () => {
     expect(feed.some((x) => x.slug === a.slug)).toBe(false);
   });
 });
+
+describe("a published schedule update also changes the schedule (audit M9)", () => {
+  it("creates the matching override for the named dars, so the dars card agrees with the Updates page", async () => {
+    const a = await saveAnnouncement(db, duroosEditor, {
+      titleEn: "Dalil al-Talib cancelled this Friday", titleAr: "إلغاء درس دليل الطالب يوم الجمعة", bodyEn: "The shaykh excused himself.", bodyAr: "يعتذر الشيخ.",
+      type: "cancellation", eventDate: "2026-11-20", lessonSlug: "ruh-dalil", status: "published",
+    });
+    expect(a.scheduleUpdated).toBe(true);
+    expect(a.lessonId).not.toBeNull();
+    const t = await getToday(db, new Date("2026-11-20T09:30:00Z"));
+    const dalil = t.lessons.find((l) => l.slug === "ruh-dalil")!;
+    expect(dalil.status).toBe("cancelled");
+    expect(dalil.overrideNoteEn).toBe("Dalil al-Talib cancelled this Friday");
+  });
+  it("picks the shaykh's only dars on that weekday when none is named, and nothing when it is not clear", async () => {
+    // Thursday: al-Ruhayli gives only Dalil al-Talib. Saturday: two duroos, so no guess is made.
+    const thu = await saveAnnouncement(db, duroosEditor, {
+      titleEn: "No dars this Thursday", titleAr: "لا درس يوم الخميس", bodyEn: "x", bodyAr: "x",
+      type: "cancellation", eventDate: "2026-11-26", shaykhSlug: "sulayman-ibn-saleemullah-al-ruhayli", status: "published",
+    });
+    expect(thu.scheduleUpdated).toBe(true);
+    expect((await getToday(db, new Date("2026-11-26T09:30:00Z"))).lessons.find((l) => l.slug === "ruh-dalil")?.status).toBe("cancelled");
+    const sat = await saveAnnouncement(db, duroosEditor, {
+      titleEn: "No dars this Saturday", titleAr: "لا درس يوم السبت", bodyEn: "x", bodyAr: "x",
+      type: "cancellation", eventDate: "2026-11-28", shaykhSlug: "sulayman-ibn-saleemullah-al-ruhayli", status: "published",
+    });
+    expect(sat.scheduleUpdated).toBe(false);
+    expect((await getToday(db, new Date("2026-11-28T09:30:00Z"))).lessons.filter((l) => l.status !== "on")).toHaveLength(0);
+  });
+  it("leaves the schedule alone for drafts and for plain notices", async () => {
+    const d = await saveAnnouncement(db, duroosEditor, {
+      titleEn: "Maybe cancelled", titleAr: "ربما", bodyEn: "x", bodyAr: "x", type: "cancellation", eventDate: "2026-12-03", lessonSlug: "ruh-dalil", status: "draft",
+    });
+    expect(d.scheduleUpdated).toBe(false);
+    const n = await saveAnnouncement(db, duroosEditor, {
+      titleEn: "Bring your book", titleAr: "أحضر كتابك", bodyEn: "x", bodyAr: "x", type: "reminder", eventDate: "2026-12-03", lessonSlug: "ruh-dalil", status: "published",
+    });
+    expect(n.scheduleUpdated).toBe(false);
+    expect((await getToday(db, new Date("2026-12-03T09:30:00Z"))).lessons.find((l) => l.slug === "ruh-dalil")?.status).toBe("on");
+  });
+});

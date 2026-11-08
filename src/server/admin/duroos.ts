@@ -4,6 +4,7 @@ import type { Db } from "@/server/db/client";
 import { announcements, lessonOverrides, lessons, masjids, shaykhs } from "@/server/db/schema";
 import { assertCan, type Actor } from "@/server/auth/permissions";
 import { cleanText } from "@/lib/text";
+import { weekdayOf } from "@/lib/time/riyadh";
 import { record } from "./audit";
 import { DUROOS_PATHS, refreshPublic } from "./refresh";
 
@@ -203,11 +204,37 @@ const announcementInput = z.object({
   type: z.enum(["cancellation", "postponement", "resumption", "new-book", "book-finished", "reminder", "info", "guest", "lecture"]),
   eventDate: isoDate.optional().nullable(),
   shaykhSlug: z.string().optional().nullable(),
+  /** The dars the update is about. For a cancellation, postponement or resumption it also changes the schedule. */
+  lessonSlug: z.string().optional().nullable(),
   masjidId: z.string().optional().nullable(),
   sourceUrl: httpUrl.optional().nullable(),
   imageUrl: optUrl,
   status: z.enum(["draft", "published", "archived"]),
 });
+
+/** Update types that change whether a dars is held, and the override each one creates. */
+export const SCHEDULE_TYPES: Record<string, "cancelled" | "postponed" | "resumed"> = {
+  cancellation: "cancelled",
+  postponement: "postponed",
+  resumption: "resumed",
+};
+
+/**
+ * The dars a schedule update is about: the one named, or the shaykh's only dars held
+ * on that weekday. Null when it is not clear (then only the update is published).
+ */
+async function lessonForAnnouncement(db: Db, v: { lessonSlug?: string | null; eventDate?: string | null }, shaykhId: number | null): Promise<{ id: number; slug: string } | null> {
+  if (v.lessonSlug) {
+    const [l] = await db.select({ id: lessons.id, slug: lessons.slug }).from(lessons).where(eq(lessons.slug, v.lessonSlug));
+    if (!l) throw new Error("lesson_not_found");
+    return l;
+  }
+  if (!shaykhId || !v.eventDate) return null;
+  const wd = weekdayOf(v.eventDate);
+  const held = (await db.select({ id: lessons.id, slug: lessons.slug, days: lessons.days, status: lessons.status }).from(lessons).where(eq(lessons.shaykhId, shaykhId)))
+    .filter((l) => l.status === "active" && l.days.includes(wd));
+  return held.length === 1 ? { id: held[0].id, slug: held[0].slug } : null;
+}
 
 export async function saveAnnouncement(db: Db, actor: Actor, input: z.input<typeof announcementInput>) {
   assertCan(actor, "announcements.write");
@@ -218,27 +245,38 @@ export async function saveAnnouncement(db: Db, actor: Actor, input: z.input<type
     if (!s) throw new Error("shaykh_not_found");
     shaykhId = s.id;
   }
+  const lesson = await lessonForAnnouncement(db, v, shaykhId);
   const fields = {
     titleEn: en(v.titleEn)!, titleAr: ar(v.titleAr)!, bodyEn: en(v.bodyEn)!, bodyAr: ar(v.bodyAr)!,
-    type: v.type, eventDate: v.eventDate ?? null, shaykhId, masjidId: v.masjidId ?? null,
+    type: v.type, eventDate: v.eventDate ?? null, shaykhId, lessonId: lesson?.id ?? null, masjidId: v.masjidId ?? null,
     sourceUrl: v.sourceUrl ?? null, imageUrl: v.imageUrl ?? null, status: v.status,
   };
+  let saved: typeof announcements.$inferSelect;
   if (v.slug) {
     const [before] = await db.select().from(announcements).where(eq(announcements.slug, v.slug));
     if (!before) throw new Error("announcement_not_found");
     const publishedAt = v.status === "published" ? before.publishedAt ?? new Date() : before.publishedAt;
     const [after] = await db.update(announcements).set({ ...fields, publishedAt }).where(eq(announcements.slug, v.slug)).returning();
     await record(db, actor, { action: "update", entity: "announcement", entityId: v.slug, before, after });
-    refreshPublic(DUROOS_PATHS);
-    return after;
+    saved = after;
+  } else {
+    const slug = await uniqueSlug(db, slugify(v.titleEn), announcements);
+    const now = new Date();
+    const [row] = await db
+      .insert(announcements)
+      .values({ ...fields, slug, postedAt: now, publishedAt: v.status === "published" ? now : null })
+      .returning();
+    await record(db, actor, { action: "create", entity: "announcement", entityId: slug, before: null, after: row });
+    saved = row;
   }
-  const slug = await uniqueSlug(db, slugify(v.titleEn), announcements);
-  const now = new Date();
-  const [row] = await db
-    .insert(announcements)
-    .values({ ...fields, slug, postedAt: now, publishedAt: v.status === "published" ? now : null })
-    .returning();
-  await record(db, actor, { action: "create", entity: "announcement", entityId: slug, before: null, after: row });
   refreshPublic(DUROOS_PATHS);
-  return row;
+  // A published cancellation, postponement or resumption also changes the schedule, so the
+  // Updates page, the dars card, the calendar feed and the API never disagree.
+  const kind = SCHEDULE_TYPES[v.type];
+  let scheduleUpdated = false;
+  if (v.status === "published" && kind && lesson && v.eventDate) {
+    await addOverride(db, actor, { lessonSlug: lesson.slug, kind, startsOn: v.eventDate, noteEn: v.titleEn, noteAr: v.titleAr, sourceUrl: v.sourceUrl ?? null });
+    scheduleUpdated = true;
+  }
+  return { ...saved, scheduleUpdated };
 }
