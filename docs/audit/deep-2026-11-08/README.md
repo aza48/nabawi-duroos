@@ -42,7 +42,7 @@ Reports: `security.md` (0 critical, 1 high, 8 medium, 10 low), `duroos.md` (0 cr
 | 25 | Search palette has no focus trap, focus return or combobox semantics | frontend H5 | M | done ba8db8a |
 | 26 | Day arc: keyboard Enter never opens a prayer's list | frontend M2 | S | done 0bd9f73 |
 | 27 | Small-text contrast failures (article links 3.84, gold on green 4.05, sisters label 3.06) and tap targets under 40 px (Arabic dars links 26 px) | frontend M3, M4 | S | done 21fc671 |
-| 28 | adhan and minisearch in the client bundle on every page; company guide is a 645-line client component | frontend M5, M6, M7 | M | partly 9cada45 (adhan and minisearch out of the shared bundle; the company guide is still one client component) |
+| 28 | adhan and minisearch in the client bundle on every page; company guide is a 645-line client component | frontend M5, M6, M7 | M | done 9cada45, 752056a |
 | 29 | Manifest, icons and theme colours use old colours, not the brand | frontend M13 | S | done 21fc671 |
 | 30 | Structured data: duplicated FAQPage, Article without image, deprecated HowTo; sitemap sparse lastmod and 84% thin reader pages | frontend M15, M16 | M | done 9cada45 |
 | 31 | Live and search pages are narrow 768 px columns at 1440 (empty desktop space) | frontend M8, M9 | S | done 0bd9f73, ba8db8a |
@@ -62,7 +62,7 @@ Reports: `security.md` (0 critical, 1 high, 8 medium, 10 low), `duroos.md` (0 cr
 All Low items stay in the three reports; do them opportunistically when touching the same file.
 
 ## Progress (8 November, late evening and night)
-Implementation started the same evening and continued in a second session the same night (rows 4, 14, 16, 17, 25, 28 in part, 30, 31, 32, 35, 37, 38). Every row marked done is deployed to medinahub.org (each commit built on Vercel and was checked live). Rows marked partly say what is left and why. Still open: the rest of 28 (company guide client islands), 18 (needs DATABASE_CA), 0c to 0e and 0g in part, 0h and 0i (content).
+Implementation started the same evening and continued in a second session the same night (rows 4, 14, 16, 17, 25, 28 in part, 30, 31, 32, 35, 37, 38). Every row marked done is deployed to medinahub.org (each commit built on Vercel and was checked live). Rows marked partly say what is left and why. Still open: 18 (needs DATABASE_CA), 0c to 0e and 0g in part, 0h and 0i (content).
 
 ## Order of work
 Tier 1 items 1, 2, 3, 5, 7 first (each small, each a visible wrong). Then Tier 2 items 10 to 13 and 15 (small, close the trust gaps), then 9. Then Tier 3 items 21 to 24 and 27. Then the rest by tier. Each step: tests, typecheck, commit, push to mine main and origin revamp, confirm on medinahub.org, tick the row.

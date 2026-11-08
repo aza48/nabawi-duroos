@@ -1,6 +1,6 @@
 # MESH handoff (read this first)
 
-## 8 November 2026, night: second implementation session, 12 more plan rows live (stopped at about 75% of the usage window)
+## 8 November 2026, night: second implementation session, 13 more plan rows live (stopped at 93% of the usage window)
 Read `docs/audit/deep-2026-11-08/README.md` first: every row has a status with its commit. This session worked in the worktree `.claude/worktrees/mesh-website-audit-73b810` and pushed every commit to `mine/main` (production, each built on Vercel and checked live) and `origin/revamp`.
 
 What landed (sha per row)
@@ -11,10 +11,12 @@ What landed (sha per row)
 - Row 38 (2577b8c): one envelope `{ data, error, generatedAt, version }` for every reply, errors and calendar 404s included; `/duroos/today?date=` (within 60 days) with Hijri numbers and the weekday; new `/duroos/lessons` (filters), `/duroos/shaykhs`, `/duroos/masjids`, `/duroos/streams`. Shapes documented in `docs/API.md`.
 - Rows 25, 31, 32 (ba8db8a): the search palette is a native modal dialog (focus trap, Escape anywhere, focus returns to the opener, combobox and option roles, live region, 40 px close); the results page is two columns on wide screens; guide progress text is Arabic on /ar and the Ma'had chip says it opens in English. Checked live in the browser.
 - Rows 28 (part) and 30 (9cada45): `PRAYERS` and `Prayer` live in `src/lib/time/prayers.ts` with no imports so client components no longer pull the adhan library; minisearch loads when the palette first opens; guides are Article only with an image; FAQPage markup only on the answer page with an ItemList on /ask and none on /ar; breadcrumbs start at Home; the sitemap drops the reader pages, pairs every Arabic twin and rounds priorities.
+- Row 28 finished (752056a): `CompanyGuide.tsx` is a server component; the checklists, situation tabs, type finder, phase accordion and cost calculator live in `islands.tsx` and receive only their slice of `content.ts`; `Tip`, `Card` and `sar` are in `ui.tsx` for both sides.
+- `docs/WHAT-CHANGED.md`: a plain-words list of everything the two sessions changed, written for the owner, with the "only you can do" list at the end. Keep it current when you finish a session.
 - Tests: 321 passing in 44 files (was 294 in 42). New: timeKnown, deterministic watcher checks, announcement overrides, rate limit, track flood, API routes.
 
 Left from the queue (in order)
-1. Rest of row 28: make `features/guides/company/CompanyGuide.tsx` a server component with small client islands (checklist, situation tabs, quiz, cost calculator).
+1. A real privacy page at `/privacy` (today `src/lib/redirects.ts` sends it to `/more`; the tracker in `src/components/shell/Tracker.tsx` stores a random id, city and region, no IP). Write what is collected, why, how long (180 days), and how to opt out; link it from the footer and the More page; respect `navigator.globalPrivacyControl` in the tracker.
 2. Row 18: TLS verification once the owner adds `DATABASE_CA` (see the blocked list).
 3. Content 0h and 0i: a "Living on the Visitor ID" guide, campus practicals, women's gates and sections at the Haram, a real `/privacy` page (tracking is on and `/privacy` redirects to `/more`), then Arabic guides and FAQs, `/ar/mahad`, an Arabic home page. New facts only from `docs/research/` or official sources; otherwise an open question.
 4. Optional: the three cut-short audits (content and copy, live crawl with screenshots, admin phone click-through).
@@ -64,7 +66,7 @@ Each step: edit, add or update tests, `npx tsc --noEmit`, `npx vitest run`, comm
 Known constraints: the permission classifier refuses production database reads and writes from these sessions, including read-only scripts; anything that needs a live row goes under "Blocked here, for the owner" in HANDOFF instead. A function exported from a "use client" file cannot be called from a server component (this broke one build; shared helpers live in plain modules such as `src/features/duroos/paths.ts`). Dev server: `npm run dev` on port 3100 with `WATCHPACK_POLLING=true`; never `next build` while it runs.
 
 Do next, in this order (plan rows; each is small unless marked):
-1. Rest of row 28 (M): make `src/features/guides/company/CompanyGuide.tsx` a server component and extract the checklist, situation tabs, quiz and cost calculator as small client islands that receive only their slice of `content.ts`.
+1. A real privacy page at `/privacy` (remove the redirect in `src/lib/redirects.ts`; say what the tracker in `src/components/shell/Tracker.tsx` stores, for how long, and how to opt out; link it from the footer and More; respect `navigator.globalPrivacyControl`). Then update `docs/WHAT-CHANGED.md`.
 2. Row 18: TLS verification to Supabase once the owner has added `DATABASE_CA` to Vercel (switch `src/server/db/client.ts` to `{ ca, rejectUnauthorized: true }`).
 3. Content (0h, L): a "Living on the Visitor ID" guide (what works and what does not, one consistent name; zaer and hawiya synonyms are already in search), campus practicals, women's gates and sections at the Haram, a real privacy page at `/privacy` (tracking is on and `/privacy` redirects to `/more`). New facts only from `docs/research/` or official sources; otherwise an open question.
 4. Content (0i, L): Arabic versions of the guides and FAQs, `/ar/mahad`, an Arabic home page.
