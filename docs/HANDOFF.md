@@ -1,5 +1,12 @@
 # MESH handoff (read this first)
 
+## For every AI collaborator: the owner's standing instructions (8 November 2026)
+Read `docs/COORDINATION.md` before anything else, every session. In short: always keep working while you have usage; restart as soon as your usage resets (set this up as an automation); check GitHub for the other agents' work (branches, PRs, issue #13) and continue from where they left off instead of duplicating it; claim work in COORDINATION.md; at the end of each window write what you did and what is left here and in the COORDINATION log; when nothing is left, audit and add tasks; new features need the owner's permission (list them under "Ideas waiting for the owner"); if you feel you are drifting from what the owner wants, stop and say so on issue #13.
+
+## 8 November 2026, late night: cloud agent (branch `claude/gracious-dirac-o8tgu4`)
+- Ask MESH: the desktop agent's panel and API stay; the answering engine underneath is replaced by a stronger one (live duroos for any day or prayer, adhan times, today's date and University dates, sharper retrieval with a 25-question evaluation set, a real "not found", sentence-level fallback with no AI, five free providers with rest periods and a daily cap, a ruling guard and an invented-number check). Request and response shapes unchanged, plus `related` and `lang`.
+- Next for this agent: guides reorganised by topic, fact-checks and new researched guides, then an audit.
+
 ## 8 November 2026, night: second implementation session, 13 more plan rows live (stopped at 93% of the usage window)
 Read `docs/audit/deep-2026-11-08/README.md` first: every row has a status with its commit. This session worked in the worktree `.claude/worktrees/mesh-website-audit-73b810` and pushed every commit to `mine/main` (production, each built on Vercel and checked live) and `origin/revamp`.
 
