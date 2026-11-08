@@ -64,13 +64,14 @@ const GROUPS: string[][] = [
   ["aqeedah", "aqidah", "aqida", "aqeeda", "creed", "tawhid", "tawheed", "عقيده", "توحيد"],
   ["hadith", "hadeeth", "ahadith", "حديث"],
   ["tafsir", "tafseer", "exegesis", "تفسير"],
-  ["exam", "exams", "finals", "final exams", "test", "اختبار", "اختبارات"],
-  ["calendar", "dates", "holiday", "holidays", "vacation", "break", "تقويم", "اجازه"],
+  ["exam", "exams", "finals", "final exams", "test", "اختبار", "اختبارات", "نهائي", "نهائيه"],
+  ["calendar", "key dates", "holiday", "holidays", "vacation", "break", "تقويم", "اجازه"],
   ["eid", "eid al fitr", "eid al adha", "عيد"],
   ["ramadan", "ramadhan", "ramazan", "رمضان"],
   ["bus", "buses", "transport", "shuttle", "حافله", "باص"],
   ["job", "work", "part time", "عمل"],
-  ["cost", "costs", "price", "prices", "expensive", "budget", "living costs", "تكلفه", "سعر", "اسعار", "ميزانيه", "مصاريف"],
+  ["cost", "costs", "price", "prices", "expensive", "budget", "living costs", "cost of living", "تكلفه", "سعر", "اسعار", "ميزانيه", "مصاريف"],
+  ["cost of living", "living costs", "living expenses", "monthly budget", "معيشه", "تكاليف المعيشه"],
   ["makkah", "mecca", "makka", "macca", "مكه"],
   ["train", "haramain", "haramain train", "قطار"],
   ["school", "schools", "madrasa", "مدرسه", "مدارس"],
@@ -88,7 +89,9 @@ export function expandQuery(q: string): string {
   const base = normalize(q);
   const words = base.split(" ").filter(Boolean);
   const extra = new Set<string>();
-  for (const w of words) LOOKUP.get(w)?.forEach((x) => extra.add(x));
+  // Arabic words often carry the article ("المعيشه"): look them up with and without it.
+  const bare = (w: string) => (w.length > 4 && w.startsWith("ال") ? w.slice(2) : w);
+  for (const w of words) (LOOKUP.get(w) ?? LOOKUP.get(bare(w)))?.forEach((x) => extra.add(x));
   for (let i = 0; i < words.length - 1; i++) LOOKUP.get(`${words[i]} ${words[i + 1]}`)?.forEach((x) => extra.add(x));
   words.forEach((w) => extra.delete(w));
   return [base, ...extra].join(" ");

@@ -20,7 +20,7 @@ const TYPE: Record<SearchType, { label: string; ar: string; icon: typeof Search 
 };
 const T = {
   en: { search: "Search", searchMesh: "Search MESH", close: "Close search", popular: "Popular searches", failed: "Search couldn't load. Check your connection and try again.", loading: "Loading search...", none: (q: string) => `Nothing found for “${q}”. Try another word, or ask in the WhatsApp group.`, all: (q: string) => `See all results for “${q}”`, placeholder: "Search duroos, guides, institutes, books... بالعربي أيضًا" },
-  ar: { search: "بحث", searchMesh: "البحث في MESH", close: "إغلاق البحث", popular: "عمليات بحث شائعة", failed: "تعذّر تحميل البحث. تحقّق من الاتصال وحاول مرة أخرى.", loading: "جارٍ تحميل البحث...", none: (q: string) => `لا نتائج لـ «${q}». جرّب كلمة أخرى، أو اسأل في مجموعة واتساب.`, all: (q: string) => `كل النتائج لـ «${q}»`, placeholder: "ابحث عن الدروس والأدلة والمعاهد والكتب... in English too" },
+  ar: { search: "بحث", searchMesh: "البحث في MESH", close: "إغلاق البحث", popular: "عمليات بحث شائعة", failed: "تعذّر تحميل البحث. تحقّق من الاتصال وحاول مرة أخرى.", loading: "جارٍ تحميل البحث...", none: (q: string) => `لا نتائج لـ «${q}». جرّب كلمة أخرى، أو اسأل في مجموعة واتساب.`, all: (q: string) => `كل النتائج لـ «${q}»`, placeholder: "ابحث في الدروس والأدلة والمعاهد والكتب، بالعربية أو الإنجليزية" },
 };
 const POPULAR_AR = ["الإقامة", "الرحيلي", "التأجيل", "تكلفة المعيشة", "البطاقة البنكية", "رخصة القيادة"];
 const ORDER: SearchType[] = ["page", "guide", "faq", "program", "shaykh", "dars", "library", "discount"];
@@ -97,8 +97,10 @@ function Results({ hits, q, cursor, onPick, compact, locale = "en", listId, wide
                         <Icon size={16} />
                       </span>
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate font-semibold leading-snug">{h.title}</span>
-                        {h.subtitle && <span className="block truncate text-sm text-muted">{h.subtitle}</span>}
+                        <span className="block truncate font-semibold leading-snug" dir="auto">{(locale === "ar" && h.titleAr) || h.title}</span>
+                        {(locale === "ar" && h.titleAr ? h.subtitleAr : h.subtitle) && (
+                          <span className="block truncate text-sm text-muted" dir="auto">{locale === "ar" && h.titleAr ? h.subtitleAr : h.subtitle}</span>
+                        )}
                       </span>
                       {i === cursor && <CornerDownLeft size={15} className="mt-2 shrink-0 text-muted" />}
                     </a>

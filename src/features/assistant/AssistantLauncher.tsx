@@ -10,7 +10,7 @@ import type { Locale } from "@/lib/locale";
 // The chat code loads only when someone opens it, so it never slows a page down.
 const AssistantPanel = dynamic(() => import("./AssistantPanel").then((m) => m.AssistantPanel), { ssr: false });
 
-/** The "Ask MESH" button on every public page, opening the assistant in a dialog. */
+/** The "Ask the Meshaykh" button on every public page, opening the assistant in a dialog. */
 export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
   const ar = locale === "ar";
   const path = usePathname() ?? "";
@@ -43,18 +43,18 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
         aria-haspopup="dialog"
       >
         <MessageCircleQuestion size={20} className="text-gold-bright" />
-        <span>{ar ? "اسأل MESH" : "Ask MESH"}</span>
+        <span>{ar ? "مساعد MESH" : "Ask the Meshaykh"}</span>
       </button>
       <dialog
         ref={dialog}
-        aria-label={ar ? "اسأل MESH" : "Ask MESH"}
+        aria-label={ar ? "مساعد MESH" : "Ask the Meshaykh"}
         onClick={(e) => { if (e.target === e.currentTarget) e.currentTarget.close(); }}
         className="m-0 h-[100dvh] max-h-none w-full max-w-none bg-transparent p-0 backdrop:bg-black/40 sm:m-auto sm:h-[min(44rem,90vh)] sm:max-w-xl sm:rounded-3xl"
       >
         <div className="flex h-full flex-col overflow-hidden bg-bg sm:rounded-3xl sm:border sm:border-line" dir={ar ? "rtl" : "ltr"}>
           <div className="lattice flex items-center justify-between gap-3 bg-brand px-4 py-3 text-white">
             <p className="flex items-center gap-2 font-heading text-lg font-semibold">
-              <MessageCircleQuestion size={20} className="text-gold-bright" /> {ar ? "اسأل MESH" : "Ask MESH"}
+              <MessageCircleQuestion size={20} className="text-gold-bright" /> {ar ? "مساعد MESH" : "Ask the Meshaykh"}
             </p>
             <span className="flex items-center gap-1">
               <Link href={ar ? "/ar/assistant" : "/assistant"} onClick={() => dialog.current?.close()} aria-label={ar ? "افتح في صفحة كاملة" : "Open full page"} className="grid size-10 place-items-center rounded-full hover:bg-white/10">

@@ -1,11 +1,30 @@
 # MESH handoff (read this first)
 
-## For every AI collaborator: the owner's standing instructions (8 November 2026)
-Read `docs/COORDINATION.md` before anything else, every session. In short: always keep working while you have usage; restart as soon as your usage resets (set this up as an automation); check GitHub for the other agents' work (branches, PRs, issue #13) and continue from where they left off instead of duplicating it; claim work in COORDINATION.md; at the end of each window write what you did and what is left here and in the COORDINATION log; when nothing is left, audit and add tasks; new features need the owner's permission (list them under "Ideas waiting for the owner"); if you feel you are drifting from what the owner wants, stop and say so on issue #13.
+## Standing instructions from the owner (9 November 2026, binding for every agent)
+1. Always check GitHub for the other agents' updates: `git fetch --all`, the new commits on `main` and on every branch, open pull requests, and the comments on issue 13. The shared files are `docs/AI-LOG.md` (who owns what, and a log of every push) and `docs/HANDOFF.md` (where the work stands). Live discussion goes in issue 13.
+2. Every time the usage window resets, restart automatically (a scheduled task does this on the owner's PC), read where the other agents left off, and continue from there.
+3. Before the window runs out (about 95%), write in this file, on GitHub, what you did (with commit shas) and what still needs doing, and add a line to `docs/AI-LOG.md`.
+4. When there are no tasks left for you or for the other agents, run a critical audit of the site and add the new tasks and ideas, ranked, to this file and to the log.
+5. A new feature the owner has not approved: do not build it. Ask the owner, or record the question under "Waiting for the owner" in `docs/AI-LOG.md`.
+6. Always be working while there is usage. Never sit on standby.
+7. Exception: if you feel you are doing something you are not supposed to, or drifting from what the owner asked, stop at once, tell the owner what the issue is, and go no further.
 
-## 8 November 2026, late night: cloud agent (branch `claude/gracious-dirac-o8tgu4`)
-- Ask MESH: the desktop agent's panel and API stay; the answering engine underneath is replaced by a stronger one (live duroos for any day or prayer, adhan times, today's date and University dates, sharper retrieval with a 25-question evaluation set, a real "not found", sentence-level fallback with no AI, five free providers with rest periods and a daily cap, a ruling guard and an invented-number check). Request and response shapes unchanged, plus `related` and `lang`.
-- Next for this agent: guides reorganised by topic, fact-checks and new researched guides, then an audit.
+## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
+Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
+
+Landed on `main` (all pushed; Vercel builds of 90f632f and 2fcc3b9 green, later ones not yet checked)
+- `afc27c0`, `2f002df`: a privacy page built by mistake was reverted, and the privacy page removed from every instruction file. Owner decision: no privacy page until near launch.
+- `90f632f`: analytics capture arrival (source type, full referrer, UTM, ad click ids), searches typed in the search bar and /search with result counts, device and browser versions, screen, connection, location from Vercel geo headers (no IP stored), visit number, Core Web Vitals and script errors. `analytics_daily` rollups kept for ever, raw 365 days, owner-only (`analytics.view`) dashboard with sections and CSV export, monthly 400-day backup in `.github/workflows/backup.yml`. New columns are added by `ensureAnalytics` (self-healing on the first failed insert, or by the daily cron).
+- `2fcc3b9`, `78860aa`: assistant. The cloud agent's engine (`src/server/assistant/*`) is merged and owns the server side; the desktop agent owns the interface (`src/features/assistant/*`, `/assistant`, `/ar/assistant`, the launcher in `SiteShell`). Name: "Ask the Meshaykh", Arabic "مساعد MESH". Questions are logged as `ask` events on the Visitors page.
+- `aced27b`: `docs/AI-LOG.md` coordination log; three research reports in `docs/research/` (`factcheck-2026-11-09-university.md`, `factcheck-2026-11-09-haram-and-daily-life.md`, `community-2026-11-09.md`) handed to the cloud agent, which owns guide content.
+
+Not finished, pick up here
+1. **Done in 6414c2d** (was: uncommitted Arabic work). An Arabic audit agent was still editing when usage ran out: `src/app/(ar)/*` (more, not-found, opengraph-image), `src/components/VideoEmbed.tsx`, `src/components/shell/BottomNav.tsx`, `LanguageSwitch.tsx`, `src/content/key-dates.ts`, `library-books.ts`, `library.ts`, `src/features/content/ContentPages.tsx`, `FaqExplorer.tsx`, `UniversityCalendar.tsx`, `src/features/library/*` (new `MahadPage.tsx`), `src/features/programs/ProgramPages.tsx`, `src/features/search/SearchUI.tsx`, `src/lib/locale.ts` (includes `assistant` in `AR_TWINS`, needed for the Arabic twin of /assistant), `src/lib/time/hijri.ts`, `tests/language-switch.test.ts`, `tests/locale.test.ts`. Its report should be in `docs/audit/arabic-2026-11-09.md`. Run `npx tsc --noEmit` and `npx vitest run`, review the diff, then commit by explicit path and push.
+2. Check the Vercel status of `78860aa` and `aced27b` and try /assistant live in English and Arabic at 390 px and 1440 px.
+3. Read new comments on issue 13 and update `docs/AI-LOG.md`.
+4. Arabic versions of guide and FAQ bodies: wait for the cloud agent's content edits, agree the storage on issue 13.
+5. Owner: add a free `GROQ_API_KEY` or `ASSISTANT_GEMINI_KEY` in Vercel so the assistant does not share the watcher's Gemini quota (see `src/server/assistant/llm.ts` for every supported key).
+
 
 ## 8 November 2026, night: second implementation session, 13 more plan rows live (stopped at 93% of the usage window)
 Read `docs/audit/deep-2026-11-08/README.md` first: every row has a status with its commit. This session worked in the worktree `.claude/worktrees/mesh-website-audit-73b810` and pushed every commit to `mine/main` (production, each built on Vercel and checked live) and `origin/revamp`.

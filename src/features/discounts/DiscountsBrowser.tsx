@@ -58,10 +58,7 @@ export function DiscountsBrowser({ groups, locale = "en" }: { groups: OfferGroup
                   </span>
                   <div className="min-w-0">
                     {ar ? (
-                      <>
-                        <p className="ar-text font-semibold leading-snug">{o.name}</p>
-                        {o.nameEn && <p className="text-sm text-muted" dir="auto" lang="en">{o.nameEn}</p>}
-                      </>
+                      <p className="ar-text font-semibold leading-snug">{o.name}</p>
                     ) : (
                       <>
                         <p className="font-semibold leading-snug">{o.nameEn ?? o.name}</p>

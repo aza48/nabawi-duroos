@@ -1,45 +1,60 @@
 import { z } from "zod";
 import { getDb } from "@/server/db/client";
+import { fail, ok } from "@/server/api";
+import { allow, clientIp } from "@/server/rate-limit";
 import { askMesh } from "@/server/assistant/answer";
 import { aiAvailable } from "@/server/assistant/llm";
 import { BOT_NAME } from "@/server/assistant/prompt";
-import { allow, clientIp } from "@/server/rate-limit";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 30;
+export const maxDuration = 60;
+
+/** Enough for a real conversation; more than this from one address is a script. */
+export const ASK_LIMITS = [
+  { max: 12, windowMs: 60_000 },
+  { max: 80, windowMs: 3_600_000 },
+];
+
+/** A turn of the conversation so far; `content` (the panel) and `text` (older clients) are both accepted. */
+const turn = z
+  .object({ role: z.enum(["user", "assistant"]), content: z.string().max(4000).optional(), text: z.string().max(4000).optional() })
+  .transform((t) => ({ role: t.role, text: t.content ?? t.text ?? "" }));
 
 const body = z.object({
-  question: z.string().trim().min(2).max(600),
-  locale: z.enum(["en", "ar"]).default("en"),
-  history: z.array(z.object({ role: z.enum(["user", "assistant"]), text: z.string().max(4000) })).max(8).optional(),
+  question: z.string().trim().min(1).max(600),
+  locale: z.enum(["en", "ar"]).optional().default("en"),
+  history: z.array(turn).max(12).optional().default([]),
 });
 
-/** A few questions a minute and a few dozen a day per address keep the free quota for everyone. */
-export const ASK_LIMITS = { perMinute: 6, perDay: 60 };
-
-const json = (data: unknown, status = 200) =>
-  Response.json({ data: status === 200 ? data : null, error: status === 200 ? null : data, generatedAt: new Date().toISOString(), version: 1 }, { status, headers: { "cache-control": "no-store" } });
-
-/** Ask the Meshaykh: `{ question, locale, history? }` in, `{ answer, sources, related, mode, found, lang }` out. */
+/**
+ * Ask the Meshaykh: `{ question, history?, locale? }` in; out, the standard envelope with
+ * `data: { answer, sources[{title, section?, url}], related[{title, url}], mode, found, lang }`.
+ * `answer` uses **bold**, "- " and "1. " lines, and [n] markers that point to sources[n-1].
+ */
 export async function POST(req: Request) {
   const ip = clientIp(req);
-  if (!allow(`ask:${ip}`, ASK_LIMITS.perMinute, 60_000) || !allow(`askday:${ip}`, ASK_LIMITS.perDay, 86_400_000)) {
-    return json("Too many questions for now. Please try again in a little while.", 429);
+  if (!ASK_LIMITS.every((l, i) => allow(`ask${i}:${ip}`, l.max, l.windowMs))) {
+    return fail("too_many_requests", 429, "Please wait a minute before asking again.");
   }
   let input: z.infer<typeof body>;
   try {
     input = body.parse(await req.json());
   } catch {
-    return json("Please type a question of at least two letters.", 400);
+    return fail("bad_request", 400, "Send { question, history? } as JSON; the question must be 1 to 600 characters.");
   }
   try {
-    return json(await askMesh(await getDb(), input));
+    const reply = await askMesh(await getDb(), { question: input.question, history: input.history, locale: input.locale });
+    const res = ok(reply);
+    res.headers.set("Cache-Control", "no-store");
+    return res;
   } catch {
-    return json("Something went wrong. Please try again.", 500);
+    return fail("assistant_error", 500, "Something went wrong. Please try again.");
   }
 }
 
-/** The assistant's name and whether a model can write answers right now (for the app). */
+/** What the assistant is and whether a model can write answers right now (for the app). */
 export async function GET() {
-  return json({ name: BOT_NAME, ai: aiAvailable(), limits: ASK_LIMITS });
+  const res = ok({ name: BOT_NAME, ai: aiAvailable(), limits: ASK_LIMITS });
+  res.headers.set("Cache-Control", "no-store");
+  return res;
 }

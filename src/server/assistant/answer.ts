@@ -25,12 +25,12 @@ import { write, type ChatMessage } from "./llm";
 
 export type Turn = { role: "user" | "assistant"; text: string };
 export type AskInput = { question: string; history?: Turn[]; locale: "en" | "ar" };
-export type Source = { title: string; url: string };
+export type Source = { title: string; section?: string; url: string };
 export type AskResult = {
   answer: string;
   sources: Source[];
   /** Other MESH pages on the same topic, for "you might also want". */
-  related: Source[];
+  related: { title: string; url: string }[];
   /** ai: written by a model; extract: the site's own sentences; live: computed; guard: a fixed reply; none: nothing found. */
   mode: "ai" | "extract" | "live" | "guard" | "none";
   found: boolean;
@@ -91,12 +91,26 @@ export function parseReply(raw: string): Reply | null {
   return text && !text.startsWith("{") ? { answer: text, sources: [], found: true } : null;
 }
 
-const sourceOf = (c: Chunk): Source => ({ title: c.section ? `${c.title}: ${c.section}` : c.title, url: c.url });
+/**
+ * Renumbers the [n] markers in the order they are first used, so [1] is always the first source
+ * shown, and drops markers that point at nothing. Returns the passages cited, in that order.
+ */
+export function citations(text: string, passages: Chunk[]): { text: string; cited: number[] } {
+  const cited: number[] = [];
+  const out = text.replace(/\s?\[(\d+(?:\s*,\s*\d+)*)\]/g, (_m, nums: string) => {
+    const ns = nums.split(",").map((n) => Number(n.trim()) - 1).filter((n) => n >= 0 && n < passages.length && passages[n].id !== "live-today");
+    ns.forEach((n) => !cited.includes(n) && cited.push(n));
+    return ns.length ? ns.map((n) => ` [${cited.indexOf(n) + 1}]`).join("") : "";
+  });
+  return { text: out.trim(), cited };
+}
+
+const sourceOf = (c: Chunk): Source => ({ title: c.title, ...(c.section ? { section: c.section } : {}), url: c.url });
 const page = (url: string) => url.split("#")[0];
 
-function relatedOf(passages: Passage[], used: Set<string>): Source[] {
+function relatedOf(passages: Passage[], used: Set<string>): AskResult["related"] {
   const seen = new Set(used);
-  const out: Source[] = [];
+  const out: AskResult["related"] = [];
   for (const p of passages) {
     if (seen.has(page(p.url)) || !(p.kind === "faq" || p.kind === "guide")) continue;
     seen.add(page(p.url));
@@ -177,10 +191,15 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
     const written = await writer(messages).catch(() => null);
     const reply = written ? parseReply(written.text) : null;
     if (reply) {
-      const text = cleanText(cleanDashes(reply.answer.replace(/\s?\[\d+(?:\s*,\s*\d+)*\]/g, "")), lang);
-      if (unsupportedNumbers(text, context, q).length < 2) {
-        const used = reply.sources.filter((n) => n >= 1 && n <= context.length).map((n) => context[n - 1]).filter((c) => c.id !== "live-today");
-        const sources = reply.found ? uniqueSources(used.length ? used : passages.slice(0, 2)) : [];
+      const marked = citations(cleanText(cleanDashes(reply.answer), lang), context);
+      if (unsupportedNumbers(marked.text, context, q).length < 2) {
+        // Sources in the order of the [n] markers; with no markers, the ones the model listed.
+        const listed = reply.sources.filter((n) => n >= 1 && n <= context.length).map((n) => n - 1).filter((i) => context[i].id !== "live-today");
+        const order = marked.cited.length ? [...marked.cited, ...listed.filter((i) => !marked.cited.includes(i))] : listed;
+        const used = order.map((i) => context[i]);
+        // Markers number the sources one to one, so sources are not merged by page here.
+        const sources = reply.found ? (marked.cited.length ? used.map(sourceOf) : uniqueSources(used.length ? used : passages.slice(0, 2))) : [];
+        const text = reply.found ? marked.text : marked.text.replace(/\s?\[\d+\]/g, "");
         const result: AskResult = { answer: text, sources, related: relatedOf(found, new Set(sources.map((s) => page(s.url)))), mode: "ai", found: reply.found, lang };
         if (!reply.found) void noteUnanswered(db, q);
         else if (cacheable) {

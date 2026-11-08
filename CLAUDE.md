@@ -5,7 +5,7 @@
 MESH (medinahub.org) is run by Muhaymin (GitHub `iumuhaymin`), the owner and final reviewer. Contributors work through their own Claude agents; this file is what those agents read first.
 
 ## Read before changing anything
-0. `docs/COORDINATION.md`: several AI agents work on MESH at once. Read it first every session, claim your work there, check GitHub (branches, PRs, issue #13) for the others' work, and follow the owner's standing instructions in it (always keep working while you have usage, restart after each reset, hand off at the end, ask before building new features).
+0. `docs/AI-LOG.md` and GitHub issue 13: which agent owns which files right now, binding owner decisions, and the log every agent appends to after each push. Claim an area there before you start, and never edit another agent's area.
 1. `CONTRIBUTING.md`: setup, the checks to run, and the house rules.
 2. `docs/HANDOFF.md`: stack, map of the code, commands, gotchas and the current ranked next steps.
 3. `docs/audit/AUDIT.md` and `docs/audit/ADMIN-AUDIT.md` for known open issues.

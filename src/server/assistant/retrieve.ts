@@ -7,8 +7,10 @@ const STOP = new Set(
   (
     "a an and are as at be been but by can could did do does doing for from get got had has have how i if in into is it its me my of on or our should so than that the their them then there these they this to too up us was we were what when where which who whom why will with would you your " +
     "please tell know need want any some much many about anyone also just like there's whats what's hi hello salam assalamu alaikum asalamualaikum jazakallah thanks thank madinah medina " +
-    "ما ماذا كيف هل من في على الى إلى عن مع هو هي انا أنا او أو ثم لو كان يكون اريد أريد ممكن عندي لي"
-  ).split(" ")
+    "ما ماذا كيف هل من في على الى إلى عن مع هو هي انا أنا او أو ثم لو كان يكون اريد أريد ممكن عندي لي كم اين متى المدينه المنوره مدينه"
+  )
+    .split(" ")
+    .map((w) => normalize(w))
 );
 
 export type Passage = Chunk & { score: number };
@@ -87,11 +89,18 @@ export function coverage(q: string, c: Pick<Chunk, "title" | "section" | "text">
   return hits(terms, c) / terms.length;
 }
 
-/** A topic word counts when it, or one of its synonyms (so an Arabic word can match English text), is in the passage. */
-function hits(terms: string[], c: Pick<Chunk, "title" | "section" | "text">): number {
-  const hay = ` ${normalize(`${c.title} ${c.section ?? ""} ${c.text}`)} `;
+/**
+ * How many topic words are in the text. A word counts when it, or one of its synonyms, is there,
+ * so an Arabic question can match English text.
+ */
+export function termHits(terms: string[], text: string): number {
+  const hay = ` ${normalize(text)} `;
   const has = (w: string) => hay.includes(w.length <= 3 ? ` ${w} ` : w) || (w.length > 4 && hay.includes(w.slice(0, -1)));
   return terms.filter((t) => has(t) || expandQuery(t).split(" ").slice(1).some((x) => x.length > 2 && has(x))).length;
+}
+
+function hits(terms: string[], c: Pick<Chunk, "title" | "section" | "text">): number {
+  return termHits(terms, `${c.title} ${c.section ?? ""} ${c.text}`);
 }
 
 /**

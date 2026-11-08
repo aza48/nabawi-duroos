@@ -141,11 +141,11 @@ describe("assistant answers", () => {
     expect(r.answer).not.toMatch(/[\u2014\u2013]/);
   });
 
-  it("uses the model's answer and the passages it names, without long dashes or markers", async () => {
-    const r = await ask("How much is rent for a flat?", { writer: async () => ({ text: JSON.stringify({ answer: "Rent varies by area \u2014 ask early [1].", sources: [1, 99], found: true }) }) });
+  it("uses the model's answer, renumbers its [n] markers to match the sources, and removes long dashes", async () => {
+    const r = await ask("How much is rent for a flat?", { writer: async () => ({ text: JSON.stringify({ answer: "Rent varies by area [2] \u2014 ask early [1, 99].", sources: [2, 1], found: true }) }) });
     expect(r.mode).toBe("ai");
-    expect(r.answer).toBe("Rent varies by area, ask early.");
-    expect(r.sources).toHaveLength(1);
+    expect(r.answer).toBe("Rent varies by area [1], ask early [2].");
+    expect(r.sources).toHaveLength(2);
   });
 
   it("rejects an answer that brings in numbers of its own", async () => {

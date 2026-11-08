@@ -86,3 +86,27 @@ export function hijriIsoBounds(year: number, month: number, day: number): string
   if (lastInMonth) return lastInMonth;
   throw new Error(`Cannot resolve Hijri date ${day}/${month}/${year}`);
 }
+
+/** Month names as the calendar content writes them, longest first so "Rabi al-Awwal" wins over "Rabi". */
+const HIJRI_TEXT_AR: [RegExp, string][] = [
+  [/Rabi al-Awwal/g, "ربيع الأول"],
+  [/Rabi al-(Thani|Akhir)/g, "ربيع الآخر"],
+  [/Jumada al-(Ula|Awwal)/g, "جمادى الأولى"],
+  [/Jumada al-(Akhirah|Thani)/g, "جمادى الآخرة"],
+  [/Dhul? ?Qa'?dah|Dhu al-Qa'?dah/g, "ذي القعدة"],
+  [/Dhul? ?Hijjah|Dhu al-Hijjah/g, "ذي الحجة"],
+  [/Muharram/g, "محرم"],
+  [/Safar/g, "صفر"],
+  [/Rajab/g, "رجب"],
+  [/Sha'?ban/g, "شعبان"],
+  [/Ramadan/g, "رمضان"],
+  [/Shawwal/g, "شوال"],
+];
+
+/** "19 Safar to 19 Rabi al-Awwal 1448" becomes "١٩ صفر إلى ١٩ ربيع الأول ١٤٤٨هـ". */
+export function hijriTextAr(s: string): string {
+  let out = s;
+  for (const [re, ar] of HIJRI_TEXT_AR) out = out.replace(re, ar);
+  out = out.replace(/\bto\b/g, "إلى");
+  return `${toArabicDigits(out)}هـ`;
+}

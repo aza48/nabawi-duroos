@@ -57,7 +57,7 @@ function tableText(table: HTMLElement): string {
     .slice(headed ? 1 : 0)
     .filter((r) => r.some(Boolean))
     .map((r) => {
-      const rest = r.slice(1).map((c, i) => (head[i + 1] ? `${head[i + 1]} ${c}` : c)).filter((x) => x.trim());
+      const rest = r.slice(1).map((c, i) => (!c.trim() ? "" : head[i + 1] ? `${head[i + 1]}: ${c}` : c)).filter(Boolean);
       return `• ${r[0]}${rest.length ? `: ${rest.join("; ")}` : ""}`;
     })
     .join("\n");
