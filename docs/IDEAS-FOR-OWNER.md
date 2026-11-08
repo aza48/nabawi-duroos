@@ -6,6 +6,7 @@ Answer these when you can; each answer lets MESH state something with authority 
 - **Deferral:** the University page says new students can defer up to 2 years, but students on the new electronic study visa report no deferral. Which should MESH say?
 - **Housing:** the 2025 intake was told housing is not included, but later reports say unmarried students get free housing. Which is current?
 - **Family residency deposit (istiqdam):** quoted as 10,000 SAR (Jan 2025) and 30,000 SAR (Nov 2025). Which is current?
+- **Al-Fusha Academy (Study page):** no Arabic-for-foreigners "Al-Fusha Academy" could be found; alfusha.edu.sa is Al-Fusha Private Schools (nursery to secondary). The group chat lists an institute called "Fusha" at 1,000 to 2,400 SAR. What is its exact name and contact, and does it teach sisters?
 - **Second semester start:** confirm 20 December 2026 against the official calendar image.
 
 ## Shaykh photos

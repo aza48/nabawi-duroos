@@ -20,6 +20,8 @@ export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids
   const ar = locale === "ar";
   const [day, setDay] = useState<number>(6);
   const [masjid, setMasjid] = useState<string>("all");
+  const [prayer, setPrayer] = useState<string>("all");
+  const shown = PRAYERS.filter((p) => prayer === "all" || p === prayer);
   const [today, setToday] = useState<number>(-1);
   useEffect(() => {
     const d = riyadhWeekday();
@@ -35,7 +37,7 @@ export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids
   }, [week, masjids]);
 
   const rows = (week.byDay[day] ?? []).filter((r) => masjid === "all" || r.masjidId === masjid);
-  const unstated = week.daysNotStated.filter((r) => masjid === "all" || r.masjidId === masjid);
+  const unstated = week.daysNotStated.filter((r) => (masjid === "all" || r.masjidId === masjid) && (prayer === "all" || r.prayer === prayer));
   const base = ar ? "/ar/duroos" : "/duroos";
 
   return (
@@ -72,10 +74,26 @@ export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids
         ))}
       </div>
 
-      <WeekGrid week={week} masjid={masjid} today={today} locale={locale} base={base} />
+      <div className="-mx-4 flex gap-1.5 overflow-x-auto px-4 pb-3 [scrollbar-width:none]" role="group" aria-label={ar ? "الصلاة" : "Prayer"}>
+        {["all", ...PRAYERS].map((p) => (
+          <button
+            key={p}
+            type="button"
+            onClick={() => setPrayer(p)}
+            aria-pressed={prayer === p}
+            className={`shrink-0 rounded-full px-3.5 py-1.5 text-xs font-semibold transition ${
+              prayer === p ? "bg-ink text-bg" : "border border-line bg-card text-muted"
+            }`}
+          >
+            {p === "all" ? (ar ? "كل الأوقات" : "All times") : `${t(locale, "after")} ${t(locale, p as (typeof PRAYERS)[number])}`}
+          </button>
+        ))}
+      </div>
+
+      <WeekGrid week={week} masjid={masjid} prayers={shown} today={today} locale={locale} base={base} />
 
       <div className="lg:hidden">
-      {PRAYERS.map((p) => {
+      {shown.map((p) => {
         const group = rows.filter((r) => r.prayer === p);
         if (!group.length) return null;
         return (
@@ -91,7 +109,7 @@ export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids
           </section>
         );
       })}
-      {rows.length === 0 && <p className="card p-4 text-center text-sm text-muted">{t(locale, "noLessonsToday")}</p>}
+      {rows.filter((r) => shown.includes(r.prayer)).length === 0 && <p className="card p-4 text-center text-sm text-muted">{t(locale, "noLessonsToday")}</p>}
       </div>
 
       {unstated.length > 0 && (
@@ -126,7 +144,7 @@ function Row({ r, locale, base }: { r: ScheduleRow; locale: Locale; base: string
 /** Madinah's week starts on Saturday. */
 const WEEK_ORDER = [6, 0, 1, 2, 3, 4, 5];
 
-function WeekGrid({ week, masjid, today, locale, base }: { week: Week; masjid: string; today: number; locale: Locale; base: string }) {
+function WeekGrid({ week, masjid, prayers, today, locale, base }: { week: Week; masjid: string; prayers: readonly (typeof PRAYERS)[number][]; today: number; locale: Locale; base: string }) {
   const ar = locale === "ar";
   return (
     <div className="hidden overflow-hidden rounded-3xl border border-line bg-card shadow-[var(--shadow)] lg:block">
@@ -141,7 +159,7 @@ function WeekGrid({ week, masjid, today, locale, base }: { week: Week; masjid: s
             {d === today && <span className="block text-[11px] font-medium opacity-80">{t(locale, "today")}</span>}
           </div>
         ))}
-        {PRAYERS.map((p) => (
+        {prayers.map((p) => (
           <div key={p} className="contents">
             <div className="flex flex-col justify-center border-b border-line bg-bg-2 px-3 py-4">
               <span className="text-xs text-muted">{t(locale, "after")}</span>
