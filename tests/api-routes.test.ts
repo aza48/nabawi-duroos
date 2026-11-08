@@ -70,3 +70,25 @@ describe("/api/v1 for a native app", () => {
     for (const x of s) for (const k of ["checkUrl", "shaykhId", "masjidId", "id"]) expect(x).not.toHaveProperty(k);
   });
 });
+
+describe("watch cron without an AI key", () => {
+  it("still runs the parts that need no AI and says the key is missing", async () => {
+    db = await resetTestDb();
+    await importLegacy(db);
+    vi.stubEnv("CRON_SECRET", "test-secret");
+    vi.stubEnv("GEMINI_API_KEY", "");
+    const fetchMock = vi.fn(async () => new Response("<html></html>", { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    try {
+      const { GET } = await import("@/app/api/cron/watch/route");
+      const res = await GET(new Request("https://medinahub.org/api/cron/watch", { headers: { authorization: "Bearer test-secret" } }));
+      expect(res.status).toBe(200);
+      const body = await res.json();
+      expect(body).toMatchObject({ ok: true, warning: "GEMINI_API_KEY is not set" });
+      expect(fetchMock).toHaveBeenCalled();
+    } finally {
+      vi.unstubAllGlobals();
+      vi.unstubAllEnvs();
+    }
+  });
+});
