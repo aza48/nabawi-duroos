@@ -50,7 +50,7 @@ export function sistersRoute(locale: Locale) {
         <div className="shell pt-6 md:pt-10">
           <DuroosNav locale={locale} />
           <section className="lattice mt-6 overflow-hidden rounded-3xl bg-brand px-6 py-8 text-white md:px-10 md:py-12">
-            <p className="text-sm font-semibold tracking-wide text-gold-bright">{ar ? "للأخوات" : "For sisters"}</p>
+            <p className="text-sm font-semibold tracking-wide text-white/90">{ar ? "للأخوات" : "For sisters"}</p>
             <h1 className="mt-2 font-heading text-4xl font-bold md:text-5xl">{ar ? "دروس الأخوات" : "Sisters' duroos"}</h1>
             <p className="mt-3 max-w-2xl text-white/85">
               {ar

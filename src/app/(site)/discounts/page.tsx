@@ -7,7 +7,7 @@ import { DiscountsBrowser } from "@/features/discounts/DiscountsBrowser";
 export const metadata: Metadata = {
   title: "Student discounts",
   description: "Discounts for Islamic University students and staff at clinics, schools, car rentals, restaurants, gyms, opticians and hotels in Madinah.",
-  alternates: { canonical: "/discounts" },
+  alternates: { canonical: "/discounts", languages: { en: "/discounts", ar: "/ar/discounts", "x-default": "/discounts" } },
 };
 
 export default function Page() {

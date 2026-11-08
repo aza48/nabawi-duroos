@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const p = PROGRAMS.find((x) => x.slug === slug);
-  return p ? { title: metaTitle(p.name), description: metaDescription(p.tagline), alternates: { canonical: `/programs/${p.slug}` } } : {};
+  return p ? { title: metaTitle(p.name), description: metaDescription(p.tagline), alternates: { canonical: `/programs/${p.slug}`, languages: { en: `/programs/${p.slug}`, ar: `/ar/programs/${p.slug}`, "x-default": `/programs/${p.slug}` } } } : {};
 }
 
 export default async function Page({ params }: Props) {

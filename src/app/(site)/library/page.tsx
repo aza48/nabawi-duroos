@@ -7,7 +7,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "The Jamiah library",
   description: "Islamic University course texts for every college, Ma'had books and guides, and official links.",
-  alternates: { canonical: "/library" },
+  alternates: { canonical: "/library", languages: { en: "/library", ar: "/ar/library", "x-default": "/library" } },
 };
 
 export default async function Page() {

@@ -312,7 +312,7 @@ export function UpdatesPage({ current, history, locale }: { current: Announcemen
       <p className="mt-1 whitespace-pre-line text-sm leading-relaxed">
         <Linkified text={ar ? a.bodyAr : a.bodyEn} />
       </p>
-      {a.imageUrl && <Image src={a.imageUrl} alt="" width={600} height={800} className="mt-3 h-auto w-full rounded-xl" />}
+      {a.imageUrl && <Image src={a.imageUrl} alt="" width={600} height={800} unoptimized={/^https?:/.test(a.imageUrl)} className="mt-3 h-auto w-full rounded-xl" />}
       <p className="mt-2 flex flex-wrap gap-x-2 text-xs text-muted">
         {a.eventDate && (
           <span>

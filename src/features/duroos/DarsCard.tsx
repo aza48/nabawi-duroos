@@ -35,7 +35,7 @@ export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: L
           {live ? <LiveBadge locale={locale} href={liveHref} /> : l.status !== "on" ? <StatusTag status={l.status} locale={locale} /> : null}
         </span>
       </div>
-      <Link href={duroosPath(locale, `/lesson/${l.slug}`)} className="mt-1.5 block flex-1">
+      <Link href={duroosPath(locale, `/lesson/${l.slug}`)} className="mt-1 flex min-h-10 flex-1 flex-col justify-center">
         <p className={`ar-text text-[19px] leading-snug ${cancelled ? "line-through decoration-cancel/60" : ""}`}>{l.bookAr}</p>
         {!ar && <p className="mt-0.5 text-sm leading-snug text-muted">{l.bookEn}</p>}
       </Link>

@@ -8,7 +8,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Questions and answers",
   description: "Verified answers to the questions English-speaking students in Madinah ask most.",
-  alternates: { canonical: "/ask" },
+  alternates: { canonical: "/ask", languages: { en: "/ask", ar: "/ar/ask", "x-default": "/ask" } },
 };
 
 export default async function Page() {

@@ -43,7 +43,7 @@ export default async function Page() {
       <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], ["Getting settled", "/guides#getting-settled"], [TITLE, `/guides/${SLUG}`]])]} />
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-16">
-          <Link href="/guides#getting-settled" className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white">
+          <Link href="/guides#getting-settled" className="inline-flex min-h-10 items-center gap-2 text-sm text-white/75 hover:text-white">
             <Briefcase size={15} className="text-gold-bright" /> Getting settled · Work and business
           </Link>
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl">{TITLE}</h1>
@@ -52,7 +52,7 @@ export default async function Page() {
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
             <span className="flex items-center gap-1.5"><BookOpen size={15} /> 15 min read</span>
             <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {steps.length} steps to tick off</span>
-            <span className="flex items-center gap-1.5 text-gold-bright"><CircleCheck size={15} /> Checked {CHECKED}</span>
+            <span className="flex items-center gap-1.5 text-gold-pale"><CircleCheck size={15} /> Checked {CHECKED}</span>
           </p>
         </div>
       </section>

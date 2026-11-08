@@ -4,7 +4,7 @@ import { getWhatsAppUrl } from "@/server/settings";
 import { MorePage } from "@/features/content/ContentPages";
 
 export const revalidate = 300;
-export const metadata: Metadata = { title: "More", alternates: { canonical: "/more" } };
+export const metadata: Metadata = { title: "More", alternates: { canonical: "/more", languages: { en: "/more", ar: "/ar/more", "x-default": "/more" } } };
 
 export default async function Page() {
   return <MorePage whatsappUrl={await getWhatsAppUrl(await getDb())} />;

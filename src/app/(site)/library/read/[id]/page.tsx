@@ -6,6 +6,10 @@ import { ReaderView } from "@/features/library/CoursePages";
 import { addBookHref } from "@/features/library/add-link";
 
 export const revalidate = 3600;
+/** Rendered on first visit and cached for an hour; without this a dynamic segment is never ISR-cached. */
+export function generateStaticParams(): { id: string }[] {
+  return [];
+}
 type Props = { params: Promise<{ id: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

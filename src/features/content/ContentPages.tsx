@@ -168,7 +168,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
             return (
               <a key={st.id} href={`#${st.id}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
                 <Icon size={16} className="text-gold-bright" /> {st.label}
-                <span className="text-white/60 tabular">{st.items.length}</span>
+                <span className="text-white/75 tabular">{st.items.length}</span>
               </a>
             );
           })}
@@ -258,7 +258,7 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
             {!isCalendar && <span className="flex items-center gap-1.5"><BookOpen size={15} /> {ar ? `${guide.readingMinutes} دقائق للقراءة` : `${guide.readingMinutes} min read`}</span>}
             {steps > 0 && <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {ar ? `${steps} خطوات` : `${steps} steps to tick off`}</span>}
-            {verified(guide.lastVerifiedAt, locale) && <span className="flex items-center gap-1.5 text-gold-bright"><CircleCheck size={15} /> {verified(guide.lastVerifiedAt, locale)}</span>}
+            {verified(guide.lastVerifiedAt, locale) && <span className="flex items-center gap-1.5 text-gold-pale"><CircleCheck size={15} /> {verified(guide.lastVerifiedAt, locale)}</span>}
           </p>
         </div>
       </section>

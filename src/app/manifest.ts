@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Live duroos schedules, guides and answers for English-speaking students in Madinah.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f6f1e7",
-    theme_color: "#1e4d3b",
+    background_color: "#f8f6f1",
+    theme_color: "#145c3e",
     icons: [
       { src: "/icon", sizes: "512x512", type: "image/png", purpose: "any" },
       { src: "/apple-icon", sizes: "180x180", type: "image/png" },

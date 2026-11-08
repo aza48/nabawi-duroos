@@ -18,7 +18,7 @@ const SIZE = { sm: "size-12 text-lg rounded-xl", md: "size-16 text-xl rounded-2x
 export function ShaykhBadge({ nameAr, photo, size = "md" }: { nameAr: string; photo?: string | null; size?: keyof typeof SIZE }) {
   if (photo) {
     const px = size === "lg" ? 112 : size === "md" ? 64 : 48;
-    return <Image src={photo} alt="" width={px} height={px} className={`${SIZE[size]} shrink-0 object-cover`} />;
+    return <Image src={photo} alt="" width={px} height={px} unoptimized={/^https?:/.test(photo)} className={`${SIZE[size]} shrink-0 object-cover`} />;
   }
   return (
     <span className={`lattice grid shrink-0 place-items-center overflow-hidden bg-brand-deep font-arabic font-bold text-gold-bright ${SIZE[size]}`} aria-hidden="true">

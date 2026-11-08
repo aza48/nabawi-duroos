@@ -19,11 +19,10 @@ export const metadata: Metadata = {
   openGraph: { siteName: "MESH", type: "website", locale: "en_GB" },
   twitter: { card: "summary_large_image" },
   keywords: ["Madinah", "Medina", "Islamic University of Madinah", "IUM", "duroos", "Masjid an-Nabawi", "Arabic in Madinah", "students in Madinah", "living in Madinah", "hijrah to Madinah", "MESH"],
-  alternates: { languages: { en: "/", ar: "/ar/duroos" } },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f6f1e7",
+  themeColor: "#f8f6f1",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",

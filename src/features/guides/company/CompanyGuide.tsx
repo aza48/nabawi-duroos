@@ -280,7 +280,7 @@ function TypeFinder() {
         </div>
         {p ? (
           <div className="rounded-2xl bg-brand p-5 text-white" aria-live="polite">
-            <p className="text-sm font-semibold uppercase tracking-wide text-gold-bright">Best fit</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-gold-pale">Best fit</p>
             <p className="mt-1 font-heading text-3xl font-bold">{p.name}</p>
             <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
               <div><dt className="text-white/60">Good for</dt><dd className="mt-0.5">{p.bestFor}</dd></div>

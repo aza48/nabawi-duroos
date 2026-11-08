@@ -28,7 +28,7 @@ export function LiveBadge({ locale, href }: { locale: Locale; href?: string | nu
   );
   const cls = "inline-flex items-center gap-1.5 rounded-full bg-cancel-bg px-2 py-0.5 text-[10.5px] font-bold tracking-wide text-live";
   return href ? (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+    <a href={href} target="_blank" rel="noopener noreferrer" className={`${cls} relative before:absolute before:-inset-2.5 before:content-['']`}>
       {inner}
     </a>
   ) : (

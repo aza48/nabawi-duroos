@@ -136,10 +136,10 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
           </p>
           <span className="flex items-center gap-3">
             <span className="sm:hidden"><ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} /></span>
-            <span className="text-xs text-white/50">medinahub.org</span>
+            <span className="text-xs text-white/70">medinahub.org</span>
           </span>
         </div>
-        <p className="shell pb-5 text-xs leading-relaxed text-white/50">
+        <p className="shell pb-5 text-xs leading-relaxed text-white/70">
           {ar
             ? "© مركز MESH. محتوى الموقع محمي بحقوق النشر."
             : "© MESH. All content is protected by copyright."}

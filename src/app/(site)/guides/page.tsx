@@ -8,7 +8,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Guides",
   description: "Step-by-step guides for English-speaking students in Madinah: arriving, settling in, family life and leaving.",
-  alternates: { canonical: "/guides" },
+  alternates: { canonical: "/guides", languages: { en: "/guides", ar: "/ar/guides", "x-default": "/guides" } },
 };
 
 export default async function Page() {
