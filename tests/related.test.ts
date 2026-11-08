@@ -25,3 +25,12 @@ describe("related", () => {
     expect(r).toHaveLength(1);
   });
 });
+
+import { shortName } from "@/features/duroos/ScheduleBrowser";
+describe("shortName", () => {
+  it("drops whole titles only", () => {
+    expect(shortName("Shaykhah Barakah bint Mudayf al-Talhi")).toBe("Barakah al-Talhi");
+    expect(shortName("Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli")).toBe("Sulayman al-Ruhayli");
+    expect(shortName("Shaykh Ali Battin")).toBe("Ali Battin");
+  });
+});

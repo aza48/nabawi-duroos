@@ -1,16 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, CalendarDays, Clock3, ExternalLink, MapPin, Radio } from "lucide-react";
+import { BookOpen, CalendarDays, ChevronRight, Clock3, ExternalLink, MapPin, Radio } from "lucide-react";
 import type { getLesson, getShaykh, AnnouncementRow, StreamRow } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { formatClock, riyadhDateIso } from "@/lib/time/riyadh";
 import { formatHijri } from "@/lib/time/hijri";
 import { prayerTimes } from "@/lib/time/prayer";
-import { EmptyState } from "@/components/ui";
+import { Breadcrumbs, EmptyState } from "@/components/ui";
 import { DuroosNav } from "./DuroosNav";
 import { DAY_LONG_KEYS, publicLabel, t } from "./strings";
 import { SistersTag } from "./StatusTag";
 import { duroosPath } from "./DarsCard";
+import { mapUrl } from "@/lib/maps";
 import { CalendarButton } from "./CalendarButton";
 import { AlertsButton } from "./AlertsButton";
 import { ShaykhBadge } from "./ShaykhBadge";
@@ -30,7 +31,10 @@ export function ShaykhPage({ shaykh: s, locale }: { shaykh: Shaykh; locale: Loca
   return (
     <>
       <section className="lattice overflow-hidden bg-brand text-white">
-        <div className="shell flex flex-col gap-6 py-10 sm:flex-row sm:items-center md:py-14">
+        <div className="shell pt-6 md:pt-8">
+          <Breadcrumbs tone="band" rtl={ar} items={[[ar ? "الرئيسية" : "Home", ar ? "/ar" : "/"], [ar ? "الدروس" : "Duroos", duroosPath(locale)], [ar ? "الجدول الأسبوعي" : "Weekly schedule", duroosPath(locale, "/schedule")]]} />
+        </div>
+        <div className="shell flex flex-col gap-6 pt-6 pb-10 sm:flex-row sm:items-center md:pb-14">
           <ShaykhBadge nameAr={s.nameAr} photo={s.photo} size="lg" />
           <div className="min-w-0">
             <h1 className="font-heading text-3xl font-bold leading-tight md:text-5xl">{ar ? s.nameAr : s.nameEn}</h1>
@@ -107,7 +111,18 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
   return (
     <div data-variant={l.audience === "women" ? "sisters" : undefined}>
       <section className="lattice overflow-hidden bg-brand text-white">
-        <div className="shell py-10 md:py-14">
+        <div className="shell pt-6 pb-10 md:pt-8 md:pb-14">
+          <div className="mb-6">
+            <Breadcrumbs
+              tone="band"
+              rtl={ar}
+              items={[
+                [ar ? "الرئيسية" : "Home", ar ? "/ar" : "/"],
+                [ar ? "الدروس" : "Duroos", duroosPath(locale)],
+                [ar ? l.shaykh.nameAr : l.shaykh.nameEn, duroosPath(locale, `/shaykh/${l.shaykh.slug}`)],
+              ]}
+            />
+          </div>
           {l.audience === "women" && <p className="mb-3"><SistersTag locale={locale} /></p>}
           <p className="ar-text text-3xl font-bold leading-snug md:text-5xl">{l.bookAr}</p>
           {!ar && <h1 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-4xl">{l.bookEn}</h1>}
@@ -125,8 +140,8 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
           <div>
             <dl className="divide-y divide-line overflow-hidden rounded-3xl border border-line bg-card">
               <Item icon={<CalendarDays size={18} />} label={t(locale, "days")} value={daysText(l, locale)} />
-              <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={`${t(locale, "adhan")} ${formatClock(adhan, locale)}. ${t(locale, "afterIqamah")}.`} />
-              <Item icon={<MapPin size={18} />} label={t(locale, "location")} value={placeText(ar ? l.masjid.nameAr : l.masjid.nameEn, ar ? l.locationAr : l.locationEn, ar)} />
+              <Item icon={<Clock3 size={18} />} label={`${t(locale, "after")} ${t(locale, l.prayer)}`} value={`${t(locale, "adhan")} ${formatClock(adhan, locale)}. ${t(locale, "afterIqamah")}.`} link={{ href: duroosPath(locale, `/schedule?prayer=${l.prayer}`), label: ar ? `كل الدروس بعد ${t(locale, l.prayer)}` : `All duroos after ${t(locale, l.prayer)}`, internal: true }} />
+              <Item icon={<MapPin size={18} />} label={t(locale, "location")} value={placeText(ar ? l.masjid.nameAr : l.masjid.nameEn, ar ? l.locationAr : l.locationEn, ar)} link={{ href: mapUrl(l.masjid.nameEn), label: ar ? "افتح في الخرائط" : "Open in Maps" }} />
             </dl>
             <h2 className="mt-10 mb-3 font-heading text-2xl font-bold">{t(locale, "history")}</h2>
             {l.history.length === 0 ? (
@@ -203,13 +218,26 @@ export function placeText(masjid: string, spot: string | null | undefined, ar = 
   return `${masjid}${ar ? "، " : ", "}${spot}`;
 }
 
-function Item({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function Item({ icon, label, value, link }: { icon: React.ReactNode; label: string; value: string; link?: { href: string; label: string; internal?: boolean } }) {
   return (
     <div className="flex gap-4 p-4 md:p-5">
       <span className="mt-0.5 text-primary">{icon}</span>
       <div>
         <dt className="text-sm font-semibold text-muted">{label}</dt>
         <dd className="mt-0.5">{value}</dd>
+        {link && (
+          <dd className="mt-1.5">
+            {link.internal ? (
+              <Link href={link.href} className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+                {link.label} <ChevronRight size={14} aria-hidden="true" className="rtl:rotate-180" />
+              </Link>
+            ) : (
+              <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+                {link.label} <ExternalLink size={13} aria-hidden="true" />
+              </a>
+            )}
+          </dd>
+        )}
       </div>
     </div>
   );

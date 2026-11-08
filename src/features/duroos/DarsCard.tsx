@@ -5,6 +5,7 @@ import type { Locale } from "@/lib/locale";
 import { Countdown } from "./Countdown";
 import { LiveBadge, SistersTag, StatusTag } from "./StatusTag";
 import { publicLabel } from "./strings";
+import { mapUrl } from "@/lib/maps";
 
 export function duroosPath(locale: Locale, rest = ""): string {
   return `${locale === "ar" ? "/ar" : ""}/duroos${rest}`;
@@ -20,7 +21,7 @@ export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: L
   const edge = live ? "before:bg-live" : cancelled ? "before:bg-cancel" : l.status !== "on" ? "before:bg-amber" : "before:bg-primary/70";
   return (
     <article
-      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-card p-4 ps-5 shadow-[var(--shadow)] transition-colors hover:border-primary/40 before:absolute before:inset-y-0 before:start-0 before:w-1 ${edge} ${
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-card p-4 ps-5 shadow-[var(--shadow)] lift hover:border-primary/40 before:absolute before:inset-y-0 before:start-0 before:w-1 ${edge} ${
         done ? "opacity-60" : ""
       } ${live ? "ring-2 ring-live/40" : ""}`}
     >
@@ -41,7 +42,16 @@ export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: L
         <span className="flex min-w-0 items-center gap-1">
           <MapPin size={13} className="shrink-0" />
           <span className="truncate">
-            {ar ? l.masjid.shortAr : l.masjid.shortEn}, {ar ? l.locationAr : l.locationEn}
+            <a
+              href={mapUrl(l.masjid.nameEn)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-ink/80 underline decoration-line underline-offset-2 hover:text-primary hover:decoration-primary"
+              aria-label={ar ? `${l.masjid.shortAr} على الخريطة` : `${l.masjid.shortEn} on the map`}
+            >
+              {ar ? l.masjid.shortAr : l.masjid.shortEn}
+            </a>
+            , {ar ? l.locationAr : l.locationEn}
           </span>
         </span>
         {!cancelled && !done && (

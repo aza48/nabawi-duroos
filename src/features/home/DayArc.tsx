@@ -21,6 +21,8 @@ export type ArcLesson = {
   shaykh: string;
   shaykhSlug: string;
   masjid: string;
+  /** Google Maps link for the masjid. */
+  map: string;
   live: boolean;
   off: boolean;
 };
@@ -198,7 +200,9 @@ export function DayArc({ prayers, counts, lessons, locale }: { prayers: Record<P
                             {l.shaykh}
                           </a>
                           {", "}
-                          <span dir="auto">{l.masjid}</span>
+                          <a href={l.map} target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline" dir="auto">
+                            {l.masjid}
+                          </a>
                           {l.off && <span className="font-semibold text-cancel">{ar ? "، ملغى" : ", cancelled"}</span>}
                         </p>
                       </li>

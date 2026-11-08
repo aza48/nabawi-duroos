@@ -6,6 +6,7 @@ import { addDays } from "@/lib/time/riyadh";
 import { PRAYERS, prayerTimes } from "@/lib/time/prayer";
 import { DayArc, type ArcCounts, type ArcLesson } from "./DayArc";
 import { HeroSky } from "./HeroSky";
+import { mapUrl } from "@/lib/maps";
 import { NextPrayer } from "./NextPrayer";
 import { WeatherChip } from "./WeatherChip";
 
@@ -36,6 +37,7 @@ export function arcLessons(today: Today, locale: Locale): ArcLesson[] {
     shaykh: ar ? l.shaykh.nameAr : l.shaykh.nameEn,
     shaykhSlug: l.shaykh.slug,
     masjid: ar ? l.masjid.shortAr : l.masjid.shortEn,
+    map: mapUrl(l.masjid.nameEn),
     live: l.phase === "live" && l.status !== "cancelled" && l.status !== "postponed",
     off: l.status === "cancelled" || l.status === "postponed",
   }));

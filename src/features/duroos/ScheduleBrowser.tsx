@@ -28,7 +28,13 @@ export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids
     const d = riyadhWeekday();
     setDay(d);
     setToday(d);
-  }, []);
+    // Links from lesson pages and the day arc can open the schedule filtered: ?prayer=maghrib&masjid=nabawi
+    const q = new URLSearchParams(window.location.search);
+    const p = q.get("prayer");
+    if (p && (PRAYERS as readonly string[]).includes(p)) setPrayer(p);
+    const m = q.get("masjid");
+    if (m && masjids.some((x) => x.id === m)) setMasjid(m);
+  }, [masjids]);
 
   const used = useMemo(() => {
     const ids = new Set<string>();
@@ -130,7 +136,7 @@ export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids
 function Row({ r, locale, base }: { r: ScheduleRow; locale: Locale; base: string }) {
   const ar = locale === "ar";
   return (
-    <Link href={`${base}/lesson/${r.slug}`} className="card block p-3 transition hover:border-primary">
+    <Link href={`${base}/lesson/${r.slug}`} className="card lift block p-3 hover:border-primary">
       <p className="flex items-start justify-between gap-2 text-sm font-semibold">
         {ar ? r.shaykh.nameAr : r.shaykh.nameEn}
         {r.audience === "women" && <SistersTag locale={locale} />}
@@ -196,7 +202,8 @@ function WeekGrid({ week, masjid, prayers, today, locale, base }: { week: Week; 
 }
 
 /** "Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli" becomes "Sulayman al-Ruhayli". */
-function shortName(name: string): string {
-  const words = name.replace(/^((Prof\.|Dr\.|Shaykh|الشيخ|د\.|أ\.د\.)\s*)+/, "").split(/\s+/);
+export function shortName(name: string): string {
+  // Titles are whole words, so "Shaykhah Barakah" loses "Shaykhah", not just "Shaykh".
+  const words = name.replace(/^((Prof\.|Dr\.|Shaykhah|Shaykh|Ustadhah|Ustadh|الشيخة|الشيخ|الأستاذة|د\.|أ\.د\.)\s+)+/, "").split(/\s+/);
   return words.length > 2 ? `${words[0]} ${words[words.length - 1]}` : words.join(" ");
 }
