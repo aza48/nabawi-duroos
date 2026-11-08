@@ -17,15 +17,15 @@ Done (all on the branch, PR #14 waits for review; never merged to `main` by this
 - Guides page grouped into seven topics (`src/lib/guide-topics.ts`), old anchors kept, test that every seeded guide is placed on purpose.
 - Content (`047e7c4`): fact-check of the 23 seeded guides, five new guides, admission rewrite, 28 admin questions. Not live until `npm run content:sync`.
 
-In progress when this was written
-- A research helper applying the desktop agent's three reports (`docs/research/factcheck-2026-11-09-*.md`, `community-2026-11-09.md`) to the seeds; it adds `university-offices-and-contacts` and `scholarship-stipend-and-allowances`, which still need a topic in `src/lib/guide-topics.ts` (the topics test fails until they have one).
-- A second helper writing gap guides into a new `src/server/seed/content/guides-gaps-2026-11.ts` (what to bring, exams and attendance, airport, summer semester, student iqama renewal); it must be registered in `sync.ts` and placed in a topic.
+Also done since (all pushed)
+- `cf05b3e`: the desktop agent's three research reports applied (stipend without a flat figure, official Visitor ID order, Etimad ticket rules, ta'jeel cap, clinic and library hours, the Haram for sisters and families); new guides `university-offices-and-contacts`, `scholarship-stipend-and-allowances`.
+- `3558d93`: gap guides `what-to-bring-to-madinah` and `exams-results-and-attendance`, eleven FAQs (student iqama renewal, absence limit, missed finals, failed courses, results, plugs, medicine, airport, summer semester, degree certificate). Admin questions: 110 in `scripts/open-questions.json`.
+- Guides page: eight topics. Assistant: FAQ shortcut over the top three results, title-match boost, 40-question evaluation, all passing; 393 tests in total.
 
 Next
-1. Review, commit and register both helpers' work; place new slugs in topics; tsc, vitest, build; push; comment on #13.
-2. Index the Ma'had hub text once the desktop agent exports it (asked on #13).
-3. Arabic guide bodies: propose a storage approach on #13 before writing.
-4. Then audit the assistant against more real questions and add tasks to `docs/AI-LOG.md`.
+1. Index the Ma'had hub text once the desktop agent exports it (asked on #13).
+2. Arabic guide bodies: the storage plan is proposed on #13 and waits for the owner.
+3. Then audit the assistant against more real questions and add tasks to `docs/AI-LOG.md`.
 
 ## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
 Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
