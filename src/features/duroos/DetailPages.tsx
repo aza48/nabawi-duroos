@@ -9,6 +9,7 @@ import { prayerTimes } from "@/lib/time/prayer";
 import { EmptyState } from "@/components/ui";
 import { DuroosNav } from "./DuroosNav";
 import { DAY_LONG_KEYS, publicLabel, t } from "./strings";
+import { SistersTag } from "./StatusTag";
 import { duroosPath } from "./DarsCard";
 import { CalendarButton } from "./CalendarButton";
 import { AlertsButton } from "./AlertsButton";
@@ -56,6 +57,7 @@ export function ShaykhPage({ shaykh: s, locale }: { shaykh: Shaykh; locale: Loca
             <div className="grid gap-3 md:grid-cols-2">
               {s.lessons.map((l) => (
                 <Link key={l.slug} href={duroosPath(locale, `/lesson/${l.slug}`)} className="group flex flex-col rounded-2xl border border-line bg-card p-4 transition-colors hover:border-primary/50">
+                  {l.audience === "women" && <span className="mb-1.5"><SistersTag locale={locale} /></span>}
                   <p className="ar-text text-lg leading-snug">{l.bookAr}</p>
                   {!ar && <p className="mt-0.5 text-sm text-muted group-hover:text-ink">{l.bookEn}</p>}
                   <p className="mt-auto flex flex-wrap items-center gap-x-2 pt-3 text-xs text-muted">
@@ -103,9 +105,10 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
   const streamHref = l.stream ? (l.stream.isLive && l.stream.liveUrl ? l.stream.liveUrl : l.stream.url) : null;
   const streamKind = l.stream ? ({ youtube: ar ? "فيديو على يوتيوب" : "Video on YouTube", mixlr: ar ? "صوت على Mixlr" : "Audio on Mixlr", web: ar ? "بث على الموقع" : "Broadcast online" } as Record<string, string>)[l.stream.kind] ?? (ar ? "بث مباشر" : "Live broadcast") : null;
   return (
-    <>
+    <div data-variant={l.audience === "women" ? "sisters" : undefined}>
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-14">
+          {l.audience === "women" && <p className="mb-3"><SistersTag locale={locale} /></p>}
           <p className="ar-text text-3xl font-bold leading-snug md:text-5xl">{l.bookAr}</p>
           {!ar && <h1 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-4xl">{l.bookEn}</h1>}
           {ar && <h1 className="sr-only">{l.bookAr}</h1>}
@@ -174,7 +177,7 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
           </aside>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

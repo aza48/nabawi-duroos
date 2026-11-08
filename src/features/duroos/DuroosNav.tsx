@@ -11,6 +11,7 @@ const TABS = [
   { rest: "/schedule", key: "schedule" },
   { rest: "/updates", key: "updates" },
   { rest: "/live", key: "live" },
+  { rest: "/sisters", key: "sisters" },
 ] as const;
 
 /** Section tabs + a language switch that keeps you on the same page. */
@@ -28,7 +29,11 @@ export function DuroosNav({ locale }: { locale: Locale }) {
           href={`${base}${tab.rest}`}
           aria-current={active(tab.rest) ? "page" : undefined}
           className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
-            active(tab.rest) ? "bg-primary text-primary-ink" : "border border-line bg-card text-muted hover:text-ink"
+            active(tab.rest)
+              ? "bg-primary text-primary-ink"
+              : tab.key === "sisters"
+                ? "border border-petal/30 bg-petal-bg text-petal hover:border-petal/60"
+                : "border border-line bg-card text-muted hover:text-ink"
           }`}
         >
           {t(locale, tab.key)}

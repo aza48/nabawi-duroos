@@ -91,3 +91,11 @@ describe("Al-Midad import", () => {
     expect(t2.days).toEqual([1]);
   });
 });
+
+describe("audience", () => {
+  it("tags the Al-Midad women's duroos and leaves the rest for everyone", async () => {
+    const rows = await db.select({ slug: lessons.slug, audience: lessons.audience }).from(lessons);
+    const women = rows.filter((r) => r.audience === "women").map((r) => r.slug).sort();
+    expect(women).toEqual(["sisters-muzayni-mujadilah", "sisters-radadi-tawhid", "sisters-talhi-ighathah", "sisters-umari-arbain", "sisters-umari-kabair"]);
+  });
+});

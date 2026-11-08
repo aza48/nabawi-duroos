@@ -8,6 +8,7 @@ import type { MasjidRow } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { PRAYERS } from "@/lib/time/prayer";
 import { DAY_KEYS, t } from "./strings";
+import { SistersTag } from "./StatusTag";
 
 type Week = { byDay: Record<number, ScheduleRow[]>; daysNotStated: ScheduleRow[] };
 
@@ -130,7 +131,10 @@ function Row({ r, locale, base }: { r: ScheduleRow; locale: Locale; base: string
   const ar = locale === "ar";
   return (
     <Link href={`${base}/lesson/${r.slug}`} className="card block p-3 transition hover:border-primary">
-      <p className="text-sm font-semibold">{ar ? r.shaykh.nameAr : r.shaykh.nameEn}</p>
+      <p className="flex items-start justify-between gap-2 text-sm font-semibold">
+        {ar ? r.shaykh.nameAr : r.shaykh.nameEn}
+        {r.audience === "women" && <SistersTag locale={locale} />}
+      </p>
       <p className="ar-text text-[15px] leading-snug">{r.bookAr}</p>
       {!ar && <p className="text-sm text-muted">{r.bookEn}</p>}
       <p className="mt-1 flex items-start gap-1 text-xs text-muted">

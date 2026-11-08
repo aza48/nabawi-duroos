@@ -5,6 +5,7 @@ import { Tabs } from "@/components/Tabs";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { PROGRAMS, PROGRAM_KINDS, type Audience, type Program } from "@/content/programs";
 import { JsonLd, breadcrumbs } from "@/components/JsonLd";
+import { AudienceFilter } from "./AudienceFilter";
 import { abs } from "@/lib/site";
 
 const AUDIENCE: Record<Audience, { label: string; icon: typeof User }> = {
@@ -45,15 +46,16 @@ export function ProgramsIndex() {
             </a>
           ))}
         </nav>
+        <AudienceFilter options={(Object.keys(AUDIENCE) as Audience[]).filter((a) => PROGRAMS.some((p) => p.audience.includes(a))).map((a) => ({ id: a, label: AUDIENCE[a].label }))}>
         {PROGRAM_KINDS.map((k) => {
           const items = PROGRAMS.filter((p) => p.kind === k.id).sort(byName);
           if (!items.length) return null;
           return (
-            <section key={k.id} id={k.id} className="mt-12 scroll-mt-24">
+            <section key={k.id} id={k.id} data-auds={[...new Set(items.flatMap((p) => p.audience))].join(" ")} className="mt-12 scroll-mt-24">
               <h2 className="mb-5 font-heading text-2xl font-bold md:text-3xl">{k.label}</h2>
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {items.map((p) => (
-                  <Link key={p.slug} href={`/programs/${p.slug}`} className="group flex flex-col rounded-2xl border border-line bg-card p-5 transition-colors hover:border-primary/50">
+                  <Link key={p.slug} href={`/programs/${p.slug}`} data-aud={p.audience.join(" ")} className="group flex flex-col rounded-2xl border border-line bg-card p-5 transition-colors hover:border-primary/50">
                     <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary">{p.name}</span>
                     <span className="ar-text text-[15px] text-muted">{p.nameAr}</span>
                     <span className="mt-2 text-sm leading-relaxed text-muted">{p.tagline}</span>
@@ -69,6 +71,7 @@ export function ProgramsIndex() {
             </section>
           );
         })}
+        </AudienceFilter>
         <p className="mt-12 rounded-2xl bg-bg-2 p-5 text-sm text-muted">
           MESH is run by students and is not connected to any institute listed here. Programmes are listed in alphabetical order, each with the date it was last checked. Fees and dates change, so confirm with the institute before you pay, and tell us in the WhatsApp group if something is out of date.
         </p>

@@ -66,6 +66,8 @@ export const lessons = pgTable(
     /** Where to read the book being taught (an online reader with a PDF). */
     bookUrl: text("book_url"),
     status: text("status").$type<LessonStatus>().notNull().default("active"),
+    /** Who the dars is for: everyone, men only, or women only (shown with the pink Sisters tag). */
+    audience: text("audience").$type<"all" | "men" | "women">().notNull().default("all"),
     validFrom: date("valid_from"),
     validTo: date("valid_to"),
     sort: integer("sort").notNull().default(0),

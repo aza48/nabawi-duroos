@@ -28,6 +28,8 @@
   --amber-bg: #f6e7c4;
   --gold: #8a6416;
   --gold-bg: #f4e9cf;
+  --petal: #b0446e;
+  --petal-bg: #fbe6ee;
   --live: #d02f4a;
   --wa: #25d366;
   --wa-ink: #04331b;
@@ -62,10 +64,41 @@
   --amber-bg: #3d3015;
   --gold: #e3c27a;
   --gold-bg: #2f2816;
+  --petal: #f4a9c4;
+  --petal-bg: #3a1a27;
   --live: #ff6b7f;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
   --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.3), 0 24px 48px -16px rgb(0 0 0 / 0.6);
   --pattern: rgb(216 181 102 / 0.07);
+}
+
+/* Sisters: a soft petal-pink MESH, scoped to the sisters' pages. Pinks carry the brand role, gold stays. */
+[data-variant="sisters"] {
+  --bg: #fcf6f8;
+  --bg-2: #f7e9ee;
+  --border: #efd9e1;
+  --primary: #a63d66;
+  --brand: #a63d66;
+  --brand-deep: #7f2b4d;
+  --primary-ink: #ffffff;
+  --primary-soft: #fbe6ee;
+  --accent: #a87a22;
+  --pattern: rgb(166 61 102 / 0.07);
+  --shadow-lg: 0 2px 4px rgb(60 20 36 / 0.04), 0 24px 48px -16px rgb(166 61 102 / 0.25);
+  background: var(--bg);
+}
+:root[data-theme="dark"] [data-variant="sisters"] {
+  --bg: #170d12;
+  --bg-2: #211219;
+  --card: #26151d;
+  --border: #3f2431;
+  --primary: #f4a9c4;
+  --brand: #5a2340;
+  --brand-deep: #3f1830;
+  --primary-ink: #1c0d14;
+  --primary-soft: #3a1a27;
+  --accent: #e3c27a;
+  --pattern: rgb(244 169 196 / 0.07);
 }
 
 :root[lang="ar"] {
@@ -95,6 +128,8 @@
   --color-amber-bg: var(--amber-bg);
   --color-gold: var(--gold);
   --color-gold-bg: var(--gold-bg);
+  --color-petal: var(--petal);
+  --color-petal-bg: var(--petal-bg);
   --color-live: var(--live);
   --color-wa: var(--wa);
   --color-wa-ink: var(--wa-ink);
@@ -275,3 +310,10 @@ a { -webkit-tap-highlight-color: transparent; }
 .guide .video-slot p { margin: 0; padding: 0.75rem 1rem; font-weight: 600; font-size: 0.92rem; }
 .guide table { display: table; width: 100%; }
 @media (max-width: 640px) { .guide table { display: block; } }
+
+/* Study page audience filter (AudienceFilter.tsx) */
+[data-for="men"] [data-aud]:not([data-aud~="men"]), [data-for="men"] [data-auds]:not([data-auds~="men"]) { display: none; }
+[data-for="women"] [data-aud]:not([data-aud~="women"]), [data-for="women"] [data-auds]:not([data-auds~="women"]) { display: none; }
+[data-for="children"] [data-aud]:not([data-aud~="children"]), [data-for="children"] [data-auds]:not([data-auds~="children"]) { display: none; }
+[data-for="online"] [data-aud]:not([data-aud~="online"]), [data-for="online"] [data-auds]:not([data-auds~="online"]) { display: none; }
+[data-for="families"] [data-aud]:not([data-aud~="families"]), [data-for="families"] [data-auds]:not([data-auds~="families"]) { display: none; }

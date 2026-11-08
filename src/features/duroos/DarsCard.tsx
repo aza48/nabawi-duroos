@@ -3,7 +3,7 @@ import { MapPin, Radio } from "lucide-react";
 import type { TodayLesson } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { Countdown } from "./Countdown";
-import { LiveBadge, StatusTag } from "./StatusTag";
+import { LiveBadge, SistersTag, StatusTag } from "./StatusTag";
 import { publicLabel } from "./strings";
 
 export function duroosPath(locale: Locale, rest = ""): string {
@@ -28,7 +28,10 @@ export function DarsCard({ lesson: l, locale }: { lesson: TodayLesson; locale: L
         <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="font-heading text-[15px] font-semibold leading-snug hover:text-primary">
           {ar ? l.shaykh.nameAr : l.shaykh.nameEn}
         </Link>
-        {live ? <LiveBadge locale={locale} href={liveHref} /> : l.status !== "on" ? <StatusTag status={l.status} locale={locale} /> : null}
+        <span className="flex shrink-0 items-center gap-1.5">
+          {l.audience === "women" && <SistersTag locale={locale} />}
+          {live ? <LiveBadge locale={locale} href={liveHref} /> : l.status !== "on" ? <StatusTag status={l.status} locale={locale} /> : null}
+        </span>
       </div>
       <Link href={duroosPath(locale, `/lesson/${l.slug}`)} className="mt-1.5 block flex-1">
         <p className={`ar-text text-[19px] leading-snug ${cancelled ? "line-through decoration-cancel/60" : ""}`}>{l.bookAr}</p>

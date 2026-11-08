@@ -35,3 +35,12 @@ export function LiveBadge({ locale, href }: { locale: Locale; href?: string | nu
     <span className={cls}>{inner}</span>
   );
 }
+
+/** Pink tag on every women-only dars. */
+export function SistersTag({ locale }: { locale: Locale }) {
+  return (
+    <span className="inline-flex shrink-0 items-center rounded-full bg-petal-bg px-2 py-0.5 text-[10.5px] font-bold tracking-wide text-petal">
+      {t(locale, "sisters")}
+    </span>
+  );
+}

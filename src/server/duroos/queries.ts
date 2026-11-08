@@ -36,6 +36,7 @@ export type TodayLesson = {
   overrideNoteEn: string | null;
   overrideNoteAr: string | null;
   stream: StreamRef | null;
+  audience: LessonRow["audience"];
 };
 
 export async function scheduleRows(db: Db): Promise<ScheduleRow[]> {
@@ -109,6 +110,7 @@ export async function getToday(db: Db, now: Date = new Date()) {
     stream: liveNow.has(l.slug)
       ? { url: liveNow.get(l.slug)!, kind: "web" as const, isLive: true, liveUrl: liveNow.get(l.slug)! }
       : pickStream(allStreams, l),
+    audience: l.audience,
   }));
   return {
     date,

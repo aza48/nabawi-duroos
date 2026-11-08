@@ -1,4 +1,4 @@
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq, inArray, sql } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { lessons, masjids, shaykhs } from "@/server/db/schema";
 import { cleanRow } from "@/lib/text";
@@ -160,11 +160,16 @@ export async function syncAlMidad(db: Db): Promise<{ added: number; updated: num
       locationEn: l.location.en,
       locationAr: l.location.ar,
       status: "active" as const,
+      audience: l.audience,
       sort: 500 + i,
     });
     const r = await db.insert(lessons).values(v).onConflictDoNothing().returning({ id: lessons.id });
     added += r.length;
   }
+
+  // Tag the women's duroos (also rows inserted before the audience column existed). An admin's own choice stays.
+  const women = AL_MIDAD_LESSONS.filter((l) => l.audience === "women").map((l) => l.slug);
+  await db.update(lessons).set({ audience: "women" }).where(and(inArray(lessons.slug, women), eq(lessons.audience, "all")));
 
   // Shaykh Abdurrazzaq al-Badr's Tafsir as-Sa'di: the seed had no weekdays; Al-Midad gives Sunday to Friday.
   let updated = 0;
