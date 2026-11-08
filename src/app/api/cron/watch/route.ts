@@ -17,8 +17,9 @@ export async function GET(req: Request) {
   if (!apiKey) return NextResponse.json({ error: "GEMINI_API_KEY is not set" }, { status: 500 });
   const db = await getDb();
   const result = await runWatcher(db, liveDeps(apiKey));
+  // A slow YouTube page must never eat the function's 60 seconds.
   const streamsChanged = await refreshStreams(db, async (url) => {
-    const res = await fetch(url, { headers: { "user-agent": "Mozilla/5.0", "accept-language": "en" }, cache: "no-store" });
+    const res = await fetch(url, { headers: { "user-agent": "Mozilla/5.0", "accept-language": "en" }, cache: "no-store", signal: AbortSignal.timeout(8_000) });
     return res.text();
   });
   // Pages show "checked N min ago", so refresh them every run.

@@ -69,12 +69,16 @@ async function imagePart(url: string, f: FetchLike) {
   const inline = /^data:([^;,]+);base64,(.+)$/.exec(url);
   if (inline) return { inline_data: { mime_type: inline[1], data: inline[2] } };
   try {
-    const res = await f(url, { method: "GET" });
+    const res = await f(url, { method: "GET", signal: AbortSignal.timeout(8_000) });
     if (!res.ok) return null;
-    const type = res.headers.get("content-type") ?? "image/jpeg";
+    // Only real flyer formats, and only up to 4 MB (checked before the body is read when the server says its size).
+    const type = (res.headers.get("content-type") ?? "image/jpeg").split(";")[0].trim().toLowerCase();
+    if (!/^image\/(jpeg|png|webp)$/.test(type)) return null;
+    const declared = Number(res.headers.get("content-length") ?? 0);
+    if (declared > 4_000_000) return null;
     const buf = Buffer.from(await res.arrayBuffer());
     if (buf.length > 4_000_000) return null;
-    return { inline_data: { mime_type: type.split(";")[0], data: buf.toString("base64") } };
+    return { inline_data: { mime_type: type, data: buf.toString("base64") } };
   } catch {
     return null;
   }

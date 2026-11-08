@@ -64,3 +64,26 @@ describe("visitor analytics", () => {
     expect(refHost("https://medinahub.org/library", "medinahub.org")).toBeNull();
   });
 });
+
+describe("track endpoint limits", () => {
+  it("drops a flood from one address quietly after the per-minute limit", async () => {
+    const { TRACK_LIMIT } = await import("@/app/api/v1/track/route");
+    const { resetRateLimits } = await import("@/server/rate-limit");
+    resetRateLimits();
+    const before = (await analyticsReport(db, 7)).pageviews;
+    const { POST } = await import("@/app/api/v1/track/route");
+    for (let i = 0; i < TRACK_LIMIT.max + 5; i++) {
+      const res = await POST(new Request("https://medinahub.org/api/v1/track", {
+        method: "POST",
+        body: JSON.stringify({ t: "pv", v: "visitor_flood_aa", s: "session_flood_aa", e: `flood_${String(i).padStart(10, "0")}`, path: "/" }),
+        headers: { "user-agent": PHONE, host: "medinahub.org", "x-forwarded-for": "203.0.113.9" },
+      }));
+      expect(res.status).toBe(204);
+    }
+    expect((await analyticsReport(db, 7)).pageviews).toBe(before + TRACK_LIMIT.max);
+  });
+  it("refuses a path that is not on this site", async () => {
+    expect((await track({ t: "pv", v: "visitor_aaaaaaaa", s: "session_aaaaaaaa", e: "page_bad_aaaa", path: "https://evil.example/" })).status).toBe(400);
+    expect((await track({ t: "pv", v: "visitor_aaaaaaaa", s: "session_aaaaaaaa", e: "page_bad_bbbb", path: "//evil.example/" })).status).toBe(400);
+  });
+});

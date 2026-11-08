@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 import { z } from "zod";
 import { getDb } from "@/server/db/client";
 import { ensureAnalytics, isBot, parseUa, refHost } from "@/server/analytics/store";
+import { allow, clientIp } from "@/server/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +14,7 @@ const body = z.object({
   v: id,
   s: id,
   e: id,
-  path: z.string().max(2000).transform((s) => s.slice(0, 300)),
+  path: z.string().max(2000).regex(/^\/(?!\/)/, "a path on this site").transform((s) => s.slice(0, 300)),
   title: str(200),
   ref: str(500),
   label: str(140),
@@ -29,9 +30,26 @@ const body = z.object({
 
 const empty = () => new Response(null, { status: 204, headers: { "cache-control": "no-store" } });
 
+/** A busy visitor sends a few events a minute; far more from one address is a script, and is dropped quietly. */
+export const TRACK_LIMIT = { max: 120, windowMs: 60_000 };
+
+/** The tables are created by the daily cron. If a brand-new database has none yet, create them once and retry. */
+let healed = false;
+async function withTables<T>(db: Awaited<ReturnType<typeof getDb>>, work: () => Promise<T>): Promise<T> {
+  try {
+    return await work();
+  } catch (e) {
+    if (healed) throw e;
+    healed = true;
+    await ensureAnalytics(db);
+    return work();
+  }
+}
+
 export async function POST(req: Request) {
   const ua = req.headers.get("user-agent") ?? "";
   if (isBot(ua)) return empty();
+  if (!allow(`track:${clientIp(req)}`, TRACK_LIMIT.max, TRACK_LIMIT.windowMs)) return empty();
   let data: z.infer<typeof body>;
   try {
     const raw = await req.text();
@@ -44,8 +62,8 @@ export async function POST(req: Request) {
 
   try {
     const db = await getDb();
-    await ensureAnalytics(db);
     const now = new Date();
+    await withTables(db, async () => {
 
     if (data.t === "pv") {
       const host = req.headers.get("host") ?? "medinahub.org";
@@ -66,11 +84,6 @@ export async function POST(req: Request) {
         insert into analytics_events (id, session_id, visitor_id, ts, type, path, title)
         values (${data.e}, ${data.s}, ${data.v}, ${now}, 'pageview', ${data.path}, ${data.title ?? null})
         on conflict (id) do nothing`);
-      // Keep about six months of history.
-      if (Math.random() < 0.005) {
-        await db.execute(sql`delete from analytics_events where ts < now() - interval '180 days'`);
-        await db.execute(sql`delete from analytics_sessions where last_seen < now() - interval '180 days'`);
-      }
     } else if (data.t === "hb") {
       await db.execute(sql`update analytics_sessions set last_seen = ${now}, exit_path = ${data.path} where id = ${data.s}`);
       await db.execute(sql`
@@ -84,6 +97,7 @@ export async function POST(req: Request) {
         on conflict (id) do nothing`);
       await db.execute(sql`update analytics_sessions set last_seen = ${now}, clicks = clicks + 1 where id = ${data.s}`);
     }
+    });
   } catch (e) {
     console.error("track failed", e);
   }

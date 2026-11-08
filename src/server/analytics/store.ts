@@ -54,6 +54,20 @@ const DDL = [
 
 let ready: Promise<void> | null = null;
 
+/** How long visits are kept. */
+export const RETENTION_DAYS = 180;
+
+/** Deletes visits older than the retention period. Run from the daily cron, never inside a visitor's request. */
+export async function purgeAnalytics(db: Db): Promise<void> {
+  await ensureAnalytics(db);
+  await db.execute(sql`delete from analytics_events where ts < now() - make_interval(days => ${RETENTION_DAYS})`);
+  await db.execute(sql`delete from analytics_sessions where last_seen < now() - make_interval(days => ${RETENTION_DAYS})`);
+}
+
+/**
+ * Creates the tables if they are missing. Called from the daily cron and the admin report,
+ * not from the track endpoint: a visitor's request should never take a table lock.
+ */
 export function ensureAnalytics(db: Db): Promise<void> {
   ready ??= (async () => {
     for (const stmt of DDL) await db.execute(stmt);
