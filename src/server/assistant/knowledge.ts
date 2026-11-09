@@ -1,13 +1,15 @@
 import { parse, type HTMLElement } from "node-html-parser";
 import type { Db } from "@/server/db/client";
 import * as COMPANY from "@/features/guides/company/content";
-import { listFaqs, listGuides, FAQ_CATEGORIES, GUIDE_STAGES } from "@/server/content/queries";
+import { listFaqs, listGuides, FAQ_CATEGORIES } from "@/server/content/queries";
+import { GUIDE_TOPICS } from "@/lib/guide-topics";
 import { listShaykhs, scheduleRows } from "@/server/duroos/queries";
 import { PROGRAMS } from "@/content/programs";
 import { KEY_DATES } from "@/content/key-dates";
 import { DISCOUNTS } from "@/content/discounts";
 import { LIVE_COLLECTIONS } from "@/content/library-books";
 import { OFFICIAL } from "@/content/library";
+import { MAHAD_COPY } from "@/features/library/MahadPage";
 import { slugify } from "@/lib/guide-html";
 import { HELP_CONTACT_DEFAULT } from "@/server/settings";
 
@@ -27,13 +29,22 @@ export type Chunk = {
   section?: string;
   text: string;
   url: string;
+  /** Extra search words that are not shown (an FAQ's tags). */
+  keywords?: string;
 };
 
 const MAX = 1100;
 const DAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const PRAYER = { fajr: "Fajr", dhuhr: "Dhuhr", asr: "Asr", maghrib: "Maghrib", isha: "Isha" } as const;
 
-const squash = (s: string) => s.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
+const squash = (s: string) =>
+  s
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&[a-z]+;/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([,.;:!?)])/g, "$1")
+    .trim();
 
 /** Plain text of an element, with list items and table cells kept apart so sentences do not run together. */
 function textOf(el: HTMLElement): string {
@@ -41,8 +52,26 @@ function textOf(el: HTMLElement): string {
   if (tag === "li") return `• ${squash(el.text)}`;
   if (tag === "tr") return el.querySelectorAll("th,td").map((c) => squash(c.text)).filter(Boolean).join(" | ");
   if (tag === "ul" || tag === "ol") return el.querySelectorAll(":scope > li").map((li, i) => `${tag === "ol" ? `${i + 1}.` : "•"} ${squash(li.text)}`).join("\n");
-  if (tag === "table") return el.querySelectorAll("tr").map((r) => textOf(r)).join("\n");
+  if (tag === "table") return tableText(el);
   return squash(el.text);
+}
+
+/**
+ * A table as readable lines: each row becomes "• first cell: header two value two; header three
+ * value three", so a passage about bus and train fares still reads as sentences.
+ */
+function tableText(table: HTMLElement): string {
+  const rows = table.querySelectorAll("tr").map((r) => r.querySelectorAll("th,td").map((c) => squash(c.text)));
+  const headed = table.querySelectorAll("tr")[0]?.querySelectorAll("th").length > 0;
+  const head = headed ? rows[0] : [];
+  return rows
+    .slice(headed ? 1 : 0)
+    .filter((r) => r.some(Boolean))
+    .map((r) => {
+      const rest = r.slice(1).map((c, i) => (!c.trim() ? "" : head[i + 1] ? `${head[i + 1]}: ${c}` : c)).filter(Boolean);
+      return `• ${r[0]}${rest.length ? `: ${rest.join("; ")}` : ""}`;
+    })
+    .join("\n");
 }
 
 /** Splits a long section into windows of whole blocks, each under MAX characters where possible. */
@@ -163,7 +192,22 @@ function siteChunks(): Chunk[] {
     },
     { id: "page-duroos", kind: "page", title: "Duroos in Madinah", text: "Today's duroos of the mashayikh in Masjid an-Nabawi, Masjid Quba and other masjids are at /duroos with live status, cancellations and changes. The weekly schedule by day and prayer is at /duroos/schedule. Live broadcasts are at /duroos/live. Cancellations, postponements and new books are at /duroos/updates. Duroos for sisters are at /duroos/sisters. Free phone alerts when a dars changes can be turned on at /more#alerts.", url: "/duroos" },
     { id: "page-library", kind: "page", title: "The Jamiah library", text: `Islamic University course books (muqarrarat) and Ma'had books by level are in the MESH library at /library, readable on the site. Collections: ${LIVE_COLLECTIONS.map((c) => c.title).join(", ")}. The Ma'had hub at /mahad has books by level, answer keys, the rules and what happens if you fail a level. Official links: ${OFFICIAL.map((o) => `${o.title} (${o.href})`).join("; ")}.`, url: "/library" },
-    { id: "page-guides", kind: "page", title: "Guides", text: `MESH guides cover: ${GUIDE_STAGES.map((s) => `${s.label} (${s.blurb})`).join("; ")}. Questions and answers by topic: ${FAQ_CATEGORIES.map((c) => c.label).join(", ")}, at /ask.`, url: "/guides" },
+    {
+      id: "mahad-fail",
+      kind: "guide",
+      title: "Ma'had hub",
+      section: MAHAD_COPY.en.failTitle,
+      text: `${MAHAD_COPY.en.fail.map(([b, rest]) => `• ${b}${rest}`).join("\n")}\n${MAHAD_COPY.en.checked}`,
+      url: "/mahad#fail",
+    },
+    {
+      id: "mahad-about",
+      kind: "guide",
+      title: "Ma'had hub",
+      text: `${MAHAD_COPY.en.subtitle} ${MAHAD_COPY.en.booksIntro} ${MAHAD_COPY.en.sixTitle}: ${MAHAD_COPY.en.sixIntro} ${MAHAD_COPY.en.answersIntro} Rules and guides: ${MAHAD_COPY.en.rules.join(", ")}.`,
+      url: "/mahad",
+    },
+    { id: "page-guides", kind: "page", title: "Guides", text: `MESH guides, by topic: ${GUIDE_TOPICS.map((t) => `${t.label} (${t.blurb})`).join("; ")}. Questions and answers by topic: ${FAQ_CATEGORIES.map((c) => c.label).join(", ")}, at /ask.`, url: "/guides" },
   ];
 }
 
@@ -177,14 +221,17 @@ export async function buildKnowledge(db: Db): Promise<Chunk[]> {
   };
   return [
     ...siteChunks(),
-    ...guides.flatMap((g) => chunkGuide(g)),
+    // The calendar guide's page is drawn from the key dates (indexed below), not from its stored body.
+    ...guides.flatMap((g) => (g.slug === "university-calendar-1448" ? chunkGuide({ ...g, bodyHtml: "" }) : chunkGuide(g))),
     ...companyChunks(),
     ...faqs.map((f) => ({
       id: `faq-${f.slug}`,
       kind: "faq" as const,
       title: f.question,
-      text: squash(f.answerHtml.replace(/<li>/g, " • ").replace(/<\/(p|li|h\d)>/g, "\n").replace(/<[^>]+>/g, " ")).slice(0, MAX * 2),
+      // Inline tags (bold, links) go without a gap so "<b>Personal</b>, then" stays "Personal, then".
+      text: squash(f.answerHtml.replace(/<li>/g, " • ").replace(/<\/(p|li|h\d)>/g, " ").replace(/<\/?(strong|b|em|i|a|span|code)\b[^>]*>/g, "").replace(/<[^>]+>/g, " ")).slice(0, MAX * 2),
       url: `/ask/${f.slug}`,
+      keywords: (f.tags ?? []).join(" "),
     })),
     ...programChunks(),
     ...dateChunks(),

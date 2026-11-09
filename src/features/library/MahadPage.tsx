@@ -23,7 +23,8 @@ function folderLink(tree: LibFolder | null, match: RegExp, base: string) {
   return top ? `${base}/mahad#f-${top.id}` : `${base}/mahad`;
 }
 
-const T = {
+/** The page copy in both languages. Exported so the assistant can answer from it (src/server/assistant/knowledge.ts). */
+export const MAHAD_COPY = {
   en: {
     metaTitle: "Ma'had hub: books, answers and levels",
     metaDescription: "The Arabic Language Institute at the Islamic University of Madinah: the textbooks for every level, the answer keys, and what happens if you fail a level.",
@@ -77,6 +78,7 @@ const T = {
     footer: ["وكل ما يخص المعهد غير ذلك تجده في ", "المكتبة", ". قادم للدراسة؟ اقرأ ", "الأدلة", "."],
   },
 };
+const T = MAHAD_COPY;
 
 export function mahadMetadata(locale: Locale): Metadata {
   const t = T[locale];

@@ -3,6 +3,8 @@
  * vocabulary of student life in Madinah, so "ikama", "iqamah" and "إقامة" all find the same page.
  */
 
+import { MORE_GROUPS } from "./more-words";
+
 const TASHKEEL = /[ؐ-ًؚ-ٰٟۖ-ۭـ]/g;
 
 export function normalize(s: string): string {
@@ -44,16 +46,16 @@ const GROUPS: string[][] = [
   ["takhlees", "talkhees", "summary", "notes", "تلخيص"],
   ["muqarrarat", "muqararat", "curriculum", "syllabus", "textbooks", "books", "مقررات"],
   ["markaz", "marakiz", "centre", "center", "مركز"],
-  ["sisters", "women", "female", "wife", "ladies", "اخوات", "نساء"],
+  ["sisters", "women", "female", "wife", "ladies", "sisters section", "womens section", "اخوات", "نساء", "النساء", "مصلى النساء"],
   ["family", "wife", "children", "kids", "spouse", "عائله"],
-  ["rent", "apartment", "flat", "housing", "accommodation", "ejar", "سكن"],
-  ["sim", "mobile", "phone", "stc", "mobily", "zain", "internet", "data"],
-  ["bank", "mada", "card", "account", "alrajhi", "rajhi"],
-  ["licence", "license", "driving", "rukhsa", "رخصه"],
+  ["rent", "apartment", "flat", "housing", "accommodation", "ejar", "سكن", "شقه", "ايجار", "استئجار", "عقار"],
+  ["sim", "mobile", "phone", "stc", "mobily", "zain", "internet", "data", "شريحه", "جوال", "انترنت", "اتصالات"],
+  ["bank", "mada", "card", "account", "alrajhi", "rajhi", "بنك", "بنكي", "مصرف", "حساب", "مدى"],
+  ["licence", "license", "driving", "rukhsa", "رخصه", "قياده"],
   ["visa", "tasheera", "exit reentry", "final exit", "khuruj", "تاشيره"],
   ["umrah", "umra", "omrah", "عمره"],
   ["rawdah", "rawda", "rowdah", "روضه"],
-  ["ticket", "flight", "tazkirah", "etimad", "اعتماد"],
+  ["ticket", "flight", "tazkirah", "etimad", "اعتماد", "تذكره", "تذاكر", "طيران"],
   ["discount", "offer", "deal", "cheap", "خصم"],
   ["doctor", "clinic", "hospital", "dentist", "medical", "health", "paediatrician", "pediatrician", "gp", "pharmacy", "طبيب", "مستشفى", "صيدليه"],
   ["optician", "glasses", "eye doctor", "optometrist", "نظارات"],
@@ -64,24 +66,42 @@ const GROUPS: string[][] = [
   ["aqeedah", "aqidah", "aqida", "aqeeda", "creed", "tawhid", "tawheed", "عقيده", "توحيد"],
   ["hadith", "hadeeth", "ahadith", "حديث"],
   ["tafsir", "tafseer", "exegesis", "تفسير"],
-  ["exam", "exams", "finals", "final exams", "test", "اختبار", "اختبارات"],
-  ["calendar", "dates", "holiday", "holidays", "vacation", "break", "تقويم", "اجازه"],
+  ["exam", "exams", "finals", "final exams", "test", "اختبار", "اختبارات", "نهائي", "نهائيه"],
+  ["calendar", "key dates", "holiday", "holidays", "vacation", "break", "تقويم", "اجازه"],
   ["eid", "eid al fitr", "eid al adha", "عيد"],
   ["ramadan", "ramadhan", "ramazan", "رمضان"],
   ["bus", "buses", "transport", "shuttle", "حافله", "باص"],
   ["job", "work", "part time", "عمل"],
+  ["cost", "costs", "price", "prices", "expensive", "budget", "تكلفه", "سعر", "اسعار", "ميزانيه", "مصاريف"],
+  ["living costs", "living expenses", "monthly budget", "معيشه", "تكاليف المعيشه"],
+  ["makkah", "mecca", "makka", "macca", "مكه"],
+  ["hot", "heat", "temperature", "weather", "climate", "حر", "حراره", "طقس"],
+  ["eat", "eating", "food", "meal", "lunch", "dinner", "breakfast", "اكل", "طعام"],
+  ["taxi", "uber", "careem", "ride app", "ride apps", "ride hailing", "تاكسي", "اوبر", "كريم"],
+  ["reserve", "reservation", "book", "booking", "subscribe", "subscription", "حجز"],
+  ["student", "students", "طالب", "طلاب", "الطالب", "الطلاب"],
+  ["monthly", "شهري", "شهريه", "شهريا"],
+  ["pack", "packing", "packing list", "suitcase", "move", "moving", "relocating", "relocation", "ماذا احضر", "تجهيز السفر"],
+  ["mataam", "matam", "mataim", "cafeteria", "canteen", "dining hall", "meals", "مطعم"],
+  ["train", "haramain", "haramain train", "قطار"],
+  ["school", "schools", "madrasa", "مدرسه", "مدارس"],
+  ["baby", "birth", "giving birth", "pregnancy", "pregnant", "maternity", "ولاده", "حمل"],
+  ["tamr", "ajwa", "ajwah", "date fruit", "تمر", "تمور", "عجوه"],
   ["fajr", "فجر"], ["dhuhr", "zuhr", "duhr", "ظهر"], ["asr", "عصر"], ["maghrib", "مغرب"], ["isha", "ishaa", "عشاء"],
 ];
 
 const LOOKUP = new Map<string, string[]>();
 for (const g of GROUPS) for (const w of g) LOOKUP.set(normalize(w), g.map(normalize));
+for (const g of MORE_GROUPS) for (const w of g) LOOKUP.set(normalize(w), [...new Set([...(LOOKUP.get(normalize(w)) ?? []), ...g.map(normalize)])]);
 
 /** The query plus every spelling and synonym it implies, normalised. */
 export function expandQuery(q: string): string {
   const base = normalize(q);
   const words = base.split(" ").filter(Boolean);
   const extra = new Set<string>();
-  for (const w of words) LOOKUP.get(w)?.forEach((x) => extra.add(x));
+  // Arabic words often carry the article ("المعيشه"): look them up with and without it.
+  const bare = (w: string) => (w.length > 4 && w.startsWith("ال") ? w.slice(2) : w);
+  for (const w of words) (LOOKUP.get(w) ?? LOOKUP.get(bare(w)))?.forEach((x) => extra.add(x));
   for (let i = 0; i < words.length - 1; i++) LOOKUP.get(`${words[i]} ${words[i + 1]}`)?.forEach((x) => extra.add(x));
   words.forEach((w) => extra.delete(w));
   return [base, ...extra].join(" ");

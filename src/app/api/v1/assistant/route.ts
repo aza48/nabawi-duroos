@@ -2,7 +2,7 @@ import { z } from "zod";
 import { getDb } from "@/server/db/client";
 import { fail, ok } from "@/server/api";
 import { allow, clientIp } from "@/server/rate-limit";
-import { answer } from "@/server/assistant/answer";
+import { askMesh } from "@/server/assistant/answer";
 import { aiAvailable } from "@/server/assistant/llm";
 import { BOT_NAME } from "@/server/assistant/prompt";
 
@@ -15,16 +15,22 @@ export const ASK_LIMITS = [
   { max: 80, windowMs: 3_600_000 },
 ];
 
+/** A turn of the conversation so far; `content` (the panel) and `text` (older clients) are both accepted. */
+const turn = z
+  .object({ role: z.enum(["user", "assistant"]), content: z.string().max(4000).optional(), text: z.string().max(4000).optional() })
+  .transform((t) => ({ role: t.role, text: t.content ?? t.text ?? "" }));
+
 const body = z.object({
   question: z.string().trim().min(1).max(600),
-  history: z
-    .array(z.object({ role: z.enum(["user", "assistant"]), content: z.string().max(4000) }))
-    .max(12)
-    .optional()
-    .default([]),
+  locale: z.enum(["en", "ar"]).optional().default("en"),
+  history: z.array(turn).max(12).optional().default([]),
 });
 
-/** Ask the Meshaykh: one question (with the conversation so far) in, one grounded answer out. */
+/**
+ * Ask the MESHaykh: `{ question, history?, locale? }` in; out, the standard envelope with
+ * `data: { answer, sources[{title, section?, url}], related[{title, url}], mode, found, lang }`.
+ * `answer` uses **bold**, "- " and "1. " lines, and [n] markers that point to sources[n-1].
+ */
 export async function POST(req: Request) {
   const ip = clientIp(req);
   if (!ASK_LIMITS.every((l, i) => allow(`ask${i}:${ip}`, l.max, l.windowMs))) {
@@ -37,7 +43,7 @@ export async function POST(req: Request) {
     return fail("bad_request", 400, "Send { question, history? } as JSON; the question must be 1 to 600 characters.");
   }
   try {
-    const reply = await answer(await getDb(), input.question, input.history);
+    const reply = await askMesh(await getDb(), { question: input.question, history: input.history, locale: input.locale });
     const res = ok(reply);
     res.headers.set("Cache-Control", "no-store");
     return res;
@@ -46,7 +52,7 @@ export async function POST(req: Request) {
   }
 }
 
-/** What the assistant is and whether a writer is available right now (for the app and the status badge). */
+/** What the assistant is and whether a model can write answers right now (for the app). */
 export async function GET() {
   const res = ok({ name: BOT_NAME, ai: aiAvailable(), limits: ASK_LIMITS });
   res.headers.set("Cache-Control", "no-store");

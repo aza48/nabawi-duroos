@@ -36,17 +36,51 @@ export function createSearch(docs: SearchDoc[]) {
 
   return function search(q: string, limit = 30): SearchHit[] {
     if (!q.trim()) return [];
-    const raw = normalize(q);
+    const { query, typed, weight } = weighQuery(q);
     return ms
-      .search(expandQuery(q), {
-        // Every word the person typed should count; the synonyms only help.
+      .search(query, {
+        // The words the person typed (and their spellings) count in full; related words only help.
+        boostTerm: (term) => weight(term),
         boostDocument: (_id, _term, stored) => {
-          const t = normalize(`${stored?.title ?? ""} ${stored?.titleAr ?? ""} ${stored?.subtitle ?? ""}`);
-          const exact = raw.split(" ").every((w) => t.includes(w)) ? 1.6 : 1;
+          const t = normalize(`${stored?.title ?? ""} ${stored?.titleAr ?? ""} ${stored?.subtitle ?? ""}`).split(/[\s-]+/);
+          const exact = typed.length > 0 && typed.every((w) => w.some((v) => t.some((x) => x.startsWith(v)))) ? 1.6 : 1;
           return exact * (boostType[(stored?.type as SearchType) ?? "page"] ?? 1);
         },
       })
       .slice(0, limit)
       .map((r) => ({ id: r.id, type: r.type, title: r.title, subtitle: r.subtitle, titleAr: r.titleAr, subtitleAr: r.subtitleAr, url: r.url, score: r.score }) as SearchHit);
   };
+}
+
+/** Particles in transliterated titles ("Kitab at-Tawhid", "Zad al-Ma'ad") and English filler: never a reason to match. */
+const PARTICLES = new Set(["al", "el", "at", "ath", "ad", "adh", "ar", "as", "ash", "az", "an", "wa", "wal", "li", "bi", "fi", "of", "the", "a", "and", "in", "on", "for", "to"]);
+
+/** English filler that synonym phrases bring in ("things to do with kids"). A person may type these; a synonym never adds them. */
+const FILLER = new Set(["with", "from", "by", "or", "do", "does", "is", "are", "my", "how", "what", "can"]);
+
+/** Edit distance, for telling a spelling of the same word ("tawheed", "tawhid") from a related word ("aqidah"). */
+function distance(a: string, b: string): number {
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    for (let j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    prev = cur;
+  }
+  return prev[b.length];
+}
+
+const isSpelling = (w: string, x: string) => w === x || (w.length >= 4 && x.length >= 4 && distance(w, x) <= 2);
+
+/**
+ * Splits a query into what was typed and what the synonym list adds. Particles are dropped unless
+ * they are all there is. `typed` holds, per typed word, that word and its other spellings.
+ */
+export function weighQuery(q: string): { query: string; typed: string[][]; weight: (term: string) => number } {
+  const words = normalize(q).split(/[\s-]+/).filter(Boolean);
+  const kept = words.filter((w) => !PARTICLES.has(w));
+  const own = kept.length ? kept : words;
+  const added = expandQuery(own.join(" ")).split(" ").filter((x) => x.length > 1 && !PARTICLES.has(x) && !FILLER.has(x) && !own.includes(x));
+  const typed = own.map((w) => [w, ...added.filter((x) => isSpelling(w, x))]);
+  const full = new Set(typed.flat());
+  return { query: [...own, ...added].join(" "), typed, weight: (term) => (full.has(term) ? 1 : 0.5) };
 }

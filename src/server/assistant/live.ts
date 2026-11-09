@@ -1,5 +1,5 @@
 import type { Db } from "@/server/db/client";
-import { getToday } from "@/server/duroos/queries";
+import { getToday, scheduleRows } from "@/server/duroos/queries";
 import { keyDatesState, KEY_DATES } from "@/content/key-dates";
 import { formatGregorian, formatHijri } from "@/lib/time/hijri";
 import { PRAYERS, prayerTimes, type Prayer } from "@/lib/time/prayer";
@@ -27,16 +27,24 @@ const DAYS_EN = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday
 const DAYS_AR = ["الاحد", "الاثنين", "الثلاثاء", "الاربعاء", "الخميس", "الجمعه", "السبت"];
 const DAY_NAME = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-const DUROOS = /\b(dars|darss|duroos|durus|doroos|lesson|lessons|halaqa|halaqah|halaqat|class|classes|lecture|lectures|majlis)\b|درس|دروس|حلق|محاضر/;
+const DUROOS = /\b(dars|darss|duroos|durus|doroos|lesson|lessons|halaqa|halaqah|halaqat|class|classes|lecture|lectures|majlis|shaykh|sheikh|shaikh|teaching|teach|teaches)\b|درس|دروس|حلق|محاضر|الشيخ/;
 const WHEN = /\b(today|tonight|now|right now|currently|tomorrow|this (morning|evening|afternoon)|live|on now|happening)\b|اليوم|الليله|الان|غدا|بكره|مباشر/;
-const TIMES = /\b(prayer times?|salah times?|salat times?|adhan|azan|athan|iqamah?|when is (fajr|dhuhr|zuhr|asr|maghrib|isha))\b|مواقيت|موعد (الصلاه|الاذان)|اذان/;
+// "Iqama" alone is the residence permit, so only "iqamah time" counts as a prayer question.
+const TIMES = /\b(prayer times?|salah times?|salat times?|adhan|azan|athan|iqamah times?|when is (fajr|dhuhr|zuhr|asr|maghrib|isha))\b|مواقيت|موعد (الصلاه|الاذان)|اذان/;
 
 export type LiveIntent = { duroos: { date: string; prayers: Prayer[] } | null; prayerTimes: boolean };
 
 /** Reads what live data a question needs, if any. `today` is the Riyadh date. */
 export function detectLive(question: string, today: string): LiveIntent {
   const q = normalize(question);
-  const prayers = PRAYERS.filter((p) => PRAYER_WORDS[p].test(q));
+  const named = PRAYERS.filter((p) => PRAYER_WORDS[p].test(q));
+  // "Tonight" is the evening duroos; "this morning" is after Fajr; "this afternoon" after Dhuhr and Asr.
+  const prayers: Prayer[] = named.length
+    ? named
+    : /\b(tonight|this evening)\b|الليله|المساء/.test(q) ? ["maghrib", "isha"]
+    : /\bthis morning\b|الصباح/.test(q) ? ["fajr"]
+    : /\bthis afternoon\b|الظهيره/.test(q) ? ["dhuhr", "asr"]
+    : [];
   const wantsTimes = TIMES.test(q);
   let date: string | null = null;
   if (/\b(tomorrow)\b|غدا|بكره/.test(q)) date = addDays(today, 1);
@@ -57,14 +65,30 @@ export function dayLabel(date: string, today: string, ar: boolean): string {
   return ar ? `يوم ${["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"][weekdayOf(date)]}` : `on ${DAY_NAME[weekdayOf(date)]}`;
 }
 
-/** The duroos of one day as a passage, grouped by prayer, with each one's state today. */
-export async function duroosPassage(db: Db, intent: { date: string; prayers: Prayer[] }, now: Date, ar: boolean): Promise<Chunk> {
+/** Parts of a name too common to identify a shaykh on their own. */
+const NAME_NOISE = new Set(["shaykh", "sheikh", "shaykhah", "prof", "dr", "ibn", "bin", "bint", "abd", "abdul", "abdullah", "muhammad", "mohammed", "ahmad", "al", "ali"]);
+const nameParts = (s: string) => normalize(s).split(" ").map((w) => w.replace(/^al(?=[a-z]{3})/, "")).filter((w) => w.length >= 4 && !NAME_NOISE.has(w));
+
+/** The shaykhs named in a question ("is Shaykh Abdurrazzaq teaching tonight"), by slug. */
+export function shaykhsNamed(question: string, shaykhs: { slug: string; nameEn: string; nameAr: string }[]): Set<string> {
+  const q = new Set(nameParts(question));
+  const qa = normalize(question);
+  return new Set(
+    shaykhs
+      .filter((s) => nameParts(s.nameEn).some((w) => q.has(w)) || nameParts(s.nameAr).some((w) => w.length >= 4 && qa.includes(w)))
+      .map((s) => s.slug)
+  );
+}
+
+/** The duroos of one day as a passage, grouped by prayer, with each one's state today. A named shaykh narrows it to his duroos. */
+export async function duroosPassage(db: Db, intent: { date: string; prayers: Prayer[] }, now: Date, ar: boolean, question = ""): Promise<Chunk> {
   const today = riyadhDateIso(now);
-  const day = await getToday(db, now, intent.date);
+  const [day, rows] = await Promise.all([getToday(db, now, intent.date), question ? scheduleRows(db) : Promise.resolve([])]);
+  const named = question ? shaykhsNamed(question, [...new Map(rows.map((r) => [r.shaykh.slug, r.shaykh])).values()]) : new Set<string>();
   const wanted = intent.prayers.length ? intent.prayers : PRAYERS;
   const lines: string[] = [];
   for (const p of wanted) {
-    const list = day.lessons.filter((l) => l.prayer === p);
+    const list = day.lessons.filter((l) => l.prayer === p && (!named.size || named.has(l.shaykh.slug)));
     if (!list.length) continue;
     lines.push(ar ? `بعد ${PRAYER_AR[p]} (الأذان ${formatClock(new Date(day.prayers[p]), "ar")}):` : `After ${PRAYER_EN[p]} (adhan ${formatClock(new Date(day.prayers[p]))}):`);
     for (const l of list) {
@@ -87,7 +111,10 @@ export async function duroosPassage(db: Db, intent: { date: string; prayers: Pra
   const head = ar
     ? `الدروس ${when} (${day.hijri.ar}، ${day.gregorian.ar})${intent.prayers.length ? ` بعد ${intent.prayers.map((p) => PRAYER_AR[p]).join(" و")}` : ""}:`
     : `Duroos ${when} (${day.hijri.en}, ${day.gregorian.en})${intent.prayers.length ? ` after ${intent.prayers.map((p) => PRAYER_EN[p]).join(" and ")}` : ""}:`;
-  const none = ar ? "لا توجد دروس مسجلة في هذا الوقت." : "There are no regular duroos listed for that time.";
+  const who = [...new Map(rows.filter((r) => named.has(r.shaykh.slug)).map((r) => [r.shaykh.slug, ar ? r.shaykh.nameAr : r.shaykh.nameEn])).values()].join(ar ? " و" : " and ");
+  const none = named.size
+    ? ar ? `لا يوجد درس مسجل لـ${who} في هذا الوقت.` : `No dars by ${who} is listed for that time.`
+    : ar ? "لا توجد دروس مسجلة في هذا الوقت." : "There are no regular duroos listed for that time.";
   return {
     id: `live-duroos-${intent.date}`,
     kind: "page",
