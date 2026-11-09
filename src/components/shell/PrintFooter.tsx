@@ -1,6 +1,7 @@
 import QRCode from "qrcode";
 import type { Locale } from "@/lib/locale";
 import { PRINT_SCAN_LABEL, printLink } from "./print-link";
+import { ALBASEERAH } from "./Albaseerah";
 
 /**
  * Shown on paper only (print.css): the page address and a QR code that opens it on a phone.
@@ -15,6 +16,9 @@ export async function PrintFooter({ path, locale = "en" }: { path: string; local
       <span className="print-footer-text">
         <span className="print-footer-label">{PRINT_SCAN_LABEL[locale === "ar" ? "ar" : "en"]}</span>
         <span className="print-footer-url" dir="ltr">{label}</span>
+        <span className="print-footer-credit">
+          {locale === "ar" ? `${ALBASEERAH.ar.by} ${ALBASEERAH.ar.name}` : `${ALBASEERAH.en.by} ${ALBASEERAH.en.name}`} · <span dir="ltr">{ALBASEERAH.domain}</span>
+        </span>
       </span>
     </aside>
   );

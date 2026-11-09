@@ -1,18 +1,31 @@
 /**
  * The quiet credit to MESH's parent organisation, Albaseerah International Institute (albaseerah.org).
- * MESH keeps its own name and look; this only says who brings it. It uses the one Albaseerah mark, the crest that
- * albaseerah.org shows (the white-bordered version, so it also reads on the deep green). The crest carries Albaseerah's
- * maroon, and a short maroon tick on a hairline answers MESH's gold bar, so the two read as one family without merging.
+ *
+ * MESH keeps its own name, green, gold and lattice. Albaseerah appears as a binding: a slim band in its deep maroon at
+ * the very foot of every page, under a hairline of its gold, with the MESH lattice running faintly through it. One
+ * Albaseerah mark only: the crest that albaseerah.org shows, in its white-bordered version so it reads on any ground.
+ * Every mention of Albaseerah links to albaseerah.org.
  */
+import type { ReactNode } from "react";
 import type { Locale } from "@/lib/locale";
 
 export const ALBASEERAH = {
   url: "https://albaseerah.org",
+  domain: "albaseerah.org",
   en: { by: "Brought to you by", name: "Albaseerah International Institute" },
   ar: { by: "يقدّمه لكم", name: "معهد البصيرة العالمي للدراسات الإسلامية" },
 } as const;
 
-function Crest({ className = "" }: { className?: string }) {
+/** Every mention of Albaseerah is this link. */
+export function AlbaseerahLink({ className = "", children, label }: { className?: string; children: ReactNode; label?: string }) {
+  return (
+    <a href={ALBASEERAH.url} target="_blank" rel="noopener" className={className} aria-label={label}>
+      {children}
+    </a>
+  );
+}
+
+export function AlbaseerahCrest({ className = "" }: { className?: string }) {
   return (
     <picture className="shrink-0">
       <source srcSet="/images/albaseerah/crest.webp" type="image/webp" />
@@ -22,36 +35,38 @@ function Crest({ className = "" }: { className?: string }) {
   );
 }
 
-/** Footer lockup, on the deep green: a hairline with a maroon tick, the emblem, and two small lines of text. */
-export function AlbaseerahFooterCredit({ locale = "en" }: { locale?: Locale }) {
+/** The binding at the foot of every page: the Albaseerah credit, centred like a seal, on its deep maroon. */
+export function AlbaseerahBand({ locale = "en" }: { locale?: Locale }) {
   const ar = locale === "ar";
   const t = ar ? ALBASEERAH.ar : ALBASEERAH.en;
   return (
-    <div className="abs-rule mt-7 max-w-xs pt-5">
-      <a href={ALBASEERAH.url} target="_blank" rel="noopener" className="group flex items-center gap-3.5" aria-label={`${t.by} ${t.name}`}>
-        <Crest className="h-11 transition duration-300 group-hover:-translate-y-px" />
-        <span className="min-w-0">
-          <span className={`block text-white/55 ${ar ? "text-xs" : "text-[10px] font-semibold uppercase tracking-[0.2em]"}`}>{t.by}</span>
-          <span className={`mt-1 block font-medium leading-snug text-white/90 transition group-hover:text-white ${ar ? "text-sm" : "text-[13.5px]"}`}>{t.name}</span>
-        </span>
-      </a>
+    // On phones the band runs on under the bottom bar and the assistant button, so the credit always shows above them.
+    <div className="abs-band lattice pb-[calc(9rem+env(safe-area-inset-bottom))] md:pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-0">
+      <div className="shell flex justify-center py-4">
+        <AlbaseerahLink className="group inline-flex items-center gap-3.5" label={`${t.by} ${t.name}`}>
+          <AlbaseerahCrest className="h-11 transition duration-300 group-hover:-translate-y-0.5" />
+          <span className="min-w-0">
+            <span className={`block text-abs-gold ${ar ? "text-xs" : "text-[10px] font-semibold uppercase tracking-[0.22em]"}`}>{t.by}</span>
+            <span className={`abs-name mt-0.5 block font-medium leading-snug text-white ${ar ? "text-sm" : "text-[14px]"}`}>{t.name}</span>
+          </span>
+        </AlbaseerahLink>
+      </div>
     </div>
   );
 }
 
-/** One line for the About text on light pages: the emblem and a sentence, the name in Albaseerah maroon. */
-export function AlbaseerahAboutCredit({ locale = "en", className = "" }: { locale?: Locale; className?: string }) {
+/** About MESH: the crest, the credit and the address, set off by a maroon rule. */
+export function AlbaseerahAbout({ locale = "en", className = "" }: { locale?: Locale; className?: string }) {
   const ar = locale === "ar";
+  const t = ar ? ALBASEERAH.ar : ALBASEERAH.en;
   return (
-    <p className={`flex items-center gap-3 text-sm leading-relaxed text-muted ${className}`}>
-      <Crest className="h-10" />
-      <span>
-        {ar ? "يقدّم لكم MESH " : "MESH is brought to you by "}
-        <a href={ALBASEERAH.url} target="_blank" rel="noopener" className="font-semibold text-abs underline-offset-2 hover:underline">
-          {ar ? ALBASEERAH.ar.name : ALBASEERAH.en.name}
-        </a>
-        .
+    <AlbaseerahLink className={`group flex items-center gap-4 border-s-2 border-abs ps-4 ${className}`} label={`${t.by} ${t.name}`}>
+      <AlbaseerahCrest className="h-14 transition duration-300 group-hover:-translate-y-0.5" />
+      <span className="min-w-0">
+        <span className={`block text-muted ${ar ? "text-xs" : "text-[10.5px] font-semibold uppercase tracking-[0.2em]"}`}>{t.by}</span>
+        <span className="mt-0.5 block font-heading text-lg font-semibold leading-snug text-abs underline-offset-4 group-hover:underline">{t.name}</span>
+        <span className="mt-0.5 block text-sm text-muted" dir="ltr">{ALBASEERAH.domain}</span>
       </span>
-    </p>
+    </AlbaseerahLink>
   );
 }

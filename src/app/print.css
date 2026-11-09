@@ -119,6 +119,7 @@
   .print-footer-text { display: flex; flex-direction: column; gap: 1mm; }
   .print-footer-label { font-size: 9pt; }
   .print-footer-url { font-size: 12pt; font-weight: 700; unicode-bidi: isolate; }
+  .print-footer-credit { font-size: 8pt; color: #720000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   :root[dir="rtl"] .print-footer-url { text-align: right; }
 
   /* ---------- Weekly duroos schedule (ScheduleBrowser.tsx, read only) ----------

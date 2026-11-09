@@ -40,9 +40,10 @@
   --pattern: rgb(15 90 67 / 0.07);
   --font-heading: var(--font-display), system-ui, sans-serif;
   --font-body: var(--font-text), system-ui, sans-serif;
-  /* Albaseerah, MESH's parent organisation: its maroon, used only in the credit. */
+  /* Albaseerah, MESH's parent organisation (albaseerah.org): its maroon and gold, used only in the credit. */
   --abs: #720000;
-  --abs-tick: #a8323e;
+  --abs-band: #3d0d12;
+  --abs-gold: #dcc08a;
 }
 
 :root[data-theme="dark"] {
@@ -76,6 +77,7 @@
   --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.3), 0 24px 48px -16px rgb(0 0 0 / 0.6);
   --pattern: rgb(216 181 102 / 0.07);
   --abs: #e7a9a9;
+  --abs-band: #26080b;
 }
 
 /* Sisters: a soft petal-pink MESH, scoped to the sisters' pages. Pinks carry the brand role, gold stays. */
@@ -143,6 +145,7 @@
   --color-wa: var(--wa);
   --color-wa-ink: var(--wa-ink);
   --color-abs: var(--abs);
+  --color-abs-gold: var(--abs-gold);
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
   --font-arabic: var(--font-amiri), serif;
@@ -246,9 +249,11 @@ a { -webkit-tap-highlight-color: transparent; }
 .lattice-soft { --lattice-color: var(--pattern); }
 
 /* MESH wordmark */
-/* The Albaseerah credit's hairline: faint white, with a short maroon tick at the start, like MESH's gold bar. */
-.abs-rule { position: relative; border-top: 1px solid rgb(255 255 255 / 0.12); }
-.abs-rule::before { content: ""; position: absolute; top: -1.5px; inset-inline-start: 0; width: 1.75rem; height: 3px; border-radius: 9999px; background: var(--abs-tick); }
+/* The Albaseerah binding at the foot of every page: its deep maroon under a hairline of its gold, the MESH lattice
+   running through it in that gold. The name takes a gold underline on hover. */
+.abs-band { background: var(--abs-band); border-top: 1px solid rgb(197 160 89 / 0.55); --lattice-color: rgb(197 160 89 / 0.09); }
+.abs-name { text-decoration: underline 1px transparent; text-underline-offset: 5px; transition: text-decoration-color 0.25s; }
+.group:hover .abs-name, .group:focus-visible .abs-name { text-decoration-color: #c5a059; }
 
 .wordmark { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; line-height: 0.9; }
 .brand-line { letter-spacing: 0.18em; font-weight: 600; }
