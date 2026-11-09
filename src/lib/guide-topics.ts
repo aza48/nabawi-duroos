@@ -74,9 +74,9 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     id: "more-study",
     label: "Other ways to study",
     labelAr: "طرق أخرى للدراسة",
-    blurb: "Postgraduate study, the Masjid an-Nabawi Institute and College, and the other universities in Madinah.",
-    blurbAr: "الدراسات العليا ومعهد المسجد النبوي وكليته والجامعات الأخرى في المدينة.",
-    slugs: ["postgraduate-admission-1448", "masjid-an-nabawi-institute-and-college", "other-universities-in-madinah"],
+    blurb: "Postgraduate study, studying online with the University, the Masjid an-Nabawi Institute and College, and the other universities in Madinah.",
+    blurbAr: "الدراسات العليا والدراسة عن بعد في الجامعة ومعهد المسجد النبوي وكليته والجامعات الأخرى في المدينة.",
+    slugs: ["postgraduate-admission-1448", "masjid-an-nabawi-institute-and-college", "studying-online-at-the-islamic-university", "other-universities-in-madinah"],
   },
   {
     id: "haram",
@@ -98,8 +98,8 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     id: "explore",
     label: "Explore Madinah",
     labelAr: "استكشف المدينة",
-    blurb: "Historic sites, day trips, the seasons and camping, dates, and sport.",
-    blurbAr: "المعالم التاريخية والرحلات القصيرة والمواسم والتخييم والتمور والرياضة.",
+    blurb: "Historic sites, day trips, the seasons and camping, dates, sport and volunteering.",
+    blurbAr: "المعالم التاريخية والرحلات القصيرة والمواسم والتخييم والتمور والرياضة والتطوع.",
     slugs: ["historic-sites-and-masjids", "day-trips-from-madinah", "seasons-and-camping", "dates-of-madinah", "sports-and-activities", "volunteering-as-a-student"],
   },
 ];

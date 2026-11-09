@@ -148,7 +148,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 </ul>
 <h2>Sending a parcel abroad</h2>
 <table><thead><tr><th>Way</th><th>What to know</th></tr></thead><tbody>
-<tr><td>SPL</td><td>Boxes up to 30 kg to almost every country, in three services: Economy, delivered to the post office nearest the receiver; Express, to the door; and Sea Freight, the cheapest per kilo for heavy boxes and the slowest. The price depends on weight and destination, and the calculator on splonline.com.sa gives it in a minute. As of 2025 a 30 kg express parcel costs from under 300 SAR to South Asia to about 750 SAR to Europe and North America, and to the USA about 400, 620 and 780 SAR for 10, 20 and 30 kg as of 2026. Customer service 19992</td></tr>
+<tr><td>SPL</td><td>Boxes up to 30 kg to almost every country, in three services: Economy, delivered to the post office nearest the receiver; Express, to the door; and Sea Freight, the cheapest per kilo for heavy boxes and the slowest. The price depends on weight and destination, and the calculator on splonline.com.sa gives it in a minute. As of 2025 a 30 kg express parcel costs from under 300 SAR to South Asia to about 750 SAR to Europe. To the USA it costs about 400, 620 and 780 SAR for 10, 20 and 30 kg as of 2026. Customer service 19992</td></tr>
 <tr><td>Aramex, DHL, FedEx, SMSA, UPS</td><td>Faster and tracked door to door, at a higher price per kilo. Ask each for a quote and about a books rate</td></tr>
 <tr><td>Sea cargo</td><td>Cargo offices in the city ship by the box or the cubic metre to Africa and Asia. Weeks in transit, but the cheapest way to move a whole library</td></tr>
 <tr><td>An extra checked bag</td><td>Often the cheapest for the first 20 to 30 kg if you are flying anyway. Buy it from the airline before the day</td></tr>
@@ -251,7 +251,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <h2>Who runs it</h2>
 <ul>
 <li><strong>The Deanship of Student Affairs</strong> (عمادة شؤون الطلاب) runs the student clubs. Each club has a president, a deputy and members, and the volunteering calls come from the clubs and the Deanship.</li>
-<li><strong>Ata' Volunteering Club</strong> (نادي عطاء التطوعي) is the University's volunteering club. It posts the calls for volunteers and runs the sign-up groups for each event. From 1448 it posts opportunities every week.</li>
+<li><strong>Ata' Volunteering Club</strong> (نادي عطاء التطوعي) is a University volunteering club. It posts the calls for volunteers and runs the sign-up groups for each event. From 1448 it posts opportunities every week.</li>
 <li><strong>The General Administration of Community Service</strong> runs the University's community programmes and marks International Volunteer Day on 5 December, when it thanks the year's volunteers.</li>
 </ul>
 <h2>Where your hours are recorded</h2>
@@ -259,7 +259,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <tr><td>National Volunteering Platform</td><td>Your official volunteering hours. Every opportunity has its own page, you register on it, and the hours are approved after the event by the organiser</td><td><a href="https://nvg.gov.sa/">nvg.gov.sa</a></td></tr>
 <tr><td>The University's Skills Record (السجل المهاري)</td><td>Club programmes, events and certificates. Since 1448 it is the official place where club events are announced, registered, attended and certified</td><td><a href="https://services.iu.edu.sa/student-skill-record/Programs">services.iu.edu.sa, Student Skill Record</a></td></tr>
 </tbody></table>
-<p>The two records are separate: volunteering hours live on the national platform, and club events and certificates live in the Skills Record. Hours on the national platform do not change your grades or your transcript. They are your own record, and employers and scholarship bodies ask for it.</p>
+<p>Club programmes, events and their certificates go in the Skills Record, and the hours of each volunteering opportunity go on the national platform. More in <a href="/ask/skills-record">What is the University Skills Record?</a></p>
 <h2>How to join an opportunity</h2>
 <ol>
 <li><strong>Register on the national platform</strong> at nvg.gov.sa once, and in the University's Skills Record, before the season starts.</li>
@@ -282,22 +282,22 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <p>Shifts are short and mostly outside class time: after Maghrib until Isha, after Asr, evenings at a tournament weekend, or under an hour for a bus departure. Some trips and conferences come with an official absence excuse for the class hours they take.</p>
 <h2>The year's volunteering seasons</h2>
 <table><thead><tr><th>When</th><th>What happens</th></tr></thead><tbody>
-<tr><td>Late August to September</td><td>The clubs restart and announce the year. Club evenings start at the winter tent opposite Unit 13, near the playing field</td></tr>
+<tr><td>Late August to September</td><td>The clubs restart and announce the year's programme, and the club evenings begin. In 1447 they met at the winter tent opposite Unit 13, near the playing field</td></tr>
 <tr><td>Mid November</td><td>International Day of Tolerance and International Students' Day (16 and 17 November), marked together over two or three evenings with cultural displays from many countries, a food corner, club stalls and a sports cup. Volunteers organise the evenings after Maghrib</td></tr>
 <tr><td>5 December</td><td>International Volunteer Day: the University thanks its volunteers</td></tr>
 <tr><td>18 December</td><td>World Arabic Language Day events at Al-Salam Hall</td></tr>
-<tr><td>January and February</td><td>The Saudi Universities Sports Federation tournaments. Home finals need organisers, crowd managers, photographers and reception for visitors with disabilities, on evenings from 5 to 10 pm</td></tr>
-<tr><td>Ramadan</td><td>Group Umrah trips from campus organised by the Deanship, with volunteers on the buses. Just before Ramadan a separate group opens for volunteering at the Prophet's Mosque</td></tr>
+<tr><td>Second semester</td><td>The Saudi Universities Sports Federation tournaments, held in January and February in 1447. Home finals need organisers, crowd managers, photographers and reception for visitors with disabilities, on evenings from 5 to 10 pm</td></tr>
+<tr><td>Ramadan</td><td>Group Umrah trips from campus organised by the Deanship, with volunteers on the buses.</td></tr>
 <tr><td>Any time in term</td><td>Environmental days and recreational trips, leaving from Unit 13</td></tr>
-<tr><td>Shawwal to Dhul Qa'dah</td><td>The graduation ceremony and the graduates' forum, after Asr</td></tr>
+<tr><td>Near the end of the second semester</td><td>The graduation ceremony and the graduates' forum, after Asr</td></tr>
 <tr><td>Just before the Eid al-Adha break</td><td>The closing ceremony of the year's student activities at Al-Salam Hall</td></tr>
 </tbody></table>
 <p>The summer and the Hajj season are quiet. The buses to events and trips leave from Housing Unit 13, and from in front of the colleges for events at Al-Salam Hall, usually 30 to 60 minutes before the start.</p>
 <h2>Clubs and events beyond volunteering</h2>
 <p>The same Deanship runs the clubs, the talks, conferences, exhibitions and trips, most of them at Al-Salam Hall, King Saud Hall, the Student Activities Theatre and the colleges' large halls. Events for students commonly offer a certificate of attendance, transport, a meal and sometimes a prize draw, and each announcement says what it includes. Some events take registration through one channel only, your nationality's representative, your housing unit or the volunteers, so read the announcement and register once. The Deanship also holds open meetings between the Dean of Student Affairs and students at the start of the year.</p>
 <h2>Students on a Visitor ID</h2>
-<p>The national platform signs you in with Nafath, which Visitor ID holders activate in their first week: see <a href="/guides/new-student-steps">First steps for new students</a>. If the platform refuses your registration, tell the club organiser before the event, so the hours can be recorded another way, and ask the Deanship of Student Affairs through Tawasul.</p>
+<p>The national platform signs you in with Nafath, which Visitor ID holders activate in their first week: see <a href="/guides/new-student-steps">First steps for new students</a>. If the platform refuses your registration, tell the club organiser before the event, and ask the Deanship of Student Affairs through Tawasul.</p>
 <p>Which office handles clubs and activities, and how to write a request, is in <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>. Campus life in general is in <a href="/guides/campus-life-islamic-university">Student life at the Islamic University</a>.</p>
-<blockquote><p>Tip: A question about volunteering we have not answered? Please message Admin on WhatsApp at +1 234 567 9076 or email mesh@albaseerah.org.</p></blockquote>`,
+<blockquote><p>Tip: A question about volunteering we have not answered? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
 ];
