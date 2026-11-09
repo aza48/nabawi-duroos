@@ -24,7 +24,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "التأشيرات والإقامة والمال والعمل",
     blurb: "Family visas, iqama and re-entry fees, Absher, your budget, everyday apps, driving, and starting a company.",
     blurbAr: "تأشيرات الأسرة ورسوم الإقامة والخروج والعودة وأبشر والميزانية والتطبيقات اليومية والقيادة وتأسيس شركة.",
-    slugs: ["visas-for-family-and-visitors", "iqama-and-exit-reentry-fees", "phone-sims-and-absher", "cost-of-living", "everyday-apps-and-services", "drivers-license", "start-a-company-in-saudi"],
+    slugs: ["visas-for-family-and-visitors", "iqama-and-exit-reentry-fees", "phone-sims-and-absher", "cost-of-living", "owning-property-as-a-non-saudi", "sending-and-receiving-money", "everyday-apps-and-services", "drivers-license", "start-a-company-in-saudi"],
   },
   {
     id: "home",
@@ -32,7 +32,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "السكن والمواصلات والصحة",
     blurb: "Renting a flat, buses, the train and taxis, and doctors, hospitals and pharmacies.",
     blurbAr: "استئجار شقة والحافلات والقطار وسيارات الأجرة والأطباء والمستشفيات والصيدليات.",
-    slugs: ["finding-an-apartment", "getting-around", "haramain-train-and-city-buses", "doctors-hospitals-and-pharmacies"],
+    slugs: ["finding-an-apartment", "getting-around", "haramain-train-and-city-buses", "shipping-and-receiving-parcels", "doctors-hospitals-and-pharmacies"],
   },
   {
     id: "study",
@@ -75,7 +75,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "الأسرة والأخوات والأطفال",
     blurb: "Study for sisters, having a baby, schools and things to do with children.",
     blurbAr: "دراسة الأخوات والولادة والمدارس وأنشطة الأطفال.",
-    slugs: ["sisters-studying-in-madinah", "having-a-baby-in-madinah", "kindergartens-and-schools", "kids-activities"],
+    slugs: ["sisters-studying-in-madinah", "having-a-baby-in-madinah", "kindergartens-and-schools", "bringing-parents-to-visit", "kids-activities"],
   },
   {
     id: "explore",
