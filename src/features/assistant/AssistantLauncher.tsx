@@ -11,7 +11,10 @@ import { MeshaykhName } from "./MeshaykhName";
 // The chat code loads only when someone opens it, so it never slows a page down.
 const AssistantPanel = dynamic(() => import("./AssistantPanel").then((m) => m.AssistantPanel), { ssr: false });
 
-/** The "Ask the MESHaykh" button on every public page, opening the assistant in a dialog. */
+/**
+ * The "Ask the MESHaykh" button on every public page, opening the assistant in a dialog. Wherever the bottom menu bar
+ * shows (phones and tablets) it is just the round icon, sitting above the bar; on desktop it carries the full name.
+ */
 export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
   const ar = locale === "ar";
   const path = usePathname() ?? "";
@@ -40,11 +43,14 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
         ref={opener}
         type="button"
         onClick={open}
-        className="fixed end-4 bottom-[calc(env(safe-area-inset-bottom)+5.25rem)] z-40 inline-flex min-h-12 items-center gap-2 rounded-full bg-brand px-4 font-semibold text-white shadow-lg ring-1 ring-black/5 transition hover:brightness-110 md:bottom-6"
+        className="fixed end-4 bottom-[calc(env(safe-area-inset-bottom)+5.25rem)] z-40 inline-flex size-14 items-center justify-center gap-2 rounded-full bg-brand font-semibold text-white shadow-lg ring-1 ring-black/5 transition hover:brightness-110 active:scale-95 lg:bottom-6 lg:size-auto lg:min-h-12 lg:px-4"
         aria-haspopup="dialog"
+        aria-label={ar ? "مساعد MESH" : "Ask the MESHaykh, MESH's assistant"}
+        data-assistant-fab
       >
-        <MessageCircleQuestion size={20} className="text-gold-bright" />
-        <span>{ar ? "مساعد MESH" : <MeshaykhName />}</span>
+        <MessageCircleQuestion size={20} className="hidden text-gold-bright lg:block" aria-hidden="true" />
+        <MessageCircleQuestion size={26} className="text-gold-bright lg:hidden" aria-hidden="true" />
+        <span className="hidden lg:inline">{ar ? "مساعد MESH" : <MeshaykhName />}</span>
       </button>
       <dialog
         ref={dialog}

@@ -165,6 +165,10 @@ html {
   :root[data-text] [data-desktop-nav] { display: none !important; }
   :root[data-text] [data-bottom-nav] { display: block !important; }
   :root[data-text] [data-main] { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)) !important; }
+  /* With the bottom bar back, the assistant button goes back to its round icon above the bar. */
+  :root[data-text] [data-assistant-fab] { bottom: calc(env(safe-area-inset-bottom) + 5.25rem) !important; width: 3.5rem !important; height: 3.5rem !important; min-height: 0 !important; padding: 0 !important; }
+  :root[data-text] [data-assistant-fab] > :is(span, svg:first-child) { display: none !important; }
+  :root[data-text] [data-assistant-fab] > svg:nth-child(2) { display: block !important; }
 }
 body {
   background: var(--bg);
