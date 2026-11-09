@@ -32,6 +32,9 @@ function fold(line: string): string[] {
   return out;
 }
 
+/** How long before the adhan a subscribed calendar reminds you of a dars. */
+export const ALARM_MINUTES = 20;
+
 export function buildIcs(title: string, events: CalEvent[], now: Date = new Date()): string {
   const lines = [
     "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//MESH//Duroos//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
@@ -44,7 +47,10 @@ export function buildIcs(title: string, events: CalEvent[], now: Date = new Date
         ? [`DTSTART;VALUE=DATE:${e.allDay.from.replace(/-/g, "")}`, `DTEND;VALUE=DATE:${e.allDay.toExclusive.replace(/-/g, "")}`, "TRANSP:TRANSPARENT"]
         : [`DTSTART:${stamp(e.start)}`, `DTEND:${stamp(e.end)}`]),
       `SUMMARY:${esc(e.summary)}`, `DESCRIPTION:${esc(e.description)}`, `LOCATION:${esc(e.location)}`, `URL:${e.url}`,
-      `STATUS:${e.cancelled ? "CANCELLED" : "CONFIRMED"}`, "END:VEVENT"
+      `STATUS:${e.cancelled ? "CANCELLED" : "CONFIRMED"}`,
+      // A reminder 20 minutes before each dars (the event starts at the adhan); none for whole-day dates or cancelled duroos.
+      ...(e.allDay || e.cancelled ? [] : ["BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${esc(e.summary)}`, `TRIGGER:-PT${ALARM_MINUTES}M`, "END:VALARM"]),
+      "END:VEVENT"
     );
   }
   lines.push("END:VCALENDAR");

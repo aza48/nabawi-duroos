@@ -10,6 +10,9 @@ import { ScheduleBrowser } from "./ScheduleBrowser";
 import { DuroosNav } from "./DuroosNav";
 import { LessonPage, LivePage, ShaykhPage, UpdatesPage } from "./DetailPages";
 import { t } from "./strings";
+import { lessonEventLd, shaykhLd } from "./structured-data";
+import { JsonLd } from "@/components/JsonLd";
+import { lessonFeed } from "@/server/calendar";
 import { riyadhDateIso, weekdayOf } from "@/lib/time/riyadh";
 import { clip, metaDescription, metaTitle } from "@/lib/text";
 
@@ -67,7 +70,12 @@ export function shaykhRoute(locale: Locale) {
   async function Page({ params }: SlugProps) {
     const s = await getShaykh(await getDb(), (await params).slug);
     if (!s) notFound();
-    return <ShaykhPage shaykh={s} locale={locale} />;
+    return (
+      <>
+        <JsonLd data={shaykhLd(s, locale)} />
+        <ShaykhPage shaykh={s} locale={locale} />
+      </>
+    );
   }
   async function generateMetadata({ params }: SlugProps): Promise<Metadata> {
     const slug = (await params).slug;
@@ -90,9 +98,19 @@ export function shaykhRoute(locale: Locale) {
 
 export function lessonRoute(locale: Locale) {
   async function Page({ params }: SlugProps) {
-    const l = await getLesson(await getDb(), (await params).slug);
+    const db = await getDb();
+    const l = await getLesson(db, (await params).slug);
     if (!l) notFound();
-    return <LessonPage lesson={l} locale={locale} />;
+    // The next sitting, from the same schedule the calendar feeds use (cancelled when the day's change says so).
+    const now = Date.now();
+    const next = l.timeKnown ? (await lessonFeed(db, { lessonSlug: l.slug }, riyadhDateIso(), 15)).events.find((e) => e.end.getTime() > now) ?? null : null;
+    const ld = lessonEventLd(l, next, locale);
+    return (
+      <>
+        {ld && <JsonLd data={ld} />}
+        <LessonPage lesson={l} locale={locale} />
+      </>
+    );
   }
   async function generateMetadata({ params }: SlugProps): Promise<Metadata> {
     const slug = (await params).slug;
