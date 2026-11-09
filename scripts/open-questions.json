@@ -723,5 +723,30 @@
   "topic": "Leaving",
   "question": "What minimum passport validity does Jawazat require before a final exit visa is issued (60 days is quoted)?",
   "context": "The iqama rule (30 days left) and the visa validity (60 days) are confirmed; the passport rule is not."
+ },
+ {
+  "topic": "Housing",
+  "question": "Which districts or projects in Madinah are inside REGA's approved zones for non-Saudi ownership (aggregators list 9 or 10 zones, including Knowledge Economic City and Rua Al Madinah, and disagree)?",
+  "context": "The property guide sends readers to the map on saudiproperties.rega.gov.sa and names no zone."
+ },
+ {
+  "topic": "Visas",
+  "question": "Can a student with a student iqama host a family visit visa for his parents on the MOFA platform, or is it only for work iqamas? And what is the University's own family visitor procedure for Visitor ID students?",
+  "context": "The parents guide says a Visitor ID cannot host and tells students to ask the Deanship of Student Affairs through Tawasul. Sources say the MOFA form asks for employer or chamber attestation."
+ },
+ {
+  "topic": "Visas",
+  "question": "How long can a parent stay on a single-entry family visit visa (30 or 90 days are both quoted), and is there a salary condition for the host?",
+  "context": "The parents guide gives the tourist eVisa's 90 days and the 180-day cap for family visit extensions, and no per-entry figure for the family visit visa."
+ },
+ {
+  "topic": "Money",
+  "question": "Which wallets and remittance apps open for Visitor ID students without a branch visit, and what monthly limits do they give a student with no salary?",
+  "context": "The money guide says wallets that accepted the Visitor ID at opening work, and that limits are tied to verified income."
+ },
+ {
+  "topic": "Money",
+  "question": "What is the current cash declaration threshold at Saudi customs: 60,000 SAR (older ZATCA page) or 40,000 SAR (newer e-service page)?",
+  "context": "The money guide says 'above the limit customs publishes' without a figure."
  }
 ]

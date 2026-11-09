@@ -4,7 +4,7 @@
 
 | Name | What it is |
 |---|---|
-| `DATABASE_URL` | Neon Postgres connection string |
+| `DATABASE_URL` | Supabase Postgres connection string (transaction pooler) |
 | `BETTER_AUTH_SECRET` | Long random string (e.g. `openssl rand -base64 32`). Never reuse the dev one. |
 | `BETTER_AUTH_URL` | `https://medinahub.org` |
 | `GEMINI_API_KEY` | Google AI Studio key for reading channel posts. Create a fresh one for production. |
@@ -18,8 +18,9 @@ Previews never use these database settings; they run on their own seeded copy.
 
 The watcher lives at `GET /api/cron/watch`. Each run reads every channel, asks the AI about new posts
 (at most 8 per run, so the free tier is enough), checks the YouTube live stream, and refreshes the pages.
-It should run every 2 to 5 minutes. Vercel's free plan only allows daily cron jobs, so use a free
-Cloudflare Worker:
+It should run every 2 to 5 minutes. Vercel's free plan only allows daily cron jobs. In production,
+Supabase `pg_cron` calls it every 3 minutes, and calls `/api/cron/daily` at 01:30 UTC, both with the
+`CRON_SECRET` header. If `pg_cron` is ever unavailable, a free Cloudflare Worker does the same:
 
 1. Cloudflare dashboard → Workers & Pages → Create → Worker, name it `mesh-cron`.
 2. Paste this code and deploy:
@@ -66,7 +67,7 @@ DATABASE_URL=... BETTER_AUTH_URL=https://medinahub.org npm run admin:invite -- y
 
 ## Morning brief
 
-Add a second trigger to the same Cloudflare Worker, or a separate one, calling
+Supabase `pg_cron` runs it. With the Cloudflare fallback, add a second trigger calling
 `https://medinahub.org/api/cron/daily` with the same `Authorization: Bearer <CRON_SECRET>` header,
 on cron `30 1 * * *` (04:30 Riyadh, before Fajr). The same call does the daily housekeeping first: it creates the analytics tables if they are missing and deletes visits older than 180 days, so none of that runs inside a visitor's request.
 
@@ -74,11 +75,12 @@ on cron `30 1 * * *` (04:30 Riyadh, before Fajr). The same call does the daily h
 
 Anyone can subscribe: `webcal://medinahub.org/api/v1/calendar/all.ics`, or per shaykh
 (`shaykh-<slug>.ics`), masjid (`masjid-<id>.ics`) or lesson (`lesson-<slug>.ics`). The buttons on
-shaykh and lesson pages do this. Calendars refresh every few hours and show cancellations.
+shaykh and lesson pages do this. Calendars refresh every few hours, show cancellations, and remind
+20 minutes before each dars.
 
-## Going live (database switch)
+## Rebuilding the database from scratch (done once, on 8 November 2026)
 
 1. Ask aza48 for the live `DATABASE_URL` and put it in `.env.production.local` (git-ignored).
 2. `npm run go-live` (dry run, changes nothing) and read the plan.
 3. `npm run go-live -- --apply --owner you@example.com` and open the printed owner invite.
-4. Add all the Vercel variables above, then merge `revamp` into `main`.
+4. Add all the Vercel variables above, then deploy `main`.

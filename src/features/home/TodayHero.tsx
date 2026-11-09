@@ -5,6 +5,7 @@ import { addDays } from "@/lib/time/riyadh";
 import { PRAYERS, prayerTimes } from "@/lib/time/prayer";
 import { DayArc, type ArcCounts, type ArcLesson } from "./DayArc";
 import { HeroSky } from "./HeroSky";
+import { AlbaseerahSchool } from "@/components/shell/Albaseerah";
 import { mapUrl } from "@/lib/maps";
 import { NextPrayer } from "./NextPrayer";
 import { WeatherChip } from "./WeatherChip";
@@ -74,6 +75,7 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
     <section className="hero lattice overflow-hidden bg-brand text-white">
       <DayRollover date={today.date} />
       <HeroSky prayers={today.prayers} />
+      <AlbaseerahSchool locale={locale} />
       <div className="hero-text shell pt-6 pb-6 md:pt-12 md:pb-8">
         <div className="grid items-end gap-4 md:gap-6 lg:grid-cols-[1fr_340px] lg:gap-10">
           <div>

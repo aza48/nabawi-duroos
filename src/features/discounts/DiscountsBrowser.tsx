@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { BadgePercent, GraduationCap, Search } from "lucide-react";
 import type { OfferGroup } from "@/content/discounts";
+import { DEALS_AR } from "@/content/discounts-ar";
 
 /** Browse the University's partner offers by category, by name, or students-only. */
 export function DiscountsBrowser({ groups, locale = "en" }: { groups: OfferGroup[]; locale?: "en" | "ar" }) {
@@ -11,12 +12,14 @@ export function DiscountsBrowser({ groups, locale = "en" }: { groups: OfferGroup
   const [q, setQ] = useState("");
   const [studentsOnly, setStudentsOnly] = useState(false);
   const needle = q.trim().toLowerCase();
+  /** The offer in the page's language; an offer with no translation yet keeps its English. */
+  const deal = (d: string) => (ar && DEALS_AR[d]) || d;
   const visible = groups
     .filter((g) => cat === "all" || g.id === cat)
     .map((g) => ({
       ...g,
       offers: g.offers.filter(
-        (o) => (!studentsOnly || o.students) && (!needle || o.name.includes(q.trim()) || (o.nameEn ?? "").toLowerCase().includes(needle) || o.deal.toLowerCase().includes(needle))
+        (o) => (!studentsOnly || o.students) && (!needle || o.name.includes(q.trim()) || (o.nameEn ?? "").toLowerCase().includes(needle) || o.deal.toLowerCase().includes(needle) || deal(o.deal).includes(q.trim()))
       ),
     }))
     .filter((g) => g.offers.length);
@@ -65,7 +68,7 @@ export function DiscountsBrowser({ groups, locale = "en" }: { groups: OfferGroup
                         {o.nameEn && <p className="ar-text text-sm text-muted">{o.name}</p>}
                       </>
                     )}
-                    <p className="mt-1.5 text-sm leading-relaxed" dir="auto">{o.deal}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed" dir="auto">{deal(o.deal)}</p>
                     {o.students && <span className="mt-2 inline-block rounded-full bg-on-bg px-2 py-0.5 text-[11px] font-bold text-on">{ar ? "تذكر الطلاب" : "Students named"}</span>}
                   </div>
                 </article>
