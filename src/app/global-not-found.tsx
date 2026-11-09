@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { fontVariables } from "./fonts";
 import { ThemeScript } from "@/components/shell/ThemeScript";
+import { AdminHelp } from "@/components/shell/AdminHelp";
 
 export const metadata: Metadata = { title: "Page not found · MESH" };
 
@@ -20,6 +21,7 @@ export default function GlobalNotFound() {
             <a href="/" className="rounded-full bg-primary px-5 py-2.5 font-semibold text-primary-ink">Home</a>
             <a href="/duroos" className="rounded-full border border-line px-5 py-2.5 font-semibold">Today&apos;s duroos</a>
           </div>
+          <AdminHelp className="mt-4 w-full text-start" />
         </main>
       </body>
     </html>

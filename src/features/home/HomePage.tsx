@@ -9,6 +9,7 @@ import { TodayHero } from "./TodayHero";
 import { DuroosCards } from "./DuroosCards";
 import { KeyDates } from "./KeyDates";
 import { TimeAgo } from "./TimeAgo";
+import { AdminHelp } from "@/components/shell/AdminHelp";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
@@ -72,7 +73,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
             </span>
             <p className="mt-4 font-heading text-2xl font-bold leading-tight">The MESH group</p>
             <p className="mt-2 text-sm leading-relaxed text-white/80">
-              Announcements, events and help from students who have been here longer. Verified information only, no debates.
+              Announcements, events and tips from students who have been here longer. Verified information only, no debates.
             </p>
             <p className="mt-2 text-sm font-semibold text-white">Only for English-speaking Western students.</p>
             <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold-bright px-4 py-2 text-sm font-bold text-brand-deep">
@@ -91,7 +92,10 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
           action={{ href: "/guides", label: "All guides" }}
         />
         {guides.length === 0 ? (
-          <p className="rounded-2xl border border-dashed border-line bg-card p-6 text-center text-muted">Guides are being written. In the meantime, ask in the WhatsApp group.</p>
+          <div className="rounded-2xl border border-dashed border-line bg-card p-6 text-center text-muted">
+            <p>Guides are being written. Until then, ask Admin.</p>
+            <AdminHelp variant="line" className="mt-2 text-sm" />
+          </div>
         ) : (
           <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
             {guides.slice(0, 8).map((g) => {

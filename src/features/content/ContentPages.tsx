@@ -1,6 +1,6 @@
 import { UniversityCalendar } from "./UniversityCalendar";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, ChevronDown, CircleCheck, CircleHelp, Compass, FileText, Flag, GraduationCap, KeyRound, Landmark, Languages, Library, MessageCircleQuestion, Plane, Radio, ScrollText, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, ChevronDown, CircleCheck, CircleHelp, Compass, FileText, GraduationCap, KeyRound, Landmark, Languages, Library, MessageCircleQuestion, Plane, Radio, ScrollText, Users } from "lucide-react";
 import type { FaqRow, GuideRow } from "@/server/content/queries";
 import { FAQ_CATEGORIES } from "@/server/content/queries";
 import { OLD_ANCHORS, groupGuides, topicById, topicOf, type GuideTopicId } from "@/lib/guide-topics";
@@ -14,7 +14,8 @@ import { JsonLd, ORG_ID, breadcrumbs } from "@/components/JsonLd";
 import { abs } from "@/lib/site";
 
 const plain = (html: string) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-import { AskOnWhatsApp, WhatsAppIcon } from "@/components/shell/WhatsApp";
+import { WhatsAppIcon } from "@/components/shell/WhatsApp";
+import { AdminHelp } from "@/components/shell/AdminHelp";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 import { EnglishNote } from "@/components/EnglishNote";
 import type { Locale } from "@/lib/locale";
@@ -75,7 +76,8 @@ function RelatedList({ kind, items, locale, rail = false }: { kind: "guides" | "
   );
 }
 
-export function AskPage({ faqs, whatsappUrl, locale = "en" }: { faqs: FaqRow[]; whatsappUrl: string; locale?: Locale }) {
+/** `whatsappUrl` is no longer used: help goes to Admin, never to the group. Kept optional for older callers. */
+export function AskPage({ faqs, locale = "en" }: { faqs: FaqRow[]; whatsappUrl?: string; locale?: Locale }) {
   const ar = locale === "ar";
   return (
     <>
@@ -98,22 +100,14 @@ export function AskPage({ faqs, whatsappUrl, locale = "en" }: { faqs: FaqRow[]; 
         {ar && <EnglishNote className="mb-6 max-w-3xl lg:ms-[288px]" />}
         <FaqExplorer items={faqs.map((f) => ({ slug: f.slug, question: f.question, category: f.category }))} categories={FAQ_CATEGORIES} locale={locale} />
         <div className="mt-10 max-w-3xl lg:ms-[288px]">
-          <AskOnWhatsApp url={whatsappUrl} locale={locale} />
+          <AdminHelp locale={locale} kind="question" />
         </div>
       </div>
     </>
   );
 }
 
-function OutdatedNote({ whatsappUrl, locale = "en" }: { whatsappUrl: string; locale?: Locale }) {
-  return (
-    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-6 flex items-center gap-2 text-sm text-muted hover:text-ink">
-      <Flag size={14} /> {locale === "ar" ? "معلومة قديمة؟ أخبرنا في مجموعة واتساب." : "Something outdated? Tell us in the WhatsApp group."}
-    </a>
-  );
-}
-
-export function FaqPage({ faq, whatsappUrl, locale = "en", guides = [], faqs = [] }: { faq: FaqRow; whatsappUrl: string; locale?: Locale; guides?: GuideRow[]; faqs?: FaqRow[] }) {
+export function FaqPage({ faq, locale = "en", guides = [], faqs = [] }: { faq: FaqRow; whatsappUrl?: string; locale?: Locale; guides?: GuideRow[]; faqs?: FaqRow[] }) {
   const ar = locale === "ar";
   const cat = FAQ_CATEGORIES.find((c) => c.id === faq.category);
   const me = asFaq(faq);
@@ -154,12 +148,11 @@ export function FaqPage({ faq, whatsappUrl, locale = "en", guides = [], faqs = [
           <CircleCheck size={15} /> {verified(faq.lastVerifiedAt, "ar")}
         </p>
       )}
-      <OutdatedNote whatsappUrl={whatsappUrl} locale={locale} />
+      <AdminHelp locale={locale} className="mt-6" />
       <RelatedList kind="guides" items={relGuides} locale={locale} />
       <div className="xl:hidden">
         <RelatedList kind="faqs" items={relFaqs} locale={locale} />
       </div>
-      <div className="mt-10"><AskOnWhatsApp url={whatsappUrl} locale={locale} /></div>
     </article>
     {relFaqs.length > 0 && (
       <aside className="hidden pt-9 xl:sticky xl:top-24 xl:block xl:self-start">
@@ -238,7 +231,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
   );
 }
 
-export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs = [] }: { guide: GuideRow; whatsappUrl: string; locale?: Locale; guides?: GuideRow[]; faqs?: FaqRow[] }) {
+export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { guide: GuideRow; whatsappUrl?: string; locale?: Locale; guides?: GuideRow[]; faqs?: FaqRow[] }) {
   const ar = locale === "ar";
   const topic = topicById(topicOf(guide));
   const stageLabel = ar ? topic.labelAr : topic.label;
@@ -336,14 +329,13 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
             {guide.slug === "university-calendar-1448" ? <UniversityCalendar locale={locale} /> : <GuideBody html={html} slug={guide.slug} steps={steps} locale={ar ? "ar" : "en"} />}
           </div>
           <div className={isCalendar ? "max-w-3xl" : undefined}>
-            <OutdatedNote whatsappUrl={whatsappUrl} locale={locale} />
+            <AdminHelp locale={locale} className="mt-6" />
             <RelatedList kind="guides" items={relGuides} locale={locale} />
             {relFaqs.length > 0 && (
               <div className={isCalendar ? undefined : "xl:hidden"}>
                 <RelatedList kind="faqs" items={relFaqs} locale={locale} />
               </div>
             )}
-            <div className="mt-10"><AskOnWhatsApp url={whatsappUrl} locale={locale} /></div>
           </div>
         </article>
         {!isCalendar && relFaqs.length > 0 && (
@@ -429,15 +421,16 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
               {ar ? (
                 <p className="mt-3 leading-relaxed">
                   MESH (ملتقى الطلاب الناطقين بالإنجليزية في المدينة) يديره طلاب لخدمة الطلاب الناطقين بالإنجليزية في المدينة المنورة.
-                  الإعلانات والفعاليات والمساعدة اليومية في مجموعة واتساب، وهذا الموقع يجمع الأجوبة الموثّقة والأدلة وجدول الدروس المباشر في مكان واحد.
+                  الإعلانات والفعاليات في مجموعة واتساب، وهذا الموقع يجمع الأجوبة الموثّقة والأدلة وجدول الدروس المباشر في مكان واحد. ولأي سؤال أو تصحيح راسل المشرف على واتساب.
                 </p>
               ) : (
                 <p className="mt-3 leading-relaxed">
                   MESH (Medina English Student Hub) is run by students, for English-speaking students in Madinah.
-                  Announcements, events and everyday help happen in the WhatsApp group. This website keeps the verified
-                  answers, the guides and the live duroos schedule in one place.
+                  Announcements and events happen in the WhatsApp group. This website keeps the verified answers, the
+                  guides and the live duroos schedule in one place. For any question or correction, message Admin on WhatsApp.
                 </p>
               )}
+              <AdminHelp locale={locale} kind="question" className="mt-4" />
             </section>
             <section id="rules">
               <h2 className="font-heading text-2xl font-bold">{ar ? "قواعد المجموعة" : "Group rules"}</h2>
