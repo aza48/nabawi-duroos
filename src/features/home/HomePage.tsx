@@ -9,6 +9,9 @@ import { TodayHero } from "./TodayHero";
 import { DuroosCards } from "./DuroosCards";
 import { KeyDates } from "./KeyDates";
 import { TimeAgo } from "./TimeAgo";
+import { NextUpRail } from "./NextUpRail";
+import { todaysChanges } from "./rail";
+import { slimLesson } from "@/features/duroos/now-next";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
@@ -37,7 +40,10 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
           )}
         </div>
 
-        <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+        <aside className="space-y-6">
+          <div className="hidden lg:block">
+            <NextUpRail lessons={today.lessons.map(slimLesson)} changes={todaysChanges(today.lessons)} serverNow={Date.now()} />
+          </div>
           <section className="rounded-3xl border border-line bg-card p-5">
             <div className="flex items-baseline justify-between">
               <h2 className="font-heading text-lg font-bold">Latest updates</h2>
@@ -46,7 +52,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
               </Link>
             </div>
             {updates.length === 0 ? (
-              <p className="mt-3 text-sm text-muted">No changes announced. Every dars is on as usual.</p>
+              <p className="mt-3 text-sm text-muted">{todaysChanges(today.lessons).length ? "No announcements." : "No changes announced. Every dars is on as usual."}</p>
             ) : (
               <ul className="mt-3 divide-y divide-line">
                 {updates.slice(0, 4).map((a) => (
@@ -65,7 +71,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="lattice block overflow-hidden rounded-3xl bg-brand-deep p-6 text-white shadow-[var(--shadow-lg)] transition hover:brightness-110"
+            className="lattice block overflow-hidden rounded-3xl bg-brand-deep p-6 text-white shadow-[var(--shadow-lg)] transition hover:brightness-110 lg:!sticky lg:top-24"
           >
             <span className="grid size-12 place-items-center rounded-2xl bg-wa text-wa-ink">
               <WhatsAppIcon size={26} />
