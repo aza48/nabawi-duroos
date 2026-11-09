@@ -12,6 +12,64 @@
 9. Cloud agents: nobody can see a cloud session, its files or its chat. Only the repo `iumuhaymin/medinahub` is shared. Commit and push everything you want others to know (code, half-done work on your own branch, notes, reports), and write your handoff in the repo, never only in the chat. Cloud containers are deleted when the session ends, so anything not pushed is lost.
 10. Hand off before your usage runs out (owner, 9 Nov). When your usage is nearly spent (about 85%, or when you are told it is low), start nothing new. Commit your half-done work as it is to your own branch with a commit message starting "WIP:" and push it. Add an entry under "Takeovers" in `docs/AI-LOG.md`: the task, the branch, what is done, the exact next step, the files involved, and which teammate takes over (your buddy in `docs/WORKPLAN-2026-11-09.md`, or anyone free). Comment on issue 13 naming that teammate. The teammate checks "Takeovers" first on every wake-up. It carries on, on that branch and in those files only, signing its commits "<name> for <owner>", and hands back when the owner of the task returns. Nobody merges or changes the database for someone else.
 
+
+## 9 November 2026, about 14:45 Riyadh: Desktop agent (worktree `mesh-website-audit-73b810`, pushes `HEAD:main`)
+**Production was frozen at #39 (`09d2182`) by Vercel's daily limit until about 14:50 Riyadh; the push of `7f84882` deployed everything.** If a `main` commit's Vercel status says "Deployment rate limited" again, production is frozen at the last success: check locally until the next push gets through.
+
+Done
+- The 8 Nov deep audit (`docs/audit/deep-2026-11-08/README.md`) is closed apart from owner items: 0c, 0d and 0e need live rows edited in Admin, 0h is content for Lanes B and E, 0i is the AR1 to AR4 work, and 18 waits for `DATABASE_CA` from the owner. 0g (search ranking) was checked against the live index and is done.
+- Release check of `main` at `0123e09`: `docs/audit/release-checks/2026-11-09-main-0123e09.md`. It is healthy. The crawl tools (`crawl.js`, `summary.js`) are in the same folder for the next check.
+- Fixed: the unconfirmed time row says "Evening" / "مساءً" (no doubt wording; `tests/time-label-copy.test.ts`). Breadcrumb links have a 40 px tap area on phones with no layout change.
+- PR reviews (in AI-LOG, since PR comments are blocked here): #35 and #32 ok to merge.
+
+- Live crawl after the deploy: same results as local, plus two production-only problems. Fixed `9c887b3`: hydration error 418 on stale loads of the home page (`TimeAgo`). Handed to web: the Arabic font preloads 404 in production (hard-coded file names).
+
+Next for the desktop agent
+1. After web's font fix or any big merge, repeat the release check (`docs/audit/release-checks/`).
+2. Small tap targets left in other lanes: library folder rows (`CoursePages.tsx`, unclaimed, 20 px), "All duroos after <prayer>" (`DetailPages.tsx`, Lane A), the home cards' "All" link (naiifos).
+3. Owner items in AI-LOG: the frozen deploy, and whether the desktop agent gets an hourly wake-up.
+
+## 9 November 2026, about 14:00 Riyadh: web (Lanes D and C, analytics)
+Everything below is merged to `main` (the owner told web to review and merge its own PRs; akheeai merged #24, #26, #27, #29). `main` at `e989e1e` passed tsc, 480 tests, the production build and a smoke test (key pages 200, unknown slugs 404, no sideways scroll at A or A++).
+
+Done (PR, what it does)
+- #24 D7: Arabic layout preloads Amiri 700 and Alexandria (Arabic range); first paint on /ar/duroos 2.2 s to 1.4 s. `tests/ar-font-preload.test.ts` checks the hashed names against the build.
+- #26 D1: one `AdminHelp` block (`src/components/shell/AdminHelp.tsx`, `admin-help.ts`); every help line goes to Admin on WhatsApp with the page link; a test keeps group help lines out.
+- #27 D2: `arCount()` in `src/lib/arabic-count.ts` at every Arabic count web found.
+- #28 D6: "Up next" rail on the wide home page from akheeai's `nowNext()` (`src/features/home/rail.ts`), today's changes, sticky group card (`lg:sticky!`, because `.lattice` sets position relative).
+- #29 AR2: `/ar/guides*` and `/ar/ask*` show `titleAr`, `summaryAr`, `bodyHtmlAr`, `questionAr`, `answerHtmlAr` when AR1 adds them (`src/lib/arabic-content.ts`); hreflang both ways and sitemap pairs for translated rows.
+- #33 D5: A, A+, A++ (`TextSizeControl`), plain inline head scripts (theme no longer flashes), header and menus adapt; also fixed the Arabic header overflowing at 1280 to 1439 px.
+- #37 D4: Ramadan mode (`src/features/home/ramadan.ts`, `RamadanStrip.tsx`), on by itself from 1 Ramadan 1448; owner-only facts wait in `RAMADAN_SETTINGS` (see "Waiting for the owner" in AI-LOG).
+- #40 C5: `error.tsx` with Try again in duroos, guides, ask, library (both trees); skeletons only inside `(index)` route groups so real 404s stay 404 (`tests/loading-boundaries.test.ts`); `NavPending` bar on menu links (`useLinkStatus`).
+- #42 C4: the MESH gate as the app icon (`src/components/shell/gate.ts`, `public/icons/`), install screenshots, Guides shortcut.
+
+Next for web, in order
+1. D3 "Who are you?" once aiakhee's B1 (`/start`) merges; then link `/start` and `/glossary` from the guides page and the menu.
+2. C2 share images for lesson, shaykh and FAQ pages. Finding: Satori (next/og) cannot load Amiri (GSUB lookup type 5 format 3) and lays Arabic words out left to right. Alexandria (`@fontsource/alexandria`, arabic 700 woff, 16 KB) loads and joins letters; put each Arabic word in its own box inside a `flex-direction: row-reverse` row for the right order. Word gaps come out uneven, so keep Arabic text on the image short (WhatsApp shows og:title as real text anyway). Fonts are read with `readFile(join(process.cwd(), "assets/..."))` as the Next 16 docs show.
+3. C3 share button, C6 print, C1 offline last (network first, versioned cache, kill switch). C7 PR checks only after the owner's yes.
+4. Spare tasks S1 to S3 (analytics), left to web by akheeai.
+
+## 9 November 2026, about 12:30 Riyadh: akheeai (branch `claude/stoic-curie-w1ar9c`), kept current while working
+**Done this window**
+- PR #25 merged by the owner: the MAP gleam and A2 "Now and next". It is **not live yet**, because Vercel's free plan is out of deployments for the day (100 a day). Redeploy `main` in Vercel once the limit frees up. Proposal waiting for the owner: build `main` only.
+- **The mashayikh's current positions** (owner: "extremely important"):
+  - research for 31 lesson shaykhs and 13 other teachers in `docs/research/mashayikh-positions-2026-11.md`
+  - data for 26 shaykhs in `MASHAYIKH_POSITIONS`
+  - `npm run shaykh:sync` (it previews; `-- --apply` writes)
+  - a PR from this branch after a notice to aiakhee about one line in `answer.ts`
+- **A3 "My duroos":** a star on each lesson page and schedule row, and a My duroos filter, on the phone only. Built and tested on the local branch `akheeai/A3-my-duroos` (commit `6956dc0`). It goes up as its own PR from this branch once the mashayikh PR merges.
+- **PR #23 takeover for akhiai:**
+  - wired in the four new guides
+  - widened four assistant eval regexes, with 0 misses
+  - restored the link from the leaving guide to the parcels guide
+  - screenshots taken; PR #23 is ready for review
+- **Reviews:** PRs #24, #26 and #27 by web are ok to merge (issue 13).
+
+**Next for akheeai**
+- `Countdown.tsx:66` live chip with `arCount` after D2 (#27) merges.
+- Lane A: A4, A1 and A5 if aiakhee has not started them (check issue 13).
+- Review the AR1 (aiakhee) and AR2 and D6 (web) PRs as they open.
+
 ## 9 November 2026, about 07:00 Riyadh: cloud agent 2 (branch `claude/stoic-curie-w1ar9c`)
 The usage window reset at 03:30 UTC. The next estimated reset is about 08:30 UTC, and a "MESH reset start" wake-up is booked for 08:33 UTC. Everything is pushed to the branch, never to `main`. Only `docs/AI-LOG.md` and `docs/HANDOFF.md` overlap with other branches. tsc is clean and 376 tests pass. Owner questions and the suggested merge order are under "Waiting for the owner" in `docs/AI-LOG.md`. Reports are in `docs/audit/` (content, crawl, code, a11y, admin phone, Lighthouse, PR review).
 
