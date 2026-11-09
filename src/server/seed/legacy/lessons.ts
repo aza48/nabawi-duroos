@@ -393,7 +393,7 @@ export const LESSONS: Lesson[] = [
   },
   {
     id: "abbud-fathmajid",
-    shaykh: L("الشيخ د. صالح بن عبد الله العبود", "Shaykh Dr. Salih ibn Abdullah al-Abbud"),
+    shaykh: L("الشيخ د. صالح بن عبد الله العبود", "Dr. Salih ibn Abdullah al-Abbud"),
     book: L("فتح المجيد شرح كتاب التوحيد", "Fath al-Majid Sharh Kitab al-Tawhid"),
     masjid: "nabawi",
     days: [0, 1, 2],
