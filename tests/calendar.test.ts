@@ -49,6 +49,15 @@ describe("reminders (A5)", () => {
 });
 
 describe("datesFeed", () => {
+  it("puts a long request window in once, on its last day, and leaves out withdrawal windows", () => {
+    const { events } = datesFeed();
+    const reenrol = events.find((e) => e.uid === "date-reenrol-1@medinahub.org")!;
+    expect(reenrol.allDay).toEqual({ from: "2026-10-22", toExclusive: "2026-10-23" });
+    expect(reenrol.summary).toBe("Last day: Re-enrolment requests");
+    expect(events.find((e) => e.uid === "date-drop-add-2@medinahub.org")!.summary).toBe("Drop, add and change sections");
+    expect(events.some((e) => /withdraw|Excuse from the semester/i.test(e.summary))).toBe(false);
+    for (const e of events.filter((x) => x.summary.startsWith("Last day"))) expect(e.allDay!.from < e.allDay!.toExclusive).toBe(true);
+  });
   it("turns the University calendar into whole-day events with an exclusive end", () => {
     const ics = buildIcs(datesFeed().title, datesFeed().events);
     const finals = ics.slice(ics.indexOf("UID:date-finals-1@"));
