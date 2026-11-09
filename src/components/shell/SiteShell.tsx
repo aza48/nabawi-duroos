@@ -83,6 +83,8 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
       links: [
         [ar ? "الدراسة في المدينة" : "Study programmes", ar ? "/ar/programs" : "/programs"],
         [ar ? "الأدلة" : "Guides", ar ? "/ar/guides" : "/guides"],
+        [ar ? "أيامك المئة الأولى" : "Your first 100 days", ar ? "/ar/start" : "/start"],
+        [ar ? "كلمات تسمعها في المدينة" : "Glossary", ar ? "/ar/glossary" : "/glossary"],
         [ar ? "المكتبة" : "Library", ar ? "/ar/library" : "/library"],
         [ar ? "الخصومات" : "Student discounts", ar ? "/ar/discounts" : "/discounts"],
         [ar ? "الأسئلة الشائعة" : "Questions", ar ? "/ar/ask" : "/ask"],
