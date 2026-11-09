@@ -751,6 +751,21 @@
  },
  {
   "topic": "University",
+  "question": "Does the mat'am serve iftar and suhoor in Ramadan, and how does the monthly booking on restaurant.iu.edu.sa change for the month?",
+  "context": "The Ramadan guide tells students to ask the mat'am before booking."
+ },
+ {
+  "topic": "Haram",
+  "question": "Can students on a Visitor ID register for i'tikaf at the Prophet's Mosque with Nafath, and do non-Saudi residents still need their sponsor's approval as in 1447?",
+  "context": "The Ramadan guide says to try the portal the day registration opens and ask Student Affairs if refused."
+ },
+ {
+  "topic": "University",
+  "question": "Do all scholarship students keep their room over the summer break, is there a storage rule for belongings, and is the Central Library open in the weeks between the summer finals and the new year?",
+  "context": "The seasons guide says the room is kept and the library is open through the summer semester."
+ },
+ {
+  "topic": "University",
   "question": "Can students on a Visitor ID create an account on the National Volunteering Platform (nvg.gov.sa), which signs in with Nafath, and do volunteering hours count for anything at the University (Skills Record, scholarship standing)?",
   "context": "The volunteering guide says the hours are the student's own record and tells Visitor ID students to tell the organiser if the platform refuses them."
  },
