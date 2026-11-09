@@ -16,7 +16,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "ابدأ هنا",
     blurb: "Applying, arriving and your first weeks: the steps in the order you will need them.",
     blurbAr: "التقديم والوصول وأسابيعك الأولى، بالترتيب الذي ستحتاجه.",
-    slugs: ["applying-to-the-islamic-university", "what-to-bring-to-madinah", "first-30-days-in-madinah", "new-student-steps", "your-first-semester-week-by-week", "living-on-a-visitor-id", "lost-your-iqama-passport-or-card", "sim-internet-bank"],
+    slugs: ["applying-to-the-islamic-university", "what-to-bring-to-madinah", "first-30-days-in-madinah", "new-student-steps", "your-first-semester-week-by-week", "living-on-a-visitor-id", "lost-your-iqama-passport-or-card", "scams-and-staying-safe", "sim-internet-bank"],
   },
   {
     id: "papers",
@@ -82,9 +82,9 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     id: "haram",
     label: "The Haram and worship",
     labelAr: "الحرم والعبادة",
-    blurb: "Your first visit to Masjid an-Nabawi, the Rawdah, Umrah, Quba, the women's sections, and Hajj as a resident.",
-    blurbAr: "زيارتك الأولى للمسجد النبوي والروضة والعمرة وقباء ومصليات النساء.",
-    slugs: ["masjid-an-nabawi-first-visit", "umrah-rawdah-quba", "women-at-masjid-an-nabawi", "hajj-as-a-student"],
+    blurb: "Your first visit to Masjid an-Nabawi, the Rawdah, Umrah, Quba, the women's sections, Ramadan, and Hajj as a resident.",
+    blurbAr: "زيارتك الأولى للمسجد النبوي والروضة والعمرة وقباء ومصليات النساء ورمضان والحج.",
+    slugs: ["masjid-an-nabawi-first-visit", "umrah-rawdah-quba", "women-at-masjid-an-nabawi", "ramadan-as-a-student", "hajj-as-a-student"],
   },
   {
     id: "family",

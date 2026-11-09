@@ -26,7 +26,17 @@ Sources: `docs/research/telegram-iu-2026-11/` (TG) and `docs/research/gomedine-2
 18. **Lost your iqama, Visitor ID, passport or student card.** Steps for each. (TG c7, c1) **(done: `lost-your-iqama-passport-or-card`)**
 19. **If a student passes away.** What the University and the family do; burial in al-Baqi'. A sensitive but much-needed page. (TG c7)
 
-More ideas are added below as the readers finish.
+20. **Ramadan as a student.** Classes, iftar, Umrah trips, i'tikaf registration, volunteering. **(done: `ramadan-as-a-student`)** (TG delta)
+21. **Scams and staying safe.** The borrowing trick near the colleges, stolen accounts and codes, fake bank messages, Hajj packages outside Nusuk. **(done: `scams-and-staying-safe`)** (TG delta)
+22. **Finding your way around the campus.** A plain-words map: main gate and permits office, Unit 22 (card counter, Student Fund, bookshop), Unit 13, the Deanship of Student Affairs, the mat'am behind the Sharia college. (TG delta 3.3)
+23. **Can I work while I study?** Asked every year; needs the University's answer (sponsor approval). FAQ. (TG c1 to c5)
+24. **Student support when things go wrong.** Counselling unit, college guidance, Student Fund aid, Scholarship Fund hardship rounds, the Medical Center. (TG delta 3.5)
+25. **The teaching diploma alongside your degree.** Registration in early Safar, four evening semesters. (TG c6, check it still runs)
+26. **Choosing between Sharia, Law and the Qur'an College.** Shape of each degree, memorisation, postgraduate routes. (TG c6)
+27. **Getting married in Madinah.** Draft ready in gomedine part 2, 4.10; waits for the owner. (GM)
+28. **Looking after a car in your name.** Istimara, Fahas, driver authorisation, accidents, impound. **(done: a section in `drivers-license`)** (GM part 2)
+
+More ideas are added below as new research comes in.
 
 ## Also published from this research (not on the list above)
 - `university-student-system`, `what-you-study-by-level`, `studying-online-at-the-islamic-university`, `check-visa-and-iqama-online`, `family-records-on-absher`; discounts replaced from the official 25 Oct 2026 deck; sports club prices.

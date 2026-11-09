@@ -135,6 +135,16 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 <p>The fees, the conditions and the steps are in <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>.</p>
 <h2>A new baby</h2>
 <p>The hospital registers the birth, and you print the birth certificate from Absher under Civil Affairs services. You then add the baby to your iqama through a request in Absher and collect the card at Jawazat. Every step is in <a href="/guides/having-a-baby-in-madinah#after-the-birth-papers-step-by-step">Having a baby in Madinah</a>.</p>
+<h2>Booking Jawazat</h2>
+<p>A few things still need a visit to Jawazat, such as fingerprints for a family member, a passport transfer that Absher refuses, or an entry or exit missing from your records. Book first:</p>
+<ol>
+  <li>In Absher, open Appointments, then Passport, then New appointment.</li>
+  <li>Choose the service: fingerprints for men, fingerprints for dependants, or Resident services for nearly everything else.</li>
+  <li>Choose the region, the number of transactions and the office, then a green slot. Print the confirmation or keep a screenshot.</li>
+</ol>
+<p>Change or cancel the appointment from the same page with the plus sign, so the slot goes to someone else.</p>
+<h2>A name spelt differently from the passport in English</h2>
+<p>If the English spelling on an iqama does not match the passport, banks and money transfer services can refuse you. Book Jawazat under Resident services and take the passport and the iqama: the name is corrected to match the passport, and a new card follows within days. For a student iqama, ask Travel Management to do it.</p>
 <h2>Checking everything in one place</h2>
 <p>Each person's page under Family Members Services shows their iqama expiry, passport details and any visa. Look once a month, and set a reminder a month before each iqama expires. Checks that need no sign-in are in <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
 <blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,

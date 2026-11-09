@@ -2,8 +2,9 @@ import type { SeedGuide } from "./guides-2026";
 
 /**
  * Admin lane guides on University life, November 2026: the first semester, the stipend card,
- * getting to the Haram, paid housing in Unit 13, the Student Fund and your room, and lost documents.
- * Sources and confidence per fact are in docs/research/telegram-iu-2026-11/ (c1 to c4, c7),
+ * getting to the Haram, paid housing in Unit 13, the Student Fund and your room, lost documents,
+ * Ramadan as a student, and scams.
+ * Sources and confidence per fact are in docs/research/telegram-iu-2026-11/ (c1 to c7, and DELTA-c3-c5-c6.md),
  * docs/research/chats-2026-11/ and docs/research/gomedine-2026-11/. Registered in sync.ts; topics in src/lib/guide-topics.ts.
  */
 export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
@@ -51,6 +52,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <h2>Weeks 2 to 5: settling into your courses</h2>
 <ul>
 <li><strong>Course description:</strong> teachers hand out the course description (توصيف المقرر) in the first week or two. It lists the topics, the books and how the marks are split.</li>
+<li><strong>Your section's group:</strong> most sections have a WhatsApp or Telegram group run by a student class head (رئيس الشعبة), who passes on the teacher's notices, test dates and marks. Ask for it in your first lecture. The Academic System and your University email stay the official record, and a link posted in a group is never a reason to type your password.</li>
 <li><strong>Books:</strong> see <a href="/ask/muqarrarat">What are muqarrarat?</a></li>
 <li><strong>Blackboard:</strong> class materials, monthly tests and announcements. If you cannot sign in, see <a href="/ask/blackboard-login">How do I sign in to Blackboard?</a></li>
 <li><strong>Your study plan</strong> is in the Academic System under <strong>Academic</strong>, then <strong>Student Plan</strong> (خطة الطالب). It shows every course you will take, level by level, and what each needs first.</li>
@@ -122,6 +124,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li><strong>The summer:</strong> the stipend is paid through the summer break as well.</li>
 <li><strong>New students:</strong> nothing is paid in your first month. The first two months come together in the second month.</li>
 <li><strong>No text message?</strong> Alerts do not always arrive. Check the balance at an ATM, or your payments in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
+<li><strong>Your mobile number:</strong> the card's alerts and codes go to the mobile number on your University account, and the number must be in your own name. If you change your number, update it from the user account icon on iu.edu.sa first, and allow a few days for the card to follow.</li>
 </ul>
 <h2>Moving the money to your own account with a wallet app</h2>
 <p>This is the quickest way, and it needs no ATM. The steps below are for Barq. Alinma Pay and urpay accept the card the same way.</p>
@@ -278,7 +281,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <tr><td>Amount</td><td>Up to 2,000 SAR. Your GPA counts towards how much you are given</td></tr>
 <tr><td>Repayment</td><td>200 SAR a month, taken from your stipend</td></tr>
 <tr><td>How often</td><td>Once only</td></tr>
-<tr><td>Not open to</td><td>Students in their final year</td></tr>
+<tr><td>Not open to</td><td>Students in their first semester, who have no GPA yet, and students in their final year</td></tr>
 <tr><td>Time to arrive</td><td>One to two weeks, and up to a month in busy periods</td></tr>
 </tbody></table>
 <ol>
@@ -308,6 +311,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <h2>The first hour</h2>
 <ol>
 <li><strong>Look again calmly</strong> where you last had it: your room, the mat'am, the prayer room, the bus, the car you came in.</li>
+<li><strong>Lost it on campus?</strong> Ask campus security, and Student Relations (العلاقات الطلابية) on the first floor of the Deanship of Student Affairs. Things found on campus are handed in to them, and they contact the owner. If you find something yourself, take it there.</li>
 <li><strong>Block anything that holds money:</strong> freeze your bank card in your banking app, and report the stipend card (below).</li>
 <li><strong>Suspend your SIM</strong> if your phone is gone, by calling your mobile operator, so nobody receives your codes.</li>
 <li><strong>Write down what was lost</strong>, when and where. You need it for the police report.</li>
@@ -363,5 +367,119 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li>Write your mobile operator's and your bank's customer care numbers on paper, away from the phone.</li>
 </ul>
 <blockquote><p>Tip: Stuck at any step, or not sure which office to go to? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
+  },
+  {
+    slug: "ramadan-as-a-student",
+    stage: "getting-settled",
+    title: "Ramadan as a student in Madinah: classes, iftar, Umrah and i'tikaf",
+    summary: "How Ramadan works for University students: the shorter class timetable and the holidays in Ramadan 1448, iftar and suhoor on campus, the early stipend, free Umrah trips, i'tikaf at Masjid an-Nabawi and volunteering at the Haram.",
+    bodyHtml: `
+<p>Checked November 2026. Ramadan in Madinah is the high point of the year, and the University changes its rhythm for it. This guide covers what changes on campus and what to plan for, with the dates of Ramadan 1448.</p>
+<h2>Ramadan 1448 at a glance</h2>
+<table><thead><tr><th>What</th><th>1448</th></tr></thead><tbody>
+<tr><td>Ramadan begins, by moon sighting</td><td>Expected Monday 8 February 2027</td></tr>
+<tr><td>Classes on the Ramadan timetable</td><td>8 to 18 February, and 23 to 25 February 2027</td></tr>
+<tr><td>Founding Day holiday</td><td>Friday 19 to Monday 22 February 2027</td></tr>
+<tr><td>Eid al-Fitr holiday</td><td>Friday 26 February to Saturday 13 March 2027 (19 Ramadan to 5 Shawwal)</td></tr>
+<tr><td>The last ten nights</td><td>From the night of Sunday 28 February 2027, all inside the Eid holiday</td></tr>
+<tr><td>Eid al-Fitr</td><td>Expected Tuesday 9 March 2027</td></tr>
+<tr><td>Classes resume</td><td>Sunday 14 March 2027</td></tr>
+</tbody></table>
+<p>So in 1448 there are only about two weeks of classes in Ramadan, and the whole of the last ten nights is free for worship. Every date is in <a href="/guides/university-calendar-1448">The University calendar</a>.</p>
+<h2>Classes in Ramadan</h2>
+<ul>
+<li><strong>A separate timetable.</strong> The University publishes the Ramadan lecture times a few days before Ramadan, on its official X account (@iu_edu) and in the Academic System. In 1447 they came out on 16 February 2026.</li>
+<li><strong>Shorter lectures.</strong> A two-hour lecture becomes about one hour, and a one-hour lecture about 30 minutes. The morning day usually starts at 10 am, and afternoon classes at about 2 pm.</li>
+<li><strong>The absence rules do not change.</strong> Every absence still counts towards the 25% limit, so keep going until the last day of teaching. See <a href="/ask/how-many-classes-can-i-miss">How many classes can I miss?</a></li>
+<li><strong>The Ma'had</strong> can finish teaching a few days before the colleges. Go by its own notice.</li>
+<li><strong>No final exams</strong> fall in Ramadan in 1448. Second semester finals start on 25 April 2027.</li>
+</ul>
+<h2>Iftar and suhoor on campus</h2>
+<ul>
+<li><strong>A free iftar every day.</strong> The Deanship of Student Affairs serves iftar next to the University sports ground, often with Qur'an competitions and prizes. In 1445 iftar was also served in the lobbies of Units 24 and 25, about 3,000 meals a day.</li>
+<li><strong>Meals run out.</strong> If you are coming back late from the Haram, carry dates and water with you.</li>
+<li><strong>Suhoor</strong> meals are handed out in the last ten nights, including at Gate 4.</li>
+<li><strong>Do not queue at cars</strong> handing out meals or cash near the campus gates. The University has warned students against this. Eat at the University iftar instead.</li>
+</ul>
+<h2>Your stipend in Ramadan</h2>
+<p>The University usually pays the stipend early in Ramadan, a few days before Eid. The next payment then comes more than a month later, so plan your spending for the gap. See <a href="/guides/getting-your-stipend-off-the-university-card">Your University stipend card</a>.</p>
+<h2>Umrah in Ramadan</h2>
+<ul>
+<li><strong>Free trips.</strong> The Deanship of Student Affairs runs free Umrah trips by bus in Ramadan, each announced with a registration form. In 1446 one left on 7 Ramadan at 1:30 pm from in front of the University grocery, and in 1447 one left on 22 Ramadan at 1 pm from the sports ground. Colleges run their own trips as well. The bus returns the same day, and a student who misses it comes back at his own cost.</li>
+<li><strong>Your permit.</strong> Book your Umrah permit in Nusuk for the time you will arrive in Makkah. Permits, trains and buses fill quickly in Ramadan, most of all in the last ten nights.</li>
+<li><strong>Going on your own:</strong> see <a href="/ask/umrah-from-madinah">How do I go for Umrah from Madinah?</a> and <a href="/ask/haramain-train-to-makkah">How do I take the Haramain train to Makkah?</a></li>
+<li><strong>Go on a day off.</strong> Travel absences are not excused, so plan Umrah for a weekend or the holidays, not a teaching day.</li>
+</ul>
+<h2>I'tikaf at Masjid an-Nabawi</h2>
+<ul>
+<li><strong>Registration is needed</strong> for a place in the masjid's i'tikaf areas in the last ten days. The General Authority for the Care of the Two Holy Mosques opens it around the middle of Ramadan, and places are limited.</li>
+<li><strong>Register</strong> with your iqama or ID number on the link the Authority announces, as soon as it opens. Whether you were accepted shows in your account.</li>
+<li><strong>Sisters</strong> should check the women's arrangements in the same announcement. See <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</li>
+</ul>
+<h2>Volunteering at the Haram</h2>
+<ul>
+<li>Each Ramadan the University recruits students to volunteer at Masjid an-Nabawi. In 1445 volunteers served every day of Ramadan, in thobe and cap, and received certificates, hours on the National Volunteering Platform and priority for work in the Hajj season.</li>
+<li>Charities in the city recruit volunteers on <a href="https://nvg.gov.sa/">nvg.gov.sa</a> too. Hours are approved only when you turn up and work. See <a href="/ask/skills-record">What is the University Skills Record?</a></li>
+</ul>
+<h2>Getting to the Haram at night</h2>
+<ul>
+<li>University bus times change in Ramadan. The new times are posted in the halls and by the Deanship of Student Affairs. See <a href="/guides/university-to-the-haram">Getting from the University to the Haram</a>.</li>
+<li>For Tarawih and Qiyam the courtyards fill an hour before the adhan, and parking near the Haram is hardest at night. Leave early, or take the bus.</li>
+<li>Rawdah permits go quickly in Ramadan: book in Nusuk as early as the app allows. See <a href="/guides/masjid-an-nabawi-first-visit">Visiting Masjid an-Nabawi</a>.</li>
+</ul>
+<blockquote><p>Tip: Write the Eid holiday into your plans now. Most students stay in Madinah for the last ten nights, and trains and flights out after Eid sell out early. Questions? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
+  },
+  {
+    slug: "scams-and-staying-safe",
+    stage: "getting-settled",
+    title: "Scams and staying safe: what students in Madinah run into",
+    summary: "The tricks students meet on and around campus and online, from strangers borrowing money to stolen accounts, fake bank messages and Hajj packages, and what to do if one catches you.",
+    bodyHtml: `
+<p>Checked November 2026. Madinah is a safe city, and people here trust each other. That trust is exactly what scammers count on. The same few tricks come round every year, and once you know them you will spot them.</p>
+<h2>Strangers who want to borrow money</h2>
+<p>This is the most common trick near the University. A well-dressed man stops you near the colleges or the gates, often from a car. He says he is a graduate of the University, an imam or a muezzin, and tells a story: an ATM swallowed his card, his car has broken down, a relative is in hospital. He asks for a few hundred riyals and promises to repay it tonight. He never does, and he blocks your number. The same men come back months later with new stories.</p>
+<ul>
+<li>Never lend money to someone you do not know, however respectable he looks and however moving the story.</li>
+<li>If he insists, walk away and tell campus security.</li>
+<li>If you have already paid, report it at the nearest police station with his phone number and any transfer receipt. The phone number is enough to trace him.</li>
+</ul>
+<h2>Theft on campus and in crowds</h2>
+<ul>
+<li>Lock your room every time you go out, even for a minute. Rooms have been entered and wallets taken.</li>
+<li>Keep your bag and phone with you in the prayer rooms, the mat'am and the library.</li>
+<li>Watch your pockets in bus queues and crowds, at the Haram as well as on campus.</li>
+<li>Lost something? See <a href="/guides/lost-your-iqama-passport-or-card">Lost your passport, iqama, phone or University card?</a></li>
+</ul>
+<h2>Links, codes and stolen accounts</h2>
+<ul>
+<li><strong>Never type your University password</strong> into a page you reached from a link in a group or a class chat. Fake accounts post links named "timetable" or "class group" to steal accounts. See <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat. Is it safe?</a></li>
+<li><strong>Never share a code</strong> that arrives by text, for WhatsApp, Telegram, Absher, Nafath or your bank. Whoever has the code has your account. Someone asking you to "send me the code, it came to you by mistake" is stealing it.</li>
+<li><strong>Turn on two-step verification</strong> in WhatsApp and Telegram. A hijacked account is used to ask your friends and family for money in your name.</li>
+<li><strong>Never photograph your bank card</strong> or stipend card for anyone, and never give out its CVV.</li>
+</ul>
+<h2>Bank messages and calls</h2>
+<ul>
+<li>A Saudi bank never asks for a code, a PIN or your card details by phone, text or WhatsApp.</li>
+<li>Messages with spelling mistakes, messages that ask you to call an ordinary mobile number, and messages warning that your account or Absher will be suspended unless you act now are fraud.</li>
+<li>If in doubt, hang up and call your bank on the number printed on your card or shown in its app.</li>
+<li>Money from a stranger "sent by mistake", followed by a request to send it on: do not transfer anything. Tell your bank. Passing it on can make you part of a fraud.</li>
+</ul>
+<h2>Offers that are too good to be true</h2>
+<ul>
+<li>"Investment" schemes promising daily profits, and "work from home" offers posted in student groups, are scams, even when a group admin posts them.</li>
+<li>Services that offer to solve your Blackboard tests or "guarantee full marks" are cheating. Two identical answers lead to a cheating report against both students, under the student conduct rules.</li>
+<li>A Hajj package sold by phone or on social media, outside Nusuk, gives you no permit. See <a href="/guides/hajj-as-a-student">Hajj from Madinah as a student or resident</a>.</li>
+<li>Buying from a stranger online? Pay on delivery, or meet in a public place and check the item before you pay. A seller in a hurry for the money is a warning sign.</li>
+</ul>
+<h2>Rumours and forwarded messages</h2>
+<p>Every year messages go round the groups about visa fines, new deadlines, stopped stipends or students being sent home. Many are false or years old. Go only by the University's official accounts on X (@iu_edu and the deanships' own accounts), your University email and the Academic System. If a message worries you, ask the office concerned through Tawasul before you act. See <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</p>
+<h2>If it happens to you</h2>
+<ol>
+<li><strong>Money gone from a card or account:</strong> freeze the card in your banking app and call your bank at once. Speed matters. For the stipend card, go to the counter in Unit 22: see <a href="/guides/getting-your-stipend-off-the-university-card">Your University stipend card</a>.</li>
+<li><strong>An account taken over:</strong> change the password from a device you trust and sign out of other devices. For your University account, change it from the user account icon on iu.edu.sa and tell the Deanship of IT on <a href="mailto:it.care@iu.edu.sa">it.care@iu.edu.sa</a>.</li>
+<li><strong>Report it</strong> at the nearest police station with screenshots, phone numbers and transfer receipts. In an emergency, call 911.</li>
+<li><strong>Warn others:</strong> tell your class group and friends, so the same trick does not catch them.</li>
+</ol>
+<blockquote><p>Tip: When someone rushes you, slow down. Every scam on this page depends on you acting before you think. Questions? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
 ];

@@ -183,7 +183,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <li><strong>No clashes and no full sections.</strong> The system will not register two courses at the same time, and it does not open a section that is full.</li>
 </ul>
 <h2>Adding and dropping, step by step</h2>
-<p>Use a computer. The page does not work well on a phone, and it times out if you leave it open too long.</p>
+<p>Use a computer. The page does not work well on a phone, and it times out if you leave it open too long. Check the semester shown at the top of the page first, because it can open on the previous semester. When the system is busy, confirm one or two courses at a time rather than a whole timetable at once, and refresh Registered courses after each confirm.</p>
 <ol>
 <li>Open <strong>Electronic Registration</strong>, then <strong>Drop and add</strong> (الحذف والإضافة).</li>
 <li>Tick the course, tap the magnifier under <strong>Search for a section</strong> (ابحث عن شعبة), and choose the section number.</li>
@@ -196,7 +196,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <h2>When a course will not go in</h2>
 <table><thead><tr><th>What you see</th><th>What it means and what to do</th></tr></thead><tbody>
 <tr><td>The course is not in Courses offered in the plan</td><td>You have not passed its prerequisite, or it is not offered this semester. Check your Student plan</td></tr>
-<tr><td>The section is full</td><td>Choose another section. If every section is full, ask the Deanship of Admission and Registration through Tawasul with the course code</td></tr>
+<tr><td>The section is full</td><td>Check again at different times: seats free up as other students swap. If every section stays full, message your academic advisor in the Academic System and ask for the section to be expanded (توسيع شعبة), or ask the Deanship of Admission and Registration through Tawasul with the course code. A section is more often opened or expanded when several students ask together</td></tr>
 <tr><td>A clash with another course</td><td>Choose a section at another time, or drop one of the two</td></tr>
 <tr><td>The page says it is not your time yet</td><td>Your batch has not opened. Check the time shown on the page</td></tr>
 <tr><td>You are short of the minimum hours because of failed courses or clashes</td><td>Go to the Deanship of Admission and Registration, 3rd floor, or your college's wakeel, during the window</td></tr>
@@ -210,7 +210,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <li>Act in the first week. The longer you wait, the harder a change becomes.</li>
 </ul>
 <h2>Withdrawing from a course</h2>
-<p>If a course is going badly, you can withdraw from it during the semester and receive a <strong>W</strong> instead of a fail. A W does not count in your GPA.</p>
+<p>If a course is going badly, you can withdraw from it during the semester and receive a <strong>W</strong> instead of a fail. A W does not count in your GPA. Withdrawing from single courses does not affect your stipend or your room, as long as you stay above the minimum load. Only leaving the whole semester does.</p>
 <ol>
 <li>Open <strong>Academic</strong>, then <strong>Course withdrawal</strong> (الإعتذار عن مقرر), then <strong>Withdrawal request</strong> (طلب إعتذار).</li>
 <li>Choose the course and send the request. Your teacher does not need to agree.</li>
@@ -309,6 +309,15 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <li>Check your status after the window. Once it is back to Regular (منتظم), register your courses for the semester.</li>
 </ol>
 <p>For a low GPA, the extra chance is given only when one semester of 14 credit hours could lift your cumulative GPA back to the minimum. Scholarship students cannot have their study time extended by more than half the length of the degree.</p>
+<h2>Your general grade</h2>
+<p>Your transcript and degree also give a general grade (التقدير العام), worked out from your cumulative GPA. It is what postgraduate programmes and employers mean by "very good" or "good".</p>
+<table><thead><tr><th>General grade</th><th>Cumulative GPA out of 5</th></tr></thead><tbody>
+<tr><td>Excellent (ممتاز)</td><td>4.50 to 5.00</td></tr>
+<tr><td>Very good (جيد جداً)</td><td>3.75 to under 4.50</td></tr>
+<tr><td>Good (جيد)</td><td>2.75 to under 3.75</td></tr>
+<tr><td>Pass (مقبول)</td><td>2.00 to under 2.75</td></tr>
+</tbody></table>
+<p>A cumulative GPA below 2.00 is below the pass grade needed to graduate.</p>
 <h2>Honours</h2>
 <table><thead><tr><th>Honours</th><th>Cumulative GPA</th></tr></thead><tbody>
 <tr><td>First class</td><td>4.75 to 5.00</td></tr>
