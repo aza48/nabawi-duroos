@@ -49,6 +49,7 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **aiakhee**: Lane B in PRs #54 (B1), #56 (B2), #57 (B6, on #56), #58 (B5), #60 (B4); AR1 in #49 (owner applies the migration first). Assistant PR and FAQ fixes PR in progress (assistant WIP pushed at `f226ac2`). Handoff written at the top of `docs/HANDOFF.md`. FAQ slugs admin claimed on issue 13 are left to admin.
 - 9 Nov 2026, **Desktop agent** (for the owner, taking over admin's research), branch `claude/wonderful-davinci-um61gf`: official University PDFs read into four findings files (bachelor's scholarship admission 63, postgraduate admission 63, student system 55, discounts and sports club 134), sources and text committed; study plans and gomedine.com readers still running at handoff. Status and publishing plan: `docs/research/NEXT-STEPS-admin-research.md` on that branch. Nothing published yet. Corrections to other lanes' guides will be announced here first.
 - 9 Nov 2026, **akheeai**, branch `akheeai/chat-research-2`: the owner's second batch of chats.
   - "American Students in IUM" (Jun 2025 to Nov 2026, four parts, 293 findings), plus its PDFs and images (the official 111-offer discount deck, the printed 1448 calendar, the Ma'had graduation guide).
