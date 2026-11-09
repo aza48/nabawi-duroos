@@ -40,5 +40,8 @@ describe("every answer is in Arabic", () => {
     expect(f.questionAr?.trim(), "questionAr").toBeTruthy();
     expect(f.answerHtmlAr?.trim(), "answerHtmlAr").toBeTruthy();
     expect(drift(f.answerHtml, f.answerHtmlAr ?? "")).toEqual([]);
+    // Same paragraphs: the short answer that opens the English opens the Arabic too.
+    const paragraphs = (h: string) => (h.match(/<p[\s>]/g) ?? []).length;
+    expect(paragraphs(f.answerHtmlAr ?? ""), "paragraphs").toBe(paragraphs(f.answerHtml));
   });
 });
