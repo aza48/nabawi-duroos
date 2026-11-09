@@ -225,6 +225,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <li>Only within the window. For the second semester of 1448 it runs from <strong>20 December 2026 to 13 March 2027</strong>.</li>
 </ul>
 <p>To leave a whole semester, use ta'jeel or i'tithaar instead: see <a href="/guides/tajeel-and-itithaar">Taking a semester off</a>. Never simply stop attending. Twenty days in a row of absence without ta'jeel or i'tithaar closes your file (طي القيد).</p>
+<p>Studying online in the electronic courses? You withdraw through Tawasul to the E-Learning Center instead: see <a href="/guides/studying-online-at-the-islamic-university">Studying online at the Islamic University</a>.</p>
 <h2>Catching up</h2>
 <ul>
 <li>A failed or dropped course has to be registered again in a later semester. Put it first, because the courses after it wait for it.</li>
