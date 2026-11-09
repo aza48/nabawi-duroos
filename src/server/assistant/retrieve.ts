@@ -313,4 +313,7 @@ export function answers(q: string, c: Pick<Chunk, "title" | "section" | "text"> 
   return n / terms.length >= 0.5 && n >= Math.min(2, terms.length);
 }
 
+/** Words that only say "a dars", "a book" or "at the Haram": never what a question about duroos is about. */
+export const isGeneric = (term: string) => GENERIC.has(term);
+
 export { keyTerms };

@@ -5,7 +5,7 @@ import { cleanText } from "@/lib/text";
 import { normalize } from "@/lib/search/normalize";
 import { riyadhDateIso } from "@/lib/time/riyadh";
 import { getKnowledge, type Chunk } from "./knowledge";
-import { answers, coverage, createRetriever, headingHolds, keyTerms, retrieverFor, termHits, type Passage, type Retriever } from "./retrieve";
+import { answers, coverage, createRetriever, headingHolds, isGeneric, keyTerms, retrieverFor, termHits, type Passage, type Retriever } from "./retrieve";
 import { datePassage, detectLive, duroosPassage, prayerTimesPassage, shaykhsNamed, todayPassage } from "./live";
 import { Citer, cite, composeExtractive, ENGLISH_PAGE_AR, extract, notFound, programLine, RANKING, sentences } from "./compose";
 import { asksWhenWhere, greetingReply, isGreeting, isRulingQuestion, looksLikeFiqh, rulingReply } from "./guard";
@@ -253,6 +253,9 @@ const RANK_AVOID = new RegExp(`${RANKING.source}|\\bstart (with|at)\\b`, "i");
 /** "Who is Shaykh X", "tell me about", "من هو". */
 const WHO_Q = /^(who is|who was|tell me about)\b|(^|\s)(من هو|من هي)(\s|$)/;
 
+/** "Who teaches Kitab at-Tawhid", "من يدرس كتاب التوحيد": a question only a dars answers. */
+const WHO_TEACHES = /\bwho (teaches|teach|is teaching|gives)\b|(^|\s)(من يدرس|من يشرح)(\s|$)/;
+
 /** "Where can I buy", "where can I get zamzam water", "اين اشتري": the answer must say where the thing is sold or handed out. */
 const BUY_Q = /\b(buy|buying|purchase|shop for)\b|\bwhere (can|do|could|should) (i|we|you) get\b|(^|\s)(اشتري|نشتري|يشتري|شراء|ابتاع)(\s|$)/;
 const BUY_WORD = /^(buy|buying|purchase|اشتري|شراء|شري)$/;
@@ -415,11 +418,19 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   const aboutDuroos = topic.length < allTerms.length;
   // A question about duroos searches the duroos on their own too: with many lessons and profiles that mention the
   // same subject, the dars entries can fall out of the overall top six even when the question is about a book.
-  const darsFound = aboutDuroos && topic.length && !who ? darsRetriever(chunks)(searchText, 8).filter((p) => answers(searchText, p)) : [];
+  // A dars is listed only when it holds the subject: the book or the shaykh, not "book" or "the Haram" ("who teaches
+  // the book of fasting in the Haram" is not answered by every book taught in the Haram).
+  const subject = topic.filter((t) => !isGeneric(t));
+  const words = subject.length ? subject : topic;
+  const need = words.length <= 2 ? words.length : Math.ceil(words.length * 0.67);
+  const holdsSubject = (c: Chunk) => termHits(words, `${c.title} ${c.titleAr ?? ""} ${c.text}`) >= need;
+  const darsFound = aboutDuroos && topic.length && !who ? darsRetriever(chunks)(searchText, 8).filter((p) => answers(searchText, p) && holdsSubject(p)) : [];
+  const matching = topic.length && !who ? chunks.filter((c) => c.kind === "dars" && holdsSubject(c)) : [];
+  // "Who teaches the book of fasting": only a dars answers who teaches a book. With none on MESH, the help line,
+  // never a guide that mentions fasting.
+  if (!who && subject.length && WHO_TEACHES.test(normalize(q)) && !matching.length && !darsFound.length) return missing();
   if (!who && topic.length && (found.slice(0, 3).some((p) => p.kind === "dars") || darsFound.length > 1 || (aboutDuroos && found[0].kind === "shaykh"))) {
-    const need = topic.length <= 2 ? topic.length : Math.ceil(topic.length * 0.67);
     const inFound = new Set([...found, ...darsFound].map((p) => p.id));
-    const matching = chunks.filter((c) => c.kind === "dars" && termHits(topic, `${c.title} ${c.titleAr ?? ""} ${c.text}`) >= need);
     const duroos = [...new Map([...matching, ...darsFound].map((c) => [c.url, c])).values()].sort((x, y) => Number(inFound.has(y.id)) - Number(inFound.has(x.id)));
     // Dars titles are "<book> with <shaykh>"; duroos from several mashayikh mean the question is about the book.
     const teachers = new Set(duroos.map((p) => p.title.split(" with ").pop()));
