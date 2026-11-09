@@ -26,7 +26,8 @@ export function LessonForm({
 }) {
   const router = useRouter();
   const [v, setV] = useState<Lesson>(lesson);
-  const [shaykhSlug, setShaykhSlug] = useState(shaykhs?.[0]?.slug ?? "");
+  // No silent default: a new dars must be given its shaykh on purpose.
+  const [shaykhSlug, setShaykhSlug] = useState("");
   const [msg, setMsg] = useState<string | null>(null);
   const { notify } = useFeedback();
   // Messages show in the toast above the tab bar, never under the button where a phone hides them.
@@ -64,7 +65,8 @@ export function LessonForm({
     <form onSubmit={submit} className="grid gap-4">
       {shaykhs && (
         <Field label="Shaykh">
-          <select className={inputCls} value={shaykhSlug} onChange={(e) => setShaykhSlug(e.target.value)}>
+          <select className={inputCls} value={shaykhSlug} onChange={(e) => setShaykhSlug(e.target.value)} required>
+            <option value="" disabled>Choose the shaykh</option>
             {shaykhs.map((s) => <option key={s.slug} value={s.slug}>{s.nameEn}</option>)}
           </select>
         </Field>

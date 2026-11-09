@@ -21,7 +21,7 @@ export default async function Page() {
         every change waits for a person and is marked when it would have been published on its own. Turn it on for a
         channel once its suggestions have been right for a couple of weeks.
       </p>
-      <SourceToggles items={rows.map((s) => ({ handle: s.handle, name: s.name, trusted: s.trusted, autoPublish: s.autoPublish, lastChecked: s.lastCheckedAt ? timeAgo(s.lastCheckedAt) : "never", lastError: s.lastError }))} />
+      <SourceToggles items={rows.map((s) => ({ handle: s.handle, name: s.name, trusted: s.trusted, autoPublish: s.autoPublish, lastChecked: s.lastCheckedAt ? timeAgo(s.lastCheckedAt) : "not yet", lastError: s.lastError }))} />
     </div>
   );
 }
