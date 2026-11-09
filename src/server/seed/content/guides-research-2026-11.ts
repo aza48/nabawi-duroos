@@ -24,7 +24,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Anything linked to the Visitor ID, such as a bank account, only runs while your visa is valid. Keep an eye on the expiry date in Absher.</li>
 </ul>
 <h2>Visitor ID and iqama side by side</h2>
-<table><thead><tr><th></th><th>Visitor ID (educational visa)</th><th>Iqama</th></tr></thead><tbody>
+<table><thead><tr><th>Topic</th><th>Visitor ID (educational visa)</th><th>Iqama</th></tr></thead><tbody>
 <tr><td><strong>Absher and Nafath</strong></td><td>Register with your border number</td><td>Register with your iqama number</td></tr>
 <tr><td><strong>Bank account and mada card</strong></td><td>Yes, at a branch or online with Nafath. The account is frozen when the Visitor ID expires</td><td>Yes, in the bank's app or at a branch</td></tr>
 <tr><td><strong>SIM card</strong></td><td>Yes, registered to your passport and border number, with a fingerprint</td><td>Yes, registered to your iqama</td></tr>
@@ -479,7 +479,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 </ul>
 <p>Choose carefully. Scholarship students are placed in one college and cannot move to another after admission.</p>
 <h2>Full and partial scholarships</h2>
-<table><thead><tr><th></th><th>Full (external)</th><th>Partial (internal)</th></tr></thead><tbody>
+<table><thead><tr><th>Topic</th><th>Full (external)</th><th>Partial (internal)</th></tr></thead><tbody>
 <tr><td><strong>Who</strong></td><td>Applicants living outside Saudi Arabia</td><td>Applicants already living in Saudi Arabia, who must keep a legal residency throughout</td></tr>
 <tr><td><strong>Tuition</strong></td><td>Free</td><td>Free</td></tr>
 <tr><td><strong>Stipend and allowances</strong></td><td>Monthly stipend, arrival allowance and graduation allowance</td><td>None</td></tr>
@@ -597,7 +597,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     bodyHtml: `
 <p>Checked 9 November 2026. Ta'jeel and i'tithaar both take you out of a semester, but they work differently and they share one limit. Read this before you apply, and speak to your college or the Ma'had first.</p>
 <h2>Ta'jeel and i'tithaar in short</h2>
-<table><thead><tr><th></th><th>Ta'jeel (تأجيل)</th><th>I'tithaar (اعتذار)</th></tr></thead><tbody>
+<table><thead><tr><th>Topic</th><th>Ta'jeel (تأجيل)</th><th>I'tithaar (اعتذار)</th></tr></thead><tbody>
 <tr><td>What it is</td><td>Postponing a semester before it starts</td><td>An excuse from a semester you have already started</td></tr>
 <tr><td>When</td><td>The deferral window just before the semester</td><td>After the deferral window, during the semester</td></tr>
 <tr><td>Approval</td><td>Your college must approve it</td><td>Your college must approve it</td></tr>
@@ -632,7 +632,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 </ol>
 <p><strong>Checking your request:</strong> repeat steps 1 and 2, but choose <strong>إظهار الحركات الأكاديمية</strong>. Once it is approved, your status (<strong>الوضع العام</strong>) changes from <strong>منتظم</strong> (regular) to <strong>مؤجل</strong> (postponed).</p>
 <h2>Travel and your visa</h2>
-<table><thead><tr><th></th><th>Visitor ID (educational visa)</th><th>Iqama</th></tr></thead><tbody>
+<table><thead><tr><th>Topic</th><th>Visitor ID (educational visa)</th><th>Iqama</th></tr></thead><tbody>
 <tr><td><strong>Before you leave</strong></td><td>Ask the University through Tawasul what your status means for your visa, and check the expiry date in Absher</td><td>Ask Travel Management (إدارة السفر) which visa you need before you book</td></tr>
 <tr><td><strong>Coming back</strong></td><td>Request a new visa on the <a href="https://minhatee2.iu.edu.sa/Home/VisaLanding">Minhati visa page</a>, signing in with your University number</td><td>Return on a valid exit and re-entry visa, or follow Travel Management's instructions</td></tr>
 </tbody></table>
@@ -671,7 +671,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <p>Your blanket and bedsheets are yours to take home.</p>
 <h2>4. Return your student card and clear your file</h2>
 <p>Hand in the signed room form at the housing office, and return your student card at the student card office. Keep a copy or a PDF of the card first. What comes next depends on your residency:</p>
-<table><thead><tr><th></th><th>Visitor ID (educational visa)</th><th>Iqama</th></tr></thead><tbody>
+<table><thead><tr><th>Topic</th><th>Visitor ID (educational visa)</th><th>Iqama</th></tr></thead><tbody>
 <tr><td><strong>Leaving the Kingdom</strong></td><td>There is no iqama to hand in. Before you book, ask Travel Management (إدارة السفر) through Tawasul what clearance it needs from you</td><td>Travel Management arranges your final exit visa. Hand in your iqama when it asks for it</td></tr>
 <tr><td><strong>Your ticket</strong></td><td colspan="2">Issued only once the University has confirmed your clearance (step 10)</td></tr>
 </tbody></table>
@@ -876,7 +876,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 </tbody></table>
 <p>The University announces each window on the Deanship's X account, <a href="https://x.com/highstudies_iu">@highstudies_iu</a>, and its Telegram channel, <a href="https://t.me/highstudies_iu">t.me/highstudies_iu</a>. The 1448 window opened in mid November, so have your documents ready now.</p>
 <h2>How to apply</h2>
-<table><thead><tr><th></th><th>Inside Saudi Arabia</th><th>Outside Saudi Arabia</th></tr></thead><tbody>
+<table><thead><tr><th>Topic</th><th>Inside Saudi Arabia</th><th>Outside Saudi Arabia</th></tr></thead><tbody>
 <tr><td><strong>Who</strong></td><td>Saudis, GCC citizens, legal residents (internal scholarship) and external scholarship students already at the University</td><td>International applicants for an external scholarship</td></tr>
 <tr><td><strong>Where</strong></td><td>The University's postgraduate admission portal, <a href="https://postgraduate.iu.edu.sa/">postgraduate.iu.edu.sa</a></td><td>The postgraduate Minhati portal, <a href="https://postgraduateminhatee.iu.edu.sa/">postgraduateminhatee.iu.edu.sa</a></td></tr>
 <tr><td><strong>Written exam</strong></td><td>Where the department sets one</td><td>Exempt, unless you already hold a scholarship in Saudi Arabia</td></tr>

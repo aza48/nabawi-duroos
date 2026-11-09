@@ -23,7 +23,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <li><strong>Copies of everything:</strong> a clear scan of each document in a folder on your phone and in cloud storage, plus two paper copies.</li>
 <li><strong>Your border number</strong> (رقم الحدود), the entry number linked to your visa. Write it down when you land: you need it for your SIM, Absher and the bank.</li>
 </ol>
-<table><thead><tr><th></th><th>Students on the educational visa</th><th>Families and visitors</th></tr></thead><tbody>
+<table><thead><tr><th>Topic</th><th>Students on the educational visa</th><th>Families and visitors</th></tr></thead><tbody>
 <tr><td><strong>Your status</strong></td><td>Your final acceptance, your University number if you have one, and your Minhati login</td><td>Your visa, whether a tourist eVisa, a family visit visa or a dependant visa</td></tr>
 <tr><td><strong>Certificates</strong></td><td>The originals of your school certificate and transcript, and every document you uploaded when you applied</td><td>Your marriage certificate and each child's birth certificate</td></tr>
 <tr><td><strong>Children</strong></td><td>Not needed</td><td>Vaccination records and the latest school reports, for enrolling in a school or kindergarten</td></tr>
@@ -196,7 +196,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <li><strong>Older residencies first.</strong> Residents whose iqama was issued more than a year ago are given priority.</li>
 <li><strong>No visit visas.</strong> No visit visa of any kind, including the tourist eVisa, allows Hajj.</li>
 </ul>
-<table><thead><tr><th></th><th>Iqama</th><th>Visitor ID (educational visa)</th><th>Family on a visit visa</th></tr></thead><tbody>
+<table><thead><tr><th>Topic</th><th>Iqama</th><th>Visitor ID (educational visa)</th><th>Family on a visit visa</th></tr></thead><tbody>
 <tr><td><strong>Domestic Hajj in Nusuk</strong></td><td>Yes, with an iqama valid to the end of Dhul Hijjah</td><td>Check your eligibility in Nusuk when registration opens, and ask the University through Tawasul before you pay anything</td><td>No</td></tr>
 <tr><td><strong>Priority</strong></td><td>Higher once your iqama is more than a year old, and for a first Hajj</td><td>Shown in Nusuk if you are eligible</td><td>Not applicable</td></tr>
 <tr><td><strong>Wife and children in the same booking</strong></td><td>Yes, if each holds a valid iqama</td><td>Only family members who are eligible in their own right</td><td>No</td></tr>

@@ -56,12 +56,17 @@ export function isRulingQuestion(q: string): boolean {
 }
 
 /** A greeting with no question in it ("salam", "hello", "السلام عليكم"). */
-const GREETING = /^(hi|hello|hey|salam|salaam|assalamu? ?alaikum|as salamu alaikum|assalamualaikum|asalamualaikum|wa ?alaikum ?(as)? ?salam|good (morning|evening|afternoon)|thanks?|thank you|jazakallah ?(khair|khayr)?|السلام عليكم|سلام|مرحبا|اهلا|شكرا|جزاك الله خيرا)[\s!.,?]*$/;
+const GREETING = /^(hi|hello|hey|salam|salaam|assalamu? ?alaikum|as salamu alaikum|assalamualaikum|asalamualaikum|wa ?alaikum ?(as)? ?salam|good (morning|evening|afternoon)|thanks?|thank you( so much| very much)?|jazakallah ?(u)? ?(khair|khayr|khairan)?|السلام عليكم|سلام|مرحبا|اهلا|شكرا|جزاك الله خيرا)[\s!.,?]*$/;
 export function isGreeting(q: string): boolean {
   return GREETING.test(normalize(q).replace(/\s+/g, " ").trim()) || GREETING.test(q.trim().toLowerCase());
 }
 
-function greetingReply(lang: "en" | "ar"): string {
+const THANKS = /^(thanks?|thank you( so much| very much)?|jazakallah ?(u)? ?(khair|khayr|khairan)?|شكرا|جزاك الله خيرا)[\s!.,]*$/;
+
+function greetingReply(lang: "en" | "ar", q = ""): string {
+  if (THANKS.test(normalize(q).trim()) || THANKS.test(q.trim().toLowerCase())) {
+    return lang === "ar" ? "وإياكم. إن احتجت شيئًا آخر عن الدراسة أو الحياة في المدينة فاسألني." : "Wa iyyakum. If you need anything else about studying or living in Madinah, just ask.";
+  }
   return lang === "ar"
     ? "وعليكم السلام ورحمة الله. أنا مساعد MESH، أجيب عن الدراسة والحياة في المدينة: الجامعة والتأشيرات والإقامة والبنوك والسكن والدروس. اسألني ما تريد."
     : "Wa alaikum assalam. I'm the MESH assistant: ask me anything about studying and living in Madinah, from the University, visas, the iqama, banks and housing to tonight's duroos.";
@@ -89,7 +94,9 @@ const replySchema = z.object({ answer: z.string().min(1).max(4000), sources: z.a
 type Reply = z.infer<typeof replySchema>;
 
 /** Reads the model's JSON reply; a model that ignored the format still counts, as plain text. */
-export function parseReply(raw: string): Reply | null {
+export function parseReply(input: string): Reply | null {
+  // Some models wrap JSON in a ```json fence.
+  const raw = input.replace(/^\s*```(?:json)?\s*/i, "").replace(/\s*```\s*$/, "");
   const m = /\{[\s\S]*\}/.exec(raw);
   if (m) {
     try {
@@ -99,8 +106,17 @@ export function parseReply(raw: string): Reply | null {
       // not JSON after all
     }
   }
+  // Broken JSON: keep the answer string if it can be read, never show the raw braces.
+  const ans = /"answer"\s*:\s*"((?:[^"\\]|\\.)*)"/.exec(raw);
+  if (ans) {
+    try {
+      return { answer: JSON.parse(`"${ans[1]}"`) as string, sources: [], found: true };
+    } catch {
+      return null;
+    }
+  }
   const text = raw.trim();
-  return text && !text.startsWith("{") ? { answer: text, sources: [], found: true } : null;
+  return text && !/^[{[]/.test(text) && !/"answer"\s*:/.test(text) ? { answer: text, sources: [], found: true } : null;
 }
 
 /**
@@ -108,11 +124,22 @@ export function parseReply(raw: string): Reply | null {
  * shown, and drops markers that point at nothing. Returns the passages cited, in that order.
  */
 export function citations(text: string, passages: Chunk[]): { text: string; cited: number[] } {
+  // Passages from the same section share a link, so they share one number: no duplicate sources.
   const cited: number[] = [];
+  const urls: string[] = [];
   const out = text.replace(/\s?\[(\d+(?:\s*,\s*\d+)*)\]/g, (_m, nums: string) => {
     const ns = nums.split(",").map((n) => Number(n.trim()) - 1).filter((n) => n >= 0 && n < passages.length && passages[n].id !== "live-today");
-    ns.forEach((n) => !cited.includes(n) && cited.push(n));
-    return ns.length ? ns.map((n) => ` [${cited.indexOf(n) + 1}]`).join("") : "";
+    const marks = new Set<number>();
+    for (const n of ns) {
+      let k = urls.indexOf(passages[n].url);
+      if (k < 0) {
+        urls.push(passages[n].url);
+        cited.push(n);
+        k = urls.length - 1;
+      }
+      marks.add(k + 1);
+    }
+    return [...marks].map((k) => ` [${k}]`).join("");
   });
   return { text: out.trim(), cited };
 }
@@ -178,7 +205,7 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   const history = (input.history ?? []).slice(-6).map((t) => ({ role: t.role, text: t.text.slice(0, 1200) }));
 
   if (isGreeting(q)) {
-    return { answer: greetingReply(lang), sources: [], related: [], mode: "guard", found: true, lang };
+    return { answer: greetingReply(lang, q), sources: [], related: [], mode: "guard", found: true, lang };
   }
 
   if (isRulingQuestion(q)) {

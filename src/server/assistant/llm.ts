@@ -10,7 +10,7 @@ import { GEMINI_MODELS } from "@/server/watcher/ai";
  *   GROQ_API_KEY, CEREBRAS_API_KEY, ASSISTANT_GEMINI_API_KEY (or ASSISTANT_GEMINI_KEY), MISTRAL_API_KEY,
  *   OPENROUTER_API_KEY.
  *   GEMINI_API_KEY (the watcher's key) is used last, only on its "lite" models, so the
- *   watcher keeps its main models' daily quota. ASSISTANT_SHARE_WATCHER_KEY=0 turns that off.
+ *   watcher keeps its main models' daily quota. ASSISTANT_SHARE_WATCHER_KEY=0 (or the older ASSISTANT_SHARE_GEMINI=0) turns that off.
  * Each provider's model list can be replaced with <PROVIDER>_MODELS="model-a,model-b".
  */
 
@@ -35,7 +35,7 @@ export function providers(env: NodeJS.ProcessEnv = process.env): Provider[] {
     { id: "gemini", kind: "gemini", key: () => env.ASSISTANT_GEMINI_API_KEY || env.ASSISTANT_GEMINI_KEY, models: list(env.ASSISTANT_GEMINI_MODELS, GEMINI_MODELS) },
     { id: "mistral", kind: "openai", url: "https://api.mistral.ai/v1/chat/completions", key: () => env.MISTRAL_API_KEY, models: list(env.MISTRAL_MODELS, ["mistral-small-latest", "open-mistral-nemo"]) },
     { id: "openrouter", kind: "openai", url: "https://openrouter.ai/api/v1/chat/completions", key: () => env.OPENROUTER_API_KEY, models: list(env.OPENROUTER_MODELS, ["openai/gpt-oss-120b:free", "meta-llama/llama-3.3-70b-instruct:free", "deepseek/deepseek-chat-v3.1:free", "openrouter/free"]) },
-    { id: "gemini-shared", kind: "gemini", key: () => (env.ASSISTANT_SHARE_WATCHER_KEY === "0" ? undefined : env.GEMINI_API_KEY), models: lite.length ? lite : GEMINI_MODELS.slice(-1) },
+    { id: "gemini-shared", kind: "gemini", key: () => (env.ASSISTANT_SHARE_WATCHER_KEY === "0" || env.ASSISTANT_SHARE_GEMINI === "0" ? undefined : env.GEMINI_API_KEY), models: lite.length ? lite : GEMINI_MODELS.slice(-1) },
   ];
   return all.filter((p) => !!p.key());
 }

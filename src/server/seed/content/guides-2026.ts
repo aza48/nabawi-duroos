@@ -48,7 +48,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Health</h2>
 <p>On a visit or business visa there is no free healthcare. The insurance that comes with the visa covers emergencies only, so routine visits are paid by you. A GP visit is 100 to 200 SAR, a specialist 150 to 300, a dental check and clean 150 to 250, and an emergency visit 300 to 500. Keep 500 to 800 SAR aside for surprises. Scholarship students are treated free at the University Medical Center, and many private clinics give students and staff big discounts (see Student discounts).</p>
 <h2>A realistic monthly budget</h2>
-<table><thead><tr><th></th><th>Single person</th><th>Family of 3 or 4</th></tr></thead><tbody>
+<table><thead><tr><th>Item</th><th>Single person</th><th>Family of 3 or 4</th></tr></thead><tbody>
 <tr><td>Rent (shared room or small flat)</td><td>1,000 to 2,000</td><td>3,000 to 4,000</td></tr>
 <tr><td>Groceries and household</td><td>1,000</td><td>2,000</td></tr>
 <tr><td>Bills</td><td>300 to 600</td><td>400 to 800</td></tr>

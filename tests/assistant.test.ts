@@ -3,12 +3,13 @@ import { resetTestDb, type Db } from "@/server/db/client";
 import { importLegacy } from "@/server/seed/import-legacy";
 import { buildKnowledge, chunkGuide, type Chunk } from "@/server/assistant/knowledge";
 import { createRetriever, oneEdit } from "@/server/assistant/retrieve";
-import { askMesh, sameQuestion, cleanDashes, isRulingQuestion, langOf, parseReply, resetAnswerCache, unsupportedNumbers, type AskOptions } from "@/server/assistant/answer";
+import { askMesh, citations, sameQuestion, cleanDashes, isRulingQuestion, langOf, parseReply, resetAnswerCache, unsupportedNumbers, type AskOptions } from "@/server/assistant/answer";
 import { systemPrompt } from "@/server/assistant/prompt";
 import { detectLive } from "@/server/assistant/live";
 import { extract } from "@/server/assistant/compose";
 import { providers, resetProviders, write } from "@/server/assistant/llm";
 import { enhanceGuideHtml } from "@/lib/guide-html";
+import { expandQuery } from "@/lib/search/normalize";
 
 let db: Db;
 let chunks: Chunk[];
@@ -119,6 +120,30 @@ describe("assistant rules", () => {
     expect(parseReply('Sure: {"answer":"Hi","sources":[2],"found":true}')).toEqual({ answer: "Hi", sources: [2], found: true });
     expect(parseReply("Plain words.")).toEqual({ answer: "Plain words.", sources: [], found: true });
     expect(parseReply("{broken")).toBeNull();
+  });
+
+  it("reads a JSON reply in a code fence, and never shows broken JSON", () => {
+    expect(parseReply('```json\n{"answer":"Hi","sources":[1],"found":true}\n```')?.answer).toBe("Hi");
+    expect(parseReply('{"answer": "Rent is paid yearly.", "sources": [1, ')?.answer).toBe("Rent is paid yearly.");
+    expect(parseReply('{"sources": [1, ')).toBeNull();
+  });
+
+  it("gives one number to two passages from the same section", () => {
+    const p = [
+      { id: "a", kind: "guide", title: "G", text: "x", url: "/guides/g#rent" },
+      { id: "b", kind: "guide", title: "G", text: "y", url: "/guides/g#rent" },
+      { id: "c", kind: "faq", title: "F", text: "z", url: "/ask/f" },
+    ] as Chunk[];
+    const r = citations("One [1]. Two [2]. Three [3].", p);
+    expect(r.text).toBe("One [1]. Two [1]. Three [2].");
+    expect(r.cited).toEqual([0, 2]);
+  });
+
+  it("keeps synonym groups apart and free of filler words", () => {
+    expect(expandQuery("women")).toContain("sisters");
+    expect(expandQuery("monthly").split(" ")).not.toContain("a");
+    expect(expandQuery("monthly").split(" ")).not.toContain("per");
+    expect(expandQuery("mataam").split(" ")).not.toContain("am");
   });
 
   it("keeps the house rules in the prompt", () => {
@@ -240,6 +265,8 @@ describe("assistant answers", () => {
     const r = await ask("Assalamu alaikum");
     expect(r.found).toBe(true);
     expect(r.answer).toMatch(/alaikum/i);
+    expect((await ask("jazakallah khair")).answer).toMatch(/iyyakum/i);
+    expect((await ask("thanks!")).answer).not.toMatch(/alaikum/i);
     expect((await ask("السلام عليكم")).lang).toBe("ar");
   });
 
