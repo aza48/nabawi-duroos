@@ -19,8 +19,9 @@ Owner's top priority (9 November 2026): every guide in plain Modern Standard Ara
 | 1, Start here | `applying-to-the-islamic-university`, `what-to-bring-to-madinah`, `first-30-days-in-madinah`, `new-student-steps`, `living-on-a-visitor-id`, `sim-internet-bank` | translated 9 Nov 2026, structure and links checked by script against the English |
 | 2, most read | `cost-of-living`, `campus-life-islamic-university`, `masjid-an-nabawi-first-visit`, `umrah-rawdah-quba`, `finding-an-apartment` | translated 9 Nov 2026, checked by script |
 | 3, getting around and papers | `getting-around`, `haramain-train-and-city-buses`, `doctors-hospitals-and-pharmacies`, `visas-for-family-and-visitors`, `scholarship-stipend-and-allowances` | translated 9 Nov 2026, checked by script |
-| 4, University and the Haram | `women-at-masjid-an-nabawi`, `exams-results-and-attendance`, `university-offices-and-contacts`, `hajj-as-a-student`, `tajeel-and-itithaar` | next |
-| 5 onwards | the rest, in the order of `docs/research/guides-2026-11/README.md` | |
+| 4, University and the Haram | `women-at-masjid-an-nabawi`, `exams-results-and-attendance`, `university-offices-and-contacts`, `hajj-as-a-student`, `tajeel-and-itithaar` | translated 9 Nov 2026, checked by script |
+| 5, papers and leaving | `phone-sims-and-absher`, `iqama-and-exit-reentry-fees`, `etimad-account`, `drivers-license`, `graduate-procedures` | next |
+| 6 onwards | the rest, in the order of `docs/research/guides-2026-11/README.md` | |
 
 ## How to check a translation
 
