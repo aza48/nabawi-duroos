@@ -31,9 +31,9 @@ export function DarsMiniCard({ lesson: l, locale, isNext }: { lesson: TodayLesso
   const note = publicLabel(ar ? l.overrideNoteAr ?? l.overrideNoteEn : l.overrideNoteEn ?? l.overrideNoteAr);
 
   return (
-    <article className={`lift flex h-full flex-col rounded-2xl border border-line bg-card p-4 shadow-[var(--shadow)] ${done ? "opacity-60" : ""}`}>
-      <div className="flex items-center gap-3 sm:gap-4">
-        <div className="min-w-0 flex-1">
+    <article className={`@container lift flex h-full flex-col rounded-2xl border border-line bg-card p-4 shadow-[var(--shadow)] ${done ? "opacity-60" : ""}`}>
+      <div className="flex flex-1 flex-col gap-3 @[28rem]:flex-row @[28rem]:items-stretch @[28rem]:gap-8">
+        <div className="flex min-w-0 flex-1 flex-col @[28rem]:min-w-[10rem]">
           <div className="flex min-h-[1.625rem] flex-wrap items-center gap-2">
             {live ? (
               <LiveBadge locale={locale} href={liveHref} />
@@ -62,7 +62,7 @@ export function DarsMiniCard({ lesson: l, locale, isNext }: { lesson: TodayLesso
             {title}
           </Link>
 
-          <p className="mt-2 flex items-center gap-1.5 text-[13px] text-muted">
+          <p className="mt-auto flex items-center gap-1.5 pt-2 text-[13px] text-muted">
             <MapPin size={14} className="shrink-0" />
             <span className="min-w-0 truncate">
               <a
@@ -79,11 +79,16 @@ export function DarsMiniCard({ lesson: l, locale, isNext }: { lesson: TodayLesso
           </p>
         </div>
 
-        <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="group flex shrink-0 items-center gap-3">
-          <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
-          <span className="block max-w-[6rem] sm:max-w-[9rem]">
+        <Link
+          href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)}
+          className="group flex items-stretch gap-3 border-t border-line pt-3 @[28rem]:min-w-0 @[28rem]:shrink @[28rem]:border-s @[28rem]:border-t-0 @[28rem]:ps-8 @[28rem]:pt-0"
+        >
+          <span className="block aspect-square max-h-20 shrink-0 @[28rem]:max-h-44">
+            <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} fill />
+          </span>
+          <span className="block min-w-0 flex-1 self-center @[28rem]:max-w-[13rem] @[28rem]:flex-initial">
             <span className="block text-[11px] text-muted">{t(locale, "shaykh")}</span>
-            <span className="line-clamp-2 text-sm font-bold leading-snug group-hover:text-primary">{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
+            <span className="text-sm font-bold leading-snug group-hover:text-primary @[28rem]:text-base">{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
           </span>
         </Link>
       </div>
