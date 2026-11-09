@@ -97,7 +97,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>A Visitor ID account works only while your Visitor ID and your stay are valid. When the ID expires the bank freezes the account until it is renewed, so renew your visa in good time.</p>
 <blockquote><p>Tip: A mada card is worth having. Some shops take only mada or cash, foreign cards are sometimes blocked by bank security checks, and you need a local card to pay bills and government fees.</p></blockquote>
 <p>Already have a SIM? See <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a> for codes, SIM checks and updating your Absher number.</p>
-<p>University students: once the account is open, add your IBAN for the stipend in the Academic System. See <a href="/guides/new-student-steps">First steps for new students</a>.</p>`,
+<p>University students: the stipend is paid onto <a href="/guides/getting-your-stipend-off-the-university-card">the University stipend card</a>, not into an account you open yourself. Your own account is for receiving money from home and moving your stipend across. See <a href="/guides/new-student-steps">First steps for new students</a>.</p>`,
   },
   {
     slug: "getting-around",

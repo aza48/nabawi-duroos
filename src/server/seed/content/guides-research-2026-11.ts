@@ -56,7 +56,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li><strong>At a branch:</strong> take your passport and show your Visitor ID in the Absher app. <strong>Online:</strong> apply in the bank's app or website and confirm your identity through Nafath.</li>
 <li>Say you are a student at the Islamic University on the educational visa, and give your home address.</li>
 <li>Your account number comes by text message. Collect your mada debit card at the branch or ask for it to be posted.</li>
-<li>Add the account's IBAN for your stipend in the Academic System under Personal, then Rewards.</li>
+<li>Your own account is for transfers and everyday spending. The stipend itself is paid onto <a href="/guides/getting-your-stipend-off-the-university-card">the University stipend card</a>, and you move it to your own account from there.</li>
 </ol>
 <blockquote><p>Tip: Banks apply the rules differently from branch to branch. If one says no, try another branch or another bank.</p></blockquote>
 <h2>Phone and internet</h2>
@@ -218,7 +218,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <h2>Week 2: money and paperwork</h2>
 <ol>
 <li><strong>Register your National Address</strong> with Saudi Post. Banks and deliveries need it. See <a href="/ask/short-address">What is a short address?</a></li>
-<li><strong>Open a bank account</strong> and order a mada card. Visitor ID holders go to a branch with their passport and their Visitor ID in Absher, or open online through Nafath. Then add your IBAN for the stipend in the Academic System under Personal, then Rewards.</li>
+<li><strong>Open a bank account</strong> and order a mada card. Visitor ID holders go to a branch with their passport and their Visitor ID in Absher, or open online through Nafath. The stipend itself is paid onto <a href="/guides/getting-your-stipend-off-the-university-card">the University stipend card</a>, which the University issues, not into this account.</li>
 <li><strong>Set up Etimad</strong> for your University tickets and check your details match your passport. See <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</li>
 <li><strong>Check the key dates</strong> for your semester: exams, breaks and the deadlines for ta'jeel and withdrawal. See <a href="/guides/university-calendar-1448">The University calendar</a>.</li>
 </ol>
@@ -352,7 +352,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <tr><td>Advice on your study plan</td><td>Your academic advisor</td><td>Academic System, Academic, then <strong>Contact the academic advisor</strong> (التواصل مع المرشد الأكاديمي)</td></tr>
 <tr><td>A message to a teacher</td><td>The teacher</td><td>Academic System, Personal, then <strong>Send email</strong> (إرسال بريد إلكتروني), or a message in Blackboard</td></tr>
 <tr><td>Housing, activities, clubs and life in the halls</td><td>Deanship of Student Affairs</td><td>Tawasul, or the office in person. The housing office for room handovers is in Unit 22</td></tr>
-<tr><td>Your stipend and IBAN</td><td>The rewards service</td><td>Academic System, Personal, then Rewards</td></tr>
+<tr><td>Your stipend and the stipend card</td><td>The rewards service</td><td>Academic System, Personal, then Rewards</td></tr>
 <tr><td>A letter proving you are a student, a transcript</td><td>Issued automatically, free and stamped</td><td>Academic System, Personal, then Official Documents</td></tr>
 <tr><td>Passwords and sign-in problems</td><td>Deanship of IT and E-Learning</td><td><strong>it.care@iu.edu.sa</strong>, or <strong>+966 14 847 1856</strong></td></tr>
 <tr><td>Blackboard</td><td>E-Learning Center</td><td><strong>bb@iu.edu.sa</strong>, or Tawasul to the E-Learning Center: see <a href="/ask/blackboard-login">How do I log in to Blackboard?</a></td></tr>
@@ -1057,7 +1057,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 </ol>
 <h2>Also check</h2>
 <ul>
-<li>Your stipend continues into the Kulliyah. Check under Personal, then Rewards, in the Academic System that the next payment shows and that your IBAN is still right. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
+<li>Your stipend continues into the Kulliyah. Check under Personal, then Rewards, in the Academic System that the next payment shows and that your stipend card is still active. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
 <li>Your new timetable is in the Academic System, under Electronic Registration, then Registered Courses.</li>
 <li>The rules on ta'jeel and i'tithaar are in <a href="/guides/tajeel-and-itithaar">Taking a semester off</a>.</li>
 </ul>

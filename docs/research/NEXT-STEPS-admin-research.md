@@ -10,10 +10,16 @@ This branch is `main` plus the research branch `claude/wonderful-davinci-um61gf`
 - **E** gomedine.com parts 1, 3, 4 into the papers guides, new file `guides-admin-papers-2026-11.ts` if needed.
 Then: wire the new files in `sync.ts` and `src/lib/guide-topics.ts`, full tsc, vitest and build, commit, PR. Progress is in the checklist below; anything not ticked is not done.
 
-### Checklist
-- [ ] A  - [ ] B1  - [ ] B2  - [ ] C  - [ ] D  - [ ] E
-- [ ] wired in, tests and build pass, PR opened
-- [ ] owner questions gathered (below)
+### Done (merged to `main` through the PR for this branch)
+- A, B1, B2, C, D, E all finished; wired in `sync.ts` and `src/lib/guide-topics.ts` (new topic "Your studies, step by step", id `studies`, icon in `ContentPages.tsx`). tsc, 513 tests and the build pass. Screenshots: `docs/research/admin-publish-2026-11/screenshots/`.
+- New guides (16): `university-student-system`, `registering-your-courses`, `gpa-warnings-and-dismissal`, `what-you-study-by-level`, `university-email-and-microsoft-365` (A); `your-first-semester-week-by-week`, `getting-your-stipend-off-the-university-card`, `unit-13-and-paid-university-housing`, `university-housing-and-student-services`, `university-to-the-haram`, `lost-your-iqama-passport-or-card` (B2); `check-visa-and-iqama-online`, `family-records-on-absher` (E).
+- Owner questions from every writer: `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`.
+
+### Still to do (next agent: start here)
+1. **The distance-study handbook** ("دليل نظام الدراسة في الجامعة الإسلامية (عن بعد)", 60 pages, the owner's Google Drive file `1l_wPDaN_HJTBgReRIQngREdaX-I4Mt9c`). Its text is in `docs/research/iu-pdfs-2026-11/text/distance-study-system-handbook.txt`. A reader was writing `docs/research/iu-pdfs-2026-11/distance-study-handbook.md` and `src/server/seed/content/guides-admin-online-2026-11.ts` (guide `studying-online-at-the-islamic-university`). If those files are not on `main`, redo just that: read the text, write both, wire it in `sync.ts` and the `studies` topic.
+2. Skipped for lack of firm facts: changing college or major (official: scholarship students cannot change after placement), Tawasul (covered inside `university-student-system`), ijazah sessions, "if a student passes away", room inspection rules.
+3. For other lanes (not edited here): `drivers-license` (fine bands, international permit, gomedine part 1), `finding-an-apartment` (agent commission), `sisters-studying-in-madinah` (halaqat gates, book fee), `doctors-hospitals-and-pharmacies` (held: insurance conflict). Library page text "for every college" in `LibraryPage.tsx` (web) is fine as is.
+4. Publish: `npm run content:sync` against production (owner, or an agent the owner allows). The discounts and sports club ship with the code and need no sync.
 
 ### Missing inputs (only the owner has them)
 - gomedine.com part 2 (pages 056 to 110): on the owner's PC in the Desktop agent's scratch folder, or rerun it there.
