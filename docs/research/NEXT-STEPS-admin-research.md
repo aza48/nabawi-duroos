@@ -16,15 +16,21 @@ Then: wire the new files in `sync.ts` and `src/lib/guide-topics.ts`, full tsc, v
 - Owner questions from every writer: `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`.
 
 ### Still to do (next agent: start here)
-1. **The distance-study handbook** ("دليل نظام الدراسة في الجامعة الإسلامية (عن بعد)", 60 pages, the owner's Google Drive file `1l_wPDaN_HJTBgReRIQngREdaX-I4Mt9c`). Its text is in `docs/research/iu-pdfs-2026-11/text/distance-study-system-handbook.txt`. A reader was writing `docs/research/iu-pdfs-2026-11/distance-study-handbook.md` and `src/server/seed/content/guides-admin-online-2026-11.ts` (guide `studying-online-at-the-islamic-university`). If those files are not on `main`, redo just that: read the text, write both, wire it in `sync.ts` and the `studies` topic.
-2. Skipped for lack of firm facts: changing college or major (official: scholarship students cannot change after placement), Tawasul (covered inside `university-student-system`), ijazah sessions, "if a student passes away", room inspection rules.
-3. For other lanes (not edited here): `drivers-license` (fine bands, international permit, gomedine part 1), `finding-an-apartment` (agent commission), `sisters-studying-in-madinah` (halaqat gates, book fee), `doctors-hospitals-and-pharmacies` (held: insurance conflict). Library page text "for every college" in `LibraryPage.tsx` (web) is fine as is.
-4. Publish: `npm run content:sync` against production (owner, or an agent the owner allows). The discounts and sports club ship with the code and need no sync.
+State on 10 Nov 2026, after the third merge (fact-check and gomedine.com part 2). Merged to `main`: #76 (research in guides), #79 (calendar, online study guide), and the fact-check PR from this branch. Everything in this file's earlier plan is done:
+- gomedine.com: all 583 pages in `docs/research/gomedine-2026-11/raw/`; parts 1 to 4 read and published. The owner trusts the site.
+- Fact-check of every new and changed guide: `docs/research/admin-publish-2026-11/factcheck-FC1.md` to `FC4.md` (about 1,200 claims checked, about 110 corrected or removed). Each file lists the claims kept that rest on student reports only.
+- New guide `getting-married-in-saudi-arabia` (Family).
+
+What is left:
+1. **Owner questions:** `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`. When the owner answers one, fix the guide it names. Big ones: renting on a Visitor ID through Ejar (MESH's newer source says yes; a Jan 2026 page says no), the stipend card or own IBAN, the GPA warning threshold, room sharing in the halls, the absence bar, sports club hours, and whether the student-made system guide is fine to publish from.
+2. **For akhiai (not edited here):** `sisters-studying-in-madinah` gives Dhul Qa'dah for the Ma'had registration; the 1448 window is Safar (FC4, gomedine raw pages). `finding-an-apartment`: the agent's commission is 2.5% (raw 004).
+3. **Arabic** versions of the 15 new guides, after AR1 (akhiai's AR3 process).
+4. **Skipped for lack of firm facts:** changing college or major, ijazah sessions, "if a student passes away", room inspection rules.
+5. **Publish:** `npm run content:sync` against production (owner, or an agent the owner allows). Until then the guide text is not live; the discounts and calendar are.
 
 ### Missing inputs (only the owner has them)
-- gomedine.com part 2 (pages 056 to 110): on the owner's PC in the Desktop agent's scratch folder, or rerun it there.
-- The 70 MB student handbook PDF (too large for GitHub).
-- Telegram periods c5 (2024) and c6 (2019 to 2023): skipped on the owner's instruction.
+- Telegram periods c5 (2024) and c6 (2019 to 2023): skipped on the owner's instruction. The export is on the owner's PC.
+- (Done: gomedine.com part 2 was fetched again from the site; the 70 MB handbook is the owner's Drive file `1l_wPDaN_HJTBgReRIQngREdaX-I4Mt9c`, text in `iu-pdfs-2026-11/text/`.)
 
 ### After merge (owner, or an agent the owner allows)
 `npm run content:sync` against production publishes the guides. Nothing has been written to the production database.

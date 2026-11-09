@@ -1,0 +1,92 @@
+URL: https://gomedine.com/fr_fr/mise-a-jour-du-passeport-sur-absher-en-arabie-saoudite/
+TITLE: Mise à jour du passeport sur Absher en Arabie Saoudite — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Mise à Jour en Ligne des Informations de Passeport (Naqal Maloomat) sur Absher
+Désormais, vous pouvez mettre à jour les informations du passeport des personnes à charge en ligne via Absher, ou via Tawasul. Il est indispensable de mettre à jour vos détails de passeport dans Absher pour pouvoir quitter l’Arabie Saoudite.
+Qui peut effectuer la Mise à Jour en Ligne de Naqal Maloomat ?
+Votre employeur (kafil) est la seule personne autorisée à mettre à jour les informations du passeport dans Jawazat.
+Si vous êtes un employé, cette responsabilité incombe à votre employeur.
+De même, vous pouvez mettre à jour les informations du passeport des personnes a votre charge dans Absher.
+Votre employeur peut également mettre à jour le passeport de vos personnes à charge dans Absher.
+Le processus de mise à jour des informations de passeport ne peut être effectué que dans les 12 mois précédant l’expiration du passeport actuel.
+Mise à Jour du Passeport via Absher
+Comment mettre à jour le passeport d’une personne a charge dans Absher
+Une fois connecté à votre compte Absher https://www.absher.sa/
+Cliquez sur l’onglet « Services aux Membres de la Famille ».
+Sélectionnez l’option « Mettre à Jour les Informations de Passeport du Résident ».
+Cliquez sur le bouton « Procéder » sur la page suivante.
+Sélectionnez la personne a charge dont les informations de passeport doivent être mises à jour sur Absher.
+Dernière Étape pour Effectuer Naqal Maloomat en Ligne Vous devrez entrer :
+Numéro de passeport.
+Date de délivrance du passeport.
+Date d’expiration du passeport.
+Une fois que vous cliquez sur le bouton « Mettre à jour les informations du passeport », votre dossier sera mis à jour dans le système Absher.
+Reconnaissance Optique de Caractères : Les premiers chiffres d’un long code écrit au bas de la page principale de votre passeport.
+Nouveau Pays de Délivrance du Passeport : Votre pays d’origine.
+Nouvelle Ville de Délivrance du Passeport : La capitale de votre pays d’origine.
+Mise à Jour de Naqal Maloomat via le Service Tawasul
+Si le système en ligne ne fonctionne pas et que vous recevez le message suivant, il n’est pas nécessaire de visiter le bureau des Jawazat.
+« Désolé ! Vous ne pouvez pas mettre à jour les informations du passeport. Veuillez visiter Jawazat pour plus d’informations. »
+Dans ce cas, vous pouvez demander à Jawazat de mettre à jour le passeport de la personne a votre charge via le service Tawasul.
+Fichier PDF pour Pièce Jointe
+Créez un fichier PDF séparé pour chaque membre de la famille avec tous les documents mentionnés ci-dessous à télécharger sur Absher.
+Vous devrez faire une demande pour chaque personne a votre charge à la fois et attendre que les informations soient mises à jour. Sinon, le système affichera l’erreur « Désolé ! Vous ne pouvez pas soumettre cette demande. La description a dépassé la limite autorisée. »
+La taille du fichier PDF ne doit pas dépasser 1 Mo. Si la taille est plus grande, vous pouvez utiliser un compresseur de PDF en ligne.
+Capture d’Écran du message d’erreur
+Copie de l’ancien passeport.
+Visa saoudien apposé sur le passeport (le cas échéant).
+Copie du nouveau passeport.
+Copie de l’Iqama de la personne a charge.
+Mise à Jour des Informations de Passeport avec Tawasul
+Connectez-vous à votre compte Absher https://www.absher.sa/ .
+Cliquez sur l’onglet « Mes Services ».
+Sélectionnez « Passeports ».
+Cliquez sur le service « Tawasul ».
+Une nouvelle page s’ouvrira où vous devrez cliquer sur le bouton « Nouvelle Demande ».
+Changez la langue en arabe et sélectionnez les paramètres suivants :
+Secteur : تحديث وتمديد جواز السفر
+Service : Problèmes de Mise à Jour des Informations de Passeport du Résident.
+Description de la Demande : Écrivez le numéro d’Iqama et le Numéro de Frontière (si disponible).
+Pièce Jointe : Joignez le fichier PDF que vous avez créé auparavant.
+Le nom du fichier PDF doit être composé d’un seul mot, sans espace.
+Une demande pour une personne a charge.
+La mise à jour de Naqal Maloomat du passeport sera effectuée en un jour.
+Mise à Jour des Informations de Passeport par l’Employeur
+Votre employeur a le droit de mettre à jour les informations de passeport via le système Muqeem.
+Le GRO de votre entreprise y a accès. J’ai personnellement demandé la même chose et il l’a fait pour moi en un rien de temps.
+Vérifier le Statut de Naqal Maloomat en Ligne
+Après avoir traité la demande de mise à jour des informations de passeport via Absher ou en visitant Jawazat, vous devez toujours vérifier le statut de Naqal Maloomat en ligne.
+Vérifier le Statut de Naqal Maloomat pour Vous-Même
+Pour vérifier si les informations du passeport d’un expatrié avec un compte Absher ont été mises à jour avec succès, suivez ces étapes ;
+Connectez-vous à votre compte Absher.
+Cliquez sur l’onglet « Mes Services ».
+Sélectionnez le service « Demandes ».
+Cliquez sur l’option « Passeport ».
+Sélectionnez le service « Informations sur le Passeport ».
+Cliquez sur le bouton « + ». Si vous voyez la nouvelle date d’expiration du passeport, cela signifie que les informations de votre passeport ont été mises à jour avec succès.
+Vérifier le Statut de Naqal Maloomat pour les personnes a charge
+Connectez-vous à votre compte Absher.
+Cliquez sur l’onglet « Services aux Membres de la Famille ».
+Sélectionnez l’option « Services de Visa ».
+Appuyez sur le bouton « Suivant ».
+Sélectionnez la personne a charge pour lequel vous souhaitez vérifier le statut de Naqal Maloomat en ligne en cliquant sur « Plus de Détails ».
+Si vous voyez la nouvelle date d’expiration du passeport dans les détails, cela signifie que les informations du passeport de votre dépendant ont été mises à jour avec succès.
+Naqal Maloomat pour les Détenteurs de Visa de Visite
+Si le passeport d’un membre de la famille détenteur d’un visa de visite expire, vous devez vous rendre à Jawazat avec les documents suivants après avoir renouvelé le passeport.
+Rendez-vous au bureau des Jawazat.
+Formulaire de mise à jour du passeport de Jawazat.
+Copie de l’ancien passeport.
+Copie du nouveau passeport.
+Copie du Visa.
+Copie de l’Iqama du sponsor.
+Formulaire de mise à jour du passeport de Jawazat : tous les champs marqués en orange doivent être remplis avec vos informations pertinentes.
+Naqal Maloomat depuis l’extérieur de l’Arabie Saoudite
+Si le membre de la famille est en dehors de l’Arabie Saoudite, vous recevrez le message suivant lors de la mise à jour des informations de passeport.
+Le résident pour lequel le passeport doit être enregistré doit se trouver à l’intérieur du Royaume. Vous ne pouvez pas effectuer Naqal Maloomat pour un titulaire d’Iqama qui se trouve à l’extérieur de l’Arabie Saoudite, à la place, vous pouvez :
+les amener en Arabie Saoudite sur un nouveau passeport.
+leur demander de conserver l’ancien passeport lors du voyage.
+obtenir le tampon d’immigration sur le nouveau passeport.
+Mettre à jour les informations du passeport une fois qu’ils sont en Arabie Saoudite (même procédure).
+Pour avoir toutes les dernières News veuillez nous rejoindre sur notre Groupe TELEGRAM   CLIQUEZ ICI

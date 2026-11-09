@@ -92,7 +92,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "الأسرة والأخوات والأطفال",
     blurb: "Study for sisters, having a baby, schools and things to do with children.",
     blurbAr: "دراسة الأخوات والولادة والمدارس وأنشطة الأطفال.",
-    slugs: ["sisters-studying-in-madinah", "having-a-baby-in-madinah", "kindergartens-and-schools", "bringing-parents-to-visit", "family-records-on-absher", "kids-activities"],
+    slugs: ["sisters-studying-in-madinah", "having-a-baby-in-madinah", "kindergartens-and-schools", "bringing-parents-to-visit", "family-records-on-absher", "getting-married-in-saudi-arabia", "kids-activities"],
   },
   {
     id: "explore",
