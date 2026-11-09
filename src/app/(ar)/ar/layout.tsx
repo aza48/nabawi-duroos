@@ -7,6 +7,7 @@ import { getDb } from "@/server/db/client";
 import { getHelpContact, getWhatsAppUrl } from "@/server/settings";
 import { SITE_URL } from "@/lib/site";
 import { htmlAttrs } from "@/lib/locale";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -35,6 +36,7 @@ export default async function ArabicLayout({ children }: { children: React.React
         <SiteShell locale="ar" whatsappUrl={whatsappUrl} helpContact={helpContact}>
           {children}
         </SiteShell>
+        <Analytics />
       </body>
     </html>
   );

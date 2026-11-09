@@ -11,7 +11,7 @@ import { LIVE_COLLECTIONS } from "@/content/library-books";
 import { OFFICIAL } from "@/content/library";
 import { MAHAD_COPY } from "@/features/library/MahadPage";
 import { slugify } from "@/lib/guide-html";
-import { HELP_CONTACT_DEFAULT } from "@/server/settings";
+import { HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
 
 /**
  * The assistant's knowledge: every public page of MESH cut into small, self-contained passages
@@ -181,13 +181,13 @@ function discountChunks(): Chunk[] {
 }
 
 function siteChunks(): Chunk[] {
-  const help = `please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT}`;
+  const help = `please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT} or email ${HELP_EMAIL_DEFAULT}`;
   return [
     {
       id: "page-about",
       kind: "page",
       title: "About MESH",
-      text: `MESH (Medina English Student Hub, medinahub.org) is run by students, for English-speaking students and families in Madinah. It is independent and impartial. It has live duroos schedules of the mashayikh, study programmes, guides, answers to common questions, a library of Islamic University course books, student discounts and key dates, in English with an Arabic version under /ar. For anything else, or to suggest a correction, ${help}. The MESH WhatsApp group (announcements, events and daily help) is only for English-speaking Western students; the join link is on every page.`,
+      text: `MESH (Medina English Student Hub, medinahub.org) is for English-speaking students and families in Madinah. It is brought to you by Albaseerah International Institute. It is independent and impartial. It has live duroos schedules of the mashayikh, study programmes, guides, answers to common questions, a library of Islamic University course books, student discounts and key dates, in English with an Arabic version under /ar. For anything else, or to suggest a correction, ${help}. The MESH WhatsApp group (announcements, events and daily help) is only for English-speaking Western students; the join link is on every page.`,
       url: "/more",
     },
     { id: "page-duroos", kind: "page", title: "Duroos in Madinah", text: "Today's duroos of the mashayikh in Masjid an-Nabawi, Masjid Quba and other masjids are at /duroos with live status, cancellations and changes. The weekly schedule by day and prayer is at /duroos/schedule. Live broadcasts are at /duroos/live. Cancellations, postponements and new books are at /duroos/updates. Duroos for sisters are at /duroos/sisters. Free phone alerts when a dars changes can be turned on at /more#alerts.", url: "/duroos" },
