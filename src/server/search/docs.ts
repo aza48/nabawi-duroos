@@ -1,5 +1,6 @@
 import type { Db } from "@/server/db/client";
 import * as COMPANY from "@/features/guides/company/content";
+import * as COMPANY_AR from "@/features/guides/company/content-ar";
 import { listFaqs, listGuides } from "@/server/content/queries";
 import { listShaykhs, scheduleRows } from "@/server/duroos/queries";
 import { PROGRAMS } from "@/content/programs";
@@ -30,7 +31,7 @@ export async function buildSearchDocs(db: Db): Promise<SearchDoc[]> {
   const [guides, faqs, shaykhs, lessons] = await Promise.all([listGuides(db), listFaqs(db), listShaykhs(db), scheduleRows(db)]);
   return [
     ...PAGES,
-    { id: `guide-${COMPANY.SLUG}`, type: "guide" as const, title: COMPANY.TITLE, subtitle: COMPANY.SUMMARY, text: COMPANY.SEARCH_TEXT, url: `/guides/${COMPANY.SLUG}` },
+    { id: `guide-${COMPANY.SLUG}`, type: "guide" as const, title: COMPANY.TITLE, subtitle: COMPANY.SUMMARY, titleAr: COMPANY_AR.TITLE, subtitleAr: COMPANY_AR.SUMMARY, text: `${COMPANY.SEARCH_TEXT} ${COMPANY_AR.SEARCH_TEXT}`, url: `/guides/${COMPANY.SLUG}` },
     // Arabic titles and text come with the guide or answer once it is translated, so an Arabic search finds it in Arabic.
     ...guides.map((g) => ({
       id: `guide-${g.slug}`, type: "guide" as const, title: g.title, subtitle: g.summary,

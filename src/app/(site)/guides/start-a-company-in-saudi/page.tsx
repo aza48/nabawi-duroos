@@ -14,7 +14,10 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Start your own company in Saudi Arabia (2025 rules)",
   description: SUMMARY,
-  alternates: { canonical: `/guides/${SLUG}` },
+  alternates: {
+    canonical: `/guides/${SLUG}`,
+    languages: { en: `/guides/${SLUG}`, ar: `/ar/guides/${SLUG}`, "x-default": `/guides/${SLUG}` },
+  },
   openGraph: { type: "article", title: TITLE, description: SUMMARY, url: `/guides/${SLUG}`, siteName: "MESH" },
   twitter: { card: "summary_large_image", title: TITLE, description: SUMMARY },
 };

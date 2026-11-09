@@ -9,7 +9,7 @@ Owner's top priority (9 November 2026): every guide in plain Modern Standard Ara
 - Callouts start with "نصيحة:" (Tip), "ملاحظة:" (Note) or "مهم:" (Important). `src/lib/guide-html.ts` detects the English words only today; aiakhee adds the Arabic ones with AR1.
 - Terms are kept as the English guides spell them and as the site's Arabic UI already uses them: أبشر، نفاذ، هوية زائر، الإقامة، إيجار، اعتماد، مقيم، تواصل، المكافأة، رقم الحدود، العنوان الوطني، بطاقة مدى، الآيبان، النظام الأكاديمي، بلاك بورد، البريد السعودي، الجوازات، المطعم الجامعي، المركز الطبي الجامعي، الروضة الشريفة، نسك، قباء، حافلات المدينة، «ادرس في السعودية»، «منحتي».
 - Numbers in prose use Arabic-Indic digits (٢٠٢٦، ٣٫٧٥ ريالات). Phone numbers, codes, web addresses and product names keep Western digits so they can be dialled or typed.
-- House rules apply in Arabic too: no long dashes, no doubt words (قد، ربما، يُقال), no source wording, the Admin line reads "راسل المشرف على واتساب على الرقم +1 234 567 9076 أو بالبريد mesh@albaseerah.org" (the email was added to the house rule on 9 Nov).
+- House rules apply in Arabic too: no long dashes, no doubt words (قد، ربما، يُقال), no source wording, the Admin line reads "راسل الإدارة على واتساب على الرقم +1 234 567 9076 أو بالبريد mesh@albaseerah.org" (the email was added to the house rule on 9 Nov).
 - "Checked 9 November 2026" becomes "روجع في ٩ نوفمبر ٢٠٢٦".
 
 ## Status

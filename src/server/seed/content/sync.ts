@@ -13,6 +13,8 @@ import { GUIDES_ADMIN_LIFE_2026_11 } from "./guides-admin-life-2026-11";
 import { GUIDES_ADMIN_ONLINE_2026_11 } from "./guides-admin-online-2026-11";
 import { GUIDES_ADMIN_PAPERS_2026_11 } from "./guides-admin-papers-2026-11";
 import { ARABIC_FAQS, ARABIC_GUIDES } from "./arabic";
+import { withFaqLead } from "./faq-leads";
+import { FAQS_AIAKHEE_2026_11 } from "./faqs-aiakhee-2026-11";
 
 /**
  * Every seeded guide, one per slug. A later list replaces an earlier guide with the same slug,
@@ -21,7 +23,7 @@ import { ARABIC_FAQS, ARABIC_GUIDES } from "./arabic";
 const ENGLISH_GUIDES: SeedGuide[] = [
   ...new Map([...GUIDES_2026, ...GUIDES_STUDENT_LIFE, ...GUIDES_RESEARCH_2026_11, ...GUIDES_GAPS_2026_11, ...GUIDES_LANE_E_2026_11, ...GUIDES_ADMIN_2026_11, ...GUIDES_ADMIN_LIFE_2026_11, ...GUIDES_ADMIN_ONLINE_2026_11, ...GUIDES_ADMIN_PAPERS_2026_11, ...GUIDE_REWRITES_2026_11].map((g) => [g.slug, g] as const)).values(),
 ];
-const ENGLISH_FAQS: SeedFaq[] = [...new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11].map((f) => [f.slug, f] as const)).values()];
+const ENGLISH_FAQS: SeedFaq[] = [...new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11, ...FAQS_AIAKHEE_2026_11].map((f) => [f.slug, f] as const)).values()].map(withFaqLead);
 
 /**
  * Every seeded guide and answer with its Arabic (src/server/seed/content/arabic.ts, built from
