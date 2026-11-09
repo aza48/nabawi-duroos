@@ -16,6 +16,11 @@ How to keep it so:
 | Jawazat fees (checked November 2026) | guide `iqama-and-exit-reentry-fees` | May 2027 | Recheck and update the date |
 | Gym class prices and schedule (checked 8 November 2026) | guide `sports-and-activities` | February 2027 | Recheck |
 | "Final exam schedules are out" update with the steps to find them | announcement `final-exam-schedules-released-1448` (Latest updates on the home page and /duroos/updates) | 14 December 2026 (last exam day) | Archive the update in Admin |
+| Traffic fine amounts (checked November 2026) | guide `drivers-license`, "Fines, cameras and points" | May 2027 | Recheck against Absher and update the "as of" month |
+| Efada medical fee 60 to 200 SAR and driving school fees up to about 2,500 SAR (checked November 2026) | guide `drivers-license` | May 2027 | Recheck and update the "as of" month |
+| Car transfer fees 150 SAR government and 230 SAR Absher (checked November 2026) | guide `graduate-procedures`, "Your car" | May 2027 | Recheck on Absher |
+| SPL international parcel ranges (2025 figures) | guide `graduate-procedures`, "Ship your books" | Recheck now in SPL's price calculator, then every 6 months | Update the ranges and the "as of" year |
+| Second-hand furniture price points "as of late 2026" | guide `graduate-procedures`, "Sell or give away" | May 2027 | Recheck against current listings |
 
 ## Removed
 
