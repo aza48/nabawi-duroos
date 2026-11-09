@@ -96,7 +96,7 @@ export const START_STAGES: StartStage[] = [
     blurbEn: "Money, home and the duroos.",
     blurbAr: "المال والسكن والدروس.",
     steps: [
-      { id: "iban", by: 14, href: "/guides/scholarship-stipend-and-allowances", for: "student", en: "Send your IBAN to the University so your stipend is paid into your account.", ar: "أرسل رقم الآيبان إلى الجامعة لتصرف مكافأتك في حسابك." },
+      { id: "stipend-card", by: 14, href: "/guides/getting-your-stipend-off-the-university-card", for: "student", en: "Collect your stipend card, the card the University pays your stipend onto, and change its PIN at the bank's ATM.", ar: "استلم بطاقة المكافأة التي تصرف عليها الجامعة مكافأتك، وغيّر رقمها السري من صراف البنك." },
       { id: "etimad", by: 21, href: "/guides/etimad-account", for: "student", en: "Set up your Etimad account for your flight tickets.", ar: "أنشئ حسابك في اعتماد لتذاكر الطيران." },
       { id: "flat", by: 21, href: "/guides/finding-an-apartment", for: "family", en: "Find a flat and sign the lease on Ejar.", ar: "ابحث عن شقة ووقّع العقد على منصة إيجار." },
       { id: "insurance", by: 21, href: "/ask/check-health-insurance", en: "Check your health insurance and find your nearest clinic and pharmacy.", ar: "تحقق من تأمينك الصحي واعرف أقرب مستوصف وصيدلية." },
