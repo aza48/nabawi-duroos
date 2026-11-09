@@ -15,6 +15,7 @@ const HIGHLIGHT = "map";
 const GLEAM =
   "border-[color-mix(in_srgb,#8b5cf6_35%,var(--border))] bg-[linear-gradient(135deg,var(--card)_55%,color-mix(in_srgb,#8b5cf6_9%,var(--card)))] shadow-[0_10px_28px_-16px_rgba(124,58,237,0.45)] hover:border-[color-mix(in_srgb,#8b5cf6_60%,var(--border))]";
 import type { Locale } from "@/lib/locale";
+import { arDigits } from "@/lib/arabic-count";
 
 const AUDIENCE: Record<Audience, { label: string; ar: string; icon: typeof User }> = {
   men: { label: "Brothers", ar: "الإخوة", icon: User },
@@ -59,7 +60,7 @@ export function ProgramsIndex({ locale = "en" }: { locale?: Locale }) {
         <nav aria-label={ar ? "انتقل إلى" : "Jump to"} className="flex flex-wrap gap-2">
           {PROGRAM_KINDS.filter((k) => PROGRAMS.some((p) => p.kind === k.id)).map((k) => (
             <a key={k.id} href={`#${k.id}`} className="min-h-10 rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold text-muted transition hover:text-ink">
-              {ar ? k.labelAr : k.label} <span className="tabular opacity-70">{PROGRAMS.filter((p) => p.kind === k.id).length}</span>
+              {ar ? k.labelAr : k.label} <span className="tabular opacity-70">{ar ? arDigits(PROGRAMS.filter((p) => p.kind === k.id).length) : PROGRAMS.filter((p) => p.kind === k.id).length}</span>
             </a>
           ))}
         </nav>
@@ -126,7 +127,7 @@ export function ProgramPage({ p, locale = "en" }: { p: Program; locale?: Locale 
     ...(p.levels ? [{ id: "levels", label: t.levels, content: <div {...en} className="max-w-3xl"><List items={p.levels} /></div> }] : []),
     ...(p.included ? [{ id: "fees", label: t.fees, content: <div {...en} className="max-w-3xl"><p className="mb-5 font-heading text-2xl font-bold">{p.price}</p><List items={p.included} /></div> }] : []),
     ...(p.steps ? [{ id: "apply", label: t.apply, content: <div {...en} className="max-w-3xl"><List items={p.steps} numbered /></div> }] : []),
-    ...(p.videos?.length ? [{ id: "videos", label: `${t.videos} (${p.videos.length})`, content: <div className="grid gap-5 md:grid-cols-2">{p.videos.map((v) => <VideoEmbed key={v.id} id={v.id} title={v.title} locale={locale} />)}</div> }] : []),
+    ...(p.videos?.length ? [{ id: "videos", label: `${t.videos} (${locale === "ar" ? arDigits(p.videos.length) : p.videos.length})`, content: <div className="grid gap-5 md:grid-cols-2">{p.videos.map((v) => <VideoEmbed key={v.id} id={v.id} title={v.title} locale={locale} />)}</div> }] : []),
   ];
   const ld = {
     "@context": "https://schema.org",
