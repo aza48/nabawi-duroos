@@ -25,16 +25,16 @@ export function SiteShell({
   const ar = locale === "ar";
   return (
     <>
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:start-2 focus:z-50 focus:rounded focus:bg-card focus:p-2">
+      <a href="#main" data-noprint className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:start-2 focus:z-50 focus:rounded focus:bg-card focus:p-2">
         {ar ? "تخطَّ إلى المحتوى" : "Skip to content"}
       </a>
-      <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/85 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/85 backdrop-blur-md" data-print-header>
         <div className="shell flex h-16 items-center justify-between gap-2 sm:gap-4 md:h-[72px] lg:gap-3 xl:gap-4">
           <Link href={ar ? "/ar" : "/"} aria-label={ar ? "الصفحة الرئيسية لـ MESH" : "MESH home"} className="shrink-0">
             <Wordmark />
           </Link>
           <DesktopNav locale={locale} />
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2" data-noprint>
             <SearchPalette locale={locale} />
             <a
               href={whatsappUrl}
@@ -53,7 +53,9 @@ export function SiteShell({
         </div>
       </header>
       <Tracker />
-      <AssistantLauncher locale={locale} />
+      <div className="contents" data-noprint>
+        <AssistantLauncher locale={locale} />
+      </div>
       <main id="main" className="pb-safe lg:pb-0" data-main>
         {children}
       </main>
@@ -88,7 +90,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
     },
   ];
   return (
-    <footer className="lattice mt-16 bg-brand-deep text-white">
+    <footer className="lattice mt-16 bg-brand-deep text-white" data-noprint>
       <div className="shell grid gap-8 py-12 sm:grid-cols-2 md:py-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
         <div>
           <Wordmark tone="light" />
