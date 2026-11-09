@@ -11,6 +11,6 @@ export function parseTextSize(v: unknown): TextSize {
 
 /**
  * Runs in <head> before the first paint: applies the saved theme and text size, so neither ever flashes.
- * Keep it tiny and dependency free; it is inlined into every page.
+ * The admin app has no text size control, so it keeps its own size. Keep it tiny; it is inlined into every page.
  */
-export const HEAD_SCRIPT = `(function(){try{var d=document.documentElement,t=localStorage.getItem("mesh-theme");if(t==="light"||t==="dark")d.setAttribute("data-theme",t);var s=localStorage.getItem("${TEXT_SIZE_KEY}");if(s==="lg"||s==="xl")d.setAttribute("data-text",s)}catch(e){}})()`;
+export const HEAD_SCRIPT = `(function(){try{var d=document.documentElement,t=localStorage.getItem("mesh-theme");if(t==="light"||t==="dark")d.setAttribute("data-theme",t);var s=localStorage.getItem("${TEXT_SIZE_KEY}");if((s==="lg"||s==="xl")&&location.pathname.indexOf("/admin")!==0)d.setAttribute("data-text",s)}catch(e){}})()`;

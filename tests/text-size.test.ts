@@ -3,11 +3,11 @@ import { describe, expect, it } from "vitest";
 import { HEAD_SCRIPT, TEXT_SIZE_KEY, parseTextSize } from "@/components/shell/text-size";
 
 /** Runs the head script against a stub document and storage, and returns the attributes it set on <html>. */
-function run(stored: Record<string, string>, throws = false) {
+function run(stored: Record<string, string>, throws = false, pathname = "/") {
   const attrs: Record<string, string> = {};
   const localStorage = { getItem: (k: string) => { if (throws) throw new Error("blocked"); return stored[k] ?? null; } };
   const document = { documentElement: { setAttribute: (k: string, v: string) => { attrs[k] = v; } } };
-  runInNewContext(HEAD_SCRIPT, { localStorage, document });
+  runInNewContext(HEAD_SCRIPT, { localStorage, document, location: { pathname } });
   return attrs;
 }
 
@@ -22,6 +22,10 @@ describe("text size (D5)", () => {
   it("applies the saved theme and text size before paint", () => {
     expect(run({ "mesh-theme": "dark", [TEXT_SIZE_KEY]: "xl" })).toEqual({ "data-theme": "dark", "data-text": "xl" });
     expect(run({ [TEXT_SIZE_KEY]: "lg" })).toEqual({ "data-text": "lg" });
+  });
+
+  it("keeps the admin app at its own size, theme still applied", () => {
+    expect(run({ "mesh-theme": "dark", [TEXT_SIZE_KEY]: "xl" }, false, "/admin/login")).toEqual({ "data-theme": "dark" });
   });
 
   it("ignores unknown values and blocked storage", () => {

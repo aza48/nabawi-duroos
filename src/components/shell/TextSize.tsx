@@ -12,7 +12,15 @@ const LABEL: Record<Size, { mark: string; en: string; ar: string }> = {
 /** A, A+ and A++: sets data-text on <html> (the head script applies it again on every page) and saves it on the phone. */
 export function TextSizeControl({ locale = "en", tone = "light" }: { locale?: "en" | "ar"; tone?: "light" | "dark" }) {
   const [size, setSize] = useState<Size | null>(null);
-  useEffect(() => setSize(parseTextSize(document.documentElement.getAttribute("data-text"))), []);
+  // Follow the <html> attribute, so every copy of the control (More page, footer) shows the same size.
+  useEffect(() => {
+    const root = document.documentElement;
+    const read = () => setSize(parseTextSize(root.getAttribute("data-text")));
+    read();
+    const obs = new MutationObserver(read);
+    obs.observe(root, { attributes: true, attributeFilter: ["data-text"] });
+    return () => obs.disconnect();
+  }, []);
 
   function choose(next: Size) {
     const root = document.documentElement;
