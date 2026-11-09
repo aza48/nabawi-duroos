@@ -4,20 +4,20 @@ Cleaned up on 9 November 2026, about 17:00 Riyadh, by akheeai. This file is the 
 
 Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG.md` (who owns what, owner decisions, the log) and the latest comments on GitHub issue 13.
 
-## 9 November 2026, about 21:00 Riyadh: aiakhee (Lane B, the assistant, AR1)
-**Open PRs, all checked (tsc, vitest, `MESH_LOCAL_DB=1 next build`, screenshots at 390 and 1440 px in English and Arabic, an independent review each), waiting for review and merge (web reviews for akheeai):**
-- #49 AR1 Arabic columns (`aiakhee/AR1-arabic-columns`, `3e270e1`). **Owner applies the migration first** (`docs/AR1-MIGRATION.md`); akheeai reviewed it ok.
-- #54 B1 First 100 days (`/start`, `/ar/start`), `b68261f`.
-- #56 B2 glossary (`/glossary`, `/ar/glossary`, first mention definitions in guides), `24e63a4`. Merge before #57. B1 and B2 each add one word to `AR_TWINS`: keep both.
-- #57 B6 Quran and hadith links, stacked on #56, `6a2a0ea`.
-- #58 B5 FAQ short answers (`faq-leads.ts`), `5477ebb`. Safe to merge; hold the FAQ `content:sync` until the FAQ fixes PR below lands (10 answers repeat their lead's Yes or No).
-- #60 B4 dars locations research note, `597a6ab` (9 confirmed, 12 likely, 31 unknown).
+## 10 November 2026, about 02:45 Riyadh: aiakhee (Lane B, the assistant, AR1)
+**Merged to `main`:** B4 dars locations (#60), B1 First 100 days `/start` (#54), B2 glossary `/glossary` (#56), B6 Quran and hadith links (#57), B5 FAQ short answers (#58), FAQ fixes and 13 new FAQs (#85), the assistant (#106: ruling guard, citations, search fixes, authoritative wording, a 228-question test bank in `tests/assistant-eval.test.ts`).
 
-**In progress (sub-agents in aiakhee's session):**
-- `aiakhee/assistant-quality-2`, on AR1: ruling guard (4 leaks found in an evaluation of 165 questions), Arabic indexing, retrieval fixes for 51 misses, web's three fixes (no-answer wording, launcher at 768 to 1023 px, `ASK_LIMITS` out of the route file), a regression test set. WIP pushed at `f226ac2`. Evaluation harness and results are in aiakhee's scratchpad and will be summarised in `docs/research/assistant-eval-2026-11.md`.
-- `aiakhee/faq-fixes-and-new`, on #58: FAQ fixes and new FAQs from `docs/research/*`, in aiakhee's own file `faqs-aiakhee-2026-11.ts`. It avoids the FAQs admin claimed on issue 13.
+**Waiting for the owner:**
+- #49 AR1 Arabic columns (`aiakhee/AR1-arabic-columns`, `2dff60c`, current with `main`, 1285 tests pass). Apply the migration first (`docs/AR1-MIGRATION.md`), then merge. It carries `tests/assistant-arabic.test.ts`; the assistant already reads the Arabic fields once they exist.
+- `npm run content:sync` publishes the FAQ short answers, the FAQ fixes and the new FAQs.
 
-**Next for aiakhee (or a teammate if aiakhee is out of usage):** AR4 (FAQs in Arabic, `questionAr` and `answerHtmlAr`, after #49 merges), the deferred admission and University FAQs after admin's PR lands, then the assistant answering from `/start` and the glossary.
+**Next for aiakhee (or anyone free):**
+1. AR4: the FAQs in Arabic (`questionAr`, `answerHtmlAr`) after #49 merges, in aiakhee's own files (`faqs-aiakhee-2026-11.ts` overlay).
+2. The deferred admission and University FAQs: drafts and evidence in `docs/research/faq-deferred-2026-11.md`; recheck against admin's corrected guides first.
+3. Assistant weak answers listed in `docs/research/assistant-eval-2026-11.md` (Haram opening hours, Jawazat location, visa expiry), mostly content gaps for the guide owners.
+4. New guide topics offered to admin on issue 13 (Qur'an circles at the Haram, government offices, utilities in a rented flat, working on an iqama); write them only if admin passes them on.
+
+aiakhee's hourly wake-up is paused (owner, to save tokens); the usage reset wake-up is booked for 03:52 UTC.
 
 ## 10 November 2026: Desktop agent
 The admin research is finished and back with admin; a cloud session published it into guides on `main`. **28 guides and 35 FAQs on `main` are not live yet**: the owner runs the command in `scripts/publish-pending-2026-11-10.txt` (new rows only, nothing overwritten). Then check a few on medinahub.org, for example `/guides/university-student-system` and `/ask/blackboard-login`.
