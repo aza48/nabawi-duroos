@@ -1,6 +1,6 @@
 import { UniversityCalendar } from "./UniversityCalendar";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, ChevronDown, CircleCheck, CircleHelp, Compass, FileText, GraduationCap, KeyRound, Landmark, Languages, Library, MessageCircleQuestion, Plane, Radio, ScrollText, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookA, BookOpen, CalendarDays, ChevronDown, CircleCheck, CircleHelp, Compass, FileText, Flag, GraduationCap, KeyRound, Landmark, Languages, Library, MessageCircleQuestion, Plane, Radio, ScrollText, Users } from "lucide-react";
 import type { FaqRow, GuideRow } from "@/server/content/queries";
 import { FAQ_CATEGORIES } from "@/server/content/queries";
 import { OLD_ANCHORS, groupGuides, topicById, topicOf, type GuideTopicId } from "@/lib/guide-topics";
@@ -9,7 +9,7 @@ import { Breadcrumbs, PageBand, SectionHeader } from "@/components/ui";
 import { related, type RelItem } from "@/lib/related";
 import { FaqExplorer } from "./FaqExplorer";
 import { GuideBody } from "./GuideBody";
-import { enhanceGuideHtml } from "@/lib/guide-html";
+import { enhanceGuideHtml, linkScriptureRefs } from "@/lib/guide-html";
 import { JsonLd, ORG_ID, breadcrumbs } from "@/components/JsonLd";
 import { abs } from "@/lib/site";
 
@@ -160,7 +160,7 @@ export function FaqPage({ faq, locale = "en", guides = [], faqs = [] }: { faq: F
             <CircleCheck size={15} /> {verified(faq.lastVerifiedAt)}
           </p>
         )}
-        <div className="article mt-5" {...textAttrs(ft.answerInArabic, locale)} dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(ft.answerHtml) }} />
+        <div className="article mt-5" {...textAttrs(ft.answerInArabic, locale)} dangerouslySetInnerHTML={{ __html: linkScriptureRefs(sanitizeArticleHtml(ft.answerHtml)) }} />
       </div>
       {ar && verified(faq.lastVerifiedAt, "ar") && (
         <p className="mt-4 flex items-center gap-1.5 text-sm text-on">
@@ -207,6 +207,12 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
           })}
           <Link href={ar ? "/ar/mahad" : "/mahad"} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gold-bright px-4 py-2 text-sm font-semibold text-brand-deep transition hover:bg-gold">
             {ar ? "دليل المعهد" : <>Ma&apos;had hub</>}
+          </Link>
+          <Link href={ar ? "/ar/start" : "/start"} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
+            <Flag size={16} className="text-gold-bright" /> {ar ? "أيامك المئة الأولى" : "Your first 100 days"}
+          </Link>
+          <Link href={ar ? "/ar/glossary" : "/glossary"} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
+            <BookA size={16} className="text-gold-bright" /> {ar ? "كلمات تسمعها في المدينة" : "Glossary"}
           </Link>
         </nav>
       </PageBand>
@@ -259,7 +265,7 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
   const Icon = TOPIC_ICON[topic.id] ?? BookOpen;
   const isCalendar = guide.slug === "university-calendar-1448";
   const gt = guideText(guide, locale);
-  const { html, toc, steps: rawSteps } = enhanceGuideHtml(sanitizeArticleHtml(gt.bodyHtml));
+  const { html, toc, steps: rawSteps } = enhanceGuideHtml(sanitizeArticleHtml(gt.bodyHtml), { glossaryBase: ar ? "/ar/glossary" : "/glossary" });
   const steps = isCalendar ? 0 : rawSteps;
   const me = asGuide(guide);
   const relGuides = localRel(related(me, guides.map(asGuide), 4), "guides", guides, faqs, locale);
@@ -392,6 +398,8 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
   const ar = locale === "ar";
   const tiles = ar
     ? [
+        { href: "/ar/start", label: "أيامك المئة الأولى", note: "ما تفعله أولًا بعد وصولك، أسبوعًا بأسبوع", icon: Flag },
+        { href: "/ar/glossary", label: "كلمات تسمعها في المدينة", note: "الإقامة ونفاذ والتأجيل والمكافأة وغيرها، بشرح موجز", icon: BookA },
         { href: "/ar/programs", label: "الدراسة في المدينة", note: "معاهد العربية والدرجات الجامعية ومراكز الأخوات", icon: GraduationCap },
         { href: "/ar/library", label: "المكتبة", note: "مقررات الجامعة وكتب المعهد", icon: Library },
         { href: "/ar/discounts", label: "خصومات الطلاب", note: "عيادات ومدارس ونوادٍ وتأجير سيارات وغيرها", icon: BadgePercent },
@@ -401,6 +409,8 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
         { href: "/more", label: "English", note: "هذه الصفحة بالإنجليزية", icon: Languages },
       ]
     : [
+        { href: "/start", label: "Your first 100 days", note: "What to do first after you land, week by week", icon: Flag },
+        { href: "/glossary", label: "Glossary", note: "Iqama, Nafath, ta'jeel, mukafa'ah and more, in plain English", icon: BookA },
         { href: "/programs", label: "Study in Madinah", note: "Arabic institutes, degrees and sisters' marakiz", icon: GraduationCap },
         { href: "/library", label: "Jamiah library", note: "Muqarrarat and Ma'had books", icon: Library },
         { href: "/discounts", label: "Student discounts", note: "Clinics, schools, gyms, car rental and more", icon: BadgePercent },
