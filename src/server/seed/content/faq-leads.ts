@@ -45,7 +45,6 @@ export const FAQ_LEADS: Record<string, string> = {
   "medical-center-hours": "Sunday to Thursday from 8:00 am, with emergency care until 11:00 pm; Fridays and Saturdays, emergency care only, 1:00 pm to 9:00 pm.",
   "student-ticket-rules": "Your ticket needs an Etimad travel order, is valid for 3 months from the first travel date, and has no cash refund.",
   "airport-to-haram-and-university": "Madinah Bus route 400, a ride app or a taxi takes you to the Haram; arriving scholarship students can ask about a University reception trip.",
-  "summer-semester": "Yes. It is an optional semester for catching up, such as retaking a failed course.",
   "student-iqama-renewal": "The University's Travel Management renews it for you; your part is to keep your file clear so nothing holds the renewal up.",
   "how-many-classes-can-i-miss": "Missing more than a quarter of a course's hours bars you from its final exam and fails the course.",
   "exam-results-where": "Both are in the Academic System: grades under Course results once your college approves them, and your GPA under your academic record.",
@@ -62,7 +61,8 @@ export const FAQ_LEADS: Record<string, string> = {
   "traffic-fines": "Check them in Absher under traffic violations, and pay in your banking app through SADAD or in Absher.",
   "buying-a-used-car": "With an iqama, yes: insure it in your name, then transfer it in Absher; on a Visitor ID, you cannot buy one in your name.",
   "learn-tajweed-in-madinah": "In the free Qur'an halaqat of Masjid an-Nabawi, which teach correct recitation; register at reg.qm.edu.sa.",
-  "blackboard-login": "Sign in at sso.iu.edu.sa or in the University app; if it fails, test the Academic System, then ask through Tawasul.",
+  "summer-semester": "Only in the years the University announces one: none ran in summer 2026, and the 1448 calendar lists one from 6 June 2027.",
+  "blackboard-login": "Sign in at iu.edu.sa through Nafath or your University number and open Zidni; on a phone, use the Blackboard app.",
 };
 
 const escapeHtml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
