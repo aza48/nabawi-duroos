@@ -17,6 +17,7 @@ const plain = (html: string) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " 
 import { WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { AdminHelp } from "@/components/shell/AdminHelp";
 import { AlbaseerahSignature } from "@/components/shell/Albaseerah";
+import { MeshaykhName } from "@/features/assistant/MeshaykhName";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 import { EnglishNote } from "@/components/EnglishNote";
 import { faqText, guideText, textAttrs } from "@/lib/arabic-content";
@@ -238,7 +239,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
           <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary text-primary-ink"><MessageCircleQuestion size={22} /></span>
           <span className="min-w-0 flex-1">
             <span className="block font-heading text-lg font-semibold">{ar ? "لم تجد ما تبحث عنه؟" : "Can't find what you need?"}</span>
-            <span className="block text-sm text-muted">{ar ? "اسأل مساعد MESH، فهو يبحث في كل الأدلة والأسئلة وجدول الدروس." : "Ask the Meshaykh. It searches every guide, answer and the duroos schedule for you."}</span>
+            <span className="block text-sm text-muted">{ar ? "اسأل مساعد MESH، فهو يبحث في كل الأدلة والأسئلة وجدول الدروس." : <><MeshaykhName tone="light" />. It searches every guide, answer and the duroos schedule for you.</>}</span>
           </span>
           <ArrowRight size={18} className="shrink-0 text-primary rtl:rotate-180" />
         </Link>

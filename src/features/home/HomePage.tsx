@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, BookOpen, BookOpenText, Compass, GraduationCap, KeyRound, Luggage, Plane, RefreshCw, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BellRing, BookOpen, BookOpenText, Compass, GraduationCap, KeyRound, Luggage, Megaphone, Plane, RefreshCw, Users } from "lucide-react";
 import type { getToday, AnnouncementRow } from "@/server/duroos/queries";
 import type { GuideRow } from "@/server/content/queries";
 import type { GuideStage } from "@/server/db/schema";
@@ -29,7 +29,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
   return (
     <>
       <TodayHero today={today} locale="en" />
-      <KeyDates initialNow={Date.now()} />
+      <KeyDates initialNow={Date.now()} side={<LatestUpdates updates={updates} quiet={changes.length > 0} />} />
 
       <div className="shell mt-10 grid grid-cols-1 gap-10 md:mt-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-12">
         <div id="live" className="min-w-0">
@@ -46,29 +46,6 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
           <div className="hidden lg:block">
             <NextUpRail lessons={today.lessons.map(slimLesson)} changes={changes} serverNow={Date.now()} />
           </div>
-          <section className="rounded-3xl border border-line bg-card p-5">
-            <div className="flex items-baseline justify-between">
-              <h2 className="font-heading text-lg font-bold">Latest updates</h2>
-              <Link href="/duroos/updates" className="text-sm font-semibold text-primary hover:underline">
-                All
-              </Link>
-            </div>
-            {updates.length === 0 ? (
-              <p className="mt-3 text-sm text-muted">{changes.length ? "No announcements." : "No changes announced. Every dars is on as usual."}</p>
-            ) : (
-              <ul className="mt-3 divide-y divide-line">
-                {updates.slice(0, 4).map((a) => (
-                  <li key={a.slug} className="py-3 first:pt-1 last:pb-0">
-                    <Link href={`/duroos/updates#${a.slug}`} className="group block">
-                      <span className="block text-sm font-semibold leading-snug group-hover:text-primary">{a.titleEn}</span>
-                      <span className="mt-0.5 line-clamp-2 block text-sm text-muted">{a.bodyEn}</span>
-                      {a.bodyEn.length > 110 && <span className="mt-1 inline-block text-xs font-semibold text-primary">Read in full</span>}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
           <a
             href={whatsappUrl}
             target="_blank"
@@ -125,5 +102,49 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
         )}
       </section>
     </>
+  );
+}
+
+/**
+ * The latest duroos announcements, in the third column of "Coming up", set like a notice board in the same light card as
+ * the dates beside it: the three newest, each with when it was posted, and at the foot a way to get a phone alert when a
+ * dars changes, so the card is useful (and full) even on a quiet day.
+ */
+function LatestUpdates({ updates, quiet }: { updates: AnnouncementRow[]; quiet: boolean }) {
+  return (
+    <section aria-labelledby="latest-updates" className="flex flex-col rounded-3xl border border-line bg-card p-5 sm:p-6 md:col-span-2 xl:col-span-1">
+      <div className="flex items-center justify-between gap-3">
+        <h2 id="latest-updates" className="flex items-center gap-2 text-sm font-semibold text-muted">
+          <Megaphone size={15} className="text-gold" /> Latest updates
+        </h2>
+        <Link href="/duroos/updates" className="-me-2 inline-flex min-h-10 items-center rounded-full px-2 text-sm font-semibold text-primary hover:underline">
+          All
+        </Link>
+      </div>
+      {updates.length === 0 ? (
+        <p className="mt-3 mb-5 text-sm text-muted">{quiet ? "No announcements." : "No changes announced. Every dars is on as usual."}</p>
+      ) : (
+        <ul className="mt-1 mb-4 divide-y divide-line">
+          {updates.slice(0, 3).map((a) => (
+            <li key={a.slug}>
+              <Link href={`/duroos/updates#${a.slug}`} className="group block py-3.5">
+                <span className="block text-[11px] font-semibold uppercase tracking-wide text-gold">
+                  <TimeAgo iso={new Date(a.postedAt).toISOString()} />
+                </span>
+                <span className="mt-1 block font-semibold leading-snug group-hover:text-primary">{a.titleEn}</span>
+                <span className="mt-1 line-clamp-2 text-sm leading-relaxed text-muted">{a.bodyEn}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+      <Link href="/more#alerts" className="group mt-auto flex items-center gap-3 rounded-2xl bg-bg-2 p-3 transition hover:bg-primary-soft">
+        <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-ink">
+          <BellRing size={17} />
+        </span>
+        <span className="min-w-0 flex-1 text-sm font-semibold leading-snug">Get a phone alert when a dars changes</span>
+        <ArrowRight size={16} className="shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-primary" />
+      </Link>
+    </section>
   );
 }
