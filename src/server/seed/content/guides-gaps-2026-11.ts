@@ -5,6 +5,8 @@ import type { SeedFaq, SeedGuide } from "./guides-2026";
  * answer yet: packing before you fly, exams and attendance, the airport, the summer semester,
  * iqama renewal and graduation. Sources are listed in docs/research/gaps-2026-11.md, and facts that
  * could not be stated with authority are raised in docs/research/gaps-2026-11-questions.json.
+ * The FAQs from eid-prayer-in-madinah onwards (Eid, health, passports, fines, cars, tajweed and
+ * Blackboard) are sourced in docs/research/faq-gaps-2026-11-09.md.
  */
 export const GUIDES_GAPS_2026_11: SeedGuide[] = [
   {
@@ -328,5 +330,61 @@ export const FAQS_GAPS_2026_11: SeedFaq[] = [
     question: "I was offered a year of online Arabic. How do I get to Madinah after it?",
     answerHtml: `<p>The online year is offered to some applicants who hold initial acceptance for the Arabic Institute (Ma'had) but cannot be given a place in Madinah that year. It is free and lasts one academic year at most.</p><ul><li><strong>It does not lead to a visa by itself.</strong> To study in Madinah afterwards, submit a new application on Study in Saudi as soon as the portal next opens, even while you are still studying online. Without it, the University cannot issue your educational visa, however well you do.</li><li><strong>Priority is not a place.</strong> Attending and passing the online year gives you priority with the University, but you still need the Ministry's final acceptance before any visa is issued.</li><li><strong>No stipend</strong> is paid while you study online. The stipend starts once you are studying in Madinah on a full scholarship. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li><li><strong>Already with the Ministry?</strong> If Minhati shows your status as initial acceptance on the Study in Saudi portal, you do not need the online stage. Wait for the Ministry's final decision.</li></ul><p>The full steps are in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>. Questions about your own file? Message Admin on WhatsApp at +1 234 567 9076.</p>`,
     tags: ["online", "arabic", "mahad", "study in saudi", "priority", "application", "stipend"],
+  },
+  {
+    slug: "eid-prayer-in-madinah",
+    category: "duroos",
+    question: "Where is the Eid prayer held in Madinah, and when does it start?",
+    answerHtml: `<p>At Masjid an-Nabawi, and in hundreds of masjids and open-air Eid musallas (مصليات العيد) across the city, so there is one near every neighbourhood. The prayer starts 15 minutes after sunrise by the Umm al-Qura calendar: for Eid al-Fitr 1447 that was 6:40 am in Madinah. The Ministry of Islamic Affairs publishes each city's exact time before Eid, and the day itself is confirmed the evening before, when the sighting of the new moon is announced. In 1448, Eid al-Fitr falls on Tuesday 9 March 2027 and Eid al-Adha on Sunday 16 May 2027 by the Umm al-Qura calendar.</p><ul><li><strong>Arrive early.</strong> At the Haram the courtyards fill well before sunrise and the rows spread into the streets around the masjid. Many people come for Fajr and stay.</li><li><strong>Sisters</strong> pray in the women's sections, which fill first. See <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</li><li><strong>Families:</strong> agree a meeting point before you separate, because phone signal drops in the crowds, and bring a prayer mat for the courtyards and streets.</li></ul><p>More in <a href="/guides/masjid-an-nabawi-first-visit">Visiting Masjid an-Nabawi</a>.</p>`,
+    tags: ["eid", "eid prayer", "salat al-eid", "musalla", "haram", "eid al-fitr", "eid al-adha"],
+  },
+  {
+    slug: "female-doctor",
+    category: "family",
+    question: "Can I see a female doctor in Madinah?",
+    answerHtml: `<p>Yes. Women doctors work in most hospitals and in many clinics, above all in women's health, obstetrics and children's clinics.</p><ul><li><strong>When you book</strong> by phone, in a hospital's app or at reception, ask for a female doctor (طبيبة) before the appointment is confirmed.</li><li><strong>At a government health centre,</strong> book in the Sehhaty app, then ask at reception for a female doctor when you arrive, before you go in.</li><li><strong>During an examination</strong> by a male doctor, you may ask for a woman, such as a nurse, to be present. This is one of every patient's rights.</li><li><strong>In an emergency</strong> you are seen by the doctor on duty, so ask for a woman nurse to stay with you.</li></ul><p>Hospitals, clinics and health apps are in <a href="/guides/doctors-hospitals-and-pharmacies">Doctors, hospitals, pharmacies and emergency numbers</a>, and maternity care in <a href="/guides/having-a-baby-in-madinah">Having a baby in Madinah</a>.</p>`,
+    tags: ["female doctor", "women doctor", "tabiba", "sisters", "health", "clinic", "sehhaty"],
+  },
+  {
+    slug: "baby-vaccinations",
+    category: "family",
+    question: "How do I get my baby vaccinated in Madinah?",
+    answerHtml: `<p>Babies here follow the Ministry of Health's national immunisation schedule. The first vaccines are given at birth, in the hospital, before you take your baby home. The next doses start at two months and continue at set ages through the first 18 months, with more before school.</p><ol><li><strong>Before you leave the hospital,</strong> ask which vaccines your baby was given, and keep the record.</li><li><strong>Register at your nearest primary health care centre</strong> (مركز الرعاية الصحية الأولية).</li><li><strong>Add your baby to your file in Absher,</strong> then add the baby as a dependant in Sehhaty. See <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, and dependent fees</a>.</li><li><strong>Book each dose</strong> in Sehhaty or at the centre. Sehhaty keeps your child's vaccination record and certificate, in Arabic and English, in place of the old paper card, and reminds you before each dose is due.</li></ol><p>Older children who started their vaccines abroad: take their records to the centre so the remaining doses can be planned. More in <a href="/guides/having-a-baby-in-madinah">Having a baby in Madinah</a>.</p>`,
+    tags: ["vaccination", "vaccine", "immunisation", "baby", "newborn", "sehhaty", "primary health care"],
+  },
+  {
+    slug: "renew-passport-in-saudi",
+    category: "getting-settled",
+    question: "My passport is expiring. How do I renew it in Saudi Arabia, and what must I update afterwards?",
+    answerHtml: `<p>Renew it at your country's embassy in Riyadh or its consulate in Jeddah. Read their website for the steps, because many take applications online or by post. Start well before the expiry date, keep the old passport when the new one arrives, and then move your Saudi records to the new passport.</p><table><thead><tr><th>Topic</th><th>Iqama</th><th>Visitor ID</th></tr></thead><tbody><tr><td><strong>Your own record</strong></td><td>Your sponsor moves your iqama to the new passport. For a student iqama, that is the University's Travel Management: send it a copy of the new passport through Tawasul.</td><td>Your Visitor ID is tied to your passport. Send a copy of the new passport to the Deanship of Admission and Registration through Tawasul, subject Educational visa.</td></tr><tr><td><strong>Your family</strong></td><td>As head of the family, update each dependant's passport in Absher, under Passports, then Resident Identity services, then Update passport information. Absher accepts it once the old passport has 12 months or less left, and not while traffic fines are unpaid. It shows the fee before you pay.</td><td>Family on a multiple-entry visit visa: update the passport number on the visa in Absher.</td></tr></tbody></table><p>Then update your bank and your mobile operator, and check that your name on Etimad still matches the new passport letter for letter. Book no travel until the new passport shows in Absher. See <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a> and <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>`,
+    tags: ["passport", "renewal", "embassy", "consulate", "absher", "iqama", "visitor id"],
+  },
+  {
+    slug: "traffic-fines",
+    category: "getting-settled",
+    question: "How do I check and pay traffic fines?",
+    answerHtml: `<ul><li><strong>Check:</strong> your fines show in Absher under traffic violations, with the date, place and amount, on an iqama or a Visitor ID. Check every month, because camera fines arrive without a paper ticket.</li><li><strong>Pay:</strong> in your banking app under SADAD government payments, traffic violations, or in Absher.</li><li><strong>Object:</strong> if a fine is wrong, object to it in Absher, from the same traffic violations page, as soon as you see it.</li></ul><p>Pay as soon as a fine appears. Unpaid fines stop Absher issuing an exit and re-entry visa, hold up the renewal of a student iqama, block updating a family member's passport, and block transferring a car to your name. See <a href="/ask/student-iqama-renewal">Who renews my student iqama?</a> and <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, and dependent fees</a>.</p>`,
+    tags: ["traffic", "fines", "violations", "mukhalafat", "absher", "sadad", "saher"],
+  },
+  {
+    slug: "buying-a-used-car",
+    category: "getting-settled",
+    question: "Can I buy a used car as a student, and what do I need?",
+    answerHtml: `<p><strong>With an iqama,</strong> yes. Used cars are sold on classified apps and websites and at used car showrooms. Residents may own private cars only.</p><ol><li><strong>Check the car before you pay:</strong> a valid registration (istimara), a valid periodic technical inspection (الفحص الفني الدوري), and no fines on the car. Have a mechanic look at it too.</li><li><strong>Insure it in your name</strong> before the transfer. Absher does not complete a sale without valid insurance.</li><li><strong>Transfer it in Absher.</strong> The seller starts the sale in his Absher, you accept it in yours and pay the fees Absher shows. Both of you need active Absher accounts, and the transfer is refused while there are unpaid fines on you or the car.</li><li><strong>Check</strong> that the car shows under your vehicles in Absher.</li></ol><p>Swap your home licence for a Saudi one as well: see <a href="/guides/drivers-license">Getting a Saudi driving licence</a>.</p><p><strong>On a Visitor ID,</strong> owning or registering a car needs an iqama, so you cannot buy one in your own name. You can drive on your home licence while Saudi Arabia recognises it, and rent a car: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>`,
+    tags: ["car", "used car", "buy", "absher", "ownership transfer", "insurance", "inspection", "istimara"],
+  },
+  {
+    slug: "learn-tajweed-in-madinah",
+    category: "duroos",
+    question: "Where can I learn tajweed in Madinah?",
+    answerHtml: `<p>Start with the Haram. Masjid an-Nabawi runs free Qur'an halaqat for men and women, and correcting recitation (تصحيح التلاوة) is one of their programmes, alongside memorisation and the mutun. Classes meet at set times around the prayers, in person at the masjid, and some are taught remotely.</p><ol><li>Open <a href="https://qm.edu.sa/">qm.edu.sa</a> and choose the men's or the women's section.</li><li>Register at <a href="https://reg.qm.edu.sa/">reg.qm.edu.sa</a> and wait for your placement.</li><li>Attend on the days and times you are given. Teaching is in Arabic.</li></ol><p>See <a href="/programs/nabawi-halaqat">Qur'an and mutun halaqat in the Haram</a>. Several institutes and marakiz in the city also teach the Qur'an and tajweed, some free and some paid: all are on <a href="/programs">Study in Madinah</a>. Sisters: see <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a> and <a href="/guides/sisters-studying-in-madinah">Where sisters can study</a>.</p>`,
+    tags: ["tajweed", "quran", "recitation", "halaqat", "haram", "qm.edu.sa", "sisters"],
+  },
+  {
+    slug: "blackboard-login",
+    category: "university",
+    question: "How do I log in to Blackboard, and what do I do if it fails?",
+    answerHtml: `<p>Sign in with your University login at sso.iu.edu.sa, through Nafath or with your University number, password and the code sent to you, and open Blackboard from there. The University's app also opens Blackboard, with the same two ways to sign in.</p><p>If it fails:</p><ol><li>Try signing in to the Academic System with the same login. If that fails too, the problem is your University account, not Blackboard.</li><li>If the Nafath request does not reach your phone, sign in with your University number and password instead.</li><li>Try a private window, another browser, or the app.</li><li>Still stuck? Send a request through Tawasul at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a> with a screenshot of the error, or use the guest form if you cannot sign in. You can also email <strong>it.care@iu.edu.sa</strong> or call student care on <strong>920022042</strong>.</li></ol><p>Never share your password or a code, and never open links posted in class chats: see <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat</a>. Other offices are in <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</p>`,
+    tags: ["blackboard", "login", "sso", "password", "nafath", "e-learning"],
   },
 ];

@@ -648,5 +648,45 @@
   "topic": "University",
   "question": "Who exactly is offered the online Arabic year (only Ma'had applicants with initial acceptance who were not given a place, or others too), and is it still offered for the 1449 intake?",
   "context": "The new FAQ says it is offered to some applicants with initial acceptance for the Arabic Institute who cannot be given a place in Madinah that year, free, for one academic year at most."
+ },
+ {
+  "topic": "Visas",
+  "question": "Does Nafath work outside Saudi Arabia, for example to approve a sign-in to the University, a bank or Absher while on holiday at home, and what should students do if it stops working abroad?",
+  "context": "No FAQ was written. No official Nafath or SDAIA page says either way, secondary sites disagree, Etimad says its sign-in works from abroad after a first Nafath sign-in inside the Kingdom, and two members could not reach the University account from abroad in August 2026."
+ },
+ {
+  "topic": "Visas",
+  "question": "After renewing his passport, how does a Visitor ID student move his Visitor ID to the new passport: only through the University (Tawasul, Educational visa), or also in Absher himself, and does the bank account or SIM freeze until it is done?",
+  "context": "The new FAQ renew-passport-in-saudi tells Visitor ID students to send the new passport to the Deanship of Admission and Registration through Tawasul. No official procedure for Visitor ID passport updates was found."
+ },
+ {
+  "topic": "Healthcare",
+  "question": "Can the wives and children of scholarship students use the University Medical Center, including its women's and obstetrics clinic and its vaccination unit, or is it only for students and staff?",
+  "context": "The University's page says the Center serves students, staff and faculty. The new FAQs female-doctor and baby-vaccinations do not mention the Center for families until this is confirmed."
+ },
+ {
+  "topic": "Healthcare",
+  "question": "Are the national childhood vaccines free at government primary health care centres for children of families on a visit visa or a Visitor ID, and how is a baby born to a Visitor ID student added to Absher and Sehhaty?",
+  "context": "The new FAQ baby-vaccinations says the vaccines are free at primary health care centres (a Ministry of Health statement that they are free for all children regardless of nationality) and tells parents to add the baby in Absher, then Sehhaty. Newer secondary guides disagree on visitors."
+ },
+ {
+  "topic": "University",
+  "question": "What is the direct Blackboard address for students, who fixes Blackboard faults (it.care@iu.edu.sa, the E-Learning Center, or a Tawasul department), and what should a student do when his registered courses do not appear in Blackboard?",
+  "context": "The new FAQ blackboard-login sends students through sso.iu.edu.sa or the University app, then Tawasul, it.care@iu.edu.sa or 920022042. The Blackboard URL and missing courses are left out."
+ },
+ {
+  "topic": "University",
+  "question": "Is there Wi-Fi on campus and in the Jamiah and Rabwa halls, how do students sign in to it, and is there a laundry inside or near the halls?",
+  "context": "No FAQ was written. Nothing official was found. Group chat members say the Wi-Fi login is the student number and the University password; laundry in the halls is described only by older blogs."
+ },
+ {
+  "topic": "Driving",
+  "question": "Is the 25% discount for paying a traffic fine early still in force, is the window 30 or 45 days, and which violations are excluded?",
+  "context": "The new FAQ traffic-fines covers checking, paying, objecting within 30 days and what unpaid fines block, and leaves the discount out because sources disagree on the window."
+ },
+ {
+  "topic": "Driving",
+  "question": "Must a student with an iqama hold a Saudi driving licence before a car can be transferred to his name in Absher, and what are the current transfer fees?",
+  "context": "The new FAQ buying-a-used-car gives the official Absher conditions (valid registration, inspection and insurance, no fines, private cars only for residents) and says Absher shows the fees. Secondary guides quote 150 SAR plus a 230 SAR Absher fee."
  }
 ]
