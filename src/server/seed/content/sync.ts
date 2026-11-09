@@ -2,16 +2,27 @@ import { sql } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { faqs, guides } from "@/server/db/schema";
 import { cleanText } from "@/lib/text";
-import { FAQS_2026, GUIDES_2026 } from "./guides-2026";
+import { FAQS_2026, GUIDES_2026, type SeedFaq, type SeedGuide } from "./guides-2026";
 import { FAQS_STUDENT_LIFE, GUIDES_STUDENT_LIFE } from "./guides-student-life";
+import { GUIDE_REWRITES_2026_11, GUIDES_RESEARCH_2026_11 } from "./guides-research-2026-11";
+import { FAQS_GAPS_2026_11, GUIDES_GAPS_2026_11 } from "./guides-gaps-2026-11";
+
+/**
+ * Every seeded guide, one per slug. A later list replaces an earlier guide with the same slug,
+ * which is how rewrites kept outside guides-2026.ts take effect.
+ */
+export const SEED_GUIDES: SeedGuide[] = [
+  ...new Map([...GUIDES_2026, ...GUIDES_STUDENT_LIFE, ...GUIDES_RESEARCH_2026_11, ...GUIDES_GAPS_2026_11, ...GUIDE_REWRITES_2026_11].map((g) => [g.slug, g] as const)).values(),
+];
+export const SEED_FAQS: SeedFaq[] = [...new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11].map((f) => [f.slug, f] as const)).values()];
 
 const minutes = (html: string) => Math.max(1, Math.ceil(html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length / 200));
 
 /** Upserts the November 2026 guides and FAQs as published and verified. Safe to run repeatedly. */
 export async function syncContent2026(db: Db, now: Date = new Date(), opts: { only?: string[] } = {}): Promise<{ guides: number; faqs: number }> {
   const pick = <T extends { slug: string }>(xs: T[]) => (opts.only ? xs.filter((x) => opts.only!.includes(x.slug)) : xs);
-  const guideList = pick([...GUIDES_2026, ...GUIDES_STUDENT_LIFE]);
-  const faqList = pick([...FAQS_2026, ...FAQS_STUDENT_LIFE]);
+  const guideList = pick(SEED_GUIDES);
+  const faqList = pick(SEED_FAQS);
   for (const g of guideList) {
     const row = {
       slug: g.slug,

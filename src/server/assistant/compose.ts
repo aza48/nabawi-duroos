@@ -1,7 +1,6 @@
-import { normalize } from "@/lib/search/normalize";
 import { HELP_CONTACT_DEFAULT } from "@/server/settings";
 import type { Chunk } from "./knowledge";
-import { keyTerms } from "./retrieve";
+import { keyTerms, termHits } from "./retrieve";
 
 /**
  * Answers without any AI: the sentences of the best passages that carry the question's words,
@@ -19,8 +18,7 @@ export function sentences(text: string): string[] {
 }
 
 function score(s: string, terms: string[]): number {
-  const n = normalize(s);
-  return terms.reduce((a, t) => a + (n.includes(t) ? 1 : 0), 0);
+  return termHits(terms, s);
 }
 
 /** The best few sentences of the passage, in order, within roughly `max` characters. */
@@ -38,7 +36,9 @@ export function extract(question: string, p: Chunk, max = 520): string {
     // A list line pulls in its neighbours so a list of steps reads as a list.
     if (/^(•|\d+\.)\s/.test(r.s)) {
       for (const j of [r.i - 1, r.i + 1, r.i + 2]) {
-        if (all[j] && /^(•|\d+\.)\s/.test(all[j]) && len + all[j].length <= max) {
+        // Steps travel together; table rows only when they are as relevant as the one picked.
+        const neighbour = all[j] && /^(•|\d+\.)\s/.test(all[j]) && (/^\d+\./.test(all[j]) || score(all[j], terms) >= r.v);
+        if (neighbour && len + all[j].length <= max) {
           picked.add(j);
           len += all[j].length;
         }
@@ -46,6 +46,12 @@ export function extract(question: string, p: Chunk, max = 520): string {
     }
     if (len >= max * 0.8) break;
   }
+  // A heading line ("Start of final exams:") means nothing without what follows it.
+  for (const i of [...picked]) if (/:$/.test(all[i]) && !(all[i + 1] && picked.has(i + 1))) {
+    if (all[i + 1] && len + all[i + 1].length <= max * 1.2) picked.add(i + 1);
+    else picked.delete(i);
+  }
+  if (!picked.size) picked.add(ranked[0].i);
   // A list line that opens the answer needs the sentence that introduces it.
   const first = Math.min(...picked);
   if (/^(•|\d+\.)\s/.test(all[first]) && first > 0 && !/^(•|\d+\.)\s/.test(all[first - 1])) picked.add(first - 1);

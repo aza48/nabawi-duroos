@@ -60,7 +60,7 @@ export function resultsSummary(n: number, locale: "en" | "ar"): string {
 }
 
 function Results({ hits, q, cursor, onPick, compact, locale = "en", listId, wide }: { hits: SearchHit[]; q: string; cursor: number; onPick: (h: SearchHit) => void; compact?: boolean; locale?: "en" | "ar"; listId?: string; wide?: boolean }) {
-  const groups = ORDER.map((t) => ({ t, items: hits.filter((h) => h.type === t).slice(0, compact ? 5 : 12) })).filter((g) => g.items.length);
+  const groups = groupHits(hits, !!compact);
   const flat = groups.flatMap((g) => g.items);
   if (!q.trim()) return null;
   if (!flat.length) return <p className="px-2 py-8 text-center text-muted" role="status">{T[locale].none(q)}</p>;
@@ -115,8 +115,16 @@ function Results({ hits, q, cursor, onPick, compact, locale = "en", listId, wide
   );
 }
 
+/** Hits grouped by type, the group holding the best hit first; equal best scores keep ORDER. */
+export function groupHits(hits: SearchHit[], compact: boolean): { t: SearchType; items: SearchHit[] }[] {
+  const best = (items: SearchHit[]) => Math.max(...items.map((h) => h.score));
+  return ORDER.map((t) => ({ t, items: hits.filter((h) => h.type === t).slice(0, compact ? 5 : 12) }))
+    .filter((g) => g.items.length)
+    .sort((a, b) => best(b.items) - best(a.items) || ORDER.indexOf(a.t) - ORDER.indexOf(b.t));
+}
+
 function flatten(hits: SearchHit[], compact: boolean) {
-  return ORDER.flatMap((t) => hits.filter((h) => h.type === t).slice(0, compact ? 5 : 12));
+  return groupHits(hits, compact).flatMap((g) => g.items);
 }
 
 /** Header button + ⌘K / Ctrl+K palette, available on every page. */

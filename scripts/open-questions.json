@@ -123,5 +123,570 @@
   "topic": "Visas",
   "question": "What does an exit and re-entry visa cost when extended from abroad (reported double the in-Kingdom fee, 200 SAR a month for a single visa)?",
   "context": "The fees guide says higher fees apply but gives no figure."
+ },
+ {
+  "topic": "Visas",
+  "question": "What is the educational visa fee for new University students this year, and is it the same for every country?",
+  "context": "One student report gave USD 230 in August 2026, and another university quoted 800 SAR in 2025. The application guide says only that the fee is paid through the link that is sent."
+ },
+ {
+  "topic": "Visas",
+  "question": "Do students on the educational visa (Visitor ID) need an exit and re-entry visa or University permission to travel abroad, and is there a limit on how many days they can stay per entry (one report said 180 days)?",
+  "context": "The Visitor ID guide only tells students to check their visa covers the return date and to follow the University's travel notice."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is a medical examination actually required for the educational visa, and where is it done?",
+  "context": "Students report the medical step is often not enforced. The application guide says to do any medical step you are asked for."
+ },
+ {
+  "topic": "Visas",
+  "question": "Can students on the educational visa (Visitor ID) work part-time, for example up to 20 hours a week, and does it need University approval?",
+  "context": "Mentioned in a 2024 explainer of the new visa and by some outside guides. Others say students may not work. Left out of the Visitor ID guide."
+ },
+ {
+  "topic": "Visas",
+  "question": "Can a Visitor ID student sit a driving test or get a Saudi licence in any way, or get car insurance as a named driver?",
+  "context": "The Visitor ID guide says a Saudi licence and owning a car need an iqama. Students keep asking about insurance and rentals."
+ },
+ {
+  "topic": "Phones",
+  "question": "Are mobile lines registered on a Visitor ID suspended by the operators every 6 to 7 months, and what should students do when it happens?",
+  "context": "Three students reported this in September 2026. The guide only says to go to a branch if the line stops working."
+ },
+ {
+  "topic": "University",
+  "question": "Does the Study in Saudi application number begin with LPA, so the guide can tell applicants which number to keep?",
+  "context": "Only one source mentions the LPA prefix. The guide says 'keep your application number'."
+ },
+ {
+  "topic": "University",
+  "question": "Did the Islamic University take bachelor's applications in the Study in Saudi window of 16 September to 6 October 2026?",
+  "context": "One student source says the University's programmes were not listed in that window for the first time. The guide lists only the spring windows."
+ },
+ {
+  "topic": "University",
+  "question": "What are the University clinic's opening hours, and where should students go after hours or at weekends?",
+  "context": "Asked in the group and not answered. The first 30 days guide says to start with the University clinic."
+ },
+ {
+  "topic": "Women",
+  "question": "Can sisters on a visit visa or a Visitor ID register for the Masjid an-Nabawi Qur'an and mutun halaqat on reg.qm.edu.sa, or only iqama holders?",
+  "context": "The women's guide explains how to register but does not say who is eligible."
+ },
+ {
+  "topic": "Women",
+  "question": "What are the current women's Rawdah hours? News reports in October 2026 said after Fajr to 11 am and after Isha to 2 am (Friday after Fajr to 9 am), but the Haramain authority's page shows 5:30 to 11 am and 9:30 pm to midnight.",
+  "context": "The women's guide says only that women's slots are after Fajr and after Isha and that the app shows the open times."
+ },
+ {
+  "topic": "Women",
+  "question": "Which gate numbers lead to the women's sections today, and where do sisters sit to hear the main duroos clearly?",
+  "context": "Outside guides disagree (gates 12 to 14 and 23 to 30, or 13 to 17 and 25 to 30). The guide says to follow the signs."
+ },
+ {
+  "topic": "Transport",
+  "question": "Is there a direct Madinah Bus route from the Haramain station to Masjid an-Nabawi, and what is its number and fare?",
+  "context": "Reported as route 300 from 1 October 2026 at the 11.50 SAR fare. The train guide tells people to check the route map in the app."
+ },
+ {
+  "topic": "University",
+  "question": "Are new scholarship students (2025 and 2026 intakes) still housed in the halls by default, or were some intakes told that housing is not included?",
+  "context": "The applying and student life guides say scholarship students are housed by default. A student source says the 2025 intake was told benefits exclude housing while old halls are rebuilt, and a later post says unmarried students are housed. Fact-check November 2026."
+ },
+ {
+  "topic": "Family",
+  "question": "Is the University's istiqdam (family residency for a wife and children) open now, what is the deposit (10,000 or 30,000 SAR have both been quoted), and can students on the educational visa use it?",
+  "context": "The istiqdam FAQ now says only that the University sets the deposit and decides when requests are open. A group member said in October 2026 that istiqdam is closed for everyone."
+ },
+ {
+  "topic": "Visas",
+  "question": "Who can sponsor a family visit visa: any iqama holder, or only a professional or skilled iqama with a minimum salary? Can a student or dependant iqama sponsor one?",
+  "context": "The visa guide used to say student and dependant iqamas cannot sponsor. Outside guides disagree, so the guide now gives only the fee and the relatives covered."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is the tourist eVisa limited to 90 days per visit, or is there also a cap across the year (90 or 180 days in 12 months)?",
+  "context": "The official portal says up to 90 days in the country. Some guides add a 180 day yearly cap. The guide says up to 90 days in the country."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is the 30-day grace period to leave after a visit visa expires (started June 2025) still in place?",
+  "context": "Not on the site. Only 2025 reports were found."
+ },
+ {
+  "topic": "University",
+  "question": "Do students need to book mat'am meals a month ahead, and how and when is the booking made?",
+  "context": "Group members remind each other to reserve each month. The student life guide gives only the prices."
+ },
+ {
+  "topic": "Driving",
+  "question": "For the licence swap, is the medical check still done at the Regional Laboratory and Central Blood Bank, or at any approved medical centre? Does the University still translate licences?",
+  "context": "The driving licence guide names the Regional Laboratory. Outside guides say any approved centre, and a group member said the University stopped translating licences last year. The guide now says many translation offices work online."
+ },
+ {
+  "topic": "Driving",
+  "question": "How long can a visitor, or a student on a Visitor ID, drive on a home licence: three months, one year, or the length of the visa?",
+  "context": "Outside sources disagree. The getting around guide says only that a recognised licence can be used, with an International Driving Permit."
+ },
+ {
+  "topic": "Transport",
+  "question": "What are the current Haramain train child discounts (50 percent or 40 percent off economy), and can tickets bought at the station counter be changed or refunded?",
+  "context": "Sources disagree. The guide tells readers to read the change and refund rules before paying and leaves out the child discount."
+ },
+ {
+  "topic": "Transport",
+  "question": "Who runs the intercity coach from Madinah to Makkah now (SAPTCO or Darb Alwatan), from which station, and what is the fare?",
+  "context": "The guide now says about 85 to 100 SAR and 6 to 7 hours, from a March 2025 source."
+ },
+ {
+  "topic": "University",
+  "question": "Can students on a Visitor ID set up Etimad with Nafath like iqama holders, so they can request their University ticket?",
+  "context": "The Etimad guide assumes Nafath sign-in. Nafath for Visitor ID holders is not confirmed."
+ },
+ {
+  "topic": "Healthcare",
+  "question": "Can Visitor ID students and visit visa holders register in the Sehhaty app, and what can they use it for?",
+  "context": "The doctors guide lists Sehhaty as the app for residents. Guides disagree on visitor access."
+ },
+ {
+  "topic": "Haram",
+  "question": "What are the opening hours of the Prophet's Mosque Library (24 hours, or 8 am to 10 pm), and which gate leads to the women's library?",
+  "context": "The first visit guide now gives the men's entrance at Gate 10 and no hours."
+ },
+ {
+  "topic": "Study",
+  "question": "What is the main language of teaching at Prince Mugrin University, and are international students accepted with scholarships?",
+  "context": "The other universities guide used to say teaching is mainly in English. Only an outside directory says so, so it was removed."
+ },
+ {
+  "topic": "Phone",
+  "question": "Can Visitor ID holders use the CST Mutasil My Numbers service with their border number to see the lines registered to them?",
+  "context": "The SIM guide tells Visitor ID holders to ask their operator in a branch."
+ },
+ {
+  "topic": "University",
+  "question": "What monthly stipend do you receive now, and in which college? Is it 840, 850 or 1,000 SAR, and did it change in 1447 or 1448?",
+  "context": "The University's 1445 student guide lists 850 SAR for the Islamic and Arabic colleges and 1,000 SAR for engineering, science and computing. Students quote 840 SAR. The guides now give no figure and say the rate depends on the college. src/content/programs.ts still shows 840 SAR."
+ },
+ {
+  "topic": "University",
+  "question": "Are the yearly books allowance (one month's stipend) and the yearly award for an Excellent grade (1,000 SAR) still paid?",
+  "context": "Both are in the 1445 student guide but not in the 1448 admission guide. Left off the site until confirmed."
+ },
+ {
+  "topic": "University",
+  "question": "When a student graduates, is the graduation allowance three months' stipend, the 150 SAR paid at Al-Otair in the old graduation guide, or both?",
+  "context": "The 1445 and 1448 University guides name a three month graduation allowance for shipping books. The old graduation guide mentions only 150 SAR."
+ },
+ {
+  "topic": "University",
+  "question": "Does the University still give new students a stipend bank card through an office (names on a sheet after 2 to 3 weeks), or do they only open their own bank account and add the IBAN under Rewards?",
+  "context": "First steps for new students was rewritten to the University's October 2025 order: own bank account, then an IBAN update request in the Academic System. The old card office step was dropped."
+ },
+ {
+  "topic": "University",
+  "question": "Where do new students who missed orientation week collect their student card, and is 'Maktab 22' the same building as 'Wihda 22'?",
+  "context": "The guides now say the card is printed during orientation week, or on the spot at the student card office for latecomers, without naming the building."
+ },
+ {
+  "topic": "University",
+  "question": "Is there an 'Educational Visa Unit' at the University? Is a Tawasul request to the Deanship of Admission and Registration, subject 'Educational visa', the right route, and how long do replies take?",
+  "context": "No official page names the unit, so the Visitor ID guide no longer mentions it and only gives the Tawasul route."
+ },
+ {
+  "topic": "University",
+  "question": "Do Visitor ID graduates still need a final exit visa or a Passports clearance before they receive their degree and final ticket?",
+  "context": "The old graduation guide says the final exit visa is needed for the degree. It was written before the Visitor ID."
+ },
+ {
+  "topic": "University",
+  "question": "Does the three-semester limit on ta'jeel and i'tithaar run across the Ma'had and the Kulliyah together, or separately for each?",
+  "context": "The old guide said moving from the Ma'had to the Kulliyah resets ta'jeel. The 1445 rules say three semesters over the whole programme. The rewritten guide states only the three-semester limit."
+ },
+ {
+  "topic": "University",
+  "question": "Do the 2026 rules for student tickets (capital cities only, valid 3 months, no refunds, no-show loses the ticket) apply every year, or only to summer 2026?",
+  "context": "Travel Management's poster says 'this year'. The Etimad guide lists them as the rules for 2026 tickets."
+ },
+ {
+  "topic": "University",
+  "question": "Must new students bring original certificates certified by the Saudi embassy or cultural attache when they arrive?",
+  "context": "An older University page on steps after final acceptance says so. Not on the site."
+ },
+ {
+  "topic": "Sport",
+  "question": "What do students pay at the University sports club now for one month and for a year?",
+  "context": "The site now says only that students pay reduced rates. The last official price sheet is from 2022 (125 SAR a month, 1,000 SAR a year)."
+ },
+ {
+  "topic": "University",
+  "question": "Is the Central Library open on Fridays and Saturdays, and what are its Ramadan hours? Is there a separate section or time for sisters?",
+  "context": "The site gives 6:00 am to midnight, Sunday to Thursday, from the library's 1447 to 1448 poster."
+ },
+ {
+  "topic": "University",
+  "question": "Can Visitor ID students, married students or partial scholarship students eat at the mat'am, and do they book on restaurant.iu.edu.sa the same way?",
+  "context": "The official guides say the subsidised meals are for external scholarship students."
+ },
+ {
+  "topic": "University",
+  "question": "Are family units in University housing still offered to married full scholarship students, and how does one apply?",
+  "context": "The 1445 student guide says family housing is given when units are available. The site now says family units are offered only when one is free."
+ },
+ {
+  "topic": "University",
+  "question": "Does the Medical Center treat Visitor ID students free from their first day, and does it treat wives and children who are on visit visas?",
+  "context": "The 1445 student guide says treatment covers the student and his family. The site says only that care is free for scholarship students."
+ },
+ {
+  "topic": "University",
+  "question": "Has the University announced the 1449 postgraduate application window, and where will it be announced?",
+  "context": "Last year's window opened on 16 November 2025. Nothing announced by 8 November 2026."
+ },
+ {
+  "topic": "Visas",
+  "question": "How long is a student's Visitor ID valid, who renews it, and what happens to the bank account, mada card and SIM on the day it expires?",
+  "context": "The Visitor ID guide now has a 'Before your Visitor ID runs out' checklist but gives no validity period."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is there a 180 day stay limit within the one year educational visa, with fines after 180 days?",
+  "context": "Asked in the group in June 2026 with no answer. Not on the site."
+ },
+ {
+  "topic": "Visas",
+  "question": "Can a student on the educational visa (Visitor ID) register for Hajj in Nusuk at resident prices? Has anyone done so for 1447 or 1448?",
+  "context": "The Visitor ID guide now tells students to ask the University before registering. Earlier it said Hajj was not open on a Visitor ID."
+ },
+ {
+  "topic": "Visas",
+  "question": "Which banks have opened accounts for members on a Visitor ID since September 2025, with what papers, and was the online route through Nafath accepted?",
+  "context": "The site follows the University's October 2025 guidance: branch with the Visitor ID in Absher, or online through Nafath."
+ },
+ {
+  "topic": "Visas",
+  "question": "Do students from earlier intakes who hold a student iqama still pay nothing for it?",
+  "context": "The iqama fees guide says so. Not confirmed for 2026."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is the tourist eVisa today about SAR 535 in total online and SAR 480 on arrival, and did the four new countries become eligible on 5 November 2026?",
+  "context": "The site now says 'early November 2026' and 'about SAR 535'."
+ },
+ {
+  "topic": "Visas",
+  "question": "What does extending a visit visa on Absher cost now, and can it be filed a few days after the expiry date?",
+  "context": "The site now says at least 7 days before expiry and about 100 SAR, confirmed on Absher. The old '3 days after expiry' was removed."
+ },
+ {
+  "topic": "Visas",
+  "question": "Is the fee to add a newborn to an iqama 2,000 SAR even when the baby is born in Saudi Arabia, and is the iqama fee for a dependant aged 18 or over 500 SAR?",
+  "context": "The iqama fees guide says free for a baby born in the Kingdom and 500 SAR for a dependant over 18. Outside sources disagree on both."
+ },
+ {
+  "topic": "Driving",
+  "question": "Which countries' licences did Madinah traffic swap without a driving test this year?",
+  "context": "The driving guide lists the UK, the US, Canada, Australia, most of Europe and the Gulf. No official list was found."
+ },
+ {
+  "topic": "Haram",
+  "question": "Does Nusuk still allow only one scheduled Rawdah permit in any 365 days?",
+  "context": "Sources disagree. The guides now say the app shows how many permits you can book."
+ },
+ {
+  "topic": "Haram",
+  "question": "Which gate do women with a Rawdah permit use, and where do they queue?",
+  "context": "The women's guide said the southern courtyards opposite gate 37. That was removed until confirmed."
+ },
+ {
+  "topic": "Haram",
+  "question": "From what age can children enter the Rawdah with their mother, and does a child need a separate permit?",
+  "context": "Not on the site."
+ },
+ {
+  "topic": "Haram",
+  "question": "Can strollers go into the women's halls, or only the courtyards? Is there a place to leave a stroller?",
+  "context": "Not on the site."
+ },
+ {
+  "topic": "Haram",
+  "question": "Where exactly is the free left-luggage centre at Masjid an-Nabawi, and where is lost property handed in and collected?",
+  "context": "The site now gives no location. Reports place the luggage centre between courtyard exits 365 and 366, and a lost property office near gates 366 and 367."
+ },
+ {
+  "topic": "Haram",
+  "question": "Is the children's hospitality centre at the Haram free, from what age does it take children, and what are its hours?",
+  "context": "The site says it takes boys up to 6 and girls up to 9. Sources disagree on the fee (free or first hour free), the lower age (18 months or 3 years) and the number of centres."
+ },
+ {
+  "topic": "Haram",
+  "question": "How does a sister ask for a wheelchair or an electric cart at the Haram, from which gate, and is ID needed?",
+  "context": "The site says wheelchairs are lent from the Gates Management Office at Gate 7."
+ },
+ {
+  "topic": "Haram",
+  "question": "Are there women-only wudu areas separate from the toilet blocks at Masjid an-Nabawi, and where?",
+  "context": "Not on the site."
+ },
+ {
+  "topic": "Haram",
+  "question": "Do the Masjid an-Nabawi Ma'had and Kulliyah have a women's section taking students for 1449, and which sisters qualify?",
+  "context": "The guides say they do. The Authority's own pages mention only Saudis and residents and say nothing about a women's section."
+ },
+ {
+  "topic": "Haram",
+  "question": "Is booking on the Baqi' portal (ekram.amana-md.gov.sa) required for every visit, and at what times is al-Baqi' open?",
+  "context": "The site now points to the portal and no longer gives the after Fajr and after Asr times."
+ },
+ {
+  "topic": "Haram",
+  "question": "For the Masjid an-Nabawi Institute, is the certificate grade needed 'good' or 'very good'?",
+  "context": "The institute guide says 'good or better'. The Authority's FAQ says 'very good'."
+ },
+ {
+  "topic": "Schools",
+  "question": "Do schools in Madinah enrol children whose parents are on a Visitor ID or a visit visa? Which school, which year, and what papers were asked for?",
+  "context": "The schools guide says many do. One outside source says a residence permit is needed."
+ },
+ {
+  "topic": "Phones",
+  "question": "Which operator codes and numbers did you confirm: Mobily 1100 and *222#, STC *150#, Zain 959 (voice)?",
+  "context": "The phone guide lists them. Only the balance codes and STC 900 are confirmed."
+ },
+ {
+  "topic": "University",
+  "question": "Who may register for the summer semester (everyone, or only students with failed or remaining courses), how many credit hours can be taken, and does the stipend, the room in the halls and the mat'am continue in June and July?",
+  "context": "The new FAQ summer-semester gives the 1449 dates and says the semester is optional and used to catch up. Nothing official on eligibility, load, stipend or housing was found, so none of it is on the site."
+ },
+ {
+  "topic": "University",
+  "question": "Does taking the summer semester change the yearly ticket home (date, or losing it)?",
+  "context": "Students on the summer semester stay in Madinah into late July. Left out of the summer FAQ."
+ },
+ {
+  "topic": "University",
+  "question": "Is the minimum cumulative GPA to graduate still 2.75 out of 5, and is the same figure used for academic warning and dismissal?",
+  "context": "The 1445 student guide gives 2.75. The new exams guide says only 'below the minimum for graduation' and gives no number until this is confirmed."
+ },
+ {
+  "topic": "University",
+  "question": "How soon after the last final do results appear in the Academic System? Is there a set date each semester?",
+  "context": "The exams guide says results appear once the college has approved them, with no timing."
+ },
+ {
+  "topic": "University",
+  "question": "How exactly is a grade appeal submitted: on paper at the college, through Tawasul, or an e-service? Is the window still 15 days from the result?",
+  "context": "The exams guide says to submit a request to the dean of your college within 15 days (1445 student guide). The channel is not stated."
+ },
+ {
+  "topic": "University",
+  "question": "Does an accepted excuse take those hours out of the 25% absence count, or does it only allow the college to lift a bar when the student attended at least half of the course?",
+  "context": "Students in the group say excused absence does not count. The official rule found says the college may lift a bar if at least 50% was attended. The site states only the official rule."
+ },
+ {
+  "topic": "University",
+  "question": "When a failed course is retaken and passed, does the F stay in the GPA, or is it replaced by the new grade?",
+  "context": "The exams guide says the F stays on the record and lowers the GPA, but does not say what happens after a retake."
+ },
+ {
+  "topic": "University",
+  "question": "Does a failed course, an academic warning or a DN affect the monthly stipend?",
+  "context": "Not on the site."
+ },
+ {
+  "topic": "University",
+  "question": "Do Ma'had exams use the same grading scale, exam-day rules, substitute exam and appeal process as the colleges?",
+  "context": "The exams guide says the Ma'had has the same absence limit and tells Ma'had students to ask the Ma'had office about the rest."
+ },
+ {
+  "topic": "University",
+  "question": "Does lateness to a lecture count as absence, and after how many minutes?",
+  "context": "Students ask this often. Not on the site."
+ },
+ {
+  "topic": "University",
+  "question": "Does the University meet every new scholarship student at Madinah airport? How is a pick-up requested, and does it run for students arriving outside the main intake week?",
+  "context": "Official news lists airport reception runs among the University's transport services. The airport FAQ tells students to ask through Tawasul before they fly."
+ },
+ {
+  "topic": "University",
+  "question": "How long before expiry does Travel Management start renewing student iqamas, and does renewal need a minimum passport validity?",
+  "context": "The new FAQ student-iqama-renewal lists what blocks a renewal (traffic fines, children not added, birth certificate fines, expired visas) from the Travel Management pages. Timing and passport rules are not stated."
+ },
+ {
+  "topic": "University",
+  "question": "What must the person collecting a graduate's certificate bring (the authorisation form, which ID copies, any stamp), and which office do they go to?",
+  "context": "The FAQ degree-collection-and-verification says an official authorisation form exists, without the details."
+ },
+ {
+  "topic": "University",
+  "question": "What size and how many passport photos do new students need for the student card and other offices?",
+  "context": "One group answer says 3 by 4 cm on photo paper. The packing guide says only 'a few printed copies on a white background'."
+ },
+ {
+  "topic": "Transport",
+  "question": "Is there a fixed posted taxi fare from Madinah airport to the Haram (one report says 75 SAR for up to five people), and is 40 to 80 SAR still right for a ride app?",
+  "context": "The airport FAQ gives 40 to 80 SAR by ride app and tells readers to agree a taxi fare first. Transfer companies quote anywhere from 70 to 150 SAR."
+ },
+ {
+  "topic": "Transport",
+  "question": "Where does the airport bus (route 400) stop near the Haram, and how often does it run at night?",
+  "context": "The airport FAQ says it runs round the clock to the Haram area. The fare question is already open in scripts/open-questions.json."
+ },
+ {
+  "topic": "Visas",
+  "question": "What is the current customs declaration limit for cash, gold and jewellery: 60,000 SAR, or 40,000 SAR since August 2026?",
+  "context": "ZATCA's page still shows 60,000. Several August 2026 reports say it fell to 40,000. The packing guide says only that amounts above the customs limit must be declared."
+ },
+ {
+  "topic": "Schools",
+  "question": "Do schools and kindergartens in Madinah ask for attested birth certificates or attested school reports from abroad when enrolling a child?",
+  "context": "The packing guide tells families to bring birth certificates and school reports and to attest documents at home if they may be asked. It does not say attestation is required."
+ },
+ {
+  "topic": "Healthcare",
+  "question": "Is there a quantity limit (for example a one month supply) on controlled medicines a traveller may bring with the SFDA permit?",
+  "context": "The packing guide and FAQ bringing-medicine-into-saudi describe the SFDA traveller's permit but give no quantity limit. One third-party guide mentions a one month supply."
+ },
+ {
+  "topic": "Family",
+  "question": "What are the current entry prices at the Kinetic, Peekboo and Poky soft play centres and at the Al Noor Mall and Al Rashid Mall crèches, and what ages does Peekboo take (1 to 14, or 2 to 12)?",
+  "context": "The kids guide now gives no prices and no ages for Peekboo. A parent's figures from October 2026 were 35, about 60, 20, about 40 and 50 SAR per child; a listing gives Peekboo's ages as 2 to 12."
+ },
+ {
+  "topic": "Family",
+  "question": "What is at Snowy Forest (ages, price, what children can do), and should it be listed in the kids guide?",
+  "context": "The old kids guide had only a heading and a map link for it, so the rewrite leaves it out."
+ },
+ {
+  "topic": "Sisters",
+  "question": "Are Academiyah al-Ma'rifah, Markaz Mishkat and Markaz Taibah taking sisters for 1448, with no tuition, and what book fee, nursery and bus fee do they charge now?",
+  "context": "The sisters guide now gives no fees. The old figures (a one-off $50 book fee at Mishkat, a small book fee elsewhere, free nurseries, paid buses) come from a December 2023 sheet."
+ },
+ {
+  "topic": "Haram",
+  "question": "Where in Masjid an-Nabawi do the women's Ma'had and Kulliyah hold classes, and where is their office?",
+  "context": "The old sisters guide said the Ma'had is on the western women's side by gates 13 to 17, the Kulliyah on the eastern side by gates 25 to 30, and the office at gate 13 on the eastern side, which does not match the Authority's gate map. The guide now gives no gate numbers."
+ },
+ {
+  "topic": "Haram",
+  "question": "How many juz must a sister have memorised to apply to the Masjid an-Nabawi Kulliyah: 3, 10 or 15?",
+  "context": "The old sisters guide said 15, the institute guide says 3 from the Authority's FAQ, and the 1448 call for the higher section was reported as 10 for Shariah. The sisters guide now gives no number."
+ },
+ {
+  "topic": "University",
+  "question": "Where do graduates return the student card, collect the degree certificate, get the University stamp on copies, and collect the graduation bisht and gifts?",
+  "context": "The old graduation guide named Wihda 22, the 4th floor of the Admissions building, the Wihdat al-Ikhtibarat office on the 3rd floor and an office behind Wihda 11. The rewrite names only the office that handles each step."
+ },
+ {
+  "topic": "University",
+  "question": "Where is the Ministry of Foreign Affairs branch in Madinah that legalises degrees, and what is the fee for each document?",
+  "context": "The old guide placed it in Sultanah near Al Rajhi Bank. A services site gives Prince Abdullah Road in Al-Anbariyah. Many sites quote 30 SAR a document, but no official page shows it. The guide now gives neither."
+ },
+ {
+  "topic": "University",
+  "question": "What does it cost a graduate to upgrade the final ticket to business class, and how is it paid?",
+  "context": "The September 2026 ticket rules allow an upgrade at the student's own cost but give no price. The old guide's 527 SAR was removed."
+ },
+ {
+  "topic": "University",
+  "question": "When a student moves from the Ma'had to the Kulliyah, is the new University number the old one with the last digit changed to 3, and which office prints the new card?",
+  "context": "The old guide gave this rule and the 3rd floor of the Deanship of Student Affairs. The rewrite says only that a new number is issued and the card comes from the student card office."
+ },
+ {
+  "topic": "University",
+  "question": "Are the 1448 postgraduate fees (11,000 SAR a semester for most paid master's and PhD programmes, 13,000 for the PhD in Law, 8,000 for paid diplomas) unchanged for 1449?",
+  "context": "The postgraduate guide shows them as the 1448 fees."
+ },
+ {
+  "topic": "University",
+  "question": "Can a new scholarship student still defer the start of his studies after final acceptance (the older guidance said up to two years), or must students on the educational visa arrive in the semester they are offered?",
+  "context": "The deferral FAQ said the rules allow up to two years, while the applying guide said to arrive in the semester offered. The 1448 admission guide says nothing on deferral, and students report that requests to arrive later were returned. Both now say to arrive in the semester offered, with no two-year figure."
+ },
+ {
+  "topic": "Family",
+  "question": "Can a student on the educational visa (Visitor ID) bring his wife and children through the University, and on which visa, or must they come on their own visas such as the tourist eVisa?",
+  "context": "The Visitor ID guide said a Visitor ID cannot sponsor family, while the visas guide and the istiqdam FAQ said to ask the University. The 2022 announcement of the educational visa says it allows bringing a spouse and children. All three now say to ask the University through Tawasul."
+ },
+ {
+  "topic": "Hajj",
+  "question": "Can a woman living in the Kingdom register for domestic Hajj in Nusuk without a mahram (for example aged 45 or over, with a group of women), and what did Nusuk allow in 1447?",
+  "context": "The new Hajj guide says only how a woman adds her husband or another mahram as a companion, and that Nusuk has a mahram exception request for a mahram who has performed Hajj before. Outside sources disagree on whether women may register without a mahram."
+ },
+ {
+  "topic": "Hajj",
+  "question": "Does the University still fund Hajj for a few final-year students each year (35 places were described for 2025, one per country, with grades counting), how are they chosen, and where is it announced?",
+  "context": "Only one student channel describes it. The Hajj guide leaves funded places out."
+ },
+ {
+  "topic": "Hajj",
+  "question": "What were the 1447 domestic Hajj package categories and their prices, and does MESH want to publish a price range for 1448 once Nusuk shows it?",
+  "context": "The last price list found in the news is for 2024 (four packages, about 4,100 to 13,265 SAR with VAT, travel to Makkah not included). The Hajj guide gives no prices and says they are published in Nusuk when booking opens."
+ },
+ {
+  "topic": "Renting",
+  "question": "When a student takes over a flat from one who is leaving, do Madinah owners usually end the old Ejar contract and register a new one, and is there any fee or new deposit?",
+  "context": "The apartment guide now says the old contract is ended and a new one registered in the new tenant's name, and that nothing should be paid before the owner agrees."
+ },
+ {
+  "topic": "Renting",
+  "question": "Can a student on a Visitor ID have the electricity and water accounts moved into his name through Ejar's financial liability transfer, and has any member done it?",
+  "context": "The apartment guide says Ejar moves the bills to the tenant with a registered contract. It does not say whether this works with a Visitor ID."
+ },
+ {
+  "topic": "Renting",
+  "question": "Are 15,000 to 21,000 SAR a year still typical in Madinah for empty one to three bedroom flats in Al Iskan, Rabwa and Taibah?",
+  "context": "The apartment guide gives this range for autumn 2026 from several members' figures (15,000 for one bedroom in Al Iskan, 18,000 and 20,000 to 21,000 for larger flats). Please correct it if it is off."
+ },
+ {
+  "topic": "University",
+  "question": "What does the priority given to students who finish the online Arabic year mean in practice: a guaranteed place in Madinah the next year, or only a better chance among new applicants, and does it depend on their online results?",
+  "context": "The new FAQ says attending and passing gives priority with the University but that a new Study in Saudi application and the Ministry's final acceptance are still needed."
+ },
+ {
+  "topic": "University",
+  "question": "Who exactly is offered the online Arabic year (only Ma'had applicants with initial acceptance who were not given a place, or others too), and is it still offered for the 1449 intake?",
+  "context": "The new FAQ says it is offered to some applicants with initial acceptance for the Arabic Institute who cannot be given a place in Madinah that year, free, for one academic year at most."
+ },
+ {
+  "topic": "Visas",
+  "question": "Does Nafath work outside Saudi Arabia, for example to approve a sign-in to the University, a bank or Absher while on holiday at home, and what should students do if it stops working abroad?",
+  "context": "No FAQ was written. No official Nafath or SDAIA page says either way, secondary sites disagree, Etimad says its sign-in works from abroad after a first Nafath sign-in inside the Kingdom, and two members could not reach the University account from abroad in August 2026."
+ },
+ {
+  "topic": "Visas",
+  "question": "After renewing his passport, how does a Visitor ID student move his Visitor ID to the new passport: only through the University (Tawasul, Educational visa), or also in Absher himself, and does the bank account or SIM freeze until it is done?",
+  "context": "The new FAQ renew-passport-in-saudi tells Visitor ID students to send the new passport to the Deanship of Admission and Registration through Tawasul. No official procedure for Visitor ID passport updates was found."
+ },
+ {
+  "topic": "Healthcare",
+  "question": "Can the wives and children of scholarship students use the University Medical Center, including its women's and obstetrics clinic and its vaccination unit, or is it only for students and staff?",
+  "context": "The University's page says the Center serves students, staff and faculty. The new FAQs female-doctor and baby-vaccinations do not mention the Center for families until this is confirmed."
+ },
+ {
+  "topic": "Healthcare",
+  "question": "Are the national childhood vaccines free at government primary health care centres for children of families on a visit visa or a Visitor ID, and how is a baby born to a Visitor ID student added to Absher and Sehhaty?",
+  "context": "The new FAQ baby-vaccinations says the vaccines are free at primary health care centres (a Ministry of Health statement that they are free for all children regardless of nationality) and tells parents to add the baby in Absher, then Sehhaty. Newer secondary guides disagree on visitors."
+ },
+ {
+  "topic": "University",
+  "question": "What is the direct Blackboard address for students, who fixes Blackboard faults (it.care@iu.edu.sa, the E-Learning Center, or a Tawasul department), and what should a student do when his registered courses do not appear in Blackboard?",
+  "context": "The new FAQ blackboard-login sends students through sso.iu.edu.sa or the University app, then Tawasul, it.care@iu.edu.sa or 920022042. The Blackboard URL and missing courses are left out."
+ },
+ {
+  "topic": "University",
+  "question": "Is there Wi-Fi on campus and in the Jamiah and Rabwa halls, how do students sign in to it, and is there a laundry inside or near the halls?",
+  "context": "No FAQ was written. Nothing official was found. Group chat members say the Wi-Fi login is the student number and the University password; laundry in the halls is described only by older blogs."
+ },
+ {
+  "topic": "Driving",
+  "question": "Is the 25% discount for paying a traffic fine early still in force, is the window 30 or 45 days, and which violations are excluded?",
+  "context": "The new FAQ traffic-fines covers checking, paying, objecting within 30 days and what unpaid fines block, and leaves the discount out because sources disagree on the window."
+ },
+ {
+  "topic": "Driving",
+  "question": "Must a student with an iqama hold a Saudi driving licence before a car can be transferred to his name in Absher, and what are the current transfer fees?",
+  "context": "The new FAQ buying-a-used-car gives the official Absher conditions (valid registration, inspection and insurance, no fines, private cars only for residents) and says Absher shows the fees. Secondary guides quote 150 SAR plus a 230 SAR Absher fee."
  }
 ]

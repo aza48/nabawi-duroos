@@ -62,3 +62,39 @@ describe("student vocabulary", () => {
     expect(expandMore("aqidah")).toContain("tawhid");
   });
 });
+
+import { weighQuery } from "@/lib/search/engine";
+describe("ranking: typed words over related words", () => {
+  const books: SearchDoc[] = [
+    { id: "tawhid", type: "dars", title: "Explanation of Kitab al-Tawhid", subtitle: "after Maghrib", text: "", url: "/duroos/lesson/tawhid" },
+    { id: "wasitiyyah", type: "dars", title: "Al-Aqidah al-Wasitiyyah", subtitle: "after Isha", text: "", url: "/duroos/lesson/wasitiyyah" },
+    { id: "kafi", type: "dars", title: "Kitab al-Kafi", subtitle: "after Asr", text: "", url: "/duroos/lesson/kafi" },
+    { id: "campus", type: "guide", title: "Student life at the University", subtitle: "Meals at the mat'am and buses", text: "Eat at the mat'am. Buses stop at the gate at Fajr.", url: "/guides/campus" },
+  ];
+  const search = createSearch(books);
+  it("puts the book named in the query first, whatever the particle or spelling", () => {
+    expect(search("kitab at-tawhid")[0].id).toBe("tawhid");
+    expect(search("kitab al tawheed")[0].id).toBe("tawhid");
+    expect(search("tawheed")[0].id).toBe("tawhid");
+  });
+  it("lets a synonym help without beating the word typed", () => {
+    expect(search("tawhid").map((h) => h.id).slice(0, 2)).toEqual(["tawhid", "wasitiyyah"]);
+  });
+  it("never matches on a particle alone", () => {
+    expect(search("kitab at-tawhid").map((h) => h.id)).not.toContain("campus");
+  });
+  it("never matches on a particle inside a synonym phrase", () => {
+    const withEid = createSearch([...books, { id: "eid", type: "guide", title: "Eid in Madinah", subtitle: "Prayer times and the Haram", text: "", url: "/guides/eid" }]);
+    expect(withEid("eid").map((h) => h.id)).toEqual(["eid"]);
+    expect(weighQuery("eid").query.split(" ")).not.toContain("al");
+    expect(weighQuery("playground").query.split(" ")).not.toContain("with");
+    expect(weighQuery("what is ejar").query.split(" ").slice(0, 3)).toEqual(["what", "is", "ejar"]);
+  });
+  it("keeps spellings at full weight and related words lower", () => {
+    const { typed, weight } = weighQuery("Kitab at-Tawheed");
+    expect(typed.map((t) => t[0])).toEqual(["kitab", "tawheed"]);
+    expect(weight("tawhid")).toBe(1);
+    expect(weight("aqidah")).toBeLessThan(1);
+    expect(weighQuery("at").query).toBe("at");
+  });
+});

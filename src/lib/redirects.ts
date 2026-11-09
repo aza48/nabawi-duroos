@@ -12,6 +12,7 @@ export const LEGACY_REDIRECTS: { source: string; destination: string; permanent:
   { source: "/guides/restaurants", destination: "/guides", permanent: true },
   { source: "/guides/emergency-numbers", destination: "/guides/doctors-hospitals-and-pharmacies", permanent: true },
   { source: "/guides/arabic-learning-resources", destination: "/library", permanent: true },
+  { source: "/guides/childbirth-options", destination: "/guides/having-a-baby-in-madinah", permanent: true },
   { source: "/mesh", destination: "/", permanent: true },
   { source: "/mesh/:path*", destination: "/:path*", permanent: true },
   { source: "/browse", destination: "/ask", permanent: true },
