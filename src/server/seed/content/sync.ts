@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { faqs, guides } from "@/server/db/schema";
 import { cleanText } from "@/lib/text";
+import { hasVisibleHtml } from "@/lib/guide-html";
 import { FAQS_2026, GUIDES_2026, type SeedFaq, type SeedGuide } from "./guides-2026";
 import { FAQS_STUDENT_LIFE, GUIDES_STUDENT_LIFE } from "./guides-student-life";
 import { GUIDE_REWRITES_2026_11, GUIDES_RESEARCH_2026_11 } from "./guides-research-2026-11";
@@ -21,13 +22,28 @@ export const SEED_GUIDES: SeedGuide[] = [
 ];
 export const SEED_FAQS: SeedFaq[] = [...new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11].map((f) => [f.slug, f] as const)).values()];
 
+/** Seeded Arabic, cleaned to house style; missing or blank becomes null (no translation yet). */
+const arabic = (s: string | undefined): string | null => (s && s.trim() ? cleanText(s.trim(), "ar") : null);
+/** Seeded Arabic HTML; a body with nothing to show ("<p></p>", "<p>&nbsp;</p>") is null, as in Admin. */
+const arabicHtml = (html: string | undefined): string | null => {
+  const s = arabic(html);
+  return hasVisibleHtml(s) ? s : null;
+};
+
 const minutes = (html: string) => Math.max(1, Math.ceil(html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length / 200));
 
-/** Upserts the November 2026 guides and FAQs as published and verified. Safe to run repeatedly. */
-export async function syncContent2026(db: Db, now: Date = new Date(), opts: { only?: string[] } = {}): Promise<{ guides: number; faqs: number }> {
+/**
+ * Upserts the November 2026 guides and FAQs as published and verified. Safe to run repeatedly.
+ * `guides` and `faqs` replace the seeded lists (tests use them); `only` limits the run to some slugs.
+ */
+export async function syncContent2026(
+  db: Db,
+  now: Date = new Date(),
+  opts: { only?: string[]; guides?: SeedGuide[]; faqs?: SeedFaq[] } = {},
+): Promise<{ guides: number; faqs: number }> {
   const pick = <T extends { slug: string }>(xs: T[]) => (opts.only ? xs.filter((x) => opts.only!.includes(x.slug)) : xs);
-  const guideList = pick(SEED_GUIDES);
-  const faqList = pick(SEED_FAQS);
+  const guideList = pick(opts.guides ?? SEED_GUIDES);
+  const faqList = pick(opts.faqs ?? SEED_FAQS);
   for (const g of guideList) {
     const row = {
       slug: g.slug,
@@ -35,6 +51,9 @@ export async function syncContent2026(db: Db, now: Date = new Date(), opts: { on
       summary: cleanText(g.summary, "en"),
       stage: g.stage,
       bodyHtml: g.bodyHtml.trim(),
+      titleAr: arabic(g.titleAr),
+      summaryAr: arabic(g.summaryAr),
+      bodyHtmlAr: arabicHtml(g.bodyHtmlAr),
       readingMinutes: minutes(g.bodyHtml),
       status: "published" as const,
       lastVerifiedAt: now,
@@ -46,14 +65,25 @@ export async function syncContent2026(db: Db, now: Date = new Date(), opts: { on
         target: guides.slug,
         set: {
           title: row.title, summary: row.summary, stage: row.stage, bodyHtml: row.bodyHtml, readingMinutes: row.readingMinutes, status: row.status,
-          // Only a real change counts as a new check. Re-running the sync keeps the old date.
-          lastVerifiedAt: sql`case when ${guides.bodyHtml} is distinct from excluded.body_html or ${guides.title} is distinct from excluded.title or ${guides.lastVerifiedAt} is null then excluded.last_verified_at else ${guides.lastVerifiedAt} end`,
+          // A seed without Arabic keeps any Arabic an editor added in Admin.
+          titleAr: sql`coalesce(excluded.title_ar, ${guides.titleAr})`,
+          summaryAr: sql`coalesce(excluded.summary_ar, ${guides.summaryAr})`,
+          bodyHtmlAr: sql`coalesce(excluded.body_html_ar, ${guides.bodyHtmlAr})`,
+          // Only a real change (English or Arabic) counts as a new check. Re-running the sync keeps the old date.
+          lastVerifiedAt: sql`case when ${guides.bodyHtml} is distinct from excluded.body_html or ${guides.title} is distinct from excluded.title
+            or (excluded.body_html_ar is not null and ${guides.bodyHtmlAr} is distinct from excluded.body_html_ar)
+            or (excluded.title_ar is not null and ${guides.titleAr} is distinct from excluded.title_ar)
+            or ${guides.lastVerifiedAt} is null then excluded.last_verified_at else ${guides.lastVerifiedAt} end`,
           updatedAt: sql`now()`,
         },
       });
   }
   for (const f of faqList) {
-    const row = { slug: f.slug, question: cleanText(f.question, "en"), category: f.category, answerHtml: f.answerHtml, tags: f.tags ?? [], status: "published" as const, lastVerifiedAt: now };
+    const row = {
+      slug: f.slug, question: cleanText(f.question, "en"), category: f.category, answerHtml: f.answerHtml,
+      questionAr: arabic(f.questionAr), answerHtmlAr: arabicHtml(f.answerHtmlAr),
+      tags: f.tags ?? [], status: "published" as const, lastVerifiedAt: now,
+    };
     await db
       .insert(faqs)
       .values(row)
@@ -61,7 +91,12 @@ export async function syncContent2026(db: Db, now: Date = new Date(), opts: { on
         target: faqs.slug,
         set: {
           question: row.question, category: row.category, answerHtml: row.answerHtml, tags: row.tags, status: row.status,
-          lastVerifiedAt: sql`case when ${faqs.answerHtml} is distinct from excluded.answer_html or ${faqs.question} is distinct from excluded.question or ${faqs.lastVerifiedAt} is null then excluded.last_verified_at else ${faqs.lastVerifiedAt} end`,
+          questionAr: sql`coalesce(excluded.question_ar, ${faqs.questionAr})`,
+          answerHtmlAr: sql`coalesce(excluded.answer_html_ar, ${faqs.answerHtmlAr})`,
+          lastVerifiedAt: sql`case when ${faqs.answerHtml} is distinct from excluded.answer_html or ${faqs.question} is distinct from excluded.question
+            or (excluded.answer_html_ar is not null and ${faqs.answerHtmlAr} is distinct from excluded.answer_html_ar)
+            or (excluded.question_ar is not null and ${faqs.questionAr} is distinct from excluded.question_ar)
+            or ${faqs.lastVerifiedAt} is null then excluded.last_verified_at else ${faqs.lastVerifiedAt} end`,
           updatedAt: sql`now()`,
         },
       });

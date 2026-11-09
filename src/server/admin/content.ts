@@ -5,6 +5,7 @@ import { faqs, guides } from "@/server/db/schema";
 import { assertCan, type Actor } from "@/server/auth/permissions";
 import { sanitizeArticleHtml } from "@/lib/sanitize";
 import { cleanText } from "@/lib/text";
+import { hasVisibleHtml } from "@/lib/guide-html";
 import { getSetting, setSetting } from "@/server/settings";
 import { record } from "./audit";
 import { slugify } from "./duroos";
@@ -23,10 +24,35 @@ async function freeSlug(db: Db, table: typeof faqs | typeof guides, base: string
   for (let i = 2; ; i++) if (!taken.has(`${base}-${i}`)) return `${base}-${i}`;
 }
 
+/**
+ * Arabic text is optional. Left out, a save keeps what is stored; sent empty, it clears the field
+ * (null), and the Arabic page falls back to the English.
+ */
+const arText = (max: number) => z.string().trim().max(max).nullable().optional();
+const arHtml = (max: number) => z.string().max(max).nullable().optional();
+
+function arabicText(s: string | null | undefined): string | null | undefined {
+  if (s === undefined) return undefined;
+  return s ? cleanText(s, "ar") : null;
+}
+
+/** Sanitised exactly like the English; an editor left empty (only "<p></p>") stores null. */
+function arabicHtml(html: string | null | undefined): string | null | undefined {
+  if (html === undefined) return undefined;
+  if (!html) return null;
+  const clean = sanitizeArticleHtml(cleanText(html, "ar"));
+  return hasVisibleHtml(clean) ? clean : null;
+}
+
+/** Drops the fields that were left out, so an update never touches them. */
+const given = <T extends Record<string, unknown>>(o: T) => Object.fromEntries(Object.entries(o).filter(([, x]) => x !== undefined)) as Partial<T>;
+
 const faqInput = z.object({
   slug: z.string().optional(),
   question: z.string().trim().min(5).max(300),
   answerHtml: z.string().min(1).max(100_000),
+  questionAr: arText(300),
+  answerHtmlAr: arHtml(100_000),
   category: z.enum(["getting-started", "getting-settled", "family", "university", "duroos", "leaving"]),
   tags: z.array(z.string().trim().min(1).max(40)).max(12),
   status: z.enum(["draft", "published"]),
@@ -40,6 +66,7 @@ export async function saveFaq(db: Db, actor: Actor, input: z.input<typeof faqInp
   const fields = {
     question: cleanText(v.question, "en"),
     answerHtml: sanitizeArticleHtml(cleanText(v.answerHtml, "en")),
+    ...given({ questionAr: arabicText(v.questionAr), answerHtmlAr: arabicHtml(v.answerHtmlAr) }),
     category: v.category,
     tags: v.tags,
     status: v.status,
@@ -76,6 +103,9 @@ const guideInput = z.object({
   title: z.string().trim().min(3).max(200),
   summary: z.string().trim().min(3).max(400),
   bodyHtml: z.string().min(1).max(300_000),
+  titleAr: arText(200),
+  summaryAr: arText(400),
+  bodyHtmlAr: arHtml(300_000),
   stage: z.enum(["getting-started", "getting-settled", "study", "family", "leaving"]),
   coverUrl: z.string().trim().max(500).regex(/^(https:\/\/[^\s/]+\S*|\/(?![\/\\])\S*)?$/, "Use an https:// link or a /path on MESH").transform((v) => v || null).optional().nullable(),
   readingMinutes: z.number().int().min(1).max(120).optional(),
@@ -92,6 +122,7 @@ export async function saveGuide(db: Db, actor: Actor, input: z.input<typeof guid
     title: cleanText(v.title, "en"),
     summary: cleanText(v.summary, "en"),
     bodyHtml: body,
+    ...given({ titleAr: arabicText(v.titleAr), summaryAr: arabicText(v.summaryAr), bodyHtmlAr: arabicHtml(v.bodyHtmlAr) }),
     stage: v.stage,
     coverUrl: v.coverUrl ?? null,
     readingMinutes: v.readingMinutes ?? readingMinutes(body),

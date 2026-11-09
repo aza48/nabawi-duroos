@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <div className="mx-auto max-w-2xl">
       <Link href="/admin/content" className="text-sm text-muted">← Content</Link>
       <h1 className="mt-1 mb-4 text-2xl font-semibold">Edit answer</h1>
-      <FaqForm value={{ slug: f.slug, question: f.question, answerHtml: f.answerHtml, category: f.category as never, tags: f.tags, status: f.status }} />
+      <FaqForm value={{ slug: f.slug, question: f.question, answerHtml: f.answerHtml, category: f.category as never, tags: f.tags, status: f.status, questionAr: f.questionAr, answerHtmlAr: f.answerHtmlAr }} />
     </div>
   );
 }
