@@ -548,5 +548,55 @@
   "topic": "Healthcare",
   "question": "Is there a quantity limit (for example a one month supply) on controlled medicines a traveller may bring with the SFDA permit?",
   "context": "The packing guide and FAQ bringing-medicine-into-saudi describe the SFDA traveller's permit but give no quantity limit. One third-party guide mentions a one month supply."
+ },
+ {
+  "topic": "Family",
+  "question": "What are the current entry prices at the Kinetic, Peekboo and Poky soft play centres and at the Al Noor Mall and Al Rashid Mall crèches, and what ages does Peekboo take (1 to 14, or 2 to 12)?",
+  "context": "The kids guide now gives no prices and no ages for Peekboo. A parent's figures from October 2026 were 35, about 60, 20, about 40 and 50 SAR per child; a listing gives Peekboo's ages as 2 to 12."
+ },
+ {
+  "topic": "Family",
+  "question": "What is at Snowy Forest (ages, price, what children can do), and should it be listed in the kids guide?",
+  "context": "The old kids guide had only a heading and a map link for it, so the rewrite leaves it out."
+ },
+ {
+  "topic": "Sisters",
+  "question": "Are Academiyah al-Ma'rifah, Markaz Mishkat and Markaz Taibah taking sisters for 1448, with no tuition, and what book fee, nursery and bus fee do they charge now?",
+  "context": "The sisters guide now gives no fees. The old figures (a one-off $50 book fee at Mishkat, a small book fee elsewhere, free nurseries, paid buses) come from a December 2023 sheet."
+ },
+ {
+  "topic": "Haram",
+  "question": "Where in Masjid an-Nabawi do the women's Ma'had and Kulliyah hold classes, and where is their office?",
+  "context": "The old sisters guide said the Ma'had is on the western women's side by gates 13 to 17, the Kulliyah on the eastern side by gates 25 to 30, and the office at gate 13 on the eastern side, which does not match the Authority's gate map. The guide now gives no gate numbers."
+ },
+ {
+  "topic": "Haram",
+  "question": "How many juz must a sister have memorised to apply to the Masjid an-Nabawi Kulliyah: 3, 10 or 15?",
+  "context": "The old sisters guide said 15, the institute guide says 3 from the Authority's FAQ, and the 1448 call for the higher section was reported as 10 for Shariah. The sisters guide now gives no number."
+ },
+ {
+  "topic": "University",
+  "question": "Where do graduates return the student card, collect the degree certificate, get the University stamp on copies, and collect the graduation bisht and gifts?",
+  "context": "The old graduation guide named Wihda 22, the 4th floor of the Admissions building, the Wihdat al-Ikhtibarat office on the 3rd floor and an office behind Wihda 11. The rewrite names only the office that handles each step."
+ },
+ {
+  "topic": "University",
+  "question": "Where is the Ministry of Foreign Affairs branch in Madinah that legalises degrees, and what is the fee for each document?",
+  "context": "The old guide placed it in Sultanah near Al Rajhi Bank. A services site gives Prince Abdullah Road in Al-Anbariyah. Many sites quote 30 SAR a document, but no official page shows it. The guide now gives neither."
+ },
+ {
+  "topic": "University",
+  "question": "What does it cost a graduate to upgrade the final ticket to business class, and how is it paid?",
+  "context": "The September 2026 ticket rules allow an upgrade at the student's own cost but give no price. The old guide's 527 SAR was removed."
+ },
+ {
+  "topic": "University",
+  "question": "When a student moves from the Ma'had to the Kulliyah, is the new University number the old one with the last digit changed to 3, and which office prints the new card?",
+  "context": "The old guide gave this rule and the 3rd floor of the Deanship of Student Affairs. The rewrite says only that a new number is issued and the card comes from the student card office."
+ },
+ {
+  "topic": "University",
+  "question": "Are the 1448 postgraduate fees (11,000 SAR a semester for most paid master's and PhD programmes, 13,000 for the PhD in Law, 8,000 for paid diplomas) unchanged for 1449?",
+  "context": "The postgraduate guide shows them as the 1448 fees."
  }
 ]

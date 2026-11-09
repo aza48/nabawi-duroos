@@ -95,7 +95,7 @@ describe("lookups", () => {
   });
   it("starts with the 12 guides kept from the previous MESH site plus the 2026 guides and answers", async () => {
     const { SEED_GUIDES: GUIDES_2026, SEED_FAQS: FAQS_2026 } = await import("@/server/seed/content/sync");
-    const rewritten = GUIDES_2026.filter((g) => ["drivers-license", "finding-an-apartment", "new-student-steps", "tajeel-and-itithaar"].includes(g.slug)).length;
+    const rewritten = GUIDES_2026.filter((g) => ["drivers-license", "finding-an-apartment", "new-student-steps", "tajeel-and-itithaar", "graduate-procedures", "sisters-studying-in-madinah", "kids-activities", "graduating-from-mahad", "postgraduate-admission-1448"].includes(g.slug)).length;
     expect(await listFaqs(db)).toHaveLength(FAQS_2026.length);
     // 12 legacy guides, less childbirth-options (retired: it named individual doctors).
     expect(await listGuides(db)).toHaveLength(12 - 1 + GUIDES_2026.length - rewritten);

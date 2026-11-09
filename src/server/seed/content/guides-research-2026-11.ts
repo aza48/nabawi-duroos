@@ -641,4 +641,343 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <p><strong>Can I cancel a request?</strong> Ask your college or the Ma'had straight away, as they may need to put you back into your classes.</p>
 <blockquote><p>Tip: Not sure which one fits your case? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
   },
+  {
+    slug: "graduate-procedures",
+    stage: "leaving",
+    title: "Graduating: room handover, certificates, legalisation and your flight home",
+    summary: "Everything to do after your final exams, in order: check your certificate details, hand back your room, collect and legalise your degree, the graduation allowance and bisht, and your ticket home.",
+    bodyHtml: `
+<p>Checked 9 November 2026. Do these steps in order, because each one needs the one before it. Start the first two in your final semester, before your exams end.</p>
+<h2>1. Check the details on your certificate</h2>
+<p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester and correct any difference from your passport before printing. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
+<h2>2. Download and print your documents</h2>
+<p>In the Academic System, open <strong>Personal</strong>, then <strong>Official Documents</strong> (المستندات الرسمية), and download:</p>
+<ul>
+<li>your <strong>academic transcript</strong> (السجل الأكاديمي)</li>
+<li>your <strong>conduct certificate</strong> (إفادة سلوك)</li>
+<li>your <strong>graduation certificate</strong> (إفادة تخرج)</li>
+</ul>
+<p>Print one colour copy and two black and white copies of each, and keep copies of your passport, your student card and your Visitor ID or iqama. Having them ready saves extra trips.</p>
+<blockquote><p>Tip: If nothing downloads, allow pop-ups for the site in your browser settings and try again in Chrome on a computer.</p></blockquote>
+<h2>3. Hand back your room (taslim sakan)</h2>
+<p>The housing office of the Deanship of Student Affairs handles the handover.</p>
+<ol>
+<li><strong>Get the handover form</strong> (istimarah) from the housing office. Say you are graduating and want to hand back your room, and give your University number.</li>
+<li><strong>Clean the room</strong> and check the furniture. Five items must all be there: the mattress, the bed frame, the wardrobe, the desk and the chair. Nothing may be missing or swapped, and any missing or swapped item is charged to you. A carpet is the only thing you may leave behind.</li>
+<li><strong>Arrange the inspection</strong> with your building's mushrif (supervisor), at his office or by phone. He checks the room, takes the key and signs the form. <strong>Keep the original form.</strong></li>
+<li><strong>Go back to the housing office</strong> the next working morning for the final clearance. The system then shows your room as returned.</li>
+</ol>
+<p>Your blanket and bedsheets are yours to take home.</p>
+<h2>4. Return your student card and clear your file</h2>
+<p>Hand in the signed room form at the housing office, and return your student card at the student card office. Keep a copy or a PDF of the card first. What comes next depends on your residency:</p>
+<table><thead><tr><th></th><th>Visitor ID (educational visa)</th><th>Iqama</th></tr></thead><tbody>
+<tr><td><strong>Leaving the Kingdom</strong></td><td>There is no iqama to hand in. Before you book, ask Travel Management (إدارة السفر) through Tawasul what clearance it needs from you</td><td>Travel Management arranges your final exit visa. Hand in your iqama when it asks for it</td></tr>
+<tr><td><strong>Your ticket</strong></td><td colspan="2">Issued only once the University has confirmed your clearance (step 10)</td></tr>
+</tbody></table>
+<h2>5. Collect your degree certificate</h2>
+<p>Collect your certificate from the Deanship of Admission and Registration, with your University number, and sign for it. If you cannot be there, the Deanship has an official form for authorising someone to collect it for you. See <a href="/ask/degree-collection-and-verification">Can someone else collect my degree certificate?</a></p>
+<h2>6. Get the University stamp</h2>
+<p>Ask for the University stamp on the black and white copies of your transcript, conduct certificate and graduation certificate, and on a copy of your degree. The Ministry of Foreign Affairs legalises only documents that already carry the University stamp.</p>
+<h2>7. Legalise your documents at the Ministry of Foreign Affairs</h2>
+<p>Most embassies will not legalise a Saudi degree until the Ministry of Foreign Affairs has. The documents usually legalised are the degree, the Ma'had certificate, the transcript, the conduct certificate and the graduation certificate.</p>
+<ol>
+<li>Open the Ministry's ratification service at <a href="https://ratification.mofa.gov.sa/">ratification.mofa.gov.sa</a> and sign in through Nafath.</li>
+<li>Start a new request and enter each document.</li>
+<li>Pay the fee for each document online, and book an appointment at the Ministry's branch in Madinah.</li>
+<li>Go to the branch at your appointment with the payment receipt and the stamped copies.</li>
+</ol>
+<blockquote><p>Tip: Pay straight after booking. An unpaid appointment is cancelled.</p></blockquote>
+<h2>8. Legalise them at your embassy or consulate</h2>
+<p>Your own country may also want the documents legalised by its embassy in Riyadh or its consulate in Jeddah. Requirements differ from country to country, so read your embassy's website first. Take the documents legalised by the Ministry of Foreign Affairs and copies of your passport, student card and Visitor ID or iqama, and register online beforehand if your embassy asks you to.</p>
+<h2>9. The graduation allowance, bisht and gifts</h2>
+<ul>
+<li><strong>Graduation allowance:</strong> full (external) scholarship students receive a graduation allowance of three months' stipend, for shipping their books home, once the University has confirmed their clearance. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
+<li><strong>Bisht and gifts:</strong> bachelor's, master's and PhD graduates are given a graduation bisht (mishlah) and gifts such as books. If you have already gone home, someone can collect them for you: send a request through Tawasul with your name, student card number and graduation date, and the full name and student card number of the person collecting.</li>
+</ul>
+<h2>10. Your ticket home</h2>
+<ol>
+<li>Finish everything above first, including the embassy, before you book.</li>
+<li>Make sure the University has confirmed your clearance. Graduates' tickets are issued only after that.</li>
+<li>Your final ticket is issued against a travel order on Etimad, to a capital city. Check that your name on Etimad matches your passport letter for letter.</li>
+<li>You may upgrade the class of travel at your own cost.</li>
+</ol>
+<p>The ticket rules (validity, date changes, no refunds and baggage) are in <a href="/guides/etimad-account">Setting up your Etimad account</a>.</p>
+<h2>After you leave</h2>
+<ul>
+<li>Scholarship students agree when they are admitted to go home on graduating. You cannot stay on in the Kingdom on the scholarship after your studies end.</li>
+<li>Employers and other universities can check your degree on the University's graduation document verification service. See <a href="/ask/degree-collection-and-verification">Can someone else collect my degree certificate, and how can an employer check it?</a></li>
+</ul>
+<p>May Allah grant success to every graduate.</p>
+<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+  },
+  {
+    slug: "sisters-studying-in-madinah",
+    stage: "family",
+    title: "Where sisters can study Arabic and Islamic sciences in Madinah",
+    summary: "The in-person options for sisters, listed alphabetically: the women's marakiz for Arabic, Qur'an and Shariah, and the Masjid an-Nabawi Ma'had and Kulliyah, with who each is for, what it teaches and how to apply.",
+    bodyHtml: `
+<p>Checked 9 November 2026. Madinah has several places where sisters study Arabic, the Qur'an and the Islamic sciences in person. They are listed here alphabetically. Teaching is in Arabic, and most classes are in the morning. Contact each place for the start of the next term before you plan around it.</p>
+<h2>At a glance</h2>
+<table><thead><tr><th>Where</th><th>What it teaches</th><th>Length</th><th>Nursery</th></tr></thead><tbody>
+<tr><td>Academiyah al-Ma'rifah</td><td>Arabic for non-Arabic speakers, Shariah and Qur'an</td><td>Arabic 2 years, Shariah 1 year</td><td>Yes</td></tr>
+<tr><td>Dar at-Tawheed wa as-Sunnah</td><td>Qur'an, tajweed, Arabic and the mutun</td><td>Ongoing classes</td><td>Yes, ages 1 to 3, and a kindergarten for 4 to 6</td></tr>
+<tr><td>Markaz Mishkat</td><td>Arabic and Islamic studies</td><td>2 years</td><td>Yes</td></tr>
+<tr><td>Markaz Taibah</td><td>Arabic in 4 levels, with Qur'an and Islamic studies</td><td>2 years</td><td>Yes</td></tr>
+<tr><td>Masjid an-Nabawi Ma'had</td><td>The classical texts, intermediate and secondary stages</td><td>6 years</td><td>No</td></tr>
+<tr><td>Masjid an-Nabawi Kulliyah</td><td>A bachelor's degree in Shariah</td><td>4 years</td><td>No</td></tr>
+</tbody></table>
+<h2>Academiyah al-Ma'rifah</h2>
+<p>Run by the Ma'rifah charitable society in Madinah, for women whose first language is not Arabic. Formerly known as Markaz al-Manar, Markaz Ta'allum and Markaz Nebras.</p>
+<ul>
+<li><strong>Where:</strong> Al-Iskan, opposite Abdul Latif Al Sheikh Mosque. Phone 014 846 1300.</li>
+<li><strong>Arabic programme (2 years):</strong> a foundation level (the alphabet, reading, writing and Qur'an), then four levels on the Madinah books covering grammar, reading, expression and writing. Levels 3 and 4 add aqeedah, hadith, seerah and history. Students memorise Juz 'Amma and Juz Tabarak alongside.</li>
+<li><strong>Shariah programme (1 year, 2 levels):</strong> tafseer, hadith, fiqh, aqeedah, the sciences of the Qur'an, grammar, tajweed and usul al-fiqh, then seerah, tarbiyah, mustalah al-hadith and research. It expects good Arabic.</li>
+<li><strong>Qur'an programme:</strong> for students with strong Arabic and seven ajza memorised. Taught by male teachers from behind a screen, with a female teacher supervising.</li>
+<li><strong>To apply:</strong> your passport with your iqama or visa, and a placement test.</li>
+<li><strong>For mothers:</strong> a nursery, and a bus for a fee.</li>
+</ul>
+<h2>Dar at-Tawheed wa as-Sunnah</h2>
+<p>A women's centre in the Suqman district for sisters and girls. Classes began on 1 November 2026.</p>
+<ul>
+<li><strong>What it teaches:</strong> the Qur'an, tajweed, al-Qa'idah an-Nuraniyyah, the Arabic language and the essential Islamic texts (mutun).</li>
+<li><strong>To apply:</strong> in person at the centre between 7:00 and 11:00 in the morning. Places are limited.</li>
+<li><strong>For mothers:</strong> a nursery for ages 1 to 3 and a kindergarten for ages 4 to 6.</li>
+</ul>
+<p>Contact details are on <a href="/programs/dar-tawheed-sunnah">Dar at-Tawheed wa as-Sunnah</a>.</p>
+<h2>Markaz Mishkat</h2>
+<ul>
+<li><strong>Where:</strong> Al-Aridh district. <a href="https://maps.app.goo.gl/1UFgNiPjZ7pS1ybu9">Location on Google Maps</a></li>
+<li><strong>Length:</strong> 2 years.</li>
+<li><strong>Books:</strong> al-Arabiyyah Bayna Yadayk, with Islamic studies books chosen by the markaz. Qur'an classes cover Juz 'Amma and part of Juz Tabarak.</li>
+<li><strong>To apply:</strong> your passport with your iqama or visa. A placement test only if you want to start above the first level.</li>
+<li><strong>For mothers:</strong> a nursery.</li>
+</ul>
+<h2>Markaz Taibah</h2>
+<ul>
+<li><strong>Where:</strong> Taibah district. <a href="https://maps.app.goo.gl/NPFFeZu8MUvxfnK19">Location on Google Maps</a></li>
+<li><strong>Length:</strong> 2 years, in 4 levels.</li>
+<li><strong>Books:</strong> al-Arabiyyah Bayna Yadayk, books 1 to 4, with Qur'an and writing at every level. Level 1 adds al-Qa'idah an-Nuraniyyah. Levels 2 to 4 add fiqh, aqeedah, seerah and hadith, levels 3 and 4 add tafseer, and level 4 adds imla'.</li>
+<li><strong>To apply:</strong> your passport and your husband's iqama, then a placement test. When a level is full, you start the following semester.</li>
+<li><strong>For mothers:</strong> a nursery, and a bus for a fee.</li>
+</ul>
+<h2>Masjid an-Nabawi Ma'had and Kulliyah</h2>
+<p>Free full-time study inside the Haram, in the women's sections of the masjid. Children do not come to class.</p>
+<ul>
+<li><strong>Ma'had, intermediate stage (3 years):</strong> foundational texts in tajweed, tawheed, tafseer, hadith, fiqh, fara'id, seerah, grammar, imla' and Arabic calligraphy. Students memorise Juz 'Amma.</li>
+<li><strong>Ma'had, secondary stage (3 years):</strong> more advanced texts, adding usul at-tafseer, mustalah al-hadith, history and balaghah. Entry needs seven ajza memorised. Each stage ends with a diploma.</li>
+<li><strong>Kulliyah (4 years):</strong> a bachelor's degree in Shariah.</li>
+</ul>
+<h3>Who can apply</h3>
+<ul>
+<li>Non-Saudis need a valid iqama. A Visitor ID or a visit visa is not enough to register.</li>
+<li>Good written and spoken Arabic. The exam and the interview are in Arabic.</li>
+<li>Certificates from outside the Kingdom must be made equivalent and attested before you apply.</li>
+<li>Dependants need a letter of permission from their sponsor. Kulliyah applicants also bring two letters of recommendation (tazkiyah) from a school or a Qur'an teacher.</li>
+</ul>
+<h3>When and how to apply</h3>
+<p>Registration opens once a year, in Safar, for the Ma'had and the Kulliyah together. For 1448 it ran from 5 to 20 Safar (20 July to 4 August 2026).</p>
+<ol>
+<li>Apply online on the portal of the General Authority for the Care of the Two Holy Mosques while registration is open, with all your documents in one PDF.</li>
+<li>Sit the written exam in person. For 1448 it was on 11 Rabi' al-Awwal (24 August 2026).</li>
+<li>Attend the personal interview in person. For 1448 it was on 13 Rabi' al-Awwal (26 August 2026).</li>
+<li>Bring the originals and copies of your documents when you are accepted, then start your studies.</li>
+</ol>
+<p>The full conditions for each level are in <a href="/guides/masjid-an-nabawi-institute-and-college">The Masjid an-Nabawi Institute and College</a> and <a href="/programs/nabawi-women">Masjid an-Nabawi programmes for women</a>.</p>
+<h2>Without registering</h2>
+<p>The Haram's free Qur'an and mutun halaqat for sisters take registrations online, and the duroos in the masjid are open to everyone. See <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>. For online study and the other routes, see <a href="/ask/sisters-study">Where can sisters study?</a> and <a href="/programs">Study in Madinah</a>.</p>
+<blockquote><p>Tip: A question about your own case? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+  },
+  {
+    slug: "kids-activities",
+    stage: "family",
+    title: "Play areas and fun places for children in Madinah",
+    summary: "Soft play centres, mall crèches and gardens for young children in Madinah, with the ages each takes and what is there.",
+    bodyHtml: `
+<p>Checked 9 November 2026. Madinah has indoor soft play centres, crèches in the malls and gardens with rides, which are a good way to spend a hot afternoon with young children. Each section below is in alphabetical order. Entry is paid per child at the desk.</p>
+<h2>Soft play centres</h2>
+<h3>Kinetic</h3>
+<ul>
+<li><strong>Ages:</strong> 1 to 13.</li>
+<li><strong>What is there:</strong> two floors of play, with an area upstairs for children under three, and a café.</li>
+<li><a href="https://maps.app.goo.gl/sjH7sompZUFuZGPL9">Location on Google Maps</a></li>
+</ul>
+<h3>Peekboo</h3>
+<ul>
+<li><strong>What is there:</strong> a large indoor play centre with a café, in a building with many restaurants and cafés.</li>
+<li><a href="https://maps.app.goo.gl/HHUiSx6Ln8s4DbUq9">Location on Google Maps</a></li>
+</ul>
+<h3>Poky</h3>
+<ul>
+<li><strong>Where:</strong> inside Wow 5! (the 5 Riyal Market).</li>
+<li><strong>Ages:</strong> 1 to 10.</li>
+<li><strong>What is there:</strong> two floors of play, with an area on the top floor for babies and toddlers.</li>
+<li><a href="https://maps.app.goo.gl/RFS3ftpoG8AVNn8P9">Location on Google Maps</a></li>
+</ul>
+<h2>Mall crèches for under fives</h2>
+<p>You can leave a child under five in these crèches or stay and play with them.</p>
+<ul>
+<li><strong>Al Noor Mall:</strong> a slide into a ball pit, a climbing frame and other activities. The mall has a second play area as well: <a href="https://maps.app.goo.gl/1xB4qFEvuGpt1vjA6">location on Google Maps</a>.</li>
+<li><strong>Al Rashid Mall:</strong> on the basement floor, near Home Centre. A ball pit, slides, activity tables and role-play corners such as a kitchen. For children under five only.</li>
+</ul>
+<h2>Gardens and parks</h2>
+<p>Gardens such as Reef Al Bustan have bouncy castles and rides such as small trains.</p>
+<blockquote><p>Tip: Many mall arcade rides and the large bouncy castles in the gardens are built for children of four and over. Toddlers have their own areas in the soft play centres above.</p></blockquote>
+<p>For schools and nurseries, see <a href="/guides/kindergartens-and-schools">Kindergartens and schools</a>. The children's centres at the Haram are in <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</p>
+<blockquote><p>Tip: Know a place for children we should add? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+  },
+  {
+    slug: "graduating-from-mahad",
+    stage: "study",
+    title: "Moving from the Ma'had to the Kulliyah",
+    summary: "The three things to do when you finish the Ma'had: choose your college, get your new University card, and keep your room.",
+    bodyHtml: `
+<p>Checked 9 November 2026. The Ma'had (the Arabic Language Institute) prepares you for your college and lasts at most two years, depending on the level you are placed in. When you finish it, three things need doing: one before the break and two after it.</p>
+<h2>1. Choose your college (before the break)</h2>
+<ul>
+<li>Near the end of your final Ma'had semester, go to <a href="https://alisc.iu.edu.sa/">alisc.iu.edu.sa</a> and rank your first, second and third choice of college.</li>
+<li>The Ma'had announces the deadline. Do not miss it.</li>
+<li>Choose carefully. Scholarship students cannot move to another college once they are placed.</li>
+</ul>
+<blockquote><p>Tip: If the page gives you trouble, sign in to the University system at sso.iu.edu.sa first, then open the link. Use Chrome on a computer, or desktop mode on your phone.</p></blockquote>
+<h2>2. Get your new University card (after the break)</h2>
+<p>You receive a new University number for the Kulliyah. Use it everywhere from then on. Take these to the student card office:</p>
+<ul>
+<li>your old University card</li>
+<li>a passport photo</li>
+<li>your Visitor ID number or your iqama number</li>
+<li>your new University number</li>
+</ul>
+<h2>3. Keep your room (after the break)</h2>
+<p>The University system now lists you as a Ma'had graduate, so confirm that you still live in your room.</p>
+<ol>
+<li>Go to the housing office (إدارة السكن) and get the paper that confirms which room you are in. It is the same paper you were given when you first arrived.</li>
+<li>Find your building's mushrif (supervisor) and check that his records show your Visitor ID or iqama number and your <strong>new</strong> University number.</li>
+</ol>
+<h2>Also check</h2>
+<ul>
+<li>Your stipend continues into the Kulliyah. Check under Personal, then Rewards, in the Academic System that the next payment shows and that your IBAN is still right. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
+<li>Your new timetable is in the Academic System, under Electronic Registration, then Registered Courses.</li>
+<li>The rules on ta'jeel and i'tithaar are in <a href="/guides/tajeel-and-itithaar">Taking a semester off</a>.</li>
+</ul>
+<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+  },
+  {
+    slug: "postgraduate-admission-1448",
+    stage: "study",
+    title: "Postgraduate admission at the Islamic University: master's, PhD and diplomas",
+    summary: "Who can apply for a master's, PhD or higher diploma, how to apply from inside or outside Saudi Arabia, the conditions, the 1448 dates and fees, and what each kind of student receives.",
+    bodyHtml: `
+<p>Checked 9 November 2026. The Deanship of Graduate Studies admits master's, PhD and higher diploma students once a year. The 1448 window is closed and the 1449 window has not opened yet. The 1448 cycle below shows what to prepare.</p>
+<h2>Dates</h2>
+<table><thead><tr><th>1448 intake</th><th>Window</th></tr></thead><tbody>
+<tr><td>Master's and PhD</td><td>16 November to 11 December 2025</td></tr>
+<tr><td>Higher diplomas</td><td>5 to 11 April 2026</td></tr>
+</tbody></table>
+<p>The University announces each window on the Deanship's X account, <a href="https://x.com/highstudies_iu">@highstudies_iu</a>, and its Telegram channel, <a href="https://t.me/highstudies_iu">t.me/highstudies_iu</a>. Have your documents ready before November.</p>
+<h2>How to apply</h2>
+<table><thead><tr><th></th><th>Inside Saudi Arabia</th><th>Outside Saudi Arabia</th></tr></thead><tbody>
+<tr><td><strong>Who</strong></td><td>Saudis, GCC citizens, legal residents (internal scholarship) and external scholarship students already at the University</td><td>International applicants for an external scholarship</td></tr>
+<tr><td><strong>Where</strong></td><td>The University's postgraduate admission portal, <a href="https://postgraduate.iu.edu.sa/">postgraduate.iu.edu.sa</a></td><td>The postgraduate Minhati portal, <a href="https://postgraduateminhatee.iu.edu.sa/">postgraduateminhatee.iu.edu.sa</a></td></tr>
+<tr><td><strong>Written exam</strong></td><td>Where the department sets one</td><td>Exempt, unless you already hold a scholarship in Saudi Arabia</td></tr>
+</tbody></table>
+<ul>
+<li>All programmes are taught at the main campus in Madinah.</li>
+<li>The University has <strong>no offices or agents anywhere</strong> that take applications for it.</li>
+<li><strong>Application fee: 300 SAR</strong> for every applicant, not refundable, paid by e-invoice on the portal. Your application is not considered, and you cannot sit the exam, until it is paid.</li>
+<li>You apply yourself. Keep your login safe, give a working email and phone number (with promotional text messages not blocked), and follow your application on the portal.</li>
+</ul>
+<blockquote><p>Important: A message from any of these counts as official notice from the University: the Deanship's X account, the admission portal (the public page or your own page), your official email, a text message, the admission WhatsApp number or the admission unit's email.</p></blockquote>
+<h2>Who can apply</h2>
+<p>Saudis, GCC citizens, legal residents of Saudi Arabia (internal scholarship) and international applicants (external scholarship).</p>
+<p><strong>To apply you need:</strong> a degree from an institution recognised by the Ministry of Education, no conduct record that bars admission, the 300 SAR fee paid, every required document uploaded and matching by the deadline, medical fitness, and any extra conditions your department sets.</p>
+<p><strong>To be accepted you need to:</strong> pass the department's specialist exam and interview, where it holds them; pass any supplementary courses it sets; complete all your admission documents by the deadline, or the nomination is cancelled; and, on a paid programme, pay the first semester's tuition before you enrol.</p>
+<p><strong>Typical programme conditions:</strong> a grade of at least very good (جيد جدا) in your previous degree, at least 60 out of 100 in the written specialist exam, and a personal interview. Each department publishes its own conditions, such as memorisation, your previous specialism and minimum grades, on the portal. Read the ones for your programme before you apply.</p>
+<h3>About your qualifications</h3>
+<ul>
+<li><strong>Non-Saudi with a qualification from abroad:</strong> final acceptance needs the Saudi embassy's attestation of your qualification. You can apply and be nominated before you have it.</li>
+<li><strong>Not graduated yet:</strong> you are compared with other applicants on your grade and cumulative GPA at the time you apply. A later rise in your GPA does not count.</li>
+<li>The University awards the degree only. It takes no responsibility for your employment or promotion, and does not ask for your employer's approval. Arranging that is up to you.</li>
+</ul>
+<h2>Fees for the 1448 intake</h2>
+<p>Paid programmes charge only for the minimum study period: one year for a diploma, two for a master's and three for a PhD. Extra semesters beyond that are not charged. Tuition can be paid in instalments through the University's payment partner. Fees are in SAR.</p>
+<table><thead><tr><th>Programme</th><th>Level</th><th>Per semester</th><th>Whole programme</th></tr></thead><tbody>
+<tr><td>Aqeedah</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Aqeedah</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Arabic language skills</td><td>Diploma</td><td>Free</td><td>Free</td></tr>
+<tr><td>Arbitration</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+<tr><td>Chemistry</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Comparative education</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Curricula and teaching methods</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Curricula and teaching methods</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+<tr><td>Cybersecurity</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+<tr><td>Cybersecurity</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Da'wah</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Da'wah and Islamic culture</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+<tr><td>Da'wah and Islamic culture</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Data science</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Educational administration</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Educational administration</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Educational psychology</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Engineering and technology management</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Fiqh</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Fiqh</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Fiqh as-Sunnah</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Fiqh as-Sunnah</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Foundations of Islamic education</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Foundations of Islamic education</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+<tr><td>Guidance and counselling</td><td>Diploma</td><td>Free</td><td>Free</td></tr>
+<tr><td>Hadith sciences</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Hadith sciences</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+<tr><td>History and civilisation</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>History and civilisation</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+<tr><td>Islamic culture</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Islamic economics</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Islamic economics</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Judicial studies</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Judicial studies</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+<tr><td>Judiciary and Shari'ah policy</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+<tr><td>Law (al-Anzimah)</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Law (al-Anzimah)</td><td>PhD</td><td>13,000</td><td>78,000</td></tr>
+<tr><td>Linguistics</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Linguistics</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Literature and rhetoric</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Literature and rhetoric</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Mathematics</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Mechatronics and robotics</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Media and communication</td><td>Diploma</td><td>Free</td><td>Free</td></tr>
+<tr><td>Media and communication</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Physics</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Professional science in industrial laboratories</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Qira'at</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Qira'at</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+<tr><td>Religions and ideologies</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Renewable energy</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+<tr><td>Sects and doctrines</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Sects and doctrines</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Tafsir and Qur'anic sciences</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Tafsir and Qur'anic sciences</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+<tr><td>Teaching Arabic to non-native speakers</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+<tr><td>Teaching Arabic to non-native speakers</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Teaching Arabic to non-native speakers</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+<tr><td>Usul al-Fiqh</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+<tr><td>Usul al-Fiqh</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+</tbody></table>
+<p>The diploma in teaching Arabic to non-native speakers trains teachers. It is for graduates of Arabic or Islamic studies, not a course for learning Arabic.</p>
+<h2>What you receive as a postgraduate student</h2>
+<table><thead><tr><th>You are</th><th>What you receive</th></tr></thead><tbody>
+<tr><td>Saudi, a GCC citizen, a stateless GCC resident, or the child of a Saudi mother</td><td>A study place, the library, medical services, subsidised meals, subsidised housing when available, and academic and cultural activities</td></tr>
+<tr><td><strong>External scholarship student</strong> (sponsored by the University)</td><td>A study place, a <strong>monthly stipend</strong>, a set-up allowance, a books allowance, a printing allowance, a graduation allowance, housing, subsidised meals, <strong>tickets</strong>, the library, medical services and activities</td></tr>
+<tr><td><strong>Internal scholarship student</strong> (legal resident)</td><td>A study place, the library, and academic and cultural activities</td></tr>
+</tbody></table>
+<h2>Contact the Deanship of Graduate Studies</h2>
+<p>During official working hours. If a problem is not solved, contact them again after one working day.</p>
+<ul>
+<li>X: <a href="https://x.com/highstudies_iu">@highstudies_iu</a></li>
+<li>Admission unit WhatsApp: <strong>0148137257</strong></li>
+<li>Admission unit email: <a href="mailto:g.r@iu.edu.sa">g.r@iu.edu.sa</a></li>
+<li>Phone extensions: <strong>31009</strong> and <strong>31006</strong></li>
+</ul>
+<p>Bachelor's admission is in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</p>
+<blockquote><p>Tip: Questions about your own application? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+  },
 ];
