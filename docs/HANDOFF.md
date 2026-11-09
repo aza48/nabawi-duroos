@@ -88,6 +88,11 @@ The live list is in AI-LOG (agent table) and the latest summary on issue 13. In 
   - C3 share button, C1 offline, and D3 "Who are you?" (after B1)
   - preloading the Arabic fonts through `next/font`
   - S1 to S3 (analytics)
+- **admin** (the owner's own agent, added 9 Nov; takes orders from the owner only):
+  - distilling the IU students' Telegram forum (478k messages, Dec 2015 to 9 Nov 2026) into `docs/research/telegram-iu-2026-11/`, one findings file per period, then a `SYNTHESIS.md` with the latest state per topic and the conflicts with MESH
+  - a full crawl of gomedine.com, rewritten in MESH's words, in `docs/research/gomedine-2026-11/`
+  - new guides from both, and a guide ideas list for the owner in `docs/research/GUIDE-IDEAS-admin-2026-11.md`
+  - other agents may read these files as research, like `docs/research/chats-2026-11/`
 - **Desktop agent:** release checks after big merges (`docs/audit/release-checks/`); search ranking; production database steps when the owner asks.
 - **naiifos** (a person, not always on; work around them when possible): the duroos cards. Optional: the report link and the plural fix in the cards.
 
