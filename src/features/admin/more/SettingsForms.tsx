@@ -61,6 +61,7 @@ export function AdminsManager({ admins, selfId }: { admins: Admin[]; selfId: str
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<(typeof ROLES)[number]["id"]>("duroos_editor");
   const [link, setLink] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
 
@@ -84,7 +85,13 @@ export function AdminsManager({ admins, selfId }: { admins: Admin[]; selfId: str
           <div className="rounded-xl bg-bg-2 p-3 text-sm">
             <p className="mb-1 font-semibold">Send this link to them privately. It works once and expires in 72 hours.</p>
             <p className="break-all font-mono text-xs">{link}</p>
-            <button type="button" className={`${btnGhost} mt-2`} onClick={() => navigator.clipboard?.writeText(link)}><Copy size={14} /> Copy link</button>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button type="button" className={btnGhost} onClick={async () => {
+                try { await navigator.clipboard?.writeText(link); setCopied(true); setTimeout(() => setCopied(false), 2500); } catch { /* the link stays on screen */ }
+              }}><Copy size={14} /> {copied ? "Link copied" : "Copy link"}</button>
+              {/* On a phone the link usually goes by WhatsApp: the share sheet saves a copy and paste. */}
+              <a className={btnGhost} href={`https://wa.me/?text=${encodeURIComponent(`Your MESH admin invite (works once, 72 hours): ${link}`)}`} target="_blank" rel="noopener noreferrer">Send on WhatsApp</a>
+            </div>
           </div>
         )}
         {error && <ErrorNote>{error}</ErrorNote>}
