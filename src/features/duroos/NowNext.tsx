@@ -75,9 +75,14 @@ export function NowNext({ lessons, serverNow, locale }: { lessons: NowNextLesson
             )}
           </ul>
         )}
-        <a href={ar ? "/ar/lite" : "/lite"} className="mt-3 inline-flex min-h-10 items-center text-xs text-muted underline-offset-2 hover:text-ink hover:underline">
-          {ar ? "الشبكة ضعيفة؟ افتح النسخة الخفيفة" : "Weak signal? Open the light version"}
-        </a>
+        <p className="mt-3 flex flex-wrap gap-x-4">
+          <a href={ar ? "/ar/lite" : "/lite"} className="inline-flex min-h-10 items-center text-xs text-muted underline-offset-2 hover:text-ink hover:underline">
+            {ar ? "الشبكة ضعيفة؟ افتح النسخة الخفيفة" : "Weak signal? Open the light version"}
+          </a>
+          <a href="https://prh.gov.sa/ar/almasjed_alnabawi/dourous-madina" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center text-xs text-muted underline-offset-2 hover:text-ink hover:underline">
+            {ar ? "جدول دروس المسجد النبوي الرسمي" : "The official schedule of the Prophet's Mosque"}
+          </a>
+        </p>
       </div>
     </section>
   );
