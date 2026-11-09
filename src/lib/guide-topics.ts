@@ -74,9 +74,9 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     id: "more-study",
     label: "Other ways to study",
     labelAr: "طرق أخرى للدراسة",
-    blurb: "Postgraduate study, the Masjid an-Nabawi Institute and College, and the other universities in Madinah.",
-    blurbAr: "الدراسات العليا ومعهد المسجد النبوي وكليته والجامعات الأخرى في المدينة.",
-    slugs: ["postgraduate-admission-1448", "masjid-an-nabawi-institute-and-college", "other-universities-in-madinah"],
+    blurb: "Postgraduate study, studying online with the University, the Masjid an-Nabawi Institute and College, and the other universities in Madinah.",
+    blurbAr: "الدراسات العليا والدراسة عن بعد في الجامعة ومعهد المسجد النبوي وكليته والجامعات الأخرى في المدينة.",
+    slugs: ["postgraduate-admission-1448", "masjid-an-nabawi-institute-and-college", "studying-online-at-the-islamic-university", "other-universities-in-madinah"],
   },
   {
     id: "haram",
