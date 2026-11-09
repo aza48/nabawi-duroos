@@ -54,3 +54,11 @@ describe("home rail rows (D6)", () => {
     expect(r.groups).toEqual([]);
   });
 });
+
+describe("home rail rows, cancelled duroos (D6 review)", () => {
+  it("leaves cancelled and postponed duroos to Today's changes", () => {
+    const day = [...DAY.slice(0, 1), { ...DAY[1], status: "cancelled" as const }, DAY[2], { ...DAY[3], status: "postponed" as const }, DAY[4]];
+    const r = railRows(day, ms(at("10:00")));
+    expect(r.groups.flatMap((g) => g.items.map((l) => l.slug))).toEqual(["asr-1", "maghrib-2", "isha-2"]);
+  });
+});

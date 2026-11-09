@@ -21,6 +21,8 @@ export type RailGroup = { prayer: TodayLesson["prayer"]; adhanAt: string; items:
  * group that did not fit.
  */
 export function railRows(lessons: NowNextLesson[], now: number, max = 3): { live: ReturnType<typeof nowNext>["live"]; groups: RailGroup[]; more: number } {
+  // Cancelled and postponed duroos are listed under "Today's changes", so they do not take a row here.
+  lessons = lessons.filter((l) => l.status !== "cancelled" && l.status !== "postponed");
   const { live, next } = nowNext(lessons, now);
   const groups: RailGroup[] = [];
   let left = max - live.length;

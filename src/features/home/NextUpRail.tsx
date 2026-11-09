@@ -40,7 +40,7 @@ export function NextUpRail({ lessons, changes, serverNow, locale = "en" }: { les
         <p className="mt-3 flex items-start gap-2 text-sm text-muted">
           <CalendarDays size={16} className="mt-0.5 shrink-0" />
           <span>
-            {ar ? "لا دروس أخرى اليوم. " : "No more duroos today. "}
+            {lessons.length === 0 ? (ar ? "لا دروس اليوم. " : "No duroos today. ") : ar ? "لا دروس أخرى اليوم. " : "No more duroos today. "}
             <Link href={schedule} className="font-semibold text-primary hover:underline">
               {ar ? "اطّلع على جدول الأسبوع" : "See the weekly schedule"}
             </Link>
@@ -56,7 +56,7 @@ export function NextUpRail({ lessons, changes, serverNow, locale = "en" }: { les
             <Row key={l.slug} l={l} locale={locale} book={book(l)}
               when={l.status === "cancelled" || l.status === "postponed"
                 ? <StatusTag status={l.status} locale={locale} />
-                : <span>{t(locale, g.prayer)} <span dir="ltr">{formatClock(new Date(g.adhanAt), locale)}</span>, {formatUntil(new Date(g.adhanAt).getTime() - now, locale)}</span>} />
+                : <span>{t(locale, g.prayer)} <span dir="ltr">{formatClock(new Date(g.adhanAt), locale)}</span>, {new Date(g.adhanAt).getTime() > now ? formatUntil(new Date(g.adhanAt).getTime() - now, locale) : ar ? "بعد الصلاة" : "after the prayer"}</span>} />
           )))}
         </ol>
       )}
