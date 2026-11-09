@@ -4,6 +4,7 @@ import { useEffect, useState, type CSSProperties } from "react";
 import type { Prayer } from "@/lib/time/prayers";
 import { useWeather } from "./useWeather";
 import { moonPath, moonPhase, skyColours, sunIsUp } from "./sky";
+import { AlbaseerahSchoolDrawing } from "@/components/shell/Albaseerah";
 
 /** The current time, refreshed every `ms`. Null until mounted, so the server and browser render the same. */
 export function useNow(ms: number): number | null {
@@ -121,6 +122,7 @@ function Skyline() {
           className="ridge-far"
         />
       </svg>
+      <AlbaseerahSchoolDrawing />
       <Gate />
       <svg className="sky-ridge" viewBox="0 0 1000 80" preserveAspectRatio="none">
         <path d="M0 80V64C90 58 170 52 260 56C360 60 420 50 520 54C640 58 720 48 820 54C900 58 960 54 1000 56V80Z" className="ridge-near" />

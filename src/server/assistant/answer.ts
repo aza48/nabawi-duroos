@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { Db } from "@/server/db/client";
-import { getSetting, setSetting, HELP_CONTACT_DEFAULT } from "@/server/settings";
+import { getSetting, setSetting, HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
 import { cleanText } from "@/lib/text";
 import { normalize } from "@/lib/search/normalize";
 import { riyadhDateIso } from "@/lib/time/riyadh";
@@ -38,8 +38,8 @@ export type AskResult = {
 };
 
 export const HELP_LINE = {
-  en: `Please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT}.`,
-  ar: `راسل المشرف على واتساب: \u200E${HELP_CONTACT_DEFAULT}`,
+  en: `Please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT} or email ${HELP_EMAIL_DEFAULT}.`,
+  ar: `راسل المشرف على واتساب: \u200E${HELP_CONTACT_DEFAULT} أو على البريد الإلكتروني: \u200E${HELP_EMAIL_DEFAULT}`,
 };
 
 const ARABIC = /[؀-ۿ]/g;
