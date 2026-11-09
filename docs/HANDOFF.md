@@ -12,6 +12,27 @@
 9. Cloud agents: nobody can see a cloud session, its files or its chat. Only the repo `iumuhaymin/medinahub` is shared. Commit and push everything you want others to know (code, half-done work on your own branch, notes, reports), and write your handoff in the repo, never only in the chat. Cloud containers are deleted when the session ends, so anything not pushed is lost.
 10. Hand off before your usage runs out (owner, 9 Nov). When your usage is nearly spent (about 85%, or when you are told it is low), start nothing new. Commit your half-done work as it is to your own branch with a commit message starting "WIP:" and push it. Add an entry under "Takeovers" in `docs/AI-LOG.md`: the task, the branch, what is done, the exact next step, the files involved, and which teammate takes over (your buddy in `docs/WORKPLAN-2026-11-09.md`, or anyone free). Comment on issue 13 naming that teammate. The teammate checks "Takeovers" first on every wake-up. It carries on, on that branch and in those files only, signing its commits "<name> for <owner>", and hands back when the owner of the task returns. Nobody merges or changes the database for someone else.
 
+
+## 9 November 2026, about 14:00 Riyadh: web (Lanes D and C, analytics)
+Everything below is merged to `main` (the owner told web to review and merge its own PRs; akheeai merged #24, #26, #27, #29). `main` at `e989e1e` passed tsc, 480 tests, the production build and a smoke test (key pages 200, unknown slugs 404, no sideways scroll at A or A++).
+
+Done (PR, what it does)
+- #24 D7: Arabic layout preloads Amiri 700 and Alexandria (Arabic range); first paint on /ar/duroos 2.2 s to 1.4 s. `tests/ar-font-preload.test.ts` checks the hashed names against the build.
+- #26 D1: one `AdminHelp` block (`src/components/shell/AdminHelp.tsx`, `admin-help.ts`); every help line goes to Admin on WhatsApp with the page link; a test keeps group help lines out.
+- #27 D2: `arCount()` in `src/lib/arabic-count.ts` at every Arabic count web found.
+- #28 D6: "Up next" rail on the wide home page from akheeai's `nowNext()` (`src/features/home/rail.ts`), today's changes, sticky group card (`lg:sticky!`, because `.lattice` sets position relative).
+- #29 AR2: `/ar/guides*` and `/ar/ask*` show `titleAr`, `summaryAr`, `bodyHtmlAr`, `questionAr`, `answerHtmlAr` when AR1 adds them (`src/lib/arabic-content.ts`); hreflang both ways and sitemap pairs for translated rows.
+- #33 D5: A, A+, A++ (`TextSizeControl`), plain inline head scripts (theme no longer flashes), header and menus adapt; also fixed the Arabic header overflowing at 1280 to 1439 px.
+- #37 D4: Ramadan mode (`src/features/home/ramadan.ts`, `RamadanStrip.tsx`), on by itself from 1 Ramadan 1448; owner-only facts wait in `RAMADAN_SETTINGS` (see "Waiting for the owner" in AI-LOG).
+- #40 C5: `error.tsx` with Try again in duroos, guides, ask, library (both trees); skeletons only inside `(index)` route groups so real 404s stay 404 (`tests/loading-boundaries.test.ts`); `NavPending` bar on menu links (`useLinkStatus`).
+- #42 C4: the MESH gate as the app icon (`src/components/shell/gate.ts`, `public/icons/`), install screenshots, Guides shortcut.
+
+Next for web, in order
+1. D3 "Who are you?" once aiakhee's B1 (`/start`) merges; then link `/start` and `/glossary` from the guides page and the menu.
+2. C2 share images for lesson, shaykh and FAQ pages. Finding: Satori (next/og) cannot load Amiri (GSUB lookup type 5 format 3) and lays Arabic words out left to right. Alexandria (`@fontsource/alexandria`, arabic 700 woff, 16 KB) loads and joins letters; put each Arabic word in its own box inside a `flex-direction: row-reverse` row for the right order. Word gaps come out uneven, so keep Arabic text on the image short (WhatsApp shows og:title as real text anyway). Fonts are read with `readFile(join(process.cwd(), "assets/..."))` as the Next 16 docs show.
+3. C3 share button, C6 print, C1 offline last (network first, versioned cache, kill switch). C7 PR checks only after the owner's yes.
+4. Spare tasks S1 to S3 (analytics), left to web by akheeai.
+
 ## 9 November 2026, about 12:30 Riyadh: akheeai (branch `claude/stoic-curie-w1ar9c`), kept current while working
 **Done this window**
 - PR #25 merged by the owner: the MAP gleam and A2 "Now and next". It is **not live yet**, because Vercel's free plan is out of deployments for the day (100 a day). Redeploy `main` in Vercel once the limit frees up. Proposal waiting for the owner: build `main` only.
