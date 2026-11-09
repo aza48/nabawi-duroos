@@ -25,6 +25,7 @@ How to keep it so:
 | Domestic parcel 15 to 35 SAR and SPL Express Plus 141 SAR (2026); Haramain station SPL counter 75 to 150 SAR (2026); customs processing fees | guide `shipping-and-receiving-parcels` | May 2027 | Recheck with the carriers and ZATCA |
 | Tourist eVisa 72 countries and about 535 SAR; family visit visa 300 and 500 SAR; extension about 100 SAR (checked November 2026) | guides `bringing-parents-to-visit` and `visas-for-family-and-visitors` | February 2027 | Recheck on visa.visitsaudi.com and the MOFA platform |
 | REGA support line and the 5% transaction tax (checked November 2026) | guide `owning-property-as-a-non-saudi` | May 2027 | Recheck on saudiproperties.rega.gov.sa |
+| Graduates' room deadline example (27 June 2026, about five weeks after the finals) | guide `graduate-procedures` | May 2027 | Replace with the 1448 Deanship notice when it is posted |
 
 ## Removed
 

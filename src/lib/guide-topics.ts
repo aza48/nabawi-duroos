@@ -83,7 +83,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "استكشف المدينة",
     blurb: "Historic sites, day trips, the seasons and camping, dates, and sport.",
     blurbAr: "المعالم التاريخية والرحلات القصيرة والمواسم والتخييم والتمور والرياضة.",
-    slugs: ["historic-sites-and-masjids", "day-trips-from-madinah", "seasons-and-camping", "dates-of-madinah", "sports-and-activities"],
+    slugs: ["historic-sites-and-masjids", "day-trips-from-madinah", "seasons-and-camping", "dates-of-madinah", "sports-and-activities", "volunteering-as-a-student"],
   },
 ];
 

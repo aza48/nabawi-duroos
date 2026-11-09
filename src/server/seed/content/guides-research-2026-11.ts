@@ -676,6 +676,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Arrange the inspection</strong> with your building's mushrif (supervisor), at his office or by phone. He checks the room, takes the key and signs the form. <strong>Keep the original form.</strong></li>
 <li><strong>Go back to the housing office</strong> the next working morning for the final clearance. The system then shows your room as returned.</li>
 </ol>
+<p>Graduates vacate by the Deanship's deadline, about five weeks after the finals (27 June in 2026). After it, anything left is removed at the owner's risk. Ma'had graduates moving into a college keep their room as regular students.</p>
 <p>Your blanket and bedsheets are yours to take home. Anything else you bought for the room, from a kettle to a bookshelf, goes with you, to a friend or to the market: see <strong>Your things</strong> below.</p>
 <h2>4. Return your student card and clear your file</h2>
 <p>Hand in the signed room form at the housing office, and return your student card at the student card office. Keep a copy or a PDF of the card first. Travel Management (إدارة السفر) then confirms your clearance in the University's records, and your ticket and, with an iqama, your final exit follow from that. Nothing is issued before the clearance shows.</p>
@@ -697,6 +698,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h2>7. The graduation allowance, bisht and gifts</h2>
 <ul>
 <li><strong>Graduation allowance:</strong> full (external) scholarship students receive a graduation allowance of three months' stipend, for shipping their books home, once the University has confirmed their clearance. It lands in the same account as your stipend, so keep that account open until it arrives. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
+<li><strong>The ceremony:</strong> the University's graduation ceremony is held in Shawwal or Dhul Qa'dah, and each graduate receives two invitations for family. The bisht, sash and card are collected in the weeks before it.</li>
 <li><strong>Bisht and gifts:</strong> bachelor's, master's and PhD graduates are given a graduation bisht (mishlah) and gifts such as books. If you have already gone home, someone can collect them for you: send a request through Tawasul with your name, student card number and graduation date, and the full name and student card number of the person collecting.</li>
 </ul>
 <h2>8. Leaving the Kingdom: final exit on an iqama, or on a Visitor ID</h2>
@@ -803,7 +805,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     title: "Where sisters can study Arabic and Islamic sciences in Madinah",
     summary: "The in-person options for sisters, listed alphabetically: the women's marakiz for Arabic, Qur'an and Shariah, and the Masjid an-Nabawi Ma'had and Kulliyah, with who each is for, what it teaches and how to apply.",
     bodyHtml: `
-<p>Checked 9 November 2026. Madinah has several places where sisters study Arabic, the Qur'an and the Islamic sciences in person. They are listed here alphabetically. Teaching is in Arabic, and most classes are in the morning. Contact each place for the start of the next term before you plan around it.</p>
+<p>Checked 9 November 2026. Madinah has several places where sisters study Arabic, the Qur'an and the Islamic sciences in person. They are listed here alphabetically, with the Haram's own Ma'had and Kulliyah together at the end. Teaching is in Arabic, and most classes are in the morning. Contact each place for the start of the next term before you plan around it.</p>
 <h2>At a glance</h2>
 <table><thead><tr><th>Where</th><th>What it teaches</th><th>Length</th><th>Nursery</th></tr></thead><tbody>
 <tr><td>Academiyah al-Ma'rifah</td><td>Arabic for non-Arabic speakers, Shariah and Qur'an</td><td>Arabic 2 years, Shariah 1 year</td><td>Yes</td></tr>
@@ -870,7 +872,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Bring the originals and copies of your documents when you are accepted, then start your studies.</li>
 </ol>
 <p>The full conditions for each level are in <a href="/guides/masjid-an-nabawi-institute-and-college">The Masjid an-Nabawi Institute and College</a> and <a href="/programs/nabawi-women">Masjid an-Nabawi programmes for women</a>.</p>
-<h2>Without registering</h2>
+<h2>Without enrolling</h2>
 <p>The Haram's free Qur'an and mutun halaqat for sisters take registrations online, and the duroos in the masjid are open to everyone. See <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>. For online study and the other routes, see <a href="/ask/sisters-study">Where can sisters study?</a> and <a href="/programs">Study in Madinah</a>.</p>
 <blockquote><p>Tip: A question about your own case? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
@@ -878,7 +880,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     slug: "kids-activities",
     stage: "family",
     title: "Play areas and fun places for children in Madinah",
-    summary: "Soft play centres, mall crèches and gardens for young children in Madinah, with the ages each takes and what is there.",
+    summary: "Soft play centres, mall crèches and gardens for young children in Madinah, with what is at each and the ages they take.",
     bodyHtml: `
 <p>Checked 9 November 2026. Madinah has indoor soft play centres, crèches in the malls and gardens with rides, which are a good way to spend a hot afternoon with young children. Each section below is in alphabetical order. Entry is paid per child at the desk.</p>
 <h2>Soft play centres</h2>

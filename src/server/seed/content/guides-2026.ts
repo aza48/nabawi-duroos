@@ -94,6 +94,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Open the account in one of two ways. <strong>At a branch:</strong> take your passport and show your Visitor ID in the Absher app. <strong>Online:</strong> apply in the bank's app or website and confirm your identity through Nafath. Each bank sets its own extra conditions, so if one turns you away, try another bank.</li>
 <li>Your account number arrives by text message. Collect your mada debit card at the branch or ask for it to be posted to your National Address.</li>
 </ol>
+<p>US citizens: banks run extra checks under the FATCA agreement, and some ask for your Social Security number, so have it with you.</p>
 <p>A Visitor ID account works only while your Visitor ID and your stay are valid. When the ID expires the bank freezes the account until it is renewed, so renew your visa in good time.</p>
 <blockquote><p>Tip: A mada card is worth having. Some shops take only mada or cash, foreign cards are sometimes blocked by bank security checks, and you need a local card to pay bills and government fees.</p></blockquote>
 <p>Already have a SIM? See <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a> for codes, SIM checks and updating your Absher number.</p>
@@ -316,11 +317,12 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>WhatsApp and Telegram groups:</strong> up-to-date listings and direct contact with landlords and students who are leaving.</li>
 <li><strong>Property sites and apps:</strong> Aqar, Bayut and Haraj are the biggest. Prices on them tend to be inflated and many landlords speak only Arabic.</li>
 <li><strong>Agents:</strong> some real-estate offices work in English. Use an agent from Ejar's official list of accredited agents, and check their FAL licence number in the FAL app or on the Real Estate General Authority's website before you pay anything.</li>
+<li><strong>Building supervisors:</strong> ask the haris of the buildings you like, in person after Asr when he is at the door. He knows which flats are about to empty.</li>
 <li><strong>Taking over a flat:</strong> students who are leaving often hand over their flat, sometimes with the furniture. Ask to see the contract and meet the landlord before you pay for the furniture or the remaining rent.</li>
 </ul>
 <blockquote><p>Tip: If it's your first time, stay in a hotel or a short let (Booking, Airbnb or Gathern) for a week or two and look in person. You'll see the building, test the air conditioning and negotiate directly.</p></blockquote>
 <h2>Furnished or empty</h2>
-<p>For 3 to 6 months, take furnished. For a year or more, an empty flat is 40 to 50% cheaper and you can furnish it cheaply at Haraj market. Most good newer buildings are an 8 to 15 minute drive from the Haram rather than walking distance.</p>
+<p>For 3 to 6 months, take furnished. For a year or more, an empty flat is 40 to 50% cheaper and you can furnish it cheaply at Haraj market. Most good newer buildings are an 8 to 15 minute drive from the Haram rather than walking distance. Basement flats are cheaper to rent and cheaper to cool, and damp in winter, so look at the walls before you take one. As of 2025, an empty flat of three or four bedrooms let by the year went for about 23,000 to 25,000 SAR, and a room for about 600 SAR a month.</p>
 <h2>The contract</h2>
 <p><strong>Ejar</strong> is the official system of the Real Estate General Authority, and a registered contract legally protects both sides. You do not type the contract in yourself: an accredited agent, or a landlord who meets Ejar's conditions, creates it on Ejar, and you approve it from the link Ejar sends you by SMS. This works with an iqama, and on the educational visa with a Visitor ID (see the answer on renting on a student visa). The registration fee is 125 SAR a year, so check in the contract who pays it. Since September 2025 landlords must register their leases, and a tenant can ask for registration too. Many rentals in Madinah are still private paper agreements, which carry no legal protection. Ejar's helpline is 199011.</p>
 <h2>Renting on your own</h2>
@@ -756,7 +758,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <ul>
 <li><strong>Masjid Quba</strong> (about 3.5 km): the first masjid of Islam. Two rak'ahs after wudu at home carry the reward of an Umrah. Many people walk there on Saturdays along the Quba walkway, which is around 3 km and takes about 45 minutes.</li>
 <li><strong>Masjid al-Jumu'ah</strong> (about 4 to 5 km): where the first Friday prayer was held in Madinah, on the way between the Haram and Quba.</li>
-<li><strong>Quba gardens:</strong> Bir Ariis and Bir al-Khatim are in the gardens near Quba, and the square around the masjid has family cafés.</li>
+<li><strong>Quba gardens:</strong> Bir Aris, also called Bir al-Khatim, is in the gardens near Quba: the well into which the Prophet's ﷺ ring fell from Uthman's hand. The square around the masjid has family cafés.</li>
 </ul>
 <h2>Khandaq, Mount Sala' and Qiblatayn</h2>
 <p>The Battle of the Trench took place in 5 AH around Mount Sala' (Sal'), north-west of the Haram. The small masjids on its slope are still called the Seven Masjids, although several have been rebuilt or joined into larger ones and fewer stand today. The best known is Masjid al-Fath, where the Prophet ﷺ made du'a, and the large Masjid al-Khandaq stands beside the site. The walk through the area takes about 40 minutes.</p>
@@ -779,7 +781,7 @@ export const GUIDES_2026: SeedGuide[] = [
     title: "Day trips and weekends away from Madinah",
     summary: "Badr, Khaybar, Yanbu, AlUla, Jeddah and more, with distance, drive time and the best months to go.",
     bodyHtml: `
-<p>Distances and times are by road from Madinah. For anywhere over 300 km, a flight or the Haramain train is often easier. Checked November 2026.</p>
+<p>Distances and times are by road from Madinah. For anywhere over 300 km a flight is often easier, and the Haramain train covers Jeddah and Makkah. Checked November 2026.</p>
 <table><thead><tr><th>Place</th><th>Distance</th><th>Drive</th><th>Good for</th></tr></thead><tbody>
 <tr><td>Wadi al-Jinn</td><td>about 30 km</td><td>about 40 min</td><td>A half-day outing to the valley where cars seem to roll uphill. Any car will do and you need no guide.</td></tr>
 <tr><td>Badr</td><td>about 150 km</td><td>1.5 to 2 h</td><td>The battlefield of the Battle of Badr, with a visitor centre and signs in Arabic and English. Leave after Fajr and be back by Maghrib. Take water and food, as services are limited.</td></tr>
@@ -797,7 +799,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Tell someone your route. Mobile signal fades more than 30 km from the city.</li>
 <li>Keep your iqama or passport and your car papers with you for police checkpoints.</li>
 </ol>
-<p>Hiring a car needs a licence your country is recognised for, and many companies ask for residency. See <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>`,
+<p>Hiring a car needs a licence that Saudi Arabia recognises, usually with an International Driving Permit, and many companies ask for residency. See <a href="/guides/drivers-license">Driving in Madinah: your Saudi driving licence</a> and <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>`,
   },
   {
     slug: "seasons-and-camping",
@@ -883,7 +885,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </tbody></table>
 <h2>Where to go</h2>
 <ul>
-<li><strong>University students:</strong> start with the University Medical Center on campus. It is free for scholarship students. Clinics run Sunday to Thursday from 8:00 am to 3:15 pm. An emergency shift follows until 11:00 pm on those days, and runs from 1:00 pm to 9:00 pm on Fridays and Saturdays. Book clinic appointments at <a href="https://vcappointments.iu.edu.sa/">vcappointments.iu.edu.sa</a> with your University login. Many private clinics also give students big discounts (see <a href="/discounts">Student discounts</a>).</li>
+<li><strong>University students:</strong> start with the University Medical Center on campus. It is free for scholarship students. Clinics run Sunday to Thursday from 8:00 am to 3:15 pm. An emergency shift follows until 11:00 pm on those days, and runs from 1:00 pm to 9:00 pm on Fridays and Saturdays. Book clinic appointments at <a href="https://vcappointments.iu.edu.sa/">vcappointments.iu.edu.sa</a> with your University login. A family member needs a file opened in person at the Medical Center before the app lets them book. Many private clinics also give students big discounts (see <a href="/discounts">Student discounts</a>).</li>
 <li><strong>Minor illness:</strong> a private clinic is quickest. A GP visit usually costs 100 to 200 SAR (see <a href="/guides/cost-of-living">What it costs to live in Madinah</a>).</li>
 <li><strong>Emergencies:</strong> go to the nearest hospital emergency department, or call 997.</li>
 <li><strong>Visitors:</strong> every visit visa comes with compulsory medical insurance, but it covers emergencies only, up to 100,000 SAR, with low limits for dental emergencies and childbirth. Routine visits are paid by you, and a private hospital may ask for payment up front, so keep some money aside or buy extra cover. If you extend your visa, the insurance must be extended too.</li>

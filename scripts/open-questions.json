@@ -748,5 +748,15 @@
   "topic": "Money",
   "question": "What is the current cash declaration threshold at Saudi customs: 60,000 SAR (older ZATCA page) or 40,000 SAR (newer e-service page)?",
   "context": "The money guide says 'above the limit customs publishes' without a figure."
+ },
+ {
+  "topic": "University",
+  "question": "Can students on a Visitor ID create an account on the National Volunteering Platform (nvg.gov.sa), which signs in with Nafath, and do volunteering hours count for anything at the University (Skills Record, scholarship standing)?",
+  "context": "The volunteering guide says the hours are the student's own record and tells Visitor ID students to tell the organiser if the platform refuses them."
+ },
+ {
+  "topic": "Haram",
+  "question": "What is UMMC's full Arabic name, for the Arabic translation of the having-a-baby guide?",
+  "context": "web's AR3 batch left it as a safe form."
  }
 ]
