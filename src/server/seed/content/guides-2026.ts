@@ -276,22 +276,54 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Al Dawaa and Al Nahdi pharmacies have branches all over the city, some open round the clock, and most staff speak English.</li>
 </ul>
 <h2>Gyms</h2>
-<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's (Fitness Time Ladies and others) 250 to 500. Martial arts clubs are 150 to 300 SAR. Islamic University students pay reduced rates at the University sports club, well below the public price. Classes and trips are listed in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>`,
+<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's 250 to 500. Martial arts clubs are 150 to 300 SAR. At the Islamic University Sports Club on campus a student pays 125 SAR for a month, against 250 SAR for the public; longer memberships cost less per month. Prices, facilities, classes and trips are listed in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>`,
   },
   {
     slug: "visas-for-family-and-visitors",
     stage: "getting-started",
     title: "Visas for family members and visitors",
-    summary: "The options people use to bring family over or stay for months, and what an iqama adds. Rules change, so always check the official site.",
+    summary: "The visas people use to bring family over or stay for months, the fingerprint step at a visa centre, extending a family visit visa in Absher with its fees and fines, and what an iqama adds.",
     bodyHtml: `
 <blockquote><p>Important: Visa rules change often. Everything here was checked in November 2026. Confirm on <a href="https://visa.mofa.gov.sa/">visa.mofa.gov.sa</a> before you book anything.</p></blockquote>
 <h2>Staying on a visa</h2>
 <ul>
 <li><strong>Tourist eVisa:</strong> open to citizens of dozens of countries, including the UK, the US, Canada and most of Europe. Bosnia and Herzegovina, Mexico, North Macedonia and Serbia were added in early November 2026. It costs about SAR 535 in total online or SAR 480 on arrival at an international airport (paid by card at the airport kiosks), includes compulsory health insurance, and is valid for one year with multiple entries. You may stay up to 90 days in total, counted across all your entries. Your passport must be valid for at least six months when you enter. The visa cannot be extended inside the Kingdom, and a new one can be issued only after the old one expires. It covers Umrah with a Nusuk permit, but not Hajj. Check the rules for your passport on <a href="https://visa.visitsaudi.com/">visa.visitsaudi.com</a>, and apply only there, not through agents who add their own fees.</li>
-<li><strong>Extending a visit visa:</strong> the host (a Saudi or an iqama holder) files the extension on Absher or Muqeem at least 7 days before the visa expires. The visitor needs valid medical insurance for the new dates, bought as a new policy, and the total stay is capped at 180 days. The fee is about SAR 100 each time, and Absher shows the exact amount before you pay. If the online request fails, use the Absher communication service.</li>
+<li><strong>Holders of a US, UK or Schengen visa:</strong> a person whose US, UK or Schengen visa has already been used to enter that country, or who lives in the US, the UK or the EU with a valid residence permit, gets the tourist eVisa whatever their nationality. Their spouse, children and parents come with them on the same terms, also whatever their nationality. The visa on arrival is meant mainly for passengers on Saudi national airlines, so anyone flying with another airline gets the eVisa online before the flight, or risks being refused boarding.</li>
+<li><strong>Extending a visit visa:</strong> the host (a Saudi or an iqama holder) extends it in Absher from 7 days before it expires, for 100 SAR each time, with new medical insurance for the new dates. The total stay is capped at 180 days. The steps are below.</li>
 <li><strong>Family visit visa:</strong> an iqama holder applies on the Ministry of Foreign Affairs visa platform for close relatives such as a spouse, children or parents. The government fee is SAR 300 for a single entry or SAR 500 for multiple entries, plus medical insurance. Approval is decided case by case.</li>
+<li><strong>Umrah visa:</strong> applied for on Nusuk, once the hotel and transport are booked and recorded there or through a licensed agent. It must be used to enter within 30 days of being issued, and the 1448 season's last day of entry is 23 March 2027. The full season dates are in <a href="/guides/bringing-parents-to-visit">Bringing your parents to visit Madinah</a>.</li>
 </ul>
 <p>On a visit visa you may live here and take short courses at language centres. You may not work, and degree study needs a student visa.</p>
+<h2>Family visit visa: fingerprints at a visa centre</h2>
+<p>For a family visit visa, a personal visit visa, a business visa or a work visa, the visitor goes in person to a Tasheer visa centre before the visa is issued, and gives fingerprints and a photo there. Tourist eVisas and Umrah visas skip this step.</p>
+<ul>
+<li>Children under 6 give no fingerprints.</li>
+<li>Any Tasheer centre in the world can be used. In the online application, enter the capital of the country where the visitor will hand in the file as the place of processing.</li>
+<li>Someone else can collect the passport with a signed authorisation and the receipt, or it can be sent back by courier.</li>
+</ul>
+<p>The visitor takes to the visa centre:</p>
+<ul>
+<li>the original passport, valid for at least 6 months, with two blank pages side by side;</li>
+<li>a photo 51 x 51 mm on a white background, taken in the last 3 months;</li>
+<li>the approval from the Ministry of Foreign Affairs visa platform;</li>
+<li>proof of the relationship, such as the marriage certificate or a child's birth certificate naming both parents;</li>
+<li>a copy of the host's iqama;</li>
+<li>for a visitor living outside their own country, a copy of their residence permit there.</li>
+</ul>
+<h2>Extending a family visit visa in Absher</h2>
+<p>The host extends the visa in Absher, and the visitor stays in the country. Start a week before it expires.</p>
+<ol>
+<li><strong>Buy new health insurance</strong> for the extra period first. Absher refuses the extension without it. Insurers' websites find the visitor by visa number and passport number, then ask for the border number and the visa's expiry date, both shown in Absher.</li>
+<li><strong>Pay the 100 SAR extension fee</strong> through SADAD in your banking app. The insurance is priced separately and costs more for older visitors.</li>
+<li><strong>From 7 days before the visa ends,</strong> sign in to absher.sa on a computer and open the service Extend Visit Visa (تمديد تأشيرة زيارة).</li>
+<li><strong>Choose the visitor,</strong> press Start service, check the details, press Next, then accept the terms and confirm.</li>
+<li><strong>Check the new end date</strong> by opening the visitor again, before the old date passes.</li>
+</ol>
+<table><thead><tr><th>When you apply</th><th>What you pay (SAR)</th></tr></thead><tbody>
+<tr><td>From 7 days before expiry to the expiry date</td><td>100</td></tr>
+<tr><td>In the 3 days after expiry</td><td>100, plus a 500 fine</td></tr>
+</tbody></table>
+<p>The total stay, with every extension, is 180 days at most. A tourist eVisa cannot be extended at all. If the online request fails, use the Absher communication service. To find a visitor's border number or check a visa without signing in, see <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
 <h2>What an iqama adds</h2>
 <ul>
 <li>A Saudi driving licence and a car in your name.</li>

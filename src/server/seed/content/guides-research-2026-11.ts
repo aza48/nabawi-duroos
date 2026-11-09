@@ -331,46 +331,64 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
     slug: "university-offices-and-contacts",
     stage: "study",
     title: "Who to ask at the Islamic University: offices, portals and contacts",
-    summary: "Which office or portal handles tickets, the Visitor ID, registration, housing, health, meals and documents, with the numbers and links, and how to write a request that gets answered.",
+    summary: "Which office or portal handles tickets, visas, registration, absence, housing, health, meals, passwords and documents, with the numbers, emails and links, how to sign in, and how to write a request that gets answered.",
     bodyHtml: `
-<p>Checked 9 November 2026. Most problems at the University are solved quickly once they reach the right office. This page lists who does what, and the portal or contact for each.</p>
+<p>Checked November 2026. Most problems at the University are solved quickly once they reach the right office. This page lists who does what, and the portal or contact for each.</p>
 <h2>Start here</h2>
 <ul>
 <li><strong>Student care:</strong> call <strong>920022042</strong> or email <strong>care@iu.edu.sa</strong> when you do not know where a question belongs.</li>
-<li><strong>Tawasul</strong> (تواصل), the University's request system, at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a>. Sign in with your University login and send your request to the right deanship. If you cannot sign in yet, use the guest form at <a href="https://helpdesk.iu.edu.sa/newticket_guest">helpdesk.iu.edu.sa/newticket_guest</a>.</li>
+<li><strong>Tawasul</strong> (تواصل), the University's request system, at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a>. Sign in with your University login and send your request to the right office. If you cannot sign in yet, use the guest form at <a href="https://helpdesk.iu.edu.sa/newticket_guest">helpdesk.iu.edu.sa/newticket_guest</a>.</li>
 <li><strong>Your University email.</strong> Replies and official notices come here, so read it every day.</li>
+<li><strong>Your college's wakeel</strong> (vice dean) for student affairs: absences, excuses, timetable problems after drop and add, and anything your college decides.</li>
 </ul>
 <h2>Who handles what</h2>
 <table><thead><tr><th>You need</th><th>Who handles it</th><th>Where</th></tr></thead><tbody>
 <tr><td>Your ticket home, your arrival ticket, passport matters</td><td>Travel Management (إدارة السفر)</td><td>Tickets through Etimad: see <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>. Arrival tickets through Minhati</td></tr>
+<tr><td>An exit and re-entry visa, your iqama renewal</td><td>Travel Management (إدارة السفر)</td><td>The <strong>Travel Management System</strong> (نظام إدارة السفر) in the University's e-services, or Tawasul</td></tr>
 <tr><td>Your educational visa and Visitor ID</td><td>Deanship of Admission and Registration</td><td>Tawasul, subject Educational visa: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a></td></tr>
-<tr><td>Registration, your timetable, adding and dropping courses, ta'jeel and i'tithaar, transfers</td><td>Deanship of Admission and Registration</td><td>The Academic System, and Tawasul for anything it cannot do</td></tr>
+<tr><td>Registration, your timetable, adding and dropping courses, ta'jeel and i'tithaar, transfers</td><td>Deanship of Admission and Registration</td><td>The Academic System, and Tawasul or <strong>admission.reg@iu.edu.sa</strong> for anything it cannot do</td></tr>
 <tr><td>A new visa after ta'jeel, an excuse or a break in study</td><td>Deanship of Admission and Registration</td><td><a href="https://minhatee2.iu.edu.sa/Home/VisaLanding">Minhati visa page</a>, signing in with your University number</td></tr>
-<tr><td>Housing, activities, clubs and life in the halls</td><td>Deanship of Student Affairs</td><td>Tawasul, or the office in person</td></tr>
+<tr><td>An absence excuse, a missed final, a mark you want reviewed</td><td>Your college</td><td>The Academic System screens in <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>, then the wakeel of your college</td></tr>
+<tr><td>Advice on your study plan</td><td>Your academic advisor</td><td>Academic System, Academic, then <strong>Contact the academic advisor</strong> (التواصل مع المرشد الأكاديمي)</td></tr>
+<tr><td>A message to a teacher</td><td>The teacher</td><td>Academic System, Personal, then <strong>Send email</strong> (إرسال بريد إلكتروني), or a message in Blackboard</td></tr>
+<tr><td>Housing, activities, clubs and life in the halls</td><td>Deanship of Student Affairs</td><td>Tawasul, or the office in person. The housing office for room handovers is in Unit 22</td></tr>
 <tr><td>Your stipend and IBAN</td><td>The rewards service</td><td>Academic System, Personal, then Rewards</td></tr>
-<tr><td>A letter proving you are a student</td><td>Issued automatically, free and stamped</td><td>Academic System, Personal, then Official Documents</td></tr>
+<tr><td>A letter proving you are a student, a transcript</td><td>Issued automatically, free and stamped</td><td>Academic System, Personal, then Official Documents</td></tr>
+<tr><td>Passwords and sign-in problems</td><td>Deanship of IT and E-Learning</td><td><strong>it.care@iu.edu.sa</strong>, or <strong>+966 14 847 1856</strong></td></tr>
+<tr><td>Blackboard</td><td>E-Learning Center</td><td><strong>bb@iu.edu.sa</strong>, or Tawasul to the E-Learning Center: see <a href="/ask/blackboard-login">How do I log in to Blackboard?</a></td></tr>
 <tr><td>A doctor or dentist</td><td>University Medical Center</td><td>Book at <a href="https://vcappointments.iu.edu.sa/">vcappointments.iu.edu.sa</a></td></tr>
 <tr><td>Meals at the mat'am</td><td>The University restaurant</td><td>Book monthly at <a href="https://restaurant.iu.edu.sa/">restaurant.iu.edu.sa</a></td></tr>
 <tr><td>Your application, before you arrive</td><td>Deanship of Admission and Registration</td><td><a href="https://minhatee2.iu.edu.sa/">Minhati</a> and its helpdesk, and Study in Saudi for the final acceptance and visa</td></tr>
 </tbody></table>
+<h2>Signing in</h2>
+<ol>
+<li>Open <a href="https://iu.edu.sa/">iu.edu.sa</a> and tap the <strong>user account</strong> icon in the top bar, or go straight to sso.iu.edu.sa.</li>
+<li>Choose <strong>Login through Nafath</strong> (الدخول عن طريق نفاذ), or <strong>Login with University number</strong> (الدخول بالرقم الجامعي / الوظيفي).</li>
+<li>With your University number: type the number, your password and the <strong>verification code</strong> (رمز التحقق) shown on the screen beside the box. Tap the refresh arrow if the code is hard to read. Then tap <strong>Login</strong> (دخول).</li>
+<li>If the website hangs, sign in through Nafath or use the University's app.</li>
+</ol>
+<p>One login opens every University system. Your password, and the mobile number that receives your University alerts and codes, are changed from the same <strong>user account</strong> icon. Every screen is explained step by step in <a href="/guides/university-student-system">Using the University's student system</a>.</p>
 <h2>The portals you will use</h2>
 <ul>
-<li><strong>University login</strong> at sso.iu.edu.sa: through Nafath, or with your University number, password and a code sent to you. One login opens the Academic System, your email, Blackboard, Tawasul, the Medical Center bookings and the restaurant.</li>
-<li><strong>Academic System:</strong> your timetable, final exams, academic requests, rewards and official documents.</li>
-<li><strong>Blackboard:</strong> your classes, materials and class chats. Never open links posted by accounts you do not know: see <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat</a>.</li>
+<li><strong>Academic System</strong> (النظام الأكاديمي): five menus, Electronic Registration, Personal, Academic, Travel Management System and Graduation procedures. Your timetable, results, absence, academic requests, rewards and official documents are all here.</li>
+<li><strong>Blackboard</strong>, the tile named <strong>Zidni</strong> (زدني): your classes, materials, tests and class chats. Never open links posted by accounts you do not know: see <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat</a>.</li>
+<li><strong>Tawasul</strong> (نظام تواصل / إدارة الطلبات): requests to any office.</li>
+<li><strong>Saudi Digital Library</strong> (المكتبة الرقمية السعودية): books, journals and databases, opened from inside the Kingdom.</li>
 <li><strong>Minhati:</strong> your application, the arrival ticket request and visa renewal for returning students.</li>
 <li><strong>Etimad:</strong> travel orders for your University tickets.</li>
 </ul>
 <h2>Writing a request that gets answered</h2>
 <ol>
-<li>Send it to the office that handles the matter, using the table above.</li>
-<li>Start with your full name as in your passport, your University number and your college.</li>
+<li>Send it to the office that handles the matter, using the table above. In Tawasul, tap <strong>New request</strong> (طلب جديد) and choose the office from the list.</li>
+<li>Give it a clear title under <strong>Subject</strong> (الموضوع). Under <strong>Request details</strong> (تفاصيل الطلب), start with your full name as in your passport, your University number and your college.</li>
 <li>Say in a few lines what you need, what you have already tried, where, and what you were told.</li>
-<li>Attach screenshots of any error and copies of the documents involved.</li>
-<li>Press send, then <strong>track request</strong>, and save the link or reference number so you can follow it up.</li>
-<li>Watch your University email for the reply, and answer any follow-up question the same day.</li>
+<li>Attach screenshots of any error and copies of the documents involved, then tap <strong>Send request</strong> (إرسال الطلب).</li>
+<li>Follow it under <strong>My requests</strong> (طلباتي), and save the reference number so you can follow it up.</li>
+<li>Watch your University email for the reply, and answer any follow-up question the same day. If nothing comes in two working days, follow it up in person.</li>
 </ol>
 <blockquote><p>Tip: Your name must match your passport letter for letter on every portal. A mismatch is the most common reason a ticket or a request gets stuck.</p></blockquote>
+<h2>Official news</h2>
+<p>The University posts announcements, calendars and deadlines on X: <strong>@iu_edu</strong> for the University, <strong>@AdmissDeanship</strong> for the Deanship of Admission and Registration, and <strong>@dsa_iu_edu</strong> for the Deanship of Student Affairs. Go by these and your University email, not by forwarded messages in groups.</p>
 <h2>Outside the University</h2>
 <table><thead><tr><th>For</th><th>Contact</th></tr></thead><tbody>
 <tr><td>Absher or Nafath not activating</td><td>Absher customer care, <strong>920020405</strong>, 24 hours. See <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a></td></tr>
@@ -752,7 +770,8 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <tr><td>After you land</td><td>Keep your Saudi number alive for codes until every account is closed. Check your degree verifies online.</td></tr>
 </tbody></table>
 <h2>1. Check the details on your certificate</h2>
-<p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester and correct any difference from your passport before printing. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
+<p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester, under <strong>Graduation procedures</strong> (اجراءات التخرج), and correct any difference from your passport before printing. A correction after the document is issued means paying for a replacement. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
+<p>After your final results are approved, your status in the Academic System changes from <strong>Regular</strong> (منتظم) to <strong>Graduate</strong> (متخرج). Your clearance and the collection of your certificate both wait for that change, which can take some weeks after the finals.</p>
 <h2>2. Download and print your documents</h2>
 <p>In the Academic System, open <strong>Personal</strong>, then <strong>Official Documents</strong> (المستندات الرسمية), and download:</p>
 <ul>
@@ -770,11 +789,12 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Arrange the inspection</strong> with your building's mushrif (supervisor), at his office or by phone. He checks the room, takes the key and signs the form. <strong>Keep the original form.</strong></li>
 <li><strong>Go back to the housing office</strong> the next working morning for the final clearance. The system then shows your room as returned.</li>
 </ol>
+<p>The University sets a date by which graduates must empty their rooms. In 2026 it was 27 June, about five weeks after the final exams. Anything left after that date is removed at your own risk, so plan your handover, your visa and your ticket around it.</p>
 <p>Your blanket and bedsheets are yours to take home. Anything else you bought for the room, from a kettle to a bookshelf, goes with you, to a friend or to the market: see <strong>Your things</strong> below.</p>
 <h2>4. Return your student card and clear your file</h2>
-<p>Hand in the signed room form at the housing office, and return your student card at the student card office. Keep a copy or a PDF of the card first. Travel Management (إدارة السفر) then confirms your clearance in the University's records, and your ticket and, with an iqama, your final exit follow from that. Nothing is issued before the clearance shows.</p>
+<p>Hand in the signed room form at the housing office, and return your student card at the student card office. Keep a copy or a PDF of the card first. Then complete the clearance (إخلاء طرف) in the Academic System, under <strong>Academic</strong>, then <strong>Clearance</strong>. It opens once your status shows Graduate, and lists each office that must sign you off. Travel Management (إدارة السفر) then confirms your clearance in the University's records, and your ticket and, with an iqama, your final exit follow from that. Nothing is issued before the clearance shows.</p>
 <h2>5. Collect your degree and the University stamp</h2>
-<p>Collect your certificate from the Deanship of Admission and Registration, with your University number, and sign for it. If you cannot be there, the Deanship has an official form for authorising someone to collect it for you. See <a href="/ask/degree-collection-and-verification">Can someone else collect my degree certificate?</a></p>
+<p>Once your status shows Graduate, book a collection appointment at <a href="https://services.iu.edu.sa/Appointment">services.iu.edu.sa/Appointment</a>, signing in with your University number. Collect your certificate from the Deanship of Admission and Registration at your appointment, and sign for it. If you cannot be there, fill in the Deanship's official form for authorising someone to collect it for you, send it through Tawasul first, and give a printed copy to the person collecting. See <a href="/ask/degree-collection-and-verification">Can someone else collect my degree certificate?</a></p>
 <p>Then ask for the University stamp on the black and white copies of your transcript, conduct certificate and graduation certificate, and on a copy of your degree. The Ministry of Foreign Affairs legalises only documents that already carry the University stamp.</p>
 <h2>6. Legalise your documents: the Ministry, then your embassy</h2>
 <p>Most embassies will not legalise a Saudi degree until the Ministry of Foreign Affairs has. The documents usually legalised are the degree, the Ma'had certificate, the transcript, the conduct certificate and the graduation certificate.</p>
@@ -791,6 +811,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h2>7. The graduation allowance, bisht and gifts</h2>
 <ul>
 <li><strong>Graduation allowance:</strong> full (external) scholarship students receive a graduation allowance of three months' stipend, for shipping their books home, once the University has confirmed their clearance. It lands in the same account as your stipend, so keep that account open until it arrives. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
+<li><strong>The ceremony:</strong> the University holds one graduation ceremony a year, near the end of the second semester (on 27 April in 2026). Graduates collect the bisht, the sash and the invitation cards beforehand from the Deanship of Admission and Registration, ground floor, on the days the University announces. Each graduate receives two invitation cards for family. Students who finish between semesters attend the next ceremony.</li>
 <li><strong>Bisht and gifts:</strong> bachelor's, master's and PhD graduates are given a graduation bisht (mishlah) and gifts such as books. If you have already gone home, someone can collect them for you: send a request through Tawasul with your name, student card number and graduation date, and the full name and student card number of the person collecting.</li>
 </ul>
 <h2>8. Leaving the Kingdom: final exit on an iqama, or on a Visitor ID</h2>
@@ -1046,7 +1067,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     slug: "postgraduate-admission-1448",
     stage: "study",
     title: "Postgraduate admission at the Islamic University: master's, PhD and diplomas",
-    summary: "Who can apply for a master's, PhD or higher diploma, how to apply from inside or outside Saudi Arabia, the conditions, the 1448 dates and fees, and what each kind of student receives.",
+    summary: "Who can apply for a master's, PhD or higher diploma, how to apply from inside or outside Saudi Arabia, the conditions for each department, how applicants are ranked, the enrolment documents, the 1448 dates and fees, and what each kind of student receives.",
     bodyHtml: `
 <p>Checked 9 November 2026. The Deanship of Graduate Studies admits master's, PhD and higher diploma students once a year. The 1448 window is closed and the 1449 window has not opened yet. The 1448 cycle below shows what to prepare.</p>
 <h2>Dates</h2>
@@ -1081,6 +1102,76 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Not graduated yet:</strong> you are compared with other applicants on your grade and cumulative GPA at the time you apply. A later rise in your GPA does not count.</li>
 <li>The University awards the degree only. It takes no responsibility for your employment or promotion, and does not ask for your employer's approval. Arranging that is up to you.</li>
 </ul>
+<h2>Already studying at the University?</h2>
+<p>Students who hold an Islamic University scholarship apply on the University's postgraduate portal, not on Minhati. For the 1448 intake the rules are strict:</p>
+<ul>
+<li><strong>You can apply in your final year</strong> if you will graduate before the programme starts.</li>
+<li><strong>If you have already graduated, you cannot apply.</strong> The only exception is a special decision of the University President, for students who graduated after the start of the first semester of 1447 and whose scholarship is still valid.</li>
+<li><strong>Final year of a bachelor's:</strong> you count as an expected graduate if your remaining hours fit within the maximum load allowed, summer semester included.</li>
+<li><strong>Final year of a master's by thesis:</strong> your thesis is already defended with a recommendation to award the degree, or submitted with the defence set for the second semester of 1447 at the latest.</li>
+<li><strong>Final year of a master's by coursework:</strong> your graduation project is submitted when you apply.</li>
+</ul>
+<p>You are ranked on your grade and GPA on the day you apply. If you do not graduate in time, you lose the nomination and cannot keep it for the next year. A scholarship student who moves straight from a bachelor's into a master's keeps his room.</p>
+<p>Iqama holders on an internal scholarship apply on the same portal. Graduates can apply if their degree is from a GCC government university or a university recognised by the Saudi Ministry of Education. Expected graduates are accepted only from the Islamic University.</p>
+<h2>Conditions by department</h2>
+<p>These are the main conditions for the 1448 intake, on top of the general conditions above. "Exam" is the written specialist exam and "interview" is the personal interview, each marked out of 100. Applicants from outside Saudi Arabia with no current scholarship skip the written exam but still sit the interview and any Qur'an test.</p>
+<table><thead><tr><th>Department</th><th>Previous grade</th><th>Qur'an memorisation</th><th>Pass marks</th></tr></thead><tbody>
+<tr><td>Aqeedah</td><td>Very good. Master's: a Shari'ah degree. PhD: Aqeedah</td><td>None</td><td>Exam 60, interview 60</td></tr>
+<tr><td>Arabic Language Institute (teaching Arabic to non-native speakers)</td><td>Very good for the master's. Diploma: a degree in Arabic or Shari'ah</td><td>None</td><td>Exam 60</td></tr>
+<tr><td>Da'wah and Islamic Culture</td><td>Very good (diploma: good)</td><td>Diploma 1 juz, master's 3, PhD 5</td><td>Exam 60, interview 60, Qur'an 60</td></tr>
+<tr><td>Education (master's)</td><td>Very good, regular study</td><td>None</td><td>Exam 60, interview 60</td></tr>
+<tr><td>Education (PhD)</td><td>A master's in the same field</td><td>None</td><td>Exam 70, interview 70</td></tr>
+<tr><td>Fiqh and Usul al-Fiqh</td><td>Very good, regular study. Master's: a Shari'ah degree</td><td>None</td><td>Exam 60, interview 60</td></tr>
+<tr><td>Fiqh as-Sunnah</td><td>Very good</td><td>Master's 3 juz, PhD 5</td><td>Written and oral 70, Qur'an 80</td></tr>
+<tr><td>Hadith Sciences</td><td>Very good. Master's: a Hadith or Shari'ah degree</td><td>Master's 4 juz, PhD 8</td><td>Written and oral 70, Qur'an 80</td></tr>
+<tr><td>History and Civilisation</td><td>Very good. Geography and literature graduates can apply</td><td>None</td><td>Exam 60</td></tr>
+<tr><td>Islamic Economics</td><td>Very good</td><td>None</td><td>Exam 60, interview 60</td></tr>
+<tr><td>Judicial Studies</td><td>Diplomas: good. Master's and PhD: very good</td><td>None</td><td>Exam 60, interview 60</td></tr>
+<tr><td>Law (al-Anzimah)</td><td>Very good, regular study</td><td>None</td><td>Exam 60, interview 60</td></tr>
+<tr><td>Linguistics, Literature and Rhetoric</td><td>Good, with a bachelor's in Arabic</td><td>None</td><td>Exam 60</td></tr>
+<tr><td>Media and Communication</td><td>Not set</td><td>None</td><td>Exam 60, interview 60</td></tr>
+<tr><td>Qira'at</td><td>Very good. Master's: a Qira'at degree or an ijazah in the ten qira'at</td><td>The whole Qur'an</td><td>Exam 60, interview 60</td></tr>
+<tr><td>Tafsir and Qur'anic Sciences</td><td>Very good, full regular study</td><td>Master's 5 juz, PhD 10</td><td>Exam 60</td></tr>
+</tbody></table>
+<p>The higher diploma in Guidance and Counselling is open only to external scholarship students, with a very good bachelor's and an exam mark of 60. A master's applicant in Da'wah who studied the higher diploma in Da'wah and Islamic Culture needs at least 4.75 out of 5 in the diploma.</p>
+<h2>Science, engineering and computing</h2>
+<p>These master's programmes have extra conditions for the 1448 intake:</p>
+<ul>
+<li><strong>Degree:</strong> a bachelor's by regular study in the same field. Engineering programmes take engineering graduates, and Renewable Energy and Mechatronics take electrical or mechanical engineers only. Data Science and Cybersecurity take computer science, information technology and information systems graduates, and not education graduates.</li>
+<li><strong>GPA:</strong> at least 3.50 out of 5 or 2.50 out of 4 in engineering and computing, and at least "good" in physics, chemistry and mathematics.</li>
+<li><strong>English:</strong> at least TOEFL PBT 450, TOEFL iBT 45, IELTS 4 (4.5 for Cybersecurity) or STEP 60, taken within the last two years.</li>
+<li><strong>English waiver:</strong> engineering and science can waive it if you are a national of an English-speaking country or took your bachelor's in one. Science also accepts a written undertaking to bring the certificate before you submit your thesis proposal. Computing has no waiver.</li>
+<li><strong>Aptitude test (Qiyas):</strong> at least 60, taken within the last five years, for Saudi and internal scholarship applicants. External scholarship students are exempt.</li>
+<li><strong>Interview:</strong> required for Data Science and Cybersecurity.</li>
+<li><strong>Statement of Purpose:</strong> required for Physics, Chemistry and Mathematics.</li>
+</ul>
+<h2>How applicants are ranked</h2>
+<p>Every applicant who meets the conditions gets a weighted score, and the highest scores win the seats. The University's Standing Committee for Graduate Studies decides how many seats go to external scholarship, internal scholarship and Saudi applicants, based on how many in each group pass. The 1448 weights:</p>
+<table><thead><tr><th>Programmes</th><th>How the score is made</th></tr></thead><tbody>
+<tr><td>Applying from outside Saudi Arabia (no current scholarship): Shari'ah, Arabic, science and engineering programmes</td><td>50% previous GPA, 50% interview</td></tr>
+<tr><td>Applying from outside Saudi Arabia (no current scholarship): computing programmes</td><td>50% GPA, 30% interview, 20% English test</td></tr>
+<tr><td>Most Shari'ah, Arabic, education and media programmes inside Saudi Arabia</td><td>40% GPA, 30% written exam, 30% interview</td></tr>
+<tr><td>Tafsir; Linguistics; Literature and Rhetoric; History and Civilisation; Arabic Language Skills diploma; Guidance and Counselling diploma</td><td>50% GPA, 50% written exam</td></tr>
+<tr><td>Arbitration diploma</td><td>60% bachelor's GPA, 40% interview</td></tr>
+<tr><td>Computing, inside Saudi Arabia</td><td>50% GPA, 30% interview, 10% aptitude test, 10% English test</td></tr>
+<tr><td>Engineering, inside Saudi Arabia</td><td>50% GPA, 20% interview, 15% aptitude test, 15% English test</td></tr>
+<tr><td>Physics, Chemistry, Mathematics</td><td>50% GPA, 25% aptitude test, 15% interview, 10% English certificate</td></tr>
+<tr><td>Industrial Laboratories (professional master's)</td><td>50% GPA, 25% aptitude test, 25% years of lab experience</td></tr>
+</tbody></table>
+<p>The aptitude test counts only for Saudi and internal scholarship applicants. External scholarship students are exempt from it.</p>
+<h2>Documents for enrolment</h2>
+<p>Once you are nominated, upload these on the admission portal by the date the Deanship announces, each as a PDF under 5 MB, or your nomination is cancelled. For non-Saudi students:</p>
+<ol>
+<li>Your degree certificate</li>
+<li>Your academic transcript</li>
+<li>A copy of your iqama</li>
+<li>A copy of your passport</li>
+<li>The admission agreement, signed and dated</li>
+<li>Your aptitude test certificate, for programmes that require it</li>
+<li>Saudi embassy attestation of your certificate, if it is from outside Saudi Arabia</li>
+<li>Your English certificate, for programmes that require it</li>
+</ol>
+<p>Then fill in the University's enrolment form. On a paid programme, pay the first semester's fee before you are enrolled. If anything you submit turns out to be false or altered, your admission is cancelled, even after you have started studying, and legal penalties follow.</p>
 <h2>Fees for the 1448 intake</h2>
 <p>Paid programmes charge only for the minimum study period: one year for a diploma, two for a master's and three for a PhD. Extra semesters beyond that are not charged. Fees are in SAR.</p>
 <table><thead><tr><th>Programme</th><th>Level</th><th>Per semester</th><th>Whole programme</th></tr></thead><tbody>
