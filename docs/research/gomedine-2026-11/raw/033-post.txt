@@ -1,0 +1,32 @@
+URL: https://gomedine.com/fr_fr/comment-savoir-combien-de-cartes-sim-sont-enregistrees-sous-votre-iqama/
+TITLE: Comment savoir combien de cartes SIM sont enregistrées sous votre Iqama? — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Si vous vivez en Arabie Saoudite, il est courant de posséder plusieurs cartes SIM pour diverses raisons, telles que l’utilisation personnelle, le travail ou encore l’internet. Cependant, il est crucial de suivre le nombre de cartes SIM enregistrées sous votre Iqama, qui est un document d’identité obligatoire pour les expatriés en Arabie Saoudite.
+Avoir plusieurs cartes SIM enregistrées sous votre Iqama sans votre connaissance ou votre consentement peut entraîner diverses complications et même des conséquences pénales. Heureusement, il existe un moyen simple de vérifier le nombre de cartes SIM enregistrées sous votre Iqama grâce au portail Argaami CITC, que nous allons discuter dans cet article.
+Vérification des cartes SIM sur l’Iqama via CITC Si vous voulez savoir combien de cartes SIM sont enregistrées sous votre Iqama, vous pouvez maintenant le faire via le portail Argami de la Commission des communications et des technologies de l’information (CITC). Il existe deux façons de vérifier les cartes SIM enregistrées sous votre Iqama via CITC.
+Grâce à ce service, vous pouvez facilement savoir s’il y a des cartes SIM non autorisées enregistrées sous votre numéro d’Iqama. Continuez à lire pour en savoir plus sur la manière d’utiliser le portail Argami de CITC pour vérifier le nombre de cartes SIM liées à votre Iqama.
+Comment vérifier les cartes SIM enregistrées sous votre Iqama en utilisant le numéro de téléphone mobile enregistré
+Il est important de savoir quelles cartes SIM sont enregistrées sous votre Iqama (carte d’identité saoudienne) afin d’éviter toute utilisation frauduleuse. Heureusement, il est possible de vérifier les cartes SIM enregistrées en utilisant votre numéro de téléphone mobile enregistré. Voici les étapes à suivre:
+Accédez au portail Argami CITC: https://arqami.citc.gov.sa/ .
+Sélectionnez ENGLISH.
+Choisissez l’option « Inquiry ».
+Sélectionnez le type de recherche « Individual ».
+Entrez votre « numéro Iqama » dans le champ ID Number.
+Entrez votre « date de naissance » dans le champ Birth Date.
+Sélectionnez « Yes I have » dans le champ Has Mobile Number et entrez votre numéro de téléphone mobile enregistré.
+Cliquez sur le bouton « Inquiry ».
+Vous devrez entrer un OTP reçu sur le numéro de téléphone mobile enregistré que vous avez fourni. Entrez le code secret et cliquez sur « Submit ».
+Vous verrez une liste de numéros de téléphone mobile et de cartes SIM de données liées à votre Iqama dans la fenêtre suivante.
+Il est important de noter que cette méthode ne fonctionne que si vous avez un numéro de téléphone mobile enregistré sous votre Iqama. Si ce n’est pas le cas, vous devrez utiliser une autre méthode pour vérifier les cartes SIM enregistrées. De plus, si vous constatez que des cartes SIM non autorisées sont enregistrées sous votre Iqama, vous devez les signaler immédiatement aux autorités compétentes pour éviter toute utilisation frauduleuse de votre identité.
+2: Vérifiez les SIM enregistrées sous votre Iqama sans numéro de téléphone enregistré
+Si vous souhaitez savoir combien de cartes SIM sont enregistrées sous votre Iqama sans fournir de numéro de téléphone enregistré, il existe une méthode pour le faire. Cependant, cette méthode ne vous donne que des informations sur le nombre de connexions et non sur les numéros individuels. Voici les étapes à suivre :
+1.Accédez au site Argami CITC : https://arqami.citc.gov.sa/
+2.Sélectionnez l’option « Inquiry » et le type de requête « Individuelle ».
+3.Entrez votre numéro d’Iqama et votre date de naissance.
+4.Sélectionnez l’option « Non, je n’ai pas » dans le champ « Has Mobile Number ».
+5.Cliquez ensuite sur le bouton « Inquiry ».
+6.Vous verrez alors le nombre de connexions mobiles associées à votre numéro d’Iqama.
+Pour avoir toutes les dernières News veuillez nous rejoindre sur notre Groupe TELEGRAM CLIQUEZ ICI
+Cette méthode est particulièrement utile pour les personnes qui ont besoin de savoir combien de cartes SIM sont enregistrées sous leur Iqama, mais qui n’ont pas de numéro de téléphone enregistré. En suivant ces étapes simples, vous pouvez obtenir cette information rapidement et facilement.

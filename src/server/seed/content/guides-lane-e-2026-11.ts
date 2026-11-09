@@ -183,6 +183,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 </tbody></table>
 <ul>
 <li>The visa is cancelled if it is not used to enter within 30 days of being issued, so apply only once the flights are fixed.</li>
+<li>Once they have entered, your parents may stay up to 90 days, within the season's dates above.</li>
 <li>The hotel and transport are booked on Nusuk, or through a licensed agent, before the visa is issued.</li>
 <li>Your mother does not need a mahram to get the visa or to perform Umrah.</li>
 <li>An Umrah visa never allows Hajj, and from 1 Dhul Qa'dah (8 April 2027) Umrah permits stop for the Hajj season.</li>

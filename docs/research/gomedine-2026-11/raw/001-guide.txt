@@ -1,0 +1,170 @@
+URL: https://gomedine.com/fr_fr/guides/ouvrir-un-compte-bancaire-a-medine/
+TITLE: Ouvrir un compte bancaire à Médine — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Accueil / Guides / Ouvrir un compte bancaire à Médine
+Facile
+Nouveaux arrivants
+Ouvrir un compte bancaire à Médine
+Guide étape par étape pour ouvrir votre compte bancaire. Documents nécessaires, banques recommandées et erreurs à éviter.
+Ouvrir un compte bancaire à Médine en 2026
+Guide complet, étape par étape, pour ouvrir votre compte bancaire en Arabie saoudite : documents requis, banques recommandées, délais, frais, et pièges à éviter pour les expatriés francophones installés à Médine.
+🏦 Finance ⏱ Lecture 10 min 👥 Expatriés 🗓 Mise à jour avril 2026
+Iqama
+Obligatoire
+0 SAR
+Compte courant standard
+3–10 j
+Délai moyen d’activation
+SAMA
+Régulateur bancaire
+1. Prérequis indispensables
+Pour ouvrir un compte bancaire en Arabie saoudite, vous devez être résident légal. Les banques appliquent strictement les règles de la SAMA (Saudi Central Bank) en matière de KYC (connaissance du client) et d’enregistrement biométrique via Absher.
+Iqama valide (au moins 3 mois restants de validité recommandés)
+Enregistrement biométrique effectué (empreintes digitales + photo) via un centre Jawazat ou une borne agréée
+Numéro saoudien actif (STC, Mobily ou Zain) enregistré à votre nom
+Justificatif de domicile : contrat Ejar, facture SEC (électricité), ou NWC (eau)
+Lettre de l’employeur précisant le salaire (pour les salariés)
+⚠️ À noter : les touristes et les résidents en visite familiale ne peuvent pas ouvrir de compte bancaire standard. Seuls les titulaires d’Iqama, Premium Residency ou visa de travail y ont droit.
+2. Principales banques en Arabie saoudite
+Voici les banques les plus présentes et les mieux adaptées aux expatriés, toutes supervisées par la SAMA :
+Banque
+Réseau Médine
+Application
+Langues
+Al Rajhi Bank
+Très dense
+Al Rajhi Mobile
+AR / EN
+Saudi National Bank (SNB)
+Dense
+SNB
+AR / EN
+Riyad Bank
+Moyen
+Riyad Mobile
+AR / EN
+SAB (Saudi Awwal Bank)
+Limité
+SABmobile
+AR / EN
+Alinma Bank
+Moyen
+Alinma
+AR / EN
+STC Pay / STC Bank
+100 % digital
+STC Pay
+AR / EN
+💡 Conseil : Al Rajhi Bank est le choix le plus fréquent pour les résidents à Médine grâce à son maillage d’agences, ses DAB multilingues et sa compatibilité avec toutes les plateformes gouvernementales (Tawakkalna, Absher Paiements, Muqeem).
+3. Documents à préparer
+Documents obligatoires
+Original + copie de l’ Iqama
+Original + copie du passeport (avec visa d’entrée)
+Lettre de l’employeur (Salary Certificate) datée de moins de 30 jours, mentionnant salaire, poste et date d’embauche
+Justificatif d’adresse : contrat Ejar enregistré ou facture SEC récente
+Numéro de téléphone saoudien à votre nom
+Documents complémentaires (selon profil)
+Pour les indépendants : Commercial Registration (CR) + licence municipale
+Pour les conjoints non-salariés : lettre de parrainage du conjoint + son certificat de salaire
+Pour les étudiants : attestation universitaire officielle
+4. Étapes d’ouverture
+Préparer ses documents
+Rassembler Iqama, passeport, lettre employeur, contrat Ejar et numéro mobile saoudien actif.
+Choisir une agence
+Repérer l’agence la plus proche de votre quartier via l’application de la banque ou Google Maps. À Médine, les zones de Qurban, Al-Haram, Al-Khalidiyyah concentrent la majorité des agences.
+Prendre rendez-vous
+La plupart des banques permettent la prise de RDV via leur application ou un simple appel. Certaines acceptent le walk-in le matin.
+Se rendre en agence pour le KYC
+Signature du formulaire d’ouverture, vérification biométrique, photo, lecture de l’Iqama.
+Activer le compte
+Activation sous 24 à 72 h après validation interne. Vous recevez un SMS de confirmation.
+Récupérer la carte
+Carte mada (débit) livrée en agence ou par coursier sous 3 à 10 jours ouvrés.
+Installer l’application mobile
+Téléchargement, activation via OTP, définition du code secret. L’app permet virements, paiements factures et SADAD.
+5. Frais et conditions
+Service
+Coût indicatif
+Ouverture de compte courant
+Gratuit
+Carte mada (débit)
+Gratuit (1ʳᵉ carte)
+Tenue de compte
+Généralement 0 SAR
+Virement national (IBAN)
+Gratuit via app
+Retrait DAB autre banque
+≈ 2 SAR
+Virement international SWIFT
+≈ 50–100 SAR + commission de change
+Remplacement de carte
+20–30 SAR
+✅ Bon à savoir : les banques saoudiennes proposent deux modèles de compte : conventionnel (avec intérêts) et islamique (charia-compliant, sans riba). Al Rajhi, Alinma et la plupart des banques offrent par défaut le modèle islamique.
+6. Applications mobiles et services numériques
+Les banques saoudiennes ont massivement digitalisé leurs services. L’application mobile est aujourd’hui le canal principal pour gérer son compte au quotidien :
+Consultation du solde et des relevés
+Virements instantanés via IPS (Sarie Instant) 24/7
+Paiement des factures SADAD (électricité, eau, télécoms, amendes)
+Recharge mobile prépayée
+Transferts internationaux (selon banque)
+Gestion des cartes (blocage, code PIN, limites)
+STC Pay et urpay sont des alternatives 100 % digitales très utilisées pour les petits paiements et transferts Western Union intégrés.
+7. Transferts internationaux
+Pour envoyer de l’argent vers la France, le Maroc, l’Algérie ou la Tunisie, plusieurs options existent :
+Solution
+Délai
+Avantage
+Agence de transfert (Enjaz, Tahweel Al Rajhi)
+Quelques minutes
+Taux compétitifs, large réseau
+Application bancaire (SWIFT)
+1–3 jours
+Pratique, direct compte à compte
+Wise / Revolut (via compte tiers)
+1–2 jours
+Frais très bas, taux proche du marché
+Western Union / MoneyGram
+Quelques minutes
+Retrait en espèces à l’étranger
+⚠️ Vigilance fiscale : tout transfert supérieur à 60 000 SAR doit être documenté (origine des fonds) pour respecter les règles anti-blanchiment de la SAMA.
+8. Erreurs fréquentes à éviter
+❌ Ne faites pas ça :
+Ouvrir un compte avec une Iqama expirant dans moins de 3 mois
+Utiliser un numéro mobile qui n’est pas à votre nom pour l’OTP
+Oublier l’enregistrement biométrique sur Absher avant la demande
+Déposer une lettre de salaire datée de plus de 30 jours
+Partager votre code secret ou OTP, même avec un conseiller bancaire
+💡 Astuce : en cas de changement d’employeur (transfert de kafala), pensez à mettre à jour votre profil bancaire sous 30 jours pour éviter le gel du compte.
+9. Questions fréquentes
+Puis-je ouvrir un compte avant d’avoir mon Iqama ?
+Non. La SAMA exige une Iqama active et un enregistrement biométrique. Certaines banques proposent un « pre-account » pour les nouveaux salariés, mais il reste inopérant tant que l’Iqama n’est pas émise.
+Un conjoint sans emploi peut-il ouvrir un compte ?
+Oui, sous parrainage de l’époux ou de l’épouse résident. Il faut fournir l’Iqama, une copie de l’acte de mariage attesté, et la lettre de salaire du sponsor.
+Puis-je avoir un compte en euros ou en dollars ?
+Oui, la plupart des grandes banques (SNB, SAB, Riyad Bank) proposent des comptes multi-devises sous forme de « Foreign Currency Account », sur demande explicite en agence.
+Mon compte peut-il être gelé ?
+Oui, si votre Iqama expire, si vous êtes déclaré en huroob (absconding), ou en cas d’alerte anti-blanchiment. Le déblocage nécessite une régularisation auprès de Jawazat puis de la banque.
+Quelle est la différence entre un compte islamique et un compte conventionnel ?
+Le compte islamique (par défaut dans la plupart des banques saoudiennes) respecte la charia : pas de riba (intérêts), produits basés sur mourabaha, ijara ou wakala. Le compte conventionnel offre des intérêts créditeurs classiques.
+Est-il possible de tout faire en ligne ?
+STC Bank, D360 et certains comptes Alinma permettent une ouverture 100 % digitale via Nafath (authentification Absher). Le KYC biométrique reste obligatoire, mais il peut être fait à distance via reconnaissance faciale.
+10. Liens officiels et ressources
+SAMA (Banque centrale) Régulateur officiel du secteur bancaire
+Al Rajhi Bank Site officiel et agences
+Saudi National Bank (SNB) Services aux particuliers
+Riyad Bank Offres résidents
+Alinma Bank Banque islamique
+Absher Enregistrement biométrique et Nafath
+STC Pay / STC Bank Solution digitale
+Besoin d’un accompagnement local à Médine ?
+Nos équipes connaissent les agences, les horaires et les conseillers francophones.
+Prendre contact →
+Guides associés
+Obtenir et renouveler son Iqama Document indispensable pour ouvrir un compte
+Coût de la vie à Médine Budget mensuel détaillé
+Mettre à jour son passeport Via Absher en ligne
+Inscrire ses enfants à l’école Démarches et frais
+📄 Mise à jour : avril 2026 · Les informations de ce guide sont données à titre indicatif. Les procédures, tarifs et règlements saoudiens évoluent régulièrement. Vérifiez toujours les informations à jour auprès des sources officielles (Absher, Jawazat, SAMA, MoE, CCHI, MOFA) avant toute démarche.
+Mis à jour le 19/04/2026

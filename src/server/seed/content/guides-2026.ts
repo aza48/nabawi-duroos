@@ -169,7 +169,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>From request to boarding pass</h2>
 <ol>
 <li><strong>Check your profile on Etimad</strong> early in the second semester: name, passport number, passport expiry, phone and email.</li>
-<li><strong>Sign up when the University asks.</strong> Travel Management collects the summer lists months ahead, through your nationality representative or a form and Etimad. Choose your city from the ones set for your country, or say that you do not want a ticket. A student who misses the list gets no ticket. Graduating students are not on this list, because their final ticket is separate.</li>
+<li><strong>Sign up when the University asks.</strong> Travel Management collects the summer lists months ahead, through your nationality representative or a form and Etimad. Choose your city from the ones set for your country, or say that you do not want a ticket. Only students on the list receive a ticket, so if you find you are missing from it, tell your representative at once. Graduating students are not on this list, because their final ticket is separate.</li>
 <li><strong>Watch Etimad.</strong> Your travel order appears under Travel orders once it is approved. On a group booking the order sits under the group leader's name, so not seeing your own order there is normal.</li>
 <li><strong>Find your ticket.</strong> Tickets come out in batches from mid April to mid May. A group ticket arrives as one PDF from Saudia, emailed to one student in the group, with everyone's tickets in it. Search all your email, spam and junk included, for "Saudia" and "flight confirmation", going back a month. If you receive a ticket that is not yours, pass it to your representative. Check the name, the dates and the airports the day you receive it.</li>
 <li><strong>Get your own e-ticket from a group booking</strong> if you want one: in the Saudia app open Assistant, then Change or cancel flight, enter the booking reference and your last name and continue as if changing (nothing is changed), then choose Download e-tickets on the Saudia website.</li>
@@ -230,7 +230,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>A medical certificate if asked. Private clinics do the check-up for about 150 SAR.</li>
 </ol>
 <h2>Schools</h2>
-<p>Government and Saudi private schools teach boys and girls separately. Many international schools teach them together in the early years, so check each school's own policy. International schools run English, Cambridge or national tracks alongside the Saudi curriculum. Several schools give Islamic University families a discount (see <a href="/discounts">Student discounts</a>).</p>
+<p>Government and Saudi private schools teach boys and girls separately. Many international schools teach them together in the early years, so check each school's own policy. International schools follow British, American, IB or other national curricula. Government schools do not take children who are in the Kingdom on a visit, tourist or Umrah visa; an iqama holder's child joins one only with an authorisation letter from the Ministry of Education, which depends on places for expatriates, and a letter from the parent's employer. Some private schools also take only children with an iqama, so ask each school before you plan. Several schools give Islamic University families a discount (see <a href="/discounts">Student discounts</a>).</p>
 <h3>How Saudi schooling is organised</h3>
 <table><thead><tr><th>Stage</th><th>Ages</th><th>Length</th></tr></thead><tbody>
 <tr><td>Kindergarten (روضة)</td><td>3 to 6</td><td>Up to 3 years</td></tr>
@@ -241,8 +241,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>School days are Sunday to Thursday, from about 7:00 to 13:00 or 14:00.</p>
 <h3>Documents for a school age child</h3>
 <ul>
-<li>The parent's iqama or Visitor ID, and passport.</li>
-<li>The child's passport with a valid visa, or the child's iqama.</li>
+<li>The parent's iqama and passport.</li>
+<li>The child's passport, and the child's iqama if he or she has one.</li>
 <li>The birth certificate, attested and translated into Arabic.</li>
 <li>The vaccination record.</li>
 <li>School reports for the last two or three years, translated and attested if they are not in Arabic or English.</li>
@@ -259,17 +259,17 @@ export const GUIDES_2026: SeedGuide[] = [
 </ol>
 <p>Private schools usually charge the full fee for the term you are in, so time a move for the end of a term.</p>
 <h3>Private school fees</h3>
-<p>Private schools on the Saudi track charge roughly 9,000 to 25,000 SAR a year, rising with each stage, and English-medium international tracks cost more. Uniforms, books and the school bus are extra, and the bus alone adds 3,000 SAR or more a year. Many schools give 10% off for brothers and sisters and take the fee in three instalments. Many close registration for the new year in late August, so apply in the spring or early summer.</p>
+<p>Private schools on the Saudi track charge roughly 9,000 to 25,000 SAR a year, rising with each stage, and English-medium international tracks cost more. Uniforms, books and the school bus are extra, and the bus alone adds 3,000 SAR or more a year. Some schools give 10% off for brothers and sisters and take the fee in three instalments. Some private schools close registration for the new year in late August, and international schools open theirs from January or February, so apply early in the year.</p>
 <h2>Free Qur'an and Islamic schools</h2>
 <p>Listed alphabetically.</p>
 <table><thead><tr><th>School</th><th>Ages and length</th><th>Who can join</th><th>What it asks</th></tr></thead><tbody>
-<tr><td>Dar al-Hadith</td><td>From 11, for 6 years: 3 intermediate and 3 secondary</td><td>Children with an iqama</td><td>Reading and writing in Arabic; 2 to 3 juz memorised for intermediate, 4 to 5 for secondary; the last school certificate attested, translated into Arabic and equated at the Ministry of Education office; online registration, then a placement exam in person</td></tr>
+<tr><td>Dar al-Hadith</td><td>From 11, for 6 years: 3 intermediate and 3 secondary</td><td>Children with an iqama</td><td>Reading and writing in Arabic; 2 to 3 juz memorised for intermediate, 4 to 5 for secondary; the last school certificate attested, translated into Arabic and equated at the Ministry of Education office; online registration, then a placement exam in person in May or June</td></tr>
 <tr><td>Masjid an-Nabawi halaqat</td><td>From 5, no end date</td><td>Children and adults with an iqama or any visa</td><td>A passport with visa or an iqama, and a Saudi mobile number. Register at <a href="https://reg.qm.edu.sa/">reg.qm.edu.sa</a> any time of year</td></tr>
-<tr><td>Masjid an-Nabawi Ma'had</td><td>From 12 for intermediate, from 15 for secondary, 3 years each</td><td>Iqama holders, with written consent from the sponsor</td><td>Arabic, Qur'an memorisation, a written exam and an interview. One registration window a year: see <a href="/guides/masjid-an-nabawi-institute-and-college">The Masjid an-Nabawi Institute and College</a></td></tr>
+<tr><td>Masjid an-Nabawi Ma'had</td><td>From 12 for intermediate, from 15 for secondary, 3 years each</td><td>Iqama holders, with written consent from the sponsor</td><td>Arabic, Qur'an memorisation, a written exam and an interview. One registration window a year: for 1448 it ran from 5 to 20 Safar (19 July to 3 August 2026). See <a href="/guides/masjid-an-nabawi-institute-and-college">The Masjid an-Nabawi Institute and College</a></td></tr>
 </tbody></table>
 <ul>
-<li>Dar al-Hadith teaches the Qur'an, the Islamic sciences, Arabic, history and maths, and pays its pupils a monthly allowance. Its graduates have priority for the Islamic University. A pupil aiming for another field, such as medicine or engineering, moves to a government secondary school after intermediate.</li>
-<li>The halaqat meet after Fajr or Duha, between Asr and Maghrib, and between Maghrib and Isha, and some classes run online. They give small rewards for passed memorisation exams, paid into a bank account, so keep an IBAN letter from your bank ready.</li>
+<li>Dar al-Hadith teaches the Qur'an, the Islamic sciences, Arabic, history and maths, and pays its pupils a monthly allowance of about 300 SAR in intermediate and 350 SAR in secondary. Its graduates have priority for the Islamic University. A pupil aiming for another field, such as medicine or engineering, moves to a government secondary school after intermediate.</li>
+<li>The halaqat meet after Fajr or Duha, between Asr and Maghrib, and between Maghrib and Isha, and some classes run online. Men's circles are at Gate 22, first floor, and women's at Gate 24 or Gate 13, second floor. They give small rewards for passed memorisation exams, paid into a bank account, so keep an IBAN letter from your bank ready.</li>
 </ul>
 <h2>Qur'an circles</h2>
 <p>Most neighbourhood masjids run Tahfidh al-Qur'an circles after Asr or Maghrib, usually starting with Juz 'Amma, tajweed and reading. Ask the imam of your local masjid. Masjid an-Nabawi also runs halaqat for children (above).</p>`,
@@ -291,6 +291,14 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Arrive at the time on your booking and follow the stewards. The barcode on the permit opens the automatic gates only at your slot time, and people with special needs have their own path.</li>
 <li>Pray two rak'ahs and make du'a calmly, then make room for others.</li>
 </ol>
+<ul>
+<li><strong>Book before you arrive.</strong> A visitor creates the Nusuk account with the passport and visa numbers as soon as the visa is issued and books from home, because slots in the busy seasons are gone by the time people land.</li>
+<li><strong>When slots appear.</strong> New slots for the coming week are mostly released on Friday afternoon, Saudi time, and small batches open about every 30 minutes through the day. Open the app several times a day, above all on Friday afternoon.</li>
+<li><strong>Book under the right category.</strong> A permit booked as a man does not open the women's gate, and the women's times are different. Men usually enter from late night to early morning, often by Gate 37 (Bab as-Salam). Women have two windows, early morning and late evening, often by Gate 25 (Bab Uthman ibn Affan). The gate and time on your permit are the ones that count.</li>
+<li><strong>Children.</strong> Babies and very young children are not admitted. From the age of 5, a child needs a permit of their own, booked like an adult's.</li>
+<li><strong>Arrive 30 minutes early</strong> and avoid photos inside: many people are waiting behind you.</li>
+<li><strong>Use only the official Nusuk app,</strong> published by the Ministry of Hajj and Umrah. Nobody can sell you a Rawdah permit or guaranteed entry: the permit is free and in your own name, and an offer of paid access is a scam.</li>
+</ul>
 <h2>Al-Baqi'</h2>
 <p>Jannat al-Baqi', where many Companions and members of the Prophet's ﷺ family are buried, is on the eastern side of the Haram. It is open to men. Visits can be booked, and the crowd level checked, on the Baqi' portal of Madinah Municipality at <a href="https://ekram.amana-md.gov.sa/">ekram.amana-md.gov.sa</a>.</p>
 <h2>Umrah from Madinah</h2>
@@ -347,7 +355,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Tourist eVisa:</strong> open to citizens of dozens of countries, including the UK, the US, Canada and most of Europe. Bosnia and Herzegovina, Mexico, North Macedonia and Serbia were added in early November 2026. It costs about SAR 535 in total online or SAR 480 on arrival at an international airport (paid by card at the airport kiosks), includes compulsory health insurance, and is valid for one year with multiple entries. You may stay up to 90 days in total, counted across all your entries. Your passport must be valid for at least six months when you enter. The visa cannot be extended inside the Kingdom, and a new one can be issued only after the old one expires. It covers Umrah with a Nusuk permit, but not Hajj. Check the rules for your passport on <a href="https://visa.visitsaudi.com/">visa.visitsaudi.com</a>, and apply only there, not through agents who add their own fees.</li>
 <li><strong>Holders of a US, UK or Schengen visa:</strong> a person whose US, UK or Schengen visa has already been used to enter that country, or who lives in the US, the UK or the EU with a valid residence permit, gets the tourist eVisa whatever their nationality. Their spouse, children and parents come with them on the same terms, also whatever their nationality. The visa on arrival is meant mainly for passengers on Saudi national airlines, so anyone flying with another airline gets the eVisa online before the flight, or risks being refused boarding.</li>
 <li><strong>Extending a visit visa:</strong> the host (a Saudi or an iqama holder) extends it in Absher from 7 days before it expires, for 100 SAR each time, with new medical insurance for the new dates. The total stay is capped at 180 days. The steps are below.</li>
-<li><strong>Family visit visa:</strong> an iqama holder applies on the Ministry of Foreign Affairs visa platform for close relatives such as a spouse, children or parents. The government fee is SAR 300 for a single entry or SAR 500 for multiple entries, plus medical insurance. Approval is decided case by case.</li>
+<li><strong>Family visit visa:</strong> an iqama holder applies on the Ministry of Foreign Affairs visa platform for close relatives: a spouse, children, parents, parents-in-law, grandparents, a brother or sister with their spouse and children, and the spouse's brothers and sisters. The host's iqama must have at least 4 months left on the day of the application. The government fee is SAR 300 for a single entry or SAR 500 for multiple entries, plus medical insurance. Approval is decided case by case, and the commonest reasons for a refusal are an iqama too close to expiry, a relative outside that list, and a mistyped detail such as a wrong visa number. Apply before Ramadan: applications made in the Hajj season, from 1 Ramadan to 1 Safar, are refused.</li>
 <li><strong>Umrah visa:</strong> applied for on Nusuk, once the hotel and transport are booked and recorded there or through a licensed agent. It must be used to enter within 30 days of being issued, and the 1448 season's last day of entry is 23 March 2027. The full season dates are in <a href="/guides/bringing-parents-to-visit">Bringing your parents to visit Madinah</a>.</li>
 </ul>
 <p>On a visit visa you may live here and take short courses at language centres. You may not work, and degree study needs a student visa.</p>
@@ -371,8 +379,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>The host extends the visa in Absher, and the visitor stays in the country. Start a week before it expires.</p>
 <ol>
 <li><strong>Buy new health insurance</strong> for the extra period first. Absher refuses the extension without it. Insurers' websites find the visitor by visa number and passport number, then ask for the border number and the visa's expiry date, both shown in Absher.</li>
-<li><strong>Pay the 100 SAR extension fee</strong> through SADAD in your banking app. The insurance is priced separately and costs more for older visitors.</li>
-<li><strong>From 7 days before the visa ends,</strong> sign in to absher.sa on a computer and open the service Extend Visit Visa (تمديد تأشيرة زيارة).</li>
+<li><strong>Pay the 100 SAR extension fee</strong> through SADAD in your banking app: SADAD or Payments, then Government payments, then Alien Control (Jawazat), then the service Extend visitor visa. Enter the visitor's border number, not your own iqama number, and keep a screenshot of the receipt. The insurance is paid for separately.</li>
+<li><strong>From 7 days before the visa ends,</strong> sign in to absher.sa on a computer and open <strong>My Services</strong>, then <strong>Passports</strong>, then <strong>Visitor services</strong>.</li>
 <li><strong>Choose the visitor,</strong> press Start service, check the details, press Next, then accept the terms and confirm.</li>
 <li><strong>Check the new end date</strong> by opening the visitor again, before the old date passes.</li>
 </ol>
@@ -380,7 +388,17 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>From 7 days before expiry to the expiry date</td><td>100</td></tr>
 <tr><td>In the 3 days after expiry</td><td>100, plus a 500 fine</td></tr>
 </tbody></table>
-<p>The total stay, with every extension, is 180 days at most. A tourist eVisa cannot be extended at all. If the online request fails, use the Absher communication service. To find a visitor's border number or check a visa without signing in, see <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
+<p>The total stay, with every extension, is 180 days at most. A tourist eVisa cannot be extended at all. Absher does not show whether the fee has arrived: if it answers that the visa cannot be extended because of insufficient funds, the payment has not reached it, so check that you paid against the visitor's border number, then try again. To find a visitor's border number or check a visa without signing in, see <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
+<h2>Moving children from a visit visa to an iqama</h2>
+<p>When both parents hold iqamas, children under 18 who came on a family visit visa can be moved onto iqamas without leaving the country. This is done at the Jawazat office of the city where the father's sponsor is registered, with an appointment booked in Absher for Resident services.</p>
+<ul>
+<li>Each child's birth certificate and the parents' marriage certificate, attested by the Saudi embassy and the Ministry of Foreign Affairs.</li>
+<li>The children's original passports and a passport photo of each child.</li>
+<li>Copies of both parents' iqamas and passports.</li>
+<li>A letter from the father's sponsor asking Jawazat to move the children from the visit visa to an iqama. A private employer's letter carries its company stamp and the Chamber of Commerce stamp.</li>
+<li>The visa application form, available at Jawazat, and a signed undertaking for converting the visit visa to an iqama. In Madinah one form covers all the children.</li>
+</ul>
+<p>Pay the dependant fees for each child up to the father's iqama expiry date, hand in the file at the counter, and Jawazat cancels the visit visa in the child's passport. Once it is approved, the children's iqamas appear in Absher within 2 to 5 working days. With a student iqama, the University is the father's sponsor, so ask Travel Management through Tawasul what it needs before you book the appointment.</p>
 <h2>What an iqama adds</h2>
 <ul>
 <li>A Saudi driving licence and a car in your name.</li>
@@ -483,11 +501,11 @@ export const GUIDES_2026: SeedGuide[] = [
     slug: "drivers-license",
     stage: "getting-settled",
     title: "Driving in Madinah: your Saudi driving licence, the driving school, insurance, fines and renting a car",
-    summary: "Who can drive on what, swapping a foreign licence at the model driving school, the driving school route, renewal, insurance and Najm, the common fines and the Saher cameras, and renting or buying a car. The swap needs an iqama.",
+    summary: "Who can drive on what, swapping a foreign licence at the model driving school, the driving school route, renewal, insurance, what to do after an accident, the common fines and the Saher cameras, renting or buying a car, and keeping a car legal in Absher (istimara, inspection, authorising another driver). The swap needs an iqama.",
     bodyHtml: `
 <p>Checked November 2026. Madinah is an easy city to drive in: wide roads, cheap fuel, and parking at the Haram that fills only on Fridays and in Ramadan. What you need in order to drive depends on what you hold.</p>
 <table><thead><tr><th>You hold</th><th>You can drive on</th><th>A Saudi licence</th><th>Buying a car</th></tr></thead><tbody>
-<tr><td>A visit or tourist visa</td><td>Your valid home licence, with an International Driving Permit if it is not in English or Arabic, for one year from the day you entered or until the licence expires, whichever comes first</td><td>No</td><td>No. Rent instead</td></tr>
+<tr><td>A visit or tourist visa</td><td>Your valid home licence, with an International Driving Permit or an Arabic translation from an approved office if it is not in Arabic, for one year from the day you entered or until the licence expires, whichever comes first</td><td>No</td><td>No. Rent instead</td></tr>
 <tr><td>A Visitor ID (educational visa)</td><td>Your valid home licence and an International Driving Permit, for the same one year from entry</td><td>No. The swap and the driving school both need an iqama</td><td>No. Rent instead</td></tr>
 <tr><td>An iqama</td><td>Your home licence for a short period after the iqama is issued</td><td>Yes: swap your licence or go through the driving school</td><td>Yes</td></tr>
 </tbody></table>
@@ -536,8 +554,19 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Third-party insurance is the law.</strong> Every car must have it, and Absher will not register a car to you, or transfer one, without a policy in your name. Comprehensive cover for your own car is optional, and a bank that finances a car insists on it.</li>
 <li><strong>Compare policies online.</strong> Several Saudi comparison sites quote every licensed insurer at once. Prices depend on the car, your age and your record.</li>
 <li><strong>A small accident with nobody hurt:</strong> move to the side if you can, do not leave, and report it through the Najm app or on 920000560. Najm's inspector records the damage, decides fault and sends the report to both insurers. Report within 24 hours.</li>
-<li><strong>Anyone hurt, or a dispute:</strong> call 911 and wait for the traffic police.</li>
+<li><strong>Anyone hurt, a fire, neither car insured, or a dispute:</strong> call 911, or the traffic police on 993, and wait for them.</li>
 </ul>
+<h3>After an accident, step by step</h3>
+<ol>
+<li><strong>Report it in the Najm app.</strong> Sign up with your iqama number and approve it in Nafath, press Report an accident, add the other car's details and upload photos of both cars. Najm assigns an inspector. A text from Najm confirms the case, and a second one from the traffic police confirms the accident report.</li>
+<li><strong>In a rented car,</strong> call the rental company straight after Najm. It handles the rest with you.</li>
+<li><strong>Have the damage estimated</strong> (تقدير, Taqdeer) with the Najm report. You need the estimate for the insurance claim.</li>
+<li><strong>Claim.</strong> If the other driver is at fault, claim from his insurer on its website and upload the reports. If you are fully at fault and hold comprehensive cover, claim from your own insurer. The insurer pays within 15 days of confirming the claim.</li>
+<li><strong>The other driver has no insurance?</strong> Book a traffic department (Muroor) appointment, take the estimate, and ask the officer for the final report. With comprehensive cover, hand that report to your insurer. With third-party cover only, file the claim on Najiz, which sends it to the Taradhi platform for an online reconciliation session, and if he still does not pay, ask the execution court on Najiz to collect.</li>
+<li><strong>Issue a repair permit before a garage touches the car:</strong> Absher, Vehicles, Vehicle Management, choose the car, then Issue vehicle repair permit. For an accident on record, issue it within 90 days of the accident. For damage with no recorded accident, Absher gives one permit per car each calendar year; for a second one, go to the traffic department. The garage then takes up the permit, and a permit no garage has taken up within 24 hours expires.</li>
+<li><strong>Need a record of your accidents?</strong> Absher, General Services, Absher Reports, Request report, Traffic accidents. It lists the last two years and costs 28.75 SAR.</li>
+</ol>
+<p>Never drive away from an accident. Leaving the scene is punished with a fine of up to 10,000 SAR and up to 3 months in prison. Causing a death carries up to 4 years in prison and a 200,000 SAR fine, and injuries lasting more than 15 days up to 2 years and 100,000 SAR. Someone hit your car and drove off? Note the plate number, report it to the traffic police, get the damage estimated and the repair permit, and claim from your own insurer if you hold comprehensive cover.</p>
 <h2>Fines, cameras and points</h2>
 <p>Madinah's main roads carry Saher cameras for speed and red lights, and mobile cameras appear in bus lanes. Fines arrive in Absher without a paper ticket, so check your violations every month, pay in your banking app under government payments, and object in Absher within 30 days if a fine is wrong. As of November 2026 the common fines are:</p>
 <table><thead><tr><th>Violation</th><th>Fine (SAR)</th></tr></thead><tbody>
@@ -553,6 +582,38 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Renting is the answer for anyone without an iqama, and for families with visitors. Companies at the airport and across the city rent by the day, the week and the month. The usual conditions: you are 21 or over, you hold a licence in English or Arabic or an International Driving Permit with it, and you pay with a credit card in your own name. Every camera fine during the rental is charged to you, with the company's handling fee on top, so drive as if the car were yours. A monthly rental of a small car is one of the cheaper ways for a family to have wheels for a season.</p>
 <h2>Buying a car</h2>
 <p>With an iqama you can buy a used car and transfer it to your name in Absher. The checks to make before you pay, and the steps, are in <a href="/ask/buying-a-used-car">Can I buy a used car as a student, and what do I need?</a>. When you leave the Kingdom, sell it first: a car in your name blocks a final exit. See <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
+<h2>Keeping your car legal: Absher's vehicle services</h2>
+<p>Everything below is in Absher under <strong>Vehicles</strong>, then <strong>Services</strong>, then <strong>Vehicle Management</strong> (إدارة المركبات), where you choose the car.</p>
+<h3>Renewing the registration (istimara)</h3>
+<ol>
+<li>Renew once the istimara has less than 180 days left. Absher renews only with valid insurance, a valid periodic inspection, every traffic fine paid, and any late fee on the registration paid.</li>
+<li>Choose the car, then <strong>Renew vehicle registration</strong>. Absher shows the fee: it depends on the engine size for cars made in 2015 or earlier and on fuel economy for later cars, from nothing for the most efficient up to 190 SAR a year. Pay it in your banking app, then accept the terms and confirm in Absher.</li>
+<li>A card with no expiry date printed on it stays valid, so keep it. Otherwise order the new card by post within 90 days of the renewal, or collect it at the traffic department with an appointment for Print istimara (طباعة رخصة سير مركبة).</li>
+</ol>
+<h3>The periodic inspection (Fahas)</h3>
+<ul>
+<li>A new private car has its first inspection three years after it is first registered, then one every year. A valid inspection is needed to renew the istimara and to sell the car.</li>
+<li>Inspection centres take appointments only. Book at <a href="https://vi.vsafety.sa/">vi.vsafety.sa</a>: enter your name, mobile number and email (or the details of the person you send with the car), choose Registered vehicle, Saudi Arabia, your plate number and Private vehicle, then Periodic inspection, your region, the centre, the date and the time, and confirm with the code sent to your phone. Keep the confirmation.</li>
+<li>To check the inspection date, open the car in Vehicle Management and press More details.</li>
+</ul>
+<h3>Insurance</h3>
+<p>Open the car in Vehicle Management to see the insurer, the start date, the status and the expiry date of its policy. Renew before that date: driving uninsured is fined 150 SAR, and the istimara cannot be renewed without a valid policy.</p>
+<h3>Letting someone else drive your car</h3>
+<ol>
+<li>Open the car and choose <strong>Issue driver authorisation</strong>, then accept the terms.</li>
+<li>Enter the driver's iqama number and date of birth, choose inside or outside Saudi Arabia, and the length.</li>
+<li>Enter the code sent to the driver's Absher mobile number, so keep the driver beside you, then print the confirmation.</li>
+</ol>
+<ul>
+<li>The car needs a valid istimara and insurance. The driver needs a valid iqama and licence, an Absher account and no unpaid fines.</li>
+<li>Inside the Kingdom you can authorise any iqama holder, for any length. Outside the Kingdom, only members of your family, and only for as long as their exit and re-entry visa runs.</li>
+<li>Each car takes one authorised driver at a time. Traffic fines during the authorisation are recorded against the authorised driver.</li>
+<li>To end it early, open View or cancel driver authorisation. The driver can also end it under Received driver authorisations, with a code sent to you.</li>
+</ul>
+<h3>Your car is not where you parked it</h3>
+<p>Before you report a theft, check whether the traffic police towed it: Absher, Vehicles, Inquiries, then Impounded vehicles inquiry, and choose the car. The page shows the date and the place if it was towed.</p>
+<h3>Cards by post</h3>
+<p>A new or renewed driving licence, istimara or iqama can be posted to your National Address within 90 days of being issued: Absher, My Services, Postal Delivery Service, then Request postal document delivery. Choose the document, the address and your mobile number. Saudi Post sends a text with a link to pay 17.25 SAR, then a second text with the tracking number. The card arrives in about three working days.</p>
 <h2>Driving well in Madinah</h2>
 <ul>
 <li>Fuel is sold by the litre at every station, 2.18 SAR for 91 and 2.33 SAR for 95 as of November 2026, and most stations take cards and phone payment.</li>
@@ -655,17 +716,24 @@ export const GUIDES_2026: SeedGuide[] = [
 <blockquote><p>Tip: Book antenatal visits early, ask the hospital for its current delivery price in writing, and ask what is included before you decide.</p></blockquote>
 <p>On a visit visa, the insurance that comes with the visa pays for emergency pregnancy and childbirth care only up to a low limit (5,000 SAR), so plan to pay for a delivery yourself.</p>
 <h2>After the birth: papers, step by step</h2>
-<p>Your baby needs four papers, in this order: the birth record, the birth certificate, a passport from your embassy, then a place on your iqama. Start in the first week.</p>
+<p>Your baby needs four papers, in this order: the birth record, the birth certificate, a passport from your embassy, then a place on your iqama.</p>
 <h3>1. The birth record at the hospital</h3>
 <ol>
-<li>The hospital where your baby is born registers the birth with Civil Affairs. You do not need to visit the Civil Affairs office.</li>
-<li>Before the hospital submits it, check the spelling of every name, the parents' and the baby's, letter by letter against your passports. A mistake here follows your child onto every later document.</li>
+<li>The birth is declared at the hospital where your baby is born. You do not need to visit the Civil Affairs office.</li>
+<li>Before the hospital submits it, check the spelling of every name, the parents' and the baby's, letter by letter against your passports.</li>
 <li>The hospital gives you the original birth notification. It is issued only once, so make several copies and keep the original safe. Your embassy needs it.</li>
 </ol>
 <h3>2. The birth certificate in Absher</h3>
-<p>Once the birth is registered, sign in to Absher and open <strong>Services</strong>, then <strong>Civil Affairs services</strong>, then <strong>Birth certificate services</strong>, then <strong>View birth certificate</strong>. View it, check it and print it. Register the birth promptly: a late birth certificate carries a fine and holds up your iqama renewal.</p>
+<p>Once the birth is registered, sign in to Absher and open <strong>Services</strong>, then <strong>Civil Affairs services</strong>, then <strong>Birth certificate services</strong>, then <strong>View birth certificate</strong>. View it, check it and print it. Register the birth promptly: a birth registered more than 30 days after the baby is born carries a 50 SAR late fee, paid online, and an unpaid late fee holds up your iqama renewal.</p>
+<p>The hospital sends its birth notice to the Ministry of Health, and a text message from the Ministry of Interior tells you when the birth is recorded. This takes up to two weeks. If no certificate shows after that message:</p>
+<ol>
+<li>In Absher, open <strong>Services</strong>, then <strong>Civil Affairs</strong>, then <strong>New Born Registration</strong>. It works while the baby is under one year old and once your National Address is registered.</li>
+<li>Check the spelling of every name and the date of birth. If anything is wrong, stop and ask the hospital to correct its notice.</li>
+<li>Accept the terms, then choose postal delivery of the certificate to your National Address, or collect it at a Civil Affairs office.</li>
+</ol>
+<p>If the online request does not go through, book a Civil Affairs appointment in Absher with the service Birth registration (تسجيل واقعة ميلاد), at any office in the region where your baby was born: see <a href="/guides/family-records-on-absher#booking-a-jawazat-civil-affairs-or-traffic-appointment">Booking an appointment</a>. Arrive 20 minutes early with the text message from the Ministry of Interior, copies of both parents' passports, the father's iqama and the mother's if she has one. If the mother is not on the father's iqama, for example because she is on a visit visa, add the marriage certificate translated into Arabic and a copy of her Saudi visa. Fill in the birth registration form (form 87), pay the 50 SAR late fee if the baby is more than 30 days old, and the certificate is printed at the counter.</p>
 <h3>3. The baby's passport</h3>
-<p>Your embassy registers the birth and issues the baby's passport. Embassies ask for the birth notification translated by a translator they accept, so read your embassy's website for its list before you go, and take copies of both parents' passports and iqamas.</p>
+<p>Your embassy registers the birth and issues the baby's passport. Read your embassy's website for its list of papers before you go: it can ask for the birth notification translated by a translator it approves. Take copies of both parents' passports and iqamas. If your embassy wants the Saudi birth certificate attested, the Ministry of Foreign Affairs attests it first.</p>
 <h3>4. Your baby's iqama</h3>
 <p>If you hold an iqama, add your baby to it as a dependant. Send one request for each child, twins included.</p>
 <table><thead><tr><th>Where the baby was born</th><th>Fee</th></tr></thead><tbody>
@@ -682,6 +750,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </ol>
 <p>This Tawasul is the Ministry of Interior's request service inside Absher, not the University's Tawasul. Add the baby within three months of a baby born abroad arriving, to avoid a fine. The fees for dependants are in <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>, and the family services in Absher are in <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
 <p>On a Visitor ID there is no iqama to add the baby to. Register the birth and get the passport the same way, then ask the Deanship of Admission and Registration through Tawasul, subject Educational visa, how your baby's stay is arranged.</p>
+<p><strong>Mother on a visit visa?</strong> A baby born here to a mother on a family visit visa needs an exit stamp from Jawazat before leaving. Follow the steps above up to the passport. Then, at least 15 days before you travel, book a Jawazat appointment for Resident services and go to the Expatriate Affairs section (إدارة شؤون الوافدين) with the baby's passport, the father's iqama and passport, the mother's passport with her Saudi visa, the marriage certificate translated into Arabic and the birth text message from the Ministry of Interior, each with a copy. Jawazat stamps the baby's exit in the passport.</p>
 <h3>5. Vaccinations</h3>
 <p>The first vaccines are given in the hospital before you go home. The rest follow the national schedule at your primary health care centre: see <a href="/ask/baby-vaccinations">How do I get my baby vaccinated in Madinah?</a></p>`,
   },
@@ -697,7 +766,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h3>Facilities</h3>
 <ul>
 <li>An indoor sports hall with courts for basketball, handball and volleyball, and seats for spectators</li>
-<li>A covered, air-conditioned Olympic pool, and an outdoor Olympic pool</li>
+<li>A covered, air-conditioned Olympic pool, and an outdoor Olympic pool that is closed for maintenance</li>
 <li>A squash court</li>
 <li>A weights and bodybuilding hall</li>
 <li>A CrossFit hall</li>
@@ -713,7 +782,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>6 months</td><td>600 SAR</td><td>800 SAR</td><td>1,000 SAR</td></tr>
 <tr><td>12 months</td><td>1,000 SAR</td><td>1,200 SAR</td><td>1,700 SAR</td></tr>
 </tbody></table>
-<p>All prices include VAT. Show your University card to get the student or staff price. For one month a student pays exactly half the public price. On longer memberships the student saving is about 40% (for example 1,000 SAR a year instead of 1,700), but the monthly cost drops further: a year works out at about 83 SAR a month.</p>
+<p>All prices include VAT. For one month a student pays exactly half the public price. On longer memberships the student saving is about 40% (for example 1,000 SAR a year instead of 1,700), but the monthly cost drops further: a year works out at about 83 SAR a month.</p>
 <h3>Pausing your membership</h3>
 <p>You can pause (freeze) a longer membership, for example when you travel in the holidays:</p>
 <ul>
@@ -768,7 +837,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <blockquote><p>Note: These steps use an iqama number. If you are here on a Visitor ID, ask your operator in a branch which lines are registered to your passport.</p></blockquote>
 <h2>A number you do not recognise</h2>
 <ol>
-<li>Contact the operator (STC 900, Mobily 1100, Zain 959, or a branch) with your iqama details ready, and ask them to cancel it.</li>
+<li>Contact the operator (STC 900, Mobily 1100, Zain 959, or a branch) with your iqama details ready, and ask them to cancel it. In a branch, show your iqama and give the number: the line is cancelled within 24 hours.</li>
 <li>File a complaint and keep the reference number.</li>
 <li>If the operator has not fixed it within five working days, escalate to CST through its telecom complaints service.</li>
 <li>Check Mutasil again to confirm the number is gone.</li>
@@ -777,7 +846,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Absher sends its verification codes to the number on file, so update it when you change your SIM. The new number must be active, able to receive SMS, and registered to your own ID (or that of a close relative). Your bank keeps its own record of your number, so update it with the bank as well.</p>
 <ul>
 <li><strong>Absher app:</strong> before logging in, open Digital Identity Management, choose Change Mobile Number, enter your iqama or ID number and date of birth, enter the new number and finish the biometric check.</li>
-<li><strong>Nafath app:</strong> open Digital Identity Account Management, choose Digital Identity Mobile Number Update, enter the details and finish the biometric check.</li>
+<li><strong>Nafath app:</strong> open Digital Identity Account Management, choose Digital Identity Mobile Number Update, enter your iqama number, then the new number and the code sent to it, and finish the biometric check. For the fingerprint step, lay your left hand flat and let the camera capture the four fingers, without the thumb. If it fails, adjust the distance and the focus and try again. The new number works in Absher about 10 minutes later.</li>
 <li><strong>Absher kiosk</strong> (at Jawazat offices, malls, airports and government service centres): choose your language, enter your iqama or ID number, choose Update Mobile Number, scan your fingerprint, then enter the new number and the code sent to it. This is the way to go if you no longer have your old number.</li>
 </ul>
 <h2>Activating Absher</h2>
@@ -821,6 +890,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>9 months</td><td>488</td></tr>
 <tr><td>12 months</td><td>650</td></tr>
 </tbody></table>
+<p>Renewed while the holder is outside Saudi Arabia, the iqama of a domestic worker or of a sponsored companion (a father, mother, brother or sister under your sponsorship) costs double: 1,300 SAR instead of 650 SAR.</p>
 <p>A renewal is held up by unpaid traffic fines, children not yet added to the iqama, a late birth certificate fine or an expired visa on the file. Clear these before the expiry date, not after. How to renew your wife's and children's iqamas, even while they are abroad, is in <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
 <h3>Renewing late</h3>
 <p>An iqama that is not renewed within 3 days of its expiry date is fined:</p>
@@ -833,7 +903,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h3>If you lose your iqama or passport</h3>
 <ol>
 <li><strong>Get a police report</strong> at the nearest police station the same day, and keep it.</li>
-<li><strong>A lost iqama:</strong> the sponsor requests a replacement through Jawazat (Travel Management for a student iqama, you for your family). A replacement costs 1,000 SAR the first time and 2,000 SAR the second time. Your digital iqama in Absher and Tawakkalna stays valid proof of identity meanwhile.</li>
+<li><strong>A lost iqama:</strong> the sponsor requests a replacement through Jawazat (Travel Management for a student iqama, you for your family). For a work iqama or a family member's iqama, a replacement costs 1,000 SAR the first time and 2,000 SAR the second time.</li>
 <li><strong>A lost passport:</strong> report it in Absher, which has a service for a lost or stolen passport, then go to your embassy or consulate for a new one. Embassies ask for the police report, a written statement of the loss, a Jawazat printout of your iqama details, a copy of the lost passport if you have one, your national ID card, a copy of your iqama and the passport fee. Each country sets its own list, so read its website first.</li>
 <li><strong>Move your Saudi records to the new passport:</strong> see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
 </ol>
@@ -849,12 +919,14 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Extra months must fall within the validity of your iqama. If you extend while you are already abroad, the extra months cost double: 200 SAR a month on a single visa and 400 SAR a month on a multiple visa. Fees are not refunded if you cancel the visa, so choose the length carefully.</p>
 <h3>The rules that catch people</h3>
 <ul>
-<li><strong>Come back before it expires.</strong> An exit and re-entry visa that runs out while you are abroad leaves you outside with no way back on that iqama.</li>
-<li><strong>Your passport must outlast the trip.</strong> Absher refuses a visa when the passport has less than 90 days left. Renew the passport first: see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
+<li><strong>Come back before it expires, or extend it.</strong> Extend it from Absher before it runs out, while the iqama is valid and the extension fee is paid (the steps are below). If it has already run out while you are abroad, the sponsor extends it online through the Ministry of Foreign Affairs site instead. Watch both dates: the visa and the iqama.</li>
+<li><strong>The iqama must outlast the visa.</strong> For a visa set by number of days, the iqama must be valid for the visa's length plus 90 days. For a visa set by return date, the return date must fall at least 7 days before the iqama expires.</li>
+<li><strong>Your passport must outlast the trip.</strong> The passport must stay valid for at least 3 months beyond the end of the visa, or Absher refuses it. Renew the passport first: see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
 <li><strong>Fines block it.</strong> Any unpaid traffic fine on you, or on a dependant, stops the visa being issued.</li>
 <li><strong>Apply from inside Saudi Arabia.</strong> The traveller must be in the Kingdom when the visa is issued, with a valid iqama.</li>
-<li><strong>Fingerprints on file.</strong> The traveller's fingerprints must be registered with Jawazat, or their Absher account active.</li>
+<li><strong>Fingerprints on file.</strong> The traveller's fingerprints must be registered with Jawazat, or their Absher account active. This applies to family members too, so check each traveller's fingerprints well before the trip, and book an appointment for anyone missing: see <a href="/guides/family-records-on-absher#booking-a-jawazat-civil-affairs-or-traffic-appointment">Booking a Jawazat appointment</a>.</li>
 <li><strong>One open visa at a time.</strong> An earlier exit and re-entry visa that was issued and never used blocks a new one. Cancel it in Absher before you issue the next.</li>
+<li><strong>Travel within 3 months, or cancel.</strong> Use the visa within 3 months of the day it is issued. A family member's visa you will not use is cancelled in Absher (Family Members Services, then Visa Services) while it is still valid, within 90 days of issue or before the return date, whichever comes first. After that a penalty is charged automatically.</li>
 <li><strong>Pay against the right iqama.</strong> The fee is paid with the iqama number of the person travelling, not the head of the family's.</li>
 <li><strong>Print it or save it.</strong> Airlines ask to see the visa at check-in. Keep a copy on your phone.</li>
 <li><strong>The summer ticket and the visa go together.</strong> Request the visa when the University collects the summer travel lists, so the visa dates cover the ticket dates.</li>
@@ -874,11 +946,25 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Pay the extension fee (the double rate for a visa extended from abroad, above), then press <strong>Extend</strong>.</li>
 <li>Check the new return date on the same page, or on Muqeem's public visa inquiry.</li>
 </ol>
-<p>Absher accepts the extension only when the family member is outside Saudi Arabia on the day you apply, the new return date is at least 7 days before their iqama expires, and the visa's total extension stays within 180 days. Where the Hijri and Gregorian dates on the screen differ, the Gregorian date counts. If their iqama is close to expiry, renew it first: see <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
+<p>Extend before the visa expires: Absher's extension needs both the visa and the iqama still valid. Absher accepts the extension only when the family member is outside Saudi Arabia on the day you apply, the new return date is at least 7 days before their iqama expires, and the visa's total extension stays within 180 days. Where the Hijri and Gregorian dates on the screen differ, the Gregorian date counts. If their iqama is close to expiry, renew it first: see <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
 <h3>Checking a visa without signing in</h3>
 <p>Muqeem's public visa inquiry shows whether an exit and re-entry visa is valid and the date to return before, with just the iqama number and date of birth. See <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
 <h2>Final exit</h2>
 <p>A final exit visa is free. It is valid for 60 days from the day it is issued, the iqama must have at least 30 days left, and it cancels the iqama when the holder crosses the border, so it is the last paper you take, after the bank, the car and the flat are settled. It is refused while there are unpaid fines, a car registered in the person's name, or a dependant left behind on an unsettled iqama. Returning later means a new visa of your own. The whole leaving process is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
+<h3>Final exit for your wife or children</h3>
+<ol>
+<li>Sign in to Absher and open <strong>Family Members Services</strong>, then <strong>Visa Services</strong>, and press Next.</li>
+<li>Choose the family member, press <strong>More details</strong>, then <strong>Issue final exit visa</strong>. Accept the terms and confirm.</li>
+<li>Print the visa, or save it as a PDF, from the same screen.</li>
+</ol>
+<p>Absher issues it only when the family member is inside Saudi Arabia, holds a valid iqama with a passport valid for at least 60 days, has no unpaid fines and has no car in their name. The error "AC3052E: Insufficient funds" means a fee on that person's file is still unpaid: pay it, then try again.</p>
+<h3>Cancelling, or running out of time</h3>
+<ul>
+<li><strong>Cancel it free while it is valid,</strong> on the same page: Family Members Services, then Visa Services, then More details. Travel Management cancels a student's own final exit.</li>
+<li><strong>It cannot be extended.</strong> If your plans move, cancel it and issue a new one nearer the date.</li>
+<li><strong>Not leaving within the 60 days costs a 1,000 SAR fine.</strong> An expired final exit is cancelled only at Jawazat, with an appointment for Resident services, a cancellation form, copies of the visa, the iqama and the passport, two photos on a white background, and the iqama renewal fees if the iqama has run out meanwhile.</li>
+<li><strong>Keep the printout after you leave.</strong> A Saudi embassy can ask for it when you apply for a new Saudi visa later.</li>
+</ul>
 <h2>Adding family</h2>
 <ul>
 <li>Adding a dependant, or a newborn born inside Saudi Arabia, is done on Absher, which shows any fee before you pay. Register a birth promptly: a late birth certificate carries a fine and holds up the iqama renewal. The newborn's request, step by step, is in <a href="/guides/having-a-baby-in-madinah#after-the-birth-papers-step-by-step">Having a baby in Madinah</a>.</li>
@@ -1141,17 +1227,17 @@ export type SeedFaq = { slug: string; question: string; category: string; answer
 
 export const FAQS_2026: SeedFaq[] = [
   { slug: "defer-my-place", category: "university", question: "Can I defer my place at the University?", answerHtml: "<p>Plan to arrive in the semester you are offered. Under the educational visa, the visa application names the semester you will arrive, and asking to arrive later can send it back. If something serious stops you travelling, ask the University before you change your plans. See <a href=\"/guides/applying-to-the-islamic-university\">Applying to the Islamic University</a>.</p>" },
-  { slug: "is-housing-included", category: "university", question: "Is housing included for scholarship students?", answerHtml: "<p>For full (external) scholarship students, yes. The University gives you a free room, either inside the Jamiah or in the Rabwa halls (الربوة), shared with one other student, and the housing office allocates it. A partial (internal) scholarship, for applicants already living in Saudi Arabia, covers tuition only: it includes no free housing, no stipend, no tickets and no meals. When places are free, partial scholarship students are offered a paid room in Unit 13: see <a href=\"/guides/unit-13-and-paid-university-housing\">Unit 13 and paid University housing</a>. Your offer on Study in Saudi shows which scholarship you have, and the full comparison is in <a href=\"/guides/scholarship-stipend-and-allowances\">Your scholarship money</a>.</p>" },
+  { slug: "is-housing-included", category: "university", question: "Is housing included for scholarship students?", answerHtml: "<p>For full (external) scholarship students, yes. The University gives you a free room, either inside the Jamiah or in the Rabwa halls (الربوة), and the housing office allocates it. A partial (internal) scholarship, for applicants already living in Saudi Arabia, covers tuition only: it includes no free housing, no stipend, no tickets and no meals. When places are free, partial scholarship students are offered a paid room in Unit 13: see <a href=\"/guides/unit-13-and-paid-university-housing\">Unit 13 and paid University housing</a>. Your offer on Study in Saudi shows which scholarship you have, and the full comparison is in <a href=\"/guides/scholarship-stipend-and-allowances\">Your scholarship money</a>.</p>" },
   { slug: "istiqdam-deposit", category: "family", question: "Can I sponsor my family, and what is the deposit?", answerHtml: "<p>Not at present. Family residency (istiqdam) through the University has been closed since January 2025, and no reopening has been announced as of November 2026, so there is no deposit to pay. Plan without it. Families who come do so on visit visas at their own cost, and the University does not arrange visit visas. The University Medical Center treats family members on istiqdam only. See <a href=\"/guides/visas-for-family-and-visitors\">Visas for family members and visitors</a>.</p>" },
   { slug: "join-mesh-group", category: "getting-started", question: "How do I join the MESH WhatsApp group?", answerHtml: "<p>Tap any \"Join the group\" button on this site. Keep posts relevant, share only verified information, and no debates. The full rules are on the More page.</p>" },
   { slug: "how-to-apply-iu", category: "getting-started", question: "How do I apply to the Islamic University of Madinah?", answerHtml: "<p>Through the national Study in Saudi portal (studyinsaudi.sa) when applications open. It is free, you apply yourself, and the University has no offices or agents. The main window is in spring (19 April to 21 May in 2026), with short extra rounds later in the year (16 September to 6 October in 2026). You can choose up to 25 programmes across several universities and edit your application until the deadline. Have your passport, secondary certificate and transcript, police clearance, medical report, two recommendation letters (tazkiyah) and a passport photo ready before the window opens. The full steps are in <a href=\"/guides/applying-to-the-islamic-university\">Applying to the Islamic University</a>, and the overview with a video walkthrough is at <a href=\"/programs/iu-madinah\">Islamic University of Madinah</a>.</p>" },
-  { slug: "stipend-amount", category: "university", question: "How much is the University stipend?", answerHtml: "<p>Full scholarship students receive a monthly stipend (mukafa'ah). The rate depends on your college, and your own amount is in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong>. It is paid onto your University stipend card, an Al Rajhi Bank card, usually between the 21st and 25th of each month and earlier before holidays. New students get nothing in their first month and a double payment in the second. On top of it come an arrival allowance of two months' stipend, a yearly books allowance, an excellence allowance for a semester GPA of 4.50 or more in both semesters, three months' stipend when you graduate, a ticket home each year, housing and subsidised meals. The stipend stops during ta'jeel or i'tithaar and after the regular length of your programme. Partial scholarships cover tuition only. Full details: <a href=\"/guides/scholarship-stipend-and-allowances\">Your scholarship money: stipend, allowances and tickets</a>.</p>" },
+  { slug: "stipend-amount", category: "university", question: "How much is the University stipend?", answerHtml: "<p>Full scholarship students receive a monthly stipend (mukafa'ah). The rate depends on your college, and your own amount is in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong>. It is paid onto your University stipend card, an Al Rajhi Bank card, usually between the 21st and 25th of each month and earlier before holidays. New students get nothing in their first month and a double payment in the second. On top of it come an arrival allowance of two months' stipend, a yearly books allowance for college students, an excellence allowance for a semester GPA of 4.50 or more in both semesters, three months' stipend when you graduate, a ticket home each year, housing and subsidised meals. The stipend stops during ta'jeel or i'tithaar and after the regular length of your programme. Partial scholarships cover tuition only. Full details: <a href=\"/guides/scholarship-stipend-and-allowances\">Your scholarship money: stipend, allowances and tickets</a>.</p>" },
   { slug: "learn-arabic-before-iu", category: "getting-started", question: "Where can I learn Arabic in Madinah before getting into the University?", answerHtml: "<p>There are several options. Year-round institutes such as Ahlul Athar, Mutun al-Ijaz and Taba charge from about 350 SAR a month. The <a href=\"/programs/map\">Madinah Arabic Program</a> runs one-month intensives on the University campus. More options, with fees and dates, are on <a href=\"/programs\">Study in Madinah</a>.</p>" },
   { slug: "sisters-study", category: "family", question: "Where can sisters study Arabic and Islamic sciences?", answerHtml: "<p>There are women's marakiz (Academiyah al-Ma'rifah, Dar at-Tawheed wa as-Sunnah, Markaz Mishkat and Markaz Taibah), the Masjid an-Nabawi Ma'had and Kulliyah for women, and paid options such as Fusha, MAP's sisters' classes and Taba (now open to women). See <a href=\"/guides/sisters-studying-in-madinah\">Where sisters can study</a> and <a href=\"/programs\">Study in Madinah</a>.</p>" },
   { slug: "monthly-budget", category: "getting-settled", question: "How much money do I need per month in Madinah?", answerHtml: "<p>Roughly 2,900 to 6,700 SAR for a single person renting their own place, and 6,300 to 12,800 SAR for a family of three or four. Scholarship students in the halls spend far less. Full breakdown: <a href=\"/guides/cost-of-living\">What it costs to live in Madinah</a>.</p>" },
   { slug: "bank-account-without-iqama", category: "getting-settled", question: "Can I open a Saudi bank account without an iqama?", answerHtml: "<p>Yes. Since September 2025 holders of a Visitor ID can open an account and get a mada card. You need an active Visitor ID in Absher, a registered National Address and a Saudi mobile number linked to Absher. Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The bank also asks for your home address and the purpose of your stay. The account works only while your Visitor ID is valid and is frozen when it expires. See <a href=\"/guides/sim-internet-bank\">SIM card, internet and a Saudi bank card</a>.</p>" },
   { slug: "home-internet-no-iqama", category: "getting-settled", question: "How do I get home internet without an iqama?", answerHtml: "<p>Fixed home internet needs an iqama, so most people use a portable router with an unlimited-data SIM from STC, Mobily or Zain.</p>" },
-  { slug: "drive-on-visit-visa", category: "getting-settled", question: "Can I drive on a visit visa?", answerHtml: "<p>Yes, with your own valid licence if Saudi Arabia recognises it, for up to one year from the day you entered or until the licence expires, whichever comes first. This covers tourist, Umrah and family visit visas. Carry the original licence, make sure its class matches the vehicle (a car licence does not cover a motorcycle), and after an accident report it in the Najm app. Car hire firms set their own rules, and many ask for an International Driving Permit. Gulf citizens drive on their own national licence, but permits issued in the Gulf states are not accepted. To get a Saudi licence or register a car you need an iqama. See <a href=\"/guides/drivers-license\">Getting a Saudi driving licence</a>.</p>" },
+  { slug: "drive-on-visit-visa", category: "getting-settled", question: "Can I drive on a visit visa?", answerHtml: "<p>Yes, with your own valid licence if Saudi Arabia recognises it, for up to one year from the day you entered or until the licence expires, whichever comes first. This covers tourist, Umrah and family visit visas. Carry the original licence, with an International Driving Permit or an Arabic translation from an approved office if it is not in Arabic, make sure its class matches the vehicle (a car licence does not cover a motorcycle), and after an accident report it in the Najm app. Car hire firms set their own rules, and many ask for an International Driving Permit. Gulf citizens drive on their own national licence, but permits issued in the Gulf states are not accepted. To get a Saudi licence or register a car you need an iqama. See <a href=\"/guides/drivers-license\">Getting a Saudi driving licence</a>.</p>" },
   { slug: "rawdah-booking", category: "duroos", question: "How do I visit the Rawdah?", answerHtml: "<p>Book a free permit in the Nusuk app or on the Nusuk website (residents sign in with Nafath) and arrive at the time printed on it. The app shows how many permits you can book, and same-day slots are released for people at the masjid. Pray, make du'a calmly, and make room for others. More in <a href=\"/guides/masjid-an-nabawi-first-visit\">Visiting Masjid an-Nabawi</a>.</p>" },
   { slug: "duroos-english", category: "duroos", question: "Are there duroos in English in the Haram?", answerHtml: "<p>Almost all duroos are in Arabic, which is excellent listening practice. English lessons are rare. Take a notebook, write down words, and look them up later. Today's duroos are on the <a href=\"/duroos\">Duroos</a> page.</p>" },
   { slug: "do-i-register-for-duroos", category: "duroos", question: "Do I need to register to attend the duroos?", answerHtml: "<p>No. The duroos of the mashayikh are open to everyone. Only the Qur'an and mutun halaqat need registration.</p>" },

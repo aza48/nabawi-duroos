@@ -1,0 +1,68 @@
+URL: https://gomedine.com/fr_fr/comment-sinscrire-sur-la-plateforme-qiwa-en-arabie-saoudite/
+TITLE: Comment s’inscrire sur la plateforme Qiwa en Arabie Saoudite ? — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Mis à jour 2026. Qiwa est la plateforme du ministère des Ressources humaines (MHRSD) où sont stockés vos contrats, votre permis de travail et votre statut d’emploi. Bonne nouvelle : en 2026, l’inscription a été simplifiée et passe désormais par Nafath . Voici la marche à suivre, ce que vous pouvez y faire, et surtout les solutions aux blocages les plus fréquents signalés par les utilisateurs.Le ministère des Ressources Humaines a lancé la plateforme Qiwa pour les expatriés travaillant en Arabie Saoudite. Chaque expatrié travaillant en Arabie Saoudite doit enregistrer son compte sur la plateforme Qiwa pour bénéficier de 85 services différents.
+À retenir (30 secondes)
+En 2026, on ne crée plus un mot de passe Qiwa : on se connecte via Nafath (identité numérique nationale) ou Absher.
+Pour la plupart des expatriés, le compte individuel est déjà pré-activé (lié à votre iqama). « S’inscrire » revient surtout à se connecter la première fois et à compléter son profil.
+Prérequis : une iqama valide, un compte Absher actif et l’application Nafath installée et liée à votre iqama.
+Utilisez uniquement le portail officiel qiwa.sa . L’ancienne application Qiwa a été retirée du Play Store en 2024, et de faux apps circulent.
+Les blocages les plus courants (boucle de connexion, compte bloqué, accès depuis l’étranger) ont des solutions simples, détaillées plus bas.
+Pourquoi s’inscrire sur Qiwa (et pourquoi c’est important en 2026)
+Qiwa est devenu le point central de votre vie professionnelle dans le Royaume. C’est là que vous pouvez consulter et accepter votre contrat (seul un contrat documenté sur Qiwa est juridiquement reconnu), suivre la validité de votre permis de travail , gérer un transfert d’employeur et accéder à des dizaines de services du ministère.
+C’est d’autant plus crucial depuis 2026 : un permis de travail laissé expiré plus de 3 mois peut entraîner votre radiation du registre de l’entreprise (voir notre article dédié). Avoir un compte Qiwa actif, c’est pouvoir vérifier tout cela soi-même.
+🔗 À lire ensuite : Comment vérifier votre contrat de travail sur Qiwa .
+Les prérequis avant de commencer
+Une iqama valide (numéro de résidence).
+Un compte Absher actif (la passerelle des services gouvernementaux).
+L’application Nafath installée sur votre téléphone et liée à votre iqama . C’est elle qui valide votre identité.
+💡 La plupart des données sont récupérées automatiquement depuis les systèmes du gouvernement. Vous n’avez normalement aucun document à téléverser lors de l’inscription standard.
+Inscription Qiwa : la procédure 2026 pas à pas
+Suivez les 5 étapes ci-dessous. Chaque lien ouvre directement le site ou l’application officielle : vous pouvez faire votre démarche sans quitter l’article.
+Étape 1 — Réunir les prérequis
+Avant tout, il vous faut une iqama valide , un compte Absher actif et l’application Nafath . 👉 Vérifier / activer Absher : absher.sa
+Étape 2 — Installer et activer Nafath
+Téléchargez l’application officielle Nafath (éditée par le National Information Center), puis liez-la à votre iqama. 📱 Télécharger Nafath :
+Nafath sur l’App Store (iPhone)
+Nafath sur Google Play (Android)
+⚠️ N’installez Nafath et Qiwa que depuis ces liens officiels. De fausses applications circulent : ne saisissez jamais votre iqama ailleurs.
+Étape 3 — Ouvrir le portail Qiwa
+Rendez-vous sur le site officiel et choisissez l’espace « Particuliers / Individus » . 🌐 Accéder à Qiwa : qiwa.sa
+Étape 4 — Se connecter via Nafath
+Sur Qiwa, saisissez votre numéro d’iqama , choisissez l’authentification Nafath , puis ouvrez l’application Nafath et validez le numéro affiché à l’écran. (Une alternative par code à usage unique via Absher peut être proposée.)
+Étape 5 — Compléter votre profil
+Renseignez votre numéro de mobile et votre e-mail pour recevoir les notifications. Vous accédez alors à votre tableau de bord individuel : contrats, permis de travail, transferts.s.
+⚠️ Ancienne méthode obsolète : les guides datés décrivaient une inscription par e-mail + mot de passe créés sur Qiwa. Ce n’est plus la voie principale en 2026 : l’identité est désormais validée par Nafath , ce qui évite la gestion d’un mot de passe séparé.
+Les services disponibles après inscription
+Une fois connecté, vous pouvez notamment :
+consulter votre dossier individuel et votre historique d’emploi ;
+consulter, accepter, refuser ou modifier un contrat de travail ;
+suivre la validité de votre permis de travail ;
+demander ou suivre un transfert vers un autre employeur ;
+suivre un changement de profession sur l’iqama ;
+accéder aux certificats (saoudisation, attestations) et aux réclamations.
+🔗 Voir aussi : Comment transférer une iqama vers un autre employeur .
+Problèmes courants & solutions (d’après les retours d’utilisateurs)
+Les utilisateurs signalent régulièrement les blocages suivants. Voici comment vous en sortir :
+1. Bloqué sur la page de connexion après avoir validé dans Nafath. Cause probable : cache du navigateur ou session, ou application Nafath non à jour. Solution : videz le cache et les cookies, essayez un autre navigateur ou la navigation privée, mettez à jour Nafath , puis réessayez. Tester depuis un ordinateur aide souvent.
+2. Compte ou identifiant bloqué après plusieurs tentatives. Cause : anciennes connexions par mot de passe avec essais répétés. Solution : avec Nafath, vous n’avez plus besoin de mot de passe. Si votre compte est bloqué, contactez le support Qiwa (voir plus bas) ; plusieurs utilisateurs rapportent un déblocage en quelques heures.
+3. Impossible d’accéder à Qiwa depuis l’étranger. Des utilisateurs signalent des blocages d’accès hors du Royaume. Le plus fiable est d’effectuer la démarche depuis l’Arabie Saoudite ; en cas d’urgence à l’étranger, contactez le support pour connaître les options.
+4. Nafath ne reconnaît pas votre visage. Cause fréquente : photo d’iqama ancienne (prise il y a des années). Solution : utilisez l’ option de validation par code dans Nafath plutôt que la reconnaissance faciale, mettez à jour votre photo via Absher, ou rendez-vous dans un point de service.
+5. Votre contrat ou un service n’apparaît pas. Cause la plus fréquente : l’ employeur n’a pas finalisé la démarche, ou vos données ne sont pas correctement liées dans le système. Solution : ce n’est pas forcément de votre fait. Demandez à votre employeur de vérifier la soumission côté entreprise, et ouvrez un ticket si besoin.
+6. Le portail est indisponible (maintenance). Qiwa peut être hors ligne lors d’opérations de maintenance. Solution : réessayez plus tard et, si la situation bloque une démarche urgente (transfert, contrat), créez un ticket auprès du support pour garder une trace.
+7. Méfiez-vous des fausses applications Qiwa. Plusieurs applications imitant Qiwa circulent. Ne saisissez jamais votre numéro d’iqama ou un mot de passe dans une application non officielle. Passez uniquement par qiwa.sa .
+En cas de blocage : contacts utiles
+Support Qiwa : support@qiwa.sa — ligne d’assistance 920000105 .
+Litige de travail (salaire, contrat) : plateforme de réclamations Madad du ministère.
+Vérification : confirmez toujours les informations sensibles sur qiwa.sa et hrsd.gov.sa .
+Foire aux questions
+Qiwa est-il réservé aux Saoudiens ? Non. Saoudiens et expatriés utilisent la plateforme.
+Dois-je créer un mot de passe Qiwa ? Non, en 2026 l’accès se fait via Nafath (ou Absher). Pas de mot de passe séparé à gérer.
+Mon compte est-il déjà créé ? Le compte individuel est souvent pré-activé dès lors que vous avez une iqama active. La première connexion via Nafath suffit généralement.
+Puis-je m’inscrire sans Absher ni Nafath ? Difficilement : l’authentification officielle repose sur Nafath/Absher. Installez et liez Nafath à votre iqama d’abord.
+L’application Qiwa existe-t-elle encore ? L’ancienne application a été retirée du Play Store en 2024. Le plus sûr est d’utiliser le portail web officiel , en se méfiant des imitations.
+Avertissement : cet article est informatif et ne constitue pas un conseil juridique. Les interfaces et procédures peuvent évoluer. Pour votre situation, vérifiez directement sur qiwa.sa / hrsd.gov.sa .
+📲 Pour ne rater aucune mise à jour des démarches et réglementations en Arabie Saoudite, rejoignez notre groupe Telegram .
+Medinatouna — informations fiables et vérifiées pour la communauté francophone de Médine et d’Arabie Saoudite.
