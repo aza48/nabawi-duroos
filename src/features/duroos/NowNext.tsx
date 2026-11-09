@@ -53,7 +53,7 @@ export function NowNext({ lessons, serverNow, locale }: { lessons: NowNextLesson
           {next ? (
             <>
               {ar ? `التالي: بعد ${t(locale, next.prayer)}` : `Next: after ${t(locale, next.prayer)}`}
-              <span className="ms-2 font-semibold normal-case tracking-normal text-primary">{formatUntil(new Date(next.adhanAt).getTime() - now, locale)}</span>
+              <span className="ms-2 font-semibold normal-case tracking-normal text-primary">{new Date(next.adhanAt).getTime() > now ? formatUntil(new Date(next.adhanAt).getTime() - now, locale) : ar ? "يبدأ قريبًا" : "starting soon"}</span>
             </>
           ) : ar ? "التالي" : "Next"}
         </h2>
