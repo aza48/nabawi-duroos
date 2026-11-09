@@ -15,6 +15,7 @@ import {
   type LibNode,
 } from "@/content/library-books";
 import { toArabicDigits, type Locale } from "@/lib/locale";
+import { arCount } from "@/lib/arabic-count";
 
 const FILE_ICON = { pdf: FileText, img: FileImage, video: FileVideo, audio: FileAudio, doc: FileText, other: FileText } as const;
 const KIND_LABEL = { pdf: "PDF", img: "Image", video: "Video", audio: "Audio", doc: "Document", other: "File" } as const;
@@ -134,7 +135,7 @@ export function CollectionView({ collection, tree, addHref, locale = "en" }: { c
               <p className="ar-text mt-2 text-xl text-white/80">{collection.titleAr}</p>
             </>
           )}
-          <p className="mt-4 max-w-2xl text-white/85">{ar ? `${num(countFiles(tree), locale)} ملفًا. ${collection.blurbAr}` : `${countFiles(tree)} files. ${collection.blurb}`}</p>
+          <p className="mt-4 max-w-2xl text-white/85">{ar ? `${arCount(countFiles(tree), "file")}. ${collection.blurbAr}` : `${countFiles(tree)} files. ${collection.blurb}`}</p>
           {sections.length > 1 && (
             <nav aria-label={ar ? "المستويات" : "Levels"} className="mt-6 flex flex-wrap gap-2">
               {sections.map((s) => (
@@ -162,7 +163,7 @@ export function CollectionView({ collection, tree, addHref, locale = "en" }: { c
               </h2>
               <p className="mt-1 text-sm text-muted">
                 {ar
-                  ? `${num(countFiles(s), locale)} ملفًا${subjects.length ? `، ${num(subjects.length, locale)} مواد` : ""}`
+                  ? `${arCount(countFiles(s), "file")}${subjects.length ? `، ${arCount(subjects.length, "subject")}` : ""}`
                   : `${countFiles(s)} files${subjects.length ? `, ${subjects.length} subjects` : ""}`}
               </p>
               {files.length > 0 && <ul className="mt-3 grid gap-1 md:grid-cols-2">{files.map((f) => <FileRow key={f.id} f={f} locale={locale} />)}</ul>}
@@ -257,7 +258,7 @@ export function SearchResults({ q, hits, collection, locale = "en" }: { q: strin
         <p className="mt-6 text-sm text-muted">
           {ar
             ? hits.length
-              ? `${count} ملفًا تطابق «${q}»${collection ? ` في ${collection.titleAr}` : ""}.`
+              ? `${arCount(hits.length, "file", { plus: hits.length >= 60 })} ${hits.length === 1 ? "يطابق" : hits.length === 2 ? "يطابقان" : "تطابق"} «${q}»${collection ? ` في ${collection.titleAr}` : ""}.`
               : `لا شيء يطابق «${q}». جرّب اسم المادة بالعربية، أو كلمة واحدة مثل: توحيد أو نحو.`
             : hits.length
               ? `${count} files match "${q}"${collection ? ` in ${collection.title}` : ""}.`

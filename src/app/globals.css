@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./print.css";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 /* ---------- Design tokens ----------
@@ -146,6 +147,21 @@ html {
   background: var(--bg);
   -webkit-text-size-adjust: 100%;
 }
+/* Text size (A+ and A++ in the menu): everything sized in rem grows with the root. Percentages keep the phone's own setting. */
+/* The admin app has no text size control, so it keeps its size. */
+:root[data-text="lg"]:not(:has(main.admin-main)) { font-size: 112.5%; }
+:root[data-text="xl"]:not(:has(main.admin-main)) { font-size: 125%; }
+/* Breakpoints are measured in the browser's own text size, so with larger text the header drops its labels (icons stay). */
+:root[data-text] [data-hdr-label] { display: none !important; }
+/* Arabic menu labels are longer: between 1280 and 1439 px the Arabic header also drops its labels, or it scrolls sideways. */
+@media (min-width: 1280px) and (max-width: 1439.98px) { [dir="rtl"] header [data-hdr-label] { display: none !important; } }
+@media (max-width: 639.98px) { :root[data-text] header .brand-line { display: none; } }
+/* From 1024 px the desktop menu would not fit beside larger text until 1280 px: keep the bottom bar until then. */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  :root[data-text] [data-desktop-nav] { display: none !important; }
+  :root[data-text] [data-bottom-nav] { display: block !important; }
+  :root[data-text] [data-main] { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)) !important; }
+}
 body {
   background: var(--bg);
   color: var(--ink);
@@ -181,6 +197,10 @@ a { -webkit-tap-highlight-color: transparent; }
   box-shadow: 0 0 0 4px rgb(0 0 0 / 0.35);
 }
 .pb-safe { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+/* Under a menu link while its page loads (NavPending): a gold bar that sweeps; static when motion is reduced. */
+.nav-pending { position: absolute; inset-inline: 22%; bottom: 0.25rem; height: 3px; border-radius: 9999px; background: var(--gold-bright); transform-origin: left; animation: nav-pending 0.9s ease-in-out infinite alternate; }
+@keyframes nav-pending { from { transform: scaleX(0.25); opacity: 0.6; } to { transform: scaleX(1); opacity: 1; } }
+[dir="rtl"] .nav-pending { transform-origin: right; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Search } from "lucide-react";
+import { AdminHelp } from "@/components/shell/AdminHelp";
 
 const LINKS: [string, string][] = [
   ["Today's duroos", "/duroos"],
@@ -29,6 +30,7 @@ export default function NotFound() {
           </Link>
         ))}
       </nav>
+      <AdminHelp className="mt-8 w-full max-w-lg text-start" />
     </div>
   );
 }

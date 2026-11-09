@@ -7,6 +7,7 @@ import { listFaqs, listGuides } from "@/server/content/queries";
 import { abs } from "@/lib/site";
 import { PROGRAMS } from "@/content/programs";
 import { LIVE_COLLECTIONS } from "@/content/library-books";
+import { faqText, guideText } from "@/lib/arabic-content";
 
 export const revalidate = 3600;
 
@@ -57,7 +58,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...LIVE_COLLECTIONS.flatMap((c) => pair(`/library/${c.slug}`, 0.7, "monthly")),
     ...shaykhRows.flatMap((s) => both(`/shaykh/${s.slug}`, 0.6, "weekly")),
     ...lessonRows.flatMap((l) => both(`/lesson/${l.slug}`, 0.6, "daily")),
-    ...faqRows.map((f): Entry => ({ url: abs(`/ask/${f.slug}`), lastModified: f.updatedAt, priority: 0.7 })),
-    ...guideRows.filter((g) => g.slug !== COMPANY_SLUG).map((g): Entry => ({ url: abs(`/guides/${g.slug}`), lastModified: g.lastVerifiedAt ?? g.updatedAt, priority: 0.7 })),
+    ...faqRows.flatMap((f): Entry[] => (faqText(f, "ar").answerInArabic ? pair(`/ask/${f.slug}`, 0.7, "weekly", f.updatedAt) : [{ url: abs(`/ask/${f.slug}`), lastModified: f.updatedAt, priority: 0.7 }])),
+    ...guideRows.filter((g) => g.slug !== COMPANY_SLUG).flatMap((g): Entry[] => (guideText(g, "ar").bodyInArabic ? pair(`/guides/${g.slug}`, 0.7, "weekly", g.lastVerifiedAt ?? g.updatedAt) : [{ url: abs(`/guides/${g.slug}`), lastModified: g.lastVerifiedAt ?? g.updatedAt, priority: 0.7 }])),
   ];
 }

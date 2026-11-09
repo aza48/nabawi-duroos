@@ -69,7 +69,8 @@ export function Breadcrumbs({ items, tone = "page", rtl = false }: { items: [lab
           <li key={i} className="flex min-w-0 items-center gap-1.5">
             {i > 0 && <ChevronRight size={14} aria-hidden="true" className={`shrink-0 ${tone === "band" ? "text-white/45" : "text-muted/60"} ${rtl ? "rotate-180" : ""}`} />}
             {href ? (
-              <Link href={href} className={`rounded transition-colors ${link}`}>
+              // A 40px high tap target on phones; the negative margin cancels the padding, so nothing moves.
+              <Link href={href} className={`-my-2.5 inline-block rounded py-2.5 transition-colors ${link}`}>
                 {label}
               </Link>
             ) : (

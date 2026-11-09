@@ -4,10 +4,12 @@ import { BottomNav, DesktopNav } from "./BottomNav";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { WhatsAppIcon } from "./WhatsApp";
+import { AdminHelpLink } from "./AdminHelp";
 import { Wordmark } from "./Wordmark";
 import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
 import { AssistantLauncher } from "@/features/assistant/AssistantLauncher";
+import { TextSizeControl } from "./TextSize";
 
 export function SiteShell({
   locale,
@@ -23,16 +25,16 @@ export function SiteShell({
   const ar = locale === "ar";
   return (
     <>
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:start-2 focus:z-50 focus:rounded focus:bg-card focus:p-2">
+      <a href="#main" data-noprint className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:start-2 focus:z-50 focus:rounded focus:bg-card focus:p-2">
         {ar ? "تخطَّ إلى المحتوى" : "Skip to content"}
       </a>
-      <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/85 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/85 backdrop-blur-md" data-print-header>
         <div className="shell flex h-16 items-center justify-between gap-2 sm:gap-4 md:h-[72px] lg:gap-3 xl:gap-4">
           <Link href={ar ? "/ar" : "/"} aria-label={ar ? "الصفحة الرئيسية لـ MESH" : "MESH home"} className="shrink-0">
             <Wordmark />
           </Link>
           <DesktopNav locale={locale} />
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2" data-noprint>
             <SearchPalette locale={locale} />
             <a
               href={whatsappUrl}
@@ -41,7 +43,7 @@ export function SiteShell({
               aria-label={ar ? "انضم لمجموعة MESH على واتساب" : "Join the MESH WhatsApp group"}
               className="flex h-11 min-w-11 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-wa px-3 text-sm font-semibold text-wa-ink transition hover:brightness-105 xl:px-4"
             >
-              <WhatsAppIcon size={18} /> <span className="hidden xl:inline">{ar ? "انضم للمجموعة" : "Join the group"}</span>
+              <WhatsAppIcon size={18} /> <span className="hidden xl:inline" data-hdr-label>{ar ? "انضم للمجموعة" : "Join the group"}</span>
             </a>
             <LanguageSwitch />
             <span className="hidden sm:contents">
@@ -51,8 +53,10 @@ export function SiteShell({
         </div>
       </header>
       <Tracker />
-      <AssistantLauncher locale={locale} />
-      <main id="main" className="pb-safe lg:pb-0">
+      <div className="contents" data-noprint>
+        <AssistantLauncher locale={locale} />
+      </div>
+      <main id="main" className="pb-safe lg:pb-0" data-main>
         {children}
       </main>
       <Footer locale={locale} whatsappUrl={whatsappUrl} helpContact={helpContact} />
@@ -86,7 +90,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
     },
   ];
   return (
-    <footer className="lattice mt-16 bg-brand-deep text-white">
+    <footer className="lattice mt-16 bg-brand-deep text-white" data-noprint>
       <div className="shell grid gap-8 py-12 sm:grid-cols-2 md:py-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
         <div>
           <Wordmark tone="light" />
@@ -113,7 +117,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
         <div>
           <p className="font-heading text-base font-semibold text-gold-bright">{ar ? "مجموعة واتساب" : "The MESH group"}</p>
           <p className="mt-3 text-sm text-white/75">
-            {ar ? "الإعلانات والفعاليات والمساعدة اليومية." : "Announcements, events and daily help from students who have been here longer."}
+            {ar ? "الإعلانات والفعاليات، وتجارب طلاب سبقوك إلى المدينة." : "Announcements, events and tips from students who have been here longer."}
           </p>
           <p className="mt-2 text-sm font-semibold text-white">
             {ar ? "المجموعة خاصة بالطلاب الغربيين الناطقين بالإنجليزية فقط." : "Only for English-speaking Western students."}
@@ -132,11 +136,12 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
         <div className="shell flex flex-wrap items-center justify-between gap-3 py-5 text-sm text-white/70">
           <p>
             {ar ? "تحتاج مساعدة أو عندك اقتراح؟ راسل المشرف على واتساب: " : "Need any assistance, or have a suggestion? Please message Admin on WhatsApp at "}
-            <a href={`https://wa.me/${helpContact.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold-bright hover:underline" dir="ltr">
+            <AdminHelpLink locale={ar ? "ar" : "en"} className="font-semibold text-gold-bright hover:underline">
               {helpContact}
-            </a>
+            </AdminHelpLink>
           </p>
-          <span className="flex items-center gap-3">
+          <span className="flex flex-wrap items-center gap-3">
+            <TextSizeControl locale={ar ? "ar" : "en"} tone="dark" />
             <span className="sm:hidden"><ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} /></span>
             <span className="text-xs text-white/70">medinahub.org</span>
           </span>

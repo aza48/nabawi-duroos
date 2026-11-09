@@ -53,7 +53,7 @@ export function NowNext({ lessons, serverNow, locale }: { lessons: NowNextLesson
           {next ? (
             <>
               {ar ? `التالي: بعد ${t(locale, next.prayer)}` : `Next: after ${t(locale, next.prayer)}`}
-              <span className="ms-2 font-semibold normal-case tracking-normal text-primary">{formatUntil(new Date(next.adhanAt).getTime() - now, locale)}</span>
+              <span className="ms-2 font-semibold normal-case tracking-normal text-primary">{new Date(next.adhanAt).getTime() > now ? formatUntil(new Date(next.adhanAt).getTime() - now, locale) : ar ? "يبدأ قريبًا" : "starting soon"}</span>
             </>
           ) : ar ? "التالي" : "Next"}
         </h2>
@@ -75,6 +75,9 @@ export function NowNext({ lessons, serverNow, locale }: { lessons: NowNextLesson
             )}
           </ul>
         )}
+        <a href={ar ? "/ar/lite" : "/lite"} className="mt-3 inline-flex min-h-10 items-center text-xs text-muted underline-offset-2 hover:text-ink hover:underline">
+          {ar ? "الشبكة ضعيفة؟ افتح النسخة الخفيفة" : "Weak signal? Open the light version"}
+        </a>
       </div>
     </section>
   );
