@@ -231,7 +231,6 @@ The answers let MESH state these with authority. Earlier rounds and their decisi
   - whether Ali Abu Battin is Prof. Dr.
   - Abdulmuhsin al-Qasim's court
 - **Shaykh photos:** 11 shuyukh have no verified photo (`docs/research/shaykh-photos.md`).
-- **Lesson days:** which weekdays the Tafsir as-Sa'di dars after Fajr runs (`abadr-tafsir`), and whether the monthly Kitab al-Tawhid at Dar al-Hijrah has a fixed week.
 - **Channels:** may shaykh facts and the library page name Telegram, YouTube and "Study in Saudi" channels as places to follow?
 - **Programmes:** Fusha's exact name and contact; Mutun al-Ijaz's price (550 or 400 SAR a month), and whether it gives a recommendation for University admission.
 - **Campus life:** free bus stops and times to the Haram; the mat'am's hours; students per room in the Jamiah and Rabwa halls; family housing after probation; sports club facilities; class hours.
