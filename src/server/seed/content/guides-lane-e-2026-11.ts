@@ -169,11 +169,25 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <h2>Which visa</h2>
 <table><thead><tr><th>Visa</th><th>Who it suits</th><th>What to know</th></tr></thead><tbody>
 <tr><td><strong>Tourist eVisa</strong></td><td>Parents from one of the 72 eligible countries, and holders of a valid and used US, UK or Schengen visa</td><td>About 535 SAR with the compulsory insurance, applied for on visa.visitsaudi.com only. Valid one year, multiple entries, up to 90 days a visit. It covers Umrah with a Nusuk permit</td></tr>
-<tr><td><strong>Umrah visa</strong></td><td>Parents from other countries</td><td>Arranged through the Nusuk Umrah platform or a licensed agent, with a service package. Madinah is included in the visit</td></tr>
-<tr><td><strong>Family visit visa</strong></td><td>Parents of a resident who holds an iqama</td><td>The resident applies on the Ministry of Foreign Affairs visa platform. 300 SAR for a single entry or 500 SAR for multiple entries, plus insurance. Approval is case by case, and the host answers for the visitor</td></tr>
+<tr><td><strong>Umrah visa</strong></td><td>Parents from other countries</td><td>Arranged through the Nusuk Umrah platform or a licensed agent, with a service package: the hotel and transport are booked and recorded on Nusuk before the visa is issued. It must be used to enter within 30 days of issue, and the season closes in Shawwal (dates below). Madinah is included in the visit</td></tr>
+<tr><td><strong>Family visit visa</strong></td><td>Parents of a resident who holds an iqama</td><td>The resident applies on the Ministry of Foreign Affairs visa platform. 300 SAR for a single entry or 500 SAR for multiple entries, plus insurance. Your parents then give fingerprints and a photo at a Tasheer visa centre before the visa is issued. Approval is case by case, and the host answers for the visitor</td></tr>
 <tr><td><strong>Students on the educational visa</strong></td><td>Visitor ID holders</td><td>You cannot host a family visit visa without an iqama. Your parents come on a tourist or Umrah visa, or ask the Deanship of Student Affairs through Tawasul about the University's own family visitor procedure</td></tr>
 </tbody></table>
-<p>The current rules and fees are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>, and they change, so check the official site before paying for flights.</p>
+<p>The current rules and fees, and what to take to the visa centre, are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>, and they change, so check the official site before paying for flights.</p>
+<h2>Coming on an Umrah visa: the 1448 season</h2>
+<p>Parents coming on an Umrah visa must keep to the season's dates:</p>
+<table><thead><tr><th>Step</th><th>Hijri</th><th>Gregorian</th></tr></thead><tbody>
+<tr><td>Last day an Umrah visa is issued</td><td>1 Shawwal 1448</td><td>9 March 2027</td></tr>
+<tr><td>Last day to enter Saudi Arabia</td><td>15 Shawwal 1448</td><td>23 March 2027</td></tr>
+<tr><td>Last day to leave Saudi Arabia</td><td>30 Shawwal 1448</td><td>7 April 2027</td></tr>
+</tbody></table>
+<ul>
+<li>The visa is cancelled if it is not used to enter within 30 days of being issued, so apply only once the flights are fixed.</li>
+<li>The hotel and transport are booked on Nusuk, or through a licensed agent, before the visa is issued.</li>
+<li>Your mother does not need a mahram to get the visa or to perform Umrah.</li>
+<li>An Umrah visa never allows Hajj, and from 1 Dhul Qa'dah (8 April 2027) Umrah permits stop for the Hajj season.</li>
+<li>Every valid Saudi visa, the tourist eVisa and the family visit visa included, allows Umrah. A Nusuk permit is needed in every case.</li>
+</ul>
 <h2>Before they fly</h2>
 <ol>
 <li><strong>Passports valid for six months</strong> from the day they enter.</li>
@@ -215,11 +229,12 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <tr><td>Asr to Isha</td><td>The Haram: duroos after Maghrib for your father, the women's sections for your mother, dates and the market after Isha</td></tr>
 </tbody></table>
 <h2>Health, insurance and emergencies</h2>
-<p>The eVisa and the family visit visa include medical insurance for the visit, and the insurer's card or number is on the visa. For a chemist, pharmacies are on every street and many open all night. For an emergency, 997 is the ambulance and 911 works for everything. Hospitals and clinics are in <a href="/guides/doctors-hospitals-and-pharmacies">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>
+<p>The eVisa and the family visit visa include medical insurance for the visit, and the insurer's card or number is on the visa. To check the policy, use the Council of Health Insurance visa inquiry with the passport, visa or border number: see <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>. For a chemist, pharmacies are on every street and many open all night. For an emergency, 997 is the ambulance and 911 works for everything. Hospitals and clinics are in <a href="/guides/doctors-hospitals-and-pharmacies">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>
 <h2>How long they can stay</h2>
 <ul>
 <li>On the tourist eVisa, up to 90 days in a visit, counted from the day of entry, and the visa itself runs a year.</li>
-<li>On a family visit visa, the host extends it on Absher before it expires, for about 100 SAR a time, with new insurance for the new dates, up to 180 days in total.</li>
+<li>On a family visit visa, the host extends it in Absher from 7 days before it expires, for 100 SAR a time, up to 180 days in total. Buy the new insurance for the new dates first, because Absher refuses the extension without it. Extending in the 3 days after expiry adds a 500 SAR fine. The steps are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</li>
+<li>On an Umrah visa, they leave by the season's last departure date above.</li>
 <li>An overstay brings a fine and a ban on the visitor and penalties on the host. Put the last day in your calendar on the day they arrive.</li>
 </ul>
 <h2>When they leave</h2>
