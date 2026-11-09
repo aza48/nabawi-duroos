@@ -17,7 +17,8 @@ Public text never names these chats. Each fact is written in MESH's own words, a
 | `ata-volunteer-club.md` | The Ata' volunteering club, 1448 (Arabic, announcements) | Nov 2025 to Nov 2026 | **Medium.** Everything on volunteering is new to MESH: nvg.gov.sa, the Skills Record, how it works, the yearly days |
 | `business-jobs.md` | Madinah Students Business/Jobs | Nov 2025 to Nov 2026 | **Low.** Adverts only; it shows the gap for a "can I work?" answer, which needs an official source |
 | `university-offers-group.md` | A University offers group run by a business (Arabic) | Aug to Nov 2026 | **Very low.** Adverts only; small campus details (shops near units 22 and 23) |
-| `move-to-saudi.md` | "Move to Saudi Arabia" relocation group | Nov 2025 to Nov 2026 | **None.** The export holds only join and security notices; the admin posts were not exported |
+| `move-to-saudi.md` | "Move to Saudi Arabia" relocation group (full export, sent again) | Aug to Nov 2026 (disappearing messages removed everything older) | **Low.** About 15 durable facts: Premium Residency costs confirm MESH, visa portal gaps, a housing red flag, single fathers' needs |
+| `american-students-2025-06-to-11.md`, `american-students-2025-11-to-2026-03.md`, `american-students-2026-03-to-06.md`, `american-students-2026-06-to-11.md` | "American Students in IUM", the big community group (members' questions and answers, the representative, some official notices), read in four parts | Jun 2025 to Nov 2026 | **High.** 293 findings; the same conflicts appear independently in several months, which makes them strong |
 
 ## Tasks from this research
 **akhiai (guides, Lane E).** Check each item against the finding in `us-students-announcements.md` (item numbers in brackets) before writing:
@@ -64,3 +65,76 @@ Public text never names these chats. Each fact is written in MESH's own words, a
 - How much is the book allowance?
 - Can Visitor ID holders use nvg.gov.sa?
 - May a student on a study iqama do paid work, or work online for clients abroad?
+
+## The American Students in IUM chat: what matters most
+Each item below shows which file and finding number to read. Before writing, check the newest file first, because the newer statement wins.
+
+**Conflicts with MESH, seen in more than one part of the chat or in an official notice (fix first):**
+1. **Ticket cities.** Students choose from cities the University sets for each country. US students were offered New York or Washington DC in summer 2026, not "a capital city only". This was confirmed in the Nov to Mar, Mar to Jun and announcements files.
+2. **Group tickets.** The date can be changed at the student's cost, through Tawasul and the Saudia office on campus. In 2026 they were for bachelor's students only, the University set the dates, and Saudia emailed one PDF to one student per group from mid April.
+3. **Visa expiring abroad on ta'jeel or i'tithaar.** It can be extended through Travel Management within about 60 days (59 in the 2025 notice). After that the student is "exited and did not return" and must apply again as new. Two official notices, 25 Aug 2025 and 9 Sep 2026.
+4. **Exit and re-entry visas.** Multiple visas were issued by the University without a request (official, 9 Feb 2026). In 1448 they come in blocks with fixed end dates (10 Oct 2026, 7 Jan 2027, then one covering winter, Ramadan and summer). Travelling in term without permission risks dismissal.
+5. **Family residency (istiqdam).** Both the representative (May 2026) and a member say it has been closed since 2025, until further notice. The MESH FAQ suggests requests open from time to time.
+
+**Conflicts to confirm with the University before changing MESH:**
+6. **How the stipend is paid.** Several members describe a University Al Rajhi stipend card, replaced at the Wihda 22 kiosk in about 2 weeks. MESH says the stipend goes to your own IBAN.
+7. **Updating a renewed passport.** Members say an iqama holder now does it in Absher, for about 60 SAR. MESH says Travel Management does it through Tawasul.
+8. **Ma'had ta'jeel.** A quoted refusal says Ma'had students get only one. MESH says up to three semesters in total.
+9. **Changing college.** A member says a change of major request exists after one semester. MESH says scholarship students cannot move.
+10. **Shared taxis to Makkah.** Members quote 60 to 80 SAR a seat, and over 100 SAR in Ramadan. MESH says 40 to 50.
+
+**New for guides (akhiai), by guide:**
+- `scholarship-stipend-and-allowances`:
+  - the amounts members give: 840 SAR a month; set-up 1,680; books about 850 a year, once a semester in college; excellence 1,000 for a 4.5 GPA two semesters running; graduation 2,520
+  - the stipend usually arrives around the 23rd to 25th, and early in Ramadan
+  - missing payments go to the kiosk in Wihda 22
+- `graduating-from-mahad`:
+  - the new University number arrives by email, without a password
+  - to set one, use "forgot password" with Nafath; it fails from abroad, so do it in the Kingdom or on campus Wi-Fi
+  - the IT office is behind Wihda 18, it.care@iu.edu.sa
+  - ta'jeel needs the new number working first
+- `campus-life-islamic-university`:
+  - the mat'am's hours and paying online with a personal mada card
+  - the gym's hours, and the library is closed on Saturdays
+  - room faults are reported through a University website request
+  - a Saudi Post office is on campus
+  - scooters must be registered
+  - temporary rooms are in Wihda 5, arranged at the Wihda 22 housing office
+  - a printed iqama card costs about 58 SAR at Student Affairs and takes 2 to 3 weeks
+  - Ramadan on campus: iftar and suhoor, and class times change
+- `exams-results-and-attendance`:
+  - add and drop, and the reported 25-hour cap
+  - how substitute exams appear on the schedule
+  - travel absences are not removed
+- `iqama-and-exit-reentry-fees`:
+  - the iqama renewal path on Tawasul: Travel Management, then "طلب تجديد الإقامة"; students on ta'jeel send it themselves
+  - check a visa on vv.muqeem.sa or in Absher
+  - Minhati only opens from a Saudi IP address
+  - an emergency exit visa during term goes through Tawasul, the dean and the Student Affairs secretary
+- `sim-internet-bank` and `sending-and-receiving-money`:
+  - US citizens face FATCA checks (some banks ask for an SSN, some are harder)
+  - a new iqama number after two ta'jeels locked one student's old account
+  - a 5,000 SAR daily ATM limit is reported
+  - clean 100 dollar notes exchange best
+- `doctors-hospitals-and-pharmacies`: family members need an in-person file at the Medical Center before they can book in the app.
+- `graduate-procedures`: graduates get two family invitations to the ceremony; the bisht, sash and card are collected in April.
+- `umrah-rawdah-quba` and the Ramadan guide (#45):
+  - I'tikaf registration at Masjid an-Nabawi opens on the Haramain authority's e-services around 5 Ramadan at 11 am
+  - tawaf carts are booked at carts.alharamain.gov.sa
+  - one zamzam container per passport on Saudia
+  - Haram parking at the blue machines or in the Mawqif app, about 1.30 SAR an hour
+- `finding-an-apartment`:
+  - ask building supervisors in person after Asr
+  - basement flats are cheaper to cool but damp
+  - rents reported in 2025: 23,000 to 25,000 SAR a year for 3 to 4 bedrooms, and 600 SAR a month for a room
+- **Duroos (akheeai):** the official schedule of duroos at Masjid an-Nabawi is published at prh.gov.sa. Worth a link on `/duroos`.
+
+**New FAQs (aiakhee):**
+- "Is family residency (istiqdam) open?"
+- "How do I get my University password after the Ma'had?"
+- "Can I open a bank account as a US citizen?"
+- "How is the stipend paid, and what if my card stops working?"
+- "Can I travel during the semester?"
+- update `student-ticket-rules`
+
+**Owner and the University:** every file has a section of open questions. The ones above, numbered 6 to 10, matter most.
