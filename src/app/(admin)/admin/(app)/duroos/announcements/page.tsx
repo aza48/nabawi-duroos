@@ -26,7 +26,7 @@ export default async function Page() {
           <li key={a.slug}>
             <Link href={`/admin/duroos/announcements/${a.slug}`} className="flex items-center gap-3 p-3">
               <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-semibold">{a.titleEn}</span>
+                <span className="line-clamp-2 block text-sm font-semibold">{a.titleEn}</span>
                 <span className="block text-xs text-muted">{a.eventDate ?? riyadhDateIso(a.postedAt)}</span>
               </span>
               <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold capitalize ${BADGE[a.status]}`}>{a.status}</span>

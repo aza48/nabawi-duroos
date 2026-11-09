@@ -32,7 +32,7 @@ export function AdminShell({ name, roleLabel, canUndo = false, canSeeVisitors = 
           <Link href="/admin" className="font-heading text-xl font-semibold text-primary">MESH <span className="text-sm font-medium text-muted">Admin</span></Link>
           <nav className="hidden gap-1 md:flex">
             {tabs.map((t) => (
-              <Link key={t.href} href={t.href} className={`rounded-full px-3 py-1.5 text-sm font-semibold ${active(t) ? "bg-primary text-primary-ink" : "text-muted hover:text-ink"}`}>{t.label}</Link>
+              <Link key={t.href} href={t.href} className={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold ${active(t) ? "bg-primary text-primary-ink" : "text-muted hover:text-ink"}`}>{t.label}</Link>
             ))}
           </nav>
           <div className="flex items-center gap-2">

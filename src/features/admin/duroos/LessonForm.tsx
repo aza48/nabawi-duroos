@@ -71,13 +71,13 @@ export function LessonForm({
           </select>
         </Field>
       )}
-      <Field label="Book (Arabic)"><input dir="rtl" className={inputCls} value={v.bookAr} onChange={(e) => set("bookAr", e.target.value)} required /></Field>
       <Field label="Book (English)"><input className={inputCls} value={v.bookEn} onChange={(e) => set("bookEn", e.target.value)} required /></Field>
+      <Field label="Book (Arabic)"><input dir="rtl" className={inputCls} value={v.bookAr} onChange={(e) => set("bookAr", e.target.value)} required /></Field>
       <div className="grid grid-cols-2 gap-3">
         <Field label="Author (English)"><input className={inputCls} value={v.bookAuthorEn ?? ""} onChange={(e) => set("bookAuthorEn", e.target.value)} /></Field>
         <Field label="Author (Arabic)"><input dir="rtl" className={inputCls} value={v.bookAuthorAr ?? ""} onChange={(e) => set("bookAuthorAr", e.target.value)} /></Field>
-        <Field label="Link to the book (optional)" hint="A PDF or the MESH Library page, shown on the dars page. https:// or /library/…"><input className={inputCls} inputMode="url" value={v.bookUrl ?? ""} onChange={(e) => set("bookUrl", e.target.value)} placeholder="https://…" /></Field>
       </div>
+      <Field label="Link to the book (optional)" hint="A PDF or the MESH Library page, shown on the dars page. https:// or /library/…"><input className={inputCls} inputMode="url" value={v.bookUrl ?? ""} onChange={(e) => set("bookUrl", e.target.value)} placeholder="https://…" /></Field>
       <div className="grid grid-cols-2 gap-3">
         <Field label="Masjid">
           <select className={inputCls} value={v.masjidId} onChange={(e) => set("masjidId", e.target.value)}>
