@@ -387,51 +387,78 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
     slug: "scholarship-stipend-and-allowances",
     stage: "study",
     title: "Your scholarship money: stipend, allowances and tickets",
-    summary: "What a full scholarship pays: the monthly stipend, the arrival and graduation allowances and the yearly ticket home, how to see your rewards and add your IBAN, and what stops payment.",
+    summary: "What a full scholarship pays and when: the monthly stipend and pay days, the University stipend card, the arrival, books, excellence and graduation allowances, the yearly ticket home, Student Fund loans, and what stops payment.",
     bodyHtml: `
-<p>Checked 9 November 2026. A full (external) scholarship at the Islamic University pays more than the monthly stipend. This page sets out each payment, where to see it, and what can stop it.</p>
+<p>Checked 9 November 2026. A full (external) scholarship at the Islamic University pays more than the monthly stipend. This page sets out each payment, when it comes, where it lands and what can stop it.</p>
 <h2>What a full scholarship gives you</h2>
 <ul>
 <li>A <strong>monthly stipend</strong> (mukafa'ah, مكافأة).</li>
-<li>An <strong>arrival allowance</strong> of two months' stipend.</li>
-<li>A <strong>graduation allowance</strong> of three months' stipend, for shipping your books home.</li>
-<li>A <strong>discounted economy ticket home</strong> at the end of each academic year.</li>
+<li>An <strong>arrival allowance</strong> (بدل تجهيز) of two months' stipend, paid after you first arrive.</li>
+<li>A <strong>books allowance</strong> (بدل كتب) once a year, paid around October.</li>
+<li>An <strong>excellence allowance</strong> (بدل التفوق) for top grades. See below.</li>
+<li>A <strong>graduation allowance</strong> (بدل تخرج) of three months' stipend, for shipping your books home.</li>
+<li>A <strong>ticket home at the end of each academic year</strong>, in discounted economy class, by the most direct route. It is given only when no other party already provides you with a ticket.</li>
 <li>University housing, three subsidised meals a day, free buses to the Haram and free medical care at the University Medical Center.</li>
 </ul>
-<p>A partial (internal) scholarship, for applicants already living in Saudi Arabia, covers tuition only. It has no stipend, allowances, tickets, housing or meals.</p>
+<h2>Partial scholarships</h2>
+<p>A partial (internal) scholarship, for applicants already living in Saudi Arabia, covers tuition only. It pays no stipend and no allowances, and includes no ticket, no meals and no free housing. When places are free, the University offers partial scholarship students a paid room in Unit 13: see <a href="/guides/unit-13-and-paid-university-housing">Unit 13 and paid University housing</a>.</p>
 <h2>The monthly stipend</h2>
 <ul>
-<li>The rate is set by the University and depends on your college.</li>
-<li>Your own payments are in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
-<li>It is paid monthly into your bank account. The day changes from month to month, and the University sometimes pays early before a holiday, so plan your month without counting on a fixed date.</li>
+<li><strong>The rate</strong> is set by the University and depends on your college. Your own payments are in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
+<li><strong>Where it goes:</strong> onto your <strong>University stipend card</strong>, an Al Rajhi Bank card the University issues to you. It is not paid into a bank account of your own. See the next section.</li>
+<li><strong>When:</strong> usually between the <strong>21st and the 25th</strong> of each Gregorian month, late at night. If the day falls on a weekend it moves to the nearest working day, and the University pays early before National Day, Founding Day and the start of Ramadan. After an early payment, the next one comes more than a month later.</li>
+<li><strong>All year:</strong> it is paid every month, the summer break included.</li>
+<li><strong>Alerts:</strong> the text message does not always arrive, so check the card balance itself.</li>
 </ul>
-<blockquote><p>Tip: Bring enough money for your first two months. Opening a bank account and setting up your first payments takes time.</p></blockquote>
-<h2>Getting paid: your bank account and IBAN</h2>
+<h3>Your first months</h3>
+<p>New students receive no stipend in their first month. The second month brings a double payment that covers both months: in September 2026 new students received two payments of the monthly rate, a day apart. The arrival allowance is a separate payment. If nothing has arrived by the end of your second month, go to the stipends section (قسم المكافآت) of the Deanship of Student Affairs.</p>
+<blockquote><p>Tip: Bring enough money for your first two months. Your first stipend comes in your second month.</p></blockquote>
+<h2>The University stipend card</h2>
+<ul>
+<li><strong>Getting it:</strong> new students receive the card after orientation. Cards are issued and renewed at the card office in Unit 22 (الوحدة 22), 8:00 am to 2:00 pm on working days. The University activates the card, and the PIN comes in the envelope. You can change the PIN at any Al Rajhi ATM.</li>
+<li><strong>Money only goes out:</strong> the card takes no cash deposits and no transfers in, and it cannot be added to Apple Pay or the Al Rajhi app.</li>
+<li><strong>Using the money:</strong> withdraw it at an Al Rajhi ATM, or move it to your own bank account with the Barq app, which is instant and free. Step by step: <a href="/guides/getting-your-stipend-off-the-university-card">Getting your stipend off the University card</a>.</li>
+<li><strong>Your own account:</strong> open a Saudi bank account early so you have somewhere to move the money. On a Visitor ID, see <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
+<li><strong>Lost, swallowed or expired card:</strong> ask the stipends section for a replacement (بدل فاقد). It takes about two weeks, a small fee is taken from the card, and your stipend is kept. An expired card cannot be used at all, so renew it before the expiry date.</li>
+<li><strong>After a card change:</strong> a new or renewed card can hold up a payment while the University updates its records. If a payment is missing after a change, tell the stipends section.</li>
+</ul>
+<h2>The excellence allowance</h2>
+<p>Full scholarship students with a <strong>semester GPA of 4.50 or more out of 5 in both semesters</strong> of the academic year receive an excellence allowance (بدل التفوق) once a year. In recent years it has been 1,000 SAR.</p>
+<ul>
+<li>Each semester's GPA counts on its own. Your cumulative GPA does not.</li>
+<li>There is nothing to apply for. It is paid onto your stipend card in batches after the year ends, usually from July, with the last batches alongside the August or September stipend.</li>
+<li>A bar (حرمان) from a course loses it.</li>
+<li>If you qualified and nothing has arrived by the end of September, ask the stipends section.</li>
+</ul>
+<h2>Student Fund loans</h2>
+<p>If you run short, the Student Fund (صندوق الطالب) in Unit 22 gives loans (سلفة) of up to <strong>2,000 SAR</strong>, repaid in fixed monthly instalments taken from your stipend.</p>
 <ol>
-<li>Open a Saudi bank account. On a Visitor ID, see <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
-<li>Find the account's IBAN in your banking app. It starts with SA and has 24 characters.</li>
-<li>In the Academic System, open <strong>Personal</strong>, then <strong>Rewards</strong>, and send an IBAN update request with the new number.</li>
-<li>Check the Rewards screen after the next payment date to see that the payment went to the right account.</li>
+<li>Collect the Fund's form at Unit 22.</li>
+<li>Bring an IBAN certificate for your own bank account, your academic record and your student card.</li>
+<li>Hand in the form. The money reaches your account in one to two weeks.</li>
 </ol>
-<p>If you change bank, send a new IBAN update request before the next payment.</p>
+<p>You can borrow once only, and not in your final year. A good GPA helps your request. The Fund also has an aid section (إعانة) for students in real hardship.</p>
 <h2>What stops the stipend</h2>
 <ul>
 <li><strong>Ta'jeel or i'tithaar:</strong> the stipend stops for the semester you are not studying. See <a href="/guides/tajeel-and-itithaar">Taking a semester off</a>.</li>
+<li><strong>Passing the regular length of your programme:</strong> the stipend covers the normal number of semesters in your study plan. Extra semesters beyond it are unpaid unless the University approves them.</li>
 <li><strong>Leaving your studies:</strong> withdrawal or dismissal ends the scholarship.</li>
-<li><strong>A frozen bank account:</strong> on a Visitor ID, the bank freezes the account when the ID expires. Renew in good time: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</li>
 </ul>
 <h2>Your ticket home</h2>
-<p>Each academic year the University gives you a discounted economy ticket home, issued against a travel order on Etimad. The main rules:</p>
+<p>Each academic year the University gives you a discounted economy ticket home and back, issued against a travel order on Etimad. The main rules:</p>
 <ul>
-<li>To a capital city in your own country, or in the country that issued the visa you arrived on.</li>
-<li>Valid for 3 months from the first travel date. The name and the outbound airports cannot be changed.</li>
+<li>It goes to one of the cities the University sets for your country. In 2026, for example, students going to the USA chose New York or Washington DC. A connection beyond that city is at your own cost.</li>
+<li>It is given only when no other party already provides you with a ticket.</li>
+<li>Valid for 3 months from the first travel date. The name, the destination and the outbound airports cannot be changed.</li>
 <li>Date changes are at your cost, cancelling returns the ticket to the University with no cash refund, and a no-show loses the ticket.</li>
 <li>One cabin bag and two checked bags.</li>
 </ul>
-<p>The full list and how to set up your account are in <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</p>
+<p>How to request it, how group tickets arrive and what to do about an exam clash are in <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</p>
+<h2>Married students</h2>
+<p>The University's Scholarship Fund (صندوق المنح) runs support programmes for married scholarship students whose families live with them in Madinah, including a hardship programme (تفريج كرب). It announces each round on its Telegram channel, <a href="https://t.me/BoxIslamicUniversity1">t.me/BoxIslamicUniversity1</a>. When it asks married students to update their details, send a recent enrolment letter (إفادة), an IBAN certificate and the iqamas of every family member, all as PDF, before the deadline.</p>
 <h2>When you graduate</h2>
-<p>Graduates receive the graduation allowance of three months' stipend and a final ticket home, once the University has confirmed their clearance. The steps are in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
-<blockquote><p>Tip: A payment missing or wrong? Check the Rewards screen first, then send a request through Tawasul. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
+<p>Graduates receive the graduation allowance of three months' stipend and a final ticket home, once the University has confirmed their clearance. The allowance reaches your card one to two months after you graduate. The steps are in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
+<blockquote><p>Tip: A payment missing or wrong? Check the Rewards screen and your card balance first, then go to the stipends section of the Deanship of Student Affairs or send a request through Tawasul. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
 ];
 
@@ -444,7 +471,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     slug: "applying-to-the-islamic-university",
     stage: "getting-started",
     title: "Applying to the Islamic University",
-    summary: "The 2025 to 2026 system step by step, from the Study in Saudi portal and the second application on Minhati to final approval, the educational visa and arrival, with past windows and what to prepare now.",
+    summary: "The 2025 to 2026 system step by step, from the Study in Saudi portal and the second application on Minhati to final approval, the educational visa and arrival, with past windows, the colleges and programme lengths, full and partial scholarships, how internal applicants are ranked and what to prepare now.",
     bodyHtml: `
 <blockquote><p>Important: applying is free and you do it yourself on <a href="https://studyinsaudi.sa/">studyinsaudi.sa</a>. The University has no offices or agents abroad. Anyone who asks you for money to apply, to speed things up or to guarantee a place is not working for the University. Do not pay them and do not give them your login.</p></blockquote>
 <p>Checked 9 November 2026. Since 2025 the whole journey runs through one national portal, a second application on the University's own portal, a final approval from the Ministry of Education and an electronic educational visa. New students arrive with a Visitor ID rather than an iqama.</p>
@@ -455,67 +482,91 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <tr><td>2024</td><td>21 April to 28 July 2024</td></tr>
 <tr><td>2025, for the 1447 year</td><td>1 May to 14 June 2025</td></tr>
 <tr><td>2026, for the 1448 year</td><td>19 April to 21 May 2026</td></tr>
+<tr><td>2026, extra round (second round for full scholarships, third for partial)</td><td>16 September to 6 October 2026</td></tr>
 </tbody></table>
-<p>Watch studyinsaudi.sa and the University's announcements from March, and have every document ready before the window opens. Recent windows have lasted five to six weeks, and the last days are the busiest, so apply early in the window, not on the final day.</p>
+<p>Extra rounds like the September 2026 one are short and are also open to applicants who were not accepted earlier in the year. Watch studyinsaudi.sa and the University's announcements from March, and have every document ready before the window opens. Recent windows have lasted five to six weeks, and the last days are the busiest, so apply early in the window, not on the final day.</p>
 <h2>Who can apply</h2>
 <ul>
 <li><strong>Age:</strong> at least 17 and no older than 25.</li>
 <li><strong>School certificate:</strong> general secondary or its equivalent, no more than five years old. Scientific colleges need the scientific track. An old certificate is one of the most common reasons for rejection.</li>
 <li><strong>Where you live:</strong> full scholarship applicants must be living outside Saudi Arabia.</li>
 <li><strong>Record:</strong> good conduct, never expelled from a university for discipline, and not already on a Saudi scholarship.</li>
-<li><strong>Health:</strong> medically fit, with a medical report showing no infectious disease.</li>
+<li><strong>Health:</strong> medically fit, with a medical report showing you are in good health.</li>
+<li><strong>Recommendation:</strong> two scholarly recommendation letters (tazkiyah) are a condition of admission, not an extra.</li>
 <li><strong>College of the Holy Qur'an:</strong> the whole Qur'an memorised, confirmed in an oral exam.</li>
 <li><strong>Engineering, computing and science:</strong> these colleges teach in English and ask for IELTS or TOEFL, unless your earlier study was in English or you come from a country where English is an official or main language. The Islamic and Arabic colleges teach in Arabic.</li>
 <li><strong>Finished school in Saudi Arabia?</strong> You count as an internal applicant even if you apply for an external scholarship, and you must submit the General Aptitude Test, plus the Achievement Test for the scientific colleges.</li>
 <li><strong>Brothers only for study in Madinah.</strong> Sisters can study with the University online, and other routes are in <a href="/ask/sisters-study">Where can sisters study?</a></li>
 </ul>
 <h2>The programmes</h2>
-<p>Degrees take four or five years, after the Arabic institute if your placement test puts you there.</p>
-<ul>
-<li><strong>Islamic and Arabic colleges:</strong> Sharia, Creed and Da'wah, the Holy Qur'an, Hadith, Arabic language and Media, Law, and Business (Economics).</li>
-<li><strong>Engineering:</strong> chemical, civil, electrical, industrial and mechanical.</li>
-<li><strong>Computing:</strong> computer science, data science and information technology.</li>
-<li><strong>Science:</strong> chemistry, environmental sciences, financial and actuarial mathematics, mathematics and physics.</li>
-</ul>
-<p>Choose carefully. Scholarship students are placed in one college and cannot move to another after admission.</p>
-<h2>Full and partial scholarships</h2>
-<table><thead><tr><th>Topic</th><th>Full (external)</th><th>Partial (internal)</th></tr></thead><tbody>
-<tr><td><strong>Who</strong></td><td>Applicants living outside Saudi Arabia</td><td>Applicants already living in Saudi Arabia, who must keep a legal residency throughout</td></tr>
-<tr><td><strong>Tuition</strong></td><td>Free</td><td>Free</td></tr>
-<tr><td><strong>Stipend and allowances</strong></td><td>Monthly stipend, arrival allowance and graduation allowance</td><td>None</td></tr>
-<tr><td><strong>Housing and meals</strong></td><td>University housing and subsidised meals</td><td>None</td></tr>
-<tr><td><strong>Tickets</strong></td><td>A discounted economy ticket home each year</td><td>None</td></tr>
-<tr><td><strong>Also</strong></td><td>Free buses to the Haram, free medical care, the library, sport and activities</td><td>Employer approval if you work</td></tr>
+<p>These are the bachelor's programmes open to scholarship students for the 1448 year.</p>
+<table><thead><tr><th>College</th><th>Programmes</th><th>Length</th><th>Taught in</th></tr></thead><tbody>
+<tr><td>Sharia</td><td>Sharia</td><td>4 years</td><td>Arabic</td></tr>
+<tr><td>Creed and Da'wah</td><td>Creed and Da'wah</td><td>4 years</td><td>Arabic</td></tr>
+<tr><td>Holy Qur'an</td><td>Holy Qur'an</td><td>4 years</td><td>Arabic</td></tr>
+<tr><td>Hadith</td><td>Hadith</td><td>4 years</td><td>Arabic</td></tr>
+<tr><td>Arabic Language and Humanities</td><td>Arabic Language, Media</td><td>4 years</td><td>Arabic</td></tr>
+<tr><td>Law</td><td>Law (al-Anzimah, الأنظمة)</td><td>4 years</td><td>Arabic</td></tr>
+<tr><td>Business</td><td>Economics</td><td>4 years</td><td>Arabic</td></tr>
+<tr><td>Engineering</td><td>Chemical, Civil, Electrical, Industrial, Mechanical</td><td>5 years</td><td>English</td></tr>
+<tr><td>Computer</td><td>Computer Science, Data Science, Information Technology</td><td>5 years</td><td>English</td></tr>
+<tr><td>Science</td><td>Chemistry, Environmental Sciences, Financial and Actuarial Mathematics, Mathematics, Physics</td><td>4 years</td><td>English</td></tr>
 </tbody></table>
-<p>More in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money: stipend, allowances and tickets</a>.</p>
+<p>New in 1448: Law is now its own College of Law, and Economics sits in the College of Business. Classes for both are held in the Sharia buildings.</p>
+<h3>The Arabic Language Institute (Ma'had)</h3>
+<p>The Institute runs two Arabic diplomas before college: the Intermediate Diploma (الدبلوم المتوسط), 2 years, and the Associate Diploma (الدبلوم المشارك), 1 year. You do not choose the Ma'had. The University places you there if your Arabic needs it, and students with strong Arabic start straight in their college. Your degree years come after any time in the Ma'had.</p>
+<h3>Choose your college with care</h3>
+<p>Scholarship students cannot transfer to another college after admission. You study the programme and college you are accepted into.</p>
+<h2>Full and partial scholarships</h2>
+<p>The University offers international bachelor's students two kinds of scholarship. Both are full-time study on campus in Madinah, and your offer on Study in Saudi shows which one you have.</p>
+<table><thead><tr><th>Topic</th><th>Full (external, منحة خارجية)</th><th>Partial (internal, منحة داخلية)</th></tr></thead><tbody>
+<tr><td><strong>Who</strong></td><td>Non-Saudi applicants living outside Saudi Arabia</td><td>Non-Saudi applicants living in Saudi Arabia on a legal residency, which they must keep for their whole degree</td></tr>
+<tr><td><strong>Tuition</strong></td><td>Free</td><td>Free</td></tr>
+<tr><td><strong>Monthly stipend</strong></td><td>Yes</td><td>No</td></tr>
+<tr><td><strong>Arrival and graduation allowances</strong></td><td>Yes: two months' stipend on arrival and three months' stipend on graduating</td><td>No</td></tr>
+<tr><td><strong>Ticket home each year</strong></td><td>Yes, discounted economy, unless another party already gives you a ticket</td><td>No</td></tr>
+<tr><td><strong>Housing</strong></td><td>Free University housing</td><td>No free housing. Paid rooms in Unit 13 are offered when places are free</td></tr>
+<tr><td><strong>Subsidised meals</strong></td><td>Yes</td><td>No</td></tr>
+<tr><td><strong>Extra condition</strong></td><td>None</td><td>If you work, your employer's written approval to study</td></tr>
+</tbody></table>
+<p>More in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money: stipend, allowances and tickets</a> and <a href="/guides/unit-13-and-paid-university-housing">Unit 13 and paid University housing</a>.</p>
+<h2>Applying from inside Saudi Arabia</h2>
+<p>If you live in Saudi Arabia on a legal residency, you apply for a partial (internal) scholarship. If you finished secondary school in Saudi Arabia, you are treated as an internal applicant for every admission rule, even if you apply for a full scholarship.</p>
+<p>Internal applicants must sit the General Aptitude Test (اختبار القدرات العامة). For engineering, computing and science you also need the Achievement Test (الاختبار التحصيلي). Without these results your application is not considered. Places are ranked by a weighted score:</p>
+<table><thead><tr><th>Colleges</th><th>Secondary certificate</th><th>General Aptitude Test</th><th>Achievement Test</th></tr></thead><tbody>
+<tr><td>Islamic, Arabic, Law and Business colleges</td><td>50%</td><td>50%</td><td>Not used</td></tr>
+<tr><td>Engineering, Computer and Science colleges</td><td>30%</td><td>30%</td><td>40%</td></tr>
+</tbody></table>
+<p>Applicants are then sorted by score and by the order of their choices, and each programme takes as many students as it has seats. <strong>Worked example:</strong> for Sharia, a secondary certificate of 90% and an aptitude score of 80 give a weighted score of 45 + 40 = 85.</p>
 <h2>Prepare now for the next window</h2>
 <ol>
 <li><strong>Passport:</strong> valid well beyond your planned arrival. Every form must use your name exactly as it is printed in it.</li>
 <li><strong>Secondary school certificate and transcript.</strong> Check it will still be under five years old when you apply.</li>
 <li><strong>Police clearance</strong> from your country. In many countries this takes weeks, so start early.</li>
 <li><strong>For a partial scholarship:</strong> your employer's approval.</li>
-<li><strong>Two recommendation letters (tazkiyah)</strong> from recognised organisations, institutions or scholars in your country, or from people the University approves.</li>
-<li><strong>Medical report</strong> showing you are fit to study and free of infectious disease.</li>
-<li><strong>Birth certificate</strong> or another proof of age.</li>
+<li><strong>Two scholarly recommendation letters (tazkiyah)</strong> from recognised organisations, institutions or scholars in your country, or from well-known figures the University approves. Both are required.</li>
+<li><strong>Medical report</strong> showing you are in good health and fit to study.</li>
+<li><strong>Birth certificate</strong>, or an official age assessment certificate (شهادة التسنين) if you have no birth certificate.</li>
 <li><strong>IELTS or TOEFL</strong> for engineering, computing and science, unless you are exempt.</li>
 <li><strong>Photo:</strong> passport style, plain white background, neutral face, and not in white clothes. A photo studio does this properly.</li>
 <li><strong>Arabic translations</strong> of anything not in Arabic, made by a certified translator.</li>
 <li><strong>Extra certificates</strong> for Qur'an memorisation, Arabic, mutun or ijazah, if you have them. They count for the Islamic colleges.</li>
 <li><strong>Clear colour scans</strong> of everything. Do not use phone photos.</li>
-<li><strong>An email address you check every day,</strong> including the spam folder. Your registered email is the University's official channel, and missing a message can end your application.</li>
+<li><strong>An email address you check every day,</strong> including the spam folder. Your registered email is the University's official channel. If you lose access to it, your admission or visa can stop and your application can be removed.</li>
 </ol>
+<p>Everything you enter in your application must be backed by a document. Details without a document are not accepted, and applying does not oblige the University to admit you.</p>
 <h2>From application to arrival</h2>
 <ol>
 <li><strong>Apply on Study in Saudi.</strong> Create your account, fill in your details, upload your documents and choose your programmes. You can choose up to 25 programmes across more than ten universities, and each shows whether it is a full, partial or paid scholarship. Submit before the deadline and keep your application number.</li>
 <li><strong>Complete the second application on Minhati.</strong> The University emails you login details for <a href="https://minhatee2.iu.edu.sa/">Minhati</a>, its own portal, and asks for extra details and documents with Arabic translations. You often have only about 24 hours, so act the same day.</li>
-<li><strong>Sit the interview or the placement test if invited.</strong> The interview is online. The Arabic test is not pass or fail: it only places you in a Ma'had level, so answer honestly. A level that is too high makes your first year much harder.</li>
+<li><strong>Sit the interview or the placement test if invited.</strong> The interview is online. The Arabic placement test (اختبار تحديد مستوى اللغة العربية) is for full scholarship applicants the University chooses to assess. It is not pass or fail: it decides whether you start in the Ma'had and at which level, or go straight to your college, so answer honestly. A level that is too high makes your first year much harder.</li>
 <li><strong>Accept your offer within 5 days.</strong> Initial acceptance arrives by email and shows on the portal as waiting for your confirmation. Accepting cancels your applications to other universities. If you ignore it, the offer lapses. Retype your first and last name exactly as in your passport.</li>
 <li><strong>Wait for final acceptance.</strong> Minhati shows only a preliminary acceptance, which is conditional. Final acceptance appears on Study in Saudi, which is the official record and the only stage that leads to a visa.</li>
 <li><strong>Fill in the visa application</strong> when the portal asks. You must be outside Saudi Arabia when you submit it, or it is rejected.</li>
 <li><strong>Pay the educational visa fee</strong> through the link that is sent to you.</li>
 <li><strong>Give your fingerprints</strong> through the Ministry of Foreign Affairs' <strong>Saudi Visa Bio</strong> app, or at an approved visa centre or Saudi embassy if the app does not work for you. Complete any medical tests you are asked for.</li>
 <li><strong>Receive the visa.</strong> It appears in your Study in Saudi account and is sent by email. If you used the app for fingerprints, you need no embassy visit.</li>
-<li><strong>Request your arrival ticket on Minhati,</strong> with your name exactly as in your passport.</li>
+<li><strong>Request your arrival ticket on Minhati,</strong> with your name exactly as in your passport, and wait for it. Full scholarship students arrive on the University's ticket, so do not buy your own.</li>
 <li><strong>Arrive in the semester you were offered.</strong> Your first weeks are in <a href="/guides/first-30-days-in-madinah">Your first 30 days in Madinah</a>, and life without an iqama in <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</li>
 </ol>
 <h2>What your status means</h2>
@@ -547,21 +598,21 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h2>What you agree to</h2>
 <p>Scholarship students sign a declaration. It commits you to follow Saudi law and the University's rules, to attend regularly and keep up your grades, not to move your sponsorship to anyone other than the University, and to go home when you graduate, withdraw or leave. You cannot stay on in the Kingdom on the scholarship after your studies end.</p>
 <h2>Housing and family</h2>
-<p><strong>Housing:</strong> full scholarships include University housing and partial ones do not. See <a href="/ask/is-housing-included">Is housing included?</a> and check the support shown on your offer. <strong>Family:</strong> see <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</p>
+<p><strong>Housing:</strong> full scholarships include free University housing. Partial scholarships include no free housing, and paid rooms in Unit 13 are offered when places are free. See <a href="/ask/is-housing-included">Is housing included?</a> and check the support shown on your offer. <strong>Family:</strong> family residency (istiqdam) through the University has been closed since 2025, so plan to come alone at first. See <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</p>
 <blockquote><p>Tip: Questions about your own application? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "new-student-steps",
     stage: "getting-started",
     title: "First steps for new students: SIM, Absher, Visitor ID, student card and bank account",
-    summary: "What to do after you arrive, in order: a Saudi SIM, Absher and the kiosk, Nafath, your Visitor ID, your National Address, a bank account and your IBAN, then your student card and University accounts.",
+    summary: "What to do after you arrive, in order: a Saudi SIM, Absher and the kiosk, Nafath, your Visitor ID, your National Address, a bank account, orientation, your stipend card and student card, then your University accounts and Etimad.",
     bodyHtml: `
-<p>Checked 9 November 2026. New students on the educational visa do these steps in this order, because each one needs the one before it. By the end you will have a Saudi number, an active Absher and Nafath, your Visitor ID, a bank account for your stipend, your student card and your University accounts.</p>
+<p>Checked 9 November 2026. New students on the educational visa do these steps in this order, because each one needs the one before it. By the end you will have a Saudi number, an active Absher and Nafath, your Visitor ID, a bank account, your stipend card, your student card and your University accounts.</p>
 <h2>Before you start</h2>
 <ul>
 <li>Keep your passport with you, and find your <strong>border number</strong> (رقم الحدود), the number linked to your visa when you first entered the Kingdom.</li>
 <li>Have an email address you can open on your phone.</li>
-<li>Bring enough money for your first two months. Opening a bank account and setting up your first payments takes time.</li>
+<li>Bring enough money for your first two months. No stipend is paid in your first month.</li>
 </ul>
 <h2>The steps</h2>
 <ol>
@@ -571,10 +622,12 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Activate Nafath</strong> (نفاذ) in the Nafath app: open the settings, choose to activate your national digital identity, and complete your details and the face check.</li>
 <li><strong>Issue your Visitor ID</strong> (هوية زائر) in Absher: choose <strong>Issue visitor ID</strong> and complete the details. It is digital only, it shows in the Absher app, and it cannot be printed.</li>
 <li><strong>Register your National Address</strong> with Saudi Post. Your bank needs it. See <a href="/ask/short-address">What is a short address?</a></li>
-<li><strong>Open a bank account.</strong> Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The account number arrives by text message, and the mada card is collected at the branch or posted to you. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
-<li><strong>Give the University your IBAN</strong> so your stipend is paid into your account: in the Academic System, open Personal, then Rewards, and send an IBAN update request. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
-<li><strong>Collect your student card.</strong> New students receive it during orientation week. If you arrive later, take your Visitor ID to the student card office, which prints it on the spot.</li>
-<li><strong>Sign in to your University accounts</strong> at sso.iu.edu.sa, through Nafath or with your University number, password and a code. This opens your University email, the Academic System, Blackboard and Tawasul. Your timetable is under Electronic Registration, then Registered Courses.</li>
+<li><strong>Open a bank account.</strong> Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The account number arrives by text message, and the mada card is collected at the branch or posted to you. This is the account you move your stipend into from the University card. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
+<li><strong>Attend orientation.</strong> New students have an orientation meeting in the first week, announced on the University's X account. It explains how your first weeks work, so do not miss it.</li>
+<li><strong>Collect your stipend card.</strong> Your stipend is paid onto a University stipend card (an Al Rajhi Bank card), not into your own account. New students receive it after orientation, and cards are issued and renewed at the card office in Unit 22. Your first stipend comes in your second month, as a double payment. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a> and <a href="/guides/getting-your-stipend-off-the-university-card">Getting your stipend off the University card</a>.</li>
+<li><strong>Get your student card.</strong> Your University ID is digital, in the Tawakkalna app. A printed card is optional: take a 4x6 photo and your ID to the Comprehensive Services Office on the ground floor of Unit 22, 8:00 am to 2:00 pm on working days.</li>
+<li><strong>Sign in to your University accounts</strong> at sso.iu.edu.sa, through Nafath or with your University number, password and a code. This opens your University email, the Academic System, Blackboard and Tawasul. Your timetable is under Electronic Registration, then Registered Courses. In the timetable, day 1 is Sunday and day 5 is Thursday.</li>
+<li><strong>Check your ID number is on your University record.</strong> Without your Visitor ID or iqama number in the Academic System, the Travel Administration cannot issue your tickets or visas. Sign in to the University website and open Academic Services (الخدمات الأكاديمية), then Academic Information (المعلومات الأكاديمية), and look under ID number (رقم الهوية). If it is empty, go to the Travel Administration (إدارة السفر) with your passport and Visitor ID.</li>
 <li><strong>Set up Etimad</strong> for your University tickets, with your name exactly as in your passport. See <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</li>
 </ol>
 <blockquote><p>Note: If Absher or Nafath activation keeps failing, call Absher customer care on <strong>920020405</strong> (24 hours), choose English, enter your border number and ask for a technical support ticket. See <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a>.</p></blockquote>
@@ -593,9 +646,9 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     slug: "tajeel-and-itithaar",
     stage: "study",
     title: "Taking a semester off: ta'jeel and i'tithaar",
-    summary: "How to postpone a semester (ta'jeel) or be excused from one (i'tithaar), the limits, what each does to your stipend, room and study period, the 1448 windows, and how to apply.",
+    summary: "How to postpone a semester (ta'jeel) or be excused from one (i'tithaar), the limits, what each does to your stipend, room, visa and study period, handing back your room from abroad, the 60-day rule, the 1448 windows, coming back after a closed file, and how to apply.",
     bodyHtml: `
-<p>Checked 9 November 2026. Ta'jeel and i'tithaar both take you out of a semester, but they work differently and they share one limit. Read this before you apply, and speak to your college or the Ma'had first.</p>
+<p>Checked November 2026. Ta'jeel and i'tithaar both take you out of a semester, but they work differently and they share one limit. Read this before you apply, and speak to your college or the Ma'had first.</p>
 <h2>Ta'jeel and i'tithaar in short</h2>
 <table><thead><tr><th>Topic</th><th>Ta'jeel (تأجيل)</th><th>I'tithaar (اعتذار)</th></tr></thead><tbody>
 <tr><td>What it is</td><td>Postponing a semester before it starts</td><td>An excuse from a semester you have already started</td></tr>
@@ -604,41 +657,82 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <tr><td>Your courses</td><td>You are not registered that semester</td><td>You are withdrawn from all that semester's courses with a W grade, which is not a fail</td></tr>
 <tr><td>Maximum study period</td><td>Not counted, so your deadline moves back</td><td>Counted, so your deadline stays where it was</td></tr>
 <tr><td>Stipend (mukafa'ah)</td><td>Stops</td><td>Stops</td></tr>
-<tr><td>Room in the halls</td><td>Hand it back and empty it</td><td>You may need to</td></tr>
+<tr><td>Room in the halls</td><td>Hand it back first: the request is not approved until you do</td><td>Hand it back and move out as soon as your status changes</td></tr>
+<tr><td>Visa (iqama, one semester)</td><td>Exit and re-entry: you leave the Kingdom and return a week before the next semester</td><td>Exit and re-entry: you leave the Kingdom and return a week before the next semester</td></tr>
 </tbody></table>
 <h2>The limits</h2>
 <ul>
 <li>Ta'jeel and i'tithaar added together cannot be more than <strong>three semesters</strong> over your whole programme.</li>
 <li>In your <strong>first year</strong> neither is allowed except for compelling reasons. In the first year you also cannot withdraw from single courses or transfer to another college.</li>
-<li>Because i'tithaar counts towards your maximum study period, you have to fit the missed courses into later semesters or summers. If you run out of time, you risk not getting your degree.</li>
+<li>Because i'tithaar counts towards your maximum study period, you have to fit the missed courses into later semesters. If you run out of time, you risk not getting your degree.</li>
+<li>To leave a single course rather than the whole semester, see <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</li>
 </ul>
 <h2>The 1448 windows</h2>
 <table><thead><tr><th>Semester 2, 1448</th><th>Dates</th></tr></thead><tbody>
 <tr><td>Ta'jeel (deferral)</td><td>13 to 19 December 2026</td></tr>
 <tr><td>I'tithaar (excuse from the semester) and withdrawing from a course</td><td>20 December 2026 to 13 March 2027</td></tr>
+<tr><td>Re-enrolment requests for the next semester, after a closed file or a semester off</td><td>24 January to 11 April 2027</td></tr>
 </tbody></table>
-<p>The windows for every semester are in <a href="/guides/university-calendar-1448">The University calendar</a>, and the Academic System is the live record if a window is extended. Miss the ta'jeel window and only i'tithaar is left.</p>
+<p>The windows for every semester are in <a href="/guides/university-calendar-1448">The University calendar</a>, and the Academic System is the live record if a window is extended. Outside a window the screen says no movement can be entered in this period (لا يمكن إدخال اي حركة في هذه الفترة). Miss the ta'jeel window and only i'tithaar is left.</p>
 <h2>How to apply in the Academic System</h2>
-<p>The steps are the same for both.</p>
+<p>The steps are the same for both. Use a computer if you can.</p>
 <ol>
 <li>Sign in to the University system and open the <strong>Academic System</strong>.</li>
-<li>Under <strong>أكاديمي</strong> (Academic), choose <strong>ادخال حركات اكاديمية</strong>, then <strong>ادخال حركات أكاديمية جديدة</strong>.</li>
-<li>Tap <strong>أوافق</strong> (I agree).</li>
+<li>Under <strong>أكاديمي</strong> (Academic), choose <strong>ادخال حركات اكاديمية</strong> (Enter academic movements), then <strong>ادخال حركات أكاديمية جديدة</strong>.</li>
+<li>Read the conditions on the screen, including the visa and housing rules below, and tap <strong>أوافق</strong> (I agree).</li>
 <li>Set <strong>نوع الحركة</strong> (type) to <strong>تأجيل</strong> for ta'jeel, or <strong>الاعتذار</strong> for i'tithaar, which appears once the ta'jeel window has closed. Do not choose <strong>إنسحاب</strong>: that withdraws you from the University.</li>
 <li>Choose the semesters. For one semester, set both <strong>من بداية الفصل</strong> and <strong>إلى نهاية الفصل</strong> to the same semester. For two, set <strong>إلى نهاية الفصل</strong> to the second one.</li>
 <li>Choose your reason (<strong>السبب</strong>). Add notes under <strong>ملاحظات</strong> and supporting PDFs under <strong>مرفقات</strong>, such as a medical report. Tap <strong>التالي</strong> (next).</li>
 <li>Check the summary and tap <strong>حفظ</strong> (save), then <strong>انهاء</strong> (finish).</li>
-<li>See the wakeel of your college or the Ma'had, who handles student affairs, in case there are more forms to complete.</li>
+<li>If you live in the halls, hand back your room now (see below). See the wakeel of your college or the Ma'had, who handles student affairs, in case there are more forms to complete.</li>
 </ol>
-<p><strong>Checking your request:</strong> repeat steps 1 and 2, but choose <strong>إظهار الحركات الأكاديمية</strong>. Once it is approved, your status (<strong>الوضع العام</strong>) changes from <strong>منتظم</strong> (regular) to <strong>مؤجل</strong> (postponed).</p>
+<p><strong>Checking your request:</strong> repeat steps 1 and 2, but choose <strong>إظهار الحركات الأكاديمية</strong> (Show academic movements). Once it is approved, your status (<strong>الوضع العام</strong>) changes from <strong>منتظم</strong> (regular) to <strong>مؤجل</strong> (postponed). Past requests stay under <strong>حركات أكاديمية سابقة</strong> (Previous academic movements). If a request sits unanswered for days, follow it up with the wakeel of your college. The other screens of the Academic System are in <a href="/guides/university-student-system">Using the University's student system</a>.</p>
+<h2>What happens after you apply</h2>
+<ul>
+<li>Your request takes effect only when your status changes. Until then you are still a regular student, so <strong>keep attending your classes</strong>. Absences in the meantime count against you.</li>
+<li>Once your status changes, leave your room in the University halls straight away.</li>
+<li>Your stipend stops for the semester you are out.</li>
+</ul>
+<h2>Your room in the halls</h2>
+<p>A ta'jeel request is not approved until the housing office shows no room in your name. After an i'tithaar, you hand the room back as soon as your status changes. Belongings left in the halls after the Deanship's deadline are removed at your own risk.</p>
+<ol>
+<li>Empty the room. Everything the University provided stays: the mattress, the bed, the wardrobe, the desk and the chair.</li>
+<li>Get the handover form from the housing office in Unit 22, or at the Deanship of Student Affairs.</li>
+<li>Your building's mushrif (supervisor) checks the room is empty, takes the key and signs the form.</li>
+<li>Take the signed form back to the housing office, which records the room as returned.</li>
+</ol>
+<h3>If you are already abroad</h3>
+<p>Authorise a fellow student to hand back the room for you.</p>
+<ol>
+<li>In Tawasul at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a>, tap <strong>New request</strong> (طلب جديد) and choose <strong>Housing Administration</strong> (إدارة الإسكان). Use a subject such as "Authorisation to hand back my room".</li>
+<li>Write: "I, student [your full name], University number [your number], authorise student [his full name], University number [his number], to hand back my room: Unit [..], floor [..], room [..], bed [..]." Send it.</li>
+<li>Your friend prints the request, takes it to the housing office in Unit 22, and collects the handover form.</li>
+<li>He empties the room, the mushrif checks it and signs, and he takes the form back to the housing office.</li>
+<li>Once the system shows no room in your name, your ta'jeel can be approved.</li>
+</ol>
 <h2>Travel and your visa</h2>
-<table><thead><tr><th>Topic</th><th>Visitor ID (educational visa)</th><th>Iqama</th></tr></thead><tbody>
-<tr><td><strong>Before you leave</strong></td><td>Ask the University through Tawasul what your status means for your visa, and check the expiry date in Absher</td><td>Ask Travel Management (إدارة السفر) which visa you need before you book</td></tr>
-<tr><td><strong>Coming back</strong></td><td>Request a new visa on the <a href="https://minhatee2.iu.edu.sa/Home/VisaLanding">Minhati visa page</a>, signing in with your University number</td><td>Return on a valid exit and re-entry visa, or follow Travel Management's instructions</td></tr>
+<p>These rules are for international students on a full scholarship. They are set out on the application screen, and you agree to them when you apply.</p>
+<h3>If you hold an iqama</h3>
+<table><thead><tr><th>Your request</th><th>Visa you receive</th><th>What you must do</th></tr></thead><tbody>
+<tr><td>Ta'jeel or i'tithaar for one semester</td><td>Exit and re-entry visa</td><td>Leave the halls and the Kingdom once your status changes, and come back one week before the next semester starts</td></tr>
+<tr><td>Ta'jeel or i'tithaar for more than one semester, or withdrawal from the University</td><td>Final exit visa</td><td>Complete your clearance (إخلاء طرف) and leave the Kingdom within two weeks of your status changing</td></tr>
+<tr><td>Coming back to study after a final exit (re-enrolment, إعادة الانتظام)</td><td>A new study visa</td><td>Apply for it as the Deanship of Admission and Registration announces. You cannot return to study on any other kind of visa</td></tr>
 </tbody></table>
+<p><strong>The 60-day rule.</strong> If your exit and re-entry visa runs out while you are abroad on ta'jeel or i'tithaar, send a Tawasul request to Travel Management (إدارة السفر) to extend it, within 60 days of the day it expired. Ask someone in Madinah to pay the fee and finish the paperwork for you. Do it by day 59 at the latest. After 60 days your status becomes exited and did not return (خرج ولم يعد): the visa can no longer be extended, and you apply for a new study visa the way new students do.</p>
+<h3>If you hold a Visitor ID</h3>
+<p>Before you leave, ask the University through Tawasul what your status means for your visa, and check its expiry date in Absher. See <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>
+<h3>Getting a new visa to come back</h3>
+<p>Returning ta'jeel and i'tithaar students whose status has become exited and did not return, and students whose file was closed, request a new study visa on the <a href="https://minhatee2.iu.edu.sa/Home/VisaLanding">Minhati visa page</a>, signing in with their University number. The Deanship of Admission and Registration announces when it opens each semester, and the letter you need for the application is on the University website. From there it is the same process as for new students, through the Saudi embassy in your country.</p>
 <p>Flights during a semester off are at your own cost. The University's ticket is the yearly one home.</p>
+<h2>Coming back after a closed file</h2>
+<p>Missing 20 days in a row without ta'jeel or i'tithaar closes your file (مطوي القيد). A closed file can be reopened only once, within four semesters.</p>
+<ol>
+<li>Within the re-enrolment window, open the Academic System, then <strong>أكاديمي</strong>, <strong>ادخال حركات اكاديمية</strong>, <strong>ادخال حركة أكاديمية جديدة</strong>, and tap <strong>أوافق</strong>.</li>
+<li>Set <strong>نوع الحركة</strong> to <strong>اعادة قيد</strong> (re-enrolment), choose the reason that fits, attach your excuse, tap <strong>التالي</strong> and send.</li>
+<li>If you are outside the Kingdom, request your new visa on Minhati as above once you are accepted.</li>
+</ol>
 <h2>Questions</h2>
-<p><strong>Can I apply from abroad?</strong> Yes, the request is online. But someone has to empty your room and return the key, and you cannot sort out problems in person.</p>
+<p><strong>Can I apply from abroad?</strong> Yes, the request is online. Authorise a fellow student to hand back your room, as above, and watch the 60-day rule if your visa runs out.</p>
 <p><strong>Can I cancel a request?</strong> Ask your college or the Ma'had straight away, as they may need to put you back into your classes.</p>
 <blockquote><p>Tip: Not sure which one fits your case? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
@@ -957,13 +1051,15 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <p>Checked 9 November 2026. The Deanship of Graduate Studies admits master's, PhD and higher diploma students once a year. The 1448 window is closed and the 1449 window has not opened yet. The 1448 cycle below shows what to prepare.</p>
 <h2>Dates</h2>
 <table><thead><tr><th>1448 intake</th><th>Window</th></tr></thead><tbody>
-<tr><td>Master's and PhD</td><td>16 November to 11 December 2025</td></tr>
-<tr><td>Higher diplomas</td><td>5 to 11 April 2026</td></tr>
+<tr><td>Master's and PhD</td><td>Opened 16 November 2025 and closed in early December 2025</td></tr>
+<tr><td>Higher diplomas</td><td>5 to 11 April 2026 (17 to 23 Shawwal 1447)</td></tr>
 </tbody></table>
-<p>The University announces each window on the Deanship's X account, <a href="https://x.com/highstudies_iu">@highstudies_iu</a>, and its Telegram channel, <a href="https://t.me/highstudies_iu">t.me/highstudies_iu</a>. The 1448 window opened in mid November, so have your documents ready now.</p>
+<p>The University announces each window on the Deanship's X account, <a href="https://x.com/highstudies_iu">@highstudies_iu</a>, and its Telegram channel, <a href="https://t.me/highstudies_iu">t.me/highstudies_iu</a>. The 1448 master's and PhD window opened in mid November and ran for about three weeks, so watch these channels from early November and have your documents ready before it opens.</p>
+<p>For applicants inside Saudi Arabia, the 1448 cycle then ran like this: the specialist exams in mid January 2026, the interviews in late January, and acceptances announced from Ramadan. Postgraduate classes are held in the evening.</p>
+<blockquote><p>Tip: The University holds a Postgraduate Week on campus for students in their final levels. In 2026 it opened on 8 November at Qa'at as-Salam, with an exhibition on each programme and its admission conditions.</p></blockquote>
 <h2>How to apply</h2>
 <table><thead><tr><th>Topic</th><th>Inside Saudi Arabia</th><th>Outside Saudi Arabia</th></tr></thead><tbody>
-<tr><td><strong>Who</strong></td><td>Saudis, GCC citizens, legal residents (internal scholarship) and external scholarship students already at the University</td><td>International applicants for an external scholarship</td></tr>
+<tr><td><strong>Who</strong></td><td>Saudis, GCC citizens, legal residents (internal scholarship) and external scholarship students already at the University who are about to graduate</td><td>International applicants for an external scholarship who do not hold a scholarship in Saudi Arabia</td></tr>
 <tr><td><strong>Where</strong></td><td>The University's postgraduate admission portal, <a href="https://postgraduate.iu.edu.sa/">postgraduate.iu.edu.sa</a></td><td>The postgraduate Minhati portal, <a href="https://postgraduateminhatee.iu.edu.sa/">postgraduateminhatee.iu.edu.sa</a></td></tr>
 <tr><td><strong>Written exam</strong></td><td>Where the department sets one</td><td>Exempt, unless you already hold a scholarship in Saudi Arabia</td></tr>
 </tbody></table>
@@ -978,7 +1074,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <p>Saudis, GCC citizens, legal residents of Saudi Arabia (internal scholarship) and international applicants (external scholarship).</p>
 <p><strong>To apply you need:</strong> a degree from an institution recognised by the Ministry of Education, no conduct record that bars admission, the 300 SAR fee paid, every required document uploaded and matching by the deadline, medical fitness, and any extra conditions your department sets.</p>
 <p><strong>To be accepted you need to:</strong> pass the department's specialist exam and interview, where it holds them; pass any supplementary courses it sets; complete all your admission documents by the deadline, or the nomination is cancelled; and, on a paid programme, pay the first semester's tuition before you enrol.</p>
-<p><strong>Typical programme conditions:</strong> a grade of at least very good (جيد جدا) in your previous degree, at least 60 out of 100 in the written specialist exam, and a personal interview. Each department publishes its own conditions, such as memorisation, your previous specialism and minimum grades, on the portal. Read the ones for your programme before you apply.</p>
+<p>If you apply without meeting the conditions, the responsibility is yours and the 300 SAR fee is not refunded. Check the conditions for your programme below before you pay.</p>
 <h3>About your qualifications</h3>
 <ul>
 <li><strong>Non-Saudi with a qualification from abroad:</strong> final acceptance needs the Saudi embassy's attestation of your qualification. You can apply and be nominated before you have it.</li>
@@ -986,7 +1082,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>The University awards the degree only. It takes no responsibility for your employment or promotion, and does not ask for your employer's approval. Arranging that is up to you.</li>
 </ul>
 <h2>Fees for the 1448 intake</h2>
-<p>Paid programmes charge only for the minimum study period: one year for a diploma, two for a master's and three for a PhD. Extra semesters beyond that are not charged. Tuition can be paid in instalments through the University's payment partner. Fees are in SAR.</p>
+<p>Paid programmes charge only for the minimum study period: one year for a diploma, two for a master's and three for a PhD. Extra semesters beyond that are not charged. Fees are in SAR.</p>
 <table><thead><tr><th>Programme</th><th>Level</th><th>Per semester</th><th>Whole programme</th></tr></thead><tbody>
 <tr><td>Aqeedah</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
 <tr><td>Aqeedah</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
@@ -1057,7 +1153,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <tr><td><strong>Internal scholarship student</strong> (legal resident)</td><td>A study place, the library, and academic and cultural activities</td></tr>
 </tbody></table>
 <h2>Contact the Deanship of Graduate Studies</h2>
-<p>During official working hours. If a problem is not solved, contact them again after one working day.</p>
+<p>During official working hours. If a problem is not solved, you can contact them again within one working day.</p>
 <ul>
 <li>X: <a href="https://x.com/highstudies_iu">@highstudies_iu</a></li>
 <li>Admission unit WhatsApp: <strong>0148137257</strong></li>

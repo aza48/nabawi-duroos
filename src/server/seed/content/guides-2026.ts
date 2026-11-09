@@ -533,7 +533,7 @@ export const GUIDES_2026: SeedGuide[] = [
     slug: "having-a-baby-in-madinah",
     stage: "family",
     title: "Having a baby in Madinah",
-    summary: "Hospitals compared for fees, husbands and companions, female-only staff and free delivery for University wives. Checked April 2025.",
+    summary: "Hospitals compared for fees, husbands and companions, female-only staff and free delivery for University wives (checked April 2025), then the papers after the birth: birth record, birth certificate, passport and your baby's iqama.",
     bodyHtml: `
 <blockquote><p>Important: this comparison was last checked in April 2025. Prices and visiting rules change, and a husband's access to the labour room is always decided by the staff and doctors on duty. Phone the hospital when you book and again near your due date.</p></blockquote>
 <h2>Free delivery for University wives</h2>
@@ -563,15 +563,76 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Which doctor delivers</h2>
 <p>At Dr. Hamid Suliman Al Ahmadi Hospital, Madina National Hospital, Mouwasat, Uhud and Wilaada, the doctor on duty usually delivers your baby, so you generally cannot choose.</p>
 <blockquote><p>Tip: Book antenatal visits early, ask the hospital for its current delivery price in writing, and ask what is included before you decide.</p></blockquote>
-<p>On a visit visa, the insurance that comes with the visa pays for emergency pregnancy and childbirth care only up to a low limit (5,000 SAR), so plan to pay for a delivery yourself. After the birth, register the baby and add them to your file: see <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>.</p>`,
+<p>On a visit visa, the insurance that comes with the visa pays for emergency pregnancy and childbirth care only up to a low limit (5,000 SAR), so plan to pay for a delivery yourself.</p>
+<h2>After the birth: papers, step by step</h2>
+<p>Your baby needs four papers, in this order: the birth record, the birth certificate, a passport from your embassy, then a place on your iqama. Start in the first week.</p>
+<h3>1. The birth record at the hospital</h3>
+<ol>
+<li>The hospital where your baby is born registers the birth with Civil Affairs. You do not need to visit the Civil Affairs office.</li>
+<li>Before the hospital submits it, check the spelling of every name, the parents' and the baby's, letter by letter against your passports. A mistake here follows your child onto every later document.</li>
+<li>The hospital gives you the original birth notification. It is issued only once, so make several copies and keep the original safe. Your embassy needs it.</li>
+</ol>
+<h3>2. The birth certificate in Absher</h3>
+<p>Once the birth is registered, sign in to Absher and open <strong>Services</strong>, then <strong>Civil Affairs services</strong>, then <strong>Birth certificate services</strong>, then <strong>View birth certificate</strong>. View it, check it and print it. Register the birth promptly: a late birth certificate carries a fine and holds up your iqama renewal.</p>
+<h3>3. The baby's passport</h3>
+<p>Your embassy registers the birth and issues the baby's passport. Embassies ask for the birth notification translated by a translator they accept, so read your embassy's website for its list before you go, and take copies of both parents' passports and iqamas.</p>
+<h3>4. Your baby's iqama</h3>
+<p>If you hold an iqama, add your baby to it as a dependant. Send one request for each child, twins included.</p>
+<table><thead><tr><th>Where the baby was born</th><th>Fee</th></tr></thead><tbody>
+<tr><td>In Saudi Arabia</td><td>The dependant fees only, shown in Absher before you pay</td></tr>
+<tr><td>Outside Saudi Arabia</td><td>The dependant fees plus 2,000 SAR for the dependant entry visa</td></tr>
+</tbody></table>
+<ol>
+<li><strong>Make one PDF for the child, under 1 MB,</strong> with these pages in this order: the birth certificate, the baby's passport, the health insurance, the fee receipt, a photo of the baby, and the passports and iqamas of both parents.</li>
+<li><strong>Born outside Saudi Arabia?</strong> Add the baby's Saudi visa with the entry stamp and border number, and a polio vaccination certificate from the hospital. Pay the 2,000 SAR before you submit.</li>
+<li><strong>Send the request in Absher:</strong> My Services, then Passports, then Tawasul, then New request. Choose the sector Resident services inside the kingdom, then <strong>NewBorn registration</strong> for a baby born here, or <strong>Separate Dependent</strong> for a baby born abroad. For a baby born abroad, write the border number in the description.</li>
+<li><strong>Wait for two text messages:</strong> the first with your reference number, the second when the request is approved. Sign in to Tawasul again and print the approval.</li>
+<li><strong>Book a Jawazat appointment in Absher</strong> and take the appointment letter, the approval, the printed PDF, the baby's original passport and passport photos.</li>
+<li><strong>Check every detail on the iqama</strong> before you leave the counter.</li>
+</ol>
+<p>This Tawasul is the Ministry of Interior's request service inside Absher, not the University's Tawasul. Add the baby within three months of a baby born abroad arriving, to avoid a fine. The fees for dependants are in <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>, and the family services in Absher are in <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
+<p>On a Visitor ID there is no iqama to add the baby to. Register the birth and get the passport the same way, then ask the Deanship of Admission and Registration through Tawasul, subject Educational visa, how your baby's stay is arranged.</p>
+<h3>5. Vaccinations</h3>
+<p>The first vaccines are given in the hospital before you go home. The rest follow the national schedule at your primary health care centre: see <a href="/ask/baby-vaccinations">How do I get my baby vaccinated in Madinah?</a></p>`,
   },
   {
     slug: "sports-and-activities",
     stage: "getting-settled",
     title: "Sport and fitness classes",
-    summary: "Jiu-jitsu and fitness classes for children and adults at the University sports center, with gym access, schedules and prices.",
+    summary: "The Islamic University Sports Club's facilities, membership prices and pause rules, plus jiu-jitsu and fitness classes for children and adults with schedules and prices.",
     bodyHtml: `
-<p>Gyms in Madinah are men-only or women-only (see Everyday apps and services for usual prices). This page lists regular classes for students and families. Details checked 8 November 2026.</p>
+<p>This page covers the Islamic University Sports Club on campus and the regular classes held there for students and families. Gyms in Madinah are men-only or women-only (see <a href="/guides/everyday-apps-and-services">Everyday apps and services</a> for usual prices). Details checked 9 November 2026.</p>
+<h2>The Islamic University Sports Club</h2>
+<p>The University Sports Club (النادي الرياضي) is on the main campus, behind the science colleges. It has one branch. University students, University staff and people from outside the University can all join, each at their own price, and students pay the least.</p>
+<h3>Facilities</h3>
+<ul>
+<li>An indoor sports hall with courts for basketball, handball and volleyball, and seats for spectators</li>
+<li>A covered, air-conditioned Olympic pool, and an outdoor Olympic pool</li>
+<li>A squash court</li>
+<li>A weights and bodybuilding hall</li>
+<li>A CrossFit hall</li>
+<li>A cardio hall with exercise bikes and cross-trainers</li>
+<li>Outdoor pitches for football, five-a-side, volleyball and tennis</li>
+<li>IU Coffee, for hot and cold drinks and healthy meals, and IU Store, a sports shop</li>
+</ul>
+<h3>Membership prices</h3>
+<table><thead><tr><th>Membership</th><th>University students</th><th>University staff</th><th>Everyone else</th></tr></thead><tbody>
+<tr><td>One day</td><td>30 SAR</td><td>30 SAR</td><td>30 SAR</td></tr>
+<tr><td>1 month</td><td>125 SAR</td><td>175 SAR</td><td>250 SAR</td></tr>
+<tr><td>3 months</td><td>345 SAR</td><td>450 SAR</td><td>600 SAR</td></tr>
+<tr><td>6 months</td><td>600 SAR</td><td>800 SAR</td><td>1,000 SAR</td></tr>
+<tr><td>12 months</td><td>1,000 SAR</td><td>1,200 SAR</td><td>1,700 SAR</td></tr>
+</tbody></table>
+<p>All prices include VAT. Show your University card to get the student or staff price. For one month a student pays exactly half the public price. On longer memberships the student saving is about 40% (for example 1,000 SAR a year instead of 1,700), but the monthly cost drops further: a year works out at about 83 SAR a month.</p>
+<h3>Pausing your membership</h3>
+<p>You can pause (freeze) a longer membership, for example when you travel in the holidays:</p>
+<ul>
+<li>3 months: once, for up to 15 days</li>
+<li>6 months: once, for up to 30 days</li>
+<li>12 months: twice, for up to 60 days in total</li>
+</ul>
+<blockquote><p>Tip: A day pass costs 30 SAR for everyone, so try the club once before you pay for a longer membership.</p></blockquote>
+<p>Discounts at other gyms, clubs and riding stables in Madinah are on <a href="/discounts">Student discounts</a>.</p>
 <h2>Jiu-jitsu, grappling and fitness at the Islamic University Sports Center</h2>
 <p>Sunnah Strength runs classes for children and adults at the University's sports center. The coach is an American sports and fitness coach, a NASM and ASEP certified trainer and a jiu-jitsu black belt. The programme suits beginners and covers jiu-jitsu, grappling and wrestling, strength and fitness training, plyometrics, self-defence and sparring, and team-building challenges.</p>
 <h3>Children</h3>
@@ -635,7 +696,7 @@ export const GUIDES_2026: SeedGuide[] = [
     slug: "iqama-and-exit-reentry-fees",
     stage: "getting-settled",
     title: "Iqama, exit and re-entry, final exit and dependant fees: what they cost and who issues them",
-    summary: "What Jawazat charges for the iqama, exit and re-entry visas, final exit, adding family and visit visa extensions, who issues each paper for a student and his family, the rules that catch people, and the Absher steps. Checked November 2026.",
+    summary: "What Jawazat charges for the iqama, exit and re-entry visas, final exit, adding family and visit visa extensions, who issues each paper for a student and his family, the rules that catch people, late renewal and lost card fines, extending a family member's visa from abroad, and the Absher steps. Checked November 2026.",
     bodyHtml: `
 <blockquote><p>Important: these are Jawazat service fees, checked in November 2026. Other charges such as health insurance can apply separately, so confirm the final amount on Absher before you pay.</p></blockquote>
 <p>New students on the educational visa are not issued an iqama: they hold a Visitor ID and pay none of these fees. Students from earlier intakes who hold a student iqama pay nothing for their own iqama. The fees below matter mostly for families and for anyone who travels. Fees are paid through SADAD in your banking app, under Government payments, and Absher shows the final amount before you pay.</p>
@@ -653,7 +714,30 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>Domestic worker, farmer or shepherd</td><td>600</td></tr>
 <tr><td>Worker of a company or establishment</td><td>650</td></tr>
 </tbody></table>
-<p>A renewal is held up by unpaid traffic fines, children not yet added to the iqama, a late birth certificate fine or an expired visa on the file. Clear these before the expiry date, not after.</p>
+<p>A company worker's iqama can be renewed for 3, 6, 9 or 12 months at a time:</p>
+<table><thead><tr><th>Renewal period</th><th>Fee (SAR)</th></tr></thead><tbody>
+<tr><td>3 months</td><td>163</td></tr>
+<tr><td>6 months</td><td>325</td></tr>
+<tr><td>9 months</td><td>488</td></tr>
+<tr><td>12 months</td><td>650</td></tr>
+</tbody></table>
+<p>A renewal is held up by unpaid traffic fines, children not yet added to the iqama, a late birth certificate fine or an expired visa on the file. Clear these before the expiry date, not after. How to renew your wife's and children's iqamas, even while they are abroad, is in <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
+<h3>Renewing late</h3>
+<p>An iqama that is not renewed within 3 days of its expiry date is fined:</p>
+<ul>
+<li>First time: 500 SAR.</li>
+<li>Second time: 1,000 SAR.</li>
+<li>Third time: deportation.</li>
+</ul>
+<p>Check every iqama in your family in Absher once a month. Once a renewal goes through, the digital iqama in Absher and Tawakkalna shows the new date at once.</p>
+<h3>If you lose your iqama or passport</h3>
+<ol>
+<li><strong>Get a police report</strong> at the nearest police station the same day, and keep it.</li>
+<li><strong>A lost iqama:</strong> the sponsor requests a replacement through Jawazat (Travel Management for a student iqama, you for your family). A replacement costs 1,000 SAR the first time and 2,000 SAR the second time. Your digital iqama in Absher and Tawakkalna stays valid proof of identity meanwhile.</li>
+<li><strong>A lost passport:</strong> report it in Absher, which has a service for a lost or stolen passport, then go to your embassy or consulate for a new one. Embassies ask for the police report, a written statement of the loss, a Jawazat printout of your iqama details, a copy of the lost passport if you have one, your national ID card, a copy of your iqama and the passport fee. Each country sets its own list, so read its website first.</li>
+<li><strong>Move your Saudi records to the new passport:</strong> see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
+</ol>
+<p>Keep photos of both sides of your iqama and of your passport's photo page on your phone, and paper copies at home.</p>
 <h2>Exit and re-entry visa</h2>
 <table><thead><tr><th>Visa</th><th>Fee (SAR)</th></tr></thead><tbody>
 <tr><td>Single, up to 2 months, one trip</td><td>200</td></tr>
@@ -666,8 +750,12 @@ export const GUIDES_2026: SeedGuide[] = [
 <h3>The rules that catch people</h3>
 <ul>
 <li><strong>Come back before it expires.</strong> An exit and re-entry visa that runs out while you are abroad leaves you outside with no way back on that iqama.</li>
-<li><strong>Your passport must outlast the trip.</strong> Absher refuses a visa when the passport is close to expiry. Renew the passport first: see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
+<li><strong>Your passport must outlast the trip.</strong> Absher refuses a visa when the passport has less than 90 days left. Renew the passport first: see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
 <li><strong>Fines block it.</strong> Any unpaid traffic fine on you, or on a dependant, stops the visa being issued.</li>
+<li><strong>Apply from inside Saudi Arabia.</strong> The traveller must be in the Kingdom when the visa is issued, with a valid iqama.</li>
+<li><strong>Fingerprints on file.</strong> The traveller's fingerprints must be registered with Jawazat, or their Absher account active.</li>
+<li><strong>One open visa at a time.</strong> An earlier exit and re-entry visa that was issued and never used blocks a new one. Cancel it in Absher before you issue the next.</li>
+<li><strong>Pay against the right iqama.</strong> The fee is paid with the iqama number of the person travelling, not the head of the family's.</li>
 <li><strong>Print it or save it.</strong> Airlines ask to see the visa at check-in. Keep a copy on your phone.</li>
 <li><strong>The summer ticket and the visa go together.</strong> Request the visa when the University collects the summer travel lists, so the visa dates cover the ticket dates.</li>
 </ul>
@@ -675,24 +763,36 @@ export const GUIDES_2026: SeedGuide[] = [
 <ol>
 <li>Sign in to Absher Individuals, open <strong>Services</strong>, then <strong>Passports</strong>, then <strong>Exit and re-entry visa</strong> (or <strong>Final exit visa</strong>).</li>
 <li>Choose the family member, the type of visa and the months, and check the dates against the iqama's expiry.</li>
-<li>Pay the fee shown through SADAD in your banking app, then return to Absher to issue the visa and download it.</li>
+<li>Set the length one of two ways: <strong>by number of days</strong>, counted from the day the person leaves, or <strong>by return date</strong>, the last day on which they may come back.</li>
+<li>Pay the fee shown through SADAD in your banking app, under Government payments, with the traveller's iqama number, then return to Absher to issue the visa and download it.</li>
 </ol>
+<h3>Extending a family member's visa while they are abroad</h3>
+<p>If your wife or children are outside Saudi Arabia and need more time, extend their exit and re-entry visa from Absher. They do not need to come back first.</p>
+<ol>
+<li>Sign in to Absher and open <strong>Family Members Services</strong>, then <strong>Visa Services</strong>.</li>
+<li>Choose the family member and open their visa.</li>
+<li>Pay the extension fee (the double rate for a visa extended from abroad, above), then press <strong>Extend</strong>.</li>
+<li>Check the new return date on the same page, or on Muqeem's public visa inquiry.</li>
+</ol>
+<p>Absher accepts the extension only when the family member is outside Saudi Arabia on the day you apply, the new return date is at least 7 days before their iqama expires, and the visa's total extension stays within 180 days. Where the Hijri and Gregorian dates on the screen differ, the Gregorian date counts. If their iqama is close to expiry, renew it first: see <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
+<h3>Checking a visa without signing in</h3>
+<p>Muqeem's public visa inquiry shows whether an exit and re-entry visa is valid and the date to return before, with just the iqama number and date of birth. See <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
 <h2>Final exit</h2>
 <p>A final exit visa is free. It is valid for 60 days from the day it is issued, the iqama must have at least 30 days left, and it cancels the iqama when the holder crosses the border, so it is the last paper you take, after the bank, the car and the flat are settled. It is refused while there are unpaid fines, a car registered in the person's name, or a dependant left behind on an unsettled iqama. Returning later means a new visa of your own. The whole leaving process is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
 <h2>Adding family</h2>
 <ul>
-<li>Adding a dependant, or a newborn born inside Saudi Arabia, is done on Absher, which shows any fee before you pay. Register a birth promptly: a late birth certificate carries a fine and holds up the iqama renewal.</li>
+<li>Adding a dependant, or a newborn born inside Saudi Arabia, is done on Absher, which shows any fee before you pay. Register a birth promptly: a late birth certificate carries a fine and holds up the iqama renewal. The newborn's request, step by step, is in <a href="/guides/having-a-baby-in-madinah#after-the-birth-papers-step-by-step">Having a baby in Madinah</a>.</li>
 <li>A child born outside Saudi Arabia first needs an entry visa as a dependant: 2,000 SAR. Add the child within three months of arrival to avoid a fine.</li>
 <li>The monthly levy for dependants on a work iqama is 400 SAR per dependant a month. Student iqamas are not work iqamas, so ask Travel Management before you plan around it.</li>
 </ul>
 <h2>Visit visas</h2>
 <ul>
-<li>Extending a visit visa: about 100 SAR each time, requested by the host on Absher or Muqeem before the visa expires. Absher shows the exact amount before you pay.</li>
+<li>Extending a visit visa: 100 SAR each time, requested by the host in Absher from 7 days before the visa expires. Requested in the 3 days after it expires, it costs a 500 SAR fine on top. Buy the visitor's new health insurance first, because Absher refuses the extension without it.</li>
 <li>Who can host a relative, the eVisa and the 180 day limit are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</li>
 </ul>
 <h2>On a Visitor ID</h2>
 <p>Students on the educational visa hold no iqama, so none of the fees above apply. Leaving and returning follows your visa, not an exit and re-entry visa: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a> before you book a trip, and ask the Deanship of Admission and Registration through Tawasul, subject Educational visa, if your plans cross the visa's dates.</p>
-<blockquote><p>Tip: Absher refused the visa and you cannot see why? Check your violations page and every dependant's iqama date first. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
+<blockquote><p>Tip: Absher refused the visa and you cannot see why? Check your violations page, the travel restriction inquiry and every dependant's iqama and passport dates first. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "masjid-an-nabawi-first-visit",
@@ -957,7 +1057,7 @@ export const FAQS_2026: SeedFaq[] = [
   { slug: "do-i-register-for-duroos", category: "duroos", question: "Do I need to register to attend the duroos?", answerHtml: "<p>No. The duroos of the mashayikh are open to everyone. Only the Qur'an and mutun halaqat need registration.</p>" },
   { slug: "tajeel-vs-itithaar", category: "university", question: "What's the difference between ta'jeel and i'tithaar?", answerHtml: "<p>Ta'jeel is a planned semester off, requested in a short window before the semester. Its time is not counted in your maximum study period. I'tithaar is an excuse from a semester you have already started: you are withdrawn from all its courses with a W grade, not a fail, but that semester does count towards your maximum study period. Both need your college's approval, together they cannot exceed three semesters over your whole programme, and in your first year they are allowed only for compelling reasons. Details: <a href=\"/guides/tajeel-and-itithaar\">Taking a semester off</a>.</p>" },
   { slug: "etimad-what-for", category: "university", question: "What is Etimad and why do I need it?", answerHtml: "<p>It's the government platform where your University travel orders and ticket letters go. Set it up once and make sure your details match your passport exactly. See <a href=\"/guides/etimad-account\">Setting up your Etimad account</a>.</p>" },
-  { slug: "student-discounts", category: "getting-settled", question: "Are there discounts for University students?", answerHtml: "<p>Yes. The University's partner programme lists over 100 offers at clinics, labs, opticians, schools, car rentals, restaurants and gyms. Students also pay reduced rates at the University sports club. See <a href=\"/discounts\">Student discounts</a>.</p>" },
+  { slug: "student-discounts", category: "getting-settled", question: "Are there discounts for University students?", answerHtml: "<p>Yes. The University's partner programme has more than 100 offers at hospitals, clinics, labs, opticians, schools, car rentals, restaurants, hotels and gyms. Some name students, and many are written for University staff, so show your University card and ask before you pay. See <a href=\"/discounts\">Student discounts</a>.</p><p>At the University Sports Club a student pays 125 SAR for one month, half the 250 SAR public price, and 1,000 SAR for a year. The full price list is in <a href=\"/guides/sports-and-activities\">Sport and fitness classes</a>.</p>", tags: ["discounts", "sports club", "gym", "university card"] },
   { slug: "mahad-books", category: "university", question: "Where can I find the Ma'had books and the answers?", answerHtml: "<p>In the <a href=\"/library#mahad\">Jamiah library</a>: the official books for every level, the student guide, answer keys and the Madinah Books as web pages.</p>" },
   { slug: "muqarrarat", category: "university", question: "Where are the muqarrarat for my college?", answerHtml: "<p>The <a href=\"/library#muqarrarat\">Jamiah library</a> has a folder for every college and level. If you've written a takhlees that could help others, send it to us and we'll review it and add it.</p>" },
   { slug: "absher-nafath-activation", category: "getting-settled", question: "My Absher or Nafath activation keeps failing. What do I do?", answerHtml: "<p>This happens to many new students on the student visa. Call Absher customer care on <strong>920020405</strong>, choose English and enter your border number. Ask them to open a technical support ticket, and say you are a new international scholarship student on a student visa with a border number. The fix can take a few days, and they may send you a temporary password.</p>", tags: ["absher", "nafath", "visa", "new students"] },
