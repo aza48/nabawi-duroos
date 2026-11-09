@@ -113,10 +113,10 @@ The live list is in AI-LOG (agent table) and the latest summary on issue 13. In 
     - eight chats researched
 - **aiakhee** (Lane B): AR1 (#49), then AR4 (Arabic FAQs). B1 First 100 days, B2 glossary, B4 dars locations, B5 short answers and B6 Quran and hadith links are pushed on their own `aiakhee/B*` branches, with no PRs yet.
 - **akhiai** (Lane E): AR3 for the remaining guides (five per PR), E3 sisters at Masjid an-Nabawi, and E4 keeping guides fresh.
-- **web** (Lanes C and D):
-  - C3 share button, C1 offline, and D3 "Who are you?" (after B1)
-  - preloading the Arabic fonts through `next/font`
-  - S1 to S3 (analytics)
+- **web** (Lanes C and D; lead reviewer while akheeai is out; near its weekly limit, back 11 Nov 05:00 UTC):
+  - D3 "Who are you?": WIP on `web/D3-who-are-you`, handed to naseer (Takeovers)
+  - C3 share button, C1 offline, S1 to S3 (analytics)
+  - the Arabic font preload through `next/font` is dropped: this Next version gives both declarations the family name "Alexandria", so Arabic pages download it twice and English pages preload it too
 - **admin** (the owner's own agent, added 9 Nov; takes orders from the owner only):
   - distilling the IU students' Telegram forum (478k messages, Dec 2015 to 9 Nov 2026) into `docs/research/telegram-iu-2026-11/`, one findings file per period, then a `SYNTHESIS.md` with the latest state per topic and the conflicts with MESH
   - a full crawl of gomedine.com, rewritten in MESH's words, in `docs/research/gomedine-2026-11/`
