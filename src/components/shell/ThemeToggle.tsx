@@ -10,7 +10,13 @@ function currentTheme(): "light" | "dark" {
 
 export function ThemeToggle({ label = "Switch theme" }: { label?: string }) {
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
-  useEffect(() => setTheme(currentTheme()), []);
+  // Follow the <html> attribute, so every theme button on the page (header, footer, More page) shows the same icon.
+  useEffect(() => {
+    setTheme(currentTheme());
+    const obs = new MutationObserver(() => setTheme(currentTheme()));
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => obs.disconnect();
+  }, []);
 
   function toggle() {
     const next = currentTheme() === "dark" ? "light" : "dark";

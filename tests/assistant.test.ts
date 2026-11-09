@@ -250,6 +250,12 @@ describe("assistant answers", () => {
     expect(r.answer.split("\n").filter((l) => l.startsWith("- ")).length).toBeGreaterThan(1);
   });
 
+  it("answers a question about one shaykh from his profile, not a list of his duroos", async () => {
+    const r = await ask("Who is Prof. Dr. Mahir Khujah?");
+    expect(r.sources[0].url).toBe("/duroos/shaykh/mahir-ibn-abdurrahim-khujah");
+    expect(r.answer).toMatch(/Dean of the College of Aqidah and Da'wah/);
+  });
+
   it("answers a question MESH already answered from that FAQ, without a model call", async () => {
     let called = false;
     const r = await ask("How much is the University stipend?", { writer: async () => ((called = true), null) });
