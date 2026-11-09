@@ -9,6 +9,11 @@ import { JsonLd, breadcrumbs } from "@/components/JsonLd";
 import { AudienceFilter } from "./AudienceFilter";
 import { abs } from "@/lib/site";
 import { EnglishNote } from "@/components/EnglishNote";
+
+/** Owner's choice (9 Nov 2026): the Madinah Arabic Program gets a very light purple gleam. Works in light and dark. */
+const HIGHLIGHT = "map";
+const GLEAM =
+  "border-[color-mix(in_srgb,#8b5cf6_35%,var(--border))] bg-[linear-gradient(135deg,var(--card)_55%,color-mix(in_srgb,#8b5cf6_9%,var(--card)))] shadow-[0_10px_28px_-16px_rgba(124,58,237,0.45)] hover:border-[color-mix(in_srgb,#8b5cf6_60%,var(--border))]";
 import type { Locale } from "@/lib/locale";
 
 const AUDIENCE: Record<Audience, { label: string; ar: string; icon: typeof User }> = {
@@ -67,7 +72,7 @@ export function ProgramsIndex({ locale = "en" }: { locale?: Locale }) {
               <h2 className="mb-5 font-heading text-2xl font-bold md:text-3xl">{ar ? k.labelAr : k.label}</h2>
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {items.map((p) => (
-                  <Link key={p.slug} href={`${t.base}/programs/${p.slug}`} data-aud={p.audience.join(" ")} className="group flex flex-col rounded-2xl border border-line bg-card p-5 lift hover:border-primary/50">
+                  <Link key={p.slug} href={`${t.base}/programs/${p.slug}`} data-aud={p.audience.join(" ")} className={`group flex flex-col rounded-2xl border p-5 lift ${p.slug === HIGHLIGHT ? GLEAM : "border-line bg-card hover:border-primary/50"}`}>
                     {ar ? (
                       <span className="ar-text text-xl font-bold leading-snug group-hover:text-primary">{p.nameAr}</span>
                     ) : (
