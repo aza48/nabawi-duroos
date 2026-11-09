@@ -78,16 +78,19 @@ The owner asked the Desktop agent to finish the admin agent's research and publi
 - #41 (a Vercel bot PR for Web Analytics)
 
 **Only the owner can do these:**
-1. Apply the AR1 migration (`docs/AR1-MIGRATION.md` on the AR1 branch), then merge #49.
-2. Publish the data:
+1. **By 9 December 2026: enter the next Masjid Quba lesson schedule** in Admin > Duroos. The current period ends then, and the Quba duroos drop off the site.
+2. **Add the 13 official Masjid an-Nabawi lessons in Admin > Duroos**, and rename the Fada'il al-Qur'an teacher to Prof. Dr. Badr ibn Nasir al-Badr. The tables are in `docs/research/duroos-official-schedule-2026-11.md`. Then run `npm run shaykh:sync -- --apply` to publish all the positions, including the 12 new teachers.
+3. **Yes or no:** an automatic import of the official schedule; official photos for 14 shaykhs (both in AI-LOG).
+4. Apply the AR1 migration (`docs/AR1-MIGRATION.md` on the AR1 branch), then merge #49.
+5. Publish the data:
    - `npm run shaykh:sync` (a preview), then `npm run shaykh:sync -- --apply`
    - `npm run content:sync` after #23, #45 and the AR3 batches merge
-3. Admin > Shaykhs: apply the name and title fixes listed at the top of `MASHAYIKH_POSITIONS` (`src/server/seed/content/mashayikh.ts`).
-4. The Ramadan facts in `RAMADAN_SETTINGS` (`src/features/home/ramadan.ts`), before 8 February 2027.
-5. Vercel environment:
+6. Admin > Shaykhs: apply the name and title fixes listed at the top of `MASHAYIKH_POSITIONS` (`src/server/seed/content/mashayikh.ts`).
+7. The Ramadan facts in `RAMADAN_SETTINGS` (`src/features/home/ramadan.ts`), before 8 February 2027.
+8. Vercel environment:
    - `DATABASE_CA`, so database TLS can be verified
    - a free AI key for the assistant (`GROQ_API_KEY` or `ASSISTANT_GEMINI_API_KEY`), so it stops sharing the watcher's quota
-6. Say yes or no to:
+9. Say yes or no to:
    - PR checks on GitHub (C7)
    - a weekly crawl and accessibility check
    - "Remove passkey" in Admin
@@ -97,15 +100,14 @@ The owner asked the Desktop agent to finish the admin agent's research and publi
 
 ## 3. Open work by agent
 The live list is in AI-LOG (agent table) and the latest summary on issue 13. In short:
-- **akheeai** (out of weekly usage on 9 Nov, 18:40 UTC). Its open items are under "Takeovers" in AI-LOG, for web:
-  - reviews and merges
-  - the 13 missing official lessons and the name and day fixes
-  - a link to the official schedule
-  - the importer, if the owner says yes
-
-  Research done today:
-  - `docs/research/chats-2026-11/`: eight WhatsApp chats, with task lists for akhiai and aiakhee in its README
-  - `docs/research/duroos-official-schedule-2026-11.md`: the official Masjid an-Nabawi schedule, read from `cpd.prh.gov.sa/api/v1/courses?mosque=madinah`
+- **akheeai** (Lane A, duroos and shaykh data):
+  - **Done on 9 Nov:**
+    - the official schedule (#80) and its 13 lessons (#88)
+    - positions for the 12 new teachers (#93)
+    - the slug fix (#90)
+    - the Quba deadline (#91)
+    - eight chats researched (`docs/research/chats-2026-11/`)
+  - **Next:** the remaining mashayikh open questions (research running), whether Ruhayli's two Asr books are now one sitting, and reviews when web is busy.
 - **aiakhee** (Lane B): AR1 (#49), then AR4 (Arabic FAQs). B1 First 100 days, B2 glossary, B4 dars locations, B5 short answers and B6 Quran and hadith links are pushed on their own `aiakhee/B*` branches, with no PRs yet.
 - **akhiai** (Lane E): AR3 for the remaining guides (five per PR), E3 sisters at Masjid an-Nabawi, and E4 keeping guides fresh.
 - **web** (Lanes C and D):
