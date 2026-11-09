@@ -21,6 +21,10 @@ How to keep it so:
 | Car transfer fees 150 SAR government and 230 SAR Absher (checked November 2026) | guide `graduate-procedures`, "Your car" | May 2027 | Recheck on Absher |
 | SPL international parcel ranges (2025 figures) | guide `graduate-procedures`, "Ship your books" | Recheck now in SPL's price calculator, then every 6 months | Update the ranges and the "as of" year |
 | Second-hand furniture price points "as of late 2026" | guide `graduate-procedures`, "Sell or give away" | May 2027 | Recheck against current listings |
+| Remittance fee ranges (banks up to 40 SAR, centres 20 to 50, wallets 0 to 50; checked November 2026) | guide `sending-and-receiving-money`, "What it costs" | May 2027 | Recheck in the apps and update the "as of" month |
+| Domestic parcel 15 to 35 SAR and SPL Express Plus 141 SAR (2026); Haramain station SPL counter 75 to 150 SAR (2026); customs processing fees | guide `shipping-and-receiving-parcels` | May 2027 | Recheck with the carriers and ZATCA |
+| Tourist eVisa 72 countries and about 535 SAR; family visit visa 300 and 500 SAR; extension about 100 SAR (checked November 2026) | guides `bringing-parents-to-visit` and `visas-for-family-and-visitors` | February 2027 | Recheck on visa.visitsaudi.com and the MOFA platform |
+| REGA support line and the 5% transaction tax (checked November 2026) | guide `owning-property-as-a-non-saudi` | May 2027 | Recheck on saudiproperties.rega.gov.sa |
 
 ## Removed
 

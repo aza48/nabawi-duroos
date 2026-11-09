@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RefreshCw } from "lucide-react";
+import { AdminEmailLink } from "./AdminHelp";
 
 const HELP = "+1 234 567 9076";
 
@@ -33,6 +34,8 @@ export function ErrorState({ error, retry }: { error: unknown; retry: () => void
         <a href={`https://wa.me/${HELP.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap font-semibold text-primary [unicode-bidi:isolate] hover:underline" dir="ltr">
           {HELP}
         </a>
+        {ar ? " أو على البريد الإلكتروني " : " or email "}
+        <AdminEmailLink className="font-semibold text-primary hover:underline" />
       </p>
     </div>
   );

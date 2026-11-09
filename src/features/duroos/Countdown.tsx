@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Locale } from "@/lib/locale";
+import { arCount, AR_PHRASES } from "@/lib/arabic-count";
 import { toArabicDigits } from "@/lib/locale";
 import { phaseAt } from "@/server/duroos/schedule";
 
@@ -63,7 +64,7 @@ export function LiveNowChip({ items, initial, locale }: { items: (LiveWindowProp
   return (
     <a href="#live" className="inline-flex items-center gap-2 rounded-full bg-live px-3 py-1 text-sm font-semibold text-white">
       <span className="live-dot size-2 rounded-full bg-white" />
-      {locale === "ar" ? `${toArabicDigits(live)} مباشر الآن` : `${live} live now`}
+      {locale === "ar" ? `${arCount(live, AR_PHRASES.darsLive)} الآن` : `${live} live now`}
     </a>
   );
 }
