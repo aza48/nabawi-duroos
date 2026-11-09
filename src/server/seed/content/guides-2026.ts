@@ -135,36 +135,64 @@ export const GUIDES_2026: SeedGuide[] = [
   {
     slug: "etimad-account",
     stage: "study",
-    title: "Setting up your Etimad account for flight tickets",
-    summary: "Etimad is where the University's travel orders and ticket letters go. Set it up once and check your details match your passport.",
+    title: "Your University ticket: Etimad, the travel order and the rules",
+    summary: "Who gets the arrival, yearly and final tickets and how each is requested, setting up Etimad so your details match your passport, the path from request to boarding pass, the 2026 ticket rules, and what to do when a ticket is stuck.",
     bodyHtml: `
-<p>Your yearly ticket home and your final ticket as a graduate go through Etimad, the government platform. The ticket office asks you to have a working account with correct details.</p>
+<p>Checked November 2026. Full scholarship students receive a discounted economy ticket home at the end of each academic year, an arrival ticket when they first come, and a final ticket when they graduate. Every one of them is a government ticket: the University issues a travel order (أمر إركاب) on Etimad, the government platform, and a travel agency books the flight against it. No travel order, no ticket. This guide covers the account, the yearly ticket from request to boarding, and the rules.</p>
+<h2>Who gets a ticket, and when</h2>
+<table><thead><tr><th>Ticket</th><th>Who</th><th>How it is requested</th></tr></thead><tbody>
+<tr><td>Arrival ticket</td><td>New full scholarship students</td><td>On Minhati, with your passport and visa uploaded and your name exactly as in the passport. Travel Management prepares the order and the agency issues the ticket</td></tr>
+<tr><td>Yearly ticket home</td><td>Full scholarship students, at the end of the academic year</td><td>Through Travel Management, which collects the travel lists before the summer break. Your travel order then appears on Etimad</td></tr>
+<tr><td>Final ticket</td><td>Graduates, and students whose studies have ended</td><td>Issued only after Travel Management confirms your clearance in the University's records</td></tr>
+<tr><td>Graduate studies</td><td>Students admitted to a master's or PhD</td><td>Through Travel Management on admission</td></tr>
+</tbody></table>
+<p>Partial (internal) scholarships include no tickets. Family tickets are at your own cost. Unused student tickets are cancelled by Travel Management and their value goes back to the University, so a ticket you cannot use is best cancelled early.</p>
+<h2>Setting up your Etimad account</h2>
 <ol>
 <li>Open <a href="https://portal.etimad.sa/">portal.etimad.sa</a> and choose Log in.</li>
 <li>Pick <strong>Individuals</strong>, then sign in through <strong>Nafath</strong>.</li>
 <li>Enter your mobile number and email, accept the terms and save.</li>
 <li>Type in the code sent to your phone, then confirm the link sent to your email.</li>
 <li>Back on the site, open <strong>Travel orders</strong> (أوامر الإركاب), then your <strong>Profile</strong>.</li>
-<li>Press <strong>Edit profile</strong> and check every detail exactly matches your passport, then save. A confirmation message means you're done.</li>
+<li>Press <strong>Edit profile</strong> and check every detail exactly matches your passport, then save. A confirmation message means you are done.</li>
 </ol>
 <blockquote><p>Note: A spelling mismatch between Etimad and your passport is the most common reason a ticket gets stuck. Fix it before you request your ticket.</p></blockquote>
-<p>Do the first sign-in while you are in Saudi Arabia, through Nafath. After that the account also works from abroad.</p>
+<p>Do the first sign-in while you are in Saudi Arabia, through Nafath. After that the account also works from abroad. Keep the mobile number on the account alive, because the codes go there.</p>
+<h2>From request to boarding pass</h2>
+<ol>
+<li><strong>Check your profile on Etimad</strong> a month before the summer break: name, passport number, passport expiry and phone.</li>
+<li><strong>Give Travel Management your dates and city</strong> when it collects the travel lists. Choose a date you can really keep.</li>
+<li><strong>Watch Etimad.</strong> Your travel order appears under Travel orders once it is approved.</li>
+<li><strong>Collect the ticket.</strong> The travel agency issues the e-ticket against the order and it reaches you by email or through the University's ticket system. Check the name, the dates and the airports the day you receive it.</li>
+<li><strong>Get your exit and re-entry visa</strong> if you hold an iqama, with dates that cover the whole trip. See <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>.</li>
+<li><strong>Check in online</strong> and arrive early. A no-show loses the whole ticket.</li>
+</ol>
 <h2>The rules for student tickets</h2>
-<p>The University issues a ticket only against an official travel order (أمر إركاب) on Etimad, so no open tickets are issued. The rules for 2026 tickets:</p>
+<p>The University issues a ticket only against an official travel order on Etimad, so no open tickets are issued. The rules for tickets issued from 2026:</p>
 <ol>
 <li><strong>Where to:</strong> a capital city only, in your own country or in the country that issued the visa you arrived on.</li>
 <li><strong>Validity:</strong> 3 months from the first travel date. After that no changes are possible.</li>
 <li><strong>Name:</strong> the passenger name cannot be changed, which is why it must match your passport from the start.</li>
 <li><strong>Airports:</strong> the departure and arrival airports of the outbound flight cannot be changed.</li>
 <li><strong>Date and time:</strong> can be changed, but you pay the fare difference and any fees.</li>
-<li><strong>Class:</strong> no downgrades. You may upgrade at your own cost.</li>
+<li><strong>Class:</strong> no downgrades. You can upgrade at your own cost.</li>
 <li><strong>Cancelling:</strong> the ticket goes back to the University. There is no cash refund to you.</li>
 <li><strong>Missing the flight:</strong> a no-show loses the whole ticket.</li>
 <li><strong>Refund vouchers:</strong> after any change, no voucher goes to the student and nothing can be added to a wallet.</li>
 <li><strong>Baggage:</strong> one cabin bag and two checked bags, within the airline's own limits.</li>
 </ol>
 <blockquote><p>Tip: Pick your date carefully before the travel order is issued. Changing it later costs you money, and missing the flight costs you the ticket.</p></blockquote>
-<p>Graduates, and students whose studies have ended, need their clearance confirmed by the University before a final ticket is issued. What the yearly ticket covers is in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money: stipend, allowances and tickets</a>.</p>`,
+<h2>Common problems</h2>
+<table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody>
+<tr><td>Nafath will not sign you in</td><td>Activate Nafath first: see <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a></td></tr>
+<tr><td>Your name on the ticket differs from the passport</td><td>Tell Travel Management through Tawasul the same day. The name cannot be changed on the ticket, so the order has to be corrected before issue</td></tr>
+<tr><td>No travel order after the list closed</td><td>Send a request through Tawasul to Travel Management with your University number and dates</td></tr>
+<tr><td>You want a different city</td><td>Capitals only. A ticket to another city, or an onward flight, is at your own cost</td></tr>
+<tr><td>You renewed your passport</td><td>Update Etimad and tell Travel Management before the order is issued</td></tr>
+<tr><td>Your summer ticket is a group booking</td><td>Group tickets cannot be changed. Travel on the date given</td></tr>
+</tbody></table>
+<p>Graduates: the final ticket comes after everything else is cleared, and the order of steps is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>. What the yearly ticket covers alongside your stipend is in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money: stipend, allowances and tickets</a>.</p>
+<blockquote><p>Tip: Ticket stuck and Tawasul silent? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
   },
   {
     slug: "kindergartens-and-schools",
@@ -364,23 +392,73 @@ export const GUIDES_2026: SeedGuide[] = [
   {
     slug: "drivers-license",
     stage: "getting-settled",
-    title: "Getting a Saudi driving licence with your foreign one",
-    summary: "From translation to the driving school appointment, with the fee and what to bring. You need an iqama.",
+    title: "Driving in Madinah: your Saudi driving licence, the driving school, insurance, fines and renting a car",
+    summary: "Who can drive on what, swapping a foreign licence at the model driving school, the driving school route, renewal, insurance and Najm, the common fines and the Saher cameras, and renting or buying a car. The swap needs an iqama.",
     bodyHtml: `
-<p>With an iqama you can replace your home licence with a Saudi one. Holders of licences from a list of countries, including the UK, the US, Canada, Australia, most of Europe and the Gulf states, can swap without a driving test. Others are asked to go through the driving school's training and test. Check your country on Absher before you start. Once your iqama is issued, plan to switch within three months.</p>
+<p>Checked November 2026. Madinah is an easy city to drive in: wide roads, cheap fuel, and parking at the Haram that fills only on Fridays and in Ramadan. What you need in order to drive depends on what you hold.</p>
+<table><thead><tr><th>You hold</th><th>You can drive on</th><th>A Saudi licence</th><th>Buying a car</th></tr></thead><tbody>
+<tr><td>A visit or tourist visa</td><td>Your home licence while it is recognised, with an International Driving Permit if it is not in English or Arabic</td><td>No</td><td>No. Rent instead</td></tr>
+<tr><td>A Visitor ID (educational visa)</td><td>Your home licence while it is recognised, with an International Driving Permit</td><td>No. The swap and the driving school both need an iqama</td><td>No. Rent instead</td></tr>
+<tr><td>An iqama</td><td>Your home licence for a short period after the iqama is issued</td><td>Yes: swap your licence or go through the driving school</td><td>Yes</td></tr>
+</tbody></table>
+<p>Women have driven in Saudi Arabia since June 2018, on the same licence and through the same steps as men.</p>
+<h2>Swapping your foreign licence (iqama holders)</h2>
+<p>Holders of licences from a list of countries, including the Gulf states, the UK, the US, Canada, Australia and most of Europe, swap without going through the driving school's course. At the appointment the school checks the licence and can ask you to drive a short assessment. Others are sent to the driving school's training and test. Your licence must be valid, a full licence and not a learner's or provisional one, and plan to switch within three months of your iqama being issued.</p>
 <ol>
-<li><strong>Translate your licence into Arabic</strong> at a certified translation office. Many offices work fully online and send back a signed and stamped PDF.</li>
-<li><strong>Book an appointment on absher.sa</strong> on a computer, not the app: Appointments (مواعيد), then Traffic, then <em>Replacement of driving licence</em> (استبدال رخصة القيادة). Choose <strong>المدرسة النموذجية</strong> (the model driving school).</li>
+<li><strong>Translate your licence into Arabic</strong> at a certified translation office, if it is not already in Arabic or English. Many offices work fully online and send back a signed and stamped PDF the same day.</li>
+<li><strong>Do the medical check</strong> at a clinic approved for the Efada medical report. They check your eyes, your blood group and your general fitness, and the result goes to Absher within a day. As of November 2026 the check costs 60 to 200 SAR depending on the clinic. The Regional Laboratory and Central Blood Bank (المختبر الإقليمي وبنك الدم المركزي), a short taxi ride from the University, does it.</li>
+<li><strong>Book an appointment on absher.sa</strong> on a computer, not the app: Appointments (مواعيد), then Traffic, then <em>Replacement of driving licence</em> (استبدال رخصة القيادة). Choose the model driving school (المدرسة النموذجية لتعليم قيادة السيارات), on Airport Road in Al-Aqoul. The other schools do not swap foreign licences.</li>
 <li><strong>Upload three PDFs:</strong> the translation, and the front and back of your original licence.</li>
-<li><strong>Do the medical check</strong> before your appointment, at the Regional Laboratory and Central Blood Bank (المختبر الإقليمي وبنك الدم المركزي). It's a short taxi ride from the University. They take a blood test and check your eyes, and send the result to the driving school themselves.</li>
-<li><strong>Pay the licence fee in your banking app:</strong> Payments, then Government payments, then Driving licence, then Issue licence. Enter your iqama number, choose private, then the length. The fee is 40 SAR a year: 5 years is 200 SAR and 10 years is 400 SAR. The medical check is paid separately at the centre.</li>
+<li><strong>Pay the licence fee in your banking app:</strong> Payments, then Government payments, then Driving licence, then Issue licence. Enter your iqama number, choose private, then the length. The fee is 40 SAR a year: 2 years is 80 SAR, 5 years is 200 SAR and 10 years is 400 SAR.</li>
 <li><strong>Go to your appointment</strong> with your original licence, the translation, a photo, and your iqama (the card or the digital one in Absher).</li>
-<li><strong>Check Absher afterwards.</strong> Your Saudi licence appears there once it's issued.</li>
+<li><strong>Check Absher afterwards.</strong> Your Saudi licence appears there once it is issued, and Absher offers delivery of the card to your National Address.</li>
 </ol>
-<blockquote><p>Tip: The driving school may keep your original licence. Take photos of both sides first.</p></blockquote>
+<blockquote><p>Tip: The driving school keeps your original licence in some cases. Take photos of both sides first.</p></blockquote>
 <blockquote><p>Note: People near the driving school offer to book a slot for you for a small fee, but they ask for your Absher password or the code sent to your phone. Never share either. Book the appointment yourself on Absher.</p></blockquote>
-<p><strong>On a Visitor ID:</strong> the steps above need an iqama. Students on the educational visa drive on their home licence while it is recognised, with an International Driving Permit, and buying a car needs an iqama.</p>
-<blockquote><p>Note: If you held a Saudi licence before and came back on a new iqama, you don't start again. Transfer or renew it onto the new iqama through Absher.</p></blockquote>`,
+<blockquote><p>Note: If you held a Saudi licence before and came back on a new iqama, you do not start again. Transfer or renew it onto the new iqama through Absher.</p></blockquote>
+<h2>If your country is not on the list: the driving school</h2>
+<p>You go through the same school as a new driver, but a licence from home shortens the training.</p>
+<ol>
+<li>Do the Efada medical check as above.</li>
+<li>In Absher, open Appointments, then Traffic, then <em>Issue driving licence</em>, and book at a driving school. You must be 18 or over.</li>
+<li>At the school, pay the training fee and sit the theory lessons and the computer test on the road signs and rules. The test is offered in English.</li>
+<li>Do the driving assessment. It decides how many training hours you are given, from about six hours for a confident driver up to thirty for a beginner.</li>
+<li>Pass the practical test, pay the licence fee as above, and collect the licence or have it delivered.</li>
+</ol>
+<p>As of November 2026 the school's fees run from a few hundred riyals for the shortest course to about 2,500 SAR for the full beginner's course, on top of the medical and the licence fee.</p>
+<h2>Renewing your licence</h2>
+<p>Renew in Absher under Services, then Traffic, then Driving licence services, once the licence is in its last months. You need a fresh Efada medical report on the system, every traffic fine paid, and the fee for the years you choose. The new card can be delivered to your National Address.</p>
+<h2>Insurance and accidents</h2>
+<ul>
+<li><strong>Third-party insurance is the law.</strong> Every car must have it, and Absher will not register a car to you, or transfer one, without a policy in your name. Comprehensive cover for your own car is optional, and a bank that finances a car insists on it.</li>
+<li><strong>Compare policies online.</strong> Several Saudi comparison sites quote every licensed insurer at once. Prices depend on the car, your age and your record.</li>
+<li><strong>A small accident with nobody hurt:</strong> move to the side if you can, do not leave, and report it through the Najm app or on 920000560. Najm's inspector records the damage, decides fault and sends the report to both insurers. Report within 24 hours.</li>
+<li><strong>Anyone hurt, or a dispute:</strong> call 911 and wait for the traffic police.</li>
+</ul>
+<h2>Fines, cameras and points</h2>
+<p>Madinah's main roads carry Saher cameras for speed and red lights, and mobile cameras appear in bus lanes. Fines arrive in Absher without a paper ticket, so check your violations every month, pay in your banking app under government payments, and object in Absher within 30 days if a fine is wrong. As of November 2026 the common fines are:</p>
+<table><thead><tr><th>Violation</th><th>Fine (SAR)</th></tr></thead><tbody>
+<tr><td>Phone in hand while driving</td><td>500 to 900</td></tr>
+<tr><td>No seat belt</td><td>150 to 300</td></tr>
+<tr><td>Running a red light</td><td>3,000 to 6,000, and the car is impounded on a repeat</td></tr>
+<tr><td>Speeding</td><td>From 300 SAR, rising with the speed to 2,000 SAR and more</td></tr>
+<tr><td>Expired registration (istimara)</td><td>100 to 150</td></tr>
+<tr><td>Parking in a disabled space</td><td>500 to 900</td></tr>
+</tbody></table>
+<p>Serious violations also add points to your licence, and enough points suspend it. Unpaid fines stop your exit and re-entry visa, hold up an iqama renewal, and block selling a car. See <a href="/ask/traffic-fines">How do I check and pay traffic fines?</a></p>
+<h2>Renting a car</h2>
+<p>Renting is the answer for anyone without an iqama, and for families with visitors. Companies at the airport and across the city rent by the day, the week and the month. The usual conditions: you are 21 or over, you hold a licence in English or Arabic or an International Driving Permit with it, and you pay with a credit card in your own name. Every camera fine during the rental is charged to you, with the company's handling fee on top, so drive as if the car were yours. A monthly rental of a small car is one of the cheaper ways for a family to have wheels for a season.</p>
+<h2>Buying a car</h2>
+<p>With an iqama you can buy a used car and transfer it to your name in Absher. The checks to make before you pay, and the steps, are in <a href="/ask/buying-a-used-car">Can I buy a used car as a student, and what do I need?</a>. When you leave the Kingdom, sell it first: a car in your name blocks a final exit. See <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
+<h2>Driving well in Madinah</h2>
+<ul>
+<li>Fuel is sold by the litre at every station, and most take cards and phone payment.</li>
+<li>The ring roads are fast. Inside the central area around the Haram, speed limits drop and the cameras are frequent.</li>
+<li>Friday before Jumu'ah, Ramadan nights and the days around Eid are the only times parking near the Haram is hard. The car parks under the courtyards fill first.</li>
+<li>For Makkah, the Haramain train and the coaches are cheaper and calmer than driving: see <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</li>
+</ul>
+<p>Students on the educational visa: what works and what does not on a Visitor ID is in <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>
+<blockquote><p>Tip: Not sure whether your country's licence swaps without a test? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
   },
   {
     // Superseded: the published version is GUIDE_REWRITES_2026_11 in guides-research-2026-11.ts (SEED_GUIDES keeps the later one). Edit that one.
@@ -472,7 +550,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Which doctor delivers</h2>
 <p>At Dr. Hamid Suliman Al Ahmadi Hospital, Madina National Hospital, Mouwasat, Uhud and Wilaada, the doctor on duty usually delivers your baby, so you generally cannot choose.</p>
 <blockquote><p>Tip: Book antenatal visits early, ask the hospital for its current delivery price in writing, and ask what is included before you decide.</p></blockquote>
-<p>On a visit visa, the insurance that comes with the visa pays for emergency pregnancy and childbirth care only up to a low limit (5,000 SAR), so plan to pay for a delivery yourself. After the birth, register the baby and add them to your file: see <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, and dependent fees</a>.</p>`,
+<p>On a visit visa, the insurance that comes with the visa pays for emergency pregnancy and childbirth care only up to a low limit (5,000 SAR), so plan to pay for a delivery yourself. After the birth, register the baby and add them to your file: see <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>.</p>`,
   },
   {
     slug: "sports-and-activities",
@@ -543,17 +621,26 @@ export const GUIDES_2026: SeedGuide[] = [
   {
     slug: "iqama-and-exit-reentry-fees",
     stage: "getting-settled",
-    title: "Iqama, exit and re-entry, and dependent fees",
-    summary: "What Jawazat charges for the iqama, exit and re-entry visas, adding family and transfers. Checked November 2026.",
+    title: "Iqama, exit and re-entry, final exit and dependant fees: what they cost and who issues them",
+    summary: "What Jawazat charges for the iqama, exit and re-entry visas, final exit, adding family and visit visa extensions, who issues each paper for a student and his family, the rules that catch people, and the Absher steps. Checked November 2026.",
     bodyHtml: `
 <blockquote><p>Important: these are Jawazat service fees, checked in November 2026. Other charges such as health insurance can apply separately, so confirm the final amount on Absher before you pay.</p></blockquote>
-<p>New students on the educational visa are not issued an iqama: they hold a Visitor ID and pay none of these fees. Students from earlier intakes who hold a student iqama pay nothing for their own iqama. The fees below matter mostly for families and for anyone who travels. Fees are paid through Sadad in your banking app, under Government payments.</p>
+<p>New students on the educational visa are not issued an iqama: they hold a Visitor ID and pay none of these fees. Students from earlier intakes who hold a student iqama pay nothing for their own iqama. The fees below matter mostly for families and for anyone who travels. Fees are paid through SADAD in your banking app, under Government payments, and Absher shows the final amount before you pay.</p>
+<h2>Who issues what</h2>
+<p>With a student iqama, the University is your sponsor, so the papers for you go through its Travel Management (إدارة السفر). The papers for your family go through your own Absher account, as head of the family.</p>
+<table><thead><tr><th>Paper</th><th>For you</th><th>For your wife and children</th></tr></thead><tbody>
+<tr><td>Iqama issue and renewal</td><td>Travel Management, through Muqeem. See <a href="/ask/student-iqama-renewal">Who renews my student iqama?</a></td><td>Travel Management's Reception Unit issues the first iqama. You renew it in Absher</td></tr>
+<tr><td>Exit and re-entry visa</td><td>Travel Management. It collects the lists for the summer break, approved leave and ta'jeel, and handles students away for more than six months</td><td>You, in Absher</td></tr>
+<tr><td>Final exit</td><td>Travel Management, once your clearance shows</td><td>You, in Absher</td></tr>
+<tr><td>Visit visa for a relative, and its extension</td><td colspan="2">You, in Absher or Muqeem, as the host</td></tr>
+</tbody></table>
 <h2>Iqama</h2>
 <table><thead><tr><th>Who</th><th>Fee (SAR)</th></tr></thead><tbody>
 <tr><td>Student with a student iqama</td><td>Free</td></tr>
 <tr><td>Domestic worker, farmer or shepherd</td><td>600</td></tr>
 <tr><td>Worker of a company or establishment</td><td>650</td></tr>
 </tbody></table>
+<p>A renewal is held up by unpaid traffic fines, children not yet added to the iqama, a late birth certificate fine or an expired visa on the file. Clear these before the expiry date, not after.</p>
 <h2>Exit and re-entry visa</h2>
 <table><thead><tr><th>Visa</th><th>Fee (SAR)</th></tr></thead><tbody>
 <tr><td>Single, up to 2 months, one trip</td><td>200</td></tr>
@@ -563,17 +650,36 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>Final exit</td><td>Free</td></tr>
 </tbody></table>
 <p>Extra months must fall within the validity of your iqama. If you extend while you are already abroad, the extra months cost double: 200 SAR a month on a single visa and 400 SAR a month on a multiple visa. Fees are not refunded if you cancel the visa, so choose the length carefully.</p>
+<h3>The rules that catch people</h3>
+<ul>
+<li><strong>Come back before it expires.</strong> An exit and re-entry visa that runs out while you are abroad leaves you outside with no way back on that iqama.</li>
+<li><strong>Your passport must outlast the trip.</strong> Absher refuses a visa when the passport is close to expiry. Renew the passport first: see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
+<li><strong>Fines block it.</strong> Any unpaid traffic fine on you, or on a dependant, stops the visa being issued.</li>
+<li><strong>Print it or save it.</strong> Airlines ask to see the visa at check-in. Keep a copy on your phone.</li>
+<li><strong>The summer ticket and the visa go together.</strong> Request the visa when the University collects the summer travel lists, so the visa dates cover the ticket dates.</li>
+</ul>
+<h3>Issuing one for a dependant in Absher</h3>
+<ol>
+<li>Sign in to Absher Individuals, open <strong>Services</strong>, then <strong>Passports</strong>, then <strong>Exit and re-entry visa</strong> (or <strong>Final exit visa</strong>).</li>
+<li>Choose the family member, the type of visa and the months, and check the dates against the iqama's expiry.</li>
+<li>Pay the fee shown through SADAD in your banking app, then return to Absher to issue the visa and download it.</li>
+</ol>
+<h2>Final exit</h2>
+<p>A final exit visa is free. It cancels the iqama when the holder crosses the border, so it is the last paper you take, after the bank, the car and the flat are settled. It is refused while there are unpaid fines, a car registered in the person's name, or a dependant left behind on an unsettled iqama. Returning later means a new visa of your own. The whole leaving process is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
 <h2>Adding family</h2>
 <ul>
-<li>Adding a dependant, or a newborn born inside Saudi Arabia, is done on Absher, which shows any fee before you pay.</li>
-<li>A child born outside Saudi Arabia first needs an entry visa as a dependent: 2,000 SAR. Add the child within three months of arrival to avoid a fine.</li>
+<li>Adding a dependant, or a newborn born inside Saudi Arabia, is done on Absher, which shows any fee before you pay. Register a birth promptly: a late birth certificate carries a fine and holds up the iqama renewal.</li>
+<li>A child born outside Saudi Arabia first needs an entry visa as a dependant: 2,000 SAR. Add the child within three months of arrival to avoid a fine.</li>
+<li>The monthly levy for dependants on a work iqama is 400 SAR per dependant a month. Student iqamas are not work iqamas, so ask Travel Management before you plan around it.</li>
 </ul>
 <h2>Visit visas</h2>
 <ul>
-<li>Extending a visit visa: about 100 SAR each time. Absher shows the exact amount before you pay.</li>
+<li>Extending a visit visa: about 100 SAR each time, requested by the host on Absher or Muqeem before the visa expires. Absher shows the exact amount before you pay.</li>
+<li>Who can host a relative, the eVisa and the 180 day limit are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</li>
 </ul>
-<p>Other charges can apply, for example the monthly levy for dependants on a work iqama (400 SAR per dependant a month) and Absher service charges. Absher shows the final amount before you pay.</p>
-<p>Visitor ID students pay none of the iqama fees above until they hold an iqama. See Visas for family members and visitors for the visit visa rules.</p>`,
+<h2>On a Visitor ID</h2>
+<p>Students on the educational visa hold no iqama, so none of the fees above apply. Leaving and returning follows your visa, not an exit and re-entry visa: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a> before you book a trip, and ask the Deanship of Admission and Registration through Tawasul, subject Educational visa, if your plans cross the visa's dates.</p>
+<blockquote><p>Tip: Absher refused the visa and you cannot see why? Check your violations page and every dependant's iqama date first. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
   },
   {
     slug: "masjid-an-nabawi-first-visit",

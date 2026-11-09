@@ -79,7 +79,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>You can drive with your own licence if Saudi Arabia recognises your country's licence. Carry the original. Car hire firms set their own rules, and many ask for an International Driving Permit.</li>
 <li>Traffic fines show in Absher under violations. Pay them in your banking app.</li>
 </ul>
-<p>Once you hold an iqama, the swap is in <a href="/guides/drivers-license">Getting a Saudi driving licence</a>.</p>
+<p>Once you hold an iqama, the swap is in <a href="/guides/drivers-license">Driving in Madinah: your Saudi driving licence</a>.</p>
 <h2>Umrah, the Rawdah and Hajj</h2>
 <ul>
 <li>Book Umrah and Rawdah permits in the Nusuk app. See <a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba</a>.</li>
@@ -219,7 +219,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ol>
 <li><strong>Register your National Address</strong> with Saudi Post. Banks and deliveries need it. See <a href="/ask/short-address">What is a short address?</a></li>
 <li><strong>Open a bank account</strong> and order a mada card. Visitor ID holders go to a branch with their passport and their Visitor ID in Absher, or open online through Nafath. Then add your IBAN for the stipend in the Academic System under Personal, then Rewards.</li>
-<li><strong>Set up Etimad</strong> for your University tickets and check your details match your passport. See <a href="/guides/etimad-account">Setting up your Etimad account</a>.</li>
+<li><strong>Set up Etimad</strong> for your University tickets and check your details match your passport. See <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</li>
 <li><strong>Check the key dates</strong> for your semester: exams, breaks and the deadlines for ta'jeel and withdrawal. See <a href="/guides/university-calendar-1448">The University calendar</a>.</li>
 </ol>
 <h2>Week 3: housing and getting around</h2>
@@ -342,7 +342,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 </ul>
 <h2>Who handles what</h2>
 <table><thead><tr><th>You need</th><th>Who handles it</th><th>Where</th></tr></thead><tbody>
-<tr><td>Your ticket home, your arrival ticket, passport matters</td><td>Travel Management (إدارة السفر)</td><td>Tickets through Etimad: see <a href="/guides/etimad-account">Setting up your Etimad account</a>. Arrival tickets through Minhati</td></tr>
+<tr><td>Your ticket home, your arrival ticket, passport matters</td><td>Travel Management (إدارة السفر)</td><td>Tickets through Etimad: see <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>. Arrival tickets through Minhati</td></tr>
 <tr><td>Your educational visa and Visitor ID</td><td>Deanship of Admission and Registration</td><td>Tawasul, subject Educational visa: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a></td></tr>
 <tr><td>Registration, your timetable, adding and dropping courses, ta'jeel and i'tithaar, transfers</td><td>Deanship of Admission and Registration</td><td>The Academic System, and Tawasul for anything it cannot do</td></tr>
 <tr><td>A new visa after ta'jeel, an excuse or a break in study</td><td>Deanship of Admission and Registration</td><td><a href="https://minhatee2.iu.edu.sa/Home/VisaLanding">Minhati visa page</a>, signing in with your University number</td></tr>
@@ -428,9 +428,9 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Date changes are at your cost, cancelling returns the ticket to the University with no cash refund, and a no-show loses the ticket.</li>
 <li>One cabin bag and two checked bags.</li>
 </ul>
-<p>The full list and how to set up your account are in <a href="/guides/etimad-account">Setting up your Etimad account</a>.</p>
+<p>The full list and how to set up your account are in <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</p>
 <h2>When you graduate</h2>
-<p>Graduates receive the graduation allowance of three months' stipend and a final ticket home, once the University has confirmed their clearance. The steps are in <a href="/guides/graduate-procedures">Graduating</a>.</p>
+<p>Graduates receive the graduation allowance of three months' stipend and a final ticket home, once the University has confirmed their clearance. The steps are in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
 <blockquote><p>Tip: A payment missing or wrong? Check the Rewards screen first, then send a request through Tawasul. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
   },
 ];
@@ -575,7 +575,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Give the University your IBAN</strong> so your stipend is paid into your account: in the Academic System, open Personal, then Rewards, and send an IBAN update request. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
 <li><strong>Collect your student card.</strong> New students receive it during orientation week. If you arrive later, take your Visitor ID to the student card office, which prints it on the spot.</li>
 <li><strong>Sign in to your University accounts</strong> at sso.iu.edu.sa, through Nafath or with your University number, password and a code. This opens your University email, the Academic System, Blackboard and Tawasul. Your timetable is under Electronic Registration, then Registered Courses.</li>
-<li><strong>Set up Etimad</strong> for your University tickets, with your name exactly as in your passport. See <a href="/guides/etimad-account">Setting up your Etimad account</a>.</li>
+<li><strong>Set up Etimad</strong> for your University tickets, with your name exactly as in your passport. See <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</li>
 </ol>
 <blockquote><p>Note: If Absher or Nafath activation keeps failing, call Absher customer care on <strong>920020405</strong> (24 hours), choose English, enter your border number and ask for a technical support ticket. See <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a>.</p></blockquote>
 <h2>If you hold an iqama</h2>
@@ -645,10 +645,18 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
   {
     slug: "graduate-procedures",
     stage: "leaving",
-    title: "Graduating: room handover, certificates, legalisation and your flight home",
-    summary: "Everything to do after your final exams, in order: check your certificate details, hand back your room, collect and legalise your degree, the graduation allowance and bisht, and your ticket home.",
+    title: "Leaving Madinah for good: graduation, final exit, shipping, selling up and closing accounts",
+    summary: "Everything to do when you leave for good, in order and on a timeline: your certificate and room, clearance and final exit on an iqama or a Visitor ID, the University ticket, shipping your books, selling the furniture and the car, the bank account, SIMs, your flat's deposit and bills, and the children's school papers.",
     bodyHtml: `
-<p>Checked 9 November 2026. Do these steps in order, because each one needs the one before it. Start the first two in your final semester, before your exams end.</p>
+<p>Checked November 2026. Leaving Madinah for good is more than handing back a room. It is also the final exit, your University ticket, the books you want to keep, the furniture you cannot take, your bank account, your SIM, your flat and its deposit, and your children's school papers. This guide puts all of it in one place, in the order it needs doing. Graduates start at the top. If you are leaving for another reason, or you are a family who never studied, skip the University steps and start at <strong>Leaving the Kingdom</strong>.</p>
+<h2>Your leaving timeline</h2>
+<table><thead><tr><th>When</th><th>What to do</th></tr></thead><tbody>
+<tr><td>Three months before</td><td>Check the name on your certificate. Tell your landlord. Ask the children's school for their leaving papers. Start selling the big things and shipping the first boxes of books.</td></tr>
+<tr><td>One month before</td><td>Pay every fine. Sell or transfer the car. Decide what travels with you, what ships and what goes. Print your University documents.</td></tr>
+<tr><td>Two weeks before</td><td>Hand back your room or flat, collect your deposit, settle electricity and water, collect your degree, legalise your documents.</td></tr>
+<tr><td>Last days</td><td>Clearance confirmed, ticket issued, final exit issued, bank account emptied and closed, spare SIMs cancelled, last photos taken.</td></tr>
+<tr><td>After you land</td><td>Keep your Saudi number alive for codes until every account is closed. Check your degree verifies online.</td></tr>
+</tbody></table>
 <h2>1. Check the details on your certificate</h2>
 <p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester and correct any difference from your passport before printing. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
 <h2>2. Download and print your documents</h2>
@@ -664,22 +672,17 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <p>The housing office of the Deanship of Student Affairs handles the handover.</p>
 <ol>
 <li><strong>Get the handover form</strong> (istimarah) from the housing office. Say you are graduating and want to hand back your room, and give your University number.</li>
-<li><strong>Clean the room</strong> and check the furniture. Five items must all be there: the mattress, the bed frame, the wardrobe, the desk and the chair. Nothing may be missing or swapped, and any missing or swapped item is charged to you. A carpet is the only thing you may leave behind.</li>
+<li><strong>Clean the room</strong> and check the furniture. Five items must all be there: the mattress, the bed frame, the wardrobe, the desk and the chair. Nothing can be missing or swapped, and any missing or swapped item is charged to you. A carpet is the only thing you can leave behind.</li>
 <li><strong>Arrange the inspection</strong> with your building's mushrif (supervisor), at his office or by phone. He checks the room, takes the key and signs the form. <strong>Keep the original form.</strong></li>
 <li><strong>Go back to the housing office</strong> the next working morning for the final clearance. The system then shows your room as returned.</li>
 </ol>
-<p>Your blanket and bedsheets are yours to take home.</p>
+<p>Your blanket and bedsheets are yours to take home. Anything else you bought for the room, from a kettle to a bookshelf, goes with you, to a friend or to the market: see <strong>Your things</strong> below.</p>
 <h2>4. Return your student card and clear your file</h2>
-<p>Hand in the signed room form at the housing office, and return your student card at the student card office. Keep a copy or a PDF of the card first. What comes next depends on your residency:</p>
-<table><thead><tr><th>Topic</th><th>Visitor ID (educational visa)</th><th>Iqama</th></tr></thead><tbody>
-<tr><td><strong>Leaving the Kingdom</strong></td><td>There is no iqama to hand in. Before you book, ask Travel Management (إدارة السفر) through Tawasul what clearance it needs from you</td><td>Travel Management arranges your final exit visa. Hand in your iqama when it asks for it</td></tr>
-<tr><td><strong>Your ticket</strong></td><td colspan="2">Issued only once the University has confirmed your clearance (step 10)</td></tr>
-</tbody></table>
-<h2>5. Collect your degree certificate</h2>
+<p>Hand in the signed room form at the housing office, and return your student card at the student card office. Keep a copy or a PDF of the card first. Travel Management (إدارة السفر) then confirms your clearance in the University's records, and your ticket and, with an iqama, your final exit follow from that. Nothing is issued before the clearance shows.</p>
+<h2>5. Collect your degree and the University stamp</h2>
 <p>Collect your certificate from the Deanship of Admission and Registration, with your University number, and sign for it. If you cannot be there, the Deanship has an official form for authorising someone to collect it for you. See <a href="/ask/degree-collection-and-verification">Can someone else collect my degree certificate?</a></p>
-<h2>6. Get the University stamp</h2>
-<p>Ask for the University stamp on the black and white copies of your transcript, conduct certificate and graduation certificate, and on a copy of your degree. The Ministry of Foreign Affairs legalises only documents that already carry the University stamp.</p>
-<h2>7. Legalise your documents at the Ministry of Foreign Affairs</h2>
+<p>Then ask for the University stamp on the black and white copies of your transcript, conduct certificate and graduation certificate, and on a copy of your degree. The Ministry of Foreign Affairs legalises only documents that already carry the University stamp.</p>
+<h2>6. Legalise your documents: the Ministry, then your embassy</h2>
 <p>Most embassies will not legalise a Saudi degree until the Ministry of Foreign Affairs has. The documents usually legalised are the degree, the Ma'had certificate, the transcript, the conduct certificate and the graduation certificate.</p>
 <ol>
 <li>Open the Ministry's ratification service at <a href="https://ratification.mofa.gov.sa/">ratification.mofa.gov.sa</a> and sign in through Nafath.</li>
@@ -688,25 +691,105 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Go to the branch at your appointment with the payment receipt and the stamped copies.</li>
 </ol>
 <blockquote><p>Tip: Pay straight after booking. An unpaid appointment is cancelled.</p></blockquote>
-<h2>8. Legalise them at your embassy or consulate</h2>
-<p>Your own country may also want the documents legalised by its embassy in Riyadh or its consulate in Jeddah. Requirements differ from country to country, so read your embassy's website first. Take the documents legalised by the Ministry of Foreign Affairs and copies of your passport, student card and Visitor ID or iqama, and register online beforehand if your embassy asks you to.</p>
-<h2>9. The graduation allowance, bisht and gifts</h2>
+<p>Your own country can also want the documents legalised by its embassy in Riyadh or its consulate in Jeddah. Requirements differ from country to country, so read your embassy's website first. Take the documents legalised by the Ministry of Foreign Affairs and copies of your passport, student card and Visitor ID or iqama, and register online beforehand if your embassy asks you to. Do this before your clearance and ticket, because once your final exit is issued your time in the Kingdom is short.</p>
+<h2>7. The graduation allowance, bisht and gifts</h2>
 <ul>
-<li><strong>Graduation allowance:</strong> full (external) scholarship students receive a graduation allowance of three months' stipend, for shipping their books home, once the University has confirmed their clearance. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
+<li><strong>Graduation allowance:</strong> full (external) scholarship students receive a graduation allowance of three months' stipend, for shipping their books home, once the University has confirmed their clearance. It lands in the same account as your stipend, so keep that account open until it arrives. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
 <li><strong>Bisht and gifts:</strong> bachelor's, master's and PhD graduates are given a graduation bisht (mishlah) and gifts such as books. If you have already gone home, someone can collect them for you: send a request through Tawasul with your name, student card number and graduation date, and the full name and student card number of the person collecting.</li>
 </ul>
-<h2>10. Your ticket home</h2>
+<h2>8. Leaving the Kingdom: final exit on an iqama, or on a Visitor ID</h2>
+<p>How you leave depends on what you hold.</p>
+<table><thead><tr><th>Topic</th><th>Iqama</th><th>Visitor ID (educational visa)</th></tr></thead><tbody>
+<tr><td><strong>What is issued</strong></td><td>A final exit visa (خروج نهائي). It is free, it cancels your iqama when you cross the border, and you leave within its validity</td><td>Nothing to issue. Your educational visa ends when you leave, so you must leave before it expires</td></tr>
+<tr><td><strong>Who issues it</strong></td><td>Travel Management, as your sponsor, once your clearance shows. Send a request through Tawasul if it has not moved a week after your clearance</td><td>Ask Travel Management through Tawasul what clearance it needs from you, then book</td></tr>
+<tr><td><strong>Your family</strong></td><td>You issue your dependants' final exit yourself in Absher: Services, then Passports, then Visa services, then Final exit visa. Their iqamas must be valid and their fines paid</td><td>Family on visit visas leave with you or before their own visas expire</td></tr>
+<tr><td><strong>What blocks it</strong></td><td colspan="2">Unpaid traffic fines, a car still registered in your name, a dependant with an unpaid fine or an expired iqama, and a passport close to expiry. Clear all of these first</td></tr>
+<tr><td><strong>Coming back</strong></td><td colspan="2">Your scholarship ends when you graduate and you agreed on admission to go home. You can return later on a new visa of your own, for example an Umrah or tourist visa, and students admitted to graduate studies arrive on a new educational visa</td></tr>
+</tbody></table>
+<blockquote><p>Note: A final exit visa has a validity window. Do not let it be issued before your ticket date is fixed and your bank, flat and car are settled, because once it is issued the clock is running.</p></blockquote>
+<h2>9. Your ticket home</h2>
 <ol>
 <li>Finish everything above first, including the embassy, before you book.</li>
 <li>Make sure the University has confirmed your clearance. Graduates' tickets are issued only after that.</li>
-<li>Your final ticket is issued against a travel order on Etimad, to a capital city. Check that your name on Etimad matches your passport letter for letter.</li>
-<li>You may upgrade the class of travel at your own cost.</li>
+<li>Your final ticket is issued against a travel order on Etimad, to a capital city in your own country or the country that issued your visa. Check that your name on Etimad matches your passport letter for letter.</li>
+<li>Tell the ticket unit the date you can really travel. A date change later costs you the fare difference, and a no-show loses the ticket.</li>
+<li>You can upgrade the class of travel at your own cost. Your family's tickets are at your own cost.</li>
 </ol>
-<p>The ticket rules (validity, date changes, no refunds and baggage) are in <a href="/guides/etimad-account">Setting up your Etimad account</a>.</p>
+<p>The ticket rules (validity, date changes, no refunds and baggage) are in <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</p>
+<h2>10. Your bank account</h2>
+<p>Banks close the accounts of expatriates on final exit, and an account on a Visitor ID is frozen when the ID expires. So the money must move before you leave, not after.</p>
+<ol>
+<li><strong>Wait for the last payments:</strong> your final stipend and the graduation allowance go to this account. Check the Rewards screen in the Academic System for the amounts.</li>
+<li><strong>Send the balance home</strong> while your Saudi number and Absher still work, because transfers need the codes sent to your phone. Compare the final amount your family receives, not the headline rate: see <a href="/ask/send-money-home">How do I send money home from Madinah?</a></li>
+<li><strong>Cancel what charges the account:</strong> subscriptions, a car instalment, the internet contract, any standing order.</li>
+<li><strong>Close the account at a branch</strong> and ask for a closure letter. Keep it with your papers.</li>
+</ol>
+<blockquote><p>Tip: Leave nothing of value in the account. Getting money out of a Saudi account from abroad takes a representative, paperwork and weeks.</p></blockquote>
+<h2>11. Your phone and SIMs</h2>
+<ol>
+<li><strong>See every line registered to you</strong> in Mutasil or the CST app, and cancel the ones you do not need with their operator. A forgotten line stays on your record. Steps are in <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a>.</li>
+<li><strong>Keep one line alive</strong> for a few months after you leave, on roaming or with a small top-up, because your bank, Absher and Etimad send their codes to it. Move your bank to app-based approval before you go if your bank offers it.</li>
+<li><strong>Save what lives on the number:</strong> export your WhatsApp chats and tell your groups your new number before the Saudi one dies.</li>
+</ol>
+<h2>12. Your flat: handover, deposit, electricity and water</h2>
+<p>If you rented in the city, your contract decides the notice you must give. Most are for a year, and an early exit needs the landlord's agreement, so tell the landlord in writing as early as you can.</p>
+<ol>
+<li><strong>Give notice</strong> in the way your contract says. On Ejar, the contract ends on its date, or both sides end it early through Ejar's free service for ending a contract by agreement.</li>
+<li><strong>Take dated photos</strong> of every room on the day you hand over, with the meters in shot.</li>
+<li><strong>Sign the handover</strong> with the landlord or agent. On Ejar the handover form is digital, and your deposit, which Ejar holds in its own account, is released when both sides sign. Only documented damage you caused can be deducted, not ordinary wear.</li>
+<li><strong>Settle electricity:</strong> pay the last bill in the Saudi Energy app and remove yourself from the meter under Account management, so later bills go to the owner.</li>
+<li><strong>Settle water:</strong> pay the last bill in the National Water Company app. A rented property's meter goes back to the owner's name when the contract ends.</li>
+<li><strong>Return the router</strong> and end the home internet contract with the operator, or the monthly charge continues.</li>
+</ol>
+<p>If anything is withheld without a reason, Ejar has a mediation route through its dashboard before any court. See <a href="/guides/finding-an-apartment">Finding and renting a flat</a>.</p>
+<h2>13. Your things: sell, give, ship</h2>
+<p>Decide early, because the last week is for paperwork, not for selling a fridge.</p>
+<h3>Sell or give away</h3>
+<ul>
+<li><strong>Where to sell:</strong> Haraj, the notice boards and group chats of the halls, and the second-hand furniture shops in the city, which also buy. New students arrive every August and want exactly what you are selling.</li>
+<li><strong>Price it to go.</strong> As of late 2026, a used sofa set or washing machine goes for a few hundred riyals, a single mattress for under a hundred, and buyers expect to collect. A pickup van, flagged down on the road or booked by phone, carries a mattress or a fridge across the city for a few tens of riyals.</li>
+<li><strong>Give the rest away.</strong> Charities in Madinah collect usable furniture and appliances, and a new student in your hall will be glad of your desk lamp.</li>
+</ul>
+<h3>Your car</h3>
+<p>A car registered in your name blocks your final exit, so sell it or transfer it first.</p>
+<ol>
+<li>Pay every fine on the car and on you, and keep the registration (istimara) and the periodic inspection valid.</li>
+<li>Start the sale in Absher under Vehicle services, entering the buyer's ID number and date of birth, the price and your bank account.</li>
+<li>The buyer insures the car in his own name, accepts the sale in his Absher and pays. As of November 2026 the transfer carries a government fee of 150 SAR and an Absher fee of 230 SAR, paid by the buyer.</li>
+<li>Hand over the car, the buyer confirms delivery in Absher, and the car leaves your name. Check it is gone from your vehicles list before you ask for final exit.</li>
+</ol>
+<h3>Ship your books</h3>
+<p>Books are the heaviest thing a student owns, and the graduation allowance exists for exactly this. Compare these ways, and weigh your boxes before you choose.</p>
+<table><thead><tr><th>Way</th><th>Good for</th><th>What to know</th></tr></thead><tbody>
+<tr><td>Your checked baggage</td><td>Up to two bags on the University ticket</td><td>Often the cheapest for the first 40 to 50 kg. Buy an extra bag from the airline before the flight, not at the counter</td></tr>
+<tr><td>SPL (Saudi Post)</td><td>Boxes up to 30 kg, door to door</td><td>Priced by weight and country in SPL's price calculator. As of 2025 a 30 kg express parcel costs from under 300 SAR to South Asia to about 750 SAR to Europe and North America</td></tr>
+<tr><td>Courier companies</td><td>Faster, tracked, any weight</td><td>Aramex, DHL, FedEx, SMSA and UPS all ship from Madinah. Ask each for a quote by weight, and ask about a books or student rate</td></tr>
+<tr><td>Sea cargo</td><td>Many boxes to Africa or Asia</td><td>Cargo offices in the city ship by the box or the cubic metre. Slow, but far cheaper per kilo for a whole library</td></tr>
+</tbody></table>
+<p>Pack books in small strong boxes of about 20 to 30 kg, write your name and destination inside the lid as well as outside, keep the shipping receipts until the boxes arrive, and check your own country's customs rules for printed books before you send. The campus has a travel and shipping office that quotes for students.</p>
+<h2>14. Your children's school papers</h2>
+<ol>
+<li>Ask the school for a transfer certificate and the report cards of every year, and settle any fees first, because schools release papers only to a clear account.</li>
+<li>If the next school is in another country, ask it exactly which stamps it needs. Attestation of school papers by the Ministry of Education takes about a month, so start three months before you leave.</li>
+<li>Download the children's vaccination record from Sehhaty and ask the clinic for any medical records you want to keep.</li>
+</ol>
+<h2>Your last week</h2>
+<ol>
+<li>Clearance confirmed in the University's records, and the final exit issued (iqama) or Travel Management's clearance done (Visitor ID).</li>
+<li>Ticket in hand, name matching the passport.</li>
+<li>Bank account emptied and closed, closure letter kept.</li>
+<li>Flat handed over, deposit back, electricity and water paid, router returned.</li>
+<li>Car out of your name, fines at zero in Absher.</li>
+<li>Spare SIMs cancelled, one line kept alive.</li>
+<li>Degree, transcript, legalised copies, the room form and the closure letter all in your hand luggage, with photos of each on your phone.</li>
+<li>Boxes shipped, receipts saved.</li>
+</ol>
 <h2>After you leave</h2>
 <ul>
 <li>Scholarship students agree when they are admitted to go home on graduating. You cannot stay on in the Kingdom on the scholarship after your studies end.</li>
 <li>Employers and other universities can check your degree on the University's graduation document verification service. See <a href="/ask/degree-collection-and-verification">Can someone else collect my degree certificate, and how can an employer check it?</a></li>
+<li>Your Absher account stays yours. Keep its password and the phone number it uses, because you need it if you ever return.</li>
+<li>Stay in touch with your teachers and your hall. The du'a of a student for his shaykh, and of a shaykh for his student, does not stop at the border.</li>
 </ul>
 <p>May Allah grant success to every graduate.</p>
 <blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
