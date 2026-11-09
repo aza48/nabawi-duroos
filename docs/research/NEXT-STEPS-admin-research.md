@@ -12,7 +12,7 @@ Then: wire the new files in `sync.ts` and `src/lib/guide-topics.ts`, full tsc, v
 
 ### Done (merged to `main` through the PR for this branch)
 - A, B1, B2, C, D, E all finished; wired in `sync.ts` and `src/lib/guide-topics.ts` (new topic "Your studies, step by step", id `studies`, icon in `ContentPages.tsx`). tsc, 513 tests and the build pass. Screenshots: `docs/research/admin-publish-2026-11/screenshots/`.
-- New guides (16): `university-student-system`, `registering-your-courses`, `gpa-warnings-and-dismissal`, `what-you-study-by-level`, `university-email-and-microsoft-365` (A); `your-first-semester-week-by-week`, `getting-your-stipend-off-the-university-card`, `unit-13-and-paid-university-housing`, `university-housing-and-student-services`, `university-to-the-haram`, `lost-your-iqama-passport-or-card` (B2); `check-visa-and-iqama-online`, `family-records-on-absher` (E).
+- New guides (13): `university-student-system`, `registering-your-courses`, `gpa-warnings-and-dismissal`, `what-you-study-by-level`, `university-email-and-microsoft-365` (A); `your-first-semester-week-by-week`, `getting-your-stipend-off-the-university-card`, `unit-13-and-paid-university-housing`, `university-housing-and-student-services`, `university-to-the-haram`, `lost-your-iqama-passport-or-card` (B2); `check-visa-and-iqama-online`, `family-records-on-absher` (E).
 - Owner questions from every writer: `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`.
 
 ### Still to do (next agent: start here)
