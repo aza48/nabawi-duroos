@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "../../globals.css";
 import { fontVariables } from "../../fonts";
 import { ThemeScript } from "@/components/shell/ThemeScript";
-import { ArabicFontPreload } from "./ArabicFontPreload";
 import { SiteShell } from "@/components/shell/SiteShell";
 import { getDb } from "@/server/db/client";
 import { getHelpContact, getWhatsAppUrl } from "@/server/settings";
@@ -31,7 +30,6 @@ export default async function ArabicLayout({ children }: { children: React.React
     <html {...htmlAttrs("ar")} className={fontVariables} suppressHydrationWarning>
       <head>
         <ThemeScript />
-        <ArabicFontPreload />
       </head>
       <body>
         <SiteShell locale="ar" whatsappUrl={whatsappUrl} helpContact={helpContact}>
