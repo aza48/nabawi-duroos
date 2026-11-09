@@ -18,6 +18,7 @@ import { AskOnWhatsApp, WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 import { EnglishNote } from "@/components/EnglishNote";
 import type { Locale } from "@/lib/locale";
+import { arCount, arDigits } from "@/lib/arabic-count";
 
 const verified = (d: Date | null, locale: Locale = "en") =>
   d
@@ -189,7 +190,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
             return (
               <a key={t.id} href={`#${t.id}`} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
                 <Icon size={16} className="text-gold-bright" /> {t.label}
-                <span className="text-white/75 tabular">{t.items.length}</span>
+                <span className="text-white/75 tabular">{ar ? arDigits(t.items.length) : t.items.length}</span>
               </a>
             );
           })}
@@ -209,11 +210,11 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {t.items.map((g, n) => (
                   <Link key={g.slug} href={`${ar ? "/ar" : ""}/guides/${g.slug}`} className="lift group flex flex-col rounded-2xl border border-line bg-card p-5 hover:border-primary/50">
-                    {i === 0 && <span className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent">{ar ? `الخطوة ${n + 1}` : `Step ${n + 1}`}</span>}
+                    {i === 0 && <span className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent">{ar ? `الخطوة ${arDigits(n + 1)}` : `Step ${n + 1}`}</span>}
                     <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary" dir="auto">{g.title}</span>
                     <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted" dir="auto">{g.summary}</span>
                     <span className="mt-auto flex items-center gap-3 pt-4 text-xs text-muted">
-                      <span className="flex items-center gap-1"><BookOpen size={13} /> {g.readingMinutes} {ar ? "دقائق" : "min"}</span>
+                      <span className="flex items-center gap-1"><BookOpen size={13} /> {ar ? arCount(g.readingMinutes, "minute", { one: "bare" }) : `${g.readingMinutes} min`}</span>
                       {g.lastVerifiedAt && <span className="flex items-center gap-1 text-on"><CircleCheck size={13} /> {ar ? "موثّق" : "Verified"}</span>}
                     </span>
                   </Link>
@@ -288,8 +289,8 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl" dir="auto">{guide.title}</h1>
           <p className="mt-4 max-w-2xl text-white/85 md:text-lg" dir="auto">{guide.summary}</p>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
-            {!isCalendar && <span className="flex items-center gap-1.5"><BookOpen size={15} /> {ar ? `${guide.readingMinutes} دقائق للقراءة` : `${guide.readingMinutes} min read`}</span>}
-            {steps > 0 && <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {ar ? `${steps} خطوات` : `${steps} steps to tick off`}</span>}
+            {!isCalendar && <span className="flex items-center gap-1.5"><BookOpen size={15} /> {ar ? `${arCount(guide.readingMinutes, "minute", { one: "bare" })} للقراءة` : `${guide.readingMinutes} min read`}</span>}
+            {steps > 0 && <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {ar ? arCount(steps, "step") : `${steps} ${steps === 1 ? "step" : "steps"} to tick off`}</span>}
             {verified(guide.lastVerifiedAt, locale) && <span className="flex items-center gap-1.5 text-gold-pale"><CircleCheck size={15} /> {verified(guide.lastVerifiedAt, locale)}</span>}
           </p>
         </div>
@@ -316,7 +317,7 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
         {toc.length > 2 && !isCalendar && (
           <details className="group min-w-0 max-w-full rounded-2xl border border-line bg-card lg:hidden">
             <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 text-sm font-semibold [&::-webkit-details-marker]:hidden">
-              {onPage} <span className="text-muted">({toc.length})</span>
+              {onPage} <span className="text-muted">({ar ? arDigits(toc.length) : toc.length})</span>
               <ChevronDown size={18} className="ms-auto text-muted transition group-open:rotate-180" />
             </summary>
             <ul className="border-t border-line px-2 py-2">

@@ -11,6 +11,7 @@ import { useWeather } from "./useWeather";
 import { MoonDisc, useNow } from "./HeroSky";
 import { WeatherDetails } from "./WeatherChip";
 import { moonLit, moonName, moonPhase, sunIsUp } from "./sky";
+import { arCount, enCount } from "@/lib/arabic-count";
 
 export type ArcCounts = Record<Prayer, { total: number; live: number; cancelled: number }>;
 /** One of today's duroos, as the arc's popover lists it. */
@@ -110,7 +111,6 @@ export function DayArc({ prayers, counts, lessons, locale }: { prayers: Record<P
   const sun = pointAt(progress);
   const up = now !== null && sunIsUp(now, prayers);
   const phase = now === null ? 0 : moonPhase(now);
-  const num = (n: number) => (ar ? toArabicDigits(n) : String(n));
   const clear = !weather || weather.kind === "clear";
 
   return (
@@ -170,7 +170,7 @@ export function DayArc({ prayers, counts, lessons, locale }: { prayers: Record<P
                 </span>
                 {c.total > 0 && (
                   <span className={`mt-1 hidden rounded-full px-2 py-0.5 sm:inline-block text-[10.5px] font-semibold md:text-[11px] ${c.live ? "bg-live text-white" : "bg-white/15 text-white"}`}>
-                    {c.live ? (ar ? "مباشر الآن" : "Live now") : ar ? `${num(c.total)} دروس` : `${c.total} ${c.total === 1 ? "dars" : "duroos"}`}
+                    {c.live ? (ar ? "مباشر الآن" : "Live now") : ar ? arCount(c.total, "dars") : enCount(c.total, "dars", "duroos")}
                   </span>
                 )}
               </span>
