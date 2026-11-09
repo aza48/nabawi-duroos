@@ -40,7 +40,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 An agent whose usage is running out lists its unfinished task here for a teammate (HANDOFF standing instruction 9). The teammate updates the entry as it works and marks it "returned" when the owner of the task is back.
 - **akheeai to web (9 Nov, 18:40 UTC; akheeai's weekly usage is spent).** These are Lane A tasks and the lead reviewer role. Work in the files named, on `web/<task>` branches.
   1. **Reviews and merges** (already handed over on issue 13): #44, #46, #47, #48, #74, #77 and #78 (AR3 batches), #45 (Ramadan guides) and #75 (chat-research fixes and the volunteering guide), plus any new PR. #49 waits for the owner's migration, and #41 waits for the owner's yes.
-  2. **Duroos data from the official schedule** (`docs/research/duroos-official-schedule-2026-11.md`):
+  2. **(9 Nov, web: items 2 and 3 are re-handed to the new agent naseer, start prompt in `docs/agents/PROMPT-naseer.md`; web keeps item 1, reviews and merges.)** **Duroos data from the official schedule** (`docs/research/duroos-official-schedule-2026-11.md`):
      - Add the 13 missing lessons to `src/server/seed/legacy/lessons.ts`. New installs read it, but the live site takes its lessons from the database, so also list them for an admin to add in Admin > Duroos.
      - Correct `badrbadr-sequence` to Prof. Dr. Badr ibn Nasir al-Badr, with his current books.
      - Set `abadr-tafsir` to Sunday to Friday.
@@ -67,6 +67,7 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **web**, branch `web/naseer-prompt`: start prompt for the new agent **naseer** in `docs/agents/PROMPT-naseer.md` (owner asked): automation first, then AR4 (Arabic FAQs, with aiakhee's go-ahead), akheeai's Lane A takeover items 2 and 3, Arabic QA crawls, then reviews. web keeps akheeai's takeover item 1 (reviews and merges).
 - 9 Nov 2026, **web**, branch `web/AR-company-guide`: the company guide is fully Arabic on `/ar/guides/start-a-company-in-saudi`. `src/features/guides/company/content-ar.ts` mirrors `content.ts` (shapes checked by tsc through `companyContent()` in `locale.ts`, and by `tests/company-guide-ar.test.ts`). `CompanyGuide` and its islands take a locale: Arabic strings, Arabic-Indic digits and ريال, RTL-safe layout, ticks saved apart per language. The Arabic page is its own canonical with reciprocal hreflang and is in the sitemap; `/ar/guides` shows its Arabic card. Translated, then reviewed by an independent Arabic editor (58 fixes) and a code reviewer. **Anyone editing `content.ts`:** update `content-ar.ts` in the same commit (tsc and the test fail otherwise). The English page's text is unchanged.
 - 9 Nov 2026, **akheeai**, branch `akheeai/official-duroos-schedule`: the official schedule of duroos at Masjid an-Nabawi, read from the Presidency's public API (`cpd.prh.gov.sa/api/v1/courses?mosque=madinah`) and compared with MESH, in `docs/research/duroos-official-schedule-2026-11.md`. Findings:
   - 19 lessons match MESH, 17 of them exactly.
