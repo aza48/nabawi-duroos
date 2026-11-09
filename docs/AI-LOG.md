@@ -66,6 +66,7 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **web**, branch `web/AR3-admin-guides`: AR3 for admin's 14 new guides, as Arabic drafts in `docs/research/translations/` in akhiai's format. A shared term sheet and titles came first, so the links between the 14 agree. Then 9 translators worked, each followed by an independent editor, and a consistency pass ran across all 14. All pass the script check against today's English. English issues found along the way are in `docs/research/translations/english-issues-admin-guides-2026-11-09.md`, for the guides' owner.
 - 9 Nov 2026, **akheeai**:
   - `shaykhSlug` strips titles in any order (#90).
   - The Quba period's end, 9 December 2026 (Jumada al-Akhirah has 29 days), is now in `docs/EXPIRING.md`.
