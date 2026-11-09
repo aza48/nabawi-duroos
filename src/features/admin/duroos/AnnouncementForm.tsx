@@ -11,7 +11,7 @@ type A = {
   slug?: string; titleEn: string; titleAr: string; bodyEn: string; bodyAr: string; type: Type;
   eventDate: string | null; shaykhSlug: string | null; lessonSlug: string | null; masjidId: string | null; sourceUrl: string | null; status: "draft" | "published" | "archived";
 };
-export type LessonOption = { slug: string; label: string; shaykhSlug: string };
+export type LessonOption = { slug: string; label: string; shortLabel?: string; shaykhSlug: string };
 
 /** Update types that also change the schedule when a dars and a date are set. */
 const SCHEDULE_TYPES = new Set<Type>(["cancellation", "postponement", "resumption"]);
@@ -96,8 +96,8 @@ export function AnnouncementForm({ value, shaykhs, masjids, lessons = [] }: { va
           hint={SCHEDULE_TYPES.has(v.type) ? "With a dars and a date, publishing also marks the dars cancelled, postponed or resumed on that day everywhere on the site." : "Optional: the dars this update is about."}
         >
           <select className={inputCls} value={v.lessonSlug ?? ""} onChange={(e) => set("lessonSlug", e.target.value || null)}>
-            <option value="">{v.shaykhSlug ? "His only dars that day, if there is one" : "Not set"}</option>
-            {lessons.filter((l) => !v.shaykhSlug || l.shaykhSlug === v.shaykhSlug).map((l) => <option key={l.slug} value={l.slug}>{l.label}</option>)}
+            <option value="">{v.shaykhSlug ? "Not chosen (matched by the date)" : "Not set"}</option>
+            {lessons.filter((l) => !v.shaykhSlug || l.shaykhSlug === v.shaykhSlug).map((l) => <option key={l.slug} value={l.slug}>{v.shaykhSlug && l.shortLabel ? l.shortLabel : l.label}</option>)}
           </select>
         </Field>
       )}
