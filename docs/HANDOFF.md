@@ -105,7 +105,7 @@ It is in English, with Arabic under `/ar`, and it promotes the MESH WhatsApp gro
 
 ## 5. Owner's rules (always follow)
 - **Copy:** no em or en dashes anywhere (tests scan for them) and no AI-sounding copy. Plain, warm, specific English.
-- **Help text:** "message Admin on WhatsApp at +1 234 567 9076". The number is fixed in code (`HELP_CONTACT_DEFAULT` in `src/server/settings.ts`, `ADMIN_WHATSAPP` in `src/components/shell/admin-help.ts`) and is not editable in the admin. Help never goes to the group.
+- **Help text:** "message Admin on WhatsApp at +1 234 567 9076 or email mesh@albaseerah.org". The number and email are fixed in code (`HELP_CONTACT_DEFAULT` and `HELP_EMAIL_DEFAULT` in `src/server/settings.ts`, `ADMIN_WHATSAPP` and `ADMIN_EMAIL` in `src/components/shell/admin-help.ts`) and is not editable in the admin. Help never goes to the group.
 - **Authority:** public text never mentions a source, channel, post or doubt ("reportedly", "not stated"). Research notes stay in `docs/research/` or go to the owner as questions.
 - **Impartial:** never recommend or feature one markaz, institute, business or doctor. List alphabetically, and say MESH is student-run and independent. The one exception is the owner's: the light purple gleam on the Madinah Arabic Program card.
 - **No adverts or short-term promotions.** Only long-term, real, in-person services and neutral facts. Never repeat another site's names, groups or price lists as promotion.

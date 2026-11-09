@@ -2,7 +2,7 @@ import type { getToday } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { PRAYERS } from "@/lib/time/prayers";
 import { formatClock } from "@/lib/time/riyadh";
-import { HELP_CONTACT_DEFAULT } from "@/server/settings";
+import { HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
 import { t } from "./strings";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
@@ -51,8 +51,8 @@ export function liteHtml(today: Today, locale: Locale, now: Date = new Date()): 
   const date = ar ? `${today.hijri.ar} (${today.gregorian.ar})` : `${today.hijri.en} (${today.gregorian.en})`;
   const updated = `${ar ? "حُدّثت" : "Updated"} ${formatClock(now, locale)}`;
   const help = ar
-    ? `معلومة خاطئة؟ راسل المشرف على واتساب على الرقم <a href="https://wa.me/${HELP_CONTACT_DEFAULT.replace(/\D/g, "")}" dir="ltr">${HELP_CONTACT_DEFAULT}</a>`
-    : `Something wrong? Message Admin on WhatsApp at <a href="https://wa.me/${HELP_CONTACT_DEFAULT.replace(/\D/g, "")}">${HELP_CONTACT_DEFAULT}</a>`;
+    ? `معلومة خاطئة؟ راسل المشرف على واتساب على الرقم <a href="https://wa.me/${HELP_CONTACT_DEFAULT.replace(/\D/g, "")}" dir="ltr">${HELP_CONTACT_DEFAULT}</a> أو على البريد الإلكتروني <a href="mailto:${HELP_EMAIL_DEFAULT}" dir="ltr">${HELP_EMAIL_DEFAULT}</a>`
+    : `Something wrong? Message Admin on WhatsApp at <a href="https://wa.me/${HELP_CONTACT_DEFAULT.replace(/\D/g, "")}">${HELP_CONTACT_DEFAULT}</a> or email <a href="mailto:${HELP_EMAIL_DEFAULT}">${HELP_EMAIL_DEFAULT}</a>`;
   return (
     `<!doctype html><html lang="${locale}" dir="${ar ? "rtl" : "ltr"}"><head><meta charset="utf-8">` +
     `<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">` +

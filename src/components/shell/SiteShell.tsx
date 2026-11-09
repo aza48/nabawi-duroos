@@ -4,7 +4,7 @@ import { BottomNav, DesktopNav } from "./BottomNav";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { WhatsAppIcon } from "./WhatsApp";
-import { AdminHelpLink } from "./AdminHelp";
+import { AdminEmailLink, AdminHelpLink } from "./AdminHelp";
 import { Wordmark } from "./Wordmark";
 import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
@@ -139,6 +139,8 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
             <AdminHelpLink locale={ar ? "ar" : "en"} className="font-semibold text-gold-bright hover:underline">
               {helpContact}
             </AdminHelpLink>
+            {ar ? " أو على البريد الإلكتروني: " : " or email "}
+            <AdminEmailLink className="font-semibold text-gold-bright hover:underline" />
           </p>
           <span className="flex flex-wrap items-center gap-3">
             <TextSizeControl locale={ar ? "ar" : "en"} tone="dark" />

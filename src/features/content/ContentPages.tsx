@@ -449,13 +449,13 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
               {ar ? (
                 <p className="mt-3 leading-relaxed">
                   MESH (ملتقى الطلاب الناطقين بالإنجليزية في المدينة) يديره طلاب لخدمة الطلاب الناطقين بالإنجليزية في المدينة المنورة.
-                  الإعلانات والفعاليات في مجموعة واتساب، وهذا الموقع يجمع الأجوبة الموثّقة والأدلة وجدول الدروس المباشر في مكان واحد. ولأي سؤال أو تصحيح راسل المشرف على واتساب.
+                  الإعلانات والفعاليات في مجموعة واتساب، وهذا الموقع يجمع الأجوبة الموثّقة والأدلة وجدول الدروس المباشر في مكان واحد. ولأي سؤال أو تصحيح راسل المشرف على واتساب أو على البريد الإلكتروني <span dir="ltr">mesh@albaseerah.org</span>.
                 </p>
               ) : (
                 <p className="mt-3 leading-relaxed">
                   MESH (Medina English Student Hub) is run by students, for English-speaking students in Madinah.
                   Announcements and events happen in the WhatsApp group. This website keeps the verified answers, the
-                  guides and the live duroos schedule in one place. For any question or correction, message Admin on WhatsApp.
+                  guides and the live duroos schedule in one place. For any question or correction, message Admin on WhatsApp or email mesh@albaseerah.org.
                 </p>
               )}
               <AdminHelp locale={locale} kind="question" className="mt-4" />

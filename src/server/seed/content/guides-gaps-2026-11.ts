@@ -93,7 +93,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <li>Every original is in your hand luggage.</li>
 </ol>
 <p>What to do once you land, in order: <a href="/guides/first-30-days-in-madinah">Your first 30 days in Madinah</a>. Getting from the airport: see <a href="/ask/airport-to-haram-and-university">How do I get from Madinah airport to the Haram or the University?</a></p>
-<blockquote><p>Tip: Something missing from this list? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Something missing from this list? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "exams-results-and-attendance",
@@ -182,7 +182,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <li>Three semesters in a row with a cumulative GPA below the minimum for graduation lead to academic dismissal. So does going past the length of your programme plus half again.</li>
 <li>A dismissed student can request one extra chance within the window in the calendar. For the second semester of 1448 the window is 11 to 14 December 2026.</li>
 </ul>
-<blockquote><p>Tip: Worried about a bar, a missed exam or a failed course? Speak to the wakeel of your college early, while there is still time to act. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Worried about a bar, a missed exam or a failed course? Speak to the wakeel of your college early, while there is still time to act. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "hajj-as-a-student",
@@ -242,7 +242,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <li>Anyone who drives, houses, hides or applies for a visa for someone without a permit is fined up to 100,000 SAR for each person helped.</li>
 <li>Violations can be reported on 911 in Makkah, Madinah, Riyadh and the Eastern Province, and on 999 elsewhere.</li>
 </ul>
-<blockquote><p>Tip: Not sure whether you can register this year, or which office to ask? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Not sure whether you can register this year, or which office to ask? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
 ];
 
@@ -328,7 +328,7 @@ export const FAQS_GAPS_2026_11: SeedFaq[] = [
     slug: "online-arabic-year-to-madinah",
     category: "university",
     question: "I was offered a year of online Arabic. How do I get to Madinah after it?",
-    answerHtml: `<p>The online year is offered to some applicants who hold initial acceptance for the Arabic Institute (Ma'had) but cannot be given a place in Madinah that year. It is free and lasts one academic year at most.</p><ul><li><strong>It does not lead to a visa by itself.</strong> To study in Madinah afterwards, submit a new application on Study in Saudi as soon as the portal next opens, even while you are still studying online. Without it, the University cannot issue your educational visa, however well you do.</li><li><strong>Priority is not a place.</strong> Attending and passing the online year gives you priority with the University, but you still need the Ministry's final acceptance before any visa is issued.</li><li><strong>No stipend</strong> is paid while you study online. The stipend starts once you are studying in Madinah on a full scholarship. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li><li><strong>Already with the Ministry?</strong> If Minhati shows your status as initial acceptance on the Study in Saudi portal, you do not need the online stage. Wait for the Ministry's final decision.</li></ul><p>The full steps are in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>. Questions about your own file? Message Admin on WhatsApp at +1 234 567 9076.</p>`,
+    answerHtml: `<p>The online year is offered to some applicants who hold initial acceptance for the Arabic Institute (Ma'had) but cannot be given a place in Madinah that year. It is free and lasts one academic year at most.</p><ul><li><strong>It does not lead to a visa by itself.</strong> To study in Madinah afterwards, submit a new application on Study in Saudi as soon as the portal next opens, even while you are still studying online. Without it, the University cannot issue your educational visa, however well you do.</li><li><strong>Priority is not a place.</strong> Attending and passing the online year gives you priority with the University, but you still need the Ministry's final acceptance before any visa is issued.</li><li><strong>No stipend</strong> is paid while you study online. The stipend starts once you are studying in Madinah on a full scholarship. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li><li><strong>Already with the Ministry?</strong> If Minhati shows your status as initial acceptance on the Study in Saudi portal, you do not need the online stage. Wait for the Ministry's final decision.</li></ul><p>The full steps are in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>. Questions about your own file? Message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p>`,
     tags: ["online", "arabic", "mahad", "study in saudi", "priority", "application", "stipend"],
   },
   {

@@ -56,7 +56,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <p>Most students rent, and for a stay of a few years renting is cheaper and simpler. Buying makes sense for a family settled in Madinah for the long term, with the money to pay in full, and with a property inside a zone that they would be glad to own even if their stay ended early. Prices inside the zones are set by the new developments, so compare them with the rents in <a href="/guides/cost-of-living">What it costs to live in Madinah</a> before deciding.</p>
 <h2>Where to ask</h2>
 <p>REGA's support line is 920017183 inside the Kingdom and 00966920017183 from abroad, and its email is saudiproperties@rega.gov.sa. The official guide to ownership by non-Saudis is published on the portal in Arabic.</p>
-<blockquote><p>Tip: Never pay a deposit on a promise that a plot "will be inside the zones soon". Only the map on the portal counts. Questions? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Never pay a deposit on a promise that a plot "will be inside the zones soon". Only the map on the portal counts. Questions? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "sending-and-receiving-money",
@@ -111,7 +111,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 </ul>
 <h2>Zakat and sadaqah</h2>
 <p>Zakat and sadaqah to charities inside the Kingdom go through the national platforms Ehsan (ehsan.sa) and Zakaty, which take mada, cards and Apple Pay. Ehsan also receives zakat al-fitr in the last days of Ramadan: you choose the region and the number of people and pay the announced rate per person. Zakat for your own family and community at home goes with your ordinary transfer, with "zakat" or "family support" as the purpose.</p>
-<blockquote><p>Tip: Keep every transfer receipt. Some countries tax money received from abroad or ask where it came from, and the receipt answers the question. More in <a href="/ask/send-money-home">How do I send money home from Madinah?</a>, or message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Keep every transfer receipt. Some countries tax money received from abroad or ask where it came from, and the receipt answers the question. More in <a href="/ask/send-money-home">How do I send money home from Madinah?</a>, or message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "shipping-and-receiving-parcels",
@@ -157,7 +157,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <p>Leaving for good and shipping everything? The full plan, including selling what you cannot ship, is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
 <h2>On the Haramain train</h2>
 <p>Each passenger takes one bag of up to 25 kg and 65 by 55 by 35 cm plus a hand item, and excess luggage is turned away at the security check. The SPL counter in the station ships the extra bag to the destination station for collection the next day, for about 75 to 150 SAR a bag as of 2026, so a student moving between Madinah and Makkah or Jeddah with more than one bag sends the extra box a day ahead. Zamzam water flies as checked baggage in its sealed box on most airlines and does not go in the post. Details in <a href="/guides/haramain-train-and-city-buses">The Haramain train and Madinah buses</a>.</p>
-<blockquote><p>Tip: A parcel stuck for days usually means the carrier could not reach your number or your address was incomplete. Open the tracking page, check the note, and call the carrier. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: A parcel stuck for days usually means the carrier could not reach your number or your address was incomplete. Open the tracking page, check the note, and call the carrier. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "bringing-parents-to-visit",
@@ -224,6 +224,6 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 </ul>
 <h2>When they leave</h2>
 <p>A sealed box of ajwa or safawi dates, prayer mats from the Haram's market, and a few books in Arabic for the grandchildren travel well in the suitcase, and anything heavier goes by post: see <a href="/guides/shipping-and-receiving-parcels">Shipping and receiving parcels in Madinah</a>. Ask them to keep the Nusuk app, because the permits for the next visit are booked the same way.</p>
-<blockquote><p>Tip: Planning a visit around Ramadan or the University breaks? Check the dates first, book early, and expect the city to be full. Questions? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Planning a visit around Ramadan or the University breaks? Check the dates first, book early, and expect the city to be full. Questions? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
 ];
