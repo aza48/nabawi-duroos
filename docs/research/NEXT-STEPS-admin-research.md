@@ -16,21 +16,17 @@ Then: wire the new files in `sync.ts` and `src/lib/guide-topics.ts`, full tsc, v
 - Owner questions from every writer: `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`.
 
 ### Still to do (next agent: start here)
-State on 10 Nov 2026. Merged to `main`: [#76](https://github.com/iumuhaymin/medinahub/pull/76) (the research in guides) and [#79](https://github.com/iumuhaymin/medinahub/pull/79) (calendar: no daily withdrawal entries, long request windows as "Last day: ..."; guide `studying-online-at-the-islamic-university`). Work in flight on branch `claude/resume-guide-validation-8uugen`; check `git log origin/main..origin/claude/resume-guide-validation-8uugen` for what landed.
+State on 10 Nov 2026, after the third merge (fact-check and gomedine.com part 2). Merged to `main`: #76 (research in guides), #79 (calendar, online study guide), and the fact-check PR from this branch. Everything in this file's earlier plan is done:
+- gomedine.com: all 583 pages in `docs/research/gomedine-2026-11/raw/`; parts 1 to 4 read and published. The owner trusts the site.
+- Fact-check of every new and changed guide: `docs/research/admin-publish-2026-11/factcheck-FC1.md` to `FC4.md` (about 1,200 claims checked, about 110 corrected or removed). Each file lists the claims kept that rest on student reports only.
+- New guide `getting-married-in-saudi-arabia` (Family).
 
-**Owner instructions (10 Nov):** fact-check everything published; treat gomedine.com as accurate (second-hand but researched); the whole site is scraped in `docs/research/gomedine-2026-11/raw/` (583 pages, see its README).
-
-1. **gomedine.com part 2** (`raw/056` to `110`): write `docs/research/gomedine-2026-11/part-2.md` (format of `part-3.md`) and publish its facts into the papers guides. If `part-2.md` is missing on the branch, redo it.
-2. **Fact-check** with the brief below (`docs/research/admin-publish-2026-11/FACTCHECK-BRIEF.md`, with `WRITER-BRIEF.md` for the house rules): each specific claim in the new and changed guide text must trace to a source; cut or correct the rest; list what rests on student reports only. Reports go to `docs/research/admin-publish-2026-11/factcheck-<letter>.md`. Split:
-   - FC1: `guides-admin-2026-11.ts`, `guides-admin-online-2026-11.ts`
-   - FC2: `guides-admin-life-2026-11.ts`
-   - FC3: the existing guides and FAQs changed in #76 (`git diff bed106c origin/main -- src/server/seed/content/`), study, admission, money, discounts
-   - FC4: the papers guides changed by gomedine.com (task E in #76, and part 2) and `guides-admin-papers-2026-11.ts`, against `raw/`. Also revisit the gomedine conflicts held back in `OWNER-QUESTIONS.md` (writer E) now that the owner trusts the site: where the site gives a clear, dated answer, publish it.
-   A report file that exists means that check is done. Rules for the check: strongest source first (University PDFs, then gomedine.com, then Telegram and WhatsApp findings, then pre-9-Nov MESH text); keep a student-report-only claim about money, deadlines or rules only if two periods agree or one recent report is specific.
-3. After each piece: `npx tsc --noEmit`, `npx vitest run`, commit by path, PR to `main`, merge (the owner asked for merges as soon as work passes).
-4. Skipped for lack of firm facts: changing college or major, ijazah sessions, "if a student passes away", room inspection rules.
-5. Other lanes (akhiai): `drivers-license` (fine bands, international permit), `finding-an-apartment` (agent commission), `sisters-studying-in-madinah` (halaqat gates, book fee). Arabic versions of the 14 new guides wait for AR1.
-6. Publish: `npm run content:sync` against production (owner, or an agent the owner allows). Discounts and the calendar ship with the code.
+What is left:
+1. **Owner questions:** `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`. When the owner answers one, fix the guide it names. Big ones: renting on a Visitor ID through Ejar (MESH's newer source says yes; a Jan 2026 page says no), the stipend card or own IBAN, the GPA warning threshold, room sharing in the halls, the absence bar, sports club hours, and whether the student-made system guide is fine to publish from.
+2. **For akhiai (not edited here):** `sisters-studying-in-madinah` gives Dhul Qa'dah for the Ma'had registration; the 1448 window is Safar (FC4, gomedine raw pages). `finding-an-apartment`: the agent's commission is 2.5% (raw 004).
+3. **Arabic** versions of the 15 new guides, after AR1 (akhiai's AR3 process).
+4. **Skipped for lack of firm facts:** changing college or major, ijazah sessions, "if a student passes away", room inspection rules.
+5. **Publish:** `npm run content:sync` against production (owner, or an agent the owner allows). Until then the guide text is not live; the discounts and calendar are.
 
 ### Missing inputs (only the owner has them)
 - Telegram periods c5 (2024) and c6 (2019 to 2023): skipped on the owner's instruction. The export is on the owner's PC.

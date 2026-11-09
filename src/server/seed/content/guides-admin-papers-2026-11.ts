@@ -125,7 +125,7 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 </ol>
 <p>The same request is also under <strong>My Services</strong>, then <strong>Postal Delivery Service</strong>, which lists every card you can have posted: an iqama, a driving licence or a car registration, within 90 days of it being issued or renewed. The card must already be approved, and unpaid fines block the request, so pay them first.</p>
 <h2>Correcting a name in Arabic</h2>
-<p>If a family member's name is spelt wrongly in Arabic on the iqama, correct it early, because the same spelling goes onto the birth certificate, the bank, the school and every later record.</p>
+<p>If a family member's name is spelt wrongly in Arabic on the iqama, correct it early: a name that does not match the passport gets requests refused at banks and money transfer services, and on family visa applications.</p>
 <ol>
 <li>Open <strong>Family Members Services</strong>, then <strong>Resident ID services</strong>.</li>
 <li>Choose the family member and the name correction service, then press <strong>Start Service</strong>.</li>
@@ -156,7 +156,7 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 <li>Choose <strong>Passports</strong> for Jawazat, <strong>Civil Affairs</strong> for a birth, or <strong>Traffic</strong> for the traffic department, then press <strong>Proceed to service</strong> and <strong>Book new appointment</strong>.</li>
 <li>Choose the service (table below), the region, the number of transactions you have and the office.</li>
 <li>Pick a date and time: green slots are free, red ones are taken. Check them, then press <strong>Confirm appointment details</strong>.</li>
-<li>Print the appointment or keep a screenshot. The last screen lists the papers to bring.</li>
+<li>Print the appointment or keep a screenshot. For Civil Affairs, the last screen lists the papers to bring.</li>
 </ol>
 <table><thead><tr><th>Office</th><th>Service to choose</th><th>For</th></tr></thead><tbody>
 <tr><td>Jawazat</td><td>Resident services (خدمات المقيمين)</td><td>Almost everything: a newborn's iqama, a passport update, a name correction, cancelling an expired final exit</td></tr>
@@ -195,7 +195,7 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 </ul>
 <h2>Step by step</h2>
 <ol>
-<li><strong>Choose a marriage officer (ma'dhun, مأذون).</strong> Only a licensed officer can register the contract. The Ministry of Justice lists the licensed officers for each city. Agree his fee before he starts.</li>
+<li><strong>Choose a marriage officer (ma'dhun, مأذون).</strong> The officer files the contract with the Ministry of Justice, whose website lists the marriage officers for each city. Agree his fee before he starts.</li>
 <li><strong>Give him the details.</strong> He creates the contract on the Ministry of Justice's portal, choosing the region and entering each person's details.</li>
 <li><strong>Wait for the checks.</strong> After a few days, each of the five numbers receives a text asking for confirmation. Every person must confirm within 24 hours.</li>
 <li><strong>The nikah.</strong> Once all five have confirmed, the officer conducts the nikah, at a place you agree with him, with the groom, the bride, her guardian and the two witnesses present. He asks the bride and the groom for their consent and then completes the contract.</li>
@@ -204,18 +204,19 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 <h2>Using the contract abroad</h2>
 <p>For your embassy or your home country, have the contract attested by the Ministry of Justice, then by the Ministry of Foreign Affairs, then translated into the language your country needs, and the translation attested by your embassy or consulate in Saudi Arabia.</p>
 <h2>Married abroad, both living here</h2>
-<p>If two iqama holders marry outside Saudi Arabia, the marriage certificate is attested by the foreign ministry of the country where it was issued, then by the Saudi embassy there, then by the Ministry of Foreign Affairs in Saudi Arabia, and handed in at Jawazat so the marriage shows on the iqama records.</p>
+<p>If two iqama holders marry outside Saudi Arabia, the marriage certificate is attested by the foreign ministry of the country where it was issued, then by the Saudi embassy there, then by the Ministry of Foreign Affairs in Saudi Arabia, and handed in at Jawazat.</p>
 <h2>Moving the wife's iqama from her father to her husband</h2>
 <p>When the bride is on her father's iqama as his dependant, her iqama moves to her husband's file after the marriage. This is done at Jawazat, with an appointment for Resident services booked in Absher: see <a href="/guides/family-records-on-absher#booking-a-jawazat-civil-affairs-or-traffic-appointment">Booking a Jawazat appointment</a>. Take:</p>
 <ul>
-<li>the father's consent, which he signs in front of the Jawazat officer (the form is given at Jawazat);</li>
-<li>the iqama transfer form, also from Jawazat;</li>
+<li>the father's consent, which he signs in front of the Jawazat officer;</li>
+<li>the iqama transfer form. The Ministry of Interior's forms are free to download, so there is no need to pay the people outside the office who sell them;</li>
 <li>a copy of the marriage contract;</li>
 <li>the wife's original passport and iqama;</li>
 <li>copies of the iqamas of the wife, the husband and the father;</li>
-<li>a letter from the husband's sponsor agreeing to the transfer. A private employer's letter carries the Chamber of Commerce stamp. A student with a student iqama asks Travel Management for this letter;</li>
-<li>the transfer fee, paid in your banking app before the appointment.</li>
+<li>a release letter from the husband's employer agreeing to the transfer, stamped by the Chamber of Commerce;</li>
+<li>the transfer fee.</li>
 </ul>
+<p>With a student iqama, the University is the husband's sponsor, so ask Travel Management through Tawasul what it needs from you before you book the appointment.</p>
 <p>The officer moves the iqama in the system at the counter, and the new card is printed at another window. Afterwards, the husband manages her records in Absher under Family Members Services: see <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
 <p>A wife who arrives later from abroad comes on the family visas covered in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</p>
 <blockquote><p>Tip: Planning a nikah and unsure which papers apply to you? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,

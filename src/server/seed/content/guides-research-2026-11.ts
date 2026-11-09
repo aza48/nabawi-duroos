@@ -16,7 +16,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>Checked 9 November 2026. Students who arrive on the educational visa (the student visa) are given a digital Visitor ID (هوية زائر) linked to their border number. They are not issued an iqama. Most of daily life works on a Visitor ID, but some things need different steps and a few are open only to iqama holders. This page puts the two side by side.</p>
 <h2>What the Visitor ID is</h2>
 <ul>
-<li>It is issued by the General Directorate of Passports (Jawazat) through your Absher account, and is tied to your <strong>border number</strong> (رقم الحدود), the 10 digit number Jawazat gives you when you first enter the Kingdom. It is written by hand in your passport beside the entry stamp, and Absher's public border number inquiry finds it from your visa number and visa issue date.</li>
+<li>It is issued by the General Directorate of Passports (Jawazat) through your Absher account, and is tied to your <strong>border number</strong> (رقم الحدود), the 10 digit number Jawazat gives you when you first enter the Kingdom. Jawazat writes it by hand in your passport, and Absher's public border number inquiry finds it from your visa number and visa issue date.</li>
 <li>It is digital only and cannot be printed on paper.</li>
 <li>The long-term educational visa behind it is valid for one year and renewed each year while you study.</li>
 <li>Jawazat accepts the digital Visitor ID as official proof of identity inside the Kingdom, so you can show it on your phone at checkpoints and offices.</li>
