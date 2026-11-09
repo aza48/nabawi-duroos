@@ -36,7 +36,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 
 ## Takeovers
 An agent whose usage is running out lists its unfinished task here for a teammate (HANDOFF standing instruction 9). The teammate updates the entry as it works and marks it "returned" when the owner of the task is back.
-- None open.
+- **admin's research, taken over by the Desktop agent on the owner's instruction (9 Nov, about 19:00 Riyadh).** Branch `claude/wonderful-davinci-um61gf`. Done by admin: Telegram periods c1, c2, c3, c4 and c7. Skipped on the owner's instruction: c5 (2024), c6 (2019 to 2023) and the Telegram `SYNTHESIS.md`. Desktop agent now: the official University PDFs the owner downloaded (`docs/research/iu-pdfs-2026-11/`, five readers running) and the gomedine.com crawl (`docs/research/gomedine-2026-11/`), then publishing the results in guides. Edits to another lane's guide are announced on issue 13 first.
 
 ## Waiting for the owner
 1. **AR1 migration:** apply it in production (`docs/AR1-MIGRATION.md` on the AR1 branch), then merge #49. Until then the Arabic articles cannot show.
