@@ -65,9 +65,9 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     id: "haram",
     label: "The Haram and worship",
     labelAr: "الحرم والعبادة",
-    blurb: "Your first visit to Masjid an-Nabawi, the Rawdah, Umrah, Quba, and the women's sections.",
+    blurb: "Your first visit to Masjid an-Nabawi, the Rawdah, Umrah, Quba, the women's sections, and Hajj as a resident.",
     blurbAr: "زيارتك الأولى للمسجد النبوي والروضة والعمرة وقباء ومصليات النساء.",
-    slugs: ["masjid-an-nabawi-first-visit", "umrah-rawdah-quba", "women-at-masjid-an-nabawi"],
+    slugs: ["masjid-an-nabawi-first-visit", "umrah-rawdah-quba", "women-at-masjid-an-nabawi", "hajj-as-a-student"],
   },
   {
     id: "family",

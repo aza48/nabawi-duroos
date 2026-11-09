@@ -182,6 +182,66 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 </ul>
 <blockquote><p>Tip: Worried about a bar, a missed exam or a failed course? Speak to the wakeel of your college early, while there is still time to act. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
   },
+  {
+    slug: "hajj-as-a-student",
+    stage: "getting-settled",
+    title: "Hajj from Madinah as a student or resident",
+    summary: "How students and families living in Madinah register for Hajj in Nusuk: who can apply, iqama and Visitor ID side by side, packages and payment, what to prepare, the 1448 timeline around exams, and the penalties for Hajj without a permit.",
+    bodyHtml: `
+<p>Checked 9 November 2026. Hajj from inside the Kingdom is booked only in Nusuk, the official platform of the Ministry of Hajj and Umrah, with a licensed Hajj company listed there. This guide covers the official procedure: who can register, what to prepare, how the season runs, and what happens to anyone who goes without a permit. Hajj 1448 falls on 8 to 13 Dhul Hijjah, which is 14 to 19 May 2027, with the Day of Arafah on Saturday 15 May.</p>
+<h2>Who can register</h2>
+<p>Domestic Hajj is open to citizens and to residents who hold a valid residency. The applicant must be at least 15 years old by the Gregorian calendar and meet the health requirements, and a resident's iqama must stay valid until the end of Dhul Hijjah. When you register, Nusuk checks your record against the national systems, including whether you have performed Hajj before.</p>
+<ul>
+<li><strong>First Hajj first.</strong> People who have never performed Hajj book first. Those who have performed it register in a later phase, and only if places remain.</li>
+<li><strong>Older residencies first.</strong> Residents whose iqama was issued more than a year ago are given priority.</li>
+<li><strong>No visit visas.</strong> No visit visa of any kind, including the tourist eVisa, allows Hajj.</li>
+</ul>
+<table><thead><tr><th></th><th>Iqama</th><th>Visitor ID (educational visa)</th><th>Family on a visit visa</th></tr></thead><tbody>
+<tr><td><strong>Domestic Hajj in Nusuk</strong></td><td>Yes, with an iqama valid to the end of Dhul Hijjah</td><td>Check your eligibility in Nusuk when registration opens, and ask the University through Tawasul before you pay anything</td><td>No</td></tr>
+<tr><td><strong>Priority</strong></td><td>Higher once your iqama is more than a year old, and for a first Hajj</td><td>Shown in Nusuk if you are eligible</td><td>Not applicable</td></tr>
+<tr><td><strong>Wife and children in the same booking</strong></td><td>Yes, if each holds a valid iqama</td><td>Only family members who are eligible in their own right</td><td>No</td></tr>
+<tr><td><strong>Makkah in the Hajj months</strong></td><td>Entry only with a Hajj permit or a seasonal entry permit</td><td>The same rule</td><td>Must stay out of Makkah and the holy sites from 1 Dhul Qa'dah to 14 Dhul Hijjah</td></tr>
+</tbody></table>
+<p>The Visitor ID rules in general are in <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>
+<h2>Packages and prices</h2>
+<ul>
+<li><strong>Only through Nusuk.</strong> Every domestic package is sold by a licensed company and booked in the Nusuk app or at <a href="https://www.nusuk.sa/">nusuk.sa</a>. A "campaign" sold by phone, social media or word of mouth outside Nusuk gives you no permit.</li>
+<li><strong>Categories.</strong> The Ministry sets a small number of package categories each season. They differ in the camps in Mina and Arafat, the distance to the Jamarat and the services included, from an economy category up to upgraded camps with more services.</li>
+<li><strong>Prices.</strong> Prices are published in Nusuk when package booking opens, with VAT included, and they change from season to season. Each package shows what it includes, so check whether travel from Madinah to Makkah is part of it. Often it is not.</li>
+<li><strong>Paying.</strong> Booking issues a SADAD invoice, which you pay in your banking app within the time shown. An unpaid booking is cancelled. In 1447 the window was 72 hours, cut to 6 hours in the last days before Hajj.</li>
+<li><strong>Cancelling.</strong> Cancelling early, before the permit is issued, costs nothing. Close to Hajj, nothing is refunded. Nusuk shows the rule for each stage, so read it before you pay.</li>
+</ul>
+<h2>What you need</h2>
+<ol>
+<li><strong>Your iqama</strong>, valid until the end of Dhul Hijjah 1448 (5 June 2027). If it expires before then, renew it first. On a Visitor ID, have your eligibility checked in Nusuk and with the University before you go further.</li>
+<li><strong>A Nusuk account</strong> in your own name, with the mobile number registered to you in Absher.</li>
+<li><strong>Vaccinations:</strong> meningitis (ACWY) and seasonal flu, given at a primary health centre before you book. Nusuk checks them.</li>
+<li><strong>Your family's details</strong> if they come with you: each person's iqama number, date of birth and relationship to you. Relationships must already show in Absher, so add your wife and children there first.</li>
+<li><strong>The full price</strong> of the package, ready to pay by SADAD.</li>
+</ol>
+<h2>Sisters and the mahram</h2>
+<p>A woman travelling with her husband or another mahram adds him as a companion in the same booking, with the same company and the same package, and Nusuk checks the relationship against Absher. If the mahram has performed Hajj before, Nusuk offers a mahram exception request so that he can still accompany her. Ask the company about any other arrangement before you pay.</p>
+<h2>The 1448 season, step by step</h2>
+<p>The Ministry announces each season's dates in Nusuk. In 1447, registration opened on 6 Ramadan, package booking on 15 Ramadan, first-time pilgrims had priority until the end of Shawwal, and those who had performed Hajj before could register from 1 Dhul Qa'dah. For 1448, plan around these dates:</p>
+<ol>
+<li><strong>Now to January 2027:</strong> renew your iqama if it ends before June, add your family in Absher, and get vaccinated.</li>
+<li><strong>From the start of Ramadan (8 February 2027):</strong> watch Nusuk for registration and book as soon as booking opens. Places for a first Hajj go first.</li>
+<li><strong>Late Shawwal (early April 2027):</strong> entry to Makkah for anyone who does not live there needs a permit, and from 1 Dhul Qa'dah (8 April 2027) Umrah permits stop until after Hajj. Do any Umrah you plan before then. See <a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba</a>.</li>
+<li><strong>25 April to 10 May 2027:</strong> second semester finals. Check your package's start date against your exam timetable before you book.</li>
+<li><strong>11 to 22 May 2027:</strong> the Eid al-Adha holiday, which covers the days of Hajj. Classes resume on Sunday 23 May.</li>
+</ol>
+<p>All the University dates are in <a href="/guides/university-calendar-1448">The University calendar</a>.</p>
+<h2>Hajj without a permit</h2>
+<p>The Ministry of Interior enforces the permit rule every season, from 1 Dhul Qa'dah to 14 Dhul Hijjah.</p>
+<ul>
+<li>Anyone caught performing Hajj, or trying to, without a permit is fined up to 20,000 SAR.</li>
+<li>Residents caught are deported and barred from entering the Kingdom for 10 years. For a student, that ends his studies.</li>
+<li>Visit visa holders who enter or stay in Makkah or the holy sites during those weeks are fined.</li>
+<li>Anyone who drives, houses, hides or applies for a visa for someone without a permit is fined up to 100,000 SAR for each person helped.</li>
+<li>Violations can be reported on 911 in Makkah, Madinah, Riyadh and the Eastern Province, and on 999 elsewhere.</li>
+</ul>
+<blockquote><p>Tip: Not sure whether you can register this year, or which office to ask? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+  },
 ];
 
 export const FAQS_GAPS_2026_11: SeedFaq[] = [
@@ -261,5 +321,12 @@ export const FAQS_GAPS_2026_11: SeedFaq[] = [
     question: "Can someone else collect my degree certificate, and how can an employer check it?",
     answerHtml: `<p><strong>Collecting:</strong> yes. The Deanship of Admission and Registration has an official form for authorising someone to collect your graduation documents. Fill it in and give it to the person collecting for you. Someone can also collect your graduation bisht and gifts for you: send a request through Tawasul with your name, student card number and graduation date, and the full name and student card number of the person collecting. See <a href="/guides/graduate-procedures">Graduating</a>.</p><p><strong>Checking:</strong> employers, other universities and anyone you name can check an Islamic University degree on the University's public graduation document verification service (التحقق من وثيقة التخرج) at eduportal.iu.edu.sa. It is also listed on the national platform, my.gov.sa.</p>`,
     tags: ["graduation", "certificate", "degree", "verification", "authorisation"],
+  },
+  {
+    slug: "online-arabic-year-to-madinah",
+    category: "university",
+    question: "I was offered a year of online Arabic. How do I get to Madinah after it?",
+    answerHtml: `<p>The online year is offered to some applicants who hold initial acceptance for the Arabic Institute (Ma'had) but cannot be given a place in Madinah that year. It is free and lasts one academic year at most.</p><ul><li><strong>It does not lead to a visa by itself.</strong> To study in Madinah afterwards, submit a new application on Study in Saudi as soon as the portal next opens, even while you are still studying online. Without it, the University cannot issue your educational visa, however well you do.</li><li><strong>Priority is not a place.</strong> Attending and passing the online year gives you priority with the University, but you still need the Ministry's final acceptance before any visa is issued.</li><li><strong>No stipend</strong> is paid while you study online. The stipend starts once you are studying in Madinah on a full scholarship. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li><li><strong>Already with the Ministry?</strong> If Minhati shows your status as initial acceptance on the Study in Saudi portal, you do not need the online stage. Wait for the Ministry's final decision.</li></ul><p>The full steps are in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>. Questions about your own file? Message Admin on WhatsApp at +1 234 567 9076.</p>`,
+    tags: ["online", "arabic", "mahad", "study in saudi", "priority", "application", "stipend"],
   },
 ];

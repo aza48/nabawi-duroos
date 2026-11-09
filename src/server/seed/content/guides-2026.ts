@@ -280,7 +280,7 @@ export const GUIDES_2026: SeedGuide[] = [
     slug: "finding-an-apartment",
     stage: "getting-settled",
     title: "Finding and renting a flat",
-    summary: "Where to look, furnished or empty, Ejar or a private agreement, and a checklist before you sign.",
+    summary: "Where to look, furnished or empty, Ejar or a private agreement, renting on your own (payments, deposits, taking over, subletting, repairs and bills), and a checklist before you sign.",
     bodyHtml: `
 <h2>Where to look</h2>
 <ul>
@@ -294,7 +294,58 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Furnished or empty</h2>
 <p>For 3 to 6 months, take furnished. For a year or more, an empty flat is 40 to 50% cheaper and you can furnish it cheaply at Haraj market. Most good newer buildings are an 8 to 15 minute drive from the Haram rather than walking distance.</p>
 <h2>The contract</h2>
-<p><strong>Ejar</strong> is the official system of the Real Estate General Authority, and a registered contract legally protects both sides. You do not type the contract in yourself: an accredited agent, or a landlord who meets Ejar's conditions, creates it on Ejar, and you approve it from the link Ejar sends you by SMS. This works with an iqama, and on the educational visa with a Visitor ID (see the answer on renting on a student visa). The registration fee is 125 SAR a year, so check in the contract who pays it. Since September 2025 landlords must register their leases, and a tenant can ask for registration too. Many rentals in Madinah are still private paper agreements, which carry no legal protection. Owners usually want 6 or 12 months up front, or two payments a year, and some charge more when you pay in instalments, so ask for both prices. Ejar's helpline is 199011.</p>
+<p><strong>Ejar</strong> is the official system of the Real Estate General Authority, and a registered contract legally protects both sides. You do not type the contract in yourself: an accredited agent, or a landlord who meets Ejar's conditions, creates it on Ejar, and you approve it from the link Ejar sends you by SMS. This works with an iqama, and on the educational visa with a Visitor ID (see the answer on renting on a student visa). The registration fee is 125 SAR a year, so check in the contract who pays it. Since September 2025 landlords must register their leases, and a tenant can ask for registration too. Many rentals in Madinah are still private paper agreements, which carry no legal protection. Ejar's helpline is 199011.</p>
+<h2>Renting on your own</h2>
+<p>Everything below applies with an iqama and on a Visitor ID. On a Visitor ID, the Ejar contract is registered for you by an accredited agent.</p>
+<h3>Contract length and payments</h3>
+<ul>
+<li>Empty flats are let for 6 or 12 months at a time. An Ejar contract can set the rent yearly, half-yearly, quarterly or monthly, but most owners in Madinah want the whole period up front, or two payments a year.</li>
+<li>Paying the whole year at once often brings the price down, so ask for the yearly price and the instalment price before you agree.</li>
+<li>Furnished flats offered by middlemen are usually rented month by month, at a higher price and often with no contract in your name.</li>
+<li>On a registered Ejar contract, pay the rent only through Ejar, by mada or SADAD from the invoice. Cash or a bank transfer outside Ejar does not count as proof that you paid.</li>
+<li>A registered contract renews itself unless you or the owner gives notice at least 60 days before it ends. If you plan to leave, tell the owner in writing well before then.</li>
+</ul>
+<h3>What you pay at the start</h3>
+<ul>
+<li>The first payment of rent, usually 6 or 12 months.</li>
+<li>The agent's commission, if you use an agent. Agree the amount before he starts.</li>
+<li>The Ejar fee of 125 SAR a year, if the contract puts it on you.</li>
+<li>A deposit, if the owner asks for one. Write the amount, and when and how it comes back, into the contract.</li>
+<li>Furniture and air conditioners, since an empty flat may come without them.</li>
+</ul>
+<h3>Taking over a flat from a student who is leaving</h3>
+<p>Students who leave often hand over their flat and sell their furniture cheaply. A tenant cannot pass a flat or a contract to someone else without the owner's consent, so:</p>
+<ol>
+<li>Meet the owner or his agent before you pay anything, and make sure he agrees to rent to you.</li>
+<li>If the leaving student had an Ejar contract, it is ended and a new one is registered in your name. If he had no contract, agree the rent, the period and any months already paid directly with the owner.</li>
+<li>Pay for the furniture separately, against a written list of what you are buying.</li>
+<li>Never pay the leaving student rent for months ahead unless the owner confirms in writing that he has the money and the months are yours.</li>
+</ol>
+<h3>Subletting</h3>
+<ul>
+<li>Letting out the flat or a room to someone else, or taking in flatmates who pay rent to you, needs the owner's permission. Without it, you are breaking the contract and the owner can end it.</li>
+<li>If you rent from someone who is not the owner, you have no contract with the owner. If the main tenant leaves or stops paying, you can lose the flat. Ask to see the main tenant's contract and the owner's written permission to sublet.</li>
+<li>When students share a flat, agree in writing among yourselves how the rent, the deposit and the bills are split, and what happens when one of you leaves.</li>
+</ul>
+<h3>Repairs</h3>
+<p>Under the Ejar contract, the owner pays for repairs that keep the flat safe and usable, such as structural faults and defects that stop you living in it. You pay for everyday upkeep and for damage caused by use, unless the contract says otherwise. Paper agreements often say nothing on repairs, so agree in writing before you sign who fixes the air conditioners, the water heater and the plumbing.</p>
+<h3>Bills in your name</h3>
+<ul>
+<li>With an Ejar contract, the electricity and water accounts move into your name through Ejar's financial liability transfer (نقل المسؤولية المالية). The agent selects it when he registers the contract, or you request it in Ejar for a contract already running. It moves back to the owner when the contract ends.</li>
+<li>Photograph the meter reading on the day you move in.</li>
+<li>Without a contract, the bills stay in the owner's name. Agree how you pay them and keep every receipt.</li>
+<li>Home internet: see <a href="/ask/home-internet-no-iqama">How do I get home internet without an iqama?</a></li>
+</ul>
+<h3>Red flags before you pay</h3>
+<ul>
+<li>You cannot meet the owner, or see his papers or the agent's FAL licence.</li>
+<li>You are asked for money to hold a flat you have not seen, especially by transfer to a personal account.</li>
+<li>The rent is far below other flats in the same area.</li>
+<li>The owner refuses to register the contract on Ejar, or asks for rent in cash on a registered contract.</li>
+<li>Someone sublets to you without the owner's written permission.</li>
+<li>The electricity is cut off, or the last tenant left a large unpaid bill.</li>
+</ul>
+<blockquote><p>Tip: Unsure about a contract or an offer? Please message Admin on WhatsApp at +1 234 567 9076 before you pay.</p></blockquote>
 <h2>Checklist before you pay</h2>
 <ol>
 <li>Look for damp, cracks or mould, especially in bathrooms.</li>
