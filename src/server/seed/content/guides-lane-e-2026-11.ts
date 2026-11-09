@@ -274,7 +274,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <li>Lectures start at 10:00 and are shortened to 35-minute slots (10:00, 10:40, 11:20, 12:00), with breaks around Dhuhr and Asr. The timetable is posted on the University's channels in the days before Ramadan.</li>
 <li>The Eid holiday starts on 19 Ramadan, so the last ten nights are free of classes.</li>
 <li>The mat'am moves to the fasting day. Ask it how the monthly booking on restaurant.iu.edu.sa changes for the month before you book.</li>
-<li>Free University buses to the Haram run in the evening. Pick-up points and times change for the month: message Admin on WhatsApp at +1 234 567 9076 for the current ones.</li>
+<li>Free University buses to the Haram run in the evening. Pick-up points and times change for the month: message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a> for the current ones.</li>
 <li>Exams are not held in Ramadan in 1448. The second semester's finals start on 25 April 2027.</li>
 </ul>
 <h2>Daily life</h2>
@@ -298,6 +298,6 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 </ul>
 <h2>What changes every year</h2>
 <p>The Rawdah timetable, the shuttle routes, the i'tikaf registration date, the University lecture times and the Eid prayer time are announced afresh each Ramadan. Check the Presidency's channels, the Madinah Bus app and the University's announcements in Sha'ban, and the home page's Ramadan mode carries the day's iftar and suhoor times.</p>
-<blockquote><p>Tip: Stuck on a step, or a time has changed? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Stuck on a step, or a time has changed? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
 ];

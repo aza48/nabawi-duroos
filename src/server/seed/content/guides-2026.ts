@@ -1099,7 +1099,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </tbody></table>
 <h3>Gear</h3>
 <p>Camping gear is sold online and in the shops around Souq al-Manakhah, including charcoal grills, dallah pots and floor mats.</p>
-<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "dates-of-madinah",
