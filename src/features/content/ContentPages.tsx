@@ -26,6 +26,7 @@ import { TextSizeControl } from "@/components/shell/TextSize";
 import { ThemeToggle } from "@/components/shell/ThemeToggle";
 import { PrintFooter } from "@/components/shell/PrintFooter";
 import { arCount, arDigits } from "@/lib/arabic-count";
+import { SLUG as COMPANY_SLUG } from "@/features/guides/company/content";
 
 const verified = (d: Date | null, locale: Locale = "en") =>
   d
@@ -210,7 +211,8 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
         </nav>
       </PageBand>
       <div className="shell mt-10 space-y-14 md:mt-14">
-        {ar && guides.some((g) => !guideText(g, locale).bodyInArabic) && <EnglishNote className="max-w-3xl" />}
+        {/* The company guide is its own page with an Arabic version, so it never needs the note. */}
+        {ar && guides.some((g) => g.slug !== COMPANY_SLUG && !guideText(g, locale).bodyInArabic) && <EnglishNote className="max-w-3xl" />}
         {topics.map((t, i) => {
           const Icon = TOPIC_ICON[t.id];
           return (

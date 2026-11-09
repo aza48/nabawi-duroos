@@ -1,8 +1,17 @@
 import { AlertTriangle, Lightbulb } from "lucide-react";
+import { arDigits } from "@/lib/arabic-count";
+import type { Locale } from "@/lib/locale";
 
 /** Small pieces shared by the server-rendered guide and its client islands (this module has no "use client", so both may import it). */
 
-export const sar = (n: number) => `${n.toLocaleString("en-GB")} SAR`;
+/** A whole number with thousands separators: "1,500" in English, "١٬٥٠٠" in Arabic. Written by hand so server and browser agree. */
+export const num = (n: number, locale: Locale = "en") => {
+  const en = n.toLocaleString("en-GB");
+  return locale === "ar" ? arDigits(en).replace(/,/g, "٬") : en;
+};
+
+/** An amount in riyals: "1,500 SAR" in English, "١٬٥٠٠ ريال" in Arabic. */
+export const sar = (n: number, locale: Locale = "en") => (locale === "ar" ? `${num(n, "ar")} ريال` : `${num(n)} SAR`);
 
 export function Tip({ children, tone = "gold" }: { children: React.ReactNode; tone?: "gold" | "warn" }) {
   const warn = tone === "warn";

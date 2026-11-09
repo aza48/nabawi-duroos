@@ -67,6 +67,7 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **web**, branch `web/AR-company-guide`: the company guide is fully Arabic on `/ar/guides/start-a-company-in-saudi`. `src/features/guides/company/content-ar.ts` mirrors `content.ts` (shapes checked by tsc through `companyContent()` in `locale.ts`, and by `tests/company-guide-ar.test.ts`). `CompanyGuide` and its islands take a locale: Arabic strings, Arabic-Indic digits and ريال, RTL-safe layout, ticks saved apart per language. The Arabic page is its own canonical with reciprocal hreflang and is in the sitemap; `/ar/guides` shows its Arabic card. Translated, then reviewed by an independent Arabic editor (58 fixes) and a code reviewer. **Anyone editing `content.ts`:** update `content-ar.ts` in the same commit (tsc and the test fail otherwise). The English page's text is unchanged.
 - 9 Nov 2026, **akheeai**, branch `akheeai/official-duroos-schedule`: the official schedule of duroos at Masjid an-Nabawi, read from the Presidency's public API (`cpd.prh.gov.sa/api/v1/courses?mosque=madinah`) and compared with MESH, in `docs/research/duroos-official-schedule-2026-11.md`. Findings:
   - 19 lessons match MESH, 17 of them exactly.
   - 13 lessons by 11 teachers are missing from MESH.
