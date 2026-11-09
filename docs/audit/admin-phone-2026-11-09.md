@@ -157,3 +157,20 @@ Screenshots: `docs/screenshots/admin-phone/` (390x844 unless the name says deskt
   - `25-visitors.png`
   - `26-desktop-inbox.png` (1440x900)
   - `27-keyboard-bars-take-space.png`
+
+## Status (cloud agent 2, 9 Nov, branch `claude/stoic-curie-w1ar9c`)
+- **Done and checked on a local dev build:**
+  - rows 1 to 20
+  - row 22
+  - row 23
+  - row 24
+  - row 25 (the header tabs only)
+  - row 27
+  - row 28 (except the date in words under date fields)
+  - row 29
+  - row 30
+  - row 31
+  - row 32
+- **Left for the owner:** row 21 (two-column admin on wide screens; question under "Waiting for the owner" in `docs/AI-LOG.md`) and row 33 (Arabic fields for answers and guides; cloud agent 1's migration proposal on issue 13).
+- **Left for the desktop agent:** row 25 (the Visitors range chips in its analytics area).
+- **Not done yet:** row 26 (with the keyboard open, the header and tab bar take about 120 of 420 px; hide the tab bar while an input has focus).
