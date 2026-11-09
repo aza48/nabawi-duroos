@@ -2,6 +2,7 @@
 
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { TableKit } from "@tiptap/extension-table";
 import { Bold, Heading2, Heading3, Italic, Link2, List, ListOrdered, Quote, Redo2, Undo2 } from "lucide-react";
 
 export function RichText({ value, onChange, placeholder }: { value: string; onChange: (html: string) => void; placeholder?: string }) {
@@ -14,6 +15,8 @@ export function RichText({ value, onChange, placeholder }: { value: string; onCh
         code: false,
         link: { openOnClick: false, autolink: true, defaultProtocol: "https" },
       }),
+      // Guides hold tables (costs, fees, timings). Without this the editor silently drops them on save.
+      TableKit.configure({ table: { resizable: false } }),
     ],
     content: value,
     editorProps: {

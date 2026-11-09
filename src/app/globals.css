@@ -198,6 +198,9 @@ a { -webkit-tap-highlight-color: transparent; }
 .article :where(table) { display: block; overflow-x: auto; border-collapse: collapse; margin: 0 0 1rem; font-size: 0.92rem; }
 .article :where(th, td) { border: 1px solid var(--border); padding: 0.45rem 0.6rem; text-align: start; vertical-align: top; }
 .article :where(th) { background: var(--bg-2); font-weight: 600; }
+/* The admin editor wraps each table cell in a paragraph; keep cells as compact as hand-written ones. */
+.article :where(th, td) > p { margin: 0; }
+.article :where(th, td) > p + p { margin-top: 0.4rem; }
 .article :where(h2 + p, h3 + p) { margin-top: 0; }
 
 /* ---------- MESH lattice (from the logo) ---------- */
