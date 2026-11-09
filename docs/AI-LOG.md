@@ -45,6 +45,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 - (cloud agent 2, 9 Nov) The admin at 1440 px is one narrow column (`max-w-4xl` in `AdminShell.tsx`) with large empty areas, against the house rule. Proposal: two columns on wide screens (list on the left, the open item on the right) for Duroos, Content and Activity. This is a design change, so it is not built until you say yes.
 
 ## Log (newest first)
+- 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: rechecked the PR review. PR 14 (`c4ea4fc`) and PR 15 (`d496991`) fixed every item. A trial merge of `main` with PRs 17, 15, 14, 16, 18 and this branch has log-line conflicts only, and passes tsc, 431 tests and the production build. Nothing blocks the merges apart from the owner's spelling decision.
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: visual pass at 390 and 1440 px, added to `docs/audit/lighthouse-2026-11-09.md`. Layouts hold. Four notes for others: Arabic number forms ("١ دروس", "١١ دروس"), help lines that still point to the group instead of the Admin line, an empty right column on the wide home page, and cut-off shaykh names in the cards.
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: a fresh code review of this branch found 10 issues; 7 are fixed, each checked:
   - "Questions waiting for an answer" shows to those who can answer them (content.write).
