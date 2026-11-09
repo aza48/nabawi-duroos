@@ -22,7 +22,8 @@ Owner's top priority (9 November 2026): every guide in plain Modern Standard Ara
 | 4, University and the Haram | `women-at-masjid-an-nabawi`, `exams-results-and-attendance`, `university-offices-and-contacts`, `hajj-as-a-student`, `tajeel-and-itithaar` | translated 9 Nov 2026, checked by script |
 | 5, papers and leaving | `phone-sims-and-absher`, `iqama-and-exit-reentry-fees`, `etimad-account`, `drivers-license`, `graduate-procedures` | translated 9 Nov 2026, checked by script |
 | web's batch (PR 62, merged) | `postgraduate-admission-1448`, `sisters-studying-in-madinah`, `historic-sites-and-masjids`, `having-a-baby-in-madinah`, `masjid-an-nabawi-institute-and-college`, `day-trips-from-madinah`, `graduating-from-mahad`, `kids-activities` | on main |
-| 6, the rest | `everyday-apps-and-services`, `dates-of-madinah`, `kindergartens-and-schools`, `sports-and-activities`, `other-universities-in-madinah`, `what-to-bring` is done; plus the Lane E guides `owning-property-as-a-non-saudi`, `sending-and-receiving-money`, `shipping-and-receiving-parcels`, `bringing-parents-to-visit`, `ramadan-in-madinah`, `seasons-and-camping` | next |
+| 6, everyday life | `everyday-apps-and-services`, `dates-of-madinah`, `kindergartens-and-schools`, `sports-and-activities`, `other-universities-in-madinah` | translated 9 Nov 2026, checked by script |
+| 7, Lane E guides | `owning-property-as-a-non-saudi`, `sending-and-receiving-money`, `shipping-and-receiving-parcels`, `bringing-parents-to-visit`, `ramadan-in-madinah`, `seasons-and-camping`, `volunteering-as-a-student` | next (the last three after #45 and #75 merge) |
 
 ## How to check a translation
 
