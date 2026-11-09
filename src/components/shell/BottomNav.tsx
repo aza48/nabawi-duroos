@@ -32,6 +32,7 @@ export function BottomNav({ locale }: { locale: Locale }) {
     <nav
       aria-label={locale === "ar" ? "القائمة الرئيسية" : "Main"}
       className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card/95 backdrop-blur lg:hidden"
+      data-bottom-nav
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <ul className="mx-auto flex max-w-lg justify-around">
@@ -61,7 +62,7 @@ export function BottomNav({ locale }: { locale: Locale }) {
 export function DesktopNav({ locale }: { locale: Locale }) {
   const path = usePathname() ?? "/";
   return (
-    <nav aria-label={locale === "ar" ? "القائمة الرئيسية" : "Main"} className="hidden items-center gap-0.5 lg:flex">
+    <nav aria-label={locale === "ar" ? "القائمة الرئيسية" : "Main"} className="hidden items-center gap-0.5 lg:flex" data-desktop-nav>
       {navItems(locale).map(({ href, label, match }) => (
         <Link
           key={href}
