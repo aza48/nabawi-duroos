@@ -92,3 +92,12 @@ describe("watch cron without an AI key", () => {
     }
   });
 });
+
+describe("unknown /api/v1 addresses", () => {
+  it("answer 404 in the JSON envelope", async () => {
+    const { GET } = await import("@/app/api/v1/[...rest]/route");
+    const res = await GET();
+    expect(res.status).toBe(404);
+    expect(await res.json()).toMatchObject({ data: null, error: "not_found", version: 1 });
+  });
+});
