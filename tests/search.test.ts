@@ -87,6 +87,8 @@ describe("ranking: typed words over related words", () => {
     const withEid = createSearch([...books, { id: "eid", type: "guide", title: "Eid in Madinah", subtitle: "Prayer times and the Haram", text: "", url: "/guides/eid" }]);
     expect(withEid("eid").map((h) => h.id)).toEqual(["eid"]);
     expect(weighQuery("eid").query.split(" ")).not.toContain("al");
+    expect(weighQuery("playground").query.split(" ")).not.toContain("with");
+    expect(weighQuery("what is ejar").query.split(" ").slice(0, 3)).toEqual(["what", "is", "ejar"]);
   });
   it("keeps spellings at full weight and related words lower", () => {
     const { typed, weight } = weighQuery("Kitab at-Tawheed");

@@ -55,6 +55,9 @@ export function createSearch(docs: SearchDoc[]) {
 /** Particles in transliterated titles ("Kitab at-Tawhid", "Zad al-Ma'ad") and English filler: never a reason to match. */
 const PARTICLES = new Set(["al", "el", "at", "ath", "ad", "adh", "ar", "as", "ash", "az", "an", "wa", "wal", "li", "bi", "fi", "of", "the", "a", "and", "in", "on", "for", "to"]);
 
+/** English filler that synonym phrases bring in ("things to do with kids"). A person may type these; a synonym never adds them. */
+const FILLER = new Set(["with", "from", "by", "or", "do", "does", "is", "are", "my", "how", "what", "can"]);
+
 /** Edit distance, for telling a spelling of the same word ("tawheed", "tawhid") from a related word ("aqidah"). */
 function distance(a: string, b: string): number {
   let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
@@ -76,7 +79,7 @@ export function weighQuery(q: string): { query: string; typed: string[][]; weigh
   const words = normalize(q).split(/[\s-]+/).filter(Boolean);
   const kept = words.filter((w) => !PARTICLES.has(w));
   const own = kept.length ? kept : words;
-  const added = expandQuery(own.join(" ")).split(" ").filter((x) => x.length > 1 && !PARTICLES.has(x) && !own.includes(x));
+  const added = expandQuery(own.join(" ")).split(" ").filter((x) => x.length > 1 && !PARTICLES.has(x) && !FILLER.has(x) && !own.includes(x));
   const typed = own.map((w) => [w, ...added.filter((x) => isSpelling(w, x))]);
   const full = new Set(typed.flat());
   return { query: [...own, ...added].join(" "), typed, weight: (term) => (full.has(term) ? 1 : 0.5) };
