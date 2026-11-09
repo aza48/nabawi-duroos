@@ -346,7 +346,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Tourist eVisa:</strong> open to citizens of dozens of countries, including the UK, the US, Canada and most of Europe. Bosnia and Herzegovina, Mexico, North Macedonia and Serbia were added in early November 2026. It costs about SAR 535 in total online or SAR 480 on arrival at an international airport (paid by card at the airport kiosks), includes compulsory health insurance, and is valid for one year with multiple entries. You may stay up to 90 days in total, counted across all your entries. Your passport must be valid for at least six months when you enter. The visa cannot be extended inside the Kingdom, and a new one can be issued only after the old one expires. It covers Umrah with a Nusuk permit, but not Hajj. Check the rules for your passport on <a href="https://visa.visitsaudi.com/">visa.visitsaudi.com</a>, and apply only there, not through agents who add their own fees.</li>
 <li><strong>Holders of a US, UK or Schengen visa:</strong> a person whose US, UK or Schengen visa has already been used to enter that country, or who lives in the US, the UK or the EU with a valid residence permit, gets the tourist eVisa whatever their nationality. Their spouse, children and parents come with them on the same terms, also whatever their nationality. The visa on arrival is meant mainly for passengers on Saudi national airlines, so anyone flying with another airline gets the eVisa online before the flight, or risks being refused boarding.</li>
 <li><strong>Extending a visit visa:</strong> the host (a Saudi or an iqama holder) extends it in Absher from 7 days before it expires, for 100 SAR each time, with new medical insurance for the new dates. The total stay is capped at 180 days. The steps are below.</li>
-<li><strong>Family visit visa:</strong> an iqama holder applies on the Ministry of Foreign Affairs visa platform for close relatives such as a spouse, children or parents. The government fee is SAR 300 for a single entry or SAR 500 for multiple entries, plus medical insurance. Approval is decided case by case.</li>
+<li><strong>Family visit visa:</strong> an iqama holder applies on the Ministry of Foreign Affairs visa platform for close relatives: a spouse, children, parents, parents-in-law, grandparents, a brother or sister with their spouse and children, and the spouse's brothers and sisters. The host's iqama must have at least 3 months left on the day of the application. The government fee is SAR 300 for a single entry or SAR 500 for multiple entries, plus medical insurance. Approval is decided case by case, and the commonest reasons for a refusal are an iqama too close to expiry, a relative outside that list, and a mistyped detail such as a passport or visa number.</li>
 <li><strong>Umrah visa:</strong> applied for on Nusuk, once the hotel and transport are booked and recorded there or through a licensed agent. It must be used to enter within 30 days of being issued, and the 1448 season's last day of entry is 23 March 2027. The full season dates are in <a href="/guides/bringing-parents-to-visit">Bringing your parents to visit Madinah</a>.</li>
 </ul>
 <p>On a visit visa you may live here and take short courses at language centres. You may not work, and degree study needs a student visa.</p>
@@ -370,7 +370,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>The host extends the visa in Absher, and the visitor stays in the country. Start a week before it expires.</p>
 <ol>
 <li><strong>Buy new health insurance</strong> for the extra period first. Absher refuses the extension without it. Insurers' websites find the visitor by visa number and passport number, then ask for the border number and the visa's expiry date, both shown in Absher.</li>
-<li><strong>Pay the 100 SAR extension fee</strong> through SADAD in your banking app. The insurance is priced separately and costs more for older visitors.</li>
+<li><strong>Pay the 100 SAR extension fee</strong> through SADAD in your banking app: Payments, then Government payments, then Passports (some banks call it Alien Control or Jawazat), then the service Extend visitor visa. Enter the visitor's border number, not your own iqama number, and keep a screenshot of the receipt. The insurance is priced separately and costs more for older visitors.</li>
 <li><strong>From 7 days before the visa ends,</strong> sign in to absher.sa on a computer and open the service Extend Visit Visa (تمديد تأشيرة زيارة).</li>
 <li><strong>Choose the visitor,</strong> press Start service, check the details, press Next, then accept the terms and confirm.</li>
 <li><strong>Check the new end date</strong> by opening the visitor again, before the old date passes.</li>
@@ -851,7 +851,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Your passport must outlast the trip.</strong> Absher refuses a visa when the passport has less than 90 days left. Renew the passport first: see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
 <li><strong>Fines block it.</strong> Any unpaid traffic fine on you, or on a dependant, stops the visa being issued.</li>
 <li><strong>Apply from inside Saudi Arabia.</strong> The traveller must be in the Kingdom when the visa is issued, with a valid iqama.</li>
-<li><strong>Fingerprints on file.</strong> The traveller's fingerprints must be registered with Jawazat, or their Absher account active.</li>
+<li><strong>Fingerprints on file.</strong> The traveller's fingerprints must be registered with Jawazat, or their Absher account active. This applies to every family member aged 15 or over, so book a fingerprint appointment for a child who has just turned 15 before the trip: see <a href="/guides/family-records-on-absher#booking-a-jawazat-civil-affairs-or-traffic-appointment">Booking a Jawazat appointment</a>.</li>
 <li><strong>One open visa at a time.</strong> An earlier exit and re-entry visa that was issued and never used blocks a new one. Cancel it in Absher before you issue the next.</li>
 <li><strong>Pay against the right iqama.</strong> The fee is paid with the iqama number of the person travelling, not the head of the family's.</li>
 <li><strong>Print it or save it.</strong> Airlines ask to see the visa at check-in. Keep a copy on your phone.</li>
@@ -877,6 +877,20 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Muqeem's public visa inquiry shows whether an exit and re-entry visa is valid and the date to return before, with just the iqama number and date of birth. See <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
 <h2>Final exit</h2>
 <p>A final exit visa is free. It is valid for 60 days from the day it is issued, the iqama must have at least 30 days left, and it cancels the iqama when the holder crosses the border, so it is the last paper you take, after the bank, the car and the flat are settled. It is refused while there are unpaid fines, a car registered in the person's name, or a dependant left behind on an unsettled iqama. Returning later means a new visa of your own. The whole leaving process is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
+<h3>Final exit for your wife or children</h3>
+<ol>
+<li>Sign in to Absher and open <strong>Family Members Services</strong>, then <strong>Visa Services</strong>, and press Next.</li>
+<li>Choose the family member, press <strong>More details</strong>, then <strong>Issue final exit visa</strong>. Accept the terms and confirm.</li>
+<li>Print the visa, or save it as a PDF, from the same screen.</li>
+</ol>
+<p>Absher issues it only when the family member is inside Saudi Arabia, holds a valid iqama with a passport valid for at least 60 days, has no unpaid fines and has no car in their name. The error "AC3052E: Insufficient funds" means a fee on that person's file is still unpaid: pay it, then try again.</p>
+<h3>Cancelling, or running out of time</h3>
+<ul>
+<li><strong>Cancel it free while it is valid,</strong> on the same page: Family Members Services, then Visa Services, then More details. Travel Management cancels a student's own final exit.</li>
+<li><strong>It cannot be extended.</strong> If your plans move, cancel it and issue a new one nearer the date.</li>
+<li><strong>Not leaving within the 60 days costs a 1,000 SAR fine.</strong> An expired final exit is cancelled only at Jawazat, with an appointment for Resident services, a cancellation form, copies of the visa, the iqama and the passport, two photos on a white background, and the iqama renewal fees if the iqama has run out meanwhile.</li>
+<li><strong>Keep the printout after you leave.</strong> A Saudi embassy can ask for it when you apply for a new Saudi visa later.</li>
+</ul>
 <h2>Adding family</h2>
 <ul>
 <li>Adding a dependant, or a newborn born inside Saudi Arabia, is done on Absher, which shows any fee before you pay. Register a birth promptly: a late birth certificate carries a fine and holds up the iqama renewal. The newborn's request, step by step, is in <a href="/guides/having-a-baby-in-madinah#after-the-birth-papers-step-by-step">Having a baby in Madinah</a>.</li>
