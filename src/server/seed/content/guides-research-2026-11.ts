@@ -16,7 +16,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>Checked 9 November 2026. Students who arrive on the educational visa (the student visa) are given a digital Visitor ID (هوية زائر) linked to their border number. They are not issued an iqama. Most of daily life works on a Visitor ID, but some things need different steps and a few are open only to iqama holders. This page puts the two side by side.</p>
 <h2>What the Visitor ID is</h2>
 <ul>
-<li>It is issued by the General Directorate of Passports (Jawazat) through your Absher account, and is tied to your <strong>border number</strong> (رقم الحدود), the number Jawazat gives you when you first enter the Kingdom.</li>
+<li>It is issued by the General Directorate of Passports (Jawazat) through your Absher account, and is tied to your <strong>border number</strong> (رقم الحدود), the 10 digit number Jawazat gives you when you first enter the Kingdom. It is written by hand in your passport beside the entry stamp, and Absher's public border number inquiry finds it from your visa number and visa issue date.</li>
 <li>It is digital only and cannot be printed on paper.</li>
 <li>The long-term educational visa behind it is valid for one year and renewed each year while you study.</li>
 <li>Jawazat accepts the digital Visitor ID as official proof of identity inside the Kingdom, so you can show it on your phone at checkpoints and offices.</li>
@@ -90,7 +90,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <h2>Before your Visitor ID runs out</h2>
 <p>Your bank account, your mada card and anything else tied to the Visitor ID stop working when it expires, until it is renewed. Plan for it like a deadline.</p>
 <ol>
-<li>Note the expiry date shown in Absher, and set reminders a month and a week before it.</li>
+<li>Note the expiry date shown in Absher, and set reminders a month and a week before it. You can also check your visa without signing in on Muqeem's public visa inquiry, with the visa number and your passport number: see <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</li>
 <li>Ask the University about renewal well before that date, through Tawasul.</li>
 <li>Keep enough cash or a working foreign card to get through a few days if your Saudi card is frozen.</li>
 <li>After the renewal, check that the new date shows in Absher and that your bank has it. If your card stays frozen, take your passport to a branch.</li>
