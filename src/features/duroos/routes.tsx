@@ -10,6 +10,7 @@ import { ScheduleBrowser } from "./ScheduleBrowser";
 import { DuroosNav } from "./DuroosNav";
 import { LessonPage, LivePage, ShaykhPage, UpdatesPage } from "./DetailPages";
 import { t } from "./strings";
+import { riyadhDateIso, weekdayOf } from "@/lib/time/riyadh";
 import { clip, metaDescription, metaTitle } from "@/lib/text";
 
 type SlugProps = { params: Promise<{ slug: string }> };
@@ -47,7 +48,7 @@ export function scheduleRoute(locale: Locale) {
         <p className="mb-6 max-w-2xl text-muted">
           {locale === "ar" ? "كل الدروس الثابتة في الأسبوع. اضغط على أي درس لتفاصيله." : "Every regular dars in the week. Tap any one for its place, books and recent changes."}
         </p>
-        <ScheduleBrowser week={week} masjids={masjids} locale={locale} />
+        <ScheduleBrowser week={week} masjids={masjids} locale={locale} initialDay={weekdayOf(riyadhDateIso())} />
       </div>
     );
   }

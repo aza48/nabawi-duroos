@@ -17,13 +17,14 @@ function riyadhWeekday(): number {
   return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(name);
 }
 
-export function ScheduleBrowser({ week, masjids, locale }: { week: Week; masjids: MasjidRow[]; locale: Locale }) {
+export function ScheduleBrowser({ week, masjids, locale, initialDay = 6 }: { week: Week; masjids: MasjidRow[]; locale: Locale; initialDay?: number }) {
   const ar = locale === "ar";
-  const [day, setDay] = useState<number>(6);
+  // The server renders today's list already, so the page does not jump when the browser takes over.
+  const [day, setDay] = useState<number>(initialDay);
   const [masjid, setMasjid] = useState<string>("all");
   const [prayer, setPrayer] = useState<string>("all");
   const shown = PRAYERS.filter((p) => prayer === "all" || p === prayer);
-  const [today, setToday] = useState<number>(-1);
+  const [today, setToday] = useState<number>(initialDay);
   useEffect(() => {
     const d = riyadhWeekday();
     setDay(d);
