@@ -34,7 +34,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <h2>Money and cards</h2>
 <ul>
 <li>The Saudi riyal is fixed at 3.75 riyals to one US dollar.</li>
-<li>Bring enough for your first one or two months. Opening a bank account and receiving a first stipend both take time.</li>
+<li>Bring enough for your first two months. Opening a bank account and receiving a first stipend both take time.</li>
 <li>Carry two cards from different banks, and tell your bank you are moving. Foreign cards are sometimes blocked by bank security checks, so a second card saves the day.</li>
 <li>Keep some cash for the first days. City buses do not take cash, but small shops and some taxis prefer it.</li>
 <li>Cash, gold and jewellery above the customs limit must be declared when you arrive. Carry what you need for a few weeks and use cards for the rest.</li>
@@ -52,7 +52,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <table><thead><tr><th>Months</th><th>What to pack</th></tr></thead><tbody>
 <tr><td>November to February</td><td>Mild days and cold nights, especially in the open courtyards of the Haram. A warm jacket or jumper, socks and a warm layer for Fajr and Isha.</td></tr>
 <tr><td>March to May</td><td>Pleasant in March, hot by May. Light clothes, a layer for March evenings, and a scarf for dusty days.</td></tr>
-<tr><td>June to September</td><td>Very hot, up to 44°C. Loose, light cotton, sandals and a refillable water bottle.</td></tr>
+<tr><td>June to September</td><td>Very hot, with days around 44°C and more on the worst days. Loose, light cotton, sandals and a refillable water bottle.</td></tr>
 <tr><td>October</td><td>Hot at first, cooling through the month. Summer clothes with one warmer layer.</td></tr>
 </tbody></table>
 <ul>
@@ -196,7 +196,7 @@ export const FAQS_GAPS_2026_11: SeedFaq[] = [
     slug: "summer-semester",
     category: "university",
     question: "Is there a summer semester at the Islamic University?",
-    answerHtml: `<p>Yes. The summer semester is optional, and students use it to catch up: to retake a failed course, or to take a course they dropped or missed after an i'tithaar. For 1449, summer classes begin on Sunday 6 June 2027 (1 Muharram 1449) and final exams start on Tuesday 27 July 2027 (23 Safar 1449). The new academic year starts on 22 August 2027.</p><p>Each year the Deanship of Admission and Registration announces which courses are offered and when to register, and you register in the Academic System. Not every course runs in the summer, so ask your college early if you are counting on one. All the dates are in <a href="/guides/university-calendar-1448">The University calendar</a>, and how failed courses work is in <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>`,
+    answerHtml: `<p>Yes. The summer semester is optional, and students use it to catch up: to retake a failed course, or to take a course they dropped or missed after an i'tithaar. The summer semester of the 1448 academic year begins on Sunday 6 June 2027 (1 Muharram 1449), and its final exams start on Tuesday 27 July 2027 (23 Safar 1449). The 1449 academic year starts on Sunday 22 August 2027.</p><p>Each year the Deanship of Admission and Registration announces which courses are offered and when to register, and you register in the Academic System. Not every course runs in the summer, so ask your college early if you are counting on one. All the dates are in <a href="/guides/university-calendar-1448">The University calendar</a>, and how failed courses work is in <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>`,
     tags: ["summer", "semester", "retake", "calendar", "courses"],
   },
   {

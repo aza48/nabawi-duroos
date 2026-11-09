@@ -29,7 +29,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <tr><td><strong>Bank account and mada card</strong></td><td>Yes, at a branch or online with Nafath. The account is frozen when the Visitor ID expires</td><td>Yes, in the bank's app or at a branch</td></tr>
 <tr><td><strong>SIM card</strong></td><td>Yes, registered to your passport and border number, with a fingerprint</td><td>Yes, registered to your iqama</td></tr>
 <tr><td><strong>Home fibre internet</strong></td><td>No. Use a 5G router with a data SIM</td><td>Yes</td></tr>
-<tr><td><strong>Rental contract on Ejar</strong></td><td>Yes, through an accredited Ejar agent</td><td>Yes, yourself or through an agent</td></tr>
+<tr><td><strong>Rental contract on Ejar</strong></td><td>Yes, through an accredited Ejar agent</td><td>Yes, created by an accredited agent or the landlord and approved by you</td></tr>
 <tr><td><strong>Saudi driving licence</strong></td><td>No</td><td>Yes, by swapping your foreign licence</td></tr>
 <tr><td><strong>Buying or registering a car</strong></td><td>No</td><td>Yes</td></tr>
 <tr><td><strong>Umrah and Rawdah permits in Nusuk</strong></td><td>Yes</td><td>Yes</td></tr>
@@ -86,7 +86,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Hajj from inside the Kingdom is booked in Nusuk once registration opens, and a visit visa does not allow Hajj. Before you register or pay for a package on a Visitor ID, ask the University through Tawasul whether you are eligible.</li>
 </ul>
 <h2>Family</h2>
-<p>A Visitor ID cannot sponsor family. Your wife, children or parents come on their own visas, most often the tourist eVisa where their passport qualifies. The options and the extension rules are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>. Children can still join many private kindergartens and schools: see <a href="/guides/kindergartens-and-schools">Kindergartens and schools</a>.</p>
+<p>Family visas for students on the educational visa go through the University's own procedures, so ask the University through Tawasul before you plan. Many wives, children and parents come on their own visas, most often the tourist eVisa where their passport qualifies. The options and the extension rules are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>. Children can still join many private kindergartens and schools: see <a href="/guides/kindergartens-and-schools">Kindergartens and schools</a>.</p>
 <h2>Before your Visitor ID runs out</h2>
 <p>Your bank account, your mada card and anything else tied to the Visitor ID stop working when it expires, until it is renewed. Plan for it like a deadline.</p>
 <ol>
@@ -198,7 +198,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ol>
 <li>Check that the name on your ticket, visa and every University record matches your passport exactly, letter for letter.</li>
 <li>Pack your original certificates, passport photos on a white background, and copies of everything on your phone.</li>
-<li>Bring enough cash or a working foreign card for your first month. The first stipend and your bank card take time.</li>
+<li>Bring enough cash or a working foreign card for your first two months. The first stipend and your bank card take time.</li>
 <li>Bring a letter from your doctor for any regular medicine. Prescriptions from other countries are not accepted here.</li>
 </ol>
 <h2>Day 1 and 2: phone and the first night</h2>
@@ -251,8 +251,8 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>Checked 9 November 2026. The Institute of the Haram in Makkah has a branch at Masjid an-Nabawi, with an Institute (Ma'had) for intermediate and secondary study and a College (Kulliyah) for a bachelor's degree. Study is free and full time, inside the masjid, with separate sections for brothers and sisters.</p>
 <h2>The levels</h2>
 <table><thead><tr><th>Level</th><th>Who can apply</th></tr></thead><tbody>
-<tr><td>Intermediate (Institute)</td><td>At least 12 at the start of the year, with a primary school certificate graded good or better</td></tr>
-<tr><td>Secondary (Institute)</td><td>At least 15 at the start of the year, with an intermediate certificate graded good or better</td></tr>
+<tr><td>Intermediate (Institute)</td><td>At least 12 at the start of the year, with a primary school certificate</td></tr>
+<tr><td>Secondary (Institute)</td><td>At least 15 at the start of the year, with an intermediate certificate</td></tr>
 <tr><td>Bachelor's (College)</td><td>A general secondary certificate or its equivalent, with at least 85%, and at least three juz of the Qur'an memorised. Non-Saudis need at least three months left on their iqama</td></tr>
 </tbody></table>
 <h2>Who can apply</h2>
@@ -264,7 +264,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Good Arabic. Teaching, exams and the interview are all in Arabic.</li>
 </ul>
 <h2>When and how to apply</h2>
-<p>Registration opens once a year, from 5 to 20 Safar. For 1448 that was 20 July to 4 August 2026. In 1449, Safar falls in July 2027.</p>
+<p>Registration opens once a year, from 5 to 20 Safar. For 1448 that was 19 July to 3 August 2026. In 1449, Safar falls in July 2027.</p>
 <ol>
 <li>Get your certificates equated and attested well before Safar. This takes the longest.</li>
 <li>When registration opens, apply online through the portal of the General Authority for the Care of the Two Holy Mosques, choosing the Masjid an-Nabawi branch and your level.</li>
@@ -311,7 +311,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>The miqat for people leaving Madinah is Dhul Hulayfah (Abyar Ali). Many people go to the masjid at Dhul Hulayfah first, put on ihram there, and then take a taxi to the station. Book your Umrah permit in Nusuk before you travel. See <a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba</a>.</p>
 <h2>Madinah buses</h2>
 <ul>
-<li><strong>Fare:</strong> 3.45 SAR a ride on the city routes, and 11.50 SAR on the airport route (400). Each ticket is for one bus, so changing buses means a new fare.</li>
+<li><strong>Fare:</strong> 3.45 SAR a ride on the city routes. The airport route (400) has its own fare, shown in the Madinah Bus app. Each ticket is for one bus, so changing buses means a new fare.</li>
 <li><strong>No cash on board.</strong> Pay with mada, Visa or Mastercard, Apple Pay or another phone wallet, the virtual card in the Madinah Bus app, or a plastic bus card.</li>
 <li><strong>Passes in the app:</strong> 10 rides in a day for 10 SAR, 35 rides in a week for 60 SAR, and 175 rides in a month for 240 SAR.</li>
 <li><strong>Wallet refunds:</strong> only a balance above 50 SAR can be refunded, less a 20% fee, so top up in small amounts.</li>
@@ -342,7 +342,8 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 </ul>
 <h2>Who handles what</h2>
 <table><thead><tr><th>You need</th><th>Who handles it</th><th>Where</th></tr></thead><tbody>
-<tr><td>Your ticket home, your arrival ticket, passport matters, the Visitor ID steps</td><td>Travel Management (إدارة السفر)</td><td>Tickets through Etimad: see <a href="/guides/etimad-account">Setting up your Etimad account</a>. Arrival tickets through Minhati</td></tr>
+<tr><td>Your ticket home, your arrival ticket, passport matters</td><td>Travel Management (إدارة السفر)</td><td>Tickets through Etimad: see <a href="/guides/etimad-account">Setting up your Etimad account</a>. Arrival tickets through Minhati</td></tr>
+<tr><td>Your educational visa and Visitor ID</td><td>Deanship of Admission and Registration</td><td>Tawasul, subject Educational visa: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a></td></tr>
 <tr><td>Registration, your timetable, adding and dropping courses, ta'jeel and i'tithaar, transfers</td><td>Deanship of Admission and Registration</td><td>The Academic System, and Tawasul for anything it cannot do</td></tr>
 <tr><td>A new visa after ta'jeel, an excuse or a break in study</td><td>Deanship of Admission and Registration</td><td><a href="https://minhatee2.iu.edu.sa/Home/VisaLanding">Minhati visa page</a>, signing in with your University number</td></tr>
 <tr><td>Housing, activities, clubs and life in the halls</td><td>Deanship of Student Affairs</td><td>Tawasul, or the office in person</td></tr>
@@ -560,7 +561,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <ul>
 <li>Keep your passport with you, and find your <strong>border number</strong> (رقم الحدود), the number linked to your visa when you first entered the Kingdom.</li>
 <li>Have an email address you can open on your phone.</li>
-<li>Bring enough money for your first weeks. Opening a bank account and setting up your first payments takes time.</li>
+<li>Bring enough money for your first two months. Opening a bank account and setting up your first payments takes time.</li>
 </ul>
 <h2>The steps</h2>
 <ol>
@@ -775,7 +776,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Dependants need a letter of permission from their sponsor. Kulliyah applicants also bring two letters of recommendation (tazkiyah) from a school or a Qur'an teacher.</li>
 </ul>
 <h3>When and how to apply</h3>
-<p>Registration opens once a year, in Safar, for the Ma'had and the Kulliyah together. For 1448 it ran from 5 to 20 Safar (20 July to 4 August 2026).</p>
+<p>Registration opens once a year, in Safar, for the Ma'had and the Kulliyah together. For 1448 it ran from 5 to 20 Safar (19 July to 3 August 2026).</p>
 <ol>
 <li>Apply online on the portal of the General Authority for the Care of the Two Holy Mosques while registration is open, with all your documents in one PDF.</li>
 <li>Sit the written exam in person. For 1448 it was on 11 Rabi' al-Awwal (24 August 2026).</li>
@@ -873,7 +874,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <tr><td>Master's and PhD</td><td>16 November to 11 December 2025</td></tr>
 <tr><td>Higher diplomas</td><td>5 to 11 April 2026</td></tr>
 </tbody></table>
-<p>The University announces each window on the Deanship's X account, <a href="https://x.com/highstudies_iu">@highstudies_iu</a>, and its Telegram channel, <a href="https://t.me/highstudies_iu">t.me/highstudies_iu</a>. Have your documents ready before November.</p>
+<p>The University announces each window on the Deanship's X account, <a href="https://x.com/highstudies_iu">@highstudies_iu</a>, and its Telegram channel, <a href="https://t.me/highstudies_iu">t.me/highstudies_iu</a>. The 1448 window opened in mid November, so have your documents ready now.</p>
 <h2>How to apply</h2>
 <table><thead><tr><th></th><th>Inside Saudi Arabia</th><th>Outside Saudi Arabia</th></tr></thead><tbody>
 <tr><td><strong>Who</strong></td><td>Saudis, GCC citizens, legal residents (internal scholarship) and external scholarship students already at the University</td><td>International applicants for an external scholarship</td></tr>

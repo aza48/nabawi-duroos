@@ -35,7 +35,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>Drinking water, 19 litres</td><td>8</td></tr><tr><td>Fruit and vegetables, per kg</td><td>4 to 12</td></tr>
 <tr><td>Meal at a mid-range restaurant</td><td>25 to 40</td></tr>
 </tbody></table>
-<p>Cooking at home costs around 10 to 15 SAR a meal. Panda, Bin Dawood, Othaim and Carrefour are the big supermarkets, and the "5 riyal" shops are excellent for household basics.</p>
+<p>Cooking at home costs around 10 to 15 SAR a meal. Bin Dawood, Carrefour, LuLu, Othaim and Panda are the big supermarkets, and the "5 riyal" shops are excellent for household basics.</p>
 <h2>Bills</h2>
 <ul>
 <li><strong>Electricity:</strong> 100 to 300 SAR a month in winter, 200 to 800 in summer because of air conditioning.</li>
@@ -59,7 +59,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td><strong>Total (SAR)</strong></td><td><strong>about 2,900 to 6,700</strong></td><td><strong>about 6,300 to 12,800</strong></td></tr>
 </tbody></table>
 <p>The family budget does not include school fees. Kindergarten alone is around 4,000 SAR a year per child (see Kindergartens and schools).</p>
-<blockquote><p>Note: Students on the University scholarship live in the halls of residence and receive a monthly stipend, so their costs are far lower than this.</p></blockquote>
+<blockquote><p>Note: Single students on a full University scholarship live in the halls of residence and receive a monthly stipend, so their costs are far lower than this.</p></blockquote>
 <h2>Saving money</h2>
 <ul>
 <li>Big sales come four times a year: Eid al-Fitr, Eid al-Adha, Saudi National Day (23 September) and Founding Day (22 February). Gyms and shops often cut prices by up to half.</li>
@@ -89,7 +89,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h3>With a Visitor ID</h3>
 <ol>
 <li>Make sure you have a Saudi mobile number in your name, linked to your Absher account.</li>
-<li>Issue your Visitor ID in Absher and make sure it shows as active. Activate Nafath too: online account opening uses it to confirm who you are.</li>
+<li>Activate Nafath, which online account opening uses to confirm who you are, then issue your Visitor ID in Absher and make sure it shows as active.</li>
 <li>Register your National Address with Saudi Post. The bank records your address in Saudi Arabia, your home address abroad and the purpose of your stay.</li>
 <li>Open the account in one of two ways. <strong>At a branch:</strong> take your passport and show your Visitor ID in the Absher app. <strong>Online:</strong> apply in the bank's app or website and confirm your identity through Nafath. Each bank sets its own extra conditions, so if one turns you away, try another bank.</li>
 <li>Your account number arrives by text message. Collect your mada debit card at the branch or ask for it to be posted to your National Address.</li>
@@ -114,7 +114,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Quba walkway:</strong> small electric carts run along the Quba walkway between the Haram and Masjid Quba for about 10 to 20 SAR. Agree the price before you get in.</li>
 </ul>
 <h2>Driving</h2>
-<p>On a visit visa you can drive with your own licence if Saudi Arabia recognises your country's licence. Bring an International Driving Permit too, because rental companies usually ask for one, and always carry the original licence, not a photo of it. Buying or registering a car needs an iqama. Most rental companies also ask for residency, but private rentals are common, and students rent out their cars over the summer for 1,500 to 3,500 SAR a month.</p>
+<p>On a visit visa you can drive with your own licence if Saudi Arabia recognises your country's licence. Bring an International Driving Permit too, because rental companies usually ask for one, and always carry the original licence, not a photo of it. Buying or registering a car needs an iqama. Many rental companies also ask for residency, but private rentals are common, and students rent out their cars over the summer for 1,500 to 3,500 SAR a month.</p>
 <p>Petrol costs 2.18 SAR a litre for 91 and 2.33 for 95 (November 2026). Traffic fines appear in Absher under Violations.</p>
 <h2>To Makkah for Umrah</h2>
 <table><thead><tr><th>How</th><th>Time</th><th>Cost (SAR)</th></tr></thead><tbody>
@@ -141,7 +141,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Your yearly ticket home and your final ticket as a graduate go through Etimad, the government platform. The ticket office asks you to have a working account with correct details.</p>
 <ol>
 <li>Open <a href="https://portal.etimad.sa/">portal.etimad.sa</a> and choose Log in.</li>
-<li>Pick <strong>Individuals</strong>, then sign in through <strong>Nafath</strong>, with the app or your iqama number and password.</li>
+<li>Pick <strong>Individuals</strong>, then sign in through <strong>Nafath</strong>.</li>
 <li>Enter your mobile number and email, accept the terms and save.</li>
 <li>Type in the code sent to your phone, then confirm the link sent to your email.</li>
 <li>Back on the site, open <strong>Travel orders</strong> (أوامر الإركاب), then your <strong>Profile</strong>.</li>
@@ -298,7 +298,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Checklist before you pay</h2>
 <ol>
 <li>Look for damp, cracks or mould, especially in bathrooms.</li>
-<li>Run every air conditioner and check it blows cold. Summer reaches 44 to 46°C.</li>
+<li>Run every air conditioner and check it blows cold. Summer days reach about 44°C, and more on the worst days.</li>
 <li>Open every tap, check pressure and hot water, flush the toilet and check for leaks or smells.</li>
 <li>Test every light and socket.</li>
 <li>Ask to see the electricity meter, and check there is no unpaid bill from the last tenant.</li>
@@ -500,7 +500,6 @@ export const GUIDES_2026: SeedGuide[] = [
 <h2>Iqama</h2>
 <table><thead><tr><th>Who</th><th>Fee (SAR)</th></tr></thead><tbody>
 <tr><td>Student with a student iqama</td><td>Free</td></tr>
-<tr><td>Dependent aged 18 and over, issue or renewal</td><td>500</td></tr>
 <tr><td>Domestic worker, farmer or shepherd</td><td>600</td></tr>
 <tr><td>Worker of a company or establishment</td><td>650</td></tr>
 </tbody></table>
@@ -515,7 +514,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Extra months must fall within the validity of your iqama. If you extend while you are already abroad, the extra months cost double: 200 SAR a month on a single visa and 400 SAR a month on a multiple visa. Fees are not refunded if you cancel the visa, so choose the length carefully.</p>
 <h2>Adding family</h2>
 <ul>
-<li>Adding a dependent or newborn born inside Saudi Arabia: free.</li>
+<li>Adding a dependant, or a newborn born inside Saudi Arabia, is done on Absher, which shows any fee before you pay.</li>
 <li>A child born outside Saudi Arabia first needs an entry visa as a dependent: 2,000 SAR. Add the child within three months of arrival to avoid a fine.</li>
 </ul>
 <h2>Visit visas</h2>
@@ -628,7 +627,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Tell someone your route. Mobile signal fades more than 30 km from the city.</li>
 <li>Keep your iqama or passport and your car papers with you for police checkpoints.</li>
 </ol>
-<p>Hiring a car needs a licence your country is recognised for, and some companies ask for residency. See <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>`,
+<p>Hiring a car needs a licence your country is recognised for, and many companies ask for residency. See <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>`,
   },
   {
     slug: "seasons-and-camping",
@@ -771,14 +770,14 @@ export const GUIDES_2026: SeedGuide[] = [
 export type SeedFaq = { slug: string; question: string; category: string; answerHtml: string; tags?: string[] };
 
 export const FAQS_2026: SeedFaq[] = [
-  { slug: "defer-my-place", category: "university", question: "Can I defer my place at the University?", answerHtml: "<p>The University's rules allow a deferral of up to two years after final acceptance. Under the educational visa, though, the visa application names the semester you will arrive, and asking to arrive later can send it back. Plan to arrive in the semester you are offered, and ask the University before you plan around a deferral.</p>" },
+  { slug: "defer-my-place", category: "university", question: "Can I defer my place at the University?", answerHtml: "<p>Plan to arrive in the semester you are offered. Under the educational visa, the visa application names the semester you will arrive, and asking to arrive later can send it back. If something serious stops you travelling, ask the University before you change your plans. See <a href=\"/guides/applying-to-the-islamic-university\">Applying to the Islamic University</a>.</p>" },
   { slug: "is-housing-included", category: "university", question: "Is housing included for scholarship students?", answerHtml: "<p>Full (external) scholarship students are entitled to University housing, either inside the Jamiah or in the Rabwa halls (الربوة), and the University allocates your room. Partial (internal) scholarships, for applicants who already live in Saudi Arabia, cover tuition only, with no housing, stipend, tickets or meals. Your offer on Study in Saudi shows which one you have. See <a href=\"/guides/scholarship-stipend-and-allowances\">Your scholarship money</a>.</p>" },
   { slug: "istiqdam-deposit", category: "family", question: "Can I sponsor my family, and what is the deposit?", answerHtml: "<p>Students with an iqama can ask the University to sponsor a wife and children on a family residency (istiqdam). The University sets the refundable deposit and decides when requests are open, so ask the student affairs office for both before you plan or pay. Students on the educational visa with a Visitor ID follow different rules, so ask the University which route applies to you.</p>" },
   { slug: "join-mesh-group", category: "getting-started", question: "How do I join the MESH WhatsApp group?", answerHtml: "<p>Tap any \"Join the group\" button on this site. Keep posts relevant, share only verified information, and no debates. The full rules are on the More page.</p>" },
   { slug: "how-to-apply-iu", category: "getting-started", question: "How do I apply to the Islamic University of Madinah?", answerHtml: "<p>Through the national Study in Saudi portal (studyinsaudi.sa) when applications open. You can choose up to 25 programmes across several universities and edit your application until the deadline. See <a href=\"/programs/iu-madinah\">Islamic University of Madinah</a> for the steps and a video walkthrough.</p>" },
   { slug: "stipend-amount", category: "university", question: "How much is the University stipend?", answerHtml: "<p>Full scholarship students receive a monthly stipend (mukafa'ah). The rate depends on your college, and your own amount is in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong>. On top of it come two months' stipend when you arrive, three months' stipend when you graduate, a ticket home each year, housing and subsidised meals. The stipend stops during ta'jeel or i'tithaar. Partial scholarships cover tuition only. Full details: <a href=\"/guides/scholarship-stipend-and-allowances\">Your scholarship money: stipend, allowances and tickets</a>.</p>" },
   { slug: "learn-arabic-before-iu", category: "getting-started", question: "Where can I learn Arabic in Madinah before getting into the University?", answerHtml: "<p>There are several options. Year-round institutes such as Ahlul Athar, Mutun al-Ijaz and Taba charge from about 350 SAR a month. The <a href=\"/programs/map\">Madinah Arabic Program</a> runs one-month intensives on the University campus. More options, with fees and dates, are on <a href=\"/programs\">Study in Madinah</a>.</p>" },
-  { slug: "sisters-study", category: "family", question: "Where can sisters study Arabic and Islamic sciences?", answerHtml: "<p>There are free marakiz for sisters (Mishkat, Taibah, Academiyah al-Ma'rifah), the Masjid an-Nabawi Ma'had and Kulliyah for women, and paid options such as Fusha, Taba (now open to women) and MAP's sisters' classes. See <a href=\"/programs\">Study in Madinah</a>.</p>" },
+  { slug: "sisters-study", category: "family", question: "Where can sisters study Arabic and Islamic sciences?", answerHtml: "<p>There are women's marakiz (Academiyah al-Ma'rifah, Dar at-Tawheed wa as-Sunnah, Markaz Mishkat and Markaz Taibah), the Masjid an-Nabawi Ma'had and Kulliyah for women, and paid options such as Fusha, MAP's sisters' classes and Taba (now open to women). See <a href=\"/guides/sisters-studying-in-madinah\">Where sisters can study</a> and <a href=\"/programs\">Study in Madinah</a>.</p>" },
   { slug: "monthly-budget", category: "getting-settled", question: "How much money do I need per month in Madinah?", answerHtml: "<p>Roughly 2,900 to 6,700 SAR for a single person renting their own place, and 6,300 to 12,800 SAR for a family of three or four. Scholarship students in the halls spend far less. Full breakdown: <a href=\"/guides/cost-of-living\">What it costs to live in Madinah</a>.</p>" },
   { slug: "bank-account-without-iqama", category: "getting-settled", question: "Can I open a Saudi bank account without an iqama?", answerHtml: "<p>Yes. Since September 2025 holders of a Visitor ID can open an account and get a mada card. You need an active Visitor ID in Absher, a registered National Address and a Saudi mobile number linked to Absher. Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The bank also asks for your home address and the purpose of your stay. The account works only while your Visitor ID is valid and is frozen when it expires. See <a href=\"/guides/sim-internet-bank\">SIM card, internet and a Saudi bank card</a>.</p>" },
   { slug: "home-internet-no-iqama", category: "getting-settled", question: "How do I get home internet without an iqama?", answerHtml: "<p>Fixed home internet needs an iqama, so most people use a portable router with an unlimited-data SIM from STC, Mobily or Zain.</p>" },
@@ -796,12 +795,12 @@ export const FAQS_2026: SeedFaq[] = [
   { slug: "rent-on-student-visa", category: "getting-settled", question: "Can I register a rental contract on a student visa?", answerHtml: "<p>Yes. Find a flat and agree the terms, then contact a real-estate agent from Ejar's official list of accredited agents. The agent registers the contract on Ejar for you.</p>", tags: ["ejar", "rent", "housing", "visa"] },
   { slug: "library-bags-laptops", category: "university", question: "Can I take a bag or laptop into the libraries?", answerHtml: "<p><strong>University Central Library:</strong> open 6:00 am to midnight, Sunday to Thursday, for men and women. Laptops are allowed but bags are not, so take the laptop out first. There are sockets. The private study rooms are for graduate students.</p><p><strong>Masjid an-Nabawi library:</strong> open every day, 24 hours. Men go up by the escalator near Gate 10, and the women's library is by the women's prayer areas near Gate 24 and Gate 16. No bags, no food and no laptops without a permit. Tablets and notebooks are fine. The rules are applied strictly after about 2 pm. Leave your bag at the free left-luggage centre, which keeps bags for up to 4 hours, round the clock, with a ticket.</p>", tags: ["library", "laptop", "haram", "study"] },
   { slug: "blackboard-phishing", category: "university", question: "Someone posted a link in my Blackboard class chat. Is it safe?", answerHtml: "<p>Do not open it. Fake accounts posing as students post links named things like \"timetable\" or \"class WhatsApp group\". Opening one can hand over your University account, and with it they can withdraw you from your courses. Report the account, leave the group, and warn your class.</p>", tags: ["blackboard", "security", "phishing", "account"] },
-  { slug: "leaving-steps", category: "leaving", question: "What do I need to do when I graduate?", answerHtml: "<p>Hand back your room, return your student card, get your final exit visa, collect your degree, legalise your documents, and book your ticket. The full checklist is in <a href=\"/guides/graduate-procedures\">Graduating</a>.</p>" },
+  { slug: "leaving-steps", category: "leaving", question: "What do I need to do when I graduate?", answerHtml: "<p>Hand back your room, return your student card and clear your file with Travel Management, collect your degree, legalise your documents, and book your ticket once the University has confirmed your clearance. With an iqama, Travel Management also arranges your final exit visa. On a Visitor ID there is no iqama to hand in, so ask Travel Management through Tawasul what clearance it needs from you. The full checklist is in <a href=\"/guides/graduate-procedures\">Graduating</a>.</p>" },
   { slug: "check-sims-on-iqama", category: "getting-settled", question: "How do I see how many SIMs are registered under my iqama?", answerHtml: "<p>Sign in to Mutasil with Nafath, or use the My Numbers Inquiry with your iqama number, date of birth and a code sent to your registered phone. The CST app and Tawakkalna also show your numbers. If you find one you do not know, ask its operator to cancel it. Steps are in <a href=\"/guides/phone-sims-and-absher\">Your phone number, SIM checks and Absher</a>.</p>", tags: ["sim", "iqama", "mutasil", "cst"] },
   { slug: "change-absher-mobile", category: "getting-settled", question: "How do I change the mobile number on my Absher account?", answerHtml: "<p>Three ways: in the Absher app (Digital Identity Management, then Change Mobile Number), in the Nafath app (Digital Identity Mobile Number Update), or at an Absher kiosk in a Jawazat office, mall or airport. The app methods need a biometric check, and the kiosk works even if you lost your old number. Details: <a href=\"/guides/phone-sims-and-absher\">Your phone number, SIM checks and Absher</a>.</p>", tags: ["absher", "nafath", "mobile number"] },
   { slug: "short-address", category: "getting-settled", question: "What is a short address and how do I find mine?", answerHtml: "<p>It is an eight character code, four letters then four digits, that stands for your full National Address. It is used for deliveries and some official forms. You need a registered National Address first. Then find the code in Absher (My Services, then National Address Services), on the Saudi Post website after signing in with Nafath, or in the Saudi Post app. If you move, update your National Address, because the code changes with it.</p>", tags: ["national address", "short address", "delivery", "saudi post"] },
   { slug: "check-health-insurance", category: "getting-settled", question: "How do I check that my health insurance is valid?", answerHtml: "<p>Iqama holders can check on the Council of Health Insurance website, on the Insurance Authority website (free, and the one that works from abroad), in the Tawakkalna app, in Absher (health insurance validity inquiry) or in the CHI Daman app. Enter your 10 digit iqama number and check the insurer and expiry date. Insurance expiry is separate from your iqama expiry. If nothing shows, retry and then ask your insurer.</p>", tags: ["insurance", "chi", "health", "iqama"] },
   { slug: "send-money-home", category: "getting-settled", question: "How do I send money home from Madinah?", answerHtml: "<p>Apps and services in common use include Alinma, Barq, D360, Enjaz, Mobily Pay, SNB NEO, STC Pay and STC Bank, Tahweel Al Rajhi, Tiqmo and urpay. What you can use depends on your ID and bank account. Fees, exchange rates and speed differ and change, so compare the final amount your family receives after fees, not the headline rate. Checked November 2026.</p>", tags: ["remittance", "money transfer", "bank", "apps"] },
   { slug: "emergency-numbers", category: "getting-settled", question: "What are the emergency numbers in Saudi Arabia?", answerHtml: "<p>Ambulance (Saudi Red Crescent): <strong>997</strong>. Police: <strong>999</strong>. Civil Defence (fire): <strong>998</strong>. The unified emergency number <strong>911</strong> also works in Madinah. The Ministry of Health advice line is <strong>937</strong>, 24 hours, in several languages. More in <a href=\"/guides/doctors-hospitals-and-pharmacies\">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>", tags: ["emergency", "ambulance", "police", "health"] },
-  { slug: "best-time-to-visit-madinah", category: "getting-settled", question: "What is the best time of year in Madinah?", answerHtml: "<p>November to February has the best weather (about 12 to 24°C) but is the busiest Umrah period. Late September to mid November and late February to March mix good weather with calmer crowds. Summer reaches 45°C, so do outdoor things early or late. See <a href=\"/guides/seasons-and-camping\">Madinah by season, and where to camp</a>.</p>", tags: ["weather", "season", "summer", "winter"] },
+  { slug: "best-time-to-visit-madinah", category: "getting-settled", question: "What is the best time of year in Madinah?", answerHtml: "<p>November to February has the best weather (about 12 to 24°C in January, warmer in November) but is the busiest Umrah period. Late September to mid November and late February to March mix good weather with calmer crowds. Summer days reach about 44°C, and more on the worst days, so do outdoor things early or late. See <a href=\"/guides/seasons-and-camping\">Madinah by season, and where to camp</a>.</p>", tags: ["weather", "season", "summer", "winter"] },
 ];
