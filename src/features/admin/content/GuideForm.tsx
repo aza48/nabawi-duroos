@@ -19,7 +19,8 @@ export function GuideForm({ value }: { value: G }) {
   const router = useRouter();
   const { confirm, notify } = useFeedback();
   const [v, setV] = useState<G>(value);
-  const [verified, setVerified] = useState(true);
+  // Unticked by default: fixing a typo must not stamp the page as checked today.
+  const [verified, setVerified] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
   // Messages show in the toast above the tab bar, never under the button where a phone hides them.
@@ -63,7 +64,7 @@ export function GuideForm({ value }: { value: G }) {
         <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : "Publish"}</button>
       </div>
       {value.slug && (
-        <button type="button" className="text-sm text-cancel underline" disabled={pending}
+        <button type="button" className="mt-2 min-h-11 rounded-full border border-cancel/40 px-4 text-sm font-semibold text-cancel" disabled={pending}
           onClick={async () => {
             if (!(await confirm({ title: "Delete this guide?", body: "It disappears from the site straight away. You can bring it back with Undo.", confirmLabel: "Delete", danger: true }))) return;
             start(async () => {

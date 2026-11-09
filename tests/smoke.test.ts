@@ -31,3 +31,14 @@ describe("refresh paths", () => {
     expect(withArabic(["/guides", "/guides/x", "/", "/ar/duroos"])).toEqual(["/guides", "/ar/guides", "/guides/x", "/ar/guides/x", "/", "/ar", "/ar/duroos"]);
   });
 });
+
+describe("admin error messages", () => {
+  it("name fields the way the form does, never by code name", async () => {
+    const { fieldLabel } = await import("@/server/admin/field-label");
+    expect(fieldLabel(["bookUrl"])).toBe("Book link");
+    expect(fieldLabel(["titleAr"])).toBe("Title (Arabic)");
+    expect(fieldLabel(["bodyHtml"])).toBe("Body");
+    expect(fieldLabel(["url"])).toBe("Link");
+    expect(fieldLabel([])).toBe("Input");
+  });
+});

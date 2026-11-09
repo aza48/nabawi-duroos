@@ -31,7 +31,7 @@ export function AnnouncementForm({ value, shaykhs, masjids, lessons = [] }: { va
   const [v, setV] = useState<A>(value);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
-  const { notify } = useFeedback();
+  const { notify, confirm } = useFeedback();
   // Messages show in the toast above the tab bar, never under the button where a phone hides them.
   useEffect(() => { if (msg) notify(msg); }, [msg, notify]);
   const [pending, start] = useTransition();
@@ -109,7 +109,11 @@ export function AnnouncementForm({ value, shaykhs, masjids, lessons = [] }: { va
         <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : "Publish"}</button>
       </div>
       {value.slug && value.status === "published" && (
-        <button type="button" className="text-sm text-muted underline" onClick={() => save("archived")}>Take it down (archive)</button>
+        <button type="button" className="mt-2 min-h-11 rounded-full border border-cancel/40 px-4 text-sm font-semibold text-cancel" disabled={pending}
+          onClick={async () => {
+            if (!(await confirm({ title: "Take this update down?", body: "It leaves the Updates page straight away. If it changed the schedule, that change is withdrawn too.", confirmLabel: "Take it down", danger: true }))) return;
+            save("archived");
+          }}>Take it down (archive)</button>
       )}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>

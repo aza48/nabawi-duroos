@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { fieldLabel } from "@/server/admin/field-label";
 import { getDb } from "@/server/db/client";
 import { getAuth } from "@/server/auth/auth";
 import { requireAdmin } from "@/server/auth/session";
@@ -34,7 +35,7 @@ function explain(e: unknown): string {
   if (e instanceof Forbidden) return FRIENDLY.forbidden;
   if (e && typeof e === "object" && "issues" in e) {
     const issue = (e as { issues: { message: string; path: (string | number)[] }[] }).issues[0];
-    return issue ? `${issue.path.join(".") || "Input"}: ${issue.message}` : "Please check the form.";
+    return issue ? `${fieldLabel(issue.path)}: ${issue.message}` : "Please check the form.";
   }
   const m = e instanceof Error ? e.message : "";
   return FRIENDLY[m] ?? "Something went wrong. Please try again.";
