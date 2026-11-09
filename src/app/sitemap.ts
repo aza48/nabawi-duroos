@@ -55,6 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...pair("/ask", 0.8, "daily"),
     ...pair("/more", 0.3, "weekly"),
     ...pair("/mahad", 0.7, "monthly"),
+    ...pair("/glossary", 0.6, "monthly"),
     ...LIVE_COLLECTIONS.flatMap((c) => pair(`/library/${c.slug}`, 0.7, "monthly")),
     ...shaykhRows.flatMap((s) => both(`/shaykh/${s.slug}`, 0.6, "weekly")),
     ...lessonRows.flatMap((l) => both(`/lesson/${l.slug}`, 0.6, "daily")),
