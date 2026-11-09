@@ -198,7 +198,7 @@ export const GUIDES_2026: SeedGuide[] = [
     slug: "kindergartens-and-schools",
     stage: "family",
     title: "Kindergartens and schools for your children",
-    summary: "What you need to enrol, typical fees, daily times, and Qur'an circles in local masjids.",
+    summary: "Kindergartens, how Saudi schooling is organised, the documents to enrol, Noor, changing school, typical fees, the free Qur'an and Islamic schools, and Qur'an circles in local masjids.",
     bodyHtml: `
 <p>Madinah has plenty of private kindergartens and schools, and many accept children whose parents are on a visit visa, not only iqama holders. If a school hesitates, ask again politely and persist.</p>
 <h2>Kindergarten</h2>
@@ -216,9 +216,49 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>A medical certificate if asked. Private clinics do the check-up for about 150 SAR.</li>
 </ol>
 <h2>Schools</h2>
-<p>Government and Saudi private schools teach boys and girls separately. Many international schools teach them together in the early years, so check each school's own policy. International schools such as Al Aqeeq International and AlKhandaq run English, Cambridge or national tracks. Several schools give Islamic University families a discount (see Student discounts).</p>
+<p>Government and Saudi private schools teach boys and girls separately. Many international schools teach them together in the early years, so check each school's own policy. International schools run English, Cambridge or national tracks alongside the Saudi curriculum. Several schools give Islamic University families a discount (see <a href="/discounts">Student discounts</a>).</p>
+<h3>How Saudi schooling is organised</h3>
+<table><thead><tr><th>Stage</th><th>Ages</th><th>Length</th></tr></thead><tbody>
+<tr><td>Kindergarten (روضة)</td><td>3 to 6</td><td>Up to 3 years</td></tr>
+<tr><td>Primary (ابتدائي)</td><td>From 6</td><td>6 years</td></tr>
+<tr><td>Intermediate (متوسط)</td><td>From 12</td><td>3 years</td></tr>
+<tr><td>Secondary (ثانوي)</td><td>From 15</td><td>3 years</td></tr>
+</tbody></table>
+<p>School days are Sunday to Thursday, from about 7:00 to 13:00 or 14:00.</p>
+<h3>Documents for a school age child</h3>
+<ul>
+<li>The parent's iqama or Visitor ID, and passport.</li>
+<li>The child's passport with a valid visa, or the child's iqama.</li>
+<li>The birth certificate, attested and translated into Arabic.</li>
+<li>The vaccination record.</li>
+<li>School reports for the last two or three years, translated and attested if they are not in Arabic or English.</li>
+<li>The leaving certificate from the last school.</li>
+<li>Four to eight passport photos.</li>
+</ul>
+<h3>Noor, the Ministry's school system</h3>
+<p>Once your child is accepted, the school registers him or her on Noor, the Ministry of Education's system. Reports and moves up a year are recorded there. Parents sign in to Noor with Nafath to see results, attendance and assessments.</p>
+<h3>Changing school during the year</h3>
+<ol>
+<li>Make sure the new school has a place.</li>
+<li>Ask the current school for a transfer certificate.</li>
+<li>The new school completes the transfer on Noor.</li>
+</ol>
+<p>Private schools usually charge the full fee for the term you are in, so time a move for the end of a term.</p>
+<h3>Private school fees</h3>
+<p>Private schools on the Saudi track charge roughly 9,000 to 25,000 SAR a year, rising with each stage, and English-medium international tracks cost more. Uniforms, books and the school bus are extra, and the bus alone adds 3,000 SAR or more a year. Many schools give 10% off for brothers and sisters and take the fee in three instalments. Many close registration for the new year in late August, so apply in the spring or early summer.</p>
+<h2>Free Qur'an and Islamic schools</h2>
+<p>Listed alphabetically.</p>
+<table><thead><tr><th>School</th><th>Ages and length</th><th>Who can join</th><th>What it asks</th></tr></thead><tbody>
+<tr><td>Dar al-Hadith</td><td>From 11, for 6 years: 3 intermediate and 3 secondary</td><td>Children with an iqama</td><td>Reading and writing in Arabic; 2 to 3 juz memorised for intermediate, 4 to 5 for secondary; the last school certificate attested, translated into Arabic and equated at the Ministry of Education office; online registration, then a placement exam in person</td></tr>
+<tr><td>Masjid an-Nabawi halaqat</td><td>From 5, no end date</td><td>Children and adults with an iqama or any visa</td><td>A passport with visa or an iqama, and a Saudi mobile number. Register at <a href="https://reg.qm.edu.sa/">reg.qm.edu.sa</a> any time of year</td></tr>
+<tr><td>Masjid an-Nabawi Ma'had</td><td>From 12 for intermediate, from 15 for secondary, 3 years each</td><td>Iqama holders, with written consent from the sponsor</td><td>Arabic, Qur'an memorisation, a written exam and an interview. One registration window a year: see <a href="/guides/masjid-an-nabawi-institute-and-college">The Masjid an-Nabawi Institute and College</a></td></tr>
+</tbody></table>
+<ul>
+<li>Dar al-Hadith teaches the Qur'an, the Islamic sciences, Arabic, history and maths, and pays its pupils a monthly allowance. Its graduates have priority for the Islamic University. A pupil aiming for another field, such as medicine or engineering, moves to a government secondary school after intermediate.</li>
+<li>The halaqat meet after Fajr or Duha, between Asr and Maghrib, and between Maghrib and Isha, and some classes run online. They give small rewards for passed memorisation exams, paid into a bank account, so keep an IBAN letter from your bank ready.</li>
+</ul>
 <h2>Qur'an circles</h2>
-<p>Most neighbourhood masjids run Tahfidh al-Qur'an circles after Asr or Maghrib, usually starting with Juz 'Amma, tajweed and reading. Ask the imam of your local masjid. Masjid an-Nabawi also runs halaqat for children.</p>`,
+<p>Most neighbourhood masjids run Tahfidh al-Qur'an circles after Asr or Maghrib, usually starting with Juz 'Amma, tajweed and reading. Ask the imam of your local masjid. Masjid an-Nabawi also runs halaqat for children (above).</p>`,
   },
   {
     slug: "umrah-rawdah-quba",
@@ -233,7 +273,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Install the <strong>Nusuk</strong> app and sign in.</li>
 <li>Book a Rawdah slot. The permit is free and is issued straight away. Residents sign in with Nafath. Slots open in advance and go quickly, and the app shows how many permits you can book. Men and women have separate times.</li>
 <li>If no slot is free, join the waiting list in the app, or keep the app open with location on when you are at the masjid, because same-day slots are released for people nearby.</li>
-<li>Arrive at the time on your booking and follow the stewards.</li>
+<li>A day before your slot, Nusuk sends a reminder asking you to confirm or cancel. Confirm it, or cancel so the place goes to someone else.</li>
+<li>Arrive at the time on your booking and follow the stewards. The barcode on the permit opens the automatic gates only at your slot time, and people with special needs have their own path.</li>
 <li>Pray two rak'ahs and make du'a calmly, then make room for others.</li>
 </ol>
 <h2>Al-Baqi'</h2>
@@ -244,6 +285,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Enter ihram at the miqat.</strong> For people leaving Madinah it is Dhul Hulayfah (Abyar Ali), about 14 km from the Prophet's Mosque on the road to Makkah. Buses and cars stop there.</li>
 <li><strong>Travel to Makkah,</strong> about 420 km away: around 2 hours 20 minutes on the Haramain train (base fare 162 SAR plus VAT) or 4.5 to 5 hours by road. See "Getting around Madinah, and to Makkah" for the options.</li>
 </ol>
+<p>Every valid Saudi visa allows Umrah with a Nusuk permit, the tourist eVisa and the family visit visa included. From 1 Dhul Qa'dah 1448 (8 April 2027) Umrah permits stop for the Hajj season. Relatives coming on an Umrah visa keep to that visa's own season dates: see <a href="/guides/bringing-parents-to-visit">Bringing your parents to visit Madinah</a>.</p>
+<p>Wheelchairs are lent free at Masjid al-Haram too, round the clock. Any Haram worker will point you to the nearest collection point. Register your name, and return the chair straight after your Umrah.</p>
 <blockquote><p>Tip: Umrah in Ramadan is equal in reward to Hajj, so trains and buses fill up. Book well ahead.</p></blockquote>`,
   },
   {
@@ -688,7 +731,7 @@ export const GUIDES_2026: SeedGuide[] = [
     slug: "phone-sims-and-absher",
     stage: "getting-settled",
     title: "Your phone number, SIM checks and Absher",
-    summary: "Find your own number and balance, see how many SIMs are registered on your iqama, remove one you do not know, and update your Absher mobile number.",
+    summary: "Find your own number and balance, see how many SIMs are registered on your iqama, remove one you do not know, update your Absher mobile number, activate Absher, and move a SIM to someone else's name.",
     bodyHtml: `
 <p>Checked November 2026. Operators sometimes change their codes, so ask the operator if one stops working.</p>
 <h2>Codes for your own number and balance</h2>
@@ -722,7 +765,17 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Nafath app:</strong> open Digital Identity Account Management, choose Digital Identity Mobile Number Update, enter the details and finish the biometric check.</li>
 <li><strong>Absher kiosk</strong> (at Jawazat offices, malls, airports and government service centres): choose your language, enter your iqama or ID number, choose Update Mobile Number, scan your fingerprint, then enter the new number and the code sent to it. This is the way to go if you no longer have your old number.</li>
 </ul>
-<p>Trouble activating Absher or Nafath in the first place? See the FAQ on activation problems.</p>`,
+<h2>Activating Absher</h2>
+<p>After you register on Absher with your iqama or border number, a Saudi mobile number in your name and an email, the account must be activated with your fingerprints. There are three ways:</p>
+<ol>
+<li><strong>In the Nafath app:</strong> open the settings, choose to activate your national digital identity through Absher self service, sign in with your Absher user name and password, enter the details it asks for, then capture the fingerprints of your left hand with the phone's camera. Sign in to Absher afterwards to check the account shows as active.</li>
+<li><strong>At a self-service Absher kiosk</strong> (at Jawazat offices, malls, airports and government service centres): enter your iqama or border number, scan your fingerprints and confirm with the code sent to your registered mobile.</li>
+<li><strong>At a Jawazat office,</strong> with an appointment booked in Absher.</li>
+</ol>
+<p>Trouble activating Absher or Nafath in the first place? See <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a>.</p>
+<h2>Moving a SIM to someone else's name</h2>
+<p>A line registered on your iqama stays your responsibility until it is moved or cancelled. To hand a SIM to someone, both of you go to a branch of the operator with your iqamas and your Absher-registered numbers, and the line is moved to the new owner's name there. Some operators also let the owner start the transfer in their app, and the new owner accepts it within 24 hours with Nafath. Then check Mutasil to confirm the line has left your iqama.</p>
+<p>Other checks that need no sign-in, such as your border number and your visa dates, are in <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>`,
   },
   {
     slug: "iqama-and-exit-reentry-fees",
