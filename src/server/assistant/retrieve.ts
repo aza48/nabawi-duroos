@@ -7,6 +7,8 @@ const STOP = new Set(
   (
     "a an and are as at be been but by can could did do does doing for from get got had has have how i if in into is it its me my of on or our should so than that the their them then there these they this to too up us was we were what when where which who whom why will with would you your " +
     "please tell know need want any some much many about anyone also just like there's whats what's hi hello salam assalamu alaikum asalamualaikum jazakallah thanks thank madinah medina " +
+    // Verbs and words that fit any topic: they must not decide which page answers.
+    "happen happens happening best good get getting got find finding see seeing use using available possible way ways go going come coming able allowed buy buying " +
     "ما ماذا كيف هل من في على الى إلى عن مع هو هي انا أنا او أو ثم لو كان يكون اريد أريد ممكن عندي لي كم اين متى المدينه المنوره مدينه"
   )
     .split(" ")
