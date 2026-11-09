@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { metaTitle } from "@/lib/text";
+import { metaDescription, metaTitle } from "@/lib/text";
 import { getDb } from "@/server/db/client";
 import { getFaq, listFaqs, listGuides } from "@/server/content/queries";
 import { getWhatsAppUrl } from "@/server/settings";
@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const alternates = t.answerInArabic
     ? { canonical: `/ar/ask/${slug}`, languages: { en: `/ask/${slug}`, ar: `/ar/ask/${slug}`, "x-default": `/ask/${slug}` } }
     : { canonical: `/ask/${slug}` };
-  return { title: metaTitle(t.question), alternates };
+  const description = t.answerInArabic ? metaDescription(t.answerHtml.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ") || t.question) : undefined;
+  return { title: metaTitle(t.question), ...(description ? { description } : {}), alternates };
 }
 
 export default async function Page({ params }: Props) {

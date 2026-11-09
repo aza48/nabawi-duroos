@@ -339,7 +339,7 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
         <article className={isCalendar ? "min-w-0" : "min-w-0 max-w-3xl"}>
           {ar && !isCalendar && !gt.bodyInArabic && <EnglishNote className="mb-6" />}
           <div {...(ar && !isCalendar ? textAttrs(gt.bodyInArabic, locale) : {})}>
-            {guide.slug === "university-calendar-1448" ? <UniversityCalendar locale={locale} /> : <GuideBody html={html} slug={guide.slug} steps={steps} locale={ar ? "ar" : "en"} />}
+            {guide.slug === "university-calendar-1448" ? <UniversityCalendar locale={locale} /> : <GuideBody html={html} slug={gt.bodyInArabic ? `${guide.slug}.ar` : guide.slug} steps={steps} locale={ar ? "ar" : "en"} />}
           </div>
           <div className={isCalendar ? "max-w-3xl" : undefined}>
             <AdminHelp locale={locale} className="mt-6" />
