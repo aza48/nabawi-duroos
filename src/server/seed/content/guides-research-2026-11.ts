@@ -691,7 +691,9 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Go to the branch at your appointment with the payment receipt and the stamped copies.</li>
 </ol>
 <blockquote><p>Tip: Pay straight after booking. An unpaid appointment is cancelled.</p></blockquote>
-<p>Your own country can also want the documents legalised by its embassy in Riyadh or its consulate in Jeddah. Requirements differ from country to country, so read your embassy's website first. Take the documents legalised by the Ministry of Foreign Affairs and copies of your passport, student card and Visitor ID or iqama, and register online beforehand if your embassy asks you to. Do this before your clearance and ticket, because once your final exit is issued your time in the Kingdom is short.</p>
+<p>Saudi Post also carries documents to the Ministry of Foreign Affairs and brings them back legalised, for a fee, so you can skip the branch visit: ask at any Saudi Post branch.</p>
+<p><strong>Apostille or embassy?</strong> Saudi Arabia has been part of the Hague Apostille Convention since December 2022. If your own country is also a member (most of Europe, the UK, the US, Australia, India, Pakistan, Indonesia, Malaysia and South Africa are), an apostille from the Ministry of Foreign Affairs is all your documents need and your embassy has no part to play. Ask for the apostille, not the legalisation stamp, when you file the request.</p>
+<p>If your country is not a member, it can also want the documents legalised by its embassy in Riyadh or its consulate in Jeddah. Requirements differ from country to country, so read your embassy's website first. Take the documents legalised by the Ministry of Foreign Affairs and copies of your passport, student card and Visitor ID or iqama, and register online beforehand if your embassy asks you to. Do this before your clearance and ticket, because once your final exit is issued your time in the Kingdom is short.</p>
 <h2>7. The graduation allowance, bisht and gifts</h2>
 <ul>
 <li><strong>Graduation allowance:</strong> full (external) scholarship students receive a graduation allowance of three months' stipend, for shipping their books home, once the University has confirmed their clearance. It lands in the same account as your stipend, so keep that account open until it arrives. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
@@ -700,13 +702,13 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h2>8. Leaving the Kingdom: final exit on an iqama, or on a Visitor ID</h2>
 <p>How you leave depends on what you hold.</p>
 <table><thead><tr><th>Topic</th><th>Iqama</th><th>Visitor ID (educational visa)</th></tr></thead><tbody>
-<tr><td><strong>What is issued</strong></td><td>A final exit visa (خروج نهائي). It is free, it cancels your iqama when you cross the border, and you leave within its validity</td><td>Nothing to issue. Your educational visa ends when you leave, so you must leave before it expires</td></tr>
+<tr><td><strong>What is issued</strong></td><td>A final exit visa (خروج نهائي). It is free, it is valid for 60 days from the day it is issued, it needs at least 30 days left on your iqama, and it cancels the iqama when you cross the border</td><td>Nothing to issue. Your educational visa ends when you leave, so you must leave before it expires</td></tr>
 <tr><td><strong>Who issues it</strong></td><td>Travel Management, as your sponsor, once your clearance shows. Send a request through Tawasul if it has not moved a week after your clearance</td><td>Ask Travel Management through Tawasul what clearance it needs from you, then book</td></tr>
 <tr><td><strong>Your family</strong></td><td>You issue your dependants' final exit yourself in Absher: Services, then Passports, then Visa services, then Final exit visa. Their iqamas must be valid and their fines paid</td><td>Family on visit visas leave with you or before their own visas expire</td></tr>
 <tr><td><strong>What blocks it</strong></td><td colspan="2">Unpaid traffic fines, a car still registered in your name, a dependant with an unpaid fine or an expired iqama, and a passport close to expiry. Clear all of these first</td></tr>
 <tr><td><strong>Coming back</strong></td><td colspan="2">Your scholarship ends when you graduate and you agreed on admission to go home. You can return later on a new visa of your own, for example an Umrah or tourist visa, and students admitted to graduate studies arrive on a new educational visa</td></tr>
 </tbody></table>
-<blockquote><p>Note: A final exit visa has a validity window. Do not let it be issued before your ticket date is fixed and your bank, flat and car are settled, because once it is issued the clock is running.</p></blockquote>
+<blockquote><p>Note: The 60 days start on the day the visa is issued, not the day you choose to fly. Do not let it be issued before your ticket date is fixed and your bank, flat and car are settled. A fine recorded after the visa is issued can still stop you at the airport, so check Absher once more the day before.</p></blockquote>
 <h2>9. Your ticket home</h2>
 <ol>
 <li>Finish everything above first, including the embassy, before you book.</li>
@@ -728,25 +730,25 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h2>11. Your phone and SIMs</h2>
 <ol>
 <li><strong>See every line registered to you</strong> in Mutasil or the CST app, and cancel the ones you do not need with their operator. A forgotten line stays on your record. Steps are in <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a>.</li>
-<li><strong>Keep one line alive</strong> for a few months after you leave, on roaming or with a small top-up, because your bank, Absher and Etimad send their codes to it. Move your bank to app-based approval before you go if your bank offers it.</li>
+<li><strong>Do not count on a Saudi number after you leave.</strong> Operators treat a final departure as grounds to cancel a line, and a cancelled number loses its balance and goes to someone else. Finish everything that needs a code first: the bank transfers, the final exit printout, your Absher records. If you keep one line, keep it topped up and on roaming, and move your bank to app-based approval before you go if your bank offers it.</li>
 <li><strong>Save what lives on the number:</strong> export your WhatsApp chats and tell your groups your new number before the Saudi one dies.</li>
 </ol>
 <h2>12. Your flat: handover, deposit, electricity and water</h2>
 <p>If you rented in the city, your contract decides the notice you must give. Most are for a year, and an early exit needs the landlord's agreement, so tell the landlord in writing as early as you can.</p>
 <ol>
-<li><strong>Give notice</strong> in the way your contract says. On Ejar, the contract ends on its date, or both sides end it early through Ejar's free service for ending a contract by agreement.</li>
+<li><strong>Give notice</strong> in the way your contract says. An Ejar contract that renews by itself needs 60 days' written notice. Leaving before the end date needs both sides to agree: either of you starts the termination in Ejar and the other approves it, and many contracts charge one or two months' rent for an early exit, so read that clause first.</li>
 <li><strong>Take dated photos</strong> of every room on the day you hand over, with the meters in shot.</li>
-<li><strong>Sign the handover</strong> with the landlord or agent. On Ejar the handover form is digital, and your deposit, which Ejar holds in its own account, is released when both sides sign. Only documented damage you caused can be deducted, not ordinary wear.</li>
+<li><strong>Sign the handover</strong> with the landlord or agent, and fill in the move-out form in Ejar within seven days of the end date. Your deposit, which Ejar holds in its own account, is released when both sides sign. Only documented damage you caused can be deducted, not ordinary wear.</li>
 <li><strong>Settle electricity:</strong> pay the last bill in the Saudi Energy app and remove yourself from the meter under Account management, so later bills go to the owner.</li>
 <li><strong>Settle water:</strong> pay the last bill in the National Water Company app. A rented property's meter goes back to the owner's name when the contract ends.</li>
 <li><strong>Return the router</strong> and end the home internet contract with the operator, or the monthly charge continues.</li>
 </ol>
-<p>If anything is withheld without a reason, Ejar has a mediation route through its dashboard before any court. See <a href="/guides/finding-an-apartment">Finding and renting a flat</a>.</p>
+<p>If anything is withheld without a reason, open a rental dispute from your Ejar dashboard, or call Ejar on 199011. Nothing in Ejar depends on the landlord's goodwill when the contract and the move-out form are filled in properly. See <a href="/guides/finding-an-apartment">Finding and renting a flat</a>.</p>
 <h2>13. Your things: sell, give, ship</h2>
 <p>Decide early, because the last week is for paperwork, not for selling a fridge.</p>
 <h3>Sell or give away</h3>
 <ul>
-<li><strong>Where to sell:</strong> Haraj, the notice boards and group chats of the halls, and the second-hand furniture shops in the city, which also buy. New students arrive every August and want exactly what you are selling.</li>
+<li><strong>Where to sell:</strong> Haraj (it takes 1% from the seller on sales made through the site), the notice boards and group chats of the halls and your college, and the second-hand furniture shops at the end of Imam Bukhari Street, which buy as well as sell. New students arrive every August and want exactly what you are selling. Take payment by a transfer you see arrive before the item leaves the flat.</li>
 <li><strong>Price it to go.</strong> As of late 2026, a used sofa set or washing machine goes for a few hundred riyals, a single mattress for under a hundred, and buyers expect to collect. A pickup van, flagged down on the road or booked by phone, carries a mattress or a fridge across the city for a few tens of riyals.</li>
 <li><strong>Give the rest away.</strong> Charities in Madinah collect usable furniture and appliances, and a new student in your hall will be glad of your desk lamp.</li>
 </ul>
@@ -761,12 +763,12 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h3>Ship your books</h3>
 <p>Books are the heaviest thing a student owns, and the graduation allowance exists for exactly this. Compare these ways, and weigh your boxes before you choose.</p>
 <table><thead><tr><th>Way</th><th>Good for</th><th>What to know</th></tr></thead><tbody>
-<tr><td>Your checked baggage</td><td>Up to two bags on the University ticket</td><td>Often the cheapest for the first 40 to 50 kg. Buy an extra bag from the airline before the flight, not at the counter</td></tr>
-<tr><td>SPL (Saudi Post)</td><td>Boxes up to 30 kg, door to door</td><td>Priced by weight and country in SPL's price calculator. As of 2025 a 30 kg express parcel costs from under 300 SAR to South Asia to about 750 SAR to Europe and North America</td></tr>
+<tr><td>Your checked baggage</td><td>Up to two bags on the University ticket</td><td>Often the cheapest for the first 40 to 50 kg. As of November 2026 Saudia allows 23 kg a bag in economy and charges 138 SAR a bag between 23 and 32 kg. Buy an extra bag from the airline online before the flight, not at the counter</td></tr>
+<tr><td>SPL (Saudi Post)</td><td>Boxes up to 30 kg</td><td>Economy is delivered to the post office nearest the receiver, Express and Sea Freight to the door. Priced by weight and country in SPL's price calculator. As of 2025 a 30 kg express parcel costs from under 300 SAR to South Asia to about 750 SAR to Europe and North America. Customer service 19992</td></tr>
 <tr><td>Courier companies</td><td>Faster, tracked, any weight</td><td>Aramex, DHL, FedEx, SMSA and UPS all ship from Madinah. Ask each for a quote by weight, and ask about a books or student rate</td></tr>
 <tr><td>Sea cargo</td><td>Many boxes to Africa or Asia</td><td>Cargo offices in the city ship by the box or the cubic metre. Slow, but far cheaper per kilo for a whole library</td></tr>
 </tbody></table>
-<p>Pack books in small strong boxes of about 20 to 30 kg, write your name and destination inside the lid as well as outside, keep the shipping receipts until the boxes arrive, and check your own country's customs rules for printed books before you send. The campus has a travel and shipping office that quotes for students.</p>
+<p>Pack books in small double-walled boxes of 20 to 25 kg, because a 30 kg box of books splits and hurts whoever carries it. Put the heaviest flat at the bottom, fill gaps with clothes, tape every seam, and write your name, phone and destination on two sides and inside the lid. Carriers charge the greater of the real weight and the volumetric weight (length by width by height in centimetres, divided by 5,000), so a half-empty big box costs as much as a full one. List the contents of each box with an honest value: it goes on the customs form and it is your claim if a box is lost. Printed books carry no customs duty in most countries, including the UK and the US, and the campus has a travel and shipping office that quotes for students. </p>
 <h2>14. Your children's school papers</h2>
 <ol>
 <li>Ask the school for a transfer certificate and the report cards of every year, and settle any fees first, because schools release papers only to a clear account.</li>
@@ -789,7 +791,8 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Scholarship students agree when they are admitted to go home on graduating. You cannot stay on in the Kingdom on the scholarship after your studies end.</li>
 <li>Employers and other universities can check your degree on the University's graduation document verification service. See <a href="/ask/degree-collection-and-verification">Can someone else collect my degree certificate, and how can an employer check it?</a></li>
 <li>Your Absher account stays yours. Keep its password and the phone number it uses, because you need it if you ever return.</li>
-<li>Stay in touch with your teachers and your hall. The du'a of a student for his shaykh, and of a shaykh for his student, does not stop at the border.</li>
+<li>Visit your teachers before the last week, ask those who taught you for a tazkiyah (a letter of recommendation), and keep the contact details of your mashayikh, your college office and your friends. The du'a of a student for his shaykh, and of a shaykh for his student, does not stop at the border.</li>
+<li>Make a last visit to the Prophet's Mosque with time to spare, give salam at the grave, pray in Quba, and visit al-Baqi'.</li>
 </ul>
 <p>May Allah grant success to every graduate.</p>
 <blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,

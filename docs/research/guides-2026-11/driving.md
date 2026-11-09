@@ -20,8 +20,18 @@ Also checked: the owner's lead, gomedine.com "Comment changer son permis en saou
 | Saher cameras and mobile cameras in bus lanes in Madinah | `group-chat-2026.md` 1.7 (7 and 15 Oct 2026, 4 people) | 2026 | Medium |
 | Renting: usually 21 or over, licence in English or Arabic or an IDP, credit card in the renter's name, fines charged to the renter | https://car-rental.sixt.com/php/terms/view?liso=SA , https://rideoon.com/blog/can-a-tourist-rent-a-car-in-saudi-arabia , https://blog.yahmarentacar.com/post/car-rental-terms-for-foreigners-in-ksa | 2024 to 2026 | High for the pattern, written as "the usual conditions" |
 
+## Folded in from the research pass's draft (`drivers-license.md`, commit `da21814`)
+
+| Fact on the page | Source (see that file's table) | Confidence |
+|---|---|---|
+| Visitors and Visitor ID holders drive on a valid home licence for one year from entry or until it expires | General Directorate of Traffic as quoted by saudiauto.com.sa and expatfocus.com | Medium to High |
+| International Driving Permits issued in Gulf states are not accepted | platinumlist.net guide; ksaexpats.com | Medium |
+| The model driving school in Madinah has a separate women's section with women instructors | the school's own pages (almadinahg.model-drivingschool.com, model-drivingschool.help) and its X account | High |
+| Translation 50 to 100 SAR; school courses about 700 to 2,800 SAR (as of 2026) | wathim.com guide; saudidrivers.com (Dallah list prices) | Medium |
+| The licence cannot outlast the iqama; lost card replaced in Absher; restriction codes | Absher driving licence services | High |
+| Petrol 2.18 and 2.33 SAR a litre (Nov 2026) | existing guide `getting-around` | High |
+
 ## Left off the page (open questions added)
 
 - How long a new iqama holder can keep driving on the foreign licence before the swap (three months and one year are both quoted). The page keeps the earlier "plan to switch within three months" as advice.
-- Where women train and test in Madinah (whether the model school has a women's section).
 - The exact speeding tiers and the points per violation.

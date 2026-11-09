@@ -397,11 +397,19 @@ export const GUIDES_2026: SeedGuide[] = [
     bodyHtml: `
 <p>Checked November 2026. Madinah is an easy city to drive in: wide roads, cheap fuel, and parking at the Haram that fills only on Fridays and in Ramadan. What you need in order to drive depends on what you hold.</p>
 <table><thead><tr><th>You hold</th><th>You can drive on</th><th>A Saudi licence</th><th>Buying a car</th></tr></thead><tbody>
-<tr><td>A visit or tourist visa</td><td>Your home licence while it is recognised, with an International Driving Permit if it is not in English or Arabic</td><td>No</td><td>No. Rent instead</td></tr>
-<tr><td>A Visitor ID (educational visa)</td><td>Your home licence while it is recognised, with an International Driving Permit</td><td>No. The swap and the driving school both need an iqama</td><td>No. Rent instead</td></tr>
+<tr><td>A visit or tourist visa</td><td>Your valid home licence, with an International Driving Permit if it is not in English or Arabic, for one year from the day you entered or until the licence expires, whichever comes first</td><td>No</td><td>No. Rent instead</td></tr>
+<tr><td>A Visitor ID (educational visa)</td><td>Your valid home licence and an International Driving Permit, for the same one year from entry</td><td>No. The swap and the driving school both need an iqama</td><td>No. Rent instead</td></tr>
 <tr><td>An iqama</td><td>Your home licence for a short period after the iqama is issued</td><td>Yes: swap your licence or go through the driving school</td><td>Yes</td></tr>
 </tbody></table>
-<p>Women have driven in Saudi Arabia since June 2018, on the same licence and through the same steps as men.</p>
+<p>Always carry the original licence, not a photo, and the class on it must match the car. An International Driving Permit is a translation of your licence, not a licence in itself, so it is valid only with the original, and permits issued in the Gulf states are not accepted here.</p>
+<p>Women have driven in Saudi Arabia since June 2018, on the same licence, at the same fees and through the same steps as men. The model driving school in Madinah has a separate women's section with women instructors, and no husband or mahram is needed for any step.</p>
+<h2>What it costs</h2>
+<table><thead><tr><th>Item</th><th>Cost (SAR), as of November 2026</th><th>Paid to</th></tr></thead><tbody>
+<tr><td>Private licence, 40 a year</td><td>80 for 2 years, 200 for 5, 400 for 10</td><td>Government payments in your banking app (SADAD)</td></tr>
+<tr><td>Efada medical check</td><td>60 to 200</td><td>The approved clinic</td></tr>
+<tr><td>Certified Arabic translation of your licence</td><td>50 to 100</td><td>A certified translation office, often online</td></tr>
+<tr><td>Driving school training, if you need it</td><td>About 700 for the shortest course to about 2,800 for the 30-hour beginners' course</td><td>The school, after its assessment sets your hours</td></tr>
+</tbody></table>
 <h2>Swapping your foreign licence (iqama holders)</h2>
 <p>Holders of licences from a list of countries, including the Gulf states, the UK, the US, Canada, Australia and most of Europe, swap without going through the driving school's course. At the appointment the school checks the licence and can ask you to drive a short assessment. Others are sent to the driving school's training and test. Your licence must be valid, a full licence and not a learner's or provisional one, and plan to switch within three months of your iqama being issued.</p>
 <ol>
@@ -425,9 +433,14 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Do the driving assessment. It decides how many training hours you are given, from about six hours for a confident driver up to thirty for a beginner.</li>
 <li>Pass the practical test, pay the licence fee as above, and collect the licence or have it delivered.</li>
 </ol>
-<p>As of November 2026 the school's fees run from a few hundred riyals for the shortest course to about 2,500 SAR for the full beginner's course, on top of the medical and the licence fee.</p>
-<h2>Renewing your licence</h2>
-<p>Renew in Absher under Services, then Traffic, then Driving licence services, once the licence is in its last months. You need a fresh Efada medical report on the system, every traffic fine paid, and the fee for the years you choose. The new card can be delivered to your National Address.</p>
+<p>The school's fees are in the table above, on top of the medical and the licence fee. Free practice tests for the theory exam are online in English.</p>
+<h2>Renewing, losing and reading your licence</h2>
+<ul>
+<li>Renew in Absher under Services, then Traffic, then Driving licence services, once the licence is in its last months. You need a fresh Efada medical report on the system, every traffic fine paid, and the fee for the years you choose. The new card can be delivered to your National Address.</li>
+<li>The licence cannot outlast your iqama, so a short iqama gives a short licence.</li>
+<li>A lost or damaged card is replaced in Absher under the same menu, for a fee shown before you pay.</li>
+<li>A number printed under restrictions is a condition, for example that glasses or contact lenses must be worn.</li>
+</ul>
 <h2>Insurance and accidents</h2>
 <ul>
 <li><strong>Third-party insurance is the law.</strong> Every car must have it, and Absher will not register a car to you, or transfer one, without a policy in your name. Comprehensive cover for your own car is optional, and a bank that finances a car insists on it.</li>
@@ -452,7 +465,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>With an iqama you can buy a used car and transfer it to your name in Absher. The checks to make before you pay, and the steps, are in <a href="/ask/buying-a-used-car">Can I buy a used car as a student, and what do I need?</a>. When you leave the Kingdom, sell it first: a car in your name blocks a final exit. See <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
 <h2>Driving well in Madinah</h2>
 <ul>
-<li>Fuel is sold by the litre at every station, and most take cards and phone payment.</li>
+<li>Fuel is sold by the litre at every station, 2.18 SAR for 91 and 2.33 SAR for 95 as of November 2026, and most stations take cards and phone payment.</li>
 <li>The ring roads are fast. Inside the central area around the Haram, speed limits drop and the cameras are frequent.</li>
 <li>Friday before Jumu'ah, Ramadan nights and the days around Eid are the only times parking near the Haram is hard. The car parks under the courtyards fill first.</li>
 <li>For Makkah, the Haramain train and the coaches are cheaper and calmer than driving: see <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</li>
@@ -665,7 +678,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Pay the fee shown through SADAD in your banking app, then return to Absher to issue the visa and download it.</li>
 </ol>
 <h2>Final exit</h2>
-<p>A final exit visa is free. It cancels the iqama when the holder crosses the border, so it is the last paper you take, after the bank, the car and the flat are settled. It is refused while there are unpaid fines, a car registered in the person's name, or a dependant left behind on an unsettled iqama. Returning later means a new visa of your own. The whole leaving process is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
+<p>A final exit visa is free. It is valid for 60 days from the day it is issued, the iqama must have at least 30 days left, and it cancels the iqama when the holder crosses the border, so it is the last paper you take, after the bank, the car and the flat are settled. It is refused while there are unpaid fines, a car registered in the person's name, or a dependant left behind on an unsettled iqama. Returning later means a new visa of your own. The whole leaving process is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
 <h2>Adding family</h2>
 <ul>
 <li>Adding a dependant, or a newborn born inside Saudi Arabia, is done on Absher, which shows any fee before you pay. Register a birth promptly: a late birth certificate carries a fine and holds up the iqama renewal.</li>

@@ -695,19 +695,9 @@
   "context": "Sources disagree. The driving guide tells readers to plan the swap within three months of the iqama. Written by akhiai, 9 November 2026."
  },
  {
-  "topic": "Driving",
-  "question": "Where do women train and sit the driving test in Madinah: does the model driving school in Al-Aqoul have a women's section, or is there a separate school?",
-  "context": "The driving guide says women go through the same steps but names no women's school."
- },
- {
   "topic": "Leaving",
   "question": "Are SIM cards registered to an iqama cut off automatically on final exit, and can a line be kept on roaming afterwards for bank and Absher codes?",
   "context": "No official statement found. The leaving guide tells readers to cancel spare lines themselves and keep one line alive."
- },
- {
-  "topic": "Leaving",
-  "question": "What minimum passport validity and iqama validity does Jawazat require before a final exit visa is issued (60 days on the passport is quoted)?",
-  "context": "The leaving guide says only that a passport close to expiry blocks it."
  },
  {
   "topic": "Leaving",
@@ -728,5 +718,10 @@
   "topic": "University",
   "question": "Through which portal or form is the yearly summer ticket requested (the Reception Unit page names 'the travel ticket program' without a link), and what is the usual request window?",
   "context": "The Etimad guide says Travel Management collects the travel lists before the summer break."
+ },
+ {
+  "topic": "Leaving",
+  "question": "What minimum passport validity does Jawazat require before a final exit visa is issued (60 days is quoted)?",
+  "context": "The iqama rule (30 days left) and the visa validity (60 days) are confirmed; the passport rule is not."
  }
 ]

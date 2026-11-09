@@ -27,6 +27,20 @@ Same slug and stage (`leaving`), new title and summary. The ten University steps
 | School leaving papers: transfer certificate and report cards; Ministry of Education attestation for a move abroad takes about a month | A Riyadh international school's transfer certificate form (https://www.new-meis.com/sites/default/files/Documents/TC%20application-IGCSE%202023,%20JAN.pdf) and https://goschools.ai/en/insights/how-to-transfer-your-child-from-one-school-to-another-in-saudi-arabia | 2023, 2025 | Medium |
 | Children's vaccination record in Sehhaty | Already on the site (FAQ `baby-vaccinations`) | | High |
 
+## Folded in from the research pass's draft (`leaving-madinah-for-good.md`, commit `da21814`)
+
+| Fact on the page | Source (see that file's table) | Confidence |
+|---|---|---|
+| Final exit visa valid 60 days from issue; iqama needs 30 days left | KPMG flash alert 2026-164 (Jawazat clarification, June 2026); SPA N2240177 (Jan 2025) | High |
+| Saudi Arabia in the Hague Apostille Convention since 7 December 2022; apostille replaces embassy legalisation for member countries | hcch.net news 887 | High |
+| Saudi Post carries documents to the Ministry of Foreign Affairs for legalisation | splonline.com.sa services catalogue (MOFA service) | High |
+| stc terms: final departure is a ground to cancel a line; a cancelled number loses its balance | stc mobile terms and conditions, items 6-6, 6-14, 6-15 | High |
+| Ejar: 60 days' notice on a self-renewing contract; move-out form within 7 days; helpline 199011; mutual termination service | rega.gov.sa termination service; ejar.sa FAQs | High |
+| Haraj takes 1% from the seller; furniture shops at the end of Imam Bukhari Street | haraj.com.sa commission page; group chat row 136 | High, Medium |
+| SPL Economy to the nearest post office, Express and Sea Freight to the door; 19992; volumetric weight L x W x H / 5,000 | splonline.com.sa FAQ, economy, sea freight and price calculator pages | High |
+| Saudia economy 23 kg a bag, 138 SAR a bag between 23 and 32 kg (as of Nov 2026) | saudia.com baggage allowances | High |
+| Printed books duty free in the UK and US; ZATCA's departing declaration list does not include books | HMRC notice 701/10; USITC HTS 4901; zatca.gov.sa eServices 217 | High |
+
 ## Left off the page (open questions added)
 
 - Whether SIMs on an iqama are cut automatically on final exit (no official statement found; forum reports differ).
