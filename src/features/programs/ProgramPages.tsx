@@ -15,6 +15,7 @@ const HIGHLIGHT = "map";
 const GLEAM =
   "border-[color-mix(in_srgb,#8b5cf6_35%,var(--border))] bg-[linear-gradient(135deg,var(--card)_55%,color-mix(in_srgb,#8b5cf6_9%,var(--card)))] shadow-[0_10px_28px_-16px_rgba(124,58,237,0.45)] hover:border-[color-mix(in_srgb,#8b5cf6_60%,var(--border))]";
 import type { Locale } from "@/lib/locale";
+import { arDigits } from "@/lib/arabic-count";
 
 const AUDIENCE: Record<Audience, { label: string; ar: string; icon: typeof User }> = {
   men: { label: "Brothers", ar: "الإخوة", icon: User },
@@ -28,8 +29,8 @@ const checkedOn = (iso: string, locale: Locale = "en") =>
   new Intl.DateTimeFormat(locale === "ar" ? "ar-SA-u-ca-gregory-nu-latn" : "en-GB", { month: "long", year: "numeric" }).format(new Date(iso));
 
 const T = {
-  en: { title: "Study in Madinah", sub: "Arabic institutes, degrees, sisters' marakiz and Haram halaqat, with fees, dates and how to apply.", next: "Next intake:", note: "MESH is run by students and is not connected to any institute listed here. Programmes are listed in alphabetical order, each with the date it was last checked. Fees and dates change, so confirm with the institute before you pay, and tell us in the WhatsApp group if something is out of date.", overview: "Overview", levels: "Levels", fees: "Fees and what's included", apply: "How to apply", videos: "Videos", contact: "Contact and links", checked: "Last checked by MESH:", confirm: "Fees and dates change, so confirm with the institute before paying.", base: "" },
-  ar: { title: "الدراسة في المدينة", sub: "معاهد اللغة العربية والدرجات الجامعية ومراكز الأخوات وحلقات المسجد النبوي، مع الرسوم والمواعيد وطريقة التسجيل.", next: "الدفعة القادمة:", note: "يدير MESH طلابٌ، ولا صلة له بأي معهد مذكور هنا. البرامج مرتبة أبجديًا، ولكل برنامج تاريخ آخر مراجعة. الرسوم والمواعيد تتغير، فتأكد من المعهد قبل الدفع، وأخبرنا في مجموعة واتساب إن وجدت معلومة قديمة.", overview: "نظرة عامة", levels: "المستويات", fees: "الرسوم وما تشمله", apply: "طريقة التسجيل", videos: "مقاطع مرئية", contact: "التواصل والروابط", checked: "آخر مراجعة من MESH:", confirm: "الرسوم والمواعيد تتغير، فتأكد من المعهد قبل الدفع.", base: "/ar" },
+  en: { title: "Study in Madinah", sub: "Arabic institutes, degrees, sisters' marakiz and Haram halaqat, with fees, dates and how to apply.", next: "Next intake:", note: "MESH is run by students and is not connected to any institute listed here. Programmes are listed in alphabetical order, each with the date it was last checked. Fees and dates change, so confirm with the institute before you pay. Something out of date? Message Admin on WhatsApp at +1 234 567 9076.", overview: "Overview", levels: "Levels", fees: "Fees and what's included", apply: "How to apply", videos: "Videos", contact: "Contact and links", checked: "Last checked by MESH:", confirm: "Fees and dates change, so confirm with the institute before paying.", base: "" },
+  ar: { title: "الدراسة في المدينة", sub: "معاهد اللغة العربية والدرجات الجامعية ومراكز الأخوات وحلقات المسجد النبوي، مع الرسوم والمواعيد وطريقة التسجيل.", next: "الدفعة القادمة:", note: "يدير MESH طلابٌ، ولا صلة له بأي معهد مذكور هنا. البرامج مرتبة أبجديًا، ولكل برنامج تاريخ آخر مراجعة. الرسوم والمواعيد تتغير، فتأكد من المعهد قبل الدفع. وإن وجدت معلومة قديمة فراسل المشرف على واتساب على الرقم \u2066+1 234 567 9076\u2069.", overview: "نظرة عامة", levels: "المستويات", fees: "الرسوم وما تشمله", apply: "طريقة التسجيل", videos: "مقاطع مرئية", contact: "التواصل والروابط", checked: "آخر مراجعة من MESH:", confirm: "الرسوم والمواعيد تتغير، فتأكد من المعهد قبل الدفع.", base: "/ar" },
 };
 
 function AudienceChips({ p, light = false, locale = "en" }: { p: Program; light?: boolean; locale?: Locale }) {
@@ -59,7 +60,7 @@ export function ProgramsIndex({ locale = "en" }: { locale?: Locale }) {
         <nav aria-label={ar ? "انتقل إلى" : "Jump to"} className="flex flex-wrap gap-2">
           {PROGRAM_KINDS.filter((k) => PROGRAMS.some((p) => p.kind === k.id)).map((k) => (
             <a key={k.id} href={`#${k.id}`} className="min-h-10 rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold text-muted transition hover:text-ink">
-              {ar ? k.labelAr : k.label} <span className="tabular opacity-70">{PROGRAMS.filter((p) => p.kind === k.id).length}</span>
+              {ar ? k.labelAr : k.label} <span className="tabular opacity-70">{ar ? arDigits(PROGRAMS.filter((p) => p.kind === k.id).length) : PROGRAMS.filter((p) => p.kind === k.id).length}</span>
             </a>
           ))}
         </nav>
@@ -126,7 +127,7 @@ export function ProgramPage({ p, locale = "en" }: { p: Program; locale?: Locale 
     ...(p.levels ? [{ id: "levels", label: t.levels, content: <div {...en} className="max-w-3xl"><List items={p.levels} /></div> }] : []),
     ...(p.included ? [{ id: "fees", label: t.fees, content: <div {...en} className="max-w-3xl"><p className="mb-5 font-heading text-2xl font-bold">{p.price}</p><List items={p.included} /></div> }] : []),
     ...(p.steps ? [{ id: "apply", label: t.apply, content: <div {...en} className="max-w-3xl"><List items={p.steps} numbered /></div> }] : []),
-    ...(p.videos?.length ? [{ id: "videos", label: `${t.videos} (${p.videos.length})`, content: <div className="grid gap-5 md:grid-cols-2">{p.videos.map((v) => <VideoEmbed key={v.id} id={v.id} title={v.title} locale={locale} />)}</div> }] : []),
+    ...(p.videos?.length ? [{ id: "videos", label: `${t.videos} (${locale === "ar" ? arDigits(p.videos.length) : p.videos.length})`, content: <div className="grid gap-5 md:grid-cols-2">{p.videos.map((v) => <VideoEmbed key={v.id} id={v.id} title={v.title} locale={locale} />)}</div> }] : []),
   ];
   const ld = {
     "@context": "https://schema.org",

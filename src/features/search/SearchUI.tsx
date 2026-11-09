@@ -7,6 +7,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BadgePercent, BookOpen, CornerDownLeft, FileText, GraduationCap, Landmark, Library, MessageCircleQuestion, Search, User, X } from "lucide-react";
 import type { createSearch, SearchDoc, SearchHit, SearchType } from "@/lib/search/engine";
 import { localizeUrl } from "@/lib/locale";
+import { AdminHelp } from "@/components/shell/AdminHelp";
+import { arCount } from "@/lib/arabic-count";
 
 const TYPE: Record<SearchType, { label: string; ar: string; icon: typeof Search }> = {
   page: { label: "Pages", ar: "الصفحات", icon: FileText },
@@ -19,8 +21,8 @@ const TYPE: Record<SearchType, { label: string; ar: string; icon: typeof Search 
   discount: { label: "Discounts", ar: "الخصومات", icon: BadgePercent },
 };
 const T = {
-  en: { search: "Search", searchMesh: "Search MESH", close: "Close search", popular: "Popular searches", failed: "Search couldn't load. Check your connection and try again.", loading: "Loading search...", none: (q: string) => `Nothing found for “${q}”. Try another word, or ask in the WhatsApp group.`, all: (q: string) => `See all results for “${q}”`, placeholder: "Search duroos, guides, institutes, books... بالعربي أيضًا" },
-  ar: { search: "بحث", searchMesh: "البحث في MESH", close: "إغلاق البحث", popular: "عمليات بحث شائعة", failed: "تعذّر تحميل البحث. تحقّق من الاتصال وحاول مرة أخرى.", loading: "جارٍ تحميل البحث...", none: (q: string) => `لا نتائج لـ «${q}». جرّب كلمة أخرى، أو اسأل في مجموعة واتساب.`, all: (q: string) => `كل النتائج لـ «${q}»`, placeholder: "ابحث في الدروس والأدلة والمعاهد والكتب، بالعربية أو الإنجليزية" },
+  en: { search: "Search", searchMesh: "Search MESH", close: "Close search", popular: "Popular searches", failed: "Search couldn't load. Check your connection and try again.", loading: "Loading search...", none: (q: string) => `Nothing found for “${q}”. Try another word, or ask Admin.`, all: (q: string) => `See all results for “${q}”`, placeholder: "Search duroos, guides, institutes, books... بالعربي أيضًا" },
+  ar: { search: "بحث", searchMesh: "البحث في MESH", close: "إغلاق البحث", popular: "عمليات بحث شائعة", failed: "تعذّر تحميل البحث. تحقّق من الاتصال وحاول مرة أخرى.", loading: "جارٍ تحميل البحث...", none: (q: string) => `لا نتائج لـ «${q}». جرّب كلمة أخرى، أو اسأل المشرف.`, all: (q: string) => `كل النتائج لـ «${q}»`, placeholder: "ابحث في الدروس والأدلة والمعاهد والكتب، بالعربية أو الإنجليزية" },
 };
 const POPULAR_AR = ["الإقامة", "الرحيلي", "التأجيل", "تكلفة المعيشة", "البطاقة البنكية", "رخصة القيادة"];
 const ORDER: SearchType[] = ["page", "guide", "faq", "program", "shaykh", "dars", "library", "discount"];
@@ -55,7 +57,7 @@ export const optionId = (h: SearchHit) => `mesh-search-opt-${h.id.replace(/[^A-Z
 
 /** "12 results" for the live region. */
 export function resultsSummary(n: number, locale: "en" | "ar"): string {
-  if (locale === "ar") return n === 0 ? "لا نتائج" : n === 1 ? "نتيجة واحدة" : n === 2 ? "نتيجتان" : `${n} نتائج`;
+  if (locale === "ar") return arCount(n, "result", { zero: "لا نتائج" });
   return n === 1 ? "1 result" : `${n} results`;
 }
 
@@ -63,7 +65,13 @@ function Results({ hits, q, cursor, onPick, compact, locale = "en", listId, wide
   const groups = groupHits(hits, !!compact);
   const flat = groups.flatMap((g) => g.items);
   if (!q.trim()) return null;
-  if (!flat.length) return <p className="px-2 py-8 text-center text-muted" role="status">{T[locale].none(q)}</p>;
+  if (!flat.length)
+    return (
+      <div className="px-2 py-8 text-center">
+        <p className="text-muted" role="status">{T[locale].none(q)}</p>
+        <AdminHelp variant="line" locale={locale} path={`${locale === "ar" ? "/ar" : ""}/search?q=${encodeURIComponent(q.trim())}`} className="mt-3 text-sm" />
+      </div>
+    );
   return (
     <div id={listId} role="listbox" aria-label={T[locale].search} className={wide ? "lg:columns-2 lg:gap-8" : "space-y-5"}>
       <p className="sr-only" aria-live="polite">{resultsSummary(flat.length, locale)}</p>
@@ -193,11 +201,11 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={t.searchMesh}
-        className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-line bg-card px-3 text-sm text-muted transition hover:text-ink md:min-w-44 lg:min-w-11 xl:min-w-44"
+        className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-line bg-card px-3 text-sm text-muted transition hover:text-ink md:min-w-44 lg:min-w-11 xl:min-w-44 [:root[data-text]_&]:min-w-11"
       >
         <Search size={17} />
-        <span className="hidden md:inline lg:hidden xl:inline">{t.search}</span>
-        <kbd className="ms-auto hidden rounded-md border border-line px-1.5 text-[11px] md:inline lg:hidden xl:inline" dir="ltr">Ctrl K</kbd>
+        <span className="hidden md:inline lg:hidden xl:inline" data-hdr-label>{t.search}</span>
+        <kbd className="ms-auto hidden rounded-md border border-line px-1.5 text-[11px] md:inline lg:hidden xl:inline" dir="ltr" data-hdr-label>Ctrl K</kbd>
       </button>
       {open &&
         createPortal(
