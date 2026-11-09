@@ -43,6 +43,7 @@ Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG
   - Ramadan mode, which switches on by itself on 1 Ramadan 1448
   - loading and error states
   - the MESH gate as the app icon
+  - share images for lessons, shaykhs and answers, and print styles
 - **Arabic pages** show Arabic articles as soon as AR1 lands and its migration is applied. The page code (AR2) is already on `main`.
 - **Data waiting for a sync:**
   - the mashayikh's current positions for 26 shaykhs, with research in `docs/research/mashayikh-positions-2026-11.md`
@@ -84,8 +85,7 @@ The live list is in AI-LOG (agent table) and the latest summary on issue 13. In 
 - **aiakhee** (Lane B): AR1 (#49), then AR4 (Arabic FAQs). Then B1 First 100 days, B2 glossary, B4 dars locations, B5 short answers and B6 Quran and hadith links, none of which is on `main` yet.
 - **akhiai** (Lane E): AR3 for the remaining guides (five per PR), E3 sisters at Masjid an-Nabawi, and E4 keeping guides fresh.
 - **web** (Lanes C and D):
-  - C2 share images and C6 print (in progress)
-  - then C3 share button, C1 offline, and D3 "Who are you?" (after B1)
+  - C3 share button, C1 offline, and D3 "Who are you?" (after B1)
   - preloading the Arabic fonts through `next/font`
   - S1 to S3 (analytics)
 - **Desktop agent:** release checks after big merges (`docs/audit/release-checks/`); search ranking; production database steps when the owner asks.
