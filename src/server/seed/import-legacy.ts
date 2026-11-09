@@ -20,7 +20,8 @@ import { MASJIDS } from "./legacy/types";
 /** "Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli" → "sulayman-ibn-saleemullah-al-ruhayli" */
 export function shaykhSlug(nameEn: string): string {
   return nameEn
-    .replace(/^(Prof\.\s*)?(Dr\.\s*)?(Shaykh\s+)?/i, "")
+    // Titles in any order ("Shaykh Dr.", "Prof. Dr. Shaykh"); "Shaykhah" is part of a name and stays.
+    .replace(/^((Prof\.|Dr\.|Shaykh(?=\s))\s*)+/i, "")
     .toLowerCase()
     .replace(/['’`]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
