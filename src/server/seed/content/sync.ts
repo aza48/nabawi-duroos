@@ -6,13 +6,14 @@ import { FAQS_2026, GUIDES_2026, type SeedFaq, type SeedGuide } from "./guides-2
 import { FAQS_STUDENT_LIFE, GUIDES_STUDENT_LIFE } from "./guides-student-life";
 import { GUIDE_REWRITES_2026_11, GUIDES_RESEARCH_2026_11 } from "./guides-research-2026-11";
 import { FAQS_GAPS_2026_11, GUIDES_GAPS_2026_11 } from "./guides-gaps-2026-11";
+import { GUIDES_LANE_E_2026_11 } from "./guides-lane-e-2026-11";
 
 /**
  * Every seeded guide, one per slug. A later list replaces an earlier guide with the same slug,
  * which is how rewrites kept outside guides-2026.ts take effect.
  */
 export const SEED_GUIDES: SeedGuide[] = [
-  ...new Map([...GUIDES_2026, ...GUIDES_STUDENT_LIFE, ...GUIDES_RESEARCH_2026_11, ...GUIDES_GAPS_2026_11, ...GUIDE_REWRITES_2026_11].map((g) => [g.slug, g] as const)).values(),
+  ...new Map([...GUIDES_2026, ...GUIDES_STUDENT_LIFE, ...GUIDES_RESEARCH_2026_11, ...GUIDES_GAPS_2026_11, ...GUIDES_LANE_E_2026_11, ...GUIDE_REWRITES_2026_11].map((g) => [g.slug, g] as const)).values(),
 ];
 export const SEED_FAQS: SeedFaq[] = [...new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11].map((f) => [f.slug, f] as const)).values()];
 
