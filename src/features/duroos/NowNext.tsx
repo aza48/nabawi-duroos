@@ -75,6 +75,9 @@ export function NowNext({ lessons, serverNow, locale }: { lessons: NowNextLesson
             )}
           </ul>
         )}
+        <a href={ar ? "/ar/lite" : "/lite"} className="mt-3 inline-flex min-h-10 items-center text-xs text-muted underline-offset-2 hover:text-ink hover:underline">
+          {ar ? "الشبكة ضعيفة؟ افتح النسخة الخفيفة" : "Weak signal? Open the light version"}
+        </a>
       </div>
     </section>
   );
