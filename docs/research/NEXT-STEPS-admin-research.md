@@ -9,9 +9,10 @@ The owner asked the Desktop agent to finish the admin agent's research and publi
 | `iu-pdfs-2026-11/postgraduate-admission-1448.md` | 63 (40 NEW, 22 CONFIRMS, 1 CONFLICTS) | The live postgraduate guide matches the 1448 guide. New: department conditions (memorisation, pass marks), ranking weights, English and GPA thresholds for science and computing, the 1448 documents list; the 1446 age limit is gone. |
 | `iu-pdfs-2026-11/student-system-guide.md` | 55 (42 NEW, 10 CONFIRMS, 3 CONFLICTS) | A full draft guide "Using the University's student system, step by step" (slug `university-student-system`). Results stay hidden until the course evaluation is done; add and drop only registers after Confirm; the ta'jeel and i'tithaar travel rules for international students. |
 
+| `iu-pdfs-2026-11/discounts-and-sports-club.md` | 134 (68 NEW, 62 CONFIRMS, 4 CONFLICTS) | The discount deck is official (issued 25 Oct 2026, 118 offers, no end dates); all 61 offers in `discounts.ts` are still in it, 54 are new; section 4 has a full replacement `discounts.ts`. Sports club prices, hours and facilities, and the "50% off" line is only true for one month. |
+
 ## Still running when this was written (the outputs land in the Desktop agent's scratch folder first; copy them in when done)
 - `iu-pdfs-2026-11/study-plans-1448.md` (study plans per college, library mapping)
-- `iu-pdfs-2026-11/discounts-and-sports-club.md` (discount deck vs `src/content/discounts.ts`; sports club leaflet)
 - `gomedine-2026-11/part-1.md` to `part-4.md` (214 pages of the French site, 4 readers)
 On the owner's PC the outputs are in `%TEMP%\claude\e8a567db7955d8a8\8a2f9b30-c840-4fc6-81dd-635eb4325b9b\scratchpad\` under `out\`, `research-out\`, `pdfs\out\` or similar (each reader reports its path). If a file is missing there, rerun only that reader: the shared brief is `scratchpad\pdfs\BRIEF.md`, the PDF text is in `iu-pdfs-2026-11/text/`, and the site pages are in `scratchpad\gm\clean\` split by `gm\group1.txt` to `group4.txt` (rebuild with `gm\fetch.py` if gone).
 
