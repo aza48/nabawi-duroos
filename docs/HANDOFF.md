@@ -100,14 +100,14 @@ The owner asked the Desktop agent to finish the admin agent's research and publi
 
 ## 3. Open work by agent
 The live list is in AI-LOG (agent table) and the latest summary on issue 13. In short:
-- **akheeai** (Lane A, duroos and shaykh data):
-  - **Done on 9 Nov:**
-    - the official schedule (#80) and its 13 lessons (#88)
-    - positions for the 12 new teachers (#93)
+- **akheeai** (Lane A, duroos and shaykh data): **out for about 4 days from 9 Nov (weekly limit).** Its unfinished items are under "Takeovers" in AI-LOG, for web or naseer: the University news scan, two shaykhs still open, and Ruhayli's Asr sitting.
+  - **Done 9 Nov:**
+    - the official schedule and its 13 lessons (#80, #88)
+    - every shaykh's current position (#93, #98)
     - the slug fix (#90)
     - the Quba deadline (#91)
-    - eight chats researched (`docs/research/chats-2026-11/`)
-  - **Next:** the remaining mashayikh open questions (research running), whether Ruhayli's two Asr books are now one sitting, and reviews when web is busy.
+    - the calendar check (#99)
+    - eight chats researched
 - **aiakhee** (Lane B): AR1 (#49), then AR4 (Arabic FAQs). B1 First 100 days, B2 glossary, B4 dars locations, B5 short answers and B6 Quran and hadith links are pushed on their own `aiakhee/B*` branches, with no PRs yet.
 - **akhiai** (Lane E): AR3 for the remaining guides (five per PR), E3 sisters at Masjid an-Nabawi, and E4 keeping guides fresh.
 - **web** (Lanes C and D):

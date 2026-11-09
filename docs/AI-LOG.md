@@ -28,7 +28,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 ## Who owns what
 | Agent | Where it works | Area it owns | Now |
 |---|---|---|---|
-| **akheeai** (cloud; hourly wake-up `trig_01SxJcvNAENF2p1jYuTc333n`, plus a one-shot wake-up at each usage reset) | `claude/stoic-curie-w1ar9c` and `akheeai/<task>` branches, one PR per task | Lane A, duroos and schedule (`src/features/duroos/*` except naiifos's cards, `src/server/calendar.ts`, shaykh profiles and `src/server/seed/content/mashayikh.ts`), coordination docs (`docs/HANDOFF.md`, this file's structure, the work plan), reviews and merges | **Out of weekly usage (9 Nov, 18:40 UTC); Lane A handed to web, see Takeovers.** Done today: Lane A (A1 to A5, S4), the chat research (`docs/research/chats-2026-11/`), the official duroos schedule (`docs/research/duroos-official-schedule-2026-11.md`) |
+| **akheeai** (cloud; hourly wake-up `trig_01SxJcvNAENF2p1jYuTc333n`, plus a one-shot wake-up at each usage reset) | `claude/stoic-curie-w1ar9c` and `akheeai/<task>` branches, one PR per task | Lane A, duroos and schedule (`src/features/duroos/*` except naiifos's cards, `src/server/calendar.ts`, shaykh profiles and `src/server/seed/content/mashayikh.ts`), coordination docs (`docs/HANDOFF.md`, this file's structure, the work plan), reviews and merges | **Out for about 4 days from 9 Nov, 20:00 UTC (weekly limit); see Takeovers.** Done 9 Nov: Lane A (A1 to A5, S4); the official duroos schedule and its 13 lessons; positions for every shaykh, including the 12 new ones and the open questions; chat research; calendar check |
 | **aiakhee** (cloud; reset wake-up `trig_014casXrmFg7JRsyEWCQeJQE`; its hourly wake-up waits for the owner to allow it) | `aiakhee/<task>` branches | Lane B: FAQ seed content, `src/lib/guide-html.ts`, the whole assistant (`src/server/assistant/*`, `src/features/assistant/*`), `/start` and `/glossary` | AR1 (#49, migration first), then AR4 (Arabic FAQs); B1, B2, B4, B5 and B6 are on `aiakhee/B*` branches, no PRs yet |
 | **akhiai** (cloud, Fable 5.1; hourly wake-up `trig_011QLV8fWJfFwFCRyc7LbFN4`) | `akhiai/<task>` branches | Lane E, guides: `src/server/seed/content/guides-*.ts`, `scripts/open-questions.json`, `docs/EXPIRING.md`, `docs/research/guides-*`, and AR3 translations | AR3 batches 1 to 4 (#44, #46, #47, #48) and E3 (#45) in review; next: more AR3 batches, sisters at Masjid an-Nabawi, keeping guides fresh |
 | **web** (cloud; hourly wake-up `trig_01VqkfrqUJn87szU6xmQeV4s`) | `web/<task>` branches | Lanes C and D: the shell and header, Arabic pages (`src/app/(ar)/*` with the desktop agent), `ContentPages.tsx`, home layout, analytics (`src/server/analytics/*`, `/admin/analytics`) | C2 and C6 done; next C3, C1, D3 (after B1), Arabic font preload through `next/font`, S1 to S3 |
@@ -38,6 +38,13 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 
 ## Takeovers
 An agent whose usage is running out lists its unfinished task here for a teammate (HANDOFF standing instruction 9). The teammate updates the entry as it works and marks it "returned" when the owner of the task is back.
+- **akheeai is out for about 4 days (weekly limit, from 9 Nov, about 20:00 UTC). For web, or naseer if web is busy:**
+  1. **Scan the University's news list** for student-facing items: `https://iu.edu.sa/university/newses` and `https://iu.edu.sa/university/announcement`. Both are reachable from cloud sessions with curl. akheeai has already checked the official 1448/1449 calendar, and every date matches `key-dates.ts` (log, 9 Nov). The distance-study and admission PDFs are in `docs/research/iu-pdfs-2026-11/`.
+  2. **Mashayikh still open:** Prof. Dr. Abdullah al-Luhaydan (Quba) and Dr. Mu'adh Khujah; see `docs/research/mashayikh-open-questions-2026-11.md`. Also whether Shaykh al-Ruhayli's Asr books, Targhib and Dalil, are now one Thursday to Saturday sitting (`ruh-targhib`, `ruh-dalil`).
+  3. **Owner reminders to repeat on issue 13:**
+     - the next Quba schedule is due by 9 Dec
+     - add the 13 official lessons in Admin, then `npm run shaykh:sync -- --apply`
+     - yes or no on the official schedule importer and the 14 official photos
 - **akheeai to web (9 Nov, 18:40 UTC; akheeai's weekly usage is spent).** These are Lane A tasks and the lead reviewer role. Work in the files named, on `web/<task>` branches.
   1. **Reviews and merges** (already handed over on issue 13): #44, #46, #47, #48, #74, #77 and #78 (AR3 batches), #45 (Ramadan guides) and #75 (chat-research fixes and the volunteering guide), plus any new PR. #49 waits for the owner's migration, and #41 waits for the owner's yes.
   2. **Done by akheeai, on `akheeai/official-lessons`** (naseer: nothing to do here). The 13 missing lessons are in `src/server/seed/legacy/lessons.ts`, along with the `badrbadr-sequence` and `abadr-tafsir` fixes. Left open:
@@ -66,6 +73,7 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, about 20:00 UTC, **akheeai**: out for about 4 days (weekly limit). Everything is merged on `main`, and the unfinished items are under "Takeovers" for web or naseer. The wake-ups stay booked and do nothing until usage returns.
 - 9 Nov 2026, **akheeai**: `src/content/key-dates.ts` checked against the University's official 1448/1449 academic calendar (announcement `iu.edu.sa/announ14480112`, image «التقويم الدراسي 1448-1449.png»).
   - Every date from November onward matches: re-enrolment, the extra chance, ta'jeel 2, drop and add 2, finals 1 and 2, the end-of-semester break, semester 2, winter, Founding Day, the Eid holidays, summer and the 1449 start.
   - The only differences are two past windows: ta'jeel 1 officially ran 2 to 15 Aug and drop and add 1 ran 11 to 15 Aug, where MESH has longer windows, possibly from an extension notice. Both are left as they are.
