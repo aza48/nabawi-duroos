@@ -75,3 +75,35 @@ export function AlbaseerahSignature({
     </div>
   );
 }
+
+/**
+ * Far off on the horizon of the home page sky: a tiny drawing of the Albaseerah school (a central stone tower with an
+ * arched door between two slate-roofed wings with dormers). After sunset its windows and door glow a soft red; by day
+ * they barely show. It links to albaseerah.org. Tablet and desktop only: on phones the adhan card covers the horizon.
+ */
+export function AlbaseerahSchool({ locale = "en" }: { locale?: Locale }) {
+  const t = locale === "ar" ? ALBASEERAH.ar : ALBASEERAH.en;
+  return (
+    <AlbaseerahLink className="sky-school group" label={`${t.by} ${t.name}`}>
+      <svg viewBox="0 0 120 64" aria-hidden="true">
+        <title>{`${t.by} ${t.name}`}</title>
+        <g className="school-body">
+          <path d="M6 64V30H46V64ZM74 64V30H114V64Z" />
+          <path d="M3 31L12 18H40L49 31ZM71 31L80 18H108L117 31Z" />
+          <path d="M20 18V13L24 9L28 13V18ZM92 18V13L96 9L100 13V18Z" />
+          <path d="M46 64V18H74V64Z" />
+          <path d="M44 18V15H49V11H55V7H65V11H71V15H76V18Z" />
+        </g>
+        <g className="school-light">
+          <path d="M55 64V55Q60 48 65 55V64Z" className="school-door" />
+          <rect x="51" y="29" width="4.5" height="9" rx="0.6" />
+          <rect x="57.75" y="29" width="4.5" height="9" rx="0.6" />
+          <rect x="64.5" y="29" width="4.5" height="9" rx="0.6" />
+          {/* A few rooms lit, the rest only faintly, as a real building looks after dark. */}
+          {[20, 38, 78, 96].map((x) => <rect key={x} x={x} y="38" width="4" height="5" rx="0.5" />)}
+          {[11, 29, 87, 105].map((x) => <rect key={x} x={x} y="38" width="4" height="5" rx="0.5" opacity="0.22" />)}
+        </g>
+      </svg>
+    </AlbaseerahLink>
+  );
+}
