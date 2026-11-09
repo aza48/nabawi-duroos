@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { fieldLabel } from "@/server/admin/field-label";
 import { getDb } from "@/server/db/client";
 import { getAuth } from "@/server/auth/auth";
 import { requireAdmin } from "@/server/auth/session";
@@ -23,6 +24,8 @@ const FRIENDLY: Record<string, string> = {
   already_undone: "That change was already undone.",
   missing_row: "That item has since been deleted, so it can't be undone.",
   not_undoable: "That change can't be undone.",
+  changed_since: "That item was edited again after this change. Undo would wipe the newer edit, so change it directly instead.",
+  in_use: "Other items still use this, so it can't be removed. Remove or move those first.",
   needs_lesson_and_date: "The AI couldn't tell which lesson or date. Use Change a dars instead.",
   suggestion_not_found: "That suggestion was already handled.",
   question_not_found: "That question no longer exists.",
@@ -32,7 +35,7 @@ function explain(e: unknown): string {
   if (e instanceof Forbidden) return FRIENDLY.forbidden;
   if (e && typeof e === "object" && "issues" in e) {
     const issue = (e as { issues: { message: string; path: (string | number)[] }[] }).issues[0];
-    return issue ? `${issue.path.join(".") || "Input"}: ${issue.message}` : "Please check the form.";
+    return issue ? `${fieldLabel(issue.path)}: ${issue.message}` : "Please check the form.";
   }
   const m = e instanceof Error ? e.message : "";
   return FRIENDLY[m] ?? "Something went wrong. Please try again.";

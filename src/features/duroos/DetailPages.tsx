@@ -301,10 +301,12 @@ export function placeText(masjid: string, spot: string | null | undefined, ar = 
 
 function Item({ icon, label, value, link }: { icon: React.ReactNode; label: string; value: React.ReactNode; link?: { href: string; label: string; internal?: boolean } }) {
   return (
-    <div className="flex gap-4 p-4 md:p-5">
-      <span className="mt-0.5 text-primary">{icon}</span>
-      <div>
-        <dt className="text-sm font-semibold text-muted">{label}</dt>
+    // dt and dd sit directly in the row (valid description list); the icon lives inside the dt.
+    <div className="relative p-4 ps-[3.125rem] md:p-5 md:ps-[3.375rem]">
+        <dt className="text-sm font-semibold text-muted">
+          <span aria-hidden="true" className="absolute start-4 top-[1.125rem] text-primary md:start-5 md:top-[1.375rem]">{icon}</span>
+          {label}
+        </dt>
         <dd className="mt-0.5">{value}</dd>
         {link && (
           <dd className="mt-1.5">
@@ -319,7 +321,6 @@ function Item({ icon, label, value, link }: { icon: React.ReactNode; label: stri
             )}
           </dd>
         )}
-      </div>
     </div>
   );
 }

@@ -14,7 +14,8 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ q
   return (
     <>
       <PageBand title="Search MESH" subtitle="Duroos, mashayikh, guides, answers, institutes, the library and discounts, in English or Arabic." />
-      <div className="shell mt-8 md:mt-12">
+      {/* Results load in the browser: reserve their room so the footer does not jump up and back. */}
+      <div className="shell mt-8 min-h-[70vh] md:mt-12">
         <SearchPage initial={q ?? ""} />
       </div>
     </>

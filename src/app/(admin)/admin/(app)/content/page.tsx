@@ -31,7 +31,7 @@ export default async function Page() {
         <ul className="card divide-y divide-line">
           {faqs.map((f) => (
             <li key={f.slug} data-item><Link href={`/admin/content/faq/${f.slug}`} className="flex items-center gap-3 p-3">
-              <span className="min-w-0 flex-1 truncate text-sm font-medium">{f.question}</span><Badge status={f.status} />
+              <span className="line-clamp-2 min-w-0 flex-1 text-sm font-medium">{f.question}</span><Badge status={f.status} />
             </Link></li>
           ))}
           {!faqs.length && <li className="p-3 text-sm text-muted">No answers yet.</li>}
@@ -46,7 +46,7 @@ export default async function Page() {
         <ul className="card divide-y divide-line">
           {guides.map((g) => (
             <li key={g.slug} data-item><Link href={`/admin/content/guide/${g.slug}`} className="flex items-center gap-3 p-3">
-              <span className="min-w-0 flex-1 truncate text-sm font-medium">{g.title}</span><Badge status={g.status} />
+              <span className="line-clamp-2 min-w-0 flex-1 text-sm font-medium">{g.title}</span><Badge status={g.status} />
             </Link></li>
           ))}
           {!guides.length && <li className="p-3 text-sm text-muted">No guides yet.</li>}

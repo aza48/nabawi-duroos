@@ -111,10 +111,12 @@ type Today = Awaited<ReturnType<typeof getToday>>;
 
 export function dailyBriefText(t: Today): { title: string; body: string } {
   const cancelled = t.lessons.filter((l) => l.status === "cancelled" || l.status === "postponed");
-  const first = t.lessons.find((l) => l.status === "on");
+  // Only a dars with a confirmed time gets a clock time in the alert.
+  const first = t.lessons.find((l) => l.status === "on" && l.timeKnown);
+  const prayer = first ? first.prayer.charAt(0).toUpperCase() + first.prayer.slice(1) : "";
   const parts = [
     cancelled.length ? `Cancelled: ${cancelled.slice(0, 2).map((l) => l.shaykh.nameEn.split(" ").slice(-1)[0]).join(", ")}${cancelled.length > 2 ? " and more" : ""}.` : "Nothing cancelled.",
-    first ? `First: ${first.bookEn.slice(0, 50)} after ${first.prayer} (${formatClock(new Date(first.adhanAt))}).` : "",
+    first ? `First: ${first.bookEn.slice(0, 50)} after ${prayer} (${formatClock(new Date(first.adhanAt))}).` : "",
   ];
   return { title: `Today in Madinah: ${t.lessons.length} duroos`, body: parts.filter(Boolean).join(" ").slice(0, 190) };
 }

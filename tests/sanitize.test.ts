@@ -23,3 +23,11 @@ describe("sanitizeArticleHtml", () => {
     expect(out).toBe("<p>x</p>");
   });
 });
+
+describe("tables saved by the admin editor", () => {
+  it("keep their cells and drop the editor's inline sizing", async () => {
+    const { sanitizeArticleHtml } = await import("@/lib/sanitize");
+    const fromEditor = '<table style="min-width: 50px;"><colgroup><col style="min-width: 25px;"><col style="min-width: 25px;"></colgroup><tbody><tr><th><p>Item</p></th><th><p>SAR</p></th></tr><tr><td><p>Rent</p></td><td><p>1,500</p></td></tr></tbody></table>';
+    expect(sanitizeArticleHtml(fromEditor)).toBe("<table><tbody><tr><th><p>Item</p></th><th><p>SAR</p></th></tr><tr><td><p>Rent</p></td><td><p>1,500</p></td></tr></tbody></table>");
+  });
+});

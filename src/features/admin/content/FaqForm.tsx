@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteFaqAction, saveFaqAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 import { RichText } from "./RichText";
+import { useUnsavedWarning } from "../useUnsavedWarning";
 import { useFeedback } from "../Feedback";
 
 type Category = "getting-started" | "getting-settled" | "family" | "university" | "duroos" | "leaving";
@@ -21,9 +22,13 @@ export function FaqForm({ value }: { value: F }) {
   const { confirm, notify } = useFeedback();
   const [v, setV] = useState<F>(value);
   const [tags, setTags] = useState(value.tags.join(", "));
-  const [verified, setVerified] = useState(true);
+  const markSaved = useUnsavedWarning([v, tags]);
+  // Unticked by default: fixing a typo must not stamp the page as checked today.
+  const [verified, setVerified] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
+  // Messages show in the toast above the tab bar, never under the button where a phone hides them.
+  useEffect(() => { if (msg) { notify(msg); markSaved(); } }, [msg, notify, markSaved]);
   const [pending, start] = useTransition();
 
   function save(status: F["status"]) {
@@ -49,7 +54,8 @@ export function FaqForm({ value }: { value: F }) {
           {CATEGORIES.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
         </select>
       </Field>
-      <div>
+      {/* min-w-0: the editor toolbar must not widen the form past the phone screen. */}
+      <div className="min-w-0">
         <p className="mb-1.5 text-sm font-semibold">Answer</p>
         <RichText value={v.answerHtml} onChange={(html) => setV((p) => ({ ...p, answerHtml: html }))} placeholder="Answer" />
       </div>
@@ -63,7 +69,7 @@ export function FaqForm({ value }: { value: F }) {
         <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : "Publish"}</button>
       </div>
       {value.slug && (
-        <button type="button" className="text-sm text-cancel underline" disabled={pending}
+        <button type="button" className="mt-2 min-h-11 rounded-full border border-cancel/40 px-4 text-sm font-semibold text-cancel" disabled={pending}
           onClick={async () => {
             if (!(await confirm({ title: "Delete this answer?", body: "It disappears from the site straight away. You can bring it back with Undo.", confirmLabel: "Delete", danger: true }))) return;
             start(async () => {
@@ -76,7 +82,6 @@ export function FaqForm({ value }: { value: F }) {
           Delete answer
         </button>
       )}
-      {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>
   );

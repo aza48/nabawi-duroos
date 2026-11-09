@@ -212,11 +212,6 @@ export async function listAnnouncements(
   return db.select().from(announcements).where(where).orderBy(desc(announcements.postedAt)).limit(opts.limit ?? 20);
 }
 
-export async function getAnnouncement(db: Db, slug: string): Promise<AnnouncementRow | null> {
-  const [a] = await db.select().from(announcements).where(eq(announcements.slug, slug));
-  return a && a.status !== "draft" ? a : null;
-}
-
 export async function listStreams(db: Db): Promise<StreamRow[]> {
   return db.select().from(streams).orderBy(asc(streams.id));
 }

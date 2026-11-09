@@ -70,6 +70,28 @@ describe("activity log and undo", () => {
     expect(row.question).toBe("Old question");
   });
 
+  it("restores only the fields the change touched", async () => {
+    const before = await makeFaq("q6", "Old question");
+    const [after] = await db.update(faqs).set({ question: "New question" }).where(eq(faqs.slug, "q6")).returning();
+    const id = await record(db, actor, { action: "update", entity: "faq", entityId: "q6", before, after });
+    await db.update(faqs).set({ answerHtml: "<p>later edit</p>" }).where(eq(faqs.slug, "q6"));
+    expect(await undo(db, actor, id)).toEqual({ ok: true });
+    const [row] = await db.select().from(faqs).where(eq(faqs.slug, "q6"));
+    expect(row.question).toBe("Old question");
+    expect(row.answerHtml).toBe("<p>later edit</p>");
+  });
+
+  it("refuses when the same field was edited again since", async () => {
+    const before = await makeFaq("q7", "A");
+    const [after] = await db.update(faqs).set({ question: "B" }).where(eq(faqs.slug, "q7")).returning();
+    const id = await record(db, actor, { action: "update", entity: "faq", entityId: "q7", before, after });
+    await db.update(faqs).set({ question: "C" }).where(eq(faqs.slug, "q7"));
+    expect(await undo(db, actor, id)).toEqual({ ok: false, error: "changed_since" });
+    expect((await db.select().from(faqs).where(eq(faqs.slug, "q7")))[0].question).toBe("C");
+    const [log] = await db.select().from(auditLog).where(eq(auditLog.id, id));
+    expect(log.undoneAt).toBeNull();
+  });
+
   it("only undoes once", async () => {
     const before = await makeFaq("q2", "A");
     const [after] = await db.update(faqs).set({ question: "B" }).where(eq(faqs.slug, "q2")).returning();

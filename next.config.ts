@@ -8,6 +8,8 @@ const isDev = process.env.NODE_ENV === "development";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Dev logs would otherwise print server action arguments, admin passwords included.
+  logging: { serverFunctions: false },
   serverExternalPackages: ["@electric-sql/pglite"],
   // Previews and local builds run migrations from these files at runtime.
   outputFileTracingIncludes: { "/**": ["./drizzle/**/*"] },

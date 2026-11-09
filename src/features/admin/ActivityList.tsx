@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { Fragment, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Undo2 } from "lucide-react";
 import { undoAction } from "@/app/(admin)/admin/actions";
@@ -30,8 +30,10 @@ export function ActivityList({ items, canUndo }: { items: ActivityItem[]; canUnd
       {error && <p role="alert" className="mb-2 rounded-xl bg-cancel-bg px-3 py-2 text-sm text-cancel">{error}</p>}
       <ul className="card divide-y divide-line">
         {items.map((i, n) => (
-          <li key={i.id} data-item className="p-3">
-            {i.day && i.day !== items[n - 1]?.day && <p className="-mx-3 -mt-3 mb-3 bg-bg-2 px-3 py-1.5 text-xs font-bold text-muted">{i.day}</p>}
+          <Fragment key={i.id}>
+          {/* The day heading is its own row, so a search that hides the day's first change keeps the heading. */}
+          {i.day && i.day !== items[n - 1]?.day && <li data-heading className="bg-bg-2 px-3 py-1.5 text-xs font-bold text-muted">{i.day}</li>}
+          <li data-item className="p-3">
             <div className="flex items-center gap-3">
             <div className="min-w-0 flex-1">
               <p className={`text-sm ${i.undone ? "text-muted line-through" : ""}`}>{i.text}</p>
@@ -45,6 +47,7 @@ export function ActivityList({ items, canUndo }: { items: ActivityItem[]; canUnd
             )}
             </div>
           </li>
+          </Fragment>
         ))}
       </ul>
     </>
