@@ -5,6 +5,7 @@ import { getDb } from "@/server/db/client";
 import { getGuide, listFaqs, listGuides } from "@/server/content/queries";
 import { getWhatsAppUrl } from "@/server/settings";
 import { GuidePage } from "@/features/content/ContentPages";
+import { guideText } from "@/lib/arabic-content";
 
 export const revalidate = 300;
 /** Built on first visit, then cached and refreshed every 5 minutes. */
@@ -20,7 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? {
         title: metaTitle(g.title),
         description: metaDescription(g.summary ?? g.title),
-        alternates: { canonical: `/guides/${slug}` },
+        // Once the guide is translated, the English and Arabic pages point to each other.
+        alternates: guideText(g, "ar").bodyInArabic ? { canonical: `/guides/${slug}`, languages: { en: `/guides/${slug}`, ar: `/ar/guides/${slug}`, "x-default": `/guides/${slug}` } } : { canonical: `/guides/${slug}` },
         openGraph: { type: "article", title: g.title, description: g.summary, url: `/guides/${slug}`, siteName: "MESH", ...(g.coverUrl ? { images: [g.coverUrl] } : {}) },
         twitter: { card: "summary_large_image", title: g.title, description: g.summary },
       }

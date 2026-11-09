@@ -5,7 +5,8 @@ import { CHANNELS, MAHAD_EXTRA, OFFICIAL, type LibraryLink } from "@/content/lib
 import { LIVE_COLLECTIONS, countFiles, treeOf } from "@/content/library-books";
 import { CurriculumNote, LibrarySearchForm, firstLevelCount } from "./CoursePages";
 import { EnglishNote } from "@/components/EnglishNote";
-import { toArabicDigits, type Locale } from "@/lib/locale";
+import type { Locale } from "@/lib/locale";
+import { arCount } from "@/lib/arabic-count";
 
 const ICON: Record<LibraryLink["kind"], typeof Folder> = { folder: Folder, pdf: FileText, site: Globe, youtube: MonitorPlay, telegram: Send, x: Globe, whatsapp: Send };
 
@@ -84,7 +85,7 @@ export function LibraryPage({ takhleesHref, locale = "en" }: { takhleesHref: str
                     </>
                   )}
                   <span className="mt-auto pt-4 text-sm font-semibold text-primary">
-                    {ar ? toArabicDigits(countFiles(tree)) : countFiles(tree)} {t.files}{levels ? `${ar ? "، " : ", "}${ar ? toArabicDigits(levels) : levels} ${t.levels}` : ""}
+                    {ar ? `${arCount(countFiles(tree), "file")}${levels ? `، ${arCount(levels, "level")}` : ""}` : `${countFiles(tree)} ${t.files}${levels ? `, ${levels} ${t.levels}` : ""}`}
                   </span>
                 </Link>
               );
