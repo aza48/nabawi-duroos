@@ -4,6 +4,21 @@ Cleaned up on 9 November 2026, about 17:00 Riyadh, by akheeai. This file is the 
 
 Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG.md` (who owns what, owner decisions, the log) and the latest comments on GitHub issue 13.
 
+## 9 November 2026, about 21:00 Riyadh: aiakhee (Lane B, the assistant, AR1)
+**Open PRs, all checked (tsc, vitest, `MESH_LOCAL_DB=1 next build`, screenshots at 390 and 1440 px in English and Arabic, an independent review each), waiting for review and merge (web reviews for akheeai):**
+- #49 AR1 Arabic columns (`aiakhee/AR1-arabic-columns`, `3e270e1`). **Owner applies the migration first** (`docs/AR1-MIGRATION.md`); akheeai reviewed it ok.
+- #54 B1 First 100 days (`/start`, `/ar/start`), `b68261f`.
+- #56 B2 glossary (`/glossary`, `/ar/glossary`, first mention definitions in guides), `24e63a4`. Merge before #57. B1 and B2 each add one word to `AR_TWINS`: keep both.
+- #57 B6 Quran and hadith links, stacked on #56, `6a2a0ea`.
+- #58 B5 FAQ short answers (`faq-leads.ts`), `5477ebb`. Safe to merge; hold the FAQ `content:sync` until the FAQ fixes PR below lands (10 answers repeat their lead's Yes or No).
+- #60 B4 dars locations research note, `597a6ab` (9 confirmed, 12 likely, 31 unknown).
+
+**In progress (sub-agents in aiakhee's session):**
+- `aiakhee/assistant-quality-2`, on AR1: ruling guard (4 leaks found in an evaluation of 165 questions), Arabic indexing, retrieval fixes for 51 misses, web's three fixes (no-answer wording, launcher at 768 to 1023 px, `ASK_LIMITS` out of the route file), a regression test set. WIP pushed at `f226ac2`. Evaluation harness and results are in aiakhee's scratchpad and will be summarised in `docs/research/assistant-eval-2026-11.md`.
+- `aiakhee/faq-fixes-and-new`, on #58: FAQ fixes and new FAQs from `docs/research/*`, in aiakhee's own file `faqs-aiakhee-2026-11.ts`. It avoids the FAQs admin claimed on issue 13.
+
+**Next for aiakhee (or a teammate if aiakhee is out of usage):** AR4 (FAQs in Arabic, `questionAr` and `answerHtmlAr`, after #49 merges), the deferred admission and University FAQs after admin's PR lands, then the assistant answering from `/start` and the glossary.
+
 ## 9 November 2026, about 20:15 Riyadh: Desktop agent, admin's research taken over for the owner
 The owner asked the Desktop agent to finish the admin agent's research and publish it in guides, skipping the remaining Telegram periods. **Read `docs/research/NEXT-STEPS-admin-research.md` on branch `claude/wonderful-davinci-um61gf` first**: it lists what is done, what was still running and the publishing plan.
 - On that branch: the official PDFs the owner downloaded (sources and text in `docs/research/iu-pdfs-2026-11/`), and findings for the bachelor's scholarship admission guide (63), the postgraduate admission guides 1448 and 1446 (63), the student system guide (55, with a full draft guide `university-student-system`), and the official discounts deck and sports club leaflet (134).
@@ -94,6 +109,11 @@ The live list is in AI-LOG (agent table) and the latest summary on issue 13. In 
   - C3 share button, C1 offline, and D3 "Who are you?" (after B1)
   - preloading the Arabic fonts through `next/font`
   - S1 to S3 (analytics)
+- **admin** (the owner's own agent, added 9 Nov; takes orders from the owner only):
+  - distilling the IU students' Telegram forum (478k messages, Dec 2015 to 9 Nov 2026) into `docs/research/telegram-iu-2026-11/`, one findings file per period, then a `SYNTHESIS.md` with the latest state per topic and the conflicts with MESH
+  - a full crawl of gomedine.com, rewritten in MESH's words, in `docs/research/gomedine-2026-11/`
+  - new guides from both, and a guide ideas list for the owner in `docs/research/GUIDE-IDEAS-admin-2026-11.md`
+  - other agents may read these files as research, like `docs/research/chats-2026-11/`
 - **Desktop agent:** release checks after big merges (`docs/audit/release-checks/`); search ranking; production database steps when the owner asks.
 - **naiifos** (a person, not always on; work around them when possible): the duroos cards. Optional: the report link and the plural fix in the cards.
 
