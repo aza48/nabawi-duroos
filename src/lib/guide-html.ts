@@ -1,5 +1,6 @@
 import { HTMLElement, TextNode, parse } from "node-html-parser";
 import { GLOSSARY, type GlossaryTerm } from "@/content/glossary";
+import { findScriptureRefs } from "@/lib/scripture-refs";
 
 export type TocItem = { id: string; text: string };
 
@@ -17,12 +18,13 @@ const YOUTUBE = /^https?:\/\/(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:watch\?v=
  * Adds the interactive layer to already-sanitised guide HTML: anchors and a table of contents
  * for h2s, numbered steps that readers can tick off, video slots for lone YouTube links, and
  * Tip/Note callouts, and a short definition on the first mention of each glossary term (see
- * markGlossaryTerms). Runs on the server after sanitising, so it may add attributes freely.
- * `glossary: false` skips the terms; `glossaryBase` is the glossary page the terms link to.
+ * markGlossaryTerms), and links on Qur'an and hadith references (see linkScriptureRefs). Runs on
+ * the server after sanitising, so it may add attributes freely. `glossary: false` skips the terms;
+ * `glossaryBase` is the glossary page the terms link to; `scripture: false` skips the references.
  */
 export function enhanceGuideHtml(
   html: string,
-  opts: { glossary?: boolean; glossaryBase?: string } = {},
+  opts: { glossary?: boolean; glossaryBase?: string; scripture?: boolean } = {},
 ): { html: string; toc: TocItem[]; steps: number } {
   const root = parse(html);
   const toc: TocItem[] = [];
@@ -56,6 +58,8 @@ export function enhanceGuideHtml(
   }
 
   if (opts.glossary !== false) markGlossaryTerms(root, { base: opts.glossaryBase });
+  // After the glossary, so its marks stay exactly as they were; references skip them.
+  if (opts.scripture !== false) linkScriptureTree(root);
 
   return { html: root.toString(), toc, steps };
 }
@@ -172,4 +176,84 @@ export function markGlossaryTerms(root: HTMLElement, opts: { base?: string; term
 
   walk(root, false);
   return marked;
+}
+
+/* ---------- Qur'an and hadith references ---------- */
+
+/**
+ * The reference link: the article's link colour with a thin, faded underline, so a page full of
+ * citations stays calm. Inline for the same reason as the glossary links above.
+ */
+const REF_CLASS = "scripture-ref";
+const REF_STYLE = "text-decoration-thickness:1px;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent);text-underline-offset:3px";
+
+/** Text in these is never linked: the glossary's list plus anything else that is not running prose. */
+const NO_REF = new Set([...NO_MARK, "samp", "option", "label", "svg", "math"]);
+/** Of those, the ones that stand apart from the sentence around them, so they break the run of text. */
+const NO_REF_BLOCK = new Set(["h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "pre", "th", "summary", "select", "textarea", "script", "style", "svg", "math"]);
+/** These start a new run of text: a name in one paragraph never explains a number in the next. */
+const BLOCK = new Set(["p", "li", "ul", "ol", "td", "tr", "table", "thead", "tbody", "div", "section", "article", "aside", "figure", "figcaption", "dd", "dt", "dl", "details", "hr", "br", "header", "footer", "main", "nav"]);
+/** Marks the end of a run inside the context string; never part of a name or a number. */
+const RUN_BREAK = "\u0001";
+
+function refLinkHtml(href: string, text: string, kind: "quran" | "hadith"): string {
+  return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="${REF_CLASS}" data-ref="${kind}" style="${REF_STYLE}">${esc(text)}</a>`;
+}
+
+/**
+ * Turns Qur'an and hadith references in a parsed document into links that open quran.com or
+ * sunnah.com in a new tab (the matching is in src/lib/scripture-refs.ts). Text in headings,
+ * links, quotations, code and the glossary's marks is left alone, as is anything between
+ * double quotes. Mutates `root` and returns the addresses it linked, in order.
+ */
+export function linkScriptureTree(root: HTMLElement): string[] {
+  const linked: string[] = [];
+
+  const linkText = (node: TextNode, before: string) => {
+    const text = node.text;
+    const refs = findScriptureRefs(text, before);
+    if (!refs.length) return;
+    let out = "";
+    let pos = 0;
+    for (const r of refs) {
+      out += esc(text.slice(pos, r.start)) + refLinkHtml(r.href, text.slice(r.start, r.end), r.kind);
+      pos = r.end;
+      linked.push(r.href);
+    }
+    const parent = node.parentNode!;
+    const nodes = parse(out + esc(text.slice(pos))).childNodes;
+    for (const n of nodes) n.parentNode = parent;
+    parent.childNodes.splice(parent.childNodes.indexOf(node), 1, ...nodes);
+  };
+
+  /** `run` is the text so far in the current block, read for context such as an open quotation. */
+  const walk = (el: HTMLElement, run: { text: string }) => {
+    for (const child of [...el.childNodes]) {
+      if (child instanceof TextNode) {
+        const text = child.text;
+        if (!child.isWhitespace) linkText(child, run.text);
+        run.text += text;
+      } else if (child instanceof HTMLElement) {
+        const tag = child.rawTagName?.toLowerCase();
+        // A glossary popover is hidden until opened: not part of the sentence at all.
+        if (child.hasAttribute("popover")) continue;
+        if (NO_REF_BLOCK.has(tag) || child.classList.contains("video-slot")) run.text += RUN_BREAK;
+        // A link, quotation, code or glossary term is still part of the sentence: its words and quotes count as context.
+        else if (NO_REF.has(tag)) run.text += child.text;
+        else if (BLOCK.has(tag)) {
+          run.text += RUN_BREAK;
+          walk(child, { text: "" });
+        } else walk(child, run);
+      }
+    }
+  };
+
+  walk(root, { text: "" });
+  return linked;
+}
+
+/** linkScriptureTree for an HTML string: returns the HTML with its references linked. */
+export function linkScriptureRefs(html: string): string {
+  const root = parse(html);
+  return linkScriptureTree(root).length ? root.toString() : html;
 }
