@@ -11,9 +11,11 @@ The owner asked the Desktop agent to finish the admin agent's research and publi
 
 | `iu-pdfs-2026-11/discounts-and-sports-club.md` | 134 (68 NEW, 62 CONFIRMS, 4 CONFLICTS) | The discount deck is official (issued 25 Oct 2026, 118 offers, no end dates); all 61 offers in `discounts.ts` are still in it, 54 are new; section 4 has a full replacement `discounts.ts`. Sports club prices, hours and facilities, and the "50% off" line is only true for one month. |
 
+| `gomedine-2026-11/part-1.md`, `part-3.md`, `part-4.md` | 75, 76, 71 | Iqama and visa fines and renewal fees; newborn iqama steps; exit and re-entry conditions; family visit visa extension and biometrics; family records on Absher; Umrah season 1448. Conflicts to settle: renting on a student visa (MESH contradicts itself: agent vs iqama needed), the Ma'had registration window (Dhul Qa'dah, Dhul Hijjah to Muharram, or Safar), visitors' emergency health cover, schools for visit-visa children. |
+
 ## Still running when this was written (the outputs land in the Desktop agent's scratch folder first; copy them in when done)
 - `iu-pdfs-2026-11/study-plans-1448.md` (study plans per college, library mapping)
-- `gomedine-2026-11/part-1.md` to `part-4.md` (214 pages of the French site, 4 readers)
+- `gomedine-2026-11/part-2.md` (pages 056 to 110; group list `gm\group2.txt`)
 On the owner's PC the outputs are in `%TEMP%\claude\e8a567db7955d8a8\8a2f9b30-c840-4fc6-81dd-635eb4325b9b\scratchpad\` under `out\`, `research-out\`, `pdfs\out\` or similar (each reader reports its path). If a file is missing there, rerun only that reader: the shared brief is `scratchpad\pdfs\BRIEF.md`, the PDF text is in `iu-pdfs-2026-11/text/`, and the site pages are in `scratchpad\gm\clean\` split by `gm\group1.txt` to `group4.txt` (rebuild with `gm\fetch.py` if gone).
 
 ## Publishing plan (in this order)
