@@ -87,11 +87,12 @@ export default async function Inbox() {
                 <div className="w-16 shrink-0 text-xs text-muted">
                   <b className="block text-sm capitalize text-ink">{l.prayer}</b>{formatClock(new Date(l.adhanAt))}
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold">{l.shaykh.nameEn}</p>
+                {/* The row opens the dars page (where a change can be withdrawn); the tag sits under the name so it never squeezes it. */}
+                <Link href={`/admin/duroos/lesson/${l.slug}`} className="block min-w-0 flex-1">
+                  <p className="line-clamp-2 text-sm font-semibold">{l.shaykh.nameEn}</p>
                   <p className="truncate text-xs text-muted">{l.bookEn} · {l.masjid.shortEn}</p>
-                </div>
-                {l.status !== "on" ? <StatusTag status={l.status} locale="en" /> : null}
+                  {l.status !== "on" ? <span className="mt-1 inline-block"><StatusTag status={l.status} locale="en" /></span> : null}
+                </Link>
                 <ChangeDarsButton lessonSlug={l.slug} title={`${l.shaykh.nameEn}: ${l.bookEn}`} compact />
               </li>
             ))}
