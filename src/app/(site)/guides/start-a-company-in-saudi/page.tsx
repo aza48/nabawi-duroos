@@ -39,11 +39,11 @@ export default async function Page() {
   };
   return (
     <>
-      <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], ["Getting settled", "/guides#getting-settled"], [TITLE, `/guides/${SLUG}`]])]} />
+      <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], ["Visas, iqama, money and work", "/guides#papers"], [TITLE, `/guides/${SLUG}`]])]} />
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-16">
-          <Link href="/guides#getting-settled" className="inline-flex min-h-10 items-center gap-2 text-sm text-white/75 hover:text-white">
-            <Briefcase size={15} className="text-gold-bright" /> Getting settled · Work and business
+          <Link href="/guides#papers" className="inline-flex min-h-10 items-center gap-2 text-sm text-white/75 hover:text-white">
+            <Briefcase size={15} className="text-gold-bright" /> Visas, iqama, money and work
           </Link>
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl">{TITLE}</h1>
           <p className="mt-4 max-w-2xl text-white/85 md:text-lg">

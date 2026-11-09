@@ -1,0 +1,97 @@
+[
+ {
+  "topic": "University",
+  "question": "Who may register for the summer semester (everyone, or only students with failed or remaining courses), how many credit hours can be taken, and does the stipend, the room in the halls and the mat'am continue in June and July?",
+  "context": "The new FAQ summer-semester gives the 1449 dates and says the semester is optional and used to catch up. Nothing official on eligibility, load, stipend or housing was found, so none of it is on the site."
+ },
+ {
+  "topic": "University",
+  "question": "Does taking the summer semester change the yearly ticket home (date, or losing it)?",
+  "context": "Students on the summer semester stay in Madinah into late July. Left out of the summer FAQ."
+ },
+ {
+  "topic": "University",
+  "question": "Is the minimum cumulative GPA to graduate still 2.75 out of 5, and is the same figure used for academic warning and dismissal?",
+  "context": "The 1445 student guide gives 2.75. The new exams guide says only 'below the minimum for graduation' and gives no number until this is confirmed."
+ },
+ {
+  "topic": "University",
+  "question": "How soon after the last final do results appear in the Academic System? Is there a set date each semester?",
+  "context": "The exams guide says results appear once the college has approved them, with no timing."
+ },
+ {
+  "topic": "University",
+  "question": "How exactly is a grade appeal submitted: on paper at the college, through Tawasul, or an e-service? Is the window still 15 days from the result?",
+  "context": "The exams guide says to submit a request to the dean of your college within 15 days (1445 student guide). The channel is not stated."
+ },
+ {
+  "topic": "University",
+  "question": "Does an accepted excuse take those hours out of the 25% absence count, or does it only allow the college to lift a bar when the student attended at least half of the course?",
+  "context": "Students in the group say excused absence does not count. The official rule found says the college may lift a bar if at least 50% was attended. The site states only the official rule."
+ },
+ {
+  "topic": "University",
+  "question": "When a failed course is retaken and passed, does the F stay in the GPA, or is it replaced by the new grade?",
+  "context": "The exams guide says the F stays on the record and lowers the GPA, but does not say what happens after a retake."
+ },
+ {
+  "topic": "University",
+  "question": "Does a failed course, an academic warning or a DN affect the monthly stipend?",
+  "context": "Not on the site."
+ },
+ {
+  "topic": "University",
+  "question": "Do Ma'had exams use the same grading scale, exam-day rules, substitute exam and appeal process as the colleges?",
+  "context": "The exams guide says the Ma'had has the same absence limit and tells Ma'had students to ask the Ma'had office about the rest."
+ },
+ {
+  "topic": "University",
+  "question": "Does lateness to a lecture count as absence, and after how many minutes?",
+  "context": "Students ask this often. Not on the site."
+ },
+ {
+  "topic": "University",
+  "question": "Does the University meet every new scholarship student at Madinah airport? How is a pick-up requested, and does it run for students arriving outside the main intake week?",
+  "context": "Official news lists airport reception runs among the University's transport services. The airport FAQ tells students to ask through Tawasul before they fly."
+ },
+ {
+  "topic": "University",
+  "question": "How long before expiry does Travel Management start renewing student iqamas, and does renewal need a minimum passport validity?",
+  "context": "The new FAQ student-iqama-renewal lists what blocks a renewal (traffic fines, children not added, birth certificate fines, expired visas) from the Travel Management pages. Timing and passport rules are not stated."
+ },
+ {
+  "topic": "University",
+  "question": "What must the person collecting a graduate's certificate bring (the authorisation form, which ID copies, any stamp), and which office do they go to?",
+  "context": "The FAQ degree-collection-and-verification says an official authorisation form exists, without the details."
+ },
+ {
+  "topic": "University",
+  "question": "What size and how many passport photos do new students need for the student card and other offices?",
+  "context": "One group answer says 3 by 4 cm on photo paper. The packing guide says only 'a few printed copies on a white background'."
+ },
+ {
+  "topic": "Transport",
+  "question": "Is there a fixed posted taxi fare from Madinah airport to the Haram (one report says 75 SAR for up to five people), and is 40 to 80 SAR still right for a ride app?",
+  "context": "The airport FAQ gives 40 to 80 SAR by ride app and tells readers to agree a taxi fare first. Transfer companies quote anywhere from 70 to 150 SAR."
+ },
+ {
+  "topic": "Transport",
+  "question": "Where does the airport bus (route 400) stop near the Haram, and how often does it run at night?",
+  "context": "The airport FAQ says it runs round the clock to the Haram area. The fare question is already open in scripts/open-questions.json."
+ },
+ {
+  "topic": "Visas",
+  "question": "What is the current customs declaration limit for cash, gold and jewellery: 60,000 SAR, or 40,000 SAR since August 2026?",
+  "context": "ZATCA's page still shows 60,000. Several August 2026 reports say it fell to 40,000. The packing guide says only that amounts above the customs limit must be declared."
+ },
+ {
+  "topic": "Schools",
+  "question": "Do schools and kindergartens in Madinah ask for attested birth certificates or attested school reports from abroad when enrolling a child?",
+  "context": "The packing guide tells families to bring birth certificates and school reports and to attest documents at home if they may be asked. It does not say attestation is required."
+ },
+ {
+  "topic": "Healthcare",
+  "question": "Is there a quantity limit (for example a one month supply) on controlled medicines a traveller may bring with the SFDA permit?",
+  "context": "The packing guide and FAQ bringing-medicine-into-saudi describe the SFDA traveller's permit but give no quantity limit. One third-party guide mentions a one month supply."
+ }
+]

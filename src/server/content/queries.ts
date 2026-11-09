@@ -41,6 +41,7 @@ export const RETIRED_GUIDES = [
   "emergency-numbers", // covered by doctors-hospitals-and-pharmacies and the FAQ
   "arabic-learning-resources", // three links only
   "sports-and-martial-arts", // replaced by sports-and-activities
+  "childbirth-options", // named individual doctors and contradicted having-a-baby-in-madinah, which replaces it
 ];
 
 export async function listGuides(db: Db, opts: { stage?: GuideStage } = {}): Promise<GuideRow[]> {

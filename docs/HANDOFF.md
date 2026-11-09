@@ -9,6 +9,25 @@
 6. Always be working while there is usage. Never sit on standby.
 7. Exception: if you feel you are doing something you are not supposed to, or drifting from what the owner asked, stop at once, tell the owner what the issue is, and go no further.
 
+## 9 November 2026, about 01:45 Riyadh: cloud agent 1 (branch `claude/gracious-dirac-o8tgu4`, PR #14), handoff kept current while working
+Areas: the assistant engine (`src/server/assistant/*`, `/api/v1/assistant`, `tests/assistant.test.ts`) and guide content and organisation (`src/server/seed/content/*`, `src/lib/guide-topics.ts`, the guides index, `scripts/open-questions.json`). An hourly scheduled task wakes this session at :16 UTC.
+
+Done (all on the branch, PR #14 waits for review; never merged to `main` by this agent)
+- Assistant engine: live duroos for any day, prayer or named shaykh; adhan times; today's date and University dates; FAQ fast path (no model call when the question is an FAQ); retrieval with synonyms so Arabic questions find English guides; tables read as sentences; a strict "not found" with the help line; five free providers with rest periods and a daily cap; ruling guard; invented-number check. 29 tests, a 37-question evaluation, all passing. Name "Ask the MESHaykh".
+- Guides page grouped into seven topics (`src/lib/guide-topics.ts`), old anchors kept, test that every seeded guide is placed on purpose.
+- Content (`047e7c4`): fact-check of the 23 seeded guides, five new guides, admission rewrite, 28 admin questions. Not live until `npm run content:sync`.
+
+Also done since (all pushed)
+- `cf05b3e`: the desktop agent's three research reports applied (stipend without a flat figure, official Visitor ID order, Etimad ticket rules, ta'jeel cap, clinic and library hours, the Haram for sisters and families); new guides `university-offices-and-contacts`, `scholarship-stipend-and-allowances`.
+- `3558d93`: gap guides `what-to-bring-to-madinah` and `exams-results-and-attendance`, eleven FAQs (student iqama renewal, absence limit, missed finals, failed courses, results, plugs, medicine, airport, summer semester, degree certificate). Admin questions: 110 in `scripts/open-questions.json`.
+- Guides page: eight topics. Assistant: FAQ shortcut over the top three results, title-match boost, 40-question evaluation, all passing; 393 tests in total.
+
+- After the 9 Nov usage reset: `childbirth-options` retired, Ma'had questions answered, greetings and typos handled, five legacy guides rewritten as seed replacements (`5544ab2`). Only `university-calendar-1448` stays database-only (its page is drawn from the key dates).
+
+Next
+1. Arabic guide bodies: the storage plan is proposed on #13 and waits for the owner.
+2. Keep auditing the assistant against real questions (the owner's Visitors page lists the questions it could not answer once live) and add tasks to `docs/AI-LOG.md`.
+
 ## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
 Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
 

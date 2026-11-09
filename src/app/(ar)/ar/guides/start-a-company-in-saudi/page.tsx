@@ -32,8 +32,8 @@ export default async function Page() {
     <>
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-16">
-          <Link href="/ar/guides#getting-settled" className="inline-flex min-h-10 items-center gap-2 text-sm text-white/75 hover:text-white">
-            <Briefcase size={15} className="text-gold-bright" /> الاستقرار · العمل والتجارة
+          <Link href="/ar/guides#papers" className="inline-flex min-h-10 items-center gap-2 text-sm text-white/75 hover:text-white">
+            <Briefcase size={15} className="text-gold-bright" /> التأشيرات والإقامة والمال والعمل
           </Link>
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-snug md:text-6xl">{TITLE_AR}</h1>
           <p className="mt-4 max-w-2xl text-white/85 md:text-lg">{SUMMARY_AR}</p>

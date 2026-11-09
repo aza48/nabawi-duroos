@@ -192,7 +192,7 @@ export const PROGRAMS: Program[] = [
     kind: "degree",
     tagline: "The full scholarship: Arabic Ma'had, then a degree, with housing, a stipend and flights.",
     audience: ["men", "women"],
-    price: "Free on scholarship, with a monthly stipend of 840 SAR",
+    price: "Free on scholarship, with a monthly stipend",
     where: "Al-Jami'ah district",
     overview: [
       "Most English-speaking students here came on the University scholarship. You apply through the national Study in Saudi portal, usually starting in the Arabic Language Institute (Ma'had) before moving to a college.",
@@ -312,7 +312,7 @@ export const PROGRAMS: Program[] = [
     where: "Women's sections of Masjid an-Nabawi",
     overview: [
       "The Ma'had (western women's side, gates 13 to 17) runs a three-year middle school diploma and a three-year high school diploma in classical texts. Juz 'Amma is required for the first, seven ajza' for the second.",
-      "The Kulliyah (eastern women's side, gates 25 to 30) is a four-year Shariah bachelor's. Registration opens once a year in Safar (for 1448 it ran from 5 to 20 Safar), followed by a written exam and an interview. Non-Saudi applicants need a valid iqama. Good Arabic is required.",
+      "The Kulliyah is a four-year Shariah bachelor's. Registration opens once a year in Safar (for 1448 it ran from 5 to 20 Safar), followed by a written exam and an interview. Non-Saudi applicants need a valid iqama. Good Arabic is required.",
     ],
     contact: [
       { label: "Website", href: "https://gph.edu.sa/public/?page=ins" },

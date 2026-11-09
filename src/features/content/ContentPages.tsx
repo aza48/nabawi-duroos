@@ -1,12 +1,12 @@
 import { UniversityCalendar } from "./UniversityCalendar";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, ChevronDown, CircleCheck, CircleHelp, Flag, GraduationCap, Languages, Library, Radio, ScrollText } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, ChevronDown, CircleCheck, CircleHelp, Compass, FileText, Flag, GraduationCap, KeyRound, Landmark, Languages, Library, MessageCircleQuestion, Plane, Radio, ScrollText, Users } from "lucide-react";
 import type { FaqRow, GuideRow } from "@/server/content/queries";
-import { FAQ_CATEGORIES, GUIDE_STAGES } from "@/server/content/queries";
+import { FAQ_CATEGORIES } from "@/server/content/queries";
+import { OLD_ANCHORS, groupGuides, topicById, topicOf, type GuideTopicId } from "@/lib/guide-topics";
 import { sanitizeArticleHtml } from "@/lib/sanitize";
 import { Breadcrumbs, PageBand, SectionHeader } from "@/components/ui";
 import { related, type RelItem } from "@/lib/related";
-import { STAGE_ICON } from "@/features/home/HomePage";
 import { FaqExplorer } from "./FaqExplorer";
 import { GuideBody } from "./GuideBody";
 import { enhanceGuideHtml } from "@/lib/guide-html";
@@ -28,7 +28,18 @@ const verified = (d: Date | null, locale: Locale = "en") =>
 
 const EN = { dir: "ltr", lang: "en" } as const;
 
-const asGuide = (g: GuideRow): RelItem => ({ slug: g.slug, title: g.title, text: g.summary, group: g.stage });
+const asGuide = (g: GuideRow): RelItem => ({ slug: g.slug, title: g.title, text: g.summary, group: topicOf(g) });
+
+const TOPIC_ICON: Record<GuideTopicId, typeof BookOpen> = {
+  "getting-started": Plane,
+  papers: FileText,
+  home: KeyRound,
+  study: GraduationCap,
+  "more-study": Library,
+  haram: Landmark,
+  family: Users,
+  explore: Compass,
+};
 const asFaq = (f: FaqRow): RelItem => ({ slug: f.slug, title: f.question, text: plain(f.answerHtml).slice(0, 400), group: f.category, tags: f.tags });
 
 /** "Related guides" or "Related answers": a short list of links at the end of a page (or in the side rail). */
@@ -161,54 +172,67 @@ export function FaqPage({ faq, whatsappUrl, locale = "en", guides = [], faqs = [
 
 export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; locale?: Locale }) {
   const ar = locale === "ar";
-  const stages = GUIDE_STAGES.map((st) => ({ ...st, label: ar ? st.labelAr : st.label, blurb: ar ? st.blurbAr : st.blurb, items: guides.filter((g) => g.stage === st.id) }));
+  const topics = groupGuides(guides)
+    .map((t) => ({ ...t, label: ar ? t.labelAr : t.label, blurb: ar ? t.blurbAr : t.blurb }))
+    .filter((t) => t.items.length > 0);
+  const aliases = (id: GuideTopicId) => Object.entries(OLD_ANCHORS).filter(([, to]) => to === id).map(([from]) => from);
   return (
     <>
       <PageBand
         title={ar ? "الحياة في المدينة" : "Life in Madinah"}
-        subtitle={ar ? "أدلة خطوة بخطوة، من يوم وصول التأشيرة إلى يوم العودة." : "Step-by-step guides, from the day your visa arrives to the day you fly home."}
+        subtitle={ar ? "أدلة خطوة بخطوة، مرتبة حسب ما تحتاج إليه: من التقديم والوصول إلى الدراسة والأسرة والتعرف على المدينة." : "Step-by-step guides, grouped by what you need: from applying and arriving to study, family life and getting to know the city."}
       >
-        <nav aria-label={ar ? "المراحل" : "Stages"} className="mt-8 flex flex-wrap gap-2">
-          {stages.map((st) => {
-            const Icon = STAGE_ICON[st.id];
+        {/* One swipeable row on phones, wrapped on wider screens. */}
+        <nav aria-label={ar ? "المواضيع" : "Topics"} className="-mx-4 mt-8 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [scrollbar-width:none]">
+          {topics.map((t) => {
+            const Icon = TOPIC_ICON[t.id];
             return (
-              <a key={st.id} href={`#${st.id}`} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
-                <Icon size={16} className="text-gold-bright" /> {st.label}
-                <span className="text-white/75 tabular">{st.items.length}</span>
+              <a key={t.id} href={`#${t.id}`} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
+                <Icon size={16} className="text-gold-bright" /> {t.label}
+                <span className="text-white/75 tabular">{t.items.length}</span>
               </a>
             );
           })}
-          <Link href={ar ? "/ar/mahad" : "/mahad"} className="inline-flex items-center gap-2 rounded-full bg-gold-bright px-4 py-2 text-sm font-semibold text-brand-deep transition hover:bg-gold">
+          <Link href={ar ? "/ar/mahad" : "/mahad"} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gold-bright px-4 py-2 text-sm font-semibold text-brand-deep transition hover:bg-gold">
             {ar ? "دليل المعهد" : <>Ma&apos;had hub</>}
           </Link>
         </nav>
       </PageBand>
       <div className="shell mt-10 space-y-14 md:mt-14">
         {ar && <EnglishNote className="max-w-3xl" />}
-        {stages.map((st) => {
-          const Icon = STAGE_ICON[st.id];
+        {topics.map((t, i) => {
+          const Icon = TOPIC_ICON[t.id];
           return (
-            <section key={st.id} id={st.id} className="scroll-mt-24">
-              <SectionHeader title={st.label} subtitle={st.blurb} icon={Icon} rtl={ar} />
-              {st.items.length === 0 ? (
-                <p className="rounded-2xl border border-dashed border-line bg-card p-5 text-sm text-muted">{ar ? "هذا القسم قيد الكتابة. إلى ذلك الحين، اسأل في مجموعة واتساب." : "This section is being written. In the meantime, ask in the WhatsApp group."}</p>
-              ) : (
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {st.items.map((g) => (
-                    <Link key={g.slug} href={`${ar ? "/ar" : ""}/guides/${g.slug}`} className="lift group flex flex-col rounded-2xl border border-line bg-card p-5 hover:border-primary/50">
-                      <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary" dir="auto">{g.title}</span>
-                      <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted" dir="auto">{g.summary}</span>
-                      <span className="mt-auto flex items-center gap-3 pt-4 text-xs text-muted">
-                        <span className="flex items-center gap-1"><BookOpen size={13} /> {g.readingMinutes} {ar ? "دقائق" : "min"}</span>
-                        {g.lastVerifiedAt && <span className="flex items-center gap-1 text-on"><CircleCheck size={13} /> {ar ? "موثّق" : "Verified"}</span>}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              )}
+            <section key={t.id} id={t.id} className="scroll-mt-24">
+              {aliases(t.id).map((a) => <span key={a} id={a} className="block scroll-mt-24" aria-hidden />)}
+              <SectionHeader title={t.label} subtitle={t.blurb} icon={Icon} rtl={ar} />
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {t.items.map((g, n) => (
+                  <Link key={g.slug} href={`${ar ? "/ar" : ""}/guides/${g.slug}`} className="lift group flex flex-col rounded-2xl border border-line bg-card p-5 hover:border-primary/50">
+                    {i === 0 && <span className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent">{ar ? `الخطوة ${n + 1}` : `Step ${n + 1}`}</span>}
+                    <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary" dir="auto">{g.title}</span>
+                    <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted" dir="auto">{g.summary}</span>
+                    <span className="mt-auto flex items-center gap-3 pt-4 text-xs text-muted">
+                      <span className="flex items-center gap-1"><BookOpen size={13} /> {g.readingMinutes} {ar ? "دقائق" : "min"}</span>
+                      {g.lastVerifiedAt && <span className="flex items-center gap-1 text-on"><CircleCheck size={13} /> {ar ? "موثّق" : "Verified"}</span>}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </section>
           );
         })}
+        <Link
+          href={ar ? "/ar/assistant" : "/assistant"}
+          className="lift flex flex-wrap items-center gap-4 rounded-2xl border border-primary/30 bg-primary-soft p-5 md:p-6"
+        >
+          <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary text-primary-ink"><MessageCircleQuestion size={22} /></span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-heading text-lg font-semibold">{ar ? "لم تجد ما تبحث عنه؟" : "Can't find what you need?"}</span>
+            <span className="block text-sm text-muted">{ar ? "اسأل مساعد MESH، فهو يبحث في كل الأدلة والأسئلة وجدول الدروس." : "Ask the Meshaykh. It searches every guide, answer and the duroos schedule for you."}</span>
+          </span>
+          <ArrowRight size={18} className="shrink-0 text-primary rtl:rotate-180" />
+        </Link>
       </div>
     </>
   );
@@ -216,10 +240,10 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
 
 export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs = [] }: { guide: GuideRow; whatsappUrl: string; locale?: Locale; guides?: GuideRow[]; faqs?: FaqRow[] }) {
   const ar = locale === "ar";
-  const stage = GUIDE_STAGES.find((st) => st.id === guide.stage);
-  const stageLabel = ar ? (stage?.labelAr ?? "الأدلة") : (stage?.label ?? "Guides");
+  const topic = topicById(topicOf(guide));
+  const stageLabel = ar ? topic.labelAr : topic.label;
   const onPage = ar ? "في هذه الصفحة" : "On this page";
-  const Icon = STAGE_ICON[guide.stage] ?? BookOpen;
+  const Icon = TOPIC_ICON[topic.id] ?? BookOpen;
   const isCalendar = guide.slug === "university-calendar-1448";
   const { html, toc, steps: rawSteps } = enhanceGuideHtml(sanitizeArticleHtml(guide.bodyHtml));
   const steps = isCalendar ? 0 : rawSteps;
@@ -246,7 +270,7 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
   };
   return (
     <>
-      {!ar && <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], [stage?.label ?? "Guides", `/guides#${guide.stage}`], [guide.title, `/guides/${guide.slug}`]])]} />}
+      {!ar && <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], [topic.label, `/guides#${topic.id}`], [guide.title, `/guides/${guide.slug}`]])]} />}
       <section className="lattice overflow-hidden bg-brand text-white">
         <div className="shell py-10 md:py-14">
           <div className="flex items-center gap-2">
@@ -257,7 +281,7 @@ export function GuidePage({ guide, whatsappUrl, locale = "en", guides = [], faqs
               items={[
                 [ar ? "الرئيسية" : "Home", ar ? "/ar" : "/"],
                 [ar ? "الأدلة" : "Guides", `${ar ? "/ar" : ""}/guides`],
-                [stageLabel, `${ar ? "/ar" : ""}/guides#${guide.stage}`],
+                [stageLabel, `${ar ? "/ar" : ""}/guides#${topic.id}`],
               ]}
             />
           </div>
