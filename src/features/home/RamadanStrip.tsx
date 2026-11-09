@@ -5,7 +5,7 @@ import type { Locale } from "@/lib/locale";
 import { toArabicDigits } from "@/lib/locale";
 import { formatClock } from "@/lib/time/riyadh";
 import { formatUntil, useNow } from "@/features/duroos/Countdown";
-import { ramadanCountdown, type RamadanMode } from "./ramadan";
+import { ramadanNow, type RamadanMode } from "./ramadan";
 
 /**
  * The Ramadan line in the home hero: the day of Ramadan, the next of iftar or the end of suhoor with a countdown,
@@ -27,27 +27,37 @@ export function RamadanStrip({ mode, serverNow, locale }: { mode: NonNullable<Ra
     );
   }
 
-  const next = ramadanCountdown(mode, now);
-  const until = formatUntil(new Date(next.at).getTime() - now, locale);
+  const r = ramadanNow(mode, now);
+  // Before Maghrib on the last day of Shaban there is nothing to show yet.
+  if (mode.kind === "eve" && !r.countdown) return null;
   const s = mode.settings;
   return (
     <div className="mt-4 flex flex-wrap items-center gap-2 text-sm md:text-base" role="group" aria-label={ar ? "رمضان" : "Ramadan"}>
       <span className={`${chip} font-semibold text-gold-bright`}>
-        <Moon size={16} /> {ar ? `رمضان، اليوم ${toArabicDigits(mode.day)}` : `Ramadan, day ${mode.day}`}
+        <Moon size={16} />
+        {mode.kind === "eve" ? (ar ? "رمضان يبدأ الليلة" : "Ramadan begins tonight") : ar ? `رمضان، اليوم ${toArabicDigits(mode.day)}` : `Ramadan, day ${mode.day}`}
       </span>
-      <span className={`${chip} font-semibold`}>
-        {next.to === "iftar" ? <Sunset size={16} /> : <Sunrise size={16} />}
-        {next.to === "iftar" ? (ar ? "الإفطار" : "Iftar at Maghrib") : ar ? "آخر السحور" : "Suhoor ends at Fajr"} {clock(next.at)}
-        <span className="font-normal text-white/80">{until}</span>
-      </span>
-      <span className={chip}>{ar ? "التراويح بعد العشاء" : "Taraweeh after Isha"} {clock(mode.ishaAt)}</span>
-      {mode.lastTen && (
+      {r.countdown && (
+        <span className={`${chip} font-semibold`}>
+          {r.countdown.to === "iftar" ? <Sunset size={16} /> : <Sunrise size={16} />}
+          {r.countdown.to === "iftar" ? (ar ? "الإفطار" : "Iftar at Maghrib") : ar ? "آخر السحور" : "Suhoor ends at Fajr"} {clock(r.countdown.at)}
+          <span className="font-normal text-white/80">{formatUntil(new Date(r.countdown.at).getTime() - now, locale)}</span>
+        </span>
+      )}
+      {r.taraweeh && <span className={chip}>{ar ? "التراويح بعد العشاء" : "Taraweeh after Isha"} {clock(mode.ishaAt)}</span>}
+      {r.lastTen && (
         <span className={chip}>
           <MoonStar size={16} className="text-gold-bright" />
           {ar ? `العشر الأواخر${s.tahajjud ? `، التهجد ${s.tahajjud.ar}` : ""}` : `The last ten nights${s.tahajjud ? `, Tahajjud ${s.tahajjud.en}` : ""}`}
         </span>
       )}
-      {mode.eidTomorrow && s.eidPrayerAt && <span className={chip}>{ar ? "صلاة العيد غدًا" : "Eid prayer tomorrow"} {clock(s.eidPrayerAt)}</span>}
+      {mode.kind === "ramadan" && mode.eidTomorrow && (r.eidTonight || s.eidPrayerAt) && (
+        <span className={`${chip} font-semibold`}>
+          <MoonStar size={16} className="text-gold-bright" />
+          {ar ? "العيد غدًا" : "Eid tomorrow"}
+          {s.eidPrayerAt && <>{ar ? "، الصلاة" : ", prayer"} {clock(s.eidPrayerAt)}</>}
+        </span>
+      )}
       {s.duroosNote && <span className="basis-full text-white/85">{ar ? s.duroosNote.ar : s.duroosNote.en}</span>}
     </div>
   );

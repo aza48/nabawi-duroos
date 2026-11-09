@@ -26,44 +26,69 @@ export type RamadanMode =
   | {
       kind: "ramadan";
       day: number;
-      lastTen: boolean;
-      /** Today's Fajr adhan: suhoor has ended. */
-      suhoorEndedAt: string;
+      /** Today's Fajr adhan: the end of the suhoor eaten tonight before dawn (after midnight). */
+      suhoorEndsAt: string;
       /** Today's Maghrib adhan. */
       iftarAt: string;
       /** Today's Isha adhan; Taraweeh is prayed after Isha. */
       ishaAt: string;
-      /** Tomorrow's Fajr adhan: the end of tonight's suhoor. */
+      /** Tomorrow's Fajr adhan: the end of the suhoor after tonight's Taraweeh. */
       nextSuhoorEndsAt: string;
-      /** Tomorrow is Eid when the month has reached day 29 and tomorrow is 1 Shawwal. */
+      /** Tomorrow is 1 Shawwal: tonight has no Taraweeh and no suhoor. */
       eidTomorrow: boolean;
       settings: RamadanSettings;
     }
+  /** The last day of Shaban: from Maghrib, the first night of Ramadan (Taraweeh, then the first suhoor). */
+  | { kind: "eve"; iftarAt: string; ishaAt: string; nextSuhoorEndsAt: string; settings: RamadanSettings }
   | { kind: "eid"; eidPrayerAt: string | null }
   | null;
 
 /** What the home page shows today, for a plain ISO date in Madinah. */
 export function ramadanMode(iso: string, settings: RamadanSettings = RAMADAN_SETTINGS): RamadanMode {
   const h = hijriOf(iso);
-  if (h.month === 10 && h.day === 1) return { kind: "eid", eidPrayerAt: settings.eidPrayerAt };
-  if (h.month !== 9) return null;
-  const today = prayerTimes(iso);
   const tomorrow = addDays(iso, 1);
   const t = hijriOf(tomorrow);
+  const today = prayerTimes(iso);
+  const nextFajr = prayerTimes(tomorrow).fajr.toISOString();
+  if (h.month === 10 && h.day === 1) return { kind: "eid", eidPrayerAt: settings.eidPrayerAt };
+  if (h.month === 8 && t.month === 9) return { kind: "eve", iftarAt: today.maghrib.toISOString(), ishaAt: today.isha.toISOString(), nextSuhoorEndsAt: nextFajr, settings };
+  if (h.month !== 9) return null;
   return {
     kind: "ramadan",
     day: h.day,
-    lastTen: h.day >= 21,
-    suhoorEndedAt: today.fajr.toISOString(),
+    suhoorEndsAt: today.fajr.toISOString(),
     iftarAt: today.maghrib.toISOString(),
     ishaAt: today.isha.toISOString(),
-    nextSuhoorEndsAt: prayerTimes(tomorrow).fajr.toISOString(),
+    nextSuhoorEndsAt: nextFajr,
     eidTomorrow: t.month === 10 && t.day === 1,
     settings,
   };
 }
 
-/** Which countdown the strip shows at instant `now`: iftar until Maghrib, then the end of suhoor until tomorrow's Fajr. */
-export function ramadanCountdown(m: Extract<RamadanMode, { kind: "ramadan" }>, now: number): { to: "iftar" | "suhoor"; at: string } {
-  return now < new Date(m.iftarAt).getTime() ? { to: "iftar", at: m.iftarAt } : { to: "suhoor", at: m.nextSuhoorEndsAt };
+export type RamadanNow = {
+  /** The countdown to show: the end of suhoor before Fajr and again after Maghrib, iftar in between; none on Eid eve. */
+  countdown: { to: "iftar" | "suhoor"; at: string } | null;
+  /** Taraweeh tonight (not on the eve of Eid). */
+  taraweeh: boolean;
+  /** Within the last ten nights: from Maghrib on the 20th (the night of the 21st) to the end of the month. */
+  lastTen: boolean;
+  /** After Maghrib on the last day of Ramadan. */
+  eidTonight: boolean;
+};
+
+/**
+ * What the strip shows at instant `now`. A Hijri night starts at Maghrib, so the evening belongs to the next day:
+ * after Maghrib on the 20th the last ten nights have begun, and after Maghrib on the eve of Eid there is no suhoor.
+ */
+export function ramadanNow(m: Exclude<NonNullable<RamadanMode>, { kind: "eid" }>, now: number): RamadanNow {
+  const evening = now >= new Date(m.iftarAt).getTime();
+  if (m.kind === "eve") {
+    return { countdown: evening ? { to: "suhoor", at: m.nextSuhoorEndsAt } : null, taraweeh: evening, lastTen: false, eidTonight: false };
+  }
+  if (now < new Date(m.suhoorEndsAt).getTime()) {
+    return { countdown: { to: "suhoor", at: m.suhoorEndsAt }, taraweeh: false, lastTen: m.day >= 21, eidTonight: false };
+  }
+  if (!evening) return { countdown: { to: "iftar", at: m.iftarAt }, taraweeh: !m.eidTomorrow, lastTen: m.day >= 21, eidTonight: false };
+  if (m.eidTomorrow) return { countdown: null, taraweeh: false, lastTen: false, eidTonight: true };
+  return { countdown: { to: "suhoor", at: m.nextSuhoorEndsAt }, taraweeh: true, lastTen: m.day >= 20, eidTonight: false };
 }

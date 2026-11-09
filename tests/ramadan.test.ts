@@ -1,41 +1,65 @@
 import { describe, expect, it } from "vitest";
-import { ramadanCountdown, ramadanMode, type RamadanSettings } from "@/features/home/ramadan";
+import { ramadanMode, ramadanNow, type RamadanSettings } from "@/features/home/ramadan";
 import { pluralVerb } from "@/features/home/TodayHero";
 import { prayerTimes } from "@/lib/time/prayer";
 
 const ms = (iso: string) => new Date(iso).getTime();
+const day = (iso: string) => {
+  const m = ramadanMode(iso);
+  if (m?.kind !== "ramadan") throw new Error(`expected Ramadan on ${iso}`);
+  return m;
+};
 
 describe("Ramadan mode (D4), fixed dates of Ramadan 1448", () => {
-  it("is off outside Ramadan and Eid", () => {
-    expect(ramadanMode("2027-02-07")).toBeNull(); // 30 Shaban
+  it("is off outside Ramadan, its eve and Eid", () => {
+    expect(ramadanMode("2027-02-06")).toBeNull(); // 29 Shaban
     expect(ramadanMode("2027-03-10")).toBeNull(); // 2 Shawwal
     expect(ramadanMode("2026-11-09")).toBeNull();
   });
 
-  it("knows the day, the last ten nights and the eve of Eid", () => {
-    const first = ramadanMode("2027-02-08");
-    expect(first).toMatchObject({ kind: "ramadan", day: 1, lastTen: false, eidTomorrow: false });
-    expect(ramadanMode("2027-02-27")).toMatchObject({ day: 20, lastTen: false });
-    expect(ramadanMode("2027-02-28")).toMatchObject({ day: 21, lastTen: true });
-    expect(ramadanMode("2027-03-08")).toMatchObject({ day: 29, lastTen: true, eidTomorrow: true });
+  it("knows the day, the eve of Ramadan and the eve of Eid", () => {
+    expect(ramadanMode("2027-02-07")).toMatchObject({ kind: "eve" }); // 30 Shaban
+    expect(ramadanMode("2027-02-08")).toMatchObject({ kind: "ramadan", day: 1, eidTomorrow: false });
+    expect(ramadanMode("2027-03-08")).toMatchObject({ day: 29, eidTomorrow: true });
     expect(ramadanMode("2027-03-09")).toEqual({ kind: "eid", eidPrayerAt: null });
   });
 
   it("uses the adhan times, with Isha at Maghrib plus 120 minutes", () => {
-    const m = ramadanMode("2027-02-15");
-    if (m?.kind !== "ramadan") throw new Error("expected Ramadan");
+    const m = day("2027-02-15");
     const t = prayerTimes("2027-02-15");
     expect(m.iftarAt).toBe(t.maghrib.toISOString());
-    expect(m.suhoorEndedAt).toBe(t.fajr.toISOString());
+    expect(m.suhoorEndsAt).toBe(t.fajr.toISOString());
     expect(m.nextSuhoorEndsAt).toBe(prayerTimes("2027-02-16").fajr.toISOString());
     expect((ms(m.ishaAt) - ms(m.iftarAt)) / 60_000).toBe(120);
   });
 
-  it("counts to iftar until Maghrib, then to the end of suhoor", () => {
-    const m = ramadanMode("2027-02-15");
-    if (m?.kind !== "ramadan") throw new Error("expected Ramadan");
-    expect(ramadanCountdown(m, ms(m.iftarAt) - 60_000)).toEqual({ to: "iftar", at: m.iftarAt });
-    expect(ramadanCountdown(m, ms(m.iftarAt) + 60_000)).toEqual({ to: "suhoor", at: m.nextSuhoorEndsAt });
+  it("counts to the end of suhoor before Fajr, to iftar by day, and to the next suhoor after Maghrib", () => {
+    const m = day("2027-02-22"); // 15 Ramadan
+    expect(ramadanNow(m, ms(m.suhoorEndsAt) - 2 * 3600_000).countdown).toEqual({ to: "suhoor", at: m.suhoorEndsAt }); // 02:30 or so
+    expect(ramadanNow(m, ms(m.suhoorEndsAt) + 60_000).countdown).toEqual({ to: "iftar", at: m.iftarAt });
+    expect(ramadanNow(m, ms(m.iftarAt) - 60_000).countdown).toEqual({ to: "iftar", at: m.iftarAt });
+    expect(ramadanNow(m, ms(m.iftarAt) + 60_000)).toMatchObject({ countdown: { to: "suhoor", at: m.nextSuhoorEndsAt }, taraweeh: true });
+  });
+
+  it("starts the last ten nights at Maghrib on the 20th", () => {
+    const d20 = day("2027-02-27");
+    expect(ramadanNow(d20, ms(d20.iftarAt) - 60_000).lastTen).toBe(false);
+    expect(ramadanNow(d20, ms(d20.iftarAt) + 60_000).lastTen).toBe(true);
+    const d21 = day("2027-02-28");
+    expect(ramadanNow(d21, ms(d21.suhoorEndsAt) + 60_000).lastTen).toBe(true);
+  });
+
+  it("has no suhoor or Taraweeh on the eve of Eid", () => {
+    const m = day("2027-03-08");
+    expect(ramadanNow(m, ms(m.iftarAt) - 60_000)).toMatchObject({ countdown: { to: "iftar" }, taraweeh: false, lastTen: true });
+    expect(ramadanNow(m, ms(m.iftarAt) + 60_000)).toEqual({ countdown: null, taraweeh: false, lastTen: false, eidTonight: true });
+  });
+
+  it("opens Ramadan at Maghrib on its eve, with Taraweeh and the first suhoor", () => {
+    const eve = ramadanMode("2027-02-07");
+    if (eve?.kind !== "eve") throw new Error("expected the eve");
+    expect(ramadanNow(eve, ms(eve.iftarAt) - 60_000).countdown).toBeNull();
+    expect(ramadanNow(eve, ms(eve.iftarAt) + 60_000)).toMatchObject({ countdown: { to: "suhoor", at: eve.nextSuhoorEndsAt }, taraweeh: true });
   });
 
   it("shows only what the owner has confirmed", () => {
