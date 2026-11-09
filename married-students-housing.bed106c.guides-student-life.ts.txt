@@ -1,2 +1,0 @@
-  { slug: "married-students-housing", category: "family", question: "Do married students get free housing?", answerHtml: "<p>Single scholarship students are housed by the University. Family units are offered only when one is free, so most married students rent a flat in the city. See <a href=\"/guides/finding-an-apartment\">Finding and renting a flat</a>.</p>
-", tags: ["married", "housing", "family", "students"] },

@@ -1,3 +1,0 @@
-  { slug: "student-ticket-rules", category: "university", question: "What are the rules for my University ticket home?", answerHtml: "<p>The ticket is issued only against a travel order on Etimad, to a capital city in your own country or in the country that issued the visa you arrived on. It is valid for 3 months from the first travel date. The name and the outbound airports cannot be changed, date changes are at your cost, cancelling returns the ticket to the University with no cash refund, and a no-show loses the ticket. You may take one cabin bag and two checked bags. The full list is in <a href=\"/guides/etimad-account\">Setting up your Etimad account</a>.</p>
-", tags: ["ticket", "flight", "etimad", "travel", "holiday"] },
-];

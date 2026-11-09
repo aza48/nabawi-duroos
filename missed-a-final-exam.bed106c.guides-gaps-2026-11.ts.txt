@@ -1,8 +1,0 @@
-    slug: "missed-a-final-exam",
-    category: "university",
-    question: "I missed a final exam. What happens now?",
-    answerHtml: `<p>Without an accepted excuse, you score zero in that exam and your grade is worked out from your coursework. With an accepted excuse, such as a hospital report, you sit a substitute exam no later than the end of the second week of the next semester. Get the proof on the day and tell your college straight away. Each semester the University calls students who missed finals with an excuse to hand in their excuses and request a substitute exam, so watch your University email. Questions: student care on <strong>920022042</strong> or <strong>care@iu.edu.sa</strong>. See <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>
-`,
-    tags: ["exam", "missed", "excuse", "substitute exam", "finals"],
-  },
-  {

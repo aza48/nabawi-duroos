@@ -1,8 +1,0 @@
-    slug: "exam-results-where",
-    category: "university",
-    question: "Where do I see my exam results and my GPA?",
-    answerHtml: `<p>In the Academic System. <strong>Course results</strong> (نتائج المقررات) shows your grades semester by semester once your college has approved them, and your <strong>academic record</strong> (السجل الأكاديمي) shows your GPA and the courses left in your plan. A stamped transcript is free under <strong>Personal</strong>, then <strong>Official Documents</strong>. To appeal a mark, apply to the dean of your college within 15 days of the result. See <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>
-`,
-    tags: ["results", "grades", "gpa", "transcript", "exams"],
-  },
-  {

@@ -1,2 +1,0 @@
-  { slug: "student-discounts", category: "getting-settled", question: "Are there discounts for University students?", answerHtml: "<p>Yes. The University's partner programme lists over 100 offers at clinics, labs, opticians, schools, car rentals, restaurants and gyms. Students also pay reduced rates at the University sports club. See <a href=\"/discounts\">Student discounts</a>.</p>
-" },

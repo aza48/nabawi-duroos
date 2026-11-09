@@ -1,9 +1,0 @@
-    slug: "summer-semester",
-    category: "university",
-    question: "Is there a summer semester at the Islamic University?",
-    answerHtml: `<p>Yes. The summer semester is optional, and students use it to catch up: to retake a failed course, or to take a course they dropped or missed after an i'tithaar. The summer semester of the 1448 academic year begins on Sunday 6 June 2027 (1 Muharram 1449), and its final exams start on Tuesday 27 July 2027 (23 Safar 1449). The 1449 academic year starts on Sunday 22 August 2027.</p>
-<p>Each year the Deanship of Admission and Registration announces which courses are offered and when to register, and you register in the Academic System. Not every course runs in the summer, so ask your college early if you are counting on one. All the dates are in <a href="/guides/university-calendar-1448">The University calendar</a>, and how failed courses work is in <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>
-`,
-    tags: ["summer", "semester", "retake", "calendar", "courses"],
-  },
-  {

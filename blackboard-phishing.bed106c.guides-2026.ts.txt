@@ -1,2 +1,0 @@
-  { slug: "blackboard-phishing", category: "university", question: "Someone posted a link in my Blackboard class chat. Is it safe?", answerHtml: "<p>Do not open it. Fake accounts posing as students post links named things like \"timetable\" or \"class WhatsApp group\". Opening one can hand over your University account, and with it they can withdraw you from your courses. Report the account, leave the group, and warn your class.</p>
-", tags: ["blackboard", "security", "phishing", "account"] },
