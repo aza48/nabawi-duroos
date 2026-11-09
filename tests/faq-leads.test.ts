@@ -46,12 +46,10 @@ const YES_NO_TWICE = new Set([
   "joint-bank-account-spouse",
   "foreign-prescriptions",
   "free-bus-to-haram",
-  "summer-semester",
   "rent-on-student-visa",
   "drive-on-visit-visa",
   "bringing-medicine-into-saudi",
   "buying-a-used-car",
-  "degree-collection-and-verification",
 ]);
 
 const DOUBT = /\b(may|might|maybe|perhaps|probably|possibly|reportedly|apparently|it seems|seems|unclear|not stated|we think|we believe|sources?|stated|reported)\b/i;

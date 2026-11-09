@@ -324,11 +324,11 @@ function Item({ icon, label, value, link }: { icon: React.ReactNode; label: stri
         {link && (
           <dd className="mt-1.5">
             {link.internal ? (
-              <Link href={link.href} className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              <Link href={link.href} className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline relative before:absolute before:-inset-x-1 before:-inset-y-2.5 before:content-['']">
                 {link.label} <ChevronRight size={14} aria-hidden="true" className="rtl:rotate-180" />
               </Link>
             ) : (
-              <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline relative before:absolute before:-inset-x-1 before:-inset-y-2.5 before:content-['']">
                 {link.label} <ExternalLink size={13} aria-hidden="true" />
               </a>
             )}

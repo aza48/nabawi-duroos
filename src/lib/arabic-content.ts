@@ -5,7 +5,7 @@ import type { Locale } from "@/lib/locale";
  * `bodyHtmlAr` on guides; `questionAr`, `answerHtmlAr` on FAQs). Until then they are simply absent, and every
  * Arabic page keeps the English text with its "this page is in English" note.
  */
-type GuideLike = { title: string; summary: string | null; bodyHtml: string; titleAr?: string | null; summaryAr?: string | null; bodyHtmlAr?: string | null };
+type GuideLike = { title: string; summary: string | null; bodyHtml: string; readingMinutes?: number; titleAr?: string | null; summaryAr?: string | null; bodyHtmlAr?: string | null };
 type FaqLike = { question: string; answerHtml: string; questionAr?: string | null; answerHtmlAr?: string | null };
 
 const has = (s: string | null | undefined): s is string => typeof s === "string" && s.trim().length > 0;
@@ -19,7 +19,17 @@ export type LocalText = {
   /** Each field on its own, so a translated title can sit above a body still in English. */
   titleInArabic: boolean;
   summaryInArabic: boolean;
+  /** Minutes to read the body shown: the stored English figure, or worked out from the Arabic body. */
+  readingMinutes: number;
 };
+
+/** Arabic words carry their prefixes and suffixes, so a translation has fewer, longer words: 150 a minute reads like 200 English. */
+const AR_WORDS_PER_MINUTE = 150;
+
+export function arabicReadingMinutes(html: string): number {
+  const words = html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / AR_WORDS_PER_MINUTE));
+}
 
 export function guideText(g: GuideLike, locale: Locale): LocalText {
   const ar = locale === "ar";
@@ -33,6 +43,7 @@ export function guideText(g: GuideLike, locale: Locale): LocalText {
     bodyInArabic: b,
     titleInArabic: t,
     summaryInArabic: s,
+    readingMinutes: b ? arabicReadingMinutes(g.bodyHtmlAr!) : (g.readingMinutes ?? 1),
   };
 }
 

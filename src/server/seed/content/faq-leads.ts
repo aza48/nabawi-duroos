@@ -8,7 +8,7 @@
 export const FAQ_LEADS: Record<string, string> = {
   "defer-my-place": "Do not count on it: asking to arrive later than the semester you are offered can send your visa application back.",
   "is-housing-included": "Yes for full scholarship students, whom the University houses; no for partial scholarships, which cover tuition only.",
-  "istiqdam-deposit": "With an iqama you can ask the University to sponsor them; its student affairs office tells you the refundable deposit and when requests open.",
+  "istiqdam-deposit": "No. Family residency through the University has been closed since January 2025, so there is no deposit to pay.",
   "join-mesh-group": "Through any \"Join the group\" button on this site; members keep posts relevant, share only verified information and avoid debates.",
   "how-to-apply-iu": "Apply online on the national Study in Saudi portal while applications are open, choosing up to 25 programmes.",
   "stipend-amount": "It is set by college: check your own monthly figure in the Academic System, under Personal, then Rewards.",
@@ -19,7 +19,8 @@ export const FAQ_LEADS: Record<string, string> = {
   "drive-on-visit-visa": "Yes, on your home licence if Saudi Arabia recognises it, but a Saudi licence or a car in your name needs an iqama.",
   "rawdah-booking": "With a free Nusuk permit booked for a set time; same-day slots are also released for people at the masjid.",
   "duroos-english": "Rarely: English lessons are few, and almost all duroos in the Haram are taught in Arabic.",
-  "tajeel-vs-itithaar": "Ta'jeel is a planned semester off, requested before it starts; i'tithaar is an excuse from a semester you have already started.",
+  "tajeel-vs-itithaar": "Ta'jeel postpones a semester before it begins; i'tithaar withdraws you from one already under way.",
+  "mahad-books": "In the Ma'had collection of the Jamiah library, with the textbooks for every level.",
   "etimad-what-for": "It is the government platform for your University travel orders and ticket letters, and your details on it must match your passport exactly.",
   "student-discounts": "Yes. Students get over 100 partner offers through the University and reduced rates at its sports club.",
   "muqarrarat": "In the Jamiah library, under your college and then your level.",
