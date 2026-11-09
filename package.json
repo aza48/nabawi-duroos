@@ -20,6 +20,7 @@
     "watch:once": "tsx --tsconfig tsconfig.json scripts/watch-once.ts",
     "go-live": "tsx --tsconfig tsconfig.json scripts/go-live.ts",
     "content:sync": "tsx --tsconfig tsconfig.json scripts/content-sync.ts",
+    "shaykh:sync": "tsx --tsconfig tsconfig.json scripts/shaykh-sync.ts",
     "questions:add": "tsx --tsconfig tsconfig.json scripts/questions.ts add",
     "questions:pull": "tsx --tsconfig tsconfig.json scripts/questions.ts pull"
   },

@@ -9,6 +9,7 @@ import { Wordmark } from "./Wordmark";
 import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
 import { AssistantLauncher } from "@/features/assistant/AssistantLauncher";
+import { TextSizeControl } from "./TextSize";
 
 export function SiteShell({
   locale,
@@ -42,7 +43,7 @@ export function SiteShell({
               aria-label={ar ? "انضم لمجموعة MESH على واتساب" : "Join the MESH WhatsApp group"}
               className="flex h-11 min-w-11 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-wa px-3 text-sm font-semibold text-wa-ink transition hover:brightness-105 xl:px-4"
             >
-              <WhatsAppIcon size={18} /> <span className="hidden xl:inline">{ar ? "انضم للمجموعة" : "Join the group"}</span>
+              <WhatsAppIcon size={18} /> <span className="hidden xl:inline" data-hdr-label>{ar ? "انضم للمجموعة" : "Join the group"}</span>
             </a>
             <LanguageSwitch />
             <span className="hidden sm:contents">
@@ -53,7 +54,7 @@ export function SiteShell({
       </header>
       <Tracker />
       <AssistantLauncher locale={locale} />
-      <main id="main" className="pb-safe lg:pb-0">
+      <main id="main" className="pb-safe lg:pb-0" data-main>
         {children}
       </main>
       <Footer locale={locale} whatsappUrl={whatsappUrl} helpContact={helpContact} />
@@ -137,7 +138,8 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
               {helpContact}
             </AdminHelpLink>
           </p>
-          <span className="flex items-center gap-3">
+          <span className="flex flex-wrap items-center gap-3">
+            <TextSizeControl locale={ar ? "ar" : "en"} tone="dark" />
             <span className="sm:hidden"><ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} /></span>
             <span className="text-xs text-white/70">medinahub.org</span>
           </span>

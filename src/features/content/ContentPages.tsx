@@ -18,7 +18,10 @@ import { WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { AdminHelp } from "@/components/shell/AdminHelp";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 import { EnglishNote } from "@/components/EnglishNote";
+import { faqText, guideText, textAttrs } from "@/lib/arabic-content";
 import type { Locale } from "@/lib/locale";
+import { TextSizeControl } from "@/components/shell/TextSize";
+import { ThemeToggle } from "@/components/shell/ThemeToggle";
 import { arCount, arDigits } from "@/lib/arabic-count";
 
 const verified = (d: Date | null, locale: Locale = "en") =>
@@ -27,8 +30,6 @@ const verified = (d: Date | null, locale: Locale = "en") =>
       ? `آخر تحقق ${new Intl.DateTimeFormat("ar-SA-u-ca-gregory-nu-latn", { day: "numeric", month: "long", year: "numeric" }).format(d)}`
       : `Last verified ${new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(d)}`
     : null;
-
-const EN = { dir: "ltr", lang: "en" } as const;
 
 const asGuide = (g: GuideRow): RelItem => ({ slug: g.slug, title: g.title, text: g.summary, group: topicOf(g) });
 
@@ -43,6 +44,17 @@ const TOPIC_ICON: Record<GuideTopicId, typeof BookOpen> = {
   explore: Compass,
 };
 const asFaq = (f: FaqRow): RelItem => ({ slug: f.slug, title: f.question, text: plain(f.answerHtml).slice(0, 400), group: f.category, tags: f.tags });
+
+/** Related items keep their English matching but show the Arabic title and summary where a translation exists. */
+function localRel(items: RelItem[], kind: "guides" | "faqs", guides: GuideRow[], faqs: FaqRow[], locale: Locale): RelItem[] {
+  if (locale !== "ar") return items;
+  if (kind === "guides") {
+    const by = new Map(guides.map((g) => [g.slug, guideText(g, locale)]));
+    return items.map((it) => { const t = by.get(it.slug); return t ? { ...it, title: t.title, text: t.summary ?? it.text } : it; });
+  }
+  const by = new Map(faqs.map((f) => [f.slug, faqText(f, locale)]));
+  return items.map((it) => { const t = by.get(it.slug); return t ? { ...it, title: t.question } : it; });
+}
 
 /** "Related guides" or "Related answers": a short list of links at the end of a page (or in the side rail). */
 function RelatedList({ kind, items, locale, rail = false }: { kind: "guides" | "faqs"; items: RelItem[]; locale: Locale; rail?: boolean }) {
@@ -98,8 +110,8 @@ export function AskPage({ faqs, locale = "en" }: { faqs: FaqRow[]; whatsappUrl?:
         subtitle={ar ? "أجوبة موثّقة لأكثر ما يسأل عنه الطلاب، يحدّثها فريق MESH باستمرار." : "Verified answers to what students ask most, kept up to date by the MESH team."}
       />
       <div className="shell mt-8 md:mt-12">
-        {ar && <EnglishNote className="mb-6 max-w-3xl lg:ms-[288px]" />}
-        <FaqExplorer items={faqs.map((f) => ({ slug: f.slug, question: f.question, category: f.category }))} categories={FAQ_CATEGORIES} locale={locale} />
+        {ar && faqs.some((f) => !faqText(f, locale).answerInArabic) && <EnglishNote className="mb-6 max-w-3xl lg:ms-[288px]" />}
+        <FaqExplorer items={faqs.map((f) => ({ slug: f.slug, question: faqText(f, locale).question, category: f.category }))} categories={FAQ_CATEGORIES} locale={locale} />
         <div className="mt-10 max-w-3xl lg:ms-[288px]">
           <AdminHelp locale={locale} kind="question" />
         </div>
@@ -111,9 +123,10 @@ export function AskPage({ faqs, locale = "en" }: { faqs: FaqRow[]; whatsappUrl?:
 export function FaqPage({ faq, locale = "en", guides = [], faqs = [] }: { faq: FaqRow; whatsappUrl?: string; locale?: Locale; guides?: GuideRow[]; faqs?: FaqRow[] }) {
   const ar = locale === "ar";
   const cat = FAQ_CATEGORIES.find((c) => c.id === faq.category);
+  const ft = faqText(faq, locale);
   const me = asFaq(faq);
-  const relFaqs = related(me, faqs.map(asFaq), 4);
-  const relGuides = related(me, guides.map(asGuide), 3);
+  const relFaqs = localRel(related(me, faqs.map(asFaq), 4), "faqs", guides, faqs, locale);
+  const relGuides = localRel(related(me, guides.map(asGuide), 3), "guides", guides, faqs, locale);
   const askHref = ar ? "/ar/ask" : "/ask";
   return (
     <div className={`shell pt-6 md:pt-10 ${relFaqs.length ? "xl:grid xl:grid-cols-[minmax(0,48rem)_300px] xl:justify-center xl:gap-14" : ""}`}>
@@ -134,15 +147,15 @@ export function FaqPage({ faq, locale = "en", guides = [], faqs = [] }: { faq: F
           ...(cat ? ([[ar ? cat.labelAr : cat.label, `${askHref}?c=${cat.id}`]] as [string, string][]) : []),
         ]}
       />
-      {ar && <EnglishNote className="mt-4" />}
-      <div {...(ar ? EN : {})}>
-        <h1 className="mt-2 text-3xl font-semibold leading-tight">{faq.question}</h1>
+      {ar && !ft.answerInArabic && <EnglishNote className="mt-4" />}
+      <div>
+        <h1 className="mt-2 text-3xl font-semibold leading-tight" {...textAttrs(ft.questionInArabic, locale)}>{ft.question}</h1>
         {verified(faq.lastVerifiedAt) && !ar && (
           <p className="mt-2 flex items-center gap-1.5 text-sm text-on">
             <CircleCheck size={15} /> {verified(faq.lastVerifiedAt)}
           </p>
         )}
-        <div className="article mt-5" dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(faq.answerHtml) }} />
+        <div className="article mt-5" {...textAttrs(ft.answerInArabic, locale)} dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(ft.answerHtml) }} />
       </div>
       {ar && verified(faq.lastVerifiedAt, "ar") && (
         <p className="mt-4 flex items-center gap-1.5 text-sm text-on">
@@ -193,7 +206,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
         </nav>
       </PageBand>
       <div className="shell mt-10 space-y-14 md:mt-14">
-        {ar && <EnglishNote className="max-w-3xl" />}
+        {ar && guides.some((g) => !guideText(g, locale).bodyInArabic) && <EnglishNote className="max-w-3xl" />}
         {topics.map((t, i) => {
           const Icon = TOPIC_ICON[t.id];
           return (
@@ -204,8 +217,8 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
                 {t.items.map((g, n) => (
                   <Link key={g.slug} href={`${ar ? "/ar" : ""}/guides/${g.slug}`} className="lift group flex flex-col rounded-2xl border border-line bg-card p-5 hover:border-primary/50">
                     {i === 0 && <span className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent">{ar ? `الخطوة ${arDigits(n + 1)}` : `Step ${n + 1}`}</span>}
-                    <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary" dir="auto">{g.title}</span>
-                    <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted" dir="auto">{g.summary}</span>
+                    <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary" dir="auto">{guideText(g, locale).title}</span>
+                    <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted" dir="auto">{guideText(g, locale).summary}</span>
                     <span className="mt-auto flex items-center gap-3 pt-4 text-xs text-muted">
                       <span className="flex items-center gap-1"><BookOpen size={13} /> {ar ? arCount(g.readingMinutes, "minute", { one: "bare" }) : `${g.readingMinutes} min`}</span>
                       {g.lastVerifiedAt && <span className="flex items-center gap-1 text-on"><CircleCheck size={13} /> {ar ? "موثّق" : "Verified"}</span>}
@@ -239,11 +252,12 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
   const onPage = ar ? "في هذه الصفحة" : "On this page";
   const Icon = TOPIC_ICON[topic.id] ?? BookOpen;
   const isCalendar = guide.slug === "university-calendar-1448";
-  const { html, toc, steps: rawSteps } = enhanceGuideHtml(sanitizeArticleHtml(guide.bodyHtml));
+  const gt = guideText(guide, locale);
+  const { html, toc, steps: rawSteps } = enhanceGuideHtml(sanitizeArticleHtml(gt.bodyHtml));
   const steps = isCalendar ? 0 : rawSteps;
   const me = asGuide(guide);
-  const relGuides = related(me, guides.map(asGuide), 4);
-  const relFaqs = related(me, faqs.map(asFaq), 5);
+  const relGuides = localRel(related(me, guides.map(asGuide), 4), "guides", guides, faqs, locale);
+  const relFaqs = localRel(related(me, faqs.map(asFaq), 5), "faqs", guides, faqs, locale);
   const hasToc = toc.length > 1 && !isCalendar;
   // Article only: HowTo rich results were withdrawn, and Article needs an image.
   const ld = {
@@ -279,8 +293,8 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
               ]}
             />
           </div>
-          <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl" dir="auto">{guide.title}</h1>
-          <p className="mt-4 max-w-2xl text-white/85 md:text-lg" dir="auto">{guide.summary}</p>
+          <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl" dir="auto">{gt.title}</h1>
+          <p className="mt-4 max-w-2xl text-white/85 md:text-lg" dir="auto">{gt.summary}</p>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
             {!isCalendar && <span className="flex items-center gap-1.5"><BookOpen size={15} /> {ar ? `${arCount(guide.readingMinutes, "minute", { one: "bare" })} للقراءة` : `${guide.readingMinutes} min read`}</span>}
             {steps > 0 && <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {ar ? arCount(steps, "step") : `${steps} ${steps === 1 ? "step" : "steps"} to tick off`}</span>}
@@ -325,9 +339,9 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
           </details>
         )}
         <article className={isCalendar ? "min-w-0" : "min-w-0 max-w-3xl"}>
-          {ar && !isCalendar && <EnglishNote className="mb-6" />}
-          <div {...(ar && !isCalendar ? EN : {})}>
-            {guide.slug === "university-calendar-1448" ? <UniversityCalendar locale={locale} /> : <GuideBody html={html} slug={guide.slug} steps={steps} locale={ar ? "ar" : "en"} />}
+          {ar && !isCalendar && !gt.bodyInArabic && <EnglishNote className="mb-6" />}
+          <div {...(ar && !isCalendar ? textAttrs(gt.bodyInArabic, locale) : {})}>
+            {guide.slug === "university-calendar-1448" ? <UniversityCalendar locale={locale} /> : <GuideBody html={html} slug={gt.bodyInArabic ? `${guide.slug}.ar` : guide.slug} steps={steps} locale={ar ? "ar" : "en"} />}
           </div>
           <div className={isCalendar ? "max-w-3xl" : undefined}>
             <AdminHelp locale={locale} className="mt-6" />
@@ -406,6 +420,17 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
             </Link>
           ))}
         </div>
+
+        <section id="display" aria-labelledby="display-title" className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-line bg-card p-5 md:p-6">
+          <span>
+            <h2 id="display-title" className="font-heading text-xl font-bold">{ar ? "حجم الخط والمظهر" : "Text size and theme"}</h2>
+            <span className="mt-0.5 block text-sm text-muted">{ar ? "يُحفظ على هذا الهاتف." : "Saved on this phone."}</span>
+          </span>
+          <span className="flex items-center gap-3">
+            <TextSizeControl locale={locale} />
+            <ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} />
+          </span>
+        </section>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <section id="alerts" className="rounded-3xl border border-line bg-card p-6 md:p-8">
