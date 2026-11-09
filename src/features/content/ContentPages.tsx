@@ -19,6 +19,8 @@ import { AdminHelp } from "@/components/shell/AdminHelp";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 import { EnglishNote } from "@/components/EnglishNote";
 import type { Locale } from "@/lib/locale";
+import { TextSizeControl } from "@/components/shell/TextSize";
+import { ThemeToggle } from "@/components/shell/ThemeToggle";
 
 const verified = (d: Date | null, locale: Locale = "en") =>
   d
@@ -405,6 +407,17 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
             </Link>
           ))}
         </div>
+
+        <section id="display" aria-labelledby="display-title" className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-line bg-card p-5 md:p-6">
+          <span>
+            <h2 id="display-title" className="font-heading text-xl font-bold">{ar ? "حجم الخط والمظهر" : "Text size and theme"}</h2>
+            <span className="mt-0.5 block text-sm text-muted">{ar ? "يُحفظ على هذا الهاتف." : "Saved on this phone."}</span>
+          </span>
+          <span className="flex items-center gap-3">
+            <TextSizeControl locale={locale} />
+            <ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} />
+          </span>
+        </section>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <section id="alerts" className="rounded-3xl border border-line bg-card p-6 md:p-8">

@@ -146,6 +146,18 @@ html {
   background: var(--bg);
   -webkit-text-size-adjust: 100%;
 }
+/* Text size (A+ and A++ in the menu): everything sized in rem grows with the root. Percentages keep the phone's own setting. */
+:root[data-text="lg"] { font-size: 112.5%; }
+:root[data-text="xl"] { font-size: 125%; }
+/* Breakpoints are measured in the browser's own text size, so with larger text the header drops its labels (icons stay). */
+:root[data-text] [data-hdr-label] { display: none !important; }
+@media (max-width: 639.98px) { :root[data-text] header .brand-line { display: none; } }
+/* From 1024 px the desktop menu would not fit beside larger text until 1280 px: keep the bottom bar until then. */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  :root[data-text] [data-desktop-nav] { display: none !important; }
+  :root[data-text] [data-bottom-nav] { display: block !important; }
+  :root[data-text] [data-main] { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)) !important; }
+}
 body {
   background: var(--bg);
   color: var(--ink);
