@@ -1,4 +1,4 @@
-import { HELP_CONTACT_DEFAULT } from "@/server/settings";
+import { HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
 import type { Chunk } from "./knowledge";
 import { keyTerms, termHits } from "./retrieve";
 
@@ -67,8 +67,8 @@ export function extract(question: string, p: Chunk, max = 520): string {
 
 export function notFound(lang: "en" | "ar"): string {
   return lang === "ar"
-    ? `ليس عندي جواب موثوق عن هذا بعد. راسل المشرف على واتساب على الرقم ${HELP_CONTACT_DEFAULT} وسيساعدك فريق MESH، وقد نضيف الجواب إلى الموقع.`
-    : `I don't have a reliable answer to that yet. Please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT} and the MESH team will help, and we may add the answer to the site.`;
+    ? `ليس عندي جواب موثوق عن هذا بعد. راسل المشرف على واتساب على الرقم ${HELP_CONTACT_DEFAULT} أو على البريد الإلكتروني ${HELP_EMAIL_DEFAULT} وسيساعدك فريق MESH، وقد نضيف الجواب إلى الموقع.`
+    : `I don't have a reliable answer to that yet. Please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT} or email ${HELP_EMAIL_DEFAULT} and the MESH team will help, and we may add the answer to the site.`;
 }
 
 /** A plain answer from the top passages: the best one, plus the second when it adds something. */

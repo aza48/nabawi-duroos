@@ -106,7 +106,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Watch your University email. The reply comes there.</li>
 </ol>
 <p>Other offices and contacts are in <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</p>
-<blockquote><p>Tip: Still stuck? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "women-at-masjid-an-nabawi",
@@ -185,7 +185,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Al-Baqi' is open to men only. Women can see it from outside the boundary.</li>
 </ul>
 <p>For what is inside the masjid and the courtyards, see <a href="/guides/masjid-an-nabawi-first-visit">Visiting Masjid an-Nabawi: a first-visit guide</a>.</p>
-<blockquote><p>Tip: A question we have not answered here? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: A question we have not answered here? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "first-30-days-in-madinah",
@@ -240,7 +240,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <blockquote><p>Tip: Keep a folder on your phone with photos of your passport, visa, student card, contract and every receipt. You will be asked for them more often than you expect.</p></blockquote>
 <h2>Not a student?</h2>
 <p>Families and muhajirun on a visit visa follow most of the same list: SIM, Absher, bank, housing, transport. Check how long your visa lets you stay and how extensions work in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>, and see <a href="/guides/kindergartens-and-schools">Kindergartens and schools</a> if you have children.</p>
-<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "masjid-an-nabawi-institute-and-college",
@@ -275,7 +275,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>Sisters apply in the same window to the women's Institute and College. See <a href="/programs/nabawi-women">Masjid an-Nabawi programmes for women</a>.</p>
 <h2>Without an iqama</h2>
 <p>You can still study at the Haram every day. The duroos of the mashayikh are open to everyone with no registration, and the Qur'an and mutun halaqat take registrations online. See <a href="/programs/nabawi-halaqat">Qur'an and mutun halaqat in the Haram</a> and today's <a href="/duroos">Duroos</a>.</p>
-<blockquote><p>Tip: Questions about your own case? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Questions about your own case? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "haramain-train-and-city-buses",
@@ -325,7 +325,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Tap your card or show the app code when you board.</li>
 </ol>
 <p>Ride apps, the Quba walkway shuttles and shared taxis to Makkah are in <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>
-<blockquote><p>Tip: A question about a route? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: A question about a route? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "university-offices-and-contacts",
@@ -381,7 +381,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <tr><td>Emergencies</td><td>Ambulance <strong>997</strong>, unified emergency number <strong>911</strong></td></tr>
 </tbody></table>
 <p>Daily life on campus is in <a href="/guides/campus-life-islamic-university">Student life at the Islamic University</a>.</p>
-<blockquote><p>Tip: Not sure which office to ask? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Not sure which office to ask? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "scholarship-stipend-and-allowances",
@@ -431,7 +431,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>The full list and how to set up your account are in <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</p>
 <h2>When you graduate</h2>
 <p>Graduates receive the graduation allowance of three months' stipend and a final ticket home, once the University has confirmed their clearance. The steps are in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
-<blockquote><p>Tip: A payment missing or wrong? Check the Rewards screen first, then send a request through Tawasul. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: A payment missing or wrong? Check the Rewards screen first, then send a request through Tawasul. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
 ];
 
@@ -548,7 +548,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <p>Scholarship students sign a declaration. It commits you to follow Saudi law and the University's rules, to attend regularly and keep up your grades, not to move your sponsorship to anyone other than the University, and to go home when you graduate, withdraw or leave. You cannot stay on in the Kingdom on the scholarship after your studies end.</p>
 <h2>Housing and family</h2>
 <p><strong>Housing:</strong> full scholarships include University housing and partial ones do not. See <a href="/ask/is-housing-included">Is housing included?</a> and check the support shown on your offer. <strong>Family:</strong> see <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</p>
-<blockquote><p>Tip: Questions about your own application? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Questions about your own application? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "new-student-steps",
@@ -587,7 +587,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Which office handles what: <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</li>
 <li>The rest of your first month: <a href="/guides/first-30-days-in-madinah">Your first 30 days in Madinah</a>.</li>
 </ul>
-<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "tajeel-and-itithaar",
@@ -640,7 +640,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h2>Questions</h2>
 <p><strong>Can I apply from abroad?</strong> Yes, the request is online. But someone has to empty your room and return the key, and you cannot sort out problems in person.</p>
 <p><strong>Can I cancel a request?</strong> Ask your college or the Ma'had straight away, as they may need to put you back into your classes.</p>
-<blockquote><p>Tip: Not sure which one fits your case? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Not sure which one fits your case? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "graduate-procedures",
@@ -795,7 +795,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Make a last visit to the Prophet's Mosque with time to spare, give salam at the grave, pray in Quba, and visit al-Baqi'.</li>
 </ul>
 <p>May Allah grant success to every graduate.</p>
-<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "sisters-studying-in-madinah",
@@ -872,7 +872,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <p>The full conditions for each level are in <a href="/guides/masjid-an-nabawi-institute-and-college">The Masjid an-Nabawi Institute and College</a> and <a href="/programs/nabawi-women">Masjid an-Nabawi programmes for women</a>.</p>
 <h2>Without registering</h2>
 <p>The Haram's free Qur'an and mutun halaqat for sisters take registrations online, and the duroos in the masjid are open to everyone. See <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>. For online study and the other routes, see <a href="/ask/sisters-study">Where can sisters study?</a> and <a href="/programs">Study in Madinah</a>.</p>
-<blockquote><p>Tip: A question about your own case? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: A question about your own case? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "kids-activities",
@@ -910,7 +910,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <p>Gardens such as Reef Al Bustan have bouncy castles and rides such as small trains.</p>
 <blockquote><p>Tip: Many mall arcade rides and the large bouncy castles in the gardens are built for children of four and over. Toddlers have their own areas in the soft play centres above.</p></blockquote>
 <p>For schools and nurseries, see <a href="/guides/kindergartens-and-schools">Kindergartens and schools</a>. The children's centres at the Haram are in <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</p>
-<blockquote><p>Tip: Know a place for children we should add? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Know a place for children we should add? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "graduating-from-mahad",
@@ -946,7 +946,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Your new timetable is in the Academic System, under Electronic Registration, then Registered Courses.</li>
 <li>The rules on ta'jeel and i'tithaar are in <a href="/guides/tajeel-and-itithaar">Taking a semester off</a>.</li>
 </ul>
-<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "postgraduate-admission-1448",
@@ -1065,6 +1065,6 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Phone extensions: <strong>31009</strong> and <strong>31006</strong></li>
 </ul>
 <p>Bachelor's admission is in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</p>
-<blockquote><p>Tip: Questions about your own application? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Questions about your own application? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
 ];

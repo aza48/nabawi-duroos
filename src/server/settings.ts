@@ -23,6 +23,9 @@ export async function getWhatsAppUrl(db: Db): Promise<string> {
 /** The number shown for help, suggestions and takhlees submissions. Fixed on purpose: it is not editable in the admin. */
 export const HELP_CONTACT_DEFAULT = "+1 234 567 9076";
 
+/** The help email, shown beside the help number everywhere. Fixed, like the number. */
+export const HELP_EMAIL_DEFAULT = "mesh@albaseerah.org";
+
 /** Always the fixed help number. Any old `help_contact` row in settings is ignored. */
 export async function getHelpContact(_db?: Db): Promise<string> {
   return HELP_CONTACT_DEFAULT;

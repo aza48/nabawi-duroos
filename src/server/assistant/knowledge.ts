@@ -11,7 +11,7 @@ import { LIVE_COLLECTIONS } from "@/content/library-books";
 import { OFFICIAL } from "@/content/library";
 import { MAHAD_COPY } from "@/features/library/MahadPage";
 import { slugify } from "@/lib/guide-html";
-import { HELP_CONTACT_DEFAULT } from "@/server/settings";
+import { HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
 
 /**
  * The assistant's knowledge: every public page of MESH cut into small, self-contained passages
@@ -181,7 +181,7 @@ function discountChunks(): Chunk[] {
 }
 
 function siteChunks(): Chunk[] {
-  const help = `please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT}`;
+  const help = `please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT} or email ${HELP_EMAIL_DEFAULT}`;
   return [
     {
       id: "page-about",

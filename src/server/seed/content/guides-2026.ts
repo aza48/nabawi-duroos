@@ -192,7 +192,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>Your summer ticket is a group booking</td><td>Group tickets cannot be changed. Travel on the date given</td></tr>
 </tbody></table>
 <p>Graduates: the final ticket comes after everything else is cleared, and the order of steps is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>. What the yearly ticket covers alongside your stipend is in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money: stipend, allowances and tickets</a>.</p>
-<blockquote><p>Tip: Ticket stuck and Tawasul silent? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Ticket stuck and Tawasul silent? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "kindergartens-and-schools",
@@ -301,7 +301,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>A registered rental contract on Ejar is open to iqama holders and to students on the educational visa, whose contract an accredited agent registers. See <a href="/guides/finding-an-apartment">Finding and renting a flat</a>.</p>
 <p>Employment is the usual route to an iqama. Premium Residency is another: about 100,000 SAR a year, or 800,000 SAR once for permanent residency. Five other Premium Residency products, for skilled professionals, gifted people, investors, entrepreneurs and property owners, each have their own conditions.</p>
 <h2>University students' families</h2>
-<p>Students' spouse and family visas go through the University and its own procedures, and the rules differ for students with an iqama and students on the educational visa with a Visitor ID. Ask the Deanship of Student Affairs or send a request through Tawasul before you plan, and message Admin on WhatsApp at +1 234 567 9076 if you need help finding the right office.</p>
+<p>Students' spouse and family visas go through the University and its own procedures, and the rules differ for students with an iqama and students on the educational visa with a Visitor ID. Ask the Deanship of Student Affairs or send a request through Tawasul before you plan, and message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a> if you need help finding the right office.</p>
 <blockquote><p>Tip: Come on a visa for a few months first, get to know the city, and only then spend on an iqama.</p></blockquote>`,
   },
   {
@@ -373,7 +373,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Someone sublets to you without the owner's written permission.</li>
 <li>The electricity is cut off, or the last tenant left a large unpaid bill.</li>
 </ul>
-<blockquote><p>Tip: Unsure about a contract or an offer? Please message Admin on WhatsApp at +1 234 567 9076 before you pay.</p></blockquote>
+<blockquote><p>Tip: Unsure about a contract or an offer? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a> before you pay.</p></blockquote>
 <h2>Checklist before you pay</h2>
 <ol>
 <li>Look for damp, cracks or mould, especially in bathrooms.</li>
@@ -471,7 +471,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>For Makkah, the Haramain train and the coaches are cheaper and calmer than driving: see <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</li>
 </ul>
 <p>Students on the educational visa: what works and what does not on a Visitor ID is in <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>
-<blockquote><p>Tip: Not sure whether your country's licence swaps without a test? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Not sure whether your country's licence swaps without a test? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     // Superseded: the published version is GUIDE_REWRITES_2026_11 in guides-research-2026-11.ts (SEED_GUIDES keeps the later one). Edit that one.
@@ -527,7 +527,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Missing the 5 day window to confirm an offer, or the short deadline on the University's second application.</li>
 <li>Applying for the visa while visiting Saudi Arabia.</li>
 </ul>
-<blockquote><p>Tip: Questions about your own application? Message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Questions about your own application? Message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "having-a-baby-in-madinah",
@@ -692,7 +692,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </ul>
 <h2>On a Visitor ID</h2>
 <p>Students on the educational visa hold no iqama, so none of the fees above apply. Leaving and returning follows your visa, not an exit and re-entry visa: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a> before you book a trip, and ask the Deanship of Admission and Registration through Tawasul, subject Educational visa, if your plans cross the visa's dates.</p>
-<blockquote><p>Tip: Absher refused the visa and you cannot see why? Check your violations page and every dependant's iqama date first. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Absher refused the visa and you cannot see why? Check your violations page and every dependant's iqama date first. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "masjid-an-nabawi-first-visit",
