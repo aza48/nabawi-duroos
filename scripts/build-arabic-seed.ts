@@ -1,7 +1,10 @@
 /**
  * Builds src/server/seed/content/arabic.ts from the Arabic translations in docs/research/translations:
  *   <slug>.ar.html  a guide: a header comment with title_ar and summary_ar, then the Arabic body HTML;
- *   faqs-*.ar.json  answers: { "<slug>": { "questionAr": "...", "answerHtmlAr": "..." } }.
+ *   faqs-*.ar.json  answers: { "<slug>": { "questionAr": "...", "answerHtmlAr": "..." } }; a later file (faqs-3 after
+ *                   faqs-2) replaces an earlier translation of the same answer, as when an answer is rewritten;
+ *   faq-leads.ar.json the one-sentence short answers: { "<slug>": "..." }, added as the first paragraph of the Arabic
+ *                   answer, as src/server/seed/content/faq-leads.ts does for the English.
  * The content sync (src/server/seed/content/sync.ts) attaches them to the seeded guides and answers by slug.
  * Run after editing a translation: npx tsx --tsconfig tsconfig.json scripts/build-arabic-seed.ts
  */
@@ -33,10 +36,24 @@ for (const file of readdirSync(DIR).sort()) {
     const data = JSON.parse(readFileSync(join(DIR, file), "utf8")) as Record<string, ArFaq>;
     for (const [slug, v] of Object.entries(data)) {
       if (!v.questionAr?.trim() || !v.answerHtmlAr?.trim()) throw new Error(`${file}: ${slug} is missing a field`);
-      if (faqs[slug]) throw new Error(`${file}: ${slug} is translated twice`);
       faqs[slug] = { questionAr: v.questionAr.trim(), answerHtmlAr: v.answerHtmlAr.trim() };
     }
   }
+}
+
+// Short answers first, unless the translation already opens with that sentence.
+const LEADS = join(DIR, "faq-leads.ar.json");
+try {
+  const leads = JSON.parse(readFileSync(LEADS, "utf8")) as Record<string, string>;
+  const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  for (const [slug, lead] of Object.entries(leads)) {
+    const f = faqs[slug];
+    if (!f) throw new Error(`faq-leads.ar.json: ${slug} has no Arabic answer`);
+    const first = /^\s*<p[^>]*>([\s\S]*?)<\/p>/.exec(f.answerHtmlAr)?.[1].replace(/<[^>]+>/g, "").trim();
+    if (first !== lead.trim()) f.answerHtmlAr = `<p>${esc(lead.trim())}</p>${f.answerHtmlAr}`;
+  }
+} catch (e) {
+  if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
 }
 
 writeFileSync(
