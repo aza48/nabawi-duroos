@@ -6,6 +6,7 @@ import { KEY_DATES, endOf, startOf, type KeyDate } from "@/content/key-dates";
 import { SITE_URL } from "@/lib/site";
 import { toArabicDigits, type Locale } from "@/lib/locale";
 import { hijriTextAr } from "@/lib/time/hijri";
+import { arCount } from "@/lib/arabic-count";
 
 const FEED = `${SITE_URL}/api/v1/calendar/dates.ics`;
 const WEBCAL = FEED.replace(/^https?:/, "webcal:");
@@ -21,8 +22,6 @@ const KIND = {
   islamic: { icon: Moon, tone: "bg-gold-bg text-gold" },
 } as const;
 
-/** "3 days" in Arabic, with the noun agreeing with the number. */
-const arDays = (n: number) => (n === 1 ? "يوم واحد" : n === 2 ? "يومان" : n <= 10 ? `${toArabicDigits(n)} أيام` : `${toArabicDigits(n)} يومًا`);
 
 type Strings = {
   phone: string;
@@ -57,9 +56,9 @@ const T: Record<Locale, Strings> = {
     kinds: { exams: "Exams", holiday: "Holiday", study: "Classes", deadline: "Request window", islamic: "Islamic dates" },
     terms: { first: "First semester", second: "Second semester", summer: "Summer semester" },
     hidePast: "Hide past dates",
-    showPast: (n) => `Show ${n} past dates`,
+    showPast: (n) => `Show ${n} past ${n === 1 ? "date" : "dates"}`,
     ended: "Ended",
-    onNow: (n) => `On now, ${n} days left`,
+    onNow: (n) => `On now, ${n} ${n === 1 ? "day" : "days"} left`,
     today: "Today",
     tomorrow: "Tomorrow",
     inDays: (n) => `In ${n} days`,
@@ -81,10 +80,10 @@ const T: Record<Locale, Strings> = {
     hidePast: "إخفاء المواعيد الماضية",
     showPast: (n) => `عرض المواعيد الماضية (${toArabicDigits(n)})`,
     ended: "انتهى",
-    onNow: (n) => `جارٍ الآن، بقي ${arDays(n)}`,
+    onNow: (n) => `جارٍ الآن، بقي ${arCount(n, "day")}`,
     today: "اليوم",
     tomorrow: "غدًا",
-    inDays: (n) => `بعد ${arDays(n)}`,
+    inDays: (n) => `بعد ${arCount(n, "day", { case: "gen" })}`,
     to: "إلى",
     sep: "، ",
     hijri: hijriTextAr,

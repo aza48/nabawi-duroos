@@ -1,6 +1,5 @@
 import type { getToday } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
-import { toArabicDigits } from "@/lib/locale";
 import { formatHijriLong } from "@/lib/time/hijri";
 import { addDays } from "@/lib/time/riyadh";
 import { PRAYERS, prayerTimes } from "@/lib/time/prayer";
@@ -11,6 +10,7 @@ import { NextPrayer } from "./NextPrayer";
 import { WeatherChip } from "./WeatherChip";
 import { LiveNowChip } from "@/features/duroos/Countdown";
 import { DayRollover } from "./DayRollover";
+import { arCount, enCount } from "@/lib/arabic-count";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
@@ -50,17 +50,19 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
   const ar = locale === "ar";
   const weekday = today.hijri.en.split(" ")[0];
   const total = today.lessons.length;
-  const cancelled = today.lessons.filter((l) => l.status === "cancelled" || l.status === "postponed").length;
+  const cancelled = today.lessons.filter((l) => l.status === "cancelled").length;
+  const postponed = today.lessons.filter((l) => l.status === "postponed").length;
   const masjids = new Set(today.lessons.map((l) => l.masjid.id)).size;
   const live = today.lessons.filter((l) => l.phase === "live" && l.status !== "cancelled" && l.status !== "postponed").length;
-  const n = (x: number) => (ar ? toArabicDigits(x) : String(x));
   const tomorrowFajr = prayerTimes(addDays(today.date, 1)).fajr.toISOString();
 
   const summary = ar
-    ? `${n(total)} دروس اليوم في ${n(masjids)} مساجد${cancelled ? `، ${n(cancelled)} ملغى` : ""}.`
+    ? total === 0
+      ? "لا دروس اليوم."
+      : `${arCount(total, "dars")} اليوم في ${arCount(masjids, "masjid", { case: "gen" })}${cancelled ? `، وأُلغي ${arCount(cancelled, "dars")}` : ""}${postponed ? `، وأُجّل ${arCount(postponed, "dars")}` : ""}.`
     : total === 0
       ? "No duroos scheduled today."
-      : `${total} duroos today across ${masjids} ${masjids === 1 ? "masjid" : "masjids"}${cancelled ? `, ${cancelled} cancelled` : ""}.`;
+      : `${enCount(total, "dars", "duroos")} today across ${enCount(masjids, "masjid", "masjids")}${cancelled ? `, ${cancelled} cancelled` : ""}${postponed ? `, ${postponed} postponed` : ""}.`;
 
   return (
     <section className="hero lattice overflow-hidden bg-brand text-white">

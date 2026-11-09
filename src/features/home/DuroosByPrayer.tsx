@@ -1,11 +1,11 @@
 import { Clock3 } from "lucide-react";
 import type { getToday } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
-import { toArabicDigits } from "@/lib/locale";
 import { formatClock } from "@/lib/time/riyadh";
 import { PRAYERS } from "@/lib/time/prayers";
 import { DarsCard } from "@/features/duroos/DarsCard";
 import { t } from "@/features/duroos/strings";
+import { arCount, enCount } from "@/lib/arabic-count";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
@@ -42,7 +42,7 @@ export function DuroosByPrayer({ today, locale }: { today: Today; locale: Locale
               </span>
               <span className="h-px flex-1 bg-line" aria-hidden="true" />
               <span className="text-sm text-muted">
-                {allDone ? (ar ? "انتهت" : "Finished") : ar ? `${toArabicDigits(group.length)} دروس` : `${group.length} ${group.length === 1 ? "dars" : "duroos"}`}
+                {allDone ? (ar ? "انتهت" : "Finished") : ar ? arCount(group.length, "dars") : enCount(group.length, "dars", "duroos")}
               </span>
             </div>
             <div className="grid gap-3 md:grid-cols-2">
