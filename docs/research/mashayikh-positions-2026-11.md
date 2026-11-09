@@ -841,6 +841,13 @@ No public sources found (as expected for sisters' teachers who do not publish on
 
 ## Open questions for the admins
 
+**Resolved on 9 Nov 2026 by the official schedule** (`docs/research/duroos-official-schedule-2026-11.md`, the Presidency's own lesson data):
+- **Question 1:** the Fada'il al-Qur'an dars belongs to Prof. Dr. Badr ibn Nasir al-Badr, with the same spot, prayer and days. The lesson data is corrected (#88), and his positions are in `mashayikh-positions-2026-11-new.md`.
+- **Question 4:** the Presidency writes «د. علي بن فهد أبابطين»: Dr., not Prof. Dr.
+- **Question 5:** the Presidency's current lesson data writes «د. صالح بن سعد السحيمي»: Dr.
+
+The other questions stay open.
+
 1. Shaykh Badr ibn Muqbil al-Badr (section 11): no such name exists in any source. Is this Prof. Dr. Badr ibn Nasir al-Badr (teacher at the Prophet's Mosque, Qur'an sciences; fits the Fada'il al-Qur'an lesson) or Prof. Dr. Badr ibn Muqbil al-Dhafiri (former dean of the College of Aqidah and Da'wah)? Please check the original announcement.
 2. Shaykh Maher al-Qahtani (section 30): the only known scholar of this name, Maher ibn Dhafir al-Qahtani, teaches in Makkah. Please confirm the teacher of the monthly Kitab at-Tawhid lesson at Masjid Dar al-Hijrah.
 3. Prof. Dr. Muhammad ibn Nasir al-Humaid and Prof. Dr. Abdullah ibn Ibrahim al-Luhaydan (sections 20 and 21): no institution or rank found; the "أ. د." titles are unconfirmed. Ask the Quba lesson organisers or the Khizanat al-'Ilm channel for their posts.
