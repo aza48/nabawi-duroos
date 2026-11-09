@@ -83,6 +83,11 @@ describe("ranking: typed words over related words", () => {
   it("never matches on a particle alone", () => {
     expect(search("kitab at-tawhid").map((h) => h.id)).not.toContain("campus");
   });
+  it("never matches on a particle inside a synonym phrase", () => {
+    const withEid = createSearch([...books, { id: "eid", type: "guide", title: "Eid in Madinah", subtitle: "Prayer times and the Haram", text: "", url: "/guides/eid" }]);
+    expect(withEid("eid").map((h) => h.id)).toEqual(["eid"]);
+    expect(weighQuery("eid").query.split(" ")).not.toContain("al");
+  });
   it("keeps spellings at full weight and related words lower", () => {
     const { typed, weight } = weighQuery("Kitab at-Tawheed");
     expect(typed.map((t) => t[0])).toEqual(["kitab", "tawheed"]);
