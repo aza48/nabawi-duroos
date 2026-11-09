@@ -28,7 +28,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 ## Who owns what
 | Agent | Where it works | Area it owns | Now |
 |---|---|---|---|
-| **akheeai** (cloud; hourly wake-up `trig_01SxJcvNAENF2p1jYuTc333n`, plus a one-shot wake-up at each usage reset) | `claude/stoic-curie-w1ar9c` and `akheeai/<task>` branches, one PR per task | Lane A, duroos and schedule (`src/features/duroos/*` except naiifos's cards, `src/server/calendar.ts`, shaykh profiles and `src/server/seed/content/mashayikh.ts`), coordination docs (`docs/HANDOFF.md`, this file's structure, the work plan), reviews and merges | **Out of weekly usage (9 Nov, 18:40 UTC); Lane A handed to web, see Takeovers.** Done today: Lane A (A1 to A5, S4), the chat research (`docs/research/chats-2026-11/`), the official duroos schedule (`docs/research/duroos-official-schedule-2026-11.md`) |
+| **akheeai** (cloud; hourly wake-up `trig_01SxJcvNAENF2p1jYuTc333n`, plus a one-shot wake-up at each usage reset) | `claude/stoic-curie-w1ar9c` and `akheeai/<task>` branches, one PR per task | Lane A, duroos and schedule (`src/features/duroos/*` except naiifos's cards, `src/server/calendar.ts`, shaykh profiles and `src/server/seed/content/mashayikh.ts`), coordination docs (`docs/HANDOFF.md`, this file's structure, the work plan), reviews and merges | **Out for about 4 days from 9 Nov, 20:00 UTC (weekly limit); see Takeovers.** Done 9 Nov: Lane A (A1 to A5, S4); the official duroos schedule and its 13 lessons; positions for every shaykh, including the 12 new ones and the open questions; chat research; calendar check |
 | **aiakhee** (cloud; reset wake-up `trig_014casXrmFg7JRsyEWCQeJQE`; its hourly wake-up waits for the owner to allow it) | `aiakhee/<task>` branches | Lane B: FAQ seed content, `src/lib/guide-html.ts`, the whole assistant (`src/server/assistant/*`, `src/features/assistant/*`), `/start` and `/glossary` | AR1 (#49, migration first), then AR4 (Arabic FAQs); B1, B2, B4, B5 and B6 are on `aiakhee/B*` branches, no PRs yet |
 | **akhiai** (cloud, Fable 5.1; hourly wake-up `trig_011QLV8fWJfFwFCRyc7LbFN4`) | `akhiai/<task>` branches | Lane E, guides: `src/server/seed/content/guides-*.ts`, `scripts/open-questions.json`, `docs/EXPIRING.md`, `docs/research/guides-*`, and AR3 translations | AR3 batches 1 to 4 (#44, #46, #47, #48) and E3 (#45) in review; next: more AR3 batches, sisters at Masjid an-Nabawi, keeping guides fresh |
 | **web** (cloud; hourly wake-up `trig_01VqkfrqUJn87szU6xmQeV4s`) | `web/<task>` branches | Lanes C and D: the shell and header, Arabic pages (`src/app/(ar)/*` with the desktop agent), `ContentPages.tsx`, home layout, analytics (`src/server/analytics/*`, `/admin/analytics`) | C2 and C6 done; next C3, C1, D3 (after B1), Arabic font preload through `next/font`, S1 to S3 |
@@ -38,19 +38,26 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 
 ## Takeovers
 An agent whose usage is running out lists its unfinished task here for a teammate (HANDOFF standing instruction 9). The teammate updates the entry as it works and marks it "returned" when the owner of the task is back.
+- **akheeai is out for about 4 days (weekly limit, from 9 Nov, about 20:00 UTC). For web, or naseer if web is busy:**
+  1. **Scan the University's news list** for student-facing items: `https://iu.edu.sa/university/newses` and `https://iu.edu.sa/university/announcement`. Both are reachable from cloud sessions with curl. akheeai has already checked the official 1448/1449 calendar, and every date matches `key-dates.ts` (log, 9 Nov). The distance-study and admission PDFs are in `docs/research/iu-pdfs-2026-11/`.
+  2. **Mashayikh still open:** Prof. Dr. Abdullah al-Luhaydan (Quba) and Dr. Mu'adh Khujah; see `docs/research/mashayikh-open-questions-2026-11.md`. Also whether Shaykh al-Ruhayli's Asr books, Targhib and Dalil, are now one Thursday to Saturday sitting (`ruh-targhib`, `ruh-dalil`).
+  3. **Owner reminders to repeat on issue 13:**
+     - the next Quba schedule is due by 9 Dec
+     - add the 13 official lessons in Admin, then `npm run shaykh:sync -- --apply`
+     - yes or no on the official schedule importer and the 14 official photos
 - **akheeai to web (9 Nov, 18:40 UTC; akheeai's weekly usage is spent).** These are Lane A tasks and the lead reviewer role. Work in the files named, on `web/<task>` branches.
   1. **Reviews and merges** (already handed over on issue 13): #44, #46, #47, #48, #74, #77 and #78 (AR3 batches), #45 (Ramadan guides) and #75 (chat-research fixes and the volunteering guide), plus any new PR. #49 waits for the owner's migration, and #41 waits for the owner's yes.
-  2. **(9 Nov, web: items 2 and 3 are re-handed to the new agent naseer, start prompt in `docs/agents/PROMPT-naseer.md`; web keeps item 1, reviews and merges.)** **Duroos data from the official schedule** (`docs/research/duroos-official-schedule-2026-11.md`):
-     - Add the 13 missing lessons to `src/server/seed/legacy/lessons.ts`. New installs read it, but the live site takes its lessons from the database, so also list them for an admin to add in Admin > Duroos.
-     - Correct `badrbadr-sequence` to Prof. Dr. Badr ibn Nasir al-Badr, with his current books.
-     - Set `abadr-tafsir` to Sunday to Friday.
-     - Check `ruh-targhib` and `ruh-dalil`.
-     - Convert API dates with `islamic-civil`.
+  2. **Done by akheeai, on `akheeai/official-lessons`** (naseer: nothing to do here). The 13 missing lessons are in `src/server/seed/legacy/lessons.ts`, along with the `badrbadr-sequence` and `abadr-tafsir` fixes. Left open:
+     - The owner or an admin adds the same lessons in Admin > Duroos, because the live site reads the database. The tables are in `docs/research/duroos-official-schedule-2026-11.md`.
+     - Check `ruh-targhib` and `ruh-dalil` against the shaykh's own channel.
   3. Done by akheeai: the link to the official schedule, under Now and next on `/duroos`.
   4. **Only if the owner says yes:** the automatic importer of the official schedule (see "Waiting for the owner").
 - **admin's research: published by admin (resumed) on 10 Nov, see the log; only the distance-study handbook is left.** Earlier: taken over by the Desktop agent on the owner's instruction (9 Nov, about 19:00 Riyadh).** Branch `claude/wonderful-davinci-um61gf`. Done by admin: Telegram periods c1, c2, c3, c4 and c7. Skipped on the owner's instruction: c5 (2024), c6 (2019 to 2023) and the Telegram `SYNTHESIS.md`. Desktop agent now: the official University PDFs the owner downloaded (`docs/research/iu-pdfs-2026-11/`, five readers running) and the gomedine.com crawl (`docs/research/gomedine-2026-11/`), then publishing the results in guides. Edits to another lane's guide are announced on issue 13 first.
 
 ## Waiting for the owner
+- (Desktop agent, 10 Nov) **Publish the waiting guides:** run the one command in `scripts/publish-pending-2026-11-10.txt` (28 guides and 35 FAQs, all new, nothing overwritten). Admin's PR #102 (gomedine.com part 2 and the Telegram delta) is open for review too.
+- **By 9 December 2026: the next Masjid Quba lesson schedule.** The current Quba period (1/4 to 29/6/1448) ends then, and every Quba dars drops off the site the next day. Enter the new period in Admin > Duroos (it is also in `docs/EXPIRING.md`).
+- **Yes or no: official photos for 14 shaykhs who have none on MESH.** The Presidency publishes a photo of each teacher. The list and links are under "Official photos" in `docs/research/duroos-official-schedule-2026-11.md`.
 0. **Yes or no: import the official duroos schedule automatically.** The Presidency's public API lists every dars at Masjid an-Nabawi. A daily job could:
    - add new lessons as drafts for an admin to approve
    - flag changes in Admin > Inbox
@@ -67,6 +74,41 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 10 Nov 2026, **Desktop agent**: checked the live site against `main`. **28 guides and 35 FAQs are merged but not live** (each 404 on medinahub.org), including all the PDF and gomedine.com guides. All are new rows, so `--only` inserts and overwrites nothing; the exact command is in `scripts/publish-pending-2026-11-10.txt`. The Desktop agent's session is not allowed to write to production, so the owner runs it. Also: `main` at `38d70b7` hit Vercel's daily deploy limit again, but production (`fd00890`) differs from it only in docs.
+- 9 Nov 2026, about 20:00 UTC, **akheeai**: out for about 4 days (weekly limit). Everything is merged on `main`, and the unfinished items are under "Takeovers" for web or naseer. The wake-ups stay booked and do nothing until usage returns.
+- 9 Nov 2026, **akheeai**: `src/content/key-dates.ts` checked against the University's official 1448/1449 academic calendar (announcement `iu.edu.sa/announ14480112`, image «التقويم الدراسي 1448-1449.png»).
+  - Every date from November onward matches: re-enrolment, the extra chance, ta'jeel 2, drop and add 2, finals 1 and 2, the end-of-semester break, semester 2, winter, Founding Day, the Eid holidays, summer and the 1449 start.
+  - The only differences are two past windows: ta'jeel 1 officially ran 2 to 15 Aug and drop and add 1 ran 11 to 15 Aug, where MESH has longer windows, possibly from an extension notice. Both are left as they are.
+  - The long withdrawal and excuse windows stay out on purpose (see `01969de`).
+  - HANDOFF's "lesson days" owner question is closed: Tafsir as-Sa'di runs Sunday to Friday, and the Dar al-Hijrah dars is monthly on a Saturday after Maghrib (#88, #98).
+- 9 Nov 2026, **akheeai**, branch `akheeai/open-questions-positions`: the remaining mashayikh questions, researched in `docs/research/mashayikh-open-questions-2026-11.md`. Applied to `MASHAYIKH_POSITIONS`:
+  - Prof. Dr. Mahir Khujah is also the Islamic University's official spokesman (IU news, 14 May 2026).
+  - Shaykh Dr. Abdulmuhsin al-Qasim is Imam and Khatib of the Prophet's Mosque and a judge at the Court of Appeal in Madinah.
+  - The Dar al-Hijrah Tawhid dars belongs to Shaykh Maher ibn Dhafir al-Qahtani, organised by the Ministry.
+  - Prof. Dr. Muhammad al-Humaid (Tafsir) and Dr. Yusuf al-Sa'idi (Usul al-Fiqh, College of Shariah).
+  - Saud al-Khalaf is a board member of the Aqidah society, not its president.
+  - Haytham Sarhan formerly taught at the Haram Institute.
+
+  Still open: al-Luhaydan and Mu'adh Khujah.
+- 9 Nov 2026, **akheeai**, branch `akheeai/new-teachers-positions`: current positions for the 12 teachers added from the official schedule.
+  - The research is in `docs/research/mashayikh-positions-2026-11-new.md`, and the data is in `MASHAYIKH_POSITIONS`.
+  - Highlights: Dr. Abdullah al-Bu'ayjan is Imam and Khatib of the Prophet's Mosque, and Dr. Salih al-Abbud is a former President of the Islamic University (1416 to 1428 AH).
+  - Owner: these shaykhs exist on the live site only once their lessons are added in Admin. Until then, `npm run shaykh:sync` lists them as "not found"; after that, it publishes them.
+- 9 Nov 2026, **web**, branch `web/AR3-admin-guides`: AR3 for admin's 14 new guides, as Arabic drafts in `docs/research/translations/` in akhiai's format. A shared term sheet and titles came first, so the links between the 14 agree. Then 9 translators worked, each followed by an independent editor, and a consistency pass ran across all 14. All pass the script check against today's English. English issues found along the way are in `docs/research/translations/english-issues-admin-guides-2026-11-09.md`, for the guides' owner.
+- 9 Nov 2026, **akheeai**:
+  - `shaykhSlug` strips titles in any order (#90).
+  - The Quba period's end, 9 December 2026 (Jumada al-Akhirah has 29 days), is now in `docs/EXPIRING.md`.
+  - "Official photos" for 14 shaykhs without one is added to the official schedule note, as a yes or no for the owner.
+  - A research pass on the 12 new teachers' current positions is running; its PR follows.
+- 9 Nov 2026, **akheeai**, branch `akheeai/official-lessons`: the 13 lessons from the official Masjid an-Nabawi schedule are added to `src/server/seed/legacy/lessons.ts`, by 11 teachers.
+  - `badrbadr-sequence` is now Prof. Dr. Badr ibn Nasir al-Badr, with his current books.
+  - `abadr-tafsir` runs Sunday to Friday at the Bab Quba spot, and its note no longer has doubt wording.
+  - Two small fixes made by real data:
+    - the watcher's live-notice matcher (`src/server/watcher/live-notice.ts`) now weighs the shaykh's family name, so a book title naming another scholar ("محمد بن ابراهيم") no longer picks the wrong dars
+    - the assistant (`answer.ts`, aiakhee's) also searches the duroos on their own for "who teaches <book>"
+  - Lesson count tests are 58 and 65.
+  - Owner: the live site's lessons live in the database, so add the 13 lessons and rename the shaykh in Admin. The tables are in `docs/research/duroos-official-schedule-2026-11.md`.
+- 9 Nov 2026, **web**, branch `web/start-glossary-links`: aiakhee's follow-ups after B1, B2 and B6. `/start` and `/glossary` are linked from the guides page (two chips in the band), the More page and the footer, in both languages. Glossary terms in an `/ar` guide now link to `/ar/glossary` (`glossaryBase`), and FAQ answers get Quran and hadith links (`linkScriptureRefs`). Test: `tests/start-glossary-links.test.ts`.
 - 9 Nov 2026, **web**, branch `web/naseer-prompt`: start prompt for the new agent **naseer** in `docs/agents/PROMPT-naseer.md` (owner asked): automation first, then AR4 (Arabic FAQs, with aiakhee's go-ahead), akheeai's Lane A takeover items 2 and 3, Arabic QA crawls, then reviews. web keeps akheeai's takeover item 1 (reviews and merges).
 - 9 Nov 2026, **web**, branch `web/AR-company-guide`: the company guide is fully Arabic on `/ar/guides/start-a-company-in-saudi`. `src/features/guides/company/content-ar.ts` mirrors `content.ts` (shapes checked by tsc through `companyContent()` in `locale.ts`, and by `tests/company-guide-ar.test.ts`). `CompanyGuide` and its islands take a locale: Arabic strings, Arabic-Indic digits and ريال, RTL-safe layout, ticks saved apart per language. The Arabic page is its own canonical with reciprocal hreflang and is in the sitemap; `/ar/guides` shows its Arabic card. Translated, then reviewed by an independent Arabic editor (58 fixes) and a code reviewer. **Anyone editing `content.ts`:** update `content-ar.ts` in the same commit (tsc and the test fail otherwise). The English page's text is unchanged.
 - 9 Nov 2026, **akheeai**, branch `akheeai/official-duroos-schedule`: the official schedule of duroos at Masjid an-Nabawi, read from the Presidency's public API (`cpd.prh.gov.sa/api/v1/courses?mosque=madinah`) and compared with MESH, in `docs/research/duroos-official-schedule-2026-11.md`. Findings:

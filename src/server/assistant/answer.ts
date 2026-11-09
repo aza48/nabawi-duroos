@@ -284,7 +284,10 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   }
 
   // 5. Several duroos match ("who teaches Kitab at-Tawhid"): list them all.
-  const duroos = found.filter((p) => p.kind === "dars" && answers(searchText, p));
+  // Search the duroos on their own too: with many lessons and profiles that mention the same subject,
+  // the dars entries can fall out of the overall top six even when the question is about a book.
+  const darsOnly = chunks.filter((c) => c.kind === "dars");
+  const duroos = [...new Map([...found, ...createRetriever(darsOnly)(searchText, 8)].filter((p) => p.kind === "dars" && answers(searchText, p)).map((p) => [p.url, p])).values()];
   // Dars titles are "<book> with <shaykh>"; duroos from several mashayikh mean the question is about the book.
   const teachers = new Set(duroos.map((p) => p.title.split(" with ").pop()));
   if (duroos.length > 1 && (found[0].kind === "dars" || teachers.size > 1)) {

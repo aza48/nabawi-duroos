@@ -11,6 +11,7 @@ How to keep it so:
 
 | Item | Where | Expires | Action when expired |
 | --- | --- | --- | --- |
+| Masjid Quba lesson schedule for the period 1/4 to 30/6/1448 (Jumada al-Akhirah has 29 days) | the Quba lessons (`validTo` in `src/server/seed/import-legacy.ts` and on the live rows) | 9 December 2026 | Enter the next period's Quba schedule in Admin > Duroos before then; otherwise every Quba dars drops off the site the next day |
 | Dar at-Tawheed registration hours and "places are limited" | `src/content/programs.ts`, slug `dar-tawheed-sunnah` | Ask the centre in December 2026 | Reword to the current intake |
 | Childbirth fees and visiting rules (checked April 2025) | guide `having-a-baby-in-madinah` | Recheck now, then every 6 months | Update figures and the checked date |
 | Jawazat fees (checked November 2026) | guide `iqama-and-exit-reentry-fees` | May 2027 | Recheck and update the date |

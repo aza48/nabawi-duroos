@@ -17,7 +17,7 @@ beforeAll(async () => {
 describe("importLegacy", () => {
   it("imports every masjid and lesson", () => {
     expect(first.masjids).toBe(10);
-    expect(first.lessons).toBe(52);
+    expect(first.lessons).toBe(65);
     expect(first.shaykhs).toBeGreaterThanOrEqual(15);
   });
 
@@ -25,7 +25,7 @@ describe("importLegacy", () => {
     const again = await importLegacy(db);
     expect(again).toEqual(first);
     const [{ n }] = await db.select({ n: count() }).from(lessons);
-    expect(n).toBe(52);
+    expect(n).toBe(65);
   });
 
   it("keeps the verified details of al-Ruhayli's Dalil al-Talib lesson", async () => {
