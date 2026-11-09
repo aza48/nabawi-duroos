@@ -7,6 +7,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BadgePercent, BookOpen, CornerDownLeft, FileText, GraduationCap, Landmark, Library, MessageCircleQuestion, Search, User, X } from "lucide-react";
 import type { createSearch, SearchDoc, SearchHit, SearchType } from "@/lib/search/engine";
 import { localizeUrl } from "@/lib/locale";
+import { AdminHelp } from "@/components/shell/AdminHelp";
 import { arCount } from "@/lib/arabic-count";
 
 const TYPE: Record<SearchType, { label: string; ar: string; icon: typeof Search }> = {
@@ -20,8 +21,8 @@ const TYPE: Record<SearchType, { label: string; ar: string; icon: typeof Search 
   discount: { label: "Discounts", ar: "الخصومات", icon: BadgePercent },
 };
 const T = {
-  en: { search: "Search", searchMesh: "Search MESH", close: "Close search", popular: "Popular searches", failed: "Search couldn't load. Check your connection and try again.", loading: "Loading search...", none: (q: string) => `Nothing found for “${q}”. Try another word, or ask in the WhatsApp group.`, all: (q: string) => `See all results for “${q}”`, placeholder: "Search duroos, guides, institutes, books... بالعربي أيضًا" },
-  ar: { search: "بحث", searchMesh: "البحث في MESH", close: "إغلاق البحث", popular: "عمليات بحث شائعة", failed: "تعذّر تحميل البحث. تحقّق من الاتصال وحاول مرة أخرى.", loading: "جارٍ تحميل البحث...", none: (q: string) => `لا نتائج لـ «${q}». جرّب كلمة أخرى، أو اسأل في مجموعة واتساب.`, all: (q: string) => `كل النتائج لـ «${q}»`, placeholder: "ابحث في الدروس والأدلة والمعاهد والكتب، بالعربية أو الإنجليزية" },
+  en: { search: "Search", searchMesh: "Search MESH", close: "Close search", popular: "Popular searches", failed: "Search couldn't load. Check your connection and try again.", loading: "Loading search...", none: (q: string) => `Nothing found for “${q}”. Try another word, or ask Admin.`, all: (q: string) => `See all results for “${q}”`, placeholder: "Search duroos, guides, institutes, books... بالعربي أيضًا" },
+  ar: { search: "بحث", searchMesh: "البحث في MESH", close: "إغلاق البحث", popular: "عمليات بحث شائعة", failed: "تعذّر تحميل البحث. تحقّق من الاتصال وحاول مرة أخرى.", loading: "جارٍ تحميل البحث...", none: (q: string) => `لا نتائج لـ «${q}». جرّب كلمة أخرى، أو اسأل المشرف.`, all: (q: string) => `كل النتائج لـ «${q}»`, placeholder: "ابحث في الدروس والأدلة والمعاهد والكتب، بالعربية أو الإنجليزية" },
 };
 const POPULAR_AR = ["الإقامة", "الرحيلي", "التأجيل", "تكلفة المعيشة", "البطاقة البنكية", "رخصة القيادة"];
 const ORDER: SearchType[] = ["page", "guide", "faq", "program", "shaykh", "dars", "library", "discount"];
@@ -64,7 +65,13 @@ function Results({ hits, q, cursor, onPick, compact, locale = "en", listId, wide
   const groups = groupHits(hits, !!compact);
   const flat = groups.flatMap((g) => g.items);
   if (!q.trim()) return null;
-  if (!flat.length) return <p className="px-2 py-8 text-center text-muted" role="status">{T[locale].none(q)}</p>;
+  if (!flat.length)
+    return (
+      <div className="px-2 py-8 text-center">
+        <p className="text-muted" role="status">{T[locale].none(q)}</p>
+        <AdminHelp variant="line" locale={locale} path={`${locale === "ar" ? "/ar" : ""}/search?q=${encodeURIComponent(q.trim())}`} className="mt-3 text-sm" />
+      </div>
+    );
   return (
     <div id={listId} role="listbox" aria-label={T[locale].search} className={wide ? "lg:columns-2 lg:gap-8" : "space-y-5"}>
       <p className="sr-only" aria-live="polite">{resultsSummary(flat.length, locale)}</p>

@@ -63,7 +63,7 @@ export function FaqExplorer({ items, categories, locale = "en" }: { items: Item[
         </label>
         {shown.length === 0 ? (
           <p className="mt-6 rounded-2xl border border-dashed border-line bg-card p-6 text-center text-muted">
-            {ar ? "لا توجد نتيجة بعد. اسأل في مجموعة واتساب، وقد يصبح سؤالك الجواب التالي هنا." : "Nothing matches yet. Ask it in the WhatsApp group and it may become the next answer here."}
+            {ar ? "لا توجد نتيجة بعد. راسل المشرف على واتساب على الرقم \u2066+1 234 567 9076\u2069، ونضيف هنا الأسئلة التي تتكرر." : "Nothing matches yet. Message Admin on WhatsApp at +1 234 567 9076. Questions that come up often are added here."}
           </p>
         ) : (
           <ul className="mt-5 grid gap-px overflow-hidden rounded-2xl border border-line bg-line xl:grid-cols-2 xl:[&>li:last-child:nth-child(odd)]:col-span-2">
