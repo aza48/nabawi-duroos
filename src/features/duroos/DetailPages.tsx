@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BookOpen, CalendarDays, ChevronRight, Clock3, ExternalLink, Info, ListOrdered, MapPin, Radio } from "lucide-react";
 import type { getLesson, getShaykh, AnnouncementRow, StreamRow } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
-import { formatClock, riyadhDateIso } from "@/lib/time/riyadh";
+import { formatClock, riyadhDateIso, weekdayOf } from "@/lib/time/riyadh";
 import { formatGregorian, formatHijri } from "@/lib/time/hijri";
 import { prayerTimes } from "@/lib/time/prayer";
 import { Breadcrumbs, EmptyState } from "@/components/ui";
@@ -14,6 +14,7 @@ import { duroosPath } from "./paths";
 import { mapUrl } from "@/lib/maps";
 import { CalendarButton } from "./CalendarButton";
 import { AlertsButton } from "./AlertsButton";
+import { ReportLink } from "./ReportLink";
 import { StarButton } from "./StarButton";
 import { ShaykhBadge } from "./ShaykhBadge";
 
@@ -196,6 +197,14 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
                 <Item icon={<Info size={18} />} label={t(locale, "lessonNote")} value={publicLabel(ar ? l.noteAr ?? l.noteEn : l.noteEn ?? l.noteAr)!} />
               )}
             </dl>
+            {l.current && l.days.includes(weekdayOf(today)) && (
+              <ReportLink
+                dars={{ bookEn: l.bookEn, bookAr: l.bookAr, shaykhEn: l.shaykh.nameEn, shaykhAr: l.shaykh.nameAr, path: duroosPath(locale, `/lesson/${l.slug}`) }}
+                dateText={`${formatHijri(today, locale, { weekday: true })} (${formatGregorian(today, locale)})`}
+                locale={locale}
+                className="mt-3"
+              />
+            )}
             <h2 className="mt-10 mb-3 font-heading text-2xl font-bold">{t(locale, "history")}</h2>
             {l.history.length === 0 ? (
               <p className="text-sm text-muted">{t(locale, "noHistory")}</p>
