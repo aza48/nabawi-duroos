@@ -828,7 +828,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <ol>
 <li>Finish everything above first, including the embassy, before you book.</li>
 <li>Make sure the University has confirmed your clearance. Graduates' tickets are issued only after that.</li>
-<li>Your final ticket is issued against a travel order on Etimad, to a capital city in your own country or the country that issued your visa. Check that your name on Etimad matches your passport letter for letter.</li>
+<li>Your final ticket is issued against a travel order on Etimad, to one of the cities the University sets for your country. Check that your name on Etimad matches your passport letter for letter.</li>
 <li>Tell the ticket unit the date you can really travel. A date change later costs you the fare difference, and a no-show loses the ticket.</li>
 <li>You can upgrade the class of travel at your own cost. Your family's tickets are at your own cost.</li>
 </ol>

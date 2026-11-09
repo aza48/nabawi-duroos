@@ -273,9 +273,9 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <ul>
 <li>Lectures start at 10:00 and are shortened to 35-minute slots (10:00, 10:40, 11:20, 12:00), with breaks around Dhuhr and Asr. The timetable is posted on the University's channels in the days before Ramadan.</li>
 <li>The Eid holiday starts on 19 Ramadan, so the last ten nights are free of classes.</li>
-<li>The mat'am moves to the fasting day. Ask it how the monthly booking on restaurant.iu.edu.sa changes for the month before you book.</li>
+<li>The Deanship of Student Affairs serves a free iftar every day by the University sports ground and hands out suhoor meals. Meals run out, so carry dates and water if you are coming back late from the Haram.</li>
 <li>Free University buses to the Haram run in the evening. Pick-up points and times change for the month: message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a> for the current ones.</li>
-<li>Exams are not held in Ramadan in 1448. The second semester's finals start on 25 April 2027.</li>
+<li>No final exams fall in Ramadan in 1448. The second semester's finals start on 25 April 2027.</li>
 </ul>
 <h2>Daily life</h2>
 <ul>

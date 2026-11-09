@@ -1022,7 +1022,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <table><thead><tr><th>Month</th><th>Typical daytime high</th><th>Typical night low</th><th>What it means</th></tr></thead><tbody>
 <tr><td>May</td><td>38 to 40°C</td><td>25°C</td><td>Hot. Outdoor things before 9 am and after Maghrib</td></tr>
 <tr><td>June to August</td><td>42 to 45°C</td><td>28 to 30°C</td><td>Very hot. The Haram's courtyards are hot to the touch by mid-morning, and dust storms come some afternoons</td></tr>
-<tr><td>September</td><td>40 to 42°C</td><td>26°C</td><td>Still very hot until the last week</td></tr>
+<tr><td>September</td><td>39 to 41°C</td><td>26°C</td><td>Still very hot until the last week</td></tr>
 <tr><td>October</td><td>33 to 36°C</td><td>21°C</td><td>The heat breaks. Evenings are pleasant again</td></tr>
 </tbody></table>
 <h2>Staying safe in the heat</h2>
@@ -1030,43 +1030,44 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Stay out of direct sun between 10 am and 4 pm. Walk on the shaded side, use the umbrellas of the Haram courtyards, carry an umbrella of your own, and wear light colours.</li>
 <li>Drink before you are thirsty. Two to four litres a day in summer is normal. Water coolers stand at every gate of the Haram and in most masjids.</li>
 <li>Headache, dizziness, heavy sweating, nausea and cramps mean heat exhaustion: get into air conditioning, drink, cool the neck and wrists with water, and rest. Confusion, collapse or hot dry skin is heatstroke: call 997 at once and cool the person with water while you wait.</li>
-<li>Children, pregnant women, older parents and anyone fasting on a hot day are most at risk. The six days of Shawwal and the Monday and Thursday fasts fall on very long days in summer, so plan a quiet afternoon.</li>
+<li>Children, pregnant women, older parents and anyone fasting on a hot day are most at risk. Voluntary fasts in summer, such as Ashura and Mondays and Thursdays, fall on very long days, so plan a quiet afternoon.</li>
 <li>A parked car becomes an oven within minutes. Never leave a child or an animal in one, and run the air conditioning before you get in.</li>
 <li>The Ministry of Health's advice line is 937, 24 hours, in several languages.</li>
 </ul>
 <blockquote><p>Tip: Fajr and the hour after it is the best time of a summer day in Madinah. Students who pray Fajr in the Haram, study until Dhuhr, sleep in the afternoon and go out after Maghrib find summer easy.</p></blockquote>
 <h2>What summer does to your bills</h2>
-<p>Air conditioning is most of a summer electricity bill. The residential tariff in 2026 is 18 halalas per kilowatt-hour up to 6,000 kWh a month and 30 halalas above that, plus 15% VAT. From 1 January 2027 it rises to 21 and 33 halalas, with a fixed monthly charge of about 70 SAR for a normal household breaker. A two-bedroom flat with two split units running most of the day uses 1,000 to 2,000 kWh in a summer month, so expect 200 to 500 SAR a month in summer against 80 to 150 in winter, and more under the 2027 tariff. Set the thermostat to 24°C, have the filters cleaned in May, and close the curtains on the sunny side. The year's figures are in <a href="/guides/cost-of-living">What it costs to live in Madinah</a>.</p>
+<p>Air conditioning is most of a summer electricity bill. The residential tariff in 2026 is 18 halalas per kilowatt-hour up to 6,000 kWh a month and 30 halalas above that, plus 15% VAT. From 1 January 2027 it rises to 21 and 33 halalas, with a fixed monthly charge of about 70 SAR for a normal household breaker. A two-bedroom flat with two split units running most of the day uses 1,000 to 2,000 kWh in a summer month, so expect about 200 to 500 SAR a month in summer against 100 to 150 in winter, and more under the 2027 tariff. Set the thermostat to 24°C, have the filters cleaned in May, and close the curtains on the sunny side. The year's figures are in <a href="/guides/cost-of-living">What it costs to live in Madinah</a>.</p>
 <h2>The long break: dates</h2>
 <table><thead><tr><th>1448 and 1449</th><th>Date</th></tr></thead><tbody>
 <tr><td>Second-semester final exams</td><td>25 April to 10 May 2027</td></tr>
 <tr><td>Eid al-Adha holiday</td><td>11 to 22 May 2027</td></tr>
 <tr><td>End-of-year holiday begins</td><td>3 June 2027</td></tr>
-<tr><td>Summer semester classes (optional)</td><td>6 June 2027</td></tr>
+<tr><td>Summer semester classes (optional, if the University runs one)</td><td>6 June 2027</td></tr>
 <tr><td>Summer semester finals</td><td>27 July 2027</td></tr>
 <tr><td>The 1449 academic year begins</td><td>22 August 2027</td></tr>
 </tbody></table>
 <p>The Academic System is the live authority for these dates, and they are all in the <a href="/guides/university-calendar-1448">University calendar</a>.</p>
 <h2>Go home or stay?</h2>
 <table><thead><tr><th>Topic</th><th>Going home</th><th>Staying in Madinah</th></tr></thead><tbody>
-<tr><td>Ticket</td><td>Your yearly University ticket, issued against an Etimad travel order, covers one return trip to a capital city in your country. Request it early, because the ticket office is busiest in May</td><td>The ticket is yearly, and an unused ticket does not carry over</td></tr>
-<tr><td>Stipend</td><td>Continues through the break for scholarship students</td><td>Continues</td></tr>
-<tr><td>Housing</td><td>Your room is kept. Empty it of valuables, lock the wardrobe and take photos, because thefts from emptying halls happen every summer</td><td>The halls stay open. The mat'am closes over the break and reopens with the new year</td></tr>
+<tr><td>Ticket</td><td>For full scholarship students, the yearly University ticket, issued against an Etimad travel order, covers one return trip to one of the cities the University sets for your country. Sign up when Travel Management collects the summer lists, because a student who misses the list gets no ticket</td><td>The ticket is yearly, and an unused ticket does not carry over</td></tr>
+<tr><td>Stipend</td><td>Continues through the break for full scholarship students</td><td>Continues</td></tr>
+<tr><td>Housing</td><td>Full scholarship students keep their room, except graduates, who leave it by the University's set date (27 June in 2026). Empty it of valuables, lock the wardrobe and take photos, because thefts from emptying halls happen every summer</td><td>The halls stay open. The mat'am closes over the break and reopens with the new year</td></tr>
 <tr><td>Residency</td><td>Iqama holders need an exit and re-entry visa before flying. Visitor ID holders travel on their visa and return on it while it is valid</td><td>Nothing to do</td></tr>
 <tr><td>Study</td><td>Take the texts home and keep your Arabic alive</td><td>The Haram's summer course, the dawrat around the Kingdom, and the library</td></tr>
 </tbody></table>
+<p>A partial (internal) scholarship carries no stipend, no ticket and no free housing, so the summer is planned on your own means.</p>
 <h2>Before you fly for the summer</h2>
 <ol>
-<li>With an iqama, ask Travel Management for your exit and re-entry visa when it collects the summer travel lists, and check it in Absher before you book: 200 SAR for a single visa of up to two months, 500 SAR for a multiple visa of three months. The visa cannot run past your iqama's expiry, so an iqama expiring in summer is renewed first.</li>
+<li>With an iqama, check in Absher that your exit and re-entry visa covers the break before you book. In 1448 the University issues multiple visas in blocks with fixed end dates, sometimes without an application, and the last block covers the winter break, Ramadan and the summer. A visa you request yourself costs 200 SAR for a single visa of up to two months and 500 SAR for a multiple visa of three months. The visa cannot run past your iqama's expiry, so an iqama expiring in summer is renewed first.</li>
 <li>Come back before the visa's return date. Extending from abroad costs double and works only while the visa is still valid.</li>
 <li>On a Visitor ID, check in Absher that your visa covers your return date, and ask the Deanship of Admission and Registration through Tawasul if it expires during the break.</li>
 <li>Pay any traffic fines first. A fine blocks the visa.</li>
-<li>Set your ticket dates with care: the rules in <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a> make a date change expensive and a no-show final.</li>
+<li>The University sets group travel dates for most students. Master's and PhD students choose their own, so set them with care: the rules in <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a> make a date change expensive and a no-show final.</li>
 </ol>
 <p>Fees and the fine print are in <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>.</p>
 <h2>If you stay: summer courses and quiet study</h2>
 <ul>
-<li>The Prophet's Mosque runs a summer course in Qur'an and the mutun each year in Muharram and Safar, in person and online, for men and women, with sessions after Fajr and after Asr. In 1448 it ran from 5 to 31 July 2026. Registration is through the Haram's educational portal: see <a href="/programs">Study in Madinah</a>.</li>
+<li>The Prophet's Mosque runs a summer course in Qur'an and the mutun each year in Muharram and Safar, in person and online, for men and women, with sessions after Fajr and after Asr. In 1448 it ran from 5 to 31 July 2026. Registration is through the Haram's educational portal, announced on the Presidency's channels before Muharram.</li>
 <li>Several of the mashayikh pause their regular duroos over the summer and the Hajj season and restart in Rabi' al-Awwal. The <a href="/duroos">Duroos</a> page shows which lessons are paused.</li>
 <li>Intensive dawrat run in other cities in Safar, some with housing. They are announced on the Duroos updates page when the dates are known.</li>
 <li>The University's Central Library is open through the summer semester, Sunday to Thursday, air-conditioned and quiet.</li>
