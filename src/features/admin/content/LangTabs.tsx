@@ -72,5 +72,16 @@ export function langOf(target: EventTarget): Lang | null {
   return l === "en" || l === "ar" ? l : null;
 }
 
-/** True when an editor holds visible text (an emptied editor still sends "<p></p>"). */
-export const hasText = (s: string | null | undefined) => !!s && s.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim().length > 0;
+/** True when a field shows something: visible text or an image (an emptied editor still sends "<p></p>"). */
+export const hasText = (s: string | null | undefined) =>
+  !!s && (/<img\b/i.test(s) || s.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim().length > 0);
+
+/**
+ * The fields that differ from what was last loaded or saved. Untouched fields are left out, so the
+ * server keeps what it holds: Arabic added meanwhile by the content sync or another editor survives a
+ * save that only fixed the English. A field emptied on purpose is sent as "" and clears it.
+ */
+export function changedFields<T extends Record<string, string>>(now: T, saved: T): Partial<T> {
+  const norm = (s: string) => (hasText(s) ? s : "");
+  return Object.fromEntries(Object.entries(now).filter(([k, x]) => norm(x) !== norm(saved[k]))) as Partial<T>;
+}

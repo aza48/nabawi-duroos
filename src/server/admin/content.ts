@@ -5,6 +5,7 @@ import { faqs, guides } from "@/server/db/schema";
 import { assertCan, type Actor } from "@/server/auth/permissions";
 import { sanitizeArticleHtml } from "@/lib/sanitize";
 import { cleanText } from "@/lib/text";
+import { hasVisibleHtml } from "@/lib/guide-html";
 import { getSetting, setSetting } from "@/server/settings";
 import { record } from "./audit";
 import { slugify } from "./duroos";
@@ -40,7 +41,7 @@ function arabicHtml(html: string | null | undefined): string | null | undefined 
   if (html === undefined) return undefined;
   if (!html) return null;
   const clean = sanitizeArticleHtml(cleanText(html, "ar"));
-  return clean.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim() || /<img\b/.test(clean) ? clean : null;
+  return hasVisibleHtml(clean) ? clean : null;
 }
 
 /** Drops the fields that were left out, so an update never touches them. */

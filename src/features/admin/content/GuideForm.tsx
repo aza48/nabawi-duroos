@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteGuideAction, saveGuideAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 import { RichText } from "./RichText";
 import { useUnsavedWarning } from "../useUnsavedWarning";
 import { useFeedback } from "../Feedback";
-import { hasText, langOf, LangTabs, type Lang } from "./LangTabs";
+import { changedFields, hasText, langOf, LangTabs, type Lang } from "./LangTabs";
 
 type Stage = "getting-started" | "getting-settled" | "study" | "family" | "leaving";
 type G = {
@@ -21,10 +21,14 @@ const STAGES: { id: Stage; label: string }[] = [
   { id: "family", label: "Family life" }, { id: "leaving", label: "Leaving Madinah" },
 ];
 
+const arabicOf = (g: G) => ({ titleAr: g.titleAr ?? "", summaryAr: g.summaryAr ?? "", bodyHtmlAr: g.bodyHtmlAr ?? "" });
+
 export function GuideForm({ value }: { value: G }) {
   const router = useRouter();
   const { confirm, notify } = useFeedback();
-  const [v, setV] = useState<G>({ ...value, titleAr: value.titleAr ?? "", summaryAr: value.summaryAr ?? "", bodyHtmlAr: value.bodyHtmlAr ?? "" });
+  const [v, setV] = useState<G>({ ...value, ...arabicOf(value) });
+  // The Arabic as loaded or last saved: only fields that differ from it are sent.
+  const savedAr = useRef(arabicOf(value));
   const [lang, setLang] = useState<Lang>("en");
   const markSaved = useUnsavedWarning(v);
   // Unticked by default: fixing a typo must not stamp the page as checked today.
@@ -38,13 +42,16 @@ export function GuideForm({ value }: { value: G }) {
   function save(status: G["status"]) {
     setError(null);
     setMsg(null);
+    const ar = arabicOf(v);
     start(async () => {
       const r = await saveGuideAction({
         slug: value.slug, title: v.title, summary: v.summary, bodyHtml: v.bodyHtml, stage: v.stage, status, markVerified: verified,
-        // Empty clears the Arabic, so the Arabic page shows the English again.
-        titleAr: v.titleAr ?? "", summaryAr: v.summaryAr ?? "", bodyHtmlAr: v.bodyHtmlAr ?? "",
+        // Untouched Arabic is left out, so the server keeps what it holds (Arabic synced or saved
+        // meanwhile survives an English fix). An emptied field goes as "" and the page shows the English.
+        ...changedFields(ar, savedAr.current),
       });
       if (!r.ok) return setError(r.error);
+      savedAr.current = ar;
       setMsg(status === "published" ? "Published." : "Draft saved.");
       if (!value.slug && r.data) router.replace(`/admin/content/guide/${r.data}`);
       else router.refresh();

@@ -9,10 +9,12 @@ import type { SeedFaq, SeedGuide } from "@/server/seed/content/guides-2026";
 import { getFaq, getGuide, listFaqs, listGuides } from "@/server/content/queries";
 import { faqText, guideText } from "@/lib/arabic-content";
 import { saveFaq, saveGuide } from "@/server/admin/content";
-import { enhanceGuideHtml } from "@/lib/guide-html";
+import { enhanceGuideHtml, hasVisibleHtml } from "@/lib/guide-html";
+import { changedFields } from "@/features/admin/content/LangTabs";
 import type { Actor } from "@/server/auth/permissions";
 
 const EM = String.fromCharCode(0x2014);
+const RLM = "\u200F", LRM = "\u200E", ALM = "\u061C";
 
 const guideEn: SeedGuide = {
   slug: "ar1-bank-account", title: "Opening a bank account", summary: "Which bank and which papers.", stage: "getting-settled",
@@ -89,6 +91,25 @@ describe("content sync with Arabic", () => {
     const f = await getFaq(db, faqEn.slug);
     expect(f).toMatchObject({ questionAr: null, answerHtmlAr: null });
     expect(faqText(f!, "ar").answerInArabic).toBe(false);
+  });
+
+  it("stores an Arabic body or answer with nothing to show as null, like Admin", async () => {
+    const db = await resetTestDb();
+    await sync(db, "2026-11-01T00:00:00Z", { ...guideEn, titleAr: "عنوان", bodyHtmlAr: "<p></p>" }, { ...faqEn, answerHtmlAr: "<p>&nbsp;</p>" });
+    expect(await guideRow(db)).toMatchObject({ titleAr: "عنوان", bodyHtmlAr: null });
+    expect(await faqRow(db)).toMatchObject({ answerHtmlAr: null });
+    const g = await getGuide(db, guideEn.slug);
+    expect(guideText(g!, "ar")).toMatchObject({ bodyHtml: guideEn.bodyHtml, bodyInArabic: false });
+    expect(faqText((await getFaq(db, faqEn.slug))!, "ar").answerInArabic).toBe(false);
+
+    // An empty Arabic body in the seed does not wipe a real one already stored.
+    await db.update(guides).set({ bodyHtmlAr: "<p>نص المحرر</p>" }).where(eq(guides.slug, guideEn.slug));
+    await sync(db, "2026-11-02T00:00:00Z", { ...guideEn, bodyHtmlAr: "<p> </p>" }, faqEn);
+    expect((await guideRow(db)).bodyHtmlAr).toBe("<p>نص المحرر</p>");
+
+    // An image alone counts as something to show.
+    await sync(db, "2026-11-03T00:00:00Z", { ...guideEn, bodyHtmlAr: '<p><img src="/a.png" alt=""></p>' }, faqEn);
+    expect((await guideRow(db)).bodyHtmlAr).toBe('<p><img src="/a.png" alt=""></p>');
   });
 
   it("a seed without Arabic keeps the Arabic an editor added in Admin", async () => {
@@ -179,8 +200,43 @@ describe("Admin saves Arabic", () => {
     expect(cleared).toMatchObject({ questionAr: null, answerHtmlAr: null });
   });
 
+  it("an English-only save after a sync keeps the seeded Arabic", async () => {
+    await sync(db, "2026-11-01T00:00:00Z", guideAr, faqAr);
+    const g = (await getGuide(db, guideEn.slug))!;
+    // What the form sends when the Arabic tab was never touched: no Arabic fields at all.
+    const sent = changedFields({ titleAr: "", summaryAr: "", bodyHtmlAr: "" }, { titleAr: "", summaryAr: "", bodyHtmlAr: "" });
+    const saved = await saveGuide(db, editor, { slug: g.slug, title: "Opening a bank account in Madinah", summary: g.summary, bodyHtml: g.bodyHtml, stage: g.stage, status: "published", ...sent });
+    expect(saved).toMatchObject({ title: "Opening a bank account in Madinah", titleAr: guideAr.titleAr, bodyHtmlAr: guideAr.bodyHtmlAr });
+
+    const f = (await getFaq(db, faqEn.slug))!;
+    const savedFaq = await saveFaq(db, editor, { slug: f.slug, question: f.question, answerHtml: "<p>Yes, with a valid iqama.</p>", category: "getting-settled", tags: [], status: "published", ...changedFields({ questionAr: "" }, { questionAr: "" }) });
+    expect(savedFaq).toMatchObject({ questionAr: faqAr.questionAr, answerHtmlAr: faqAr.answerHtmlAr });
+  });
+
   it("rejects Arabic that is too long, like the English", async () => {
     await expect(saveFaq(db, editor, { question: "A long Arabic question?", answerHtml: "<p>a</p>", category: "university", tags: [], status: "draft", questionAr: "س".repeat(301) })).rejects.toThrow();
+  });
+});
+
+describe("the admin forms send only the Arabic that changed", () => {
+  const loaded = { titleAr: "عنوان", summaryAr: "", bodyHtmlAr: "<p>نص</p>" };
+
+  it("leaves out untouched fields, so the server keeps what it holds", () => {
+    expect(changedFields(loaded, loaded)).toEqual({});
+    // Typing into an empty editor and deleting it again leaves "<p></p>": still untouched.
+    expect(changedFields({ ...loaded, summaryAr: "<p></p>" }, loaded)).toEqual({});
+  });
+
+  it("sends an edited field, and an emptied one as empty so it clears", () => {
+    expect(changedFields({ ...loaded, titleAr: "عنوان جديد" }, loaded)).toEqual({ titleAr: "عنوان جديد" });
+    expect(changedFields({ ...loaded, bodyHtmlAr: "<p></p>" }, loaded)).toEqual({ bodyHtmlAr: "<p></p>" });
+    expect(changedFields({ ...loaded, titleAr: "" }, loaded)).toEqual({ titleAr: "" });
+  });
+
+  it("counts an image as content", () => {
+    expect(hasVisibleHtml('<p><img src="/a.png"></p>')).toBe(true);
+    expect(hasVisibleHtml("<p>&nbsp;</p><p> </p>")).toBe(false);
+    expect(hasVisibleHtml(null)).toBe(false);
   });
 });
 
@@ -192,6 +248,15 @@ describe("Arabic callouts", () => {
       expect(callouts(`<blockquote><p>${label} احجز موعدك قبل الظهر.</p></blockquote>`), label).toBe(1);
     }
     expect(callouts("<blockquote><p><strong>تنبيه:</strong> لا تنس الجواز.</p></blockquote>")).toBe(1);
+  });
+
+  it("skips a leading direction mark and accepts ! or . after the label", () => {
+    for (const mark of [RLM, LRM, ALM, `${RLM} `]) {
+      expect(callouts(`<blockquote><p>${mark}نصيحة: احجز موعدك.</p></blockquote>`), JSON.stringify(mark)).toBe(1);
+    }
+    expect(callouts("<blockquote><p>مهم! لا تتأخر.</p></blockquote>")).toBe(1);
+    expect(callouts("<blockquote><p>تنبيه. الموعد تغير.</p></blockquote>")).toBe(1);
+    expect(callouts(`<blockquote><p>${RLM}Tip: go early.</p></blockquote>`)).toBe(1);
   });
 
   it("leaves other Arabic quotes alone", () => {

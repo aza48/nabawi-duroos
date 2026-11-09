@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { faqs, guides } from "@/server/db/schema";
 import { cleanText } from "@/lib/text";
+import { hasVisibleHtml } from "@/lib/guide-html";
 import { FAQS_2026, GUIDES_2026, type SeedFaq, type SeedGuide } from "./guides-2026";
 import { FAQS_STUDENT_LIFE, GUIDES_STUDENT_LIFE } from "./guides-student-life";
 import { GUIDE_REWRITES_2026_11, GUIDES_RESEARCH_2026_11 } from "./guides-research-2026-11";
@@ -18,6 +19,11 @@ export const SEED_FAQS: SeedFaq[] = [...new Map([...FAQS_2026, ...FAQS_STUDENT_L
 
 /** Seeded Arabic, cleaned to house style; missing or blank becomes null (no translation yet). */
 const arabic = (s: string | undefined): string | null => (s && s.trim() ? cleanText(s.trim(), "ar") : null);
+/** Seeded Arabic HTML; a body with nothing to show ("<p></p>", "<p>&nbsp;</p>") is null, as in Admin. */
+const arabicHtml = (html: string | undefined): string | null => {
+  const s = arabic(html);
+  return hasVisibleHtml(s) ? s : null;
+};
 
 const minutes = (html: string) => Math.max(1, Math.ceil(html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length / 200));
 
@@ -42,7 +48,7 @@ export async function syncContent2026(
       bodyHtml: g.bodyHtml.trim(),
       titleAr: arabic(g.titleAr),
       summaryAr: arabic(g.summaryAr),
-      bodyHtmlAr: arabic(g.bodyHtmlAr),
+      bodyHtmlAr: arabicHtml(g.bodyHtmlAr),
       readingMinutes: minutes(g.bodyHtml),
       status: "published" as const,
       lastVerifiedAt: now,
@@ -70,7 +76,7 @@ export async function syncContent2026(
   for (const f of faqList) {
     const row = {
       slug: f.slug, question: cleanText(f.question, "en"), category: f.category, answerHtml: f.answerHtml,
-      questionAr: arabic(f.questionAr), answerHtmlAr: arabic(f.answerHtmlAr),
+      questionAr: arabic(f.questionAr), answerHtmlAr: arabicHtml(f.answerHtmlAr),
       tags: f.tags ?? [], status: "published" as const, lastVerifiedAt: now,
     };
     await db
