@@ -66,6 +66,15 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **akheeai**, branch `akheeai/open-questions-positions`: the remaining mashayikh questions, researched in `docs/research/mashayikh-open-questions-2026-11.md`. Applied to `MASHAYIKH_POSITIONS`:
+  - Prof. Dr. Mahir Khujah is also the Islamic University's official spokesman (IU news, 14 May 2026).
+  - Shaykh Dr. Abdulmuhsin al-Qasim is Imam and Khatib of the Prophet's Mosque and a judge at the Court of Appeal in Madinah.
+  - The Dar al-Hijrah Tawhid dars belongs to Shaykh Maher ibn Dhafir al-Qahtani, organised by the Ministry.
+  - Prof. Dr. Muhammad al-Humaid (Tafsir) and Dr. Yusuf al-Sa'idi (Usul al-Fiqh, College of Shariah).
+  - Saud al-Khalaf is a board member of the Aqidah society, not its president.
+  - Haytham Sarhan formerly taught at the Haram Institute.
+
+  Still open: al-Luhaydan and Mu'adh Khujah.
 - 9 Nov 2026, **akheeai**, branch `akheeai/new-teachers-positions`: current positions for the 12 teachers added from the official schedule.
   - The research is in `docs/research/mashayikh-positions-2026-11-new.md`, and the data is in `MASHAYIKH_POSITIONS`.
   - Highlights: Dr. Abdullah al-Bu'ayjan is Imam and Khatib of the Prophet's Mosque, and Dr. Salih al-Abbud is a former President of the Islamic University (1416 to 1428 AH).
