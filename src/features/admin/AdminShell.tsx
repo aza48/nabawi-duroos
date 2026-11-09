@@ -32,7 +32,7 @@ export function AdminShell({ name, roleLabel, canUndo = false, canSeeVisitors = 
           <Link href="/admin" className="font-heading text-xl font-semibold text-primary">MESH <span className="text-sm font-medium text-muted">Admin</span></Link>
           <nav className="hidden gap-1 md:flex">
             {tabs.map((t) => (
-              <Link key={t.href} href={t.href} className={`rounded-full px-3 py-1.5 text-sm font-semibold ${active(t) ? "bg-primary text-primary-ink" : "text-muted hover:text-ink"}`}>{t.label}</Link>
+              <Link key={t.href} href={t.href} className={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold ${active(t) ? "bg-primary text-primary-ink" : "text-muted hover:text-ink"}`}>{t.label}</Link>
             ))}
           </nav>
           <div className="flex items-center gap-2">
@@ -42,8 +42,8 @@ export function AdminShell({ name, roleLabel, canUndo = false, canSeeVisitors = 
           </div>
         </div>
       </header>
-      <main className={`mx-auto px-4 pt-4 pb-safe md:pb-16 ${path.startsWith("/admin/analytics") ? "max-w-7xl" : "max-w-4xl"}`}><AdminFeedbackProvider canUndo={canUndo}>{children}</AdminFeedbackProvider></main>
-      <nav aria-label="Admin" className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card/95 backdrop-blur md:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      <main className={`admin-main mx-auto px-4 pt-4 pb-safe md:pb-16 ${path.startsWith("/admin/analytics") ? "max-w-7xl" : "max-w-4xl"}`}><AdminFeedbackProvider canUndo={canUndo}>{children}</AdminFeedbackProvider></main>
+      <nav aria-label="Admin" className="admin-tabbar fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card/95 backdrop-blur md:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         <ul className="flex justify-around">
           {tabs.map((t) => {
             const Icon = t.icon;

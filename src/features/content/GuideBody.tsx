@@ -18,8 +18,8 @@ function readDone(slug: string): number[] {
  * with a progress bar, and video slots become tap-to-play YouTube players.
  */
 const PROGRESS = {
-  en: { allDone: "All steps done. Barakallahu feek.", done: (d: number, n: number) => `${d} of ${n} steps done`, again: "Start again", hint: "Tap a step to tick it off. It's saved on this phone." },
-  ar: { allDone: "أتممت كل الخطوات. بارك الله فيك.", done: (d: number, n: number) => `${d} من ${n} خطوات`, again: "ابدأ من جديد", hint: "اضغط على خطوة لتعليمها. يُحفظ ذلك على هذا الهاتف." },
+  en: { allDone: "All steps done. Barakallahu feek.", done: (d: number, n: number) => `${d} of ${n} steps done`, again: "Start again", hint: "Tap a step to tick it off. It's saved on this phone.", tick: (n: number) => `Step ${n} done` },
+  ar: { allDone: "أتممت كل الخطوات. بارك الله فيك.", done: (d: number, n: number) => `${d} من ${n} خطوات`, again: "ابدأ من جديد", hint: "اضغط على خطوة لتعليمها. يُحفظ ذلك على هذا الهاتف.", tick: (n: number) => `أتممت الخطوة ${n}` },
 };
 
 export function GuideBody({ html, slug, steps, locale = "en" }: { html: string; slug: string; steps: number; locale?: "en" | "ar" }) {
@@ -37,9 +37,17 @@ export function GuideBody({ html, slug, steps, locale = "en" }: { html: string; 
     items.forEach((li) => {
       const n = Number(li.dataset.step);
       li.classList.toggle("is-done", saved.has(n));
-      li.setAttribute("role", "checkbox");
-      li.setAttribute("aria-checked", String(saved.has(n)));
-      li.tabIndex = 0;
+      // The step stays a plain list item (it can hold links); a real button over the tick circle
+      // carries the state for keyboards and screen readers. A tap anywhere on the step still works.
+      let tick = li.querySelector<HTMLButtonElement>(":scope > button.step-tick");
+      if (!tick) {
+        tick = document.createElement("button");
+        tick.type = "button";
+        tick.className = "step-tick";
+        li.prepend(tick);
+      }
+      tick.setAttribute("aria-label", p.tick(n + 1));
+      tick.setAttribute("aria-pressed", String(saved.has(n)));
       const toggle = (e: Event) => {
         if ((e.target as HTMLElement).closest("a")) return;
         const now = new Set(readDone(slug));
@@ -49,16 +57,10 @@ export function GuideBody({ html, slug, steps, locale = "en" }: { html: string; 
           localStorage.setItem(key(slug), JSON.stringify([...now]));
         } catch {}
         li.classList.toggle("is-done", now.has(n));
-        li.setAttribute("aria-checked", String(now.has(n)));
+        tick.setAttribute("aria-pressed", String(now.has(n)));
         setDone([...now]);
       };
       li.onclick = toggle;
-      li.onkeydown = (e) => {
-        if (e.key === " " || e.key === "Enter") {
-          e.preventDefault();
-          toggle(e);
-        }
-      };
     });
 
     el.querySelectorAll<HTMLDivElement>(".video-slot").forEach((slot) => {

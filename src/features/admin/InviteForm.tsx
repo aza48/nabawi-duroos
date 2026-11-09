@@ -23,7 +23,12 @@ export function InviteForm({ token, email }: { token: string; email: string }) {
       setBusy(false);
       return setError(res.error);
     }
-    await authClient.signIn.email({ email, password });
+    // The account exists now. If signing in fails, say so and send them to sign in by hand.
+    const signed = await authClient.signIn.email({ email, password }).catch(() => null);
+    if (!signed || signed.error) {
+      router.push("/admin/login?error=invite_signin");
+      return;
+    }
     router.push("/admin/setup-2fa");
   }
 

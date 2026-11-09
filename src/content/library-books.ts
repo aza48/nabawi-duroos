@@ -50,6 +50,15 @@ export function cleanTitle(t: string): string {
     .replace(/-\d+\s*$/, "")
     .replace(/\s+/g, " ")
     .trim();
+  // File names saved with hyphens for spaces ("علم-مقاصد-الشارع") read as words.
+  // A leading number ("7-الماتريدية") keeps its hyphen.
+  if (!/\s/.test(s) && /[\u0600-\u06ff]/.test(s)) {
+    const lead = /^\d+-/.exec(s)?.[0] ?? "";
+    s = lead + s.slice(lead.length).replace(/-+/g, " ");
+  }
+  // Long dashes become a comma: Arabic comma in Arabic titles.
+  const comma = /[\u0600-\u06ff]/.test(s) ? "\u060c " : ", ";
+  s = s.replace(/\s*[\u2013\u2014]\s*/g, comma).replace(/\s+/g, " ").trim();
   if (/^IMG[\s_-]*\d{8}/i.test(t)) s = "Photo";
   return s || t.trim();
 }

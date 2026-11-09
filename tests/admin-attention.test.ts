@@ -23,8 +23,11 @@ describe("buildAttention", () => {
     }, NOW);
     expect(items.map((i) => i.key)).toEqual(["watcher", "sources", "suggested", "failed", "drafts", "programmes", "content"]);
     expect(items.find((i) => i.key === "sources")).toMatchObject({ count: 1, href: "/admin/sources", detail: "@twijri" });
-    expect(items.find((i) => i.key === "content")?.count).toBe(2);
+    expect(items.find((i) => i.key === "content")).toMatchObject({ count: 2, detail: "A, C" });
     expect(items.find((i) => i.key === "programmes")).toMatchObject({ count: 1, detail: "Old markaz" });
+  });
+  it("counts open questions for the admins", () => {
+    expect(buildAttention({ ...base, openQuestions: 4 }, NOW)).toEqual([{ key: "questions", label: "Questions waiting for an answer", count: 4, href: "/admin/questions" }]);
   });
 });
 

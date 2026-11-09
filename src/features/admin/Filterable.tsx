@@ -22,6 +22,16 @@ export function Filterable({ placeholder, children }: { placeholder: string; chi
       li.hidden = !match;
       if (match) shown++;
     });
+    // A heading row (a day in Activity) shows only while one of its rows does.
+    ref.current?.querySelectorAll<HTMLLIElement>("li[data-heading]").forEach((h) => {
+      let next = h.nextElementSibling as HTMLLIElement | null;
+      let any = false;
+      while (next && !next.hasAttribute("data-heading")) {
+        if (next.hasAttribute("data-item") && !next.hidden) { any = true; break; }
+        next = next.nextElementSibling as HTMLLIElement | null;
+      }
+      h.hidden = !any;
+    });
     setEmpty(total > 0 && shown === 0);
   }, [q]);
   return (

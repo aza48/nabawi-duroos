@@ -15,7 +15,7 @@ const optUrl = z
   .string()
   .trim()
   .max(500)
-  .regex(/^(https:\/\/[^\s/]+\S*|\/(?!\/)\S*)?$/, "Use an https:// link or a /path on MESH")
+  .regex(/^(https:\/\/[^\s/]+\S*|\/(?![\/\\])\S*)?$/, "Use an https:// link or a /path on MESH")
   .transform((v) => v || null)
   .optional()
   .nullable();
@@ -51,7 +51,7 @@ const overrideInput = z
 export async function addOverride(db: Db, actor: Actor | "system", input: z.input<typeof overrideInput>, origin: "admin" | "watcher_approved" | "watcher_auto" = "admin") {
   assertCan(actor, "duroos.write");
   const v = overrideInput.parse(input);
-  const [lesson] = await db.select({ id: lessons.id }).from(lessons).where(eq(lessons.slug, v.lessonSlug));
+  const [lesson] = await db.select({ id: lessons.id, bookEn: lessons.bookEn }).from(lessons).where(eq(lessons.slug, v.lessonSlug));
   if (!lesson) throw new Error("lesson_not_found");
   const endsOn = v.endsOn ?? v.startsOn;
   const [dup] = await db
@@ -73,7 +73,7 @@ export async function addOverride(db: Db, actor: Actor | "system", input: z.inpu
       origin,
     })
     .returning();
-  await record(db, actor, { action: "create", entity: "override", entityId: String(row.id), before: null, after: { ...row, lessonSlug: v.lessonSlug } });
+  await record(db, actor, { action: "create", entity: "override", entityId: String(row.id), before: null, after: { ...row, lessonSlug: v.lessonSlug, lessonLabel: lesson.bookEn } });
   refreshPublic([...DUROOS_PATHS, `/duroos/lesson/${v.lessonSlug}`, `/ar/duroos/lesson/${v.lessonSlug}`]);
   // Phone alerts are best-effort: a push failure never blocks the change itself.
   try {
@@ -252,9 +252,11 @@ export async function saveAnnouncement(db: Db, actor: Actor, input: z.input<type
     sourceUrl: v.sourceUrl ?? null, imageUrl: v.imageUrl ?? null, status: v.status,
   };
   let saved: typeof announcements.$inferSelect;
+  let previous: typeof announcements.$inferSelect | null = null;
   if (v.slug) {
     const [before] = await db.select().from(announcements).where(eq(announcements.slug, v.slug));
     if (!before) throw new Error("announcement_not_found");
+    previous = before;
     const publishedAt = v.status === "published" ? before.publishedAt ?? new Date() : before.publishedAt;
     const [after] = await db.update(announcements).set({ ...fields, publishedAt }).where(eq(announcements.slug, v.slug)).returning();
     await record(db, actor, { action: "update", entity: "announcement", entityId: v.slug, before, after });
@@ -274,6 +276,27 @@ export async function saveAnnouncement(db: Db, actor: Actor, input: z.input<type
   // Updates page, the dars card, the calendar feed and the API never disagree.
   const kind = SCHEDULE_TYPES[v.type];
   let scheduleUpdated = false;
+  // An edit that moves the date, changes the type or dars, or takes the update down undoes the
+  // schedule change the earlier version made; otherwise the old date would stay cancelled.
+  const oldKind = previous ? SCHEDULE_TYPES[previous.type] : undefined;
+  if (previous && previous.status === "published" && oldKind && previous.lessonId && previous.eventDate) {
+    const same = v.status === "published" && kind === oldKind && lesson?.id === previous.lessonId && v.eventDate === previous.eventDate;
+    if (!same) {
+      const stale = await db
+        .select({ id: lessonOverrides.id })
+        .from(lessonOverrides)
+        .where(and(
+          eq(lessonOverrides.lessonId, previous.lessonId),
+          eq(lessonOverrides.kind, oldKind),
+          eq(lessonOverrides.startsOn, previous.eventDate),
+          eq(lessonOverrides.endsOn, previous.eventDate),
+          eq(lessonOverrides.origin, "admin"),
+          isNull(lessonOverrides.revokedAt),
+        ));
+      for (const o of stale) await revokeOverride(db, actor, { id: o.id });
+      if (stale.length) scheduleUpdated = true;
+    }
+  }
   if (v.status === "published" && kind && lesson && v.eventDate) {
     await addOverride(db, actor, { lessonSlug: lesson.slug, kind, startsOn: v.eventDate, noteEn: v.titleEn, noteAr: v.titleAr, sourceUrl: v.sourceUrl ?? null });
     scheduleUpdated = true;

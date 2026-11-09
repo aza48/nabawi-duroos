@@ -13,7 +13,9 @@ export function LessonList({ rows }: { rows: Row[] }) {
   const shown = useMemo(() => {
     const s = q.trim().toLowerCase();
     if (!s) return rows;
-    return rows.filter((r) => `${r.shaykh} ${r.bookEn} ${r.bookAr} ${r.masjid}`.toLowerCase().includes(s));
+    // Every word must appear, in any order: "tafsir badr" finds the same dars as "badr tafsir".
+    const words = s.split(/\s+/);
+    return rows.filter((r) => { const hay = `${r.shaykh} ${r.bookEn} ${r.bookAr} ${r.masjid}`.toLowerCase(); return words.every((w) => hay.includes(w)); });
   }, [q, rows]);
   return (
     <>

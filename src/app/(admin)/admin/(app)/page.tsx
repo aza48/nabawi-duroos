@@ -52,7 +52,7 @@ export default async function Inbox() {
     <div className="mx-auto max-w-2xl">
       <p className="text-xs font-medium uppercase tracking-wide text-muted">{today.hijri.en} · {today.gregorian.en}</p>
       <h1 className="mt-1 text-2xl font-semibold">Inbox</h1>
-      <NeedsYou items={duroos ? attention : attention.filter((a) => ["drafts", "content", "programmes"].includes(a.key))} />
+      <NeedsYou items={attention.filter((a) => (a.key === "questions" ? can(actor.role, "content.write") : duroos || ["drafts", "content", "programmes"].includes(a.key)))} />
 
       <div className="mt-4 grid grid-cols-2 gap-2.5">
         {actions.map(({ href, label, icon: Icon }) => (
@@ -87,11 +87,12 @@ export default async function Inbox() {
                 <div className="w-16 shrink-0 text-xs text-muted">
                   <b className="block text-sm capitalize text-ink">{l.prayer}</b>{formatClock(new Date(l.adhanAt))}
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold">{l.shaykh.nameEn}</p>
+                {/* The row opens the dars page (where a change can be withdrawn); the tag sits under the name so it never squeezes it. */}
+                <Link href={`/admin/duroos/lesson/${l.slug}`} className="block min-w-0 flex-1">
+                  <p className="line-clamp-2 text-sm font-semibold">{l.shaykh.nameEn}</p>
                   <p className="truncate text-xs text-muted">{l.bookEn} · {l.masjid.shortEn}</p>
-                </div>
-                {l.status !== "on" ? <StatusTag status={l.status} locale="en" /> : null}
+                  {l.status !== "on" ? <span className="mt-1 inline-block"><StatusTag status={l.status} locale="en" /></span> : null}
+                </Link>
                 <ChangeDarsButton lessonSlug={l.slug} title={`${l.shaykh.nameEn}: ${l.bookEn}`} compact />
               </li>
             ))}

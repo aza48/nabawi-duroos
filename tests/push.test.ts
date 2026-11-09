@@ -55,6 +55,14 @@ describe("sending", () => {
     const brief = dailyBriefText(t);
     expect(brief.title).toMatch(/^Today in Madinah: \d+ duroos/);
     expect(brief.body.length).toBeLessThan(200);
+    expect(brief.body).not.toMatch(/after (fajr|dhuhr|asr|maghrib|isha)\b/);
+  });
+  it("never gives a clock time for a dars whose time is not confirmed", () => {
+    const l = (bookEn: string, prayer: string, timeKnown: boolean) => ({ status: "on", timeKnown, prayer, bookEn, adhanAt: "2026-11-07T15:00:00Z", shaykh: { nameEn: "Shaykh A" } });
+    const t = { date: "2026-11-07", lessons: [l("Unconfirmed book", "maghrib", false), l("Confirmed book", "isha", true)] } as unknown as Parameters<typeof dailyBriefText>[0];
+    const brief = dailyBriefText(t);
+    expect(brief.body).toContain("First: Confirmed book after Isha (");
+    expect(brief.body).not.toContain("Unconfirmed book");
   });
   it("lets a phone unsubscribe", async () => {
     await unsubscribePush(db, "https://fcm.googleapis.com/push/1");

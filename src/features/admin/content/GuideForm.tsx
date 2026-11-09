@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteGuideAction, saveGuideAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 import { RichText } from "./RichText";
+import { useUnsavedWarning } from "../useUnsavedWarning";
 import { useFeedback } from "../Feedback";
 
 type Stage = "getting-started" | "getting-settled" | "study" | "family" | "leaving";
@@ -19,9 +20,13 @@ export function GuideForm({ value }: { value: G }) {
   const router = useRouter();
   const { confirm, notify } = useFeedback();
   const [v, setV] = useState<G>(value);
-  const [verified, setVerified] = useState(true);
+  const markSaved = useUnsavedWarning(v);
+  // Unticked by default: fixing a typo must not stamp the page as checked today.
+  const [verified, setVerified] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
+  // Messages show in the toast above the tab bar, never under the button where a phone hides them.
+  useEffect(() => { if (msg) { notify(msg); markSaved(); } }, [msg, notify, markSaved]);
   const [pending, start] = useTransition();
 
   function save(status: G["status"]) {
@@ -47,7 +52,8 @@ export function GuideForm({ value }: { value: G }) {
           {STAGES.map((s) => <option key={s.id} value={s.id}>{s.label}</option>)}
         </select>
       </Field>
-      <div>
+      {/* min-w-0: the editor toolbar must not widen the form past the phone screen. */}
+      <div className="min-w-0">
         <p className="mb-1.5 text-sm font-semibold">Guide</p>
         <RichText value={v.bodyHtml} onChange={(html) => setV((p) => ({ ...p, bodyHtml: html }))} placeholder="Guide body" />
       </div>
@@ -60,7 +66,7 @@ export function GuideForm({ value }: { value: G }) {
         <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : "Publish"}</button>
       </div>
       {value.slug && (
-        <button type="button" className="text-sm text-cancel underline" disabled={pending}
+        <button type="button" className="mt-2 min-h-11 rounded-full border border-cancel/40 px-4 text-sm font-semibold text-cancel" disabled={pending}
           onClick={async () => {
             if (!(await confirm({ title: "Delete this guide?", body: "It disappears from the site straight away. You can bring it back with Undo.", confirmLabel: "Delete", danger: true }))) return;
             start(async () => {
@@ -73,7 +79,6 @@ export function GuideForm({ value }: { value: G }) {
           Delete guide
         </button>
       )}
-      {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>
   );

@@ -198,6 +198,9 @@ a { -webkit-tap-highlight-color: transparent; }
 .article :where(table) { display: block; overflow-x: auto; border-collapse: collapse; margin: 0 0 1rem; font-size: 0.92rem; }
 .article :where(th, td) { border: 1px solid var(--border); padding: 0.45rem 0.6rem; text-align: start; vertical-align: top; }
 .article :where(th) { background: var(--bg-2); font-weight: 600; }
+/* The admin editor wraps each table cell in a paragraph; keep cells as compact as hand-written ones. */
+.article :where(th, td) > p { margin: 0; }
+.article :where(th, td) > p + p { margin-top: 0.4rem; }
 .article :where(h2 + p, h3 + p) { margin-top: 0; }
 
 /* ---------- MESH lattice (from the logo) ---------- */
@@ -409,6 +412,12 @@ a { -webkit-tap-highlight-color: transparent; }
 }
 .guide ol.steps > li.is-done > :not(ul):not(ol) { text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent); }
 .guide ol.steps > li > p:last-child { margin-bottom: 0; }
+/* The tick button sits over the circle drawn by ::before, with a 40px tap area. */
+.guide ol.steps > li > .step-tick {
+  position: absolute; inset-inline-start: 0.35rem; top: 0.4rem; width: 2.5rem; height: 2.5rem;
+  border-radius: 999px; background: transparent; border: 0; padding: 0; cursor: pointer;
+}
+.guide ol.steps > li > .step-tick:focus-visible { outline: 3px solid var(--primary); outline-offset: 1px; }
 .guide blockquote.callout {
   border: 0; border-radius: 14px; padding: 0.9rem 1.1rem; color: var(--ink);
   background: var(--gold-bg); border-inline-start: 4px solid var(--gold-bright);
@@ -468,7 +477,7 @@ a { -webkit-tap-highlight-color: transparent; }
    and visitors who prefer less motion, simply see everything. */
 @supports (animation-timeline: view()) {
   @media screen and (prefers-reduced-motion: no-preference) {
-    main :is(.lift, .card, .reveal) {
+    main:not(.admin-main) :is(.lift, .card, .reveal) {
       animation: reveal linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 55%;
@@ -476,3 +485,8 @@ a { -webkit-tap-highlight-color: transparent; }
   }
 }
 @keyframes reveal { from { opacity: 0; translate: 0 18px; } }
+
+/* Admin on a phone: while typing, the on-screen keyboard leaves little room, so the tab bar steps aside. */
+@media (pointer: coarse) and (max-width: 767px) {
+  body:has(:is(input:not([type="checkbox"], [type="radio"], [type="button"], [type="submit"]), textarea, select, [contenteditable="true"]):focus) .admin-tabbar { display: none; }
+}

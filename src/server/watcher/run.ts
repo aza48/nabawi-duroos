@@ -1,14 +1,14 @@
 import { isBroadSource, sourceRank } from "./sources";
 import { worthReading } from "./prefilter";
 import { createHash } from "node:crypto";
-import { and, desc, eq, inArray, ne } from "drizzle-orm";
+import { and, eq, gte, inArray, lte, ne, or } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { channelPosts, lessonLive, lessons, masjids, shaykhs, sources } from "@/server/db/schema";
 import { isLiveNotice, matchLiveLesson, pickLiveLink } from "./live-notice";
 import { assertCan, type Actor } from "@/server/auth/permissions";
 import { addOverride } from "@/server/admin/duroos";
 import { setSetting } from "@/server/settings";
-import { addDays, riyadhDateIso } from "@/lib/time/riyadh";
+import { riyadhDateIso } from "@/lib/time/riyadh";
 import { parseChannelHtml, previewUrl, type ChannelPost } from "./telegram";
 import { decide } from "./decide";
 import type { AiParse } from "./ai";
@@ -69,6 +69,10 @@ export async function runWatcher(
 
   /** A post that failed is retried after this long, not on every run. */
   const ERROR_RETRY_MS = 30 * 60_000;
+  /** A forwarded copy of a notice counts as the same post only within this many hours of the first. */
+  const TWIN_WINDOW_MS = 48 * 3_600_000;
+  /** The same channel posting the same text again this soon is a repost, not a new notice. */
+  const REPOST_WINDOW_MS = 6 * 3_600_000;
 
   for (const src of allSources) {
     // Forwarded WhatsApp messages arrive through the webhook, not from a channel page.
@@ -102,12 +106,22 @@ export async function runWatcher(
       if (existing?.status === "dismissed") continue;
 
       // The same notice forwarded to a second channel: copy the first decision instead of reading it again
-      // (and never publishing it twice).
+      // (and never publishing it twice). Only another channel, within two days: the same short notice
+      // posted again on a later week ("the shaykh excuses himself today") is a new notice and is read.
       if (!existing) {
         const [twin] = await db
           .select()
           .from(channelPosts)
-          .where(and(eq(channelPosts.textHash, textHash), ne(channelPosts.status, "new"), ne(channelPosts.status, "error")))
+          .where(and(
+            eq(channelPosts.textHash, textHash),
+            // Another channel within two days, or the same channel reposting within a few hours.
+            or(
+              and(ne(channelPosts.sourceHandle, src.handle), gte(channelPosts.postedAt, new Date(p.postedAt.getTime() - TWIN_WINDOW_MS)), lte(channelPosts.postedAt, new Date(p.postedAt.getTime() + TWIN_WINDOW_MS))),
+              and(eq(channelPosts.sourceHandle, src.handle), gte(channelPosts.postedAt, new Date(p.postedAt.getTime() - REPOST_WINDOW_MS)), lte(channelPosts.postedAt, new Date(p.postedAt.getTime() + REPOST_WINDOW_MS))),
+            ),
+            ne(channelPosts.status, "new"),
+            ne(channelPosts.status, "error"),
+          ))
           .limit(1);
         if (twin) {
           await db.insert(channelPosts).values({
@@ -192,10 +206,6 @@ export async function runWatcher(
 
 /* ---------------- Admin review ---------------- */
 
-export async function listSuggestions(db: Db, limit = 30) {
-  return db.select().from(channelPosts).where(eq(channelPosts.status, "suggested")).orderBy(desc(channelPosts.postedAt)).limit(limit);
-}
-
 export async function approveSuggestion(
   db: Db,
   actor: Actor,
@@ -209,17 +219,36 @@ export async function approveSuggestion(
   const lessonSlug = edits.lessonSlug ?? parse.lesson_slug ?? undefined;
   const startsOn = edits.startsOn ?? parse.dates?.[0];
   if (!lessonSlug || !startsOn) throw new Error("needs_lesson_and_date");
-  const o = await addOverride(db, actor, {
-    lessonSlug, kind: (edits.kind ?? parse.kind ?? "note") as "cancelled", startsOn, endsOn: edits.endsOn,
-    noteEn: parse.note_en || null, noteAr: parse.note_ar || null, sourceUrl: p.url,
-  }, "watcher_approved");
-  await db.update(channelPosts).set({ status: "published", overrideId: o.id, decidedBy: actor.name, updatedAt: new Date() }).where(eq(channelPosts.id, id));
+  // Claim the post first, so two admins (or a stale tab) cannot both approve it or race a dismiss.
+  const claimed = await db
+    .update(channelPosts)
+    .set({ status: "published", decidedBy: actor.name, updatedAt: new Date() })
+    .where(and(eq(channelPosts.id, id), inArray(channelPosts.status, ["suggested", "error"])))
+    .returning({ id: channelPosts.id });
+  if (!claimed.length) throw new Error("suggestion_not_found");
+  let o: Awaited<ReturnType<typeof addOverride>>;
+  try {
+    o = await addOverride(db, actor, {
+      lessonSlug, kind: (edits.kind ?? parse.kind ?? "note") as "cancelled", startsOn, endsOn: edits.endsOn,
+      noteEn: parse.note_en || null, noteAr: parse.note_ar || null, sourceUrl: p.url,
+    }, "watcher_approved");
+  } catch (e) {
+    await db.update(channelPosts).set({ status: p.status, decidedBy: p.decidedBy, updatedAt: p.updatedAt }).where(eq(channelPosts.id, id));
+    throw e;
+  }
+  await db.update(channelPosts).set({ overrideId: o.id }).where(eq(channelPosts.id, id));
   return o;
 }
 
 export async function dismissSuggestion(db: Db, actor: Actor, id: number) {
   assertCan(actor, "duroos.write");
-  await db.update(channelPosts).set({ status: "dismissed", decidedBy: actor.name, updatedAt: new Date() }).where(eq(channelPosts.id, id));
+  // Only a post still waiting for a decision: a dismiss racing an approve must not hide a live change.
+  const done = await db
+    .update(channelPosts)
+    .set({ status: "dismissed", decidedBy: actor.name, updatedAt: new Date() })
+    .where(and(eq(channelPosts.id, id), inArray(channelPosts.status, ["suggested", "error"])))
+    .returning({ id: channelPosts.id });
+  if (!done.length) throw new Error("suggestion_not_found");
 }
 
 /** Production wiring: real network calls. */
@@ -232,9 +261,8 @@ export function liveDeps(apiKey: string): WatcherDeps {
     },
     readPost: async (post, lessonsList, today) => {
       const { readPostWithGemini } = await import("./ai");
-      return readPostWithGemini(post, lessonsList, today, { apiKey, fetch: (url, init) => fetch(url, { ...init, signal: AbortSignal.timeout(12_000) }) });
+      return readPostWithGemini(post, lessonsList, today, { apiKey, fetch: (url, init) => fetch(url, { ...init, signal: init?.signal ? AbortSignal.any([init.signal, AbortSignal.timeout(12_000)]) : AbortSignal.timeout(12_000) }) });
     },
   };
 }
 
-export { addDays };

@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { createLessonAction, updateLessonAction } from "@/app/(admin)/admin/actions";
 import { btnPrimary, ErrorNote, Field, inputCls } from "../ui";
+import { useUnsavedWarning } from "../useUnsavedWarning";
+import { useFeedback } from "../Feedback";
 
 type Lesson = {
   slug?: string; bookEn: string; bookAr: string; bookAuthorEn: string | null; bookAuthorAr: string | null; bookUrl?: string | null; topic: string;
@@ -25,8 +27,13 @@ export function LessonForm({
 }) {
   const router = useRouter();
   const [v, setV] = useState<Lesson>(lesson);
-  const [shaykhSlug, setShaykhSlug] = useState(shaykhs?.[0]?.slug ?? "");
+  const markSaved = useUnsavedWarning(v);
+  // No silent default: a new dars must be given its shaykh on purpose.
+  const [shaykhSlug, setShaykhSlug] = useState("");
   const [msg, setMsg] = useState<string | null>(null);
+  const { notify } = useFeedback();
+  // Messages show in the toast above the tab bar, never under the button where a phone hides them.
+  useEffect(() => { if (msg) { notify(msg); markSaved(); } }, [msg, notify, markSaved]);
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const set = <K extends keyof Lesson>(k: K, val: Lesson[K]) => setV((p) => ({ ...p, [k]: val }));
@@ -60,18 +67,19 @@ export function LessonForm({
     <form onSubmit={submit} className="grid gap-4">
       {shaykhs && (
         <Field label="Shaykh">
-          <select className={inputCls} value={shaykhSlug} onChange={(e) => setShaykhSlug(e.target.value)}>
+          <select className={inputCls} value={shaykhSlug} onChange={(e) => setShaykhSlug(e.target.value)} required>
+            <option value="" disabled>Choose the shaykh</option>
             {shaykhs.map((s) => <option key={s.slug} value={s.slug}>{s.nameEn}</option>)}
           </select>
         </Field>
       )}
-      <Field label="Book (Arabic)"><input dir="rtl" className={inputCls} value={v.bookAr} onChange={(e) => set("bookAr", e.target.value)} required /></Field>
       <Field label="Book (English)"><input className={inputCls} value={v.bookEn} onChange={(e) => set("bookEn", e.target.value)} required /></Field>
+      <Field label="Book (Arabic)"><input dir="rtl" className={inputCls} value={v.bookAr} onChange={(e) => set("bookAr", e.target.value)} required /></Field>
       <div className="grid grid-cols-2 gap-3">
         <Field label="Author (English)"><input className={inputCls} value={v.bookAuthorEn ?? ""} onChange={(e) => set("bookAuthorEn", e.target.value)} /></Field>
         <Field label="Author (Arabic)"><input dir="rtl" className={inputCls} value={v.bookAuthorAr ?? ""} onChange={(e) => set("bookAuthorAr", e.target.value)} /></Field>
-        <Field label="Link to the book (optional)" hint="A PDF or the MESH Library page, shown on the dars page. https:// or /library/…"><input className={inputCls} inputMode="url" value={v.bookUrl ?? ""} onChange={(e) => set("bookUrl", e.target.value)} placeholder="https://…" /></Field>
       </div>
+      <Field label="Link to the book (optional)" hint="A PDF or the MESH Library page, shown on the dars page. https:// or /library/…"><input className={inputCls} inputMode="url" value={v.bookUrl ?? ""} onChange={(e) => set("bookUrl", e.target.value)} placeholder="https://…" /></Field>
       <div className="grid grid-cols-2 gap-3">
         <Field label="Masjid">
           <select className={inputCls} value={v.masjidId} onChange={(e) => set("masjidId", e.target.value)}>
@@ -115,7 +123,6 @@ export function LessonForm({
       <Field label="Note (English, optional)"><input className={inputCls} value={v.noteEn ?? ""} onChange={(e) => set("noteEn", e.target.value)} /></Field>
       <Field label="Note (Arabic, optional)"><input dir="rtl" className={inputCls} value={v.noteAr ?? ""} onChange={(e) => set("noteAr", e.target.value)} /></Field>
       <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : lesson.slug ? "Save lesson" : "Add lesson"}</button>
-      {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>
   );

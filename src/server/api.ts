@@ -29,7 +29,9 @@ export function badRequest(message: string): NextResponse {
 export function dateParam(url: URL, today: string, days = 60): string | null {
   const v = url.searchParams.get("date");
   if (!v) return null;
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(v) || Number.isNaN(Date.parse(`${v}T00:00:00Z`))) throw new Error("date must be YYYY-MM-DD");
+  const ms = Date.parse(`${v}T00:00:00Z`);
+  // Date.parse rolls impossible days forward (2026-11-31 becomes 1 December): require a round trip.
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(v) || Number.isNaN(ms) || new Date(ms).toISOString().slice(0, 10) !== v) throw new Error("date must be YYYY-MM-DD");
   const gap = Math.abs(Date.parse(`${v}T00:00:00Z`) - Date.parse(`${today}T00:00:00Z`)) / 86_400_000;
   if (gap > days) throw new Error(`date must be within ${days} days of today`);
   return v;

@@ -6,6 +6,7 @@ import type { Auth } from "@/server/auth/auth";
 import { adminInvites } from "@/server/db/schema";
 import { assertCan, ROLES, type Actor, type Role } from "@/server/auth/permissions";
 import { SITE_URL } from "@/lib/site";
+import { record } from "./audit";
 
 export const INVITE_TTL_HOURS = 72;
 
@@ -22,13 +23,15 @@ export async function createInvite(
   assertCan(actor, "admins.manage");
   const { email, role } = inviteInput.parse(input);
   const token = randomBytes(32).toString("base64url");
-  await db.insert(adminInvites).values({
+  const [row] = await db.insert(adminInvites).values({
     email,
     role,
     tokenHash: hash(token),
     invitedBy: actor === "system" ? null : actor.id,
     expiresAt: new Date(Date.now() + INVITE_TTL_HOURS * 3_600_000),
-  });
+  }).returning({ id: adminInvites.id, expiresAt: adminInvites.expiresAt });
+  // Activity shows who invited whom and with what role (never the token).
+  await record(db, actor, { action: "create", entity: "admin", entityId: `invite:${row.id}`, before: null, after: { invite: row.id, email, role, expiresAt: row.expiresAt } });
   return { token, url: `${baseUrl}/admin/invite?token=${token}` };
 }
 
@@ -58,6 +61,8 @@ export async function acceptInvite(
   const res = await auth.api.createUser({
     body: { email: invite.email, password, name, role: invite.role as "owner" },
   });
+  // The account exists now: a failed log line must not turn a finished sign-up into an error.
+  await record(db, "system", { action: "create", entity: "admin", entityId: res.user.id, before: null, after: { id: res.user.id, name, email: invite.email, role: invite.role, invite: invite.id } }).catch(() => {});
   return { userId: res.user.id };
 }
 

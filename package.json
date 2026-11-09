@@ -27,6 +27,7 @@
     "@better-auth/passkey": "^1.7.18",
     "@electric-sql/pglite": "^0.5.15",
     "@neondatabase/serverless": "^1.2.0",
+    "@tiptap/extension-table": "^3.33.0",
     "@tiptap/pm": "^3.33.0",
     "@tiptap/react": "^3.33.0",
     "@tiptap/starter-kit": "^3.33.0",

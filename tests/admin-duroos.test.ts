@@ -84,6 +84,7 @@ describe("lessons, shaykhs and announcements", () => {
     await updateShaykh(db, duroosEditor, { slug, photo: "" });
     expect((await db.select().from(shaykhs).where(eq(shaykhs.slug, slug)))[0].photo).toBeNull();
     await expect(updateShaykh(db, duroosEditor, { slug, photo: "javascript:alert(1)" })).rejects.toThrow();
+    await expect(updateShaykh(db, duroosEditor, { slug, photo: "/\\evil.com" })).rejects.toThrow();
     const l = await updateLesson(db, duroosEditor, { slug: "ruh-dalil", bookUrl: "https://example.org/book.pdf" });
     expect(l.bookUrl).toBe("https://example.org/book.pdf");
     await expect(updateLesson(db, duroosEditor, { slug: "ruh-dalil", bookUrl: "http://insecure.example" })).rejects.toThrow();
@@ -136,6 +137,25 @@ describe("a published schedule update also changes the schedule (audit M9)", () 
     });
     expect(sat.scheduleUpdated).toBe(false);
     expect((await getToday(db, new Date("2026-11-28T09:30:00Z"))).lessons.filter((l) => l.status !== "on")).toHaveLength(0);
+  });
+  it("an edit that moves the date or takes the update down undoes the old schedule change", async () => {
+    const statusOn = async (iso: string) => (await getToday(db, new Date(`${iso}T09:30:00Z`))).lessons.find((l) => l.slug === "ruh-dalil")?.status;
+    const base = { titleEn: "Dalil al-Talib cancelled", titleAr: "إلغاء درس دليل الطالب", bodyEn: "x", bodyAr: "x", type: "cancellation", lessonSlug: "ruh-dalil" } as const;
+    const a = await saveAnnouncement(db, duroosEditor, { ...base, eventDate: "2026-12-04", status: "published" });
+    expect(await statusOn("2026-12-04")).toBe("cancelled");
+    const moved = await saveAnnouncement(db, duroosEditor, { ...base, slug: a.slug, eventDate: "2026-12-11", status: "published" });
+    expect(moved.scheduleUpdated).toBe(true);
+    expect(await statusOn("2026-12-04")).toBe("on");
+    expect(await statusOn("2026-12-11")).toBe("cancelled");
+    await saveAnnouncement(db, duroosEditor, { ...base, slug: a.slug, eventDate: "2026-12-11", status: "draft" });
+    expect(await statusOn("2026-12-11")).toBe("on");
+  });
+  it("undoing the creation of a dars that updates still point at is refused with a clear reason", async () => {
+    const { record } = await import("@/server/admin/audit");
+    const [l] = await db.select().from(lessons).where(eq(lessons.slug, "ruh-dalil"));
+    const id = await record(db, owner, { action: "create", entity: "lesson", entityId: "ruh-dalil", before: null, after: l });
+    expect(await undo(db, owner, id)).toEqual({ ok: false, error: "in_use" });
+    expect(await db.select().from(lessons).where(eq(lessons.slug, "ruh-dalil"))).toHaveLength(1);
   });
   it("leaves the schedule alone for drafts and for plain notices", async () => {
     const d = await saveAnnouncement(db, duroosEditor, {

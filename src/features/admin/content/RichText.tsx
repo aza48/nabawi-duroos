@@ -2,6 +2,7 @@
 
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { TableKit } from "@tiptap/extension-table";
 import { Bold, Heading2, Heading3, Italic, Link2, List, ListOrdered, Quote, Redo2, Undo2 } from "lucide-react";
 
 export function RichText({ value, onChange, placeholder }: { value: string; onChange: (html: string) => void; placeholder?: string }) {
@@ -14,6 +15,8 @@ export function RichText({ value, onChange, placeholder }: { value: string; onCh
         code: false,
         link: { openOnClick: false, autolink: true, defaultProtocol: "https" },
       }),
+      // Guides hold tables (costs, fees, timings). Without this the editor silently drops them on save.
+      TableKit.configure({ table: { resizable: false } }),
     ],
     content: value,
     editorProps: {
@@ -55,8 +58,9 @@ export function RichText({ value, onChange, placeholder }: { value: string; onCh
   );
 
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-bg focus-within:border-primary">
-      <div className="sticky top-14 z-10 flex gap-0.5 overflow-x-auto border-b border-line bg-card p-1 [scrollbar-width:none]">
+    // No overflow-hidden here: it would stop the toolbar sticking while a long guide scrolls.
+    <div className="rounded-xl border border-line bg-bg focus-within:border-primary">
+      <div className="sticky top-14 z-10 flex gap-0.5 overflow-x-auto rounded-t-[11px] border-b border-line bg-card p-1 [scrollbar-width:none]">
         <B label="Heading" on={s?.h2} onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}><Heading2 size={17} /></B>
         <B label="Subheading" on={s?.h3} onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}><Heading3 size={17} /></B>
         <B label="Bold" on={s?.bold} onClick={() => editor.chain().focus().toggleBold().run()}><Bold size={17} /></B>

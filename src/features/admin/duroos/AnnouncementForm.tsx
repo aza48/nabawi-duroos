@@ -1,16 +1,18 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { saveAnnouncementAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
+import { useUnsavedWarning } from "../useUnsavedWarning";
+import { useFeedback } from "../Feedback";
 
 type Type = "cancellation" | "postponement" | "resumption" | "new-book" | "book-finished" | "reminder" | "info" | "guest" | "lecture";
 type A = {
   slug?: string; titleEn: string; titleAr: string; bodyEn: string; bodyAr: string; type: Type;
   eventDate: string | null; shaykhSlug: string | null; lessonSlug: string | null; masjidId: string | null; sourceUrl: string | null; status: "draft" | "published" | "archived";
 };
-export type LessonOption = { slug: string; label: string; shaykhSlug: string };
+export type LessonOption = { slug: string; label: string; shortLabel?: string; shaykhSlug: string };
 
 /** Update types that also change the schedule when a dars and a date are set. */
 const SCHEDULE_TYPES = new Set<Type>(["cancellation", "postponement", "resumption"]);
@@ -28,8 +30,12 @@ export const EMPTY_ANNOUNCEMENT: A = {
 export function AnnouncementForm({ value, shaykhs, masjids, lessons = [] }: { value: A; shaykhs: { slug: string; nameEn: string }[]; masjids: { id: string; name: string }[]; lessons?: LessonOption[] }) {
   const router = useRouter();
   const [v, setV] = useState<A>(value);
+  const markSaved = useUnsavedWarning(v);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
+  const { notify, confirm } = useFeedback();
+  // Messages show in the toast above the tab bar, never under the button where a phone hides them.
+  useEffect(() => { if (msg) { notify(msg); markSaved(); } }, [msg, notify, markSaved]);
   const [pending, start] = useTransition();
   const set = <K extends keyof A>(k: K, val: A[K]) => setV((p) => ({ ...p, [k]: val }));
 
@@ -92,8 +98,8 @@ export function AnnouncementForm({ value, shaykhs, masjids, lessons = [] }: { va
           hint={SCHEDULE_TYPES.has(v.type) ? "With a dars and a date, publishing also marks the dars cancelled, postponed or resumed on that day everywhere on the site." : "Optional: the dars this update is about."}
         >
           <select className={inputCls} value={v.lessonSlug ?? ""} onChange={(e) => set("lessonSlug", e.target.value || null)}>
-            <option value="">{v.shaykhSlug ? "His only dars that day, if there is one" : "Not set"}</option>
-            {lessons.filter((l) => !v.shaykhSlug || l.shaykhSlug === v.shaykhSlug).map((l) => <option key={l.slug} value={l.slug}>{l.label}</option>)}
+            <option value="">{v.shaykhSlug ? "Not chosen (matched by the date)" : "Not set"}</option>
+            {lessons.filter((l) => !v.shaykhSlug || l.shaykhSlug === v.shaykhSlug).map((l) => <option key={l.slug} value={l.slug}>{v.shaykhSlug && l.shortLabel ? l.shortLabel : l.label}</option>)}
           </select>
         </Field>
       )}
@@ -105,9 +111,12 @@ export function AnnouncementForm({ value, shaykhs, masjids, lessons = [] }: { va
         <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : "Publish"}</button>
       </div>
       {value.slug && value.status === "published" && (
-        <button type="button" className="text-sm text-muted underline" onClick={() => save("archived")}>Take it down (archive)</button>
+        <button type="button" className="mt-2 min-h-11 rounded-full border border-cancel/40 px-4 text-sm font-semibold text-cancel" disabled={pending}
+          onClick={async () => {
+            if (!(await confirm({ title: "Take this update down?", body: "It leaves the Updates page straight away. If it changed the schedule, that change is withdrawn too.", confirmLabel: "Take it down", danger: true }))) return;
+            save("archived");
+          }}>Take it down (archive)</button>
       )}
-      {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>
   );

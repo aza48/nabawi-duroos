@@ -10,6 +10,7 @@ import { ScheduleBrowser } from "./ScheduleBrowser";
 import { DuroosNav } from "./DuroosNav";
 import { LessonPage, LivePage, ShaykhPage, UpdatesPage } from "./DetailPages";
 import { t } from "./strings";
+import { riyadhDateIso, weekdayOf } from "@/lib/time/riyadh";
 import { clip, metaDescription, metaTitle } from "@/lib/text";
 
 type SlugProps = { params: Promise<{ slug: string }> };
@@ -47,7 +48,7 @@ export function scheduleRoute(locale: Locale) {
         <p className="mb-6 max-w-2xl text-muted">
           {locale === "ar" ? "كل الدروس الثابتة في الأسبوع. اضغط على أي درس لتفاصيله." : "Every regular dars in the week. Tap any one for its place, books and recent changes."}
         </p>
-        <ScheduleBrowser week={week} masjids={masjids} locale={locale} />
+        <ScheduleBrowser week={week} masjids={masjids} locale={locale} initialDay={weekdayOf(riyadhDateIso())} />
       </div>
     );
   }
@@ -98,7 +99,13 @@ export function lessonRoute(locale: Locale) {
     const l = await getLesson(await getDb(), slug);
     if (!l) return {};
     return {
-      title: lessonTitle(locale === "ar" ? l.bookAr : l.bookEn, locale === "ar" ? l.shaykh.nameAr : l.shaykh.nameEn, locale, t(locale, l.prayer)),
+      // A monthly dars says so in its title: the same shaykh can teach the same book weekly after the same prayer.
+      title: lessonTitle(
+        locale === "ar" ? l.bookAr : l.bookEn,
+        locale === "ar" ? l.shaykh.nameAr : l.shaykh.nameEn,
+        locale,
+        l.days.length === 0 && /each month|كل شهر/.test(`${l.daysLabelEn ?? ""} ${l.daysLabelAr ?? ""}`) ? (locale === "ar" ? "شهريًا" : "monthly") : t(locale, l.prayer),
+      ),
       description: metaDescription(
         locale === "ar"
           ? `${l.bookAr}، ${l.shaykh.nameAr}، ${l.masjid.nameAr}، بعد ${t(locale, l.prayer)}.`

@@ -3,6 +3,7 @@ import type { Db } from "@/server/db/client";
 import { channelPosts, faqs, guides, sources } from "@/server/db/schema";
 import { PROGRAMS } from "@/content/programs";
 import { getSetting } from "@/server/settings";
+import { countOpenQuestions } from "./questions";
 
 export type AttentionItem = { key: string; label: string; count: number; href: string; detail?: string };
 
@@ -15,6 +16,8 @@ export type AttentionInput = {
   staleGuides: { slug: string; title: string; verified: Date | null }[];
   staleFaqs: { slug: string; question: string; verified: Date | null }[];
   programmes: { slug: string; name: string; checked: string }[];
+  /** Open questions the team asked the admins (More, Questions for you). */
+  openQuestions?: number;
 };
 
 const DAY = 86_400_000;
@@ -31,16 +34,22 @@ export function buildAttention(i: AttentionInput, now: Date): AttentionItem[] {
   if (i.failingSources.length) out.push({ key: "sources", label: "Channels that failed to load", count: i.failingSources.length, href: "/admin/sources", detail: i.failingSources.join(", ") });
   if (i.suggested) out.push({ key: "suggested", label: "Channel posts to approve or dismiss", count: i.suggested, href: "/admin#channels" });
   if (i.failedPosts) out.push({ key: "failed", label: "Posts the reader could not understand", count: i.failedPosts, href: "/admin#channels" });
+  if (i.openQuestions) out.push({ key: "questions", label: "Questions waiting for an answer", count: i.openQuestions, href: "/admin/questions" });
   if (i.drafts) out.push({ key: "drafts", label: "Drafts waiting to publish", count: i.drafts, href: "/admin#drafts" });
   const staleProgrammes = i.programmes.filter((p) => old(new Date(`${p.checked}T00:00:00+03:00`)));
   if (staleProgrammes.length) out.push({ key: "programmes", label: `Programmes not checked in ${STALE_DAYS / 30} months`, count: staleProgrammes.length, href: "/programs", detail: staleProgrammes.map((p) => p.name).join(", ") });
   const staleContent = [...i.staleGuides.filter((g) => old(g.verified)), ...i.staleFaqs.filter((f) => old(f.verified))];
-  if (staleContent.length) out.push({ key: "content", label: `Guides and answers not verified in ${STALE_DAYS / 30} months`, count: staleContent.length, href: "/admin/content" });
+  if (staleContent.length) {
+    // Name them: the Content list does not mark which ones are stale.
+    const names = staleContent.map((c) => ("title" in c ? c.title : c.question));
+    const detail = names.slice(0, 5).join(", ") + (names.length > 5 ? ` and ${names.length - 5} more` : "");
+    out.push({ key: "content", label: `Guides and answers not verified in ${STALE_DAYS / 30} months`, count: staleContent.length, href: "/admin/content", detail });
+  }
   return out;
 }
 
 export async function needsAttention(db: Db, now = new Date()): Promise<AttentionItem[]> {
-  const [posts, failing, last, g, f, da, dg] = await Promise.all([
+  const [posts, failing, last, g, f, da, dg, questions] = await Promise.all([
     db.select({ status: channelPosts.status, n: count() }).from(channelPosts).where(inArray(channelPosts.status, ["suggested", "error"])).groupBy(channelPosts.status),
     db.select({ handle: sources.handle }).from(sources).where(isNotNull(sources.lastError)),
     getSetting<string>(db, "watcher_last_checked_at"),
@@ -48,6 +57,7 @@ export async function needsAttention(db: Db, now = new Date()): Promise<Attentio
     db.select({ slug: faqs.slug, question: faqs.question, verified: faqs.lastVerifiedAt }).from(faqs).where(eq(faqs.status, "published")),
     db.select({ n: count() }).from(faqs).where(eq(faqs.status, "draft")),
     db.select({ n: count() }).from(guides).where(eq(guides.status, "draft")),
+    countOpenQuestions(db),
   ]);
   return buildAttention(
     {
@@ -58,6 +68,7 @@ export async function needsAttention(db: Db, now = new Date()): Promise<Attentio
       drafts: (da[0]?.n ?? 0) + (dg[0]?.n ?? 0),
       staleGuides: g,
       staleFaqs: f,
+      openQuestions: questions,
       programmes: PROGRAMS.map((p) => ({ slug: p.slug, name: p.name, checked: p.checked })),
     },
     now

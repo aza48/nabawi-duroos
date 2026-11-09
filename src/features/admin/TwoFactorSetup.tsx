@@ -12,6 +12,13 @@ export function TwoFactorSetup() {
   const [password, setPassword] = useState("");
   const [qr, setQr] = useState<string | null>(null);
   const [secret, setSecret] = useState("");
+  const [uri, setUri] = useState("");
+  const [copied, setCopied] = useState<"key" | "codes" | null>(null);
+  const copy = async (text: string, what: "key" | "codes") => {
+    // Only say "copied" when it was: without a clipboard (an http preview, an old web view) the text stays on screen.
+    if (!navigator.clipboard) return;
+    try { await navigator.clipboard.writeText(text); setCopied(what); setTimeout(() => setCopied(null), 2500); } catch { /* copy by hand */ }
+  };
   const [backup, setBackup] = useState<string[]>([]);
   const [code, setCode] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -25,6 +32,7 @@ export function TwoFactorSetup() {
     setBusy(false);
     if (error || !data || !("totpURI" in data)) return setError("Password is incorrect.");
     setSecret(new URL(data.totpURI).searchParams.get("secret") ?? "");
+    setUri(data.totpURI);
     setBackup(data.backupCodes);
     setQr(await QRCode.toDataURL(data.totpURI, { margin: 1, width: 220 }));
   }
@@ -74,20 +82,28 @@ export function TwoFactorSetup() {
   return (
     <form onSubmit={verify} className="grid gap-4">
       <ol className="grid gap-1 text-sm">
-        <li>1. Scan this code with your authenticator app.</li>
+        <li>1. Add MESH to your authenticator app: scan this code from another device, or on this phone tap &quot;Open in authenticator app&quot;.</li>
         <li>2. Save the backup codes somewhere safe.</li>
         <li>3. Enter the 6-digit code the app shows.</li>
       </ol>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={qr} alt="QR code for your authenticator app" width={220} height={220} className="mx-auto rounded-xl bg-white p-2" />
-      <p className="text-center text-xs text-muted">
-        Can&apos;t scan? Enter this key: <code className="break-all font-semibold text-ink">{secret}</code>
-      </p>
+      {uri && (
+        <a href={uri} className={`${btnPrimary} text-center`}>Open in authenticator app</a>
+      )}
+      <div className="text-center text-xs text-muted">
+        <p>Or enter this key by hand:</p>
+        {/* Groups of four are far easier to type than one 52-character block. */}
+        <code className="mt-1 block break-words font-semibold tracking-wide text-ink">{secret.match(/.{1,4}/g)?.join(" ")}</code>
+        <button type="button" className={`${btnGhost} mx-auto mt-2`} onClick={() => copy(secret, "key")}>
+          <Copy size={15} /> {copied === "key" ? "Key copied" : "Copy key"}
+        </button>
+      </div>
       <div className="rounded-xl bg-bg-2 p-3">
         <p className="mb-2 text-sm font-semibold">Backup codes (each works once)</p>
         <ul className="grid grid-cols-2 gap-1 font-mono text-sm">{backup.map((c) => <li key={c}>{c}</li>)}</ul>
-        <button type="button" className={`${btnGhost} mt-3`} onClick={() => navigator.clipboard?.writeText(backup.join("\n"))}>
-          <Copy size={15} /> Copy codes
+        <button type="button" className={`${btnGhost} mt-3`} onClick={() => copy(backup.join("\n"), "codes")}>
+          <Copy size={15} /> {copied === "codes" ? "Codes copied" : "Copy codes"}
         </button>
       </div>
       <div>

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import { addOverrideAction } from "@/app/(admin)/admin/actions";
 import { btnPrimary, ErrorNote, inputCls, labelCls } from "./ui";
+import { useFeedback } from "./Feedback";
 
 const KINDS = [
   { id: "cancelled", label: "Cancelled" },
@@ -46,6 +47,17 @@ export function ChangeDarsSheet({ lessonSlug, title, onClose }: { lessonSlug: st
   const [noteAr, setNoteAr] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
+  const { notify } = useFeedback();
+  const firstRef = useRef<HTMLButtonElement>(null);
+  // A real dialog: focus moves in, Escape closes it.
+  const closeRef = useRef(onClose);
+  useEffect(() => { closeRef.current = onClose; }, [onClose]);
+  useEffect(() => {
+    firstRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeRef.current(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   function pickWhen(w: typeof when) {
     setWhen(w);
@@ -62,6 +74,8 @@ export function ChangeDarsSheet({ lessonSlug, title, onClose }: { lessonSlug: st
         noteEn: noteEn || null, noteAr: noteAr || null,
       });
       if (!res.ok) return setError(res.error);
+      const label = KINDS.find((k) => k.id === kind)?.label ?? "Change";
+      notify(`${label} saved for ${startsOn}${endsOn && endsOn !== startsOn ? ` to ${endsOn}` : ""}. The site shows it now.`);
       onClose();
       router.refresh();
     });
@@ -72,21 +86,24 @@ export function ChangeDarsSheet({ lessonSlug, title, onClose }: { lessonSlug: st
       <form
         onSubmit={submit}
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="change-dars-title"
         className="max-h-[92dvh] w-full max-w-md overflow-y-auto rounded-t-3xl bg-card p-5 shadow-2xl md:rounded-3xl"
         style={{ paddingBottom: "calc(1.25rem + env(safe-area-inset-bottom))" }}
       >
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-muted">Change a dars</p>
-            <h2 className="text-lg font-semibold leading-snug">{title}</h2>
+            <h2 id="change-dars-title" className="text-lg font-semibold leading-snug">{title}</h2>
           </div>
-          <button type="button" onClick={onClose} aria-label="Close" className="grid size-9 place-items-center rounded-full bg-bg-2"><X size={17} /></button>
+          <button type="button" onClick={onClose} aria-label="Close" className="grid size-10 shrink-0 place-items-center rounded-full bg-bg-2"><X size={17} /></button>
         </div>
 
         <p className={labelCls}>What happened?</p>
         <div className="mb-4 grid grid-cols-3 gap-2">
           {KINDS.map((k) => (
-            <button key={k.id} type="button" onClick={() => setKind(k.id)} aria-pressed={kind === k.id}
+            <button key={k.id} ref={k.id === "cancelled" ? firstRef : undefined} type="button" onClick={() => setKind(k.id)} aria-pressed={kind === k.id}
               className={`rounded-xl px-2 py-2.5 text-sm font-semibold ${kind === k.id ? "bg-primary text-primary-ink" : "border border-line"}`}>
               {k.label}
             </button>
