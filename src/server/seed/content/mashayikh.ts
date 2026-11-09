@@ -39,7 +39,7 @@ const F = (ar: string, en: string) => ({ en, ar });
  * abdullatif-ibn-shalwah-al-shamani: Arabic شلوه (with ه), د. عبد اللطيف بن شلوه الشاماني
  * ali-ibn-fahd-abu-battin: official pages write د. علي بن فهد أبابطين (Dr., one word); confirm the rank first
  * tariq-al-qahtani: optional full name Prof. Dr. Tariq ibn Sa'id al-Qahtani / أ. د. طارق بن سعيد القحطاني
- * badr-ibn-muqbil-al-badr, maher-al-qahtani: identity unconfirmed, left out of this map
+ * maher-al-qahtani is Shaykh Maher ibn Dhafir al-Qahtani (Ministry invitation, Sep 2026); name fix for Admin: الشيخ ماهر بن ظافر القحطاني (the "Badr ibn Muqbil al-Badr" dars is Prof. Dr. Badr ibn Nasir al-Badr's, per the official schedule)
  * Not lesson shaykhs: events.ts الصويح should be السويح (al-Suwayh); al-midad.ts الشيخ عبدالإله بن عبدالعزيز الرفاعي is د.
  */
 export const MASHAYIKH_POSITIONS: Record<string, ShaykhPosition> = {
@@ -66,6 +66,7 @@ export const MASHAYIKH_POSITIONS: Record<string, ShaykhPosition> = {
     facts: [
       F("أستاذ العقيدة بالجامعة الإسلامية بالمدينة المنورة", "Professor of Aqidah at the Islamic University of Madinah"),
       F("مدرّس في المسجد النبوي", "Teacher at the Prophet's Mosque"),
+      F("عضو مجلس إدارة الجمعية العلمية السعودية لعلوم العقيدة والأديان والفرق والمذاهب", "Board member of the Saudi Scientific Society for Aqidah, Religions, Sects and Schools"),
       F(
         "يشرح «التدمرية» لشيخ الإسلام ابن تيمية في المسجد النبوي بعد المغرب يومي الأربعاء والخميس",
         "He explains «Al-Tadmuriyyah» by Shaykh al-Islam Ibn Taymiyyah at the Prophet's Mosque after Maghrib on Wednesdays and Thursdays"
@@ -208,10 +209,11 @@ export const MASHAYIKH_POSITIONS: Record<string, ShaykhPosition> = {
     ],
   },
   "abdulmuhsin-ibn-muhammad-al-qasim": {
-    roleEn: "Imam and Khatib of the Prophet's Mosque",
-    roleAr: "إمام وخطيب المسجد النبوي",
+    roleEn: "Imam and Khatib of the Prophet's Mosque, and judge at the Court of Appeal in Madinah",
+    roleAr: "إمام وخطيب المسجد النبوي، والقاضي بمحكمة الاستئناف بالمدينة المنورة",
     facts: [
       F("إمام وخطيب المسجد النبوي منذ عام ١٤١٨هـ", "Imam and Khatib of the Prophet's Mosque since 1418 AH"),
+      F("قاضٍ بمحكمة الاستئناف بالمدينة المنورة، وعمل قبلها قاضيًا بالمحكمة العامة بالمدينة", "Judge at the Court of Appeal in Madinah; before that he served as a judge at the General Court in Madinah"),
       F("يدرّس في المسجد النبوي بالتوسعة الشرقية، أمام باب ٣٧", "He teaches at the Prophet's Mosque in the Eastern Expansion, in front of Gate 37"),
       F("درسه بعد صلاة العشاء، من الأحد إلى الخميس", "His lesson is after Isha, Sunday to Thursday"),
       F(
@@ -377,15 +379,12 @@ export const MASHAYIKH_POSITIONS: Record<string, ShaykhPosition> = {
     ],
   },
   "mahir-ibn-abdurrahim-khujah": {
-    roleEn: "Dean of the College of Aqidah and Da'wah and Supervisor of the Intellectual Awareness Unit at the Islamic University of Madinah",
-    roleAr: "عميد كلية العقيدة والدعوة والمشرف على وحدة التوعية الفكرية بالجامعة الإسلامية بالمدينة المنورة",
+    roleEn: "Dean of the College of Aqidah and Da'wah, official spokesman of the Islamic University of Madinah, and Supervisor of its Intellectual Awareness Unit",
+    roleAr: "عميد كلية العقيدة والدعوة، والمتحدث الرسمي للجامعة الإسلامية بالمدينة المنورة، والمشرف على وحدة التوعية الفكرية بها",
     facts: [
       F("عميد كلية العقيدة والدعوة بالجامعة الإسلامية", "Dean of the College of Aqidah and Da'wah at the Islamic University of Madinah"),
       F("المشرف على وحدة التوعية الفكرية بالجامعة الإسلامية", "Supervisor of the Intellectual Awareness Unit at the Islamic University of Madinah"),
-      F(
-        "رأس اللجنة المنظمة للمؤتمر الدولي لجهود المملكة العربية السعودية في مواجهة الانحرافات الفكرية، الذي عقدته الجامعة الإسلامية في سبتمبر ٢٠٢٦م",
-        "Chaired the organising committee of the Islamic University's international conference on the Kingdom of Saudi Arabia's efforts in confronting intellectual deviation, held in September 2026"
-      ),
+      F("المتحدث الرسمي للجامعة الإسلامية منذ ذي القعدة ١٤٤٧هـ", "Official spokesman of the Islamic University since Dhu al-Qa'dah 1447 AH (May 2026)"),
       F(
         "يشرح «فضل الإسلام» للإمام محمد بن عبد الوهاب في مسجد محمد بن إبراهيم بالجامعة الإسلامية بعد صلاة العشاء من يوم الاثنين، بعد أن أنهى شرح «كشف الشبهات»",
         "He explains «Fadl al-Islam» by Imam Muhammad ibn Abd al-Wahhab at Masjid Muhammad ibn Ibrahim at the Islamic University after Isha on Mondays, having completed «Kashf ash-Shubuhat»"
@@ -402,6 +401,7 @@ export const MASHAYIKH_POSITIONS: Record<string, ShaykhPosition> = {
     roleAr: "المشرف على معهد السنة، والمدرّس بمسجد قباء",
     facts: [
       F("المشرف على معهد السنة للدورات العلمية", "Supervisor of Ma'had as-Sunnah for scholarly courses"),
+      F("درّس في معهد الحرم بالمسجد النبوي", "He taught at the Haram Institute of the Prophet's Mosque"),
       F(
         "يدرّس في مسجد قباء سلسلة «أشراط الساعة من القرآن والسنة» بعد صلاة العصر من يوم الجمعة",
         "He teaches the series «Ashrat as-Sa'ah (Signs of the Hour) from the Qur'an and Sunnah» at Masjid Quba after Asr on Fridays"
@@ -497,6 +497,152 @@ export const MASHAYIKH_POSITIONS: Record<string, ShaykhPosition> = {
         "موقعه الرسمي tariqalqahtany.com، وقناته الرسمية في تيليجرام @TariqAlQahtany",
         "His official website tariqalqahtany.com and his official Telegram channel @TariqAlQahtany"
       ),
+    ],
+  },
+  // The 12 teachers added from the official schedule on 9 Nov 2026 (docs/research/mashayikh-positions-2026-11-new.md)
+  "badr-ibn-nasir-al-badr": {
+    roleEn: "Teacher at the Prophet's Mosque, and graduate studies professor at Imam Muhammad ibn Saud Islamic University",
+    roleAr: "المدرّس بالمسجد النبوي، وأستاذ الدراسات العليا بجامعة الإمام محمد بن سعود الإسلامية",
+    facts: [
+      F("أستاذ الدراسات العليا بقسم القرآن وعلومه في كلية أصول الدين بجامعة الإمام محمد بن سعود الإسلامية", "Graduate studies professor in the Department of the Qur'an and its Sciences, College of Usul al-Din, Imam Muhammad ibn Saud Islamic University"),
+      F("رئيس قسم القرآن وعلومه سابقًا", "Former head of the Department of the Qur'an and its Sciences"),
+      F("يشرح «كتاب الاعتصام بالكتاب والسنة» من صحيح البخاري و«منهج السالكين» في المسجد النبوي بعد المغرب أيام السبت والأحد والاثنين، في الحصوة الثانية أمام باب عثمان", "He explains «Kitab al-I'tisam bil-Kitab was-Sunnah» from Sahih al-Bukhari and «Manhaj as-Salikin» at the Prophet's Mosque after Maghrib on Saturday, Sunday and Monday, in the Second Haswa facing Bab Uthman"),
+      F("موقعه الرسمي badr-albadr.com", "Official website: badr-albadr.com"),
+    ],
+  },
+  "ibrahim-ibn-ibrahim-al-turki": {
+    roleEn: "Teacher at the Prophet's Mosque",
+    roleAr: "المدرّس بالمسجد النبوي",
+    facts: [
+      F("مدرّس في المسجد النبوي", "Teacher at the Prophet's Mosque"),
+      F("يشرح «عمدة الأحكام» بشرح الشيخ صالح الفوزان بعد فجر الجمعة، و«كتاب التوحيد» بعد فجر السبت، في التوسعة الشمالية يمين باب عمر بن الخطاب", "He explains «Umdat al-Ahkam» with Shaykh Salih al-Fawzan's commentary after Fajr on Friday, and «Kitab at-Tawhid» after Fajr on Saturday, in the Northern Expansion to the right of Bab Umar ibn al-Khattab"),
+      F("يلقي محاضرات عامة في سلسلة «من رحاب المسجد النبوي»", "He gives public lectures in the series «From the Courtyards of the Prophet's Mosque»"),
+    ],
+  },
+  "abdulaziz-ibn-salih-al-ubayd": {
+    roleEn: "Teacher at the Prophet's Mosque, and Professor of Tafsir and Qur'anic Sciences",
+    roleAr: "المدرّس بالمسجد النبوي، وأستاذ التفسير وعلوم القرآن",
+    facts: [
+      F("مدرّس في المسجد النبوي", "Teacher at the Prophet's Mosque"),
+      F("تخرّج في الجامعة الإسلامية بالمدينة المنورة ونال منها الماجستير والدكتوراه في القرآن وعلومه", "He graduated from the Islamic University of Madinah and earned his master's and doctorate there in the Qur'an and its sciences"),
+      F("تولّى أمانة المجلس العلمي بالجامعة الإسلامية", "He served as Secretary of the Scientific Council of the Islamic University"),
+      F("يشرح «تفسير السعدي» بين المغرب والعشاء يوم الأربعاء في التوسعة الغربية أمام الداخل من باب ١١", "He explains «Tafsir as-Sa'di» between Maghrib and Isha on Wednesday, in the Western Expansion facing Gate 11"),
+    ],
+  },
+  "muhammad-sad-ibn-ahmad-al-yubi": {
+    roleEn: "Professor of Usul al-Fiqh at the College of Shariah, Islamic University of Madinah, and teacher at the Prophet's Mosque",
+    roleAr: "أستاذ أصول الفقه بكلية الشريعة بالجامعة الإسلامية، والمدرّس بالمسجد النبوي",
+    facts: [
+      F("أستاذ أصول الفقه بكلية الشريعة بالجامعة الإسلامية بالمدينة المنورة", "Professor of Usul al-Fiqh at the College of Shariah, Islamic University of Madinah"),
+      F("مؤلف «مقاصد الشريعة الإسلامية وعلاقتها بالأدلة الشرعية»، وأصله رسالته للدكتوراه", "Author of «Maqasid ash-Shari'ah al-Islamiyyah wa 'Alaqatuha bil-Adillah ash-Shar'iyyah», first written as his doctoral thesis"),
+      F("يشرح «بداية المجتهد» في المسجد النبوي بعد المغرب يومي الأحد والاثنين، في التوسعة الشمالية يمين باب عمر بن الخطاب", "He explains «Bidayat al-Mujtahid» at the Prophet's Mosque after Maghrib on Sunday and Monday, in the Northern Expansion to the right of Bab Umar ibn al-Khattab"),
+    ],
+  },
+  "abdullah-ibn-ibrahim-al-zahim": {
+    roleEn: "Professor of Fiqh at the College of Shariah, Islamic University of Madinah, and teacher at the Prophet's Mosque",
+    roleAr: "أستاذ الفقه بكلية الشريعة بالجامعة الإسلامية، والمدرّس بالمسجد النبوي",
+    facts: [
+      F("أستاذ بقسم الفقه في كلية الشريعة بالجامعة الإسلامية", "Professor in the Department of Fiqh, College of Shariah, Islamic University of Madinah"),
+      F("مدرّس في المسجد النبوي، وتنشر رئاسة الشؤون الدينية شرحه لـ«الكفاية الصغرى» ضمن «دروس الحرمين»", "Teacher at the Prophet's Mosque; the Presidency of Religious Affairs publishes his explanation of «al-Kifayah as-Sughra» in its «Durus al-Haramain» series"),
+      F("يشرح «عمدة الطالب» بعد فجر الاثنين والأربعاء، و«العناية بأدلة الكفاية» بعد مغرب الثلاثاء والأربعاء، في التوسعة الشمالية خلف باب عمر بن الخطاب", "He explains «Umdat at-Talib» after Fajr on Monday and Wednesday, and «al-Inayah bi-Adillat al-Kifayah» after Maghrib on Tuesday and Wednesday, in the Northern Expansion behind Bab Umar ibn al-Khattab"),
+    ],
+  },
+  "abdullah-ibn-muhammad-al-amin": {
+    roleEn: "Teacher at the Prophet's Mosque, and former faculty member at the Islamic University of Madinah",
+    roleAr: "المدرّس بالمسجد النبوي، وعضو هيئة التدريس بالجامعة الإسلامية سابقًا",
+    facts: [
+      F("مدرّس في المسجد النبوي", "Teacher at the Prophet's Mosque"),
+      F("نجل العلامة محمد الأمين الشنقيطي صاحب «أضواء البيان»", "Son of al-Allamah Muhammad al-Amin al-Shinqiti, author of «Adwa' al-Bayan»"),
+      F("يشرح «تفسير البغوي» بعد المغرب أيام الأحد والاثنين والثلاثاء في التوسعة الغربية أمام الداخل من باب قباء (٥)، ويُبث مباشرة", "He explains «Tafsir al-Baghawi» after Maghrib on Sunday, Monday and Tuesday, in the Western Expansion facing Bab Quba (Gate 5), streamed live"),
+      F("قناته الرسمية على تيليجرام @alshinqiti17", "Official Telegram channel: @alshinqiti17"),
+    ],
+  },
+  "muhammad-ibn-sidi-al-amin": {
+    roleEn: "Teacher at the Prophet's Mosque, and former Head of the Department of Qira'at at the Islamic University of Madinah",
+    roleAr: "المدرّس بالمسجد النبوي، ورئيس قسم القراءات بالجامعة الإسلامية سابقًا",
+    facts: [
+      F("مدرّس في المسجد النبوي", "Teacher at the Prophet's Mosque"),
+      F("رئيس قسم القراءات بكلية القرآن الكريم بالجامعة الإسلامية سابقًا", "Former Head of the Department of Qira'at, College of the Noble Qur'an, Islamic University of Madinah"),
+      F("مؤلف «الوجيز في حكم تجويد الكتاب العزيز» و«الإسناد عند علماء القراءات»", "Author of «al-Wajiz fi Hukm Tajwid al-Kitab al-Aziz» and «al-Isnad 'inda 'Ulama' al-Qira'at»"),
+      F("يشرح «الإتقان في علوم القرآن» للسيوطي بعد مغرب الأربعاء في التوسعة الغربية يمين الداخل من باب قباء (٥)", "He explains al-Suyuti's «al-Itqan fi 'Ulum al-Qur'an» after Maghrib on Wednesday, in the Western Expansion to the right of Bab Quba (Gate 5)"),
+    ],
+  },
+  "masud-ibn-bashir-al-muhammadi": {
+    roleEn: "Professor at Taibah University, and teacher at the Prophet's Mosque",
+    roleAr: "الأستاذ بجامعة طيبة، والمدرّس بالمسجد النبوي",
+    facts: [
+      F("الأستاذ بقسم الدراسات الإسلامية بجامعة طيبة بالمدينة المنورة", "Professor in the Department of Islamic Studies, Taibah University, Madinah"),
+      F("المشرف العام على الدعوة والإرشاد بفرع وزارة الشؤون الإسلامية بالمدينة المنورة سابقًا", "Former General Supervisor of Da'wah and Guidance at the Madinah branch of the Ministry of Islamic Affairs"),
+      F("يشرح «صحيح مسلم» بعد المغرب من الأحد إلى الأربعاء في التوسعة الغربية يسار الداخل من باب قباء (٥)", "He explains «Sahih Muslim» after Maghrib from Sunday to Wednesday, in the Western Expansion to the left of Bab Quba (Gate 5)"),
+      F("حسابه على إكس @msoudalmohamady", "His X account: @msoudalmohamady"),
+    ],
+  },
+  "ali-ibn-abdulaziz-al-sudais": {
+    roleEn: "Teacher at the Prophet's Mosque, and former imam of the Prophet's Mosque",
+    roleAr: "المدرّس بالمسجد النبوي، وإمام المسجد النبوي سابقًا",
+    facts: [
+      F("مدرّس في المسجد النبوي", "Teacher at the Prophet's Mosque"),
+      F("أمّ المصلين في المسجد النبوي في عدد من مواسم رمضان، منها عام ١٤١٦هـ", "He led the prayers at the Prophet's Mosque in several Ramadan seasons, including 1416 AH"),
+      F("يشرح «الشرح الممتع على زاد المستقنع» لابن عثيمين بعد مغرب الثلاثاء في التوسعة السعودية الأولى بين الحصوتين", "He explains Ibn Uthaymin's «ash-Sharh al-Mumti' 'ala Zad al-Mustaqni'» after Maghrib on Tuesday, in the First Saudi Expansion between the two Haswas"),
+    ],
+  },
+  "abdulaziz-ibn-raji-al-saidi": {
+    roleEn: "Faculty member at the College of Hadith, Islamic University of Madinah, and teacher at the Prophet's Mosque",
+    roleAr: "عضو هيئة التدريس بكلية الحديث الشريف بالجامعة الإسلامية، والمدرّس بالمسجد النبوي",
+    facts: [
+      F("عضو هيئة التدريس بقسم فقه السنة ومصادرها في كلية الحديث الشريف بالجامعة الإسلامية", "Faculty member in the Department of Fiqh al-Sunnah and its Sources, College of Hadith, Islamic University of Madinah"),
+      F("يشرح «المحرر في أحاديث الأحكام» لابن عبدالهادي بعد المغرب يومي الاثنين والثلاثاء في التوسعة الغربية يمين الداخل من باب قباء (٥)", "He explains Ibn Abd al-Hadi's «al-Muharrar fi Ahadith al-Ahkam» after Maghrib on Monday and Tuesday, in the Western Expansion to the right of Bab Quba (Gate 5)"),
+      F("يشارك في الدورات العلمية لموسم الحج في المسجد النبوي", "He teaches in the Hajj-season scholarly courses at the Prophet's Mosque"),
+    ],
+  },
+  "abdullah-ibn-abdurrahman-al-buayjan": {
+    roleEn: "Imam and Khatib of the Prophet's Mosque, and faculty member at the Islamic University of Madinah",
+    roleAr: "إمام وخطيب المسجد النبوي، وعضو هيئة التدريس بالجامعة الإسلامية بالمدينة المنورة",
+    facts: [
+      F("إمام وخطيب المسجد النبوي، عُيّن إمامًا بأمر ملكي عام ١٤٣٤هـ", "Imam and Khatib of the Prophet's Mosque, appointed imam by royal order in 1434 AH (2013)"),
+      F("عضو هيئة التدريس بقسم الدراسات القضائية في كلية الأنظمة والدراسات القضائية بالجامعة الإسلامية", "Faculty member in the Department of Judicial Studies, College of Regulations and Judicial Studies, Islamic University of Madinah"),
+      F("نال الدكتوراه في السياسة الشرعية من المعهد العالي للقضاء بتقدير ممتاز", "He holds a doctorate with distinction in Siyasah Shar'iyyah from the Higher Judicial Institute"),
+      F("يشرح «تفسير جزء عم» و«الأربعين النووية» بعد مغرب الأربعاء في التوسعة السعودية الأولى بين الحصوتين، ويُبث مباشرة", "He explains «Tafsir Juz' 'Amma» and «al-Arba'in an-Nawawiyyah» after Maghrib on Wednesday, in the First Saudi Expansion between the two Haswas, streamed live"),
+    ],
+  },
+  "salih-ibn-abdullah-al-abbud": {
+    roleEn: "Teacher at the Prophet's Mosque, and former President of the Islamic University of Madinah",
+    roleAr: "المدرّس بالمسجد النبوي، ومدير الجامعة الإسلامية بالمدينة المنورة سابقًا",
+    facts: [
+      F("مدير الجامعة الإسلامية بالمدينة المنورة من عام ١٤١٦هـ إلى عام ١٤٢٨هـ", "President of the Islamic University of Madinah from 1416 to 1428 AH (1995 to 2007)"),
+      F("مدرّس في المسجد النبوي بأمر سامٍ منذ عام ١٤١٦هـ", "Teacher at the Prophet's Mosque by royal order since 1416 AH (1996)"),
+      F("عميد كلية الدعوة وأصول الدين ورئيس قسم العقيدة بالجامعة الإسلامية سابقًا", "Former Dean of the College of Da'wah and Usul al-Din, and former Head of the Department of Aqidah, at the Islamic University"),
+      F("يشرح «فتح المجيد شرح كتاب التوحيد» بعد المغرب أيام الأحد والاثنين والثلاثاء في التوسعة السعودية الأولى بين باب عمر وباب عثمان", "He explains «Fath al-Majid Sharh Kitab at-Tawhid» after Maghrib on Sunday, Monday and Tuesday, in the First Saudi Expansion between Bab Umar and Bab Uthman"),
+    ],
+  },
+  // From docs/research/mashayikh-open-questions-2026-11.md (9 Nov 2026)
+  "maher-al-qahtani": {
+    roleEn: "Teacher of the monthly Kitab at-Tawhid lesson at Masjid Dar al-Hijrah in Madinah",
+    roleAr: "المدرّس في الدرس الشهري لشرح «كتاب التوحيد» بجامع دار الهجرة بالمدينة المنورة",
+    facts: [
+      F("يشرح «كتاب التوحيد» للإمام محمد بن عبدالوهاب في درس شهري بجامع دار الهجرة بحي الفيصلية بعد صلاة المغرب", "He explains Imam Muhammad ibn Abd al-Wahhab's «Kitab at-Tawhid» in a monthly lesson at Masjid Dar al-Hijrah, al-Faisaliyah, after Maghrib"),
+      F("يُقام الدرس بتنظيم فرع وزارة الشؤون الإسلامية والدعوة والإرشاد بمنطقة المدينة المنورة", "The lesson is organised by the Madinah branch of the Ministry of Islamic Affairs, Da'wah and Guidance"),
+      F("بدأ شرح الكتاب في جامع دار الهجرة في شعبان ١٤٤٤هـ", "He began this explanation at Masjid Dar al-Hijrah in Sha'ban 1444 AH (March 2023)"),
+      F("دروسه الأسبوعية في جدة والطائف", "His weekly lessons are in Jeddah and Ta'if"),
+      F("قناة دروسه على تيليجرام @AsSunan، وموقعه maheralqahtani.org", "His lessons channel on Telegram: @AsSunan; website maheralqahtani.org"),
+    ],
+  },
+  "muhammad-ibn-nasir-al-humaid": {
+    roleEn: "Professor of Tafsir, and teacher at Masjid Quba",
+    roleAr: "أستاذ التفسير، والمدرّس بمسجد قباء",
+    facts: [
+      F("أستاذ التفسير، ودرّس في كلية القرآن الكريم بالجامعة الإسلامية", "Professor of Tafsir; he has taught at the College of the Holy Qur'an at the Islamic University"),
+      F("يشرح تفسير سورة البقرة في مسجد قباء بعد مغرب الثلاثاء", "He explains the Tafsir of Surat al-Baqarah at Masjid Quba after Maghrib on Tuesdays"),
+      F("يُلقي محاضرات ضمن الندوات الأسبوعية بمسجد قباء", "He lectures in the weekly lecture series at Masjid Quba"),
+      F("قدّم دروسًا بالجامعة الإسلامية ضمن برامج وحدة التوعية الفكرية", "He has given lessons at the Islamic University in the Intellectual Awareness Unit programme"),
+    ],
+  },
+  "yusuf-ibn-muhsin-al-saidi": {
+    roleEn: "Faculty member in the Department of Usul al-Fiqh, College of Shariah, Islamic University of Madinah, and teacher at Jami' Hammad al-Balawi",
+    roleAr: "عضو هيئة التدريس بقسم أصول الفقه بكلية الشريعة بالجامعة الإسلامية، والمدرّس بجامع حماد البلوي",
+    facts: [
+      F("عضو هيئة التدريس بقسم أصول الفقه بكلية الشريعة بالجامعة الإسلامية", "Faculty member in the Department of Usul al-Fiqh, College of Shariah, Islamic University of Madinah"),
+      F("يشرح «مختصر التحرير» لابن النجار في جامع حماد البلوي بحي الفيصلية", "He explains Ibn an-Najjar's «Mukhtasar at-Tahrir» at Jami' Hammad al-Balawi, al-Faisaliyah"),
     ],
   },
 };

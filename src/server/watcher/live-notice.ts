@@ -41,11 +41,17 @@ export function matchLiveLesson(text: string, lessons: LessonForMatch[]): string
     .map((l) => {
       const book = new Set(tokens(l.bookAr, BOOK_STOP));
       const overlap = titleTokens.filter((t) => book.has(t)).length / titleTokens.length;
-      const nameHits = tokens(l.shaykhAr, NAME_STOP).filter((t) => norm.includes(` ${t} `)).length;
+      // The family name is the strong signal; a first name like ابراهيم also turns up inside book titles
+      // ("تقريرات الشيخ محمد بن ابراهيم"), so the other names count for less, and each only once.
+      const nameTokens = [...new Set(tokens(l.shaykhAr, NAME_STOP))];
+      const family = nameTokens[nameTokens.length - 1];
+      const familyHit = family && norm.includes(` ${family} `) ? 1 : 0;
+      const otherHits = nameTokens.slice(0, -1).filter((t) => norm.includes(` ${t} `)).length;
+      const nameHits = familyHit * 2.5 + Math.min(otherHits, 2);
       let place = 0;
       if (atQuba) place = l.masjidId === "quba" ? 1 : -2;
       else if (atNabawi) place = l.masjidId === "nabawi" ? 1 : -2;
-      return { slug: l.slug, overlap, score: overlap * 3 + Math.min(nameHits, 3) * 0.6 + place };
+      return { slug: l.slug, overlap, score: overlap * 3 + nameHits * 0.6 + place };
     })
     .filter((s) => s.overlap >= 0.5)
     .sort((a, b) => b.score - a.score);

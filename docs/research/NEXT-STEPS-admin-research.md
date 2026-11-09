@@ -1,4 +1,37 @@
-# Admin research: where it stands and what to do next (Desktop agent, 9 November 2026, about 20:10 Riyadh)
+# Admin research: where it stands and what to do next
+
+## Latest: resumed by a cloud session for the owner (branch `claude/resume-guide-validation-8uugen`)
+This branch is `main` plus the research branch `claude/wonderful-davinci-um61gf` merged in. Claimed on issue 13. Six writers publish the research into guides in parallel; each one's scope:
+- **A** new file `src/server/seed/content/guides-admin-2026-11.ts`: `university-student-system`, `what-you-study-by-level`, and academic guides from GUIDE-IDEAS A (registration, GPA and warnings, changing major, Tawasul, University email).
+- **B1** corrections in `applying-to-the-islamic-university`, `scholarship-stipend-and-allowances`, `etimad-account`, `campus-life-islamic-university`, `new-student-steps`, `postgraduate-admission-1448` and their FAQs (partial scholarship, tazkiyah, ticket, stipend card, ticket cities).
+- **B2** new file `guides-admin-life-2026-11.ts`: first semester, stipend card, University to Haram, Unit 13, lost documents, and other GUIDE-IDEAS A items.
+- **C** corrections in `exams-results-and-attendance`, `tajeel-and-itithaar`, `blackboard-login`, `university-offices-and-contacts`, `summer-semester`, library and exam FAQs.
+- **D** `src/content/discounts.ts` and `discounts-ar.ts` (118 offers), `sports-and-activities`.
+- **E** gomedine.com parts 1, 3, 4 into the papers guides, new file `guides-admin-papers-2026-11.ts` if needed.
+Then: wire the new files in `sync.ts` and `src/lib/guide-topics.ts`, full tsc, vitest and build, commit, PR. Progress is in the checklist below; anything not ticked is not done.
+
+### Done (merged to `main` through the PR for this branch)
+- A, B1, B2, C, D, E all finished; wired in `sync.ts` and `src/lib/guide-topics.ts` (new topic "Your studies, step by step", id `studies`, icon in `ContentPages.tsx`). tsc, 513 tests and the build pass. Screenshots: `docs/research/admin-publish-2026-11/screenshots/`.
+- New guides (13): `university-student-system`, `registering-your-courses`, `gpa-warnings-and-dismissal`, `what-you-study-by-level`, `university-email-and-microsoft-365` (A); `your-first-semester-week-by-week`, `getting-your-stipend-off-the-university-card`, `unit-13-and-paid-university-housing`, `university-housing-and-student-services`, `university-to-the-haram`, `lost-your-iqama-passport-or-card` (B2); `check-visa-and-iqama-online`, `family-records-on-absher` (E).
+- Owner questions from every writer: `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`.
+
+### Still to do (next agent: start here)
+1. **The distance-study handbook** ("دليل نظام الدراسة في الجامعة الإسلامية (عن بعد)", 60 pages, the owner's Google Drive file `1l_wPDaN_HJTBgReRIQngREdaX-I4Mt9c`). Its text is in `docs/research/iu-pdfs-2026-11/text/distance-study-system-handbook.txt`. A reader was writing `docs/research/iu-pdfs-2026-11/distance-study-handbook.md` and `src/server/seed/content/guides-admin-online-2026-11.ts` (guide `studying-online-at-the-islamic-university`). If those files are not on `main`, redo just that: read the text, write both, wire it in `sync.ts` and the `studies` topic.
+2. Skipped for lack of firm facts: changing college or major (official: scholarship students cannot change after placement), Tawasul (covered inside `university-student-system`), ijazah sessions, "if a student passes away", room inspection rules.
+3. For other lanes (not edited here): `drivers-license` (fine bands, international permit, gomedine part 1), `finding-an-apartment` (agent commission), `sisters-studying-in-madinah` (halaqat gates, book fee), `doctors-hospitals-and-pharmacies` (held: insurance conflict). Library page text "for every college" in `LibraryPage.tsx` (web) is fine as is.
+4. Publish: `npm run content:sync` against production (owner, or an agent the owner allows). The discounts and sports club ship with the code and need no sync.
+
+### Missing inputs (only the owner has them)
+- gomedine.com part 2 (pages 056 to 110): on the owner's PC in the Desktop agent's scratch folder, or rerun it there.
+- The 70 MB student handbook PDF (too large for GitHub).
+- Telegram periods c5 (2024) and c6 (2019 to 2023): skipped on the owner's instruction.
+
+### After merge (owner, or an agent the owner allows)
+`npm run content:sync` against production publishes the guides. Nothing has been written to the production database.
+
+---
+
+## Earlier status (Desktop agent, 9 November 2026)
 
 The owner asked the Desktop agent to finish the admin agent's research and publish it in guides in MESH's own words. The owner said to skip the remaining Telegram periods (c5 2024, c6 2019 to 2023, and the Telegram SYNTHESIS) and to focus on gomedine.com and the official PDFs.
 

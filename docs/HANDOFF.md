@@ -4,6 +4,27 @@ Cleaned up on 9 November 2026, about 17:00 Riyadh, by akheeai. This file is the 
 
 Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG.md` (who owns what, owner decisions, the log) and the latest comments on GitHub issue 13.
 
+## 9 November 2026, about 21:00 Riyadh: aiakhee (Lane B, the assistant, AR1)
+**Open PRs, all checked (tsc, vitest, `MESH_LOCAL_DB=1 next build`, screenshots at 390 and 1440 px in English and Arabic, an independent review each), waiting for review and merge (web reviews for akheeai):**
+- #49 AR1 Arabic columns (`aiakhee/AR1-arabic-columns`, `3e270e1`). **Owner applies the migration first** (`docs/AR1-MIGRATION.md`); akheeai reviewed it ok.
+- #54 B1 First 100 days (`/start`, `/ar/start`), `b68261f`.
+- #56 B2 glossary (`/glossary`, `/ar/glossary`, first mention definitions in guides), `24e63a4`. Merge before #57. B1 and B2 each add one word to `AR_TWINS`: keep both.
+- #57 B6 Quran and hadith links, stacked on #56, `6a2a0ea`.
+- #58 B5 FAQ short answers (`faq-leads.ts`), `5477ebb`. Safe to merge; hold the FAQ `content:sync` until the FAQ fixes PR below lands (10 answers repeat their lead's Yes or No).
+- #60 B4 dars locations research note, `597a6ab` (9 confirmed, 12 likely, 31 unknown).
+
+**In progress (sub-agents in aiakhee's session):**
+- `aiakhee/assistant-quality-2`, on AR1: ruling guard (4 leaks found in an evaluation of 165 questions), Arabic indexing, retrieval fixes for 51 misses, web's three fixes (no-answer wording, launcher at 768 to 1023 px, `ASK_LIMITS` out of the route file), a regression test set. WIP pushed at `f226ac2`. Evaluation harness and results are in aiakhee's scratchpad and will be summarised in `docs/research/assistant-eval-2026-11.md`.
+- `aiakhee/faq-fixes-and-new`, on #58: FAQ fixes and new FAQs from `docs/research/*`, in aiakhee's own file `faqs-aiakhee-2026-11.ts`. It avoids the FAQs admin claimed on issue 13.
+
+**Next for aiakhee (or a teammate if aiakhee is out of usage):** AR4 (FAQs in Arabic, `questionAr` and `answerHtmlAr`, after #49 merges), the deferred admission and University FAQs after admin's PR lands, then the assistant answering from `/start` and the glossary.
+
+## 9 November 2026, about 20:15 Riyadh: Desktop agent, admin's research taken over for the owner
+The owner asked the Desktop agent to finish the admin agent's research and publish it in guides, skipping the remaining Telegram periods. **Read `docs/research/NEXT-STEPS-admin-research.md` on branch `claude/wonderful-davinci-um61gf` first**: it lists what is done, what was still running and the publishing plan.
+- On that branch: the official PDFs the owner downloaded (sources and text in `docs/research/iu-pdfs-2026-11/`), and findings for the bachelor's scholarship admission guide (63), the postgraduate admission guides 1448 and 1446 (63), the student system guide (55, with a full draft guide `university-student-system`), and the official discounts deck and sports club leaflet (134).
+- Running at handoff: the study plans reader and four gomedine.com readers (`docs/research/gomedine-2026-11/part-1.md` to `part-4.md`). If their files are not on the branch, rerun them as the status file says.
+- Nothing is published yet. Next: the `university-student-system` guide in a new seed file `guides-admin-2026-11.ts`, then the corrections to other lanes' guides (announced on issue 13), then discounts, sports club, study plans and the site research. Production steps (`content:sync`) stay with the owner or an agent the owner allows.
+
 ## 1. Standing instructions from the owner (binding for every agent)
 1. **Stay in touch through GitHub.** On every wake-up run `git fetch --all`, then read the new commits on `main` and every branch, the open pull requests and the latest comments on issue 13. `docs/AI-LOG.md` is the shared file: who owns what, owner decisions, questions waiting for the owner, and a log line for every push. Claim a task on issue 13 before starting it, so no two agents do the same work.
 2. **Always on, fully hands off.** Every agent keeps itself working without anyone opening a session:
@@ -57,16 +78,19 @@ Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG
 - #41 (a Vercel bot PR for Web Analytics)
 
 **Only the owner can do these:**
-1. Apply the AR1 migration (`docs/AR1-MIGRATION.md` on the AR1 branch), then merge #49.
-2. Publish the data:
+1. **By 9 December 2026: enter the next Masjid Quba lesson schedule** in Admin > Duroos. The current period ends then, and the Quba duroos drop off the site.
+2. **Add the 13 official Masjid an-Nabawi lessons in Admin > Duroos**, and rename the Fada'il al-Qur'an teacher to Prof. Dr. Badr ibn Nasir al-Badr. The tables are in `docs/research/duroos-official-schedule-2026-11.md`. Then run `npm run shaykh:sync -- --apply` to publish all the positions, including the 12 new teachers.
+3. **Yes or no:** an automatic import of the official schedule; official photos for 14 shaykhs (both in AI-LOG).
+4. Apply the AR1 migration (`docs/AR1-MIGRATION.md` on the AR1 branch), then merge #49.
+5. Publish the data:
    - `npm run shaykh:sync` (a preview), then `npm run shaykh:sync -- --apply`
    - `npm run content:sync` after #23, #45 and the AR3 batches merge
-3. Admin > Shaykhs: apply the name and title fixes listed at the top of `MASHAYIKH_POSITIONS` (`src/server/seed/content/mashayikh.ts`).
-4. The Ramadan facts in `RAMADAN_SETTINGS` (`src/features/home/ramadan.ts`), before 8 February 2027.
-5. Vercel environment:
+6. Admin > Shaykhs: apply the name and title fixes listed at the top of `MASHAYIKH_POSITIONS` (`src/server/seed/content/mashayikh.ts`).
+7. The Ramadan facts in `RAMADAN_SETTINGS` (`src/features/home/ramadan.ts`), before 8 February 2027.
+8. Vercel environment:
    - `DATABASE_CA`, so database TLS can be verified
    - a free AI key for the assistant (`GROQ_API_KEY` or `ASSISTANT_GEMINI_API_KEY`), so it stops sharing the watcher's quota
-6. Say yes or no to:
+9. Say yes or no to:
    - PR checks on GitHub (C7)
    - a weekly crawl and accessibility check
    - "Remove passkey" in Admin
@@ -76,12 +100,14 @@ Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG
 
 ## 3. Open work by agent
 The live list is in AI-LOG (agent table) and the latest summary on issue 13. In short:
-- **akheeai** (Lane A is done):
-  - review #49 and the AR3 batches
-  - merge #23 and #45 when they pass
-  - the live chip count in `Countdown.tsx` with `arCount`
-  - a 40 px tap area on "All duroos after <prayer>"
-  - then audits and reviews
+- **akheeai** (Lane A, duroos and shaykh data): **out for about 4 days from 9 Nov (weekly limit).** Its unfinished items are under "Takeovers" in AI-LOG, for web or naseer: the University news scan, two shaykhs still open, and Ruhayli's Asr sitting.
+  - **Done 9 Nov:**
+    - the official schedule and its 13 lessons (#80, #88)
+    - every shaykh's current position (#93, #98)
+    - the slug fix (#90)
+    - the Quba deadline (#91)
+    - the calendar check (#99)
+    - eight chats researched
 - **aiakhee** (Lane B): AR1 (#49), then AR4 (Arabic FAQs). B1 First 100 days, B2 glossary, B4 dars locations, B5 short answers and B6 Quran and hadith links are pushed on their own `aiakhee/B*` branches, with no PRs yet.
 - **akhiai** (Lane E): AR3 for the remaining guides (five per PR), E3 sisters at Masjid an-Nabawi, and E4 keeping guides fresh.
 - **web** (Lanes C and D):
@@ -190,7 +216,7 @@ It is in English, with Arabic under `/ar`, and it promotes the MESH WhatsApp gro
 - `tsconfig.tsbuildinfo` changes whenever tsc runs; never commit it.
 - A function exported from a `"use client"` file cannot be called from a server component; shared helpers live in plain modules.
 - Migrations must reach live before the code that selects new columns.
-- Shaykh slugs come from the English name with titles stripped (`shaykhSlug`). Renaming a shaykh in `lessons.ts` can change his slug, so change titles in the admin instead.
+- Shaykh slugs come from the English name with titles stripped (`shaykhSlug`, any order since 9 Nov). Changing the name itself in `lessons.ts` changes the slug, so rename shaykhs in the admin instead.
 - Full-page screenshots need `reducedMotion: "reduce"`, or cards below the fold stay hidden by the scroll reveal.
 - Cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org` directly; web search still works.
 - **Desktop agent (Windows):**
@@ -205,7 +231,6 @@ The answers let MESH state these with authority. Earlier rounds and their decisi
   - whether Ali Abu Battin is Prof. Dr.
   - Abdulmuhsin al-Qasim's court
 - **Shaykh photos:** 11 shuyukh have no verified photo (`docs/research/shaykh-photos.md`).
-- **Lesson days:** which weekdays the Tafsir as-Sa'di dars after Fajr runs (`abadr-tafsir`), and whether the monthly Kitab al-Tawhid at Dar al-Hijrah has a fixed week.
 - **Channels:** may shaykh facts and the library page name Telegram, YouTube and "Study in Saudi" channels as places to follow?
 - **Programmes:** Fusha's exact name and contact; Mutun al-Ijaz's price (550 or 400 SAR a month), and whether it gives a recommendation for University admission.
 - **Campus life:** free bus stops and times to the Haram; the mat'am's hours; students per room in the Jamiah and Rabwa halls; family housing after probation; sports club facilities; class hours.

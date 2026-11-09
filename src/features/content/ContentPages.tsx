@@ -1,6 +1,6 @@
 import { UniversityCalendar } from "./UniversityCalendar";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookOpen, CalendarDays, ChevronDown, CircleCheck, CircleHelp, Compass, FileText, GraduationCap, KeyRound, Landmark, Languages, Library, MessageCircleQuestion, Plane, Radio, ScrollText, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BadgePercent, Bell, BookA, BookOpen, CalendarDays, ChevronDown, CircleCheck, CircleHelp, Compass, FileText, Flag, GraduationCap, KeyRound, Landmark, Languages, Library, MessageCircleQuestion, Plane, Radio, ScrollText, Users } from "lucide-react";
 import type { FaqRow, GuideRow } from "@/server/content/queries";
 import { FAQ_CATEGORIES } from "@/server/content/queries";
 import { OLD_ANCHORS, groupGuides, topicById, topicOf, type GuideTopicId } from "@/lib/guide-topics";
@@ -9,13 +9,15 @@ import { Breadcrumbs, PageBand, SectionHeader } from "@/components/ui";
 import { related, type RelItem } from "@/lib/related";
 import { FaqExplorer } from "./FaqExplorer";
 import { GuideBody } from "./GuideBody";
-import { enhanceGuideHtml } from "@/lib/guide-html";
+import { enhanceGuideHtml, linkScriptureRefs } from "@/lib/guide-html";
 import { JsonLd, ORG_ID, breadcrumbs } from "@/components/JsonLd";
 import { abs } from "@/lib/site";
 
 const plain = (html: string) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 import { WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { AdminHelp } from "@/components/shell/AdminHelp";
+import { AlbaseerahSignature } from "@/components/shell/Albaseerah";
+import { MeshaykhName } from "@/features/assistant/MeshaykhName";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 import { EnglishNote } from "@/components/EnglishNote";
 import { faqText, guideText, textAttrs } from "@/lib/arabic-content";
@@ -24,6 +26,7 @@ import { TextSizeControl } from "@/components/shell/TextSize";
 import { ThemeToggle } from "@/components/shell/ThemeToggle";
 import { PrintFooter } from "@/components/shell/PrintFooter";
 import { arCount, arDigits } from "@/lib/arabic-count";
+import { SLUG as COMPANY_SLUG } from "@/features/guides/company/content";
 
 const verified = (d: Date | null, locale: Locale = "en") =>
   d
@@ -39,6 +42,7 @@ const TOPIC_ICON: Record<GuideTopicId, typeof BookOpen> = {
   papers: FileText,
   home: KeyRound,
   study: GraduationCap,
+  studies: ScrollText,
   "more-study": Library,
   haram: Landmark,
   family: Users,
@@ -156,7 +160,7 @@ export function FaqPage({ faq, locale = "en", guides = [], faqs = [] }: { faq: F
             <CircleCheck size={15} /> {verified(faq.lastVerifiedAt)}
           </p>
         )}
-        <div className="article mt-5" {...textAttrs(ft.answerInArabic, locale)} dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(ft.answerHtml) }} />
+        <div className="article mt-5" {...textAttrs(ft.answerInArabic, locale)} dangerouslySetInnerHTML={{ __html: linkScriptureRefs(sanitizeArticleHtml(ft.answerHtml)) }} />
       </div>
       {ar && verified(faq.lastVerifiedAt, "ar") && (
         <p className="mt-4 flex items-center gap-1.5 text-sm text-on">
@@ -204,10 +208,17 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
           <Link href={ar ? "/ar/mahad" : "/mahad"} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gold-bright px-4 py-2 text-sm font-semibold text-brand-deep transition hover:bg-gold">
             {ar ? "دليل المعهد" : <>Ma&apos;had hub</>}
           </Link>
+          <Link href={ar ? "/ar/start" : "/start"} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
+            <Flag size={16} className="text-gold-bright" /> {ar ? "أيامك المئة الأولى" : "Your first 100 days"}
+          </Link>
+          <Link href={ar ? "/ar/glossary" : "/glossary"} className="inline-flex min-h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/10 px-4 py-2 text-sm font-semibold ring-1 ring-white/15 transition hover:bg-white/20">
+            <BookA size={16} className="text-gold-bright" /> {ar ? "كلمات تسمعها في المدينة" : "Glossary"}
+          </Link>
         </nav>
       </PageBand>
       <div className="shell mt-10 space-y-14 md:mt-14">
-        {ar && guides.some((g) => !guideText(g, locale).bodyInArabic) && <EnglishNote className="max-w-3xl" />}
+        {/* The company guide is its own page with an Arabic version, so it never needs the note. */}
+        {ar && guides.some((g) => g.slug !== COMPANY_SLUG && !guideText(g, locale).bodyInArabic) && <EnglishNote className="max-w-3xl" />}
         {topics.map((t, i) => {
           const Icon = TOPIC_ICON[t.id];
           return (
@@ -237,7 +248,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
           <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary text-primary-ink"><MessageCircleQuestion size={22} /></span>
           <span className="min-w-0 flex-1">
             <span className="block font-heading text-lg font-semibold">{ar ? "لم تجد ما تبحث عنه؟" : "Can't find what you need?"}</span>
-            <span className="block text-sm text-muted">{ar ? "اسأل مساعد MESH، فهو يبحث في كل الأدلة والأسئلة وجدول الدروس." : "Ask the Meshaykh. It searches every guide, answer and the duroos schedule for you."}</span>
+            <span className="block text-sm text-muted">{ar ? "اسأل مساعد MESH، فهو يبحث في كل الأدلة والأسئلة وجدول الدروس." : <><MeshaykhName tone="light" />. It searches every guide, answer and the duroos schedule for you.</>}</span>
           </span>
           <ArrowRight size={18} className="shrink-0 text-primary rtl:rotate-180" />
         </Link>
@@ -254,7 +265,7 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
   const Icon = TOPIC_ICON[topic.id] ?? BookOpen;
   const isCalendar = guide.slug === "university-calendar-1448";
   const gt = guideText(guide, locale);
-  const { html, toc, steps: rawSteps } = enhanceGuideHtml(sanitizeArticleHtml(gt.bodyHtml));
+  const { html, toc, steps: rawSteps } = enhanceGuideHtml(sanitizeArticleHtml(gt.bodyHtml), { glossaryBase: ar ? "/ar/glossary" : "/glossary" });
   const steps = isCalendar ? 0 : rawSteps;
   const me = asGuide(guide);
   const relGuides = localRel(related(me, guides.map(asGuide), 4), "guides", guides, faqs, locale);
@@ -387,6 +398,8 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
   const ar = locale === "ar";
   const tiles = ar
     ? [
+        { href: "/ar/start", label: "أيامك المئة الأولى", note: "ما تفعله أولًا بعد وصولك، أسبوعًا بأسبوع", icon: Flag },
+        { href: "/ar/glossary", label: "كلمات تسمعها في المدينة", note: "الإقامة ونفاذ والتأجيل والمكافأة وغيرها، بشرح موجز", icon: BookA },
         { href: "/ar/programs", label: "الدراسة في المدينة", note: "معاهد العربية والدرجات الجامعية ومراكز الأخوات", icon: GraduationCap },
         { href: "/ar/library", label: "المكتبة", note: "مقررات الجامعة وكتب المعهد", icon: Library },
         { href: "/ar/discounts", label: "خصومات الطلاب", note: "عيادات ومدارس ونوادٍ وتأجير سيارات وغيرها", icon: BadgePercent },
@@ -396,6 +409,8 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
         { href: "/more", label: "English", note: "هذه الصفحة بالإنجليزية", icon: Languages },
       ]
     : [
+        { href: "/start", label: "Your first 100 days", note: "What to do first after you land, week by week", icon: Flag },
+        { href: "/glossary", label: "Glossary", note: "Iqama, Nafath, ta'jeel, mukafa'ah and more, in plain English", icon: BookA },
         { href: "/programs", label: "Study in Madinah", note: "Arabic institutes, degrees and sisters' marakiz", icon: GraduationCap },
         { href: "/library", label: "Jamiah library", note: "Muqarrarat and Ma'had books", icon: Library },
         { href: "/discounts", label: "Student discounts", note: "Clinics, schools, gyms, car rental and more", icon: BadgePercent },
@@ -448,17 +463,18 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
               <h2 className="font-heading text-2xl font-bold">{ar ? "عن MESH" : "About MESH"}</h2>
               {ar ? (
                 <p className="mt-3 leading-relaxed">
-                  MESH (ملتقى الطلاب الناطقين بالإنجليزية في المدينة) يديره طلاب لخدمة الطلاب الناطقين بالإنجليزية في المدينة المنورة.
+                  MESH (ملتقى الطلاب الناطقين بالإنجليزية في المدينة) لخدمة الطلاب الناطقين بالإنجليزية في المدينة المنورة.
                   الإعلانات والفعاليات في مجموعة واتساب، وهذا الموقع يجمع الأجوبة الموثّقة والأدلة وجدول الدروس المباشر في مكان واحد. ولأي سؤال أو تصحيح راسل المشرف على واتساب أو على البريد الإلكتروني <span dir="ltr">mesh@albaseerah.org</span>.
                 </p>
               ) : (
                 <p className="mt-3 leading-relaxed">
-                  MESH (Medina English Student Hub) is run by students, for English-speaking students in Madinah.
+                  MESH (Medina English Student Hub) is for English-speaking students in Madinah.
                   Announcements and events happen in the WhatsApp group. This website keeps the verified answers, the
                   guides and the live duroos schedule in one place. For any question or correction, message Admin on WhatsApp or email mesh@albaseerah.org.
                 </p>
               )}
-              <AdminHelp locale={locale} kind="question" className="mt-4" />
+              <AlbaseerahSignature locale={locale} tone="light" className="mt-7" />
+              <AdminHelp locale={locale} kind="question" className="mt-6" />
             </section>
             <section id="rules">
               <h2 className="font-heading text-2xl font-bold">{ar ? "قواعد المجموعة" : "Group rules"}</h2>
