@@ -3,6 +3,8 @@
  * vocabulary of student life in Madinah, so "ikama", "iqamah" and "إقامة" all find the same page.
  */
 
+import { MORE_GROUPS } from "./more-words";
+
 const TASHKEEL = /[ؐ-ًؚ-ٰٟۖ-ۭـ]/g;
 
 export function normalize(s: string): string {
@@ -75,6 +77,7 @@ const GROUPS: string[][] = [
 
 const LOOKUP = new Map<string, string[]>();
 for (const g of GROUPS) for (const w of g) LOOKUP.set(normalize(w), g.map(normalize));
+for (const g of MORE_GROUPS) for (const w of g) LOOKUP.set(normalize(w), [...new Set([...(LOOKUP.get(normalize(w)) ?? []), ...g.map(normalize)])]);
 
 /** The query plus every spelling and synonym it implies, normalised. */
 export function expandQuery(q: string): string {
