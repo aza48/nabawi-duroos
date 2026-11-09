@@ -412,7 +412,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ul>
 <li>A <strong>monthly stipend</strong> (mukafa'ah, مكافأة).</li>
 <li>An <strong>arrival allowance</strong> (بدل تجهيز) of two months' stipend, paid after you first arrive.</li>
-<li>A <strong>books allowance</strong> (بدل كتب) once a year, paid around October.</li>
+<li>A <strong>books allowance</strong> (بدل كتب) once a year for college (kulliyah) students. In 1448 it was paid in October.</li>
 <li>An <strong>excellence allowance</strong> (بدل التفوق) for top grades. See below.</li>
 <li>A <strong>graduation allowance</strong> (بدل تخرج) of three months' stipend, for shipping your books home.</li>
 <li>A <strong>ticket home at the end of each academic year</strong>, in discounted economy class, by the most direct route. It is given only when no other party already provides you with a ticket.</li>
@@ -424,7 +424,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ul>
 <li><strong>The rate</strong> is set by the University and depends on your college. Your own payments are in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
 <li><strong>Where it goes:</strong> onto your <strong>University stipend card</strong>, an Al Rajhi Bank card the University issues to you. It is not paid into a bank account of your own. See the next section.</li>
-<li><strong>When:</strong> usually between the <strong>21st and the 25th</strong> of each Gregorian month, late at night. If the day falls on a weekend it moves to the nearest working day, and the University pays early before National Day, Founding Day and the start of Ramadan. After an early payment, the next one comes more than a month later.</li>
+<li><strong>When:</strong> usually between the <strong>21st and the 25th</strong> of each Gregorian month, late at night. If the day falls on a weekend it moves to the nearest working day, and the University pays early before holidays such as National Day and Founding Day. After an early payment, the next one comes more than a month later.</li>
 <li><strong>All year:</strong> it is paid every month, the summer break included.</li>
 <li><strong>Alerts:</strong> the text message does not always arrive, so check the card balance itself.</li>
 </ul>
@@ -453,7 +453,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ol>
 <li>Collect the Fund's form at Unit 22.</li>
 <li>Bring an IBAN certificate for your own bank account, your academic record and your student card.</li>
-<li>Hand in the form. The money reaches your account in one to two weeks.</li>
+<li>Hand in the form. The money reaches your account in one to four weeks.</li>
 </ol>
 <p>You can borrow once only, and not in your final year. A good GPA helps your request. The Fund also has an aid section (إعانة) for students in real hardship.</p>
 <h2>What stops the stipend</h2>

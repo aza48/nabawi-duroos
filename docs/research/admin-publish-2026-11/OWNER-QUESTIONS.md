@@ -117,3 +117,15 @@ Other open points (left out):
 9. **Technical support mobile +966 55 796 5152.** Left out until confirmed as an official line (same as student-system-guide.md question 8).
 10. **Moving to Madinah.** Do hours passed in the distance programmes count if the student later joins a college in Madinah on a scholarship? Readers abroad will ask; the source does not say.
 
+
+## gomedine.com part 2 (G2)
+
+
+1. **Visit visa family driving (finding 59):** may a wife or child on a family visit visa drive the host's car on an International Driving Permit only for 6 months, or for one year from entry as MESH says for visitors in general?
+2. **Rawdah permit frequency (finding 76):** once every 365 days or every 45 days? MESH says only that the app shows how many permits you can book.
+3. **Students in the newly published family procedures:** in `visas-for-family-and-visitors` (children from a visit visa to an iqama) and `getting-married-in-saudi-arabia` (moving a wife's iqama to her husband), MESH tells students with a student iqama to ask Travel Management for the sponsor's letter. Confirm that Travel Management gives this letter, and that a student iqama qualifies at all.
+4. **Marriage guide checks:** the source is a personal account. Confirm the five-SIM rule and text confirmations still apply now that Najiz uses Nafath, whether non-Saudis marrying here need the premarital medical screening, and whether the University asks students to tell it of a marriage.
+5. **Hajj season window (finding 29):** the published "1 Ramadan to 1 Safar" comes from an undated page. If the Ministry announces a different 1448 pause for family visit visas, replace it.
+6. **Ejar (findings 66 and 67), for the coordinator:** `finding-an-apartment` could take the early termination rule (rent owed to the end unless the landlord waives it) and the 7-day automatic acceptance of a contract not rejected. Not edited: outside this task's guides. Renting on a Visitor ID was not touched.
+7. **Tawakkalna for visitors (finding 50):** registration with the passport number, or through a relative's Absher for someone without Absher. Could go into `living-on-a-visitor-id` (outside this task).
+8. **Electricity bill (finding 69):** worth a short "check and pay your bill" section in `finding-an-apartment` or `cost-of-living`? Outside this task's guides.

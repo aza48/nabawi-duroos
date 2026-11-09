@@ -3,7 +3,7 @@ import type { SeedGuide } from "./guides-2026";
 /**
  * Residence papers guides, November 2026 (task E): checking a visa, a border number, insurance and
  * travel status online, and the head of family's Absher services for his wife and children.
- * Written from the research in docs/research/gomedine-2026-11 (parts 1, 3 and 4), cross-checked
+ * Written from the research in docs/research/gomedine-2026-11 (parts 1 to 4; the marriage guide from part 2), cross-checked
  * against the existing MESH guides. Unsettled points went to the owner as questions, not into the text.
  * Registered in sync.ts by the coordinator; topics in src/lib/guide-topics.ts.
  */
@@ -170,5 +170,54 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 <h2>Checking everything in one place</h2>
 <p>Each person's page under Family Members Services shows their iqama expiry, passport details and any visa. Look once a month, and set a reminder a month before each iqama expires. Checks that need no sign-in are in <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
 <blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
+  },
+  {
+    slug: "getting-married-in-saudi-arabia",
+    stage: "family",
+    title: "Getting married in Saudi Arabia: the nikah contract, its papers and the iqama",
+    summary: "Who can marry in the Kingdom, the marriage officer and the electronic contract, the papers and Saudi SIMs each person needs, using the contract abroad, registering a marriage made abroad, and moving a wife's iqama from her father to her husband.",
+    bodyHtml: `
+<p>Checked November 2026. Two foreigners can have their nikah contracted in Saudi Arabia and receive an official, electronic marriage contract from the Ministry of Justice. This guide covers who can marry here, the papers, the steps, and what to do with the iqama afterwards.</p>
+<h2>Who can marry here</h2>
+<table><thead><tr><th>You hold</th><th>Can you marry in the Kingdom?</th></tr></thead><tbody>
+<tr><td>An iqama</td><td>Yes</td></tr>
+<tr><td>A dependant's iqama on a parent's or husband's file</td><td>Yes</td></tr>
+<tr><td>A family visit visa</td><td>Yes</td></tr>
+<tr><td>A tourist visa</td><td>Yes</td></tr>
+<tr><td>A Hajj or Umrah visa</td><td>No</td></tr>
+</tbody></table>
+<p>Each person in the contract must also have a Saudi SIM registered in their own name, because the confirmations arrive by text message.</p>
+<h2>What you need</h2>
+<ul>
+<li><strong>Five people, five Saudi SIMs:</strong> the groom, the bride, the bride's guardian (wali) and two witnesses, each with a Saudi number in their own name.</li>
+<li><strong>Identity:</strong> a copy of the iqama for each resident, and a copy of the passport for anyone on a tourist or visit visa. The witnesses give copies of their iqamas.</li>
+<li><strong>The mahr:</strong> the amount agreed, which is written into the contract.</li>
+</ul>
+<h2>Step by step</h2>
+<ol>
+<li><strong>Choose a marriage officer (ma'dhun, مأذون).</strong> Only a licensed officer can register the contract. The Ministry of Justice lists the licensed officers for each city. Agree his fee before he starts.</li>
+<li><strong>Give him the details.</strong> He creates the contract on the Ministry of Justice's portal, choosing the region and entering each person's details.</li>
+<li><strong>Wait for the checks.</strong> After a few days, each of the five numbers receives a text asking for confirmation. Every person must confirm within 24 hours.</li>
+<li><strong>The nikah.</strong> Once all five have confirmed, the officer conducts the nikah, at a place you agree with him, with the groom, the bride, her guardian and the two witnesses present. He asks the bride and the groom for their consent and then completes the contract.</li>
+<li><strong>The contract.</strong> The contract is issued electronically, and you receive it as a PDF. Keep several copies.</li>
+</ol>
+<h2>Using the contract abroad</h2>
+<p>For your embassy or your home country, have the contract attested by the Ministry of Justice, then by the Ministry of Foreign Affairs, then translated into the language your country needs, and the translation attested by your embassy or consulate in Saudi Arabia.</p>
+<h2>Married abroad, both living here</h2>
+<p>If two iqama holders marry outside Saudi Arabia, the marriage certificate is attested by the foreign ministry of the country where it was issued, then by the Saudi embassy there, then by the Ministry of Foreign Affairs in Saudi Arabia, and handed in at Jawazat so the marriage shows on the iqama records.</p>
+<h2>Moving the wife's iqama from her father to her husband</h2>
+<p>When the bride is on her father's iqama as his dependant, her iqama moves to her husband's file after the marriage. This is done at Jawazat, with an appointment for Resident services booked in Absher: see <a href="/guides/family-records-on-absher#booking-a-jawazat-civil-affairs-or-traffic-appointment">Booking a Jawazat appointment</a>. Take:</p>
+<ul>
+<li>the father's consent, which he signs in front of the Jawazat officer (the form is given at Jawazat);</li>
+<li>the iqama transfer form, also from Jawazat;</li>
+<li>a copy of the marriage contract;</li>
+<li>the wife's original passport and iqama;</li>
+<li>copies of the iqamas of the wife, the husband and the father;</li>
+<li>a letter from the husband's sponsor agreeing to the transfer. A private employer's letter carries the Chamber of Commerce stamp. A student with a student iqama asks Travel Management for this letter;</li>
+<li>the transfer fee, paid in your banking app before the appointment.</li>
+</ul>
+<p>The officer moves the iqama in the system at the counter, and the new card is printed at another window. Afterwards, the husband manages her records in Absher under Family Members Services: see <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
+<p>A wife who arrives later from abroad comes on the family visas covered in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</p>
+<blockquote><p>Tip: Planning a nikah and unsure which papers apply to you? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
 ];

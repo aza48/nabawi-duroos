@@ -20,7 +20,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <tr><td><strong>Academic System</strong> (النظام الأكاديمي)</td><td>Registration, your timetable, results, academic record, study plan, absence, requests, your stipend record, official documents and personal details</td></tr>
 <tr><td><strong>Blackboard</strong> (إدارة التعلم الإلكتروني زدني)</td><td>Your classes online: materials, assignments, tests, recorded lectures and messages to your teachers</td></tr>
 <tr><td><strong>Tawasul</strong> (نظام تواصل / إدارة الطلبات)</td><td>Requests and problems for any University office</td></tr>
-<tr><td><strong>Saudi Digital Library</strong> (المكتبة الرقمية السعودية)</td><td>Books, journals and references. It opens from inside Saudi Arabia</td></tr>
+<tr><td><strong>Saudi Digital Library</strong> (المكتبة الرقمية السعودية)</td><td>Books and references. It generally opens only from inside Saudi Arabia</td></tr>
 </tbody></table>
 <p>All of them open from one sign-in, so you need only one password. Your University email is separate: see <a href="/guides/university-email-and-microsoft-365">Your University email and Microsoft 365</a>.</p>
 <h2>Signing in</h2>
@@ -32,7 +32,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <li>Tap the tile you need: <strong>Academic System</strong>, <strong>Zidni</strong> for Blackboard, or <strong>Tawasul</strong>.</li>
 </ol>
 <p><strong>Your first sign-in:</strong> your University number and a temporary password arrive by email from IU Eservices, under the title IU Single Sign-On. Change the password as soon as you are in.</p>
-<p><strong>Sign-in hangs or the password fails:</strong> sign in through Nafath instead, then set a new password from the account menu. If Nafath is not working for you either, email <strong>it.care@iu.edu.sa</strong> from your personal email with your full name and University number.</p>
+<p><strong>Sign-in hangs or the password fails:</strong> sign in through Nafath instead, then set a new password from the account menu. If Nafath is not working for you either, email <strong>it.care@iu.edu.sa</strong>, the address for password requests.</p>
 <h2>Changing your password or mobile number</h2>
 <ol>
 <li>Tap the <strong>user account</strong> icon, then <strong>Change password</strong> (تغيير كلمة المرور) or <strong>Change mobile number</strong> (تغيير رقم الجوال).</li>
@@ -143,7 +143,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 </ul>
 <p>More help: <a href="/ask/blackboard-login">How do I log in to Blackboard, and what do I do if it fails?</a> Never open links posted in class chats: see <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat</a>.</p>
 <h2>On your phone</h2>
-<p>The University's app, Islamic University of Madinah, is on the App Store and Google Play. Sign in with your University number and password. It shows your timetable, absences, GPA and student card, and it opens the Academic System. If a course seems to be missing in the app, check the Academic System on the website, which shows every course.</p>
+<p>The University's app, Islamic University of Madinah, is on the App Store and Google Play. Sign in with your University number and password. It shows your timetable, absences, GPA, academic record and student card. If a course seems to be missing in the app, check the Academic System on the website, which shows every course.</p>
 <h2>When something does not work</h2>
 <table><thead><tr><th>Problem</th><th>Who to contact</th></tr></thead><tbody>
 <tr><td>Password and sign-in</td><td><strong>it.care@iu.edu.sa</strong>, or the Deanship of IT and E-Learning on <strong>+966 14 847 1856</strong></td></tr>
@@ -160,7 +160,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
     title: "Registering your courses: add, drop and withdraw",
     summary: "How course registration works each semester at the Islamic University: your fixed first-semester timetable, the add and drop window and its batches, credit-hour limits and prerequisites, adding and dropping with Confirm, changes after the window, and withdrawing from a course with a W.",
     bodyHtml: `
-<p>Checked 9 November 2026. Each semester you build your timetable in the Academic System, in a short window before classes begin. This guide explains the rules, the order things happen in, and what to do when a course will not go in. The screen-by-screen steps for every part of the system are in <a href="/guides/university-student-system">Using the University's student system</a>.</p>
+<p>Checked 9 November 2026. Each semester you build your timetable in the Academic System, in a short window around the start of classes. This guide explains the rules, the order things happen in, and what to do when a course will not go in. The screen-by-screen steps for every part of the system are in <a href="/guides/university-student-system">Using the University's student system</a>.</p>
 <h2>Your first semester</h2>
 <ul>
 <li>Your college registers your first-semester courses for you and gives you a ready-made timetable. You cannot change it, so there is nothing to do in the add and drop window.</li>
@@ -173,7 +173,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <li><strong>Timetables appear</strong> in the Academic System in the days before the semester. Check what is already registered for you under <strong>Electronic Registration</strong>, then <strong>Registered courses</strong>.</li>
 <li><strong>Add and drop opens in batches</strong> by University number, with students closest to graduation first. The add and drop page, and a text message, tell you your own opening time. The site is busy at the start, so try again a little later if it is slow.</li>
 <li><strong>The window lasts a few days.</strong> For the second semester of 1448, add and drop runs from <strong>17 to 21 December 2026</strong>, and classes begin on Sunday 20 December. Every date is in <a href="/guides/university-calendar-1448">The University calendar</a>, and the Academic System is the live record if a window is extended.</li>
-<li><strong>Classes start</strong> straight after. Some teachers take attendance from the first lecture, so go from day one.</li>
+<li><strong>Classes start</strong> as the window ends, or in its last days. Some teachers take attendance from the first lecture, so go from day one.</li>
 </ol>
 <h2>Before you start: hours, prerequisites and sections</h2>
 <ul>
@@ -214,7 +214,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <ol>
 <li>Open <strong>Academic</strong>, then <strong>Course withdrawal</strong> (الإعتذار عن مقرر), then <strong>Withdrawal request</strong> (طلب إعتذار).</li>
 <li>Choose the course and send the request. Your teacher does not need to agree.</li>
-<li>Follow it under <strong>Show withdrawn courses</strong> (إظهار المقررات المعتذر عنها). A decision usually takes from one day to a week.</li>
+<li>Follow it under <strong>Show withdrawn courses</strong> (إظهار المقررات المعتذر عنها). A decision usually comes within a day to two weeks.</li>
 <li>Keep attending the course until the withdrawal is approved. Until then, your absences still count.</li>
 </ol>
 <p><strong>The limits:</strong></p>
@@ -266,9 +266,9 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 </ol>
 <p><strong>Example, one semester:</strong></p>
 <table><thead><tr><th>Course</th><th>Hours</th><th>Grade</th><th>Points x hours</th></tr></thead><tbody>
-<tr><td>Fiqh</td><td>3</td><td>A (4.75)</td><td>14.25</td></tr>
-<tr><td>Nahw</td><td>2</td><td>B+ (4.50)</td><td>9.00</td></tr>
-<tr><td>Tafsir</td><td>2</td><td>C (3.00)</td><td>6.00</td></tr>
+<tr><td>Course 1</td><td>3</td><td>A (4.75)</td><td>14.25</td></tr>
+<tr><td>Course 2</td><td>2</td><td>B+ (4.50)</td><td>9.00</td></tr>
+<tr><td>Course 3</td><td>2</td><td>C (3.00)</td><td>6.00</td></tr>
 <tr><td><strong>Total</strong></td><td><strong>7</strong></td><td></td><td><strong>29.25</strong></td></tr>
 </tbody></table>
 <p>Semester GPA: 29.25 divided by 7 = <strong>4.18</strong>.</p>
@@ -345,7 +345,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <li>Open <a href="https://outlook.office.com/">outlook.office.com</a>, or install the Outlook app on your phone.</li>
 <li>Sign in with your full University email address and your University password, the same password as for the Academic System.</li>
 <li>If the account does not open the first time, sign in at <a href="https://sso.iu.edu.sa/">sso.iu.edu.sa</a> first, then try again.</li>
-<li>Still locked out? Email <strong>it.care@iu.edu.sa</strong> from your personal email with your full name and University number.</li>
+<li>Still locked out? Email <strong>it.care@iu.edu.sa</strong>, the University's address for password requests.</li>
 </ol>
 <p>Changing your password, and the rules for a new one, are in <a href="/guides/university-student-system">Using the University's student system</a>.</p>
 <h2>What comes with it</h2>
@@ -355,7 +355,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 </ul>
 <h2>Read it every day</h2>
 <ul>
-<li>The University sends official notices to your University email: exam calls, substitute exams, answers to your requests and changes to your status.</li>
+<li>The University sends official notices to your University email, such as the call for final exam excuses and substitute exams, and answers such as the reply to a grade appeal.</li>
 <li>Your teachers use it, along with Blackboard messages, as the official way to reach you.</li>
 <li>Turn on notifications in the Outlook app, so nothing waits unread.</li>
 </ul>
@@ -381,7 +381,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
     title: "What you study in each college, level by level",
     summary: "The courses of the 1448 study plans for the University's seven colleges of Islamic and Arabic studies, law and business: the Noble Qur'an, Noble Hadith, Aqidah and Da'wah, Sharia, Arabic Language and Humanities, Business (Economics) and Law, level by level, in English and Arabic.",
     bodyHtml: `
-<p>Checked 9 November 2026. Every bachelor's degree at the Islamic University runs over eight levels, one level each semester. Below are the courses of the 1448 study plans, college by college, with the Arabic name you see in the Academic System. Use it to plan ahead, to find your books in the <a href="/library#muqarrarat">Jamiah library</a>, and to choose your college before you leave the Ma'had: see <a href="/guides/graduating-from-mahad">Moving from the Ma'had to the Kulliyah</a>.</p>
+<p>Checked 9 November 2026. Every bachelor's degree in the seven colleges below runs over eight levels, one level each semester. Below are the courses of the 1448 study plans, college by college, with the Arabic name you see in the Academic System. Use it to plan ahead, to find your books in the <a href="/library#muqarrarat">Jamiah library</a>, and to choose your college before you leave the Ma'had: see <a href="/guides/graduating-from-mahad">Moving from the Ma'had to the Kulliyah</a>.</p>
 <ul>
 <li><strong>Your own plan</strong>, with the code, credit hours and prerequisites of every course, is in the Academic System under <strong>Academic</strong>, then <strong>Student plan</strong> (خطة الطالب). A plan can change from one intake to the next, so go by yours.</li>
 <li>A failed course comes back before the courses that build on it. See <a href="/guides/registering-your-courses">Registering your courses</a>.</li>
@@ -395,7 +395,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <tr><td>Sharia</td><td>87</td><td>Fiqh and usul alongside Saudi law from Level 1</td></tr>
 <tr><td>Arabic Language and Humanities</td><td>80</td><td>Shared first year, then nahw, sarf, balaghah, literature, linguistics and media</td></tr>
 <tr><td>Business: Economics</td><td>65</td><td>Shared first year, then economics and finance with the fiqh of transactions</td></tr>
-<tr><td>Law and Judicial Studies</td><td>66</td><td>Saudi law, fiqh and usul from Level 1, with three electives</td></tr>
+<tr><td>Law and Judicial Studies</td><td>66</td><td>Saudi law and fiqh from Level 1, usul al-fiqh from Level 2, with three electives</td></tr>
 </tbody></table>
 <h2>College of the Noble Qur'an and Islamic Studies</h2>
 <p>You start your specialist subjects in your first semester. The Seven Qira'at run through Levels 1 to 6 and the Three Qira'at through Levels 7 and 8. Tafsir builds from an introduction in Level 1 to five levels of analytical tafsir, and the script and marking of the Mushaf come in Levels 5 to 7. There are no Qur'an memorisation courses, because you join with the whole Qur'an memorised. Books: <a href="/library/quran">Qur'an library</a>.</p>
@@ -475,7 +475,7 @@ export const GUIDES_ADMIN_2026_11: SeedGuide[] = [
 <tr><td>8</td><td>Contemporary Ideologies and Movements (المذاهب والتيارات المعاصرة), Foreign Trade (التجارة الخارجية), Feasibility Studies and Project Evaluation (دراسة الجدوى وتقييم المشروعات), Economic Terms in English (مصطلحات اقتصادية بالإنجليزية), the Saudi Economy (الاقتصاد السعودي), Research and Training (بحث وتدريب), Financial Engineering (الهندسة المالية)</td></tr>
 </tbody></table>
 <h2>College of Law and Judicial Studies</h2>
-<p>Saudi law, fiqh and usul run together from Level 1. Qur'an courses run to Level 4, and the last three levels each have one elective. Books: <a href="/library/law">Law library</a>.</p>
+<p>Saudi law and fiqh run together from Level 1, and usul al-fiqh joins them from Level 2. Qur'an courses run to Level 4, and the last three levels each have one elective. Books: <a href="/library/law">Law library</a>.</p>
 <table><thead><tr><th>Level</th><th>Courses</th></tr></thead><tbody>
 <tr><td>1</td><td>Qur'an 1 (القرآن الكريم 1), Introduction to the Study of Fiqh (المدخل لدراسة الفقه), Introduction to the Study of Saudi Law (المدخل لدراسة الأنظمة), Principles of Economics (مبادئ علم الاقتصاد), Islamic Values (قيم إسلامية), Arabic Writing (التحرير العربي), Tawhid 1 (التوحيد 1), Nahw 1 (النحو 1), the Prophet's Sirah (السيرة النبوية)</td></tr>
 <tr><td>2</td><td>Qur'an 2, Usul al-Fiqh 1 (أصول الفقه 1), Tafsir of the Legal Verses (تفسير آيات الأحكام), Fiqh of Worship (فقه العبادات), as-Siyasah ash-Shar'iyyah (السياسة الشرعية), History of the Kingdom (تاريخ المملكة), Criminology and Penology (علم الإجرام والعقاب), the Judicial System (التنظيم القضائي), Nahw 2</td></tr>
