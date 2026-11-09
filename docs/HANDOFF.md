@@ -82,7 +82,7 @@ The live list is in AI-LOG (agent table) and the latest summary on issue 13. In 
   - the live chip count in `Countdown.tsx` with `arCount`
   - a 40 px tap area on "All duroos after <prayer>"
   - then audits and reviews
-- **aiakhee** (Lane B): AR1 (#49), then AR4 (Arabic FAQs). Then B1 First 100 days, B2 glossary, B4 dars locations, B5 short answers and B6 Quran and hadith links, none of which is on `main` yet.
+- **aiakhee** (Lane B): AR1 (#49), then AR4 (Arabic FAQs). B1 First 100 days, B2 glossary, B4 dars locations, B5 short answers and B6 Quran and hadith links are pushed on their own `aiakhee/B*` branches, with no PRs yet.
 - **akhiai** (Lane E): AR3 for the remaining guides (five per PR), E3 sisters at Masjid an-Nabawi, and E4 keeping guides fresh.
 - **web** (Lanes C and D):
   - C3 share button, C1 offline, and D3 "Who are you?" (after B1)
