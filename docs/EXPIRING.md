@@ -26,6 +26,10 @@ How to keep it so:
 | Domestic parcel 15 to 35 SAR and SPL Express Plus 141 SAR (2026); Haramain station SPL counter 75 to 150 SAR (2026); customs processing fees | guide `shipping-and-receiving-parcels` | May 2027 | Recheck with the carriers and ZATCA |
 | Tourist eVisa 72 countries and about 535 SAR; family visit visa 300 and 500 SAR; extension about 100 SAR (checked November 2026) | guides `bringing-parents-to-visit` and `visas-for-family-and-visitors` | February 2027 | Recheck on visa.visitsaudi.com and the MOFA platform |
 | REGA support line and the 5% transaction tax (checked November 2026) | guide `owning-property-as-a-non-saudi` | May 2027 | Recheck on saudiproperties.rega.gov.sa |
+| Graduates' room deadline example (27 June 2026, about five weeks after the finals) | guide `graduate-procedures` | May 2027 | Replace with the 1448 Deanship notice when it is posted |
+| Ramadan 1447 Rawdah timetable figures, i'tikaf registration date, University lecture times, Eid prayer time 6:40 | guide `ramadan-in-madinah` | Sha'ban 1448 (mid January 2027) | Replace with the 1448 announcements |
+| Electricity tariff 18/30 halalas (2026) and 21/33 halalas plus about 70 SAR fixed from 1 January 2027 | guide `seasons-and-camping`, "What summer does to your bills" | January 2027 | Reword once the 2027 tariff is in force |
+| Haram summer course dates (1448: 5 to 31 July 2026) | guide `seasons-and-camping` | June 2027 | Update to the 1449 dates |
 
 ## Removed
 
