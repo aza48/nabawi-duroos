@@ -4,14 +4,13 @@
  * MESH keeps its own name, green, gold and lattice. Albaseerah countersigns at the foot of the footer's MESH column, like
  * an endorsement under a brand, and maroon appears only in small doses: one diamond, and the name as ink on paper. One
  * Albaseerah mark only: the crest that albaseerah.org shows, in its white-bordered version so it reads on any ground.
- * Every mention of Albaseerah links to albaseerah.org.
+ * Every mention of Albaseerah links to albaseerah.org, by its name; the address itself is never typed out.
  */
 import type { ReactNode } from "react";
 import type { Locale } from "@/lib/locale";
 
 export const ALBASEERAH = {
   url: "https://albaseerah.org",
-  domain: "albaseerah.org",
   en: { by: "Brought to you by", name: "Albaseerah International Institute" },
   ar: { by: "يقدّمه لكم", name: "معهد البصيرة العالمي للدراسات الإسلامية" },
 } as const;
@@ -42,12 +41,10 @@ export function AlbaseerahCrest({ className = "" }: { className?: string }) {
 export function AlbaseerahSignature({
   locale = "en",
   tone = "dark",
-  showDomain = false,
   className = "",
 }: {
   locale?: Locale;
   tone?: "dark" | "light";
-  showDomain?: boolean;
   className?: string;
 }) {
   const ar = locale === "ar";
@@ -69,7 +66,6 @@ export function AlbaseerahSignature({
         <span className="min-w-0">
           <span className={label}>{t.by}</span>
           <span className={name}>{t.name}</span>
-          {showDomain && <span className="mt-0.5 block text-xs text-muted" dir="ltr">{ALBASEERAH.domain}</span>}
         </span>
       </AlbaseerahLink>
     </div>

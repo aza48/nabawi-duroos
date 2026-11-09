@@ -459,7 +459,7 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
                   guides and the live duroos schedule in one place. For any question or correction, message Admin on WhatsApp or email mesh@albaseerah.org.
                 </p>
               )}
-              <AlbaseerahSignature locale={locale} tone="light" showDomain className="mt-7" />
+              <AlbaseerahSignature locale={locale} tone="light" className="mt-7" />
               <AdminHelp locale={locale} kind="question" className="mt-6" />
             </section>
             <section id="rules">
