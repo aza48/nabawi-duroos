@@ -190,7 +190,7 @@ function Body({ r }: { r: Report }) {
         </Grid>
       </Section>
 
-      <Section id="questions" title="Questions asked to Ask the Meshaykh">
+      <Section id="questions" title="Questions asked to Ask the MESHaykh">
         <Grid>
           <Panel title={`Latest questions (${fmt(r.questionCount)} in this period)`} wide>
             {r.questions.length === 0 ? <Empty /> : (

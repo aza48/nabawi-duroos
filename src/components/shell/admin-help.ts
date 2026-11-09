@@ -7,6 +7,15 @@ import { abs } from "@/lib/site";
  */
 export const ADMIN_WHATSAPP = "+1 234 567 9076";
 
+/** The help email, shown beside the number. A test checks it equals HELP_EMAIL_DEFAULT in src/server/settings.ts. */
+export const ADMIN_EMAIL = "mesh@albaseerah.org";
+
+/** mailto link to Admin, with the page the reader is on as the subject when a path is given. */
+export function adminEmailHref(path?: string): string {
+  if (!path || path.startsWith("/_")) return `mailto:${ADMIN_EMAIL}`;
+  return `mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(`MESH: ${abs(path)}`)}`;
+}
+
 export type HelpKind = "report" | "question";
 
 export const ADMIN_HELP_COPY = {
@@ -14,12 +23,14 @@ export const ADMIN_HELP_COPY = {
     report: "Something wrong or missing?",
     question: "Have a question?",
     line: "Message Admin on WhatsApp at",
+    email: "or email",
     greeting: "Assalamu alaykum. About this page on MESH:",
   },
   ar: {
     report: "معلومة خاطئة أو ناقصة؟",
     question: "عندك سؤال؟",
     line: "راسل المشرف على واتساب على الرقم",
+    email: "أو على البريد الإلكتروني",
     greeting: "السلام عليكم. بخصوص هذه الصفحة في MESH:",
   },
 } as const;
