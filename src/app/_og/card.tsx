@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import siteCard from "@/app/(site)/opengraph-image";
+import { siteCardImage as siteCard } from "./site";
+import { crestDataUrl, GoldBar } from "./brand";
 import { getDb } from "@/server/db/client";
 import { getLesson, getShaykh, getToday } from "@/server/duroos/queries";
 import { getFaq } from "@/server/content/queries";
@@ -91,7 +92,7 @@ function Text({ text, size, color, ar, weight = 700 }: { text: string; size: num
 }
 
 /** Draws a card. Exported for checks that render a sample card. */
-export function renderCard(card: Card, fonts?: Font[]): ImageResponse {
+export function renderCard(card: Card, fonts?: Font[], crest?: string | null): ImageResponse {
   const ar = card.locale === "ar";
   const title = fitTitle(card.title);
   const align = ar ? "flex-end" : "flex-start";
@@ -118,9 +119,16 @@ export function renderCard(card: Card, fonts?: Font[]): ImageResponse {
           <div style={{ display: "flex", flexDirection: ar ? "row-reverse" : "row", justifyContent: "space-between", alignItems: "center" }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: align }}>
               <div style={{ display: "flex", fontSize: 46, fontWeight: 900, letterSpacing: -1, lineHeight: 1 }}>MESH</div>
-              <div style={{ display: "flex", width: 64, height: 6, borderRadius: 3, background: GOLD, marginTop: 10 }} />
+              <div style={{ display: "flex", marginTop: 10 }}>
+                <GoldBar width={64} height={6} gap={8} diamond={8} />
+              </div>
             </div>
-            <div style={{ display: "flex", fontSize: 24, color: "rgba(255,255,255,0.7)" }}>medinahub.org</div>
+            <div style={{ display: "flex", flexDirection: ar ? "row-reverse" : "row", alignItems: "center" }}>
+              {/* The Albaseerah crest, small, beside the address. */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- next/og draws plain img elements */}
+              {crest && <img src={crest} width={44} height={39} alt="" style={{ marginLeft: ar ? 14 : 0, marginRight: ar ? 0 : 14 }} />}
+              <div style={{ display: "flex", fontSize: 24, color: "rgba(255,255,255,0.7)" }}>medinahub.org</div>
+            </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", flex: 1, justifyContent: "center", alignItems: align }}>
             <Text text={card.kicker} size={30} color={GOLD} ar={ar} />
@@ -152,11 +160,12 @@ async function png(res: Response): Promise<Response> {
 async function drawOrFallback(load: () => Promise<Card | null>): Promise<Response> {
   try {
     const card = await load();
-    if (!card) return png(siteCard());
-    return await png(renderCard(card, card.locale === "ar" ? await loadArabicFonts() : undefined));
+    if (!card) return png(await siteCard());
+    const crest = await crestDataUrl().catch(() => null);
+    return await png(renderCard(card, card.locale === "ar" ? await loadArabicFonts() : undefined, crest));
   } catch (e) {
     console.error("[og] card failed, using the site card", e);
-    return png(siteCard());
+    return png(await siteCard());
   }
 }
 

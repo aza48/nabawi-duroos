@@ -16,6 +16,7 @@ import { abs } from "@/lib/site";
 const plain = (html: string) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 import { WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { AdminHelp } from "@/components/shell/AdminHelp";
+import { AlbaseerahSignature } from "@/components/shell/Albaseerah";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 import { EnglishNote } from "@/components/EnglishNote";
 import { faqText, guideText, textAttrs } from "@/lib/arabic-content";
@@ -448,17 +449,18 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
               <h2 className="font-heading text-2xl font-bold">{ar ? "عن MESH" : "About MESH"}</h2>
               {ar ? (
                 <p className="mt-3 leading-relaxed">
-                  MESH (ملتقى الطلاب الناطقين بالإنجليزية في المدينة) يديره طلاب لخدمة الطلاب الناطقين بالإنجليزية في المدينة المنورة.
+                  MESH (ملتقى الطلاب الناطقين بالإنجليزية في المدينة) لخدمة الطلاب الناطقين بالإنجليزية في المدينة المنورة.
                   الإعلانات والفعاليات في مجموعة واتساب، وهذا الموقع يجمع الأجوبة الموثّقة والأدلة وجدول الدروس المباشر في مكان واحد. ولأي سؤال أو تصحيح راسل المشرف على واتساب أو على البريد الإلكتروني <span dir="ltr">mesh@albaseerah.org</span>.
                 </p>
               ) : (
                 <p className="mt-3 leading-relaxed">
-                  MESH (Medina English Student Hub) is run by students, for English-speaking students in Madinah.
+                  MESH (Medina English Student Hub) is for English-speaking students in Madinah.
                   Announcements and events happen in the WhatsApp group. This website keeps the verified answers, the
                   guides and the live duroos schedule in one place. For any question or correction, message Admin on WhatsApp or email mesh@albaseerah.org.
                 </p>
               )}
-              <AdminHelp locale={locale} kind="question" className="mt-4" />
+              <AlbaseerahSignature locale={locale} tone="light" className="mt-7" />
+              <AdminHelp locale={locale} kind="question" className="mt-6" />
             </section>
             <section id="rules">
               <h2 className="font-heading text-2xl font-bold">{ar ? "قواعد المجموعة" : "Group rules"}</h2>

@@ -6,6 +6,7 @@ import { LanguageSwitch } from "./LanguageSwitch";
 import { WhatsAppIcon } from "./WhatsApp";
 import { AdminEmailLink, AdminHelpLink } from "./AdminHelp";
 import { Wordmark } from "./Wordmark";
+import { AlbaseerahSignature } from "./Albaseerah";
 import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
 import { AssistantLauncher } from "@/features/assistant/AssistantLauncher";
@@ -92,13 +93,14 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
   return (
     <footer className="lattice mt-16 bg-brand-deep text-white" data-noprint>
       <div className="shell grid gap-8 py-12 sm:grid-cols-2 md:py-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
-        <div>
+        <div className="flex flex-col">
           <Wordmark tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">
             {ar
-              ? "مركز يديره الطلاب لطلاب المدينة الناطقين بالإنجليزية."
-              : "Run by students, for English-speaking students in Madinah."}
+              ? "لطلاب المدينة الناطقين بالإنجليزية."
+              : "For English-speaking students in Madinah."}
           </p>
+          <AlbaseerahSignature locale={locale} className="mt-auto pt-8" />
         </div>
         {cols.map((c) => (
           <div key={c.title}>
@@ -117,7 +119,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
         <div>
           <p className="font-heading text-base font-semibold text-gold-bright">{ar ? "مجموعة واتساب" : "The MESH group"}</p>
           <p className="mt-3 text-sm text-white/75">
-            {ar ? "الإعلانات والفعاليات، وتجارب طلاب سبقوك إلى المدينة." : "Announcements, events and tips from students who have been here longer."}
+            {ar ? "الإعلانات والفعاليات، ونصائح من طلاب آخرين." : "Announcements, events and tips from other students."}
           </p>
           <p className="mt-2 text-sm font-semibold text-white">
             {ar ? "المجموعة خاصة بالطلاب الغربيين الناطقين بالإنجليزية فقط." : "Only for English-speaking Western students."}
@@ -148,7 +150,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
             <span className="text-xs text-white/70">medinahub.org</span>
           </span>
         </div>
-        <p className="shell pb-5 text-xs leading-relaxed text-white/70">
+        <p className="shell pb-[calc(9rem+env(safe-area-inset-bottom))] text-xs leading-relaxed text-white/70 md:pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-11">
           {ar
             ? "© مركز MESH. محتوى الموقع محمي بحقوق النشر."
             : "© MESH. All content is protected by copyright."}
