@@ -1,0 +1,113 @@
+URL: https://gomedine.com/fr_fr/fin-de-la-kafala-en-arabie-saoudite-ce-qui-a-vraiment-change/
+TITLE: Fin de la « kafala » en Arabie Saoudite : ce qui a vraiment changé — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Mis à jour 2026 · Temps de lecture : ~11 min
+Depuis octobre 2025, l’emploi des travailleurs étrangers en Arabie Saoudite repose sur un contrat numérique (plateforme Qiwa) et non plus sur un parrain ( kafeel ). Les titres ont parlé d’« abolition du kafala ». La réalité est plus nuancée — et il est important, par honnêteté, de l’expliquer clairement. Voici ce qui a vraiment changé, ce qui ne change pas encore, et ce que cela signifie concrètement pour vous, in sha Allah.
+À retenir (en 30 secondes)
+Ce qui change : un salarié du privé peut changer d’employeur à la fin de son contrat, voyager sans l’accord du parrain, et saisir la justice du travail. Tout passe par Qiwa et Absher .
+La nuance clé : ces libertés existaient déjà en grande partie depuis la réforme de mars 2021 (la « Labor Reform Initiative »). L’annonce de juin 2025 a surtout parachevé et rebaptisé un processus engagé depuis 2020.
+Le mot « abolition » est trompeur : même l’agence officielle saoudienne parle d’« amélioration de la relation contractuelle », pas d’une suppression totale.
+Ce qui persiste : le salarié dépend toujours de son employeur pour le renouvellement de son iqama, et les ONG soulignent que des éléments du parrainage demeurent.
+Travailleurs domestiques : désormais inclus via la plateforme Musaned , mais selon un calendrier distinct.
+Nos niveaux de confiance : 🟢 Vérifié (2 sources ou +) · 🟡 Probable (1 source fiable) · 🟠 À confirmer. Cet article distingue clairement les faits (sourcés) de l’analyse .
+Le « kafala », c’était quoi ?
+Le mot kafala signifie « parrainage » en arabe. Mis en place dans les années 1950 pendant le boom pétrolier, ce système liait le statut légal, le visa et la résidence d’un travailleur étranger à un employeur unique, appelé kafeel (parrain).
+Concrètement, le parrain contrôlait presque tout : changer d’emploi, ouvrir un compte, ou quitter le pays exigeait son accord écrit. Les organisations de défense des droits humains ont longtemps dénoncé les dérives possibles de ce déséquilibre : confiscation de passeports, salaires impayés, mobilité restreinte. C’est ce système que les réformes successives ont cherché à transformer, dans le cadre de la Vision 2030 .
+Ce qui change vraiment : les trois libertés
+Sous le nouveau modèle contractuel pleinement en vigueur depuis octobre 2025, un travailleur du secteur privé bénéficie de trois libertés principales. 🟢
+1. Changer d’employeur sans « lettre de libération »
+Le salarié peut rejoindre un nouvel employeur à la fin de son contrat, sans avoir besoin d’une attestation de non-objection (NOC) de son employeur actuel. La demande se fait en ligne sur la plateforme Qiwa , le portail emploi du ministère des Ressources humaines (MHRSD).
+2. Voyager sans le bon vouloir du parrain
+Pour un simple voyage (visa de sortie/retour), le salarié peut faire la demande lui-même sur Absher , sans signature du parrain. Un point décisif de la réforme : le silence de l’employeur vaut désormais accord . L’employeur dispose de 10 jours pour approuver ou s’opposer ; s’il ne répond pas, la demande est réputée acceptée. S’il s’oppose, c’est le ministère des Ressources humaines (MHRSD) qui examine le dossier et tranche.
+Pour une sortie définitive , la nuance est réelle : dans la plupart des cas, c’est encore l’employeur qui l’initie. Le salarié peut la demander seul (via Absher ou Qiwa) uniquement si son contrat est terminé ou a expiré ; même alors, l’employeur est notifié et garde 10 jours ouvrables pour s’opposer sur des motifs légaux (litige ou affaire en cours). Cette possibilité de libre-service ne concerne pas les travailleurs domestiques , pour qui l’employeur reste responsable de l’émission.
+📲 Pas à pas : demander soi-même son visa de sortie/retour (خروج وعودة)
+À vérifier AVANT de commencer (sinon le système refuse la demande) :
+Être physiquement en Arabie Saoudite au moment de la demande.
+Iqama valide : au moins 90 jours (3 mois) en plus de la durée du visa demandé — ex. un visa de 30 jours exige une iqama valable 120 jours.
+Passeport valide au moins 3 mois au-delà de la période du visa.
+Aucune amende de circulation impayée à votre nom.
+Pas de statut « Huroob » (fuite) ni de violation « Istiqdam » ; empreintes enregistrées (hommes de 18 ans et +).
+Aucun visa déjà émis, non utilisé et non annulé.
+Les étapes :
+Connectez-vous à Absher Particuliers (application ou absher.sa) avec vos identifiants et le code de validation (Nafath / OTP).
+Ouvrez « Mes services » → « Services des passeports / Services de visa » (خدمات التأشيرات).
+Choisissez visa request
+cliquez sur create request for visa
+l’émission d’un visa de sortie/retour (خروج وعودة) pour vous-même . Indiquez la durée souhaitée, vérifiez vos informations, acceptez les conditions et soumettez la demande .
+Fenêtre employeur (10 jours) : il approuve, s’oppose, ou ne répond pas (silence = accord automatique).
+Une fois validée, payez les frais via SADAD dans un délai de 5 jours (visa simple : 200 SAR de base ; multiple : à partir de 500 SAR). Le coût incombe normalement à l’employeur.
+Émettez puis imprimez le visa depuis l’écran.
+Avant de voyager, vérifiez le statut sur Absher ou sur le portail public Muqeem ( vv.muqeem.sa , sans connexion). Vous devez voyager dans les 3 mois suivant l’émission.
+Comment payer les frais de Visas entrées multiples en ligne ?
+Si le message « Sorry, you are not eligible to create a visa request » s’affiche, revérifiez iqama, amendes, véhicule à votre nom, présence en Arabie et empreintes — ou demandez à l’employeur de l’émettre par la voie classique.
+3. Saisir la justice et garder son passeport
+Le salarié peut désormais porter plainte devant les tribunaux du travail (salaires impayés, abus) via des portails dédiés. La confiscation du passeport par l’employeur est interdite et passible de sanctions.
+Le « parrain » disparaît, le « contrat » prend sa place L’idée centrale de la réforme : remplacer une relation de parrainage informelle par un contrat de travail numérique , enregistré sur Qiwa et adossé au système de protection des salaires (WPS). Le contrat, et non plus le bon vouloir d’une personne, devient la référence.
+Pourquoi le mot « abolition » est trompeur
+C’est le cœur de cet article, et le point que la plupart des articles francophones négligent. Parler d’une « abolition » soudaine en 2025 est inexact pour deux raisons.
+Raison n°1 : la mobilité existait déjà depuis 2021
+La liberté de changer d’employeur n’est pas née en 2025. Le ministère des Ressources humaines avait lancé la Labor Reform Initiative (LRI) dès le 4 novembre 2020, entrée en vigueur le 14 mars 2021 par la résolution ministérielle n° 51848/1442 (sources : cabinets Jones Day et Lexology). Dès cette date, un travailleur du privé pouvait déjà changer d’emploi à la fin de son contrat — ou en cours de contrat après un an et un préavis de 90 jours — et gérer lui-même ses visas de sortie.
+Voici la véritable chronologie : 🟢
+Nov. 2020 Lancement de la Labor Reform Initiative (LRI) par le ministère des Ressources humaines.
+Mars 2021 Entrée en vigueur : mobilité de l’emploi et visas de sortie en libre-service via Qiwa/Absher.
+Oct. 2022 Phase 2 : assouplissement des règles de « fuite » (absconding), avec un délai de grâce de 60 jours.
+2024 Le ministère revendique un million de bénéficiaires de la LRI et une forte baisse des litiges ; révision des règles pour les domestiques.
+Juin 2025 Annonce de la « fin du kafala » — large couverture médiatique mondiale.
+Oct. 2025 Mise en œuvre formelle du modèle contractuel pour tous les contrats du privé.
+Raison n°2 : l’État lui-même reste prudent dans ses mots
+Dans un communiqué officiel daté du 2 mars 2025, l’agence de presse saoudienne (SPA) ne parle pas d’« abolition » spectaculaire, mais d’ « amélioration de la relation contractuelle » , en remplacement du système de parrainage. Les juristes recommandent d’ailleurs de suivre les textes officiels (MHRSD, SPA, Journal officiel Umm Al-Qura ) plutôt que les titres de presse, car ce sont eux qui fixent la portée réelle et les exceptions.
+📌 La formule juste à retenir Il ne s’agit pas d’une loi unique qui aurait « aboli » le kafala du jour au lendemain, mais de l’ aboutissement d’un processus de réformes étalé sur cinq ans (2020 → 2025), accéléré par l’image du Royaume à l’approche de la Coupe du Monde 2034. C’est important, et c’est honnête de l’écrire ainsi.
+Ce qui ne change pas (encore) : les angles morts
+Analyse — sourcée auprès des organisations de défense des droits. Plusieurs limites subsistent, et il serait malhonnête de les passer sous silence.
+La dépendance pour l’iqama demeure. Le travailleur dépend toujours de son employeur pour faire émettre, renouveler ou annuler sa résidence. Si l’employeur néglige cette démarche, le salarié peut se retrouver en situation irrégulière sans en être responsable (analyse Human Rights Watch).
+Le visa de sortie n’est pas supprimé. Selon l’organisation MRRORS, des employeurs conservent la capacité d’émettre un visa de sortie définitive, ce qui peut forcer un départ.
+L’accès aux plateformes n’est pas garanti pour tous. Toujours selon MRRORS, Qiwa et Absher nécessitent un smartphone, un numéro de résidence et une maîtrise de l’arabe ou de l’anglais — un obstacle réel pour les travailleurs les moins qualifiés.
+Changer d’emploi en cours de contrat reste conditionné (ancienneté d’un an, préavis), c’est-à-dire précisément lorsque le travailleur est le plus vulnérable.
+⚖️ Ce que disent les deux camps L’ Organisation internationale du Travail (OIT) a salué une avancée alignée sur les standards modernes. Walk Free y voit « un pas en avant majeur ». À l’inverse, Human Rights Watch jugeait dès 2021 les réformes limitées et estimait qu’elles ne démantelaient pas le système ; des spécialistes rappellent que des promesses passées n’ont pas toujours été tenues. La vérité se situe sans doute entre les deux : une avancée réelle, mais incomplète, dont l’application dépendra du terrain.
+Et les travailleurs domestiques ?
+C’est une nouveauté importante. Historiquement, le personnel de maison (employées de maison, chauffeurs, gardiens) était exclu du Code du travail. La réforme les inclut désormais via une plateforme distincte, Musaned . 🟢
+Selon plusieurs sources spécialisées et le communiqué de la SPA, les contrats unifiés des domestiques via Musaned garantissent désormais : le paiement des salaires via le système WPS, des heures de repos quotidiennes et un jour de congé hebdomadaire, des congés annuels et maladie payés, une indemnité de fin de service, et l’interdiction de leur faire payer les frais de recrutement ou d’iqama. Le transfert d’un employeur à un autre est également possible et contrôlé par l’État.
+Réserve honnête 🟠 : ces droits relèvent d’un calendrier propre, et les ONG insistent sur le fait que leur application réelle reste à confirmer sur le terrain.
+Concrètement, pour vous : comment exercer ces droits
+Si vous êtes salarié du privé en Arabie Saoudite, voici les conditions standards pour changer d’employeur sans l’accord de votre parrain : 🟢
+Avoir un contrat documenté sur Qiwa et un dossier légal en règle (pas d’amendes ni de violations en cours).
+Avoir terminé 12 mois chez votre employeur actuel ou être en fin de contrat.
+Disposer d’une offre d’un nouvel employeur conforme (enregistré, en règle avec la saoudisation/Nitaqat et le WPS).
+Respecter le préavis applicable (souvent 90 jours en cours de contrat).
+Cas particuliers où vous pouvez partir sans condition d’ancienneté : non-paiement du salaire pendant trois mois, non-renouvellement de votre permis par l’employeur, ou entreprise en zone rouge Nitaqat / fermée.
+Problèmes courants & solutions
+« Mon employeur refuse de me libérer »
+S’il s’agit d’une fin de contrat ou d’un des cas sans condition ci-dessus, son accord n’est plus requis : la demande se traite sur Qiwa. L’ancien employeur dispose d’un délai pour répondre, faute de quoi le système peut avancer.
+« On me demande de payer pour mon transfert »
+Les frais de transfert sont à la charge du nouvel employeur. Si on vous demande de les payer vous-même, c’est un signal d’alerte.
+« Je n’arrive pas à accéder à Qiwa / Absher »
+L’accès suppose un numéro de résidence (iqama) actif et une authentification (souvent via Nafath, l’identité numérique nationale). En cas de blocage persistant, rapprochez-vous du bureau du travail ou d’un prestataire agréé.
+Foire aux questions
+Le kafala est-il vraiment « aboli » ?
+Pas au sens strict. Le système de parrainage a été remplacé par un modèle contractuel, mais des éléments demeurent (dépendance pour l’iqama, visa de sortie). Même l’agence officielle saoudienne parle d’« amélioration de la relation contractuelle » plutôt que d’abolition totale.
+Qu’est-ce qui a vraiment changé en juin 2025 par rapport à 2021 ?
+L’essentiel des libertés de mobilité datait déjà de la réforme de mars 2021. L’étape de 2025 a surtout généralisé, formalisé et communiqué à l’échelle mondiale ce processus, tout en y intégrant davantage les travailleurs domestiques via Musaned.
+Puis-je changer d’employeur quand je veux ?
+Non, pas à tout moment. C’est libre à la fin du contrat. En cours de contrat, il faut généralement un an d’ancienneté et un préavis (souvent 90 jours), sauf cas de manquement de l’employeur (salaire impayé, permis non renouvelé).
+Les employées de maison sont-elles concernées ?
+Oui désormais, via la plateforme Musaned, avec des garanties (salaire via WPS, repos, congés payés, fin de service). Mais selon un calendrier distinct, et l’application concrète reste à confirmer.
+Mon employeur peut-il encore confisquer mon passeport ?
+Non. La confiscation du passeport par l’employeur est interdite et passible de sanctions sous le nouveau cadre.
+Dois-je faire confiance aux sites qui promettent un transfert « rapide » contre paiement ?
+Méfiance. Les démarches officielles passent par Qiwa et Absher, et les frais de transfert incombent au nouvel employeur. Vérifiez toujours l’identité d’un intermédiaire avant de payer quoi que ce soit.
+Sources vérifiées (datées)
+Ministère des Ressources humaines (HRSD) — lancement de la Labor Reform Initiative, nov. 2020 : hrsd.gov.sa
+Agence de presse saoudienne (SPA) — protection des travailleurs étrangers, mars 2025 : spa.gov.sa
+Human Rights Watch — « Labor Reforms Insufficient », mars 2021 : hrw.org
+MRRORS — analyse de la Labour Reform Initiative, 2024-2025 : mrrors.org
+Walk Free — position sur la fin du kafala, nov. 2025 : walkfree.org
+Cabinets juridiques (chronologie LRI, résolution 51848/1442) : Jones Day, Lexology (2020-2021).
+Visa de sortie/retour en libre-service (procédure, délais, conditions) — Portail national officiel : my.gov.sa
+Sortie définitive — rôle de l’employeur et conditions du libre-service : KSA Expats (mars 2026) et cabinet AHYSP (déc. 2025).
+Plateformes officielles citées : Qiwa , Absher , Muqeem , Musaned .
+À lire aussi sur Médinatouna (liens internes) : Iqama et visa : les nouvelles règles 2026 · Le permis de travail et la plateforme Qiwa · Le visa de sortie définitive expliqué .
+⚠️ Avertissement : cet article a une vocation d’information et ne constitue pas un conseil juridique. La rédaction de Médinatouna n’est ni avocat, ni cabinet d’immigration. Les règles évoluent et leur application varie selon les situations : pour un cas personnel, vérifiez sur les portails officiels saoudiens (Qiwa, Absher, Musaned) ou consultez un prestataire agréé. Informations à jour à la date de publication, le 28 juin 2026.
+Comprendre l’Arabie Saoudite, sans approximation
+Nous décryptons les lois, visas et réalités de la vie dans le Royaume avec des sources vérifiées. Rejoignez notre canal pour ne rien manquer, qu’Allah vous facilite. Rejoindre le canal Telegram

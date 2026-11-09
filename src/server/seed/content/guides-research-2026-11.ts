@@ -16,7 +16,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>Checked 9 November 2026. Students who arrive on the educational visa (the student visa) are given a digital Visitor ID (هوية زائر) linked to their border number. They are not issued an iqama. Most of daily life works on a Visitor ID, but some things need different steps and a few are open only to iqama holders. This page puts the two side by side.</p>
 <h2>What the Visitor ID is</h2>
 <ul>
-<li>It is issued by the General Directorate of Passports (Jawazat) through your Absher account, and is tied to your <strong>border number</strong> (رقم الحدود), the 10 digit number Jawazat gives you when you first enter the Kingdom. It is written by hand in your passport beside the entry stamp, and Absher's public border number inquiry finds it from your visa number and visa issue date.</li>
+<li>It is issued by the General Directorate of Passports (Jawazat) through your Absher account, and is tied to your <strong>border number</strong> (رقم الحدود), the 10 digit number Jawazat gives you when you first enter the Kingdom. Jawazat writes it by hand in your passport, and Absher's public border number inquiry finds it from your visa number and visa issue date.</li>
 <li>It is digital only and cannot be printed on paper.</li>
 <li>The long-term educational visa behind it is valid for one year and renewed each year while you study.</li>
 <li>Jawazat accepts the digital Visitor ID as official proof of identity inside the Kingdom, so you can show it on your phone at checkpoints and offices.</li>
@@ -384,7 +384,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Say in a few lines what you need, what you have already tried, where, and what you were told.</li>
 <li>Attach screenshots of any error and copies of the documents involved, then tap <strong>Send request</strong> (إرسال الطلب).</li>
 <li>Follow it under <strong>My requests</strong> (طلباتي), and save the reference number so you can follow it up.</li>
-<li>Watch your University email for the reply, and answer any follow-up question the same day. If nothing comes in two working days, follow it up in person.</li>
+<li>Watch your University email for the reply, and answer any follow-up question the same day. If nothing comes, follow it up in person.</li>
 </ol>
 <blockquote><p>Tip: Your name must match your passport letter for letter on every portal. A mismatch is the most common reason a ticket or a request gets stuck.</p></blockquote>
 <h2>Official news</h2>
@@ -412,7 +412,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ul>
 <li>A <strong>monthly stipend</strong> (mukafa'ah, مكافأة).</li>
 <li>An <strong>arrival allowance</strong> (بدل تجهيز) of two months' stipend, paid after you first arrive.</li>
-<li>A <strong>books allowance</strong> (بدل كتب) once a year, paid around October.</li>
+<li>A <strong>books allowance</strong> (بدل كتب) once a year for college (kulliyah) students. In 1448 it was paid in October.</li>
 <li>An <strong>excellence allowance</strong> (بدل التفوق) for top grades. See below.</li>
 <li>A <strong>graduation allowance</strong> (بدل تخرج) of three months' stipend, for shipping your books home.</li>
 <li>A <strong>ticket home at the end of each academic year</strong>, in discounted economy class, by the most direct route. It is given only when no other party already provides you with a ticket.</li>
@@ -424,7 +424,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ul>
 <li><strong>The rate</strong> is set by the University and depends on your college. Your own payments are in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
 <li><strong>Where it goes:</strong> onto your <strong>University stipend card</strong>, an Al Rajhi Bank card the University issues to you. It is not paid into a bank account of your own. See the next section.</li>
-<li><strong>When:</strong> usually between the <strong>21st and the 25th</strong> of each Gregorian month, late at night. If the day falls on a weekend it moves to the nearest working day, and the University pays early before National Day, Founding Day and the start of Ramadan. After an early payment, the next one comes more than a month later.</li>
+<li><strong>When:</strong> usually between the <strong>21st and the 25th</strong> of each Gregorian month, late at night. If the day falls on a weekend it moves to the nearest working day, and the University pays early before holidays such as National Day and Founding Day. After an early payment, the next one comes more than a month later.</li>
 <li><strong>All year:</strong> it is paid every month, the summer break included.</li>
 <li><strong>Alerts:</strong> the text message does not always arrive, so check the card balance itself.</li>
 </ul>
@@ -453,7 +453,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ol>
 <li>Collect the Fund's form at Unit 22.</li>
 <li>Bring an IBAN certificate for your own bank account, your academic record and your student card.</li>
-<li>Hand in the form. The money reaches your account in one to two weeks.</li>
+<li>Hand in the form. The money reaches your account in one to four weeks.</li>
 </ol>
 <p>You can borrow once only, and not in your final year. A good GPA helps your request. The Fund also has an aid section (إعانة) for students in real hardship.</p>
 <h2>What stops the stipend</h2>
@@ -770,7 +770,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <tr><td>After you land</td><td>Keep your Saudi number alive for codes until every account is closed. Check your degree verifies online.</td></tr>
 </tbody></table>
 <h2>1. Check the details on your certificate</h2>
-<p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester, under <strong>Graduation procedures</strong> (اجراءات التخرج), and correct any difference from your passport before printing. A correction after the document is issued means paying for a replacement. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
+<p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester, under <strong>Graduation procedures</strong> (اجراءات التخرج), and correct any difference from your passport before printing. Adding a missing Arabic name after the document is issued means paying for a replacement. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
 <p>After your final results are approved, your status in the Academic System changes from <strong>Regular</strong> (منتظم) to <strong>Graduate</strong> (متخرج). Your clearance and the collection of your certificate both wait for that change, which can take some weeks after the finals.</p>
 <h2>2. Download and print your documents</h2>
 <p>In the Academic System, open <strong>Personal</strong>, then <strong>Official Documents</strong> (المستندات الرسمية), and download:</p>

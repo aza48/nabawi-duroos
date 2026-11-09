@@ -20,7 +20,7 @@ export const GUIDES_ADMIN_ONLINE_2026_11: SeedGuide[] = [
 <table><thead><tr><th></th><th>Electronic university courses (المقررات الجامعية الإلكترونية)</th><th>Distance Sharia bachelor's (بكالوريوس الشريعة عن بعد)</th><th>Associate diploma in the seven qira'at (الدبلوم المشارك في القراءات السبع)</th></tr></thead><tbody>
 <tr><td><strong>What you study</strong></td><td>Any of seven specialisations: Qur'an, Hadith, Aqeedah and Da'wah, Sharia, Arabic language, Economics, and Regulations (الأنظمة)</td><td>Sharia only</td><td>The seven qira'at</td></tr>
 <tr><td><strong>Plan</strong></td><td>Flexible: you choose your courses and your load</td><td>Fixed: eight levels of about nine courses each, which you must follow</td><td>Two semesters</td></tr>
-<tr><td><strong>Load each semester</strong></td><td>No minimum, up to 25 credit hours</td><td>12 to 25 credit hours</td><td>The programme's fixed courses</td></tr>
+<tr><td><strong>Load each semester</strong></td><td>No minimum, up to 25 credit hours</td><td>12 to 25 credit hours</td><td>Set by the programme</td></tr>
 <tr><td><strong>Length</strong></td><td>No time limit</td><td>8 to 12 semesters</td><td>Two semesters</td></tr>
 <tr><td><strong>What you receive</strong></td><td>A certificate for every course you pass, a micro-certificate for a group of related courses, and an associate diploma, intermediate diploma or bachelor's once you complete one</td><td>A bachelor's in Sharia</td><td>An associate diploma</td></tr>
 <tr><td><strong>Cost</strong></td><td>230 riyals per credit hour, plus a 230 riyal registration fee each semester</td><td>Free for students given a grant</td><td>230 riyals per credit hour</td></tr>
@@ -31,7 +31,7 @@ export const GUIDES_ADMIN_ONLINE_2026_11: SeedGuide[] = [
 <h2>Which programme suits you</h2>
 <ul>
 <li><strong>Electronic courses</strong> suit you if your time or budget changes from semester to semester. Pay only for the hours you take, take a semester off with no request and stay a regular student, and keep every hour you have passed for as long as you need. Some students study two years and stop with a diploma once they meet its conditions; others continue to the bachelor's.</li>
-<li><strong>The Sharia bachelor's</strong> suits you if you can commit to a full, fixed load every semester and want a free place. It is a regular degree with a set plan and the same rules every semester.</li>
+<li><strong>The Sharia bachelor's</strong> suits you if you can commit to a full, fixed load every semester and want a free place. It is a regular degree with a set plan that you must follow.</li>
 <li><strong>The qira'at diploma</strong> is for students who already hold the whole Qur'an by heart.</li>
 </ul>
 <p>The study suits beginners. Courses start at introductory levels and build up, and they combine understanding with memorisation. You need no amount of Qur'an by heart to begin the electronic courses or the bachelor's: memorisation starts step by step from Surat al-Baqarah in the first levels.</p>
@@ -79,7 +79,7 @@ export const GUIDES_ADMIN_ONLINE_2026_11: SeedGuide[] = [
 <tr><td><strong>Academic System</strong> (النظام الأكاديمي)</td><td>Register and pay, see your registered courses, absence, results, academic record and plan, print documents, contact your academic advisor</td></tr>
 <tr><td><strong>Blackboard</strong> (إدارة التعلم الإلكتروني زدني)</td><td>Live and recorded lectures, course files, assignments, tests, your marks and messages to your teachers</td></tr>
 <tr><td><strong>Tawasul</strong> (نظام تواصل / إدارة الطلبات)</td><td>Requests and problems, including withdrawing from a course</td></tr>
-<tr><td><strong>Saudi Digital Library</strong> (المكتبة الرقمية السعودية)</td><td>Books and references. It opens from inside Saudi Arabia, so teachers send the books and notes you need</td></tr>
+<tr><td><strong>Saudi Digital Library</strong> (المكتبة الرقمية السعودية)</td><td>Books and references. It generally opens only from inside Saudi Arabia, so teachers send the books and notes you need</td></tr>
 </tbody></table>
 <p>All of them open from the same sign-in. The <strong>Zidni</strong> tile opens Blackboard with no second login. On a phone or tablet, open the Blackboard app, type Islamic University of Madinah, tap <strong>Continue with Web-Login</strong> and sign in with your University number as the username.</p>
 
@@ -126,7 +126,7 @@ export const GUIDES_ADMIN_ONLINE_2026_11: SeedGuide[] = [
 <li><strong>Live lectures</strong> (المحاضرة التزامنية): a meeting with your teacher in Blackboard, about an hour long.</li>
 <li><strong>Self-paced study</strong> (المحاضرة غير التزامنية): recorded lectures and set learning activities that cover part of the course.</li>
 </ul>
-<p><strong>Example:</strong> Fiqh al-Ibadat 1 in the Sharia specialisation has 4 weekly hours: 1 live hour and 3 self-paced hours. A course's credit hours set its weight in your GPA.</p>
+<p><strong>Example:</strong> Fiqh al-Ibadat 1 in the Sharia specialisation has 4 weekly hours: 1 live hour and 3 self-paced hours. A course's credit hours set its weight in the semester and cumulative GPA.</p>
 <p>Teachers teach mostly from their own summaries and notes, with enrichment material in Blackboard. All teachers in the distance programmes are men. The University teaches students in many countries, and teachers set lecture times with the time differences in mind.</p>
 <h3>Joining a live lecture</h3>
 <ol>
@@ -184,7 +184,7 @@ export const GUIDES_ADMIN_ONLINE_2026_11: SeedGuide[] = [
 <li>Open <strong>Electronic Registration</strong>, then <strong>Course results</strong> (نتائج المقررات), and choose the semester. Each course shows the final exam mark, the coursework mark, the total and the grade. Tap <strong>Print</strong> (طباعة) to keep a copy.</li>
 <li>Your <strong>academic record</strong> (السجل الأكاديمي), under Academic, shows your registered and passed hours and your grade in every course. It is for your own reference.</li>
 <li>What you have passed and what is left: <strong>Academic</strong>, then <strong>Passed courses in the plan</strong> (المقررات المجتازة في الخطة), <strong>Remaining courses in the plan</strong> (المقررات المتبقية في الخطة) or <strong>Student plan</strong> (خطة الطالب).</li>
-<li>Official papers are under <strong>Personal</strong>, then <strong>Official documents</strong> (المستندات الرسمية): your <strong>student statement</strong> (كشف الطالب) and the <strong>electronic university course completion certificate</strong> (شهادة إتمام مقرر جامعي إلكتروني). They open in a pop-up, so allow pop-ups for eservices.iu.edu.sa in your browser.</li>
+<li>Official papers are under <strong>Personal</strong>, then <strong>Official documents</strong> (المستندات الرسمية): your <strong>student account statement</strong> (كشف حساب الطالب) and the <strong>electronic university course completion certificate</strong> (شهادة إتمام مقرر جامعي إلكتروني). They open in a pop-up, so allow pop-ups for eservices.iu.edu.sa in your browser.</li>
 </ol>
 <p>Whether your country accepts the certificate depends on its own rules, so ask its education ministry before you rely on it for a job or further study. It is of use in Islamic centres and in da'wah work.</p>
 
@@ -220,7 +220,7 @@ export const GUIDES_ADMIN_ONLINE_2026_11: SeedGuide[] = [
 <tr><td>My card was declined</td><td>Check that it allows payments abroad, is not blocked and holds more than the amount due, then ask your bank</td></tr>
 <tr><td>The payment failed but the money was taken</td><td>Contact the bank that issued your card, with the receipt or a screenshot</td></tr>
 <tr><td>Today's lectures (محاضرات اليوم) shows nothing</td><td>Your teacher has not entered times in the Academic System. Check the course in Blackboard</td></tr>
-<tr><td>The Saudi Digital Library will not open</td><td>It opens from inside Saudi Arabia. Ask your teacher for the material in Blackboard</td></tr>
+<tr><td>The Saudi Digital Library will not open</td><td>It generally opens only from inside Saudi Arabia. Ask your teacher for the material in Blackboard</td></tr>
 <tr><td>Official documents will not open</td><td>Allow pop-ups for eservices.iu.edu.sa in your browser</td></tr>
 </tbody></table>
 <p>Never open links posted in class chats: see <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat</a>.</p>
