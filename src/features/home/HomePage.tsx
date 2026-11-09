@@ -106,38 +106,44 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
 }
 
 /**
- * The latest duroos announcements, in the third column of "Coming up": the three newest, each a line or two, and at the
- * foot a way to get a phone alert when a dars changes, so the card is useful (and full) even on a quiet day.
+ * The latest duroos announcements, in the third column of "Coming up", set like a notice board in the same light card as
+ * the dates beside it: the three newest, each with when it was posted, and at the foot a way to get a phone alert when a
+ * dars changes, so the card is useful (and full) even on a quiet day.
  */
 function LatestUpdates({ updates, quiet }: { updates: AnnouncementRow[]; quiet: boolean }) {
   return (
-    <section aria-labelledby="latest-updates" className="lattice flex flex-col overflow-hidden rounded-3xl bg-brand-deep p-6 text-white md:col-span-2 xl:col-span-1">
-      <div className="flex items-baseline justify-between gap-3">
-        <h2 id="latest-updates" className="flex items-center gap-2 text-sm font-semibold text-white/75">
-          <Megaphone size={15} className="text-gold-bright" /> Latest updates
+    <section aria-labelledby="latest-updates" className="flex flex-col rounded-3xl border border-line bg-card p-5 sm:p-6 md:col-span-2 xl:col-span-1">
+      <div className="flex items-center justify-between gap-3">
+        <h2 id="latest-updates" className="flex items-center gap-2 text-sm font-semibold text-muted">
+          <Megaphone size={15} className="text-gold" /> Latest updates
         </h2>
-        <Link href="/duroos/updates" className="text-sm font-semibold text-gold-bright hover:underline">
+        <Link href="/duroos/updates" className="-me-2 inline-flex min-h-10 items-center rounded-full px-2 text-sm font-semibold text-primary hover:underline">
           All
         </Link>
       </div>
       {updates.length === 0 ? (
-        <p className="mt-4 mb-5 text-sm text-white/75">{quiet ? "No announcements." : "No changes announced. Every dars is on as usual."}</p>
+        <p className="mt-3 mb-5 text-sm text-muted">{quiet ? "No announcements." : "No changes announced. Every dars is on as usual."}</p>
       ) : (
-        <ul className="mt-4 mb-5 grid content-start gap-3 sm:grid-cols-3 xl:grid-cols-1">
+        <ul className="mt-1 mb-4 divide-y divide-line">
           {updates.slice(0, 3).map((a) => (
             <li key={a.slug}>
-              <Link href={`/duroos/updates#${a.slug}`} className="group block h-full rounded-2xl bg-white/8 px-4 py-3 ring-1 ring-white/10 transition hover:bg-white/12">
-                <span className="block text-sm font-semibold leading-snug group-hover:text-gold-bright">{a.titleEn}</span>
-                <span className="mt-0.5 line-clamp-3 text-xs leading-relaxed text-white/70">{a.bodyEn}</span>
+              <Link href={`/duroos/updates#${a.slug}`} className="group block py-3.5">
+                <span className="block text-[11px] font-semibold uppercase tracking-wide text-gold">
+                  <TimeAgo iso={new Date(a.postedAt).toISOString()} />
+                </span>
+                <span className="mt-1 block font-semibold leading-snug group-hover:text-primary">{a.titleEn}</span>
+                <span className="mt-1 line-clamp-2 text-sm leading-relaxed text-muted">{a.bodyEn}</span>
               </Link>
             </li>
           ))}
         </ul>
       )}
-      <Link href="/more#alerts" className="group mt-auto flex items-center gap-2 border-t border-white/10 pt-4 text-sm font-semibold text-white/85 transition hover:text-white">
-        <BellRing size={15} className="shrink-0 text-gold-bright" />
-        <span className="min-w-0 flex-1">Get a phone alert when a dars changes</span>
-        <ArrowRight size={15} className="shrink-0 text-gold-bright transition group-hover:translate-x-0.5" />
+      <Link href="/more#alerts" className="group mt-auto flex items-center gap-3 rounded-2xl bg-bg-2 p-3 transition hover:bg-primary-soft">
+        <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-ink">
+          <BellRing size={17} />
+        </span>
+        <span className="min-w-0 flex-1 text-sm font-semibold leading-snug">Get a phone alert when a dars changes</span>
+        <ArrowRight size={16} className="shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-primary" />
       </Link>
     </section>
   );
