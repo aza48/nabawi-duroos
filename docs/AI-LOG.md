@@ -66,6 +66,11 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **akheeai**: `src/content/key-dates.ts` checked against the University's official 1448/1449 academic calendar (announcement `iu.edu.sa/announ14480112`, image «التقويم الدراسي 1448-1449.png»).
+  - Every date from November onward matches: re-enrolment, the extra chance, ta'jeel 2, drop and add 2, finals 1 and 2, the end-of-semester break, semester 2, winter, Founding Day, the Eid holidays, summer and the 1449 start.
+  - The only differences are two past windows: ta'jeel 1 officially ran 2 to 15 Aug and drop and add 1 ran 11 to 15 Aug, where MESH has longer windows, possibly from an extension notice. Both are left as they are.
+  - The long withdrawal and excuse windows stay out on purpose (see `01969de`).
+  - HANDOFF's "lesson days" owner question is closed: Tafsir as-Sa'di runs Sunday to Friday, and the Dar al-Hijrah dars is monthly on a Saturday after Maghrib (#88, #98).
 - 9 Nov 2026, **akheeai**, branch `akheeai/open-questions-positions`: the remaining mashayikh questions, researched in `docs/research/mashayikh-open-questions-2026-11.md`. Applied to `MASHAYIKH_POSITIONS`:
   - Prof. Dr. Mahir Khujah is also the Islamic University's official spokesman (IU news, 14 May 2026).
   - Shaykh Dr. Abdulmuhsin al-Qasim is Imam and Khatib of the Prophet's Mosque and a judge at the Court of Appeal in Madinah.
