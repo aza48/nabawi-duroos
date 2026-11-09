@@ -279,6 +279,10 @@ a { -webkit-tap-highlight-color: transparent; }
 .hero:has(.sky-school-hit:hover, .sky-school-hit:focus-visible) .school-light { animation: none; opacity: 1; filter: drop-shadow(0 0 2px rgb(239 106 92)) drop-shadow(0 0 8px rgb(180 30 30 / 0.7)); }
 @media (prefers-reduced-motion: reduce) { .school-light { animation: none; opacity: 0.6; } }
 
+/* "Ask the MESHaykh": MESH in the wordmark's heavy display face, the rest plain, so it reads as a play on MESH. */
+.meshaykh-mesh { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; }
+.meshaykh-rest { font-weight: 500; }
+
 .wordmark { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; line-height: 0.9; }
 .brand-line { letter-spacing: 0.18em; font-weight: 600; }
 
