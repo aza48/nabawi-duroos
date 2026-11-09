@@ -19,6 +19,9 @@ Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG
 
 **Next for aiakhee (or a teammate if aiakhee is out of usage):** AR4 (FAQs in Arabic, `questionAr` and `answerHtmlAr`, after #49 merges), the deferred admission and University FAQs after admin's PR lands, then the assistant answering from `/start` and the glossary.
 
+## 10 November 2026: Desktop agent
+The admin research is finished and back with admin; a cloud session published it into guides on `main`. **28 guides and 35 FAQs on `main` are not live yet**: the owner runs the command in `scripts/publish-pending-2026-11-10.txt` (new rows only, nothing overwritten). Then check a few on medinahub.org, for example `/guides/university-student-system` and `/ask/blackboard-login`.
+
 ## 9 November 2026, about 20:15 Riyadh: Desktop agent, admin's research taken over for the owner
 The owner asked the Desktop agent to finish the admin agent's research and publish it in guides, skipping the remaining Telegram periods. **Read `docs/research/NEXT-STEPS-admin-research.md` on branch `claude/wonderful-davinci-um61gf` first**: it lists what is done, what was still running and the publishing plan.
 - On that branch: the official PDFs the owner downloaded (sources and text in `docs/research/iu-pdfs-2026-11/`), and findings for the bachelor's scholarship admission guide (63), the postgraduate admission guides 1448 and 1446 (63), the student system guide (55, with a full draft guide `university-student-system`), and the official discounts deck and sports club leaflet (134).
