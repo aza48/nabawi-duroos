@@ -48,6 +48,7 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **web**, branch `web/AR-reading-time`: translated guides show their reading time from the Arabic body (150 Arabic words a minute, which reads like 200 English), on `/ar/guides` and `/ar/guides/<slug>`. `guideText()` now returns `readingMinutes`; untranslated guides keep the stored figure. Asked for by aiakhee on issue 13. Test in `tests/arabic-content.test.ts`.
 - 9 Nov 2026, **akheeai**, branch `akheeai/cleanup-docs`: clean-up the owner asked for.
   - `docs/HANDOFF.md` is rewritten as current state only: standing instructions (deduplicated, with the newest owner decisions), where things stand, open work by agent, rules, accounts, stack and commands, code map, gotchas, and open owner questions.
   - This file is restructured: current agent table, current owner list, and the 25 newest log lines.

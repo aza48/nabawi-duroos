@@ -221,7 +221,7 @@ export function GuidesPage({ guides, locale = "en" }: { guides: GuideRow[]; loca
                     <span className="font-heading text-lg font-semibold leading-snug group-hover:text-primary" dir="auto">{guideText(g, locale).title}</span>
                     <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted" dir="auto">{guideText(g, locale).summary}</span>
                     <span className="mt-auto flex items-center gap-3 pt-4 text-xs text-muted">
-                      <span className="flex items-center gap-1"><BookOpen size={13} /> {ar ? arCount(g.readingMinutes, "minute", { one: "bare" }) : `${g.readingMinutes} min`}</span>
+                      <span className="flex items-center gap-1"><BookOpen size={13} /> {ar ? arCount(guideText(g, locale).readingMinutes, "minute", { one: "bare" }) : `${g.readingMinutes} min`}</span>
                       {g.lastVerifiedAt && <span className="flex items-center gap-1 text-on"><CircleCheck size={13} /> {ar ? "موثّق" : "Verified"}</span>}
                     </span>
                   </Link>
@@ -297,7 +297,7 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-[1.05] md:text-6xl" dir="auto">{gt.title}</h1>
           <p className="mt-4 max-w-2xl text-white/85 md:text-lg" dir="auto">{gt.summary}</p>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
-            {!isCalendar && <span className="flex items-center gap-1.5"><BookOpen size={15} /> {ar ? `${arCount(guide.readingMinutes, "minute", { one: "bare" })} للقراءة` : `${guide.readingMinutes} min read`}</span>}
+            {!isCalendar && <span className="flex items-center gap-1.5"><BookOpen size={15} /> {ar ? `${arCount(gt.readingMinutes, "minute", { one: "bare" })} للقراءة` : `${guide.readingMinutes} min read`}</span>}
             {steps > 0 && <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {ar ? arCount(steps, "step") : `${steps} ${steps === 1 ? "step" : "steps"} to tick off`}</span>}
             {verified(guide.lastVerifiedAt, locale) && <span className="flex items-center gap-1.5 text-gold-pale"><CircleCheck size={15} /> {verified(guide.lastVerifiedAt, locale)}</span>}
           </p>
