@@ -7,9 +7,14 @@ import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 import { RichText } from "./RichText";
 import { useUnsavedWarning } from "../useUnsavedWarning";
 import { useFeedback } from "../Feedback";
+import { hasText, langOf, LangTabs, type Lang } from "./LangTabs";
 
 type Category = "getting-started" | "getting-settled" | "family" | "university" | "duroos" | "leaving";
-type F = { slug?: string; question: string; answerHtml: string; category: Category; tags: string[]; status: "draft" | "published" };
+type F = {
+  slug?: string; question: string; answerHtml: string; category: Category; tags: string[]; status: "draft" | "published";
+  /** Arabic for /ar/ask; empty means not translated yet. */
+  questionAr?: string | null; answerHtmlAr?: string | null;
+};
 
 const CATEGORIES: { id: Category; label: string }[] = [
   { id: "getting-started", label: "Getting started" }, { id: "getting-settled", label: "Getting settled" },
@@ -20,7 +25,8 @@ const CATEGORIES: { id: Category; label: string }[] = [
 export function FaqForm({ value }: { value: F }) {
   const router = useRouter();
   const { confirm, notify } = useFeedback();
-  const [v, setV] = useState<F>(value);
+  const [v, setV] = useState<F>({ ...value, questionAr: value.questionAr ?? "", answerHtmlAr: value.answerHtmlAr ?? "" });
+  const [lang, setLang] = useState<Lang>("en");
   const [tags, setTags] = useState(value.tags.join(", "));
   const markSaved = useUnsavedWarning([v, tags]);
   // Unticked by default: fixing a typo must not stamp the page as checked today.
@@ -37,6 +43,8 @@ export function FaqForm({ value }: { value: F }) {
     start(async () => {
       const r = await saveFaqAction({
         slug: value.slug, question: v.question, answerHtml: v.answerHtml, category: v.category, status, markVerified: verified,
+        // Empty clears the Arabic, so the Arabic page shows the English again.
+        questionAr: v.questionAr ?? "", answerHtmlAr: v.answerHtmlAr ?? "",
         tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
       });
       if (!r.ok) return setError(r.error);
@@ -47,18 +55,40 @@ export function FaqForm({ value }: { value: F }) {
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); save("published"); }} className="grid gap-4">
-      <Field label="Question"><input className={inputCls} value={v.question} onChange={(e) => setV({ ...v, question: e.target.value })} required /></Field>
+    // A required English field left empty while the Arabic tab is open: show it before the browser points at it.
+    <form onSubmit={(e) => { e.preventDefault(); save("published"); }} onInvalidCapture={(e) => { const l = langOf(e.target); if (l) setLang(l); }} className="grid gap-4">
+      <LangTabs
+        lang={lang}
+        onChange={setLang}
+        hasArabic={hasText(v.questionAr) || hasText(v.answerHtmlAr)}
+        en={
+          <>
+            <Field label="Question"><input className={inputCls} value={v.question} onChange={(e) => setV({ ...v, question: e.target.value })} required /></Field>
+            {/* min-w-0: the editor toolbar must not widen the form past the phone screen. */}
+            <div className="min-w-0">
+              <p className="mb-1.5 text-sm font-semibold">Answer</p>
+              <RichText value={v.answerHtml} onChange={(html) => setV((p) => ({ ...p, answerHtml: html }))} placeholder="Answer" />
+            </div>
+          </>
+        }
+        ar={
+          <>
+            <p className="text-sm text-muted">Optional. Each Arabic field that is filled in replaces the English on the Arabic page; empty fields keep the English there.</p>
+            <Field label="Question (Arabic)">
+              <input dir="rtl" lang="ar" className={inputCls} value={v.questionAr ?? ""} onChange={(e) => setV({ ...v, questionAr: e.target.value })} />
+            </Field>
+            <div className="min-w-0" dir="rtl" lang="ar">
+              <p className="mb-1.5 text-sm font-semibold" dir="ltr" lang="en">Answer (Arabic)</p>
+              <RichText value={v.answerHtmlAr ?? ""} onChange={(html) => setV((p) => ({ ...p, answerHtmlAr: html }))} placeholder="Answer in Arabic" />
+            </div>
+          </>
+        }
+      />
       <Field label="Category">
         <select className={inputCls} value={v.category} onChange={(e) => setV({ ...v, category: e.target.value as Category })}>
           {CATEGORIES.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
         </select>
       </Field>
-      {/* min-w-0: the editor toolbar must not widen the form past the phone screen. */}
-      <div className="min-w-0">
-        <p className="mb-1.5 text-sm font-semibold">Answer</p>
-        <RichText value={v.answerHtml} onChange={(html) => setV((p) => ({ ...p, answerHtml: html }))} placeholder="Answer" />
-      </div>
       <Field label="Tags (comma separated)"><input className={inputCls} value={tags} onChange={(e) => setTags(e.target.value)} placeholder="nafath, iqama" /></Field>
       <label className="flex items-center gap-2 text-sm">
         <input type="checkbox" className="size-5 accent-[var(--primary)]" checked={verified} onChange={(e) => setVerified(e.target.checked)} />

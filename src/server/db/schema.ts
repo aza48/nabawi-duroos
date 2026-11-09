@@ -157,6 +157,9 @@ export const faqs = pgTable("faqs", {
   slug: text("slug").notNull().unique(),
   question: text("question").notNull(),
   answerHtml: text("answer_html").notNull(),
+  // Arabic text for /ar. Null until translated; the Arabic pages then keep the English.
+  questionAr: text("question_ar"),
+  answerHtmlAr: text("answer_html_ar"),
   category: text("category").notNull(),
   tags: text("tags").array().notNull().default([]),
   status: text("status").$type<ContentStatus>().notNull().default("draft"),
@@ -171,6 +174,10 @@ export const guides = pgTable("guides", {
   title: text("title").notNull(),
   summary: text("summary").notNull(),
   bodyHtml: text("body_html").notNull(),
+  // Arabic text for /ar. Null until translated; the Arabic pages then keep the English.
+  titleAr: text("title_ar"),
+  summaryAr: text("summary_ar"),
+  bodyHtmlAr: text("body_html_ar"),
   stage: text("stage").$type<GuideStage>().notNull(),
   coverUrl: text("cover_url"),
   readingMinutes: integer("reading_minutes").notNull().default(1),

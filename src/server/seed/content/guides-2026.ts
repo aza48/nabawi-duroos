@@ -6,7 +6,11 @@ import type { GuideStage } from "@/server/db/schema";
  * Numbered lists become tick-box steps on the site; "Tip:" blockquotes become callouts;
  * a paragraph holding only a YouTube link becomes a video player.
  */
-export type SeedGuide = { slug: string; title: string; summary: string; stage: GuideStage; bodyHtml: string };
+/** The optional Arabic fields fill the Arabic page (/ar/guides/<slug>); a guide without them keeps the English there. */
+export type SeedGuide = {
+  slug: string; title: string; summary: string; stage: GuideStage; bodyHtml: string;
+  titleAr?: string; summaryAr?: string; bodyHtmlAr?: string;
+};
 
 export const GUIDES_2026: SeedGuide[] = [
   {
@@ -937,7 +941,8 @@ export const GUIDES_2026: SeedGuide[] = [
   },
 ];
 
-export type SeedFaq = { slug: string; question: string; category: string; answerHtml: string; tags?: string[] };
+/** The optional Arabic fields fill the Arabic answer (/ar/ask/<slug>); an answer without them keeps the English there. */
+export type SeedFaq = { slug: string; question: string; category: string; answerHtml: string; tags?: string[]; questionAr?: string; answerHtmlAr?: string };
 
 export const FAQS_2026: SeedFaq[] = [
   { slug: "defer-my-place", category: "university", question: "Can I defer my place at the University?", answerHtml: "<p>Plan to arrive in the semester you are offered. Under the educational visa, the visa application names the semester you will arrive, and asking to arrive later can send it back. If something serious stops you travelling, ask the University before you change your plans. See <a href=\"/guides/applying-to-the-islamic-university\">Applying to the Islamic University</a>.</p>" },

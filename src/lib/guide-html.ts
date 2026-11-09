@@ -13,6 +13,12 @@ export const slugify = (s: string) =>
 const YOUTUBE = /^https?:\/\/(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([A-Za-z0-9_-]{11})/;
 
 /**
+ * A blockquote that opens with one of these labels is a callout. "\b" does not work after Arabic letters,
+ * so an Arabic label must be followed by a space, a colon, a comma or the end ("مهمة" is not "مهم").
+ */
+const CALLOUT = /^\s*(?:(?:tip|note|important|warning)\b|(?:نصيحة|ملاحظة|مهم|تنبيه)(?=[\s:،]|$))/i;
+
+/**
  * Adds the interactive layer to already-sanitised guide HTML: anchors and a table of contents
  * for h2s, numbered steps that readers can tick off, video slots for lone YouTube links, and
  * Tip/Note callouts. Runs on the server after sanitising, so it may add attributes freely.
@@ -46,7 +52,7 @@ export function enhanceGuideHtml(html: string): { html: string; toc: TocItem[]; 
   }
 
   for (const q of root.querySelectorAll("blockquote")) {
-    if (/^\s*(tip|note|important|warning)\b/i.test(q.text)) q.setAttribute("class", "callout");
+    if (CALLOUT.test(q.text)) q.setAttribute("class", "callout");
   }
 
   return { html: root.toString(), toc, steps };
