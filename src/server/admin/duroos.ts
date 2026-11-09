@@ -51,7 +51,7 @@ const overrideInput = z
 export async function addOverride(db: Db, actor: Actor | "system", input: z.input<typeof overrideInput>, origin: "admin" | "watcher_approved" | "watcher_auto" = "admin") {
   assertCan(actor, "duroos.write");
   const v = overrideInput.parse(input);
-  const [lesson] = await db.select({ id: lessons.id }).from(lessons).where(eq(lessons.slug, v.lessonSlug));
+  const [lesson] = await db.select({ id: lessons.id, bookEn: lessons.bookEn }).from(lessons).where(eq(lessons.slug, v.lessonSlug));
   if (!lesson) throw new Error("lesson_not_found");
   const endsOn = v.endsOn ?? v.startsOn;
   const [dup] = await db
@@ -73,7 +73,7 @@ export async function addOverride(db: Db, actor: Actor | "system", input: z.inpu
       origin,
     })
     .returning();
-  await record(db, actor, { action: "create", entity: "override", entityId: String(row.id), before: null, after: { ...row, lessonSlug: v.lessonSlug } });
+  await record(db, actor, { action: "create", entity: "override", entityId: String(row.id), before: null, after: { ...row, lessonSlug: v.lessonSlug, lessonLabel: lesson.bookEn } });
   refreshPublic([...DUROOS_PATHS, `/duroos/lesson/${v.lessonSlug}`, `/ar/duroos/lesson/${v.lessonSlug}`]);
   // Phone alerts are best-effort: a push failure never blocks the change itself.
   try {
