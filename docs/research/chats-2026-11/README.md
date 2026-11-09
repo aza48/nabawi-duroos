@@ -19,6 +19,7 @@ Public text never names these chats. Each fact is written in MESH's own words, a
 | `university-offers-group.md` | A University offers group run by a business (Arabic) | Aug to Nov 2026 | **Very low.** Adverts only; small campus details (shops near units 22 and 23) |
 | `move-to-saudi.md` | "Move to Saudi Arabia" relocation group (full export, sent again) | Aug to Nov 2026 (disappearing messages removed everything older) | **Low.** About 15 durable facts: Premium Residency costs confirm MESH, visa portal gaps, a housing red flag, single fathers' needs |
 | `american-students-2025-06-to-11.md`, `american-students-2025-11-to-2026-03.md`, `american-students-2026-03-to-06.md`, `american-students-2026-06-to-11.md` | "American Students in IUM", the big community group (members' questions and answers, the representative, some official notices), read in four parts | Jun 2025 to Nov 2026 | **High.** 293 findings; the same conflicts appear independently in several months, which makes them strong |
+| `american-students-attachments.md` | The same chat's PDFs and images: the student guide to graduating from the Ma'had (2024 and 2026 versions), the University's official 111-offer discount deck (Sep 2026), the printed 1448 calendar, Travel Management notices, I'tikaf and cart notices, Saudi Post prices | 2024 to 2026 | **High.** Official documents |
 
 ## Tasks from this research
 **akhiai (guides, Lane E).** Check each item against the finding in `us-students-announcements.md` (item numbers in brackets) before writing:
@@ -128,6 +129,14 @@ Each item below shows which file and finding number to read. Before writing, che
   - basement flats are cheaper to cool but damp
   - rents reported in 2025: 23,000 to 25,000 SAR a year for 3 to 4 bedrooms, and 600 SAR a month for a room
 - **Duroos (akheeai):** the official schedule of duroos at Masjid an-Nabawi is published at prh.gov.sa. Worth a link on `/duroos`.
+
+**From the attachments (`american-students-attachments.md`):**
+- **Discounts (web, or whoever owns `src/content/discounts.ts`):** the official deck has 111 offers (Sep 2026). MESH lists 61; about 50 are missing, and some existing ones have new terms. Alpha Labs is for staff and families only, not students.
+- **Calendar (`src/content/key-dates.ts`):** the printed 1448 calendar confirms almost every MESH date. Two first-semester windows differ: ta'jeel 2 to 15 Aug 2026 (MESH: to 1 Sep), and drop and add 9 to 13 Aug (MESH: 10 to 30 Aug). Both have passed; check whether MESH used a later extension notice.
+- **`graduating-from-mahad`:** the 2026 student guide puts the student card window and the housing paper at Wahdah 22 (opens at 8:00, go before Dhuhr, with the iqama shown in Absher and a new photo). MESH says "the housing office". The Kulliyah number differs from the Ma'had number in its last digit.
+- **`iqama-and-exit-reentry-fees` and `living-on-a-visitor-id`:** the 1448 visa renewal guidance (window 4 Mar to 8 Apr 2026) and the Visitor ID extension form.
+- **`postgraduate-admission-1448`:** the 1448 higher diploma list does not include the Arbitration diploma that MESH lists.
+- **`shipping-and-receiving-parcels`:** Saudi Post prices to the USA of 398, 617 and 784 SAR for up to 10, 20 and 30 kg.
 
 **New FAQs (aiakhee):**
 - "Is family residency (istiqdam) open?"
