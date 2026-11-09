@@ -11,6 +11,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 6. A conflict in this file is always "keep both sides".
 
 ## Owner decisions (binding, newest first)
+- 9 Nov 2026: **the desktop agent gets no scheduled wake-up.** The desktop agent works only when the owner opens its session; it never wakes itself hourly or at usage resets (standing instruction 2 does not apply to it).
 - 9 Nov 2026: **reviews and merges.** akheeai and web review and merge PRs that pass review, tsc, vitest and the build ("merge asap whenever it allows"). A PR with a migration waits until the owner has applied the migration in production.
 - 9 Nov 2026, about 09:30 UTC: **push as soon as work is done.** Do not hold a finished change for a notice window or a batch: push it and open its PR at once, so the other agents see it and updates reach the site fast. Notices on issue 13 still go out, at the same time as the push.
 - 9 Nov 2026: **Vercel builds `main` only** (`git.deploymentEnabled` in `vercel.json`: `"**": false, "main": true`). Agent branches no longer use the free plan's 100 deployments a day, so merges to `main` always go live. Agents check their work locally (tsc, vitest, `MESH_LOCAL_DB=1 npx next build`, screenshots) as before. A branch made before this merged still carries the old `vercel.json` until it merges `main`.
@@ -30,7 +31,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 | **aiakhee** (cloud; reset wake-up `trig_014casXrmFg7JRsyEWCQeJQE`; its hourly wake-up waits for the owner to allow it) | `aiakhee/<task>` branches | Lane B: FAQ seed content, `src/lib/guide-html.ts`, the whole assistant (`src/server/assistant/*`, `src/features/assistant/*`), `/start` and `/glossary` | AR1 (#49, migration first), then AR4 (Arabic FAQs); B1, B2, B4, B5 and B6 are on `aiakhee/B*` branches, no PRs yet |
 | **akhiai** (cloud, Fable 5.1; hourly wake-up `trig_011QLV8fWJfFwFCRyc7LbFN4`) | `akhiai/<task>` branches | Lane E, guides: `src/server/seed/content/guides-*.ts`, `scripts/open-questions.json`, `docs/EXPIRING.md`, `docs/research/guides-*`, and AR3 translations | AR3 batches 1 to 4 (#44, #46, #47, #48) and E3 (#45) in review; next: more AR3 batches, sisters at Masjid an-Nabawi, keeping guides fresh |
 | **web** (cloud; hourly wake-up `trig_01VqkfrqUJn87szU6xmQeV4s`) | `web/<task>` branches | Lanes C and D: the shell and header, Arabic pages (`src/app/(ar)/*` with the desktop agent), `ContentPages.tsx`, home layout, analytics (`src/server/analytics/*`, `/admin/analytics`) | C2 and C6 done; next C3, C1, D3 (after B1), Arabic font preload through `next/font`, S1 to S3 |
-| **Desktop agent** (Claude Code on the owner's PC; no wake-up yet, waiting for the owner) | worktree `mesh-website-audit-73b810`, pushes to `main` | Release checks, the 8 Nov deep audit follow-ups, site search ranking (`src/lib/search/*`, `src/server/search/*`), production database steps when the owner asks | Release check after big merges |
+| **Desktop agent** (Claude Code on the owner's PC; no wake-up, by the owner's decision: it works when the owner opens it) | worktree `mesh-website-audit-73b810`, pushes to `main` | Release checks, the 8 Nov deep audit follow-ups, site search ranking (`src/lib/search/*`, `src/server/search/*`), production database steps when the owner asks | Release check after big merges |
 | naiifos (a person) | `feat/duroos-cards-*` | Duroos cards: `src/features/duroos/DuroosToday.tsx`, `src/features/home/DuroosCards.tsx`, `DarsMiniCard.tsx`, `DuroosCarousel.tsx` | Optional: the report link and the plural fix in the cards |
 
 ## Takeovers
@@ -43,7 +44,7 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 3. **Admin > Shaykhs:** the name and title fixes listed at the top of `MASHAYIKH_POSITIONS`.
 4. **Ramadan facts** in `RAMADAN_SETTINGS` (`src/features/home/ramadan.ts`), before 8 February 2027.
 5. **Vercel environment:** `DATABASE_CA` (database TLS), and a free AI key for the assistant (`GROQ_API_KEY` or `ASSISTANT_GEMINI_API_KEY`).
-6. **Yes or no:** PR checks on GitHub (C7); a weekly crawl and accessibility check; "Remove passkey" in Admin; a two-column admin on wide screens; a wake-up for the desktop agent; Vercel Web Analytics (#41).
+6. **Yes or no:** PR checks on GitHub (C7); a weekly crawl and accessibility check; "Remove passkey" in Admin; a two-column admin on wide screens; Vercel Web Analytics (#41).
 7. **Content questions:** section 10 of `docs/HANDOFF.md`, and 28 admin questions in `scripts/open-questions.json` (`npm run questions:add -- scripts/open-questions.json`).
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
