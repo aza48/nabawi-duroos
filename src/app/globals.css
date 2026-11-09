@@ -219,6 +219,8 @@ a { -webkit-tap-highlight-color: transparent; }
 .article :where(p, ul, ol) { margin: 0 0 1rem; }
 .article :where(ul) { list-style: disc; padding-inline-start: 1.3rem; }
 .article :where(ol) { list-style: decimal; padding-inline-start: 1.3rem; }
+/* Arabic text counts its lists in Arabic digits, as it writes every other number. */
+.article:where([lang="ar"], [lang="ar"] *) :where(ol), :where([lang="ar"]) .article :where(ol) { list-style-type: arabic-indic; }
 .article :where(a) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .article :where(img) { border-radius: 12px; margin: 1rem 0; }
 .article :where(blockquote) { border-inline-start: 3px solid var(--accent); padding-inline-start: 1rem; color: var(--muted); }
