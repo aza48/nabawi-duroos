@@ -21,7 +21,7 @@ State on 10 Nov 2026. Merged to `main`: [#76](https://github.com/iumuhaymin/medi
 **Owner instructions (10 Nov):** fact-check everything published; treat gomedine.com as accurate (second-hand but researched); the whole site is scraped in `docs/research/gomedine-2026-11/raw/` (583 pages, see its README).
 
 1. **gomedine.com part 2** (`raw/056` to `110`): write `docs/research/gomedine-2026-11/part-2.md` (format of `part-3.md`) and publish its facts into the papers guides. If `part-2.md` is missing on the branch, redo it.
-2. **Fact-check** with the brief below (copy of the session brief): each specific claim in the new and changed guide text must trace to a source; cut or correct the rest; list what rests on student reports only. Reports go to `docs/research/admin-publish-2026-11/factcheck-<letter>.md`. Split:
+2. **Fact-check** with the brief below (`docs/research/admin-publish-2026-11/FACTCHECK-BRIEF.md`, with `WRITER-BRIEF.md` for the house rules): each specific claim in the new and changed guide text must trace to a source; cut or correct the rest; list what rests on student reports only. Reports go to `docs/research/admin-publish-2026-11/factcheck-<letter>.md`. Split:
    - FC1: `guides-admin-2026-11.ts`, `guides-admin-online-2026-11.ts`
    - FC2: `guides-admin-life-2026-11.ts`
    - FC3: the existing guides and FAQs changed in #76 (`git diff bed106c origin/main -- src/server/seed/content/`), study, admission, money, discounts
