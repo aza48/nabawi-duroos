@@ -14,7 +14,7 @@ The owner asked the Desktop agent to finish the admin agent's research and publi
 | `gomedine-2026-11/part-1.md`, `part-3.md`, `part-4.md` | 75, 76, 71 | Iqama and visa fines and renewal fees; newborn iqama steps; exit and re-entry conditions; family visit visa extension and biometrics; family records on Absher; Umrah season 1448. Conflicts to settle: renting on a student visa (MESH contradicts itself: agent vs iqama needed), the Ma'had registration window (Dhul Qa'dah, Dhul Hijjah to Muharram, or Safar), visitors' emergency health cover, schools for visit-visa children. |
 
 ## Still running when this was written (the outputs land in the Desktop agent's scratch folder first; copy them in when done)
-- `iu-pdfs-2026-11/study-plans-1448.md` (study plans per college, library mapping)
+- (done) `iu-pdfs-2026-11/study-plans-1448.md`: 31 findings; full course tables for 7 colleges; the Qur'an, Hadith and Sharia library folders follow older plans (Qur'an 19 and Sharia 31 courses have no folder); draft guide `what-you-study-by-level`
 - `gomedine-2026-11/part-2.md` (pages 056 to 110; group list `gm\group2.txt`)
 On the owner's PC the outputs are in `%TEMP%\claude\e8a567db7955d8a8\8a2f9b30-c840-4fc6-81dd-635eb4325b9b\scratchpad\` under `out\`, `research-out\`, `pdfs\out\` or similar (each reader reports its path). If a file is missing there, rerun only that reader: the shared brief is `scratchpad\pdfs\BRIEF.md`, the PDF text is in `iu-pdfs-2026-11/text/`, and the site pages are in `scratchpad\gm\clean\` split by `gm\group1.txt` to `group4.txt` (rebuild with `gm\fetch.py` if gone).
 
