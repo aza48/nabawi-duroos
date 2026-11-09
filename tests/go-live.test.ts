@@ -39,7 +39,7 @@ describe("goLive", () => {
     expect((legacy.rows[0] as { n: number }).n).toBe(2);
     const subs: any = await db.execute(sql`SELECT count(*)::int AS n FROM subscribers`);
     expect((subs.rows[0] as { n: number }).n).toBe(1);
-    expect(report.counts?.lessons).toBe(52);
+    expect(report.counts?.lessons).toBe(65);
     const carried = await db.select().from(schema.announcements);
     expect(carried.some((a) => a.slug === "old-1" && a.status === "archived" && a.type === "cancellation")).toBe(true);
     expect(carried.some((a) => a.slug === "old-2")).toBe(false);
@@ -49,6 +49,6 @@ describe("goLive", () => {
     const db = await oldSiteDb();
     await goLive(db, { apply: true, migrate: runMigrations });
     const again = await goLive(db, { apply: true, migrate: runMigrations });
-    expect(again.counts?.lessons).toBe(52);
+    expect(again.counts?.lessons).toBe(65);
   });
 });

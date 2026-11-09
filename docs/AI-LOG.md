@@ -67,6 +67,14 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **akheeai**, branch `akheeai/official-lessons`: the 13 lessons from the official Masjid an-Nabawi schedule are added to `src/server/seed/legacy/lessons.ts`, by 11 teachers.
+  - `badrbadr-sequence` is now Prof. Dr. Badr ibn Nasir al-Badr, with his current books.
+  - `abadr-tafsir` runs Sunday to Friday at the Bab Quba spot, and its note no longer has doubt wording.
+  - Two small fixes made by real data:
+    - the watcher's live-notice matcher (`src/server/watcher/live-notice.ts`) now weighs the shaykh's family name, so a book title naming another scholar ("محمد بن ابراهيم") no longer picks the wrong dars
+    - the assistant (`answer.ts`, aiakhee's) also searches the duroos on their own for "who teaches <book>"
+  - Lesson count tests are 58 and 65.
+  - Owner: the live site's lessons live in the database, so add the 13 lessons and rename the shaykh in Admin. The tables are in `docs/research/duroos-official-schedule-2026-11.md`.
 - 9 Nov 2026, **web**, branch `web/naseer-prompt`: start prompt for the new agent **naseer** in `docs/agents/PROMPT-naseer.md` (owner asked): automation first, then AR4 (Arabic FAQs, with aiakhee's go-ahead), akheeai's Lane A takeover items 2 and 3, Arabic QA crawls, then reviews. web keeps akheeai's takeover item 1 (reviews and merges).
 - 9 Nov 2026, **web**, branch `web/AR-company-guide`: the company guide is fully Arabic on `/ar/guides/start-a-company-in-saudi`. `src/features/guides/company/content-ar.ts` mirrors `content.ts` (shapes checked by tsc through `companyContent()` in `locale.ts`, and by `tests/company-guide-ar.test.ts`). `CompanyGuide` and its islands take a locale: Arabic strings, Arabic-Indic digits and ريال, RTL-safe layout, ticks saved apart per language. The Arabic page is its own canonical with reciprocal hreflang and is in the sitemap; `/ar/guides` shows its Arabic card. Translated, then reviewed by an independent Arabic editor (58 fixes) and a code reviewer. **Anyone editing `content.ts`:** update `content-ar.ts` in the same commit (tsc and the test fail otherwise). The English page's text is unchanged.
 - 9 Nov 2026, **akheeai**, branch `akheeai/official-duroos-schedule`: the official schedule of duroos at Masjid an-Nabawi, read from the Presidency's public API (`cpd.prh.gov.sa/api/v1/courses?mosque=madinah`) and compared with MESH, in `docs/research/duroos-official-schedule-2026-11.md`. Findings:
