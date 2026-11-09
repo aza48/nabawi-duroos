@@ -9,6 +9,7 @@ import { KEY_DATES } from "@/content/key-dates";
 import { DISCOUNTS } from "@/content/discounts";
 import { LIVE_COLLECTIONS } from "@/content/library-books";
 import { OFFICIAL } from "@/content/library";
+import { MAHAD_COPY } from "@/features/library/MahadPage";
 import { slugify } from "@/lib/guide-html";
 import { HELP_CONTACT_DEFAULT } from "@/server/settings";
 
@@ -191,6 +192,21 @@ function siteChunks(): Chunk[] {
     },
     { id: "page-duroos", kind: "page", title: "Duroos in Madinah", text: "Today's duroos of the mashayikh in Masjid an-Nabawi, Masjid Quba and other masjids are at /duroos with live status, cancellations and changes. The weekly schedule by day and prayer is at /duroos/schedule. Live broadcasts are at /duroos/live. Cancellations, postponements and new books are at /duroos/updates. Duroos for sisters are at /duroos/sisters. Free phone alerts when a dars changes can be turned on at /more#alerts.", url: "/duroos" },
     { id: "page-library", kind: "page", title: "The Jamiah library", text: `Islamic University course books (muqarrarat) and Ma'had books by level are in the MESH library at /library, readable on the site. Collections: ${LIVE_COLLECTIONS.map((c) => c.title).join(", ")}. The Ma'had hub at /mahad has books by level, answer keys, the rules and what happens if you fail a level. Official links: ${OFFICIAL.map((o) => `${o.title} (${o.href})`).join("; ")}.`, url: "/library" },
+    {
+      id: "mahad-fail",
+      kind: "guide",
+      title: "Ma'had hub",
+      section: MAHAD_COPY.en.failTitle,
+      text: `${MAHAD_COPY.en.fail.map(([b, rest]) => `• ${b}${rest}`).join("\n")}\n${MAHAD_COPY.en.checked}`,
+      url: "/mahad#fail",
+    },
+    {
+      id: "mahad-about",
+      kind: "guide",
+      title: "Ma'had hub",
+      text: `${MAHAD_COPY.en.subtitle} ${MAHAD_COPY.en.booksIntro} ${MAHAD_COPY.en.sixTitle}: ${MAHAD_COPY.en.sixIntro} ${MAHAD_COPY.en.answersIntro} Rules and guides: ${MAHAD_COPY.en.rules.join(", ")}.`,
+      url: "/mahad",
+    },
     { id: "page-guides", kind: "page", title: "Guides", text: `MESH guides, by topic: ${GUIDE_TOPICS.map((t) => `${t.label} (${t.blurb})`).join("; ")}. Questions and answers by topic: ${FAQ_CATEGORIES.map((c) => c.label).join(", ")}, at /ask.`, url: "/guides" },
   ];
 }
