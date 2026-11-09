@@ -527,7 +527,6 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Go to your appointment</strong> with your original licence, the translation, a photo, and your iqama (the card or the digital one in Absher).</li>
 <li><strong>Check Absher afterwards.</strong> Your Saudi licence appears there once it is issued, and Absher offers delivery of the card to your National Address.</li>
 </ol>
-<blockquote><p>Tip: The driving school keeps your original licence in some cases. Take photos of both sides first.</p></blockquote>
 <blockquote><p>Note: People near the driving school offer to book a slot for you for a small fee, but they ask for your Absher password or the code sent to your phone. Never share either. Book the appointment yourself on Absher.</p></blockquote>
 <blockquote><p>Note: If you held a Saudi licence before and came back on a new iqama, you do not start again. Transfer or renew it onto the new iqama through Absher.</p></blockquote>
 <h2>If your country is not on the list: the driving school</h2>
