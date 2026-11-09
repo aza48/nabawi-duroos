@@ -209,9 +209,9 @@ function refLinkHtml(href: string, text: string, kind: "quran" | "hadith"): stri
 export function linkScriptureTree(root: HTMLElement): string[] {
   const linked: string[] = [];
 
-  const linkText = (node: TextNode, before: string) => {
+  const linkText = (node: TextNode, before: string, after: string) => {
     const text = node.text;
-    const refs = findScriptureRefs(text, before);
+    const refs = findScriptureRefs(text, before, after);
     if (!refs.length) return;
     let out = "";
     let pos = 0;
@@ -226,29 +226,40 @@ export function linkScriptureTree(root: HTMLElement): string[] {
     parent.childNodes.splice(parent.childNodes.indexOf(node), 1, ...nodes);
   };
 
-  /** `run` is the text so far in the current block, read for context such as an open quotation. */
-  const walk = (el: HTMLElement, run: { text: string }) => {
+  /**
+   * A run is the text of one block, in order: each piece is a text node that may be linked, or
+   * text that is only read for context (a link, a quotation, a break). Every text node is matched
+   * with the text before and after it in its run, so a name in one element explains a number in
+   * the next, and a number split by markup is never read as a shorter one.
+   */
+  type Piece = { node: TextNode | null; text: string };
+  /** Every text node to try, in document order, with its run and its place in it. */
+  const order: { run: Piece[]; i: number }[] = [];
+  const walk = (el: HTMLElement, run: Piece[]) => {
     for (const child of [...el.childNodes]) {
       if (child instanceof TextNode) {
-        const text = child.text;
-        if (!child.isWhitespace) linkText(child, run.text);
-        run.text += text;
+        if (!child.isWhitespace) order.push({ run, i: run.length });
+        run.push({ node: child.isWhitespace ? null : child, text: child.text });
       } else if (child instanceof HTMLElement) {
         const tag = child.rawTagName?.toLowerCase();
         // A glossary popover is hidden until opened: not part of the sentence at all.
         if (child.hasAttribute("popover")) continue;
-        if (NO_REF_BLOCK.has(tag) || child.classList.contains("video-slot")) run.text += RUN_BREAK;
+        if (NO_REF_BLOCK.has(tag) || child.classList.contains("video-slot")) run.push({ node: null, text: RUN_BREAK });
         // A link, quotation, code or glossary term is still part of the sentence: its words and quotes count as context.
-        else if (NO_REF.has(tag)) run.text += child.text;
+        else if (NO_REF.has(tag)) run.push({ node: null, text: child.text });
         else if (BLOCK.has(tag)) {
-          run.text += RUN_BREAK;
-          walk(child, { text: "" });
+          run.push({ node: null, text: RUN_BREAK });
+          walk(child, []);
         } else walk(child, run);
       }
     }
   };
 
-  walk(root, { text: "" });
+  walk(root, []);
+  for (const { run, i } of order) {
+    const texts = run.map((p) => p.text);
+    linkText(run[i].node!, texts.slice(0, i).join(""), texts.slice(i + 1).join(""));
+  }
   return linked;
 }
 

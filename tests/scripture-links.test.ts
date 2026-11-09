@@ -23,7 +23,7 @@ const links = (html: string) =>
     .querySelectorAll("a.scripture-ref")
     .map((a) => [a.text, a.getAttribute("href")]);
 
-const EN_DASH = "–";
+const EN_DASH = "\u2013";
 
 describe("the surah tables", () => {
   it("has 114 surahs with 6236 ayat between them", () => {
@@ -87,7 +87,16 @@ describe("Qur'an references in English", () => {
     ["Quran 2:255-257 is read at night.", "Quran 2:255-257", "https://quran.com/2/255-257"],
     [`Read al-Baqarah 2:255${EN_DASH}257 slowly.`, `al-Baqarah 2:255${EN_DASH}257`, "https://quran.com/2/255-257"],
     ["Learn Surah 2:255 by heart.", "Surah 2:255", "https://quran.com/2/255"],
-    ["See Q. 112:1-4.", "Q. 112:1-4", "https://quran.com/112/1-4"],
+    ["See (Q. 112:1-4).", "Q. 112:1-4", "https://quran.com/112/1-4"],
+    ["Patience is praised (Q 2:153).", "Q 2:153", "https://quran.com/2/153"],
+    ["Obey those in authority (Qur'an 4:59).", "Qur'an 4:59", "https://quran.com/4/59"],
+    ["Read Quran 4:30-35 with the tafsir.", "Quran 4:30-35", "https://quran.com/4/30-35"],
+    ["Read Surah al-Mulk, verse 2, at night.", "Surah al-Mulk, verse 2", "https://quran.com/67/2"],
+    ["Read al-Mulk, verse 2.", "al-Mulk, verse 2", "https://quran.com/67/2"],
+    ["Read Maryam, ayah 30.", "Maryam, ayah 30", "https://quran.com/19/30"],
+    ["The ayah of light, an-Nur, ayah 35, is well known.", "an-Nur, ayah 35", "https://quran.com/24/35"],
+    ["Recite Surah Sad, ayah 3.", "Surah Sad, ayah 3", "https://quran.com/38/3"],
+    ["See At-Talaq 65:3.", "At-Talaq 65:3", "https://quran.com/65/3"],
     ["Recite Surah al-Baqarah, ayah 286, before sleeping.", "Surah al-Baqarah, ayah 286", "https://quran.com/2/286"],
     ["Recite Surah al-Kahf, verses 1-10, on Friday.", "Surah al-Kahf, verses 1-10", "https://quran.com/18/1-10"],
     ["Recite Surah 18, ayat 1 to 10.", "Surah 18, ayat 1 to 10", "https://quran.com/18/1-10"],
@@ -97,6 +106,7 @@ describe("Qur'an references in English", () => {
     ["He recited al-Baqarah (2:286) in Witr.", "2:286", "https://quran.com/2/286"],
     ["“Allah does not burden a soul beyond what it can bear” (2:286).", "2:286", "https://quran.com/2/286"],
     ['"Allah does not burden a soul beyond what it can bear" [2:286]', "2:286", "https://quran.com/2/286"],
+    ["“Indeed, with hardship comes ease” (94:5).", "94:5", "https://quran.com/94/5"],
   ])("%s", (text, linked, href) => {
     expect(refs(text)).toEqual([[linked, href]]);
   });
@@ -160,6 +170,12 @@ describe("hadith references", () => {
     ["النسائي ١٢٣٤", "النسائي ١٢٣٤", "https://sunnah.com/nasai:1234"],
     ["ابن ماجه ٢٢٤", "ابن ماجه ٢٢٤", "https://sunnah.com/ibnmajah:224"],
     ["رياض الصالحين ٢٧", "رياض الصالحين ٢٧", "https://sunnah.com/riyadussalihin:27"],
+    ["Narrated by Muslim 2699.", "Muslim 2699", "https://sunnah.com/muslim:2699"],
+    ["Reported in Muslim 2699 and others.", "Muslim 2699", "https://sunnah.com/muslim:2699"],
+    ["Muslim no. 2699 says", "Muslim no. 2699", "https://sunnah.com/muslim:2699"],
+    ["The hadith of intention is in Muslim 1907.", "Muslim 1907", "https://sunnah.com/muslim:1907"],
+    ["أخرجه مسلم ٢٦٩٩ في صحيحه", "مسلم ٢٦٩٩", "https://sunnah.com/muslim:2699"],
+    ["صحيح مسلم ٢٦٩٩", "صحيح مسلم ٢٦٩٩", "https://sunnah.com/muslim:2699"],
   ])("%s", (text, linked, href) => {
     expect(refs(text)).toEqual([[linked, href]]);
   });
@@ -220,6 +236,44 @@ describe("text that is not a reference", () => {
     "الدرس من ٨:٣٠ إلى ١٠:٠٠",
     "الفجر ٥:١٠",
     "بوابة ٥",
+    // Class times after the word Qur'an.
+    "Hifz times: Quran 5:15, Tajweed 6:00.",
+    "Quran 4:30, Arabic 5:30",
+    "Sisters' Quran 4:15 and brothers' Quran 5:45.",
+    "Quran 9:30 every day",
+    "Quran 4:15 daily",
+    "Quran 5:00 Saturdays",
+    "(Quran 9:30 every day)",
+    "Quran class (Quran 4:30) and Arabic at 5:30.",
+    "Q 4:15",
+    "Section Q 4:15",
+    "See Q. 112:1-4.",
+    "Quran 4:30",
+    // Everyday words that are also surah names.
+    "It was a sad verse 3 times over.",
+    "Pick the room, verse 3 is next.",
+    "Feel verse 2",
+    "Each teen ayah 5 lesson",
+    "the noon verse 2",
+    "Text him at noon, verse 3",
+    "Hood, verse 3",
+    "Saba, ayah 2",
+    "(Room: 3)",
+    // Muslim as a word, not the book.
+    "Muslim 18 and over can apply.",
+    "Muslim 18+ only",
+    "Muslim 5 days a week",
+    "Students: Muslim 2, non-Muslim 0.",
+    "Muslim 18 or older",
+    "Muslim 3 nights a month",
+    "طالب مسلم ١٢",
+    "أنا مسلم ١٢",
+    "مسلم ٥ أيام",
+    // A bracketed time after a short quotation.
+    "Take the bus marked “Haram” (8:30) daily.",
+    "Halaqah “Quran for kids” (4:30)",
+    'He said "come at" (8:30)',
+    "“Meet us after the Asr prayer” (4:30)",
   ])("%s", (text) => {
     expect(refs(text)).toEqual([]);
   });
@@ -291,7 +345,21 @@ describe("linkScriptureRefs on HTML", () => {
 
   it("reads quotation marks across inline elements", () => {
     expect(links('<p>"Read <em>al-Baqarah 2:286</em> today"</p>')).toEqual([]);
-    expect(links('<p>"Read <em>this</em>" (2:286)</p>')).toEqual([["2:286", "https://quran.com/2/286"]]);
+    expect(links('<p>"Read <em>this</em> before you sleep" (2:286)</p>')).toEqual([["2:286", "https://quran.com/2/286"]]);
+  });
+
+  it("never reads a number split by markup as a shorter or longer one", () => {
+    expect(links("<p>Bukhari 1<sup>2</sup></p>")).toEqual([]);
+    expect(links("<p>Bukhari <span>12</span>34</p>")).toEqual([]);
+    expect(links("<p>Qur'an 2:28<b>6</b></p>")).toEqual([]);
+    expect(links("<p>Qur'an 2:<b>286</b></p>")).toEqual([["286", "https://quran.com/2/286"]]);
+    expect(links("<p><strong>Bukhari 12</strong> and more</p>")).toEqual([["Bukhari 12", "https://sunnah.com/bukhari:12"]]);
+  });
+
+  it("keeps an English word before the name out of the link", () => {
+    expect(refs("Read it at noon 68:3.")).toEqual([["noon 68:3", "https://quran.com/68/3"]]);
+    expect(refs("Read as Saffat 37:1.")).toEqual([["Saffat 37:1", "https://quran.com/37/1"]]);
+    expect(refs("Read As-Saffat 37:1.")).toEqual([["As-Saffat 37:1", "https://quran.com/37/1"]]);
   });
 
   it("links references in Arabic guides", () => {
@@ -307,7 +375,7 @@ describe("linkScriptureRefs on HTML", () => {
   });
 
   it("returns the addresses it linked, in order", () => {
-    const root = parse("<p>Muslim 2699 and Qur'an 2:255</p>");
+    const root = parse("<p>Sahih Muslim 2699 and Qur'an 2:255</p>");
     expect(linkScriptureTree(root)).toEqual(["https://sunnah.com/muslim:2699", "https://quran.com/2/255"]);
   });
 });
