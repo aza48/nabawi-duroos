@@ -57,7 +57,7 @@ export function KeyDates({ initialNow }: { initialNow: number }) {
             {fmt(lead.start)}
             {lead.end ? ` to ${fmt(lead.end)}` : ""}
           </p>
-          <div className="mt-5" role="timer" aria-label={`${days(left)} ${current ? "days left" : "days to go"}`}>
+          <div className="mt-5" role="timer" aria-label={`${days(left)} ${days(left) === 1 ? "day" : "days"} ${current ? "left" : "to go"}`}>
             <div className="grid grid-cols-4 gap-2" dir="ltr">
               {[
                 [Math.floor(left / 86_400_000), "days"],

@@ -47,7 +47,7 @@ export const GUIDES_STUDENT_LIFE: SeedGuide[] = [
 <h2>Money and flights</h2>
 <ul>
 <li>Your monthly stipend, the arrival and graduation allowances and how to see them are in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money: stipend, allowances and tickets</a>.</li>
-<li>Your yearly ticket home goes through Etimad. See <a href="/guides/etimad-account">Setting up your Etimad account</a>.</li>
+<li>Your yearly ticket home goes through Etimad. See <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</li>
 <li>New students on the educational visa hold a Visitor ID, not an iqama, so there is no iqama fee to pay. See <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</li>
 </ul>
 <h2>Sport</h2>
