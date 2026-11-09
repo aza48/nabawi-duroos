@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { COLLECTIONS, countFiles, treeOf } from "@/content/library-books";
 import { CollectionView } from "@/features/library/CoursePages";
 import { addBookHref } from "@/features/library/add-link";
-import { toArabicDigits } from "@/lib/locale";
+import { arCount } from "@/lib/arabic-count";
 
 export const revalidate = 3600;
 type Props = { params: Promise<{ slug: string }> };
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!c || !tree) return {};
   return {
     title: metaTitle(`مقررات ${c.titleAr}`),
-    description: metaDescription(`${toArabicDigits(countFiles(tree))} ملفًا من مقررات ${c.titleAr} في الجامعة الإسلامية بالمدينة المنورة وملخصاتها، مرتبة حسب المستوى وتُقرأ على MESH.`),
+    description: metaDescription(`${arCount(countFiles(tree), "file")} من مقررات ${c.titleAr} في الجامعة الإسلامية بالمدينة المنورة وملخصاتها، مرتبة حسب المستوى وتُقرأ على MESH.`),
     alternates: { canonical: `/ar/library/${c.slug}`, languages: { en: `/library/${c.slug}`, ar: `/ar/library/${c.slug}` } },
   };
 }

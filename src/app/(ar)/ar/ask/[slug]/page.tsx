@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { metaTitle } from "@/lib/text";
+import { metaDescription, metaTitle } from "@/lib/text";
 import { getDb } from "@/server/db/client";
 import { getFaq, listFaqs, listGuides } from "@/server/content/queries";
 import { getWhatsAppUrl } from "@/server/settings";
 import { FaqPage } from "@/features/content/ContentPages";
+import { faqText } from "@/lib/arabic-content";
 
 export const revalidate = 300;
 export function generateStaticParams() {
@@ -12,11 +13,17 @@ export function generateStaticParams() {
 }
 type Props = { params: Promise<{ slug: string }> };
 
-/** The answer is in English, so search engines are pointed at the English page. */
+/** A translated answer is its own page in Arabic; until then it is English, so search engines are pointed at the English page. */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = (await params).slug;
   const f = await getFaq(await getDb(), slug);
-  return f ? { title: metaTitle(f.question), alternates: { canonical: `/ask/${slug}` } } : {};
+  if (!f) return {};
+  const t = faqText(f, "ar");
+  const alternates = t.answerInArabic
+    ? { canonical: `/ar/ask/${slug}`, languages: { en: `/ask/${slug}`, ar: `/ar/ask/${slug}`, "x-default": `/ask/${slug}` } }
+    : { canonical: `/ask/${slug}` };
+  const description = t.answerInArabic ? metaDescription(t.answerHtml.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ") || t.question) : undefined;
+  return { title: metaTitle(t.question), ...(description ? { description } : {}), alternates };
 }
 
 export default async function Page({ params }: Props) {
