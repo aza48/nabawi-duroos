@@ -97,8 +97,8 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
           <Wordmark tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">
             {ar
-              ? "مركز يديره الطلاب لطلاب المدينة الناطقين بالإنجليزية."
-              : "Run by students, for English-speaking students in Madinah."}
+              ? "لطلاب المدينة الناطقين بالإنجليزية."
+              : "For English-speaking students in Madinah."}
           </p>
           <AlbaseerahSignature locale={locale} className="mt-auto pt-8" />
         </div>
@@ -119,7 +119,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
         <div>
           <p className="font-heading text-base font-semibold text-gold-bright">{ar ? "مجموعة واتساب" : "The MESH group"}</p>
           <p className="mt-3 text-sm text-white/75">
-            {ar ? "الإعلانات والفعاليات، وتجارب طلاب سبقوك إلى المدينة." : "Announcements, events and tips from students who have been here longer."}
+            {ar ? "الإعلانات والفعاليات، ونصائح من طلاب آخرين." : "Announcements, events and tips from other students."}
           </p>
           <p className="mt-2 text-sm font-semibold text-white">
             {ar ? "المجموعة خاصة بالطلاب الغربيين الناطقين بالإنجليزية فقط." : "Only for English-speaking Western students."}

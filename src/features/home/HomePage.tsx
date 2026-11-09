@@ -80,7 +80,7 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
             </span>
             <p className="mt-4 font-heading text-2xl font-bold leading-tight">The MESH group</p>
             <p className="mt-2 text-sm leading-relaxed text-white/80">
-              Announcements, events and tips from students who have been here longer. Verified information only, no debates.
+              Announcements, events and tips from other students. Verified information only, no debates.
             </p>
             <p className="mt-2 text-sm font-semibold text-white">Only for English-speaking Western students.</p>
             <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold-bright px-4 py-2 text-sm font-bold text-brand-deep">

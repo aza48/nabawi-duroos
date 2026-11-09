@@ -17,7 +17,7 @@ export function siteJsonLd(whatsappUrl: string) {
       alternateName: ["MESH", "Medina English Student Hub", "Medinah Hub"],
       url: SITE_URL,
       logo: abs("/icon"),
-      description: "Run by students, for English-speaking students and families in Madinah: live duroos schedules, study programmes, guides and the MESH WhatsApp group.",
+      description: "For English-speaking students and families in Madinah, brought to you by Albaseerah International Institute: live duroos schedules, study programmes, guides and the MESH WhatsApp group.",
       areaServed: { "@type": "City", name: "Madinah", containedInPlace: { "@type": "Country", name: "Saudi Arabia" } },
       sameAs: [whatsappUrl],
       parentOrganization: { "@type": "Organization", name: "Albaseerah International Institute", url: "https://albaseerah.org" },
