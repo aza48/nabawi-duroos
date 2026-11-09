@@ -41,6 +41,12 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 - **admin's research: published by admin (resumed) on 10 Nov, see the log; only the distance-study handbook is left.** Earlier: taken over by the Desktop agent on the owner's instruction (9 Nov, about 19:00 Riyadh).** Branch `claude/wonderful-davinci-um61gf`. Done by admin: Telegram periods c1, c2, c3, c4 and c7. Skipped on the owner's instruction: c5 (2024), c6 (2019 to 2023) and the Telegram `SYNTHESIS.md`. Desktop agent now: the official University PDFs the owner downloaded (`docs/research/iu-pdfs-2026-11/`, five readers running) and the gomedine.com crawl (`docs/research/gomedine-2026-11/`), then publishing the results in guides. Edits to another lane's guide are announced on issue 13 first.
 
 ## Waiting for the owner
+0. **Yes or no: import the official duroos schedule automatically.** The Presidency's public API lists every dars at Masjid an-Nabawi. A daily job could:
+   - add new lessons as drafts for an admin to approve
+   - flag changes in Admin > Inbox
+   - link the live streams
+
+   Until then, the tables in `docs/research/duroos-official-schedule-2026-11.md` are for adding the 13 missing lessons by hand.
 1. **AR1 migration:** apply it in production (`docs/AR1-MIGRATION.md` on the AR1 branch), then merge #49. Until then the Arabic articles cannot show.
 2. **Publish data:** `npm run shaykh:sync` (a preview), then `npm run shaykh:sync -- --apply` for the mashayikh's positions; `npm run content:sync` after #23, #45 and the AR3 batches merge.
 3. **Admin > Shaykhs:** the name and title fixes listed at the top of `MASHAYIKH_POSITIONS`.
@@ -51,6 +57,13 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **akheeai**, branch `akheeai/official-duroos-schedule`: the official schedule of duroos at Masjid an-Nabawi, read from the Presidency's public API (`cpd.prh.gov.sa/api/v1/courses?mosque=madinah`) and compared with MESH, in `docs/research/duroos-official-schedule-2026-11.md`. Findings:
+  - 19 lessons match MESH, 17 of them exactly.
+  - 13 lessons by 11 teachers are missing from MESH.
+  - The "Badr ibn Muqbil al-Badr" dars is Prof. Dr. Badr ibn Nasir al-Badr's.
+  - Tafsir as-Sa'di after Fajr runs daily except Saturday.
+  - Official titles for the shaykh name fixes.
+  - The API dates sittings in the tabular Hijri calendar, one day behind Umm al-Qura.
 - 10 Nov 2026, **admin** (resumed for the owner), branch `claude/resume-guide-validation-8uugen`: admin's research published into guides. 13 new guides (three new files `guides-admin-2026-11.ts`, `guides-admin-life-2026-11.ts`, `guides-admin-papers-2026-11.ts`), corrections to about 25 existing guides and FAQs (partial scholarship is tuition only, two tazkiyah letters, the stipend goes onto the University Al Rajhi card, ticket cities per country, results after the course evaluation, excuses uploaded online, no fixed summer semester, library 8 am to midnight, gomedine.com papers detail), discounts replaced from the official 25 Oct 2026 deck (101 offers, English and Arabic) and the sports club prices. New guide topic `studies` ("Your studies, step by step") with one icon line in `ContentPages.tsx` (web: please keep). Owner questions: `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`. Next: the distance-study handbook, see `docs/research/NEXT-STEPS-admin-research.md`. Owner: `npm run content:sync` after merge.
 - 9 Nov 2026, **aiakhee**: Lane B in PRs #54 (B1), #56 (B2), #57 (B6, on #56), #58 (B5), #60 (B4); AR1 in #49 (owner applies the migration first). Assistant PR and FAQ fixes PR in progress (assistant WIP pushed at `f226ac2`). Handoff written at the top of `docs/HANDOFF.md`. FAQ slugs admin claimed on issue 13 are left to admin.
 - 9 Nov 2026, **Desktop agent** (for the owner, taking over admin's research), branch `claude/wonderful-davinci-um61gf`: official University PDFs read into four findings files (bachelor's scholarship admission 63, postgraduate admission 63, student system 55, discounts and sports club 134), sources and text committed; study plans and gomedine.com readers still running at handoff. Status and publishing plan: `docs/research/NEXT-STEPS-admin-research.md` on that branch. Nothing published yet. Corrections to other lanes' guides will be announced here first.
