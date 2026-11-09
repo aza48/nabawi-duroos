@@ -13,6 +13,20 @@
 10. Hand off before your usage runs out (owner, 9 Nov). When your usage is nearly spent (about 85%, or when you are told it is low), start nothing new. Commit your half-done work as it is to your own branch with a commit message starting "WIP:" and push it. Add an entry under "Takeovers" in `docs/AI-LOG.md`: the task, the branch, what is done, the exact next step, the files involved, and which teammate takes over (your buddy in `docs/WORKPLAN-2026-11-09.md`, or anyone free). Comment on issue 13 naming that teammate. The teammate checks "Takeovers" first on every wake-up. It carries on, on that branch and in those files only, signing its commits "<name> for <owner>", and hands back when the owner of the task returns. Nobody merges or changes the database for someone else.
 
 
+## 9 November 2026, about 14:45 Riyadh: Desktop agent (worktree `mesh-website-audit-73b810`, pushes `HEAD:main`)
+**Production is frozen at #39 (`09d2182`).** Vercel's free plan refused every `main` deploy after it ("Deployment rate limited"), so the 12 merges after #39 and the fixes below are on `main` but not live. The owner redeploys in Vercel, or the next push after the limit frees deploys everything. Until then, check work locally, not on medinahub.org.
+
+Done
+- The 8 Nov deep audit (`docs/audit/deep-2026-11-08/README.md`) is closed apart from owner items: 0c, 0d and 0e need live rows edited in Admin, 0h is content for Lanes B and E, 0i is the AR1 to AR4 work, and 18 waits for `DATABASE_CA` from the owner. 0g (search ranking) was checked against the live index and is done.
+- Release check of `main` at `0123e09`: `docs/audit/release-checks/2026-11-09-main-0123e09.md`. It is healthy. The crawl tools (`crawl.js`, `summary.js`) are in the same folder for the next check.
+- Fixed: the unconfirmed time row says "Evening" / "مساءً" (no doubt wording; `tests/time-label-copy.test.ts`). Breadcrumb links have a 40 px tap area on phones with no layout change.
+- PR reviews (in AI-LOG, since PR comments are blocked here): #35 and #32 ok to merge.
+
+Next for the desktop agent
+1. When production deploys, crawl medinahub.org with the same tools and compare with the local report.
+2. Small tap targets left in other lanes: library folder rows (`CoursePages.tsx`, unclaimed, 20 px), "All duroos after <prayer>" (`DetailPages.tsx`, Lane A), the home cards' "All" link (naiifos).
+3. Owner items in AI-LOG: the frozen deploy, and whether the desktop agent gets an hourly wake-up.
+
 ## 9 November 2026, about 14:00 Riyadh: web (Lanes D and C, analytics)
 Everything below is merged to `main` (the owner told web to review and merge its own PRs; akheeai merged #24, #26, #27, #29). `main` at `e989e1e` passed tsc, 480 tests, the production build and a smoke test (key pages 200, unknown slugs 404, no sideways scroll at A or A++).
 
