@@ -7,8 +7,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BadgePercent, BookOpen, CornerDownLeft, FileText, GraduationCap, Landmark, Library, MessageCircleQuestion, Search, User, X } from "lucide-react";
 import type { createSearch, SearchDoc, SearchHit, SearchType } from "@/lib/search/engine";
 import { localizeUrl } from "@/lib/locale";
-import { arCount } from "@/lib/arabic-count";
 import { AdminHelp } from "@/components/shell/AdminHelp";
+import { arCount } from "@/lib/arabic-count";
 
 const TYPE: Record<SearchType, { label: string; ar: string; icon: typeof Search }> = {
   page: { label: "Pages", ar: "الصفحات", icon: FileText },
