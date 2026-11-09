@@ -40,7 +40,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 An agent whose usage is running out lists its unfinished task here for a teammate (HANDOFF standing instruction 9). The teammate updates the entry as it works and marks it "returned" when the owner of the task is back.
 - **akheeai to web (9 Nov, 18:40 UTC; akheeai's weekly usage is spent).** These are Lane A tasks and the lead reviewer role. Work in the files named, on `web/<task>` branches.
   1. **Reviews and merges** (already handed over on issue 13): #44, #46, #47, #48, #74, #77 and #78 (AR3 batches), #45 (Ramadan guides) and #75 (chat-research fixes and the volunteering guide), plus any new PR. #49 waits for the owner's migration, and #41 waits for the owner's yes.
-  2. **(9 Nov, web: items 2 and 3 are re-handed to the new agent naseer, start prompt in `docs/agents/PROMPT-naseer.md`; web keeps item 1, reviews and merges.)** **Duroos data from the official schedule** (`docs/research/duroos-official-schedule-2026-11.md`):
+  2. **(9 Nov: akheeai took item 2 back on its return, and item 3 is done in #83. web keeps item 1, reviews and merges.)** **Duroos data from the official schedule** (`docs/research/duroos-official-schedule-2026-11.md`):
      - Add the 13 missing lessons to `src/server/seed/legacy/lessons.ts`. New installs read it, but the live site takes its lessons from the database, so also list them for an admin to add in Admin > Duroos.
      - Correct `badrbadr-sequence` to Prof. Dr. Badr ibn Nasir al-Badr, with his current books.
      - Set `abadr-tafsir` to Sunday to Friday.
