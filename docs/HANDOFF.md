@@ -11,30 +11,32 @@
 8. Model: always work on Claude Opus 5.5 at high effort, or Claude Fable 5.1 when a task needs it. Never a smaller model.
 9. Cloud agents: nobody can see a cloud session, its files or its chat. Only the repo `iumuhaymin/medinahub` is shared. Commit and push everything you want others to know (code, half-done work on your own branch, notes, reports), and write your handoff in the repo, never only in the chat. Cloud containers are deleted when the session ends, so anything not pushed is lost.
 
-## 9 November 2026, about 03:20 Riyadh: cloud agent 2 (branch `claude/stoic-curie-w1ar9c`)
-Everything is pushed to the branch, never to `main`. Only `docs/AI-LOG.md` and `docs/HANDOFF.md` overlap with the other agents' branches; PR 16 (naiifos) and PR 14 have no code conflicts with it. tsc is clean and 372 tests pass. Each code fix has a test, or was checked in a browser on a local build (screenshots in `docs/screenshots/`). Every change has a log line, dated 9 Nov, for cloud agent 2 in `docs/AI-LOG.md`.
+## 9 November 2026, about 06:45 Riyadh: cloud agent 2 (branch `claude/stoic-curie-w1ar9c`)
+The usage window reset at 03:30 UTC. The next estimated reset is about 08:30 UTC, and a "MESH reset start" wake-up is booked for 08:33 UTC. Everything is pushed to the branch, never to `main`. Only `docs/AI-LOG.md` and `docs/HANDOFF.md` overlap with the other branches. tsc is clean and 375 tests pass.
 
-**Merge this branch soon: `14e6b98` fixes the admin editor deleting every guide table on save.** Until it is on `main`, do not edit the body of a guide that has a table in Admin.
+**Merge this branch early: `14e6b98` stops the admin editor deleting every guide table on save.** Merge order and owner questions are under "Waiting for the owner" in `docs/AI-LOG.md`.
 
-Audits (reports in `docs/audit/`):
+Reports in `docs/audit/`:
 - `content-2026-11-09.md`
 - `crawl-local-2026-11-09.md`
 - `code-2026-11-09.md`
 - `a11y-2026-11-09.md`
-- `admin-phone-2026-11-09.md` (33 rows, screenshots in `docs/screenshots/admin-phone/`)
+- `admin-phone-2026-11-09.md` (status of every row at the end)
+- `lighthouse-2026-11-09.md`
+- `pr-review-2026-11-09.md`
 
-Fixes so far:
-- **Code audit:** findings 1 to 5, 9, 10, 18, 19, 21, 22, 24, 25, 31 and 32.
-- **Accessibility:** guide step ticks and the lesson details list.
-- **Admin phone audit:**
-  - rows 1 to 10, 12 and 13: tables kept, no sideways scroll, save toasts, confirms for withdraw, role change and take-down, sticky toolbar, readable errors, verified box unticked, clear Activity lines, readable Dars picker
+Fixes, all logged with their shas in AI-LOG:
+- 15 code findings
+- 2 accessibility fixes
+- the admin phone audit except the owner's rows
+- 2 layout shifts
+- duplicate lesson titles
+- the JSON 404 for `/api/v1`
 
 Next for this agent:
-1. Admin phone audit rows 11 and 14 to 33 that are in unclaimed files; turn off `logging.serverFunctions` in dev (it prints passwords).
-2. The admin at 1440 px is one narrow column. That is a layout change, so ask the owner first.
-3. After PRs 14 and 16 merge, recheck code finding 6 and accessibility item 6.
-
-Left for others: see the "Left for others" list in the 02:40 entry in `docs/AI-LOG.md`, plus the admin rows the audit marks as needing the owner.
+1. Watch issue 13 for replies to the PR review and the owner questions.
+2. A fresh audit area: the Arabic pages against their English twins, and the guides and FAQ in the browser at 390 px. Make sure nothing breaks after PR 14's content lands locally.
+3. Code findings still open in unclaimed files: 20 (envelope for push and weather replies, check their clients first), 26, 27 and 30 (duplicate slug helpers).
 
 ## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
 Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
