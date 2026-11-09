@@ -252,20 +252,32 @@ a { -webkit-tap-highlight-color: transparent; }
   background: #720000; box-shadow: 0 0 0 1px #c5a059; transform: rotate(45deg);
 }
 .abs-knot-light { background: var(--border); }
+/* The same diamond at the end of the MESH wordmark's gold bar. */
+.mesh-jewel { display: block; flex: none; background: #720000; box-shadow: 0 0 0 1px #c5a059; transform: rotate(45deg); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
-/* The Albaseerah school on the home page horizon: MESH green like the masjid, its lights a soft breathing red after
-   sunset and almost nothing by day. Above the sky layer so it can be clicked; clear of the prayer labels. */
-.sky-school { display: none; position: absolute; z-index: 1; left: 57%; bottom: 24px; width: 58px; height: 31px; }
-@media (min-width: 768px) { .sky-school { display: block; } }
-@media (min-width: 1280px) { .sky-school { width: 66px; height: 35px; } }
-.sky-school svg { width: 100%; height: 100%; overflow: visible; }
-.school-body { fill: var(--brand-deep); opacity: 0.92; }
-.school-light { fill: #e0524a; filter: drop-shadow(0 0 2px rgb(224 82 74 / 0.9)) drop-shadow(0 0 6px rgb(160 20 20 / 0.55)); animation: school-glow 7s ease-in-out infinite; transition: opacity 2.4s ease; }
+/* The Albaseerah school, far beyond the home page horizon: small and low between the far and near hills, in the far
+   hills' haze, the near hills covering its foot. Its lights glow a faint breathing red after sunset and almost nothing
+   by day. The link (.sky-school-hit) sits over it in the same box, since the sky takes no clicks. */
+.sky-school, .sky-school-hit { display: none; position: absolute; left: 57%; bottom: 17px; width: 42px; height: 22px; }
+@media (min-width: 768px) { .sky-school, .sky-school-hit { display: block; } }
+@media (min-width: 1280px) { .sky-school, .sky-school-hit { width: 46px; height: 25px; bottom: 16px; } }
+.sky-school { overflow: visible; }
+.sky-school-hit { z-index: 1; border-radius: 4px; cursor: pointer; }
+/* Its label: hidden until the school is hovered or focused, then a small dark pill fades in just above it. */
+.school-tip {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; translate: -50% 4px; white-space: nowrap; pointer-events: none;
+  padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: 600; line-height: 1.3; color: #fff;
+  background: rgb(6 22 38 / 0.72); box-shadow: 0 0 0 1px rgb(197 160 89 / 0.45); backdrop-filter: blur(4px);
+  opacity: 0; transition: opacity 0.2s ease, translate 0.2s ease;
+}
+.sky-school-hit:hover .school-tip, .sky-school-hit:focus-visible .school-tip { opacity: 1; translate: -50% 0; }
+.school-body { fill: var(--brand-deep); opacity: 0.5; }
+.school-light { fill: #e0524a; filter: drop-shadow(0 0 1.5px rgb(224 82 74 / 0.8)) drop-shadow(0 0 4px rgb(160 20 20 / 0.45)); animation: school-glow 7s ease-in-out infinite; transition: opacity 2.4s ease; }
 .school-door { fill: #ef6a5c; }
-@keyframes school-glow { 0%, 100% { opacity: 0.55; } 50% { opacity: 0.88; } }
-.hero:has(.hero-sky[data-sun="up"]) .school-light { animation: none; opacity: 0.18; filter: none; }
-.sky-school:hover .school-light, .sky-school:focus-visible .school-light { animation: none; opacity: 1; filter: drop-shadow(0 0 3px rgb(239 106 92)) drop-shadow(0 0 10px rgb(180 30 30 / 0.7)); }
-@media (prefers-reduced-motion: reduce) { .school-light { animation: none; opacity: 0.8; } }
+@keyframes school-glow { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.72; } }
+.hero-sky[data-sun="up"] .school-light { animation: none; opacity: 0.12; filter: none; }
+.hero:has(.sky-school-hit:hover, .sky-school-hit:focus-visible) .school-light { animation: none; opacity: 1; filter: drop-shadow(0 0 2px rgb(239 106 92)) drop-shadow(0 0 8px rgb(180 30 30 / 0.7)); }
+@media (prefers-reduced-motion: reduce) { .school-light { animation: none; opacity: 0.6; } }
 
 .wordmark { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; line-height: 0.9; }
 .brand-line { letter-spacing: 0.18em; font-weight: 600; }
