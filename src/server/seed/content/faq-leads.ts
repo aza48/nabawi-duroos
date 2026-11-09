@@ -1,22 +1,19 @@
 /**
  * A one-sentence short answer that opens each FAQ, ahead of the full answer.
  * Each lead restates only facts already in that FAQ's answer, in at most 25 words.
- * FAQs whose answer already opens with a short paragraph that answers outright have no lead:
- * do-i-register-for-duroos, female-doctor, home-internet-no-iqama and mahad-books.
+ * FAQs whose answer already opens with a short paragraph that answers outright have no lead: female-doctor,
+ * mahad-books, and the FAQs that faqs-aiakhee-2026-11.ts rewrites or adds, apart from the first ten there,
+ * whose yes or no is said here in the lead and no longer at the start of the answer.
  * Plain text: withFaqLead escapes it and adds it as the first paragraph when the content syncs.
  */
 export const FAQ_LEADS: Record<string, string> = {
   "defer-my-place": "Do not count on it: asking to arrive later than the semester you are offered can send your visa application back.",
   "is-housing-included": "Yes for full scholarship students, whom the University houses; no for partial scholarships, which cover tuition only.",
-  "istiqdam-deposit": "With an iqama you can ask the University to sponsor them; its student affairs office tells you the refundable deposit and when requests open.",
-  "join-mesh-group": "Through any \"Join the group\" button on this site; members keep posts relevant, share only verified information and avoid debates.",
   "how-to-apply-iu": "Apply online on the national Study in Saudi portal while applications are open, choosing up to 25 programmes.",
   "stipend-amount": "It is set by college: check your own monthly figure in the Academic System, under Personal, then Rewards.",
-  "learn-arabic-before-iu": "At year-round institutes, from about 350 SAR a month, or in one-month intensive courses on the University campus.",
   "sisters-study": "At the women's marakiz, at the Masjid an-Nabawi Ma'had and Kulliyah for women, and at several paid institutes.",
-  "monthly-budget": "A single person renting needs roughly 2,900 to 6,700 SAR a month, and scholarship students in the halls spend far less.",
   "bank-account-without-iqama": "Yes. With an active Visitor ID, a National Address and a Saudi number linked to Absher, you can open one with a mada card.",
-  "drive-on-visit-visa": "Yes, on your home licence if Saudi Arabia recognises it, but a Saudi licence or a car in your name needs an iqama.",
+  "drive-on-visit-visa": "Yes, on your recognised home licence for up to a year from entry; a Saudi licence or owning a car needs an iqama.",
   "rawdah-booking": "With a free Nusuk permit booked for a set time; same-day slots are also released for people at the masjid.",
   "duroos-english": "Rarely: English lessons are few, and almost all duroos in the Haram are taught in Arabic.",
   "tajeel-vs-itithaar": "Ta'jeel is a planned semester off, requested before it starts; i'tithaar is an excuse from a semester you have already started.",
