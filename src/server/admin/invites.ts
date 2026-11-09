@@ -61,7 +61,8 @@ export async function acceptInvite(
   const res = await auth.api.createUser({
     body: { email: invite.email, password, name, role: invite.role as "owner" },
   });
-  await record(db, "system", { action: "create", entity: "admin", entityId: res.user.id, before: null, after: { id: res.user.id, name, email: invite.email, role: invite.role, invite: invite.id } });
+  // The account exists now: a failed log line must not turn a finished sign-up into an error.
+  await record(db, "system", { action: "create", entity: "admin", entityId: res.user.id, before: null, after: { id: res.user.id, name, email: invite.email, role: invite.role, invite: invite.id } }).catch(() => {});
   return { userId: res.user.id };
 }
 

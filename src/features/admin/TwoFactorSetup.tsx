@@ -15,7 +15,9 @@ export function TwoFactorSetup() {
   const [uri, setUri] = useState("");
   const [copied, setCopied] = useState<"key" | "codes" | null>(null);
   const copy = async (text: string, what: "key" | "codes") => {
-    try { await navigator.clipboard?.writeText(text); setCopied(what); setTimeout(() => setCopied(null), 2500); } catch { /* the text stays on screen to copy by hand */ }
+    // Only say "copied" when it was: without a clipboard (an http preview, an old web view) the text stays on screen.
+    if (!navigator.clipboard) return;
+    try { await navigator.clipboard.writeText(text); setCopied(what); setTimeout(() => setCopied(null), 2500); } catch { /* copy by hand */ }
   };
   const [backup, setBackup] = useState<string[]>([]);
   const [code, setCode] = useState("");

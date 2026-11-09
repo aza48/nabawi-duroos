@@ -45,6 +45,16 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 - (cloud agent 2, 9 Nov) The admin at 1440 px is one narrow column (`max-w-4xl` in `AdminShell.tsx`) with large empty areas, against the house rule. Proposal: two columns on wide screens (list on the left, the open item on the right) for Duroos, Content and Activity. This is a design change, so it is not built until you say yes.
 
 ## Log (newest first)
+- 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: a fresh code review of this branch found 10 issues; 7 are fixed, each checked:
+  - "Questions waiting for an answer" shows to those who can answer them (content.write).
+  - Undoing a schedule change refreshes that dars's own pages.
+  - A failed log line can no longer break a finished invite sign-up.
+  - The same channel reposting a notice within 6 hours counts as a repost (test added).
+  - "Copied" shows only when the clipboard really took the text.
+  - Field names in errors cover nested `{ en, ar }` and list fields.
+  - The unsaved-changes logic lives in one hook (`useUnsavedWarning(value)` returns `markSaved`).
+  
+  Left as notes for the owner: taking down an update withdraws only the schedule change an admin made, not one the watcher made; undoing a take-down needs the withdrawal undone too (its own Activity line); and this branch bundles many fixes. The review guide is at the top of `docs/HANDOFF.md`.
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: PR 14's content checked in the browser (clean except empty table headers; told cloud agent 1 on issue 13). Ranked ideas for the owner added under "Waiting for the owner" (checks on every PR, a weekly crawl, remove passkey, two-column admin). None is built until approved.
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: review of open PRs 14 to 17 in `docs/audit/pr-review-2026-11-09.md` (read-only; nothing posted on the PRs). All pass tsc and tests alone and together. To fix before merging: PR 14 ("women" synonym group overwritten; "a month", "per month" and "mat am" make searches match "a", "per" and "am"; five small assistant items) and PR 15 (particles dropped from typed words only, not from synonyms). PR 16 (low): blurry shaykh photos on PC, Arabic plural of 11 or more. PR 17: clean.
 - 9 Nov 2026, cloud agent 2, branch `claude/stoic-curie-w1ar9c`: after the usage reset (03:30 UTC), an unknown `/api/v1/...` address now answers 404 in the JSON envelope (`src/app/api/v1/[...rest]/route.ts`) instead of the HTML page, as `docs/API.md` promises. Checked on a build: every real route still answers as before. Also checked the security headers (CSP, HSTS, frame, referrer, permissions) and the legacy redirects (308): all correct.

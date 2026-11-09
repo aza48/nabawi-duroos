@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition, useRef } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, Trash2 } from "lucide-react";
 import { updateShaykhAction } from "@/app/(admin)/admin/actions";
@@ -13,16 +13,11 @@ type S = { slug: string; nameEn: string; nameAr: string; roleEn: string | null; 
 export function ShaykhForm({ shaykh }: { shaykh: S }) {
   const router = useRouter();
   const [v, setV] = useState(shaykh);
-  // Unsaved means "different from the last version saved", so a saved form never nags.
-  const snapshot = JSON.stringify(v);
-  const [baseline, setBaseline] = useState(snapshot);
-  const snapRef = useRef(snapshot);
-  useEffect(() => { snapRef.current = snapshot; }, [snapshot]);
-  useUnsavedWarning(snapshot !== baseline);
+  const markSaved = useUnsavedWarning(v);
   const [msg, setMsg] = useState<string | null>(null);
   const { notify } = useFeedback();
   // Messages show in the toast above the tab bar, never under the button where a phone hides them.
-  useEffect(() => { if (msg) { notify(msg); setBaseline(snapRef.current); } }, [msg, notify]);
+  useEffect(() => { if (msg) { notify(msg); markSaved(); } }, [msg, notify, markSaved]);
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const setFact = (i: number, k: "en" | "ar", val: string) => setV((p) => ({ ...p, facts: p.facts.map((f, j) => (j === i ? { ...f, [k]: val } : f)) }));

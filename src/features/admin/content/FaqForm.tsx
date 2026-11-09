@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition, useRef } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteFaqAction, saveFaqAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
@@ -22,18 +22,13 @@ export function FaqForm({ value }: { value: F }) {
   const { confirm, notify } = useFeedback();
   const [v, setV] = useState<F>(value);
   const [tags, setTags] = useState(value.tags.join(", "));
-  // Unsaved means "different from the last version saved", so a saved form never nags.
-  const snapshot = JSON.stringify([v, tags]);
-  const [baseline, setBaseline] = useState(snapshot);
-  const snapRef = useRef(snapshot);
-  useEffect(() => { snapRef.current = snapshot; }, [snapshot]);
-  useUnsavedWarning(snapshot !== baseline);
+  const markSaved = useUnsavedWarning([v, tags]);
   // Unticked by default: fixing a typo must not stamp the page as checked today.
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
   // Messages show in the toast above the tab bar, never under the button where a phone hides them.
-  useEffect(() => { if (msg) { notify(msg); setBaseline(snapRef.current); } }, [msg, notify]);
+  useEffect(() => { if (msg) { notify(msg); markSaved(); } }, [msg, notify, markSaved]);
   const [pending, start] = useTransition();
 
   function save(status: F["status"]) {

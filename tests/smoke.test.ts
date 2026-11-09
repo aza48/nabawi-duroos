@@ -40,6 +40,8 @@ describe("admin error messages", () => {
     expect(fieldLabel(["bodyHtml"])).toBe("Body");
     expect(fieldLabel(["url"])).toBe("Link");
     expect(fieldLabel([])).toBe("Input");
+    expect(fieldLabel(["facts", 0, "en"])).toBe("Facts (English)");
+    expect(fieldLabel(["days", 3])).toBe("Days");
   });
 });
 

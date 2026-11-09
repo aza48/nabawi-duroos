@@ -62,7 +62,7 @@ function publicPaths(entity: Entity, key: string): string[] {
   switch (entity) {
     case "lesson": return [...DUROOS_PATHS, `/duroos/lesson/${key}`, `/ar/duroos/lesson/${key}`];
     case "shaykh": return [...DUROOS_PATHS, `/duroos/shaykh/${key}`, `/ar/duroos/shaykh/${key}`];
-    case "override": case "announcement": return DUROOS_PATHS;
+    case "override": case "announcement": return [...DUROOS_PATHS];
     case "faq": return withArabic(["/ask", `/ask/${key}`]);
     case "guide": return withArabic(["/guides", `/guides/${key}`, "/"]);
     case "setting": return withArabic(["/", "/duroos", "/ask", "/guides", "/more"]);
@@ -103,7 +103,16 @@ export async function undo(db: Db, actor: Actor, auditId: number): Promise<UndoR
     if (pgCode(e) === "23503" || pgCode((e as { cause?: unknown })?.cause) === "23503") return { ok: false, error: "in_use" };
     throw e;
   }
-  refreshPublic(publicPaths(entry.entity as Entity, entry.entityId));
+  const paths = publicPaths(entry.entity as Entity, entry.entityId);
+  // An override's key is its number: name the dars too, so its own page shows the undo at once.
+  if (entry.entity === "override") {
+    const lessonId = ((current ?? entry.after ?? entry.before) as { lessonId?: number } | null)?.lessonId;
+    if (lessonId) {
+      const [l] = await db.select({ slug: lessons.slug }).from(lessons).where(eq(lessons.id, lessonId));
+      if (l) paths.push(`/duroos/lesson/${l.slug}`, `/ar/duroos/lesson/${l.slug}`);
+    }
+  }
+  refreshPublic(paths);
   await record(db, actor, { action: "undo", entity: entry.entity as Entity, entityId: entry.entityId, before: entry.after, after: entry.before, undoOf: entry.id });
   return { ok: true };
 

@@ -188,6 +188,15 @@ describe("the same notice twice", () => {
     expect(rows.filter((r) => r.status === "ignored" && r.reason?.startsWith("Same post as"))).toHaveLength(1);
   });
 
+  it("the same channel reposting the same notice an hour later is not read twice", async () => {
+    pages.drosalmadina = at("2026-11-07T06:00:00+00:00", "drosalmadina", 20) + at("2026-11-07T07:00:00+00:00", "drosalmadina", 21);
+    pages.almanashet = "<html></html>";
+    await runWatcher(db, deps(), NOW);
+    const [repost] = await db.select().from(channelPosts).where(eq(channelPosts.postId, "drosalmadina/21"));
+    expect(repost).toMatchObject({ status: "ignored" });
+    expect(repost.reason).toMatch(/^Same post as drosalmadina/);
+  });
+
   it("the same notice from the same channel a week later is read", async () => {
     const later = new Date(NOW.getTime() + 7 * 86_400_000);
     pages.drosalmadina = at("2026-11-14T06:00:00+00:00", "drosalmadina", 30);

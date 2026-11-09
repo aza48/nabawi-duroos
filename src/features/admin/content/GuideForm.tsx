@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition, useRef } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteGuideAction, saveGuideAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
@@ -20,18 +20,13 @@ export function GuideForm({ value }: { value: G }) {
   const router = useRouter();
   const { confirm, notify } = useFeedback();
   const [v, setV] = useState<G>(value);
-  // Unsaved means "different from the last version saved", so a saved form never nags.
-  const snapshot = JSON.stringify(v);
-  const [baseline, setBaseline] = useState(snapshot);
-  const snapRef = useRef(snapshot);
-  useEffect(() => { snapRef.current = snapshot; }, [snapshot]);
-  useUnsavedWarning(snapshot !== baseline);
+  const markSaved = useUnsavedWarning(v);
   // Unticked by default: fixing a typo must not stamp the page as checked today.
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
   // Messages show in the toast above the tab bar, never under the button where a phone hides them.
-  useEffect(() => { if (msg) { notify(msg); setBaseline(snapRef.current); } }, [msg, notify]);
+  useEffect(() => { if (msg) { notify(msg); markSaved(); } }, [msg, notify, markSaved]);
   const [pending, start] = useTransition();
 
   function save(status: G["status"]) {

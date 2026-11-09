@@ -87,7 +87,8 @@ export function AdminsManager({ admins, selfId }: { admins: Admin[]; selfId: str
             <p className="break-all font-mono text-xs">{link}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               <button type="button" className={btnGhost} onClick={async () => {
-                try { await navigator.clipboard?.writeText(link); setCopied(true); setTimeout(() => setCopied(false), 2500); } catch { /* the link stays on screen */ }
+                if (!navigator.clipboard) return;
+                try { await navigator.clipboard.writeText(link); setCopied(true); setTimeout(() => setCopied(false), 2500); } catch { /* the link stays on screen */ }
               }}><Copy size={14} /> {copied ? "Link copied" : "Copy link"}</button>
               {/* On a phone the link usually goes by WhatsApp: the share sheet saves a copy and paste. */}
               <a className={btnGhost} href={`https://wa.me/?text=${encodeURIComponent(`Your MESH admin invite (works once, 72 hours): ${link}`)}`} target="_blank" rel="noopener noreferrer">Send on WhatsApp</a>

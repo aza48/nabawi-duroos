@@ -52,7 +52,7 @@ export default async function Inbox() {
     <div className="mx-auto max-w-2xl">
       <p className="text-xs font-medium uppercase tracking-wide text-muted">{today.hijri.en} · {today.gregorian.en}</p>
       <h1 className="mt-1 text-2xl font-semibold">Inbox</h1>
-      <NeedsYou items={duroos ? attention : attention.filter((a) => ["drafts", "content", "programmes"].includes(a.key))} />
+      <NeedsYou items={attention.filter((a) => (a.key === "questions" ? can(actor.role, "content.write") : duroos || ["drafts", "content", "programmes"].includes(a.key)))} />
 
       <div className="mt-4 grid grid-cols-2 gap-2.5">
         {actions.map(({ href, label, icon: Icon }) => (

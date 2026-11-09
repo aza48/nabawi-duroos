@@ -1,12 +1,19 @@
 "use client";
 
-import { useEffect } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 /**
- * While a form has unsaved edits, leaving asks first: closing or reloading the tab (the browser's
- * own prompt) and tapping any link inside the app. On a phone one stray tap on the tab bar lost a long edit.
+ * While a form differs from its last saved version, leaving asks first: closing or reloading the tab
+ * (the browser's own prompt) and tapping any link inside the app. On a phone one stray tap on the tab
+ * bar lost a long edit. Returns `markSaved`, to call after a successful save.
  */
-export function useUnsavedWarning(dirty: boolean) {
+export function useUnsavedWarning(value: unknown): () => void {
+  const snapshot = useMemo(() => JSON.stringify(value), [value]);
+  const [baseline, setBaseline] = useState(snapshot);
+  const latest = useRef(snapshot);
+  useEffect(() => { latest.current = snapshot; }, [snapshot]);
+  const dirty = snapshot !== baseline;
+
   useEffect(() => {
     if (!dirty) return;
     const beforeUnload = (e: BeforeUnloadEvent) => {
@@ -28,4 +35,6 @@ export function useUnsavedWarning(dirty: boolean) {
       document.removeEventListener("click", click, true);
     };
   }, [dirty]);
+
+  return useCallback(() => setBaseline(latest.current), []);
 }

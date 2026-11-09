@@ -1,7 +1,7 @@
 import { isBroadSource, sourceRank } from "./sources";
 import { worthReading } from "./prefilter";
 import { createHash } from "node:crypto";
-import { and, eq, gte, inArray, lte, ne } from "drizzle-orm";
+import { and, eq, gte, inArray, lte, ne, or } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { channelPosts, lessonLive, lessons, masjids, shaykhs, sources } from "@/server/db/schema";
 import { isLiveNotice, matchLiveLesson, pickLiveLink } from "./live-notice";
@@ -71,6 +71,8 @@ export async function runWatcher(
   const ERROR_RETRY_MS = 30 * 60_000;
   /** A forwarded copy of a notice counts as the same post only within this many hours of the first. */
   const TWIN_WINDOW_MS = 48 * 3_600_000;
+  /** The same channel posting the same text again this soon is a repost, not a new notice. */
+  const REPOST_WINDOW_MS = 6 * 3_600_000;
 
   for (const src of allSources) {
     // Forwarded WhatsApp messages arrive through the webhook, not from a channel page.
@@ -112,9 +114,11 @@ export async function runWatcher(
           .from(channelPosts)
           .where(and(
             eq(channelPosts.textHash, textHash),
-            ne(channelPosts.sourceHandle, src.handle),
-            gte(channelPosts.postedAt, new Date(p.postedAt.getTime() - TWIN_WINDOW_MS)),
-            lte(channelPosts.postedAt, new Date(p.postedAt.getTime() + TWIN_WINDOW_MS)),
+            // Another channel within two days, or the same channel reposting within a few hours.
+            or(
+              and(ne(channelPosts.sourceHandle, src.handle), gte(channelPosts.postedAt, new Date(p.postedAt.getTime() - TWIN_WINDOW_MS)), lte(channelPosts.postedAt, new Date(p.postedAt.getTime() + TWIN_WINDOW_MS))),
+              and(eq(channelPosts.sourceHandle, src.handle), gte(channelPosts.postedAt, new Date(p.postedAt.getTime() - REPOST_WINDOW_MS)), lte(channelPosts.postedAt, new Date(p.postedAt.getTime() + REPOST_WINDOW_MS))),
+            ),
             ne(channelPosts.status, "new"),
             ne(channelPosts.status, "error"),
           ))

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition, useRef } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { createLessonAction, updateLessonAction } from "@/app/(admin)/admin/actions";
 import { btnPrimary, ErrorNote, Field, inputCls } from "../ui";
@@ -27,18 +27,13 @@ export function LessonForm({
 }) {
   const router = useRouter();
   const [v, setV] = useState<Lesson>(lesson);
-  // Unsaved means "different from the last version saved", so a saved form never nags.
-  const snapshot = JSON.stringify(v);
-  const [baseline, setBaseline] = useState(snapshot);
-  const snapRef = useRef(snapshot);
-  useEffect(() => { snapRef.current = snapshot; }, [snapshot]);
-  useUnsavedWarning(snapshot !== baseline);
+  const markSaved = useUnsavedWarning(v);
   // No silent default: a new dars must be given its shaykh on purpose.
   const [shaykhSlug, setShaykhSlug] = useState("");
   const [msg, setMsg] = useState<string | null>(null);
   const { notify } = useFeedback();
   // Messages show in the toast above the tab bar, never under the button where a phone hides them.
-  useEffect(() => { if (msg) { notify(msg); setBaseline(snapRef.current); } }, [msg, notify]);
+  useEffect(() => { if (msg) { notify(msg); markSaved(); } }, [msg, notify, markSaved]);
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const set = <K extends keyof Lesson>(k: K, val: Lesson[K]) => setV((p) => ({ ...p, [k]: val }));
