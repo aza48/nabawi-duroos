@@ -290,6 +290,11 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Arrive at the time on your booking and follow the stewards. The barcode on the permit opens the automatic gates only at your slot time, and people with special needs have their own path.</li>
 <li>Pray two rak'ahs and make du'a calmly, then make room for others.</li>
 </ol>
+<ul>
+<li><strong>Book before you arrive.</strong> A visitor creates the Nusuk account with the passport and visa numbers as soon as the visa is issued and books from home, because slots in the busy seasons are gone by the time people land.</li>
+<li><strong>Book under the right category.</strong> A permit booked as a man does not open the women's gate, and the women's times are different. Check the category before you confirm.</li>
+<li><strong>Use only the official Nusuk app,</strong> published by the Ministry of Hajj and Umrah. Nobody can sell you a Rawdah permit or guaranteed entry: the permit is free and in your own name, and an offer of paid access is a scam.</li>
+</ul>
 <h2>Al-Baqi'</h2>
 <p>Jannat al-Baqi', where many Companions and members of the Prophet's ﷺ family are buried, is on the eastern side of the Haram. It is open to men. Visits can be booked, and the crowd level checked, on the Baqi' portal of Madinah Municipality at <a href="https://ekram.amana-md.gov.sa/">ekram.amana-md.gov.sa</a>.</p>
 <h2>Umrah from Madinah</h2>
@@ -379,7 +384,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td>From 7 days before expiry to the expiry date</td><td>100</td></tr>
 <tr><td>In the 3 days after expiry</td><td>100, plus a 500 fine</td></tr>
 </tbody></table>
-<p>The total stay, with every extension, is 180 days at most. A tourist eVisa cannot be extended at all. If the online request fails, use the Absher communication service. To find a visitor's border number or check a visa without signing in, see <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
+<p>The total stay, with every extension, is 180 days at most. A tourist eVisa cannot be extended at all. Absher does not show whether the fee has arrived: if it answers that the visa cannot be extended because of insufficient funds, the payment has not reached it, so check that you paid against the visitor's border number, then try again. If the online request fails for another reason, use the Absher communication service. To find a visitor's border number or check a visa without signing in, see <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
 <h2>What an iqama adds</h2>
 <ul>
 <li>A Saudi driving licence and a car in your name.</li>
@@ -481,7 +486,7 @@ export const GUIDES_2026: SeedGuide[] = [
     slug: "drivers-license",
     stage: "getting-settled",
     title: "Driving in Madinah: your Saudi driving licence, the driving school, insurance, fines and renting a car",
-    summary: "Who can drive on what, swapping a foreign licence at the model driving school, the driving school route, renewal, insurance and Najm, the common fines and the Saher cameras, and renting or buying a car. The swap needs an iqama.",
+    summary: "Who can drive on what, swapping a foreign licence at the model driving school, the driving school route, renewal, insurance, what to do after an accident, the common fines and the Saher cameras, renting or buying a car, and keeping a car legal in Absher (istimara, inspection, authorising another driver). The swap needs an iqama.",
     bodyHtml: `
 <p>Checked November 2026. Madinah is an easy city to drive in: wide roads, cheap fuel, and parking at the Haram that fills only on Fridays and in Ramadan. What you need in order to drive depends on what you hold.</p>
 <table><thead><tr><th>You hold</th><th>You can drive on</th><th>A Saudi licence</th><th>Buying a car</th></tr></thead><tbody>
@@ -534,8 +539,18 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Third-party insurance is the law.</strong> Every car must have it, and Absher will not register a car to you, or transfer one, without a policy in your name. Comprehensive cover for your own car is optional, and a bank that finances a car insists on it.</li>
 <li><strong>Compare policies online.</strong> Several Saudi comparison sites quote every licensed insurer at once. Prices depend on the car, your age and your record.</li>
 <li><strong>A small accident with nobody hurt:</strong> move to the side if you can, do not leave, and report it through the Najm app or on 920000560. Najm's inspector records the damage, decides fault and sends the report to both insurers. Report within 24 hours.</li>
-<li><strong>Anyone hurt, or a dispute:</strong> call 911 and wait for the traffic police.</li>
+<li><strong>Anyone hurt, a fire, neither car insured, or a dispute:</strong> call 911, or the traffic police on 993, and wait for them.</li>
 </ul>
+<h3>After an accident, step by step</h3>
+<ol>
+<li><strong>Report it in the Najm app.</strong> Sign up with your iqama number and approve it in Nafath, press Report an accident, add the other car's details and upload photos of both cars. Najm assigns an inspector. A text from Najm confirms the case, and a second one from the traffic police confirms the accident report.</li>
+<li><strong>In a rented car,</strong> call the rental company straight after Najm. It handles the rest with you.</li>
+<li><strong>Have the damage estimated</strong> (تقدير, Taqdeer) with the Najm report. The estimate sets what the insurer pays.</li>
+<li><strong>Claim.</strong> If the other driver is at fault, claim from his insurer on its website and upload the reports. If you are fully at fault and hold comprehensive cover, claim from your own insurer. The insurer pays within 15 days of confirming the claim.</li>
+<li><strong>The other driver has no insurance?</strong> Book a traffic department (Muroor) appointment, take the estimate, and ask the officer for the final report. With comprehensive cover, hand that report to your insurer. With third-party cover only, file the claim on Najiz, which sends it to the Taradhi platform for an online reconciliation session, and if he still does not pay, ask the execution court on Najiz to collect.</li>
+<li><strong>Issue a repair permit before a garage touches the car:</strong> Absher, Vehicles, Vehicle Management, choose the car, then Issue vehicle repair permit. For an accident on record, issue it within 90 days of the accident. For damage with no recorded accident, Absher gives one permit per car each calendar year; for a second one, go to the traffic department. The garage then takes up the permit, and a permit no garage has taken up within 24 hours expires.</li>
+<li><strong>Need a record of your accidents?</strong> Absher, General Services, Absher Reports, Request report, Traffic accidents. It lists the last two years and costs 28.75 SAR.</li>
+</ol>
 <h2>Fines, cameras and points</h2>
 <p>Madinah's main roads carry Saher cameras for speed and red lights, and mobile cameras appear in bus lanes. Fines arrive in Absher without a paper ticket, so check your violations every month, pay in your banking app under government payments, and object in Absher within 30 days if a fine is wrong. As of November 2026 the common fines are:</p>
 <table><thead><tr><th>Violation</th><th>Fine (SAR)</th></tr></thead><tbody>
@@ -551,6 +566,38 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Renting is the answer for anyone without an iqama, and for families with visitors. Companies at the airport and across the city rent by the day, the week and the month. The usual conditions: you are 21 or over, you hold a licence in English or Arabic or an International Driving Permit with it, and you pay with a credit card in your own name. Every camera fine during the rental is charged to you, with the company's handling fee on top, so drive as if the car were yours. A monthly rental of a small car is one of the cheaper ways for a family to have wheels for a season.</p>
 <h2>Buying a car</h2>
 <p>With an iqama you can buy a used car and transfer it to your name in Absher. The checks to make before you pay, and the steps, are in <a href="/ask/buying-a-used-car">Can I buy a used car as a student, and what do I need?</a>. When you leave the Kingdom, sell it first: a car in your name blocks a final exit. See <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
+<h2>Keeping your car legal: Absher's vehicle services</h2>
+<p>Everything below is in Absher under <strong>Vehicles</strong>, then <strong>Services</strong>, then <strong>Vehicle Management</strong> (إدارة المركبات), where you choose the car.</p>
+<h3>Renewing the registration (istimara)</h3>
+<ol>
+<li>Renew once the istimara has less than 180 days left. Absher renews only with valid insurance, a valid periodic inspection, every traffic fine paid, and any late fee on the registration paid.</li>
+<li>Choose the car, then <strong>Renew vehicle registration</strong>. Absher shows the fee: it depends on the engine size for cars made in 2015 or earlier and on fuel economy for later cars, from nothing for the most efficient up to 190 SAR a year. Pay it in your banking app, then accept the terms and confirm in Absher.</li>
+<li>A card with no expiry date printed on it stays valid, so keep it. Otherwise order the new card by post within 90 days of the renewal, or collect it at the traffic department with an appointment for Print istimara (طباعة رخصة سير مركبة).</li>
+</ol>
+<h3>The periodic inspection (Fahas)</h3>
+<ul>
+<li>A new private car has its first inspection three years after it is first registered, then one every year. A valid inspection is needed to renew the istimara and to sell the car.</li>
+<li>Inspection centres take appointments only. Book at <a href="https://vi.vsafety.sa/">vi.vsafety.sa</a>: enter your name, mobile number and email (or the details of the person you send with the car), choose Registered vehicle, Saudi Arabia, your plate number and Private vehicle, then Periodic inspection, your region, the centre, the date and the time, and confirm with the code sent to your phone. Keep the confirmation.</li>
+<li>To check the inspection date, open the car in Vehicle Management and press More details.</li>
+</ul>
+<h3>Insurance</h3>
+<p>Open the car in Vehicle Management to see the insurer, the start date, the status and the expiry date of its policy. Renew before that date: driving uninsured is fined, and the istimara cannot be renewed without a valid policy.</p>
+<h3>Letting someone else drive your car</h3>
+<ol>
+<li>Open the car and choose <strong>Issue driver authorisation</strong>, then accept the terms.</li>
+<li>Enter the driver's iqama number and date of birth, choose inside or outside Saudi Arabia, and the length.</li>
+<li>Enter the code sent to the driver's Absher mobile number, so keep the driver beside you, then print the confirmation.</li>
+</ol>
+<ul>
+<li>The car needs a valid istimara and insurance. The driver needs a valid iqama and licence, an Absher account and no unpaid fines.</li>
+<li>Inside the Kingdom you can authorise any iqama holder, for any length. Outside the Kingdom, only members of your family, and only for as long as their exit and re-entry visa runs.</li>
+<li>Traffic fines during the authorisation are recorded against the authorised driver.</li>
+<li>To end it early, open View or cancel driver authorisation. The driver can also end it under Received driver authorisations, with a code sent to you.</li>
+</ul>
+<h3>Your car is not where you parked it</h3>
+<p>Before you report a theft, check whether the traffic police towed it: Absher, Vehicles, Inquiries, then Impounded vehicles inquiry, and choose the car. The page shows the date and the place if it was towed.</p>
+<h3>Cards by post</h3>
+<p>A new or renewed driving licence, istimara or iqama can be posted to your National Address within 90 days of being issued: Absher, My Services, Postal Delivery Service, then Request postal document delivery. Choose the document, the address and your mobile number. Saudi Post sends a text with a link to pay 17.25 SAR, then a second text with the tracking number. The card arrives in about three working days.</p>
 <h2>Driving well in Madinah</h2>
 <ul>
 <li>Fuel is sold by the litre at every station, 2.18 SAR for 91 and 2.33 SAR for 95 as of November 2026, and most stations take cards and phone payment.</li>
@@ -662,8 +709,15 @@ export const GUIDES_2026: SeedGuide[] = [
 </ol>
 <h3>2. The birth certificate in Absher</h3>
 <p>Once the birth is registered, sign in to Absher and open <strong>Services</strong>, then <strong>Civil Affairs services</strong>, then <strong>Birth certificate services</strong>, then <strong>View birth certificate</strong>. View it, check it and print it. Register the birth promptly: a late birth certificate carries a fine and holds up your iqama renewal.</p>
+<p>The hospital's notice reaches the Ministry of Interior first, and a text message tells you when it has arrived. This takes up to two weeks. If no certificate shows after that message:</p>
+<ol>
+<li>In Absher, open <strong>Services</strong>, then <strong>Civil Affairs</strong>, then <strong>New Born Registration</strong>. It works while the baby is under one year old and once your National Address is registered.</li>
+<li>Check the spelling of every name and the date of birth. If anything is wrong, stop and ask the hospital to correct its notice.</li>
+<li>Accept the terms, then choose postal delivery of the certificate to your National Address, or collect it at a Civil Affairs office.</li>
+</ol>
+<p>If the online request does not go through, book a Civil Affairs appointment in Absher with the service Birth registration (تسجيل واقعة ميلاد), at any office in the region where your baby was born: see <a href="/guides/family-records-on-absher#booking-a-jawazat-civil-affairs-or-traffic-appointment">Booking an appointment</a>. Arrive 20 minutes early with the text message from the Ministry of Interior, copies of both parents' passports, the father's iqama and the mother's if she has one. If the mother is not on the father's iqama, for example because she is on a visit visa, add the marriage certificate translated into Arabic and a copy of her Saudi visa. The office gives you the birth registration form, and the certificate is printed at the counter.</p>
 <h3>3. The baby's passport</h3>
-<p>Your embassy registers the birth and issues the baby's passport. Embassies ask for the birth notification translated by a translator they accept, so read your embassy's website for its list before you go, and take copies of both parents' passports and iqamas.</p>
+<p>Your embassy registers the birth and issues the baby's passport. Embassies ask for the birth notification translated by a translator they accept, so read your embassy's website for its list before you go, and take copies of both parents' passports and iqamas. If your embassy wants the Saudi birth certificate attested, the Ministry of Foreign Affairs attests it first.</p>
 <h3>4. Your baby's iqama</h3>
 <p>If you hold an iqama, add your baby to it as a dependant. Send one request for each child, twins included.</p>
 <table><thead><tr><th>Where the baby was born</th><th>Fee</th></tr></thead><tbody>
@@ -680,6 +734,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </ol>
 <p>This Tawasul is the Ministry of Interior's request service inside Absher, not the University's Tawasul. Add the baby within three months of a baby born abroad arriving, to avoid a fine. The fees for dependants are in <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>, and the family services in Absher are in <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
 <p>On a Visitor ID there is no iqama to add the baby to. Register the birth and get the passport the same way, then ask the Deanship of Admission and Registration through Tawasul, subject Educational visa, how your baby's stay is arranged.</p>
+<p><strong>Mother on a visit visa?</strong> A baby born here to a mother on a family visit visa has no entry record, so Jawazat has to clear the baby to leave. Follow the steps above up to the passport. Then, at least 15 days before you travel, book a Jawazat appointment for Resident services and go to the Expatriate Affairs section (إدارة شؤون الوافدين) with the baby's passport, the father's iqama and passport, the mother's passport with her Saudi visa, the marriage certificate translated into Arabic and the birth text message from the Ministry of Interior, each with a copy. Jawazat stamps the baby's exit in the passport.</p>
 <h3>5. Vaccinations</h3>
 <p>The first vaccines are given in the hospital before you go home. The rest follow the national schedule at your primary health care centre: see <a href="/ask/baby-vaccinations">How do I get my baby vaccinated in Madinah?</a></p>`,
   },
@@ -766,7 +821,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <blockquote><p>Note: These steps use an iqama number. If you are here on a Visitor ID, ask your operator in a branch which lines are registered to your passport.</p></blockquote>
 <h2>A number you do not recognise</h2>
 <ol>
-<li>Contact the operator (STC 900, Mobily 1100, Zain 959, or a branch) with your iqama details ready, and ask them to cancel it.</li>
+<li>Contact the operator (STC 900, Mobily 1100, Zain 959, or a branch) with your iqama details ready, and ask them to cancel it. In a branch, show your iqama and give the number: the line is cancelled within 24 hours.</li>
 <li>File a complaint and keep the reference number.</li>
 <li>If the operator has not fixed it within five working days, escalate to CST through its telecom complaints service.</li>
 <li>Check Mutasil again to confirm the number is gone.</li>
@@ -775,7 +830,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Absher sends its verification codes to the number on file, so update it when you change your SIM. The new number must be active, able to receive SMS, and registered to your own ID (or that of a close relative). Your bank keeps its own record of your number, so update it with the bank as well.</p>
 <ul>
 <li><strong>Absher app:</strong> before logging in, open Digital Identity Management, choose Change Mobile Number, enter your iqama or ID number and date of birth, enter the new number and finish the biometric check.</li>
-<li><strong>Nafath app:</strong> open Digital Identity Account Management, choose Digital Identity Mobile Number Update, enter the details and finish the biometric check.</li>
+<li><strong>Nafath app:</strong> open Digital Identity Account Management, choose Digital Identity Mobile Number Update, enter your iqama number, then the new number and the code sent to it, and finish the biometric check. For the fingerprint step, lay your left hand flat and let the camera capture the four fingers, without the thumb. If it fails, adjust the distance and the focus and try again. The new number works in Absher about 10 minutes later.</li>
 <li><strong>Absher kiosk</strong> (at Jawazat offices, malls, airports and government service centres): choose your language, enter your iqama or ID number, choose Update Mobile Number, scan your fingerprint, then enter the new number and the code sent to it. This is the way to go if you no longer have your old number.</li>
 </ul>
 <h2>Activating Absher</h2>

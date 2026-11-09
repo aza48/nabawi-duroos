@@ -1,0 +1,2 @@
+  { slug: "istiqdam-deposit", category: "family", question: "Can I sponsor my family, and what is the deposit?", answerHtml: "<p>Students with an iqama can ask the University to sponsor a wife and children on a family residency (istiqdam). The University sets the refundable deposit and decides when requests are open, so ask the student affairs office for both before you plan or pay. Students on the educational visa with a Visitor ID follow different rules, so ask the University which route applies to you.</p>
+" },

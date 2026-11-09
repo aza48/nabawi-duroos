@@ -1,0 +1,7 @@
+  { slug: "blackboard-phishing", category: "university", question: "Someone posted a link in my Blackboard class chat. Is it safe?", answerHtml: "<p>Do not open it. Fake accounts posing as students post links named things like \"timetable\" or \"class WhatsApp group\". Opening one and signing in can hand over your University account, and with it they can withdraw you from your courses. Report the account, leave the group, and warn your class.</p>
+<p>Your teachers reach you through your University email and Blackboard messages. Never type your password or a verification code into a page you reached from a link. If you already have:</p>
+<ol><li>Change your password at once: at <a href=\"https://iu.edu.sa/\">iu.edu.sa</a>, tap the user account icon, then <strong>Change password</strong> (تغيير كلمة المرور).</li>
+<li>Check that the mobile number on your account is still yours, and that your registered courses have not changed.</li>
+<li>Tell the Deanship of IT and E-Learning on <strong>it.care@iu.edu.sa</strong>, and report the fake account to <strong>bb@iu.edu.sa</strong>.</li>
+</ol><p>Treat \"investment\" offers in student groups the same way, and if a stranger sends you money \"by mistake\" and asks you to forward it, do not transfer anything: tell your bank.</p>
+", tags: ["blackboard", "security", "phishing", "account", "scam"] },

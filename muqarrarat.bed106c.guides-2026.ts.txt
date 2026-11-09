@@ -1,0 +1,2 @@
+  { slug: "muqarrarat", category: "university", question: "Where are the muqarrarat for my college?", answerHtml: "<p>The <a href=\"/library#muqarrarat\">Jamiah library</a> has a folder for every college and level. If you've written a takhlees that could help others, send it to us and we'll review it and add it.</p>
+" },

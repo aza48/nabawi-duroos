@@ -1,0 +1,133 @@
+    slug: "etimad-account",
+    stage: "study",
+    title: "Your University ticket: Etimad, the travel order and the rules",
+    summary: "Who gets the arrival, yearly and final tickets and how each is requested, setting up Etimad so your details match your passport, how group tickets arrive, the 2026 ticket rules, changing a date for an exam clash, and what to do when a ticket is stuck.",
+    bodyHtml: `
+<p>Checked November 2026. Full scholarship students receive a discounted economy ticket home and back at the end of each academic year, an arrival ticket when they first come, and a final ticket when they graduate. Every one of them is a government ticket: the University issues a travel order (أمر إركاب) on Etimad, the government platform, and a travel agency books the flight against it. No travel order, no ticket. This guide covers the account, the yearly ticket from request to boarding, and the rules.</p>
+
+<h2>Who gets a ticket, and when</h2>
+
+<table><thead><tr><th>Ticket</th><th>Who</th><th>How it is requested</th></tr>
+</thead><tbody>
+<tr><td>Arrival ticket</td><td>New full scholarship students</td><td>On Minhati, with your passport and visa uploaded and your name exactly as in the passport. Travel Management prepares the order and the agency issues the ticket</td></tr>
+
+<tr><td>Yearly ticket home</td><td>Full scholarship students, at the end of the academic year, unless another party already provides them with a ticket</td><td>Through Travel Management, which collects the travel lists months before the summer break, through your nationality representative and Etimad. Bachelor's and Ma'had students travel on group bookings with dates the University sets</td></tr>
+
+<tr><td>Final ticket</td><td>Graduates, and students whose studies have ended</td><td>Issued only after Travel Management confirms your clearance in the University's records</td></tr>
+
+<tr><td>Graduate studies</td><td>Students admitted to a master's or PhD</td><td>Through Travel Management on admission. Master's and PhD students get individual tickets, not group bookings</td></tr>
+
+</tbody></table>
+<p>Partial (internal) scholarships include no tickets. Family tickets are at your own cost. The Travel Administration issues no tickets during the academic year: travel in term, with your college's permission, is at your own cost. Unused student tickets are cancelled by Travel Management and their value goes back to the University, so a ticket you cannot use is best cancelled early.</p>
+
+<h2>Setting up your Etimad account</h2>
+
+<ol>
+<li>Open <a href="https://portal.etimad.sa/">portal.etimad.sa</a> and choose Log in.</li>
+
+<li>Pick <strong>Individuals</strong>, then sign in through <strong>Nafath</strong>.</li>
+
+<li>Enter your mobile number and email, accept the terms and save.</li>
+
+<li>Type in the code sent to your phone, then confirm the link sent to your email.</li>
+
+<li>Back on the site, open <strong>Travel orders</strong> (أوامر الإركاب), then your <strong>Profile</strong>.</li>
+
+<li>Press <strong>Edit profile</strong> and check every detail exactly matches your passport, then save. A confirmation message means you are done.</li>
+
+</ol>
+<blockquote><p>Note: A spelling mismatch between Etimad and your passport is the most common reason a ticket gets stuck. Fix it before you request your ticket.</p>
+</blockquote>
+<p>Do the first sign-in while you are in Saudi Arabia, through Nafath. After that the account also works from abroad. Keep the mobile number on the account alive, because the codes go there, and use an email address you read: your e-ticket is sent to the email on your Etimad profile.</p>
+
+<h2>Check your ID number is on your University record</h2>
+
+<p>Without your Visitor ID or iqama number in the Academic System, the Travel Administration cannot issue your tickets or visas. Check it in either of two ways:</p>
+
+<ul>
+<li>On the University website, open Travel and Visas (السفر والتأشيرات), sign in with your University login, open Students' Basic Information (المعلومات الأساسية للطلاب) and look under ID number (رقم الهوية).</li>
+
+<li>Or open Academic Services (الخدمات الأكاديمية), then Academic Information (المعلومات الأكاديمية), and look under ID number (رقم الهوية).</li>
+
+</ul>
+<p>If it is empty or wrong, go to the Travel Administration (إدارة السفر) with your passport and ID before the summer travel lists close.</p>
+
+<h2>From request to boarding pass</h2>
+
+<ol>
+<li><strong>Check your profile on Etimad</strong> early in the second semester: name, passport number, passport expiry, phone and email.</li>
+
+<li><strong>Sign up when the University asks.</strong> Travel Management collects the summer lists months ahead, through your nationality representative or a form and Etimad. Choose your city from the ones set for your country, or say that you do not want a ticket. A student who misses the list gets no ticket. Graduating students are not on this list, because their final ticket is separate.</li>
+
+<li><strong>Watch Etimad.</strong> Your travel order appears under Travel orders once it is approved. On a group booking the order sits under the group leader's name, so not seeing your own order there is normal.</li>
+
+<li><strong>Find your ticket.</strong> Tickets come out in batches from mid April to mid May. A group ticket arrives as one PDF from Saudia, emailed to one student in the group, with everyone's tickets in it. Search all your email, spam and junk included, for "Saudia" and "flight confirmation", going back a month. If you receive a ticket that is not yours, pass it to your representative. Check the name, the dates and the airports the day you receive it.</li>
+
+<li><strong>Get your own e-ticket from a group booking</strong> if you want one: in the Saudia app open Assistant, then Change or cancel flight, enter the booking reference and your last name and continue as if changing (nothing is changed), then choose Download e-tickets on the Saudia website.</li>
+
+<li><strong>Do not book your own return.</strong> The ticket is a round trip, and the University books the return date for the start of the new year.</li>
+
+<li><strong>Get your exit and re-entry visa</strong> if you hold an iqama, with dates that cover the whole trip. See <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>.</li>
+
+<li><strong>Check in online</strong> and arrive early. A no-show loses the whole ticket.</li>
+
+</ol>
+<h2>The rules for student tickets</h2>
+
+<p>The University issues a ticket only against an official travel order on Etimad, so no open tickets are issued. The rules for tickets issued from 2026:</p>
+
+<ol>
+<li><strong>Where to:</strong> one of the cities the University sets for each country, in your own country or in the country that issued the visa you arrived on. In summer 2026, for example, students going to the USA chose New York (JFK) or Washington DC (IAD). A connection beyond that city is a separate booking at your own cost.</li>
+
+<li><strong>Validity:</strong> 3 months from the first travel date. After that no changes are possible.</li>
+
+<li><strong>Name:</strong> the passenger name cannot be changed, which is why it must match your passport from the start.</li>
+
+<li><strong>Airports:</strong> the destination and the departure and arrival airports of the outbound flight cannot be changed.</li>
+
+<li><strong>Date and time:</strong> can be changed, but you pay the fare difference and any fees.</li>
+
+<li><strong>Class:</strong> no downgrades. You can upgrade at your own cost.</li>
+
+<li><strong>Cancelling:</strong> the ticket goes back to the University. There is no cash refund to you.</li>
+
+<li><strong>Missing the flight:</strong> a no-show loses the whole ticket.</li>
+
+<li><strong>Refund vouchers:</strong> after any change, no voucher goes to the student and nothing can be added to a wallet.</li>
+
+<li><strong>Baggage:</strong> one cabin bag and two checked bags, within the airline's own limits.</li>
+
+</ol>
+<blockquote><p>Tip: Pick your date carefully before the travel order is issued. Changing it later costs you money, and missing the flight costs you the ticket.</p>
+</blockquote>
+<h2>Common problems</h2>
+
+<table><thead><tr><th>Problem</th><th>What to do</th></tr>
+</thead><tbody>
+<tr><td>Nafath will not sign you in</td><td>Activate Nafath first: see <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a></td></tr>
+
+<tr><td>Your name on the ticket differs from the passport</td><td>Tell Travel Management through Tawasul the same day. The name cannot be changed on the ticket, so the order has to be corrected before issue</td></tr>
+
+<tr><td>No travel order after the list closed</td><td>Send a request through Tawasul to Travel Management with your University number and dates</td></tr>
+
+<tr><td>You want a different city</td><td>You can only choose from the cities set for your country. An onward flight to another city is at your own cost, so book it as soon as your ticket arrives</td></tr>
+
+<tr><td>No ticket email by mid May</td><td>Search every folder for "Saudia", ask the students in your group who received the group PDF, then ask your representative</td></tr>
+
+<tr><td>You renewed your passport</td><td>Update Etimad and tell Travel Management before the order is issued</td></tr>
+
+<tr><td>Your ticket date clashes with an exam</td><td>Send a Tawasul request to the Travel Administration asking to change the date, with a copy of the ticket and of your exam timetable. The date is then changed at the Saudia office on campus, at your own cost</td></tr>
+
+<tr><td>You need another date on a group ticket, for Hajj for example</td><td>Only the date can change, never the route. Go to the Saudia office on campus and pay the difference</td></tr>
+
+<tr><td>You will not use the ticket</td><td>Cancel it in person at Travel Management as soon as you are sure. There is no app for it. If you do nothing, you simply lose the ticket</td></tr>
+
+</tbody></table>
+<blockquote><p>Note: In the ticket season a Saudia office opens on campus for students changing travel dates. In 2026 it opened on 13 May, from 7:30 am to 3:00 pm on working days. Use this office, not Saudia branches in the city.</p>
+</blockquote>
+<p>Graduates: the final ticket comes after everything else is cleared, and the order of steps is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>. What the yearly ticket covers alongside your stipend is in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money: stipend, allowances and tickets</a>.</p>
+
+<blockquote><p>Tip: Ticket stuck and Tawasul silent? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p>
+</blockquote>`,
+  },
+  {

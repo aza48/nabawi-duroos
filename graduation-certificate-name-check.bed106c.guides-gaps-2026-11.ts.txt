@@ -1,0 +1,8 @@
+    slug: "graduation-certificate-name-check",
+    category: "leaving",
+    question: "How do I make sure my name is right on my degree certificate?",
+    answerHtml: `<p>Check it before the certificate is printed. In the Academic System, open <strong>Graduation procedures</strong> and use the graduation certificate data check (تدقيق بيانات شهادة التخرج), which shows the personal and academic details that will be printed. If your name differs from your passport in any way, correct it under <strong>Personal</strong>, then <strong>Update name</strong>, or send a request to the Deanship of Admission and Registration through Tawasul. Do it during your final semester: a certificate printed with a mistake has to be reissued. The rest of the steps are in <a href="/guides/graduate-procedures">Graduating</a>.</p>
+`,
+    tags: ["graduation", "certificate", "degree", "name", "passport"],
+  },
+  {

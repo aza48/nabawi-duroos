@@ -1,0 +1,10 @@
+    slug: "degree-collection-and-verification",
+    category: "leaving",
+    question: "Can someone else collect my degree certificate, and how can an employer check it?",
+    answerHtml: `<p><strong>Collecting:</strong> your certificate is ready once your status in the Academic System has changed from Regular to Graduate. Book a collection appointment at <a href="https://services.iu.edu.sa/Appointment">services.iu.edu.sa/Appointment</a> with your University number, and collect it from the Deanship of Admission and Registration.</p>
+<p><strong>Someone else collecting:</strong> yes. Fill in the Deanship of Admission and Registration's official form for authorising someone to collect your graduation documents, send it through Tawasul to the Deanship first, then give a printed copy to the person collecting. Someone can also collect your graduation bisht and gifts for you: send a request through Tawasul with your name, student card number and graduation date, and the full name and student card number of the person collecting. See <a href="/guides/graduate-procedures">Graduating</a>.</p>
+<p><strong>Checking:</strong> employers, other universities and anyone you name can check an Islamic University degree on the University's public graduation document verification service (التحقق من وثيقة التخرج) at eduportal.iu.edu.sa. It is also listed on the national platform, my.gov.sa. A lost certificate needs a replacement (بدل فاقد): ask the Deanship through Tawasul.</p>
+`,
+    tags: ["graduation", "certificate", "degree", "verification", "authorisation", "proxy"],
+  },
+  {

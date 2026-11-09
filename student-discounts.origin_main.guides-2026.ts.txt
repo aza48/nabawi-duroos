@@ -1,0 +1,3 @@
+  { slug: "student-discounts", category: "getting-settled", question: "Are there discounts for University students?", answerHtml: "<p>Yes. The University's partner programme has more than 100 offers at hospitals, clinics, labs, opticians, schools, car rentals, restaurants, hotels and gyms. Some name students, and many are written for University staff, so show your University card and ask before you pay. See <a href=\"/discounts\">Student discounts</a>.</p>
+<p>At the University Sports Club a student pays 125 SAR for one month, half the 250 SAR public price, and 1,000 SAR for a year. The full price list is in <a href=\"/guides/sports-and-activities\">Sport and fitness classes</a>.</p>
+", tags: ["discounts", "sports club", "gym", "university card"] },

@@ -1,0 +1,2 @@
+  { slug: "mahad-books", category: "university", question: "Where can I find the Ma'had books and the answers?", answerHtml: "<p>In the <a href=\"/library#mahad\">Jamiah library</a>: the official books for every level, the student guide, answer keys and the Madinah Books as web pages.</p>
+" },

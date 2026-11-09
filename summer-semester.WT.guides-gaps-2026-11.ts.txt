@@ -1,0 +1,14 @@
+    slug: "summer-semester",
+    category: "university",
+    question: "Is there a summer semester at the Islamic University?",
+    answerHtml: `<p>Not every year. A summer semester runs only in the years the University announces one, and none ran in the summer of 2026, although the calendar had listed one. The 1448 calendar again lists a summer semester, from Sunday 6 June 2027 (1 Muharram 1449) with finals from Tuesday 27 July 2027, but it runs only if the University confirms it. Do not plan your graduation around it. There is no summer semester for the distance programmes.</p>
+<p>When a summer semester runs, it works like this:</p>
+<ul><li>The Deanship of Admission and Registration first asks students which courses they want, and opens only the courses enough students ask for. Not every course runs.</li>
+<li>You then register your summer courses in the Academic System, under <strong>Drop and add</strong>, like any semester, and press <strong>Confirm</strong> (تثبيت).</li>
+<li>You can take at most 12 credit hours.</li>
+<li>The absence limit applies in full: past 25% you are barred. Register only if you will attend.</li>
+</ul><p>Students use it to retake a failed course or catch up after an i'tithaar. If you are counting on one, ask your college early and register the course again in the next regular semester if no summer runs. All the dates are in <a href="/guides/university-calendar-1448">The University calendar</a>, and how failed courses work is in <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>
+`,
+    tags: ["summer", "semester", "retake", "calendar", "courses"],
+  },
+  {

@@ -1,0 +1,16 @@
+    slug: "blackboard-login",
+    category: "university",
+    question: "How do I log in to Blackboard, and what do I do if it fails?",
+    answerHtml: `<p>Sign in at <a href="https://iu.edu.sa/">iu.edu.sa</a>: tap the user account icon, then sign in through Nafath, or with your University number, your password and the verification code (رمز التحقق) shown on the screen. Then tap the <strong>Zidni</strong> (زدني) tile, and Blackboard opens without a second sign-in.</p>
+<p><strong>On a phone:</strong> in the Blackboard app, search for Islamic University of Madinah, tap <strong>Continue with Web-Login</strong>, and sign in with your University number and password. If the app keeps logging you out, use the browser instead.</p>
+<p><strong>Forgot the Blackboard password:</strong> on the Web Login page tap <strong>Forgot your password?</strong> (هل نسيت كلمة المرور؟). Give your first and family name exactly as registered, with your University number or your email, and a reset link arrives by email. Your old password works until you change it.</p>
+<p>If it still fails:</p>
+<ol><li>Try signing in to the Academic System with the same login. If that fails too, the problem is your University account, not Blackboard.</li>
+<li>If the Nafath request does not reach your phone, sign in with your University number and password instead. If the code on the screen is hard to read, tap the refresh arrow for a new one.</li>
+<li>Try a private window, another browser, or the app.</li>
+<li>Still stuck? Send a request through Tawasul at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a> to the E-Learning Center with a screenshot of the error, or use the guest form if you cannot sign in. For Blackboard email <strong>bb@iu.edu.sa</strong>. For passwords and your University account email <strong>it.care@iu.edu.sa</strong> or call the Deanship of IT and E-Learning on <strong>+966 14 847 1856</strong>.</li>
+</ol><p>Never share your password or a code, and never open links posted in class chats: see <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat</a>. Every other screen is in <a href="/guides/university-student-system">Using the University's student system</a>.</p>
+`,
+    tags: ["blackboard", "login", "sso", "password", "nafath", "e-learning", "zidni"],
+  },
+];

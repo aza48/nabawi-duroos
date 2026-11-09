@@ -1,0 +1,8 @@
+    slug: "how-many-classes-can-i-miss",
+    category: "university",
+    question: "How many classes can I miss at the University?",
+    answerHtml: `<p>Up to a quarter of each course's hours. Once your absence goes past 25%, you are barred from that course's final exam and the course is recorded as failed, with the grade DN. Take a medical report or official excuse to your college within a week of the absence. If the college accepts it, it may lift a bar, but only if you attended at least half of the course. Missing 20 days in a row without ta'jeel or i'tithaar closes your file. Details: <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>
+`,
+    tags: ["absence", "attendance", "hirman", "barred", "ghiyab", "DN"],
+  },
+  {

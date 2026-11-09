@@ -1,0 +1,356 @@
+    slug: "postgraduate-admission-1448",
+    stage: "study",
+    title: "Postgraduate admission at the Islamic University: master's, PhD and diplomas",
+    summary: "Who can apply for a master's, PhD or higher diploma, how to apply from inside or outside Saudi Arabia, the conditions for each department, how applicants are ranked, the enrolment documents, the 1448 dates and fees, and what each kind of student receives.",
+    bodyHtml: `
+<p>Checked 9 November 2026. The Deanship of Graduate Studies admits master's, PhD and higher diploma students once a year. The 1448 window is closed and the 1449 window has not opened yet. The 1448 cycle below shows what to prepare.</p>
+
+<h2>Dates</h2>
+
+<table><thead><tr><th>1448 intake</th><th>Window</th></tr>
+</thead><tbody>
+<tr><td>Master's and PhD</td><td>Opened 16 November 2025 and closed in early December 2025</td></tr>
+
+<tr><td>Higher diplomas</td><td>5 to 11 April 2026 (17 to 23 Shawwal 1447)</td></tr>
+
+</tbody></table>
+<p>The University announces each window on the Deanship's X account, <a href="https://x.com/highstudies_iu">@highstudies_iu</a>, and its Telegram channel, <a href="https://t.me/highstudies_iu">t.me/highstudies_iu</a>. The 1448 master's and PhD window opened in mid November and ran for about three weeks, so watch these channels from early November and have your documents ready before it opens.</p>
+
+<p>For applicants inside Saudi Arabia, the 1448 cycle then ran like this: the specialist exams in mid January 2026, the interviews in late January, and acceptances announced from Ramadan. Postgraduate classes are held in the evening.</p>
+
+<blockquote><p>Tip: The University holds a Postgraduate Week on campus for students in their final levels. In 2026 it opened on 8 November at Qa'at as-Salam, with an exhibition on each programme and its admission conditions.</p>
+</blockquote>
+<h2>How to apply</h2>
+
+<table><thead><tr><th>Topic</th><th>Inside Saudi Arabia</th><th>Outside Saudi Arabia</th></tr>
+</thead><tbody>
+<tr><td><strong>Who</strong></td><td>Saudis, GCC citizens, legal residents (internal scholarship) and external scholarship students already at the University who are about to graduate</td><td>International applicants for an external scholarship who do not hold a scholarship in Saudi Arabia</td></tr>
+
+<tr><td><strong>Where</strong></td><td>The University's postgraduate admission portal, <a href="https://postgraduate.iu.edu.sa/">postgraduate.iu.edu.sa</a></td><td>The postgraduate Minhati portal, <a href="https://postgraduateminhatee.iu.edu.sa/">postgraduateminhatee.iu.edu.sa</a></td></tr>
+
+<tr><td><strong>Written exam</strong></td><td>Where the department sets one</td><td>Exempt, unless you already hold a scholarship in Saudi Arabia</td></tr>
+
+</tbody></table>
+<ul>
+<li>All programmes are taught at the main campus in Madinah.</li>
+
+<li>The University has <strong>no offices or agents anywhere</strong> that take applications for it.</li>
+
+<li><strong>Application fee: 300 SAR</strong> for every applicant, not refundable, paid by e-invoice on the portal. Your application is not considered, and you cannot sit the exam, until it is paid.</li>
+
+<li>You apply yourself. Keep your login safe, give a working email and phone number (with promotional text messages not blocked), and follow your application on the portal.</li>
+
+</ul>
+<blockquote><p>Important: A message from any of these counts as official notice from the University: the Deanship's X account, the admission portal (the public page or your own page), your official email, a text message, the admission WhatsApp number or the admission unit's email.</p>
+</blockquote>
+<h2>Who can apply</h2>
+
+<p>Saudis, GCC citizens, legal residents of Saudi Arabia (internal scholarship) and international applicants (external scholarship).</p>
+
+<p><strong>To apply you need:</strong> a degree from an institution recognised by the Ministry of Education, no conduct record that bars admission, the 300 SAR fee paid, every required document uploaded and matching by the deadline, medical fitness, and any extra conditions your department sets.</p>
+
+<p><strong>To be accepted you need to:</strong> pass the department's specialist exam and interview, where it holds them; pass any supplementary courses it sets; complete all your admission documents by the deadline, or the nomination is cancelled; and, on a paid programme, pay the first semester's tuition before you enrol.</p>
+
+<p>If you apply without meeting the conditions, the responsibility is yours and the 300 SAR fee is not refunded. Check the conditions for your programme below before you pay.</p>
+
+<h3>About your qualifications</h3>
+<ul>
+<li><strong>Non-Saudi with a qualification from abroad:</strong> final acceptance needs the Saudi embassy's attestation of your qualification. You can apply and be nominated before you have it.</li>
+
+<li><strong>Not graduated yet:</strong> you are compared with other applicants on your grade and cumulative GPA at the time you apply. A later rise in your GPA does not count.</li>
+
+<li>The University awards the degree only. It takes no responsibility for your employment or promotion, and does not ask for your employer's approval. Arranging that is up to you.</li>
+
+</ul>
+<h2>Already studying at the University?</h2>
+
+<p>Students who hold an Islamic University scholarship apply on the University's postgraduate portal, not on Minhati. For the 1448 intake the rules are strict:</p>
+
+<ul>
+<li><strong>You can apply in your final year</strong> if you will graduate before the programme starts.</li>
+
+<li><strong>If you have already graduated, you cannot apply.</strong> The only exception is a special decision of the University President, for students who graduated after the start of the first semester of 1447 and whose scholarship is still valid.</li>
+
+<li><strong>Final year of a bachelor's:</strong> you count as an expected graduate if your remaining hours fit within the maximum load allowed, summer semester included.</li>
+
+<li><strong>Final year of a master's by thesis:</strong> your thesis is already defended with a recommendation to award the degree, or submitted with the defence set for the second semester of 1447 at the latest.</li>
+
+<li><strong>Final year of a master's by coursework:</strong> your graduation project is submitted when you apply.</li>
+
+</ul>
+<p>You are ranked on your grade and GPA on the day you apply. If you do not graduate in time, you lose the nomination and cannot keep it for the next year. A scholarship student who moves straight from a bachelor's into a master's keeps his room.</p>
+
+<p>Iqama holders on an internal scholarship apply on the same portal. Graduates can apply if their degree is from a GCC government university or a university recognised by the Saudi Ministry of Education. Expected graduates are accepted only from the Islamic University.</p>
+
+<h2>Conditions by department</h2>
+
+<p>These are the main conditions for the 1448 intake, on top of the general conditions above. "Exam" is the written specialist exam and "interview" is the personal interview, each marked out of 100. Applicants from outside Saudi Arabia with no current scholarship skip the written exam but still sit the interview and any Qur'an test.</p>
+
+<table><thead><tr><th>Department</th><th>Previous grade</th><th>Qur'an memorisation</th><th>Pass marks</th></tr>
+</thead><tbody>
+<tr><td>Aqeedah</td><td>Very good. Master's: a Shari'ah degree. PhD: Aqeedah</td><td>None</td><td>Exam 60, interview 60</td></tr>
+
+<tr><td>Arabic Language Institute (teaching Arabic to non-native speakers)</td><td>Very good for the master's. Diploma: a degree in Arabic or Shari'ah</td><td>None</td><td>Exam 60</td></tr>
+
+<tr><td>Da'wah and Islamic Culture</td><td>Very good (diploma: good)</td><td>Diploma 1 juz, master's 3, PhD 5</td><td>Exam 60, interview 60, Qur'an 60</td></tr>
+
+<tr><td>Education (master's)</td><td>Very good, regular study</td><td>None</td><td>Exam 60, interview 60</td></tr>
+
+<tr><td>Education (PhD)</td><td>A master's in the same field</td><td>None</td><td>Exam 70, interview 70</td></tr>
+
+<tr><td>Fiqh and Usul al-Fiqh</td><td>Very good, regular study. Master's: a Shari'ah degree</td><td>None</td><td>Exam 60, interview 60</td></tr>
+
+<tr><td>Fiqh as-Sunnah</td><td>Very good</td><td>Master's 3 juz, PhD 5</td><td>Written and oral 70, Qur'an 80</td></tr>
+
+<tr><td>Hadith Sciences</td><td>Very good. Master's: a Hadith or Shari'ah degree</td><td>Master's 4 juz, PhD 8</td><td>Written and oral 70, Qur'an 80</td></tr>
+
+<tr><td>History and Civilisation</td><td>Very good. Geography and literature graduates can apply</td><td>None</td><td>Exam 60</td></tr>
+
+<tr><td>Islamic Economics</td><td>Very good</td><td>None</td><td>Exam 60, interview 60</td></tr>
+
+<tr><td>Judicial Studies</td><td>Diplomas: good. Master's and PhD: very good</td><td>None</td><td>Exam 60, interview 60</td></tr>
+
+<tr><td>Law (al-Anzimah)</td><td>Very good, regular study</td><td>None</td><td>Exam 60, interview 60</td></tr>
+
+<tr><td>Linguistics, Literature and Rhetoric</td><td>Good, with a bachelor's in Arabic</td><td>None</td><td>Exam 60</td></tr>
+
+<tr><td>Media and Communication</td><td>Not set</td><td>None</td><td>Exam 60, interview 60</td></tr>
+
+<tr><td>Qira'at</td><td>Very good. Master's: a Qira'at degree or an ijazah in the ten qira'at</td><td>The whole Qur'an</td><td>Exam 60, interview 60</td></tr>
+
+<tr><td>Tafsir and Qur'anic Sciences</td><td>Very good, full regular study</td><td>Master's 5 juz, PhD 10</td><td>Exam 60</td></tr>
+
+</tbody></table>
+<p>The higher diploma in Guidance and Counselling is open only to external scholarship students, with a very good bachelor's and an exam mark of 60. A master's applicant in Da'wah who studied the higher diploma in Da'wah and Islamic Culture needs at least 4.75 out of 5 in the diploma.</p>
+
+<h2>Science, engineering and computing</h2>
+
+<p>These master's programmes have extra conditions for the 1448 intake:</p>
+
+<ul>
+<li><strong>Degree:</strong> a bachelor's by regular study in the same field. Engineering programmes take engineering graduates, and Renewable Energy and Mechatronics take electrical or mechanical engineers only. Data Science and Cybersecurity take computer science, information technology and information systems graduates, and not education graduates.</li>
+
+<li><strong>GPA:</strong> at least 3.50 out of 5 or 2.50 out of 4 in engineering and computing, and at least "good" in physics, chemistry and mathematics.</li>
+
+<li><strong>English:</strong> at least TOEFL PBT 450, TOEFL iBT 45, IELTS 4 (4.5 for Cybersecurity) or STEP 60, taken within the last two years.</li>
+
+<li><strong>English waiver:</strong> engineering and science can waive it if you are a national of an English-speaking country or took your bachelor's in one. Science also accepts a written undertaking to bring the certificate before you submit your thesis proposal. Computing has no waiver.</li>
+
+<li><strong>Aptitude test (Qiyas):</strong> at least 60, taken within the last five years, for Saudi and internal scholarship applicants. External scholarship students are exempt.</li>
+
+<li><strong>Interview:</strong> required for Data Science and Cybersecurity.</li>
+
+<li><strong>Statement of Purpose:</strong> required for Physics, Chemistry and Mathematics.</li>
+
+</ul>
+<h2>How applicants are ranked</h2>
+
+<p>Every applicant who meets the conditions gets a weighted score, and the highest scores win the seats. The University's Standing Committee for Graduate Studies decides how many seats go to external scholarship, internal scholarship and Saudi applicants, based on how many in each group pass. The 1448 weights:</p>
+
+<table><thead><tr><th>Programmes</th><th>How the score is made</th></tr>
+</thead><tbody>
+<tr><td>Applying from outside Saudi Arabia (no current scholarship): Shari'ah, Arabic, science and engineering programmes</td><td>50% previous GPA, 50% interview</td></tr>
+
+<tr><td>Applying from outside Saudi Arabia (no current scholarship): computing programmes</td><td>50% GPA, 30% interview, 20% English test</td></tr>
+
+<tr><td>Most Shari'ah, Arabic, education and media programmes inside Saudi Arabia</td><td>40% GPA, 30% written exam, 30% interview</td></tr>
+
+<tr><td>Tafsir; Linguistics; Literature and Rhetoric; History and Civilisation; Arabic Language Skills diploma; Guidance and Counselling diploma</td><td>50% GPA, 50% written exam</td></tr>
+
+<tr><td>Arbitration diploma</td><td>60% bachelor's GPA, 40% interview</td></tr>
+
+<tr><td>Computing, inside Saudi Arabia</td><td>50% GPA, 30% interview, 10% aptitude test, 10% English test</td></tr>
+
+<tr><td>Engineering, inside Saudi Arabia</td><td>50% GPA, 20% interview, 15% aptitude test, 15% English test</td></tr>
+
+<tr><td>Physics, Chemistry, Mathematics</td><td>50% GPA, 25% aptitude test, 15% interview, 10% English certificate</td></tr>
+
+<tr><td>Industrial Laboratories (professional master's)</td><td>50% GPA, 25% aptitude test, 25% years of lab experience</td></tr>
+
+</tbody></table>
+<p>The aptitude test counts only for Saudi and internal scholarship applicants. External scholarship students are exempt from it.</p>
+
+<h2>Documents for enrolment</h2>
+
+<p>Once you are nominated, upload these on the admission portal by the date the Deanship announces, each as a PDF under 5 MB, or your nomination is cancelled. For non-Saudi students:</p>
+
+<ol>
+<li>Your degree certificate</li>
+
+<li>Your academic transcript</li>
+
+<li>A copy of your iqama</li>
+
+<li>A copy of your passport</li>
+
+<li>The admission agreement, signed and dated</li>
+
+<li>Your aptitude test certificate, for programmes that require it</li>
+
+<li>Saudi embassy attestation of your certificate, if it is from outside Saudi Arabia</li>
+
+<li>Your English certificate, for programmes that require it</li>
+
+</ol>
+<p>Then fill in the University's enrolment form. On a paid programme, pay the first semester's fee before you are enrolled. If anything you submit turns out to be false or altered, your admission is cancelled, even after you have started studying, and legal penalties follow.</p>
+
+<h2>Fees for the 1448 intake</h2>
+
+<p>Paid programmes charge only for the minimum study period: one year for a diploma, two for a master's and three for a PhD. Extra semesters beyond that are not charged. Fees are in SAR.</p>
+
+<table><thead><tr><th>Programme</th><th>Level</th><th>Per semester</th><th>Whole programme</th></tr>
+</thead><tbody>
+<tr><td>Aqeedah</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Aqeedah</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Arabic language skills</td><td>Diploma</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Arbitration</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+
+<tr><td>Chemistry</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Comparative education</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Curricula and teaching methods</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Curricula and teaching methods</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Cybersecurity</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+
+<tr><td>Cybersecurity</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Da'wah</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Da'wah and Islamic culture</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+
+<tr><td>Da'wah and Islamic culture</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Data science</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Educational administration</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Educational administration</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Educational psychology</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Engineering and technology management</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Fiqh</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Fiqh</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Fiqh as-Sunnah</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Fiqh as-Sunnah</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Foundations of Islamic education</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Foundations of Islamic education</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Guidance and counselling</td><td>Diploma</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Hadith sciences</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Hadith sciences</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>History and civilisation</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>History and civilisation</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Islamic culture</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Islamic economics</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Islamic economics</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Judicial studies</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Judicial studies</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Judiciary and Shari'ah policy</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+
+<tr><td>Law (al-Anzimah)</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Law (al-Anzimah)</td><td>PhD</td><td>13,000</td><td>78,000</td></tr>
+
+<tr><td>Linguistics</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Linguistics</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Literature and rhetoric</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Literature and rhetoric</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Mathematics</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Mechatronics and robotics</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Media and communication</td><td>Diploma</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Media and communication</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Physics</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Professional science in industrial laboratories</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Qira'at</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Qira'at</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Religions and ideologies</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Renewable energy</td><td>Master's</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Sects and doctrines</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Sects and doctrines</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Tafsir and Qur'anic sciences</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Tafsir and Qur'anic sciences</td><td>PhD</td><td>Free</td><td>Free</td></tr>
+
+<tr><td>Teaching Arabic to non-native speakers</td><td>Diploma</td><td>8,000</td><td>16,000</td></tr>
+
+<tr><td>Teaching Arabic to non-native speakers</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Teaching Arabic to non-native speakers</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+<tr><td>Usul al-Fiqh</td><td>Master's</td><td>11,000</td><td>44,000</td></tr>
+
+<tr><td>Usul al-Fiqh</td><td>PhD</td><td>11,000</td><td>66,000</td></tr>
+
+</tbody></table>
+<p>The diploma in teaching Arabic to non-native speakers trains teachers. It is for graduates of Arabic or Islamic studies, not a course for learning Arabic.</p>
+
+<h2>What you receive as a postgraduate student</h2>
+
+<table><thead><tr><th>You are</th><th>What you receive</th></tr>
+</thead><tbody>
+<tr><td>Saudi, a GCC citizen, a stateless GCC resident, or the child of a Saudi mother</td><td>A study place, the library, medical services, subsidised meals, subsidised housing when available, and academic and cultural activities</td></tr>
+
+<tr><td><strong>External scholarship student</strong> (sponsored by the University)</td><td>A study place, a <strong>monthly stipend</strong>, a set-up allowance, a books allowance, a printing allowance, a graduation allowance, housing, subsidised meals, <strong>tickets</strong>, the library, medical services and activities</td></tr>
+
+<tr><td><strong>Internal scholarship student</strong> (legal resident)</td><td>A study place, the library, and academic and cultural activities</td></tr>
+
+</tbody></table>
+<h2>Contact the Deanship of Graduate Studies</h2>
+
+<p>During official working hours. If a problem is not solved, you can contact them again within one working day.</p>
+
+<ul>
+<li>X: <a href="https://x.com/highstudies_iu">@highstudies_iu</a></li>
+
+<li>Admission unit WhatsApp: <strong>0148137257</strong></li>
+
+<li>Admission unit email: <a href="mailto:g.r@iu.edu.sa">g.r@iu.edu.sa</a></li>
+
+<li>Phone extensions: <strong>31009</strong> and <strong>31006</strong></li>
+
+</ul>
+<p>Bachelor's admission is in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</p>
+
+<blockquote><p>Tip: Questions about your own application? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p>
+</blockquote>`,
+  },
+];

@@ -1,0 +1,14 @@
+    slug: "graduation-certificate-name-check",
+    category: "leaving",
+    question: "How do I make sure my name is right on my degree certificate?",
+    answerHtml: `<p>Check it before the certificate is printed. In the Academic System, open <strong>Graduation procedures</strong> (اجراءات التخرج) and use the graduation certificate data check (تدقيق بيانات شهادة التخرج), which shows the personal and academic details that will be printed. Do it during your final semester.</p>
+<p>To correct your name, open <strong>Personal</strong>, then <strong>Update name in Arabic</strong> (تحديث الاسم باللغة العربية) or <strong>Update name in English</strong> (تحديث الاسم باللغة الانجليزية).</p>
+<ul><li>Enter four parts, first name, father's, grandfather's and family name, exactly as in your passport. In Arabic, use Arabic letters only, with no space or hyphen in the family name.</li>
+<li>Upload a copy of your passport, confirm the name and tap <strong>Save</strong> (حفظ).</li>
+<li>The change shows once the Deanship of Admission and Registration has checked that your Arabic and English names match. If it does not go through, send a request to the Deanship through Tawasul.</li>
+</ul><p>A wrong date or place of birth, or nationality, is corrected under Personal, then <strong>Nationality and place of birth correction request</strong>, with your passport and iqama uploaded together as one PDF.</p>
+<p>Once your graduation document has been issued, adding or correcting your name means paying for a replacement document. The rest of the steps are in <a href="/guides/graduate-procedures">Graduating</a>.</p>
+`,
+    tags: ["graduation", "certificate", "degree", "name", "passport"],
+  },
+  {

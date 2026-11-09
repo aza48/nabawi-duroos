@@ -1,0 +1,14 @@
+    slug: "blackboard-login",
+    category: "university",
+    question: "How do I log in to Blackboard, and what do I do if it fails?",
+    answerHtml: `<p>Sign in with your University login at sso.iu.edu.sa, through Nafath or with your University number, password and the code sent to you, and open Blackboard from there. The University's app also opens Blackboard, with the same two ways to sign in.</p>
+<p>If it fails:</p>
+<ol><li>Try signing in to the Academic System with the same login. If that fails too, the problem is your University account, not Blackboard.</li>
+<li>If the Nafath request does not reach your phone, sign in with your University number and password instead.</li>
+<li>Try a private window, another browser, or the app.</li>
+<li>Still stuck? Send a request through Tawasul at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a> with a screenshot of the error, or use the guest form if you cannot sign in. You can also email <strong>it.care@iu.edu.sa</strong> or call student care on <strong>920022042</strong>.</li>
+</ol><p>Never share your password or a code, and never open links posted in class chats: see <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat</a>. Other offices are in <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</p>
+`,
+    tags: ["blackboard", "login", "sso", "password", "nafath", "e-learning"],
+  },
+];

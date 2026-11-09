@@ -1,0 +1,95 @@
+    slug: "applying-to-the-islamic-university",
+    stage: "getting-started",
+    title: "Applying to the Islamic University",
+    summary: "Undergraduate admission step by step: when the window opens, who can apply, the documents, what initial and final acceptance mean, and how to avoid paid agents.",
+    bodyHtml: `
+<blockquote><p>Important: applying is free and you do it yourself on <a href="https://studyinsaudi.sa/">studyinsaudi.sa</a>. The University has no offices or agents abroad. Anyone who asks you for money to apply, to speed things up or to guarantee a place is not working for the University. Do not pay them and do not give them your login.</p>
+</blockquote>
+<h2>When you can apply</h2>
+
+<p>Applications open once a year on the Study in Saudi portal, usually in spring. For the 1448 year the window ran from 19 April to 21 May 2026. The portal is closed outside the window, so watch studyinsaudi.sa and the MESH group from March onwards.</p>
+
+<p>On the portal you can choose up to 25 programmes across more than ten Saudi universities. Each one shows whether it is a full, partial or paid scholarship.</p>
+
+<h2>Who can apply</h2>
+
+<ul>
+<li><strong>Age:</strong> at least 17 and no older than 25.</li>
+
+<li><strong>School certificate:</strong> general secondary or its equivalent, no more than five years old. Scientific colleges need the scientific track. An old certificate is one of the most common reasons for rejection.</li>
+
+<li><strong>Where you live:</strong> full scholarship applicants must be living outside Saudi Arabia.</li>
+
+<li><strong>Record:</strong> good conduct, never expelled from a university for discipline, and not already on a Saudi scholarship.</li>
+
+<li><strong>College of the Holy Qur'an:</strong> the whole Qur'an memorised, plus the University's own test.</li>
+
+</ul>
+<h2>Documents to have ready</h2>
+
+<ul>
+<li>Your passport, with your name exactly as it will appear on your visa.</li>
+
+<li>Your secondary school certificate and transcript.</li>
+
+<li>A police clearance from your country.</li>
+
+<li>A recommendation (tazkiyah) from an organisation, institution or scholar in your country. The portal marks it optional, but the University's own form asks who gave it, so get one.</li>
+
+<li>Proof of medical fitness.</li>
+
+<li>For a partial scholarship, your employer's approval.</li>
+
+</ul>
+<p>Scan everything clearly before the window opens. Translations into Arabic help when a document is in another language.</p>
+
+<h2>From application to arrival</h2>
+
+<ol>
+<li>Apply on Study in Saudi and keep your application number.</li>
+
+<li>Watch your email. The University sends a link to finish a second application on Minhati, its own portal, often with only about 24 hours to complete it.</li>
+
+<li>Sit the online interview or the Arabic test if you are invited. The Arabic test is not pass or fail: it only places you in a Ma'had level.</li>
+
+<li>Initial acceptance appears on the portal. Confirm it within 5 days or the offer lapses.</li>
+
+<li>Final acceptance comes from the Ministry of Education, not the University. Only then fill in the visa form on the portal.</li>
+
+<li>Pay the educational visa fee when the payment link arrives, and complete the medical check and fingerprints if the portal asks for them. Fingerprints can be given in the Saudi Visa Bio app or at an approved centre. The visa comes by email. You must be outside Saudi Arabia when you submit the visa application, or it is rejected.</li>
+
+<li>Request your arrival ticket through Minhati once the visa is issued.</li>
+
+</ol>
+<h2>Housing, deferral and family</h2>
+
+<p><strong>Housing:</strong> scholarship students are housed by default, either inside the Jamiah or in the Rabwa halls (الربوة). See <a href="/ask/is-housing-included">Is housing included?</a></p>
+
+<p><strong>Deferral:</strong> the University's rules allow up to two years after final acceptance, but under the educational visa you are expected to arrive in the semester you were accepted for. See <a href="/ask/defer-my-place">Can I defer my place?</a></p>
+
+<p><strong>Bringing your family:</strong> see <a href="/ask/istiqdam-deposit">Can I sponsor my family, and what is the deposit?</a></p>
+
+<h2>Initial acceptance is not final</h2>
+
+<p>Initial acceptance means the University has put your name forward. Final acceptance means the Ministry has approved it, and that is the only stage that leads to a visa. Do not resign from work, give up your home or book flights on initial acceptance alone. Some people with initial acceptance are moved to a later semester, and some are offered a year of online Arabic first.</p>
+
+<p>Plan to arrive in the semester you are offered. Under the new educational visa, asking to arrive later can send your application back.</p>
+
+<h2>Common mistakes</h2>
+
+<ul>
+<li>Typing a name that differs from the passport by even one letter. It can block the visa later.</li>
+
+<li>Sending photos of documents instead of clear scans, or a photo that is not a plain passport-style picture on a white background.</li>
+
+<li>Leaving the police clearance to the last weeks. In some countries it takes a long time.</li>
+
+<li>Missing the 5 day window to confirm an offer, or the short deadline on the University's second application.</li>
+
+<li>Applying for the visa while visiting Saudi Arabia.</li>
+
+</ul>
+<blockquote><p>Tip: Questions about your own application? Message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p>
+</blockquote>`,
+  },
+  {

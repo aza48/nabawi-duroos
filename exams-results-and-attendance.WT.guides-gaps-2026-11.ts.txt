@@ -1,0 +1,213 @@
+    slug: "exams-results-and-attendance",
+    stage: "study",
+    title: "Exams, results and attendance at the Islamic University",
+    summary: "The absence limit with worked examples, the warnings, excusing an absence online, the exam timetable and exam-day rules, how grades work, seeing your results, missing a final, appealing a mark, withdrawing from a course, and what a failed course means.",
+    bodyHtml: `
+<p>Checked November 2026. These are the University's rules for degree students. The Ma'had applies the same absence limit, so read the attendance section whichever you are in, and ask the Ma'had office about its own exams. Where each screen sits in the Academic System is in <a href="/guides/university-student-system">Using the University's student system</a>.</p>
+
+<h2>Attendance</h2>
+
+<ul>
+<li>You must attend at least <strong>75%</strong> of the lectures and practical sessions of each course.</li>
+
+<li>Once your absence goes <strong>past 25%</strong> of a course, you are barred (محروم) from its final exam. Exactly 25% does not bar you. The course is recorded as failed, with the grade <strong>DN</strong> (ح).</li>
+
+<li>The system warns you as your absence grows, at about <strong>10%</strong>, <strong>15%</strong> and <strong>20%</strong>. A warning is not a penalty. It tells you how close you are to the bar.</li>
+
+<li>Your absence shows in the Academic System and the University app as soon as the teacher records it. Open <strong>Personal</strong>, then <strong>Absence</strong> (الغياب) to see, for each course, your absences, your late arrivals and your absence percentage. This is the record that counts. The attendance shown in Blackboard does not.</li>
+
+<li><strong>Travel:</strong> travel only in the official holidays, or with your college's approval. Do not count on an absence for travel being excused, and travelling during the semester without permission can lead to dismissal.</li>
+
+<li><strong>Twenty days in a row:</strong> missing 20 consecutive days without ta'jeel or i'tithaar closes your file (طي القيد). The semester still counts against you. A closed file can be reopened only once, within four semesters, with an accepted excuse.</li>
+
+</ul>
+<h3>Worked example</h3>
+<p>Each absence is a share of all the lectures a course has in the semester. Take a two-hour course that meets once a week for 15 weeks:</p>
+
+<table><thead><tr><th>Absences</th><th>Share of the course</th><th>What happens</th></tr>
+</thead><tbody>
+<tr><td>1</td><td>6.7%</td><td>Nothing yet</td></tr>
+
+<tr><td>2</td><td>13.3%</td><td>Past the first warning</td></tr>
+
+<tr><td>3</td><td>20%</td><td>Your last warning</td></tr>
+
+<tr><td>4</td><td>26.7%</td><td>Barred from the final, grade DN</td></tr>
+
+</tbody></table>
+<p>So in a course like this you can miss three lectures at most, for any reason. A course that meets more often gives each absence a smaller share, but the rule is the same: past 25% you are barred. Check the percentage under <strong>Absence</strong> rather than counting from memory.</p>
+
+<h3>Excusing an absence</h3>
+<ol>
+<li>Get proof for the day. For illness, that is a sick leave issued in Sehhaty (صحتي). The University Medical Center can issue one. A prescription on its own is not an excuse.</li>
+
+<li>In the Academic System, open <strong>Academic</strong>, then <strong>Submit excuses for lecture absences</strong> (تقديم الأعذار عن غياب المحاضرات). Once an absence is recorded, a notice link also appears when you sign in.</li>
+
+<li>Upload the proof for that course within the window the screen gives you. If your college announces its own excuse form as well, use it too.</li>
+
+<li>If the course no longer appears on the screen, the window has passed. Send the excuse through Tawasul at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a> to your college.</li>
+
+<li>A reply takes from a few days to two weeks at busy times. If you hear nothing, follow it up with the wakeel of your college.</li>
+
+</ol>
+<p>An accepted excuse can lift a bar, but only if you attended at least half of the course.</p>
+
+<blockquote><p>Tip: Teachers record absence in every lecture, and some take it from the very first week. Attend from day one, and keep your spare absences for real emergencies.</p>
+</blockquote>
+<h2>Before the exams</h2>
+
+<ul>
+<li>Your final exam timetable is in the Academic System under <strong>Academic</strong>, then <strong>Final Exams</strong>. It goes up between a week and a month before the exam period. The exam times are set by the University and differ from your class times.</li>
+
+<li>The timetable marks each course you are barred from as barred (محروم), and each course you have withdrawn from as withdrawn.</li>
+
+<li>Courses taught in several sections, and the Qur'an courses, usually have one unified final for the whole University.</li>
+
+<li>Go by the Academic System only. Unofficial timetables and wrong dates circulate in the groups every semester.</li>
+
+<li>Fill in the <strong>course evaluation</strong> as soon as it opens near the end of the semester. Your results stay hidden until you do. See <strong>Where results appear</strong> below.</li>
+
+<li>For 1448, first semester finals run from 29 November to 14 December 2026, and second semester finals from 25 April to 10 May 2027. If a summer semester runs, its finals start on 27 July 2027. All the dates are in <a href="/guides/university-calendar-1448">The University calendar</a>.</li>
+
+</ul>
+<h2>On exam day</h2>
+
+<ol>
+<li>Be in the hall at least 10 minutes before the start.</li>
+
+<li>Finals last between one and three hours.</li>
+
+<li>No one may enter more than 30 minutes after the start.</li>
+
+<li>No one may leave during the first 30 minutes.</li>
+
+<li>Cheating is dealt with under the student conduct rules.</li>
+
+</ol>
+<h2>How grades work</h2>
+
+<p>Every course is marked out of 100, and 60 is the pass mark. In most courses about 40 marks come from coursework, such as monthly tests, often taken on Blackboard, and 60 from the final exam. Your teacher gives the split at the start of the course. Your GPA is out of 5.</p>
+
+<p>The University's distance programmes use a different split, 60 for coursework and 40 for the final: see <a href="/guides/studying-online-at-the-islamic-university">Studying online at the Islamic University</a>.</p>
+
+<table><thead><tr><th>Grade</th><th>Mark</th><th>Points</th></tr>
+</thead><tbody>
+<tr><td>A+</td><td>95 to 100</td><td>5.00</td></tr>
+
+<tr><td>A</td><td>90 to 94</td><td>4.75</td></tr>
+
+<tr><td>B+</td><td>85 to 89</td><td>4.50</td></tr>
+
+<tr><td>B</td><td>80 to 84</td><td>4.00</td></tr>
+
+<tr><td>C+</td><td>75 to 79</td><td>3.50</td></tr>
+
+<tr><td>C</td><td>70 to 74</td><td>3.00</td></tr>
+
+<tr><td>D+</td><td>65 to 69</td><td>2.50</td></tr>
+
+<tr><td>D</td><td>60 to 64</td><td>2.00</td></tr>
+
+<tr><td>F</td><td>below 60</td><td>Fail</td></tr>
+
+</tbody></table>
+<ul>
+<li><strong>DN</strong> means barred for absence, and counts as a fail.</li>
+
+<li><strong>W</strong> means withdrawn, after an i'tithaar or a course withdrawal. It is not a fail and does not touch your GPA.</li>
+
+<li><strong>Honours:</strong> first class needs a GPA of 4.75 to 5.00, and second class 4.25 to under 4.75. Both also need no failed course, finishing the degree within the time set for honours, and at least 60% of your credits taken at this University. A failed course, including a DN, rules out honours even after you pass it on a retake.</li>
+
+</ul>
+<h2>Where results appear</h2>
+
+<ul>
+<li><strong>Evaluate your courses first.</strong> Your grades, including your coursework marks, stay hidden until you complete the evaluation for each course: <strong>Academic</strong>, then <strong>Course evaluation</strong> (تقييم المقررات). Tap each course code and answer every statement. Your answers are anonymous. Evaluation opens near the end of the semester and closes again, so do it as soon as it opens.</li>
+
+<li>Final results appear once your college has approved them, under <strong>Electronic Registration</strong> (التسجيل الإلكتروني), then <strong>Course results</strong> (نتائج المقررات). Choose the semester to see the final exam mark, the coursework mark, the total and the grade for each course. Grades come out course by course over several days.</li>
+
+<li>Your <strong>academic record</strong> (السجل الأكاديمي), under Academic, shows every course with its hours, points and grade, and your semester and cumulative GPA. It is for your own reference, not an official document.</li>
+
+<li>The courses still left in your plan are under Academic, then <strong>Remaining courses in the plan</strong> (المقررات المتبقية في الخطة).</li>
+
+<li>A stamped transcript is free under <strong>Personal</strong>, then <strong>Official Documents</strong> (المستندات الرسمية). It opens in a pop-up, so allow pop-ups in your browser if nothing appears.</li>
+
+<li>Check each result as soon as it appears. The time limit for an appeal starts from that day.</li>
+
+</ul>
+<h2>Missing a final exam</h2>
+
+<p>Without an accepted excuse, you score zero in that exam and your course grade is worked out from your coursework, which in most courses means a fail. With an accepted excuse, such as a hospital report, you sit a substitute exam (اختبار بديل), no later than the end of the second week of the next semester.</p>
+
+<ol>
+<li>Get the proof on the day: a medical report or sick leave, or the official paper for whatever kept you away.</li>
+
+<li>Tell your college straight away.</li>
+
+<li>After the finals, apply in the Academic System: <strong>Academic</strong>, then <strong>Final exam excuse</strong> (تقديم الأعذار عن غياب الاختبار النهائي), then <strong>Request excuse from the final exams</strong> (طلب اعتذار عن الاختبارات النهائية). The screen opens only for a few days after the finals, so apply as soon as it opens. If your college also posts its own link, use it too.</li>
+
+<li>Follow your request under <strong>Show and follow excuse requests</strong> (اظهار و متابعة طلبات الاعتذار).</li>
+
+<li>In the first week of the next semester your college publishes the accepted names with the date, time and hall of each substitute exam. Check early, because the exams come quickly.</li>
+
+<li>The course stays in your new timetable until you sit it. Your own teacher sets the substitute exam, with different questions. Sit it on the date you are given.</li>
+
+</ol>
+<p>If the excuse is refused, the zero stands. Questions about excuses go to student care: <strong>920022042</strong> or <strong>care@iu.edu.sa</strong>.</p>
+
+<h2>Appealing a mark</h2>
+
+<p>A final exam is sat once. The only second sitting is the substitute exam for an accepted excuse, and there is no substitute exam for a course you failed. If you believe a final was marked wrongly, you can ask for it to be reviewed.</p>
+
+<ol>
+<li>Submit your request to the dean of your college <strong>within 15 days</strong> of the result being announced.</li>
+
+<li>Give the course name and code, your section, the teacher, the mark you received, and why you believe it is wrong.</li>
+
+<li>Keep a copy of the request and the date you handed it in.</li>
+
+<li>Follow it up with your college, and watch your University email for the answer.</li>
+
+</ol>
+<h2>If a course is going badly</h2>
+
+<p>Withdrawing from a course (الاعتذار عن مقرر) before the deadline gives a <strong>W</strong>, not a fail, and your GPA is not affected.</p>
+
+<ol>
+<li>In the Academic System, open <strong>Academic</strong>, then <strong>Course withdrawal</strong> (الإعتذار عن مقرر), then <strong>Withdrawal request</strong> (طلب إعتذار).</li>
+
+<li>Keep attending the course until the request is decided. It is usually decided within a week, and the teacher's agreement is not needed.</li>
+
+<li>Check the decision under <strong>Show withdrawn courses</strong> (إظهار المقررات المعتذر عنها). Once it is accepted, your name leaves the teacher's list and the course leaves your exam timetable, though it can still show in your class timetable.</li>
+
+</ol>
+<p>The limits:</p>
+
+<ul>
+<li>At most two courses in one semester, and six over your whole programme. You can withdraw from the same course only once.</li>
+
+<li>Never below the minimum load, never in your first year, never in your expected graduation semester, and never from a course you are already barred from.</li>
+
+<li>Only within the window in the calendar. Outside it the screen says the operation cannot be completed in this period. For the first semester of 1448 the window closed in early November 2026. For the second semester it runs from 20 December 2026 to 13 March 2027.</li>
+
+</ul>
+<p>Leaving a whole semester is ta'jeel or i'tithaar instead. See <a href="/guides/tajeel-and-itithaar">Taking a semester off</a>. Simply stopping attending is not a withdrawal: after 20 days your file is closed.</p>
+
+<h2>If you fail a course</h2>
+
+<ul>
+<li>The F or DN stays on your record and lowers your GPA.</li>
+
+<li>You must pass every course in your plan to graduate, so register the failed course again in a later semester. A summer semester runs only in the years the University announces one. See <a href="/ask/summer-semester">Is there a summer semester?</a></li>
+
+<li>A course that needs the failed one as a prerequisite does not appear for registration until you pass it. Plan the retake early, especially for courses that come in a chain, such as Qur'an 1 to 8.</li>
+
+<li>Three semesters in a row with a cumulative GPA below the minimum for graduation lead to academic dismissal. So does going past the length of your programme plus half again.</li>
+
+<li>A dismissed student can request one extra chance within the window in the calendar. For the second semester of 1448 the window is 11 to 14 December 2026.</li>
+
+</ul>
+<blockquote><p>Tip: Worried about a bar, a missed exam or a failed course? Speak to the wakeel of your college early, while there is still time to act. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p>
+</blockquote>`,
+  },
+  {

@@ -1,0 +1,65 @@
+    slug: "new-student-steps",
+    stage: "getting-started",
+    title: "First steps for new students: SIM, Absher, Visitor ID, student card and bank account",
+    summary: "What to do after you arrive, in order: a Saudi SIM, Absher and the kiosk, Nafath, your Visitor ID, your National Address, a bank account and your IBAN, then your student card and University accounts.",
+    bodyHtml: `
+<p>Checked 9 November 2026. New students on the educational visa do these steps in this order, because each one needs the one before it. By the end you will have a Saudi number, an active Absher and Nafath, your Visitor ID, a bank account for your stipend, your student card and your University accounts.</p>
+
+<h2>Before you start</h2>
+
+<ul>
+<li>Keep your passport with you, and find your <strong>border number</strong> (رقم الحدود), the number linked to your visa when you first entered the Kingdom.</li>
+
+<li>Have an email address you can open on your phone.</li>
+
+<li>Bring enough money for your first two months. Opening a bank account and setting up your first payments takes time.</li>
+
+</ul>
+<h2>The steps</h2>
+
+<ol>
+<li><strong>Get a Saudi SIM.</strong> At any mobile operator's branch, show your passport and visa or border number. The shop checks your fingerprint and registers the line in your name. Every code that follows comes to this number.</li>
+
+<li><strong>Register on Absher</strong> (أبشر) as a new user, with your border number, your email and your new mobile number.</li>
+
+<li><strong>Activate Absher at a self-service kiosk.</strong> Kiosks are in Jawazat (Passports) offices, at the University, at airports and in some malls. Enter your border number and register your fingerprint.</li>
+
+<li><strong>Activate Nafath</strong> (نفاذ) in the Nafath app: open the settings, choose to activate your national digital identity, and complete your details and the face check.</li>
+
+<li><strong>Issue your Visitor ID</strong> (هوية زائر) in Absher: choose <strong>Issue visitor ID</strong> and complete the details. It is digital only, it shows in the Absher app, and it cannot be printed.</li>
+
+<li><strong>Register your National Address</strong> with Saudi Post. Your bank needs it. See <a href="/ask/short-address">What is a short address?</a></li>
+
+<li><strong>Open a bank account.</strong> Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The account number arrives by text message, and the mada card is collected at the branch or posted to you. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
+
+<li><strong>Give the University your IBAN</strong> so your stipend is paid into your account: in the Academic System, open Personal, then Rewards, and send an IBAN update request. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
+
+<li><strong>Collect your student card.</strong> New students receive it during orientation week. If you arrive later, take your Visitor ID to the student card office, which prints it on the spot.</li>
+
+<li><strong>Sign in to your University accounts</strong> at sso.iu.edu.sa, through Nafath or with your University number, password and a code. This opens your University email, the Academic System, Blackboard and Tawasul. Your timetable is under Electronic Registration, then Registered Courses.</li>
+
+<li><strong>Set up Etimad</strong> for your University tickets, with your name exactly as in your passport. See <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</li>
+
+</ol>
+<blockquote><p>Note: If Absher or Nafath activation keeps failing, call Absher customer care on <strong>920020405</strong> (24 hours), choose English, enter your border number and ask for a technical support ticket. See <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a>.</p>
+</blockquote>
+<h2>If you hold an iqama</h2>
+
+<p>Students from earlier intakes who hold an iqama follow the same order, with two differences: Absher, Nafath and the SIM use your iqama number, and there is no Visitor ID to issue. Banks also let iqama holders open an account in the bank's app.</p>
+
+<h2>What comes next</h2>
+
+<ul>
+<li>What a Visitor ID can and cannot do, and what to do before it expires: <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</li>
+
+<li>Meals, buses, the Medical Center and the library: <a href="/guides/campus-life-islamic-university">Student life at the Islamic University</a>.</li>
+
+<li>Which office handles what: <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</li>
+
+<li>The rest of your first month: <a href="/guides/first-30-days-in-madinah">Your first 30 days in Madinah</a>.</li>
+
+</ul>
+<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p>
+</blockquote>`,
+  },
+  {

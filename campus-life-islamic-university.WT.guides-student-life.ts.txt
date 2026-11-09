@@ -1,0 +1,128 @@
+    slug: "campus-life-islamic-university",
+    stage: "study",
+    title: "Student life at the Islamic University: meals, buses, health and housing",
+    summary: "The subsidised mat'am meals, the free buses to the Haram, the Medical Center, the Central Library, housing and hall rules, Student Affairs services, Wi-Fi, the sports club and your University accounts.",
+    bodyHtml: `
+<p>Checked 9 November 2026. Full scholarship students get a lot of daily life covered. This page puts the basics in one place.</p>
+
+<h2>Meals at the mat'am</h2>
+
+<p>The University's mat'am (restaurant) serves full scholarship students three subsidised meals a day.</p>
+
+<table><thead><tr><th>Meal</th><th>Price</th></tr>
+</thead><tbody>
+<tr><td>Breakfast</td><td>1 SAR</td></tr>
+
+<tr><td>Lunch</td><td>2 SAR</td></tr>
+
+<tr><td>Dinner</td><td>2 SAR</td></tr>
+
+</tbody></table>
+<ol>
+<li>Sign in to the restaurant system at <a href="https://restaurant.iu.edu.sa/">restaurant.iu.edu.sa</a> with your University login.</li>
+
+<li>Book your meals for the coming month. Booking is done a month at a time, so set a reminder before each month ends.</li>
+
+<li>Use your own card only. Taking meals on two cards is not allowed.</li>
+
+</ol>
+<h2>Free buses</h2>
+
+<p>The University runs free buses between the campus and Masjid an-Nabawi, so you can pray at the Haram without paying for a taxi. Free buses also link the halls outside the campus with the campus. Pick-up points and times change during the year, in Ramadan and in exam weeks, so message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a> for the current ones.</p>
+
+<h2>Housing</h2>
+
+<p>Full scholarship students are housed free by the University, either inside the Jamiah or in the Rabwa halls (الربوة). Rooms are shared by two, and each student has a bed, a desk, a chair and a wardrobe. Partial scholarships include no free housing: when places are free, the University offers partial scholarship students a paid room in Unit 13. See <a href="/ask/is-housing-included">Is housing included?</a> and <a href="/guides/unit-13-and-paid-university-housing">Unit 13 and paid University housing</a>.</p>
+
+<p>Single students are housed. Family units are offered only when one is free, so most married students rent a flat in the city. See <a href="/guides/finding-an-apartment">Finding and renting a flat</a> and <a href="/guides/cost-of-living">What it costs to live in Madinah</a>.</p>
+
+<h3>Hall rules that can cost you your place</h3>
+<ul>
+<li><strong>No guests in your room, and never lend your key.</strong> Hosting anyone, letting anyone in or giving anyone your key is banned, and the penalty is dismissal from the University. Halls inside and outside the campus are inspected all year.</li>
+
+<li><strong>Nothing in empty rooms.</strong> Belongings left in a vacant or handed-back room are removed, and the University accepts no liability for them.</li>
+
+<li><strong>Leave the furniture.</strong> Everything in the room, the bed included, stays there and is checked when you hand the room back.</li>
+
+<li><strong>Laundry rooms:</strong> do not tie washing lines to the pipes or valves, and do not leave clothes there. Damage cuts the water to the whole unit until it is repaired.</li>
+
+<li><strong>Scooters and bicycles</strong> need a registration form and a sticker from Unit 22. Keep them out of rooms and corridors. Do not charge scooters or phones overnight in your room: it has caused fires.</li>
+
+</ul>
+<h2>Health: the University Medical Center</h2>
+
+<p>The Medical Center on campus is free for scholarship students. It has clinics for internal medicine, children, women and obstetrics, general surgery, skin, ear, nose and throat, and dentistry, with a pharmacy, X-ray and ultrasound, a laboratory and a vaccination unit.</p>
+
+<table><thead><tr><th>Days</th><th>Hours</th></tr>
+</thead><tbody>
+<tr><td>Sunday to Thursday, clinics</td><td>8:00 am to 3:15 pm</td></tr>
+
+<tr><td>Sunday to Thursday, emergency shift</td><td>3:15 pm to 11:00 pm</td></tr>
+
+<tr><td>Friday and Saturday, emergency shift</td><td>1:00 pm to 9:00 pm</td></tr>
+
+</tbody></table>
+<p>Book a clinic appointment at <a href="https://vcappointments.iu.edu.sa/">vcappointments.iu.edu.sa</a> with your University login. Outside these hours, go to a hospital emergency department or call 997. See <a href="/guides/doctors-hospitals-and-pharmacies">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>
+
+<h2>The Central Library</h2>
+
+<p>The Central Library is on your right as you come in through the main gate. In term it opens Sunday to Thursday, 8:00 am to midnight, and during final exams it stays open 24 hours. It is closed on Friday and Saturday. Laptops are allowed and bags are not. The library also lends set textbooks free for the semester: renew them each month and return them in the same condition, or pay a small fine. See <a href="/ask/library-bags-laptops">Can I take a bag or laptop into the libraries?</a></p>
+
+<h2>Your University accounts</h2>
+
+<ul>
+<li><strong>Signing in:</strong> the University login at sso.iu.edu.sa works through Nafath, or with your University number, password and a verification code.</li>
+
+<li><strong>Email:</strong> your University email comes with free Microsoft 365 apps and 1 TB of cloud storage. It is the official channel, so read it every day.</li>
+
+<li><strong>Classes:</strong> Blackboard is the learning platform. Your timetable and final exams are in the Academic System: see <a href="/ask/find-my-timetable">Where do I find my class timetable?</a></li>
+
+<li><strong>Proof that you are a student:</strong> a stamped student ID letter is free and instant in the Academic System under Personal, then Official Documents.</li>
+
+<li><strong>Attendance:</strong> missing more than 25% of a course's hours bars you from its final exam.</li>
+
+<li><strong>Wi-Fi:</strong> sign in to the campus network with your University number and password. Each student can connect <strong>2 devices</strong> at most. It is an open network, so avoid banking on it, and take connection problems to the Deanship of IT, in the building behind Unit 18.</li>
+
+</ul>
+<h2>Student Affairs services</h2>
+
+<p>The Deanship of Student Affairs (عمادة شؤون الطلاب) and the offices in Unit 22 handle much of daily life:</p>
+
+<ul>
+<li><strong>Stipend card:</strong> issued, renewed and replaced at Unit 22. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
+
+<li><strong>Loans:</strong> the Student Fund in Unit 22 lends up to 2,000 SAR, repaid from your stipend.</li>
+
+<li><strong>Printed iqama card:</strong> iqama holders can order a plastic iqama card through Student Affairs for about 58 SAR. Print your iqama from Absher, write your mobile number on it and hand it in. They call you to pay, and the card is ready in two to three weeks. Visitor ID holders have no card to print.</li>
+
+<li><strong>Airport buses:</strong> at the end of the academic year the Deanship runs free buses from the University to Prince Mohammad bin Abdulaziz Airport. The start date is announced on its X account, <a href="https://x.com/dsa_iu_edu">@dsa_iu_edu</a>.</li>
+
+<li><strong>Ramadan:</strong> the Deanship serves a daily iftar by the University sports ground and hands out suhoor meals, and runs free Umrah trips by bus in Ramadan, announced by the Deanship. Classes follow a separate Ramadan timetable.</li>
+
+<li><strong>Clubs and activities:</strong> run from the Deanship's first floor. You join through each club's president or group.</li>
+
+<li><strong>Nationality representatives:</strong> each nationality has a student representative who passes on University notices and collects ticket and visa lists. Their office is at the Deanship.</li>
+
+</ul>
+<h2>Money and flights</h2>
+
+<ul>
+<li>Your monthly stipend, the arrival and graduation allowances and how to see them are in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money: stipend, allowances and tickets</a>.</li>
+
+<li>Your yearly ticket home goes through Etimad. See <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</li>
+
+<li>New students on the educational visa hold a Visitor ID, not an iqama, so there is no iqama fee to pay. See <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</li>
+
+</ul>
+<h2>Sport</h2>
+
+<p>Students pay reduced rates at the Islamic University sports club, well below the public price, with memberships from one month to a year, and longer memberships can be frozen for a while. The full student price table and the classes at the sports center are in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>
+
+<h2>Who to ask</h2>
+
+<p>Student care: <strong>920022042</strong>, or email <strong>care@iu.edu.sa</strong>. Which office handles what is in <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</p>
+`,
+  },
+];
+
+export const FAQS_STUDENT_LIFE: SeedFaq[] = [

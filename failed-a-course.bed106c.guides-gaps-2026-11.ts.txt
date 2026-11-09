@@ -1,0 +1,8 @@
+    slug: "failed-a-course",
+    category: "university",
+    question: "I failed a course. What does it mean for me?",
+    answerHtml: `<p>The F stays on your record and lowers your GPA, and you must pass the course to graduate, so register it again in a later semester or in the summer semester if it is offered. A final exam is sat once: the only second sitting is the substitute exam for an accepted excuse. If you believe the paper was marked wrongly, apply to the dean of your college within 15 days of the result. Three semesters in a row with a cumulative GPA below the minimum for graduation lead to academic dismissal, so speak to the wakeel of your college early. See <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>
+`,
+    tags: ["fail", "failed", "retake", "resit", "gpa", "dismissal"],
+  },
+  {

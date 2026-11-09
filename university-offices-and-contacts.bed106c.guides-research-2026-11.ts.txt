@@ -1,0 +1,97 @@
+    slug: "university-offices-and-contacts",
+    stage: "study",
+    title: "Who to ask at the Islamic University: offices, portals and contacts",
+    summary: "Which office or portal handles tickets, the Visitor ID, registration, housing, health, meals and documents, with the numbers and links, and how to write a request that gets answered.",
+    bodyHtml: `
+<p>Checked 9 November 2026. Most problems at the University are solved quickly once they reach the right office. This page lists who does what, and the portal or contact for each.</p>
+
+<h2>Start here</h2>
+
+<ul>
+<li><strong>Student care:</strong> call <strong>920022042</strong> or email <strong>care@iu.edu.sa</strong> when you do not know where a question belongs.</li>
+
+<li><strong>Tawasul</strong> (تواصل), the University's request system, at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a>. Sign in with your University login and send your request to the right deanship. If you cannot sign in yet, use the guest form at <a href="https://helpdesk.iu.edu.sa/newticket_guest">helpdesk.iu.edu.sa/newticket_guest</a>.</li>
+
+<li><strong>Your University email.</strong> Replies and official notices come here, so read it every day.</li>
+
+</ul>
+<h2>Who handles what</h2>
+
+<table><thead><tr><th>You need</th><th>Who handles it</th><th>Where</th></tr>
+</thead><tbody>
+<tr><td>Your ticket home, your arrival ticket, passport matters</td><td>Travel Management (إدارة السفر)</td><td>Tickets through Etimad: see <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>. Arrival tickets through Minhati</td></tr>
+
+<tr><td>Your educational visa and Visitor ID</td><td>Deanship of Admission and Registration</td><td>Tawasul, subject Educational visa: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a></td></tr>
+
+<tr><td>Registration, your timetable, adding and dropping courses, ta'jeel and i'tithaar, transfers</td><td>Deanship of Admission and Registration</td><td>The Academic System, and Tawasul for anything it cannot do</td></tr>
+
+<tr><td>A new visa after ta'jeel, an excuse or a break in study</td><td>Deanship of Admission and Registration</td><td><a href="https://minhatee2.iu.edu.sa/Home/VisaLanding">Minhati visa page</a>, signing in with your University number</td></tr>
+
+<tr><td>Housing, activities, clubs and life in the halls</td><td>Deanship of Student Affairs</td><td>Tawasul, or the office in person</td></tr>
+
+<tr><td>Your stipend and IBAN</td><td>The rewards service</td><td>Academic System, Personal, then Rewards</td></tr>
+
+<tr><td>A letter proving you are a student</td><td>Issued automatically, free and stamped</td><td>Academic System, Personal, then Official Documents</td></tr>
+
+<tr><td>A doctor or dentist</td><td>University Medical Center</td><td>Book at <a href="https://vcappointments.iu.edu.sa/">vcappointments.iu.edu.sa</a></td></tr>
+
+<tr><td>Meals at the mat'am</td><td>The University restaurant</td><td>Book monthly at <a href="https://restaurant.iu.edu.sa/">restaurant.iu.edu.sa</a></td></tr>
+
+<tr><td>Your application, before you arrive</td><td>Deanship of Admission and Registration</td><td><a href="https://minhatee2.iu.edu.sa/">Minhati</a> and its helpdesk, and Study in Saudi for the final acceptance and visa</td></tr>
+
+</tbody></table>
+<h2>The portals you will use</h2>
+
+<ul>
+<li><strong>University login</strong> at sso.iu.edu.sa: through Nafath, or with your University number, password and a code sent to you. One login opens the Academic System, your email, Blackboard, Tawasul, the Medical Center bookings and the restaurant.</li>
+
+<li><strong>Academic System:</strong> your timetable, final exams, academic requests, rewards and official documents.</li>
+
+<li><strong>Blackboard:</strong> your classes, materials and class chats. Never open links posted by accounts you do not know: see <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat</a>.</li>
+
+<li><strong>Minhati:</strong> your application, the arrival ticket request and visa renewal for returning students.</li>
+
+<li><strong>Etimad:</strong> travel orders for your University tickets.</li>
+
+</ul>
+<h2>Writing a request that gets answered</h2>
+
+<ol>
+<li>Send it to the office that handles the matter, using the table above.</li>
+
+<li>Start with your full name as in your passport, your University number and your college.</li>
+
+<li>Say in a few lines what you need, what you have already tried, where, and what you were told.</li>
+
+<li>Attach screenshots of any error and copies of the documents involved.</li>
+
+<li>Press send, then <strong>track request</strong>, and save the link or reference number so you can follow it up.</li>
+
+<li>Watch your University email for the reply, and answer any follow-up question the same day.</li>
+
+</ol>
+<blockquote><p>Tip: Your name must match your passport letter for letter on every portal. A mismatch is the most common reason a ticket or a request gets stuck.</p>
+</blockquote>
+<h2>Outside the University</h2>
+
+<table><thead><tr><th>For</th><th>Contact</th></tr>
+</thead><tbody>
+<tr><td>Absher or Nafath not activating</td><td>Absher customer care, <strong>920020405</strong>, 24 hours. See <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a></td></tr>
+
+<tr><td>A rental contract</td><td>Ejar, <strong>199011</strong></td></tr>
+
+<tr><td>City buses</td><td>Madinah Bus, <strong>920000877</strong></td></tr>
+
+<tr><td>The Haramain train</td><td><strong>920004433</strong></td></tr>
+
+<tr><td>The Prophet's Mosque</td><td>General Authority for the Care of the Two Holy Mosques, <strong>1966</strong></td></tr>
+
+<tr><td>Emergencies</td><td>Ambulance <strong>997</strong>, unified emergency number <strong>911</strong></td></tr>
+
+</tbody></table>
+<p>Daily life on campus is in <a href="/guides/campus-life-islamic-university">Student life at the Islamic University</a>.</p>
+
+<blockquote><p>Tip: Not sure which office to ask? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p>
+</blockquote>`,
+  },
+  {
