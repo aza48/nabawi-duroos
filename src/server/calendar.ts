@@ -118,13 +118,17 @@ export async function lessonFeed(db: Db, filter: FeedFilter, fromIso: string, da
 /** The University calendar and the Islamic dates as whole-day events. */
 export function datesFeed(dates: KeyDate[] = KEY_DATES): { title: string; events: CalEvent[] } {
   const events = dates.map((d): CalEvent => {
+    // A request window that runs for weeks would fill every day of a subscriber's calendar,
+    // so it goes in once, on its last day.
+    const lastDayOnly = d.minor && d.end !== undefined && addDays(d.start, 7) <= d.end;
+    const from = lastDayOnly ? d.end! : d.start;
     const toExclusive = addDays(d.end ?? d.start, 1);
     return {
       uid: `date-${d.id}@medinahub.org`,
-      start: startOf(d.start),
+      start: startOf(from),
       end: startOf(toExclusive),
-      allDay: { from: d.start, toExclusive },
-      summary: d.title,
+      allDay: { from, toExclusive },
+      summary: lastDayOnly ? `Last day: ${d.title}` : d.title,
       description: [d.titleAr, d.hijri, d.note ?? "", d.after ?? ""].filter(Boolean).join("\n"),
       location: "Madinah",
       url: `${SITE_URL}/guides/university-calendar-1448`,

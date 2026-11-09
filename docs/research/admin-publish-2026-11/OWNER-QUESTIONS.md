@@ -100,3 +100,20 @@ Other open points (left out):
 15. School year: two semesters or three terms (part-1 s5 #10).
 16. Impartiality: I removed the two named international schools from `kindergartens-and-schools`; restore if the owner wants them.
 
+
+## Writer H (distance-study handbook)
+
+**Important:** page 2 of the handbook says it was prepared by students (the course interactivity supervisors) and is not an official University document. It is the same PDF that `iu-pdfs-2026-11/student-system-guide.md` read as "official", so the new guide `university-student-system` rests on it too. Its screens match what students use, but please confirm you are happy to publish from it.
+
+
+1. **Is this document official enough to publish its programme rules?** It says on page 2 that it is a student effort and not an official University document; the brief calls it the official handbook. The screens are real. The fees (230 riyals an hour plus 230 each semester), the 60/40 mark split, the 24-hour recording rule and the loads come from its authors, who supervise the courses. The new guide states them. If you want only University-issued facts, those sections need an official source first.
+2. **Fees in 1448.** Are 230 riyals per credit hour and the 230 riyal registration fee current? Is anything refunded when a course is dropped or withdrawn, and what happens to a registered course left unpaid? Is the registration fee charged in a semester with no courses?
+3. **Applying.** On which page of iu.edu.sa do distance applicants apply, and when does each programme open? Is the Sharia bachelor's grant open for 1448? The guide says only "apply on iu.edu.sa".
+4. **Absence limit.** Does the 25% bar (and the DN grade) apply to distance courses? The source names warnings but no figure, so the guide gives none.
+5. **Sisters.** The payment screen addresses male and female students and the teachers are all men. Are the distance programmes open to sisters? If yes, the guide (and `sisters-study`, `sisters-studying-in-madinah`) should say so.
+6. **Blackboard password on a phone.** University password, "registration number", or National ID / Iqama number by default? This affects `blackboard-login` too (and student-system-guide.md question 4).
+7. **The in-person exam at the end of the bachelor's.** Where is it held (Madinah only, or centres abroad), and is a visa provided for it?
+8. **Requesting the qualification.** Through which screen or Tawasul option does an e-course student request a diploma or bachelor's once the requirements are met, and how many hours does each diploma need?
+9. **Technical support mobile +966 55 796 5152.** Left out until confirmed as an official line (same as student-system-guide.md question 8).
+10. **Moving to Madinah.** Do hours passed in the distance programmes count if the student later joins a college in Madinah on a scholarship? Readers abroad will ask; the source does not say.
+
