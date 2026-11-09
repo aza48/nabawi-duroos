@@ -1,22 +1,25 @@
 /**
- * A one-sentence short answer that opens each FAQ, ahead of the full answer.
- * Each lead restates only facts already in that FAQ's answer, in at most 25 words.
- * FAQs whose answer already opens with a short paragraph that answers outright have no lead: female-doctor,
- * mahad-books, and the FAQs that faqs-aiakhee-2026-11.ts rewrites or adds, apart from the first ten there,
- * whose yes or no is said here in the lead and no longer at the start of the answer.
+ * A one-sentence short answer that opens each FAQ, ahead of the full answer, in at most 25 words.
+ * A lead restates facts in that FAQ's answer. For the nine FAQs whose answer used to open with "Yes." or
+ * "No." (the first nine in faqs-aiakhee-2026-11.ts), the yes or no is said here only, and the answer
+ * now starts with the next fact.
+ * FAQs whose answer already opens with a short paragraph that answers outright have no lead: female-doctor
+ * and the FAQs that faqs-aiakhee-2026-11.ts rewrites or adds after those nine.
  * Plain text: withFaqLead escapes it and adds it as the first paragraph when the content syncs.
  */
 export const FAQ_LEADS: Record<string, string> = {
   "defer-my-place": "Do not count on it: asking to arrive later than the semester you are offered can send your visa application back.",
   "is-housing-included": "Yes for full scholarship students, whom the University houses; no for partial scholarships, which cover tuition only.",
+  "istiqdam-deposit": "No. Family residency through the University has been closed since January 2025, so there is no deposit to pay.",
   "how-to-apply-iu": "Apply online on the national Study in Saudi portal while applications are open, choosing up to 25 programmes.",
   "stipend-amount": "It is set by college: check your own monthly figure in the Academic System, under Personal, then Rewards.",
   "sisters-study": "At the women's marakiz, at the Masjid an-Nabawi Ma'had and Kulliyah for women, and at several paid institutes.",
   "bank-account-without-iqama": "Yes. With an active Visitor ID, a National Address and a Saudi number linked to Absher, you can open one with a mada card.",
-  "drive-on-visit-visa": "Yes, on your recognised home licence for up to a year from entry; a Saudi licence or owning a car needs an iqama.",
+  "drive-on-visit-visa": "Yes, on your recognised home licence for up to a year from entry; a Saudi licence or registering a car needs an iqama.",
   "rawdah-booking": "With a free Nusuk permit booked for a set time; same-day slots are also released for people at the masjid.",
   "duroos-english": "Rarely: English lessons are few, and almost all duroos in the Haram are taught in Arabic.",
-  "tajeel-vs-itithaar": "Ta'jeel is a planned semester off, requested before it starts; i'tithaar is an excuse from a semester you have already started.",
+  "tajeel-vs-itithaar": "Ta'jeel postpones a semester before it begins; i'tithaar withdraws you from one already under way.",
+  "mahad-books": "In the Ma'had collection of the Jamiah library, with the textbooks for every level.",
   "etimad-what-for": "It is the government platform for your University travel orders and ticket letters, and your details on it must match your passport exactly.",
   "student-discounts": "Yes. Students get over 100 partner offers through the University and reduced rates at its sports club.",
   "muqarrarat": "In the Jamiah library, under your college and then your level.",
@@ -38,7 +41,7 @@ export const FAQ_LEADS: Record<string, string> = {
   "what-is-ejar": "Ejar is the national platform for registering a home rental, and a registered contract is what you use to connect utilities or renew your iqama.",
   "joint-bank-account-spouse": "Yes. Residents can open a joint account with a spouse; ask your bank which documents it needs.",
   "foreign-prescriptions": "No. Pharmacies here accept only prescriptions from doctors licensed in Saudi Arabia, so see a Saudi doctor for a new one.",
-  "free-bus-to-haram": "Yes. University buses link the campus with Masjid an-Nabawi and with the halls outside the campus, at no charge.",
+  "free-bus-to-haram": "Yes. University buses take students to the Haram at no charge.",
   "medical-center-hours": "Sunday to Thursday from 8:00 am, with emergency care until 11:00 pm; Fridays and Saturdays, emergency care only, 1:00 pm to 9:00 pm.",
   "student-ticket-rules": "Your ticket needs an Etimad travel order, is valid for 3 months from the first travel date, and has no cash refund.",
   "airport-to-haram-and-university": "Madinah Bus route 400, a ride app or a taxi takes you to the Haram; arriving scholarship students can ask about a University reception trip.",

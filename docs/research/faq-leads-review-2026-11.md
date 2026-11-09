@@ -30,7 +30,7 @@ On the 11 FAQs below, the full answer itself opens with "Yes." or "No." (or "Wit
 |---|---|---|
 | 1 | Can I defer my place at the University? (`defer-my-place`) | Do not count on it: asking to arrive later than the semester you are offered can send your visa application back. |
 | 2 | Is housing included for scholarship students? (`is-housing-included`) | Yes for full scholarship students, whom the University houses; no for partial scholarships, which cover tuition only. |
-| 3 | Can I sponsor my family, and what is the deposit? (`istiqdam-deposit`) | With an iqama you can ask the University to sponsor them; its student affairs office tells you the refundable deposit and when requests open. |
+| 3 | Can I sponsor my family, and what is the deposit? (`istiqdam-deposit`) | No. Family residency through the University has been closed since January 2025, so there is no deposit to pay. |
 | 4 | How do I join the MESH WhatsApp group? (`join-mesh-group`) | Through any "Join the group" button on this site; members keep posts relevant, share only verified information and avoid debates. |
 | 5 | How do I apply to the Islamic University of Madinah? (`how-to-apply-iu`) | Apply online on the national Study in Saudi portal while applications are open, choosing up to 25 programmes. |
 | 6 | How much is the University stipend? (`stipend-amount`) | It is set by college: check your own monthly figure in the Academic System, under Personal, then Rewards. |
@@ -41,7 +41,7 @@ On the 11 FAQs below, the full answer itself opens with "Yes." or "No." (or "Wit
 | 11 | Can I drive on a visit visa? (`drive-on-visit-visa`) | Yes, on your home licence if Saudi Arabia recognises it, but a Saudi licence or a car in your name needs an iqama. |
 | 12 | How do I visit the Rawdah? (`rawdah-booking`) | With a free Nusuk permit booked for a set time; same-day slots are also released for people at the masjid. |
 | 13 | Are there duroos in English in the Haram? (`duroos-english`) | Rarely: English lessons are few, and almost all duroos in the Haram are taught in Arabic. |
-| 14 | What's the difference between ta'jeel and i'tithaar? (`tajeel-vs-itithaar`) | Ta'jeel is a planned semester off, requested before it starts; i'tithaar is an excuse from a semester you have already started. |
+| 14 | What's the difference between ta'jeel and i'tithaar? (`tajeel-vs-itithaar`) | Ta'jeel postpones a semester before it begins; i'tithaar withdraws you from one already under way. |
 | 15 | What is Etimad and why do I need it? (`etimad-what-for`) | It is the government platform for your University travel orders and ticket letters, and your details on it must match your passport exactly. |
 | 16 | Are there discounts for University students? (`student-discounts`) | Yes. Students get over 100 partner offers through the University and reduced rates at its sports club. |
 | 17 | Where are the muqarrarat for my college? (`muqarrarat`) | In the Jamiah library, under your college and then your level. |
@@ -92,3 +92,9 @@ On the 11 FAQs below, the full answer itself opens with "Yes." or "No." (or "Wit
 - Do I need to register to attend the duroos? (`do-i-register-for-duroos`)
 - Where can I find the Ma'had books and the answers? (`mahad-books`)
 - Can I see a female doctor in Madinah? (`female-doctor`)
+
+## Update after admin's corrections (#76, 9 November 2026)
+- `istiqdam-deposit`: lead changed to match the corrected answer (family residency closed since January 2025).
+- `tajeel-vs-itithaar`: lead shortened so it no longer repeats the first sentence.
+- `mahad-books`: new lead, because the rewritten answer opens with a long paragraph.
+- `summer-semester` and `degree-collection-and-verification` no longer repeat Yes or No, so they left the test's list. Eight FAQs remain on it; aiakhee's FAQ fixes PR rewrites their openings.

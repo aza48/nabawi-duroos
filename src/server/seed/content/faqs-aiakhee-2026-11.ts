@@ -10,19 +10,21 @@ import type { SeedFaq } from "./guides-2026";
 /** Replacements: same slug as an FAQ in the guide files. */
 const REPLACEMENTS: SeedFaq[] = [
   // Yes or no said once: the lead in faq-leads.ts says it, and the answer no longer repeats it.
+  // student-discounts, free-bus-to-haram and drive-on-visit-visa follow admin's November 2026 rewrite word for word
+  // apart from that opening; if admin changes them again, change them here too.
   {
     slug: "bank-account-without-iqama",
     category: "getting-settled",
     question: "Can I open a Saudi bank account without an iqama?",
-    answerHtml: `<p>Since September 2025 holders of a Visitor ID can open an account and get a mada card. Before you apply, check in Absher that your Visitor ID shows as active, that your National Address is registered and that your mobile number is linked to Absher.</p><p>Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The bank also asks for your home address and the purpose of your stay. The account works only while your Visitor ID is valid and is frozen when it expires. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>, and if you hold a US passport, <a href="/ask/us-citizen-bank-account">Can I open a Saudi bank account as a US citizen?</a></p>`,
+    answerHtml: `<p>Visitor ID holders have been able to do this since September 2025. Before you apply, check in Absher that all three are in place.</p><p>Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The bank also asks for your home address and the purpose of your stay. The account works only while your Visitor ID is valid and is frozen when it expires. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</p>`,
     tags: ["bank", "bank account", "visitor id", "mada", "iqama", "nafath"],
   },
   {
     slug: "student-discounts",
     category: "getting-settled",
     question: "Are there discounts for University students?",
-    answerHtml: `<p>The University's partner programme lists over 100 offers at clinics, labs, opticians, schools, car rentals, restaurants and gyms. Students also pay reduced rates at the University sports club. See <a href="/discounts">Student discounts</a>.</p>`,
-    tags: ["discounts", "offers", "sports club", "students"],
+    answerHtml: `<p>The University's partner programme has more than 100 offers at hospitals, clinics, labs, opticians, schools, car rentals, restaurants, hotels and gyms. Some name students, and many are written for University staff, so show your University card and ask before you pay. See <a href="/discounts">Student discounts</a>.</p><p>At the University Sports Club a student pays 125 SAR for one month, half the 250 SAR public price, and 1,000 SAR for a year. The full price list is in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>`,
+    tags: ["discounts", "offers", "sports club", "gym", "university card", "students"],
   },
   {
     slug: "joint-bank-account-spouse",
@@ -42,7 +44,7 @@ const REPLACEMENTS: SeedFaq[] = [
     slug: "free-bus-to-haram",
     category: "university",
     question: "Is there a free bus from the University to the Haram?",
-    answerHtml: `<p>Pick-up points and times change during the year. For the current ones, message Admin on WhatsApp at +1 234 567 9076.</p><p>Meals, health and housing on campus are in <a href="/guides/campus-life-islamic-university">Student life at the Islamic University</a>.</p>`,
+    answerHtml: `<p>The buses run between the campus, the halls outside it and Masjid an-Nabawi. Pick-up points and times change during the year, so for the current ones message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p><p>Meals, health and housing on campus are in <a href="/guides/campus-life-islamic-university">Student life at the Islamic University</a>.</p>`,
     tags: ["bus", "transport", "haram", "campus"],
   },
   {
@@ -56,8 +58,8 @@ const REPLACEMENTS: SeedFaq[] = [
     slug: "drive-on-visit-visa",
     category: "getting-settled",
     question: "Can I drive on a visit visa?",
-    answerHtml: `<p>Saudi Arabia must recognise your country's licence. Carry the original, not a photo of it, and stop driving on it one year after the day you entered, or sooner if the licence expires first.</p><p>Bring an International Driving Permit as well. It is required if your licence is not in English or Arabic, car hire firms usually ask for one, and it is issued only in your home country, so get it before you fly.</p><p>A Saudi licence and owning or registering a car both need an iqama, so neither is open on a visit visa or a Visitor ID. See <a href="/guides/drivers-license">Getting a Saudi driving licence</a> and <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>`,
-    tags: ["driving", "licence", "international driving permit", "visit visa", "visitor id", "car hire"],
+    answerHtml: `<p>Your own valid licence works if Saudi Arabia recognises it, for up to one year from the day you entered or until the licence expires, whichever comes first. This covers tourist, Umrah and family visit visas.</p><p>Carry the original licence, make sure its class matches the vehicle (a car licence does not cover a motorcycle), and after an accident report it in the Najm app. Car hire firms set their own rules, and many ask for an International Driving Permit. Gulf citizens drive on their own national licence, but permits issued in the Gulf states are not accepted.</p><p>To get a Saudi licence or register a car you need an iqama. See <a href="/guides/drivers-license">Getting a Saudi driving licence</a>.</p>`,
+    tags: ["driving", "licence", "international driving permit", "visit visa", "tourist visa", "car hire", "najm"],
   },
   {
     slug: "bringing-medicine-into-saudi",
@@ -70,15 +72,8 @@ const REPLACEMENTS: SeedFaq[] = [
     slug: "buying-a-used-car",
     category: "getting-settled",
     question: "Can I buy a used car as a student, and what do I need?",
-    answerHtml: `<p><strong>With an iqama:</strong> used cars are sold on classified apps and websites and at used car showrooms. A resident can own private cars only.</p><ol><li><strong>Check the car before you pay:</strong> a valid registration (istimara), a valid periodic technical inspection (الفحص الفني الدوري), and no fines on the car. Have a mechanic look at it too.</li><li><strong>Insure it in your name</strong> before the transfer. Absher does not complete a sale without valid insurance.</li><li><strong>Transfer it in Absher.</strong> The seller starts the sale in his Absher, you accept it in yours and pay the fees Absher shows. Both of you need active Absher accounts, and the transfer is refused while there are unpaid fines on you or the car.</li><li><strong>Check</strong> that the car shows under your vehicles in Absher.</li></ol><p>Swap your home licence for a Saudi one as well: see <a href="/guides/drivers-license">Getting a Saudi driving licence</a>.</p><p><strong>On a Visitor ID,</strong> owning or registering a car needs an iqama, so you cannot buy one in your own name. You can drive on your home licence while Saudi Arabia recognises it, and rent a car: see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>`,
+    answerHtml: `<p><strong>With an iqama:</strong> used cars are sold on classified apps and websites and at used car showrooms. A resident can own private cars only.</p><ol><li><strong>Check the car before you pay:</strong> a valid registration (istimara), a valid periodic technical inspection (الفحص الفني الدوري), and no fines on the car. Have a mechanic look at it too.</li><li><strong>Insure it in your name</strong> before the transfer. Absher does not complete a sale without valid insurance.</li><li><strong>Transfer it in Absher.</strong> The seller starts the sale in his Absher, you accept it in yours and pay the fees Absher shows. Both of you need active Absher accounts, and the transfer is refused while there are unpaid fines on you or the car.</li><li><strong>Check</strong> that the car shows under your vehicles in Absher.</li></ol><p>Swap your home licence for a Saudi one as well: see <a href="/guides/drivers-license">Getting a Saudi driving licence</a>.</p><p><strong>On a Visitor ID,</strong> owning or registering a car needs an iqama, so you cannot buy one in your own name. You can drive on your valid home licence with an International Driving Permit for one year from the day you entered, and rent a car: see <a href="/guides/drivers-license">Getting a Saudi driving licence</a> and <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>`,
     tags: ["car", "used car", "buy", "absher", "ownership transfer", "insurance", "inspection", "istimara"],
-  },
-  {
-    slug: "degree-collection-and-verification",
-    category: "leaving",
-    question: "Can someone else collect my degree certificate, and how can an employer check it?",
-    answerHtml: `<p><strong>Collecting:</strong> the Deanship of Admission and Registration has an official form for authorising someone to collect your graduation documents. Fill it in and give it to the person collecting for you. Someone can also collect your graduation bisht and gifts for you: send a request through Tawasul with your name, student card number and graduation date, and the full name and student card number of the person collecting. See <a href="/guides/graduate-procedures">Graduating</a>.</p><p><strong>Checking:</strong> employers, other universities and anyone you name can check an Islamic University degree on the University's public graduation document verification service (التحقق من وثيقة التخرج) at eduportal.iu.edu.sa. It is also listed on the national platform, my.gov.sa.</p>`,
-    tags: ["graduation", "certificate", "degree", "verification", "authorisation"],
   },
 
   // Fixes from the November 2026 content audit and fact-checks.
@@ -86,29 +81,22 @@ const REPLACEMENTS: SeedFaq[] = [
     slug: "learn-arabic-before-iu",
     category: "getting-started",
     question: "Where can I learn Arabic in Madinah before getting into the University?",
-    answerHtml: `<p>Madinah has year-round Arabic institutes, one-month intensive courses and free classes for sisters. Every option is listed on <a href="/programs">Study in Madinah</a>.</p><p>Each listing gives its fees and how to join, so you can compare them on the same terms. If the University invites you to its Arabic placement test when you apply, the result decides whether you start in its Arabic Institute or go straight into a college. See <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</p>`,
+    answerHtml: `<p>Madinah has year-round Arabic institutes, one-month intensive courses and free Arabic classes for sisters. The main options are on <a href="/programs">Study in Madinah</a>.</p><p>Each listing gives its cost, or how to ask about it, and how to join. If the University invites you to its Arabic placement test when you apply, the result decides whether you start in its Arabic Institute, and at which level, or go straight into a college. See <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</p>`,
     tags: ["arabic", "arabic course", "institute", "study in madinah"],
   },
   {
     slug: "monthly-budget",
     category: "getting-settled",
     question: "How much money do I need per month in Madinah?",
-    answerHtml: `<p>About 2,900 to 6,700 SAR a month for a single person, and 6,300 to 12,800 SAR for a family of three or four.</p><p>The single figure assumes a shared room or small flat, and the family figure does not include school fees. Single students on a full University scholarship live in the halls and receive a monthly stipend, so they spend far less. Full breakdown: <a href="/guides/cost-of-living">What it costs to live in Madinah</a>.</p>`,
+    answerHtml: `<p>As of November 2026, about 2,900 to 6,700 SAR for one person, and 6,300 to 12,800 SAR for a family of three or four.</p><p>The single figure assumes a shared room or small flat, and the family figure does not include school fees. Single students on a full University scholarship live in the halls and receive a monthly stipend, so they spend far less. Full breakdown: <a href="/guides/cost-of-living">What it costs to live in Madinah</a>.</p>`,
     tags: ["budget", "cost of living", "rent", "money", "family"],
   },
   {
     slug: "home-internet-no-iqama",
     category: "getting-settled",
     question: "How do I get home internet without an iqama?",
-    answerHtml: `<p>Fixed home internet needs an iqama. Without one, put an unlimited data SIM in a portable 5G router for Wi-Fi at home.</p><p>Data SIMs are sold by Mobily, STC and Zain. Compare their current bundles, because coverage changes from area to area. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a> and <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>`,
+    answerHtml: `<p>Fixed home internet needs an iqama. Without one, put an unlimited data SIM in a portable 5G router for Wi-Fi at home.</p><p>Every mobile operator sells data SIMs. Compare their current bundles and check the coverage where you live. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a> and <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>`,
     tags: ["internet", "wifi", "router", "sim", "visitor id", "iqama"],
-  },
-  {
-    slug: "istiqdam-deposit",
-    category: "family",
-    question: "Is family residency (istiqdam) open?",
-    answerHtml: `<p>No. As of November 2026, University family residency (istiqdam) is closed to new requests, with no date set to reopen it.</p><p>Wives, children and parents come on their own visas instead, most often the tourist eVisa where their passport qualifies. Family members on a visit visa are not treated at the University Medical Center, and the insurance that comes with a visit visa covers emergencies only, so plan for private care. On a Visitor ID, ask the University through Tawasul before you plan. The visa options and the extension rules are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</p>`,
-    tags: ["istiqdam", "family residency", "wife", "children", "family visa", "visit visa", "medical center"],
   },
   {
     slug: "do-i-register-for-duroos",
@@ -132,7 +120,7 @@ const NEW_FAQS: SeedFaq[] = [
     slug: "what-is-a-visitor-id",
     category: "getting-started",
     question: "What is a Visitor ID, and how do I get one?",
-    answerHtml: `<p>A Visitor ID (هوية زائر) is the digital ID that comes with the educational visa, in place of an iqama. You issue it in Absher.</p><ul><li>It is issued by the General Directorate of Passports (Jawazat) through Absher and tied to your border number, the number Jawazat gives you when you first enter the Kingdom.</li><li>It is digital only, shows in the Absher app, and cannot be printed. Your passport stays your travel document.</li><li>The educational visa behind it is valid for one year and renewed each year while you study.</li></ul><p>Get it in this order, because each step needs the one before:</p><ol><li>Buy a Saudi SIM with your passport and border number: see <a href="/ask/buy-a-sim-card">What do I need to buy a Saudi SIM card?</a></li><li>Register on Absher as a new user, then activate it at a self-service kiosk with your fingerprint.</li><li>Activate Nafath in the Nafath app.</li><li>In Absher, choose <strong>Issue visitor ID</strong> and complete the details.</li></ol><p>What it lets you do, from a bank account to renting, is in <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>, and the whole first week in <a href="/guides/new-student-steps">First steps for new students</a>. If activation fails, see <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a>.</p>`,
+    answerHtml: `<p>A Visitor ID (هوية زائر) is the digital ID that comes with the educational visa, in place of an iqama. You get it in Absher.</p><ul><li>It is issued by the General Directorate of Passports (Jawazat) through Absher and tied to your border number, the number Jawazat gives you when you first enter the Kingdom.</li><li>It is digital only, shows in the Absher app, and cannot be printed. Your passport stays your travel document.</li><li>The educational visa behind it is valid for one year and renewed each year while you study.</li></ul><p>Get it in this order, because each step needs the one before:</p><ol><li>Buy a Saudi SIM with your passport and border number: see <a href="/ask/buy-a-sim-card">What do I need to buy a Saudi SIM card?</a></li><li>Register on Absher as a new user, then activate it at a self-service kiosk with your fingerprint.</li><li>Activate Nafath in the Nafath app.</li><li>In Absher, choose <strong>Issue visitor ID</strong> and complete the details.</li></ol><p>What it lets you do, from a bank account to renting, is in <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>, and the whole first week in <a href="/guides/new-student-steps">First steps for new students</a>. If activation fails, see <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a>.</p>`,
     tags: ["absher", "border number", "jawazat", "nafath"],
   },
   {
@@ -146,7 +134,7 @@ const NEW_FAQS: SeedFaq[] = [
     slug: "buy-a-sim-card",
     category: "getting-started",
     question: "What do I need to buy a Saudi SIM card?",
-    answerHtml: `<p>Your passport and your border number, or your iqama if you have one. The shop registers the line to you with your fingerprint.</p><ul><li><strong>Where:</strong> at the airport, in malls or at any operator's branch.</li><li><strong>Which kind:</strong> a real Saudi SIM, not a data-only eSIM, because banks and Absher send their codes by text message.</li><li><strong>Students on the educational visa</strong> need this number before anything else, because Absher is registered with it.</li><li><strong>Your border number</strong> is the entry number linked to your visa. Write it down when you land: the SIM, Absher and the bank all ask for it.</li></ul><p>Coverage and bundles change from area to area, so compare the current offers of each operator. Home internet, SIM checks and changing your number are in <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a> and <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a>.</p>`,
+    answerHtml: `<p>Your passport and your border number, or your iqama if you have one. The shop registers the line to you with your fingerprint.</p><ul><li><strong>Where:</strong> at the airport, in malls or at any operator's branch.</li><li><strong>Which kind:</strong> a real Saudi SIM, not a data-only eSIM, because banks and Absher send their codes by text message.</li><li><strong>Students on the educational visa</strong> need this number before anything else, because Absher is registered with it.</li><li><strong>Your border number</strong> is the entry number linked to your visa. Write it down when you land: the SIM, Absher and the bank all ask for it.</li></ul><p>Coverage changes from area to area and bundles change often, so compare each operator's current offers. Home internet, SIM checks and changing your number are in <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a> and <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a>.</p>`,
     tags: ["sim", "mobile", "border number", "fingerprint", "airport", "esim"],
   },
   {
@@ -209,7 +197,7 @@ const NEW_FAQS: SeedFaq[] = [
     slug: "nationality-representative",
     category: "university",
     question: "Who is my nationality representative and what does he do?",
-    answerHtml: `<p>He is a student of your nationality who passes University notices on to you and collects your group's lists for tickets, visas and forms.</p><ul><li><strong>Notices:</strong> he forwards notices from the Travel Administration, the Deanship of Student Affairs and other offices, often with a short summary.</li><li><strong>Lists and forms:</strong> he gathers the lists for summer tickets and visas, and passes on urgent University forms, such as the forms for renewing the educational visa. Answer them by the deadline he gives.</li><li><strong>Emergency contact:</strong> representatives keep an emergency contact form for their students, so fill it in when he asks.</li><li><strong>Events:</strong> some University events take registration through the representatives. Register through one channel only.</li><li><strong>The role is unpaid.</strong> Any student can nominate himself at the nationality representatives' office in the Deanship of Student Affairs.</li></ul><p>To find yours, ask at that office. Your own requests, such as ta'jeel or a visa question, still go to the University through Tawasul: see <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</p>`,
+    answerHtml: `<p>He is a student of your nationality who passes University notices on to you and collects your group's lists for tickets, visas and forms.</p><ul><li><strong>Notices:</strong> he forwards notices from the Travel Administration, the Deanship of Student Affairs and other offices, often with a short summary.</li><li><strong>Lists and forms:</strong> he gathers the lists for summer tickets and visas, and passes on urgent University forms, such as the forms for renewing the educational visa. Answer them by the deadline he gives.</li><li><strong>Emergency contact:</strong> representatives keep an emergency contact form for their students, so fill it in when he asks.</li><li><strong>Events:</strong> some University events take registration through the representatives. Register through one channel only.</li><li><strong>The role is unpaid.</strong> In 1448, nominations opened to any student in August 2026, at the nationality representatives' office in the Deanship of Student Affairs.</li></ul><p>To find yours, ask at that office. Your own requests, such as ta'jeel or a visa question, still go to the University through Tawasul: see <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</p>`,
     tags: ["representative", "mandoob", "nationality", "notices", "tickets", "visa", "student affairs"],
   },
   {
@@ -218,13 +206,6 @@ const NEW_FAQS: SeedFaq[] = [
     question: "What is the University Skills Record?",
     answerHtml: `<p>It is the University's official platform for club and activity programmes: you register for events there, your attendance is taken, and certificates are issued.</p><ul><li><strong>Where:</strong> <a href="https://services.iu.edu.sa/student-skill-record/Programs">services.iu.edu.sa/student-skill-record</a>. It opened in October 2026, and courses, workshops and volunteering run by the University are logged there.</li><li><strong>Who can register:</strong> current students and graduates, within each programme's registration period and while seats remain.</li><li><strong>Attendance</strong> can be marked only in the first 10 minutes after the event starts, so arrive on time.</li><li><strong>Passing a programme:</strong> attend at least 75% of its hours and have the organiser approve your attendance. The activity and its hours are then added to your Skills Record.</li></ul><p>Volunteering opportunities also record your hours on the National Volunteering Platform at <a href="https://nvg.gov.sa/">nvg.gov.sa</a>, where you register on each opportunity's own page. Hours are approved only for volunteers who turn up and work. Other offices are in <a href="/guides/university-offices-and-contacts">Who to ask at the Islamic University</a>.</p>`,
     tags: ["skills record", "السجل المهاري", "clubs", "activities", "certificates", "volunteering", "nvg"],
-  },
-  {
-    slug: "us-citizen-bank-account",
-    category: "getting-settled",
-    question: "Can I open a Saudi bank account as a US citizen?",
-    answerHtml: `<p>Yes. Under the US tax law FATCA, Saudi banks ask US citizens for their Social Security number (SSN), so have it with you.</p><ul><li><strong>When it is asked:</strong> when you open the account, or later when the bank's checks flag the account as American. Once you enter it, the account works normally.</li><li><strong>Each bank sets its own process.</strong> Some ask for more papers, such as your iqama, your National Address and a University letter (إفادة), and some need a manager's approval. If one bank says no, try another.</li><li><strong>Everything else</strong> is the same as for any student. On a Visitor ID, see <a href="/ask/bank-account-without-iqama">Can I open a Saudi bank account without an iqama?</a></li></ul><p>More in <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</p>`,
-    tags: ["bank", "bank account", "us citizen", "american", "fatca", "ssn", "social security number"],
   },
 ];
 

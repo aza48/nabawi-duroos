@@ -8,6 +8,7 @@ import { getDb } from "@/server/db/client";
 import { getHelpContact, getWhatsAppUrl } from "@/server/settings";
 import { SITE_URL } from "@/lib/site";
 import { JsonLd, siteJsonLd } from "@/components/JsonLd";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -42,6 +43,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           <JsonLd data={siteJsonLd(whatsappUrl)} />
           {children}
         </SiteShell>
+        <Analytics />
       </body>
     </html>
   );

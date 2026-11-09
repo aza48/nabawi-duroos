@@ -3,9 +3,9 @@
 The hub for English-speaking students in Madinah: live duroos schedules of the mashayikh (English and Arabic), settling-in guides, verified answers to common questions, and the way into the MESH WhatsApp group.
 
 - **Maintainer:** Muhaymin (GitHub `iumuhaymin`)
-- **Start here:** `docs/HANDOFF.md` (stack, code map, commands, house rules) and `CONTRIBUTING.md`
-- **Design:** `docs/superpowers/specs/2026-11-07-mesh-revamp-design.md`
-- **Status, what's left, and feature ideas:** `docs/ROADMAP.md`
+- **Start here:** `docs/HANDOFF.md` (where things stand, the rules, stack, code map and commands) and `CONTRIBUTING.md`
+- **Who is working on what:** `docs/AI-LOG.md` and GitHub issue 13
+- **Plan and ideas:** `docs/WORKPLAN-2026-11-09.md` and `docs/IDEAS-2026-11-09.md`
 
 ## Run it on your computer
 
@@ -36,4 +36,4 @@ To try the admin, create a file `.env.local` containing `BETTER_AUTH_URL=http://
 
 ## Stack
 
-Next.js 16, React 19, TypeScript, Tailwind CSS 4, Drizzle ORM on Postgres (Neon), Better Auth (two-step sign-in, passkeys), Vitest.
+Next.js 16, React 19, TypeScript, Tailwind CSS 4, Drizzle ORM on Postgres (Supabase), Better Auth (two-step sign-in, passkeys), Vitest.

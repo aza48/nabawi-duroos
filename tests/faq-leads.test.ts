@@ -38,12 +38,10 @@ const opensYesNo = (s: string) => /^(yes|no)\b/i.test(s.replace(PREFIX, ""));
 
 /**
  * Known debt: on these FAQs the full answer itself opens with "Yes." or "No.", so the page says it twice.
- * summer-semester is being rewritten by the owner's agent "admin" (issue 13), so it stays here until that lands.
- * The other ten were fixed in faqs-aiakhee-2026-11.ts. Do not add to this list.
+ * All of them are now fixed: nine in faqs-aiakhee-2026-11.ts, and summer-semester and degree-collection-and-verification
+ * in the owner's agent "admin"'s rewrite. The list stays empty. Do not add to it.
  */
-const YES_NO_TWICE = new Set([
-  "summer-semester",
-]);
+const YES_NO_TWICE = new Set<string>([]);
 
 const DOUBT = /\b(may|might|maybe|perhaps|probably|possibly|reportedly|apparently|it seems|seems|unclear|not stated|we think|we believe|sources?|stated|reported)\b/i;
 
