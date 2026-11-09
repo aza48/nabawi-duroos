@@ -6,7 +6,7 @@ import { LanguageSwitch } from "./LanguageSwitch";
 import { WhatsAppIcon } from "./WhatsApp";
 import { AdminEmailLink, AdminHelpLink } from "./AdminHelp";
 import { Wordmark } from "./Wordmark";
-import { AlbaseerahBand } from "./Albaseerah";
+import { AlbaseerahSignature } from "./Albaseerah";
 import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
 import { AssistantLauncher } from "@/features/assistant/AssistantLauncher";
@@ -93,13 +93,14 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
   return (
     <footer className="lattice mt-16 bg-brand-deep text-white" data-noprint>
       <div className="shell grid gap-8 py-12 sm:grid-cols-2 md:py-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
-        <div>
+        <div className="flex flex-col">
           <Wordmark tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">
             {ar
               ? "مركز يديره الطلاب لطلاب المدينة الناطقين بالإنجليزية."
               : "Run by students, for English-speaking students in Madinah."}
           </p>
+          <AlbaseerahSignature locale={locale} className="mt-auto pt-8" />
         </div>
         {cols.map((c) => (
           <div key={c.title}>
@@ -149,13 +150,12 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
             <span className="text-xs text-white/70">medinahub.org</span>
           </span>
         </div>
-        <p className="shell pb-5 text-xs leading-relaxed text-white/70">
+        <p className="shell pb-[calc(9rem+env(safe-area-inset-bottom))] text-xs leading-relaxed text-white/70 md:pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-11">
           {ar
             ? "© مركز MESH. محتوى الموقع محمي بحقوق النشر."
             : "© MESH. All content is protected by copyright."}
         </p>
       </div>
-      <AlbaseerahBand locale={locale} />
     </footer>
   );
 }

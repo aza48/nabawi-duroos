@@ -17,7 +17,8 @@ export async function PrintFooter({ path, locale = "en" }: { path: string; local
         <span className="print-footer-label">{PRINT_SCAN_LABEL[locale === "ar" ? "ar" : "en"]}</span>
         <span className="print-footer-url" dir="ltr">{label}</span>
         <span className="print-footer-credit">
-          {locale === "ar" ? `${ALBASEERAH.ar.by} ${ALBASEERAH.ar.name}` : `${ALBASEERAH.en.by} ${ALBASEERAH.en.name}`} · <span dir="ltr">{ALBASEERAH.domain}</span>
+          {(locale === "ar" ? ALBASEERAH.ar : ALBASEERAH.en).by}{" "}
+          <a href={ALBASEERAH.url} style={{ color: "inherit", textDecoration: "none" }}>{(locale === "ar" ? ALBASEERAH.ar : ALBASEERAH.en).name}</a> · <span dir="ltr">{ALBASEERAH.domain}</span>
         </span>
       </span>
     </aside>

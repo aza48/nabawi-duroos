@@ -1,8 +1,8 @@
 /**
  * The quiet credit to MESH's parent organisation, Albaseerah International Institute (albaseerah.org).
  *
- * MESH keeps its own name, green, gold and lattice. Albaseerah appears as a binding: a slim band in its deep maroon at
- * the very foot of every page, under a hairline of its gold, with the MESH lattice running faintly through it. One
+ * MESH keeps its own name, green, gold and lattice. Albaseerah countersigns at the foot of the footer's MESH column, like
+ * an endorsement under a brand, and maroon appears only in small doses: one diamond, and the name as ink on paper. One
  * Albaseerah mark only: the crest that albaseerah.org shows, in its white-bordered version so it reads on any ground.
  * Every mention of Albaseerah links to albaseerah.org.
  */
@@ -35,38 +35,43 @@ export function AlbaseerahCrest({ className = "" }: { className?: string }) {
   );
 }
 
-/** The binding at the foot of every page: the Albaseerah credit, centred like a seal, on its deep maroon. */
-export function AlbaseerahBand({ locale = "en" }: { locale?: Locale }) {
+/**
+ * The Albaseerah signature: a hairline that starts at a MESH diamond in Albaseerah maroon (edged in Albaseerah gold),
+ * then the crest and the credit. Dark tone sits at the foot of the footer's MESH column; light tone on paper (About).
+ */
+export function AlbaseerahSignature({
+  locale = "en",
+  tone = "dark",
+  showDomain = false,
+  className = "",
+}: {
+  locale?: Locale;
+  tone?: "dark" | "light";
+  showDomain?: boolean;
+  className?: string;
+}) {
   const ar = locale === "ar";
   const t = ar ? ALBASEERAH.ar : ALBASEERAH.en;
+  const light = tone === "light";
+  const label = `block ${light ? "text-muted" : "text-white/65"} ${ar ? "text-xs leading-5" : "text-[10px] font-semibold uppercase leading-none tracking-[0.18em]"}`;
+  const name = [
+    "block underline decoration-transparent decoration-1 underline-offset-4 transition-colors duration-200",
+    ar ? "mt-0.5 text-sm leading-6" : "mt-1.5 leading-snug",
+    light
+      ? `font-semibold text-abs group-hover:decoration-abs/40 ${ar ? "" : "text-[15px]"}`
+      : `font-medium text-white/90 group-hover:text-white group-hover:decoration-white/50 ${ar ? "" : "text-[14px]"}`,
+  ].join(" ");
   return (
-    // On phones the band runs on under the bottom bar and the assistant button, so the credit always shows above them.
-    <div className="abs-band lattice pb-[calc(9rem+env(safe-area-inset-bottom))] md:pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-0">
-      <div className="shell flex justify-center py-4">
-        <AlbaseerahLink className="group inline-flex items-center gap-3.5" label={`${t.by} ${t.name}`}>
-          <AlbaseerahCrest className="h-11 transition duration-300 group-hover:-translate-y-0.5" />
-          <span className="min-w-0">
-            <span className={`block text-abs-gold ${ar ? "text-xs" : "text-[10px] font-semibold uppercase tracking-[0.22em]"}`}>{t.by}</span>
-            <span className={`abs-name mt-0.5 block font-medium leading-snug text-white ${ar ? "text-sm" : "text-[14px]"}`}>{t.name}</span>
-          </span>
-        </AlbaseerahLink>
-      </div>
+    <div className={className}>
+      <span aria-hidden="true" className={`abs-knot ${light ? "abs-knot-light" : ""}`} />
+      <AlbaseerahLink label={`${t.by} ${t.name}`} className="group mt-5 flex w-fit max-w-xs items-center gap-3 rounded-lg outline-offset-4">
+        <AlbaseerahCrest className={`${light ? "h-12" : "h-11"} transition-transform duration-300 group-hover:-translate-y-px motion-reduce:transition-none`} />
+        <span className="min-w-0">
+          <span className={label}>{t.by}</span>
+          <span className={name}>{t.name}</span>
+          {showDomain && <span className="mt-0.5 block text-xs text-muted" dir="ltr">{ALBASEERAH.domain}</span>}
+        </span>
+      </AlbaseerahLink>
     </div>
-  );
-}
-
-/** About MESH: the crest, the credit and the address, set off by a maroon rule. */
-export function AlbaseerahAbout({ locale = "en", className = "" }: { locale?: Locale; className?: string }) {
-  const ar = locale === "ar";
-  const t = ar ? ALBASEERAH.ar : ALBASEERAH.en;
-  return (
-    <AlbaseerahLink className={`group flex items-center gap-4 border-s-2 border-abs ps-4 ${className}`} label={`${t.by} ${t.name}`}>
-      <AlbaseerahCrest className="h-14 transition duration-300 group-hover:-translate-y-0.5" />
-      <span className="min-w-0">
-        <span className={`block text-muted ${ar ? "text-xs" : "text-[10.5px] font-semibold uppercase tracking-[0.2em]"}`}>{t.by}</span>
-        <span className="mt-0.5 block font-heading text-lg font-semibold leading-snug text-abs underline-offset-4 group-hover:underline">{t.name}</span>
-        <span className="mt-0.5 block text-sm text-muted" dir="ltr">{ALBASEERAH.domain}</span>
-      </span>
-    </AlbaseerahLink>
   );
 }

@@ -16,7 +16,7 @@ import { abs } from "@/lib/site";
 const plain = (html: string) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 import { WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { AdminHelp } from "@/components/shell/AdminHelp";
-import { AlbaseerahAbout } from "@/components/shell/Albaseerah";
+import { AlbaseerahSignature } from "@/components/shell/Albaseerah";
 import { AlertsButton } from "@/features/duroos/AlertsButton";
 import { EnglishNote } from "@/components/EnglishNote";
 import { faqText, guideText, textAttrs } from "@/lib/arabic-content";
@@ -459,7 +459,7 @@ export function MorePage({ whatsappUrl, locale = "en" }: { whatsappUrl: string; 
                   guides and the live duroos schedule in one place. For any question or correction, message Admin on WhatsApp or email mesh@albaseerah.org.
                 </p>
               )}
-              <AlbaseerahAbout locale={locale} className="mt-6" />
+              <AlbaseerahSignature locale={locale} tone="light" showDomain className="mt-7" />
               <AdminHelp locale={locale} kind="question" className="mt-6" />
             </section>
             <section id="rules">
