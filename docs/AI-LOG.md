@@ -40,12 +40,9 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 An agent whose usage is running out lists its unfinished task here for a teammate (HANDOFF standing instruction 9). The teammate updates the entry as it works and marks it "returned" when the owner of the task is back.
 - **akheeai to web (9 Nov, 18:40 UTC; akheeai's weekly usage is spent).** These are Lane A tasks and the lead reviewer role. Work in the files named, on `web/<task>` branches.
   1. **Reviews and merges** (already handed over on issue 13): #44, #46, #47, #48, #74, #77 and #78 (AR3 batches), #45 (Ramadan guides) and #75 (chat-research fixes and the volunteering guide), plus any new PR. #49 waits for the owner's migration, and #41 waits for the owner's yes.
-  2. **(9 Nov: akheeai took item 2 back on its return, and item 3 is done in #83. web keeps item 1, reviews and merges.)** **Duroos data from the official schedule** (`docs/research/duroos-official-schedule-2026-11.md`):
-     - Add the 13 missing lessons to `src/server/seed/legacy/lessons.ts`. New installs read it, but the live site takes its lessons from the database, so also list them for an admin to add in Admin > Duroos.
-     - Correct `badrbadr-sequence` to Prof. Dr. Badr ibn Nasir al-Badr, with his current books.
-     - Set `abadr-tafsir` to Sunday to Friday.
-     - Check `ruh-targhib` and `ruh-dalil`.
-     - Convert API dates with `islamic-civil`.
+  2. **Done by akheeai, on `akheeai/official-lessons`** (naseer: nothing to do here). The 13 missing lessons are in `src/server/seed/legacy/lessons.ts`, along with the `badrbadr-sequence` and `abadr-tafsir` fixes. Left open:
+     - The owner or an admin adds the same lessons in Admin > Duroos, because the live site reads the database. The tables are in `docs/research/duroos-official-schedule-2026-11.md`.
+     - Check `ruh-targhib` and `ruh-dalil` against the shaykh's own channel.
   3. Done by akheeai: the link to the official schedule, under Now and next on `/duroos`.
   4. **Only if the owner says yes:** the automatic importer of the official schedule (see "Waiting for the owner").
 - **admin's research: published by admin (resumed) on 10 Nov, see the log; only the distance-study handbook is left.** Earlier: taken over by the Desktop agent on the owner's instruction (9 Nov, about 19:00 Riyadh).** Branch `claude/wonderful-davinci-um61gf`. Done by admin: Telegram periods c1, c2, c3, c4 and c7. Skipped on the owner's instruction: c5 (2024), c6 (2019 to 2023) and the Telegram `SYNTHESIS.md`. Desktop agent now: the official University PDFs the owner downloaded (`docs/research/iu-pdfs-2026-11/`, five readers running) and the gomedine.com crawl (`docs/research/gomedine-2026-11/`), then publishing the results in guides. Edits to another lane's guide are announced on issue 13 first.
@@ -67,6 +64,14 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **akheeai**, branch `akheeai/official-lessons`: the 13 lessons from the official Masjid an-Nabawi schedule are added to `src/server/seed/legacy/lessons.ts`, by 11 teachers.
+  - `badrbadr-sequence` is now Prof. Dr. Badr ibn Nasir al-Badr, with his current books.
+  - `abadr-tafsir` runs Sunday to Friday at the Bab Quba spot, and its note no longer has doubt wording.
+  - Two small fixes made by real data:
+    - the watcher's live-notice matcher (`src/server/watcher/live-notice.ts`) now weighs the shaykh's family name, so a book title naming another scholar ("محمد بن ابراهيم") no longer picks the wrong dars
+    - the assistant (`answer.ts`, aiakhee's) also searches the duroos on their own for "who teaches <book>"
+  - Lesson count tests are 58 and 65.
+  - Owner: the live site's lessons live in the database, so add the 13 lessons and rename the shaykh in Admin. The tables are in `docs/research/duroos-official-schedule-2026-11.md`.
 - 9 Nov 2026, **web**, branch `web/start-glossary-links`: aiakhee's follow-ups after B1, B2 and B6. `/start` and `/glossary` are linked from the guides page (two chips in the band), the More page and the footer, in both languages. Glossary terms in an `/ar` guide now link to `/ar/glossary` (`glossaryBase`), and FAQ answers get Quran and hadith links (`linkScriptureRefs`). Test: `tests/start-glossary-links.test.ts`.
 - 9 Nov 2026, **web**, branch `web/naseer-prompt`: start prompt for the new agent **naseer** in `docs/agents/PROMPT-naseer.md` (owner asked): automation first, then AR4 (Arabic FAQs, with aiakhee's go-ahead), akheeai's Lane A takeover items 2 and 3, Arabic QA crawls, then reviews. web keeps akheeai's takeover item 1 (reviews and merges).
 - 9 Nov 2026, **web**, branch `web/AR-company-guide`: the company guide is fully Arabic on `/ar/guides/start-a-company-in-saudi`. `src/features/guides/company/content-ar.ts` mirrors `content.ts` (shapes checked by tsc through `companyContent()` in `locale.ts`, and by `tests/company-guide-ar.test.ts`). `CompanyGuide` and its islands take a locale: Arabic strings, Arabic-Indic digits and ريال, RTL-safe layout, ticks saved apart per language. The Arabic page is its own canonical with reciprocal hreflang and is in the sitemap; `/ar/guides` shows its Arabic card. Translated, then reviewed by an independent Arabic editor (58 fixes) and a code reviewer. **Anyone editing `content.ts`:** update `content-ar.ts` in the same commit (tsc and the test fail otherwise). The English page's text is unchanged.

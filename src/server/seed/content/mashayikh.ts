@@ -39,7 +39,7 @@ const F = (ar: string, en: string) => ({ en, ar });
  * abdullatif-ibn-shalwah-al-shamani: Arabic شلوه (with ه), د. عبد اللطيف بن شلوه الشاماني
  * ali-ibn-fahd-abu-battin: official pages write د. علي بن فهد أبابطين (Dr., one word); confirm the rank first
  * tariq-al-qahtani: optional full name Prof. Dr. Tariq ibn Sa'id al-Qahtani / أ. د. طارق بن سعيد القحطاني
- * badr-ibn-muqbil-al-badr, maher-al-qahtani: identity unconfirmed, left out of this map
+ * maher-al-qahtani: identity unconfirmed, left out of this map (the "Badr ibn Muqbil al-Badr" dars is Prof. Dr. Badr ibn Nasir al-Badr's, per the official schedule)
  * Not lesson shaykhs: events.ts الصويح should be السويح (al-Suwayh); al-midad.ts الشيخ عبدالإله بن عبدالعزيز الرفاعي is د.
  */
 export const MASHAYIKH_POSITIONS: Record<string, ShaykhPosition> = {
