@@ -145,13 +145,13 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     id: "mukafaa", term: "Mukafa'ah", ar: "مكافأة", group: "university",
     meaning: "The monthly stipend paid to full scholarship students.",
-    use: "It is paid into the account whose IBAN you add in the Academic System.",
-    match: ["mukafa'ah", "mukafa'a", "stipend"], href: "/guides/scholarship-stipend-and-allowances",
+    use: "The University pays it each month onto the stipend card it issues in your name.",
+    match: ["mukafa'ah", "mukafa'a", "stipend"], href: "/guides/getting-your-stipend-off-the-university-card",
   },
   {
     id: "academic-system", term: "Academic System", ar: "النظام الأكاديمي", group: "university",
     meaning: "The University's online system for your studies.",
-    use: "Your timetable, final exams, stipend IBAN and requests for ta'jeel or i'tithaar are all here.",
+    use: "Your timetable, final exams and requests for ta'jeel or i'tithaar are all here.",
     match: ["academic system"], href: "/ask/find-my-timetable",
   },
   {
@@ -189,8 +189,8 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     id: "iban", term: "IBAN", ar: "آيبان", group: "money",
     meaning: "The full number of your bank account. A Saudi IBAN starts with SA.",
-    use: "Add it in the Academic System so the University can pay your stipend.",
-    match: ["iban"], href: "/guides/scholarship-stipend-and-allowances",
+    use: "Your family needs it, with your bank's SWIFT code, to send money to your Saudi account.",
+    match: ["iban"], href: "/guides/sending-and-receiving-money",
   },
   {
     id: "ejar", term: "Ejar", ar: "إيجار", group: "money",
