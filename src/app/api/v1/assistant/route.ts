@@ -27,7 +27,7 @@ const body = z.object({
 });
 
 /**
- * Ask the Meshaykh: `{ question, history?, locale? }` in; out, the standard envelope with
+ * Ask the MESHaykh: `{ question, history?, locale? }` in; out, the standard envelope with
  * `data: { answer, sources[{title, section?, url}], related[{title, url}], mode, found, lang }`.
  * `answer` uses **bold**, "- " and "1. " lines, and [n] markers that point to sources[n-1].
  */
