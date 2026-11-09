@@ -22,6 +22,7 @@ import { faqText, guideText, textAttrs } from "@/lib/arabic-content";
 import type { Locale } from "@/lib/locale";
 import { TextSizeControl } from "@/components/shell/TextSize";
 import { ThemeToggle } from "@/components/shell/ThemeToggle";
+import { PrintFooter } from "@/components/shell/PrintFooter";
 import { arCount, arDigits } from "@/lib/arabic-count";
 
 const verified = (d: Date | null, locale: Locale = "en") =>
@@ -279,9 +280,9 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
   return (
     <>
       {!ar && <JsonLd data={[ld, breadcrumbs([["Guides", "/guides"], [topic.label, `/guides#${topic.id}`], [guide.title, `/guides/${guide.slug}`]])]} />}
-      <section className="lattice overflow-hidden bg-brand text-white">
+      <section className="lattice overflow-hidden bg-brand text-white" data-print-band>
         <div className="shell py-10 md:py-14">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2" data-noprint>
             <Icon size={15} className="shrink-0 text-gold-bright" aria-hidden="true" />
             <Breadcrumbs
               tone="band"
@@ -308,7 +309,7 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
         }`}
       >
         {toc.length > 1 && !isCalendar && (
-          <nav aria-label={onPage} className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
+          <nav aria-label={onPage} data-noprint className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
             <p className="text-sm font-semibold text-muted">{onPage}</p>
             <ul className="mt-3 space-y-1 border-s border-line">
               {toc.map((t) => (
@@ -322,7 +323,7 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
           </nav>
         )}
         {toc.length > 2 && !isCalendar && (
-          <details className="group min-w-0 max-w-full rounded-2xl border border-line bg-card lg:hidden">
+          <details className="group min-w-0 max-w-full rounded-2xl border border-line bg-card lg:hidden" data-noprint>
             <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 text-sm font-semibold [&::-webkit-details-marker]:hidden">
               {onPage} <span className="text-muted">({ar ? arDigits(toc.length) : toc.length})</span>
               <ChevronDown size={18} className="ms-auto text-muted transition group-open:rotate-180" />
@@ -339,11 +340,11 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
           </details>
         )}
         <article className={isCalendar ? "min-w-0" : "min-w-0 max-w-3xl"}>
-          {ar && !isCalendar && !gt.bodyInArabic && <EnglishNote className="mb-6" />}
-          <div {...(ar && !isCalendar ? textAttrs(gt.bodyInArabic, locale) : {})}>
+          {ar && !isCalendar && !gt.bodyInArabic && <EnglishNote className="mb-6 print:hidden" />}
+          <div {...(ar && !isCalendar ? textAttrs(gt.bodyInArabic, locale) : {})} data-print-guide={isCalendar ? undefined : ""}>
             {guide.slug === "university-calendar-1448" ? <UniversityCalendar locale={locale} /> : <GuideBody html={html} slug={gt.bodyInArabic ? `${guide.slug}.ar` : guide.slug} steps={steps} locale={ar ? "ar" : "en"} />}
           </div>
-          <div className={isCalendar ? "max-w-3xl" : undefined}>
+          <div className={isCalendar ? "max-w-3xl" : undefined} data-noprint>
             <AdminHelp locale={locale} className="mt-6" />
             <RelatedList kind="guides" items={relGuides} locale={locale} />
             {relFaqs.length > 0 && (
@@ -352,9 +353,10 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
               </div>
             )}
           </div>
+          <PrintFooter path={`${ar ? "/ar" : ""}/guides/${guide.slug}`} locale={locale} />
         </article>
         {!isCalendar && relFaqs.length > 0 && (
-          <aside className="hidden xl:sticky xl:top-28 xl:block xl:self-start">
+          <aside data-noprint className="hidden xl:sticky xl:top-28 xl:block xl:self-start">
             <RelatedList kind="faqs" items={relFaqs} locale={locale} rail />
           </aside>
         )}

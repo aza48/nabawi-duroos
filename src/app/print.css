@@ -1,0 +1,173 @@
+/* ---------- Print (C6) ----------
+   Imported once, from globals.css. Every page prints black on white with the MESH wordmark small at the
+   top and none of the site's controls. Guides print as a checklist with the page address and a QR code
+   (PrintFooter.tsx). The weekly duroos schedule prints on one A4 page in portrait.
+   The schedule, the duroos cards and the assistant belong to other agents, so they are reached from here
+   by selectors only: their files are not changed. */
+
+/* The print footer is for paper only. */
+.print-footer { display: none; }
+
+@page { size: A4 portrait; margin: 12mm; }
+
+@media print {
+  /* Paper colours, whatever theme or variant the screen was in. */
+  :root, :root[data-theme="dark"], [data-variant="sisters"], :root[data-theme="dark"] [data-variant="sisters"] {
+    color-scheme: light;
+    --bg: #fff;
+    --bg-2: #fff;
+    --card: #fff;
+    --border: #bbb;
+    --ink: #000;
+    --muted: #333;
+    --primary: #000;
+    --primary-soft: #fff;
+    --accent: #000;
+    --on: #000;
+    --gold: #000;
+    --gold-bg: #fff;
+    --shadow: none;
+    --shadow-lg: none;
+    --pattern: transparent;
+  }
+  html, body { background: #fff !important; color: #000 !important; }
+  :root { font-size: 11pt !important; }
+  *, *::before, *::after { box-shadow: none !important; text-shadow: none !important; animation: none !important; transition: none !important; }
+
+  /* Site controls never print: menus, footer, bottom bar, assistant, search, theme and size buttons,
+     dialogs, and the WhatsApp group card and buttons. */
+  [data-noprint], [data-desktop-nav], [data-bottom-nav], dialog, button,
+  a[href*="chat.whatsapp.com"], a[href*="whatsapp.com/channel"],
+  a[href^="webcal:"], a[href*="calendar.google.com/calendar/r?cid="] { display: none !important; }
+
+  /* The header shrinks to the wordmark, small, at the top of the first page. */
+  [data-print-header] {
+    position: static !important; border: 0 !important; background: none !important;
+    backdrop-filter: none !important; -webkit-backdrop-filter: none !important; margin-bottom: 4mm;
+  }
+  [data-print-header] > div { height: auto !important; padding: 0 !important; max-width: none !important; }
+  [data-print-header] .wordmark { font-size: 15pt !important; color: #145c3e !important; }
+  [data-print-header] .brand-line { display: block !important; font-size: 5.5pt !important; }
+  [data-print-header] [aria-hidden="true"] { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  main, [data-main] { padding: 0 !important; }
+  .shell { max-width: none !important; padding-inline: 0 !important; }
+
+  /* Green bands and lattice turn into plain black text. */
+  .lattice::before { display: none !important; }
+  main :is(.bg-brand, .bg-brand-deep, .lattice) { background: none !important; color: #000 !important; }
+  main :is(.bg-brand, .bg-brand-deep, .lattice) :is([class*="text-white"], [class*="text-gold"]) { color: #000 !important; }
+  .lift, .card { transform: none !important; }
+  main :is(.lift, .card, .reveal) { opacity: 1 !important; translate: none !important; }
+
+  a { color: inherit !important; }
+
+  /* ---------- Guides ---------- */
+  [data-print-band] { overflow: visible !important; }
+  [data-print-band] > .shell { padding: 0 0 3mm !important; border-bottom: 1.5pt solid #000; }
+  [data-print-band] h1 { font-size: 22pt !important; line-height: 1.15 !important; margin-top: 0 !important; }
+  :root[lang="ar"] [data-print-band] h1 { line-height: 1.45 !important; }
+  [data-print-band] h1 + p { font-size: 11pt !important; margin-top: 2mm !important; }
+  [data-print-band] h1 + p + p { font-size: 9pt !important; margin-top: 2mm !important; }
+  [data-print-band] svg { display: none; }
+  [data-print-band] + div { display: block !important; margin-top: 5mm !important; }
+  [data-print-band] + div > article { max-width: none !important; }
+
+  /* GuideBody: only the article prints. Its progress card and video players stay on screen.
+     print.css loads before the rest of globals.css, so rules that meet a screen rule of the same weight
+     carry !important. */
+  [data-print-guide] > :not(.article) { display: none !important; }
+  .guide { font-size: 11pt !important; }
+  .guide :where(h2) { font-size: 14pt !important; margin: 6mm 0 2.5mm !important; break-after: avoid; }
+  .guide :where(h3) { font-size: 12pt !important; break-after: avoid; }
+  .guide .video-slot { display: none !important; }
+  .guide blockquote.callout {
+    background: none !important; border: 0 !important; border-inline-start: 2pt solid #000 !important;
+    border-radius: 0 !important; padding-block: 0 !important; padding-inline: 3mm 0 !important; margin-block: 0 4mm !important;
+  }
+  .article :where(table), .guide table { display: table !important; width: 100% !important; overflow: visible !important; }
+  .article :where(th, td) { border-color: #777 !important; background: none !important; }
+  .article :where(tr) { break-inside: avoid; }
+
+  /* Steps: a checklist of empty boxes, each kept whole on one page. Ticks made on screen do not print. */
+  .guide ol.steps { gap: 2mm !important; }
+  .guide ol.steps > li, .guide ol.steps > li.is-done {
+    border: 0 !important; border-radius: 0 !important; background: none !important;
+    padding-block: 0.4mm !important; padding-inline: 8mm 0 !important; break-inside: avoid;
+  }
+  .guide ol.steps > li::before, .guide ol.steps > li.is-done::before {
+    inset-inline-start: 0 !important; top: 1.2mm !important; width: 4mm !important; height: 4mm !important;
+    border: 1pt solid #000 !important; border-radius: 0.6mm !important; background: #fff !important;
+  }
+  .guide ol.steps > li.is-done > :not(ul):not(ol) { text-decoration: none !important; }
+
+  /* Links to other sites print their address after the text. Links inside MESH are on the QR page already. */
+  .article a[href^="http"]:not([href*="medinahub.org"])::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em; font-weight: 400; overflow-wrap: anywhere;
+    direction: ltr; unicode-bidi: isolate;
+  }
+  .article a { text-decoration: none !important; border-bottom: 0.5pt solid #000; }
+
+  /* The address and QR code, at the end of the guide. */
+  .print-footer {
+    display: flex !important; align-items: center; gap: 5mm;
+    margin-top: 8mm; padding-top: 4mm; border-top: 1pt solid #000; break-inside: avoid;
+  }
+  .print-qr { display: block; width: 24mm; height: 24mm; flex-shrink: 0; }
+  .print-qr svg { display: block; width: 100%; height: 100%; }
+  .print-footer-text { display: flex; flex-direction: column; gap: 1mm; }
+  .print-footer-label { font-size: 9pt; }
+  .print-footer-url { font-size: 12pt; font-weight: 700; unicode-bidi: isolate; }
+  :root[dir="rtl"] .print-footer-url { text-align: right; }
+
+  /* ---------- Weekly duroos schedule (ScheduleBrowser.tsx, read only) ----------
+     The page is found by its week grid (110px prayer column plus seven days). It prints the grid at any
+     paper width, with no filters, tabs or page heading, small enough for one A4 page. */
+  main:has([class*="grid-cols-[110px_repeat(7"]) > .shell { padding-top: 0 !important; }
+  main:has([class*="grid-cols-[110px_repeat(7"]) > .shell > :not(h1):not(:has([class*="grid-cols-[110px_repeat(7"])) { display: none !important; }
+  main:has([class*="grid-cols-[110px_repeat(7"]) > .shell > h1 { font-size: 15pt !important; margin: 0 0 2.5mm !important; line-height: 1.3 !important; }
+  /* Inside the browser: only the week grid and the "announced each week" list. */
+  main div:has(> div > [class*="grid-cols-[110px_repeat(7"]) > :not(section):not(:has(> [class*="grid-cols-[110px_repeat(7"])) { display: none !important; }
+  main div:has(> [class*="grid-cols-[110px_repeat(7"]) {
+    display: block !important; border: 0.75pt solid #000 !important; border-radius: 0 !important; overflow: visible !important;
+  }
+  main [class*="grid-cols-[110px_repeat(7"] { grid-template-columns: 13mm repeat(7, minmax(0, 1fr)) !important; }
+  main [class*="grid-cols-[110px_repeat(7"] div { border-color: #999 !important; }
+  /* Day headings: no "today" highlight, since the sheet is kept for the whole week. */
+  main [class*="grid-cols-[110px_repeat(7"] > div:not(.contents) {
+    background: none !important; color: #000 !important; padding: 1mm 0.8mm !important; font-size: 8pt !important;
+  }
+  main [class*="grid-cols-[110px_repeat(7"] > div:not(.contents) > span.block { display: none !important; }
+  /* Prayer column. */
+  main [class*="grid-cols-[110px_repeat(7"] > .contents > div:first-child { padding: 1mm 0.8mm !important; background: none !important; }
+  main [class*="grid-cols-[110px_repeat(7"] > .contents > div:first-child > span:first-child { font-size: 6pt !important; }
+  main [class*="grid-cols-[110px_repeat(7"] > .contents > div:first-child > span:last-child { font-size: 8.5pt !important; color: #000 !important; }
+  /* Cells and the duroos in them. */
+  main [class*="grid-cols-[110px_repeat(7"] > .contents > div + div {
+    min-height: 0 !important; padding: 0.6mm !important; background: none !important;
+    display: flex; flex-direction: column; gap: 0.6mm;
+  }
+  main [class*="grid-cols-[110px_repeat(7"] > .contents > div + div > * { margin-top: 0 !important; }
+  main [class*="grid-cols-[110px_repeat(7"] a {
+    border: 0 !important; border-bottom: 0.5pt solid #ccc !important; border-radius: 0 !important; background: none !important;
+    padding: 0 0 0.6mm !important; break-inside: avoid;
+  }
+  main [class*="grid-cols-[110px_repeat(7"] a:last-child { border-bottom: 0 !important; }
+  main [class*="grid-cols-[110px_repeat(7"] a > span { line-height: 1.2 !important; }
+  main [class*="grid-cols-[110px_repeat(7"] a > span:nth-child(1) { font-size: 6.4pt !important; }
+  main [class*="grid-cols-[110px_repeat(7"] a > span:nth-child(2) { font-size: 7.4pt !important; line-height: 1.3 !important; white-space: normal !important; display: -webkit-box !important; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden !important; }
+  main [class*="grid-cols-[110px_repeat(7"] a > span:nth-child(3) { font-size: 5.8pt !important; color: #333 !important; }
+  /* Amiri and Alexandria need more room between lines than the English faces. */
+  :root[lang="ar"] main [class*="grid-cols-[110px_repeat(7"] a > span { line-height: 1.3 !important; }
+  /* "Announced each week": four short columns under the grid. */
+  main div:has(> div > [class*="grid-cols-[110px_repeat(7"]) > section { margin-top: 3mm !important; break-inside: avoid; }
+  main div:has(> div > [class*="grid-cols-[110px_repeat(7"]) > section h2 { font-size: 8pt !important; margin-bottom: 1mm !important; color: #000 !important; }
+  main div:has(> div > [class*="grid-cols-[110px_repeat(7"]) > section > div { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1mm 3mm !important; }
+  main div:has(> div > [class*="grid-cols-[110px_repeat(7"]) > section a {
+    display: block; border: 0 !important; border-radius: 0 !important; padding: 0 !important; background: none !important;
+  }
+  main div:has(> div > [class*="grid-cols-[110px_repeat(7"]) > section a > p { display: block !important; font-size: 7pt !important; margin: 0 !important; line-height: 1.3 !important; }
+  main div:has(> div > [class*="grid-cols-[110px_repeat(7"]) > section a > p:first-child { font-size: 7.5pt !important; }
+  main div:has(> div > [class*="grid-cols-[110px_repeat(7"]) > section a svg { display: none; }
+}
