@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { BookOpenCheck, CalendarDays, CalendarPlus, GraduationCap, Moon, PencilLine, Sun } from "lucide-react";
 import { SectionHeader } from "@/components/ui";
 import { KEY_DATES, endOf, keyDatesState, startOf, type KeyDate } from "@/content/key-dates";
@@ -20,8 +20,11 @@ const pad = (n: number) => String(n).padStart(2, "0");
 /** webcal:// subscribes on phones, and the feed keeps itself up to date. */
 const DATES_FEED = `${SITE_URL.replace(/^https?:/, "webcal:")}/api/v1/calendar/dates.ics`;
 
-/** "Coming up": the next University date leads, the next three follow, Islamic dates count down at the side. */
-export function KeyDates({ initialNow }: { initialNow: number }) {
+/**
+ * "Coming up": the next University date leads with a countdown; after it, one list of the next four dates, University
+ * and Islamic together in date order. `side` fills the third column (the home page puts the latest updates there).
+ */
+export function KeyDates({ initialNow, side }: { initialNow: number; side?: ReactNode }) {
   // Rendered on the server with the server's clock (so the HTML is complete and nothing jumps), then ticking on the client.
   const [now, setNow] = useState<number>(initialNow);
   useEffect(() => {
@@ -33,6 +36,8 @@ export function KeyDates({ initialNow }: { initialNow: number }) {
   const { current, next, following, islamic } = keyDatesState(new Date(now), KEY_DATES);
   const lead = current ?? next;
   const rest = current ? [next, ...following].filter((x): x is KeyDate => !!x).slice(0, 3) : following;
+  // University and Islamic dates in one list, soonest first, four at a time.
+  const upcoming = [...rest, ...islamic].sort((a, b) => startOf(a.start).getTime() - startOf(b.start).getTime()).slice(0, 4);
   if (!lead) return null;
   const k = KIND[lead.kind];
   const target = current ? endOf(current.end!) : startOf(lead.start);
@@ -57,7 +62,7 @@ export function KeyDates({ initialNow }: { initialNow: number }) {
             {fmt(lead.start)}
             {lead.end ? ` to ${fmt(lead.end)}` : ""}
           </p>
-          <div className="mt-5" role="timer" aria-label={`${days(left)} ${current ? "days left" : "days to go"}`}>
+          <div className="mt-5" role="timer" aria-label={`${days(left)} ${days(left) === 1 ? "day" : "days"} ${current ? "left" : "to go"}`}>
             <div className="grid grid-cols-4 gap-2" dir="ltr">
               {[
                 [Math.floor(left / 86_400_000), "days"],
@@ -90,52 +95,35 @@ export function KeyDates({ initialNow }: { initialNow: number }) {
           )}
         </article>
 
-        {/* The next three University dates as a timeline */}
+        {/* The next four dates, University and Islamic together, as a timeline */}
         <article className="flex flex-col rounded-3xl border border-line bg-card p-6">
           <p className="text-sm font-semibold text-muted">After that</p>
           <ol className="relative mt-4 flex flex-1 flex-col justify-between gap-5 before:absolute before:inset-y-2 before:start-[22px] before:w-px before:bg-line">
-            {rest.map((d) => {
+            {upcoming.map((d) => {
               const kk = KIND[d.kind];
+              const isl = d.kind === "islamic";
               return (
                 <li key={d.id} className="relative flex items-center gap-4">
-                  <span className="relative z-10 flex w-11 shrink-0 flex-col items-center rounded-xl border border-line bg-card py-1 leading-tight">
-                    <span className="text-[10px] font-bold uppercase text-muted">{fmt(d.start, { month: "short" })}</span>
+                  <span className={`relative z-10 flex w-11 shrink-0 flex-col items-center rounded-xl border py-1 leading-tight ${isl ? "border-gold/30 bg-gold-bg" : "border-line bg-card"}`}>
+                    <span className={`text-[10px] font-bold uppercase ${isl ? "text-gold" : "text-muted"}`}>{fmt(d.start, { month: "short" })}</span>
                     <span className="font-heading text-lg font-bold">{fmt(d.start, { day: "numeric" })}</span>
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block font-semibold leading-snug">{d.title}</span>
                     <span className="flex items-center gap-1.5 text-xs text-muted">
-                      <kk.icon size={12} /> {kk.label}
-                      {d.end ? `, until ${fmt(d.end, { day: "numeric", month: "short" })}` : ""}
+                      <kk.icon size={12} className={isl ? "text-gold" : undefined} />
+                      {isl ? d.hijri : kk.label}
+                      {!isl && d.end ? `, until ${fmt(d.end, { day: "numeric", month: "short" })}` : ""}
                     </span>
                   </span>
-                  <span className="shrink-0 text-sm font-semibold tabular text-primary">{days(startOf(d.start).getTime() - now)}d</span>
+                  <span className={`shrink-0 text-sm font-semibold tabular ${isl ? "text-gold" : "text-primary"}`}>{days(startOf(d.start).getTime() - now)}d</span>
                 </li>
               );
             })}
           </ol>
         </article>
 
-        {/* Islamic dates: small counters */}
-        <article className="lattice flex flex-col overflow-hidden rounded-3xl bg-brand-deep p-6 text-white md:col-span-2 xl:col-span-1">
-          <p className="flex items-center gap-2 text-sm font-semibold text-white/75">
-            <Moon size={15} className="text-gold-bright" /> Islamic dates
-          </p>
-          <ul className="mt-4 grid flex-1 content-between gap-3 sm:grid-cols-3 xl:grid-cols-1">
-            {islamic.map((d) => (
-              <li key={d.id} className="flex items-center justify-between gap-3 rounded-2xl bg-white/8 px-4 py-3 ring-1 xl:py-2.5 ring-white/10">
-                <span className="min-w-0">
-                  <span className="block font-semibold leading-snug">{d.title}</span>
-                  <span className="block text-xs text-white/65">{d.hijri}</span>
-                </span>
-                <span className="shrink-0 text-end">
-                  <span className="block font-heading text-2xl font-bold leading-none tabular text-gold-bright">{days(startOf(d.start).getTime() - now)}</span>
-                  <span className="text-[11px] text-white/65">days</span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </article>
+        {side}
       </div>
     </section>
   );

@@ -30,7 +30,34 @@ describe("buildIcs", () => {
   });
 });
 
+describe("reminders (A5)", () => {
+  const ev = { uid: "y@medinahub.org", start: new Date("2026-11-12T12:15:00Z"), end: new Date("2026-11-12T13:15:00Z"), summary: "Kitab", description: "", location: "Nabawi", url: "https://medinahub.org/y" };
+  const alarms = (ics: string) => ics.split("BEGIN:VALARM").length - 1;
+  it("reminds 20 minutes before each dars, inside the event", () => {
+    const ics = buildIcs("t", [{ ...ev, cancelled: false }]);
+    expect(alarms(ics)).toBe(1);
+    const block = ics.slice(ics.indexOf("BEGIN:VALARM"), ics.indexOf("END:VALARM"));
+    expect(block).toContain("ACTION:DISPLAY");
+    expect(block).toContain("TRIGGER:-PT20M");
+    expect(block).toContain("DESCRIPTION:Kitab");
+    expect(ics.indexOf("END:VALARM")).toBeLessThan(ics.indexOf("END:VEVENT"));
+  });
+  it("never reminds for a cancelled dars or a whole-day date", () => {
+    expect(alarms(buildIcs("t", [{ ...ev, cancelled: true }]))).toBe(0);
+    expect(alarms(buildIcs(datesFeed().title, datesFeed().events))).toBe(0);
+  });
+});
+
 describe("datesFeed", () => {
+  it("puts a long request window in once, on its last day, and leaves out withdrawal windows", () => {
+    const { events } = datesFeed();
+    const reenrol = events.find((e) => e.uid === "date-reenrol-1@medinahub.org")!;
+    expect(reenrol.allDay).toEqual({ from: "2026-10-22", toExclusive: "2026-10-23" });
+    expect(reenrol.summary).toBe("Last day: Re-enrolment requests");
+    expect(events.find((e) => e.uid === "date-drop-add-2@medinahub.org")!.summary).toBe("Drop, add and change sections");
+    expect(events.some((e) => /withdraw|Excuse from the semester/i.test(e.summary))).toBe(false);
+    for (const e of events.filter((x) => x.summary.startsWith("Last day"))) expect(e.allDay!.from < e.allDay!.toExclusive).toBe(true);
+  });
   it("turns the University calendar into whole-day events with an exclusive end", () => {
     const ics = buildIcs(datesFeed().title, datesFeed().events);
     const finals = ics.slice(ics.indexOf("UID:date-finals-1@"));

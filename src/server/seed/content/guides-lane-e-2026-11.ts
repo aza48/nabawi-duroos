@@ -56,7 +56,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <p>Most students rent, and for a stay of a few years renting is cheaper and simpler. Buying makes sense for a family settled in Madinah for the long term, with the money to pay in full, and with a property inside a zone that they would be glad to own even if their stay ended early. Prices inside the zones are set by the new developments, so compare them with the rents in <a href="/guides/cost-of-living">What it costs to live in Madinah</a> before deciding.</p>
 <h2>Where to ask</h2>
 <p>REGA's support line is 920017183 inside the Kingdom and 00966920017183 from abroad, and its email is saudiproperties@rega.gov.sa. The official guide to ownership by non-Saudis is published on the portal in Arabic.</p>
-<blockquote><p>Tip: Never pay a deposit on a promise that a plot "will be inside the zones soon". Only the map on the portal counts. Questions? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Never pay a deposit on a promise that a plot "will be inside the zones soon". Only the map on the portal counts. Questions? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "sending-and-receiving-money",
@@ -111,7 +111,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 </ul>
 <h2>Zakat and sadaqah</h2>
 <p>Zakat and sadaqah to charities inside the Kingdom go through the national platforms Ehsan (ehsan.sa) and Zakaty, which take mada, cards and Apple Pay. Ehsan also receives zakat al-fitr in the last days of Ramadan: you choose the region and the number of people and pay the announced rate per person. Zakat for your own family and community at home goes with your ordinary transfer, with "zakat" or "family support" as the purpose.</p>
-<blockquote><p>Tip: Keep every transfer receipt. Some countries tax money received from abroad or ask where it came from, and the receipt answers the question. More in <a href="/ask/send-money-home">How do I send money home from Madinah?</a>, or message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Keep every transfer receipt. Some countries tax money received from abroad or ask where it came from, and the receipt answers the question. More in <a href="/ask/send-money-home">How do I send money home from Madinah?</a>, or message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "shipping-and-receiving-parcels",
@@ -157,7 +157,7 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <p>Leaving for good and shipping everything? The full plan, including selling what you cannot ship, is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
 <h2>On the Haramain train</h2>
 <p>Each passenger takes one bag of up to 25 kg and 65 by 55 by 35 cm plus a hand item, and excess luggage is turned away at the security check. The SPL counter in the station ships the extra bag to the destination station for collection the next day, for about 75 to 150 SAR a bag as of 2026, so a student moving between Madinah and Makkah or Jeddah with more than one bag sends the extra box a day ahead. Zamzam water flies as checked baggage in its sealed box on most airlines and does not go in the post. Details in <a href="/guides/haramain-train-and-city-buses">The Haramain train and Madinah buses</a>.</p>
-<blockquote><p>Tip: A parcel stuck for days usually means the carrier could not reach your number or your address was incomplete. Open the tracking page, check the note, and call the carrier. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: A parcel stuck for days usually means the carrier could not reach your number or your address was incomplete. Open the tracking page, check the note, and call the carrier. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "bringing-parents-to-visit",
@@ -169,11 +169,25 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <h2>Which visa</h2>
 <table><thead><tr><th>Visa</th><th>Who it suits</th><th>What to know</th></tr></thead><tbody>
 <tr><td><strong>Tourist eVisa</strong></td><td>Parents from one of the 72 eligible countries, and holders of a valid and used US, UK or Schengen visa</td><td>About 535 SAR with the compulsory insurance, applied for on visa.visitsaudi.com only. Valid one year, multiple entries, up to 90 days a visit. It covers Umrah with a Nusuk permit</td></tr>
-<tr><td><strong>Umrah visa</strong></td><td>Parents from other countries</td><td>Arranged through the Nusuk Umrah platform or a licensed agent, with a service package. Madinah is included in the visit</td></tr>
-<tr><td><strong>Family visit visa</strong></td><td>Parents of a resident who holds an iqama</td><td>The resident applies on the Ministry of Foreign Affairs visa platform. 300 SAR for a single entry or 500 SAR for multiple entries, plus insurance. Approval is case by case, and the host answers for the visitor</td></tr>
+<tr><td><strong>Umrah visa</strong></td><td>Parents from other countries</td><td>Arranged through the Nusuk Umrah platform or a licensed agent, with a service package: the hotel and transport are booked and recorded on Nusuk before the visa is issued. It must be used to enter within 30 days of issue, and the season closes in Shawwal (dates below). Madinah is included in the visit</td></tr>
+<tr><td><strong>Family visit visa</strong></td><td>Parents of a resident who holds an iqama</td><td>The resident applies on the Ministry of Foreign Affairs visa platform. 300 SAR for a single entry or 500 SAR for multiple entries, plus insurance. Your parents then give fingerprints and a photo at a Tasheer visa centre before the visa is issued. Approval is case by case, and the host answers for the visitor</td></tr>
 <tr><td><strong>Students on the educational visa</strong></td><td>Visitor ID holders</td><td>You cannot host a family visit visa without an iqama. Your parents come on a tourist or Umrah visa, or ask the Deanship of Student Affairs through Tawasul about the University's own family visitor procedure</td></tr>
 </tbody></table>
-<p>The current rules and fees are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>, and they change, so check the official site before paying for flights.</p>
+<p>The current rules and fees, and what to take to the visa centre, are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>, and they change, so check the official site before paying for flights.</p>
+<h2>Coming on an Umrah visa: the 1448 season</h2>
+<p>Parents coming on an Umrah visa must keep to the season's dates:</p>
+<table><thead><tr><th>Step</th><th>Hijri</th><th>Gregorian</th></tr></thead><tbody>
+<tr><td>Last day an Umrah visa is issued</td><td>1 Shawwal 1448</td><td>9 March 2027</td></tr>
+<tr><td>Last day to enter Saudi Arabia</td><td>15 Shawwal 1448</td><td>23 March 2027</td></tr>
+<tr><td>Last day to leave Saudi Arabia</td><td>30 Shawwal 1448</td><td>7 April 2027</td></tr>
+</tbody></table>
+<ul>
+<li>The visa is cancelled if it is not used to enter within 30 days of being issued, so apply only once the flights are fixed.</li>
+<li>The hotel and transport are booked on Nusuk, or through a licensed agent, before the visa is issued.</li>
+<li>Your mother does not need a mahram to get the visa or to perform Umrah.</li>
+<li>An Umrah visa never allows Hajj, and from 1 Dhul Qa'dah (8 April 2027) Umrah permits stop for the Hajj season.</li>
+<li>Every valid Saudi visa, the tourist eVisa and the family visit visa included, allows Umrah. A Nusuk permit is needed in every case.</li>
+</ul>
 <h2>Before they fly</h2>
 <ol>
 <li><strong>Passports valid for six months</strong> from the day they enter.</li>
@@ -215,16 +229,17 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <tr><td>Asr to Isha</td><td>The Haram: duroos after Maghrib for your father, the women's sections for your mother, dates and the market after Isha</td></tr>
 </tbody></table>
 <h2>Health, insurance and emergencies</h2>
-<p>The eVisa and the family visit visa include medical insurance for the visit, and the insurer's card or number is on the visa. For a chemist, pharmacies are on every street and many open all night. For an emergency, 997 is the ambulance and 911 works for everything. Hospitals and clinics are in <a href="/guides/doctors-hospitals-and-pharmacies">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>
+<p>The eVisa and the family visit visa include medical insurance for the visit, and the insurer's card or number is on the visa. To check the policy, use the Council of Health Insurance visa inquiry with the passport, visa or border number: see <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>. For a chemist, pharmacies are on every street and many open all night. For an emergency, 997 is the ambulance and 911 works for everything. Hospitals and clinics are in <a href="/guides/doctors-hospitals-and-pharmacies">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>
 <h2>How long they can stay</h2>
 <ul>
 <li>On the tourist eVisa, up to 90 days in a visit, counted from the day of entry, and the visa itself runs a year.</li>
-<li>On a family visit visa, the host extends it on Absher before it expires, for about 100 SAR a time, with new insurance for the new dates, up to 180 days in total.</li>
+<li>On a family visit visa, the host extends it in Absher from 7 days before it expires, for 100 SAR a time, up to 180 days in total. Buy the new insurance for the new dates first, because Absher refuses the extension without it. Extending in the 3 days after expiry adds a 500 SAR fine. The steps are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</li>
+<li>On an Umrah visa, they leave by the season's last departure date above.</li>
 <li>An overstay brings a fine and a ban on the visitor and penalties on the host. Put the last day in your calendar on the day they arrive.</li>
 </ul>
 <h2>When they leave</h2>
 <p>A sealed box of ajwa or safawi dates, prayer mats from the Haram's market, and a few books in Arabic for the grandchildren travel well in the suitcase, and anything heavier goes by post: see <a href="/guides/shipping-and-receiving-parcels">Shipping and receiving parcels in Madinah</a>. Ask them to keep the Nusuk app, because the permits for the next visit are booked the same way.</p>
-<blockquote><p>Tip: Planning a visit around Ramadan or the University breaks? Check the dates first, book early, and expect the city to be full. Questions? Please message Admin on WhatsApp at +1 234 567 9076.</p></blockquote>`,
+<blockquote><p>Tip: Planning a visit around Ramadan or the University breaks? Check the dates first, book early, and expect the city to be full. Questions? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "ramadan-in-madinah",

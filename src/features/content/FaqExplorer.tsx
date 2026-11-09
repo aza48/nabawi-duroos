@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, Search } from "lucide-react";
+import { arDigits } from "@/lib/arabic-count";
 
 type Item = { slug: string; question: string; category: string };
 type Cat = { id: string; label: string; labelAr?: string };
@@ -41,7 +42,7 @@ export function FaqExplorer({ items, categories, locale = "en" }: { items: Item[
                   }`}
                 >
                   {ar ? (c.labelAr ?? c.label) : c.label}
-                  <span className="text-xs opacity-70 tabular">{n}</span>
+                  <span className="text-xs opacity-70 tabular">{ar ? arDigits(n) : n}</span>
                 </button>
               </li>
             );
@@ -62,7 +63,7 @@ export function FaqExplorer({ items, categories, locale = "en" }: { items: Item[
         </label>
         {shown.length === 0 ? (
           <p className="mt-6 rounded-2xl border border-dashed border-line bg-card p-6 text-center text-muted">
-            {ar ? "لا توجد نتيجة بعد. اسأل في مجموعة واتساب، وقد يصبح سؤالك الجواب التالي هنا." : "Nothing matches yet. Ask it in the WhatsApp group and it may become the next answer here."}
+            {ar ? "لا توجد نتيجة بعد. راسل المشرف على واتساب على الرقم \u2066+1 234 567 9076\u2069 أو على البريد الإلكتروني \u2066mesh@albaseerah.org\u2069، ونضيف هنا الأسئلة التي تتكرر." : "Nothing matches yet. Message Admin on WhatsApp at +1 234 567 9076 or email mesh@albaseerah.org. Questions that come up often are added here."}
           </p>
         ) : (
           <ul className="mt-5 grid gap-px overflow-hidden rounded-2xl border border-line bg-line xl:grid-cols-2 xl:[&>li:last-child:nth-child(odd)]:col-span-2">

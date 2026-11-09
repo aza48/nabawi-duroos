@@ -1,18 +1,24 @@
 import type { getToday } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
-import { toArabicDigits } from "@/lib/locale";
 import { formatHijriLong } from "@/lib/time/hijri";
 import { addDays } from "@/lib/time/riyadh";
 import { PRAYERS, prayerTimes } from "@/lib/time/prayer";
 import { DayArc, type ArcCounts, type ArcLesson } from "./DayArc";
 import { HeroSky } from "./HeroSky";
+import { AlbaseerahSchool } from "@/components/shell/Albaseerah";
 import { mapUrl } from "@/lib/maps";
 import { NextPrayer } from "./NextPrayer";
 import { WeatherChip } from "./WeatherChip";
 import { LiveNowChip } from "@/features/duroos/Countdown";
 import { DayRollover } from "./DayRollover";
+import { arCount, enCount } from "@/lib/arabic-count";
+import { ramadanMode } from "./ramadan";
+import { RamadanStrip } from "./RamadanStrip";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
+
+/** A verb before a counted, non-human subject: feminine with a plural (3 to 10 duroos), masculine otherwise. */
+export const pluralVerb = (n: number, masc: string, fem: string) => (n % 100 >= 3 && n % 100 <= 10 ? fem : masc);
 
 export function arcCounts(today: Today): ArcCounts {
   return Object.fromEntries(
@@ -50,22 +56,26 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
   const ar = locale === "ar";
   const weekday = today.hijri.en.split(" ")[0];
   const total = today.lessons.length;
-  const cancelled = today.lessons.filter((l) => l.status === "cancelled" || l.status === "postponed").length;
+  const cancelled = today.lessons.filter((l) => l.status === "cancelled").length;
+  const postponed = today.lessons.filter((l) => l.status === "postponed").length;
   const masjids = new Set(today.lessons.map((l) => l.masjid.id)).size;
   const live = today.lessons.filter((l) => l.phase === "live" && l.status !== "cancelled" && l.status !== "postponed").length;
-  const n = (x: number) => (ar ? toArabicDigits(x) : String(x));
   const tomorrowFajr = prayerTimes(addDays(today.date, 1)).fajr.toISOString();
+  const ramadan = ramadanMode(today.date);
 
   const summary = ar
-    ? `${n(total)} دروس اليوم في ${n(masjids)} مساجد${cancelled ? `، ${n(cancelled)} ملغى` : ""}.`
+    ? total === 0
+      ? "لا دروس اليوم."
+      : `${arCount(total, "dars")} اليوم في ${arCount(masjids, "masjid", { case: "gen" })}${cancelled ? `، و${pluralVerb(cancelled, "أُلغي", "أُلغيت")} ${arCount(cancelled, "dars")}` : ""}${postponed ? `، و${pluralVerb(postponed, "أُجّل", "أُجّلت")} ${arCount(postponed, "dars")}` : ""}.`
     : total === 0
       ? "No duroos scheduled today."
-      : `${total} duroos today across ${masjids} ${masjids === 1 ? "masjid" : "masjids"}${cancelled ? `, ${cancelled} cancelled` : ""}.`;
+      : `${enCount(total, "dars", "duroos")} today across ${enCount(masjids, "masjid", "masjids")}${cancelled ? `, ${cancelled} cancelled` : ""}${postponed ? `, ${postponed} postponed` : ""}.`;
 
   return (
     <section className="hero lattice overflow-hidden bg-brand text-white">
       <DayRollover date={today.date} />
       <HeroSky prayers={today.prayers} />
+      <AlbaseerahSchool locale={locale} />
       <div className="hero-text shell pt-6 pb-6 md:pt-12 md:pb-8">
         <div className="grid items-end gap-4 md:gap-6 lg:grid-cols-[1fr_340px] lg:gap-10">
           <div>
@@ -88,6 +98,7 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
                 items={today.lessons.map((l) => ({ liveFrom: l.liveFrom, liveUntil: l.liveUntil, off: !l.timeKnown || l.status === "cancelled" || l.status === "postponed" }))}
               />
             </p>
+            {ramadan && <RamadanStrip mode={ramadan} serverNow={Date.now()} locale={locale} />}
           </div>
           <NextPrayer prayers={today.prayers} tomorrowFajr={tomorrowFajr} locale={locale} />
         </div>

@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { MapPin } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import type { ScheduleRow } from "@/server/duroos/queries";
 import type { MasjidRow } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
 import { PRAYERS } from "@/lib/time/prayers";
 import { DAY_KEYS, t } from "./strings";
 import { SistersTag } from "./StatusTag";
+import { StarButton } from "./StarButton";
+import { useStarred } from "./useStarred";
 
 type Week = { byDay: Record<number, ScheduleRow[]>; daysNotStated: ScheduleRow[] };
 
@@ -25,6 +27,11 @@ export function ScheduleBrowser({ week, masjids, locale, initialDay = 6 }: { wee
   const [prayer, setPrayer] = useState<string>("all");
   const shown = PRAYERS.filter((p) => prayer === "all" || p === prayer);
   const [today, setToday] = useState<number>(initialDay);
+  const { starred } = useStarred();
+  const [mine, setMine] = useState(false);
+  const keep = (r: ScheduleRow) => !mine || starred.includes(r.slug);
+  // Days that hold one of your duroos get a gold dot, so "My duroos" on a phone shows where to look.
+  const mineDays = new Set(Object.entries(week.byDay).filter(([, rs]) => rs.some((r) => starred.includes(r.slug))).map(([d]) => Number(d)));
   useEffect(() => {
     const d = riyadhWeekday();
     setDay(d);
@@ -35,6 +42,7 @@ export function ScheduleBrowser({ week, masjids, locale, initialDay = 6 }: { wee
     if (p && (PRAYERS as readonly string[]).includes(p)) setPrayer(p);
     const m = q.get("masjid");
     if (m && masjids.some((x) => x.id === m)) setMasjid(m);
+    if (q.get("mine") === "1") setMine(true);
   }, [masjids]);
 
   const used = useMemo(() => {
@@ -44,8 +52,8 @@ export function ScheduleBrowser({ week, masjids, locale, initialDay = 6 }: { wee
     return masjids.filter((m) => ids.has(m.id));
   }, [week, masjids]);
 
-  const rows = (week.byDay[day] ?? []).filter((r) => masjid === "all" || r.masjidId === masjid);
-  const unstated = week.daysNotStated.filter((r) => (masjid === "all" || r.masjidId === masjid) && (prayer === "all" || r.prayer === prayer));
+  const rows = (week.byDay[day] ?? []).filter((r) => (masjid === "all" || r.masjidId === masjid) && keep(r));
+  const unstated = week.daysNotStated.filter((r) => (masjid === "all" || r.masjidId === masjid) && (prayer === "all" || r.prayer === prayer) && keep(r));
   const base = ar ? "/ar/duroos" : "/duroos";
 
   return (
@@ -63,10 +71,23 @@ export function ScheduleBrowser({ week, masjids, locale, initialDay = 6 }: { wee
           >
             {t(locale, k)}
             {i === today && <span className="text-[10px] font-medium opacity-80">{t(locale, "today")}</span>}
+            {mineDays.has(i) && <span className="mt-0.5 size-1.5 rounded-full bg-gold-bright" aria-hidden="true" />}
           </button>
         ))}
       </div>
       <div className="-mx-4 mt-1 flex gap-1.5 overflow-x-auto px-4 pb-3 [scrollbar-width:none]">
+        <button
+          type="button"
+          onClick={() => setMine((v) => !v)}
+          aria-pressed={mine}
+          className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition ${
+            mine ? "bg-gold-bright text-[#1f1a0a]" : "border border-line bg-card text-muted"
+          }`}
+        >
+          <Star size={13} className={mine || starred.length ? "fill-current" : ""} aria-hidden />
+          {ar ? "دروسي" : "My duroos"}
+          {starred.length > 0 && <span className="tabular-nums opacity-80">{starred.length}</span>}
+        </button>
         {[{ id: "all", shortEn: t("en", "allMasjids"), shortAr: t("ar", "allMasjids") }, ...used].map((m) => (
           <button
             key={m.id}
@@ -98,7 +119,13 @@ export function ScheduleBrowser({ week, masjids, locale, initialDay = 6 }: { wee
         ))}
       </div>
 
-      <WeekGrid week={week} masjid={masjid} prayers={shown} today={today} locale={locale} base={base} />
+      {mine && starred.length === 0 && (
+        <p className="card mb-4 p-4 text-center text-sm text-muted">
+          {ar ? "اضغط النجمة بجانب أي درس ليظهر هنا. تُحفظ دروسك على هذا الجهاز فقط." : "Tap the star beside any dars to keep it here. Your duroos stay on this phone only."}
+        </p>
+      )}
+
+      <WeekGrid week={week} masjid={masjid} prayers={shown} today={today} locale={locale} base={base} keep={keep} starred={starred} />
 
       <div className="lg:hidden">
       {shown.map((p) => {
@@ -117,7 +144,11 @@ export function ScheduleBrowser({ week, masjids, locale, initialDay = 6 }: { wee
           </section>
         );
       })}
-      {rows.filter((r) => shown.includes(r.prayer)).length === 0 && <p className="card p-4 text-center text-sm text-muted">{t(locale, "noLessonsToday")}</p>}
+      {rows.filter((r) => shown.includes(r.prayer)).length === 0 && !(mine && starred.length === 0) && (
+        <p className="card p-4 text-center text-sm text-muted">
+          {mine ? (ar ? "لا دروس لك في هذا اليوم. الأيام التي عليها نقطة ذهبية فيها دروسك." : "None of your duroos on this day. Days with a gold dot have yours.") : t(locale, "noLessonsToday")}
+        </p>
+      )}
       </div>
 
       {unstated.length > 0 && (
@@ -137,7 +168,8 @@ export function ScheduleBrowser({ week, masjids, locale, initialDay = 6 }: { wee
 function Row({ r, locale, base }: { r: ScheduleRow; locale: Locale; base: string }) {
   const ar = locale === "ar";
   return (
-    <Link href={`${base}/lesson/${r.slug}`} className="card lift block p-3 hover:border-primary">
+    <div className="relative">
+    <Link href={`${base}/lesson/${r.slug}`} className="card lift block p-3 pe-12 hover:border-primary">
       <p className="flex items-start justify-between gap-2 text-sm font-semibold">
         {ar ? r.shaykh.nameAr : r.shaykh.nameEn}
         {r.audience === "women" && <SistersTag locale={locale} />}
@@ -149,13 +181,17 @@ function Row({ r, locale, base }: { r: ScheduleRow; locale: Locale; base: string
         {ar ? r.masjid.shortAr : r.masjid.shortEn} · {ar ? r.locationAr : r.locationEn}
       </p>
     </Link>
+    <span className="absolute bottom-1 end-1">
+      <StarButton slug={r.slug} title={ar ? r.bookAr : r.bookEn} locale={locale} />
+    </span>
+    </div>
   );
 }
 
 /** Madinah's week starts on Saturday. */
 const WEEK_ORDER = [6, 0, 1, 2, 3, 4, 5];
 
-function WeekGrid({ week, masjid, prayers, today, locale, base }: { week: Week; masjid: string; prayers: readonly (typeof PRAYERS)[number][]; today: number; locale: Locale; base: string }) {
+function WeekGrid({ week, masjid, prayers, today, locale, base, keep, starred }: { week: Week; masjid: string; prayers: readonly (typeof PRAYERS)[number][]; today: number; locale: Locale; base: string; keep: (r: ScheduleRow) => boolean; starred: readonly string[] }) {
   const ar = locale === "ar";
   return (
     <div className="hidden overflow-hidden rounded-3xl border border-line bg-card shadow-[var(--shadow)] lg:block">
@@ -177,7 +213,7 @@ function WeekGrid({ week, masjid, prayers, today, locale, base }: { week: Week; 
               <span className="font-heading text-base font-bold text-primary">{t(locale, p)}</span>
             </div>
             {WEEK_ORDER.map((d) => {
-              const cell = (week.byDay[d] ?? []).filter((r) => r.prayer === p && (masjid === "all" || r.masjidId === masjid));
+              const cell = (week.byDay[d] ?? []).filter((r) => r.prayer === p && (masjid === "all" || r.masjidId === masjid) && keep(r));
               return (
                 <div key={d} className={`min-h-24 space-y-1.5 border-b border-s border-line p-1.5 ${d === today ? "bg-primary-soft/50" : ""}`}>
                   {cell.map((r) => (
@@ -187,7 +223,10 @@ function WeekGrid({ week, masjid, prayers, today, locale, base }: { week: Week; 
                       title={`${ar ? r.shaykh.nameAr : r.shaykh.nameEn}: ${ar ? r.bookAr : r.bookEn}`}
                       className="block rounded-lg border border-line bg-bg px-2 py-1.5 transition-colors hover:border-primary hover:bg-card"
                     >
-                      <span className="block truncate text-[11.5px] font-semibold leading-tight">{shortName(ar ? r.shaykh.nameAr : r.shaykh.nameEn)}</span>
+                      <span className="flex items-center gap-1 truncate text-[11.5px] font-semibold leading-tight">
+                        {starred.includes(r.slug) && <Star size={10} className="shrink-0 fill-current text-gold" aria-label={ar ? "في دروسي" : "In My duroos"} />}
+                        <span className="truncate">{shortName(ar ? r.shaykh.nameAr : r.shaykh.nameEn)}</span>
+                      </span>
                       <span className="ar-text block truncate text-[13px] leading-snug">{r.bookAr}</span>
                       <span className="block truncate text-[10.5px] text-muted">{ar ? r.masjid.shortAr : r.masjid.shortEn}</span>
                     </Link>

@@ -4,10 +4,13 @@ import { BottomNav, DesktopNav } from "./BottomNav";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { WhatsAppIcon } from "./WhatsApp";
+import { AdminEmailLink, AdminHelpLink } from "./AdminHelp";
 import { Wordmark } from "./Wordmark";
+import { AlbaseerahSignature } from "./Albaseerah";
 import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
 import { AssistantLauncher } from "@/features/assistant/AssistantLauncher";
+import { TextSizeControl } from "./TextSize";
 
 export function SiteShell({
   locale,
@@ -23,16 +26,16 @@ export function SiteShell({
   const ar = locale === "ar";
   return (
     <>
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:start-2 focus:z-50 focus:rounded focus:bg-card focus:p-2">
+      <a href="#main" data-noprint className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:start-2 focus:z-50 focus:rounded focus:bg-card focus:p-2">
         {ar ? "تخطَّ إلى المحتوى" : "Skip to content"}
       </a>
-      <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/85 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-line/70 bg-bg/85 backdrop-blur-md" data-print-header>
         <div className="shell flex h-16 items-center justify-between gap-2 sm:gap-4 md:h-[72px] lg:gap-3 xl:gap-4">
           <Link href={ar ? "/ar" : "/"} aria-label={ar ? "الصفحة الرئيسية لـ MESH" : "MESH home"} className="shrink-0">
             <Wordmark />
           </Link>
           <DesktopNav locale={locale} />
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2" data-noprint>
             <SearchPalette locale={locale} />
             <a
               href={whatsappUrl}
@@ -41,7 +44,7 @@ export function SiteShell({
               aria-label={ar ? "انضم لمجموعة MESH على واتساب" : "Join the MESH WhatsApp group"}
               className="flex h-11 min-w-11 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-wa px-3 text-sm font-semibold text-wa-ink transition hover:brightness-105 xl:px-4"
             >
-              <WhatsAppIcon size={18} /> <span className="hidden xl:inline">{ar ? "انضم للمجموعة" : "Join the group"}</span>
+              <WhatsAppIcon size={18} /> <span className="hidden xl:inline" data-hdr-label>{ar ? "انضم للمجموعة" : "Join the group"}</span>
             </a>
             <LanguageSwitch />
             <span className="hidden sm:contents">
@@ -51,8 +54,10 @@ export function SiteShell({
         </div>
       </header>
       <Tracker />
-      <AssistantLauncher locale={locale} />
-      <main id="main" className="pb-safe lg:pb-0">
+      <div className="contents" data-noprint>
+        <AssistantLauncher locale={locale} />
+      </div>
+      <main id="main" className="pb-safe lg:pb-0" data-main>
         {children}
       </main>
       <Footer locale={locale} whatsappUrl={whatsappUrl} helpContact={helpContact} />
@@ -86,15 +91,16 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
     },
   ];
   return (
-    <footer className="lattice mt-16 bg-brand-deep text-white">
+    <footer className="lattice mt-16 bg-brand-deep text-white" data-noprint>
       <div className="shell grid gap-8 py-12 sm:grid-cols-2 md:py-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
-        <div>
+        <div className="flex flex-col">
           <Wordmark tone="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">
             {ar
-              ? "مركز يديره الطلاب لطلاب المدينة الناطقين بالإنجليزية."
-              : "Run by students, for English-speaking students in Madinah."}
+              ? "لطلاب المدينة الناطقين بالإنجليزية."
+              : "For English-speaking students in Madinah."}
           </p>
+          <AlbaseerahSignature locale={locale} className="mt-auto pt-8" />
         </div>
         {cols.map((c) => (
           <div key={c.title}>
@@ -113,7 +119,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
         <div>
           <p className="font-heading text-base font-semibold text-gold-bright">{ar ? "مجموعة واتساب" : "The MESH group"}</p>
           <p className="mt-3 text-sm text-white/75">
-            {ar ? "الإعلانات والفعاليات والمساعدة اليومية." : "Announcements, events and daily help from students who have been here longer."}
+            {ar ? "الإعلانات والفعاليات، ونصائح من طلاب آخرين." : "Announcements, events and tips from other students."}
           </p>
           <p className="mt-2 text-sm font-semibold text-white">
             {ar ? "المجموعة خاصة بالطلاب الغربيين الناطقين بالإنجليزية فقط." : "Only for English-speaking Western students."}
@@ -132,16 +138,19 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
         <div className="shell flex flex-wrap items-center justify-between gap-3 py-5 text-sm text-white/70">
           <p>
             {ar ? "تحتاج مساعدة أو عندك اقتراح؟ راسل المشرف على واتساب: " : "Need any assistance, or have a suggestion? Please message Admin on WhatsApp at "}
-            <a href={`https://wa.me/${helpContact.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold-bright hover:underline" dir="ltr">
+            <AdminHelpLink locale={ar ? "ar" : "en"} className="font-semibold text-gold-bright hover:underline">
               {helpContact}
-            </a>
+            </AdminHelpLink>
+            {ar ? " أو على البريد الإلكتروني: " : " or email "}
+            <AdminEmailLink className="font-semibold text-gold-bright hover:underline" />
           </p>
-          <span className="flex items-center gap-3">
+          <span className="flex flex-wrap items-center gap-3">
+            <TextSizeControl locale={ar ? "ar" : "en"} tone="dark" />
             <span className="sm:hidden"><ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} /></span>
             <span className="text-xs text-white/70">medinahub.org</span>
           </span>
         </div>
-        <p className="shell pb-5 text-xs leading-relaxed text-white/70">
+        <p className="shell pb-[calc(9rem+env(safe-area-inset-bottom))] text-xs leading-relaxed text-white/70 md:pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-11">
           {ar
             ? "© مركز MESH. محتوى الموقع محمي بحقوق النشر."
             : "© MESH. All content is protected by copyright."}

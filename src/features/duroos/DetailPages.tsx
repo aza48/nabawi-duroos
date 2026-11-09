@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BookOpen, CalendarDays, ChevronRight, Clock3, ExternalLink, Info, ListOrdered, MapPin, Radio } from "lucide-react";
 import type { getLesson, getShaykh, AnnouncementRow, StreamRow } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
-import { formatClock, riyadhDateIso } from "@/lib/time/riyadh";
+import { formatClock, riyadhDateIso, weekdayOf } from "@/lib/time/riyadh";
 import { formatGregorian, formatHijri } from "@/lib/time/hijri";
 import { prayerTimes } from "@/lib/time/prayer";
 import { Breadcrumbs, EmptyState } from "@/components/ui";
@@ -14,6 +14,8 @@ import { duroosPath } from "./paths";
 import { mapUrl } from "@/lib/maps";
 import { CalendarButton } from "./CalendarButton";
 import { AlertsButton } from "./AlertsButton";
+import { ReportLink } from "./ReportLink";
+import { StarButton } from "./StarButton";
 import { ShaykhBadge } from "./ShaykhBadge";
 
 type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>;
@@ -162,10 +164,13 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
           {!ar && <h1 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-4xl">{l.bookEn}</h1>}
           {ar && <h1 className="sr-only">{l.bookAr}</h1>}
           {(ar ? l.bookAuthorAr : l.bookAuthorEn) && <p className="mt-2 text-white/75">{t(locale, "by")} {ar ? l.bookAuthorAr : l.bookAuthorEn}</p>}
-          <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="mt-6 inline-flex items-center gap-3 rounded-2xl bg-white/10 py-2 pe-5 ps-2 ring-1 ring-white/15 transition hover:bg-white/15">
-            <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
-            <span className="font-semibold">{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
-          </Link>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="inline-flex items-center gap-3 rounded-2xl bg-white/10 py-2 pe-5 ps-2 ring-1 ring-white/15 transition hover:bg-white/15">
+              <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
+              <span className="font-semibold">{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
+            </Link>
+            <StarButton slug={l.slug} title={ar ? l.bookAr : l.bookEn} locale={locale} variant="band" />
+          </div>
         </div>
       </section>
       <div className="shell mt-6 md:mt-8">
@@ -192,6 +197,14 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
                 <Item icon={<Info size={18} />} label={t(locale, "lessonNote")} value={publicLabel(ar ? l.noteAr ?? l.noteEn : l.noteEn ?? l.noteAr)!} />
               )}
             </dl>
+            {l.current && l.days.includes(weekdayOf(today)) && (
+              <ReportLink
+                dars={{ bookEn: l.bookEn, bookAr: l.bookAr, shaykhEn: l.shaykh.nameEn, shaykhAr: l.shaykh.nameAr, path: duroosPath(locale, `/lesson/${l.slug}`) }}
+                dateText={`${formatHijri(today, locale, { weekday: true })} (${formatGregorian(today, locale)})`}
+                locale={locale}
+                className="mt-3"
+              />
+            )}
             <h2 className="mt-10 mb-3 font-heading text-2xl font-bold">{t(locale, "history")}</h2>
             {l.history.length === 0 ? (
               <p className="text-sm text-muted">{t(locale, "noHistory")}</p>
@@ -311,11 +324,11 @@ function Item({ icon, label, value, link }: { icon: React.ReactNode; label: stri
         {link && (
           <dd className="mt-1.5">
             {link.internal ? (
-              <Link href={link.href} className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              <Link href={link.href} className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline relative before:absolute before:-inset-x-1 before:-inset-y-2.5 before:content-['']">
                 {link.label} <ChevronRight size={14} aria-hidden="true" className="rtl:rotate-180" />
               </Link>
             ) : (
-              <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              <a href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline relative before:absolute before:-inset-x-1 before:-inset-y-2.5 before:content-['']">
                 {link.label} <ExternalLink size={13} aria-hidden="true" />
               </a>
             )}

@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { Db } from "@/server/db/client";
-import { getSetting, setSetting, HELP_CONTACT_DEFAULT } from "@/server/settings";
+import { getSetting, setSetting, HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
 import { cleanText } from "@/lib/text";
 import { normalize } from "@/lib/search/normalize";
 import { riyadhDateIso } from "@/lib/time/riyadh";
@@ -38,8 +38,8 @@ export type AskResult = {
 };
 
 export const HELP_LINE = {
-  en: `Please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT}.`,
-  ar: `راسل المشرف على واتساب: \u200E${HELP_CONTACT_DEFAULT}`,
+  en: `Please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT} or email ${HELP_EMAIL_DEFAULT}.`,
+  ar: `راسل المشرف على واتساب: \u200E${HELP_CONTACT_DEFAULT} أو على البريد الإلكتروني: \u200E${HELP_EMAIL_DEFAULT}`,
 };
 
 const ARABIC = /[؀-ۿ]/g;
@@ -285,7 +285,9 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
 
   // 5. Several duroos match ("who teaches Kitab at-Tawhid"): list them all.
   const duroos = found.filter((p) => p.kind === "dars" && answers(searchText, p));
-  if (found[0].kind === "dars" && duroos.length > 1) {
+  // Dars titles are "<book> with <shaykh>"; duroos from several mashayikh mean the question is about the book.
+  const teachers = new Set(duroos.map((p) => p.title.split(" with ").pop()));
+  if (duroos.length > 1 && (found[0].kind === "dars" || teachers.size > 1)) {
     const list = duroos.slice(0, 5);
     return { answer: list.map((p) => `- ${p.text}`).join("\n"), sources: uniqueSources(list), related: relatedOf(found, new Set()), mode: "extract", found: true, lang };
   }

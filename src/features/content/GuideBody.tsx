@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { RotateCcw } from "lucide-react";
+import { arCount, arDigits } from "@/lib/arabic-count";
 
 const key = (slug: string) => `mesh-guide-${slug}`;
 
@@ -18,8 +19,8 @@ function readDone(slug: string): number[] {
  * with a progress bar, and video slots become tap-to-play YouTube players.
  */
 const PROGRESS = {
-  en: { allDone: "All steps done. Barakallahu feek.", done: (d: number, n: number) => `${d} of ${n} steps done`, again: "Start again", hint: "Tap a step to tick it off. It's saved on this phone.", tick: (n: number) => `Step ${n} done` },
-  ar: { allDone: "أتممت كل الخطوات. بارك الله فيك.", done: (d: number, n: number) => `${d} من ${n} خطوات`, again: "ابدأ من جديد", hint: "اضغط على خطوة لتعليمها. يُحفظ ذلك على هذا الهاتف.", tick: (n: number) => `أتممت الخطوة ${n}` },
+  en: { allDone: "All steps done. Barakallahu feek.", done: (d: number, n: number) => `${d} of ${n} ${n === 1 ? "step" : "steps"} done`, again: "Start again", hint: "Tap a step to tick it off. It's saved on this phone.", tick: (n: number) => `Step ${n} done` },
+  ar: { allDone: "أتممت كل الخطوات. بارك الله فيك.", done: (d: number, n: number) => `${arDigits(d)} من ${arCount(n, "step", { case: "gen" })}`, again: "ابدأ من جديد", hint: "اضغط على خطوة لتعليمها. يُحفظ ذلك على هذا الهاتف.", tick: (n: number) => `أتممت الخطوة ${arDigits(n)}` },
 };
 
 export function GuideBody({ html, slug, steps, locale = "en" }: { html: string; slug: string; steps: number; locale?: "en" | "ar" }) {

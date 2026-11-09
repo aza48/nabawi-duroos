@@ -9,12 +9,14 @@ import { JsonLd, breadcrumbs } from "@/components/JsonLd";
 import { AudienceFilter } from "./AudienceFilter";
 import { abs } from "@/lib/site";
 import { EnglishNote } from "@/components/EnglishNote";
+import { localProgram } from "./program-text";
 
 /** Owner's choice (9 Nov 2026): the Madinah Arabic Program gets a very light purple gleam. Works in light and dark. */
 const HIGHLIGHT = "map";
 const GLEAM =
   "border-[color-mix(in_srgb,#8b5cf6_35%,var(--border))] bg-[linear-gradient(135deg,var(--card)_55%,color-mix(in_srgb,#8b5cf6_9%,var(--card)))] shadow-[0_10px_28px_-16px_rgba(124,58,237,0.45)] hover:border-[color-mix(in_srgb,#8b5cf6_60%,var(--border))]";
 import type { Locale } from "@/lib/locale";
+import { arDigits } from "@/lib/arabic-count";
 
 const AUDIENCE: Record<Audience, { label: string; ar: string; icon: typeof User }> = {
   men: { label: "Brothers", ar: "الإخوة", icon: User },
@@ -28,8 +30,8 @@ const checkedOn = (iso: string, locale: Locale = "en") =>
   new Intl.DateTimeFormat(locale === "ar" ? "ar-SA-u-ca-gregory-nu-latn" : "en-GB", { month: "long", year: "numeric" }).format(new Date(iso));
 
 const T = {
-  en: { title: "Study in Madinah", sub: "Arabic institutes, degrees, sisters' marakiz and Haram halaqat, with fees, dates and how to apply.", next: "Next intake:", note: "MESH is run by students and is not connected to any institute listed here. Programmes are listed in alphabetical order, each with the date it was last checked. Fees and dates change, so confirm with the institute before you pay, and tell us in the WhatsApp group if something is out of date.", overview: "Overview", levels: "Levels", fees: "Fees and what's included", apply: "How to apply", videos: "Videos", contact: "Contact and links", checked: "Last checked by MESH:", confirm: "Fees and dates change, so confirm with the institute before paying.", base: "" },
-  ar: { title: "الدراسة في المدينة", sub: "معاهد اللغة العربية والدرجات الجامعية ومراكز الأخوات وحلقات المسجد النبوي، مع الرسوم والمواعيد وطريقة التسجيل.", next: "الدفعة القادمة:", note: "يدير MESH طلابٌ، ولا صلة له بأي معهد مذكور هنا. البرامج مرتبة أبجديًا، ولكل برنامج تاريخ آخر مراجعة. الرسوم والمواعيد تتغير، فتأكد من المعهد قبل الدفع، وأخبرنا في مجموعة واتساب إن وجدت معلومة قديمة.", overview: "نظرة عامة", levels: "المستويات", fees: "الرسوم وما تشمله", apply: "طريقة التسجيل", videos: "مقاطع مرئية", contact: "التواصل والروابط", checked: "آخر مراجعة من MESH:", confirm: "الرسوم والمواعيد تتغير، فتأكد من المعهد قبل الدفع.", base: "/ar" },
+  en: { title: "Study in Madinah", sub: "Arabic institutes, degrees, sisters' marakiz and Haram halaqat, with fees, dates and how to apply.", next: "Next intake:", note: "MESH is independent of every institute listed here. Programmes are listed in alphabetical order, each with the date it was last checked. Fees and dates change, so confirm with the institute before you pay. Something out of date? Message Admin on WhatsApp at +1 234 567 9076 or email mesh@albaseerah.org.", overview: "Overview", levels: "Levels", fees: "Fees and what's included", apply: "How to apply", videos: "Videos", contact: "Contact and links", checked: "Last checked by MESH:", confirm: "Fees and dates change, so confirm with the institute before paying.", base: "" },
+  ar: { title: "الدراسة في المدينة", sub: "معاهد اللغة العربية والدرجات الجامعية ومراكز الأخوات وحلقات المسجد النبوي، مع الرسوم والمواعيد وطريقة التسجيل.", next: "الدفعة القادمة:", note: "MESH مستقل عن كل معهد مذكور هنا. البرامج مرتبة أبجديًا، ولكل برنامج تاريخ آخر مراجعة. الرسوم والمواعيد تتغير، فتأكد من المعهد قبل الدفع. وإن وجدت معلومة قديمة فراسل الإدارة على واتساب على الرقم \u2066+1 234 567 9076\u2069 أو على البريد الإلكتروني \u2066mesh@albaseerah.org\u2069.", overview: "نظرة عامة", levels: "المستويات", fees: "الرسوم وما تشمله", apply: "طريقة التسجيل", videos: "مقاطع مرئية", contact: "التواصل والروابط", checked: "آخر مراجعة من MESH:", confirm: "الرسوم والمواعيد تتغير، فتأكد من المعهد قبل الدفع.", base: "/ar" },
 };
 
 function AudienceChips({ p, light = false, locale = "en" }: { p: Program; light?: boolean; locale?: Locale }) {
@@ -59,13 +61,13 @@ export function ProgramsIndex({ locale = "en" }: { locale?: Locale }) {
         <nav aria-label={ar ? "انتقل إلى" : "Jump to"} className="flex flex-wrap gap-2">
           {PROGRAM_KINDS.filter((k) => PROGRAMS.some((p) => p.kind === k.id)).map((k) => (
             <a key={k.id} href={`#${k.id}`} className="min-h-10 rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold text-muted transition hover:text-ink">
-              {ar ? k.labelAr : k.label} <span className="tabular opacity-70">{PROGRAMS.filter((p) => p.kind === k.id).length}</span>
+              {ar ? k.labelAr : k.label} <span className="tabular opacity-70">{ar ? arDigits(PROGRAMS.filter((p) => p.kind === k.id).length) : PROGRAMS.filter((p) => p.kind === k.id).length}</span>
             </a>
           ))}
         </nav>
         <AudienceFilter options={(Object.keys(AUDIENCE) as Audience[]).filter((a) => PROGRAMS.some((p) => p.audience.includes(a))).map((a) => ({ id: a, label: ar ? AUDIENCE[a].ar : AUDIENCE[a].label }))} locale={locale}>
         {PROGRAM_KINDS.map((k) => {
-          const items = PROGRAMS.filter((p) => p.kind === k.id).sort(byName);
+          const items = PROGRAMS.filter((p) => p.kind === k.id).sort(byName).map((p) => localProgram(p, locale));
           if (!items.length) return null;
           return (
             <section key={k.id} id={k.id} data-auds={[...new Set(items.flatMap((p) => p.audience))].join(" ")} className="mt-12 scroll-mt-24">
@@ -95,20 +97,20 @@ export function ProgramsIndex({ locale = "en" }: { locale?: Locale }) {
           );
         })}
         </AudienceFilter>
-        {ar && <EnglishNote className="mt-10 max-w-3xl" />}
+        {ar && PROGRAMS.some((p) => !localProgram(p, locale).inArabic) && <EnglishNote className="mt-10 max-w-3xl" />}
         <p className={`${ar ? "mt-4" : "mt-12"} rounded-2xl bg-bg-2 p-5 text-sm text-muted`}>{t.note}</p>
       </div>
     </>
   );
 }
 
-function List({ items, numbered = false }: { items: string[]; numbered?: boolean }) {
+function List({ items, numbered = false, ar = false }: { items: string[]; numbered?: boolean; ar?: boolean }) {
   return (
     <ol className="space-y-3">
       {items.map((x, i) => (
         <li key={x} className="flex gap-3">
           <span className={`grid size-7 shrink-0 place-items-center rounded-full text-xs font-bold ${numbered ? "bg-primary text-primary-ink" : "bg-primary-soft text-primary"}`}>
-            {numbered ? i + 1 : <Check size={14} />}
+            {numbered ? (ar ? arDigits(i + 1) : i + 1) : <Check size={14} />}
           </span>
           <span className="pt-0.5 leading-relaxed">{x}</span>
         </li>
@@ -120,13 +122,14 @@ function List({ items, numbered = false }: { items: string[]; numbered?: boolean
 export function ProgramPage({ p, locale = "en" }: { p: Program; locale?: Locale }) {
   const ar = locale === "ar";
   const t = T[locale];
-  const en = ar ? ({ dir: "ltr", lang: "en" } as const) : {};
+  const lp = localProgram(p, locale);
+  const en = ar && !lp.inArabic ? ({ dir: "ltr", lang: "en" } as const) : {};
   const tabs = [
-    { id: "overview", label: t.overview, content: <div {...en} className="max-w-3xl space-y-4 text-[1.05rem] leading-relaxed">{p.overview.map((x) => <p key={x}>{x}</p>)}</div> },
-    ...(p.levels ? [{ id: "levels", label: t.levels, content: <div {...en} className="max-w-3xl"><List items={p.levels} /></div> }] : []),
-    ...(p.included ? [{ id: "fees", label: t.fees, content: <div {...en} className="max-w-3xl"><p className="mb-5 font-heading text-2xl font-bold">{p.price}</p><List items={p.included} /></div> }] : []),
-    ...(p.steps ? [{ id: "apply", label: t.apply, content: <div {...en} className="max-w-3xl"><List items={p.steps} numbered /></div> }] : []),
-    ...(p.videos?.length ? [{ id: "videos", label: `${t.videos} (${p.videos.length})`, content: <div className="grid gap-5 md:grid-cols-2">{p.videos.map((v) => <VideoEmbed key={v.id} id={v.id} title={v.title} locale={locale} />)}</div> }] : []),
+    { id: "overview", label: t.overview, content: <div {...en} className="max-w-3xl space-y-4 text-[1.05rem] leading-relaxed">{lp.overview.map((x) => <p key={x}>{x}</p>)}</div> },
+    ...(lp.levels ? [{ id: "levels", label: t.levels, content: <div {...en} className="max-w-3xl"><List items={lp.levels} /></div> }] : []),
+    ...(lp.included ? [{ id: "fees", label: t.fees, content: <div {...en} className="max-w-3xl"><p className="mb-5 font-heading text-2xl font-bold">{lp.price}</p><List items={lp.included} /></div> }] : []),
+    ...(lp.steps ? [{ id: "apply", label: t.apply, content: <div {...en} className="max-w-3xl"><List items={lp.steps} numbered ar={ar && lp.inArabic} /></div> }] : []),
+    ...(lp.videos?.length ? [{ id: "videos", label: `${t.videos} (${locale === "ar" ? arDigits(lp.videos.length) : lp.videos.length})`, content: <div className="grid gap-5 md:grid-cols-2">{lp.videos.map((v) => <VideoEmbed key={v.id} id={v.id} title={v.title} locale={locale} />)}</div> }] : []),
   ];
   const ld = {
     "@context": "https://schema.org",
@@ -155,25 +158,25 @@ export function ProgramPage({ p, locale = "en" }: { p: Program; locale?: Locale 
               <p className="ar-text mt-2 text-2xl text-white/80">{p.nameAr}</p>
             </>
           )}
-          <p className="mt-4 max-w-2xl text-white/85 md:text-lg" dir="auto">{p.tagline}</p>
+          <p className="mt-4 max-w-2xl text-white/85 md:text-lg" dir="auto">{lp.tagline}</p>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm md:text-base">
             <AudienceChips p={p} light locale={locale} />
-            <span className="flex items-center gap-1.5"><Wallet size={17} className="text-gold-bright" /> <span dir="auto">{p.price}</span></span>
-            <span className="flex items-center gap-1.5"><MapPin size={17} className="text-gold-bright" /> <span dir="auto">{p.where}</span></span>
+            <span className="flex items-center gap-1.5"><Wallet size={17} className="text-gold-bright" /> <span dir="auto">{lp.price}</span></span>
+            <span className="flex items-center gap-1.5"><MapPin size={17} className="text-gold-bright" /> <span dir="auto">{lp.where}</span></span>
           </div>
         </div>
       </section>
       <div className="shell mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12">
         <div className="min-w-0">
-          {ar && <EnglishNote className="mb-6" />}
+          {ar && !lp.inArabic && <EnglishNote className="mb-6" />}
           <Tabs tabs={tabs} />
         </div>
         <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
-          {p.contact?.length ? (
+          {lp.contact?.length ? (
             <div className="rounded-3xl border border-line bg-card p-5">
               <p className="font-heading text-lg font-bold">{t.contact}</p>
               <ul className="mt-3 space-y-2">
-                {p.contact.map((c) => (
+                {lp.contact.map((c) => (
                   <li key={c.href}>
                     <a href={c.href} target={c.href.startsWith("/") ? undefined : "_blank"} rel="noopener noreferrer" className="flex items-center justify-between gap-2 rounded-xl bg-bg-2 px-3.5 py-2.5 text-sm font-semibold transition hover:bg-primary hover:text-primary-ink">
                       <span dir="auto">{c.label}</span> <ArrowUpRight size={15} className="shrink-0 rtl:-scale-x-100" />
