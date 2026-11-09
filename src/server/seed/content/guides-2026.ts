@@ -901,7 +901,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <h3>If you lose your iqama or passport</h3>
 <ol>
 <li><strong>Get a police report</strong> at the nearest police station the same day, and keep it.</li>
-<li><strong>A lost iqama:</strong> the sponsor requests a replacement through Jawazat (Travel Management for a student iqama, you for your family). A replacement costs 1,000 SAR the first time and 2,000 SAR the second time. Your digital iqama in Absher and Tawakkalna stays valid proof of identity meanwhile.</li>
+<li><strong>A lost iqama:</strong> the sponsor requests a replacement through Jawazat (Travel Management for a student iqama, you for your family). For a work iqama or a family member's iqama, a replacement costs 1,000 SAR the first time and 2,000 SAR the second time.</li>
 <li><strong>A lost passport:</strong> report it in Absher, which has a service for a lost or stolen passport, then go to your embassy or consulate for a new one. Embassies ask for the police report, a written statement of the loss, a Jawazat printout of your iqama details, a copy of the lost passport if you have one, your national ID card, a copy of your iqama and the passport fee. Each country sets its own list, so read its website first.</li>
 <li><strong>Move your Saudi records to the new passport:</strong> see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
 </ol>
@@ -917,13 +917,14 @@ export const GUIDES_2026: SeedGuide[] = [
 <p>Extra months must fall within the validity of your iqama. If you extend while you are already abroad, the extra months cost double: 200 SAR a month on a single visa and 400 SAR a month on a multiple visa. Fees are not refunded if you cancel the visa, so choose the length carefully.</p>
 <h3>The rules that catch people</h3>
 <ul>
-<li><strong>Come back before it expires, or extend it.</strong> If it runs out while you are abroad, the sponsor can still extend it from Absher as long as the iqama is valid and the extension fee is paid (the steps are below). If the iqama has also run out, there is no way back on that iqama, so watch both dates.</li>
+<li><strong>Come back before it expires, or extend it.</strong> Extend it from Absher before it runs out, while the iqama is valid and the extension fee is paid (the steps are below). If it has already run out while you are abroad, the sponsor extends it online through the Ministry of Foreign Affairs site instead. Watch both dates: the visa and the iqama.</li>
 <li><strong>The iqama must outlast the visa.</strong> For a visa set by number of days, the iqama must be valid for the visa's length plus 90 days. For a visa set by return date, the return date must fall at least 7 days before the iqama expires.</li>
-<li><strong>Your passport must outlast the trip.</strong> Absher refuses a visa when the passport has less than 90 days left. Renew the passport first: see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
+<li><strong>Your passport must outlast the trip.</strong> The passport must stay valid for at least 3 months beyond the end of the visa, or Absher refuses it. Renew the passport first: see <a href="/ask/renew-passport-in-saudi">My passport is expiring</a>.</li>
 <li><strong>Fines block it.</strong> Any unpaid traffic fine on you, or on a dependant, stops the visa being issued.</li>
 <li><strong>Apply from inside Saudi Arabia.</strong> The traveller must be in the Kingdom when the visa is issued, with a valid iqama.</li>
-<li><strong>Fingerprints on file.</strong> The traveller's fingerprints must be registered with Jawazat, or their Absher account active. This applies to every family member aged 15 or over, so book a fingerprint appointment for a child who has just turned 15 before the trip: see <a href="/guides/family-records-on-absher#booking-a-jawazat-civil-affairs-or-traffic-appointment">Booking a Jawazat appointment</a>.</li>
+<li><strong>Fingerprints on file.</strong> The traveller's fingerprints must be registered with Jawazat, or their Absher account active. This applies to family members too, so check each traveller's fingerprints well before the trip, and book an appointment for anyone missing: see <a href="/guides/family-records-on-absher#booking-a-jawazat-civil-affairs-or-traffic-appointment">Booking a Jawazat appointment</a>.</li>
 <li><strong>One open visa at a time.</strong> An earlier exit and re-entry visa that was issued and never used blocks a new one. Cancel it in Absher before you issue the next.</li>
+<li><strong>Travel within 3 months, or cancel.</strong> Use the visa within 3 months of the day it is issued. A family member's visa you will not use is cancelled in Absher (Family Members Services, then Visa Services) while it is still valid, within 90 days of issue or before the return date, whichever comes first. After that a penalty is charged automatically.</li>
 <li><strong>Pay against the right iqama.</strong> The fee is paid with the iqama number of the person travelling, not the head of the family's.</li>
 <li><strong>Print it or save it.</strong> Airlines ask to see the visa at check-in. Keep a copy on your phone.</li>
 <li><strong>The summer ticket and the visa go together.</strong> Request the visa when the University collects the summer travel lists, so the visa dates cover the ticket dates.</li>
@@ -943,7 +944,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Pay the extension fee (the double rate for a visa extended from abroad, above), then press <strong>Extend</strong>.</li>
 <li>Check the new return date on the same page, or on Muqeem's public visa inquiry.</li>
 </ol>
-<p>This works even after the visa has expired, while the family member is still abroad and their iqama is valid. Absher accepts the extension only when the family member is outside Saudi Arabia on the day you apply, the new return date is at least 7 days before their iqama expires, and the visa's total extension stays within 180 days. Where the Hijri and Gregorian dates on the screen differ, the Gregorian date counts. If their iqama is close to expiry, renew it first: see <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
+<p>Extend before the visa expires: Absher's extension needs both the visa and the iqama still valid. Absher accepts the extension only when the family member is outside Saudi Arabia on the day you apply, the new return date is at least 7 days before their iqama expires, and the visa's total extension stays within 180 days. Where the Hijri and Gregorian dates on the screen differ, the Gregorian date counts. If their iqama is close to expiry, renew it first: see <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
 <h3>Checking a visa without signing in</h3>
 <p>Muqeem's public visa inquiry shows whether an exit and re-entry visa is valid and the date to return before, with just the iqama number and date of birth. See <a href="/guides/check-visa-and-iqama-online">Checking your visa, border number, insurance and fines online</a>.</p>
 <h2>Final exit</h2>

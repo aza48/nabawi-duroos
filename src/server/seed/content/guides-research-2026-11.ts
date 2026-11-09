@@ -384,7 +384,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Say in a few lines what you need, what you have already tried, where, and what you were told.</li>
 <li>Attach screenshots of any error and copies of the documents involved, then tap <strong>Send request</strong> (إرسال الطلب).</li>
 <li>Follow it under <strong>My requests</strong> (طلباتي), and save the reference number so you can follow it up.</li>
-<li>Watch your University email for the reply, and answer any follow-up question the same day. If nothing comes in two working days, follow it up in person.</li>
+<li>Watch your University email for the reply, and answer any follow-up question the same day. If nothing comes, follow it up in person.</li>
 </ol>
 <blockquote><p>Tip: Your name must match your passport letter for letter on every portal. A mismatch is the most common reason a ticket or a request gets stuck.</p></blockquote>
 <h2>Official news</h2>
@@ -770,7 +770,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <tr><td>After you land</td><td>Keep your Saudi number alive for codes until every account is closed. Check your degree verifies online.</td></tr>
 </tbody></table>
 <h2>1. Check the details on your certificate</h2>
-<p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester, under <strong>Graduation procedures</strong> (اجراءات التخرج), and correct any difference from your passport before printing. A correction after the document is issued means paying for a replacement. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
+<p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester, under <strong>Graduation procedures</strong> (اجراءات التخرج), and correct any difference from your passport before printing. Adding a missing Arabic name after the document is issued means paying for a replacement. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
 <p>After your final results are approved, your status in the Academic System changes from <strong>Regular</strong> (منتظم) to <strong>Graduate</strong> (متخرج). Your clearance and the collection of your certificate both wait for that change, which can take some weeks after the finals.</p>
 <h2>2. Download and print your documents</h2>
 <p>In the Academic System, open <strong>Personal</strong>, then <strong>Official Documents</strong> (المستندات الرسمية), and download:</p>

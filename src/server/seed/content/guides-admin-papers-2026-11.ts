@@ -27,7 +27,7 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 <tr><td>Your family's iqamas and visas</td><td>Yes</td><td>Absher, Family Members Services</td><td>Choose the person</td></tr>
 </tbody></table>
 <h2>Your border number</h2>
-<p>Your border number (رقم الحدود) is the 10 digit number Jawazat gives you when you first enter the Kingdom on a new visa. It is written by hand in your passport beside the entry stamp. You need it to register on Absher as a visitor or a new student, to buy a SIM, to buy or renew a visitor's insurance, to pay a visit visa extension and to pay a newborn's fees. Students on the educational visa use it for their Visitor ID.</p>
+<p>Your border number (رقم الحدود) is the 10 digit number Jawazat gives you when you first enter the Kingdom on a new visa. Jawazat writes it by hand in your passport. You need it to register on Absher as a visitor or a new student, to buy a SIM, to buy or renew a visitor's insurance, to pay a visit visa extension and to pay a newborn's fees. Students on the educational visa use it for their Visitor ID.</p>
 <ol>
 <li>Open <a href="https://www.absher.sa/">absher.sa</a>. You do not sign in.</li>
 <li>Open the public services and choose the border number inquiry, then Non-GCC citizens.</li>
@@ -53,7 +53,7 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 <p>Compare the return-before date with your return ticket. If the ticket is later, extend the visa before you fly: see <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>. Students whose visa comes from the University's Travel Management check it the same way.</p>
 <h2>Health insurance</h2>
 <ul>
-<li><strong>Iqama holders:</strong> the Council of Health Insurance (CHI) inquiry with your iqama number shows the insurer, the policy, the type of cover and the dates. Absher shows the same for you and each family member.</li>
+<li><strong>Iqama holders:</strong> the Council of Health Insurance (CHI) inquiry with your iqama number shows the insurer, the policy, the type of cover, whether it is active and the dates. Absher shows whether the insurance is valid, and its expiry date, for you, your wife and your children.</li>
 <li><strong>Visitors:</strong> the CHI visa inquiry takes the passport number, the visa number or the border number.</li>
 <li><strong>Before a visit visa extension,</strong> buy the visitor's new policy first. Insurers' websites find the visitor by visa number and passport number, then ask for the border number and the visa's expiry date, both shown in Absher.</li>
 </ul>
@@ -64,11 +64,11 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 <h3>Traffic fines</h3>
 <p>Your fines show under traffic violations, with the date, place and amount; press More details beside a fine for a map of where it was recorded. Tawakkalna shows them too, under Traffic violations, then Unpaid traffic violations. Unpaid fines block an exit and re-entry visa, a renewal and a passport update, so check every month. Paying and objecting are in <a href="/ask/traffic-fines">How do I check and pay traffic fines?</a></p>
 <h3>Travel restrictions and suspended services</h3>
-<p>A court case, an unpaid amount or an official order can suspend your services or stop you travelling. Check before you book a flight home.</p>
+<p>A pending legal case can suspend your services or stop you travelling. Check before you book a flight home.</p>
 <ol>
 <li>Sign in to <a href="https://www.absher.sa/">absher.sa</a> as an individual.</li>
 <li>On the home page, open the inquiry on suspended services and travel restrictions.</li>
-<li>Press Continue. Any restriction appears with the body that placed it, and you can print the page. If nothing is recorded, Absher tells you so.</li>
+<li>Press Continue. Any case or restriction appears on screen, and you can print the page. If nothing is recorded against you, Absher tells you so.</li>
 </ol>
 <h3>Absher reports</h3>
 <p>Absher issues official reports that you download and print. Among them: your family members, your vehicles, your traffic violations, your traffic accidents, your travel record (the dates you entered and left), and a Muqeem report on your residence.</p>
@@ -82,11 +82,11 @@ export const GUIDES_ADMIN_PAPERS_2026_11: SeedGuide[] = [
 <p>As head of the family, you see each person's iqama expiry date, passport details and visas under Family Members Services. Renewals, card delivery and name corrections are in <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</p>
 <h2>Before you travel: a five-minute check</h2>
 <ol>
-<li>Your passport, and each traveller's, has well over 90 days left after your return date.</li>
+<li>Your passport, and each traveller's, stays valid for at least 3 months after the visa's return-before date.</li>
 <li>Muqeem shows the exit and re-entry visa as valid, with a return-before date after your return flight.</li>
 <li>Absher shows no unpaid traffic fines on you or any family member.</li>
 <li>The travel restriction inquiry shows nothing recorded.</li>
-<li>Every family member's iqama runs past the return date.</li>
+<li>Every traveller's iqama runs at least 7 days past the return-before date.</li>
 <li>The visa is saved on your phone and printed, because airlines ask for it at check-in.</li>
 </ol>
 <blockquote><p>Tip: An inquiry shows an error or a date you do not expect? Take a screenshot before you do anything else. Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,

@@ -129,3 +129,19 @@ Other open points (left out):
 6. **Ejar (findings 66 and 67), for the coordinator:** `finding-an-apartment` could take the early termination rule (rent owed to the end unless the landlord waives it) and the 7-day automatic acceptance of a contract not rejected. Not edited: outside this task's guides. Renting on a Visitor ID was not touched.
 7. **Tawakkalna for visitors (finding 50):** registration with the passport number, or through a relative's Absher for someone without Absher. Could go into `living-on-a-visitor-id` (outside this task).
 8. **Electricity bill (finding 69):** worth a short "check and pay your bill" section in `finding-an-apartment` or `cost-of-living`? Outside this task's guides.
+
+## Fact-check FC2
+
+1. First-semester 1448 add and drop: printed official calendar 9 to 13 Aug 2026; forwarded notice 29/2 to 2/3/1448 and members 11 to 15 Aug (c1 #2 to #4); key-dates.ts 10 to 30 Aug. The guide your-first-semester-week-by-week now gives no dates.
+2. Lost student iqama card: is the route Travel Management through Tawasul with the police report, and which fee applies (government 1,000/2,000 SAR, gomedine part-1 #5, or printed card about 58 SAR, c4 #70)? Same as B2 #6.
+3. University buses to the Haram: where are the current times posted? The guide says only that times change during the year.
+
+## Fact-check FC3
+
+## Owner questions
+
+1. **Room sharing in the halls.** c4 #55 says two students per room; earlier web research (`factcheck-2026-11-09-university.md`, Halls row) found 2 to 4. I removed "shared with one other student" from is-housing-included and "Rooms are shared by two" from campus-life. How many students share a room?
+2. **When the absence bar comes.** c1 #40 (Aug to Nov 2026) says a two-hour weekly course bars you at the 4th absence and that this tightened from the 5th two years ago. c2 #12 (Jan to Jul 2026) says about 4 absences are allowed and the 5th bars; c3 #1 gives an hour-based table (2-hour course: 8 hours allowed, 9th bars). The guides publish the stricter c1 example. Is that right?
+3. **Books allowance frequency and timing.** Paid once a year (us-ann #21, chats 25-11 #3) or each semester (chats 26-06 #20)? Paid in January 2025 (c4 #46) and October 2026. Do Ma'had students get it?
+4. **Printed iqama card office.** Student Affairs, first floor (chats 25-06 #39), or the Travel Administration director's secretary (c4 #70)? campus-life says Student Affairs.
+5. **Study in Saudi 2026 main window.** The approved applying guide says 19 April to 21 May 2026; chats 26-03 #42 says preferences closed about 20 to 21 May and submission on 31 May 2026. Not changed (approved text wins over a weak report).
