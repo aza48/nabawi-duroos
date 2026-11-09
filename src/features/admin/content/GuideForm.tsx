@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { deleteGuideAction, saveGuideAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
@@ -22,6 +22,8 @@ export function GuideForm({ value }: { value: G }) {
   const [verified, setVerified] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
+  // Messages show in the toast above the tab bar, never under the button where a phone hides them.
+  useEffect(() => { if (msg) notify(msg); }, [msg, notify]);
   const [pending, start] = useTransition();
 
   function save(status: G["status"]) {
@@ -47,7 +49,8 @@ export function GuideForm({ value }: { value: G }) {
           {STAGES.map((s) => <option key={s.id} value={s.id}>{s.label}</option>)}
         </select>
       </Field>
-      <div>
+      {/* min-w-0: the editor toolbar must not widen the form past the phone screen. */}
+      <div className="min-w-0">
         <p className="mb-1.5 text-sm font-semibold">Guide</p>
         <RichText value={v.bodyHtml} onChange={(html) => setV((p) => ({ ...p, bodyHtml: html }))} placeholder="Guide body" />
       </div>
@@ -73,7 +76,6 @@ export function GuideForm({ value }: { value: G }) {
           Delete guide
         </button>
       )}
-      {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>
   );

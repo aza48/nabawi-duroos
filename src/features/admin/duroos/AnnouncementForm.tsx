@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { saveAnnouncementAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
+import { useFeedback } from "../Feedback";
 
 type Type = "cancellation" | "postponement" | "resumption" | "new-book" | "book-finished" | "reminder" | "info" | "guest" | "lecture";
 type A = {
@@ -30,6 +31,9 @@ export function AnnouncementForm({ value, shaykhs, masjids, lessons = [] }: { va
   const [v, setV] = useState<A>(value);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
+  const { notify } = useFeedback();
+  // Messages show in the toast above the tab bar, never under the button where a phone hides them.
+  useEffect(() => { if (msg) notify(msg); }, [msg, notify]);
   const [pending, start] = useTransition();
   const set = <K extends keyof A>(k: K, val: A[K]) => setV((p) => ({ ...p, [k]: val }));
 
@@ -107,7 +111,6 @@ export function AnnouncementForm({ value, shaykhs, masjids, lessons = [] }: { va
       {value.slug && value.status === "published" && (
         <button type="button" className="text-sm text-muted underline" onClick={() => save("archived")}>Take it down (archive)</button>
       )}
-      {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>
   );

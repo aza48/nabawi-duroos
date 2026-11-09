@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, Trash2 } from "lucide-react";
 import { updateShaykhAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
+import { useFeedback } from "../Feedback";
 
 type S = { slug: string; nameEn: string; nameAr: string; roleEn: string | null; roleAr: string | null; photo?: string | null; facts: { en: string; ar: string }[] };
 
@@ -12,6 +13,9 @@ export function ShaykhForm({ shaykh }: { shaykh: S }) {
   const router = useRouter();
   const [v, setV] = useState(shaykh);
   const [msg, setMsg] = useState<string | null>(null);
+  const { notify } = useFeedback();
+  // Messages show in the toast above the tab bar, never under the button where a phone hides them.
+  useEffect(() => { if (msg) notify(msg); }, [msg, notify]);
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const setFact = (i: number, k: "en" | "ar", val: string) => setV((p) => ({ ...p, facts: p.facts.map((f, j) => (j === i ? { ...f, [k]: val } : f)) }));
@@ -60,7 +64,6 @@ export function ShaykhForm({ shaykh }: { shaykh: S }) {
         </button>
       </div>
       <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : "Save profile"}</button>
-      {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>
   );

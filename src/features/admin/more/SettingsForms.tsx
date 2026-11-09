@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Copy, Fingerprint } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
@@ -11,6 +11,9 @@ import { useFeedback } from "../Feedback";
 export function WhatsAppForm({ current }: { current: string }) {
   const [url, setUrl] = useState(current);
   const [msg, setMsg] = useState<string | null>(null);
+  const { notify } = useFeedback();
+  // Messages show in the toast above the tab bar, never under the button where a phone hides them.
+  useEffect(() => { if (msg) notify(msg); }, [msg, notify]);
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   return (
@@ -22,7 +25,6 @@ export function WhatsAppForm({ current }: { current: string }) {
         <input className={inputCls} value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://chat.whatsapp.com/…" required />
       </Field>
       <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : "Save link"}</button>
-      {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>
   );
@@ -99,8 +101,25 @@ export function AdminsManager({ admins, selfId }: { admins: Admin[]; selfId: str
               </div>
               {a.id !== selfId && !a.banned && (
                 <div className="flex gap-2">
-                  <select className={`${inputCls} py-2 text-sm`} defaultValue={a.role ?? "editor"} disabled={pending}
-                    onChange={(e) => start(async () => { const r = await setRoleAction({ userId: a.id, role: e.target.value as never }); if (!r.ok) setError(r.error); router.refresh(); })}>
+                  <select className={`${inputCls} py-2 text-sm`} defaultValue={a.role ?? "editor"} disabled={pending} aria-label={`Role for ${a.name}`}
+                    onChange={async (e) => {
+                      const select = e.currentTarget;
+                      const role = select.value;
+                      const label = ROLES.find((r) => r.id === role)?.label ?? role;
+                      // A slip on a phone picker must not change someone's access: ask first.
+                      const ok = await confirm({
+                        title: `Make ${a.name} ${label === "Owner" || label === "Editor" ? `an ${label}` : `a ${label}`}?`,
+                        body: role === "owner" ? "Owners can invite and remove admins and change every setting." : "Their access changes straight away.",
+                        confirmLabel: "Change role",
+                        danger: role === "owner",
+                      });
+                      if (!ok) { select.value = a.role ?? "editor"; return; }
+                      start(async () => {
+                        const r = await setRoleAction({ userId: a.id, role: role as never });
+                        if (!r.ok) { setError(r.error); select.value = a.role ?? "editor"; } else notify(`${a.name} is now ${label === "Owner" || label === "Editor" ? `an ${label}` : `a ${label}`}`);
+                        router.refresh();
+                      });
+                    }}>
                     {ROLES.map((r) => <option key={r.id} value={r.id}>{r.label}</option>)}
                   </select>
                   <button type="button" className="shrink-0 rounded-full border border-line px-3 text-xs font-semibold text-cancel" disabled={pending}

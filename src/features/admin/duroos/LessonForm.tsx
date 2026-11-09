@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { createLessonAction, updateLessonAction } from "@/app/(admin)/admin/actions";
 import { btnPrimary, ErrorNote, Field, inputCls } from "../ui";
+import { useFeedback } from "../Feedback";
 
 type Lesson = {
   slug?: string; bookEn: string; bookAr: string; bookAuthorEn: string | null; bookAuthorAr: string | null; bookUrl?: string | null; topic: string;
@@ -27,6 +28,9 @@ export function LessonForm({
   const [v, setV] = useState<Lesson>(lesson);
   const [shaykhSlug, setShaykhSlug] = useState(shaykhs?.[0]?.slug ?? "");
   const [msg, setMsg] = useState<string | null>(null);
+  const { notify } = useFeedback();
+  // Messages show in the toast above the tab bar, never under the button where a phone hides them.
+  useEffect(() => { if (msg) notify(msg); }, [msg, notify]);
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const set = <K extends keyof Lesson>(k: K, val: Lesson[K]) => setV((p) => ({ ...p, [k]: val }));
@@ -115,7 +119,6 @@ export function LessonForm({
       <Field label="Note (English, optional)"><input className={inputCls} value={v.noteEn ?? ""} onChange={(e) => set("noteEn", e.target.value)} /></Field>
       <Field label="Note (Arabic, optional)"><input dir="rtl" className={inputCls} value={v.noteAr ?? ""} onChange={(e) => set("noteAr", e.target.value)} /></Field>
       <button className={btnPrimary} disabled={pending}>{pending ? "Saving…" : lesson.slug ? "Save lesson" : "Add lesson"}</button>
-      {msg && <p className="text-center text-sm text-on">{msg}</p>}
       {error && <ErrorNote>{error}</ErrorNote>}
     </form>
   );
