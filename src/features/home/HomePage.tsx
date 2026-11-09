@@ -9,6 +9,7 @@ import { TodayHero } from "./TodayHero";
 import { DuroosCards } from "./DuroosCards";
 import { KeyDates } from "./KeyDates";
 import { TimeAgo } from "./TimeAgo";
+import { AdminHelp } from "@/components/shell/AdminHelp";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
@@ -91,7 +92,10 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
           action={{ href: "/guides", label: "All guides" }}
         />
         {guides.length === 0 ? (
-          <p className="rounded-2xl border border-dashed border-line bg-card p-6 text-center text-muted">Guides are being written. In the meantime, ask in the WhatsApp group.</p>
+          <div className="rounded-2xl border border-dashed border-line bg-card p-6 text-center text-muted">
+            <p>Guides are being written. Until then, ask Admin.</p>
+            <AdminHelp variant="line" className="mt-2 text-sm" />
+          </div>
         ) : (
           <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
             {guides.slice(0, 8).map((g) => {

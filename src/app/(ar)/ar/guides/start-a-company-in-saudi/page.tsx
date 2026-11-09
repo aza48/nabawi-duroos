@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, Briefcase, CircleCheck } from "lucide-react";
-import { getDb } from "@/server/db/client";
-import { getWhatsAppUrl } from "@/server/settings";
-import { AskOnWhatsApp } from "@/components/shell/WhatsApp";
+import { AdminHelp } from "@/components/shell/AdminHelp";
 import { EnglishNote } from "@/components/EnglishNote";
 import { toArabicDigits } from "@/lib/locale";
 import { CompanyGuide } from "@/features/guides/company/CompanyGuide";
@@ -25,8 +23,7 @@ export const metadata: Metadata = {
   openGraph: { type: "article", title: TITLE_AR, description: SUMMARY_AR, url: `/ar/guides/${SLUG}`, siteName: "MESH" },
 };
 
-export default async function Page() {
-  const whatsappUrl = await getWhatsAppUrl(await getDb());
+export default function Page() {
   const steps = PLAN.flatMap((p) => p.items);
   return (
     <>
@@ -51,7 +48,7 @@ export default async function Page() {
         <CompanyGuide />
       </div>
       <div className="shell mt-10 max-w-3xl">
-        <AskOnWhatsApp url={whatsappUrl} locale="ar" />
+        <AdminHelp locale="ar" kind="question" />
       </div>
     </>
   );
