@@ -748,5 +748,20 @@
   "topic": "Money",
   "question": "What is the current cash declaration threshold at Saudi customs: 60,000 SAR (older ZATCA page) or 40,000 SAR (newer e-service page)?",
   "context": "The money guide says 'above the limit customs publishes' without a figure."
+ },
+ {
+  "topic": "University",
+  "question": "Does the mat'am serve iftar and suhoor in Ramadan, and how does the monthly booking on restaurant.iu.edu.sa change for the month?",
+  "context": "The Ramadan guide tells students to ask the mat'am before booking."
+ },
+ {
+  "topic": "Haram",
+  "question": "Can students on a Visitor ID register for i'tikaf at the Prophet's Mosque with Nafath, and do non-Saudi residents still need their sponsor's approval as in 1447?",
+  "context": "The Ramadan guide says to try the portal the day registration opens and ask Student Affairs if refused."
+ },
+ {
+  "topic": "University",
+  "question": "Do all scholarship students keep their room over the summer break, is there a storage rule for belongings, and is the Central Library open in the weeks between the summer finals and the new year?",
+  "context": "The seasons guide says the room is kept and the library is open through the summer semester."
  }
 ]

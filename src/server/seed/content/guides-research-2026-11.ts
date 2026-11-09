@@ -828,7 +828,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <ol>
 <li>Finish everything above first, including the embassy, before you book.</li>
 <li>Make sure the University has confirmed your clearance. Graduates' tickets are issued only after that.</li>
-<li>Your final ticket is issued against a travel order on Etimad, to a capital city in your own country or the country that issued your visa. Check that your name on Etimad matches your passport letter for letter.</li>
+<li>Your final ticket is issued against a travel order on Etimad, to one of the cities the University sets for your country. Check that your name on Etimad matches your passport letter for letter.</li>
 <li>Tell the ticket unit the date you can really travel. A date change later costs you the fare difference, and a no-show loses the ticket.</li>
 <li>You can upgrade the class of travel at your own cost. Your family's tickets are at your own cost.</li>
 </ol>
@@ -878,7 +878,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h3>Ship your books</h3>
 <p>Books are the heaviest thing a student owns, and the graduation allowance exists for exactly this. Compare these ways, and weigh your boxes before you choose.</p>
 <table><thead><tr><th>Way</th><th>Good for</th><th>What to know</th></tr></thead><tbody>
-<tr><td>Your checked baggage</td><td>Up to two bags on the University ticket</td><td>Often the cheapest for the first 40 to 50 kg. As of November 2026 Saudia allows 23 kg a bag in economy and charges 138 SAR a bag between 23 and 32 kg. Buy an extra bag from the airline online before the flight, not at the counter</td></tr>
+<tr><td>Your checked baggage</td><td>Up to two bags on the University ticket</td><td>Often the cheapest for the first 40 to 50 kg. The airlines flying from Madinah allow about 23 kg a bag in economy on most fares, a bag between 23 and 32 kg pays an excess fee per piece or per kilo, and nothing heavier than 32 kg goes in the hold. Buy an extra bag from the airline online before the flight, not at the counter</td></tr>
 <tr><td>SPL (Saudi Post)</td><td>Boxes up to 30 kg</td><td>Economy is delivered to the post office nearest the receiver, Express and Sea Freight to the door. Priced by weight and country in SPL's price calculator. As of 2025 a 30 kg express parcel costs from under 300 SAR to South Asia to about 750 SAR to Europe and North America. Customer service 19992</td></tr>
 <tr><td>Courier companies</td><td>Faster, tracked, any weight</td><td>Aramex, DHL, FedEx, SMSA and UPS all ship from Madinah. Ask each for a quote by weight, and ask about a books or student rate</td></tr>
 <tr><td>Sea cargo</td><td>Many boxes to Africa or Asia</td><td>Cargo offices in the city ship by the box or the cubic metre. Slow, but far cheaper per kilo for a whole library</td></tr>

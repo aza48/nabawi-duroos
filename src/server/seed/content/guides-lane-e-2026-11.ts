@@ -242,4 +242,63 @@ export const GUIDES_LANE_E_2026_11: SeedGuide[] = [
 <p>A sealed box of ajwa or safawi dates, prayer mats from the Haram's market, and a few books in Arabic for the grandchildren travel well in the suitcase, and anything heavier goes by post: see <a href="/guides/shipping-and-receiving-parcels">Shipping and receiving parcels in Madinah</a>. Ask them to keep the Nusuk app, because the permits for the next visit are booked the same way.</p>
 <blockquote><p>Tip: Planning a visit around Ramadan or the University breaks? Check the dates first, book early, and expect the city to be full. Questions? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
+  {
+    slug: "ramadan-in-madinah",
+    stage: "getting-settled",
+    title: "Ramadan in Madinah: the Haram, the University and daily life",
+    summary: "The 1448 dates, Taraweeh and Tahajjud and iftar at the Prophet's Mosque, the Rawdah timetable, i'tikaf registration, University lecture times and the Eid holiday, shops, offices and the free Ramadan shuttles, zakat al-fitr and the Eid prayer.",
+    bodyHtml: `
+<p>Checked November 2026. Ramadan turns Madinah's day upside down. The city sleeps late, the Prophet's Mosque fills from Asr, iftar is laid out for hundreds of thousands in the courtyards, and the last ten nights draw the biggest crowds of the year outside Hajj. Ramadan 1448 begins on 8 February 2027 and Eid al-Fitr falls on 9 March 2027. This guide covers the Haram, the University, daily life, zakat al-fitr and Eid, and marks what changes from year to year.</p>
+<h2>The dates for 1448</h2>
+<table><thead><tr><th>What</th><th>When</th></tr></thead><tbody>
+<tr><td>1 Ramadan</td><td>Monday 8 February 2027</td></tr>
+<tr><td>Founding Day holiday (University)</td><td>19 to 22 February 2027</td></tr>
+<tr><td>University Eid al-Fitr holiday</td><td>26 February to 13 March 2027. Classes stop before the last ten nights and resume on Sunday 14 March</td></tr>
+<tr><td>The last ten nights</td><td>From the night of 21 Ramadan, Saturday 27 February 2027</td></tr>
+<tr><td>Eid al-Fitr</td><td>Tuesday 9 March 2027, confirmed by the moon sighting the evening before</td></tr>
+</tbody></table>
+<p>Every date is in the <a href="/guides/university-calendar-1448">University calendar</a>, and the home page counts down to iftar and suhoor through the month.</p>
+<h2>The Prophet's Mosque in Ramadan</h2>
+<ul>
+<li><strong>Taraweeh</strong> follows Isha and is prayed as 10 rak'ahs with 3 of witr, led by the mosque's imams in turn. The General Presidency publishes the imams' schedule before the month starts.</li>
+<li><strong>Tahajjud</strong> is added in the last ten nights, after midnight and before suhoor, and the mosque stays open through the night.</li>
+<li><strong>Iftar</strong> is laid out on long sheets in the courtyards and inside: dates, water, yoghurt, bread and coffee, offered by families and charities under permit, with the permits issued through the Ehsan platform. Sit down anywhere, eat what is in front of you, and help fold the sheet before the Maghrib prayer. Nobody hands out food without a permit, so bring nothing to distribute.</li>
+<li><strong>The Rawdah</strong> runs on a Ramadan timetable with a different one for the last ten days. In 1447 the last ten days gave women one window, 6:00 to 11:00 in the morning, and men three, 11:20 am to 8 pm, 11 pm to midnight and 2 to 5 am. The 1448 timetable is published by the Presidency before the month. Book in Nusuk as usual, and book the moment the Ramadan slots open, because they go within minutes.</li>
+<li><strong>Crowd levels</strong> for each prayer area and the courtyards are published live by the Presidency on alharamain.gov.sa. Check it before you leave the house on the odd nights.</li>
+<li><strong>Bags:</strong> the free left-luggage centre keeps bags for up to four hours. A prayer mat and a small bag go in; large bags and food do not.</li>
+</ul>
+<blockquote><p>Tip: For Jumu'ah and the odd nights, be inside the mosque an hour before the adhan for Isha, or you will pray in the streets around it. The streets are carpeted and have speakers, and that is where most of the city ends up on the 27th night.</p></blockquote>
+<h2>I'tikaf</h2>
+<p>I'tikaf in the Prophet's Mosque runs from 20 Ramadan to the end of the month and needs a permit. Registration opens in the first days of Ramadan (in 1447 it opened on 3 Ramadan) on the Presidency's portal at eservices.alharamain.gov.sa, with Nafath for citizens and residents. Applicants must be 18 or over, places are limited, and successful applicants receive a text message. Bring a prayer mat, a light sheet, a pillow and two ihram cloths. Women have their own area with its own entrance. Students on the educational visa: open the portal with your Nafath the day registration opens, and ask the Deanship of Student Affairs through Tawasul if it refuses you.</p>
+<h2>The University in Ramadan</h2>
+<ul>
+<li>Lectures start at 10:00 and are shortened to 35-minute slots (10:00, 10:40, 11:20, 12:00), with breaks around Dhuhr and Asr. The timetable is posted on the University's channels in the days before Ramadan.</li>
+<li>The Eid holiday starts on 19 Ramadan, so the last ten nights are free of classes.</li>
+<li>The Deanship of Student Affairs serves a free iftar every day by the University sports ground and hands out suhoor meals. Meals run out, so carry dates and water if you are coming back late from the Haram.</li>
+<li>Free University buses to the Haram run in the evening. Pick-up points and times change for the month: message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a> for the current ones.</li>
+<li>No final exams fall in Ramadan in 1448. The second semester's finals start on 25 April 2027.</li>
+</ul>
+<h2>Daily life</h2>
+<ul>
+<li><strong>Shops and restaurants</strong> close in the afternoon and open after Taraweeh until suhoor. Supermarkets open through the day. Do your shopping late at night, when the city is awake.</li>
+<li><strong>Offices:</strong> government offices and banks keep shorter hours. Private employers cut Muslim employees' day to six hours by law. Absher, Nafath and the banking apps do not change.</li>
+<li><strong>Transport:</strong> Madinah Bus runs free Ramadan shuttles from park-and-ride hubs across the city to the Prophet's Mosque and to Quba, from 3 pm until an hour after Taraweeh, and in the last ten days until half an hour after Tahajjud. The routes are in the Madinah Bus app each year. Ride-app prices surge after Taraweeh, so walk the first ten minutes away from the Haram before you book.</li>
+<li><strong>Eating in public</strong> in daylight is not done. Travellers who are not fasting, and children, eat indoors.</li>
+<li><strong>Prices:</strong> hotel prices around the Haram are at their highest in the last ten nights. Dates, sweets and Ramadan foods have their own markets, and Ramadan night markets open around the city.</li>
+<li><strong>Umrah in Ramadan</strong> carries the reward of Hajj, so the trains and buses to Makkah are full. Book the train and the Nusuk permit weeks ahead. See <a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba from Madinah</a>.</li>
+<li><strong>Families:</strong> the children's centres at the Haram and the women's sections are busiest after Taraweeh. Everything for sisters and children is in <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</li>
+</ul>
+<h2>Zakat al-fitr</h2>
+<p>Zakat al-fitr is one sa' of the staple food for each member of the household, paid before the Eid prayer. In Madinah it is given as rice or dates to families in need, or paid in money through the national donation platform Ehsan at ehsan.sa, which takes the payment per person and region in the last days of Ramadan at the rate announced each year. Sending it home is also done through your ordinary transfer: see <a href="/guides/sending-and-receiving-money">Sending money home and receiving money in Madinah</a>.</p>
+<h2>Eid</h2>
+<ul>
+<li>The Eid prayer in the Prophet's Mosque is held shortly after sunrise, and the Ministry of Islamic Affairs publishes the exact time for Madinah the day before (6:40 am for Eid al-Fitr 1447). Arrive an hour early with your mat and expect to pray in the courtyards. See <a href="/ask/eid-prayer-in-madinah">Where is the Eid prayer held in Madinah?</a></li>
+<li>Eid prayers are also held in the large masjids and the open Eid grounds in every district, which are far less crowded.</li>
+<li>Shops reopen on the afternoon of the first day, and the Eid sales are one of the four big sales of the year.</li>
+<li>The University's holiday continues until 13 March, so plan a trip, a dawrah or a quiet week of revision.</li>
+</ul>
+<h2>What changes every year</h2>
+<p>The Rawdah timetable, the shuttle routes, the i'tikaf registration date, the University lecture times and the Eid prayer time are announced afresh each Ramadan. Check the Presidency's channels, the Madinah Bus app and the University's announcements in Sha'ban, and the home page's Ramadan mode carries the day's iftar and suhoor times.</p>
+<blockquote><p>Tip: Stuck on a step, or a time has changed? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
+  },
 ];
