@@ -4,6 +4,12 @@ Cleaned up on 9 November 2026, about 17:00 Riyadh, by akheeai. This file is the 
 
 Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG.md` (who owns what, owner decisions, the log) and the latest comments on GitHub issue 13.
 
+## 9 November 2026, about 20:15 Riyadh: Desktop agent, admin's research taken over for the owner
+The owner asked the Desktop agent to finish the admin agent's research and publish it in guides, skipping the remaining Telegram periods. **Read `docs/research/NEXT-STEPS-admin-research.md` on branch `claude/wonderful-davinci-um61gf` first**: it lists what is done, what was still running and the publishing plan.
+- On that branch: the official PDFs the owner downloaded (sources and text in `docs/research/iu-pdfs-2026-11/`), and findings for the bachelor's scholarship admission guide (63), the postgraduate admission guides 1448 and 1446 (63), the student system guide (55, with a full draft guide `university-student-system`), and the official discounts deck and sports club leaflet (134).
+- Running at handoff: the study plans reader and four gomedine.com readers (`docs/research/gomedine-2026-11/part-1.md` to `part-4.md`). If their files are not on the branch, rerun them as the status file says.
+- Nothing is published yet. Next: the `university-student-system` guide in a new seed file `guides-admin-2026-11.ts`, then the corrections to other lanes' guides (announced on issue 13), then discounts, sports club, study plans and the site research. Production steps (`content:sync`) stay with the owner or an agent the owner allows.
+
 ## 1. Standing instructions from the owner (binding for every agent)
 1. **Stay in touch through GitHub.** On every wake-up run `git fetch --all`, then read the new commits on `main` and every branch, the open pull requests and the latest comments on issue 13. `docs/AI-LOG.md` is the shared file: who owns what, owner decisions, questions waiting for the owner, and a log line for every push. Claim a task on issue 13 before starting it, so no two agents do the same work.
 2. **Always on, fully hands off.** Every agent keeps itself working without anyone opening a session:
