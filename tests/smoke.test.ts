@@ -42,3 +42,12 @@ describe("admin error messages", () => {
     expect(fieldLabel([])).toBe("Input");
   });
 });
+
+describe("watcher reasons for editors", () => {
+  it("reads in plain English", async () => {
+    const { plainReason } = await import("@/features/admin/watcher/reason");
+    expect(plainReason('"new_book" always needs a person; confidence 62%')).toBe("A new book is always checked by a person. Not sure enough to publish on its own");
+    expect(plainReason("image only; a person must read the flyer; channel not trusted")).toBe("A flyer with no text: read the flyer. From a channel not marked trusted");
+    expect(plainReason("Shadow mode: would have published automatically")).toMatch(/^Would have gone live on its own/);
+  });
+});

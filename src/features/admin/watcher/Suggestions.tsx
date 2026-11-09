@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Check, ExternalLink, Image as ImageIcon, X, Zap } from "lucide-react";
+import { plainReason } from "./reason";
 import { approveSuggestionAction, dismissSuggestionAction } from "@/app/(admin)/admin/actions";
 
 export type SuggestionCard = {
@@ -37,10 +38,10 @@ export function Suggestions({ items }: { items: SuggestionCard[] }) {
               <ImageIcon size={12} /> Flyer
             </a>
           )}
-          {s.reading && <p className="mt-2 rounded-lg bg-bg-2 px-2.5 py-1.5 text-sm"><b>AI reading:</b> {s.reading}</p>}
+          {s.reading && <p className="mt-2 rounded-lg bg-bg-2 px-2.5 py-1.5 text-sm">{s.reading}</p>}
           {s.reason && (
             <p className={`mt-1.5 flex items-center gap-1 text-xs ${s.wouldAuto ? "text-on" : "text-muted"}`}>
-              {s.wouldAuto && <Zap size={12} />} {s.reason}
+              {s.wouldAuto && <Zap size={12} />} {plainReason(s.reason)}
             </p>
           )}
           <div className="mt-3 flex gap-2">
