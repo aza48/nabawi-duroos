@@ -11,8 +11,13 @@ import { WeatherChip } from "./WeatherChip";
 import { LiveNowChip } from "@/features/duroos/Countdown";
 import { DayRollover } from "./DayRollover";
 import { arCount, enCount } from "@/lib/arabic-count";
+import { ramadanMode } from "./ramadan";
+import { RamadanStrip } from "./RamadanStrip";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
+
+/** A verb before a counted, non-human subject: feminine with a plural (3 to 10 duroos), masculine otherwise. */
+export const pluralVerb = (n: number, masc: string, fem: string) => (n % 100 >= 3 && n % 100 <= 10 ? fem : masc);
 
 export function arcCounts(today: Today): ArcCounts {
   return Object.fromEntries(
@@ -55,11 +60,12 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
   const masjids = new Set(today.lessons.map((l) => l.masjid.id)).size;
   const live = today.lessons.filter((l) => l.phase === "live" && l.status !== "cancelled" && l.status !== "postponed").length;
   const tomorrowFajr = prayerTimes(addDays(today.date, 1)).fajr.toISOString();
+  const ramadan = ramadanMode(today.date);
 
   const summary = ar
     ? total === 0
       ? "لا دروس اليوم."
-      : `${arCount(total, "dars")} اليوم في ${arCount(masjids, "masjid", { case: "gen" })}${cancelled ? `، وأُلغي ${arCount(cancelled, "dars")}` : ""}${postponed ? `، وأُجّل ${arCount(postponed, "dars")}` : ""}.`
+      : `${arCount(total, "dars")} اليوم في ${arCount(masjids, "masjid", { case: "gen" })}${cancelled ? `، و${pluralVerb(cancelled, "أُلغي", "أُلغيت")} ${arCount(cancelled, "dars")}` : ""}${postponed ? `، و${pluralVerb(postponed, "أُجّل", "أُجّلت")} ${arCount(postponed, "dars")}` : ""}.`
     : total === 0
       ? "No duroos scheduled today."
       : `${enCount(total, "dars", "duroos")} today across ${enCount(masjids, "masjid", "masjids")}${cancelled ? `, ${cancelled} cancelled` : ""}${postponed ? `, ${postponed} postponed` : ""}.`;
@@ -90,6 +96,7 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
                 items={today.lessons.map((l) => ({ liveFrom: l.liveFrom, liveUntil: l.liveUntil, off: !l.timeKnown || l.status === "cancelled" || l.status === "postponed" }))}
               />
             </p>
+            {ramadan && <RamadanStrip mode={ramadan} serverNow={Date.now()} locale={locale} />}
           </div>
           <NextPrayer prayers={today.prayers} tomorrowFajr={tomorrowFajr} locale={locale} />
         </div>

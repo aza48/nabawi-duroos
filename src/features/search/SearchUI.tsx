@@ -201,11 +201,11 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={t.searchMesh}
-        className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-line bg-card px-3 text-sm text-muted transition hover:text-ink md:min-w-44 lg:min-w-11 xl:min-w-44"
+        className="flex h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-line bg-card px-3 text-sm text-muted transition hover:text-ink md:min-w-44 lg:min-w-11 xl:min-w-44 [:root[data-text]_&]:min-w-11"
       >
         <Search size={17} />
-        <span className="hidden md:inline lg:hidden xl:inline">{t.search}</span>
-        <kbd className="ms-auto hidden rounded-md border border-line px-1.5 text-[11px] md:inline lg:hidden xl:inline" dir="ltr">Ctrl K</kbd>
+        <span className="hidden md:inline lg:hidden xl:inline" data-hdr-label>{t.search}</span>
+        <kbd className="ms-auto hidden rounded-md border border-line px-1.5 text-[11px] md:inline lg:hidden xl:inline" dir="ltr" data-hdr-label>Ctrl K</kbd>
       </button>
       {open &&
         createPortal(
