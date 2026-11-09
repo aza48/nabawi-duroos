@@ -14,6 +14,7 @@ import { SHAYKH_PROFILES } from "./legacy/profiles";
 import { ANNOUNCEMENTS } from "./legacy/announcements";
 import { EVENTS } from "./legacy/events";
 import { DAR_HIJRAH_STREAM, GENERAL_TELEGRAM, NABAWI_YOUTUBE, SHAYKH_TELEGRAM } from "./legacy/streams";
+import { MASHAYIKH_POSITIONS } from "./content/mashayikh";
 import { MASJIDS } from "./legacy/types";
 
 /** "Prof. Dr. Sulayman ibn Saleemullah al-Ruhayli" → "sulayman-ibn-saleemullah-al-ruhayli" */
@@ -66,14 +67,17 @@ export async function importLegacy(db: Db) {
   for (const l of LESSONS) {
     if (shaykhIdByAr.has(l.shaykh.ar)) continue;
     const p = SHAYKH_PROFILES[l.shaykh.ar];
+    const slug = shaykhSlug(l.shaykh.en);
+    // Current positions (sourced, see docs/research/mashayikh-positions-2026-11.md) win over the older profile lines.
+    const pos = MASHAYIKH_POSITIONS[slug];
     const v = cleanRow({
-      slug: shaykhSlug(l.shaykh.en),
-      nameEn: l.shaykh.en,
-      nameAr: l.shaykh.ar,
+      slug,
+      nameEn: pos?.nameEn ?? l.shaykh.en,
+      nameAr: pos?.nameAr ?? l.shaykh.ar,
       photo: p?.photo ?? null,
-      roleEn: p?.role.en ?? null,
-      roleAr: p?.role.ar ?? null,
-      facts: p?.facts ?? [],
+      roleEn: pos?.roleEn ?? p?.role.en ?? null,
+      roleAr: pos?.roleAr ?? p?.role.ar ?? null,
+      facts: pos?.facts ?? p?.facts ?? [],
     });
     const [row] = await db
       .insert(shaykhs)

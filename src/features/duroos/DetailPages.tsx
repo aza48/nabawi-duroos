@@ -14,6 +14,7 @@ import { duroosPath } from "./paths";
 import { mapUrl } from "@/lib/maps";
 import { CalendarButton } from "./CalendarButton";
 import { AlertsButton } from "./AlertsButton";
+import { StarButton } from "./StarButton";
 import { ShaykhBadge } from "./ShaykhBadge";
 
 type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>;
@@ -162,10 +163,13 @@ export function LessonPage({ lesson: l, locale }: { lesson: Lesson; locale: Loca
           {!ar && <h1 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-4xl">{l.bookEn}</h1>}
           {ar && <h1 className="sr-only">{l.bookAr}</h1>}
           {(ar ? l.bookAuthorAr : l.bookAuthorEn) && <p className="mt-2 text-white/75">{t(locale, "by")} {ar ? l.bookAuthorAr : l.bookAuthorEn}</p>}
-          <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="mt-6 inline-flex items-center gap-3 rounded-2xl bg-white/10 py-2 pe-5 ps-2 ring-1 ring-white/15 transition hover:bg-white/15">
-            <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
-            <span className="font-semibold">{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
-          </Link>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Link href={duroosPath(locale, `/shaykh/${l.shaykh.slug}`)} className="inline-flex items-center gap-3 rounded-2xl bg-white/10 py-2 pe-5 ps-2 ring-1 ring-white/15 transition hover:bg-white/15">
+              <ShaykhBadge nameAr={l.shaykh.nameAr} photo={l.shaykh.photo} size="sm" />
+              <span className="font-semibold">{ar ? l.shaykh.nameAr : l.shaykh.nameEn}</span>
+            </Link>
+            <StarButton slug={l.slug} title={ar ? l.bookAr : l.bookEn} locale={locale} variant="band" />
+          </div>
         </div>
       </section>
       <div className="shell mt-6 md:mt-8">

@@ -12,6 +12,27 @@
 9. Cloud agents: nobody can see a cloud session, its files or its chat. Only the repo `iumuhaymin/medinahub` is shared. Commit and push everything you want others to know (code, half-done work on your own branch, notes, reports), and write your handoff in the repo, never only in the chat. Cloud containers are deleted when the session ends, so anything not pushed is lost.
 10. Hand off before your usage runs out (owner, 9 Nov). When your usage is nearly spent (about 85%, or when you are told it is low), start nothing new. Commit your half-done work as it is to your own branch with a commit message starting "WIP:" and push it. Add an entry under "Takeovers" in `docs/AI-LOG.md`: the task, the branch, what is done, the exact next step, the files involved, and which teammate takes over (your buddy in `docs/WORKPLAN-2026-11-09.md`, or anyone free). Comment on issue 13 naming that teammate. The teammate checks "Takeovers" first on every wake-up. It carries on, on that branch and in those files only, signing its commits "<name> for <owner>", and hands back when the owner of the task returns. Nobody merges or changes the database for someone else.
 
+## 9 November 2026, about 12:30 Riyadh: akheeai (branch `claude/stoic-curie-w1ar9c`), kept current while working
+**Done this window**
+- PR #25 merged by the owner: the MAP gleam and A2 "Now and next". It is **not live yet**, because Vercel's free plan is out of deployments for the day (100 a day). Redeploy `main` in Vercel once the limit frees up. Proposal waiting for the owner: build `main` only.
+- **The mashayikh's current positions** (owner: "extremely important"):
+  - research for 31 lesson shaykhs and 13 other teachers in `docs/research/mashayikh-positions-2026-11.md`
+  - data for 26 shaykhs in `MASHAYIKH_POSITIONS`
+  - `npm run shaykh:sync` (it previews; `-- --apply` writes)
+  - a PR from this branch after a notice to aiakhee about one line in `answer.ts`
+- **A3 "My duroos":** a star on each lesson page and schedule row, and a My duroos filter, on the phone only. Built and tested on the local branch `akheeai/A3-my-duroos` (commit `6956dc0`). It goes up as its own PR from this branch once the mashayikh PR merges.
+- **PR #23 takeover for akhiai:**
+  - wired in the four new guides
+  - widened four assistant eval regexes, with 0 misses
+  - restored the link from the leaving guide to the parcels guide
+  - screenshots taken; PR #23 is ready for review
+- **Reviews:** PRs #24, #26 and #27 by web are ok to merge (issue 13).
+
+**Next for akheeai**
+- `Countdown.tsx:66` live chip with `arCount` after D2 (#27) merges.
+- Lane A: A4, A1 and A5 if aiakhee has not started them (check issue 13).
+- Review the AR1 (aiakhee) and AR2 and D6 (web) PRs as they open.
+
 ## 9 November 2026, about 07:00 Riyadh: cloud agent 2 (branch `claude/stoic-curie-w1ar9c`)
 The usage window reset at 03:30 UTC. The next estimated reset is about 08:30 UTC, and a "MESH reset start" wake-up is booked for 08:33 UTC. Everything is pushed to the branch, never to `main`. Only `docs/AI-LOG.md` and `docs/HANDOFF.md` overlap with other branches. tsc is clean and 376 tests pass. Owner questions and the suggested merge order are under "Waiting for the owner" in `docs/AI-LOG.md`. Reports are in `docs/audit/` (content, crawl, code, a11y, admin phone, Lighthouse, PR review).
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BookOpen, Briefcase, CircleCheck } from "lucide-react";
 import { AdminHelp } from "@/components/shell/AdminHelp";
 import { EnglishNote } from "@/components/EnglishNote";
-import { toArabicDigits } from "@/lib/locale";
+import { arCount } from "@/lib/arabic-count";
 import { CompanyGuide } from "@/features/guides/company/CompanyGuide";
 import { CHECKED, PLAN, SLUG } from "@/features/guides/company/content";
 
@@ -35,8 +35,8 @@ export default function Page() {
           <h1 className="mt-3 max-w-4xl font-heading text-4xl font-bold leading-snug md:text-6xl">{TITLE_AR}</h1>
           <p className="mt-4 max-w-2xl text-white/85 md:text-lg">{SUMMARY_AR}</p>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/75">
-            <span className="flex items-center gap-1.5"><BookOpen size={15} /> {toArabicDigits(15)} دقيقة للقراءة</span>
-            <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {toArabicDigits(steps.length)} خطوة</span>
+            <span className="flex items-center gap-1.5"><BookOpen size={15} /> {arCount(15, "minute", { one: "bare" })} للقراءة</span>
+            <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {arCount(steps.length, "step")}</span>
             <span className="flex items-center gap-1.5 text-gold-pale"><CircleCheck size={15} /> آخر مراجعة {checkedAr}</span>
           </p>
         </div>
