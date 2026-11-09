@@ -8,6 +8,7 @@ import { BadgePercent, BookOpen, CornerDownLeft, FileText, GraduationCap, Landma
 import type { createSearch, SearchDoc, SearchHit, SearchType } from "@/lib/search/engine";
 import { localizeUrl } from "@/lib/locale";
 import { AdminHelp } from "@/components/shell/AdminHelp";
+import { arCount } from "@/lib/arabic-count";
 
 const TYPE: Record<SearchType, { label: string; ar: string; icon: typeof Search }> = {
   page: { label: "Pages", ar: "الصفحات", icon: FileText },
@@ -56,7 +57,7 @@ export const optionId = (h: SearchHit) => `mesh-search-opt-${h.id.replace(/[^A-Z
 
 /** "12 results" for the live region. */
 export function resultsSummary(n: number, locale: "en" | "ar"): string {
-  if (locale === "ar") return n === 0 ? "لا نتائج" : n === 1 ? "نتيجة واحدة" : n === 2 ? "نتيجتان" : `${n} نتائج`;
+  if (locale === "ar") return arCount(n, "result", { zero: "لا نتائج" });
   return n === 1 ? "1 result" : `${n} results`;
 }
 

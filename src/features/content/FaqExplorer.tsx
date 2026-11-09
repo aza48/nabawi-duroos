@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, Search } from "lucide-react";
+import { arDigits } from "@/lib/arabic-count";
 
 type Item = { slug: string; question: string; category: string };
 type Cat = { id: string; label: string; labelAr?: string };
@@ -41,7 +42,7 @@ export function FaqExplorer({ items, categories, locale = "en" }: { items: Item[
                   }`}
                 >
                   {ar ? (c.labelAr ?? c.label) : c.label}
-                  <span className="text-xs opacity-70 tabular">{n}</span>
+                  <span className="text-xs opacity-70 tabular">{ar ? arDigits(n) : n}</span>
                 </button>
               </li>
             );
