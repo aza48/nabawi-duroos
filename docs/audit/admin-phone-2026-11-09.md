@@ -173,4 +173,4 @@ Screenshots: `docs/screenshots/admin-phone/` (390x844 unless the name says deskt
   - row 32
 - **Left for the owner:** row 21 (two-column admin on wide screens; question under "Waiting for the owner" in `docs/AI-LOG.md`) and row 33 (Arabic fields for answers and guides; cloud agent 1's migration proposal on issue 13).
 - **Left for the desktop agent:** row 25 (the Visitors range chips in its analytics area).
-- **Not done yet:** row 26 (with the keyboard open, the header and tab bar take about 120 of 420 px; hide the tab bar while an input has focus).
+- **Also done:** row 26 (the tab bar steps aside while a field has focus on a phone).

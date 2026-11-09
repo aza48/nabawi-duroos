@@ -485,3 +485,8 @@ a { -webkit-tap-highlight-color: transparent; }
   }
 }
 @keyframes reveal { from { opacity: 0; translate: 0 18px; } }
+
+/* Admin on a phone: while typing, the on-screen keyboard leaves little room, so the tab bar steps aside. */
+@media (pointer: coarse) and (max-width: 767px) {
+  body:has(:is(input:not([type="checkbox"], [type="radio"], [type="button"], [type="submit"]), textarea, select, [contenteditable="true"]):focus) .admin-tabbar { display: none; }
+}

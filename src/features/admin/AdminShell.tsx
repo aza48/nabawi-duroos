@@ -43,7 +43,7 @@ export function AdminShell({ name, roleLabel, canUndo = false, canSeeVisitors = 
         </div>
       </header>
       <main className={`admin-main mx-auto px-4 pt-4 pb-safe md:pb-16 ${path.startsWith("/admin/analytics") ? "max-w-7xl" : "max-w-4xl"}`}><AdminFeedbackProvider canUndo={canUndo}>{children}</AdminFeedbackProvider></main>
-      <nav aria-label="Admin" className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card/95 backdrop-blur md:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      <nav aria-label="Admin" className="admin-tabbar fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card/95 backdrop-blur md:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         <ul className="flex justify-around">
           {tabs.map((t) => {
             const Icon = t.icon;
