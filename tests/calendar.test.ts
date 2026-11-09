@@ -30,6 +30,24 @@ describe("buildIcs", () => {
   });
 });
 
+describe("reminders (A5)", () => {
+  const ev = { uid: "y@medinahub.org", start: new Date("2026-11-12T12:15:00Z"), end: new Date("2026-11-12T13:15:00Z"), summary: "Kitab", description: "", location: "Nabawi", url: "https://medinahub.org/y" };
+  const alarms = (ics: string) => ics.split("BEGIN:VALARM").length - 1;
+  it("reminds 20 minutes before each dars, inside the event", () => {
+    const ics = buildIcs("t", [{ ...ev, cancelled: false }]);
+    expect(alarms(ics)).toBe(1);
+    const block = ics.slice(ics.indexOf("BEGIN:VALARM"), ics.indexOf("END:VALARM"));
+    expect(block).toContain("ACTION:DISPLAY");
+    expect(block).toContain("TRIGGER:-PT20M");
+    expect(block).toContain("DESCRIPTION:Kitab");
+    expect(ics.indexOf("END:VALARM")).toBeLessThan(ics.indexOf("END:VEVENT"));
+  });
+  it("never reminds for a cancelled dars or a whole-day date", () => {
+    expect(alarms(buildIcs("t", [{ ...ev, cancelled: true }]))).toBe(0);
+    expect(alarms(buildIcs(datesFeed().title, datesFeed().events))).toBe(0);
+  });
+});
+
 describe("datesFeed", () => {
   it("turns the University calendar into whole-day events with an exclusive end", () => {
     const ics = buildIcs(datesFeed().title, datesFeed().events);
