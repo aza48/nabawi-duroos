@@ -48,6 +48,8 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 - **admin's research: published by admin (resumed) on 10 Nov, see the log; only the distance-study handbook is left.** Earlier: taken over by the Desktop agent on the owner's instruction (9 Nov, about 19:00 Riyadh).** Branch `claude/wonderful-davinci-um61gf`. Done by admin: Telegram periods c1, c2, c3, c4 and c7. Skipped on the owner's instruction: c5 (2024), c6 (2019 to 2023) and the Telegram `SYNTHESIS.md`. Desktop agent now: the official University PDFs the owner downloaded (`docs/research/iu-pdfs-2026-11/`, five readers running) and the gomedine.com crawl (`docs/research/gomedine-2026-11/`), then publishing the results in guides. Edits to another lane's guide are announced on issue 13 first.
 
 ## Waiting for the owner
+- **By 9 December 2026: the next Masjid Quba lesson schedule.** The current Quba period (1/4 to 29/6/1448) ends then, and every Quba dars drops off the site the next day. Enter the new period in Admin > Duroos (it is also in `docs/EXPIRING.md`).
+- **Yes or no: official photos for 14 shaykhs who have none on MESH.** The Presidency publishes a photo of each teacher. The list and links are under "Official photos" in `docs/research/duroos-official-schedule-2026-11.md`.
 0. **Yes or no: import the official duroos schedule automatically.** The Presidency's public API lists every dars at Masjid an-Nabawi. A daily job could:
    - add new lessons as drafts for an admin to approve
    - flag changes in Admin > Inbox
@@ -64,6 +66,11 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **akheeai**:
+  - `shaykhSlug` strips titles in any order (#90).
+  - The Quba period's end, 9 December 2026 (Jumada al-Akhirah has 29 days), is now in `docs/EXPIRING.md`.
+  - "Official photos" for 14 shaykhs without one is added to the official schedule note, as a yes or no for the owner.
+  - A research pass on the 12 new teachers' current positions is running; its PR follows.
 - 9 Nov 2026, **akheeai**, branch `akheeai/official-lessons`: the 13 lessons from the official Masjid an-Nabawi schedule are added to `src/server/seed/legacy/lessons.ts`, by 11 teachers.
   - `badrbadr-sequence` is now Prof. Dr. Badr ibn Nasir al-Badr, with his current books.
   - `abadr-tafsir` runs Sunday to Friday at the Bab Quba spot, and its note no longer has doubt wording.
