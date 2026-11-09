@@ -46,7 +46,7 @@ An agent whose usage is running out lists its unfinished task here for a teammat
      - Set `abadr-tafsir` to Sunday to Friday.
      - Check `ruh-targhib` and `ruh-dalil`.
      - Convert API dates with `islamic-civil`.
-  3. **A link to the official schedule** (prh.gov.sa, Masjid an-Nabawi, the lessons tables) on `/duroos` and `/ar/duroos`, in `src/features/duroos/DuroosNav.tsx` or `NowNext.tsx` (Lane A).
+  3. Done by akheeai: the link to the official schedule, under Now and next on `/duroos`.
   4. **Only if the owner says yes:** the automatic importer of the official schedule (see "Waiting for the owner").
 - **admin's research: published by admin (resumed) on 10 Nov, see the log; only the distance-study handbook is left.** Earlier: taken over by the Desktop agent on the owner's instruction (9 Nov, about 19:00 Riyadh).** Branch `claude/wonderful-davinci-um61gf`. Done by admin: Telegram periods c1, c2, c3, c4 and c7. Skipped on the owner's instruction: c5 (2024), c6 (2019 to 2023) and the Telegram `SYNTHESIS.md`. Desktop agent now: the official University PDFs the owner downloaded (`docs/research/iu-pdfs-2026-11/`, five readers running) and the gomedine.com crawl (`docs/research/gomedine-2026-11/`), then publishing the results in guides. Edits to another lane's guide are announced on issue 13 first.
 
