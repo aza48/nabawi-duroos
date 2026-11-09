@@ -214,7 +214,7 @@ It is in English, with Arabic under `/ar`, and it promotes the MESH WhatsApp gro
 - `tsconfig.tsbuildinfo` changes whenever tsc runs; never commit it.
 - A function exported from a `"use client"` file cannot be called from a server component; shared helpers live in plain modules.
 - Migrations must reach live before the code that selects new columns.
-- Shaykh slugs come from the English name with titles stripped (`shaykhSlug`). Renaming a shaykh in `lessons.ts` can change his slug, so change titles in the admin instead.
+- Shaykh slugs come from the English name with titles stripped (`shaykhSlug`, any order since 9 Nov). Changing the name itself in `lessons.ts` changes the slug, so rename shaykhs in the admin instead.
 - Full-page screenshots need `reducedMotion: "reduce"`, or cards below the fold stay hidden by the scroll reveal.
 - Cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org` directly; web search still works.
 - **Desktop agent (Windows):**

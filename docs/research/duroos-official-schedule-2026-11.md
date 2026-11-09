@@ -87,3 +87,25 @@ In particular: Saud al-Khalaf, Anis Tahir and Abdussalam al-Suhaymi are «أ.د.
 
 ## Recommendation (needs the owner's yes)
 The official API is public, structured and current, and it is the one source that knows every dars at Masjid an-Nabawi. MESH could import it automatically: a daily job that reads the API, converts the dates with the tabular calendar, adds new lessons as drafts for an admin to approve, flags day, place or teacher changes in Admin > Inbox, and links each dars to the live stream when the API marks it live. Until the owner says yes, admins can use the tables above to add the missing lessons and apply the corrections by hand.
+
+## Official photos (for the owner)
+Each teacher in the official schedule has a photo published by the Presidency. These shaykhs have no verified photo on MESH yet. The owner decides whether to use them (the rule is verified photos only, and an official source counts as verified):
+
+| MESH slug | Name as the Presidency writes it | Official photo |
+|---|---|---|
+| `abdulaziz-ibn-raji-al-saidi` | الشيخ د.عبدالعزيز بن راجي الصاعدي | https://cpd.prh.gov.sa/storage/images/Gz010JEOpnTRcxPMkQb5dWv7k5XDhfstOr4T2RCP.png |
+| `abdulaziz-ibn-salih-al-ubayd` | الشيخ أ.د. عبدالعزيز بن صالح العبيد | https://cpd.prh.gov.sa/storage/images/3qjSOleYYMS3hUvl2jMTFp3bWVjNzRmoykEnBrhh.jpg |
+| `abdullah-ibn-abdurrahman-al-buayjan` | الشيخ د.عبدالله بن عبد الرحمن البعيجان | https://cpd.prh.gov.sa/storage/images/s4YaixuLHQBplOoIGr5kPDzCHXKpNHACCTefHIms.jpg |
+| `abdullah-ibn-ibrahim-al-zahim` | الشيخ أ.د.عبدالله بن إبراهيم الزاحم | https://cpd.prh.gov.sa/storage/images/hEI0Ma5LRTKtNzh0VI8ilnWoQUgvJUwV1L1M8sXI.png |
+| `abdullah-ibn-muhammad-al-amin` | الشيخ أ.د.عبدالله بن محمد الأمين | https://cpd.prh.gov.sa/storage/images/ia98BaYig9r0G79FF8FehAwf57FZ1Iqc5LFwWpmX.png |
+| `ali-ibn-abdulaziz-al-sudais` | الشيخ د. علي بن عبد العزيز السديس | https://cpd.prh.gov.sa/storage/images/QGPrKBn67NBSyNa6FsKgAROVScXjbvI1CP7fG2X8.png |
+| `ali-ibn-fahd-abu-battin` | الشيخ د. علي بن فهد أبابطين | https://cpd.prh.gov.sa/storage/images/VSaEAn2lwALR3vPfvfjCdpm7dLvhaUkWGUGliXvF.png |
+| `badr-ibn-nasir-al-badr` | الشيخ أ.د. بدر بن ناصر البدر | https://cpd.prh.gov.sa/storage/images/QdyAPOfMVM7l0E58I9pUsrfAIeVnqoApiZRSN8y4.png |
+| `ibrahim-ibn-ibrahim-al-turki` | الشيخ إبراهيم بن إبراهيم التركي | https://cpd.prh.gov.sa/storage/images/AD4KM6sVRxngEjv9EFuLzyPzvgpD7Qwfy5xlAb0u.png |
+| `masud-ibn-bashir-al-muhammadi` | الشيخ أ.د.مسعود بن بشير المحمدي | https://cpd.prh.gov.sa/storage/images/ZbKmBVmxAeCxMOMUvH3nvTl4rXZR1GZAOCGfop37.jpg |
+| `muhammad-ibn-sidi-al-amin` | الشيخ أ.د.محمد بن سيدي الأمين | https://cpd.prh.gov.sa/storage/images/gNEc70jeVuG03XO9ajlhQWsVR4BBX9oyXcEbBZk5.png |
+| `muhammad-sad-ibn-ahmad-al-yubi` | الشيخ أ.د. محمد سعد بن احمد اليوبي | https://cpd.prh.gov.sa/storage/images/JLwqNQ3jLIsWftz0tnXOkwbC0r55uswpZyRnFXq0.png |
+| `salih-ibn-abdullah-al-abbud` | معالي الشيخ د. صالح بن عبدالله العبود | https://cpd.prh.gov.sa/storage/images/zbLhvh0QwpIWgJv7kD5vSIy0Rhyv5WFtcDXaCzWX.png |
+| `saud-ibn-abdulaziz-al-khallaf` | الشيخ أ.د. سعود بن عبدالعزيز الخلف | https://cpd.prh.gov.sa/storage/images/YVBID1AIkbtlZFALlyz2dos8ZrgNZ50AAx5WBoe2.png |
+
+Before adding one, open it and check it against the shaykh's own channel, then save it under `public/images/` and add `photo` to his profile in `src/server/seed/legacy/profiles.ts` (or in Admin > Shaykhs for the live site).
