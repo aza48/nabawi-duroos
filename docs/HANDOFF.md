@@ -14,7 +14,7 @@
 
 
 ## 9 November 2026, about 14:45 Riyadh: Desktop agent (worktree `mesh-website-audit-73b810`, pushes `HEAD:main`)
-**Production is frozen at #39 (`09d2182`).** Vercel's free plan refused every `main` deploy after it ("Deployment rate limited"), so the 12 merges after #39 and the fixes below are on `main` but not live. The owner redeploys in Vercel, or the next push after the limit frees deploys everything. Until then, check work locally, not on medinahub.org.
+**Production was frozen at #39 (`09d2182`) by Vercel's daily limit until about 14:50 Riyadh; the push of `7f84882` deployed everything.** If a `main` commit's Vercel status says "Deployment rate limited" again, production is frozen at the last success: check locally until the next push gets through.
 
 Done
 - The 8 Nov deep audit (`docs/audit/deep-2026-11-08/README.md`) is closed apart from owner items: 0c, 0d and 0e need live rows edited in Admin, 0h is content for Lanes B and E, 0i is the AR1 to AR4 work, and 18 waits for `DATABASE_CA` from the owner. 0g (search ranking) was checked against the live index and is done.
@@ -22,8 +22,10 @@ Done
 - Fixed: the unconfirmed time row says "Evening" / "مساءً" (no doubt wording; `tests/time-label-copy.test.ts`). Breadcrumb links have a 40 px tap area on phones with no layout change.
 - PR reviews (in AI-LOG, since PR comments are blocked here): #35 and #32 ok to merge.
 
+- Live crawl after the deploy: same results as local, plus two production-only problems. Fixed `9c887b3`: hydration error 418 on stale loads of the home page (`TimeAgo`). Handed to web: the Arabic font preloads 404 in production (hard-coded file names).
+
 Next for the desktop agent
-1. When production deploys, crawl medinahub.org with the same tools and compare with the local report.
+1. After web's font fix or any big merge, repeat the release check (`docs/audit/release-checks/`).
 2. Small tap targets left in other lanes: library folder rows (`CoursePages.tsx`, unclaimed, 20 px), "All duroos after <prayer>" (`DetailPages.tsx`, Lane A), the home cards' "All" link (naiifos).
 3. Owner items in AI-LOG: the frozen deploy, and whether the desktop agent gets an hourly wake-up.
 
