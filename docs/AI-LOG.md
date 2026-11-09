@@ -28,7 +28,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 ## Who owns what
 | Agent | Where it works | Area it owns | Now |
 |---|---|---|---|
-| **akheeai** (cloud; hourly wake-up `trig_01SxJcvNAENF2p1jYuTc333n`, plus a one-shot wake-up at each usage reset) | `claude/stoic-curie-w1ar9c` and `akheeai/<task>` branches, one PR per task | Lane A, duroos and schedule (`src/features/duroos/*` except naiifos's cards, `src/server/calendar.ts`, shaykh profiles and `src/server/seed/content/mashayikh.ts`), coordination docs (`docs/HANDOFF.md`, this file's structure, the work plan), reviews and merges | Lane A is done. Reviewing #49 and the AR3 batches; next: the live chip count in `Countdown.tsx`, a 40 px tap area on "All duroos after <prayer>" |
+| **akheeai** (cloud; hourly wake-up `trig_01SxJcvNAENF2p1jYuTc333n`, plus a one-shot wake-up at each usage reset) | `claude/stoic-curie-w1ar9c` and `akheeai/<task>` branches, one PR per task | Lane A, duroos and schedule (`src/features/duroos/*` except naiifos's cards, `src/server/calendar.ts`, shaykh profiles and `src/server/seed/content/mashayikh.ts`), coordination docs (`docs/HANDOFF.md`, this file's structure, the work plan), reviews and merges | **Out of weekly usage (9 Nov, 18:40 UTC); Lane A handed to web, see Takeovers.** Done today: Lane A (A1 to A5, S4), the chat research (`docs/research/chats-2026-11/`), the official duroos schedule (`docs/research/duroos-official-schedule-2026-11.md`) |
 | **aiakhee** (cloud; reset wake-up `trig_014casXrmFg7JRsyEWCQeJQE`; its hourly wake-up waits for the owner to allow it) | `aiakhee/<task>` branches | Lane B: FAQ seed content, `src/lib/guide-html.ts`, the whole assistant (`src/server/assistant/*`, `src/features/assistant/*`), `/start` and `/glossary` | AR1 (#49, migration first), then AR4 (Arabic FAQs); B1, B2, B4, B5 and B6 are on `aiakhee/B*` branches, no PRs yet |
 | **akhiai** (cloud, Fable 5.1; hourly wake-up `trig_011QLV8fWJfFwFCRyc7LbFN4`) | `akhiai/<task>` branches | Lane E, guides: `src/server/seed/content/guides-*.ts`, `scripts/open-questions.json`, `docs/EXPIRING.md`, `docs/research/guides-*`, and AR3 translations | AR3 batches 1 to 4 (#44, #46, #47, #48) and E3 (#45) in review; next: more AR3 batches, sisters at Masjid an-Nabawi, keeping guides fresh |
 | **web** (cloud; hourly wake-up `trig_01VqkfrqUJn87szU6xmQeV4s`) | `web/<task>` branches | Lanes C and D: the shell and header, Arabic pages (`src/app/(ar)/*` with the desktop agent), `ContentPages.tsx`, home layout, analytics (`src/server/analytics/*`, `/admin/analytics`) | C2 and C6 done; next C3, C1, D3 (after B1), Arabic font preload through `next/font`, S1 to S3 |
@@ -38,9 +38,25 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 
 ## Takeovers
 An agent whose usage is running out lists its unfinished task here for a teammate (HANDOFF standing instruction 9). The teammate updates the entry as it works and marks it "returned" when the owner of the task is back.
+- **akheeai to web (9 Nov, 18:40 UTC; akheeai's weekly usage is spent).** These are Lane A tasks and the lead reviewer role. Work in the files named, on `web/<task>` branches.
+  1. **Reviews and merges** (already handed over on issue 13): #44, #46, #47, #48, #74, #77 and #78 (AR3 batches), #45 (Ramadan guides) and #75 (chat-research fixes and the volunteering guide), plus any new PR. #49 waits for the owner's migration, and #41 waits for the owner's yes.
+  2. **Duroos data from the official schedule** (`docs/research/duroos-official-schedule-2026-11.md`):
+     - Add the 13 missing lessons to `src/server/seed/legacy/lessons.ts`. New installs read it, but the live site takes its lessons from the database, so also list them for an admin to add in Admin > Duroos.
+     - Correct `badrbadr-sequence` to Prof. Dr. Badr ibn Nasir al-Badr, with his current books.
+     - Set `abadr-tafsir` to Sunday to Friday.
+     - Check `ruh-targhib` and `ruh-dalil`.
+     - Convert API dates with `islamic-civil`.
+  3. **A link to the official schedule** (prh.gov.sa, Masjid an-Nabawi, the lessons tables) on `/duroos` and `/ar/duroos`, in `src/features/duroos/DuroosNav.tsx` or `NowNext.tsx` (Lane A).
+  4. **Only if the owner says yes:** the automatic importer of the official schedule (see "Waiting for the owner").
 - **admin's research: published by admin (resumed) on 10 Nov, see the log; only the distance-study handbook is left.** Earlier: taken over by the Desktop agent on the owner's instruction (9 Nov, about 19:00 Riyadh).** Branch `claude/wonderful-davinci-um61gf`. Done by admin: Telegram periods c1, c2, c3, c4 and c7. Skipped on the owner's instruction: c5 (2024), c6 (2019 to 2023) and the Telegram `SYNTHESIS.md`. Desktop agent now: the official University PDFs the owner downloaded (`docs/research/iu-pdfs-2026-11/`, five readers running) and the gomedine.com crawl (`docs/research/gomedine-2026-11/`), then publishing the results in guides. Edits to another lane's guide are announced on issue 13 first.
 
 ## Waiting for the owner
+0. **Yes or no: import the official duroos schedule automatically.** The Presidency's public API lists every dars at Masjid an-Nabawi. A daily job could:
+   - add new lessons as drafts for an admin to approve
+   - flag changes in Admin > Inbox
+   - link the live streams
+
+   Until then, the tables in `docs/research/duroos-official-schedule-2026-11.md` are for adding the 13 missing lessons by hand.
 1. **AR1 migration:** apply it in production (`docs/AR1-MIGRATION.md` on the AR1 branch), then merge #49. Until then the Arabic articles cannot show.
 2. **Publish data:** `npm run shaykh:sync` (a preview), then `npm run shaykh:sync -- --apply` for the mashayikh's positions; `npm run content:sync` after #23, #45 and the AR3 batches merge.
 3. **Admin > Shaykhs:** the name and title fixes listed at the top of `MASHAYIKH_POSITIONS`.
@@ -51,6 +67,13 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **akheeai**, branch `akheeai/official-duroos-schedule`: the official schedule of duroos at Masjid an-Nabawi, read from the Presidency's public API (`cpd.prh.gov.sa/api/v1/courses?mosque=madinah`) and compared with MESH, in `docs/research/duroos-official-schedule-2026-11.md`. Findings:
+  - 19 lessons match MESH, 17 of them exactly.
+  - 13 lessons by 11 teachers are missing from MESH.
+  - The "Badr ibn Muqbil al-Badr" dars is Prof. Dr. Badr ibn Nasir al-Badr's.
+  - Tafsir as-Sa'di after Fajr runs daily except Saturday.
+  - Official titles for the shaykh name fixes.
+  - The API dates sittings in the tabular Hijri calendar, one day behind Umm al-Qura.
 - 10 Nov 2026, **admin** (resumed for the owner), branch `claude/resume-guide-validation-8uugen`: admin's research published into guides. 13 new guides (three new files `guides-admin-2026-11.ts`, `guides-admin-life-2026-11.ts`, `guides-admin-papers-2026-11.ts`), corrections to about 25 existing guides and FAQs (partial scholarship is tuition only, two tazkiyah letters, the stipend goes onto the University Al Rajhi card, ticket cities per country, results after the course evaluation, excuses uploaded online, no fixed summer semester, library 8 am to midnight, gomedine.com papers detail), discounts replaced from the official 25 Oct 2026 deck (101 offers, English and Arabic) and the sports club prices. New guide topic `studies` ("Your studies, step by step") with one icon line in `ContentPages.tsx` (web: please keep). Owner questions: `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`. Next: the distance-study handbook, see `docs/research/NEXT-STEPS-admin-research.md`. Owner: `npm run content:sync` after merge.
 - 9 Nov 2026, **aiakhee**: Lane B in PRs #54 (B1), #56 (B2), #57 (B6, on #56), #58 (B5), #60 (B4); AR1 in #49 (owner applies the migration first). Assistant PR and FAQ fixes PR in progress (assistant WIP pushed at `f226ac2`). Handoff written at the top of `docs/HANDOFF.md`. FAQ slugs admin claimed on issue 13 are left to admin.
 - 9 Nov 2026, **Desktop agent** (for the owner, taking over admin's research), branch `claude/wonderful-davinci-um61gf`: official University PDFs read into four findings files (bachelor's scholarship admission 63, postgraduate admission 63, student system 55, discounts and sports club 134), sources and text committed; study plans and gomedine.com readers still running at handoff. Status and publishing plan: `docs/research/NEXT-STEPS-admin-research.md` on that branch. Nothing published yet. Corrections to other lanes' guides will be announced here first.
