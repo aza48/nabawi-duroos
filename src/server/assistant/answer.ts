@@ -1,25 +1,31 @@
 import { z } from "zod";
 import type { Db } from "@/server/db/client";
-import { getSetting, setSetting, HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
+import { getSetting, setSetting, HELP_CONTACT_DEFAULT } from "@/server/settings";
 import { cleanText } from "@/lib/text";
 import { normalize } from "@/lib/search/normalize";
 import { riyadhDateIso } from "@/lib/time/riyadh";
 import { getKnowledge, type Chunk } from "./knowledge";
-import { answers, coverage, createRetriever, keyTerms, termHits, type Passage } from "./retrieve";
-import { detectLive, duroosPassage, prayerTimesPassage, todayPassage } from "./live";
-import { composeExtractive, notFound } from "./compose";
+import { answers, coverage, createRetriever, headingHolds, keyTerms, retrieverFor, termHits, type Passage, type Retriever } from "./retrieve";
+import { datePassage, detectLive, duroosPassage, prayerTimesPassage, shaykhsNamed, todayPassage } from "./live";
+import { Citer, cite, composeExtractive, ENGLISH_PAGE_AR, extract, notFound, programLine, RANKING, sentences } from "./compose";
+import { asksWhenWhere, greetingReply, isGreeting, isRulingQuestion, looksLikeFiqh, rulingReply } from "./guard";
 import { systemPrompt, userTurn } from "./prompt";
 import { write, type ChatMessage } from "./llm";
+import { stemEn } from "./words";
+
+export { HELP_LINE, isGreeting, isRulingQuestion } from "./guard";
 
 /**
  * Ask the MESHaykh: answers one question from MESH's own content.
  *
- * 1. A question asking for a religious ruling gets a fixed, kind reply (no model is asked).
+ * 1. A question asking for a religious ruling gets a fixed, kind reply with the help line (no model is asked).
  * 2. Live data (duroos on a given day or after a prayer, adhan times, today's date and the next
- *    University dates) is computed, and the best passages of the site are found.
+ *    University dates) is computed, and the best passages of the site are found, in Arabic too
+ *    when a page is translated.
  * 3. A free model writes the answer from those passages only. Its reply is checked: no long
  *    dashes, and no answer that brings in two or more numbers the passages do not contain.
  * 4. With no model available, the live data or the best sentences of the best passages answer.
+ * Every answer with sources carries [n] markers that point to sources[n-1].
  * It never throws for a model failure, and questions it could not answer are kept for the owner.
  */
 
@@ -37,45 +43,11 @@ export type AskResult = {
   lang: "en" | "ar";
 };
 
-export const HELP_LINE = {
-  en: `Please message Admin on WhatsApp at ${HELP_CONTACT_DEFAULT} or email ${HELP_EMAIL_DEFAULT}.`,
-  ar: `راسل المشرف على واتساب: \u200E${HELP_CONTACT_DEFAULT} أو على البريد الإلكتروني: \u200E${HELP_EMAIL_DEFAULT}`,
-};
-
 const ARABIC = /[؀-ۿ]/g;
 /** The language the question is written in. */
 export function langOf(text: string): "en" | "ar" {
   const letters = text.replace(/[^\p{L}]/gu, "").length || 1;
   return (text.match(ARABIC)?.length ?? 0) / letters > 0.3 ? "ar" : "en";
-}
-
-/** Questions that ask for a religious ruling. "The Haram" alone is the masjid, so only "is it haram" and the like count. */
-const RULING = /\b(is it|is this|are they|it is|is)\s+(halal|haram|permissible|permitted|allowed in islam|makruh|makrooh|sunnah|bidah|bida|shirk|kufr|obligatory|fard|wajib)\b|\b(ruling|fatwa|fatwah|hukm|islamic verdict)\b|حكم|يجوز|فتوي|حلال ام حرام|هل يحرم/;
-export function isRulingQuestion(q: string): boolean {
-  return RULING.test(normalize(q));
-}
-
-/** A greeting with no question in it ("salam", "hello", "السلام عليكم"). */
-const GREETING = /^(hi|hello|hey|salam|salaam|assalamu? ?alaikum|as salamu alaikum|assalamualaikum|asalamualaikum|wa ?alaikum ?(as)? ?salam|good (morning|evening|afternoon)|thanks?|thank you( so much| very much)?|jazakallah ?(u)? ?(khair|khayr|khairan)?|السلام عليكم|سلام|مرحبا|اهلا|شكرا|جزاك الله خيرا)[\s!.,?]*$/;
-export function isGreeting(q: string): boolean {
-  return GREETING.test(normalize(q).replace(/\s+/g, " ").trim()) || GREETING.test(q.trim().toLowerCase());
-}
-
-const THANKS = /^(thanks?|thank you( so much| very much)?|jazakallah ?(u)? ?(khair|khayr|khairan)?|شكرا|جزاك الله خيرا)[\s!.,]*$/;
-
-function greetingReply(lang: "en" | "ar", q = ""): string {
-  if (THANKS.test(normalize(q).trim()) || THANKS.test(q.trim().toLowerCase())) {
-    return lang === "ar" ? "وإياكم. إن احتجت شيئًا آخر عن الدراسة أو الحياة في المدينة فاسألني." : "Wa iyyakum. If you need anything else about studying or living in Madinah, just ask.";
-  }
-  return lang === "ar"
-    ? "وعليكم السلام ورحمة الله. أنا مساعد MESH، أجيب عن الدراسة والحياة في المدينة: الجامعة والتأشيرات والإقامة والبنوك والسكن والدروس. اسألني ما تريد."
-    : "Wa alaikum assalam. I'm the MESH assistant: ask me anything about studying and living in Madinah, from the University, visas, the iqama, banks and housing to tonight's duroos.";
-}
-
-function rulingReply(lang: "en" | "ar"): string {
-  return lang === "ar"
-    ? "لا يصدر MESH فتاوى ولا أحكامًا شرعية. اسأل عالمًا موثوقًا، وتجد المشايخ الذين يدرّسون في المسجد النبوي وأوقات دروسهم في صفحة الدروس."
-    : "MESH doesn't give religious rulings. Please ask a qualified scholar. The mashayikh who teach in Masjid an-Nabawi, and when and where their duroos are, are on the duroos page.";
 }
 
 /** Long dashes are never used on MESH; a dash between two numbers becomes "to", any other a comma. */
@@ -144,32 +116,150 @@ export function citations(text: string, passages: Chunk[]): { text: string; cite
   return { text: out.trim(), cited };
 }
 
-/** Whether a question asks the same thing as an FAQ's question: nearly all words shared, both ways. */
+/** Two words are the same word: equal, or one a plural or inflection of the other ("fees", "fee"). */
+const sameWord = (x: string, y: string) => x === y || stemEn(x) === stemEn(y) || (x.length > 4 && y.startsWith(x.slice(0, -1))) || (y.length > 4 && x.startsWith(y.slice(0, -1)));
+
+/**
+ * Whether a question asks the same thing as an FAQ's question: every word of the question is in the
+ * FAQ's, and at least half of the FAQ's words are in the question.
+ * Words are compared as written, not through synonyms, so "find a flat to rent" is not "What is Ejar?"
+ * and "is housing free" is not "Do married students get family housing?".
+ */
 export function sameQuestion(q: string, faqQuestion: string): boolean {
   const a = keyTerms(q);
   const b = keyTerms(faqQuestion);
   if (!a.length || !b.length) return false;
-  return termHits(a, faqQuestion) / a.length >= 0.75 && termHits(b, q) / b.length >= 0.5;
+  const shared = (xs: string[], ys: string[]) => xs.filter((x) => ys.some((y) => sameWord(x, y))).length;
+  return shared(a, b) === a.length && shared(b, a) / b.length >= 0.5;
 }
 
-const sourceOf = (c: Chunk): Source => ({ title: c.title, ...(c.section ? { section: c.section } : {}), url: c.url });
+/** The page a link belongs to, the same for its English and Arabic versions. */
+const pageKey = (url: string) => url.replace(/^\/ar(?=\/)/, "").split("#")[0];
 const page = (url: string) => url.split("#")[0];
 
-function relatedOf(passages: Passage[], used: Set<string>): AskResult["related"] {
-  const seen = new Set(used);
+/** A source as shown under the answer: an Arabic answer shows the page's Arabic title when it has one. */
+const sourceOf = (c: Chunk, lang: "en" | "ar"): Source => ({ title: lang === "ar" && c.titleAr ? c.titleAr : c.title, ...(c.section ? { section: c.section } : {}), url: c.url });
+
+function relatedOf(passages: Passage[], used: Set<string>, lang: "en" | "ar"): AskResult["related"] {
+  const seen = new Set([...used].map(pageKey));
   const out: AskResult["related"] = [];
   for (const p of passages) {
-    if (seen.has(page(p.url)) || !(p.kind === "faq" || p.kind === "guide")) continue;
-    seen.add(page(p.url));
-    out.push({ title: p.title, url: page(p.url) });
+    if (seen.has(pageKey(p.url)) || !(p.kind === "faq" || p.kind === "guide")) continue;
+    seen.add(pageKey(p.url));
+    out.push({ title: lang === "ar" && p.titleAr ? p.titleAr : p.title, url: page(p.url) });
     if (out.length >= 3) break;
   }
   return out;
 }
 
-function uniqueSources(list: Chunk[]): Source[] {
-  return [...new Map(list.map((c) => [c.url, sourceOf(c)])).values()].slice(0, 4);
+function uniqueSources(list: Chunk[], lang: "en" | "ar", max = 4): Source[] {
+  return [...new Map(list.map((c) => [c.url, sourceOf(c, lang)])).values()].slice(0, max);
 }
+
+/** A retriever over the duroos alone, built once per knowledge list. */
+const darsRetrievers = new WeakMap<Chunk[], Retriever>();
+function darsRetriever(chunks: Chunk[]): Retriever {
+  let r = darsRetrievers.get(chunks);
+  if (!r) darsRetrievers.set(chunks, (r = createRetriever(chunks.filter((c) => c.kind === "dars"))));
+  return r;
+}
+
+/** Arabic passages by page, built once per knowledge list. */
+const arabicPages = new WeakMap<Chunk[], Map<string, Chunk[]>>();
+
+/**
+ * Each English passage of a translated page swapped for the Arabic passage of that page that answers the
+ * question, if one does; Arabic passages that answer go first.
+ */
+function inArabicWherePossible(found: Passage[], chunks: Chunk[], question: string): Passage[] {
+  let pages = arabicPages.get(chunks);
+  if (!pages) {
+    pages = new Map();
+    for (const c of chunks) if (c.lang === "ar") pages.set(pageKey(c.url), [...(pages.get(pageKey(c.url)) ?? []), c]);
+    arabicPages.set(chunks, pages);
+  }
+  if (!pages.size) return found;
+  const terms = keyTerms(question);
+  const seen = new Set<string>();
+  const out: Passage[] = [];
+  for (const p of found) {
+    let q: Passage = p;
+    const twins = p.lang === "ar" ? undefined : pages.get(pageKey(p.url));
+    if (twins) {
+      const best = twins.map((c) => ({ c, n: termHits(terms, `${c.title} ${c.section ?? ""} ${c.text}`) })).sort((x, y) => y.n - x.n)[0];
+      if (best && answers(question, best.c)) q = { ...best.c, score: p.score, cover: p.cover };
+    }
+    if (seen.has(q.id)) continue;
+    seen.add(q.id);
+    out.push(q);
+  }
+  // An answer in the reader's language comes first.
+  const answering = (p: Passage) => p.lang === "ar" && answers(question, p);
+  return [...out.filter(answering), ...out.filter((p) => !answering(p))];
+}
+
+/**
+ * Whether a passage answers the question: it holds the topic words, the rare ones among them, and the
+ * rarest the site knows. A site-wide blurb (kind "page") only counts when it holds every topic word.
+ * "Work part time on a student visa" is not answered by a passage that only says "student" and "visa".
+ */
+function answersWell(q: string, p: Passage): boolean {
+  if (p.rare === false) return false;
+  return p.kind === "page" ? coverage(q, p) === 1 : (answers(q, p) || headed(p)) && (p.cover ?? 1) >= 0.5 && together(q, p);
+}
+
+/**
+ * For a two-word question ("Tawakkalna account"), the two words are said together: the rarer one in the title or
+ * heading, or with the other in the passage's own heading or in one sentence. A section that names the Tawakkalna
+ * app in one step and a bank account in another does not answer it, even on a page whose title says "bank account".
+ */
+function together(q: string, p: Passage): boolean {
+  const terms = keyTerms(q);
+  const rare = p.rareTerm;
+  if (terms.length !== 2 || !rare || !terms.includes(rare)) return true;
+  const other = terms.filter((t) => t !== rare);
+  if (termHits([rare], `${p.title} ${p.section ?? ""}`)) return true;
+  // A section's own heading, or the question an answer answers; a guide's title covers the whole page.
+  const own = p.section ?? (p.kind === "faq" ? p.title : "");
+  if (termHits(other, own)) return true;
+  return sentences(p.text).some((x) => termHits([rare], x) > 0 && termHits(other, x) > 0);
+}
+
+/** A section headed with the question's rarest topic word ("Uhud" for "how do I visit Uhud") is about it. */
+function headed(p: Passage): boolean {
+  return !!p.section && !!p.rareTerm && headingHolds(p.rareTerm, p.section);
+}
+
+/** A section headed with the rarest topic word as a name, capitalised ("Uhud", "Quba"), not a common word ("parents"). */
+function namedInHeading(p: Passage): boolean {
+  if (!headed(p) || !p.rareTerm) return false;
+  const term = p.rareTerm;
+  return (p.section ?? "").split(/[\s,:()]+/).some((w) => /^[A-Z]/.test(w) && normalize(w).replace(/-/g, " ").startsWith(term.replace(/_/g, " ")));
+}
+
+/** The same for a page title or a question ("How do I visit the Rawdah?"). */
+function titled(p: Passage): boolean {
+  return headed(p) || (!!p.rareTerm && headingHolds(p.rareTerm, p.title.split(":")[0]));
+}
+
+/** "Which is the best markaz", "recommend me a doctor", "ما أفضل معهد": MESH lists, it never ranks. */
+const RECOMMEND = /\b(best|recommend|recommended|suggest|which (is|are) (better|good)|good (doctor|doctors|hospital|hospitals|markaz|institute|school|schools|dentist|clinic|gym|area|place))\b|افضل|احسن|انصح|تنصح|ترشح/;
+const NOT_RECOMMEND = /recommendation letter|letter of recommendation|tazkiy/;
+export const asksToRank = (q: string) => RECOMMEND.test(normalize(q)) && !NOT_RECOMMEND.test(normalize(q));
+
+/** In a "which is best" answer, sentences that rank or point to one option first ("start with ...") are left out. */
+const RANK_AVOID = new RegExp(`${RANKING.source}|\\bstart (with|at)\\b`, "i");
+
+/** "Who is Shaykh X", "tell me about", "من هو". */
+const WHO_Q = /^(who is|who was|tell me about)\b|(^|\s)(من هو|من هي)(\s|$)/;
+
+/** "Where can I buy", "where can I get zamzam water", "اين اشتري": the answer must say where the thing is sold or handed out. */
+const BUY_Q = /\b(buy|buying|purchase|shop for)\b|\bwhere (can|do|could|should) (i|we|you) get\b|(^|\s)(اشتري|نشتري|يشتري|شراء|ابتاع)(\s|$)/;
+const BUY_WORD = /^(buy|buying|purchase|اشتري|شراء|شري)$/;
+const SOLD_HERE = /\b(shops?|stores?|markets?|souq|souk|malls?|buy|bought|sold|sells?|haraj|new and used|second hand|second-hand|online|branch(es)?|supermarkets?|kiosks?|counters?)\b|متجر|محل|محلات|سوق|يباع|تباع|شراء|اشتر/i;
+
+/** Words every question about duroos has; a list of duroos is chosen by the other words (the book, the shaykh). */
+const DUROOS_WORDS = new Set(["dars", "darss", "duroos", "durus", "doroos", "lesson", "lessons", "class", "classes", "halaqa", "halaqah", "teach", "teaches", "teaching", "taught", "held", "shaykh", "sheikh", "shaikh", "دروس", "درس", "الدرس", "الدروس", "شيخ", "الشيخ", "يدرس", "يشرح"]);
 
 const cache = new Map<string, { at: number; result: AskResult }>();
 const CACHE_MS = 6 * 3_600_000;
@@ -208,37 +298,74 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
     return { answer: greetingReply(lang, q), sources: [], related: [], mode: "guard", found: true, lang };
   }
 
-  if (isRulingQuestion(q)) {
-    return { answer: rulingReply(lang), sources: [{ title: ar ? "الدروس" : "Duroos", url: "/duroos" }], related: [], mode: "guard", found: true, lang };
-  }
+  const ruling = (): AskResult => ({ answer: rulingReply(lang), sources: [{ title: ar ? "الدروس" : "Duroos", url: "/duroos" }], related: [], mode: "guard", found: true, lang });
+  if (isRulingQuestion(q)) return ruling();
 
-  // A short follow-up ("how much does it cost?") is searched together with the previous question.
   // Short follow-ups ("do I need an iqama for that?") are searched with the two questions before them.
-  const earlier = history.filter((t) => t.role === "user").slice(-2).map((t) => t.text).join(" ");
-  const searchText = keyTerms(q).length < 3 && earlier ? `${earlier} ${q}` : q;
+  const users = history.filter((t) => t.role === "user").map((t) => t.text);
+  const earlier = users.slice(-2).join(" ");
+  const short = keyTerms(q).length < 3;
+  const searchText = short && earlier ? `${earlier} ${q}` : q;
+  // A short follow-up to a ruling question ("and nasheeds?", "وفي السفر؟") is a ruling question too,
+  // unless it asks when or where.
+  const prev = users[users.length - 1];
+  if (short && prev && !asksWhenWhere(q) && (isRulingQuestion(prev) || isRulingQuestion(`${prev} ${q}`))) return ruling();
   const today = riyadhDateIso(now);
   const live = detectLive(searchText, today);
-  const cacheable = !live.duroos && !live.prayerTimes && history.length === 0;
+  const cacheable = !live.duroos && !live.prayerTimes && !live.date && history.length === 0;
   const key = `${lang}|${normalize(q)}`;
   const hit = cacheable ? cache.get(key) : undefined;
   if (hit && now.getTime() - hit.at < CACHE_MS) return hit.result;
 
   const chunks = opts.knowledge ?? (await getKnowledge(db));
-  const found = createRetriever(chunks)(searchText, 6);
+  let found = retrieverFor(chunks, lang)(searchText, 6);
+  // The synonyms find the right page, often through its English text; when that page is translated,
+  // its Arabic passage that answers the question takes the English one's place.
+  if (ar) found = inArabicWherePossible(found, chunks, searchText);
+  // A page found in Arabic is not shown again in English.
+  if (ar) {
+    const inArabic = new Set(found.filter((p) => p.lang === "ar").map((p) => pageKey(p.url)));
+    found = found.filter((p) => p.lang === "ar" || !inArabic.has(pageKey(p.url)));
+  }
+  // "Where can I buy a fridge": a passage answers only where it says where the thing is sold, not where it mentions selling one.
+  if (BUY_Q.test(normalize(q))) found = found.filter((p) => !p.rareTerm || BUY_WORD.test(p.rareTerm) || sentences(p.text).some((x) => termHits([p.rareTerm!], x) > 0 && SOLD_HERE.test(x) && (!/\bsell(s|ing)?\b/i.test(x) || /\b(buy|shops?)\b/i.test(x))));
+  /** No answer on MESH: the help line. A question that reads like a ruling gets the ruling reply instead, never "the answer is added to the site". */
+  const missing = (): AskResult => {
+    if (looksLikeFiqh(q)) return ruling();
+    void noteUnanswered(db, q);
+    return { answer: notFound(lang), sources: [], related: relatedOf(found, new Set(), lang), mode: "none", found: false, lang };
+  };
+  // "Who is Shaykh X", "duroos of Shaykh X" for a shaykh MESH does not list: the help line, never another shaykh in his place.
+  const profiles = chunks.filter((c) => c.kind === "shaykh");
+  const shaykhList = profiles.map((c) => ({ slug: c.url.split("/").pop()!, nameEn: c.title.split(" (")[0], nameAr: c.titleAr ?? "" }));
+  const asksWho = WHO_Q.test(normalize(q));
+  if ((asksWho || live.duroos || keyTerms(q).some((t) => DUROOS_WORDS.has(t))) && shaykhsNamed(q, shaykhList).unknown) return missing();
   const livePassages: Chunk[] = [];
   if (live.duroos) livePassages.push(await duroosPassage(db, live.duroos, now, ar, searchText));
-  if (live.prayerTimes) livePassages.push(prayerTimesPassage(now, ar));
+  if (live.prayerTimes) livePassages.push(prayerTimesPassage(now, ar, live.prayerTimes));
+  if (live.date) livePassages.push(datePassage(now, ar));
   const passages: Chunk[] = [...livePassages, ...found];
-  // A site-wide blurb (kind "page") only counts as an answer when it holds every topic word.
-  const strong = livePassages.length > 0 || found.slice(0, 3).some((p) => (p.kind === "page" ? coverage(searchText, p) === 1 : answers(searchText, p)));
+  const answering = (p: Passage) => answersWell(searchText, p);
+  const strong = livePassages.length > 0 || found.slice(0, 3).some(answering);
   const context = [...passages, todayPassage(now, ar)];
+  const done = (r: AskResult) => {
+    if (cacheable && r.found) {
+      if (cache.size > 500) cache.delete(cache.keys().next().value as string);
+      cache.set(key, { at: now.getTime(), result: r });
+    }
+    return r;
+  };
+
+  // A question that reads like a ruling and that no page answers ("is stock trading ok") goes to a scholar,
+  // not to the model: nothing on MESH answers it, and the model must never be asked for a ruling.
+  if (!strong && looksLikeFiqh(q)) return ruling();
 
   // 1. The question is one MESH has already answered: give that verified answer as it is.
   // No model call, so the free quota is kept for harder questions.
   const faq = !livePassages.length && history.length === 0 ? found.slice(0, 3).find((p) => p.kind === "faq" && sameQuestion(q, p.title)) : undefined;
   if (faq) {
-    const result: AskResult = { answer: faq.text, sources: uniqueSources([faq]), related: relatedOf(found, new Set([page(faq.url)])), mode: "extract", found: true, lang };
-    return lang === "en" ? result : { ...result, answer: `${ar ? "هذا ما في MESH (بالإنجليزية):" : ""}\n\n${faq.text}`.trim() };
+    const intro = ar && faq.lang !== "ar" ? `${ENGLISH_PAGE_AR}\n\n` : "";
+    return done({ answer: `${intro}${cite(faq.text, "[1]")}`, sources: uniqueSources([faq], lang), related: relatedOf(found, new Set([faq.url]), lang), mode: "extract", found: true, lang });
   }
 
   // 2. A free model writes the answer from the passages.
@@ -259,44 +386,111 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
         const order = marked.cited.length ? [...marked.cited, ...listed.filter((i) => !marked.cited.includes(i))] : listed;
         const used = order.map((i) => context[i]);
         // Markers number the sources one to one, so sources are not merged by page here.
-        const sources = reply.found ? (marked.cited.length ? used.map(sourceOf) : uniqueSources(used.length ? used : passages.slice(0, 2))) : [];
+        const sources = reply.found ? (marked.cited.length ? used.map((c) => sourceOf(c, lang)) : uniqueSources(used.length ? used : passages.slice(0, 2), lang)) : [];
         const text = reply.found ? marked.text : marked.text.replace(/\s?\[\d+\]/g, "");
-        const result: AskResult = { answer: text, sources, related: relatedOf(found, new Set(sources.map((s) => page(s.url)))), mode: "ai", found: reply.found, lang };
+        if (!reply.found && looksLikeFiqh(searchText)) return ruling();
+        const result: AskResult = { answer: text, sources, related: relatedOf(found, new Set(sources.map((s) => s.url)), lang), mode: "ai", found: reply.found, lang };
         if (!reply.found) void noteUnanswered(db, q);
-        else if (cacheable) {
-          if (cache.size > 500) cache.delete(cache.keys().next().value as string);
-          cache.set(key, { at: now.getTime(), result });
-        }
-        return result;
+        return reply.found ? done(result) : result;
       }
     }
   }
 
-  // 3. Live data answers on its own.
+  // 3. Live data answers on its own, each block with its source.
   if (livePassages.length) {
-    return { answer: livePassages.map((p) => p.text).join("\n\n"), sources: uniqueSources(livePassages), related: relatedOf(found, new Set()), mode: "live", found: true, lang };
+    const citer = new Citer();
+    const answer = livePassages.map((p) => cite(p.text, citer.mark(p))).join("\n\n");
+    return { answer, sources: uniqueSources(citer.used, lang), related: relatedOf(found, new Set(), lang), mode: "live", found: true, lang };
   }
 
   // 4. Nothing close enough: say so, with the help line.
-  if (!strong) {
-    void noteUnanswered(db, q);
-    return { answer: notFound(lang), sources: [], related: relatedOf(found, new Set()), mode: "none", found: false, lang };
+  if (!strong) return missing();
+
+  // "Who is Shaykh X" asks about the man, not his timetable (step 7 answers it from his profile).
+  const who = asksWho && found.slice(0, 3).some((p) => p.kind === "shaykh");
+
+  // 5. Several duroos of one book or one shaykh ("who teaches Kitab at-Tawhid", "دروس الشيخ عبدالرزاق البدر"): list them all.
+  const allTerms = keyTerms(searchText);
+  const topic = allTerms.filter((t) => !DUROOS_WORDS.has(t));
+  const aboutDuroos = topic.length < allTerms.length;
+  // A question about duroos searches the duroos on their own too: with many lessons and profiles that mention the
+  // same subject, the dars entries can fall out of the overall top six even when the question is about a book.
+  const darsFound = aboutDuroos && topic.length && !who ? darsRetriever(chunks)(searchText, 8).filter((p) => answers(searchText, p)) : [];
+  if (!who && topic.length && (found.slice(0, 3).some((p) => p.kind === "dars") || darsFound.length > 1 || (aboutDuroos && found[0].kind === "shaykh"))) {
+    const need = topic.length <= 2 ? topic.length : Math.ceil(topic.length * 0.67);
+    const inFound = new Set([...found, ...darsFound].map((p) => p.id));
+    const matching = chunks.filter((c) => c.kind === "dars" && termHits(topic, `${c.title} ${c.titleAr ?? ""} ${c.text}`) >= need);
+    const duroos = [...new Map([...matching, ...darsFound].map((c) => [c.url, c])).values()].sort((x, y) => Number(inFound.has(y.id)) - Number(inFound.has(x.id)));
+    // Dars titles are "<book> with <shaykh>"; duroos from several mashayikh mean the question is about the book.
+    const teachers = new Set(duroos.map((p) => p.title.split(" with ").pop()));
+    if (duroos.length > 1 && (found[0].kind === "dars" || teachers.size > 1 || aboutDuroos)) {
+      const citer = new Citer();
+      const list = duroos.slice(0, 6).map((p) => `- ${p.text} ${citer.mark(p)}`).join("\n");
+      const answer = ar ? `${ENGLISH_PAGE_AR}\n\n${list}` : list;
+      return done({ answer, sources: uniqueSources(citer.used, lang, 6), related: relatedOf(found, new Set(), lang), mode: "extract", found: true, lang });
+    }
   }
 
-  // 5. Several duroos match ("who teaches Kitab at-Tawhid"): list them all.
-  // Search the duroos on their own too: with many lessons and profiles that mention the same subject,
-  // the dars entries can fall out of the overall top six even when the question is about a book.
-  const darsOnly = chunks.filter((c) => c.kind === "dars");
-  const duroos = [...new Map([...found, ...createRetriever(darsOnly)(searchText, 8)].filter((p) => p.kind === "dars" && answers(searchText, p)).map((p) => [p.url, p])).values()];
-  // Dars titles are "<book> with <shaykh>"; duroos from several mashayikh mean the question is about the book.
-  const teachers = new Set(duroos.map((p) => p.title.split(" with ").pop()));
-  if (duroos.length > 1 && (found[0].kind === "dars" || teachers.size > 1)) {
-    const list = duroos.slice(0, 5);
-    return { answer: list.map((p) => `- ${p.text}`).join("\n"), sources: uniqueSources(list), related: relatedOf(found, new Set()), mode: "extract", found: true, lang };
+  // 6. "Which is the best...": the options side by side, never one of them on its own.
+  const top = found.filter((p) => p.kind !== "page" || coverage(searchText, p) === 1);
+  if (asksToRank(q)) {
+    // A wider search, up to three passages a page, for the section that lists the options. It must answer
+    // the question as fully as any other answer does: "best restaurant" is not answered by a library.
+    const wide = retrieverFor(chunks, lang)(searchText, 14, 3).filter((p) => (p.kind === "guide" || p.kind === "faq") && answering(p));
+    const qTerms = keyTerms(searchText);
+    const fit = (p: Chunk) =>
+      (/several options|listed alphabetically|in alphabetical order/i.test(p.text.slice(0, 240)) ? 1 : 0) +
+      coverage(searchText, p) -
+      0.1 * keyTerms(p.title.split(":")[0]).filter((t) => !termHits([t], searchText)).length;
+    const lists = wide.filter((p) => /glance|overview|options|compar|which|choos|where to go/i.test(`${p.section ?? ""} ${p.title}`) || /several options|listed alphabetically|in alphabetical order|\boptions\b/i.test(p.text.slice(0, 240)));
+    const overview = [...lists].sort((x, y) => fit(y) - fit(x))[0] ?? top.find((p) => (p.kind === "guide" || p.kind === "faq") && answering(p));
+    // Every programme on the topic, best-matching tier only, named alphabetically on one line.
+    const scored = chunks.filter((c) => c.kind === "program" && !c.section).map((c) => ({ c, n: termHits(qTerms, `${c.title} ${c.text}`) }));
+    const best = Math.max(0, ...scored.map((x) => x.n));
+    const programs = best >= Math.min(2, qTerms.length) ? scored.filter((x) => x.n === best).map((x) => x.c) : [];
+    if (overview || programs.length > 1) {
+      const citer = new Citer();
+      const text = overview ? extract(searchText, overview, { avoid: RANK_AVOID, max: 700 }) : "";
+      // "Side by side" only when there are sides: two or more options listed.
+      const options = text.split("\n").filter((l) => /^(-|\d+\.)\s/.test(l)).length + (programs.length > 1 ? 2 : 0);
+      const lead = options >= 2 ? (ar ? "يعرض MESH الخيارات جنبًا إلى جنب ولا يفضّل أحدها على غيره." : "MESH lists the options side by side and does not rank them.") : "";
+      const blocks = [lead, ar && overview && overview.lang !== "ar" ? ENGLISH_PAGE_AR : ""];
+      if (overview && text) blocks.push(cite(text, citer.mark(overview)));
+      if (programs.length > 1) blocks.push(programLine(programs, ar, citer));
+      return done({ answer: blocks.filter(Boolean).join("\n\n"), sources: uniqueSources(citer.used, lang, 8), related: relatedOf(found, new Set(citer.used.map((c) => c.url)), lang), mode: "extract", found: true, lang });
+    }
   }
 
-  // 6. The best sentences of the best passages.
-  const top = found.filter((p) => p.kind !== "page" || coverage(searchText, p) === 1).slice(0, 2);
-  const sources = uniqueSources(top);
-  return { answer: composeExtractive(searchText, top, lang), sources, related: relatedOf(found, new Set(sources.map((s) => page(s.url)))), mode: "extract", found: true, lang };
+  // 7. The best sentences of the best passages. "Who is Shaykh X" is answered from his profile, not his timetable.
+  // Passages that answer the question come first; one that only shares a word ("buy" a car, for "buy furniture") comes after.
+  const fits = (p: Passage) => answers(searchText, p) || headed(p);
+  let ordered = [...top.filter(fits), ...top.filter((p) => !fits(p))];
+  // When the best passage is headed with a place or name ("Uhud"), a page that only names it in a list (a
+  // hospital called Uhud) adds nothing: only passages headed with it, or from the same page, follow.
+  if (ordered[0] && namedInHeading(ordered[0])) {
+    // Of the sections headed with it, the one all about it ("Uhud") comes before one that names it among others
+    // ("Quba, Uhud and the other places").
+    const headWords = (p: Passage) => keyTerms(p.section ?? "").length;
+    const own = ordered.filter(namedInHeading).sort((x, y) => headWords(x) - headWords(y))[0];
+    if (own && headWords(own) < headWords(ordered[0])) ordered = [own, ...ordered.filter((p) => p !== own)];
+    ordered = ordered.filter((p, i) => i === 0 || titled(p) || pageKey(p.url) === pageKey(ordered[0].url));
+  }
+  if (who) {
+    // The shaykh the question names (best match of his name, in English or Arabic), and only him.
+    const named = shaykhsNamed(q, shaykhList);
+    const him = named.size === 1 ? profiles.find((c) => named.has(c.url.split("/").pop()!)) : undefined;
+    if (him) ordered.splice(0, ordered.length, { ...him, score: 0 });
+    else ordered.sort((x, y) => Number(y.kind === "shaykh") - Number(x.kind === "shaykh"));
+  }
+  const best = ordered.slice(0, 4).map((p, i) => (who && i === 0 && p.kind === "shaykh" && /\S/.test(p.text.split("\nDuroos:")[0]) ? { ...p, text: p.text.split("\nDuroos:")[0] } : p));
+  // A profile is read from its start: the first lines say who he is.
+  const profile = who && best.length === 1 && best[0].kind === "shaykh" && !best[0].text.startsWith("Duroos:") ? best[0] : undefined;
+  // It opens with his name, so the answer says whom it describes; a line said twice in the profile is said once.
+  const lines = profile ? [...new Set(sentences(profile.text))].reduce((acc, x) => (!acc || acc.length + x.length < 480 ? `${acc} ${x}`.trim() : acc), "") : "";
+  const nameOf = (c: Chunk) => c.title.split(" (")[0];
+  const composed = profile
+    ? { text: [ar ? `${profile.titleAr ?? nameOf(profile)}.` : "", ar ? ENGLISH_PAGE_AR : "", cite(`${nameOf(profile)}: ${lines}`, "[1]")].filter(Boolean).join("\n\n"), used: [profile] }
+    : composeExtractive(searchText, best, lang, asksToRank(q) ? { avoid: RANKING } : {});
+  const sources = composed.used.map((c) => sourceOf(c, lang));
+  return done({ answer: composed.text, sources, related: relatedOf(found, new Set(sources.map((s) => s.url)), lang), mode: "extract", found: true, lang });
 }

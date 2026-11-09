@@ -5,7 +5,7 @@ import { buildKnowledge, chunkGuide, type Chunk } from "@/server/assistant/knowl
 import { createRetriever, oneEdit } from "@/server/assistant/retrieve";
 import { askMesh, citations, sameQuestion, cleanDashes, isRulingQuestion, langOf, parseReply, resetAnswerCache, unsupportedNumbers, type AskOptions } from "@/server/assistant/answer";
 import { systemPrompt } from "@/server/assistant/prompt";
-import { detectLive } from "@/server/assistant/live";
+import { detectLive, shaykhsNamed } from "@/server/assistant/live";
 import { extract } from "@/server/assistant/compose";
 import { providers, resetProviders, write } from "@/server/assistant/llm";
 import { enhanceGuideHtml } from "@/lib/guide-html";
@@ -169,7 +169,8 @@ describe("assistant rules", () => {
     expect(detectLive("دروس بعد العشاء اليوم", today).duroos).toEqual({ date: today, prayers: ["isha"] });
     expect(detectLive("what is the cost of living", today).duroos).toBeNull();
     expect(detectLive("what duroos are on tonight", today).duroos).toEqual({ date: today, prayers: ["maghrib", "isha"] });
-    expect(detectLive("prayer times today", today).prayerTimes).toBe(true);
+    expect(detectLive("prayer times today", today).prayerTimes).toBe(today);
+    expect(detectLive("when is fajr tomorrow", today).prayerTimes).toBe("2026-11-09");
   });
 
   it("extracts the sentences that carry the question", () => {
@@ -300,6 +301,51 @@ describe("assistant answers", () => {
   it("keeps the topic of a short follow-up", async () => {
     const r = await ask("and for families?", {}, [{ role: "user", text: "How much does it cost to live in Madinah?" }, { role: "assistant", text: "..." }]);
     expect(r.sources[0]?.url ?? "").toMatch(/cost-of-living/);
+  });
+  it("never puts another shaykh in the place of one MESH does not list", async () => {
+    const askIn = (question: string, locale: "en" | "ar") => askMesh(db, { question, locale, history: [] }, { writer: async () => null, knowledge: chunks });
+    for (const [q, locale] of [
+      ["tell me about shaykh abdul muhsin al abbad", "en"],
+      ["who is shaykh abdulmuhsin al-abbad", "en"],
+      ["duroos of shaykh al abbad tonight", "en"],
+      ["من هو الشيخ عبد المحسن العباد", "ar"],
+    ] as const) {
+      resetAnswerCache();
+      const r = await askIn(q, locale);
+      expect(r.found, q).toBe(false);
+      expect(r.answer, q).toContain("+1 234 567 9076");
+      expect(r.sources, q).toEqual([]);
+    }
+    // A shaykh MESH lists is still found, and the answer opens with his name.
+    resetAnswerCache();
+    const known = await askIn("who is shaykh abdulmuhsin al-qasim", "en");
+    expect(known.sources[0].url).toMatch(/abdulmuhsin-ibn-muhammad-al-qasim/);
+    expect(known.answer).toMatch(/^Shaykh Abdulmuhsin ibn Muhammad al-Qasim: /);
+    resetAnswerCache();
+    const knownAr = await askIn("من هو الشيخ عبد المحسن القاسم", "ar");
+    expect(knownAr.sources[0].url).toMatch(/abdulmuhsin-ibn-muhammad-al-qasim/);
+    expect(knownAr.answer.startsWith("الشيخ عبد المحسن بن محمد القاسم")).toBe(true);
+    // "Tell me about" with no name in it is a normal question.
+    resetAnswerCache();
+    expect((await ask("Tell me about renting a furnished flat near the Haram")).found).toBe(true);
+  });
+
+  it("matches a shaykh by his family name or two parts of his name, never by one shared part", () => {
+    const list = [
+      { slug: "qasim", nameEn: "Shaykh Abdulmuhsin ibn Muhammad al-Qasim", nameAr: "الشيخ عبد المحسن بن محمد القاسم" },
+      { slug: "badr", nameEn: "Prof. Dr. Abdurrazzaq ibn Abdulmuhsin al-Badr", nameAr: "أ. د. عبد الرزاق بن عبد المحسن البدر" },
+      { slug: "muqbil", nameEn: "Dr. Badr ibn Muqbil al-Badr", nameAr: "د. بدر بن مقبل البدر" },
+    ];
+    expect([...shaykhsNamed("who is shaykh abdurrazzaq al-badr", list)]).toEqual(["badr"]);
+    expect([...shaykhsNamed("is shaykh al qasim teaching today", list)]).toEqual(["qasim"]);
+    expect([...shaykhsNamed("دروس الشيخ عبدالرزاق البدر", list)]).toEqual(["badr"]);
+    const abbad = shaykhsNamed("tell me about shaykh abdul muhsin al abbad", list);
+    expect(abbad.size).toBe(0);
+    expect(abbad.unknown).toBe(true);
+    const abbadAr = shaykhsNamed("من هو الشيخ عبد المحسن العباد", list);
+    expect(abbadAr.size).toBe(0);
+    expect(abbadAr.unknown).toBe(true);
+    expect(shaykhsNamed("tell me about renting a flat", list).unknown).toBeFalsy();
   });
 });
 
