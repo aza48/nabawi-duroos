@@ -81,8 +81,9 @@ describe("Arabic twins", () => {
     expect(otherLanguagePath(ar)).toBe(route);
   });
 
-  it("Arabic pages that redirect home do so to an Arabic page", () => {
+  it("/ar is the home page in Arabic, the twin of /", () => {
     const home = readFileSync(path.join(APP, "(ar)", "ar", "page.tsx"), "utf8");
-    expect(home).toMatch(/redirect\("\/ar\//i);
+    expect(home).toMatch(/<HomePage[^>]*locale="ar"/);
+    expect(home).not.toMatch(/redirect\(/);
   });
 });

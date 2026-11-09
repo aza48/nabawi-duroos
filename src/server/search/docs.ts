@@ -31,8 +31,17 @@ export async function buildSearchDocs(db: Db): Promise<SearchDoc[]> {
   return [
     ...PAGES,
     { id: `guide-${COMPANY.SLUG}`, type: "guide" as const, title: COMPANY.TITLE, subtitle: COMPANY.SUMMARY, text: COMPANY.SEARCH_TEXT, url: `/guides/${COMPANY.SLUG}` },
-    ...guides.map((g) => ({ id: `guide-${g.slug}`, type: "guide" as const, title: g.title, subtitle: g.summary, text: plain(g.bodyHtml), url: `/guides/${g.slug}` })),
-    ...faqs.map((f) => ({ id: `faq-${f.slug}`, type: "faq" as const, title: f.question, subtitle: plain(f.answerHtml, 160), text: plain(f.answerHtml), url: `/ask/${f.slug}` })),
+    // Arabic titles and text come with the guide or answer once it is translated, so an Arabic search finds it in Arabic.
+    ...guides.map((g) => ({
+      id: `guide-${g.slug}`, type: "guide" as const, title: g.title, subtitle: g.summary,
+      titleAr: g.titleAr ?? undefined, subtitleAr: g.summaryAr ?? undefined,
+      text: `${plain(g.bodyHtml)} ${g.titleAr ?? ""} ${g.bodyHtmlAr ? plain(g.bodyHtmlAr) : ""}`, url: `/guides/${g.slug}`,
+    })),
+    ...faqs.map((f) => ({
+      id: `faq-${f.slug}`, type: "faq" as const, title: f.question, subtitle: plain(f.answerHtml, 160),
+      titleAr: f.questionAr ?? undefined, subtitleAr: f.answerHtmlAr ? plain(f.answerHtmlAr, 160) : undefined,
+      text: `${plain(f.answerHtml)} ${f.questionAr ?? ""} ${f.answerHtmlAr ? plain(f.answerHtmlAr) : ""}`, url: `/ask/${f.slug}`,
+    })),
     ...PROGRAMS.map((p) => ({ id: `program-${p.slug}`, type: "program" as const, title: p.name, subtitle: `${p.tagline} ${p.price}`, titleAr: p.nameAr, subtitleAr: "", text: `${p.nameAr} ${p.overview.join(" ")} ${(p.levels ?? []).join(" ")} ${p.audience.join(" ")}`, url: `/programs/${p.slug}` })),
     ...shaykhs.map((s) => ({ id: `shaykh-${s.slug}`, type: "shaykh" as const, title: s.nameEn, subtitle: s.nameAr, titleAr: s.nameAr, subtitleAr: s.roleAr ?? "", text: `${s.roleEn ?? ""} ${s.roleAr ?? ""} ${lessons.filter((l) => l.shaykh.slug === s.slug).map((l) => `${l.bookEn} ${l.bookAr}`).join(" ")}`, url: `/duroos/shaykh/${s.slug}` })),
     ...lessons.map((l) => ({

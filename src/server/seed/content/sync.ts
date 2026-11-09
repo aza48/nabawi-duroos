@@ -1,4 +1,4 @@
-import { sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import type { Db } from "@/server/db/client";
 import { faqs, guides } from "@/server/db/schema";
 import { cleanText } from "@/lib/text";
@@ -12,15 +12,23 @@ import { GUIDES_ADMIN_2026_11 } from "./guides-admin-2026-11";
 import { GUIDES_ADMIN_LIFE_2026_11 } from "./guides-admin-life-2026-11";
 import { GUIDES_ADMIN_ONLINE_2026_11 } from "./guides-admin-online-2026-11";
 import { GUIDES_ADMIN_PAPERS_2026_11 } from "./guides-admin-papers-2026-11";
+import { ARABIC_FAQS, ARABIC_GUIDES } from "./arabic";
 
 /**
  * Every seeded guide, one per slug. A later list replaces an earlier guide with the same slug,
  * which is how rewrites kept outside guides-2026.ts take effect.
  */
-export const SEED_GUIDES: SeedGuide[] = [
+const ENGLISH_GUIDES: SeedGuide[] = [
   ...new Map([...GUIDES_2026, ...GUIDES_STUDENT_LIFE, ...GUIDES_RESEARCH_2026_11, ...GUIDES_GAPS_2026_11, ...GUIDES_LANE_E_2026_11, ...GUIDES_ADMIN_2026_11, ...GUIDES_ADMIN_LIFE_2026_11, ...GUIDES_ADMIN_ONLINE_2026_11, ...GUIDES_ADMIN_PAPERS_2026_11, ...GUIDE_REWRITES_2026_11].map((g) => [g.slug, g] as const)).values(),
 ];
-export const SEED_FAQS: SeedFaq[] = [...new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11].map((f) => [f.slug, f] as const)).values()];
+const ENGLISH_FAQS: SeedFaq[] = [...new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11].map((f) => [f.slug, f] as const)).values()];
+
+/**
+ * Every seeded guide and answer with its Arabic (src/server/seed/content/arabic.ts, built from
+ * docs/research/translations by scripts/build-arabic-seed.ts). Arabic written inline on a seed entry wins.
+ */
+export const SEED_GUIDES: SeedGuide[] = ENGLISH_GUIDES.map((g) => ({ ...ARABIC_GUIDES[g.slug], ...g }));
+export const SEED_FAQS: SeedFaq[] = ENGLISH_FAQS.map((f) => ({ ...ARABIC_FAQS[f.slug], ...f }));
 
 /** Seeded Arabic, cleaned to house style; missing or blank becomes null (no translation yet). */
 const arabic = (s: string | undefined): string | null => (s && s.trim() ? cleanText(s.trim(), "ar") : null);
@@ -77,6 +85,18 @@ export async function syncContent2026(
           updatedAt: sql`now()`,
         },
       });
+  }
+  // Guides that live only in the database (imported from the old site, such as the University calendar) get their Arabic
+  // too: only the Arabic columns are written, everything else stays as it is.
+  if (!opts.guides) {
+    const seeded = new Set(SEED_GUIDES.map((g) => g.slug));
+    for (const [slug, a] of Object.entries(ARABIC_GUIDES)) {
+      if (seeded.has(slug) || (opts.only && !opts.only.includes(slug))) continue;
+      await db
+        .update(guides)
+        .set({ titleAr: arabic(a.titleAr), summaryAr: arabic(a.summaryAr), bodyHtmlAr: arabicHtml(a.bodyHtmlAr), updatedAt: sql`now()` })
+        .where(eq(guides.slug, slug));
+    }
   }
   for (const f of faqList) {
     const row = {
