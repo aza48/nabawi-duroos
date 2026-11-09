@@ -22,10 +22,11 @@ Also done since (all pushed)
 - `3558d93`: gap guides `what-to-bring-to-madinah` and `exams-results-and-attendance`, eleven FAQs (student iqama renewal, absence limit, missed finals, failed courses, results, plugs, medicine, airport, summer semester, degree certificate). Admin questions: 110 in `scripts/open-questions.json`.
 - Guides page: eight topics. Assistant: FAQ shortcut over the top three results, title-match boost, 40-question evaluation, all passing; 393 tests in total.
 
+- After the 9 Nov usage reset: `childbirth-options` retired, Ma'had questions answered, greetings and typos handled, five legacy guides rewritten as seed replacements (`5544ab2`). Only `university-calendar-1448` stays database-only (its page is drawn from the key dates).
+
 Next
-1. Index the Ma'had hub text once the desktop agent exports it (asked on #13).
-2. Arabic guide bodies: the storage plan is proposed on #13 and waits for the owner.
-3. Then audit the assistant against more real questions and add tasks to `docs/AI-LOG.md`.
+1. Arabic guide bodies: the storage plan is proposed on #13 and waits for the owner.
+2. Keep auditing the assistant against real questions (the owner's Visitors page lists the questions it could not answer once live) and add tasks to `docs/AI-LOG.md`.
 
 ## 9 November 2026, about 01:15 Riyadh: desktop agent stopped at 99% of the usage window
 Read `docs/AI-LOG.md` and GitHub issue 13 first: other agents are working at the same time and own parts of the code.
