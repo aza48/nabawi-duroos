@@ -26,6 +26,8 @@ How to keep it so:
 | Domestic parcel 15 to 35 SAR and SPL Express Plus 141 SAR (2026); Haramain station SPL counter 75 to 150 SAR (2026); customs processing fees | guide `shipping-and-receiving-parcels` | May 2027 | Recheck with the carriers and ZATCA |
 | Tourist eVisa 72 countries and about 535 SAR; family visit visa 300 and 500 SAR; extension about 100 SAR (checked November 2026) | guides `bringing-parents-to-visit` and `visas-for-family-and-visitors` | February 2027 | Recheck on visa.visitsaudi.com and the MOFA platform |
 | REGA support line and the 5% transaction tax (checked November 2026) | guide `owning-property-as-a-non-saudi` | May 2027 | Recheck on saudiproperties.rega.gov.sa |
+| Madinah Dates Season dates (20 July to 2 August 2026) and the 6 pm daily auction | guide `dates-of-madinah` | June 2027 | Replace with the 2027 season dates from the Madinah Region Development Authority |
+| Prince Mugrin University admission window (14 June to 30 August 2026) and IELTS 5 or TOEFL 500 | guide `other-universities-in-madinah` | June 2027 | Recheck on upm.edu.sa |
 
 ## Removed
 
