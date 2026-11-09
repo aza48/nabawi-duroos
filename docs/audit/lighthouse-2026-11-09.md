@@ -26,3 +26,13 @@ Lighthouse 12.6 with the mobile profile, on a local production build (`MESH_LOCA
 | 4 | Arabic pages: the heading is drawn in Amiri, which is not preloaded since code audit finding 5. A split per layout does not work here, because the build puts both font modules into one shared chunk | In the Arabic layout, add `<link rel="preload" as="font">` for the Amiri 700 and Alexandria Arabic files | desktop agent (`src/app/(ar)/*`) | todo |
 | 5 | "Ask in the WhatsApp group" in the search empty state, where the house rule says to message Admin on WhatsApp at +1 234 567 9076 | Change the string in `SearchUI.tsx` (English and Arabic) | desktop agent (UI strings) | todo |
 | 6 | Small tap targets on the home page (`target-size`) and colour contrast on /duroos, /ask, /guides | See `a11y-2026-11-09.md`; the contrast items are the brand colour question | owner / desktop agent | todo |
+
+## Visual pass (390 and 1440 px, local build of this branch)
+Pages checked: `/`, `/duroos`, `/guides`, `/guides/cost-of-living`, `/ask`, `/more`, `/ar`, `/library` and `/programs`. The layouts hold at both sizes, guides use three columns on wide screens, and nothing scrolls sideways.
+
+| # | What | Where | Owner |
+|---|---|---|---|
+| 1 | Arabic counts use the wrong number form: "١ دروس" should read "درس واحد", and "١١ دروس" should read "١١ درسًا" (11 and above take the singular) | `/ar` hero line and the "after Fajr" count on the duroos cards | desktop agent (hero), naiifos (cards, PR 16 is already fixing the 11+ form) |
+| 2 | Help lines still send people to the group: "Something outdated? Tell us in the WhatsApp group." and "Have a question? Post it in the MESH WhatsApp chat". The house rule is the Admin line (+1 234 567 9076) | every guide and answer page | desktop agent (UI strings) |
+| 3 | On the home page at 1440 px the right column is empty beside the lower half of Today's duroos (about 400 px), against the "no empty areas on wide screens" rule | `/` | owner and desktop agent (layout) |
+| 4 | Shaykh names are cut off in the duroos cards ("Prof. Dr. Abdurrazzaq ibn Abdulmuhsin al...") at 1440 px | `/` and `/duroos` | naiifos (PR 16 replaces these cards) |
