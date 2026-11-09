@@ -184,6 +184,7 @@ a { -webkit-tap-highlight-color: transparent; }
 /* Under a menu link while its page loads (NavPending): a gold bar that sweeps; static when motion is reduced. */
 .nav-pending { position: absolute; inset-inline: 22%; bottom: 0.25rem; height: 3px; border-radius: 9999px; background: var(--gold-bright); transform-origin: left; animation: nav-pending 0.9s ease-in-out infinite alternate; }
 @keyframes nav-pending { from { transform: scaleX(0.25); opacity: 0.6; } to { transform: scaleX(1); opacity: 1; } }
+[dir="rtl"] .nav-pending { transform-origin: right; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
