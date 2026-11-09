@@ -3,6 +3,7 @@ import { FAQ_LEADS, withFaqLead } from "@/server/seed/content/faq-leads";
 import { FAQS_2026 } from "@/server/seed/content/guides-2026";
 import { FAQS_GAPS_2026_11 } from "@/server/seed/content/guides-gaps-2026-11";
 import { FAQS_STUDENT_LIFE } from "@/server/seed/content/guides-student-life";
+import { FAQS_AIAKHEE_2026_11 } from "@/server/seed/content/faqs-aiakhee-2026-11";
 import { SEED_FAQS } from "@/server/seed/content/sync";
 
 const decode = (s: string) => s.replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
@@ -14,8 +15,8 @@ function blocks(html: string): [string, string][] {
   return [...html.trim().matchAll(/<(p|ul|ol|table|h\d|blockquote)>([\s\S]*?)<\/\1>/g)].map((m) => [m[1], m[2]]);
 }
 
-/** Each FAQ as written in the guide files, before its lead is added. */
-const ORIGINAL = new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11].map((f) => [f.slug, f.answerHtml] as const));
+/** Each FAQ as written in the guide files or aiakhee's overlay (the overlay wins), before its lead is added. */
+const ORIGINAL = new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11, ...FAQS_AIAKHEE_2026_11].map((f) => [f.slug, f.answerHtml] as const));
 const DASH = new RegExp(`[${String.fromCharCode(0x2014)}${String.fromCharCode(0x2013)}\\-]\\s|\\s[${String.fromCharCode(0x2014)}${String.fromCharCode(0x2013)}\\-]|[${String.fromCharCode(0x2014)}${String.fromCharCode(0x2013)}]`);
 /** The lead with its allowed opening "Yes. " or "No. " removed, for the one-sentence check. */
 const body = (lead: string) => lead.replace(/^(Yes|No)\. /, "");
@@ -37,20 +38,10 @@ const opensYesNo = (s: string) => /^(yes|no)\b/i.test(s.replace(PREFIX, ""));
 
 /**
  * Known debt: on these FAQs the full answer itself opens with "Yes." or "No.", so the page says it twice.
- * The fix is in the guide files (another agent's area): split each answer's opening into its own short first
- * paragraph, then delete the lead here and the slug from this list. Do not add to this list.
+ * All of them are now fixed: nine in faqs-aiakhee-2026-11.ts, and summer-semester and degree-collection-and-verification
+ * in the owner's agent "admin"'s rewrite. The list stays empty. Do not add to it.
  */
-const YES_NO_TWICE = new Set([
-  "bank-account-without-iqama",
-  "student-discounts",
-  "joint-bank-account-spouse",
-  "foreign-prescriptions",
-  "free-bus-to-haram",
-  "rent-on-student-visa",
-  "drive-on-visit-visa",
-  "bringing-medicine-into-saudi",
-  "buying-a-used-car",
-]);
+const YES_NO_TWICE = new Set<string>([]);
 
 const DOUBT = /\b(may|might|maybe|perhaps|probably|possibly|reportedly|apparently|it seems|seems|unclear|not stated|we think|we believe|sources?|stated|reported)\b/i;
 
