@@ -63,8 +63,73 @@ export function cleanTitle(t: string): string {
   return s || t.trim();
 }
 
+/**
+ * Prefixes that file-sharing sites and phones add to a name ("Noor Book com", "arabicpdfs com tarbyah00053",
+ * Indonesian "Salinan" for "Copy of", a site code like "Figh18455") come off when a real title follows.
+ */
+function stripSourcePrefix(s: string): string {
+  return s
+    .replace(/^Salinan\s+/i, "")
+    .replace(/^Noor[\s.-]*Book[\s.-]*com\s+/i, "")
+    .replace(/^arabicpdfs\s+com\s+\S+\s+/i, "")
+    .replace(/^(?:Figh|fiqh)\d+\s+(?=[\u0600-\u06ff])/i, "")
+    .replace(/\.zip$/i, "")
+    .trim();
+}
+
+/** A name with no words a reader can use: a WhatsApp or Telegram file name, an id, a bare number or code. */
+export function isJunkTitle(s: string): boolean {
+  const t = s.trim();
+  return (
+    !t ||
+    /^null$/i.test(t) ||
+    /^DOC-\d{8}-WA\d+$/i.test(t) ||
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t) ||
+    /^[\d\s]+$/.test(t) ||
+    /^(?:fiqh|figh)\d+$/i.test(t) ||
+    /^[a-z]{2,5}$/.test(t)
+  );
+}
+
+/** Names that were typed in Latin letters for an Arabic title, by Drive file id. */
+const TITLE_FIXES: Record<string, string> = {
+  "15ewnoNaBCNdGjUlP9z4ltdO4jOx7Qd2r": "الجداول الفقهية 1",
+  "15kmwe1rjfp2u26eDr3XVwyEtdnEC9Xls": "الجداول الفقهية 2",
+  "1LCl5HuqoUFSbQowgPiUuDm-EPneJlbC0": "فقه العبادات ج2",
+  "1_TkaoTY-MrW55xlb7bUU2qUsJhUWW-YJ": "المشجرة الفقهية",
+  "1MVzC9ACowxzWuEzEjBzE7s5psRZaG7q5": "معالم السنة النبوية 1",
+  "1MYCKv-E5MMZy-59kHq0bsEOX427q1JCg": "معالم السنة النبوية 2",
+  "1M_ZSFsOFLJ6kyxsz7hAb-dpuJx0CkvUb": "معالم السنة النبوية 3",
+  "1CiJezqJ_A37w-eO0UzEVN3c1-0BfjffN": "المجموع المغيث في غريبي القرآن والحديث",
+  "19Z2wvqGTylmBpe8EAJMbrb_LjTjMl10Z": "الجرح والتعديل",
+  "1W9HzhCyEYlrBFurbsn8OdZFaOhnTdEKV": "الترجيح بالمكتشف التجريبي في التفسير، دراسة نقدية",
+  "1qn7-fZTjSSrZ4Y45odKustBpAyWalRUm": "النحو",
+  "1c9wlLE80kKACaQgL6uYPY_RsH0DVeh0h": "الأنظمة",
+  "1sGqM2QLHpoCxi2hi3qlpO5nRPfmbUXXW": "أصول التربية الإسلامية وأساليبها في البيت والمدرسة والمجتمع",
+  "1sPUEk4QE-bYyJtd2csXb66UgW75uDf56": "ملف من مقررات كلية التربية",
+};
+
+const arDigit = (n: number) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
+
+/** A file whose name says nothing takes its folder's name, numbered in brackets when several in that folder do. */
 function cleanTree(n: LibFolder): LibFolder {
-  return { ...n, t: cleanTitle(n.t), f: n.f.map((c) => (isFolder(c) ? cleanTree(c) : { ...c, t: cleanTitle(c.t) })) };
+  const folder = cleanTitle(n.t);
+  const named = n.f.map((c) => (isFolder(c) ? null : TITLE_FIXES[c.id] ?? stripSourcePrefix(cleanTitle(c.t))));
+  const blanks = named.filter((t) => t !== null && isJunkTitle(t)).length;
+  const numbered = blanks > 1 || named.includes(folder);
+  const ar = /[\u0600-\u06ff]/.test(folder);
+  let k = 0;
+  return {
+    ...n,
+    t: folder,
+    f: n.f.map((c, i) => {
+      if (isFolder(c)) return cleanTree(c);
+      const t = named[i]!;
+      if (!isJunkTitle(t)) return { ...c, t };
+      k++;
+      return { ...c, t: numbered ? `${folder} (${ar ? arDigit(k) : k})` : folder };
+    }),
+  };
 }
 
 const TREES = Object.fromEntries(
