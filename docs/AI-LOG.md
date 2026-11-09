@@ -66,6 +66,10 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 9 Nov 2026, **akheeai**, branch `akheeai/new-teachers-positions`: current positions for the 12 teachers added from the official schedule.
+  - The research is in `docs/research/mashayikh-positions-2026-11-new.md`, and the data is in `MASHAYIKH_POSITIONS`.
+  - Highlights: Dr. Abdullah al-Bu'ayjan is Imam and Khatib of the Prophet's Mosque, and Dr. Salih al-Abbud is a former President of the Islamic University (1416 to 1428 AH).
+  - Owner: these shaykhs exist on the live site only once their lessons are added in Admin. Until then, `npm run shaykh:sync` lists them as "not found"; after that, it publishes them.
 - 9 Nov 2026, **web**, branch `web/AR3-admin-guides`: AR3 for admin's 14 new guides, as Arabic drafts in `docs/research/translations/` in akhiai's format. A shared term sheet and titles came first, so the links between the 14 agree. Then 9 translators worked, each followed by an independent editor, and a consistency pass ran across all 14. All pass the script check against today's English. English issues found along the way are in `docs/research/translations/english-issues-admin-guides-2026-11-09.md`, for the guides' owner.
 - 9 Nov 2026, **akheeai**:
   - `shaykhSlug` strips titles in any order (#90).

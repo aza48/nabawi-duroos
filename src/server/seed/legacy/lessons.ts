@@ -3,8 +3,8 @@ import { Lesson, Localized } from "./types";
 const L = (ar: string, en: string): Localized => ({ ar, en });
 
 export const QUBA_PERIOD: Localized = {
-  ar: "خلال الفترة من ١ / ٤ / ١٤٤٨هـ إلى ٣٠ / ٦ / ١٤٤٨هـ",
-  en: "During the period 1/4/1448 – 30/6/1448 AH",
+  ar: "خلال الفترة من ١ / ٤ / ١٤٤٨هـ إلى ٢٩ / ٦ / ١٤٤٨هـ",
+  en: "From 1/4/1448 to 29/6/1448 AH",
 };
 
 export const LESSONS: Lesson[] = [
