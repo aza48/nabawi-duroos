@@ -6,6 +6,7 @@ import { LanguageSwitch } from "./LanguageSwitch";
 import { WhatsAppIcon } from "./WhatsApp";
 import { AdminEmailLink, AdminHelpLink } from "./AdminHelp";
 import { Wordmark } from "./Wordmark";
+import { AlbaseerahFooterCredit } from "./Albaseerah";
 import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
 import { AssistantLauncher } from "@/features/assistant/AssistantLauncher";
@@ -99,6 +100,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
               ? "مركز يديره الطلاب لطلاب المدينة الناطقين بالإنجليزية."
               : "Run by students, for English-speaking students in Madinah."}
           </p>
+          <AlbaseerahFooterCredit locale={locale} />
         </div>
         {cols.map((c) => (
           <div key={c.title}>

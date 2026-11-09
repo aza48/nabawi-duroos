@@ -20,6 +20,7 @@ export function siteJsonLd(whatsappUrl: string) {
       description: "Run by students, for English-speaking students and families in Madinah: live duroos schedules, study programmes, guides and the MESH WhatsApp group.",
       areaServed: { "@type": "City", name: "Madinah", containedInPlace: { "@type": "Country", name: "Saudi Arabia" } },
       sameAs: [whatsappUrl],
+      parentOrganization: { "@type": "Organization", name: "Albaseerah International Institute", url: "https://albaseerah.org" },
     },
     {
       "@context": "https://schema.org",
