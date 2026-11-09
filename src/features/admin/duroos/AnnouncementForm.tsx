@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { saveAnnouncementAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
+import { useUnsavedWarning } from "../useUnsavedWarning";
 import { useFeedback } from "../Feedback";
 
 type Type = "cancellation" | "postponement" | "resumption" | "new-book" | "book-finished" | "reminder" | "info" | "guest" | "lecture";
@@ -29,11 +30,17 @@ export const EMPTY_ANNOUNCEMENT: A = {
 export function AnnouncementForm({ value, shaykhs, masjids, lessons = [] }: { value: A; shaykhs: { slug: string; nameEn: string }[]; masjids: { id: string; name: string }[]; lessons?: LessonOption[] }) {
   const router = useRouter();
   const [v, setV] = useState<A>(value);
+  // Unsaved means "different from the last version saved", so a saved form never nags.
+  const snapshot = JSON.stringify(v);
+  const [baseline, setBaseline] = useState(snapshot);
+  const snapRef = useRef(snapshot);
+  useEffect(() => { snapRef.current = snapshot; }, [snapshot]);
+  useUnsavedWarning(snapshot !== baseline);
   const [error, setError] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
   const { notify, confirm } = useFeedback();
   // Messages show in the toast above the tab bar, never under the button where a phone hides them.
-  useEffect(() => { if (msg) notify(msg); }, [msg, notify]);
+  useEffect(() => { if (msg) { notify(msg); setBaseline(snapRef.current); } }, [msg, notify]);
   const [pending, start] = useTransition();
   const set = <K extends keyof A>(k: K, val: A[K]) => setV((p) => ({ ...p, [k]: val }));
 

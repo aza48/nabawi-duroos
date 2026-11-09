@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, Trash2 } from "lucide-react";
 import { updateShaykhAction } from "@/app/(admin)/admin/actions";
 import { btnGhost, btnPrimary, ErrorNote, Field, inputCls } from "../ui";
+import { useUnsavedWarning } from "../useUnsavedWarning";
 import { useFeedback } from "../Feedback";
 
 type S = { slug: string; nameEn: string; nameAr: string; roleEn: string | null; roleAr: string | null; photo?: string | null; facts: { en: string; ar: string }[] };
@@ -12,10 +13,16 @@ type S = { slug: string; nameEn: string; nameAr: string; roleEn: string | null; 
 export function ShaykhForm({ shaykh }: { shaykh: S }) {
   const router = useRouter();
   const [v, setV] = useState(shaykh);
+  // Unsaved means "different from the last version saved", so a saved form never nags.
+  const snapshot = JSON.stringify(v);
+  const [baseline, setBaseline] = useState(snapshot);
+  const snapRef = useRef(snapshot);
+  useEffect(() => { snapRef.current = snapshot; }, [snapshot]);
+  useUnsavedWarning(snapshot !== baseline);
   const [msg, setMsg] = useState<string | null>(null);
   const { notify } = useFeedback();
   // Messages show in the toast above the tab bar, never under the button where a phone hides them.
-  useEffect(() => { if (msg) notify(msg); }, [msg, notify]);
+  useEffect(() => { if (msg) { notify(msg); setBaseline(snapRef.current); } }, [msg, notify]);
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const setFact = (i: number, k: "en" | "ar", val: string) => setV((p) => ({ ...p, facts: p.facts.map((f, j) => (j === i ? { ...f, [k]: val } : f)) }));
