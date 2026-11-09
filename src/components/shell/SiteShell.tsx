@@ -4,6 +4,7 @@ import { BottomNav, DesktopNav } from "./BottomNav";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { WhatsAppIcon } from "./WhatsApp";
+import { AdminHelpLink } from "./AdminHelp";
 import { Wordmark } from "./Wordmark";
 import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
@@ -113,7 +114,7 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
         <div>
           <p className="font-heading text-base font-semibold text-gold-bright">{ar ? "مجموعة واتساب" : "The MESH group"}</p>
           <p className="mt-3 text-sm text-white/75">
-            {ar ? "الإعلانات والفعاليات والمساعدة اليومية." : "Announcements, events and daily help from students who have been here longer."}
+            {ar ? "الإعلانات والفعاليات، وتجارب طلاب سبقوك إلى المدينة." : "Announcements, events and tips from students who have been here longer."}
           </p>
           <p className="mt-2 text-sm font-semibold text-white">
             {ar ? "المجموعة خاصة بالطلاب الغربيين الناطقين بالإنجليزية فقط." : "Only for English-speaking Western students."}
@@ -132,9 +133,9 @@ function Footer({ locale, whatsappUrl, helpContact }: { locale: Locale; whatsapp
         <div className="shell flex flex-wrap items-center justify-between gap-3 py-5 text-sm text-white/70">
           <p>
             {ar ? "تحتاج مساعدة أو عندك اقتراح؟ راسل المشرف على واتساب: " : "Need any assistance, or have a suggestion? Please message Admin on WhatsApp at "}
-            <a href={`https://wa.me/${helpContact.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold-bright hover:underline" dir="ltr">
+            <AdminHelpLink locale={ar ? "ar" : "en"} className="font-semibold text-gold-bright hover:underline">
               {helpContact}
-            </a>
+            </AdminHelpLink>
           </p>
           <span className="flex items-center gap-3">
             <span className="sm:hidden"><ThemeToggle label={ar ? "تبديل المظهر" : "Switch light / dark"} /></span>

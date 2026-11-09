@@ -285,7 +285,9 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
 
   // 5. Several duroos match ("who teaches Kitab at-Tawhid"): list them all.
   const duroos = found.filter((p) => p.kind === "dars" && answers(searchText, p));
-  if (found[0].kind === "dars" && duroos.length > 1) {
+  // Dars titles are "<book> with <shaykh>"; duroos from several mashayikh mean the question is about the book.
+  const teachers = new Set(duroos.map((p) => p.title.split(" with ").pop()));
+  if (duroos.length > 1 && (found[0].kind === "dars" || teachers.size > 1)) {
     const list = duroos.slice(0, 5);
     return { answer: list.map((p) => `- ${p.text}`).join("\n"), sources: uniqueSources(list), related: relatedOf(found, new Set()), mode: "extract", found: true, lang };
   }
