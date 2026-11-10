@@ -1192,10 +1192,11 @@ export const GUIDES_2026: SeedGuide[] = [
   {
     slug: "dates-of-madinah",
     stage: "getting-settled",
-    title: "Dates of Madinah: the varieties and how to buy",
-    summary: "The main varieties sold in Madinah, what each is like, and how to buy good dates to eat or take home.",
+    title: "Dates of Madinah: the varieties, the market, the season and taking them home",
+    summary: "The main varieties and what each is like, Ajwa and the Sunnah, where to buy (the Central Dates Market, the Haram shops, supermarkets and farms), the harvest and the summer dates season, how to choose and store dates, and taking them home.",
     bodyHtml: `
-<p>Madinah's date farms are among the oldest in Arabia. Every souk sells many varieties, and the choice can be bewildering at first. This guide lists the ones you will see.</p>
+<p>Checked November 2026. Madinah's palm groves are among the oldest in Arabia, and dates are part of every day here: a few with coffee for a guest, seven Ajwa in the morning, a box on every visitor's way home. Every souk sells many varieties, and the choice is bewildering at first. This guide covers the varieties you will see, where to buy, the harvest season, how to choose and store dates, and how to take them home.</p>
+<h2>The varieties</h2>
 <table><thead><tr><th>Variety</th><th>What it is like</th></tr></thead><tbody>
 <tr><td><strong>Ajwa</strong> (عجوة)</td><td>The best known of all. Nearly black, soft, a little chewy, with a deep sweetness. Grown almost only in the Madinah area. It is the date of the Sunnah of eating seven in the morning.</td></tr>
 <tr><td><strong>Anbara</strong> (عنبرة)</td><td>Long, plump and golden, with a caramel and honey flavour. The most expensive of the common varieties and a favourite for gifts.</td></tr>
@@ -1205,15 +1206,41 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td><strong>Saghai</strong> (صغاي)</td><td>Yellow tipped and brown bodied, crunchy when fresh and softer with storage. An everyday family date, good value.</td></tr>
 <tr><td><strong>Sukkari</strong> (سكري)</td><td>Golden and honey sweet, soft, very rich. Best fresh in the late summer harvest, in small servings.</td></tr>
 </tbody></table>
-<h2>Buying well</h2>
+<h2>Ajwa and the Sunnah</h2>
+<p>The Prophet ﷺ said that whoever eats seven Ajwa dates in the morning is not harmed by poison or magic that day (Sahih al-Bukhari 5445).</p>
+<h2>Where to buy</h2>
 <ul>
-<li><strong>Buy in Madinah.</strong> Good dates are usually cheaper here than back home for the same grade.</li>
+<li><strong>The Central Dates Market</strong> (سوق التمور المركزي), the city's new wholesale and retail market, at the junction of King Khalid Road (the Third Ring Road) and Ali ibn Abi Talib Road, in the Food City development. Farms and traders sell side by side, so you can taste and compare in one visit, and it is the cheapest place for a large order.</li>
+<li><strong>The shops around the Haram and Quba</strong> sell every variety in gift boxes, ready packed for travel. Prices are higher, and the convenience is real when your parents fly tomorrow.</li>
+<li><strong>Supermarkets and hypermarkets</strong> sell packed Ajwa, Sukkari and Safawi at fixed prices with the packing date on the box. Good for everyday dates.</li>
+<li><strong>Farms</strong> in the Aliyat al-Madinah area: some welcome visitors in the harvest.</li>
+</ul>
+<h2>The harvest and the dates season</h2>
+<p>The harvest begins in late July and runs into September. In the first weeks they are sold fresh as rutab (رطب), soft and moist, and they must be kept in the fridge and eaten within days. The dried dates (tamr) that fill the shops all year come from the same harvest. The date market is at its best in August and September.</p>
+<p>Every summer the Madinah Region Development Authority runs the Madinah Dates Season at the Central Dates Market. In 2026 it ran from 20 July to 2 August, with a daily wholesale auction (haraj) for rare and prized dates from 6 pm, stands for the city's farms and palm products, and stalls for family producers. The dates for each year are announced by the Authority in the weeks before.</p>
+<h2>Choosing well</h2>
+<ul>
+<li><strong>Taste before you buy.</strong> Every stall in the market lets you taste. Try two or three grades of the same variety: the difference in price is a difference in size, texture and how clean the fruit is.</li>
 <li><strong>Start with a sampler box.</strong> Many shops sell a mixed box of several varieties. Try that first, then buy a kilo of the ones you liked.</li>
 <li><strong>Check your Ajwa.</strong> Good Ajwa is firm and slightly dry with a wrinkled skin. Very soft, shiny, sticky ones are often another variety.</li>
+<li><strong>Look at the date on the box,</strong> and open it if you can. Dust, white crystals of sugar on the skin and small holes are signs of an old or poorly stored batch.</li>
 <li><strong>Go in the late afternoon.</strong> Shops are cooler and quieter, and sellers have more time for you.</li>
-<li><strong>Taking them on a plane?</strong> Ask the shop to vacuum pack them for travel.</li>
-<li><strong>Harvest season:</strong> the main harvest is late summer. Some farms in the Aliyat al-Madinah area welcome visitors then.</li>
-</ul>`,
+</ul>
+<h2>Storing dates</h2>
+<ul>
+<li>Dried dates keep for weeks in a closed box in a cool room, and for months in the fridge.</li>
+<li>In the freezer they keep for a year or more and thaw in minutes, so buy in the season and freeze what you will not eat soon.</li>
+<li>Keep them airtight. Dates take on the smell of what is near them and dry out in the air conditioning.</li>
+<li>Rutab goes straight into the fridge and is eaten within a few days.</li>
+</ul>
+<h2>Taking dates home</h2>
+<ul>
+<li><strong>Ask the shop to vacuum pack them.</strong> Vacuum packed dates travel well in checked baggage, keep the smell in, and pass through security without trouble.</li>
+<li><strong>Declare food when you land</strong> if your country asks. Australia and New Zealand require every food item to be declared, and many countries limit the quantity you bring in for yourself.</li>
+<li><strong>A box too heavy for your bag</strong> goes by post or courier, and a sealed box of dates travels well: see <a href="/guides/shipping-and-receiving-parcels">Shipping and receiving parcels in Madinah</a>.</li>
+<li><strong>Buy in Madinah.</strong> Good dates are usually cheaper here than back home for the same grade.</li>
+</ul>
+<blockquote><p>Tip: Not sure which dates to take home for a gift? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "doctors-hospitals-and-pharmacies",
@@ -1275,6 +1302,13 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td><strong>Prince Musaid bin Abdulrahman University, Madinah branch</strong></td><td>Public, blended</td><td>Known until September 2026 as the Saudi Electronic University. Business administration, computing and informatics, and health sciences, mixing online study with sessions at its Madinah centre.</td></tr>
 <tr><td><strong>Taibah University</strong></td><td>Public, founded 2003</td><td>A full range of colleges including medicine, engineering, computer science, pharmacy, education, Shariah and business. It runs its own international scholarships for bachelor's and master's study, applied for on Study in Saudi. Bachelor's applicants must be 17 to 24, live outside Saudi Arabia and hold a school certificate under five years old.</td></tr>
 </tbody></table>
+<h2>Applying</h2>
+<ul>
+<li><strong>Islamic University of Madinah:</strong> applied for on the Study in Saudi portal (studyinsaudi.sa), in the main spring window or a later extra round. The steps, documents and dates are in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</li>
+<li><strong>Prince Mugrin University:</strong> open to Saudis, residents, visitors and international students with a secondary school certificate, applied for on upm.edu.sa. For the first semester of 1448 the window ran from 14 June to 30 August 2026. Students start with a preparatory year, or go straight to their major with IELTS 5 or TOEFL 500. Fees are charged by the credit hour, and its scholarships are awarded by competition on grades and the English score.</li>
+<li><strong>Prince Musaid bin Abdulrahman University:</strong> applied for on the university's own admission portal. It took its new name by royal order on 18 September 2026.</li>
+<li><strong>Taibah University:</strong> residents apply on the university's own admission portal. Applicants from abroad apply for its international scholarships on Study in Saudi, with the age and certificate limits above.</li>
+</ul>
 <h2>Choosing</h2>
 <ul>
 <li><strong>Want Islamic sciences and Arabic?</strong> The Islamic University is built for that. Other routes are in <a href="/programs">Study in Madinah</a>.</li>
