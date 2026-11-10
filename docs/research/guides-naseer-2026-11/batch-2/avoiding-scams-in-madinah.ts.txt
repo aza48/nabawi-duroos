@@ -1,0 +1,67 @@
+  {
+    slug: "avoiding-scams-in-madinah",
+    stage: "getting-settled",
+    title: "Avoiding scams in Madinah: flats, deposits, jobs, visas and phone fraud",
+    summary: "The traps that catch newcomers, each with the official safe route: flats and deposits, property sold with a promise of residency, jobs on visit visas and visa conversion offers, running a business in someone else's name, fake Hajj and Umrah offers, calls and texts posing as your bank, Absher or the University, counterfeit goods, and where to report each one.",
+    bodyHtml: `
+<p>Checked November 2026. Most scams aimed at newcomers follow one pattern: an offer that skips the official system, and a request for money or a code before anything is in writing. Each trap below has an official route that protects you and an official place to report it.</p>
+<h2>Renting a flat</h2>
+<ul>
+<li><strong>Never transfer a deposit or a "holding fee"</strong> before you have seen the flat in person and a contract is ready to register. A cheap flat from someone who cannot meet you is the usual bait.</li>
+<li><strong>Check the agent.</strong> A real-estate broker needs a FAL licence from the Real Estate General Authority (REGA). Check the licence number on REGA's broker inquiry service at <a href="https://rega.gov.sa/">rega.gov.sa</a> or in REGA's app, Aqari (عقاري). Every property advert also needs its own advertisement licence, which REGA's advertisement licence inquiry confirms.</li>
+<li><strong>Register the contract on Ejar and pay the rent only through Ejar.</strong> Cash, or a transfer to someone's personal account, is no proof that you paid.</li>
+</ul>
+<p>The full checklist and the warning signs are in <a href="/guides/finding-an-apartment">Finding and renting a flat</a>. For a problem with a registered contract, call Ejar on <strong>199011</strong>.</p>
+<h2>Buying property with "residency included"</h2>
+<p>Under the law in force since 22 January 2026, a Muslim non-Saudi can own a home in Madinah, but only inside the approved zones, and only through REGA's official portal, Saudi Properties, at <a href="https://saudiproperties.rega.gov.sa/">saudiproperties.rega.gov.sa</a>. Owning a home gives you no residency and no visa.</p>
+<ul>
+<li>A seller who promises an iqama with the flat is selling something he cannot give. The only residency linked to property is the Real Estate Owner product of Premium Residency. You apply for it yourself to the Premium Residency Center, through the <a href="https://my.gov.sa/en/services/187911">National Platform</a>, and it has its own conditions.</li>
+<li>Check the plot on the portal's zone map, get the eligibility certificate there, and pay electronically. Never pay in cash or into a personal account.</li>
+<li>A guaranteed profit, or a plot that "will be inside the zones soon", is a warning sign.</li>
+</ul>
+<p>The rules and the five steps are in <a href="/guides/owning-property-as-a-non-saudi">Owning a home in Madinah as a non-Saudi</a>.</p>
+<h2>Job offers and "visa conversion"</h2>
+<p>The tourist eVisa and the Umrah visa are not work visas, and their holders must not take paid work. A visit visa cannot be converted into a work iqama inside the Kingdom, whatever someone charges for it. A job "on your visit visa, papers later", or a paid "conversion", leaves you working illegally.</p>
+<p>A real job comes with a work visa that the employer applies for before you travel. Once you are resident, your contract is recorded on Qiwa, and you can read it in your own Qiwa account under Employment Contracts. Under the Labour Law the employer pays the recruitment fees and the iqama and work permit fees, and their renewals. Anyone who asks you to pay for "your visa" or "your iqama" is not offering a lawful job. Report labour violations to the Ministry of Human Resources on <strong>19911</strong> or in its app.</p>
+<h2>Running a business in someone else's name</h2>
+<p>Some newcomers are offered a shop, a delivery business or an online store "in a Saudi's name, you just run it". This is commercial concealment (التستر التجاري, tasattur), a crime under the Anti-Commercial Concealment Law. The penalties include:</p>
+<ul>
+<li>up to five years in prison and fines of up to 5 million SAR;</li>
+<li>confiscation of the money made, closure of the business and cancellation of its commercial registration;</li>
+<li>deportation of the non-Saudi involved, with a ban on returning to work in the Kingdom.</li>
+</ul>
+<p>The lawful route is a company of your own, registered in your name. On a University iqama that means leaving University sponsorship first: see <a href="/guides/start-a-company-in-saudi">Start your own company in Saudi Arabia</a>. Concealment is reported to the Ministry of Commerce on <strong>1900</strong> or in its Balagh Tijari app (بلاغ تجاري).</p>
+<h2>Hajj, Umrah and Rawdah offers</h2>
+<ul>
+<li><strong>Hajj:</strong> residents book domestic Hajj only in Nusuk, at <a href="https://www.nusuk.sa/">nusuk.sa</a> or in the app, with a licensed company listed there. A "campaign" sold on social media, by phone or by word of mouth outside Nusuk gives you no permit, and Hajj without a permit brings heavy fines and, for residents, deportation. See <a href="/guides/hajj-as-a-student">Hajj from Madinah as a student or resident</a>.</li>
+<li><strong>Umrah and the Rawdah:</strong> permits are in Nusuk, in your own name, and the Rawdah permit is free. Anyone selling paid or guaranteed access is running a scam. See <a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba from Madinah</a>.</li>
+</ul>
+<p>Report fake Hajj adverts on <strong>911</strong>. For any problem with a Hajj or Umrah service, the unified number <strong>1966</strong> answers around the clock and in several languages.</p>
+<h2>Calls, texts and links pretending to be your bank, Absher or the University</h2>
+<p>The caller claims to be your bank, the police, Absher or the University, or a text says your card is blocked or a fine is due and gives a link. The aim is always your password, your card details or the code sent to your phone.</p>
+<ul>
+<li><strong>Never share a one-time code (OTP),</strong> a password or a card number with anyone, on any call, in any chat, even with someone who says he is from your bank or a government office.</li>
+<li><strong>Nafath:</strong> approve a request only when you started the sign-in yourself and the number in the app matches the one on your screen. Reject any request you did not start, and never pick a number someone reads to you on the phone.</li>
+<li><strong>Fines and fees:</strong> ignore texts with payment links. Check fines yourself in Absher and pay through your banking app: see <a href="/ask/traffic-fines">How do I check and pay traffic fines?</a></li>
+<li><strong>The University:</strong> fake accounts post links in Blackboard class chats to take over student accounts. See <a href="/ask/blackboard-phishing">Someone posted a link in my Blackboard class chat. Is it safe?</a> and <a href="/guides/university-email-and-microsoft-365">Your University email and Microsoft 365</a>.</li>
+<li><strong>Money and "investments":</strong> if a stranger sends money "by mistake" and asks you to send it on, tell your bank and transfer nothing. Do not put money into "investment" offers posted in groups.</li>
+<li><strong>Scam texts:</strong> forward them, free, to <strong>330330</strong>, the reporting number of the Communications, Space and Technology Commission.</li>
+</ul>
+<blockquote><p>Important: If you have already shared a code or your card details, call your bank at once on the number in its app or on the back of your card, and ask it to block the card and stop the transfer. Then change your passwords and report the fraud in Absher, under Public Security, Financial Fraud Reports, or in the Ministry of Interior's Kollona Amn app (كلنا أمن).</p></blockquote>
+<h2>Counterfeit goods</h2>
+<p>Fake brand perfumes, phones, chargers and spare parts are sold in markets and through "message me" posts. Buy electronics from shops that give a tax invoice, and keep it for the warranty. Report counterfeit goods and commercial fraud to the Ministry of Commerce on <strong>1900</strong> or in the Balagh Tijari app.</p>
+<h2>Where to report</h2>
+<table><thead><tr><th>What happened</th><th>Where to report</th></tr></thead><tbody>
+<tr><td>Money taken from your card or account</td><td>Your bank first. Then Absher, Financial Fraud Reports, or the Kollona Amn app</td></tr>
+<tr><td>Your bank does not resolve your complaint</td><td>The Saudi Central Bank's consumer protection line, free on <strong>8001256666</strong></td></tr>
+<tr><td>Scam text message</td><td>Forward it to <strong>330330</strong></td></tr>
+<tr><td>Fraud, impersonation, extortion or a hacked account</td><td>The Kollona Amn app. In an emergency, <strong>911</strong></td></tr>
+<tr><td>A problem with a registered rental contract</td><td>Ejar, <strong>199011</strong></td></tr>
+<tr><td>Fake Hajj adverts</td><td><strong>911</strong></td></tr>
+<tr><td>Hajj or Umrah services</td><td>The unified number <strong>1966</strong></td></tr>
+<tr><td>Labour violations</td><td>Ministry of Human Resources, <strong>19911</strong> or its app</td></tr>
+<tr><td>Tasattur, counterfeit goods, commercial fraud</td><td>Ministry of Commerce, <strong>1900</strong> or the Balagh Tijari app</td></tr>
+<tr><td>A University account taken over</td><td><strong>it.care@iu.edu.sa</strong>, and report fake Blackboard accounts to <strong>bb@iu.edu.sa</strong></td></tr>
+</tbody></table>
+<p>All the emergency numbers are in <a href="/ask/emergency-numbers">What are the emergency numbers in Saudi Arabia?</a></p>`,
+  },
