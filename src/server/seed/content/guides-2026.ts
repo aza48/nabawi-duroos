@@ -314,12 +314,32 @@ export const GUIDES_2026: SeedGuide[] = [
   {
     slug: "everyday-apps-and-services",
     stage: "getting-settled",
-    title: "Everyday apps and services",
-    summary: "The apps residents of Madinah use for food, repairs, cleaning, shopping and laundry, with typical prices.",
+    title: "Everyday apps and services: government apps, getting around, paying, food, repairs and prices",
+    summary: "The government apps every resident uses and what each is for, ride apps, paying by card and phone, and the apps and services for food, shopping, repairs, cleaning, laundry and gyms, with typical prices.",
     bodyHtml: `
+<p>Checked November 2026. Daily life in Madinah runs on the phone: government papers, the Rawdah permit, the bus, dinner and the plumber are all an app away. This guide lists the apps residents use, what each is for, and the usual prices, with links to the guides that explain each step. Apps of the same kind are listed alphabetically.</p>
+<h2>The government apps</h2>
+<table><thead><tr><th>App</th><th>What it is for</th><th>The full steps</th></tr></thead><tbody>
+<tr><td><strong>Absher</strong></td><td>Your residency record: iqama, visas, family members, traffic fines</td><td><a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a></td></tr>
+<tr><td><strong>Nafath</strong></td><td>Approves your sign-in to government and bank services with a number on screen</td><td><a href="/guides/new-student-steps">First steps for new students</a></td></tr>
+<tr><td><strong>Tawakkalna</strong></td><td>Digital copies of your documents, including the University ID</td><td><a href="/guides/new-student-steps">First steps for new students</a></td></tr>
+<tr><td><strong>Nusuk</strong></td><td>Permits for the Rawdah and for Umrah</td><td><a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba from Madinah</a></td></tr>
+<tr><td><strong>Ejar</strong></td><td>Registered rental contracts</td><td><a href="/guides/finding-an-apartment">Finding and renting a flat</a></td></tr>
+<tr><td><strong>Saudi Post (SPL)</strong></td><td>Your National Address and short address, and parcels</td><td><a href="/guides/shipping-and-receiving-parcels">Shipping and receiving parcels in Madinah</a></td></tr>
+<tr><td><strong>Madinah Bus</strong></td><td>Routes, live times and fares, with ride bundles</td><td><a href="/guides/haramain-train-and-city-buses">The Haramain train and Madinah buses</a></td></tr>
+</tbody></table>
+<p>Students on the educational visa: what works with a Visitor ID is in <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>
+<h2>Getting around</h2>
+<p>Bolt, Careem, Jeeny and Uber all run in Madinah, and their prices rise after Taraweeh in Ramadan. The bus, the Haramain train, taxis and fares are in <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>
+<h2>Paying</h2>
+<ul>
+<li>Cards and phones are taken almost everywhere, from the bakery to the laundry, and the buses take no cash at all. A mada card in Apple Pay or a bank wallet covers most days.</li>
+<li>Keep a little cash for small stalls.</li>
+<li>Sending money home, the wallets and their fees are in <a href="/guides/sending-and-receiving-money">Sending money home and receiving money in Madinah</a>.</li>
+</ul>
 <h2>Food</h2>
 <ul>
-<li><strong>HungerStation</strong> and <strong>Keeta</strong> for delivery, usually in 20 to 30 minutes.</li>
+<li><strong>HungerStation</strong>, <strong>Jahez</strong>, <strong>Keeta</strong> and <strong>Mrsool</strong> for delivery, usually in 20 to 30 minutes. Supermarkets deliver through the same apps.</li>
 <li><strong>Barakah</strong> for unsold food from restaurants, bakeries and shops at 50 to 70% off, collected at a set time. Orders can be cancelled by the shop up to an hour before pick-up.</li>
 </ul>
 <h2>Shopping</h2>
@@ -341,7 +361,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Al Dawaa and Al Nahdi pharmacies have branches all over the city, some open round the clock, and most staff speak English.</li>
 </ul>
 <h2>Gyms</h2>
-<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's 250 to 500. Martial arts clubs are 150 to 300 SAR. At the Islamic University Sports Club on campus a student pays 125 SAR for a month, against 250 SAR for the public; longer memberships cost less per month. Prices, facilities, classes and trips are listed in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>`,
+<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's 250 to 500. Martial arts clubs are 150 to 300 SAR. At the Islamic University Sports Club on campus a student pays 125 SAR for a month, against 250 SAR for the public; longer memberships cost less per month. Prices, facilities, classes and trips are listed in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>
+<blockquote><p>Tip: An app refuses your ID, or you need a service not listed here? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "visas-for-family-and-visitors",
