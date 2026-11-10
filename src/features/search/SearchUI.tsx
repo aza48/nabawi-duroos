@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { createPortal } from "react-dom";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { BadgePercent, BookA, BookOpen, CalendarDays, Clock, CornerDownLeft, FileText, GraduationCap, Landmark, Library, MessageCircleQuestion, Search, Sparkles, TextSearch, User, X } from "lucide-react";
 import type { Search as SearchFn, SearchDoc, SearchHit, SearchType } from "@/lib/search/engine";
@@ -32,7 +32,7 @@ const T = {
     clear: "Clear",
     failed: "Search couldn't load. Check your connection and try again.",
     loading: "Loading search...",
-    none: (q: string) => `Nothing found for “${q}”. Ask the MESHaykh below, or ask Admin.`,
+    none: (q: string) => `Nothing found for “${q}”. Ask the MESHaykh, or ask Admin.`,
     all: (q: string) => `See all results for “${q}”`,
     placeholder: "Search duroos, guides, institutes, books... بالعربي أيضًا",
     ask: "Ask the MESHaykh",
@@ -53,7 +53,7 @@ const T = {
     clear: "مسح",
     failed: "تعذّر تحميل البحث. تحقّق من الاتصال وحاول مرة أخرى.",
     loading: "جارٍ تحميل البحث...",
-    none: (q: string) => `لا نتائج لـ «${q}». اسأل مساعد MESH في الأسفل، أو اسأل المشرف.`,
+    none: (q: string) => `لا نتائج لـ «${q}». اسأل مساعد MESH، أو اسأل المشرف.`,
     all: (q: string) => `كل النتائج لـ «${q}»`,
     placeholder: "ابحث في الدروس والأدلة والمعاهد والكتب، بالعربية أو الإنجليزية",
     ask: "اسأل مساعد MESH",
@@ -236,6 +236,8 @@ type ResultsProps = {
   mark: (t: string) => { t: string; hit: boolean }[];
   covers: (heading: string) => boolean;
   cursor: number;
+  /** Called when a link that is not a row is followed (the instant answer's "Read more"). */
+  onLeave?: () => void;
   opts: Opt[];
   onPick: (o: Opt) => void;
   compact?: boolean;
@@ -244,7 +246,7 @@ type ResultsProps = {
   wide?: boolean;
 };
 
-function Results({ q, hits, deep, corrected, mark, covers, cursor, opts, onPick, compact, locale = "en", listId, wide }: ResultsProps) {
+function Results({ q, hits, deep, corrected, mark, covers, cursor, opts, onPick, onLeave, compact, locale = "en", listId, wide }: ResultsProps) {
   const t = T[locale];
   const groups = groupHits(hits, !!compact);
   const flat = groups.flatMap((g) => g.items);
@@ -263,7 +265,7 @@ function Results({ q, hits, deep, corrected, mark, covers, cursor, opts, onPick,
           href={localizeUrl(url, locale)}
           target={ext ? "_blank" : undefined}
           rel={ext ? "noopener noreferrer" : undefined}
-          tabIndex={-1}
+          tabIndex={compact ? -1 : undefined}
           onClick={(e) => {
             if (!ext) {
               e.preventDefault();
@@ -288,7 +290,7 @@ function Results({ q, hits, deep, corrected, mark, covers, cursor, opts, onPick,
       <li role="option" id={optionId({ id: "ask" })} aria-selected={at("ask") === cursor}>
         <button
           type="button"
-          tabIndex={-1}
+          tabIndex={compact ? -1 : undefined}
           onClick={() => onPick({ id: "ask", ask: true })}
           data-active={at("ask") === cursor}
           className="flex w-full items-center gap-3 rounded-xl border border-primary/25 bg-primary-soft/50 px-2 py-2.5 text-start transition-colors hover:bg-primary-soft data-[active=true]:bg-primary-soft"
@@ -345,7 +347,7 @@ function Results({ q, hits, deep, corrected, mark, covers, cursor, opts, onPick,
             {instant.kind === "live" ? <Clock size={13} /> : <MessageCircleQuestion size={13} />} {instant.kind === "live" ? t.now : t.short}
           </p>
           <p className="mt-1 whitespace-pre-line text-[15px] leading-relaxed" dir="auto">{instant.text.length > 600 ? `${instant.text.slice(0, 600).replace(/\s+\S*$/, "")}...` : instant.text}</p>
-          <Link href={localizeUrl(instant.url, locale)} onClick={() => saveRecent(q)} className="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
+          <Link href={localizeUrl(instant.url, locale)} onClick={() => { saveRecent(q); onLeave?.(); }} className="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
             {t.more}
           </Link>
         </div>
@@ -443,7 +445,8 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
   const t = T[locale];
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
-  const [cursor, setCursor] = useState(0);
+  // The chosen row by its id, so it stays chosen when the sections from the server arrive and move it.
+  const [chosen, setChosen] = useState<string | null>(null);
   const input = useRef<HTMLInputElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   /** Whatever had focus when the palette opened; it gets focus back on close. */
@@ -451,7 +454,10 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
   const router = useRouter();
   const { hits, corrected, mark, covers, ready, failed } = useSearch(q, open);
   const deep = useDeep(q, open, locale);
-  const opts = optionsOf(q, hits, deep, true, covers);
+  // Rows exist only once results show: Enter before then does nothing rather than ask the assistant.
+  const opts = ready && !failed ? optionsOf(q, hits, deep, true, covers) : [];
+  const cursor = Math.max(0, opts.findIndex((o) => o.id === chosen));
+  const path = usePathname();
   const LIST_ID = "mesh-search-results";
 
   useEffect(() => {
@@ -481,13 +487,20 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
       opener.current?.focus();
     };
   }, [open]);
-  useEffect(() => setCursor(0), [q]);
+  useEffect(() => setChosen(null), [q]);
 
   // Leaving the search (tap outside, X or Escape) cancels it, so it opens empty next time.
   const close = useCallback(() => {
     setOpen(false);
     setQ("");
   }, []);
+  // A link followed from the palette opens its page, and the palette gets out of the way.
+  const lastPath = useRef(path);
+  useEffect(() => {
+    if (lastPath.current === path) return;
+    lastPath.current = path;
+    close();
+  }, [path, close]);
 
   const pick = useCallback(
     (o: Opt | undefined) => {
@@ -531,8 +544,8 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 onKeyDown={(e) => {
-                  if (e.key === "ArrowDown") { e.preventDefault(); setCursor((c) => Math.min(c + 1, opts.length - 1)); }
-                  else if (e.key === "ArrowUp") { e.preventDefault(); setCursor((c) => Math.max(c - 1, 0)); }
+                  if (e.key === "ArrowDown") { e.preventDefault(); if (opts.length) setChosen(opts[Math.min(cursor + 1, opts.length - 1)].id); }
+                  else if (e.key === "ArrowUp") { e.preventDefault(); if (opts.length) setChosen(opts[Math.max(cursor - 1, 0)].id); }
                   else if (e.key === "Enter" && opts[cursor]) { e.preventDefault(); pick(opts[cursor]); }
                 }}
                 placeholder={t.placeholder}
@@ -560,7 +573,7 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
               ) : !ready ? (
                 <p className="p-6 text-center text-muted" role="status" aria-live="polite">{t.loading}</p>
               ) : (
-                <Results q={q} hits={hits} deep={deep} corrected={corrected} mark={mark} covers={covers} cursor={cursor} opts={opts} onPick={pick} compact locale={locale} listId={LIST_ID} />
+                <Results q={q} hits={hits} deep={deep} corrected={corrected} mark={mark} covers={covers} cursor={cursor} opts={opts} onPick={pick} onLeave={close} compact locale={locale} listId={LIST_ID} />
               )}
             </div>
             {q.trim() && ready && (

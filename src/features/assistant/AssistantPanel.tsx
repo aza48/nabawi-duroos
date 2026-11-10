@@ -173,6 +173,9 @@ function saveChat(msgs: Msg[]) {
 /** Pages a question can be about: a guide, an answer, a programme, a dars or a shaykh. */
 export const aboutPage = (path: string | undefined) => !!path && /^\/(ar\/)?(guides|ask|programs|duroos\/lesson|duroos\/shaykh)\/[^/]+/.test(path);
 
+/** Pages where "how much does it cost?" makes sense as a starter: a guide or a programme, not a shaykh or a dars. */
+const costsPage = (path: string | undefined) => !!path && /^\/(ar\/)?(guides|programs)\/[^/]+/.test(path);
+
 type Props = {
   locale?: Locale;
   autoFocus?: boolean;
@@ -185,9 +188,11 @@ type Props = {
   page?: string;
   /** Called when a link in the chat is followed, so a dialog can close. */
   onNavigate?: () => void;
+  /** Called once `request` has been asked, so it is not asked again when the panel opens anew. */
+  onRequestHandled?: () => void;
 };
 
-export function AssistantPanel({ locale = "en", autoFocus = false, compact = false, initialQuestion, request, page, onNavigate }: Props) {
+export function AssistantPanel({ locale = "en", autoFocus = false, compact = false, initialQuestion, request, page, onNavigate, onRequestHandled }: Props) {
   const t = T[locale];
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [restored, setRestored] = useState(false);
@@ -198,6 +203,8 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
   const end = useRef<HTMLDivElement>(null);
   const abort = useRef<AbortController | null>(null);
   const asked = useRef<string | number | null>(null);
+  /** Set by "New conversation", so the answer it stops does not put its question back in the box. */
+  const resetting = useRef(false);
   /** The conversation as last rendered, read when a question is sent. */
   const current = useRef<Msg[]>([]);
   useEffect(() => {
@@ -246,9 +253,14 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
         logQuestion(question, d.mode, d.mode !== "guard" && (d.sources.length > 0 || d.mode === "live"));
       } catch (e) {
         if (ctrl.signal.aborted) {
-          // Stopped: the question goes back in the box, unanswered.
-          setMsgs((m) => m.slice(0, -1));
-          setQ(question);
+          if (resetting.current) {
+            // "New conversation": everything went, the stopped question too.
+            resetting.current = false;
+          } else {
+            // Stopped: the question goes back in the box, unanswered.
+            setMsgs((m) => m.slice(0, -1));
+            setQ(question);
+          }
         } else {
           const msg = e instanceof Error && e.message !== "failed" && !/fetch|network|json/i.test(e.message) ? e.message : t.error;
           setMsgs((m) => [...m, { role: "assistant", text: msg, failed: true, retry: question }]);
@@ -262,17 +274,25 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
     [locale, page, t.error]
   );
 
-  // A question from the link (/assistant?q=) or from the search box is asked once.
+  // A question from the link (/assistant?q=) or from the search box is asked once; one sent while an answer is
+  // on its way waits for it.
   useEffect(() => {
-    if (!restored || !initialQuestion || asked.current === initialQuestion) return;
+    if (!restored || busy || !initialQuestion || asked.current === initialQuestion) return;
     asked.current = initialQuestion;
+    // The link is spent: a reload or Back must not ask it again.
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("q");
+      window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+    } catch {}
     void ask(initialQuestion);
-  }, [restored, initialQuestion, ask]);
+  }, [restored, busy, initialQuestion, ask]);
   useEffect(() => {
-    if (!restored || !request || asked.current === request.n) return;
+    if (!restored || busy || !request || asked.current === request.n) return;
     asked.current = request.n;
+    onRequestHandled?.();
     void ask(request.q);
-  }, [restored, request, ask]);
+  }, [restored, busy, request, ask, onRequestHandled]);
 
   const copy = async (i: number, m: Msg) => {
     try {
@@ -296,7 +316,7 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
           <div>
             <p className="leading-relaxed text-muted">{t.intro}</p>
             <p className="mt-1 text-sm text-muted">{t.note}</p>
-            {aboutPage(page) && (
+            {costsPage(page) && (
               <>
                 <p className="mt-4 text-xs font-semibold text-muted">{t.onPage}</p>
                 <div className="mt-2 flex flex-wrap gap-2">
@@ -330,7 +350,7 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
                 dir="auto"
                 dangerouslySetInnerHTML={{ __html: renderAnswer(m.text, (m.sources ?? []).map((x) => ({ ...x, url: localizeUrl(x.url, locale) }))) }}
               />
-              {m.failed && m.retry && (
+              {m.failed && m.retry && i === msgs.length - 1 && (
                 <button type="button" onClick={() => ask(m.retry!, { replace: i - 1 })} disabled={busy} className="mt-2 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-line bg-card px-3.5 text-sm font-semibold text-primary hover:border-primary disabled:opacity-40">
                   <RotateCcw size={14} /> {t.retry}
                 </button>
@@ -390,7 +410,7 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
         onSubmit={(e) => { e.preventDefault(); void ask(q); }}
       >
         {msgs.length > 0 && (
-          <button type="button" onClick={() => { abort.current?.abort(); setMsgs([]); }} aria-label={t.again} title={t.again} className="grid size-11 shrink-0 place-items-center rounded-full border border-line bg-card text-muted hover:text-ink">
+          <button type="button" onClick={() => { if (abort.current) { resetting.current = true; abort.current.abort(); } setMsgs([]); }} aria-label={t.again} title={t.again} className="grid size-11 shrink-0 place-items-center rounded-full border border-line bg-card text-muted hover:text-ink">
             <RotateCcw size={17} />
           </button>
         )}

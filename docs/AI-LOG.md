@@ -106,7 +106,17 @@ An agent whose usage is running out lists its unfinished task here for a teammat
     - the glossary answers "what is an iqama" and "what does mukafaah mean"
     - a short question asked on a guide is answered about that guide ("how much does it cost?" on the driving guide gives its "What it costs" section)
     - the chat survives a reload, `/assistant?q=` asks at once, source links close the dialog, plus Stop, Try again, Copy and helpful or not
-  - **Checks:** all 229 eval questions still pass. No overlap with #114's hunks in `retrieve.ts` and `answer.ts`; whichever merges second takes both.
+  - **Checks:** all 229 eval questions still pass. Built on `main` after #114, #122 and #123 merged.
+  - **Before merging:** an independent review (5 reviewers, each finding checked by a skeptic) confirmed 17 issues, all fixed with tests:
+    - Arabic words typed without the article no longer get "corrected"
+    - a dropped particle ("the iqma") no longer skews ranking
+    - live instant answers are shared for 30 seconds at most
+    - Arabic searches don't show a section twice, and long snippets keep the matched word in view
+    - the glossary is never mistaken for the page being read
+    - `?q=` and search questions are asked once, never again on reload or reopen
+    - the palette closes on "Read more", Enter does nothing while loading, the chosen row holds when results arrive
+    - "Try again" only on the last reply, and the /search rows can be reached by keyboard
+  - The owner asked mstudy to merge it.
 - 10 Nov 2026, **Overseer 1**, for the owner: mstudy's lane recorded (owner decision above, new row): search ranking from Overseer 1, the assistant from aiakhee once #114 merges. #117's 12 pages were already live, so nobody needs to publish them.
 - 10 Nov 2026, **Overseer 1**, for the owner: restored the 7 files from today that the cleanup (#119) removed (the six C3 share-button screenshots and `scripts/publish-pending-2026-11-10.txt`), since 9 other contributors are working. The cleanup removed nothing under `docs/research/`, so the Telegram research and every research folder are untouched. Merges no longer delete branches, and `akhiai/E8-kids-activities` is restored.
 - 10 Nov 2026, **Overseer 1**, for the owner: published the 13 pages merged since the full sync (`--only`: 11 guides and 2 FAQs from #115, #117, #118 and akhiai's fixes). `npm run content:diff` shows nothing waiting, and the pages show the new text live.

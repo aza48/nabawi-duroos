@@ -3,7 +3,7 @@ import { resetTestDb, type Db } from "@/server/db/client";
 import { importLegacy } from "@/server/seed/import-legacy";
 import { buildSearchDocs } from "@/server/search/docs";
 import { deepSearch, snippetOf } from "@/server/search/deep";
-import { coversAll, createSearch, highlight, queryWords, type SearchDoc } from "@/lib/search/engine";
+import { coversAll, createSearch, highlight, queryWords, weighQuery, type SearchDoc } from "@/lib/search/engine";
 import { arabicBare } from "@/lib/search/normalize";
 import { buildKnowledge, type Chunk } from "@/server/assistant/knowledge";
 import { askMesh, resetAnswerCache } from "@/server/assistant/answer";
@@ -40,6 +40,16 @@ describe("search engine", () => {
     expect(search.correct("iqama")).toBeNull();
     expect(search.correct("apartm")).toBeNull();
     expect(search.correct("tafsir")).toBeNull();
+  });
+  it("knows an Arabic word typed without the article the site uses", () => {
+    const ar = createSearch([{ id: "d", type: "date", title: "Internal transfer", titleAr: "طلبات تأجيل الدراسة والتحويل الداخلي", url: "/guides/c" }]);
+    expect(ar.correct("داخلي")).toBeNull();
+    expect(ar.correct("تحويل")).toBeNull();
+  });
+  it("keeps the word first typed with its own place when a particle is dropped", () => {
+    const { typed } = weighQuery("the iqama", ["the", "iqma"]);
+    expect(typed[0]).toContain("iqma");
+    expect(typed[0]).not.toContain("the");
   });
   it("lets the topic decide when a generic word is typed next to it", () => {
     expect(search("tafsir dars")[0].id).toBe("tafsir");
@@ -126,6 +136,17 @@ describe("search index and the full-text pass", () => {
   it("returns nothing for a search too short to mean anything", async () => {
     expect(await deepSearch(db, "a", "en", NOW, knowledge)).toEqual({ instant: null, hits: [] });
   });
+  it("keeps the matched word in view in a long sentence", () => {
+    const long = `${"Every student should read the rules of the University before the semester starts, ".repeat(4)}and the Aramex office is by the gate.`;
+    const snip = snippetOf(long, ["aramex"]);
+    expect(snip).toMatch(/Aramex/);
+    expect(snip.length).toBeLessThanOrEqual(226);
+  });
+  it("answers today's date for a date search only, not for a word that only starts one", async () => {
+    expect((await deepSearch(db, "hijri", "en", NOW, knowledge)).instant?.kind).toBe("live");
+    expect((await deepSearch(db, "islamic", "en", NOW, knowledge)).instant).toBeNull();
+    expect((await deepSearch(db, "التاريخ", "ar", NOW, knowledge)).instant).toBeNull();
+  });
   it("cuts a snippet to its best sentence", () => {
     expect(snippetOf("Opening hours vary. The library opens at 8 am. Bags stay outside.", ["library"])).toBe("The library opens at 8 am.");
     expect(snippetOf("x ".repeat(300), []).length).toBeLessThanOrEqual(223);
@@ -162,6 +183,12 @@ describe("Ask the MESHaykh: the glossary and the page being read", () => {
     expect(r.sources[0].url).toBe("/guides/drivers-license#what-it-costs");
     const dars = await ask("what time does it start", "/duroos/lesson/abadr-tawhid");
     expect(dars.sources[0].url).toBe("/duroos/lesson/abadr-tawhid");
+  });
+  it("reads an answer page as that answer, not the glossary word that links to it", async () => {
+    // The glossary's Ejar links to this answer and comes first in the knowledge; the page is still the answer.
+    const r = await ask("what do I need for it?", "/ask/what-is-ejar");
+    expect(r.found).toBe(true);
+    expect(r.sources.map((s) => s.url)).toContain("/ask/what-is-ejar");
   });
   it("answers a question that stands on its own without the page", async () => {
     const r = await ask("prayer times", "/guides/drivers-license");

@@ -29,7 +29,8 @@ export type Instant = { title: string; text: string; url: string; kind: "live" |
 
 export type DeepResult = { instant: Instant | null; hits: DeepHit[] };
 
-const TODAYS_DATE = /^(the )?(hijri|islamic|todays|today s) ?(date|day|month)?$|^(today|date today|hijri date today)$|^(التاريخ الهجري|التاريخ|تاريخ اليوم|التاريخ اليوم|الهجري)$/;
+/** "hijri date", "today's date", "التاريخ الهجري": not "islamic" alone, nor "التاريخ" alone (that is also "history"). */
+const TODAYS_DATE = /^(the )?(hijri|hijri (date|day|month)|(islamic|todays|today s) (date|day|month))$|^(today|date today|hijri date today)$|^(التاريخ الهجري|تاريخ اليوم|التاريخ اليوم|الهجري)$/;
 
 const KINDS = new Set<Chunk["kind"]>(["guide", "faq", "date", "program"]);
 const MAX_SNIPPET = 220;
@@ -47,7 +48,19 @@ export function snippetOf(text: string, terms: string[]): string {
       n = k;
     }
   }
-  return best.length <= MAX_SNIPPET ? best : `${best.slice(0, MAX_SNIPPET).replace(/\s+\S*$/, "")}...`;
+  if (best.length <= MAX_SNIPPET) return best;
+  // A long sentence is cut around its first matching word, so the words searched for stay in view.
+  let at = 0;
+  for (const m of best.matchAll(/\S+/g)) {
+    if (terms.length && termHits(terms, m[0]) > 0) {
+      at = m.index ?? 0;
+      break;
+    }
+  }
+  if (at <= MAX_SNIPPET - 60) return `${best.slice(0, MAX_SNIPPET).replace(/\s+\S*$/, "")}...`;
+  const start = best.indexOf(" ", Math.max(0, at - 40)) + 1;
+  const cut = best.slice(start, start + MAX_SNIPPET);
+  return `...${start + MAX_SNIPPET < best.length ? `${cut.replace(/\s+\S*$/, "")}...` : cut}`;
 }
 
 /** The first sentence of an answer: the short answer every MESH answer starts with. */
@@ -72,7 +85,13 @@ export async function deepSearch(db: Db, query: string, locale: "en" | "ar", now
 
   const chunks = knowledge ?? (await getKnowledge(db));
   const terms = keyTerms(q);
-  const found = retrieverFor(chunks, lang)(q, 12, 2).filter((p) => KINDS.has(p.kind) && (answers(q, p) || (p.cover ?? 0) >= 0.5));
+  let found = retrieverFor(chunks, lang)(q, 12, 2).filter((p) => KINDS.has(p.kind) && (answers(q, p) || (p.cover ?? 0) >= 0.5));
+  // An Arabic search finds a translated page in both languages: the Arabic section only, never the same one twice.
+  const pageOf = (url: string) => url.replace(/^\/ar(?=\/)/, "").split("#")[0];
+  if (ar) {
+    const inArabic = new Set(found.filter((p) => p.lang === "ar").map((p) => pageOf(p.url)));
+    found = found.filter((p) => p.lang === "ar" || !inArabic.has(pageOf(p.url)));
+  }
   // A search that is one of MESH's questions ("how much is the stipend") shows its short answer.
   const faq = !instant ? found.slice(0, 3).find((p) => p.kind === "faq" && sameQuestion(q, p.title)) : undefined;
   if (faq) instant = { title: faq.title, text: lead(faq.text), url: faq.url, kind: "answer" };
@@ -80,8 +99,9 @@ export async function deepSearch(db: Db, query: string, locale: "en" | "ar", now
   const seen = new Set<string>();
   const hits: DeepHit[] = [];
   for (const p of found) {
-    if (seen.has(p.url)) continue;
-    seen.add(p.url);
+    const key = p.url.replace(/^\/ar(?=\/)/, "");
+    if (seen.has(key)) continue;
+    seen.add(key);
     hits.push({ title: p.title, ...(p.titleAr ? { titleAr: p.titleAr } : {}), ...(p.section ? { section: p.section } : {}), snippet: snippetOf(p.text, terms), url: p.url, kind: p.kind as DeepHit["kind"] });
     if (hits.length >= 8) break;
   }

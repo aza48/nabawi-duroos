@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,7 +22,10 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
   const opener = useRef<HTMLButtonElement>(null);
   const [opened, setOpened] = useState(false);
   const [request, setRequest] = useState<{ q: string; n: number } | null>(null);
+  const seq = useRef(0);
   const onAssistantPage = /^\/(ar\/)?assistant$/.test(path);
+  // Once asked, a question from the search box is done: the panel opening again later must not ask it again.
+  const clearRequest = useCallback(() => setRequest(null), []);
 
   useEffect(() => {
     const d = dialog.current;
@@ -40,7 +43,9 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
       if (!q) return;
       e.preventDefault();
       setOpened(true);
-      setRequest((r) => ({ q, n: (r?.n ?? 0) + 1 }));
+      // A fresh number each time, even after the last one was cleared, so the panel always sees a new question.
+      seq.current += 1;
+      setRequest({ q, n: seq.current });
       if (!dialog.current?.open) dialog.current?.showModal();
     };
     window.addEventListener("mesh:ask", onAsk);
@@ -94,7 +99,7 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
               </button>
             </span>
           </div>
-          <div className="min-h-0 flex-1">{opened && <AssistantPanel locale={locale} autoFocus compact request={request} page={path} onNavigate={() => dialog.current?.close()} />}</div>
+          <div className="min-h-0 flex-1">{opened && <AssistantPanel locale={locale} autoFocus compact request={request} page={path} onNavigate={() => dialog.current?.close()} onRequestHandled={clearRequest} />}</div>
         </div>
       </dialog>
     </>

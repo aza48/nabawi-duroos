@@ -17,9 +17,11 @@ export async function GET(req: Request) {
   if (q.length > 200) return fail("bad_request", 400, "The search must be 200 characters or fewer.");
   if (!allow(`deep:${clientIp(req)}`, 120, 60_000)) return fail("too_many_requests", 429, "Please wait a minute before searching again.");
   try {
-    const res = ok(await deepSearch(await getDb(), q, locale));
-    // Live answers change through the day, so a short shared cache only.
-    res.headers.set("Cache-Control", "public, s-maxage=120, stale-while-revalidate=600");
+    const data = await deepSearch(await getDb(), q, locale);
+    const res = ok(data);
+    // A live answer (today's date, adhan times, tonight's duroos and their cancellations) is shared for 30 seconds
+    // at most, never served stale; written sections change only when a guide does.
+    res.headers.set("Cache-Control", data.instant?.kind === "live" ? "public, s-maxage=30" : "public, s-maxage=120, stale-while-revalidate=600");
     return res;
   } catch {
     return fail("search_error", 500, "Search couldn't load. Please try again.");

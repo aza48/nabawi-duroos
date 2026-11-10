@@ -128,7 +128,8 @@ function vocabulary(docs: SearchDoc[]) {
   const add = (w: string, n = 1) => {
     if (w.length >= 3 && !/\d/.test(w)) count.set(w, (count.get(w) ?? 0) + n);
   };
-  for (const d of docs) for (const w of split(`${d.title} ${d.titleAr ?? ""} ${d.subtitle ?? ""} ${d.text ?? ""}`)) add(w);
+  // Arabic words count without their article too: "داخلي" is a known word when the site says "الداخلي".
+  for (const d of docs) for (const w of split(`${d.title} ${d.titleAr ?? ""} ${d.subtitle ?? ""} ${d.text ?? ""}`)) for (const f of forms(w)) add(f);
   // A synonym word is worth many uses: "apartmnt" is "apartment", a word students type, before a rarer word one letter off.
   for (const w of knownWords()) add(w, 5);
   const sorted = [...count.keys()].sort();
@@ -180,10 +181,13 @@ function vocabulary(docs: SearchDoc[]) {
  */
 export function weighQuery(q: string, alsoTyped: string[] = []): { query: string; typed: string[][]; weight: (term: string) => number } {
   const words = split(q);
-  const kept = words.filter((w) => !PARTICLES.has(w));
-  const own = kept.length ? kept : words;
+  // Positions, not words, are kept, so the word first typed at each place ("iqma" for "iqama") stays with it.
+  const kept = words.map((_, i) => i).filter((i) => !PARTICLES.has(words[i]));
+  const at = kept.length ? kept : words.map((_, i) => i);
+  const own = at.map((i) => words[i]);
+  const first = at.map((i) => alsoTyped[i]);
   const added = expandQuery(own.join(" ")).split(" ").filter((x) => x.length > 1 && !PARTICLES.has(x) && !FILLER.has(x) && !own.includes(x));
-  const typed = own.map((w, i) => [...new Set([w, ...forms(w).slice(1), ...(alsoTyped[i] && alsoTyped[i] !== w ? [alsoTyped[i]] : []), ...added.filter((x) => isSpelling(w, x))])]);
+  const typed = own.map((w, i) => [...new Set([w, ...forms(w).slice(1), ...(first[i] && first[i] !== w ? [first[i]] : []), ...added.filter((x) => isSpelling(w, x))])]);
   const topical = own.some((w) => !GENERIC.has(w));
   const light = new Set(topical ? typed.filter((t) => GENERIC.has(t[0])).flat() : []);
   const full = new Set(typed.flat());

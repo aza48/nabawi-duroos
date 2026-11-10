@@ -145,7 +145,8 @@ const POINTS_AT_PAGE = /\b(this|it|that|here|these|those)\b|(^|\s)(هذا|هذه
 function pageChunk(chunks: Chunk[], path: string): Chunk | undefined {
   const key = pageKey(path);
   if (!/^\/(guides|ask|programs|duroos\/lesson|duroos\/shaykh)\//.test(key)) return undefined;
-  return chunks.find((c) => c.lang !== "ar" && pageKey(c.url) === key);
+  // A glossary word links to the page that explains it, but it is not that page.
+  return chunks.find((c) => c.lang !== "ar" && c.kind !== "term" && pageKey(c.url) === key);
 }
 
 /** A source as shown under the answer: an Arabic answer shows the page's Arabic title when it has one. */
@@ -221,7 +222,8 @@ function inArabicWherePossible(found: Passage[], chunks: Chunk[], question: stri
   const out: Passage[] = [];
   for (const p of found) {
     let q: Passage = p;
-    const twins = p.lang === "ar" ? undefined : pages.get(pageKey(p.url));
+    // A glossary meaning is not a page: it keeps its place, not swapped for the linked guide's Arabic passage.
+    const twins = p.lang === "ar" || p.kind === "term" ? undefined : pages.get(pageKey(p.url));
     if (twins) {
       // The same section in Arabic first (an English "Exit and re-entry visa" passage becomes «تأشيرة الخروج والعودة»,
       // not the summary that names every topic), then the page's best Arabic passage.
@@ -377,7 +379,7 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
     searchText = `${reading.kind === "guide" ? reading.title.split(":")[0] : reading.title} ${q}`;
     const all = retrieverFor(chunks, lang)(searchText, 6);
     // The page's own sections, ranked by the question alone: "how much does it cost?" is its "What it costs".
-    const own = createRetriever(chunks.filter((c) => c.lang !== "ar" && pageKey(c.url) === pageKey(reading.url)))(q, 3, 3);
+    const own = createRetriever(chunks.filter((c) => c.lang !== "ar" && c.kind !== "term" && pageKey(c.url) === pageKey(reading.url)))(q, 3, 3);
     found = [...new Map([...own.slice(0, 3), ...all].map((p) => [p.id, p])).values()].slice(0, 6);
   }
   // The synonyms find the right page, often through its English text; when that page is translated,
@@ -386,7 +388,7 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   // A page found in Arabic is not shown again in English.
   if (ar) {
     const inArabic = new Set(found.filter((p) => p.lang === "ar").map((p) => pageKey(p.url)));
-    found = found.filter((p) => p.lang === "ar" || !inArabic.has(pageKey(p.url)));
+    found = found.filter((p) => p.lang === "ar" || p.kind === "term" || !inArabic.has(pageKey(p.url)));
   }
   // "Where can I buy a fridge": a passage answers only where it says where the thing is sold, not where it mentions selling one.
   if (BUY_Q.test(normalize(q))) found = found.filter((p) => !p.rareTerm || BUY_WORD.test(p.rareTerm) || sentences(p.text).some((x) => termHits([p.rareTerm!], x) > 0 && SOLD_HERE.test(x) && (!/\bsell(s|ing)?\b/i.test(x) || /\b(buy|shops?)\b/i.test(x))));
