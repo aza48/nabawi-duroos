@@ -21,6 +21,8 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const opener = useRef<HTMLButtonElement>(null);
   const [opened, setOpened] = useState(false);
+  const [request, setRequest] = useState<{ q: string; n: number } | null>(null);
+  const onAssistantPage = /^\/(ar\/)?assistant$/.test(path);
 
   useEffect(() => {
     const d = dialog.current;
@@ -28,9 +30,29 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
     const onClose = () => opener.current?.focus();
     d.addEventListener("close", onClose);
     return () => d.removeEventListener("close", onClose);
-  }, []);
+  }, [onAssistantPage]);
 
-  if (/^\/(ar\/)?assistant$/.test(path)) return null;
+  // "Ask the MESHaykh" from the search box: answered here, on the page the person is on.
+  useEffect(() => {
+    if (onAssistantPage) return;
+    const onAsk = (e: Event) => {
+      const q = (e as CustomEvent<{ q?: string }>).detail?.q?.trim();
+      if (!q) return;
+      e.preventDefault();
+      setOpened(true);
+      setRequest((r) => ({ q, n: (r?.n ?? 0) + 1 }));
+      if (!dialog.current?.open) dialog.current?.showModal();
+    };
+    window.addEventListener("mesh:ask", onAsk);
+    return () => window.removeEventListener("mesh:ask", onAsk);
+  }, [onAssistantPage]);
+
+  // A link followed from the chat opens its page: the dialog gets out of the way.
+  useEffect(() => {
+    if (dialog.current?.open) dialog.current.close();
+  }, [path]);
+
+  if (onAssistantPage) return null;
 
   const open = () => {
     setOpened(true);
@@ -72,7 +94,7 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
               </button>
             </span>
           </div>
-          <div className="min-h-0 flex-1">{opened && <AssistantPanel locale={locale} autoFocus compact />}</div>
+          <div className="min-h-0 flex-1">{opened && <AssistantPanel locale={locale} autoFocus compact request={request} page={path} onNavigate={() => dialog.current?.close()} />}</div>
         </div>
       </dialog>
     </>
