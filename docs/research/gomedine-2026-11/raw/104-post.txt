@@ -1,0 +1,78 @@
+URL: https://gomedine.com/fr_fr/comment-verifier-votre-contrat-de-travail-sur-qiwa-en-arabie-saoudite/
+TITLE: Comment vérifier votre contrat de travail sur Qiwa en Arabie Saoudite? — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Article mis à jour 2026. En Arabie Saoudite, votre contrat de travail enregistré sur Qiwa est devenu le seul document juridiquement reconnu par le ministère des Ressources humaines (MHRSD). Savoir le consulter, le vérifier et l’accepter — et garder un œil sur votre permis de travail — n’a jamais été aussi important. Voici le guide complet, à jour des règles 2026. Désormais, vous pouvez rapidement vérifier votre contrat de travail sur Qiwa en suivant les instructions ci-dessous.
+Vérifier votre contrat de travail
+⚡ Mise à jour 2026 : ce qui a changé (à lire en premier)
+Avant les étapes pratiques, voici les nouveautés à connaître absolument :
+Connexion via Nafath. On ne se connecte plus à Qiwa avec un simple identifiant/mot de passe : l’accès passe désormais par Nafath (l’identité numérique nationale) ou Absher.
+Le contrat doit être documenté. Un contrat non enregistré et non approuvé sur Qiwa n’est pas reconnu par le ministère. Vérifiez que le vôtre y figure bien.
+Délai de 10 jours. Une offre de contrat reçue sur Qiwa doit être acceptée ou refusée sous 10 jours , sinon elle est annulée automatiquement.
+Surveillez votre permis de travail (rukhsat al-‘amal). Depuis le 30 juin 2026 , un salarié dont le permis est expiré depuis plus de 3 mois peut être radié du registre de son entreprise — même si son iqama est encore valide .
+Plus de liberté de mobilité. Depuis la réforme de 2025, vous pouvez changer d’employeur sans l’accord de l’ancien une fois le contrat ou le préavis terminé.
+On détaille tout plus bas.
+Avant de commencer : se connecter à Qiwa
+Rendez-vous sur le portail officiel : qiwa.sa .
+Choisissez l’espace « Individus » (compte individuel), pas l’espace entreprise.
+Authentifiez-vous via Nafath : ouvrez l’application Nafath sur votre téléphone et validez le numéro affiché à l’écran (ou utilisez Absher).
+💡 Si vous n’avez pas encore de compte, lisez d’abord notre guide : Comment s’inscrire sur la plateforme Qiwa en Arabie Saoudite ?
+L’interface Qiwa est en arabe et en anglais. Pour vous aider à repérer les boutons, nous indiquons à chaque fois le libellé français et anglais.
+1. Consulter et vérifier votre contrat de travail actuel
+Pour lire le contrat actuellement enregistré avec votre employeur :
+Connectez-vous à votre compte individuel Qiwa (via Nafath).
+Ouvrez le menu (les 3 barres) puis l’onglet « Services » ( Services ).
+Cliquez sur « Contrats de travail » ( Employment Contracts ).
+Sélectionnez « Contrat actuel » ( Current contract ) pour l’afficher.
+Ce que vous devez vérifier dans le contrat :
+le salaire de base et les indemnités,
+l’ intitulé du poste (il doit correspondre à votre profession sur l’iqama),
+la période d’essai , la durée du contrat et les conditions de renouvellement ,
+le préavis , les congés et droits annexes.
+Pensez à télécharger une copie ( Contract Preview ) et à la conserver : elle vous servira en cas de litige, de transfert ou de démarche de visa.
+⚠️ Important : une fois le contrat Qiwa émis et approuvé, il remplace tous les contrats précédents signés avec l’employeur. C’est lui qui fait foi devant le ministère et la justice du travail.
+2. Accepter ou refuser un nouveau contrat (offre ou transfert de parrainage)
+Quand vous trouvez un nouvel emploi, le nouvel employeur vous envoie une offre / un contrat dans Qiwa pour lancer le transfert. Voici la marche à suivre :
+Connectez-vous à votre compte individuel Qiwa.
+Menu → « Services » → « Contrats de travail » ( Employment Contracts ) pour voir les contrats en attente . (Pour un transfert, le chemin « Transferts d’employés » / Employee Transfers mène au même contrat.)
+Cliquez sur « Voir les détails » ( Go to details ), puis « Accepter le contrat » ( Accept contract ).
+Lisez et acceptez les conditions générales , puis cliquez sur « Accepter et continuer » .
+Saisissez le code à 4 chiffres reçu par SMS, puis confirmez.
+Pour refuser : cliquez sur « Refuser » ( Reject ), choisissez un motif , puis confirmez.
+À retenir en 2026 :
+Vous disposez de 10 jours pour répondre. Sans réponse, l’offre est annulée automatiquement .
+Après acceptation, ce contrat devient votre seul contrat juridiquement contraignant aux yeux du ministère.
+Si vous êtes sous visa de sortie définitif ( Final Exit Visa ), vous ne pouvez pas changer d’employeur ni accepter de nouveau contrat.
+En cas de blocage : écrivez à support@qiwa.sa ou appelez la ligne d’assistance Qiwa : 920000105 .
+3. Demander une modification avant d’accepter
+Vous pouvez demander à l’employeur de modifier les termes avant d’accepter :
+Compte individuel → « Services » → « Contrats de travail » .
+« Voir les détails » ( Go to details ) sur le contrat concerné.
+Faites défiler et cliquez sur « Demander une modification » ( Request modification ).
+Sélectionnez un motif , puis cliquez sur « Soumettre » .
+Votre demande part automatiquement à l’employeur, qui peut renvoyer une version corrigée.
+4. Vérifier la validité de votre permis de travail (devenu crucial en 2026)
+En Arabie Saoudite, vous avez deux documents aux dates parfois différentes :
+l’ iqama (titre de séjour),
+le permis de travail ( rukhsat al-‘amal ), géré sur Qiwa.
+Depuis le 30 juin 2026 , si votre permis de travail reste expiré plus de 3 mois , Qiwa peut radier automatiquement votre enregistrement de l’entreprise — et ce, même si votre iqama est encore valable . Une iqama « qui a l’air bonne » ne suffit donc plus.
+Le bon réflexe : dans votre compte Qiwa, vérifiez régulièrement la date d’expiration de votre permis de travail (visible avec votre statut d’emploi). Si elle approche, alertez votre employeur par écrit — c’est lui qui doit renouveler le permis (et il n’a pas le droit de vous en déduire le coût du salaire).
+Les nouvelles réglementations 2026 à connaître
+Documentation et contrat unifié. Le contrat de travail doit obligatoirement être documenté électroniquement sur Qiwa pour être valable. L’Arabie Saoudite a par ailleurs déployé un contrat unifié automatiquement authentifié via le portail Najiz , que les employeurs devaient adopter (contrats à durée déterminée, qui concernent la majorité des expatriés, à l’échéance de mars 2026).
+Fin du système kafala (depuis juin 2025). La relation est désormais contractuelle , pas liée à un parrain. Concrètement : changement d’employeur sans accord de l’ancien une fois le contrat / préavis terminé, demande de sortie et retour directement via Absher, et interdiction pour l’employeur de retenir votre passeport.
+Permis classés par niveau de compétence. Les permis de travail des étrangers sont classés en trois catégories — high-skill, skilled, basic — selon le diplôme, l’expérience, le salaire et l’âge.
+Résidence Premium (« Saudi Green Card »). Les titulaires doivent désormais obtenir un permis de travail dédié via la plateforme, au tarif de 100 SAR .
+Saoudisation (Nitaqat). Côté entreprises, seuls les contrats des employés saoudiens documentés sur Qiwa comptent désormais dans le calcul du Nitaqat (depuis avril 2026) — un point qui pousse les employeurs à tout régulariser sur la plateforme.
+En cas de problème
+Support Qiwa : support@qiwa.sa — ligne d’assistance 920000105 .
+Litige (salaire impayé, contrat non respecté) : vous pouvez saisir le ministère via la plateforme de réclamations Madad ; un salaire impayé depuis 30 jours ouvre droit à une action.
+Vérification personnelle : confirmez toujours les informations sensibles directement sur qiwa.sa et hrsd.gov.sa .
+Foire aux questions
+Mon iqama est valide : dois-je quand même surveiller mon permis de travail ? Oui. Depuis 2026, c’est le permis de travail (et non l’iqama seule) qui peut déclencher une radiation s’il reste expiré plus de 3 mois.
+Un contrat non enregistré sur Qiwa a-t-il une valeur ? Non. Seul le contrat documenté et approuvé sur Qiwa est reconnu par le ministère et la justice du travail.
+Combien de temps pour accepter une offre reçue sur Qiwa ? 10 jours. Passé ce délai sans réponse, la demande est annulée automatiquement.
+Puis-je changer d’employeur sans l’accord de mon parrain ? Oui, depuis la réforme de 2025, une fois votre contrat ou votre préavis terminé (sauf situation de visa de sortie définitif).
+Comment me connecter si je n’ai pas Nafath ? Installez l’application Nafath , liez votre iqama, puis réessayez. Absher est une alternative d’authentification.
+📲 Pour ne rater aucune mise à jour des lois et réglementations en Arabie Saoudite, rejoignez notre groupe Telegram .
+Medinatouna — informations fiables et vérifiées pour la communauté francophone de Médine et d’Arabie Saoudite.
