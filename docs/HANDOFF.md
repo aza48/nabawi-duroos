@@ -4,20 +4,23 @@ Cleaned up on 9 November 2026, about 17:00 Riyadh, by akheeai. This file is the 
 
 Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG.md` (who owns what, owner decisions, the log) and the latest comments on GitHub issue 13.
 
-## 9 November 2026, about 21:00 Riyadh: aiakhee (Lane B, the assistant, AR1)
-**Open PRs, all checked (tsc, vitest, `MESH_LOCAL_DB=1 next build`, screenshots at 390 and 1440 px in English and Arabic, an independent review each), waiting for review and merge (web reviews for akheeai):**
-- #49 AR1 Arabic columns (`aiakhee/AR1-arabic-columns`, `3e270e1`). **Owner applies the migration first** (`docs/AR1-MIGRATION.md`); akheeai reviewed it ok.
-- #54 B1 First 100 days (`/start`, `/ar/start`), `b68261f`.
-- #56 B2 glossary (`/glossary`, `/ar/glossary`, first mention definitions in guides), `24e63a4`. Merge before #57. B1 and B2 each add one word to `AR_TWINS`: keep both.
-- #57 B6 Quran and hadith links, stacked on #56, `6a2a0ea`.
-- #58 B5 FAQ short answers (`faq-leads.ts`), `5477ebb`. Safe to merge; hold the FAQ `content:sync` until the FAQ fixes PR below lands (10 answers repeat their lead's Yes or No).
-- #60 B4 dars locations research note, `597a6ab` (9 confirmed, 12 likely, 31 unknown).
+## 10 November 2026, about 02:45 Riyadh: aiakhee (Lane B, the assistant, AR1)
+**Merged to `main`:** B4 dars locations (#60), B1 First 100 days `/start` (#54), B2 glossary `/glossary` (#56), B6 Quran and hadith links (#57), B5 FAQ short answers (#58), FAQ fixes and 13 new FAQs (#85), the assistant (#106: ruling guard, citations, search fixes, authoritative wording, a 228-question test bank in `tests/assistant-eval.test.ts`).
 
-**In progress (sub-agents in aiakhee's session):**
-- `aiakhee/assistant-quality-2`, on AR1: ruling guard (4 leaks found in an evaluation of 165 questions), Arabic indexing, retrieval fixes for 51 misses, web's three fixes (no-answer wording, launcher at 768 to 1023 px, `ASK_LIMITS` out of the route file), a regression test set. WIP pushed at `f226ac2`. Evaluation harness and results are in aiakhee's scratchpad and will be summarised in `docs/research/assistant-eval-2026-11.md`.
-- `aiakhee/faq-fixes-and-new`, on #58: FAQ fixes and new FAQs from `docs/research/*`, in aiakhee's own file `faqs-aiakhee-2026-11.ts`. It avoids the FAQs admin claimed on issue 13.
+**Waiting for the owner:**
+- #49 AR1 Arabic columns (`aiakhee/AR1-arabic-columns`, `2dff60c`, current with `main`, 1285 tests pass). Apply the migration first (`docs/AR1-MIGRATION.md`), then merge. It carries `tests/assistant-arabic.test.ts`; the assistant already reads the Arabic fields once they exist.
+- `npm run content:sync` publishes the FAQ short answers, the FAQ fixes and the new FAQs.
 
-**Next for aiakhee (or a teammate if aiakhee is out of usage):** AR4 (FAQs in Arabic, `questionAr` and `answerHtmlAr`, after #49 merges), the deferred admission and University FAQs after admin's PR lands, then the assistant answering from `/start` and the glossary.
+**Next for aiakhee (or anyone free):**
+1. AR4: the FAQs in Arabic (`questionAr`, `answerHtmlAr`) after #49 merges, in aiakhee's own files (`faqs-aiakhee-2026-11.ts` overlay).
+2. The deferred admission and University FAQs: drafts and evidence in `docs/research/faq-deferred-2026-11.md`; recheck against admin's corrected guides first.
+3. Assistant weak answers listed in `docs/research/assistant-eval-2026-11.md` (Haram opening hours, Jawazat location, visa expiry), mostly content gaps for the guide owners.
+4. New guide topics offered to admin on issue 13 (Qur'an circles at the Haram, government offices, utilities in a rented flat, working on an iqama); write them only if admin passes them on.
+
+aiakhee's hourly wake-up is paused (owner, to save tokens); the usage reset wake-up is booked for 03:52 UTC.
+
+## 10 November 2026: Desktop agent
+The admin research is finished and back with admin; a cloud session published it into guides on `main`. **28 guides and 35 FAQs on `main` are not live yet**: the owner runs the command in `scripts/publish-pending-2026-11-10.txt` (new rows only, nothing overwritten). Then check a few on medinahub.org, for example `/guides/university-student-system` and `/ask/blackboard-login`.
 
 ## 9 November 2026, about 20:15 Riyadh: Desktop agent, admin's research taken over for the owner
 The owner asked the Desktop agent to finish the admin agent's research and publish it in guides, skipping the remaining Telegram periods. **Read `docs/research/NEXT-STEPS-admin-research.md` on branch `claude/wonderful-davinci-um61gf` first**: it lists what is done, what was still running and the publishing plan.
@@ -110,15 +113,15 @@ The live list is in AI-LOG (agent table) and the latest summary on issue 13. In 
     - eight chats researched
 - **aiakhee** (Lane B): AR1 (#49), then AR4 (Arabic FAQs). B1 First 100 days, B2 glossary, B4 dars locations, B5 short answers and B6 Quran and hadith links are pushed on their own `aiakhee/B*` branches, with no PRs yet.
 - **akhiai** (Lane E): AR3 for the remaining guides (five per PR), E3 sisters at Masjid an-Nabawi, and E4 keeping guides fresh.
-- **web** (Lanes C and D):
-  - C3 share button, C1 offline, and D3 "Who are you?" (after B1)
-  - preloading the Arabic fonts through `next/font`
-  - S1 to S3 (analytics)
+- **web** (Lanes C and D; lead reviewer while akheeai is out; near its weekly limit, back 11 Nov 05:00 UTC):
+  - D3 "Who are you?": WIP on `web/D3-who-are-you`, handed to naseer (Takeovers)
+  - C3 share button, C1 offline, S1 to S3 (analytics)
+  - the Arabic font preload through `next/font` is dropped: this Next version gives both declarations the family name "Alexandria", so Arabic pages download it twice and English pages preload it too
 - **admin** (the owner's own agent, added 9 Nov; takes orders from the owner only):
   - distilling the IU students' Telegram forum (478k messages, Dec 2015 to 9 Nov 2026) into `docs/research/telegram-iu-2026-11/`, one findings file per period, then a `SYNTHESIS.md` with the latest state per topic and the conflicts with MESH
   - a full crawl of gomedine.com, rewritten in MESH's words, in `docs/research/gomedine-2026-11/`
   - new guides from both, and a guide ideas list for the owner in `docs/research/GUIDE-IDEAS-admin-2026-11.md`
-  - status 10 Nov: every Telegram period and every gomedine.com page is read. 15 new guides and about 40 corrections or additions are published from this research (see AI-LOG). What is left needs the owner's answers: the last section of `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`
+  - status 10 Nov: every Telegram period and every gomedine.com page is read. 14 new guides and about 40 corrections or additions are published from this research (see AI-LOG). What is left needs the owner's answers: the last section of `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`
   - other agents may read these files as research, like `docs/research/chats-2026-11/`
 - **Desktop agent:** release checks after big merges (`docs/audit/release-checks/`); search ranking; production database steps when the owner asks.
 - **naiifos** (a person, not always on; work around them when possible): the duroos cards. Optional: the report link and the plural fix in the cards.

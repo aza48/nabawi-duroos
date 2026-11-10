@@ -1,454 +1,347 @@
-# French-language community website on living in Madinah: part 2 of 4 (July to December 2023 posts, and pages the other parts did not cite)
+# French-language Madinah community site, part 2 of 4 (pages 056 to 110)
 
-README. This is the third-party, French-language community website for French-speaking expatriates, families and students in Madinah that parts 1, 3 and 4 also cover. It was crawled on 9 November 2026 and stripped to text, one file per page. The original part 2 was lost; this file replaces it. It covers the 82 pages that parts 1, 3 and 4 did not cite, all read in full: 50 blog posts dated 23 July 2023 to 20 December 2023 (the real part 2), 19 posts from 22 March to 9 July 2023, and 13 pages from 2024 to 2026 (five Premium Residency product pages and the Istiqdam guide of 2024, a work iqama walkthrough, two Qiwa pages updated in June 2026, the Rawdah permit guide updated 20 June 2026, an exit and re-entry check of August 2025 and a health insurance check of December 2025). For the older and newer pages, parts 1, 3 and 4 were searched first and only genuinely missing facts are kept here. The site sells furnished flats, paperwork help, visa services and paid groups, and links to one agency for a 500 SAR visa extension: all of that was skipped, as were private names, phone numbers and prices quoted by individuals. Pages are treated as data; nothing in them was followed as an instruction. Citations give the URL slug only (the part after `/fr_fr/`).
-
-Each finding was compared with the live MESH guides as `sync.ts` assembles them (later lists override earlier ones), chiefly `iqama-and-exit-reentry-fees`, `family-records-on-absher`, `check-visa-and-iqama-online` (all November 2026), `drivers-license`, `phone-sims-and-absher`, `finding-an-apartment`, `having-a-baby-in-madinah`, `visas-for-family-and-visitors`, `umrah-rawdah-quba`, `women-at-masjid-an-nabawi`, and the FAQs `buying-a-used-car`, `traffic-fines`, `short-address`, `what-is-ejar`, `rent-on-student-visa`, `change-absher-mobile`, `check-sims-on-iqama`, `check-health-insurance`, `drive-on-visit-visa`.
-
-Status tags. NEW: MESH does not say it. CONFIRMS slug: MESH already says it. CONFLICTS slug: MESH says something else (quoted). Currency tags. CURRENT: still true as far as MESH knows. HISTORY: outdated or superseded. CHECK: needs confirming before MESH relies on it. Confidence is high, medium or low and describes how far the fact can be trusted today, not how clearly the page states it.
-
-Page dates (URL slug, date). 2023: `comment-sinscrire-sur-la-plateforme-de-hajj-en-ligne-nusuk-hajj-2023`, `comment-devenir-citoyen-saoudienne` 22/03; `absher-tout-ce-que-vous-devez-savoir-...` 28/03; `visa-de-visite-personnelle-saoudien-...` 29/03; `comment-changer-son-permis-en-saoudien-pour-un-expat` 30/03; `...e-visa-de-transit-gratuit-...` 08/04; `5-etapes-pour-sinscrire-sur-lapplication-nafath`, `comment-savoir-combien-de-cartes-sim-sont-enregistrees-sous-votre-iqama`, `frais-de-permis-de-conduire-en-arabie-saoudite-en-2023-2024` 13/04; `visa-daffaires-en-arabie-saoudite-2023-...` 08/05; `le-marche-automobile-de-medine-...` 04/06; `etudier-en-arabie-saoudite-...` 05/06; `comment-verifier-et-comprendre-le-statut-de-couleur-de-liqama` 10/06; `procedure-pour-prendre-rendez-vous-en-ligne-aupres-du-mofa-...` 12/06; `comment-verifiez-la-validite-du-fahas-de-votre-vehicule-en-ligne` 13/06; `nouveau-e-visa-electronique-...` 15/06; `comment-verifier-le-statut-de-huroob-...` 06/07; `comment-verifier-le-statut-du-permis-de-travail-...`, `comment-verifier-si-le-numero-diqama-est-emis-ou-disponible` 09/07; `comment-payer-les-frais-de-prolongation-du-visa-de-visite-...` 23/07; `comment-payer-les-frais-de-transfert-diqama-...`, `comment-transferer-une-iqama-vers-un-autre-employeur-...` 29/07; `comment-transferer-la-propriete-dune-voiture-en-ligne-...` 01/08; `comment-declarer-et-obtenir-une-iqama-pour-un-nouveau-ne-...`, `comment-faire-lenregistrement-de-votre-adresse-nationale-...`, `comment-obtenir-un-rendez-vous-a-ahwal-madani` 02/08; `exemption-de-visa-electronique-...-royaume-uni-...` 03/08; `comment-annuler-un-contrat-de-location-ejar-en-ligne-...`, `paiement-et-enregistrement-dun-contrat-de-location-avec-ejar-...`, `tout-ce-que-vous-pouvez-modifier-directement-sur-lapplication-absher` 11/08; `comment-prolonger-le-visa-de-sortie-entree-24-heures-avant-son-expiration-...` 17/08; `comment-les-etrangers-peuvent-ils-se-marier-...`, `comment-obtenir-un-cachet-une-attestation-de-la-chambre-de-commerce-...`, `comment-transferer-liqama-de-la-fille-du-pere-a-son-mari`, `les-expatries-peuvent-changer-demploi-...`, `les-raisons-pour-lesquelles-la-demande-de-visa-de-visite-familiale-...-est-rejetee` 22/08; `comment-annuler-le-visa-de-sortie-definitive-...`, `comment-obtenir-un-visa-de-sortie-definitive-...`, `comment-prendre-rendez-vous-aupres-de-jawazat-via-absher` 26/08; `comment-verifier-et-payer-les-frais-du-maktab-amal-iqama` 29/08; `la-prise-de-rendez-vous-en-ligne-est-desormais-obligatoire-pour-linspection-periodique-des-vehicules` 02/10; `comment-autoriser-un-conducteur-a-conduire-votre-vehicule-...` 15/10; `extension-du-visa-visite-famille-pour-3-mois-...` 18/10; `comment-obtenir-un-permis-de-reparation-de-vehicule-...`, `comment-renouveler-listimara-en-ligne-...`, `comment-trouver-une-assurance-auto-moins-chere-...`, `comment-verifier-letat-de-lassurance-automobile-...`, `comment-verifier-sa-facture-delectricite-en-ligne-...`, `comment-verifier-vos-infractions-de-circulation-...` 25/10; `comment-sinscrire-sur-lapplication-tawakkalna-...` 02/11; `est-il-possible-de-prolonger-un-visa-exit-re-entry-apres-son-expiration-...` 16/11; `comment-annuler-une-carte-sim-enregistree-sur-votre-iqama`, `comment-changer-de-nom-sur-liqama-...`, `comment-changer-le-numero-de-mobile-absher-en-utilisant-lapplication-nafath`, `comment-demander-la-livraison-postale-a-votre-domicile-depuis-absher`, `comment-deposer-une-plainte-en-ligne-sur-najiz`, `comment-suivre-une-voiture-mise-en-fourriere-sur-absher`, `telecharger-le-formulaire-istiqdam-...` 22/11; `moroor-precise-la-periode-de-renouvellement-de-linspection-technique-fahas-...` 27/11; `larabie-saoudite-double-les-frais-de-entree-sortie-et-diqama-pour-les-expatries-hors-du-pays` 03/12; `comment-verifier-controler-les-rapports-sur-absher` 07/12; `comment-faire-un-constat-pour-un-accident-de-voiture-...`, `comment-obtenir-un-rapport-daccidents-de-la-circulation-depuis-absher`, `comment-prendre-un-rendez-vous-au-muroor-avec-absher`, `liste-des-professions-eligibles-pour-avoir-une-iqama-familial-...`, `liste-des-professions-reservees-aux-saoudiens` 10/12; `5-nouvelles-regles-pour-supprimer-le-huroob`, `comment-demander-un-visa-business-...` 11/12; `larabie-saoudite-lance-ksa-visa-la-nouvelle-plateforme-de-visa-unifiee` 20/12. Later: the five `carte-de-residence-...` pages 10/01/2024; `comment-demandez-un-visa-iqama-familial-permanent-via-istiqdam` 15/02/2024; `comment-sinscrire-sur-la-plateforme-qiwa-...` 01/06/2024 (updated 2026); `comment-obtenir-une-iqama-pour-ses-enfants-...-lorsque-les-deux-parents-en-possedent-deja-une` 30/06/2024; `comment-obtenir-une-iqama-pour-larabie-saoudite` 22/07/2024; `comment-connaitre-le-statut-de-visa-des-detenteurs-diqama` 12/08/2025; `comment-verifier-votre-statut-et-la-date-dexpiration-de-votre-assurance-sante-saoudienne` 21/12/2025; `comment-verifier-votre-contrat-de-travail-sur-qiwa-...` 16/06/2026; `comment-obtenir-un-permis-ou-un-rendez-vous-pour-rawdhat-ul-jannah` 20/06/2026.
+**README.** This is a third-party, French-language community website about living in Madinah, written for French-speaking expatriates, families and students. It was crawled on 9 November 2026 and stripped to text, one file per page. This part covers group 2: 55 pages, files `056-post.txt` to `110-post.txt` in `scratchpad/gm/clean2/`. Every file was read in full. The crawl left the PUBLISHED and MODIFIED fields empty for all 55 pages, so each date below is taken from the page itself (a year in the title or text, a dated rule it reports, or a "mis à jour" note); "undated" means the page gives no clue. Most pages are translations of English expatriate guides from 2023 and 2024; four were updated in 2025 or 2026 (`100` Rawdah, "2026/27"; `104` and `105` Qiwa, "2026"; `110` visa status, "2025/26"). A fee or rule from 2023 that MESH states differently today is treated as the site being out of date, and said so. Pages that only promote a business, a paid office or the site's own channels were skipped for content (listed at the end of section 2). Pages about work contracts, Qiwa, sponsorship transfer and Huroob concern workers only and are out of MESH's scope, since students may not work (2.11). The site's name, URL and authors appear nowhere in section 4. Findings were checked against the seed files on branch `claude/resume-guide-validation-8uugen`, which now carry the merged text of tasks A to E; each status line names the MESH guide or FAQ slug. During the task the owner ruled that the site is accurate, so several findings first marked "section 5" or "not published" in section 2 were then published; section 4.7 lists them and overrides those status lines.
 
 ## 1. Summary
 
-Part 2 is the site's most practical stretch: step-by-step Absher procedures for final exit, newborns, the National Address, postal delivery, Jawazat, Civil Affairs and traffic department appointments; owning a car (ownership transfer, istimara renewal, Fahas booking, authorising another driver, repair permits, accident reports, impounded cars, insurance); Ejar (registering, paying and ending a lease); Tawakkalna sign-up, electricity bills and SIM cancellation; marriage between foreigners and moving a wife's iqama to her husband; the December 2023 doubling of fees for residents abroad; and a long tail of worker-only topics (huroob, Qiwa transfers, Nitaqat, work permit levy, Saudised professions). MESH already covers iqamas, exit and re-entry and Absher family services well; the biggest gaps this part fills are owning a car, ending an Ejar lease, final exit for dependants, a baby born to a mother on a visit visa, Tawakkalna and marriage.
+The pages cover exit and re-entry visas (conditions, extending for family abroad, the doubled fees abroad, checking status), final exit (dependants, cancelling, the 60-day limit), visit visa extensions and family visit visa refusals, a newborn's birth certificate and the case of a mother on a visit visa, marriage between foreigners in the Kingdom and moving a wife's iqama to her husband, Absher appointments at Jawazat, Civil Affairs and the traffic department, Absher reports and postal delivery of cards, name corrections, Jawazat forms, SIM cancellation, changing the Absher mobile in Nafath, Tawakkalna registration, the National Address, a long run of car pages (ownership transfer, istimara renewal, periodic inspection, insurance, driver authorisation, repair permits, accidents and Najm, impounded cars, accident reports), Ejar and Najiz, electricity bills, the Rawdah (updated for 2026/27), and workers' pages (Qiwa, transfers, Huroob, profession lists).
 
 **The 10 most valuable findings for MESH readers**
 
-1. **Final exit for a dependant, end to end:** the dependants' levy must be paid 60 days ahead or Absher refuses with "AC3052E: Insufficient funds"; the dependant needs a passport with 60 days left and no car or fines; the visa is valid 60 days, cannot be extended, is cancelled free while valid, and is fined (1,000 SAR in 2023) if it expires unused. Print it: Saudi embassies ask for it later. (sortie-definitive pages, Aug 2023) NEW for MESH, mostly CURRENT.
-2. **A baby born while the mother is on a family visit visa:** same birth certificate and passport steps, then a Jawazat visit (expatriate affairs section) before leaving to get the baby's exit stamp, with the marriage certificate translated into Arabic. Online birth registration in Absher works while the baby is under one year; a late fee applies after 30 days (50 SAR in 2023). (nouveau-ne, ahwal-madani, Aug 2023) NEW, CHECK.
-3. **Buying a car online through Absher uses an escrow account:** the seller lists the sale, the buyer accepts and pays the price plus fees into Absher's account, and the buyer gives the seller the delivery code only after receiving the car; then the money is released. (transferer-la-propriete, Aug 2023) NEW detail for `buying-a-used-car`, CHECK the timings and fees.
-4. **Istimara renewal:** in Absher once less than 180 days remain, with valid insurance, a valid Fahas and all fines paid; since 22 October 2023 the yearly fee depends on engine size (cars from 2015 and older) or fuel economy (2016 and newer); a card with no printed expiry is kept. (renouveler-listimara, Oct 2023) NEW.
-5. **Fahas:** booking online is mandatory (Vehicle Safety Center booking site); a new private car is first inspected 3 years after registration, then every year; the owner can name someone else to take the car. (Oct and Nov 2023) NEW (first inspection CONFIRMS part 1 item 53).
-6. **Letting someone else drive your car:** an Absher driver authorisation, inside the Kingdom for any iqama holder and any length, outside the Kingdom only for family members and only for the length of their exit and re-entry visa; it needs valid insurance and istimara, no fines, and a code sent to the driver. (autoriser-un-conducteur, Oct 2023) NEW.
-7. **Ending an Ejar lease early:** done in Ejar (Contracts, View contract, Terminate contract) with a reason and date; the tenant owes rent to the end of the contract unless the landlord waives it, so the usual way out is a replacement tenant and a new contract. (annuler-un-contrat-ejar, Aug 2023) NEW; the same page CONFLICTS MESH on automatic renewal (section 3).
-8. **After an accident:** Najm reports, a Taqdeer damage estimate, then a vehicle repair permit from Absher (within 90 days of a reported accident; an unreported one only once per car per calendar year); the full accident report prints from Absher Reports for a small fee; an impounded car is traced in Absher. (Oct to Dec 2023) NEW.
-9. **The December 2023 Cabinet decision doubled exit and re-entry extensions bought from abroad (200 SAR a month single, 400 multiple), and iqama renewal for "companions" and domestic workers renewed while abroad (1,300 SAR instead of 650).** The first half CONFIRMS `iqama-and-exit-reentry-fees`; the second is NEW, CHECK.
-10. **Marriage between two foreigners in the Kingdom** is contracted electronically by a licensed marriage officer found on Najiz; iqama holders, their dependants and family visit or tourist visa holders may marry, Hajj and Umrah visa holders may not; groom, bride, guardian and two witnesses each need a Saudi number in their own name to confirm by SMS. A wife on her father's iqama then moves to her husband's at Jawazat. (Aug 2023) NEW, CHECK.
+1. **Absher appointments, one method for three offices:** Appointments, then Passports, Civil Affairs or Traffic, then Book new appointment; "Resident services" at Jawazat covers almost everything; fingerprint appointments are booked separately for the resident and for his family. MESH had no section on booking. (`075`, `062`, `103`)
+2. **A newborn's birth certificate when it does not show in Absher:** the Ministry of Interior's text can take up to two weeks; then Absher Services, Civil Affairs, New Born Registration (baby under one year, National Address registered); fallback is a Civil Affairs appointment with a set list of papers. (`060`, `062`)
+3. **A baby born to a mother on a visit visa needs Jawazat's exit clearance** at the Expatriate Affairs section, at least 15 days before travel, with a set list of papers. (`060`)
+4. **Final exit for dependants:** passport valid at least 60 days, inside the Kingdom, no car, no fines; free to cancel while valid; cannot be extended; 1,000 SAR fine for not leaving within 60 days; keep the printout for later visa applications. (`073`, `074`)
+5. **Online car ownership transfer:** 150 SAR fee first, seller starts the sale, buyer accepts, pays into Absher's account within 72 hours, and releases the money with a code only after receiving the car. (`059`)
+6. **Owning a car in Absher:** istimara renewal conditions (less than 180 days left, insurance, inspection, fines paid), the yearly fee by engine size or fuel economy, compulsory online booking for the periodic inspection, driver authorisation rules, and the impounded-car inquiry. (`077`, `078`, `080`, `081`, `091`, `096`)
+7. **After an accident:** traffic police on 993 for injury, fire or no insurance, Najm for the rest; Taqdeer estimate; claim from the at-fault insurer; the Najiz and Taradhi route when the other side has no insurance; a repair permit in Absher before any garage work. (`083`, `101`, `102`)
+8. **Paying a visit visa extension:** SADAD, Government payments, Passports (Alien Control), Extend visitor visa, with the visitor's border number; Absher's "insufficient funds" message means the fee has not arrived. (`056`)
+9. **Family visit visa refusals:** the host's iqama needs 3 months left, the relative must be on the Ministry's list, and details must be typed exactly. (`068`)
+10. **Absher reports** (travel record, family members, vehicles, accidents, Muqeem report) and how to check one someone gives you; postal delivery of an iqama, licence or istimara for 17.25 SAR within 90 days. (`089`, `099`, `101`)
 
 ## 2. Findings by MESH topic
 
-### 2.1 Final exit, cancelling it and leaving (`iqama-and-exit-reentry-fees`, FAQ `leaving-steps`)
+### 2.1 Exit and re-entry visas (`iqama-and-exit-reentry-fees`, `check-visa-and-iqama-online`)
 
-1. **A final exit visa is valid 60 days from issue; cancelling it while valid is free; one that expires unused carries a 1,000 SAR fine.**
-   `comment-annuler-le-visa-de-sortie-definitive-en-arabie-saoudite` and `comment-obtenir-un-visa-de-sortie-definitive-en-arabie-saoudite` (26 Aug 2023). Status: 60 days CONFIRMS `iqama-and-exit-reentry-fees` ("valid for 60 days from the day it is issued"); the free cancellation and the fine are NEW for MESH (part 3 reports a 1,000 to 3,000 SAR scale for late cancellation; part 4 item 23 has cancellation in Absher). CURRENT (validity), CHECK (fine amount). Confidence: high (validity), medium (fine).
-2. **A dependant's final exit is cancelled in Absher: Family Members, Services, Visa services, Next, choose the person, More details, cancel. A worker's is cancelled by the employer.**
-   `comment-annuler-le-visa-de-sortie-definitive-...` (26 Aug 2023). Status: CONFIRMS part 4 item 23; NEW for MESH. CURRENT. Confidence: medium (menu names drift).
-3. **A final exit cannot be extended. To stay longer, cancel it and issue a new one later.**
-   Same page. Status: NEW. CURRENT. Confidence: high.
-4. **After it has expired, cancelling needs a Jawazat visit (Resident services counter) with a form, a Chamber-attested employer letter, the cancellation fee, any iqama, dependant and work permit fees due if the iqama has also expired, two white-background photos, and copies of the visa, iqama and passport.**
-   Same page. Status: NEW. CHECK (2023 list, worker framing). Confidence: medium.
-5. **For a dependant's final exit, the dependants' levy must be paid to cover 60 days from the visa date; otherwise Absher shows "AC3052E: Insufficient funds". The page's example: levy paid to 15 June, visa issued 20 June, so 35 more days are due.**
-   `comment-obtenir-un-visa-de-sortie-definitive-...` (26 Aug 2023). Status: NEW (MESH says the levy is 400 SAR a month on work iqamas, and student iqamas should ask Travel Management). CURRENT for work iqamas, CHECK for student iqamas. Confidence: medium. (The page's arithmetic is muddled; the rule is what matters.)
-6. **A dependant's final exit also needs a valid iqama, a passport valid at least 60 days, the person inside the Kingdom, no unpaid violations and no vehicle in their name. Steps: Family Members, Visa services, Next, choose the person, More details, Issue final visa.**
-   Same page. Status: CONFIRMS `iqama-and-exit-reentry-fees` (fines, car); passport 60 days and steps NEW. CURRENT. Confidence: medium.
-7. **Print the final exit visa even though Absher says printing is not needed: Saudi embassies ask for it if the same person applies for a Saudi visa later.**
-   Same page. Status: NEW. CURRENT (good practice). Confidence: medium.
-8. **Dependants' iqama cards need not be handed to Jawazat; the sponsor disposes of them.**
-   Same page. Status: NEW. CURRENT. Confidence: medium.
-9. **A worker can request his own final exit in Absher (My Services, Passports, Visa requests, Create, Final exit) once his dependants' final exits are issued, family visitors have left, no car is in his name and the iqama has more than 32 days left; the employer has 10 days to approve, then 5 days to issue; such a visa is valid 15 days.**
-   Same page. Status: For employed residents only. MESH's 30 days for the iqama (`iqama-and-exit-reentry-fees`) is close; see section 3. CHECK. Confidence: medium.
-10. **Banks close an expatriate's accounts automatically after final exit.**
-    Same page. Status: NEW, CHECK (MESH's leaving advice already says settle the bank first). Confidence: low.
+1. **Exit and re-entry status is checked in Absher (Inquiries, exit and re-entry visa status, with the iqama number and the passport or visa number; result: active, used, expired or cancelled) or on Muqeem's public inquiry at vv.muqeem.sa.**
+   `110-post.txt`, `/fr_fr/comment-connaitre-le-statut-de-visa-des-detenteurs-diqama/` (2025/26). Status: CONFIRMS `check-visa-and-iqama-online` (Muqeem); NEW: the Absher inquiry and its four statuses
+2. **Conditions for issuing the visa: sponsor and sponsored person in good standing (not reported dead, absent from work, or in breach of Istiqdam rules); all traffic fines paid; no unpaid visa-cancellation penalty; no other valid visa; the traveller inside the Kingdom; passport valid at least 90 days; return at least 7 days before the iqama expires; the Gregorian date wins over the Hijri; fingerprints on file for every sponsored man and woman aged 15 and over; the fee paid.**
+   `110-post.txt`, same path (2025/26). Status: CONFIRMS `iqama-and-exit-reentry-fees` ("Absher refuses a visa when the passport has less than 90 days left", "One open visa at a time", "the Gregorian date counts"); NEW: the age of 15 for fingerprints
+3. **For a visa set by number of days, the iqama must be valid for the visa's length plus 90 days.**
+   `110-post.txt`, same path (2025/26); `087-post.txt`, `/fr_fr/est-il-possible-de-prolonger-un-visa-exit-re-entry-apres-son-expiration-en-arabie-saoudite/` (undated, about 2023). Status: NEW. Same rule as part 3 owner question 3, now in two more pages. Not published: section 5.
+4. **An expired exit and re-entry visa "can be extended online by the sponsor through the Ministry of Foreign Affairs site"; `087`'s title also promises an extension after expiry, but its steps describe an extension before expiry, with the person outside the Kingdom.**
+   `110-post.txt`, same path; `087-post.txt`, same path. Status: CONFLICTS `iqama-and-exit-reentry-fees`: MESH says "An exit and re-entry visa that runs out while you are abroad leaves you outside with no way back on that iqama". Section 3 and 5.
+5. **Jawazat confirmed that a family member's exit and re-entry visa can be extended while they are outside the Kingdom, from Absher (Family Members, Visa Services, choose the length, confirm), once the fee is paid; the iqama and the visa must both still be valid.**
+   `067-post.txt`, `/fr_fr/comment-prolonger-le-visa-de-sortie-entree-24-heures-avant-son-expiration-pour-les-membres-de-votre-famille-a-lexterieur-de-larabie/` (undated). Status: CONFIRMS `iqama-and-exit-reentry-fees` ("Extending a family member's visa while they are abroad")
+6. **Extension fees: 100 SAR for a single visa, 200 SAR for a multiple visa.**
+   `087-post.txt`, same path (about 2023). Status: CONFLICTS in part with `iqama-and-exit-reentry-fees` (200 and 400 SAR a month from abroad). `097` shows the doubling came later, so this page is out of date; MESH is current.
+7. **The Cabinet doubled the fees for extending an exit and re-entry visa from abroad: 200 SAR a month (single) and 400 SAR a month (multiple). Issuing is unchanged: about 100 SAR a month for a single visa, 500 SAR for the first 3 months of a multiple visa and 200 SAR for each further month.**
+   `097-post.txt`, `/fr_fr/larabie-saoudite-double-les-frais-de-entree-sortie-et-diqama-pour-les-expatries-hors-du-pays/` (2023). Status: CONFIRMS `iqama-and-exit-reentry-fees` (all four figures)
+8. **The iqama renewal fee for "companions" (مرافقين) and domestic workers renewed while they are outside the Kingdom doubles to 1,300 SAR. The page says companions are not dependants but people under "sponsorship" in Absher: father, mother, brother, sister, or a spouse who first came with the resident.**
+   `097-post.txt`, same path (2023). Status: NEW. Whether this touches a student's wife and children renewed from abroad (`family-records-on-absher`: "You can renew a dependant's iqama in Absher even while that person is outside Saudi Arabia") is unclear: section 5.
 
-### 2.2 Exit and re-entry, and fees for residents abroad (`iqama-and-exit-reentry-fees`, `check-visa-and-iqama-online`)
+### 2.2 Final exit (`iqama-and-exit-reentry-fees`, `graduate-procedures`)
 
-11. **3 December 2023 Cabinet decision: issuing exit and re-entry is unchanged (about 100 SAR a month single; 500 SAR for 3 months multiple, then 200 a month), but extending from abroad now costs 200 SAR a month single and 400 SAR a month multiple.**
-    `larabie-saoudite-double-les-frais-de-entree-sortie-et-diqama-pour-les-expatries-hors-du-pays` (3 Dec 2023). Status: CONFIRMS `iqama-and-exit-reentry-fees` ("200 SAR a month on a single visa and 400 SAR a month on a multiple visa"). CURRENT. Confidence: high.
-12. **Same decision: renewing the iqama of "companions" (مرافقين: listed as parents, siblings, and a wife who first came together with the resident) and of domestic workers while they are abroad costs 1,300 SAR instead of 650 SAR. The page says companions are not the same as dependants.**
-    Same page. Status: NEW. CHECK (who counts as a companion, and whether a wife or child on a student or work iqama is affected). Confidence: low to medium.
-13. **Extending a family member's exit and re-entry from abroad: Absher, Family Members, Visa Services, choose the length, confirm. Conditions: iqama not expired, fees paid, visa not expired (for workers, a valid contract).**
-    `comment-prolonger-le-visa-de-sortie-entree-24-heures-avant-son-expiration-...` (17 Aug 2023). Status: CONFIRMS `iqama-and-exit-reentry-fees` ("Extending a family member's visa while they are abroad"). CURRENT. Confidence: high.
-14. **A Jawazat clarification (November 2023): an exit and re-entry visa that has already expired can still be extended while the person is outside the Kingdom, if the iqama covers the new period plus 90 days.**
-    `est-il-possible-de-prolonger-un-visa-exit-re-entry-apres-son-expiration-...` (16 Nov 2023). Status: CONFLICTS `iqama-and-exit-reentry-fees`: MESH says "An exit and re-entry visa that runs out while you are abroad leaves you outside with no way back on that iqama." CHECK (section 3). Confidence: low to medium.
-15. **Conditions Absher applies to any exit and re-entry visa (2025 list): sponsor and traveller active (not reported absent or deceased), fines paid, no pending visa-cancellation penalty, no other valid visa, traveller inside the Kingdom, passport valid 90 days, return at least 7 days before the iqama expires, iqama validity above the visa length plus 90 days for a visa set in days, Gregorian date prevails, fingerprints for everyone 15 and over.**
-    `comment-connaitre-le-statut-de-visa-des-detenteurs-diqama` (12 Aug 2025). Status: CONFIRMS `iqama-and-exit-reentry-fees` ("The rules that catch people") and part 4 section 4.1 (90-day margin). CURRENT. Confidence: high. The page's claim that an expired visa is extended "on the Ministry of Foreign Affairs site" is not credible and is ignored.
-16. **Checking an exit and re-entry visa inside Absher: Workers (or Family Members), Inquiries, Exit and re-entry visa status, with iqama number and passport or visa number; result: active, used, expired or cancelled.**
-    Same page. Status: NEW (MESH gives the public Muqeem check). CURRENT. Confidence: medium.
-17. **One printed MOI form (the iqama form) covers iqama issue, renewal, lost (بدل فاقد) and damaged (بدل تالف) cards, single, multiple and final exit visas, transfer of services, adding a dependant and passport transfer (Naql Maloomat). It is free to download; people outside offices sell it. When Absher fails to move an iqama to a new passport, Jawazat does it on the spot and Absher shows it within a day or two.**
-    `telecharger-le-formulaire-istiqdam-formulaire-de-mise-a-jour-du-passeport-formulaire-iqama` (22 Nov 2023). Status: NEW (minor; MESH's passport route is the Absher Tawasul request). CHECK. Confidence: medium.
+9. **A worker can request his own final exit in Absher if no car is in his name, all dependants' final exits are issued, all visiting family have left, and the iqama has more than 32 days left; the employer has 10 days to answer; that visa is valid 15 days.**
+   `073-post.txt`, `/fr_fr/comment-obtenir-un-visa-de-sortie-definitive-en-arabie-saoudite/` (undated, about 2022). Status: workers only. The 32 days differs slightly from MESH's "at least 30 days left" (`iqama-and-exit-reentry-fees`, `graduate-procedures`), but applies to this worker route only. No change.
+10. **A dependant's final exit is issued by the head of family in Absher: Family Members, Visa Services, Next, More details, Issue final exit visa. Conditions: no car in the dependant's name, the dependant inside the Kingdom, valid iqama, passport valid at least 60 days, no unpaid violations, and (on a work iqama) dependant fees paid for 60 days from the visa date. Error "AC3052E: Insufficient funds" means a fee is unpaid.**
+    `073-post.txt`, same path. Status: CONFIRMS `graduate-procedures` (fines, car, valid iqama); NEW: passport 60 days, menu, error code. Published in `iqama-and-exit-reentry-fees` (the 60-day levy rule left out: it is for work iqamas)
+11. **A final exit is valid 60 days from issue; not leaving in time costs a 1,000 SAR fine; cancelling within the 60 days is free (dependants: same Absher page; workers: the employer); after expiry it is cancelled only at Jawazat (Resident services) with a form, a letter, copies, two white-background photos and any iqama fees due; it cannot be extended, only cancelled and issued again.**
+    `073-post.txt`, same path; `074-post.txt`, `/fr_fr/comment-annuler-le-visa-de-sortie-definitive-en-arabie-saoudite/` (undated). Status: CONFIRMS "valid for 60 days" (`iqama-and-exit-reentry-fees`); NEW: the rest. Published.
+12. **Print the final exit: Absher says it is not needed, but Saudi embassies ask for the final exit paper when the same person later applies for a Saudi visa.**
+    `073-post.txt`, same path. Status: NEW. Published.
+13. **Banks close the accounts of expatriates who take final exit.**
+    `073-post.txt`, same path. Status: CONFIRMS `graduate-procedures` ("Banks close the accounts of expatriates on final exit")
+14. **Iqama cards need not be handed in at Jawazat after final exit.**
+    `073-post.txt`, same path. Status: NEW, minor. Not published.
 
-### 2.3 Absher, Jawazat and Civil Affairs appointments, reports and delivery (`family-records-on-absher`, `check-visa-and-iqama-online`)
+### 2.3 Absher appointments, reports, cards and names (`family-records-on-absher`, `check-visa-and-iqama-online`, `renew-passport-in-saudi`)
 
-18. **Jawazat appointment: Absher, Appointments, Passport, Proceed to service, New appointment. Services: men's biometrics; dependants' biometrics; Resident services (everything else, including newborn iqamas and passport transfer); and an inquiry service for when an entry or exit is missing from Jawazat's records. Choose region, number of transactions, office, then a green slot; edit or cancel with the plus sign.**
-    `comment-prendre-rendez-vous-aupres-de-jawazat-via-absher` (26 Aug 2023). Status: NEW (MESH mentions Jawazat appointments but not the steps). CURRENT. Confidence: medium to high.
-19. **Postal delivery of a renewed iqama, driving licence or istimara: Absher, My Services, Postal delivery service, within 90 days of issue or renewal, to the National Address; Saudi Post then texts a payment link (17.25 SAR in 2023) and a tracking number; delivery in about 3 working days.**
-    `comment-demander-la-livraison-postale-a-votre-domicile-depuis-absher` (22 Nov 2023), `comment-renouveler-listimara-en-ligne-...` (25 Oct 2023). Status: CONFIRMS `family-records-on-absher` (card delivery for family) and `drivers-license` (delivery to National Address); the 90-day window and the istimara are NEW. CURRENT, CHECK the fee. Confidence: medium.
-20. **Absher Reports (Services, General Services, Absher Reports): eleven paid reports including family members, vehicles, traffic violations, traffic accidents, travel record, domestic workers, accident and violation settlements, Muqeem report, criminal record and visitor report. Anyone can verify a report shown to them with "Inquire report", the reference number and the requester's iqama number.**
-    `comment-verifier-controler-les-rapports-sur-absher` (7 Dec 2023). Status: NEW. CURRENT. Confidence: medium.
-21. **Absher lets you change your password, email, mobile number and address under "Update user information".**
-    `tout-ce-que-vous-pouvez-modifier-directement-sur-lapplication-absher` (11 Aug 2023). Status: CONFIRMS `phone-sims-and-absher` (mobile). Minor. Confidence: medium.
-22. **Changing the Absher mobile number in Nafath: settings, Absher self-service, update digital identity number, iqama number, new number, code, then a camera scan of four fingers of the left hand; the change takes about 10 minutes.**
-    `comment-changer-le-numero-de-mobile-absher-en-utilisant-lapplication-nafath` (22 Nov 2023). Status: CONFIRMS FAQ `change-absher-mobile`; "about 10 minutes" NEW (minor). CURRENT. Confidence: high.
-23. **A misspelt English name on the iqama is corrected by Jawazat against the passport, and a new card follows in days; a misspelt Arabic name can be corrected by the sponsor online (Muqeem service تعديل الاسم المترجم for employers). A name that differs from the passport causes trouble with banks, money transfers, police certificates for emigration and family visa requests.**
-    `comment-changer-de-nom-sur-liqama-en-arabie-saoudite` (22 Nov 2023). Status: Arabic name CONFIRMS `family-records-on-absher` ("Correcting a name in Arabic"); the English name route and the reasons are NEW. CURRENT. Confidence: medium.
-24. **Moving a wife's iqama from her father to her husband after they marry in the Kingdom: Jawazat, Resident services appointment, with a release letter from the husband's employer attested by the Chamber of Commerce, the father's consent signed before the Jawazat officer, the transfer form, the marriage certificate, the wife's passport and iqama, copies of all three iqamas, and the fee. A marriage made abroad must first be attested by the home foreign ministry, the Saudi embassy and the Saudi foreign ministry.**
-    `comment-transferer-liqama-de-la-fille-du-pere-a-son-mari` (22 Aug 2023). Status: CONFIRMS part 4 item 18 (transfer at Jawazat, not istiqdam) and adds the father's consent; NEW for MESH. For employed residents mainly (student iqama holders should ask Travel Management). CHECK. Confidence: medium.
-25. **Children on family visit visas can be converted to iqamas at Jawazat (city of the employer's registration) when both parents hold iqamas and the children are under 18, with attested birth and marriage certificates, a Chamber-attested employer letter, forms and the fees (dependant levy to the iqama expiry and a 2,000 SAR family fee). The Madinah office accepted one file for all the children; results in 2 to 5 working days.**
-    `comment-obtenir-une-iqama-pour-ses-enfants-...-lorsque-les-deux-parents-en-possedent-deja-une` (30 Jun 2024). Status: NEW, for employed residents. CHECK. Confidence: low to medium.
-26. **Absher's digital ID covers expatriates' family members too (announced 2023), and vehicle theft can be reported in Absher without going to a police station.**
-    `absher-tout-ce-que-vous-devez-savoir-...` (28 Mar 2023). Status: digital ID CONFIRMS MESH (Absher and Tawakkalna); theft reporting NEW (minor). CURRENT. Confidence: medium.
+15. **Jawazat appointment: Absher, Appointments, Passports, Proceed to service, New appointment. Services: biometrics for residents (men), biometrics for residents' companions, Resident services (everything else, including a newborn's iqama and a passport update), and an inquiry on incoming transactions when an entry or exit is missing from the system. Choose region, number of transactions and office; green slots free, red taken; confirm, print or screenshot. Modify or cancel with the plus sign.**
+    `075-post.txt`, `/fr_fr/comment-prendre-rendez-vous-aupres-de-jawazat-via-absher/` (undated). Status: NEW. Published in `family-records-on-absher`.
+16. **Civil Affairs appointment for a birth: Absher, Appointments, Civil Affairs, Proceed to service, Book new appointment, service تسجيل واقعة ميلاد, region and branch; any office in the region where the baby was born; the last screen lists the documents.**
+    `062-post.txt`, `/fr_fr/comment-obtenir-un-rendez-vous-a-ahwal-madani/` (undated). Status: NEW. Published in `family-records-on-absher` and `having-a-baby-in-madinah`.
+17. **Traffic (Muroor) appointment: Absher, Appointments, Traffic, Proceed to service, Book new appointment; 24 purposes, among them استبدال رخصة قيادة, طباعة رخصة سير مركبة, طباعة إذن إصلاح مركبة, إصدار رخصة قيادة بدل تالف / فاقد, إجراءات الهيئات المرورية and إستبدال رخص القيادة الأجنبية (نساء).**
+    `103-post.txt`, `/fr_fr/comment-prendre-un-rendez-vous-au-muroor-avec-absher/` (undated). Status: CONFIRMS `drivers-license` ("Appointments (مواعيد), then Traffic, then Replacement of driving licence") and `traffic-fines` (إجراءات الهيئات المرورية); NEW: the other purposes. Published in `family-records-on-absher`.
+18. **Ministry of Interior forms (iqama form for issue, renewal, lost or damaged card, newborns; exit and re-entry; transfer; adding a dependant; passport update or Naqal Maloomat; Istiqdam) are free to download; people outside the offices charge for them and for filling them in. Forms are in Arabic and filled in Arabic.**
+    `094-post.txt`, `/fr_fr/telecharger-le-formulaire-istiqdam-formulaire-de-mise-a-jour-du-passeport-formulaire-iqama/` (undated). Status: NEW. Published in `family-records-on-absher` (forms are free).
+19. **The same page says Absher "most of the time" fails to update passport details, so people go to Jawazat with the passport update form; Jawazat updates at once and Absher shows it in a day or two, with a text message.**
+    `094-post.txt`, same path (undated, older). Status: CONFLICTS in emphasis with `renew-passport-in-saudi` (Absher first, then Absher's Tawasul). MESH is newer and right to put Absher first; the Jawazat visit was added as a further fallback.
+20. **Name corrections: an error in the English name is corrected at Jawazat against the passport; an error in the translated Arabic name is corrected by the sponsor in Muqeem (تعديل الاسم المترجم), then the card is reprinted at Jawazat.**
+    `095-post.txt`, `/fr_fr/comment-changer-de-nom-sur-liqama-en-arabie-saoudite/` (undated). Status: CONFIRMS `family-records-on-absher` (Arabic name for dependants); NEW: own iqama through the sponsor (for a student, Travel Management) and the English name at Jawazat. Published.
+21. **Postal delivery of an iqama, driving licence or istimara: within 90 days of issue or renewal, Absher, My Services, Postal Delivery Service, Request; choose the document, the National Address and a mobile number; Saudi Post texts a link to pay 17.25 SAR, then a tracking number; about three working days.**
+    `089-post.txt`, `/fr_fr/comment-demander-la-livraison-postale-a-votre-domicile-depuis-absher/` (undated); `059`, `080` (same fee). Status: CONFIRMS `family-records-on-absher` ("Getting the iqama card posted home"); NEW: 90 days, 17.25 SAR, the menu. Published.
+22. **Absher's "update user information" tab changes the password, email, mobile number and address.**
+    `064-post.txt`, `/fr_fr/tout-ce-que-vous-pouvez-modifier-directement-sur-lapplication-absher/` (undated). Status: CONFIRMS `phone-sims-and-absher` in substance. No change.
+23. **Absher Reports (Services, General Services, Absher Reports) offers 11 reports: family members, vehicles, traffic violations, traffic accidents, travel record, domestic workers, accident and violation settlements, Muqeem report, criminal record, visitor. A report someone gives you is checked with "Inquire about a report", its reference number and the requester's iqama number.**
+    `099-post.txt`, `/fr_fr/comment-verifier-controler-les-rapports-sur-absher/` (undated). Status: NEW. Published in `check-visa-and-iqama-online` (the criminal record report left out: whether residents get one through Absher is not clear).
+24. **National Address: Absher, My Services, General Services, National Address Service (register, add for a dependant with the plus button, modify, print proof), or the Saudi Post site; you need the building number, district, postal code and city; banks and insurers ask for the printed proof.**
+    `061-post.txt`, `/fr_fr/comment-faire-lenregistrement-de-votre-adresse-nationale-en-arabie-saoudite/` (2023/24). Status: CONFIRMS `short-address` and `shipping-and-receiving-parcels`. No change.
 
-### 2.4 Babies and civil records (`having-a-baby-in-madinah`)
+### 2.4 Visas for family and visitors (`visas-for-family-and-visitors`)
 
-27. **The hospital sends the birth notice to the Ministry of Health; the Ministry of Interior's SMS can take up to 2 weeks.**
-    `comment-declarer-et-obtenir-une-iqama-pour-un-nouveau-ne-en-arabie-saoudite` (2 Aug 2023). Status: NEW (timing). CURRENT. Confidence: medium.
-28. **Online birth registration in Absher (Services, Civil Affairs, New Born registration) works if the baby is under one year, the National Address is registered and the birth SMS has arrived. The baby's iqama (resident) number is generated at once, and the certificate can be posted home or printed at Civil Affairs.**
-    Same page. Status: CONFIRMS `having-a-baby-in-madinah` (certificate in Absher under Civil Affairs services); conditions NEW. CURRENT. Confidence: medium.
-29. **Registering more than 30 days after the birth adds a late fee (50 SAR in 2023), paid online before the certificate is issued.**
-    Same page and `comment-obtenir-un-rendez-vous-a-ahwal-madani` (2 Aug 2023). Status: NEW amount (MESH: "a late birth certificate carries a fine"). CHECK. Confidence: medium.
-30. **Civil Affairs appointment: Absher, Appointments, Civil Affairs, Proceed to service, Book new appointment, service تسجيل واقعة ميلاد (birth registration), region and branch (any branch in the region of birth); the confirmation lists the papers. Take the birth SMS, copies of both parents' iqamas and passports, form 87, and the marriage certificate translated into Arabic if the mother is not on the father's iqama.**
-    Same two pages. Status: NEW. CURRENT. Confidence: medium.
-31. **The page puts foreign ministry attestation of the birth certificate before the embassy passport.**
-    `comment-declarer-et-obtenir-une-iqama-pour-un-nouveau-ne-...` (2 Aug 2023). Status: NEW; MESH has the embassy using the hospital notification with an accepted translation. CHECK (embassies differ). Confidence: low.
-32. **Mother on a family visit visa: same steps up to the baby's passport; then, before leaving (the page says 15 days before), the father goes to Jawazat (expatriate affairs section, إدارة شؤون الوافدين) for the baby's exit stamp, with the baby's passport, father's iqama and passport, mother's passport and Saudi visa, the marriage certificate with Arabic translation and the birth SMS. Also bring a screenshot of the wife's details from Absher.**
-    Same page. Status: NEW. CHECK. Confidence: medium.
-33. **Father without an iqama: add a marriage certificate attested at home, at the Saudi embassy and at the Saudi foreign ministry, and a court power of attorney from the father, attested the same way, for whoever collects the certificate.**
-    Same page. Status: NEW, rare case. CHECK. Confidence: low.
+25. **Visit visa extension fee: 100 SAR each time; applying in the 3 days after expiry adds a 500 SAR fine.**
+    `056-post.txt`, `/fr_fr/comment-payer-les-frais-de-prolongation-du-visa-de-visite-en-arabie-saoudite-en-ligne/` (undated). Status: CONFIRMS `visas-for-family-and-visitors` and `iqama-and-exit-reentry-fees`
+26. **Paying it: banking app, SADAD, Government payments, beneficiary Alien Control (Jawazat), service Extend visitor visa, "not registered", the visitor's border number. Absher does not show the payment; if the fee is missing, Absher answers that the visa cannot be extended because of insufficient funds.**
+    `056-post.txt`, same path. Status: NEW. Published.
+27. **Absher could not extend a multiple-entry family visit visa; some offices did it for about 500 SAR a person.**
+    `079-post.txt`, `/fr_fr/extension-du-visa-visite-famille-pour-3-mois-sans-sortir-du-territoire-en-arabie-saoudite-2023-24/` (2023/24). Status: EXPIRED. Part 3 (`152`, March 2026) and MESH show Absher does it now. The page also promotes a paid office: skipped.
+28. **Common refusals of a family visit visa: the host's iqama has less than 3 months left on the day of the application; a mistyped field (for example a wrong visa number); a request for a relative outside the Ministry's list (spouse, children, parents, parents-in-law, a brother or sister with their families, the spouse's brother or sister, grandparents); for workers, the wrong Chamber of Commerce.**
+    `068-post.txt`, `/fr_fr/les-raisons-pour-lesquelles-la-demande-de-visa-de-visite-familiale-pour-larabie-saoudite-est-rejetee/` (undated). Status: NEW for `visas-for-family-and-visitors` (MESH says only "close relatives such as a spouse, children or parents"). Published (the Chamber of Commerce point left out: workers only).
+29. **Applications made in "the Hajj season", given as 1 Ramadan to 1 Safar, are refused.**
+    `068-post.txt`, same path (undated). Status: NEW, dated and too broad to state today. Section 5.
+30. **UK citizens could use an electronic visa waiver for a single entry of up to 6 months, requested 48 hours to 90 days ahead.**
+    `063-post.txt`, `/fr_fr/exemption-de-visa-electronique-pour-les-citoyens-du-royaume-uni-et-dirlande-du-nord-pour-entrer-en-arabie-saoudite/` (2022/23). Status: HISTORY. MESH lists the UK under the tourist eVisa (`visas-for-family-and-visitors`).
+31. **A unified "KSA Visa" platform was launched for all visa types, linked to more than 30 agencies.**
+    `109-post.txt`, `/fr_fr/larabie-saoudite-lance-ksa-visa-la-nouvelle-plateforme-de-visa-unifiee/` (about January 2024). Status: NEW, news only. MESH links visa.mofa.gov.sa; no change.
+32. **Investor "business visit" eVisa: multiple entry, up to 4 years for some nationalities, 90 days a stay.**
+    `088-post.txt`, `/fr_fr/comment-demander-un-visa-business-en-arabie-saoudite/` (late 2023). Status: out of scope. Skipped.
+33. **A child on a family visit visa can be moved onto an iqama when both parents hold iqamas and the child is under 18: attested birth and marriage certificates (an apostille is accepted for France), the child's passport and photo, the parents' iqama and passport copies, an employer letter stamped by the Chamber of Commerce, the visa form and an undertaking; a Jawazat appointment for Resident services in the city where the employer is registered; dependant fees of 400 SAR a child a month to the iqama's expiry plus 2,000 SAR; the iqamas appear in Absher 2 to 5 working days later.**
+    `098-post.txt`, `/fr_fr/comment-obtenir-une-iqama-pour-ses-enfants-en-arabie-saoudite-lorsque-les-deux-parents-en-possedent-deja-une/` (updated 2024). Status: NEW, written for work iqamas. Whether it applies to a student's family (University as sponsor, wife as dependant) is unknown: section 5.
+34. **The list of professions that may sponsor a permanent family visa includes "university student" (no. 194), "religious person", teacher and professor; Jawazat can ask for a four-year degree.**
+    `106-post.txt`, `/fr_fr/liste-des-professions-eligibles-pour-avoir-une-iqama-familial-en-arabie-saoudite/` (undated). Status: NEW, workers' list. MESH sends students' family visas to the University (`visas-for-family-and-visitors`); no change.
 
-### 2.5 National Address, Tawakkalna, SIMs and electricity (`short-address`, `phone-sims-and-absher`, `finding-an-apartment`, `everyday-apps-and-services`)
+### 2.5 Having a baby (`having-a-baby-in-madinah`)
 
-34. **Registering a National Address in Absher: My Services, General services, National Address service, Register a new national address, enter building number, district, postcode and city, verify, enter the SMS code, confirm. Add dependants with Select and the plus sign.**
-    `comment-faire-lenregistrement-de-votre-adresse-nationale-en-arabie-saoudite` (2 Aug 2023). Status: NEW steps (MESH says register with Saudi Post and find the short address). CURRENT. Confidence: medium.
-35. **Or register on Saudi Post's e-services as an individual resident with the iqama number and expiry date, then Manage addresses, National Address, register and confirm the building on the map. Updating on either site updates the other. Banks and insurers ask for the printout: Absher, National Address service, Print proof of national address.**
-    Same page. Status: NEW. CURRENT. Confidence: medium. (The page gives one postcode for all Madinah; postcodes vary by district, so MESH should not repeat it.)
-36. **Tawakkalna sign-up: with an Absher account, the code goes to the Absher number; without one, a relative with Absher registers your mobile for you (Absher, My Services, Services, General services, Register mobile number for Tawakkalna); visitors register with passport number, mobile, date of birth and nationality, an SMS code and a password of 8 characters or more. Support 8001289999. The app shows the iqama, the National Address and unpaid traffic fines (Dashboard, Traffic violations).**
-    `comment-sinscrire-sur-lapplication-tawakkalna-en-arabie-saoudite` (2 Nov 2023), `comment-verifier-vos-infractions-de-circulation-...` (25 Oct 2023). Status: NEW (MESH uses Tawakkalna for the University ID and digital iqama but never explains signing in). CHECK (sign-in now goes through Nafath for most residents). Confidence: medium.
-37. **Cancelling a SIM on your iqama: at any branch with the number and the iqama (done within 24 hours, or the SIM can be reissued instead); by calling the operator (Mobily: 1100, then 9, 1, 1, 4; up to 5 working days); or by a complaint in the regulator's app signed in with Absher, uploading the iqama.**
-    `comment-annuler-une-carte-sim-enregistree-sur-votre-iqama` (22 Nov 2023). Status: CONFIRMS `phone-sims-and-absher` ("A number you do not recognise"); details NEW (minor). CURRENT. Confidence: medium.
-38. **Checking SIMs on the iqama with or without the registered number.**
-    `comment-savoir-combien-de-cartes-sim-sont-enregistrees-sous-votre-iqama` (13 Apr 2023). Status: CONFIRMS `phone-sims-and-absher` and FAQ `check-sims-on-iqama`. CURRENT. Confidence: high.
-39. **Electricity bill: the Saudi Electricity Company answers on WhatsApp at 920001100 (2 for English, 1 for the bill, then the account number); bills can be emailed monthly; registering on the company's site with the iqama (code sent to the Absher number) and adding the account number shows 3 years of bills and payments. A 2023 SMS service (#9 and the account number to 500120) also existed.**
-    `comment-verifier-sa-facture-delectricite-en-ligne-en-arabie-saoudite` (25 Oct 2023). Status: NEW (MESH covers moving the account into your name through Ejar, not checking bills). CURRENT for the website and account route, CHECK for WhatsApp and SMS. Confidence: medium.
+35. **The hospital sends the birth notice to the Ministry of Health; the Ministry of Interior's text message confirming it can take up to two weeks.**
+    `060-post.txt`, `/fr_fr/comment-declarer-et-obtenir-une-iqama-pour-un-nouveau-ne-en-arabie-saoudite/` (undated). Status: NEW. Published.
+36. **The birth certificate can be requested online in Absher (Services, Civil Affairs, New Born Registration) if the baby is under one year, the National Address is registered and the birth text has arrived. Check the spelling of the names and the date; the hospital corrects errors. Then choose postal delivery or collect it at Civil Affairs with the father or mother.**
+    `060-post.txt`, same path. Status: CONFIRMS `having-a-baby-in-madinah` ("View birth certificate"); NEW: the request step and its conditions. Published.
+37. **A late fee of 50 SAR applies after 30 days from the birth.**
+    `060-post.txt`, same path; `062-post.txt`, same path as finding 16. Status: CONFIRMS `having-a-baby-in-madinah` ("a late birth certificate carries a fine"); the amount is NEW and undated: section 5.
+38. **If the online request fails, Civil Affairs needs: the birth text message, copies of the father's iqama, the mother's iqama if any, both passports, the marriage certificate with an Arabic translation if the wife is not on the husband's iqama or is on a visit visa, form 87, a copy of the mother's Saudi visa if she has no iqama, and an Absher screenshot of the wife's details if she is on a visit visa. Arrive 20 minutes early; the certificate is printed at the counter.**
+    `060-post.txt`, same path. Status: NEW. Published (form 87 described as "the birth registration form, which the office gives you"; the screenshot left out).
+39. **Order of papers: birth certificate, attestation by the Ministry of Foreign Affairs, the baby's passport from the embassy, then the iqama.**
+    `060-post.txt`, same path. Status: CONFIRMS the order in `having-a-baby-in-madinah`; NEW: the Ministry of Foreign Affairs attestation. Published as "If your embassy wants the Saudi birth certificate attested, the Ministry of Foreign Affairs attests it first."
+40. **Mother on a family visit visa: same steps up to the passport; then, 15 days before leaving, go to Jawazat's Expatriate Affairs section (إدارة شؤون الوافدين) with the baby's passport, the father's iqama and passport, the mother's passport, a copy of her Saudi visa, the marriage certificate with an Arabic translation and the birth text, originals and copies, to have the exit stamp put in the baby's passport.**
+    `060-post.txt`, same path. Status: NEW. Published.
+41. **If the father holds no Saudi iqama, Civil Affairs also needs the marriage certificate attested in the home country, the Saudi embassy and the Saudi Ministry of Foreign Affairs, and a power of attorney from a court at home, attested the same way, for the relative who applies.**
+    `060-post.txt`, same path. Status: NEW, rare for MESH readers. Not published.
 
-### 2.6 Ejar and housing disputes (`finding-an-apartment`, FAQs `what-is-ejar`, `rent-on-student-visa`)
+### 2.6 Marriage (no MESH guide)
 
-40. **Ending an Ejar lease early: Ejar e-services, Contracts, Show all contracts, the three dots, View contract, Terminate contract, then reason, effective date and a note; Ejar shows the financial settlement. At the end of the term nothing needs doing.**
-    `comment-annuler-un-contrat-de-location-ejar-en-ligne-en-arabie-saoudite` (11 Aug 2023). Status: NEW. CURRENT (steps), but see item 42. Confidence: medium.
-41. **Early termination makes the tenant liable for rent to the end of the contract unless the landlord waives it, so the usual way out is to bring a new tenant the landlord accepts and register a new contract. The flat goes back in the condition it was received.**
-    Same page. Status: NEW; CONFIRMS `finding-an-apartment` on handovers ("it is ended and a new one is registered in your name"). CURRENT. Confidence: medium to high.
-42. **"There is no automatic renewal of contracts in Ejar at present" and no notice is needed to leave at the end.**
-    Same page (Aug 2023). Status: CONFLICTS `finding-an-apartment`: MESH says "A registered contract renews itself unless you or the owner gives notice at least 60 days before it ends." Probably HISTORY (section 3). Confidence: low for the 2023 claim today.
-43. **Registering: the landlord or agent creates the contract with the tenant's iqama number and mobile; the tenant gets an SMS invitation link (the only way to register), sets a username and password, enters the iqama and two codes; read Article 12 (rent and payment terms) and Article 13 (additional terms, شروط إضافية) before accepting with an MOI code. The page says a contract not rejected within 7 days counts as accepted.**
-    `paiement-et-enregistrement-dun-contrat-de-location-avec-ejar-en-arabie-saoudite` (11 Aug 2023). Status: CONFIRMS `what-is-ejar` (approve from the SMS link); Articles 12 and 13 and the 7-day rule NEW. CHECK (7 days). Confidence: medium.
-44. **From 15 January 2024 residential rent may be paid only through Ejar (mada in the Ejar dashboard, or SADAD, biller code 153, subscriber number = contract number).**
-    Same page. Status: CONFIRMS `finding-an-apartment` ("pay the rent only through Ejar, by mada or SADAD"); biller code NEW. CURRENT, CHECK the code. Confidence: high (rule), medium (code).
-45. **The 2023 page gives the Ejar fee as 250 SAR paid by the landlord, landlord fines of 25,000 SAR (not on Ejar) and 1,000 SAR (contract not uploaded), and the helpline 9200 05226.**
-    Same page and item 40's page. Status: CONFLICTS `what-is-ejar` (125 SAR a year; helpline 199011). HISTORY for the fee; CHECK the helpline. Confidence: low.
-46. **A 2023 ministry announcement tied iqama renewal to an electronic Ejar contract.**
-    Same page. Status: NEW, CHECK (employer and worker context; not true for student iqamas as far as MESH knows). Confidence: low.
-47. **Najiz (Ministry of Justice, sign-in with iqama and Nafath) takes a claim against a landlord (classification عامة, then عقارية, then إخلاء عقار), a traffic accident claim when the other side will not pay (مروري, then حق خاص ناشئ عن حادث مروري), and an execution request when a judgment is not paid (التنفيذ, then طلب التنفيذ, then تنفيذ مالي, with your IBAN). Labour appeals go to Najiz within 30 days of a labour court decision.**
-    `comment-deposer-une-plainte-en-ligne-sur-najiz` (22 Nov 2023). Status: NEW. CURRENT (platform), CHECK (classification labels). Confidence: medium.
+42. **Foreigners in the Kingdom on an iqama, as a dependant, on a family visit visa or on a tourist visa can marry here; holders of Hajj and Umrah visas cannot.**
+    `069-post.txt`, `/fr_fr/comment-les-etrangers-peuvent-ils-se-marier-en-arabie-saoudite/` (undated). Status: NEW. Section 5.
+43. **The contract is made by a marriage officer (ma'dhun) chosen from the Ministry of Justice's list for the city. He needs Saudi SIMs in the names of the groom, the bride, the guardian and two witnesses, iqama or passport copies, and the mahr; he files the contract on the Ministry's portal; after a few days of checks each of the five numbers must confirm by text within 24 hours; the contract is issued as a PDF. The nikah itself needs the groom, the bride, her guardian, two witnesses and the officer. The author paid the officer 2,000 SAR.**
+    `069-post.txt`, same path. Status: NEW, a personal account, undated. Section 5. The fee is not for publication.
+44. **To use the contract abroad: attestation by the Ministry of Justice, then the Ministry of Foreign Affairs, then a translation attested by your embassy.**
+    `069-post.txt`, same path. Status: NEW. Section 5.
+45. **Iqama holders who marry abroad have the certificate attested by their own foreign ministry, the Saudi embassy and the Saudi Ministry of Foreign Affairs, then submit it to Jawazat.**
+    `070-post.txt`, `/fr_fr/comment-transferer-liqama-de-la-fille-du-pere-a-son-mari/` (undated). Status: NEW. Section 5.
+46. **When two residents marry here, the wife's iqama moves from her father to her husband at Jawazat (appointment for Resident services): the husband's employer's release letter stamped by the Chamber of Commerce, the father's consent signed before the Jawazat officer, the transfer form, the marriage certificate, the wife's passport and iqama, copies of the three iqamas, and the transfer fee.**
+    `070-post.txt`, same path. Status: NEW, written for work iqamas. Section 5.
+47. **Chamber of Commerce stamps on employer letters: 25 SAR a document, 35 SAR to submit a family visit request, card only, valid 12 months; a government letter needs no stamp.**
+    `071-post.txt`, `/fr_fr/comment-obtenir-un-cachet-une-attestation-de-la-chambre-de-commerce-en-arabie-saoudite/` (undated). Status: workers only. Not published.
 
-### 2.7 Owning a car (`drivers-license`, FAQs `buying-a-used-car`, `traffic-fines`)
+### 2.7 SIMs, Absher, Nafath and Tawakkalna (`phone-sims-and-absher`, `change-absher-mobile`, `check-sims-on-iqama`)
 
-48. **Online ownership transfer in Absher: Vehicles, Services, Vehicle Ownership Transfer. The seller (Seller tab) picks the car, enters the price (500 to 200,000 SAR), the buyer's iqama number and date of birth, his own IBAN and the region. The buyer (Buyer tab) accepts within one hour, enters his IBAN for refunds, then pays the price plus fees into the account Absher shows (an escrow account) within 72 hours, in banking hours. The seller then confirms delivery in Absher with a code sent to the buyer; the buyer gives the code only after receiving the car, and the money is released.**
-    `comment-transferer-la-propriete-dune-voiture-en-ligne-en-arabie-saoudite` (1 Aug 2023). Status: CONFIRMS FAQ `buying-a-used-car` ("The seller starts the sale in his Absher, you accept it in yours and pay the fees Absher shows"); escrow and code NEW. CURRENT (mechanism), CHECK (1 hour, 72 hours). Confidence: medium.
-49. **2023 fees: 150 SAR ownership transfer fee paid by SADAD (Motor vehicles, Ownership transfer, current owner's iqama, sequence number, new owner's iqama) plus 230 SAR added to the price, 380 SAR in all. Needs both Absher accounts, valid Fahas, the buyer's insurance, and at most 2 cars per expatriate. If Absher says "Accept was unsuccessful", use a car transfer office.**
-    Same page. Status: insurance and Fahas CONFIRM `buying-a-used-car`; two-car limit CONFIRMS part 4 item 10; fees NEW, CHECK. Confidence: medium (fees low).
-50. **After the transfer, the new istimara is printed at the traffic department (appointment purpose طباعة رخصة سير مركبة) or posted home.**
-    Same page. Status: NEW. CURRENT. Confidence: medium.
-51. **Istimara renewal: usually issued for 3 years; renew in Absher (Vehicles, Services, Vehicle management, choose the car, Renew vehicle registration) once less than 180 days remain, with valid insurance, a valid Fahas, all fines and fees (including late fees) paid. A card with no printed expiry date is kept.**
-    `comment-renouveler-listimara-en-ligne-en-arabie-saoudite` (25 Oct 2023). Status: NEW (MESH lists only the fine for an expired istimara). CURRENT, CHECK the 180 days. Confidence: medium.
-52. **From 22 October 2023 the istimara fee is yearly and graded: for light and heavy vehicles made in 2015 or earlier by engine size (up to 1.9 L: 0; 1.91 to 2.4 L: 50 SAR; 2.41 to 3.2 L: 85; 3.21 to 4.5 L: 130; over 4.5 L: 190), and for light vehicles from 2016 by fuel economy (the page's amounts for these bands are missing). The page's older "100 SAR" figure is superseded.**
-    Same page. Status: NEW. CHECK. Confidence: medium (system), low (exact amounts).
-53. **Fahas (periodic inspection) must be booked online on the Vehicle Safety Center's booking site: name, mobile, email, option to name another person (Saudi, resident or Gulf national) to take the car, registered vehicle, plate, private, Periodic inspection service, region, centre, date and slot, SMS code.**
-    `la-prise-de-rendez-vous-en-ligne-est-desormais-obligatoire-pour-linspection-periodique-des-vehicules` (2 Oct 2023). Status: NEW. CURRENT. Confidence: medium to high.
-54. **A new private car is first inspected 3 years after its first registration, then every year; taxis and buses after 2 years. A valid Fahas is required for ownership transfer and istimara renewal. Check the expiry on the sticker or certificate, or in Absher (Vehicles, Services, Vehicle management, the car, More details).**
-    `moroor-precise-la-periode-de-renouvellement-de-linspection-technique-fahas-des-vehicules` (27 Nov 2023), `comment-verifiez-la-validite-du-fahas-de-votre-vehicule-en-ligne` (13 Jun 2023). Status: CONFIRMS part 1 item 53 and answers part 1 question 8; NEW for MESH. CURRENT. Confidence: high.
-55. **Driver authorisation: Absher, Vehicles, Vehicle management, choose the car, Issue driver authorisation; enter the driver's iqama number and date of birth, inside or outside the Kingdom, and the length; the driver gives the code sent to his phone; print the confirmation. Needs a valid istimara and insurance, the driver's valid iqama, licence and Absher account, and no unpaid fines.**
-    `comment-autoriser-un-conducteur-a-conduire-votre-vehicule-en-arabie-saoudite` (15 Oct 2023). Status: NEW. CURRENT. Confidence: medium to high.
-56. **Inside the Kingdom any iqama holder can be authorised for any length; outside it only family members (Absher's error message also allows "sponsors"), for no longer than their exit and re-entry visa, which must be valid. Cancel from Vehicles, Services, View or cancel driver authorisation; the driver can cancel from "Received driver authorisations" with a code sent to the owner. The page says fines are recorded against the authorised driver and one driver per car is allowed.**
-    Same page. Status: NEW. CURRENT (inside or outside rule), CHECK (fines and one driver). Confidence: medium.
-57. **The same page says a wife and children on visit visas may drive the iqama holder's car on an international permit for 6 months.**
-    Same page. Status: CONFLICTS FAQ `drive-on-visit-visa` and `drivers-license` ("for one year from the day you entered"). HISTORY; MESH stands. Confidence: low.
-58. **Vehicle repair permit (needed by the garage): Absher, Vehicles, Services, Vehicle management, the car, Issue vehicle repair permit. For a reported accident, within 90 days, several permits allowed; for an unreported accident, one per car per calendar year (more needs the traffic department). The request lapses if no garage processes it within 24 hours. Approved workshops are listed in the Ertah app.**
-    `comment-obtenir-un-permis-de-reparation-de-vehicule-en-ligne-en-arabie-saoudite` (25 Oct 2023). Status: NEW. CURRENT. Confidence: medium to high.
-59. **After an accident: call the traffic police (993 on the page) for fire, injury, death or when nobody is insured; otherwise Najm (920000560, app or WhatsApp) with photos; Najm texts, then the traffic department texts that the report is registered. A rental car is handled by the rental company. Get a Taqdeer damage estimate, then claim from the at-fault party's insurer online (paid within about 15 days) or from your own comprehensive insurer.**
-    `comment-faire-un-constat-pour-un-accident-de-voiture-en-arabie-saoudite` (10 Dec 2023). Status: Najm CONFIRMS `drivers-license`; Taqdeer and claims NEW; 993 versus MESH's 911, see section 3. CURRENT. Confidence: medium.
-60. **If the at-fault driver is uninsured: take the Taqdeer report to the traffic department by appointment and insist on a final report; with comprehensive cover your insurer recovers it, with third-party only you claim through Najiz, which sends the case to online reconciliation and then the execution court.**
-    Same page. Status: NEW. CURRENT. Confidence: medium.
-61. **Leaving the scene is hit and run (2023 page: 10,000 SAR and 3 months' prison); causing death or injury lasting over 15 days carries heavy prison terms and fines.**
-    Same page. Status: NEW; CHECK the figures; not for publication as numbers. Confidence: low.
-62. **Traffic accident report: Absher, Services, General Services, Absher Reports, Request report, Traffic accidents, English, pay (28.75 SAR in 2023), then View previous requests. Covers the last 2 years.**
-    `comment-obtenir-un-rapport-daccidents-de-la-circulation-depuis-absher` (10 Dec 2023). Status: NEW. CURRENT, CHECK the fee. Confidence: medium.
-63. **Impounded car: Absher, Vehicles, Inquiries, Impounded vehicles inquiry, choose the car; shows date and place. Check this before reporting a theft.**
-    `comment-suivre-une-voiture-mise-en-fourriere-sur-absher` (22 Nov 2023). Status: NEW. CURRENT. Confidence: medium to high.
-64. **Traffic department (Muroor) appointment: Absher, Appointments, Traffic, Proceed to service, New appointment, region, purpose, city, green slot. Useful purposes: استبدال رخصة قيادة (replace a foreign licence), تجديد رخصة قيادة (renew licence), تجديد رخصة سير (renew istimara), طباعة رخصة سير مركبة (print istimara), إصدار رخصة سير بدل تالف / فاقد (replace lost istimara), إصدار لوحة مركبة بدل تالف / فاقد (replace a plate), طباعة إذن إصلاح مركبة (print repair permit), طباعة ورقة تقدير حادث مروري (print accident estimate), اجراءات الهيئات المرورية (traffic committees, used for stuck objections), اجراءات حجز المركبات (impounded vehicles), نقل ملكية المركبة للحالات المتعذر نقلها عن طريق المعارض (ownership transfers that cannot go through a showroom), تصدير مركبة للخارج (export a car).**
-    `comment-prendre-un-rendez-vous-au-muroor-avec-absher` (10 Dec 2023). Status: CONFIRMS FAQ `traffic-fines` (اجراءات الهيئات المرورية) and `drivers-license` (استبدال رخصة القيادة); the rest NEW. CURRENT. Confidence: medium.
-65. **Insurance: compare third-party and comprehensive quotes online with the iqama number and the car's sequence number (on the istimara); the car's insurance status shows in Absher under Vehicle management. Driving uninsured was fined 150 SAR (2023).**
-    `comment-trouver-une-assurance-auto-moins-chere-...`, `comment-verifier-letat-de-lassurance-automobile-...` (25 Oct 2023). Status: CONFIRMS `drivers-license` ("Compare policies online"); Absher check and fine NEW, CHECK the fine. Confidence: medium.
-66. **Traffic fines show in Absher (traffic violations, More details with a map link) and in Tawakkalna (Dashboard, Traffic violations, Unpaid).**
-    `comment-verifier-vos-infractions-de-circulation-en-arabie-saoudite` (25 Oct 2023). Status: CONFIRMS FAQ `traffic-fines`; Tawakkalna route NEW. CURRENT. Confidence: medium.
-67. **Licence fees: private 40 SAR a year (80, 200 or 400 SAR for 2, 5 or 10 years); motorcycle 20 SAR a year. Licence swap: 4 photos, medical about 120 SAR in 2023 with results by SMS in 2 to 24 hours, European licences not tested.**
-    `frais-de-permis-de-conduire-en-arabie-saoudite-en-2023-2024` (13 Apr 2023), `comment-changer-son-permis-en-saoudien-pour-un-expat` (30 Mar 2023). Status: CONFIRMS `drivers-license`; motorcycle fee NEW (minor). CURRENT. Confidence: high.
-68. **Madinah's used car market is open daily; have a mechanic inspect any car first.**
-    `le-marche-automobile-de-medine-...` (4 Jun 2023). Status: CONFIRMS `buying-a-used-car` ("Have a mechanic look at it too"). Confidence: high. (No location published, to stay impartial.)
+48. **Changing the Absher mobile in Nafath: settings, Absher self-service devices, update your digital identity number; enter the iqama number, the new number, the code sent to it; then scan the four fingers of the left hand (not the thumb) with the camera, adjusting focus and distance if it fails; the change takes about 10 minutes.**
+    `092-post.txt`, `/fr_fr/comment-changer-le-numero-de-mobile-absher-en-utilisant-lapplication-nafath/` (undated). Status: CONFIRMS `phone-sims-and-absher` and `change-absher-mobile`; NEW: four fingers, 10 minutes. Published.
+49. **Cancelling a SIM on your iqama: in any operator's branch with the iqama and the number (cancelled within 24 hours, or reissued if you prefer); by the helpline (STC 900, Zain 959, Mobily 1100, Lebara 1755, Virgin 1789; Mobily's menu cancels within 5 working days); or a complaint in the telecom regulator's app signed in with Absher.**
+    `093-post.txt`, `/fr_fr/comment-annuler-une-carte-sim-enregistree-sur-votre-iqama/` (undated, before the regulator became CST). Status: CONFIRMS `phone-sims-and-absher` ("within five working days, escalate to CST"); NEW: 24 hours in a branch. Published.
+50. **Tawakkalna Services: register with Absher (code to the Absher mobile); without Absher, a relative with Absher registers your mobile for Tawakkalna under General Services; visitors register with passport number, mobile, date of birth and nationality. Support 8001289999.**
+    `086-post.txt`, `/fr_fr/comment-sinscrire-sur-lapplication-tawakkalna-en-arabie-saoudite/` (2023/24). Status: NEW. Not published (touches `living-on-a-visitor-id`, outside this task's guides; and the visitor flow has changed since).
 
-### 2.8 Visas for family and visitors (`visas-for-family-and-visitors`, `bringing-parents-to-visit`)
+### 2.8 Driving and cars (`drivers-license`, `buying-a-used-car`, `traffic-fines`, `drive-on-visit-visa`)
 
-69. **Paying a visit visa extension: SADAD, Government payments, Alien control, Extend visitor visa, "not registered", the visitor's border number. The payment does not show in Absher's available funds; if it is missing, Absher refuses the extension with an "insufficient funds" message. 100 SAR each time, plus 500 SAR if requested in the 3 days after expiry.**
-    `comment-payer-les-frais-de-prolongation-du-visa-de-visite-en-arabie-saoudite-en-ligne` (23 Jul 2023). Status: CONFIRMS `iqama-and-exit-reentry-fees` and `visas-for-family-and-visitors`; the funds note NEW (minor). CURRENT. Confidence: high.
-70. **In October 2023 Absher's extension service would not extend multiple-entry family visit visas, only single entry; the "Extend visit visa" page lists visitors as "eligible" or "not eligible" for extension and shows the current dates.**
-    `extension-du-visa-visite-famille-pour-3-mois-sans-sortir-du-territoire-...` (18 Oct 2023). Status: CONFIRMS part 1 item 24 (contradictory route, not for publication). HISTORY. The paid agency route on the page is skipped. Confidence: low.
-71. **Common reasons a family visit visa request is refused: host's iqama with less than 3 months left, wrong visa number or details, a letter attested by the wrong Chamber of Commerce, applying in the Hajj season (given as 1 Ramadan to 1 Safar: apply before Ramadan), and relatives outside the eligible list.**
-    `les-raisons-pour-lesquelles-la-demande-de-visa-de-visite-familiale-...-est-rejetee` (22 Aug 2023). Status: 3 months CONFIRMS `visas-for-family-and-visitors` per part 1 ("at least 90 days left"); Hajj season fits part 4 section 2.5; the rest NEW. CHECK. Confidence: medium.
-72. **Eligible relatives for a family visit visa (2023 list): spouse, children, parents, parents-in-law, a brother with his wife and children, a sister with her husband and children, the spouse's sister and brother, grandparents.**
-    Same page. Status: NEW (MESH says "close relatives such as a spouse, children or parents"). CHECK. Confidence: medium.
-73. **Chamber of Commerce attestation of an employer's letter (visa introduction letter, family visit visa form, permanent family visa letter): only in the Chamber of the employer's city, 25 SAR per attestation, 35 SAR to submit a family visit visa request, card only, valid 12 months; many employers attest online.**
-    `comment-obtenir-un-cachet-une-attestation-de-la-chambre-de-commerce-en-arabie-saoudite` (22 Aug 2023). Status: for employed residents. HISTORY or CHECK (part 1 item 26 has online attestation). Confidence: low.
-74. **Saudi Arabia launched the unified KSA Visa platform (ksavisa.sa) in December 2023 for all visa types, linked to over 30 agencies.**
-    `larabie-saoudite-lance-ksa-visa-la-nouvelle-plateforme-de-visa-unifiee` (20 Dec 2023). Status: NEW (MESH points to visa.mofa.gov.sa). CHECK which portal MESH should name for each visa. Confidence: medium.
-75. **Older visa news: UK Electronic Visa Waiver (Aug 2023), free 96-hour stopover visa with the national airlines (Apr 2023), investor "visitor" business eVisa opened to all countries in November 2023 (multiple entry, 90-day stays, Umrah allowed), personal visit visa for guests of Saudis (Mar 2023, 200 SAR), business visa fees (May 2023), the eVisa for US, UK and Schengen visa holders (Jun 2023, now in MESH), and the 2023 student visa page.**
-    Seven pages, Mar to Dec 2023. Status: HISTORY (part 1 and part 3 cover the eVisa, transit and student visas; MESH's eVisa text is current). Confidence: n/a.
-76. **Permanent family visa (istiqdam) 2024 page: online in Absher for some professions (doctors, engineers, accountants registered with their councils), with the employer completing the request; offline at Istiqdam with attested papers; 2,000 SAR per family; the yellow paper is valid one Hijri year; a baby born after issue is added at the embassy.**
-    `comment-demandez-un-visa-iqama-familial-permanent-via-istiqdam` (15 Feb 2024). Status: already in part 1 (items 33 to 35, question 2). Not repeated. The 200-profession list (`liste-des-professions-eligibles-...`, 10 Dec 2023) includes "university student", "teacher" and "religious person": for employed residents, CHECK.
+51. **Online ownership transfer in Absher: the buyer pays a 150 SAR fee by SADAD (Government payments, Motor vehicles, Transfer of ownership, with both iqama numbers and the sequence number); the seller opens Vehicles, Vehicle Ownership Transfer, Seller (car, price, buyer's iqama and date of birth, seller's IBAN, region); the buyer accepts under Buyer with his own IBAN (refund if cancelled); the buyer pays the price into Absher's account within 72 hours, in banking hours, with 230 SAR of fees already added (380 SAR in all); on delivery the buyer gives the seller the code from Absher, and only then is the seller paid. Prices from 500 to 200,000 SAR; at most 2 cars per expatriate; on an error, a transfer office does it by hand.**
+    `059-post.txt`, `/fr_fr/comment-transferer-la-propriete-dune-voiture-en-ligne-en-arabie-saoudite/` (undated). Status: CONFIRMS `buying-a-used-car` and `graduate-procedures`; NEW: the escrow steps. Published (the 230 SAR, price range and two-car limit left out: undated, section 5).
+52. **The page says the buyer has only one hour to accept the seller's request.**
+    `059-post.txt`, same path. Status: NEW, unclear. Published as "accept soon after the seller creates it, because the request expires", without the hour.
+53. **Istimara renewal in Absher (Vehicles, Services, Vehicle Management, choose the car, Renew vehicle registration): needs valid insurance, a valid periodic inspection, fees and late fees paid, fines paid, and less than 180 days left. The yearly fee, revised on 22 October 2023, goes by engine size for cars made in 2015 or before and by fuel economy from 2016, from 0 to 190 SAR. A card with no printed expiry date is kept; otherwise order the new card by post within 90 days (17.25 SAR, 3 working days) or collect it at the Muroor.**
+    `080-post.txt`, `/fr_fr/comment-renouveler-listimara-en-ligne-en-arabie-saoudite/` (late 2023). Status: CONFIRMS `drivers-license` (expired istimara fine); NEW: the rest. Published.
+54. **Periodic inspection (Fahas) needs an online appointment at vi.vsafety.sa: your details (or a person you authorise), registered vehicle, plate, private vehicle, periodic inspection service, region, centre, date and slot, SMS code.**
+    `077-post.txt`, `/fr_fr/la-prise-de-rendez-vous-en-ligne-est-desormais-obligatoire-pour-linspection-periodique-des-vehicules/` (2024). Status: NEW. Published.
+55. **A new private car is first inspected three years after its first licence, then every year; a valid inspection is needed to transfer ownership; validity shows in Absher (Vehicle Management, the car, More details) and on the sticker.**
+    `096-post.txt`, `/fr_fr/moroor-precise-la-periode-de-renouvellement-de-linspection-technique-fahas-des-vehicules/` (undated). Status: CONFIRMS `buying-a-used-car` ("a valid periodic technical inspection"); NEW: the intervals. Published.
+56. **Absher's Vehicle Management shows the car's insurer, policy start, status and expiry; driving uninsured is fined 150 SAR.**
+    `081-post.txt`, `/fr_fr/comment-verifier-letat-de-lassurance-automobile-en-arabie-saoudite/` (undated). Status: NEW. Published without the amount (undated).
+57. **One named comparison site quotes third-party and comprehensive cover from the iqama and sequence numbers.**
+    `082-post.txt`, `/fr_fr/comment-trouver-une-assurance-auto-moins-chere-en-arabie-saoudite/` (undated). Status: CONFIRMS `drivers-license` ("Several Saudi comparison sites"). Single business: not named.
+58. **Driver authorisation (Absher, Vehicles, Vehicle Management, the car, Issue driver authorisation): the driver's iqama number and date of birth, inside or outside the Kingdom, the length, and the code sent to the driver's Absher mobile. Needs a valid istimara and insurance, and a driver with a valid iqama and licence, no unpaid fines and an Absher account. Inside the Kingdom any iqama holder, any length; outside only family members, for the length of the exit and re-entry visa. Fines go to the authorised driver; one authorised driver per car. The owner cancels under View or cancel driver authorisation, the driver under Received authorisations with the owner's code.**
+    `078-post.txt`, `/fr_fr/comment-autoriser-un-conducteur-a-conduire-votre-vehicule-en-arabie-saoudite/` (undated). Status: NEW. Published (the one-driver limit left out: the wording is ambiguous).
+59. **Close family on visit visas (wife and children) may drive the iqama holder's car on an International Driving Permit for 6 months.**
+    `078-post.txt`, same path (footnote). Status: CONFLICTS `drivers-license` and `drive-on-visit-visa`: MESH says "for one year from the day you entered or until the licence expires". Section 3 and 5.
+60. **Repair permit (Absher, Vehicle Management, the car, Issue vehicle repair permit): for a recorded accident, within 90 days, several allowed; for an unrecorded one, one a car per calendar year, more only through the Muroor; the garage processes it, and a request not processed within 24 hours expires. An app lists approved garages; helpline 920029200.**
+    `083-post.txt`, `/fr_fr/comment-obtenir-un-permis-de-reparation-de-vehicule-en-ligne-en-arabie-saoudite/` (undated). Status: NEW. Published (app and helpline left out).
+61. **Traffic violations show in Absher (with a map link under More details) and in Tawakkalna (Dashboard, Traffic violations, Unpaid).**
+    `084-post.txt`, `/fr_fr/comment-verifier-vos-infractions-de-circulation-en-arabie-saoudite/` (undated). Status: CONFIRMS `traffic-fines`; NEW: Tawakkalna and the map. Published in `check-visa-and-iqama-online`.
+62. **Impounded car: Absher, Vehicles, Inquiries, Impounded vehicles inquiry; shows date and place, or "not impounded".**
+    `091-post.txt`, `/fr_fr/comment-suivre-une-voiture-mise-en-fourriere-sur-absher/` (undated). Status: NEW. Published.
+63. **Traffic accidents report: Absher, General Services, Absher Reports, Request report, Traffic accidents, English; 28.75 SAR; lists accident number, date and plate for the last two years.**
+    `101-post.txt`, `/fr_fr/comment-obtenir-un-rapport-daccidents-de-la-circulation-depuis-absher/` (undated). Status: NEW. Published in `drivers-license` and `check-visa-and-iqama-online`.
+64. **After an accident: traffic police on 993 for fire, injury, death, or when neither party is insured; otherwise Najm on 920000560 or its app (account with iqama and Nafath, Report an accident, the other car's details, photos, an expert assigned); texts from Najm, then from the traffic police; in a rental car, call the company; damage estimate by Taqdeer; claim from the at-fault insurer online, paid within 15 days; if the other side is uninsured, a Muroor visit for the final report, then your comprehensive insurer, or with third-party cover Najiz, then Taradhi reconciliation by video, then the execution court.**
+    `102-post.txt`, `/fr_fr/comment-faire-un-constat-pour-un-accident-de-voiture-en-arabie-saoudite/` (undated). Status: CONFIRMS `drivers-license` (Najm 920000560); NEW: the rest. Published.
+65. **Penalties: hit and run 10,000 SAR and 3 months in prison; a fatal accident 4 years and 200,000 SAR; injuries over 15 days 2 years and 100,000 SAR.**
+    `102-post.txt`, same path. Status: NEW, unsourced maxima. Not published.
 
-### 2.9 Marriage (no MESH guide)
+### 2.9 Housing, courts and bills (`finding-an-apartment`, not edited in this task)
 
-77. **Two foreigners can marry in the Kingdom if each holds a valid iqama, is a dependant on one, or holds a family visit or tourist visa; Hajj and Umrah visa holders cannot. Each of groom, bride, the bride's guardian and two witnesses needs a Saudi SIM in their own name.**
-    `comment-les-etrangers-peuvent-ils-se-marier-en-arabie-saoudite` (22 Aug 2023). Status: NEW. CHECK (Visitor ID holders are not addressed). Confidence: medium.
-78. **A licensed marriage officer (ma'dhun), chosen by city from the Ministry of Justice list on Najiz, creates the contract on the ministry's portal with iqama or passport copies of the couple and witnesses and the mahr; after checks, all five numbers get an SMS to confirm within 24 hours; the contract is then issued electronically as a PDF. The officer's fee is agreed beforehand.**
-    Same page. Status: NEW. CURRENT (electronic contracts), CHECK (steps). Confidence: medium.
-79. **For use abroad: attest the contract at the Ministry of Justice and the Ministry of Foreign Affairs, then have it translated and attested by your embassy.**
-    Same page. Status: NEW. CHECK. Confidence: medium.
+66. **Ejar: rent is paid only through Ejar (mada, or SADAD biller 153) from 15 January 2024; the landlord creates the contract and pays 250 SAR; the tenant registers from the SMS link; a contract not rejected within 7 days counts as accepted; cash payments need a receipt requested in Ejar; landlords not on Ejar are fined.**
+    `065-post.txt`, `/fr_fr/paiement-et-enregistrement-dun-contrat-de-location-avec-ejar-en-arabie-saoudite/` (early 2024). Status: CONFIRMS `finding-an-apartment` ("pay the rent only through Ejar, by mada or SADAD"); CONFLICTS on the fee (MESH: "The Ejar fee of 125 SAR a year"). The page is older; MESH is current. Renting on a Visitor ID is an open question and was not touched.
+67. **Ending an Ejar contract early (Contracts, View contract, Terminate contract, reason, date, financial settlement): the tenant owes the rent to the end unless the landlord waives it; no automatic renewal; helpline 9200 05226.**
+    `066-post.txt`, `/fr_fr/comment-annuler-un-contrat-de-location-ejar-en-ligne-en-arabie-saoudite/` (2024). Status: NEW for `finding-an-apartment`; the helpline differs from MESH ("Ejar's helpline is 199011"). Not published: outside this task's guides. Reported to the coordinator.
+68. **Najiz: an objection to a labour court ruling within 30 days; a claim against a landlord (eviction); a private claim after a traffic accident; and the execution court when a ruling is not paid.**
+    `090-post.txt`, `/fr_fr/comment-deposer-une-plainte-en-ligne-sur-najiz/` (undated). Status: NEW. The accident route is published in `drivers-license`; the rest not.
+69. **Electricity bill: by WhatsApp to the electricity company, by SMS codes, by email alerts, or a registered account with three years of history.**
+    `085-post.txt`, `/fr_fr/comment-verifier-sa-facture-delectricite-en-ligne-en-arabie-saoudite/` (2023). Status: NEW, the codes look outdated. Not published.
 
-### 2.10 Rawdah, Hajj and Masjid an-Nabawi (`umrah-rawdah-quba`, `women-at-masjid-an-nabawi`)
+### 2.10 The Rawdah (`umrah-rawdah-quba`, `masjid-an-nabawi-first-visit`, `rawdah-booking`)
 
-80. **Rawdah permit (2026 page): free, Nusuk only; new batches often open on Friday afternoons for the following week, with small batches through the day; one permit roughly every 365 days; the app may refuse a new permit within 45 days of the last; babies are not admitted and children from 5 need their own permit; confirmation emails may come from the platform's old name (Eatmarna); men usually enter at gate 37 and women at gate 25.**
-    `comment-obtenir-un-permis-ou-un-rendez-vous-pour-rawdhat-ul-jannah` (20 Jun 2026). Status: free, Nusuk, separate times CONFIRM `umrah-rawdah-quba`; MESH says "the app shows how many permits you can book" rather than a fixed interval. Children's rule, gates and intervals NEW, CHECK. Confidence: low to medium.
-81. **Nusuk Hajj platform for pilgrims from 58 Western countries (2023); 2023 domestic packages from 3,465 to 11,435 SAR.**
-    `comment-sinscrire-sur-la-plateforme-de-hajj-en-ligne-nusuk-hajj-2023` (22 Mar 2023). Status: HISTORY (part 1 section L). Confidence: n/a.
+70. **The permit is compulsory and free, only through Nusuk; staff scan the QR code at the gate.**
+    `100-post.txt`, `/fr_fr/comment-obtenir-un-permis-ou-un-rendez-vous-pour-rawdhat-ul-jannah/` (updated 2026/27). Status: CONFIRMS `umrah-rawdah-quba`, `masjid-an-nabawi-first-visit`, `rawdah-booking`
+71. **Book before you arrive: a visitor creates the Nusuk account with passport and visa numbers on the day the visa is issued; slots go in seconds in busy periods.**
+    `100-post.txt`, same path. Status: CONFIRMS ("Slots open in advance and go quickly"); NEW: book from home. Published.
+72. **A permit booked under the wrong category (men or women) does not work at the gate.**
+    `100-post.txt`, same path. Status: NEW. Published.
+73. **New slots are usually released on Friday afternoon (Saudi time) for the coming week, with small batches every 30 minutes through the day.**
+    `100-post.txt`, same path. Status: NEW, a pattern, not an announced rule. Not published: section 5.
+74. **Men usually enter late at night to early morning, often by Gate 37 (Bab as-Salam); women have two windows, early morning and late evening, often by Gate 25 (Bab Uthman ibn Affan).**
+    `100-post.txt`, same path. Status: CONFIRMS `women-at-masjid-an-nabawi` ("Women's slots are in the morning and late at night"); the gates are NEW: section 5.
+75. **Babies and very young children are not admitted; from age 5 a child needs his own permit.**
+    `100-post.txt`, same path. Status: NEW. Section 5.
+76. **"As a rule, one permit every 365 days"; the same page quotes an app error that a new permit must be 45 days after the last.**
+    `100-post.txt`, same path. Status: CONFLICTS within the page; MESH says only "the app shows how many permits you can book". No change; section 5.
+77. **Anyone offering paid or "guaranteed" access is a scam; only the app published by the Ministry of Hajj and Umrah is genuine; confirmation emails from "Eatmarna" carry the platform's old name.**
+    `100-post.txt`, same path. Status: NEW. Published (scam and official app; the old name left out).
+78. **June 2026: live tracking of prayer areas, interactive maps and simultaneous translation of sermons at Masjid an-Nabawi; new pedestrian paths in the central area and to Masjid Quba.**
+    `100-post.txt`, same path. Status: CONFIRMS `umrah-rawdah-quba` ("the Quba walkway"). No change.
 
-### 2.11 For employed residents only (short notes)
+### 2.11 Work, Qiwa, sponsorship and Huroob (out of scope)
 
-82. **Huroob (absence from work):** since late 2023 the employer cannot lift it; a new employer can transfer the worker through Qiwa within 60 days, or the worker can take final exit within 60 days and return later on a new visa; otherwise deportation and a 5-year ban. Status checks on the old labour ministry site and in Absher. (`5-nouvelles-regles-pour-supprimer-le-huroob`, 11 Dec 2023; `comment-verifier-le-statut-de-huroob-...`, 6 Jul 2023) HISTORY or CHECK.
-83. **Transfers and fees:** 2,000, 4,000 and 6,000 SAR for the first, second and third transfer, paid by the new employer under Labour Law article 40; Qiwa transfer flow with 10 days to accept, notice periods and a 14-day employer window; changing job before one year with consent (Jul and Aug 2023). HISTORY (part 1 item 11; the 2026 pages say the sponsorship system changed in 2025).
-84. **Work permit levy:** 800 SAR a month (9,600 a year) in 2023 to 2024, paid under SADAD biller 050, with exemptions (spouse of a Saudi, domestic workers, small firms' first employees); Nitaqat colours; work permit and iqama-issued checks by border number; a worker whose iqama is not issued within 90 days of arrival may transfer without consent (Jun to Aug 2023). HISTORY.
-85. **Qiwa (2026 pages):** sign-in through Nafath; offers must be answered in 10 days; from 30 June 2026 a work permit expired for over 3 months can remove the worker from the employer's register even with a valid iqama; Premium Residency holders need a work permit (100 SAR); complaints through Madad. (16 Jun 2026; Qiwa sign-up, 1 Jun 2024 updated 2026) CHECK.
-86. **Work iqama from abroad (2024):** employer costs, Tasheer biometrics, 90 days to enter after the visa, Efada medical on arrival (about 100 SAR). (`comment-obtenir-une-iqama-pour-larabie-saoudite`, 22 Jul 2024) The page's claim of a monthly state allowance of 100 to 150 euros per child at the Masjid an-Nabawi school is unverified (section 5).
-87. **Saudised professions list and Premium Residency products** (10 Dec 2023; 10 Jan 2024): out of scope; Premium Residency already in part 3 section 2.14.
-88. **Citizenship (Mar 2023):** points system (10 years' residence, at least 23 of 33 points), rules for foreign wives and widows. Out of scope; HISTORY.
+79. **Iqama transfer to a new employer through Qiwa (conditions, 10 days for the worker to accept, notice periods, 14 days for the current employer, 24 days for the new employer to finish in Absher); transfer fees 2,000, 4,000, then 6,000 SAR, owed by the new employer.**
+    `057-post.txt`, `/fr_fr/comment-transferer-une-iqama-vers-un-autre-employeur-en-arabie-saoudite/`; `058-post.txt`, `/fr_fr/comment-payer-les-frais-de-transfert-diqama-vers-un-autre-employeur-en-arabie-saoudite/`; `072-post.txt`, `/fr_fr/les-expatries-peuvent-changer-demploi-avant-la-fin-du-contrat-de-1-an/` (undated). Status: out of scope.
+80. **Work permit levy (Maktab Amal): 800 SAR a month in 2023/24, paid by the employer; exemptions listed.**
+    `076-post.txt`, `/fr_fr/comment-verifier-et-payer-les-frais-du-maktab-amal-iqama/` (2023/24). Status: out of scope.
+81. **Qiwa in 2026: login through Nafath only; a contract not documented on Qiwa has no legal force; 10 days to answer an offer; since 30 June 2026 a worker whose work permit has been expired for more than 3 months can be removed from his employer's register even with a valid iqama; job changes without the old employer's consent once the contract or notice ends (since the 2025 reform); Premium Residency holders need a 100 SAR work permit.**
+    `104-post.txt`, `/fr_fr/comment-verifier-votre-contrat-de-travail-sur-qiwa-en-arabie-saoudite/`; `105-post.txt`, `/fr_fr/comment-sinscrire-sur-la-plateforme-qiwa-en-arabie-saoudite/` (updated 2026). Status: out of scope (students may not work).
+82. **Professions reserved for Saudis (about 100); professions eligible for a family iqama (200).**
+    `106-post.txt` (see finding 34); `107-post.txt`, `/fr_fr/liste-des-professions-reservees-aux-saoudiens/` (undated). Status: out of scope.
+83. **Huroob (absconding report): transfer or final exit within 60 days; otherwise deportation and a 5-year ban.**
+    `108-post.txt`, `/fr_fr/5-nouvelles-regles-pour-supprimer-le-huroob/` (undated). Status: out of scope.
+
+### 2.12 Pages skipped for content
+
+- `079-post.txt` (2023/24): promotes a paid office and its WhatsApp number for visit visa extensions. EXPIRED and commercial.
+- `082-post.txt`: promotes one insurance comparison company. Not named.
+- `088-post.txt`: investor business visa. Out of scope.
+- `098-post.txt`, final lines: links to the site's own WhatsApp group. Skipped (the procedure above comes from the rest of the page).
+- `100-post.txt`, final lines: the site's own channels. Skipped.
+- `104-post.txt`, `105-post.txt`: the site's own channels and slogan. Skipped.
+- Every page carries a link to the site's Telegram group. Skipped.
 
 ## 3. Conflicts with MESH
 
-1. **Ejar automatic renewal.** MESH (`finding-an-apartment`) says: "A registered contract renews itself unless you or the owner gives notice at least 60 days before it ends." The August 2023 page says Ejar had no automatic renewal and no notice was needed at the end. The page predates later Ejar contract changes; MESH probably stands, but the owner should confirm the current default and notice period (section 5).
-2. **Ejar fee and helpline.** MESH (`what-is-ejar`): "The fee is 125 SAR a year ... Ejar's helpline is 199011." The 2023 page: 250 SAR paid by the landlord, helpline 9200 05226. The fee is HISTORY; the helpline needs checking.
-3. **Expired exit and re-entry visa.** MESH (`iqama-and-exit-reentry-fees`): "An exit and re-entry visa that runs out while you are abroad leaves you outside with no way back on that iqama." A November 2023 page reports a Jawazat clarification that an expired visa can be extended from abroad if the iqama covers the new period plus 90 days. MESH's warning is the safe advice either way; if the clarification still holds, MESH could add "if it has just expired, try extending it in Absher at once" (section 5).
-4. **Traffic police number.** MESH (`drivers-license`): "Anyone hurt, or a dispute: call 911." The December 2023 page says 993. 911 is the unified number where the national operations centre covers the region; confirm it answers in Madinah (it is believed to) and keep 911.
-5. **Visitors driving the host's car.** MESH (`drive-on-visit-visa`, `drivers-license`): one year from entry. The October 2023 page says 6 months on an international permit. MESH stands (part 4 item 1 confirms one year under Traffic Law article 42).
-6. **Final exit iqama margin.** MESH: "the iqama must have at least 30 days left." The August 2023 page: more than 32 days, for a worker's self-requested final exit. Minor; no change unless the owner knows otherwise.
-7. **Birth certificate attestation.** The August 2023 page puts foreign ministry attestation of the birth certificate before the embassy passport; MESH (`having-a-baby-in-madinah`) has the embassy working from the hospital's birth notification with an accepted translation. Not a direct contradiction; embassies differ.
+Owner guidance received during this task: the site is accurate, so where it gives a fact MESH lacks or states differently, its version is published unless MESH rests on a stronger, newer source (an official University PDF or a dated official notice newer than the post). The changes below follow that rule.
 
-## 4. Ready-to-publish additions
+1. **`iqama-and-exit-reentry-fees`: an exit and re-entry visa that expires abroad.** MESH said it "leaves you outside with no way back on that iqama". The source (2025/26, and `087`) says the sponsor can still extend it after expiry while the person is abroad and the iqama is valid. **Change made:** the bullet now says it can be extended from Absher while the iqama is valid, and that only an expired iqama as well leaves no way back; the extension section says it works after expiry.
+2. **`drivers-license` and `drive-on-visit-visa`: family on visit visas driving.** MESH says a visitor drives on a recognised home licence "for one year from the day you entered". The source's footnote says close family on visit visas may drive the iqama holder's car on an International Driving Permit for 6 months, and itself tells readers to check with Jawazat. MESH's one-year rule is the published traffic rule for visitors and is the stronger source. **Change:** none; owner question.
+3. **`umrah-rawdah-quba` and `rawdah-booking`: how often a permit can be booked.** MESH says "the app shows how many permits you can book". The source gives one permit every 365 days and, on the same page, an app message requiring 45 days between permits. **Change:** none, since the source contradicts itself.
+4. **`finding-an-apartment`: the Ejar fee and helpline.** The source (early 2024) says the landlord pays 250 SAR and gives 9200 05226; MESH says 125 SAR a year and 199011, from newer checks. **Change:** none (and the guide is outside this task).
+5. **`renew-passport-in-saudi`: Absher or Jawazat for a passport update.** The source says Absher usually fails and Jawazat does it at once. MESH puts Absher first, then Absher's Tawasul, from newer pages. **Change made:** a Jawazat appointment with the free form added as a further route.
+6. **`iqama-and-exit-reentry-fees`: exit and re-entry extension fees.** `087` gives 100 and 200 SAR; `097` gives the doubled 200 and 400 SAR a month from abroad, as MESH does. **Change:** none; the site's own later page agrees with MESH.
+7. **`iqama-and-exit-reentry-fees`: iqama days left for final exit.** MESH says at least 30 days; the source says more than 32 days, for a worker's self-requested final exit only. **Change:** none (different route).
 
-House rules applied: no em or en dashes, no sources, no doubt, impartial, rewritten. Figures that change carry a date or are left to Absher's screen. Items marked "owner check first" depend on a question in section 5.
+## 4. Ready-to-publish sections
 
-### 4.1 Target: `iqama-and-exit-reentry-fees` (replace the "Final exit" section)
+All of these were published in this task; the HTML is in the seed files named.
+
+### 4.1 Target: `iqama-and-exit-reentry-fees` (`guides-2026.ts`): new subsections under "Final exit", and the fingerprint rule
 
 ```html
-<h2>Final exit</h2>
-<p>A final exit visa is free. It is valid for 60 days from the day it is issued, the iqama must have at least 30 days left, and it cancels the iqama when the holder crosses the border, so it is the last paper you take, after the bank, the car and the flat are settled. With a student iqama, Travel Management issues yours once your clearance shows. You issue your wife's and children's yourself in Absher.</p>
-<h3>Issuing a final exit for a family member</h3>
+<h3>Final exit for your wife or children</h3>
 <ol>
-  <li>Check that the family member is inside Saudi Arabia, has a valid iqama, a passport with at least 60 days left, no unpaid traffic fines and no car in their name.</li>
-  <li>If your family's iqamas carry the monthly dependants' levy, pay it so that it covers 60 days from the day you issue the visa. Until then Absher refuses with the message "AC3052E: Insufficient funds".</li>
-  <li>Sign in to Absher, open Family Members Services, then Visa Services, choose the person, press More details, then Issue final exit visa.</li>
-  <li>Print the visa or save the PDF. A Saudi embassy can ask to see it if the same person applies for a Saudi visa in the future.</li>
+<li>Sign in to Absher and open <strong>Family Members Services</strong>, then <strong>Visa Services</strong>, and press Next.</li>
+<li>Choose the family member, press <strong>More details</strong>, then <strong>Issue final exit visa</strong>. Accept the terms and confirm.</li>
+<li>Print the visa, or save it as a PDF, from the same screen.</li>
 </ol>
-<h3>If your plans change</h3>
+<p>Absher issues it only when the family member is inside Saudi Arabia, holds a valid iqama with a passport valid for at least 60 days, has no unpaid fines and has no car in their name. The error "AC3052E: Insufficient funds" means a fee on that person's file is still unpaid: pay it, then try again.</p>
+<h3>Cancelling, or running out of time</h3>
 <ul>
-  <li>A final exit visa cannot be extended. To stay longer, cancel it and issue a new one when you are ready to leave.</li>
-  <li>Cancelling it while it is still valid is free, in Absher under Family Members Services, Visa Services, More details.</li>
-  <li>A final exit visa that runs out unused is fined, and cancelling it after that needs an appointment at Jawazat. Leave within the 60 days, or cancel in time.</li>
-  <li>Your family's iqama cards do not need to be handed in. Once they have left, cut the cards up.</li>
-</ul>
-<p>A final exit is refused while there are unpaid fines, a car registered in the person's name, or a dependant left behind on an unsettled iqama. Returning later means a new visa of your own. The whole leaving process is in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
-```
-
-### 4.2 Target: `having-a-baby-in-madinah` (add to step 2, and a new section after step 4)
-
-Add after the paragraph in "2. The birth certificate in Absher":
-
-```html
-<ul>
-  <li>Absher registers the birth online while the baby is under one year old, once the birth text message from the Ministry of Interior has arrived and your National Address is registered. The message can take up to two weeks after the birth. Absher gives the baby a resident number at once, and you can have the certificate posted home.</li>
-  <li>Register within 30 days of the birth. After that a late fee is added, and it is paid online before the certificate is issued.</li>
-  <li>If Absher will not register it online, book Civil Affairs: Appointments, then Civil Affairs, then Book new appointment, and choose the service تسجيل واقعة ميلاد (birth registration), then any branch in the region where the baby was born. Take the birth text message, both parents' passports and iqamas with copies, and your marriage certificate translated into Arabic if your wife is not on your iqama. Arrive 20 minutes early: the certificate is printed at the counter.</li>
+<li><strong>Cancel it free while it is valid,</strong> on the same page: Family Members Services, then Visa Services, then More details. Travel Management cancels a student's own final exit.</li>
+<li><strong>It cannot be extended.</strong> If your plans move, cancel it and issue a new one nearer the date.</li>
+<li><strong>Not leaving within the 60 days costs a 1,000 SAR fine.</strong> An expired final exit is cancelled only at Jawazat, with an appointment for Resident services, a cancellation form, copies of the visa, the iqama and the passport, two photos on a white background, and the iqama renewal fees if the iqama has run out meanwhile.</li>
+<li><strong>Keep the printout after you leave.</strong> A Saudi embassy can ask for it when you apply for a new Saudi visa later.</li>
 </ul>
 ```
 
-New section (owner check first: question 5):
+The fingerprint bullet in "The rules that catch people" now adds: "This applies to every family member aged 15 or over, so book a fingerprint appointment for a child who has just turned 15 before the trip."
+
+### 4.2 Target: `family-records-on-absher` (`guides-admin-papers-2026-11.ts`): new section "Booking a Jawazat, Civil Affairs or traffic appointment"
 
 ```html
-<h2>If the mother is here on a visit visa</h2>
-<p>Follow the same steps for the birth record, the birth certificate and the baby's passport. The baby is not added to an iqama. Before you leave, the father takes these to Jawazat, at the expatriate affairs section (إدارة شؤون الوافدين), to have the baby's exit stamped, about two weeks before the flight:</p>
-<ul>
-  <li>the baby's passport, with a copy;</li>
-  <li>the father's iqama and passport, with copies;</li>
-  <li>the mother's passport, with a copy of the Saudi visa in it;</li>
-  <li>the marriage certificate, translated into Arabic;</li>
-  <li>the birth text message from the Ministry of Interior.</li>
-</ul>
-<p>Book the visit in Absher under Appointments, then Passport, then Resident services.</p>
-```
-
-### 4.3 Target: `drivers-license` (new section after "Buying a car")
-
-```html
-<h2>Looking after a car in your name</h2>
-<h3>Registration (istimara)</h3>
-<ul>
-  <li>Renew it in Absher: Vehicles, then Services, then Vehicle management, choose the car, then Renew vehicle registration. Absher opens the renewal in the registration's last months.</li>
-  <li>You need valid insurance, a valid periodic inspection, every traffic fine paid, and the renewal fee and any late fee. Since October 2023 the fee is charged by the year and depends on the engine size for older cars and on fuel economy for newer ones. Absher shows the amount before you pay.</li>
-  <li>A card with no expiry date printed on it stays valid, so you keep it. For a new card, ask Absher to post it within 90 days (My Services, then Postal delivery service), or book the traffic department with the purpose طباعة رخصة سير مركبة (print the registration).</li>
-</ul>
-<h3>Periodic inspection (Fahas)</h3>
-<ul>
-  <li>A new private car has its first inspection three years after it is first registered, then once a year.</li>
-  <li>Book the inspection online on the Vehicle Safety Center's booking site before you go. Choose the periodic inspection, your region and centre, a date and a slot, and confirm with the code sent to your phone. You can name someone else to take the car for you.</li>
-  <li>See the expiry date in Absher under Vehicles, Services, Vehicle management, the car, then More details. Without a valid inspection you cannot renew the registration or sell the car.</li>
-</ul>
-<h3>Letting someone else drive your car</h3>
+<h2>Booking a Jawazat, Civil Affairs or traffic appointment</h2>
+<p>Jawazat (the passports office), Civil Affairs and the traffic department (Muroor) see you only with an appointment booked in Absher. All three are booked the same way.</p>
 <ol>
-  <li>In Absher, open Vehicles, then Vehicle management, choose the car, then Issue driver authorisation.</li>
-  <li>Enter the driver's iqama number and date of birth, choose inside or outside Saudi Arabia, and choose how long.</li>
-  <li>Enter the code sent to the driver's phone, then print the confirmation.</li>
+<li>Sign in to absher.sa, scroll down and open <strong>Appointments</strong> (المواعيد).</li>
+<li>Choose <strong>Passports</strong> for Jawazat, <strong>Civil Affairs</strong> for a birth, or <strong>Traffic</strong> for the traffic department, then press <strong>Proceed to service</strong> and <strong>Book new appointment</strong>.</li>
+<li>Choose the service, the region, the number of transactions you have and the office.</li>
+<li>Pick a date and time: green slots are free, red ones are taken. Check them, then press <strong>Confirm appointment details</strong>.</li>
+<li>Print the appointment or keep a screenshot. The last screen lists the papers to bring.</li>
 </ol>
-<ul>
-  <li>The car needs valid insurance and registration, there must be no unpaid fines, and the driver needs a valid iqama, a valid licence and an active Absher account.</li>
-  <li>Inside Saudi Arabia you can authorise any iqama holder, for any length of time. Outside Saudi Arabia you can authorise only your own family members, for no longer than their exit and re-entry visa.</li>
-  <li>To end it, open Vehicles, then Services, then View or cancel driver authorisation.</li>
-</ul>
-<h3>After an accident: repairs and reports</h3>
-<ul>
-  <li>A garage repairs accident damage only with a repair permit from Absher: Vehicles, Services, Vehicle management, the car, then Issue vehicle repair permit. For an accident reported to Najm or the police, request it within 90 days. For damage that was never reported, you get one permit per car per calendar year.</li>
-  <li>The garage then accepts the permit in its own system. If no garage takes it up within 24 hours, it lapses and you request it again.</li>
-  <li>Your insurer, or the insurer of the driver at fault, pays after Najm's report and the damage estimate. Absher also prints a full report of your accidents in the last two years under Services, General Services, Absher Reports, for a small fee.</li>
-</ul>
-<h3>Car not where you parked it?</h3>
-<p>Before you think of theft, open Absher, then Vehicles, then Inquiries, then Impounded vehicles. It shows whether the traffic police towed the car, with the date and the place.</p>
-<h3>Booking the traffic department</h3>
-<p>In Absher, open Appointments, then Traffic, choose your region and the purpose, then a green slot. The purposes you are most likely to need:</p>
-<ul>
-  <li>استبدال رخصة قيادة: swap a foreign licence for a Saudi one.</li>
-  <li>تجديد رخصة سير: renew a registration that will not renew online.</li>
-  <li>طباعة رخصة سير مركبة: print a registration card.</li>
-  <li>إصدار رخصة سير بدل تالف / فاقد and إصدار لوحة مركبة بدل تالف / فاقد: replace a lost or damaged registration or number plate.</li>
-  <li>اجراءات الهيئات المرورية: follow up a fine objection that is stuck.</li>
-  <li>اجراءات حجز المركبات: get an impounded car back.</li>
-</ul>
+<!-- then a table of services: Resident services (خدمات المقيمين); biometrics for residents and for their companions; inquiry on incoming transactions; Civil Affairs birth registration (تسجيل واقعة ميلاد); traffic purposes -->
 ```
 
-### 4.4 Target: FAQ `buying-a-used-car` (replace the "Transfer it in Absher" sentence with this paragraph; owner check first on the timings: question 3)
+Also in this guide: the postal delivery fee (17.25 SAR by text link), the 90-day window and the Postal Delivery Service menu; name corrections for your own student iqama (Travel Management, Muqeem) and for the English name (Jawazat); Jawazat forms are free.
+
+### 4.3 Target: `having-a-baby-in-madinah` (`guides-2026.ts`): the birth certificate when it does not show, and a mother on a visit visa
 
 ```html
-<p><strong>Transfer it in Absher.</strong> Both of you sign in to Absher and open Vehicles, then Services, then Vehicle Ownership Transfer. The seller chooses the car, enters the price, your iqama number and date of birth, and his bank IBAN. You accept the sale under the Buyer tab, enter your own IBAN, then pay the price and the fees into the account Absher shows you, within the time Absher gives. The money is held there, not sent to the seller. When you have the car and the keys, give the seller the code Absher texts you, so that he can confirm the handover and the money is released. Never give the code before you have the car. Both of you need active Absher accounts, and the transfer is refused while there are unpaid fines on you or the car, or the car has no valid periodic inspection. A resident can own at most two private cars. Then print the new registration at the traffic department or have it posted to you, and check that the car shows under your vehicles in Absher.</p>
-```
-
-### 4.5 Target: `finding-an-apartment` (two short sections; owner check first on renewal: question 1)
-
-```html
-<h2>Leaving before the contract ends</h2>
-<p>An Ejar contract binds you for its whole term. If you leave early, the owner can claim the rent up to the end of the contract unless he agrees to let you go. The usual way out is to find a new tenant the owner accepts: your contract is ended and a new one is registered in the new tenant's name.</p>
+<p>The hospital's notice reaches the Ministry of Interior first, and a text message tells you when it has arrived. This takes up to two weeks. If no certificate shows after that message:</p>
 <ol>
-  <li>Agree the date with the owner in writing.</li>
-  <li>Sign in to Ejar, open Contracts, then Show all contracts, open the contract and choose Terminate contract.</li>
-  <li>Give the reason, the date you will leave and a short note. Ejar then shows any amount still owed.</li>
+<li>In Absher, open <strong>Services</strong>, then <strong>Civil Affairs</strong>, then <strong>New Born Registration</strong>. It works while the baby is under one year old and once your National Address is registered.</li>
+<li>Check the spelling of every name and the date of birth. If anything is wrong, stop and ask the hospital to correct its notice.</li>
+<li>Accept the terms, then choose postal delivery of the certificate to your National Address, or collect it at a Civil Affairs office.</li>
 </ol>
-<p>Hand the flat back in the state you received it, and keep photos of it on the day you leave.</p>
-
-<h2>Checking your electricity bill</h2>
-<p>Once the account is in your name, register on the Saudi Electricity Company's website or app with your iqama number: the code goes to your Absher mobile number. Add your account number from the bill to see each month's bill and three years of history, and pay by SADAD in your banking app. You can also have the bill sent to your email every month.</p>
+<p><strong>Mother on a visit visa?</strong> A baby born here to a mother on a family visit visa has no entry record, so Jawazat has to clear the baby to leave. Follow the steps above up to the passport. Then, at least 15 days before you travel, book a Jawazat appointment for Resident services and go to the Expatriate Affairs section (إدارة شؤون الوافدين) with the baby's passport, the father's iqama and passport, the mother's passport with her Saudi visa, the marriage certificate translated into Arabic and the birth text message from the Ministry of Interior, each with a copy. Jawazat stamps the baby's exit in the passport.</p>
 ```
 
-### 4.6 Target: FAQ `short-address` (add before "If you move")
+Also: the Civil Affairs appointment fallback with its papers, and the Ministry of Foreign Affairs attestation before the embassy.
+
+### 4.4 Target: `drivers-license` (`guides-2026.ts`): "After an accident, step by step" and "Keeping your car legal: Absher's vehicle services"
+
+Published as two blocks: a seven-step accident list (Najm app, rental car, Taqdeer estimate, claim and the 15-day payment, the uninsured other driver through the Muroor, Najiz and Taradhi, the repair permit rules, the 28.75 SAR accidents report), with 993 added beside 911; and a new section on istimara renewal (180 days, conditions, the yearly fee by engine size or fuel economy up to 190 SAR, the card by post or at the Muroor), the periodic inspection (first after three years, then yearly, booking at vi.vsafety.sa), insurance in Vehicle Management, driver authorisation (steps, conditions, inside and outside the Kingdom, fines to the authorised driver, cancelling), the impounded-car inquiry, and cards by post for 17.25 SAR.
+
+### 4.5 Target: `buying-a-used-car` (FAQ, `guides-gaps-2026-11.ts`): the Absher transfer, step by step
 
 ```html
-<p>To register your National Address, sign in to Absher and open My Services, then General services, then National Address service, then Register a new national address. Enter the building number, district, postcode and city, confirm with the code sent to your phone, and add your wife and children with the plus sign. You can do the same on Saudi Post's website. Either one updates the other. Banks and insurers sometimes ask for proof: print it from the same Absher page.</p>
+<li><strong>Transfer it in Absher.</strong> Both of you need active Absher accounts, and the transfer is refused while there are unpaid fines on you or the car. Absher holds your money until you have the car:<ol>
+<li>You pay the 150 SAR transfer fee first, in your banking app under Government payments, then Motor vehicles, then Transfer of ownership, with the seller's iqama number, the car's sequence number (on the istimara) and your iqama number.</li>
+<li>The seller opens Vehicles, then Services, then Vehicle Ownership Transfer, chooses Seller, and enters the car, the price, your iqama number, your date of birth and his IBAN.</li>
+<li>You open the same service, choose Buyer, accept the request and enter your own IBAN, which is refunded if the sale is cancelled. Accept soon after the seller creates it, because the request expires.</li>
+<li>Absher shows an account number. Pay the price into it within 72 hours, in banking hours. A further service fee is already added to the price shown.</li>
+<li>When the seller hands you the car, Absher sends you a code. Give it to the seller only once the car and its keys are in your hands: he enters it, and Absher releases the money to him.</li>
+</ol></li>
 ```
 
-### 4.7 Target: `family-records-on-absher` (two short sections)
+### 4.6 Other targets (published)
 
-```html
-<h2>Booking Jawazat</h2>
-<p>A few things still need a visit to Jawazat, such as fingerprints for a family member, a passport transfer that Absher refuses, or an entry or exit missing from your records. Book first:</p>
-<ol>
-  <li>In Absher, open Appointments, then Passport, then New appointment.</li>
-  <li>Choose the service: fingerprints for men, fingerprints for dependants, or Resident services for nearly everything else.</li>
-  <li>Choose the region, the number of transactions and the office, then a green slot. Print the confirmation or keep a screenshot.</li>
-</ol>
-<p>Change or cancel the appointment from the same page with the plus sign, so the slot goes to someone else.</p>
+- `visas-for-family-and-visitors`: the list of relatives the family visit visa platform accepts, the host's 3 months of iqama, the common refusals; the SADAD path for the extension fee with the visitor's border number; Absher's "insufficient funds" answer.
+- `check-visa-and-iqama-online`: the Absher exit and re-entry status inquiry; Tawakkalna and the map link for traffic fines; a new "Absher reports" subsection with how to check a report someone gives you.
+- `phone-sims-and-absher`: the Nafath fingerprint step (four fingers of the left hand) and the 10 minutes; a SIM cancelled in a branch within 24 hours.
+- `umrah-rawdah-quba`: book from home, book under the right category, use only the official Nusuk app; paid access is a scam.
+- `renew-passport-in-saudi` (FAQ): a Jawazat appointment with the free passport update form as a further fallback.
 
-<h2>A name spelt differently from the passport in English</h2>
-<p>If the English spelling on an iqama does not match the passport, banks and money transfer services can refuse you. Book Jawazat under Resident services and take the passport and the iqama: the name is corrected to match the passport, and a new card follows within days. For a student iqama, ask Travel Management to do it.</p>
-```
 
-### 4.8 Target: `visas-for-family-and-visitors` (add after the "Family visit visa" bullet; owner check first: question 7)
+### 4.7 Published after the owner's guidance
 
-```html
-<p>The relatives you can host on a family visit visa are your wife or husband, your children, your parents, your wife's or husband's parents, your brothers and sisters with their own spouses and children, your wife's or husband's brothers and sisters, and your grandparents. Apply well before Ramadan if you want them here for it: requests made during the Hajj season are often turned down.</p>
-```
+These were first held back as owner questions and are now published in the site's version:
 
-### 4.9 New FAQ draft: `sign-in-to-tawakkalna` ("How do I sign in to Tawakkalna?"; owner check first: question 8)
-
-```html
-<p>Install Tawakkalna from the official app store page, published by the Saudi Data and AI Authority. If you have an active Absher account, sign in with your iqama or Visitor ID number and confirm in Nafath or with the code sent to your Absher mobile number. Visitors without Absher register with their passport number, nationality, date of birth and a Saudi mobile number, confirm the text message code, and set a password of at least eight characters. Tawakkalna then shows your digital iqama or Visitor ID, your University card, your National Address, your health insurance and any unpaid traffic fines. Trouble signing in? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p>
-```
-
-### 4.10 New guide draft: `getting-married-in-madinah` ("Getting married in Madinah"; owner check first: question 9)
-
-The material is substantial and no MESH guide covers it. Stage: settling in.
-
-```html
-<p>Two foreign Muslims living in Saudi Arabia can contract their nikah here, through a licensed marriage officer, and receive an official electronic marriage contract. This guide is for students and residents marrying here. Students on the educational visa should ask the Deanship of Admission and Registration through Tawasul, subject Educational visa, before setting a date, because the visa decides how a wife can join you.</p>
-
-<h2>Who can marry here</h2>
-<ul>
-  <li>Iqama holders, and wives and children on an iqama as dependants.</li>
-  <li>Holders of a family visit visa or a tourist visa.</li>
-  <li>Not holders of a Hajj or Umrah visa.</li>
-</ul>
-
-<h2>What you need</h2>
-<ul>
-  <li>A Saudi mobile number registered in their own name for each of these five: the groom, the bride, the bride's wali, and two witnesses. Each number receives a text message to confirm the contract.</li>
-  <li>A copy of the iqama of each resident, or the passport of each visitor.</li>
-  <li>The two witnesses' iqamas.</li>
-  <li>The amount of the mahr.</li>
-</ul>
-
-<h2>The steps</h2>
-<ol>
-  <li>Choose a licensed marriage officer (ma'dhun). The Ministry of Justice lists them by city on Najiz. Agree his fee before you start.</li>
-  <li>Give him the papers above. He enters the contract on the Ministry of Justice's system.</li>
-  <li>Once the details are checked, all five numbers receive a text message. Each person confirms within 24 hours.</li>
-  <li>The officer conducts the nikah with the groom, the bride, the wali and the two witnesses present, at a place you agree, and completes the contract. You receive it as a PDF.</li>
-</ol>
-
-<h2>After the nikah</h2>
-<ul>
-  <li>If your wife is on her father's iqama, her residence moves to your sponsorship at Jawazat, with her father's consent signed in front of the officer there, the marriage contract, her passport and iqama, and copies of the iqamas of all three of you. Book Jawazat in Absher under Appointments, then Passport, then Resident services.</li>
-  <li>If she lives abroad, she joins you on the visa your own residence allows. See <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</li>
-  <li>To use the contract in another country, have it attested by the Ministry of Justice and then the Ministry of Foreign Affairs, and then translated and attested by that country's embassy.</li>
-</ul>
-
-<p>Questions? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p>
-```
+- `iqama-and-exit-reentry-fees`: an expired exit and re-entry visa can be extended from Absher while the person is abroad and the iqama is valid (finding 4); for a visa set in days the iqama must run the visa's length plus 90 days, and for a visa set by return date the return must be at least 7 days before the iqama expires (finding 3); a domestic worker's or sponsored companion's iqama renewed from abroad costs 1,300 SAR instead of 650 (finding 8).
+- `having-a-baby-in-madinah`: the 50 SAR late fee for a birth registered more than 30 days after it (finding 37).
+- `visas-for-family-and-visitors`: applications in the Hajj season, 1 Ramadan to 1 Safar, are refused, so apply before Ramadan (finding 29); new section "Moving children from a visit visa to an iqama" (finding 33), with a line that students with a student iqama ask Travel Management for the sponsor's letter.
+- `buying-a-used-car`: the 230 SAR fee added to the price (380 SAR in all), the 500 to 200,000 SAR price range, and at most two cars per resident (finding 51).
+- `drivers-license`: the 150 SAR fine for driving uninsured (finding 56), one authorised driver per car (finding 58), and the penalties for leaving an accident scene and for accidents causing death or injury, with the hit-and-run steps (finding 65).
+- `umrah-rawdah-quba`: new slots mostly on Friday afternoon and in small batches through the day (finding 73), the usual gates and windows for men and women (finding 74), babies not admitted and a permit of their own from age 5 (finding 75), arrive 30 minutes early and no photos.
+- **New guide `getting-married-in-saudi-arabia`** (stage `family`, topic family) in `guides-admin-papers-2026-11.ts`: who can marry here (not on Hajj or Umrah visas), the five Saudi SIMs, the marriage officer and the electronic contract with text confirmations within 24 hours, attestation for use abroad, registering a marriage made abroad, and moving a wife's iqama from her father to her husband at Jawazat (findings 42 to 46). The officer's 2,000 SAR fee from the personal account was left out; the text says to agree his fee first.
 
 ## 5. Questions for the owner
 
-1. **Ejar renewal and notice.** Does a registered residential Ejar contract renew itself unless notice is given 60 days before the end (MESH today), or does the 2023 position (no automatic renewal) still apply to some contracts? This decides the wording of 4.5.
-2. **Ejar helpline and fee.** Is the helpline 199011 (MESH) or 920005226 (2023 page)? Is the fee still 125 SAR a year?
-3. **Absher car sale timings and fees.** Does the buyer still get one hour to accept and 72 hours to pay into the escrow account, and are the fees still 150 SAR plus 230 SAR? If yes, 4.4 can name them.
-4. **Expired exit and re-entry.** Can a family member's exit and re-entry visa still be extended from Absher in the days after it has expired, while they are abroad (November 2023 clarification)? If yes, MESH's "no way back" warning should be softened to "extend it at once".
-5. **Baby born to a mother on a visit visa.** Can a member confirm the Jawazat exit stamp step for the baby, the section that does it in Madinah, and how long before the flight? (Draft 4.2.)
-6. **Iqama renewal from abroad at 1,300 SAR.** Does the December 2023 doubling for "companions" touch wives or children on a student iqama or a work iqama, or only parents, siblings and domestic workers?
-7. **Family visit visa relatives.** Is the 2023 list (spouse, children, parents, parents-in-law, siblings with their families, spouse's siblings, grandparents) still what the visa platform offers? (Draft 4.8.)
-8. **Tawakkalna sign-in.** Do Visitor ID students sign in with the Visitor ID number and Nafath? Is the visitor registration with passport still offered? (Draft 4.9.)
-9. **Marriage guide.** Does MESH want a marriage guide at all? If so: may students on a Visitor ID marry here, does the University require anything first, and what is the current route for a wife from abroad of a Visitor ID student? (Draft 4.10.)
-10. **Final exit fine.** Is an unused final exit that expires still fined 1,000 SAR, and is the dependants' levy really required 60 days ahead for student iqama families? (4.1 states the fine without an amount and the levy conditionally.)
-11. **Traffic police in Madinah.** Confirm that 911 answers for traffic accidents in Madinah (the 2023 page gives 993).
-12. **Istimara fee bands.** Are the October 2023 engine-size bands (0, 50, 85, 130, 190 SAR a year) current, and does Absher still open renewal at 180 days? 4.3 leaves the amount to Absher's screen.
-13. **Masjid an-Nabawi school allowance.** A 2024 page claims the state pays 100 to 150 euros a month per child enrolled at the Masjid an-Nabawi school. Is there any such allowance? Do not publish without confirmation.
-14. **Rawdah limits for children.** Do children from 5 need their own Nusuk permit, and are babies refused? Is there a fixed interval (45 days or a year) between permits? If confirmed, add one line to `umrah-rawdah-quba` and `women-at-masjid-an-nabawi`.
-15. **KSA Visa versus the MOFA visa platform.** Should MESH name ksavisa.sa anywhere, or keep visa.mofa.gov.sa for family visit visas?
+1. **Visit visa family driving (finding 59):** may a wife or child on a family visit visa drive the host's car on an International Driving Permit only for 6 months, or for one year from entry as MESH says for visitors in general?
+2. **Rawdah permit frequency (finding 76):** once every 365 days or every 45 days? MESH says only that the app shows how many permits you can book.
+3. **Students in the newly published family procedures:** in `visas-for-family-and-visitors` (children from a visit visa to an iqama) and `getting-married-in-saudi-arabia` (moving a wife's iqama to her husband), MESH tells students with a student iqama to ask Travel Management for the sponsor's letter. Confirm that Travel Management gives this letter, and that a student iqama qualifies at all.
+4. **Marriage guide checks:** the source is a personal account. Confirm the five-SIM rule and text confirmations still apply now that Najiz uses Nafath, whether non-Saudis marrying here need the premarital medical screening, and whether the University asks students to tell it of a marriage.
+5. **Hajj season window (finding 29):** the published "1 Ramadan to 1 Safar" comes from an undated page. If the Ministry announces a different 1448 pause for family visit visas, replace it.
+6. **Ejar (findings 66 and 67), for the coordinator:** `finding-an-apartment` could take the early termination rule (rent owed to the end unless the landlord waives it) and the 7-day automatic acceptance of a contract not rejected. Not edited: outside this task's guides. Renting on a Visitor ID was not touched.
+7. **Tawakkalna for visitors (finding 50):** registration with the passport number, or through a relative's Absher for someone without Absher. Could go into `living-on-a-visitor-id` (outside this task).
+8. **Electricity bill (finding 69):** worth a short "check and pay your bill" section in `finding-an-apartment` or `cost-of-living`? Outside this task's guides.

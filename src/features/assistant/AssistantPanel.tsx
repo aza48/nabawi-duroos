@@ -43,9 +43,13 @@ const T = {
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+/** The direction of a block, from its first letter: an English passage under an Arabic line is left to right. */
+const dirOf = (text: string) => (/^[^A-Za-z\u0600-\u06FF]*[\u0600-\u06FF]/.test(text) ? "rtl" : "ltr");
+
 /**
  * A very small, safe Markdown subset: paragraphs, bullet and numbered lists, bold, links to pages on this site,
- * and [n] citation markers turned into small numbered links to the cited page.
+ * and [n] citation markers turned into small numbered links to the cited page. Each block sets its own
+ * direction, so an English passage under an Arabic line reads left to right.
  */
 export function renderAnswer(md: string, sources: Source[] = []): string {
   const cite = (n: string) => {
@@ -58,23 +62,27 @@ export function renderAnswer(md: string, sources: Source[] = []): string {
       .replace(/\s?\[(\d{1,2})\]/g, (_m, n: string) => cite(n))
       .replace(/\[([^\]]+)\]\((\/[^)\s]*)\)/g, '<a href="$2" class="font-semibold text-primary underline-offset-2 hover:underline">$1</a>');
   const out: string[] = [];
+  const lines = md.split("\n").map((l) => l.trim());
   let list: "ul" | "ol" | null = null;
   const close = () => { if (list) { out.push(`</${list}>`); list = null; } };
-  for (const raw of md.split("\n")) {
-    const line = raw.trim();
+  lines.forEach((line, i) => {
     const bullet = /^[-*•]\s+(.*)$/.exec(line);
     const num = /^\d+[.)]\s+(.*)$/.exec(line);
     if (bullet || num) {
       const want = bullet ? "ul" : "ol";
-      if (list !== want) { close(); out.push(want === "ul" ? '<ul class="list-disc space-y-1 ps-5">' : '<ol class="list-decimal space-y-1 ps-5">'); list = want; }
+      if (list !== want) {
+        close();
+        out.push(`<${want} dir="${dirOf(lines[i])}" class="${want === "ul" ? "list-disc" : "list-decimal"} space-y-1 ps-5 text-start">`);
+        list = want;
+      }
       out.push(`<li>${inline((bullet ?? num)![1])}</li>`);
     } else if (!line) {
       close();
     } else {
       close();
-      out.push(`<p>${inline(line)}</p>`);
+      out.push(`<p dir="${dirOf(line)}" class="text-start">${inline(line)}</p>`);
     }
-  }
+  });
   close();
   return out.join("");
 }
@@ -167,7 +175,7 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
                 <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
                   <span className="text-xs text-muted">{t.more}:</span>
                   {m.sources.map((s) => (
-                    <Link key={s.url} href={localizeUrl(s.url, locale)} className="max-w-full truncate rounded-full bg-primary-soft px-3 py-1.5 font-medium text-primary hover:bg-primary hover:text-primary-ink">
+                    <Link key={s.url} href={localizeUrl(s.url, locale)} dir="auto" className="max-w-full truncate rounded-full bg-primary-soft px-3 py-1.5 font-medium text-primary hover:bg-primary hover:text-primary-ink">
                       {s.section ? `${s.title}: ${s.section}` : s.title}
                     </Link>
                   ))}
@@ -178,7 +186,7 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
                   <p className="text-xs text-muted">{t.related}</p>
                   <ul className="mt-1 space-y-1">
                     {m.related.slice(0, 3).map((r) => (
-                      <li key={r.url}><Link href={localizeUrl(r.url, locale)} className="text-primary underline-offset-2 hover:underline">{r.title}</Link></li>
+                      <li key={r.url}><Link href={localizeUrl(r.url, locale)} dir="auto" className="text-primary underline-offset-2 hover:underline">{r.title}</Link></li>
                     ))}
                   </ul>
                 </div>

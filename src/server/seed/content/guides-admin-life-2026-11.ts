@@ -2,9 +2,8 @@ import type { SeedGuide } from "./guides-2026";
 
 /**
  * Admin lane guides on University life, November 2026: the first semester, the stipend card,
- * getting to the Haram, paid housing in Unit 13, the Student Fund and your room, lost documents,
- * Ramadan as a student, and scams.
- * Sources and confidence per fact are in docs/research/telegram-iu-2026-11/ (c1 to c7, and DELTA-c3-c5-c6.md),
+ * getting to the Haram, paid housing in Unit 13, the Student Fund and your room, and lost documents.
+ * Sources and confidence per fact are in docs/research/telegram-iu-2026-11/ (c1 to c4, c7),
  * docs/research/chats-2026-11/ and docs/research/gomedine-2026-11/. Registered in sync.ts; topics in src/lib/guide-topics.ts.
  */
 export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
@@ -17,15 +16,15 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <p>Checked 9 November 2026. Every first semester at the Islamic University follows the same pattern. This guide walks you through it week by week, using the first semester of 1448 as the example, so you know what is coming before it arrives. It starts where <a href="/guides/new-student-steps">First steps for new students</a> ends: your SIM, Absher, Nafath and Visitor ID are already done.</p>
 <h2>The semester at a glance</h2>
 <table><thead><tr><th>When</th><th>What happens</th><th>First semester of 1448</th></tr></thead><tbody>
-<tr><td>The week before classes</td><td>Timetables are released. Returning students add and drop courses</td><td>Timetables on Monday 10 August, add and drop from Tuesday 11 to Saturday 15 August 2026</td></tr>
+<tr><td>The week before classes</td><td>Timetables are released. Returning students add and drop courses</td><td>Timetables on Monday 10 August 2026, then add and drop in the days before classes, opening in batches by University number</td></tr>
 <tr><td>Week 1</td><td>Classes start. Orientation for new students, where you collect your student card and your stipend card</td><td>Classes from Sunday 16 August, orientation on Monday 17 August 2026</td></tr>
-<tr><td>Weeks 2 to 5</td><td>Course descriptions, books, Blackboard and the first attendance records</td><td>17 August to 17 September</td></tr>
-<tr><td>Week 6</td><td>National Day holiday, the only holiday in the first semester</td><td>Wednesday 23 and Thursday 24 September 2026, joined to the weekend</td></tr>
+<tr><td>Weeks 2 to 5</td><td>Course descriptions, books, Blackboard and the first attendance records</td><td>23 August to 17 September</td></tr>
+<tr><td>Week 6</td><td>National Day holiday, the only holiday in the first semester</td><td>Wednesday 23 to Saturday 26 September 2026</td></tr>
 <tr><td>Month 2</td><td>Your first stipend arrives, with two months paid together</td><td>Saturday 19 and Sunday 20 September 2026</td></tr>
 <tr><td>Weeks 4 to 14</td><td>Monthly tests, and absence warnings for anyone missing classes</td><td>September to November</td></tr>
 <tr><td>Week 12</td><td>Last day for returning students to withdraw from a course or the semester</td><td>Thursday 5 November 2026</td></tr>
 <tr><td>Weeks 14 to 15</td><td>The final exam timetable appears. Fill in your course evaluations</td><td>November</td></tr>
-<tr><td>Weeks 16 to 17</td><td>Final exams</td><td>From Sunday 29 November 2026</td></tr>
+<tr><td>Weeks 16 to 18</td><td>Final exams</td><td>Sunday 29 November to Monday 14 December 2026</td></tr>
 <tr><td>Semester break</td><td>Short break, then the second semester</td><td>Break 15 to 19 December, second semester from Sunday 20 December 2026</td></tr>
 </tbody></table>
 <p>Every date for the year is in <a href="/guides/university-calendar-1448">The University calendar</a>.</p>
@@ -51,7 +50,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 </ul>
 <h2>Weeks 2 to 5: settling into your courses</h2>
 <ul>
-<li><strong>Course description:</strong> teachers hand out the course description (توصيف المقرر) in the first week or two. It lists the topics, the books and how the marks are split.</li>
+<li><strong>Course description:</strong> teachers usually hand out the course description (توصيف المقرر) in the first week. Many colleges also post it on their channels, on a QR code in the classroom or on Blackboard. It also shows what each course needs first.</li>
 <li><strong>Your section's group:</strong> most sections have a WhatsApp or Telegram group run by a student class head (رئيس الشعبة), who passes on the teacher's notices, test dates and marks. Ask for it in your first lecture. The Academic System and your University email stay the official record, and a link posted in a group is never a reason to type your password.</li>
 <li><strong>Books:</strong> see <a href="/ask/muqarrarat">What are muqarrarat?</a></li>
 <li><strong>Blackboard:</strong> class materials, monthly tests and announcements. If you cannot sign in, see <a href="/ask/blackboard-login">How do I sign in to Blackboard?</a></li>
@@ -88,7 +87,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li><strong>Check your absence</strong> in each course. If you are barred and have an excuse, hand it in before the finals start.</li>
 <li><strong>Read the exam-day rules</strong> in <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>: be in the hall 10 minutes early, and no one enters more than 30 minutes after the start.</li>
 </ol>
-<h2>Weeks 16 to 17: finals, and what comes next</h2>
+<h2>Weeks 16 to 18: finals, and what comes next</h2>
 <ul>
 <li>If illness or an emergency stops you sitting a final, get the proof on the day: see <a href="/ask/missed-a-final-exam">I missed a final exam. What happens now?</a></li>
 <li>Results appear in the Academic System under <strong>Course results</strong> once your college approves them. See <a href="/ask/exam-results-where">Where do I see my exam results and my GPA?</a></li>
@@ -108,7 +107,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <ul>
 <li>New students collect it with their University card at orientation in the first week. In 2026 both were handed out in the Salam hall on 17 August. Bring a 4x6 personal photo.</li>
 <li>Missed orientation? Collect it from the stipend card counter in Unit 22 (see below).</li>
-<li>The University activates the card. Your PIN is in the envelope it comes in. Change the PIN at any Al Rajhi ATM.</li>
+<li>The University activates the card. Your PIN is in the envelope it comes in. You can change the PIN at an ATM.</li>
 </ul>
 <h2>What the card can and cannot do</h2>
 <table><thead><tr><th>The card can</th><th>The card cannot</th></tr></thead><tbody>
@@ -129,11 +128,11 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <h2>Moving the money to your own account with a wallet app</h2>
 <p>This is the quickest way, and it needs no ATM. The steps below are for Barq. Alinma Pay and urpay accept the card the same way.</p>
 <ol>
-<li>Install the wallet app and open an account in your own name, verified with Nafath.</li>
+<li>Install the wallet app and open an account in your own name.</li>
 <li>Wait until the stipend is on the card. The app accepts the card only once it holds money.</li>
 <li>Choose to add money from a card, enter the stipend card's number, expiry date and CVV, and the amount.</li>
 <li>When the app asks for your source of income, choose <strong>student stipend</strong> or <strong>salary</strong>.</li>
-<li>Transfer from the wallet to your own bank account by IBAN. In 2026 a transfer from Barq to a Saudi bank was instant and free. Other wallets show their fee before you confirm.</li>
+<li>Transfer from the wallet to your own bank account by IBAN. In 2026 a transfer from Barq to a Saudi bank was instant and free. Other wallets can charge a small fee to send to another bank.</li>
 </ol>
 <h2>Using an ATM</h2>
 <ul>
@@ -142,7 +141,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li>Sending money home from your own account or wallet is in <a href="/guides/sending-and-receiving-money">Sending money home and receiving money in Madinah</a>.</li>
 </ul>
 <h2>Where to go: the stipend card counter in Unit 22</h2>
-<p>Card problems are handled at the stipend counter in Unit 22 (الوحدة 22), on the ground floor. Enter by the main entrance, turn left through the glass door, and go to the counter on the far right. Unit 22 is the second building after the College of Da'wah, heading towards the Muhammad bin Ibrahim masjid. Go in the morning, between 8 am and noon: the counter closes in the early afternoon. Questions about the payment itself also go to the stipends section (قسم المكافآت) of the Deanship of Student Affairs.</p>
+<p>Card problems are handled at the stipend counter in Unit 22 (الوحدة 22), on the ground floor. Enter by the main entrance, turn left through the glass door, and go to the counter on the far right. Unit 22 is the second building after the College of Da'wah, heading towards the Muhammad bin Ibrahim masjid. Go in the morning: the office works from about 8 am to 2 pm, and new cards are best collected before noon. Questions about the payment itself also go to the stipends section (قسم المكافآت) of the Deanship of Student Affairs.</p>
 <h2>Problems and what to do</h2>
 <table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody>
 <tr><td>The stipend has not arrived by the 26th</td><td>Check the Rewards screen. If it is missing, go to the stipend counter in Unit 22. A new student is not paid in the first month, and after a semester off the stipend restarts with the next regular payment or the one after</td></tr>
@@ -152,7 +151,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <tr><td>The payment is smaller than usual</td><td>A Student Fund loan is repaid from the stipend each month. See <a href="/guides/university-housing-and-student-services">Your University room, the Student Fund and class suspensions</a></td></tr>
 <tr><td>The stipend has stopped</td><td>A semester off, the end of your regular study period, or leaving your studies stops it. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a></td></tr>
 </tbody></table>
-<blockquote><p>Tip: Take a photo of the front of your card and keep it in a private album. The Unit 22 counter asks for the card number when you report a problem. A payment still missing after you have been to the counter? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
+<blockquote><p>Tip: Take a photo of the front of your card and keep it in a private album. When you go to the Unit 22 counter, bring your University card or your ID. A payment still missing after you have been to the counter? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "university-to-the-haram",
@@ -174,12 +173,12 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li><strong>There is no University bus to the Haram before Maghrib.</strong> The buses run for Maghrib and Isha.</li>
 <li><strong>Jumu'ah:</strong> in the first semester of 1448 the Friday buses left campus at about 9:30 and 10:30 am.</li>
 <li><strong>Coming back after Isha,</strong> the buses wait for the janazah prayer, so there is no need to rush out of the masjid.</li>
-<li>Times change in Ramadan and in exam weeks. New times are posted in the halls and by the Deanship of Student Affairs.</li>
+<li>Pick-up points and times change during the year, so check the current times before you rely on a bus.</li>
 </ul>
 <h2>Shared taxis from Gate 4</h2>
 <ul>
 <li>Cars wait outside Gate 4 and take students to Bab as-Salam (باب السلام) for <strong>3 SAR a seat</strong>.</li>
-<li>They run through most of the day and leave as soon as the car is full.</li>
+<li>They run through most of the day.</li>
 <li>Pay in cash, so keep small notes and coins with you.</li>
 </ul>
 <h2>The city bus: route 150</h2>
@@ -231,9 +230,8 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li><strong>Watch for the announcement</strong> at the start of the academic year. The Student Fund administration (صندوق الطالب) announces the free rooms, with an online application form. In 1448 the form opened on 14 August 2026.</li>
 <li><strong>Fill in the form</strong> while it is open.</li>
 <li><strong>Visit the housing office</strong> of the Deanship of Student Affairs as well, ideally in the first week or before the semester starts, and ask that your request is on the list.</li>
-<li><strong>Follow it up every few days.</strong> An answer takes from a week to a month, and longer in a busy year.</li>
+<li><strong>Follow it up every few days.</strong> An answer takes from a week to a month, and sometimes a whole semester.</li>
 <li><strong>Once accepted, pay</strong> the rent and the deposit as the acceptance message tells you. First-time residents pay before they receive the room.</li>
-<li><strong>Collect your key</strong> from the unit supervisor (mushrif), and check the room and its furniture with him.</li>
 </ol>
 <h2>Renewing each semester</h2>
 <ol>
@@ -290,11 +288,11 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li>Take them, with your University card, to the Student Fund office in Unit 22, and fill in the loan form.</li>
 <li>The loan is paid into your bank account, and the repayment starts on your stipend from the following months.</li>
 </ol>
-<p><strong>Aid:</strong> a student facing real hardship, such as an illness or an emergency at home, can ask the Fund's aid section for help. Take any papers that show the need. Rent for the paid rooms in Unit 13 is also paid to the Fund: see <a href="/guides/unit-13-and-paid-university-housing">Unit 13: paid University housing</a>.</p>
+<p><strong>Aid:</strong> the Fund also has an aid section (إعانة) for students in hardship. Ask at its office in Unit 22. Rent for the paid rooms in Unit 13 is also paid to the Fund: see <a href="/guides/unit-13-and-paid-university-housing">Unit 13: paid University housing</a>.</p>
 <blockquote><p>Tip: A loan repayment explains a stipend that arrives 200 SAR short. Plan for it before you borrow: see <a href="/guides/getting-your-stipend-off-the-university-card">Your University stipend card</a>.</p></blockquote>
 <h2>When classes are suspended</h2>
 <ul>
-<li><strong>The University rarely suspends classes for weather.</strong> Most students live on campus, so classes and exams usually go ahead in rain and dust. In December 2025 heavy rain closed Madinah's schools and other universities, and the Islamic University kept its final exams.</li>
+<li><strong>The University rarely suspends classes for weather.</strong> Most students live on campus, so classes and exams usually go ahead in the rain. In December 2025 heavy rain closed Madinah's schools and other universities, and the Islamic University kept its final exams.</li>
 <li><strong>Only a University announcement counts.</strong> A school closure in Madinah, or a suspension at another university, does not close the Islamic University.</li>
 <li><strong>Where it is announced:</strong> on the University's official X account (@iu_edu) and the Deanship of Student Affairs account (@dsa_iu_edu).</li>
 <li><strong>School long weekends do not apply to the University.</strong> In the first semester the only holiday is National Day. Every holiday is in <a href="/guides/university-calendar-1448">The University calendar</a>.</li>
@@ -320,31 +318,31 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <ol>
 <li><strong>Get a police report</strong> at the nearest police station. Take an Arabic speaker with you if you can, and keep the report.</li>
 <li><strong>Report the loss in Absher.</strong> Absher has a service for a lost or stolen passport.</li>
-<li><strong>Apply for a new passport</strong> at your country's embassy in Riyadh or its consulate in Jeddah. Most ask for the police report, a written statement of the loss, a copy of the lost passport if you have one, your national ID card from home, a printout of your details from Absher, and the passport fee. Each country sets its own list, so read its website first, because many take applications online or by post.</li>
+<li><strong>Apply for a new passport</strong> at your country's embassy in Riyadh or its consulate in Jeddah. Most ask for the police report, a written statement of the loss, a copy of the lost passport if you have one, your national ID card from home, a Jawazat printout of your iqama details and a copy of your iqama if you hold one, and the passport fee. Each country sets its own list, so read its website first, because many take applications online or by post.</li>
 <li><strong>Move your Saudi record to the new passport.</strong> On a Visitor ID: send a copy of the new passport to the Deanship of Admission and Registration through Tawasul, subject Educational visa. With a student iqama: send it to Travel Management (إدارة السفر) through Tawasul.</li>
 <li><strong>Check the new passport shows in Absher</strong> before you book any travel, and that your name on Etimad still matches it letter for letter.</li>
 </ol>
 <p>The same update after a normal renewal is in <a href="/ask/renew-passport-in-saudi">My passport is expiring. How do I renew it?</a></p>
 <h2>Your iqama card</h2>
 <ul>
-<li><strong>Your digital iqama</strong> in the Absher app is accepted as your ID inside the Kingdom, so you can still show it at checkpoints, banks and offices while you replace the card.</li>
+<li><strong>Your digital iqama</strong> in the Absher app is accepted as your ID inside the Kingdom, so you can show it while you replace the card.</li>
 <li><strong>Get a police report</strong> at the nearest police station.</li>
-<li><strong>Tell Travel Management</strong> through Tawasul, with the police report and a copy of your passport. The University is your sponsor, so it records the loss and arranges a new card.</li>
+<li><strong>Tell Travel Management</strong> through Tawasul, with the police report. The University is your sponsor, so the new printed card is requested through it.</li>
 </ul>
 <p>Who renews a student iqama, and what holds it up, is in <a href="/ask/student-iqama-renewal">Who renews my student iqama?</a></p>
 <h2>Your phone, with your Visitor ID and Absher on it</h2>
 <p>A Visitor ID is digital only, so it cannot be lost: it lives in your Absher account, not on your phone. What you lose with the phone is access to it.</p>
 <ol>
 <li><strong>Get a replacement SIM with the same number</strong> at a branch of your mobile operator. Take your passport (or iqama). The shop checks your fingerprint.</li>
-<li><strong>Sign in to Absher</strong> on the new phone. If the password or the number does not work, reset it at an Absher self-service kiosk with your fingerprint. Kiosks are at the University, in Jawazat offices and in some malls.</li>
-<li><strong>Activate Nafath again</strong> on the new phone, with the face check.</li>
+<li><strong>Sign in to Absher</strong> on the new phone. If the password or the number does not work, reset it at an Absher self-service kiosk with your fingerprint. Kiosks are in Jawazat offices, malls, airports and government service centres.</li>
+<li><strong>Activate Nafath again</strong> on the new phone, with the biometric check.</li>
 <li><strong>Sign in to your bank, Tawakkalna and the University app</strong> again through Nafath.</li>
 </ol>
 <p>If Absher or Nafath will not activate, see <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing</a>. To change the number on Absher, see <a href="/ask/change-absher-mobile">How do I change the mobile number on my Absher account?</a></p>
 <h2>Your University card</h2>
 <ul>
 <li>Your University ID is also digital, in the Tawakkalna app, so you can show that while you wait.</li>
-<li>A new printed card is issued at Unit 22 (الوحدة 22), ground floor, at the Comprehensive Services Office, from about 8 am to 2 pm, Sunday to Thursday.</li>
+<li>A new printed card is issued at Unit 22 (الوحدة 22), ground floor, at the Comprehensive Services Office, from about 8 am to 2 pm.</li>
 <li>Bring a 4x6 personal photo from a photo studio, and your ID in Tawakkalna or Absher.</li>
 </ul>
 <h2>Your stipend card</h2>
@@ -367,67 +365,6 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li>Write your mobile operator's and your bank's customer care numbers on paper, away from the phone.</li>
 </ul>
 <blockquote><p>Tip: Stuck at any step, or not sure which office to go to? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
-  },
-  {
-    slug: "ramadan-as-a-student",
-    stage: "getting-settled",
-    title: "Ramadan as a student in Madinah: classes, iftar, Umrah and i'tikaf",
-    summary: "How Ramadan works for University students: the shorter class timetable and the holidays in Ramadan 1448, iftar and suhoor on campus, the early stipend, free Umrah trips, i'tikaf at Masjid an-Nabawi and volunteering at the Haram.",
-    bodyHtml: `
-<p>Checked November 2026. Ramadan in Madinah is the high point of the year, and the University changes its rhythm for it. This guide covers what changes on campus and what to plan for, with the dates of Ramadan 1448.</p>
-<h2>Ramadan 1448 at a glance</h2>
-<table><thead><tr><th>What</th><th>1448</th></tr></thead><tbody>
-<tr><td>Ramadan begins, by moon sighting</td><td>Expected Monday 8 February 2027</td></tr>
-<tr><td>Classes on the Ramadan timetable</td><td>8 to 18 February, and 23 to 25 February 2027</td></tr>
-<tr><td>Founding Day holiday</td><td>Friday 19 to Monday 22 February 2027</td></tr>
-<tr><td>Eid al-Fitr holiday</td><td>Friday 26 February to Saturday 13 March 2027 (19 Ramadan to 5 Shawwal)</td></tr>
-<tr><td>The last ten nights</td><td>From the night of Sunday 28 February 2027, all inside the Eid holiday</td></tr>
-<tr><td>Eid al-Fitr</td><td>Expected Tuesday 9 March 2027</td></tr>
-<tr><td>Classes resume</td><td>Sunday 14 March 2027</td></tr>
-</tbody></table>
-<p>So in 1448 there are only about two weeks of classes in Ramadan, and the whole of the last ten nights is free for worship. Every date is in <a href="/guides/university-calendar-1448">The University calendar</a>.</p>
-<h2>Classes in Ramadan</h2>
-<ul>
-<li><strong>A separate timetable.</strong> The University publishes the Ramadan lecture times a few days before Ramadan, on its official X account (@iu_edu) and in the Academic System. In 1447 they came out on 16 February 2026.</li>
-<li><strong>Shorter lectures.</strong> A two-hour lecture becomes about one hour, and a one-hour lecture about 30 minutes. The morning day usually starts at 10 am, and afternoon classes at about 2 pm.</li>
-<li><strong>The absence rules do not change.</strong> Every absence still counts towards the 25% limit, so keep going until the last day of teaching. See <a href="/ask/how-many-classes-can-i-miss">How many classes can I miss?</a></li>
-<li><strong>The Ma'had</strong> can finish teaching a few days before the colleges. Go by its own notice.</li>
-<li><strong>No final exams</strong> fall in Ramadan in 1448. Second semester finals start on 25 April 2027.</li>
-</ul>
-<h2>Iftar and suhoor on campus</h2>
-<ul>
-<li><strong>A free iftar every day.</strong> The Deanship of Student Affairs serves iftar next to the University sports ground, often with Qur'an competitions and prizes. In 1445 iftar was also served in the lobbies of Units 24 and 25, about 3,000 meals a day.</li>
-<li><strong>Meals run out.</strong> If you are coming back late from the Haram, carry dates and water with you.</li>
-<li><strong>Suhoor</strong> meals are handed out in the last ten nights, including at Gate 4.</li>
-<li><strong>Do not queue at cars</strong> handing out meals or cash near the campus gates. The University has warned students against this. Eat at the University iftar instead.</li>
-</ul>
-<h2>Your stipend in Ramadan</h2>
-<p>The University usually pays the stipend early in Ramadan, a few days before Eid. The next payment then comes more than a month later, so plan your spending for the gap. See <a href="/guides/getting-your-stipend-off-the-university-card">Your University stipend card</a>.</p>
-<h2>Umrah in Ramadan</h2>
-<ul>
-<li><strong>Free trips.</strong> The Deanship of Student Affairs runs free Umrah trips by bus in Ramadan, each announced with a registration form. In 1446 one left on 7 Ramadan at 1:30 pm from in front of the University grocery, and in 1447 one left on 22 Ramadan at 1 pm from the sports ground. Colleges run their own trips as well. The bus returns the same day, and a student who misses it comes back at his own cost.</li>
-<li><strong>Your permit.</strong> Book your Umrah permit in Nusuk for the time you will arrive in Makkah. Permits, trains and buses fill quickly in Ramadan, most of all in the last ten nights.</li>
-<li><strong>Going on your own:</strong> see <a href="/ask/umrah-from-madinah">How do I go for Umrah from Madinah?</a> and <a href="/ask/haramain-train-to-makkah">How do I take the Haramain train to Makkah?</a></li>
-<li><strong>Go on a day off.</strong> Travel absences are not excused, so plan Umrah for a weekend or the holidays, not a teaching day.</li>
-</ul>
-<h2>I'tikaf at Masjid an-Nabawi</h2>
-<ul>
-<li><strong>Registration is needed</strong> for a place in the masjid's i'tikaf areas in the last ten days. The General Authority for the Care of the Two Holy Mosques opens it around the middle of Ramadan, and places are limited.</li>
-<li><strong>Register</strong> with your iqama or ID number on the link the Authority announces, as soon as it opens. Whether you were accepted shows in your account.</li>
-<li><strong>Sisters</strong> should check the women's arrangements in the same announcement. See <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</li>
-</ul>
-<h2>Volunteering at the Haram</h2>
-<ul>
-<li>Each Ramadan the University recruits students to volunteer at Masjid an-Nabawi. In 1445 volunteers served every day of Ramadan, in thobe and cap, and received certificates, hours on the National Volunteering Platform and priority for work in the Hajj season.</li>
-<li>Charities in the city recruit volunteers on <a href="https://nvg.gov.sa/">nvg.gov.sa</a> too. Hours are approved only when you turn up and work. See <a href="/ask/skills-record">What is the University Skills Record?</a></li>
-</ul>
-<h2>Getting to the Haram at night</h2>
-<ul>
-<li>University bus times change in Ramadan. The new times are posted in the halls and by the Deanship of Student Affairs. See <a href="/guides/university-to-the-haram">Getting from the University to the Haram</a>.</li>
-<li>For Tarawih and Qiyam the courtyards fill an hour before the adhan, and parking near the Haram is hardest at night. Leave early, or take the bus.</li>
-<li>Rawdah permits go quickly in Ramadan: book in Nusuk as early as the app allows. See <a href="/guides/masjid-an-nabawi-first-visit">Visiting Masjid an-Nabawi</a>.</li>
-</ul>
-<blockquote><p>Tip: Write the Eid holiday into your plans now. Most students stay in Madinah for the last ten nights, and trains and flights out after Eid sell out early. Questions? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "scams-and-staying-safe",

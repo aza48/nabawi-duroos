@@ -31,6 +31,10 @@ export type Chunk = {
   url: string;
   /** Extra search words that are not shown (an FAQ's tags). */
   keywords?: string;
+  /** "ar" when the passage itself is Arabic (a translated guide or answer); English otherwise. */
+  lang?: "ar";
+  /** The page's Arabic title, shown as the source when an English passage answers an Arabic question. */
+  titleAr?: string;
 };
 
 const MAX = 1100;
@@ -89,10 +93,15 @@ function windows(blocks: string[]): string[] {
   return out;
 }
 
-/** Cuts guide HTML into passages at each h2, with the guide summary as the first passage. */
-export function chunkGuide(g: { slug: string; title: string; summary: string; bodyHtml: string }, base = "/guides/"): Chunk[] {
+/**
+ * Cuts guide HTML into passages at each h2, with the guide summary as the first passage. An Arabic
+ * guide (`lang: "ar"`) gets its own ids and the /ar link, with the same anchors as the Arabic page.
+ */
+export function chunkGuide(g: { slug: string; title: string; summary: string; bodyHtml: string }, base = "/guides/", opts: { lang?: "ar"; titleAr?: string } = {}): Chunk[] {
   const url = `${base}${g.slug}`;
-  const out: Chunk[] = [{ id: `guide-${g.slug}-0`, kind: "guide", title: g.title, text: g.summary, url }];
+  const id = opts.lang ? `guide-ar-${g.slug}` : `guide-${g.slug}`;
+  const extra = { ...(opts.lang ? { lang: opts.lang } : {}), ...(opts.titleAr ? { titleAr: opts.titleAr, keywords: opts.titleAr } : {}) };
+  const out: Chunk[] = [{ id: `${id}-0`, kind: "guide", title: g.title, text: g.summary, url, ...extra }];
   const root = parse(g.bodyHtml);
   const used = new Set<string>();
   let section: string | undefined;
@@ -100,7 +109,7 @@ export function chunkGuide(g: { slug: string; title: string; summary: string; bo
   let blocks: string[] = [];
   let n = 1;
   const flush = () => {
-    for (const w of windows(blocks)) out.push({ id: `guide-${g.slug}-${n++}`, kind: "guide", title: g.title, section, text: w, url: anchor ? `${url}#${anchor}` : url });
+    for (const w of windows(blocks)) out.push({ id: `${id}-${n++}`, kind: "guide", title: g.title, section, text: w, url: anchor ? `${url}#${anchor}` : url, ...extra });
     blocks = [];
   };
   for (const node of root.childNodes) {
@@ -145,13 +154,13 @@ function programChunks(): Chunk[] {
   return PROGRAMS.flatMap((p) => {
     const url = `/programs/${p.slug}`;
     const head = `${p.name} (${p.nameAr}). ${p.tagline} For: ${p.audience.join(", ")}. Price: ${p.price}. Where: ${p.where}.${p.nextIntake ? ` Next intake: ${p.nextIntake}.` : ""} Last checked ${p.checked}.`;
-    const parts: Chunk[] = [{ id: `program-${p.slug}-0`, kind: "program", title: p.name, text: `${head}\n${p.overview.join(" ")}`.slice(0, MAX * 2), url }];
+    const parts: Chunk[] = [{ id: `program-${p.slug}-0`, kind: "program", title: p.name, titleAr: p.nameAr, text: `${head}\n${p.overview.join(" ")}`.slice(0, MAX * 2), url }];
     const rest = [
       p.levels?.length ? `Levels and tracks:\n${p.levels.map((l) => `• ${l}`).join("\n")}` : "",
       p.included?.length ? `Included:\n${p.included.map((l) => `• ${l}`).join("\n")}` : "",
       p.steps?.length ? `How to join:\n${p.steps.map((s, i) => `${i + 1}. ${s}`).join("\n")}` : "",
     ].filter(Boolean);
-    windows(rest).forEach((w, i) => parts.push({ id: `program-${p.slug}-${i + 1}`, kind: "program", title: p.name, section: "Details", text: w, url }));
+    windows(rest).forEach((w, i) => parts.push({ id: `program-${p.slug}-${i + 1}`, kind: "program", title: p.name, titleAr: p.nameAr, section: "Details", text: w, url }));
     return parts;
   });
 }
@@ -162,8 +171,8 @@ function dateChunks(): Chunk[] {
   const main = KEY_DATES.filter((d) => !d.minor);
   const minor = KEY_DATES.filter((d) => d.minor);
   return [
-    { id: "dates-main", kind: "date", title: "University calendar 1448 and Islamic dates", section: "Main dates", text: main.map(line).join("\n"), url: "/guides/university-calendar-1448" },
-    ...windows(minor.map(line)).map((w, i) => ({ id: `dates-admin-${i}`, kind: "date" as const, title: "University calendar 1448", section: "Request windows (postponing, drop and add, withdrawal, excuses)", text: w, url: "/guides/university-calendar-1448" })),
+    { id: "dates-main", kind: "date", title: "University calendar 1448 and Islamic dates", titleAr: "تقويم الجامعة 1448 والمواسم", section: "Main dates", text: main.map(line).join("\n"), url: "/guides/university-calendar-1448" },
+    ...windows(minor.map(line)).map((w, i) => ({ id: `dates-admin-${i}`, kind: "date" as const, title: "University calendar 1448", titleAr: "تقويم الجامعة 1448", section: "Request windows (postponing, drop and add, withdrawal, excuses)", text: w, url: "/guides/university-calendar-1448" })),
   ];
 }
 
@@ -173,6 +182,7 @@ function discountChunks(): Chunk[] {
       id: `deal-${g.id}-${i}`,
       kind: "discount" as const,
       title: "Student discounts with the University card",
+      titleAr: "خصومات الطلاب بالبطاقة الجامعية",
       section: g.label,
       text: `Show your Islamic University card and ask before paying; some offers are for staff only.\n${w}`,
       url: "/discounts",
@@ -187,15 +197,17 @@ function siteChunks(): Chunk[] {
       id: "page-about",
       kind: "page",
       title: "About MESH",
+      titleAr: "عن MESH",
       text: `MESH (Medina English Student Hub, medinahub.org) is for English-speaking students and families in Madinah. It is brought to you by Albaseerah International Institute. It is independent and impartial. It has live duroos schedules of the mashayikh, study programmes, guides, answers to common questions, a library of Islamic University course books, student discounts and key dates, in English with an Arabic version under /ar. For anything else, or to suggest a correction, ${help}. The MESH WhatsApp group (announcements, events and daily help) is only for English-speaking Western students; the join link is on every page.`,
       url: "/more",
     },
-    { id: "page-duroos", kind: "page", title: "Duroos in Madinah", text: "Today's duroos of the mashayikh in Masjid an-Nabawi, Masjid Quba and other masjids are at /duroos with live status, cancellations and changes. The weekly schedule by day and prayer is at /duroos/schedule. Live broadcasts are at /duroos/live. Cancellations, postponements and new books are at /duroos/updates. Duroos for sisters are at /duroos/sisters. Free phone alerts when a dars changes can be turned on at /more#alerts.", url: "/duroos" },
-    { id: "page-library", kind: "page", title: "The Jamiah library", text: `Islamic University course books (muqarrarat) and Ma'had books by level are in the MESH library at /library, readable on the site. Collections: ${LIVE_COLLECTIONS.map((c) => c.title).join(", ")}. The Ma'had hub at /mahad has books by level, answer keys, the rules and what happens if you fail a level. Official links: ${OFFICIAL.map((o) => `${o.title} (${o.href})`).join("; ")}.`, url: "/library" },
+    { id: "page-duroos", kind: "page", title: "Duroos in Madinah", titleAr: "الدروس في المدينة", text: "Today's duroos of the mashayikh in Masjid an-Nabawi, Masjid Quba and other masjids are at /duroos with live status, cancellations and changes. The weekly schedule by day and prayer is at /duroos/schedule. Live broadcasts are at /duroos/live. Cancellations, postponements and new books are at /duroos/updates. Duroos for sisters are at /duroos/sisters. Free phone alerts when a dars changes can be turned on at /more#alerts.", url: "/duroos" },
+    { id: "page-library", kind: "page", title: "The Jamiah library", titleAr: "مكتبة الجامعة", text: `Islamic University course books (muqarrarat) and Ma'had books by level are in the MESH library at /library, readable on the site. Collections: ${LIVE_COLLECTIONS.map((c) => c.title).join(", ")}. The Ma'had hub at /mahad has books by level, answer keys, the rules and what happens if you fail a level. Official links: ${OFFICIAL.map((o) => `${o.title} (${o.href})`).join("; ")}.`, url: "/library" },
     {
       id: "mahad-fail",
       kind: "guide",
       title: "Ma'had hub",
+      titleAr: "المعهد",
       section: MAHAD_COPY.en.failTitle,
       text: `${MAHAD_COPY.en.fail.map(([b, rest]) => `• ${b}${rest}`).join("\n")}\n${MAHAD_COPY.en.checked}`,
       url: "/mahad#fail",
@@ -204,11 +216,51 @@ function siteChunks(): Chunk[] {
       id: "mahad-about",
       kind: "guide",
       title: "Ma'had hub",
+      titleAr: "المعهد",
       text: `${MAHAD_COPY.en.subtitle} ${MAHAD_COPY.en.booksIntro} ${MAHAD_COPY.en.sixTitle}: ${MAHAD_COPY.en.sixIntro} ${MAHAD_COPY.en.answersIntro} Rules and guides: ${MAHAD_COPY.en.rules.join(", ")}.`,
       url: "/mahad",
     },
-    { id: "page-guides", kind: "page", title: "Guides", text: `MESH guides, by topic: ${GUIDE_TOPICS.map((t) => `${t.label} (${t.blurb})`).join("; ")}. Questions and answers by topic: ${FAQ_CATEGORIES.map((c) => c.label).join(", ")}, at /ask.`, url: "/guides" },
+    { id: "page-guides", kind: "page", title: "Guides", titleAr: "الأدلة", text: `MESH guides, by topic: ${GUIDE_TOPICS.map((t) => `${t.label} (${t.blurb})`).join("; ")}. Questions and answers by topic: ${FAQ_CATEGORIES.map((c) => c.label).join(", ")}, at /ask.`, url: "/guides" },
   ];
+}
+
+const filled = (s: string | null | undefined): s is string => typeof s === "string" && s.trim().length > 0;
+
+/**
+ * True when article HTML shows something: text other than spaces, or an image. An emptied editor sends
+ * "<p></p>", which is nothing, so the Arabic passages fall back to the English ones.
+ */
+const hasVisibleHtml = (html: string | null | undefined): html is string =>
+  !!html && (/<img\b/i.test(html) || html.replace(/<[^>]*>/g, "").replace(/&nbsp;|&#160;|\u00A0/g, " ").trim().length > 0);
+
+/** An FAQ answer as plain text. Inline tags (bold, links) go without a gap so "<b>Personal</b>, then" stays "Personal, then". */
+const answerText = (html: string) =>
+  squash(html.replace(/<li>/g, " • ").replace(/<\/(p|li|h\d)>/g, " ").replace(/<\/?(strong|b|em|i|a|span|code)\b[^>]*>/g, "").replace(/<[^>]+>/g, " ")).slice(0, MAX * 2);
+
+type GuideIn = { slug: string; title: string; summary: string; bodyHtml: string; titleAr?: string | null; summaryAr?: string | null; bodyHtmlAr?: string | null };
+
+/**
+ * A guide's passages: the English ones (carrying the Arabic title when there is one, so an Arabic
+ * question finds them), and the Arabic ones when the guide is translated (AR1 columns).
+ */
+export function guideChunks(g: GuideIn): Chunk[] {
+  const titleAr = filled(g.titleAr) ? g.titleAr.trim() : undefined;
+  const en = chunkGuide(g, "/guides/", { titleAr });
+  const body = hasVisibleHtml(g.bodyHtmlAr) ? g.bodyHtmlAr! : "";
+  if (!body && !filled(g.summaryAr)) return en;
+  const ar = chunkGuide({ slug: g.slug, title: titleAr ?? g.title, summary: filled(g.summaryAr) ? g.summaryAr : "", bodyHtml: body }, "/ar/guides/", { lang: "ar" });
+  return [...en, ...ar];
+}
+
+type FaqIn = { slug: string; question: string; answerHtml: string; tags?: string[] | null; questionAr?: string | null; answerHtmlAr?: string | null };
+
+/** An answer's passage, and its Arabic twin when the answer is translated. */
+export function faqChunks(f: FaqIn): Chunk[] {
+  const tags = (f.tags ?? []).join(" ");
+  const questionAr = filled(f.questionAr) ? f.questionAr.trim() : undefined;
+  const en: Chunk = { id: `faq-${f.slug}`, kind: "faq", title: f.question, text: answerText(f.answerHtml), url: `/ask/${f.slug}`, keywords: [tags, questionAr].filter(Boolean).join(" "), ...(questionAr ? { titleAr: questionAr } : {}) };
+  if (!hasVisibleHtml(f.answerHtmlAr)) return [en];
+  return [en, { id: `faq-ar-${f.slug}`, kind: "faq", lang: "ar", title: questionAr ?? f.question, text: answerText(f.answerHtmlAr!), url: `/ar/ask/${f.slug}`, keywords: [tags, f.question].join(" ") }];
 }
 
 /** Every passage of the site. Database rows (guides, FAQs, duroos) plus the content files. */
@@ -222,17 +274,9 @@ export async function buildKnowledge(db: Db): Promise<Chunk[]> {
   return [
     ...siteChunks(),
     // The calendar guide's page is drawn from the key dates (indexed below), not from its stored body.
-    ...guides.flatMap((g) => (g.slug === "university-calendar-1448" ? chunkGuide({ ...g, bodyHtml: "" }) : chunkGuide(g))),
+    ...guides.flatMap((g) => guideChunks(g.slug === "university-calendar-1448" ? { ...g, bodyHtml: "", bodyHtmlAr: null } : g)),
     ...companyChunks(),
-    ...faqs.map((f) => ({
-      id: `faq-${f.slug}`,
-      kind: "faq" as const,
-      title: f.question,
-      // Inline tags (bold, links) go without a gap so "<b>Personal</b>, then" stays "Personal, then".
-      text: squash(f.answerHtml.replace(/<li>/g, " • ").replace(/<\/(p|li|h\d)>/g, " ").replace(/<\/?(strong|b|em|i|a|span|code)\b[^>]*>/g, "").replace(/<[^>]+>/g, " ")).slice(0, MAX * 2),
-      url: `/ask/${f.slug}`,
-      keywords: (f.tags ?? []).join(" "),
-    })),
+    ...faqs.flatMap(faqChunks),
     ...programChunks(),
     ...dateChunks(),
     ...discountChunks(),
@@ -242,11 +286,12 @@ export async function buildKnowledge(db: Db): Promise<Chunk[]> {
         id: `shaykh-${s.slug}`,
         kind: "shaykh" as const,
         title: `${s.nameEn} (${s.nameAr})`,
-        text: `${s.roleEn ?? ""} ${(s.facts ?? []).map((f) => f.en).join(" ")}\nDuroos: ${his.length ? his.map(lessonText).join("\n") : "none listed now"}`.trim(),
+        titleAr: s.nameAr,
+        text: `${[s.roleEn ?? "", ...(s.facts ?? []).map((f) => f.en)].map((x) => x.trim()).filter(Boolean).map((x) => (/[.!?]$/.test(x) ? x : `${x}.`)).join(" ")}\nDuroos: ${his.length ? his.map(lessonText).join("\n") : "none listed now"}`.trim(),
         url: `/duroos/shaykh/${s.slug}`,
       };
     }),
-    ...lessons.map((l) => ({ id: `dars-${l.slug}`, kind: "dars" as const, title: `${l.bookEn} with ${l.shaykh.nameEn}`, text: lessonText(l), url: `/duroos/lesson/${l.slug}` })),
+    ...lessons.map((l) => ({ id: `dars-${l.slug}`, kind: "dars" as const, title: `${l.bookEn} with ${l.shaykh.nameEn}`, titleAr: `${l.bookAr} مع ${l.shaykh.nameAr}`, text: lessonText(l), url: `/duroos/lesson/${l.slug}` })),
   ];
 }
 

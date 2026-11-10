@@ -128,3 +128,81 @@ The full lists are section 5 of `docs/research/gomedine-2026-11/part-2.md` (15 q
 7. **Mat'am meals for someone else.** A 2024 notice allowed sending your meal barcode to another student; the guide says your own card only (DELTA 1.3 and 1.4).
 8. **Postgraduate 1448 closing date:** an official post gives 6 December 2025; the guide says "early December" (DELTA 1.2).
 
+
+## gomedine.com part 2 (G2)
+
+
+1. **Visit visa family driving (finding 59):** may a wife or child on a family visit visa drive the host's car on an International Driving Permit only for 6 months, or for one year from entry as MESH says for visitors in general?
+2. **Rawdah permit frequency (finding 76):** once every 365 days or every 45 days? MESH says only that the app shows how many permits you can book.
+3. **Students in the newly published family procedures:** in `visas-for-family-and-visitors` (children from a visit visa to an iqama) and `getting-married-in-saudi-arabia` (moving a wife's iqama to her husband), MESH tells students with a student iqama to ask Travel Management for the sponsor's letter. Confirm that Travel Management gives this letter, and that a student iqama qualifies at all.
+4. **Marriage guide checks:** the source is a personal account. Confirm the five-SIM rule and text confirmations still apply now that Najiz uses Nafath, whether non-Saudis marrying here need the premarital medical screening, and whether the University asks students to tell it of a marriage.
+5. **Hajj season window (finding 29):** the published "1 Ramadan to 1 Safar" comes from an undated page. If the Ministry announces a different 1448 pause for family visit visas, replace it.
+6. **Ejar (findings 66 and 67), for the coordinator:** `finding-an-apartment` could take the early termination rule (rent owed to the end unless the landlord waives it) and the 7-day automatic acceptance of a contract not rejected. Not edited: outside this task's guides. Renting on a Visitor ID was not touched.
+7. **Tawakkalna for visitors (finding 50):** registration with the passport number, or through a relative's Absher for someone without Absher. Could go into `living-on-a-visitor-id` (outside this task).
+8. **Electricity bill (finding 69):** worth a short "check and pay your bill" section in `finding-an-apartment` or `cost-of-living`? Outside this task's guides.
+
+## Fact-check FC2
+
+1. First-semester 1448 add and drop: printed official calendar 9 to 13 Aug 2026; forwarded notice 29/2 to 2/3/1448 and members 11 to 15 Aug (c1 #2 to #4); key-dates.ts 10 to 30 Aug. The guide your-first-semester-week-by-week now gives no dates.
+2. Lost student iqama card: is the route Travel Management through Tawasul with the police report, and which fee applies (government 1,000/2,000 SAR, gomedine part-1 #5, or printed card about 58 SAR, c4 #70)? Same as B2 #6.
+3. University buses to the Haram: where are the current times posted? The guide says only that times change during the year.
+
+## Fact-check FC3
+
+## Owner questions
+
+1. **Room sharing in the halls.** c4 #55 says two students per room; earlier web research (`factcheck-2026-11-09-university.md`, Halls row) found 2 to 4. I removed "shared with one other student" from is-housing-included and "Rooms are shared by two" from campus-life. How many students share a room?
+2. **When the absence bar comes.** c1 #40 (Aug to Nov 2026) says a two-hour weekly course bars you at the 4th absence and that this tightened from the 5th two years ago. c2 #12 (Jan to Jul 2026) says about 4 absences are allowed and the 5th bars; c3 #1 gives an hour-based table (2-hour course: 8 hours allowed, 9th bars). The guides publish the stricter c1 example. Is that right?
+3. **Books allowance frequency and timing.** Paid once a year (us-ann #21, chats 25-11 #3) or each semester (chats 26-06 #20)? Paid in January 2025 (c4 #46) and October 2026. Do Ma'had students get it?
+4. **Printed iqama card office.** Student Affairs, first floor (chats 25-06 #39), or the Travel Administration director's secretary (c4 #70)? campus-life says Student Affairs.
+5. **Study in Saudi 2026 main window.** The approved applying guide says 19 April to 21 May 2026; chats 26-03 #42 says preferences closed about 20 to 21 May and submission on 31 May 2026. Not changed (approved text wins over a weak report).
+
+## Fact-check FC4 (papers; still open after the gomedine.com pages were checked)
+
+
+## Settled from gomedine raw pages (published or confirmed)
+
+| Question | Answer published | Page and date | Guide |
+|---|---|---|---|
+| E5, part-3 Q3, part-4 Q3: iqama and passport validity for an exit and re-entry visa | Iqama: the visa's length plus 90 days (already published). Passport: at least 3 months beyond the end of the visa | 212 (28 Jun 2026, newest; 200 of Jul 2025 says 90 days at request), 110, 177 | `iqama-and-exit-reentry-fees`, `check-visa-and-iqama-online` |
+| E6, part-1 Q4, part-4 Q4: unused exit and re-entry visa | Travel within 3 months of issue; cancel an unused family visa in Absher while valid, within 90 days of issue or before the return date, whichever first; after that a penalty is automatic. Muqeem's public page needs no sign-in | 212 (Jun 2026), 190 (15 Jun 2025) | `iqama-and-exit-reentry-fees` |
+| E7, part-1 Q3: host's iqama validity for a family visit visa | At least 4 months | 028 (31 Jul 2025); 068 (undated) says 3 | `visas-for-family-and-visitors` |
+| E10 (part): visit visa extension path and traffic objection label | My Services, Passports, Visitor services; Dispute traffic violation | 152 (4 Mar 2026), 043 | `visas-for-family-and-visitors`, `traffic-fines` |
+| E11 (part): Umrah visa stay | Up to 90 days from entry, within the season | 213 (20 Jul 2026) | `bringing-parents-to-visit` |
+| E12, part-3 Q9: Dar al-Hadith | About 300 SAR a month (intermediate), 350 (secondary); placement exam in May or June; the child must hold an iqama, so a Visitor ID child cannot join | 160 (May 2024, the only source) | `kindergartens-and-schools` |
+| E2, part-3 Q1: Ma'had registration window | For 1448: 5 to 20 Safar (19 July to 3 August 2026) | 188 (20 Jul 2026, official 1448 dates) | `kindergartens-and-schools`. `sisters-studying-in-madinah` (not my slug) still says Dhul Qa'dah and should be synced |
+| E4, part-3 Q8 (visit visas): government schools | Not open to children on a visit, tourist or Umrah visa; iqama holders' children need a Ministry of Education letter and the employer's letter; some private schools take only iqama holders | 201 (28 Aug 2025), 162, 003 (19 Apr 2026), 164, 167 | `kindergartens-and-schools` |
+| E14, part-4 Q2: foreign licence language | Carry an IDP or an approved Arabic translation with any licence not in Arabic | 169 (17 Jun 2026) | `drivers-license`, `drive-on-visit-visa` |
+| Part-1 Q7: rejected traffic objections | 5 rejections in a year end objections for that year | 043 | `traffic-fines` |
+| Part-3 Q6: halaqat gates | Men Gate 22, first floor; women Gate 24 or 13, second floor | 158 (17 Jun 2026) | `kindergartens-and-schools` |
+| G2 Q1: family on visit visas driving | One year from entry for all visitors, as MESH says; no change | 169 (Jun 2026, Traffic Law art. 42); 078's 6 months is an undated footnote | none |
+| Part-1 Q5: multiple-entry family visit visa extended without leaving | Yes, in Absher, as MESH says; no change | 152 (4 Mar 2026) | none |
+| Part-1 Q8: first periodic inspection after 3 years | Already published; confirmed | 041, 096 | none |
+| Buyer's time to accept a car transfer (part-2 finding 52) | One hour | 059 | `buying-a-used-car` |
+
+## Still open (no clear, recent raw page)
+
+1. **Renting on a Visitor ID through Ejar (E1, part-4 Q1).** Left alone as instructed. 206 (19 Jan 2026) says Ejar needs a Saudi ID or an iqama, but MESH's "yes" rests on Ejar's own clarification of 31 Aug 2026 (`docs/research/factcheck-2026-11.md`, `community-2026-11-09.md`), which is newer. Not settled.
+2. **Fingerprint age for exit and re-entry.** 110 (2025/26): men and women 15 and over; 212 (Jun 2026): men 18 and over. Age removed from `iqama-and-exit-reentry-fees`. Which is right?
+3. **Expired exit and re-entry visa.** 067 (Jawazat answer, undated): Absher's extension needs the visa unexpired; 110 (2025/26): an expired visa is extended by the sponsor online through the Ministry of Foreign Affairs site. Published that way; please confirm the MOFA route still works and which page.
+4. **Fine for not cancelling an unused exit and re-entry visa.** 1,000 SAR only in 030 (2023, multiple visas); 190 says "financial penalties". Amount not published.
+5. **Students in family procedures (G2 Q3).** Does Travel Management give the sponsor's letter for moving a wife's iqama to her husband, or children from a visit visa to an iqama? Both guides now tell students to ask Travel Management through Tawasul what it needs, without promising the letter.
+6. **Marriage guide (G2 Q4).** Five-SIM rule and text confirmations with Najiz and Nafath, premarital screening, telling the University.
+7. **Dependant levy and students; 2,000 SAR per family or per child (E13, part-1 Q1, Q2).** 048 (2023) and 098 (2024) say one 2,000 SAR payment per family; 140 (2024) charges 2,000 SAR per baby born abroad. Not changed.
+8. **Lost iqama fee for students (B2 Q6, FC2 Q2).** `iqama-and-exit-reentry-fees` now gives 1,000/2,000 SAR for work and family iqamas only.
+9. **Can a student iqama host a family visit visa (E8)?** No raw page answers it (106 lists "university student" among professions for the permanent family visa only).
+10. **Visit visa family with a new passport (E9, part-3 Q4).** Only 112 (Dec 2023) says Jawazat in person.
+11. **Visitor ID and schools, the one-year visitor driving rule, Dar al-Hadith (E4, E14 second parts).** No page covers the educational visa.
+12. **School year: three terms or two semesters (E15, part-1 Q10).** 003 (19 Apr 2026) gives a three-term 2025-2026 calendar "since 2021"; part-1 flagged it as likely out of date. Not published; please confirm the 1448 Ministry calendar.
+13. **Umrah visa: meningitis vaccine, fee, multiple-entry visa (E11, part-3 Q13, part-4 Q9, Q10).** 213 (Jul 2026) says ACWY is required and the fee is about 300 SAR; 143 (Jun 2026) says the vaccine is not required and quotes 80 USD. Not published.
+14. **Rawdah permit frequency (G2 Q2).** 100 says once in 365 days and quotes a 45-day app message.
+15. **Hajj season window for family visit visa applications (G2 Q5).** Kept (068, undated, the only page).
+16. **Passport update "over 18" and "once every five years" (part-4 Q5).** 187 (May 2025) says so, but 112 describes the head of family updating children's passports; not published.
+17. **Car rental on a foreign licence while the iqama is processed (part-4 Q18).** 169 states it, then calls it a grey area. Not published.
+18. **25% discount for paying a single fine early (part-4 Q6).** 169 cites a foreign legal blog, not Muroor. Not published.
+19. **Visit visa emergency cover (E3, part-3 Q5), overstay fines, Hajj-season suspension for some nationalities (part-4 Q7, Q8), travel restriction English label (E10).** No clear page.
+
+## For other guides (not my slugs)
+
+- `sisters-studying-in-madinah`: Ma'had registration for 1448 was 5 to 20 Safar (188), not Dhul Qa'dah.
+- `finding-an-apartment`: 004 (19 Apr 2026) gives the agent's commission as 2.5% of the annual rent (part-1 Q9); 066 gives the early termination rule (G2 Q6).

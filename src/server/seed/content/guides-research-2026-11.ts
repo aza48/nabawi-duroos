@@ -16,7 +16,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>Checked 9 November 2026. Students who arrive on the educational visa (the student visa) are given a digital Visitor ID (هوية زائر) linked to their border number. They are not issued an iqama. Most of daily life works on a Visitor ID, but some things need different steps and a few are open only to iqama holders. This page puts the two side by side.</p>
 <h2>What the Visitor ID is</h2>
 <ul>
-<li>It is issued by the General Directorate of Passports (Jawazat) through your Absher account, and is tied to your <strong>border number</strong> (رقم الحدود), the 10 digit number Jawazat gives you when you first enter the Kingdom. It is written by hand in your passport beside the entry stamp, and Absher's public border number inquiry finds it from your visa number and visa issue date.</li>
+<li>It is issued by the General Directorate of Passports (Jawazat) through your Absher account, and is tied to your <strong>border number</strong> (رقم الحدود), the 10 digit number Jawazat gives you when you first enter the Kingdom. Jawazat writes it by hand in your passport, and Absher's public border number inquiry finds it from your visa number and visa issue date.</li>
 <li>It is digital only and cannot be printed on paper.</li>
 <li>The long-term educational visa behind it is valid for one year and renewed each year while you study.</li>
 <li>Jawazat accepts the digital Visitor ID as official proof of identity inside the Kingdom, so you can show it on your phone at checkpoints and offices.</li>
@@ -385,7 +385,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>Say in a few lines what you need, what you have already tried, where, and what you were told.</li>
 <li>Attach screenshots of any error and copies of the documents involved, then tap <strong>Send request</strong> (إرسال الطلب).</li>
 <li>Follow it under <strong>My requests</strong> (طلباتي), and save the reference number so you can follow it up.</li>
-<li>Watch your University email for the reply, and answer any follow-up question the same day. If nothing comes in two working days, follow it up in person.</li>
+<li>Watch your University email for the reply, and answer any follow-up question the same day. If nothing comes, follow it up in person.</li>
 </ol>
 <blockquote><p>Tip: Your name must match your passport letter for letter on every portal. A mismatch is the most common reason a ticket or a request gets stuck.</p></blockquote>
 <h2>Official news</h2>
@@ -413,7 +413,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ul>
 <li>A <strong>monthly stipend</strong> (mukafa'ah, مكافأة).</li>
 <li>An <strong>arrival allowance</strong> (بدل تجهيز) of two months' stipend, paid after you first arrive.</li>
-<li>A <strong>books allowance</strong> (بدل كتب) once a year, paid around October.</li>
+<li>A <strong>books allowance</strong> (بدل كتب) once a year for college (kulliyah) students. In 1448 it was paid in October.</li>
 <li>An <strong>excellence allowance</strong> (بدل التفوق) for top grades. See below.</li>
 <li>A <strong>graduation allowance</strong> (بدل تخرج) of three months' stipend, for shipping your books home.</li>
 <li>A <strong>ticket home at the end of each academic year</strong>, in discounted economy class, by the most direct route. It is given only when no other party already provides you with a ticket.</li>
@@ -425,7 +425,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ul>
 <li><strong>The rate</strong> is set by the University and depends on your college. In 1447 and 1448 a bachelor's student in the Shari'ah and Arabic colleges received 840 SAR a month. Your own payments are in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
 <li><strong>Where it goes:</strong> onto your <strong>University stipend card</strong>, an Al Rajhi Bank card the University issues to you. It is not paid into a bank account of your own. See the next section.</li>
-<li><strong>When:</strong> usually between the <strong>21st and the 25th</strong> of each Gregorian month, late at night. If the day falls on a weekend it moves to the nearest working day, and the University pays early before National Day, Founding Day and the start of Ramadan. After an early payment, the next one comes more than a month later.</li>
+<li><strong>When:</strong> usually between the <strong>21st and the 25th</strong> of each Gregorian month, late at night. If the day falls on a weekend it moves to the nearest working day, and the University pays early before holidays such as National Day and Founding Day. After an early payment, the next one comes more than a month later.</li>
 <li><strong>All year:</strong> it is paid every month, the summer break included.</li>
 <li><strong>Alerts:</strong> the text message does not always arrive, so check the card balance itself.</li>
 </ul>
@@ -454,7 +454,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ol>
 <li>Collect the Fund's form at Unit 22.</li>
 <li>Bring an IBAN certificate for your own bank account, your academic record and your student card.</li>
-<li>Hand in the form. The money reaches your account in one to two weeks.</li>
+<li>Hand in the form. The money reaches your account in one to four weeks.</li>
 </ol>
 <p>You can borrow once only, and not in your final year. A good GPA helps your request. The Fund also has an aid section (إعانة) for students in real hardship.</p>
 <h2>What stops the stipend</h2>
@@ -772,7 +772,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <tr><td>After you land</td><td>Keep your Saudi number alive for codes until every account is closed. Check your degree verifies online.</td></tr>
 </tbody></table>
 <h2>1. Check the details on your certificate</h2>
-<p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester, under <strong>Graduation procedures</strong> (اجراءات التخرج), and correct any difference from your passport before printing. A correction after the document is issued means paying for a replacement. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
+<p>Your degree certificate is printed with your name and details exactly as they are in the University's records. Check them in the Academic System during your final semester, under <strong>Graduation procedures</strong> (اجراءات التخرج), and correct any difference from your passport before printing. Adding a missing Arabic name after the document is issued means paying for a replacement. See <a href="/ask/graduation-certificate-name-check">How do I make sure my name is right on my degree certificate?</a></p>
 <p>After your final results are approved, your status in the Academic System changes from <strong>Regular</strong> (منتظم) to <strong>Graduate</strong> (متخرج). Your clearance and the collection of your certificate both wait for that change, which can take some weeks after the finals.</p>
 <h2>2. Download and print your documents</h2>
 <p>In the Academic System, open <strong>Personal</strong>, then <strong>Official Documents</strong> (المستندات الرسمية), and download:</p>
@@ -791,7 +791,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Arrange the inspection</strong> with your building's mushrif (supervisor), at his office or by phone. He checks the room, takes the key and signs the form. <strong>Keep the original form.</strong></li>
 <li><strong>Go back to the housing office</strong> the next working morning for the final clearance. The system then shows your room as returned.</li>
 </ol>
-<p>The University sets a date by which graduates must empty their rooms. In 2026 it was 27 June, about five weeks after the final exams. Anything left after that date is removed at your own risk, so plan your handover, your visa and your ticket around it.</p>
+<p>The University sets a date by which graduates must empty their rooms. In 2026 it was 27 June, about five weeks after the final exams. Anything left after that date is removed at your own risk, so plan your handover, your visa and your ticket around it. Ma'had graduates moving into a college keep their room as regular students.</p>
 <p>Your blanket and bedsheets are yours to take home. Anything else you bought for the room, from a kettle to a bookshelf, goes with you, to a friend or to the market: see <strong>Your things</strong> below.</p>
 <h2>4. Return your student card and clear your file</h2>
 <p>Hand in the signed room form at the housing office, and return your student card at the student card office. Keep a copy or a PDF of the card first. Then complete the clearance (إخلاء طرف) in the Academic System, under <strong>Academic</strong>, then <strong>Clearance</strong>. It opens once your status shows Graduate, and lists each office that must sign you off. Travel Management (إدارة السفر) then confirms your clearance in the University's records, and your ticket and, with an iqama, your final exit follow from that. Nothing is issued before the clearance shows.</p>
@@ -830,7 +830,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <ol>
 <li>Finish everything above first, including the embassy, before you book.</li>
 <li>Make sure the University has confirmed your clearance. Graduates' tickets are issued only after that.</li>
-<li>Your final ticket is issued against a travel order on Etimad, to a capital city in your own country or the country that issued your visa. Check that your name on Etimad matches your passport letter for letter.</li>
+<li>Your final ticket is issued against a travel order on Etimad, to one of the cities the University sets for your country. Check that your name on Etimad matches your passport letter for letter.</li>
 <li>Tell the ticket unit the date you can really travel. A date change later costs you the fare difference, and a no-show loses the ticket.</li>
 <li>You can upgrade the class of travel at your own cost. Your family's tickets are at your own cost.</li>
 </ol>
@@ -880,7 +880,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h3>Ship your books</h3>
 <p>Books are the heaviest thing a student owns, and the graduation allowance exists for exactly this. Compare these ways, and weigh your boxes before you choose.</p>
 <table><thead><tr><th>Way</th><th>Good for</th><th>What to know</th></tr></thead><tbody>
-<tr><td>Your checked baggage</td><td>Up to two bags on the University ticket</td><td>Often the cheapest for the first 40 to 50 kg. As of November 2026 Saudia allows 23 kg a bag in economy and charges 138 SAR a bag between 23 and 32 kg. Buy an extra bag from the airline online before the flight, not at the counter</td></tr>
+<tr><td>Your checked baggage</td><td>Up to two bags on the University ticket</td><td>Often the cheapest for the first 40 to 50 kg. The airlines flying from Madinah allow about 23 kg a bag in economy on most fares, a bag between 23 and 32 kg pays an excess fee per piece or per kilo, and nothing heavier than 32 kg goes in the hold. Buy an extra bag from the airline online before the flight, not at the counter</td></tr>
 <tr><td>SPL (Saudi Post)</td><td>Boxes up to 30 kg</td><td>Economy is delivered to the post office nearest the receiver, Express and Sea Freight to the door. Priced by weight and country in SPL's price calculator. As of 2025 a 30 kg express parcel costs from under 300 SAR to South Asia to about 750 SAR to Europe and North America. Customer service 19992</td></tr>
 <tr><td>Courier companies</td><td>Faster, tracked, any weight</td><td>Aramex, DHL, FedEx, SMSA and UPS all ship from Madinah. Ask each for a quote by weight, and ask about a books or student rate</td></tr>
 <tr><td>Sea cargo</td><td>Many boxes to Africa or Asia</td><td>Cargo offices in the city ship by the box or the cubic metre. Slow, but far cheaper per kilo for a whole library</td></tr>
@@ -920,7 +920,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     title: "Where sisters can study Arabic and Islamic sciences in Madinah",
     summary: "The in-person options for sisters, listed alphabetically: the women's marakiz for Arabic, Qur'an and Shariah, and the Masjid an-Nabawi Ma'had and Kulliyah, with who each is for, what it teaches and how to apply.",
     bodyHtml: `
-<p>Checked 9 November 2026. Madinah has several places where sisters study Arabic, the Qur'an and the Islamic sciences in person. They are listed here alphabetically. Teaching is in Arabic, and most classes are in the morning. Contact each place for the start of the next term before you plan around it.</p>
+<p>Checked 9 November 2026. Madinah has several places where sisters study Arabic, the Qur'an and the Islamic sciences in person. They are listed here alphabetically, with the Haram's own Ma'had and Kulliyah together at the end. Teaching is in Arabic, and most classes are in the morning. Contact each place for the start of the next term before you plan around it.</p>
 <h2>At a glance</h2>
 <table><thead><tr><th>Where</th><th>What it teaches</th><th>Length</th><th>Nursery</th></tr></thead><tbody>
 <tr><td>Academiyah al-Ma'rifah</td><td>Arabic for non-Arabic speakers, Shariah and Qur'an</td><td>Arabic 2 years, Shariah 1 year</td><td>Yes</td></tr>
@@ -987,7 +987,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Bring the originals and copies of your documents when you are accepted, then start your studies.</li>
 </ol>
 <p>The full conditions for each level are in <a href="/guides/masjid-an-nabawi-institute-and-college">The Masjid an-Nabawi Institute and College</a> and <a href="/programs/nabawi-women">Masjid an-Nabawi programmes for women</a>.</p>
-<h2>Without registering</h2>
+<h2>Without enrolling</h2>
 <p>The Haram's free Qur'an and mutun halaqat for sisters take registrations online, and the duroos in the masjid are open to everyone. See <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>. For online study and the other routes, see <a href="/ask/sisters-study">Where can sisters study?</a> and <a href="/programs">Study in Madinah</a>.</p>
 <blockquote><p>Tip: A question about your own case? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
@@ -995,7 +995,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     slug: "kids-activities",
     stage: "family",
     title: "Play areas and fun places for children in Madinah",
-    summary: "Soft play centres, mall crèches and gardens for young children in Madinah, with the ages each takes and what is there.",
+    summary: "Soft play centres, mall crèches and gardens for young children in Madinah, with what is at each and the ages they take.",
     bodyHtml: `
 <p>Checked 9 November 2026. Madinah has indoor soft play centres, crèches in the malls and gardens with rides, which are a good way to spend a hot afternoon with young children. Each section below is in alphabetical order. Entry is paid per child at the desk.</p>
 <h2>Soft play centres</h2>
