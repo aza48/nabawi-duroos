@@ -167,6 +167,31 @@ function darsRetriever(chunks: Chunk[]): Retriever {
 /** Arabic passages by page, built once per knowledge list. */
 const arabicPages = new WeakMap<Chunk[], Map<string, Chunk[]>>();
 
+/** Each English page's sections in order (by anchor; "" is the summary and the text before the first heading). */
+const englishSections = new WeakMap<Chunk[], Map<string, string[]>>();
+const anchorOf = (url: string) => url.split("#")[1] ?? "";
+const inOrder = (list: Chunk[]) => [...new Set(list.map((c) => anchorOf(c.url)))];
+
+/**
+ * The Arabic passages under the same heading as an English passage. A translation keeps the English
+ * headings in the same order (tests/arabic-complete.test.ts), so the nth section matches the nth; when
+ * the counts differ the pages do not line up and nothing is returned.
+ */
+function sameSection(p: Passage, twins: Chunk[], chunks: Chunk[]): Chunk[] {
+  let byPage = englishSections.get(chunks);
+  if (!byPage) {
+    const lists = new Map<string, Chunk[]>();
+    for (const c of chunks) if (c.lang !== "ar") lists.set(pageKey(c.url), [...(lists.get(pageKey(c.url)) ?? []), c]);
+    byPage = new Map([...lists].map(([k, v]) => [k, inOrder(v)]));
+    englishSections.set(chunks, byPage);
+  }
+  const en = byPage.get(pageKey(p.url)) ?? [];
+  const ar = inOrder(twins);
+  const k = en.indexOf(anchorOf(p.url));
+  if (k < 0 || en.length !== ar.length) return [];
+  return twins.filter((c) => anchorOf(c.url) === ar[k]);
+}
+
 /**
  * Each English passage of a translated page swapped for the Arabic passage of that page that answers the
  * question, if one does; Arabic passages that answer go first.
@@ -180,22 +205,30 @@ function inArabicWherePossible(found: Passage[], chunks: Chunk[], question: stri
   }
   if (!pages.size) return found;
   const terms = keyTerms(question);
+  const pick = (cands: Chunk[]) => cands.map((c) => ({ c, n: termHits(terms, `${c.title} ${c.section ?? ""} ${c.text}`) })).sort((x, y) => y.n - x.n)[0];
   const seen = new Set<string>();
   const out: Passage[] = [];
   for (const p of found) {
     let q: Passage = p;
     const twins = p.lang === "ar" ? undefined : pages.get(pageKey(p.url));
     if (twins) {
-      const best = twins.map((c) => ({ c, n: termHits(terms, `${c.title} ${c.section ?? ""} ${c.text}`) })).sort((x, y) => y.n - x.n)[0];
+      // The same section in Arabic first (an English "Exit and re-entry visa" passage becomes «تأشيرة الخروج والعودة»,
+      // not the summary that names every topic), then the page's best Arabic passage.
+      const same = sameSection(p, twins, chunks);
+      const near = same.length ? pick(same) : undefined;
+      const best = near && answers(question, near.c) ? near : pick(twins);
       if (best && answers(question, best.c)) q = { ...best.c, score: p.score, cover: p.cover };
     }
     if (seen.has(q.id)) continue;
     seen.add(q.id);
     out.push(q);
   }
-  // An answer in the reader's language comes first.
+  // An answer in the reader's language comes first, except the calendar line a "when" question was ranked
+  // to (it has no Arabic passage, and "متى الاختبارات النهائية" wants the date, not the page about exams).
+  const lead = out[0]?.kind === "date" ? out.slice(0, 1) : [];
+  const rest = out.slice(lead.length);
   const answering = (p: Passage) => p.lang === "ar" && answers(question, p);
-  return [...out.filter(answering), ...out.filter((p) => !answering(p))];
+  return [...lead, ...rest.filter(answering), ...rest.filter((p) => !answering(p))];
 }
 
 /**
