@@ -62,6 +62,11 @@ export function searchQuery(q: string): string {
   for (const t of terms) for (const w of t.split("_")) words.add(w);
   // "عبدالرزاق" is indexed as "عبد الرزاق": the second word finds it.
   for (const t of terms) if (/^عبد[^\s]{3,}/.test(t)) words.add(t.slice(3));
+  // An Arabic phrase joined into one term ("الخروج والعودة" is exit_reentry) searches by its English forms
+  // only, so an Arabic page that uses the same words would never be found: the question's own words go in too.
+  if (ARABIC.test(q) && terms.some((t) => t.includes("_"))) {
+    for (const w of normalize(q).split(/[\s-]+/)) if (ARABIC.test(w) && !STOP.has(w) && !ARTICLES.has(w)) words.add(w);
+  }
   return [...words].join(" ");
 }
 
@@ -268,6 +273,20 @@ export function createRetriever(chunks: Chunk[]) {
 export type Retriever = ReturnType<typeof createRetriever>;
 
 /**
+ * An English passage as the English search sees it: the Arabic title or question kept in its keywords
+ * (so an Arabic question finds an untranslated page) is dropped. No English question holds an Arabic
+ * word, and the longer field would only lower every keyword match, so English answers would change
+ * with each translation added.
+ */
+const englishOnly = (c: Chunk): Chunk => {
+  if (!c.keywords || !ARABIC.test(c.keywords)) return c;
+  const keywords = c.keywords.split(/\s+/).filter((w) => w && !ARABIC.test(w)).join(" ");
+  // An empty field still counts in the search's average field length, so none at all, as before the translation.
+  const { keywords: _arabic, ...rest } = c;
+  return keywords ? { ...c, keywords } : rest;
+};
+
+/**
  * One retriever per knowledge list and language, built once: English questions search the English
  * passages; Arabic questions search everything, so a page in Arabic and one only in English both answer.
  */
@@ -275,7 +294,7 @@ const built = new WeakMap<Chunk[], { en?: Retriever; ar?: Retriever }>();
 export function retrieverFor(chunks: Chunk[], lang: "en" | "ar"): Retriever {
   const slot = built.get(chunks) ?? {};
   built.set(chunks, slot);
-  return (slot[lang] ??= createRetriever(lang === "ar" ? chunks : chunks.filter((c) => c.lang !== "ar")));
+  return (slot[lang] ??= createRetriever(lang === "ar" ? chunks : chunks.filter((c) => c.lang !== "ar").map(englishOnly)));
 }
 
 /**
