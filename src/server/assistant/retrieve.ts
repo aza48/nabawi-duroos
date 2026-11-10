@@ -14,7 +14,9 @@ const STOP = new Set(
     "ما ماذا كيف هل من في على الى إلى عن مع هو هي انا أنا او أو ثم لو كان يكون اريد أريد ممكن عندي لي كم اين متى المدينه المنوره مدينه " +
     "لا اجد ابحث اذهب اروح نروح اصل اوصل احصل يمكن يمكنني استطيع اعرف افضل احسن مره يسمح بعد قبل كل اي لماذا شي شيء هذا هذه ذلك تلك الذي التي عند ان اذا حتي هناك يوجد توجد علي به بها له لها نحن انت طريقه كيفيه ماهو ماهي اليوم الليله غدا الان ارجو سمحت فضلك ابغي ابي ودي احتاج نريد يا بين اخرج دراسي الدراسي دراسيه الدراسيه " +
     // Verbs that fit any topic ("متى تبدأ", "كيف أدخل", "كيف أطلب") and the honorific "الشريفة".
-    "تبدا يبدا ادخل يدخل ندخل اطلب يطلب نطلب اشتري الشريفه الشريف شريفه"
+    "تبدا يبدا ادخل يدخل ندخل اطلب يطلب نطلب اشتري الشريفه الشريف شريفه " +
+    // "What does mukafa'ah mean", "ما معنى التأجيل": the word asked about is the topic, not "mean".
+    "mean means meaning define definition معنى معني يعني"
   )
     .split(" ")
     .map((w) => normalize(w))
@@ -124,6 +126,9 @@ const full = (c: Pick<Chunk, "title" | "section" | "text" | "keywords">) => `${c
 /** "When is Ramadan", "when does the second semester start", "متى الاختبارات": the calendar answers these. */
 const WHEN = /^(when|what date|which date|what day)\b|\bwhen (is|does|do|are|will|did)\b|\b(start|starts|begin|begins|end|ends|starting) (date|on)\b|متي|موعد|تاريخ/;
 
+/** A question asking what a word means. */
+const DEFINE = /^(what is|what s|whats|what are|what does|define|meaning of|what is the meaning of)\b|\b(mean|means|meaning)\b|(^|\s)(ما معني|معني|ما هو|ما هي|ماهو|ماهي|ايش|وش)(\s|$)/;
+
 export type RetrieveOptions = { limit?: number; perPage?: number };
 
 export function createRetriever(chunks: Chunk[]) {
@@ -155,7 +160,7 @@ export function createRetriever(chunks: Chunk[]) {
     return Math.max(0, ...tt.map((t) => matcher(t)(qHay) / t.length));
   };
   // Site-wide blurbs (page) only win when nothing specific does.
-  const kindBoost: Record<Chunk["kind"], number> = { faq: 1.2, guide: 1.1, program: 1.05, date: 1.05, page: 0.8, shaykh: 1, dars: 0.95, library: 0.9, discount: 0.85 };
+  const kindBoost: Record<Chunk["kind"], number> = { faq: 1.2, guide: 1.1, program: 1.05, date: 1.05, page: 0.8, shaykh: 1, dars: 0.95, library: 0.9, discount: 0.85, term: 0.7 };
 
   /**
    * The best passages for a question: at most `perPage` from one page so one long guide cannot
@@ -218,6 +223,8 @@ export function createRetriever(chunks: Chunk[]) {
     };
     const qHay = prep(`${normalize(q)} ${rewrite(normalize(q)).replace(/_/g, " ")}`);
     const when = WHEN.test(normalize(q));
+    // "What is an iqama", "what does mukafa'ah mean", "ما معنى التأجيل": the glossary's meaning answers first.
+    const define = DEFINE.test(normalize(q)) && terms.length <= 2;
     const results = ms.search(query, {
       boostDocument: (id) => {
         const c = byId.get(String(id));
@@ -234,9 +241,11 @@ export function createRetriever(chunks: Chunk[]) {
         // ...and a title or section that is all about the question ("What to bring", "A SIM card") beats a longer one that also uses the word.
         const focus = titled > 0 || c.section ? focusOf(c, qHay) : 0;
         const dated = when && c.kind === "date" && covered >= 0.5 ? 2 : 1;
+        // A word's meaning answers only a question about what the word means; anything else is answered by the guides.
+        const meaning = c.kind === "term" ? (define && titled === 1 ? 3 : 0.02) : 1;
         // Only Arabic questions see Arabic passages; of two equal answers, the one in Arabic reads better.
         const inArabic = c.lang === "ar" ? 1.25 : 1;
-        return kindBoost[c.kind] * dated * inArabic * headed * (1 + 2 * covered + 1.5 * titled + 0.8 * focus);
+        return kindBoost[c.kind] * dated * meaning * inArabic * headed * (1 + 2 * covered + 1.5 * titled + 0.8 * focus);
       },
     });
     if (!results.length) return [];

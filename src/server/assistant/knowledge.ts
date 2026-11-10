@@ -9,6 +9,7 @@ import { KEY_DATES } from "@/content/key-dates";
 import { DISCOUNTS } from "@/content/discounts";
 import { LIVE_COLLECTIONS } from "@/content/library-books";
 import { OFFICIAL } from "@/content/library";
+import { GLOSSARY } from "@/content/glossary";
 import { MAHAD_COPY } from "@/features/library/MahadPage";
 import { slugify } from "@/lib/guide-html";
 import { HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
@@ -18,7 +19,7 @@ import { HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
  * (a guide is split at its h2 headings, long sections again by paragraph). Each passage keeps
  * the link to the exact place it came from, so an answer can always point to "read more".
  */
-export type ChunkKind = "guide" | "faq" | "program" | "date" | "discount" | "dars" | "shaykh" | "library" | "page";
+export type ChunkKind = "guide" | "faq" | "program" | "date" | "discount" | "dars" | "shaykh" | "library" | "page" | "term";
 
 export type Chunk = {
   id: string;
@@ -224,6 +225,23 @@ function siteChunks(): Chunk[] {
   ];
 }
 
+/**
+ * The glossary, one passage a word: "what is an iqama" or "what does mukafa'ah mean" is answered by the word's
+ * meaning. It links to the page that explains more (every glossary fact is also on that page), or to the
+ * glossary card when there is none.
+ */
+export function glossaryChunks(): Chunk[] {
+  return GLOSSARY.map((t) => ({
+    id: `term-${t.id}`,
+    kind: "term" as const,
+    title: `${t.term} (${t.ar})`,
+    titleAr: t.ar,
+    text: `${t.term} (${t.ar}): ${t.meaning} ${t.use}`,
+    url: t.href ?? `/glossary#${t.id}`,
+    keywords: `${t.match.join(" ")} meaning definition`,
+  }));
+}
+
 const filled = (s: string | null | undefined): s is string => typeof s === "string" && s.trim().length > 0;
 
 /**
@@ -276,6 +294,7 @@ export async function buildKnowledge(db: Db): Promise<Chunk[]> {
     // The calendar guide's page is drawn from the key dates (indexed below), not from its stored body.
     ...guides.flatMap((g) => guideChunks(g.slug === "university-calendar-1448" ? { ...g, bodyHtml: "", bodyHtmlAr: null } : g)),
     ...companyChunks(),
+    ...glossaryChunks(),
     ...faqs.flatMap(faqChunks),
     ...programChunks(),
     ...dateChunks(),

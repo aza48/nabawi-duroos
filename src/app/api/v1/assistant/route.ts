@@ -19,10 +19,12 @@ const body = z.object({
   question: z.string().trim().min(1).max(600),
   locale: z.enum(["en", "ar"]).optional().default("en"),
   history: z.array(turn).max(12).optional().default([]),
+  /** The page the person is reading, for "how much does it cost?" asked on a guide. Paths on this site only. */
+  page: z.string().max(300).regex(/^\/[^/]/).optional().catch(undefined),
 });
 
 /**
- * Ask the MESHaykh: `{ question, history?, locale? }` in; out, the standard envelope with
+ * Ask the MESHaykh: `{ question, history?, locale?, page? }` in; out, the standard envelope with
  * `data: { answer, sources[{title, section?, url}], related[{title, url}], mode, found, lang }`.
  * `answer` uses **bold**, "- " and "1. " lines, and [n] markers that point to sources[n-1].
  */
@@ -38,7 +40,7 @@ export async function POST(req: Request) {
     return fail("bad_request", 400, "Send { question, history? } as JSON; the question must be 1 to 600 characters.");
   }
   try {
-    const reply = await askMesh(await getDb(), { question: input.question, history: input.history, locale: input.locale });
+    const reply = await askMesh(await getDb(), { question: input.question, history: input.history, locale: input.locale, page: input.page });
     const res = ok(reply);
     res.headers.set("Cache-Control", "no-store");
     return res;

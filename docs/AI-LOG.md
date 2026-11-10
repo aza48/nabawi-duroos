@@ -40,7 +40,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 | **akhiai** (cloud, Fable 5.1; hourly wake-up `trig_011QLV8fWJfFwFCRyc7LbFN4`) | `akhiai/<task>` branches | Lane E, guides: `src/server/seed/content/guides-*.ts`, `scripts/open-questions.json`, `docs/EXPIRING.md`, `docs/research/guides-*`, and AR3 translations | AR3 batches 1 to 4 (#44, #46, #47, #48) and E3 (#45) in review; next: more AR3 batches, sisters at Masjid an-Nabawi, keeping guides fresh |
 | **web** (cloud; hourly wake-up `trig_01VqkfrqUJn87szU6xmQeV4s`, weekly-reset wake-up `trig_015vgjTRbJkqPLJufE3hDFxm` for 11 Nov 05:02 UTC) | `web/<task>` branches | Lanes C and D: the shell and header, Arabic pages (`src/app/(ar)/*`), `ContentPages.tsx`, home layout, analytics; lead reviewer and merger while akheeai is out | Near the weekly limit (resets 11 Nov 05:00 UTC). D3 is WIP on `web/D3-who-are-you` (see Takeovers). Next: C3 share button, C1 offline, S1 to S3 |
 | **Overseer 1** (the Desktop agent: Claude Code on the owner's PC; no wake-up, by the owner's decision: it works when the owner opens it) | worktree `mesh-website-audit-73b810`, pushes to `main` | **The one merger** (verifies and merges every PR marked `Ready to merge`), release checks, the 8 Nov deep audit follow-ups, production database steps when the owner asks, the coordination tools (`scripts/pr-overlap.mjs`, `.github/workflows/pr-overlap.yml`, `scripts/content-diff.ts`, `tests/seed-no-duplicates.test.ts`) | 10 Nov: merged #115 (lost scams section), #118 (kids activities) and #119 (the cleanup); watching for `Ready to merge` comments while its session is open |
-| **mstudy** (cloud session working for the owner; signed "admin" before 10 Nov) | `mstudy/<task>` branches, one PR per task (a new branch for each task; never reuse a merged one) | Site search ranking (`src/lib/search/*`, `src/server/search/*`) and making the assistant more powerful (`src/server/assistant/*`, `src/features/assistant/*`, after aiakhee's #114 merges); its research in `docs/research/telegram-applicants-2026-11/` | No open claims (10 Nov, 04:16 UTC) |
+| **mstudy** (cloud session working for the owner; signed "admin" before 10 Nov) | `mstudy/<task>` branches, one PR per task (a new branch for each task; never reuse a merged one) | Site search ranking (`src/lib/search/*`, `src/server/search/*`) and making the assistant more powerful (`src/server/assistant/*`, `src/features/assistant/*`, after aiakhee's #114 merges); its research in `docs/research/telegram-applicants-2026-11/` | #121 (`claude/wonderful-curie-6l5xpy`, opened before the decision above): search and the assistant. Its assistant edits avoid #114's lines, and it is to merge **after** #114 (mstudy merges `main` in and rechecks first) |
 | **admin** (cloud, the owner's own agent; hourly wake-up `trig_01VjTp9me3FUT3Jur3mQ2aUe`, reset wake-up `trig_011YHnvtzZzr6HNohAArntMv`) | `claude/wonderful-davinci-um61gf` | `docs/research/telegram-iu-2026-11/*`, `docs/research/gomedine-2026-11/*`, `docs/research/GUIDE-IDEAS-admin-2026-11.md`, and new guides from that research (own seed file, announced on issue 13 before any edit to another lane's guide) | Reading the Telegram forum (7 readers) and gomedine.com (1 scraper); guides and the ideas list follow |
 | **naseer** (cloud, the owner's new agent; hourly wake-up `trig_018GRnKKSkx2c5qapD7vgUtE`, plus a one-shot wake-up at each usage reset, first `trig_01WVtj5f5Yp5uNz21bwsdEui`) | `naseer/<task>` branches, one PR per task | New guides in its own seed file `src/server/seed/content/guides-naseer-2026-11.ts` (claimed on issue 13 before each), research notes in `docs/research/guides-naseer-2026-11/`; later AR4 (Arabic FAQs) if aiakhee agrees, Arabic QA crawls, PR reviews | Batches 1 and 2 merged and live (8 guides). Open: #124 (US paperwork guide), FAQs for working families, #125 (D3 for web), #123 (research) |
 | naiifos (a person) | `feat/duroos-cards-*` | Duroos cards: `src/features/duroos/DuroosToday.tsx`, `src/features/home/DuroosCards.tsx`, `DarsMiniCard.tsx`, `DuroosCarousel.tsx` | Optional: the report link and the plural fix in the cards |
@@ -93,6 +93,29 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 10 Nov 2026, **mstudy**, for the owner, PR #121 (`claude/wonderful-curie-6l5xpy`): site search and Ask the MESHaykh.
+  - **Search:**
+    - a full-text second pass, `/api/v1/search/deep`, that links to the exact section of a guide ("Uhud", "Aramex", "library hours", the Arabic "exit and re-entry")
+    - instant answers: adhan times, the Hijri date, tonight's duroos, and MESH's short answers
+    - new in the index: key dates, the 41 glossary words, guide headings and the missing pages
+    - spelling correction; "dars" no longer outranks the topic; Arabic matches with or without the article
+    - an "Ask the MESHaykh" row and recent searches
+    - about 3x faster per keystroke
+  - **Assistant:**
+    - the glossary answers "what is an iqama" and "what does mukafaah mean"
+    - a short question asked on a guide is answered about that guide ("how much does it cost?" on the driving guide gives its "What it costs" section)
+    - the chat survives a reload, `/assistant?q=` asks at once, source links close the dialog, plus Stop, Try again, Copy and helpful or not
+  - **Checks:** all 229 eval questions still pass. Built on `main` after #114, #122 and #123 merged.
+  - **Before merging:** an independent review (5 reviewers, each finding checked by a skeptic) confirmed 17 issues, all fixed with tests:
+    - Arabic words typed without the article no longer get "corrected"
+    - a dropped particle ("the iqma") no longer skews ranking
+    - live instant answers are shared for 30 seconds at most
+    - Arabic searches don't show a section twice, and long snippets keep the matched word in view
+    - the glossary is never mistaken for the page being read
+    - `?q=` and search questions are asked once, never again on reload or reopen
+    - the palette closes on "Read more", Enter does nothing while loading, the chosen row holds when results arrive
+    - "Try again" only on the last reply, and the /search rows can be reached by keyboard
+  - The owner asked mstudy to merge it.
 - 10 Nov 2026, **Overseer 1**, for the owner: mstudy's lane recorded (owner decision above, new row): search ranking from Overseer 1, the assistant from aiakhee once #114 merges. #117's 12 pages were already live, so nobody needs to publish them.
 - 10 Nov 2026, **Overseer 1**, for the owner: restored the 7 files from today that the cleanup (#119) removed (the six C3 share-button screenshots and `scripts/publish-pending-2026-11-10.txt`), since 9 other contributors are working. The cleanup removed nothing under `docs/research/`, so the Telegram research and every research folder are untouched. Merges no longer delete branches, and `akhiai/E8-kids-activities` is restored.
 - 10 Nov 2026, **Overseer 1**, for the owner: published the 13 pages merged since the full sync (`--only`: 11 guides and 2 FAQs from #115, #117, #118 and akhiai's fixes). `npm run content:diff` shows nothing waiting, and the pages show the new text live.
