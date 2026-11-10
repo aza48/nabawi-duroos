@@ -5,16 +5,9 @@
  *   2. npm run go-live                      dry run: shows what would happen
  *   3. npm run go-live -- --apply --owner you@example.com
  */
-import { readFileSync } from "node:fs";
+import { loadEnvFile } from "./load-env";
 
-for (const file of [".env.production.local"]) {
-  try {
-    for (const line of readFileSync(file, "utf8").split("\n")) {
-      const m = /^([A-Z_]+)=(.*)$/.exec(line.trim());
-      if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, "");
-    }
-  } catch {}
-}
+loadEnvFile(".env.production.local");
 
 async function main() {
   const args = process.argv.slice(2);

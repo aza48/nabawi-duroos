@@ -5,7 +5,7 @@ The hub for English-speaking students in Madinah: live duroos schedules of the m
 - **Maintainer:** Muhaymin (GitHub `iumuhaymin`)
 - **Start here:** `docs/HANDOFF.md` (where things stand, the rules, stack, code map and commands) and `CONTRIBUTING.md`
 - **Who is working on what:** `docs/AI-LOG.md` and GitHub issue 13
-- **Plan and ideas:** `docs/WORKPLAN-2026-11-09.md` and `docs/IDEAS-2026-11-09.md`
+- **Task specs and ideas:** `docs/WORKPLAN-2026-11-09.md` and `docs/IDEAS-2026-11-09.md` (status and owners live in `docs/AI-LOG.md`)
 
 ## Run it on your computer
 

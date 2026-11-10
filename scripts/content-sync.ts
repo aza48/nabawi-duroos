@@ -2,14 +2,9 @@
  * Applies migrations, then publishes the latest MESH guides, FAQs, book links and watched channels to the live database: npm run content:sync
  * To publish only some guides or FAQs (leaving every other live row as it is): npm run content:sync -- --only=slug-one,slug-two
  */
-import { readFileSync } from "node:fs";
+import { loadEnvFile } from "./load-env";
 
-try {
-  for (const line of readFileSync(".env.production.local", "utf8").split("\n")) {
-    const m = /^([A-Z_]+)=(.*)$/.exec(line.trim());
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, "");
-  }
-} catch {}
+loadEnvFile(".env.production.local");
 
 async function main() {
   if (!process.env.DATABASE_URL) throw new Error("Put the live DATABASE_URL in .env.production.local first.");

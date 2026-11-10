@@ -1,4 +1,4 @@
-import { Lesson, Localized } from "./types";
+import { Localized } from "./types";
 
 /**
  * Livestream sources — VERIFIED links only (researched 2026-10-20).
@@ -25,11 +25,6 @@ export const NABAWI_YOUTUBE = {
   liveUrl: "https://www.youtube.com/@wmngovksa/live",
   liveEmbedUrl:
     "https://www.youtube.com/embed/live_stream?channel=UC0XNCc-DU8J5_ksR-eufPaw",
-};
-
-export const MANARA_ALHARAMAIN = {
-  name: L("منارة الحرمين", "Manarat al-Haramain"),
-  url: "https://manaratalharamain.gov.sa",
 };
 
 /**
@@ -69,21 +64,3 @@ export const SHAYKH_TELEGRAM: Record<string, { handle: string; url: string }> = 
     url: "https://t.me/dr_maherkhujah",
   },
 };
-
-export interface ShaykhStreamInfo {
-  shaykh: Localized;
-  telegram?: { handle: string; url: string };
-  /** Nabawi shuyukh are covered by the official Presidency live stream. */
-  onOfficialLive: boolean;
-}
-
-/** Stream info for a shaykh, derived from his lessons (masjid membership). */
-export function streamInfoForShaykh(shaykhNameAr: string, lessons: Lesson[]): ShaykhStreamInfo | null {
-  const mine = lessons.filter((l) => l.shaykh.ar === shaykhNameAr);
-  if (mine.length === 0) return null;
-  return {
-    shaykh: mine[0].shaykh,
-    telegram: SHAYKH_TELEGRAM[shaykhNameAr],
-    onOfficialLive: mine.some((l) => l.masjid === "nabawi"),
-  };
-}

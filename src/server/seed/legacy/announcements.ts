@@ -1,45 +1,6 @@
-import { Announcement, Localized, PendingPost, TelegramSource } from "./types";
+import { Announcement, Localized } from "./types";
 
 const L = (ar: string, en: string): Localized => ({ ar, en });
-
-export const TELEGRAM_SOURCES: TelegramSource[] = [
-  {
-    handle: "@drosalmadina",
-    name: L("دروس المدينة النبوية", "Duroos al-Madinah an-Nabawiyyah"),
-    previewUrl: "https://t.me/s/drosalmadina",
-    note: L("المصدر الرئيسي للتحديثات والإعلانات", "Main source of updates and announcements"),
-  },
-  {
-    handle: "@khizana_62",
-    name: L("خزانة العلم", "Khizanat al-'Ilm"),
-    previewUrl: "https://t.me/s/khizana_62",
-    note: L("ينشر أغلب الدروس والبثوث المباشرة", "Posts most of the duroos and live streams"),
-  },
-  {
-    handle: "@sohaymi",
-    name: L("فوائد الشيخ د. صالح السحيمي", "Beneficial lessons of Dr. Salih al-Suhaymi"),
-    previewUrl: "https://t.me/s/sohaymi",
-    note: L("قناة الشيخ صالح السحيمي الرسمية — المصدر المعتمد لإعلاناته", "Shaykh Salih al-Suhaymi's official channel — authoritative source for his announcements"),
-  },
-  {
-    handle: "@dr_maherkhujah",
-    name: L("قناة أ. د. ماهر خوجة", "Prof. Dr. Mahir Khujah's channel"),
-    previewUrl: "https://t.me/s/dr_maherkhujah",
-    note: L("دروس الشيخ ماهر خوجة بالجامعة الإسلامية", "Shaykh Mahir Khujah's lessons at the Islamic University"),
-  },
-  {
-    handle: "@Sulalruhaily",
-    name: L("قناة الشيخ سليمان الرحيلي", "Shaykh Sulayman al-Ruhayli's channel"),
-    previewUrl: "https://t.me/s/Sulalruhaily",
-    note: L("إعلانات ودروس الشيخ سليمان الرحيلي", "Announcements and lessons of Shaykh Sulayman al-Ruhayli"),
-  },
-  {
-    handle: "@twijri",
-    name: L("قناة أ. د. علي بن غازي التويجري", "Prof. Dr. Ali al-Tuwaijri's channel"),
-    previewUrl: "https://t.me/s/twijri",
-    note: L("إعلانات ودروس الشيخ علي التويجري", "Announcements and lessons of Shaykh Ali al-Tuwaijri"),
-  },
-];
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
@@ -310,29 +271,5 @@ export const ANNOUNCEMENTS: Announcement[] = [
     sourceName: L("خزانة العلم", "Khizanat al-'Ilm"),
     type: "info",
     expired: true,
-  },
-];
-
-export const PENDING_POSTS: PendingPost[] = [
-  {
-    id: "p1",
-    source: "@khizana_62",
-    sourceName: L("خزانة العلم", "Khizanat al-'Ilm"),
-    preview: L("المجلس (٥) سلسلة أشراط الساعة من الكتاب والسنة — الشيخ د. هيثم بن محمد جميل سرحان — مسجد قباء", "Majlis (5) of the Ashrat as-Sa'ah series — Dr. Haytham ibn Muhammad Jamil Sarhan — Masjid Quba"),
-    receivedAt: L("قبل ساعات", "Hours ago"),
-  },
-  {
-    id: "p2",
-    source: "@khizana_62",
-    sourceName: L("خزانة العلم", "Khizanat al-'Ilm"),
-    preview: L("المجلس (٢٢) شرح الفتوى الحموية — الشيخ أ. د. عبد القادر بن محمد عطا صوفي — مسجد قباء", "Majlis (22) of the Hamawiyyah explanation — Prof. Dr. Abdulqadir ibn Muhammad Ata Sufi — Masjid Quba"),
-    receivedAt: L("قبل يوم", "A day ago"),
-  },
-  {
-    id: "p3",
-    source: "@khizana_62",
-    sourceName: L("خزانة العلم", "Khizanat al-'Ilm"),
-    preview: L("المجلس (٧) شرح الأرجوزة المئية في ذكر حال أشرف البرية — الشيخ أ. د. عارف بن مزيد السحيمي — مسجد قباء", "Majlis (7) of the Arjuzah al-Mi'iyyah commentary — Prof. Dr. Arif ibn Mazid al-Suhaymi — Masjid Quba"),
-    receivedAt: L("قبل يومين", "Two days ago"),
   },
 ];

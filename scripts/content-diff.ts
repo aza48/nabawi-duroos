@@ -4,15 +4,11 @@
  *   npm run content:diff                 (summary)
  *   npm run content:diff -- --backup=dir (also saves every live guide and FAQ as JSON in dir first)
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { loadEnvFile } from "./load-env";
 
-try {
-  for (const line of readFileSync(".env.production.local", "utf8").split("\n")) {
-    const m = /^([A-Z_]+)=(.*)$/.exec(line.trim());
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, "");
-  }
-} catch {}
+loadEnvFile(".env.production.local");
 
 async function main() {
   if (!process.env.DATABASE_URL) throw new Error("Put the live DATABASE_URL in .env.production.local first.");

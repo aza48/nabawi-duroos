@@ -8,7 +8,7 @@ MESH (medinahub.org) is run by Muhaymin (GitHub `iumuhaymin`), the owner and fin
 0. `docs/AI-LOG.md` and GitHub issue 13: which agent owns which files right now, binding owner decisions, and the log every agent appends to after each push. Claim an area there before you start, and never edit another agent's area.
 1. `CONTRIBUTING.md`: setup, the checks to run, and the house rules.
 2. `docs/HANDOFF.md`: stack, map of the code, commands, gotchas and the current ranked next steps.
-3. `docs/audit/AUDIT.md` and `docs/audit/ADMIN-AUDIT.md` for known open issues.
+3. `docs/audit/AUDIT.md` (site) and `docs/audit/admin-phone-2026-11-09.md` (admin) for known open issues.
 
 ## Non-negotiables (details in CONTRIBUTING.md)
 - Run `npx tsc --noEmit` and `npx vitest run` before every commit; both must pass.

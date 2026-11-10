@@ -37,15 +37,6 @@ export function EmptyState({ title, body }: { title: string; body?: string }) {
   );
 }
 
-export function PageTitle({ title, subtitle }: { title: React.ReactNode; subtitle?: React.ReactNode }) {
-  return (
-    <div className="mb-5 mt-2">
-      <h1 className="text-3xl font-semibold leading-tight md:text-4xl">{title}</h1>
-      {subtitle && <p className="mt-1.5 text-muted">{subtitle}</p>}
-    </div>
-  );
-}
-
 /** The green MESH band that opens every top-level page. */
 export function PageBand({ title, subtitle, children }: { title: React.ReactNode; subtitle?: React.ReactNode; children?: React.ReactNode }) {
   return (
