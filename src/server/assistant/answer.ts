@@ -339,8 +339,13 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   // "it") or that nothing answers on its own is searched with the title of the page the person is reading.
   const reading = onPageKey ? pageChunk(chunks, input.page!) : undefined;
   if (reading && (POINTS_AT_PAGE.test(normalize(q)) || !found.slice(0, 3).some((p) => answersWell(searchText, p)))) {
-    searchText = `${reading.title} ${q}`;
-    found = retrieverFor(chunks, lang)(searchText, 6);
+    // A guide's title before the colon names it ("Driving in Madinah"); the list after it would steer the search
+    // to one subtopic ("renting a car"). Passages of the page itself come first.
+    searchText = `${reading.kind === "guide" ? reading.title.split(":")[0] : reading.title} ${q}`;
+    const all = retrieverFor(chunks, lang)(searchText, 6);
+    // The page's own sections, ranked by the question alone: "how much does it cost?" is its "What it costs".
+    const own = createRetriever(chunks.filter((c) => c.lang !== "ar" && pageKey(c.url) === pageKey(reading.url)))(q, 3, 3);
+    found = [...new Map([...own.slice(0, 3), ...all].map((p) => [p.id, p])).values()].slice(0, 6);
   }
   // The synonyms find the right page, often through its English text; when that page is translated,
   // its Arabic passage that answers the question takes the English one's place.

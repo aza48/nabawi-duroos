@@ -82,7 +82,7 @@ export function createSearch(docs: SearchDoc[]): Search {
           const type = (stored?.type as SearchType) ?? "page";
           // A word's meaning answers "iqama" or "mukafaah", not "lost iqama" or "stipend amount": with a word it
           // does not hold, the glossary card steps back for the page about it.
-          if (type === "term" && !all) return 0.3 * boostType.term;
+          if (type === "term" && !all) return 0.12 * boostType.term;
           return (all ? 1.6 : 1) * (boostType[type] ?? 1);
         },
       })
@@ -190,9 +190,20 @@ export function weighQuery(q: string, alsoTyped: string[] = []): { query: string
   return { query: [...own, ...added].join(" "), typed, weight: (term) => (light.has(term) ? 0.3 : full.has(term) ? 1 : 0.5) };
 }
 
+/** Question words not worth marking in a title ("how", "my", "كيف"). */
+const UNMARKED = new Set(["how", "what", "where", "when", "which", "who", "why", "can", "could", "do", "does", "did", "is", "are", "my", "me", "you", "your", "need", "want", "get", "كيف", "ما", "ماذا", "متي", "اين", "هل", "من", "في", "على", "عن"].map(normalize));
+
 /** The words of a query as typed, with their spellings, for marking them in a result. */
 export function queryWords(q: string): string[] {
-  return [...new Set(weighQuery(q).typed.flat().filter((w) => w.length >= 2))];
+  return [...new Set(weighQuery(q).typed.filter((t) => !UNMARKED.has(t[0]) && !FILLER.has(t[0])).flat().filter((w) => w.length >= 2))];
+}
+
+/** Whether a heading holds every word the query is about ("Uhud" for "uhud", any spelling of each word). */
+export function coversAll(heading: string, q: string): boolean {
+  const groups = weighQuery(q).typed.filter((t) => !UNMARKED.has(t[0]) && !FILLER.has(t[0]) && !GENERIC.has(t[0]));
+  if (!groups.length) return false;
+  const parts = split(heading).flatMap(forms);
+  return groups.every((g) => g.some((w) => parts.some((x) => x.startsWith(w))));
 }
 
 /**

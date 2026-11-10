@@ -3,11 +3,11 @@ import { resetTestDb, type Db } from "@/server/db/client";
 import { importLegacy } from "@/server/seed/import-legacy";
 import { buildSearchDocs } from "@/server/search/docs";
 import { deepSearch, snippetOf } from "@/server/search/deep";
-import { createSearch, highlight, queryWords, type SearchDoc } from "@/lib/search/engine";
+import { coversAll, createSearch, highlight, queryWords, type SearchDoc } from "@/lib/search/engine";
 import { arabicBare } from "@/lib/search/normalize";
 import { buildKnowledge, type Chunk } from "@/server/assistant/knowledge";
 import { askMesh, resetAnswerCache } from "@/server/assistant/answer";
-import { freshDeep, looksLikeQuestion } from "@/features/search/SearchUI";
+import { deepLeads, freshDeep, looksLikeQuestion } from "@/features/search/SearchUI";
 import { aboutPage, plainAnswer } from "@/features/assistant/AssistantPanel";
 
 /**
@@ -59,6 +59,15 @@ describe("search engine", () => {
     const parts = highlight("Finding and renting a flat", queryWords("rent flat"));
     expect(parts.filter((p) => p.hit).map((p) => p.t.trim())).toEqual(["renting", "flat"]);
     expect(highlight("Iqama", [])).toEqual([{ t: "Iqama", hit: false }]);
+    // Question words are not marked: only what the search is about.
+    expect(queryWords("how do I renew my iqama")).not.toContain("how");
+    expect(queryWords("how do I renew my iqama")).toContain("iqama");
+  });
+  it("tells when a heading is exactly what was searched", () => {
+    expect(coversAll("Uhud", "uhud")).toBe(true);
+    expect(coversAll("Quba, Uhud and the other places", "uhud")).toBe(true);
+    expect(coversAll("Having a baby in Madinah", "uhud")).toBe(false);
+    expect(coversAll("Tafsir as-Sa'di", "tafsir dars")).toBe(true);
   });
 });
 
@@ -150,7 +159,7 @@ describe("Ask the MESHaykh: the glossary and the page being read", () => {
   });
   it("answers a short question about the page being read", async () => {
     const r = await ask("how much does it cost?", "/guides/drivers-license");
-    expect(r.sources[0].url).toMatch(/^\/guides\/drivers-license/);
+    expect(r.sources[0].url).toBe("/guides/drivers-license#what-it-costs");
     const dars = await ask("what time does it start", "/duroos/lesson/abadr-tawhid");
     expect(dars.sources[0].url).toBe("/duroos/lesson/abadr-tawhid");
   });
@@ -175,6 +184,14 @@ describe("search and assistant helpers", () => {
       { title: "A", section: "Fees", snippet: "", url: "/guides/a#fees", kind: "guide" },
     ];
     expect(freshDeep(deep, [{ id: "a", type: "guide", title: "A", url: "/guides/a", score: 1 }], 4).map((d) => d.url)).toEqual(["/guides/a#fees"]);
+  });
+  it("puts a section first when it is headed with the search and no result title is", () => {
+    const covers = (h: string) => coversAll(h, "uhud");
+    const uhud = { title: "Historic sites", section: "Uhud", snippet: "", url: "/guides/historic#uhud", kind: "guide" };
+    const baby = { id: "baby", type: "guide" as const, title: "Having a baby in Madinah", url: "/guides/baby", score: 9 };
+    expect(deepLeads([uhud], [baby], covers)).toBe(true);
+    expect(deepLeads([uhud], [{ ...baby, title: "Visiting Uhud" }], covers)).toBe(false);
+    expect(deepLeads([{ ...uhud, section: undefined }], [baby], covers)).toBe(false);
   });
   it("copies an answer as plain text with its links", () => {
     const text = plainAnswer("The fee is **100 SAR** [1].", [{ title: "Iqama fees", section: "Renewal", url: "/guides/iqama#renewal" }], "https://medinahub.org");

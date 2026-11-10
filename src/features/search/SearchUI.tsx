@@ -96,7 +96,8 @@ function useSearch(q: string, active: boolean) {
   const corrected = useMemo(() => (engine && typed.trim() ? engine.search.correct(typed) : null), [engine, typed]);
   const words = useMemo(() => (engine ? engine.mod.queryWords(corrected ?? typed) : []), [engine, typed, corrected]);
   const mark = useCallback((text: string) => (engine ? engine.mod.highlight(text, words) : [{ t: text, hit: false }]), [engine, words]);
-  return { hits, corrected, mark, ready: !!engine, failed };
+  const covers = useCallback((heading: string) => !!engine && engine.mod.coversAll(heading, corrected ?? typed), [engine, corrected, typed]);
+  return { hits, corrected, mark, covers, ready: !!engine, failed };
 }
 
 /** What the server's full-text pass returns (src/server/search/deep.ts). */
@@ -206,6 +207,16 @@ export function freshDeep(deep: DeepHit[], hits: SearchHit[], max: number): Deep
   return deep.filter((d) => !shown.has(d.url)).slice(0, max);
 }
 
+/**
+ * Whether the sections found inside the pages lead: when the best one is headed with exactly what was searched
+ * ("Uhud") and no result title of the box's own is, the section is the answer and goes first.
+ */
+export function deepLeads(inside: DeepHit[], flat: SearchHit[], covers: (heading: string) => boolean): boolean {
+  const top = inside[0];
+  if (!top?.section || !covers(top.section)) return false;
+  return !flat.slice(0, 3).some((h) => covers(h.title));
+}
+
 /** One choosable row: a result, a section found inside a page, or "ask the assistant". */
 type Opt = { id: string; url?: string; ask?: true };
 
@@ -223,6 +234,7 @@ type ResultsProps = {
   deep: Deep | null;
   corrected: string | null;
   mark: (t: string) => { t: string; hit: boolean }[];
+  covers: (heading: string) => boolean;
   cursor: number;
   opts: Opt[];
   onPick: (o: Opt) => void;
@@ -232,7 +244,7 @@ type ResultsProps = {
   wide?: boolean;
 };
 
-function Results({ q, hits, deep, corrected, mark, cursor, opts, onPick, compact, locale = "en", listId, wide }: ResultsProps) {
+function Results({ q, hits, deep, corrected, mark, covers, cursor, opts, onPick, compact, locale = "en", listId, wide }: ResultsProps) {
   const t = T[locale];
   const groups = groupHits(hits, !!compact);
   const flat = groups.flatMap((g) => g.items);
@@ -240,6 +252,7 @@ function Results({ q, hits, deep, corrected, mark, cursor, opts, onPick, compact
   if (!q.trim()) return null;
   const at = (id: string) => opts.findIndex((o) => o.id === id);
   const askFirst = looksLikeQuestion(q);
+  const insideFirst = deepLeads(inside, flat, covers);
 
   const row = (id: string, url: string, body: ReactNode, Icon: typeof Search) => {
     const i = at(id);
@@ -295,6 +308,28 @@ function Results({ q, hits, deep, corrected, mark, cursor, opts, onPick, compact
     </ul>
   );
 
+  const insideSection = !!inside.length && (
+            <section role="group" aria-label={t.inside} className={wide ? "mb-6 break-inside-avoid" : undefined}>
+              <p className="mb-1.5 px-2 text-xs font-semibold text-muted" aria-hidden="true">{t.inside}</p>
+              <ul role="presentation">
+                {inside.map((d) =>
+                  row(
+                    `deep-${d.url}`,
+                    d.url,
+                    <>
+                      <span className="block truncate font-semibold leading-snug" dir="auto">
+                        <Marked parts={mark(d.section ?? ((locale === "ar" && d.titleAr) || d.title))} />
+                      </span>
+                      {d.section && <span className="block truncate text-xs text-muted" dir="auto">{(locale === "ar" && d.titleAr) || d.title}</span>}
+                      <span className="mt-0.5 line-clamp-2 block text-sm text-muted" dir="auto"><Marked parts={mark(d.snippet)} /></span>
+                    </>,
+                    TextSearch
+                  )
+                )}
+              </ul>
+            </section>
+          );
+
   const instant = deep?.instant;
   return (
     <div id={listId} role="listbox" aria-label={t.search}>
@@ -323,6 +358,7 @@ function Results({ q, hits, deep, corrected, mark, cursor, opts, onPick, compact
         </div>
       ) : (
         <div className={wide ? "lg:columns-2 lg:gap-8" : "space-y-5"}>
+          {insideFirst && insideSection}
           {groups.map(({ t: type, items }) => {
             const { label: en, ar, icon } = TYPE[type];
             const label = locale === "ar" ? ar : en;
@@ -347,27 +383,7 @@ function Results({ q, hits, deep, corrected, mark, cursor, opts, onPick, compact
               </section>
             );
           })}
-          {!!inside.length && (
-            <section role="group" aria-label={t.inside} className={wide ? "mb-6 break-inside-avoid" : undefined}>
-              <p className="mb-1.5 px-2 text-xs font-semibold text-muted" aria-hidden="true">{t.inside}</p>
-              <ul role="presentation">
-                {inside.map((d) =>
-                  row(
-                    `deep-${d.url}`,
-                    d.url,
-                    <>
-                      <span className="block truncate font-semibold leading-snug" dir="auto">
-                        <Marked parts={mark(d.section ?? ((locale === "ar" && d.titleAr) || d.title))} />
-                      </span>
-                      {d.section && <span className="block truncate text-xs text-muted" dir="auto">{(locale === "ar" && d.titleAr) || d.title}</span>}
-                      <span className="mt-0.5 line-clamp-2 block text-sm text-muted" dir="auto"><Marked parts={mark(d.snippet)} /></span>
-                    </>,
-                    TextSearch
-                  )
-                )}
-              </ul>
-            </section>
-          )}
+          {!insideFirst && insideSection}
         </div>
       )}
       {!askFirst && askRow}
@@ -376,11 +392,13 @@ function Results({ q, hits, deep, corrected, mark, cursor, opts, onPick, compact
 }
 
 /** The rows in the order they show, for the arrow keys. */
-function optionsOf(q: string, hits: SearchHit[], deep: Deep | null, compact: boolean): Opt[] {
+function optionsOf(q: string, hits: SearchHit[], deep: Deep | null, compact: boolean, covers: (heading: string) => boolean): Opt[] {
   if (!q.trim()) return [];
   const flat = groupHits(hits, compact).flatMap((g) => g.items);
   const inside = freshDeep(deep?.hits ?? [], flat, compact ? 4 : 8);
-  const rows: Opt[] = [...flat.map((h) => ({ id: h.id, url: h.url })), ...inside.map((d) => ({ id: `deep-${d.url}`, url: d.url }))];
+  const box = flat.map((h) => ({ id: h.id, url: h.url }));
+  const sections = inside.map((d) => ({ id: `deep-${d.url}`, url: d.url }));
+  const rows: Opt[] = deepLeads(inside, flat, covers) ? [...sections, ...box] : [...box, ...sections];
   const ask: Opt = { id: "ask", ask: true };
   return looksLikeQuestion(q) ? [ask, ...rows] : [...rows, ask];
 }
@@ -431,9 +449,9 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
   /** Whatever had focus when the palette opened; it gets focus back on close. */
   const opener = useRef<HTMLElement | null>(null);
   const router = useRouter();
-  const { hits, corrected, mark, ready, failed } = useSearch(q, open);
+  const { hits, corrected, mark, covers, ready, failed } = useSearch(q, open);
   const deep = useDeep(q, open, locale);
-  const opts = optionsOf(q, hits, deep, true);
+  const opts = optionsOf(q, hits, deep, true, covers);
   const LIST_ID = "mesh-search-results";
 
   useEffect(() => {
@@ -542,7 +560,7 @@ export function SearchPalette({ locale = "en" }: { locale?: "en" | "ar" }) {
               ) : !ready ? (
                 <p className="p-6 text-center text-muted" role="status" aria-live="polite">{t.loading}</p>
               ) : (
-                <Results q={q} hits={hits} deep={deep} corrected={corrected} mark={mark} cursor={cursor} opts={opts} onPick={pick} compact locale={locale} listId={LIST_ID} />
+                <Results q={q} hits={hits} deep={deep} corrected={corrected} mark={mark} covers={covers} cursor={cursor} opts={opts} onPick={pick} compact locale={locale} listId={LIST_ID} />
               )}
             </div>
             {q.trim() && ready && (
@@ -564,9 +582,9 @@ export function SearchPage({ initial, locale = "en" }: { initial: string; locale
   const router = useRouter();
   const t = T[locale];
   const base = locale === "ar" ? "/ar/search" : "/search";
-  const { hits, corrected, mark, ready, failed } = useSearch(q, true);
+  const { hits, corrected, mark, covers, ready, failed } = useSearch(q, true);
   const deep = useDeep(q, true, locale);
-  const opts = optionsOf(q, hits, deep, false);
+  const opts = optionsOf(q, hits, deep, false, covers);
   useEffect(() => {
     const id = setTimeout(() => router.replace(q ? `${base}?q=${encodeURIComponent(q)}` : base, { scroll: false }), 300);
     return () => clearTimeout(id);
@@ -599,7 +617,7 @@ export function SearchPage({ initial, locale = "en" }: { initial: string; locale
         ) : !ready ? (
           <p className="text-muted" role="status">{t.loading}</p>
         ) : q.trim() ? (
-          <Results q={q} hits={hits} deep={deep} corrected={corrected} mark={mark} cursor={-1} opts={opts} onPick={pick} locale={locale} wide />
+          <Results q={q} hits={hits} deep={deep} corrected={corrected} mark={mark} covers={covers} cursor={-1} opts={opts} onPick={pick} locale={locale} wide />
         ) : (
           <Starters locale={locale} onPick={setQ} chip="rounded-full bg-card px-3.5 py-2 text-sm font-medium ring-1 ring-line hover:text-primary" />
         )}

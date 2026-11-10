@@ -44,7 +44,7 @@ const T = {
       "How do I get home internet without an iqama?",
       "How much is the University stipend?",
     ],
-    pageSuggestions: ["How much does it cost?", "What do I need to bring?", "How long does it take?"],
+    pageSuggestions: ["How much does it cost?", "How long does it take?", "What do I need for it?"],
   },
   ar: {
     intro: "اسأل عن الدراسة والحياة في المدينة: الجامعة والتأشيرات والبنوك والسكن والدروس. الأجوبة من أدلة MESH وجدول الدروس.",
@@ -65,7 +65,7 @@ const T = {
     thanks: "شكرًا لك. فريق MESH يقرأ كل ملاحظة.",
     onPage: "عن هذه الصفحة",
     suggestions: ["هل أستطيع فتح حساب بنكي بهوية زائر؟", "ما الدروس الليلة؟", "كيف أحصل على إنترنت منزلي بدون إقامة؟", "كم مكافأة الجامعة الشهرية؟"],
-    pageSuggestions: ["كم التكلفة؟", "ما المطلوب؟", "كم يستغرق ذلك؟"],
+    pageSuggestions: ["كم تكلفة هذا؟", "كم يستغرق هذا؟", "ما المطلوب لهذا؟"],
   },
 };
 
@@ -358,8 +358,9 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
                 <div className="mt-1 flex flex-wrap items-center gap-2 text-sm">
                   <span className="text-xs text-muted">{t.more}:</span>
                   {m.sources.map((s) => (
-                    <Link key={s.url} href={localizeUrl(s.url, locale)} onClick={follow} dir="auto" className="max-w-full truncate rounded-full bg-primary-soft px-3 py-1.5 font-medium text-primary hover:bg-primary hover:text-primary-ink">
-                      {s.section ? `${s.title}: ${s.section}` : s.title}
+                    <Link key={s.url} href={localizeUrl(s.url, locale)} onClick={follow} dir="auto" title={s.section ? `${s.title}: ${s.section}` : s.title} className="max-w-full truncate rounded-full bg-primary-soft px-3 py-1.5 font-medium text-primary hover:bg-primary hover:text-primary-ink">
+                      {/* A long guide title would hide the section, and two sections of one guide would look the same. */}
+                      {s.section ?? s.title}
                     </Link>
                   ))}
                 </div>
