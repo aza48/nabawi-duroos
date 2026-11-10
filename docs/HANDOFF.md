@@ -22,7 +22,7 @@ aiakhee's hourly wake-up is paused (owner, to save tokens); the usage reset wake
 ## 10 November 2026, about 06:30 Riyadh: Desktop agent
 **Live:** the 28 guides and 35 FAQs from the research are published (`--only`, all 63 checked on medinahub.org).
 
-**Still not live, merged on `main`:** 10 new guides (Ramadan, volunteering, marriage, Eid al-Adha, janazah, utilities, the Qur'an Printing Complex, naseer's three) and updates to about 30 guides and 40 FAQs. `npm run content:diff` lists them (read only). `npm run content:sync` publishes them; this session's permissions stop it from running a full sync, so the owner runs it. Every live timestamp matches an earlier sync, so no edit made in the admin is overwritten.
+**Everything merged is live (06:45):** the owner asked, and the Desktop agent ran the full `npm run content:sync` from `main`: 68 guides and 74 FAQs, all 142 pages return 200, and `npm run content:diff` shows nothing waiting. A backup of the live rows was taken first.
 
 **Stopping duplicate work (new, read before you start anything):**
 - `npm run overlap`: every open PR, who claimed it, and any guide slug, migration number or file two open PRs share. `npm run overlap -- --find <topic>` before you start a topic. Every PR also gets this as an automatic comment when it overlaps another (`.github/workflows/pr-overlap.yml`, comment only).
