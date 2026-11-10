@@ -32,7 +32,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "السكن والمواصلات والصحة",
     blurb: "Renting a flat, buses, the train and taxis, and doctors, hospitals and pharmacies.",
     blurbAr: "استئجار شقة والحافلات والقطار وسيارات الأجرة والأطباء والمستشفيات والصيدليات.",
-    slugs: ["finding-an-apartment", "getting-around", "haramain-train-and-city-buses", "university-to-the-haram", "shipping-and-receiving-parcels", "doctors-hospitals-and-pharmacies", "avoiding-scams-in-madinah"],
+    slugs: ["finding-an-apartment", "getting-around", "haramain-train-and-city-buses", "university-to-the-haram", "shipping-and-receiving-parcels", "doctors-hospitals-and-pharmacies", "electricity-water-and-gas-at-home", "avoiding-scams-in-madinah"],
   },
   {
     id: "study",
@@ -84,7 +84,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "الحرم والعبادة",
     blurb: "Your first visit to Masjid an-Nabawi, the Rawdah, Umrah, Quba, the women's sections, and Hajj as a resident.",
     blurbAr: "زيارتك الأولى للمسجد النبوي والروضة والعمرة وقباء ومصليات النساء.",
-    slugs: ["masjid-an-nabawi-first-visit", "umrah-rawdah-quba", "women-at-masjid-an-nabawi", "hajj-as-a-student", "ramadan-in-madinah"],
+    slugs: ["masjid-an-nabawi-first-visit", "umrah-rawdah-quba", "women-at-masjid-an-nabawi", "hajj-as-a-student", "ramadan-in-madinah", "eid-al-adha-and-udhiyah", "janazah-al-baqi-and-when-someone-dies"],
   },
   {
     id: "family",
@@ -100,7 +100,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "استكشف المدينة",
     blurb: "Historic sites, day trips, the seasons and camping, dates, sport and volunteering.",
     blurbAr: "المعالم التاريخية والرحلات القصيرة والمواسم والتخييم والتمور والرياضة والتطوع.",
-    slugs: ["historic-sites-and-masjids", "day-trips-from-madinah", "seasons-and-camping", "dates-of-madinah", "sports-and-activities", "volunteering-as-a-student"],
+    slugs: ["historic-sites-and-masjids", "day-trips-from-madinah", "seasons-and-camping", "dates-of-madinah", "sports-and-activities", "volunteering-as-a-student", "visiting-the-quran-printing-complex"],
   },
 ];
 

@@ -337,7 +337,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <h2>Start here</h2>
 <ul>
 <li><strong>Student care:</strong> call <strong>920022042</strong> or email <strong>care@iu.edu.sa</strong> when you do not know where a question belongs.</li>
-<li><strong>Tawasul</strong> (تواصل), the University's request system, at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a>. Sign in with your University login and send your request to the right office. If you cannot sign in yet, use the guest form at <a href="https://helpdesk.iu.edu.sa/newticket_guest">helpdesk.iu.edu.sa/newticket_guest</a>.</li>
+<li><strong>Tawasul</strong> (تواصل), the University's request system, at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a>. Sign in with your University login and send your request to the right office. If you cannot sign in yet, use the guest form at <a href="https://helpdesk.iu.edu.sa/newticket_guest">helpdesk.iu.edu.sa/newticket_guest</a>. A reply often shows only once the request is closed, so if you see nothing, switch the request filter from in progress to closed, awaiting rating.</li>
 <li><strong>Your University email.</strong> Replies and official notices come here, so read it every day.</li>
 <li><strong>Your college's wakeel</strong> (vice dean) for student affairs: absences, excuses, timetable problems after drop and add, and anything your college decides.</li>
 </ul>
@@ -357,6 +357,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <tr><td>Passwords and sign-in problems</td><td>Deanship of IT and E-Learning</td><td><strong>it.care@iu.edu.sa</strong>, or <strong>+966 14 847 1856</strong></td></tr>
 <tr><td>Blackboard</td><td>E-Learning Center</td><td><strong>bb@iu.edu.sa</strong>, or Tawasul to the E-Learning Center: see <a href="/ask/blackboard-login">How do I log in to Blackboard?</a></td></tr>
 <tr><td>A doctor or dentist</td><td>University Medical Center</td><td>Book at <a href="https://vcappointments.iu.edu.sa/">vcappointments.iu.edu.sa</a></td></tr>
+<tr><td>Stress, exam worries, homesickness or a personal difficulty</td><td>The Student Guidance and Counselling Unit (الإرشاد الطلابي) of the Deanship of Student Affairs</td><td>In person, next to the Imam Ibn Baz masjid on the mat'am side, or through your college's own guidance unit. Free</td></tr>
 <tr><td>Meals at the mat'am</td><td>The University restaurant</td><td>Book monthly at <a href="https://restaurant.iu.edu.sa/">restaurant.iu.edu.sa</a></td></tr>
 <tr><td>Your application, before you arrive</td><td>Deanship of Admission and Registration</td><td><a href="https://minhatee2.iu.edu.sa/">Minhati</a> and its helpdesk, and Study in Saudi for the final acceptance and visa</td></tr>
 </tbody></table>
@@ -422,7 +423,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>A partial (internal) scholarship, for applicants already living in Saudi Arabia, covers tuition only. It pays no stipend and no allowances, and includes no ticket, no meals and no free housing. When places are free, the University offers partial scholarship students a paid room in Unit 13: see <a href="/guides/unit-13-and-paid-university-housing">Unit 13 and paid University housing</a>.</p>
 <h2>The monthly stipend</h2>
 <ul>
-<li><strong>The rate</strong> is set by the University and depends on your college. Your own payments are in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
+<li><strong>The rate</strong> is set by the University and depends on your college. In 1447 and 1448 a bachelor's student in the Shari'ah and Arabic colleges received 840 SAR a month. Your own payments are in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
 <li><strong>Where it goes:</strong> onto your <strong>University stipend card</strong>, an Al Rajhi Bank card the University issues to you. It is not paid into a bank account of your own. See the next section.</li>
 <li><strong>When:</strong> usually between the <strong>21st and the 25th</strong> of each Gregorian month, late at night. If the day falls on a weekend it moves to the nearest working day, and the University pays early before holidays such as National Day and Founding Day. After an early payment, the next one comes more than a month later.</li>
 <li><strong>All year:</strong> it is paid every month, the summer break included.</li>
@@ -458,7 +459,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>You can borrow once only, and not in your final year. A good GPA helps your request. The Fund also has an aid section (إعانة) for students in real hardship.</p>
 <h2>What stops the stipend</h2>
 <ul>
-<li><strong>Ta'jeel or i'tithaar:</strong> the stipend stops for the semester you are not studying. See <a href="/guides/tajeel-and-itithaar">Taking a semester off</a>.</li>
+<li><strong>Ta'jeel or i'tithaar:</strong> the stipend stops for the semester you are not studying. A ta'jeel semester is not counted in your study period, so the extra semester it adds at the end of your degree is still paid. An i'tithaar semester is counted, so the semester you add to make up for it falls outside the paid period. See <a href="/guides/tajeel-and-itithaar">Taking a semester off</a>.</li>
 <li><strong>Passing the regular length of your programme:</strong> the stipend covers the normal number of semesters in your study plan. Extra semesters beyond it are unpaid unless the University approves them.</li>
 <li><strong>Leaving your studies:</strong> withdrawal or dismissal ends the scholarship.</li>
 </ul>
@@ -474,6 +475,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <p>How to request it, how group tickets arrive and what to do about an exam clash are in <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a>.</p>
 <h2>Married students</h2>
 <p>The University's Scholarship Fund (صندوق المنح) runs support programmes for married scholarship students whose families live with them in Madinah, including a hardship programme (تفريج كرب). It announces each round on its Telegram channel, <a href="https://t.me/BoxIslamicUniversity1">t.me/BoxIslamicUniversity1</a>. When it asks married students to update their details, send a recent enrolment letter (إفادة), an IBAN certificate and the iqamas of every family member, all as PDF, before the deadline.</p>
+<p>Past rounds have included emergency cash aid (March 2024) and food ration cards (December 2024). The ration card round was open to married scholarship students living with their families in Madinah, including families whose wife holds her own iqama or is on a visit, tourist or Umrah visa. Rounds close within days, so turn on notifications for the channel.</p>
 <h2>When you graduate</h2>
 <p>Graduates receive the graduation allowance of three months' stipend and a final ticket home, once the University has confirmed their clearance. The allowance reaches your card one to two months after you graduate. The steps are in <a href="/guides/graduate-procedures">Leaving Madinah for good</a>.</p>
 <blockquote><p>Tip: A payment missing or wrong? Check the Rewards screen and your card balance first, then go to the stipends section of the Deanship of Student Affairs or send a request through Tawasul. Still stuck? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,

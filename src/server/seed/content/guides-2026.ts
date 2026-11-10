@@ -314,12 +314,32 @@ export const GUIDES_2026: SeedGuide[] = [
   {
     slug: "everyday-apps-and-services",
     stage: "getting-settled",
-    title: "Everyday apps and services",
-    summary: "The apps residents of Madinah use for food, repairs, cleaning, shopping and laundry, with typical prices.",
+    title: "Everyday apps and services: government apps, getting around, paying, food, repairs and prices",
+    summary: "The government apps every resident uses and what each is for, ride apps, paying by card and phone, and the apps and services for food, shopping, repairs, cleaning, laundry and gyms, with typical prices.",
     bodyHtml: `
+<p>Checked November 2026. Daily life in Madinah runs on the phone: government papers, the Rawdah permit, the bus, dinner and the plumber are all an app away. This guide lists the apps residents use, what each is for, and the usual prices, with links to the guides that explain each step. Apps of the same kind are listed alphabetically.</p>
+<h2>The government apps</h2>
+<table><thead><tr><th>App</th><th>What it is for</th><th>The full steps</th></tr></thead><tbody>
+<tr><td><strong>Absher</strong></td><td>Your residency record: iqama, visas, family members, traffic fines</td><td><a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a></td></tr>
+<tr><td><strong>Nafath</strong></td><td>Approves your sign-in to government and bank services with a number on screen</td><td><a href="/guides/new-student-steps">First steps for new students</a></td></tr>
+<tr><td><strong>Tawakkalna</strong></td><td>Digital copies of your documents, including the University ID</td><td><a href="/guides/new-student-steps">First steps for new students</a></td></tr>
+<tr><td><strong>Nusuk</strong></td><td>Permits for the Rawdah and for Umrah</td><td><a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba from Madinah</a></td></tr>
+<tr><td><strong>Ejar</strong></td><td>Registered rental contracts</td><td><a href="/guides/finding-an-apartment">Finding and renting a flat</a></td></tr>
+<tr><td><strong>Saudi Post (SPL)</strong></td><td>Your National Address and short address, and parcels</td><td><a href="/guides/shipping-and-receiving-parcels">Shipping and receiving parcels in Madinah</a></td></tr>
+<tr><td><strong>Madinah Bus</strong></td><td>Routes, live times and fares, with ride bundles</td><td><a href="/guides/haramain-train-and-city-buses">The Haramain train and Madinah buses</a></td></tr>
+</tbody></table>
+<p>Students on the educational visa: what works with a Visitor ID is in <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>.</p>
+<h2>Getting around</h2>
+<p>Bolt, Careem, Jeeny and Uber all run in Madinah, and their prices rise after Taraweeh in Ramadan. The bus, the Haramain train, taxis and fares are in <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>
+<h2>Paying</h2>
+<ul>
+<li>Cards and phones are taken almost everywhere, from the bakery to the laundry, and the buses take no cash at all. A mada card in Apple Pay or a bank wallet covers most days.</li>
+<li>Keep a little cash for small stalls.</li>
+<li>Sending money home, the wallets and their fees are in <a href="/guides/sending-and-receiving-money">Sending money home and receiving money in Madinah</a>.</li>
+</ul>
 <h2>Food</h2>
 <ul>
-<li><strong>HungerStation</strong> and <strong>Keeta</strong> for delivery, usually in 20 to 30 minutes.</li>
+<li><strong>HungerStation</strong>, <strong>Jahez</strong>, <strong>Keeta</strong> and <strong>Mrsool</strong> for delivery, usually in 20 to 30 minutes. Supermarkets deliver through the same apps.</li>
 <li><strong>Barakah</strong> for unsold food from restaurants, bakeries and shops at 50 to 70% off, collected at a set time. Orders can be cancelled by the shop up to an hour before pick-up.</li>
 </ul>
 <h2>Shopping</h2>
@@ -341,7 +361,8 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Al Dawaa and Al Nahdi pharmacies have branches all over the city, some open round the clock, and most staff speak English.</li>
 </ul>
 <h2>Gyms</h2>
-<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's 250 to 500. Martial arts clubs are 150 to 300 SAR. At the Islamic University Sports Club on campus a student pays 125 SAR for a month, against 250 SAR for the public; longer memberships cost less per month. Prices, facilities, classes and trips are listed in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>`,
+<p>All gyms are men-only or women-only. Men's gyms cost 150 to 400 SAR a month, women's 250 to 500. Martial arts clubs are 150 to 300 SAR. At the Islamic University Sports Club on campus a student pays 125 SAR for a month, against 250 SAR for the public; longer memberships cost less per month. Prices, facilities, classes and trips are listed in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</p>
+<blockquote><p>Tip: An app refuses your ID, or you need a service not listed here? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "visas-for-family-and-visitors",
@@ -1192,10 +1213,11 @@ export const GUIDES_2026: SeedGuide[] = [
   {
     slug: "dates-of-madinah",
     stage: "getting-settled",
-    title: "Dates of Madinah: the varieties and how to buy",
-    summary: "The main varieties sold in Madinah, what each is like, and how to buy good dates to eat or take home.",
+    title: "Dates of Madinah: the varieties, the market, the season and taking them home",
+    summary: "The main varieties and what each is like, Ajwa and the Sunnah, where to buy (the Central Dates Market, the Haram shops, supermarkets and farms), the harvest and the summer dates season, how to choose and store dates, and taking them home.",
     bodyHtml: `
-<p>Madinah's date farms are among the oldest in Arabia. Every souk sells many varieties, and the choice can be bewildering at first. This guide lists the ones you will see.</p>
+<p>Checked November 2026. Madinah's palm groves are among the oldest in Arabia, and dates are part of every day here: a few with coffee for a guest, seven Ajwa in the morning, a box on every visitor's way home. Every souk sells many varieties, and the choice is bewildering at first. This guide covers the varieties you will see, where to buy, the harvest season, how to choose and store dates, and how to take them home.</p>
+<h2>The varieties</h2>
 <table><thead><tr><th>Variety</th><th>What it is like</th></tr></thead><tbody>
 <tr><td><strong>Ajwa</strong> (عجوة)</td><td>The best known of all. Nearly black, soft, a little chewy, with a deep sweetness. Grown almost only in the Madinah area. It is the date of the Sunnah of eating seven in the morning.</td></tr>
 <tr><td><strong>Anbara</strong> (عنبرة)</td><td>Long, plump and golden, with a caramel and honey flavour. The most expensive of the common varieties and a favourite for gifts.</td></tr>
@@ -1205,15 +1227,41 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td><strong>Saghai</strong> (صغاي)</td><td>Yellow tipped and brown bodied, crunchy when fresh and softer with storage. An everyday family date, good value.</td></tr>
 <tr><td><strong>Sukkari</strong> (سكري)</td><td>Golden and honey sweet, soft, very rich. Best fresh in the late summer harvest, in small servings.</td></tr>
 </tbody></table>
-<h2>Buying well</h2>
+<h2>Ajwa and the Sunnah</h2>
+<p>The Prophet ﷺ said that whoever eats seven Ajwa dates in the morning is not harmed by poison or magic that day (Sahih al-Bukhari 5445).</p>
+<h2>Where to buy</h2>
 <ul>
-<li><strong>Buy in Madinah.</strong> Good dates are usually cheaper here than back home for the same grade.</li>
+<li><strong>The Central Dates Market</strong> (سوق التمور المركزي), the city's new wholesale and retail market, at the junction of King Khalid Road (the Third Ring Road) and Ali ibn Abi Talib Road, in the Food City development. Farms and traders sell side by side, so you can taste and compare in one visit, and it is the cheapest place for a large order.</li>
+<li><strong>The shops around the Haram and Quba</strong> sell every variety in gift boxes, ready packed for travel. Prices are higher, and the convenience is real when your parents fly tomorrow.</li>
+<li><strong>Supermarkets and hypermarkets</strong> sell packed Ajwa, Sukkari and Safawi at fixed prices with the packing date on the box. Good for everyday dates.</li>
+<li><strong>Farms</strong> in the Aliyat al-Madinah area: some welcome visitors in the harvest.</li>
+</ul>
+<h2>The harvest and the dates season</h2>
+<p>The harvest begins in late July and runs into September. In the first weeks they are sold fresh as rutab (رطب), soft and moist, and they must be kept in the fridge and eaten within days. The dried dates (tamr) that fill the shops all year come from the same harvest. The date market is at its best in August and September.</p>
+<p>Every summer the Madinah Region Development Authority runs the Madinah Dates Season at the Central Dates Market. In 2026 it ran from 20 July to 2 August, with a daily wholesale auction (haraj) for rare and prized dates from 6 pm, stands for the city's farms and palm products, and stalls for family producers. The dates for each year are announced by the Authority in the weeks before.</p>
+<h2>Choosing well</h2>
+<ul>
+<li><strong>Taste before you buy.</strong> Every stall in the market lets you taste. Try two or three grades of the same variety: the difference in price is a difference in size, texture and how clean the fruit is.</li>
 <li><strong>Start with a sampler box.</strong> Many shops sell a mixed box of several varieties. Try that first, then buy a kilo of the ones you liked.</li>
 <li><strong>Check your Ajwa.</strong> Good Ajwa is firm and slightly dry with a wrinkled skin. Very soft, shiny, sticky ones are often another variety.</li>
+<li><strong>Look at the date on the box,</strong> and open it if you can. Dust, white crystals of sugar on the skin and small holes are signs of an old or poorly stored batch.</li>
 <li><strong>Go in the late afternoon.</strong> Shops are cooler and quieter, and sellers have more time for you.</li>
-<li><strong>Taking them on a plane?</strong> Ask the shop to vacuum pack them for travel.</li>
-<li><strong>Harvest season:</strong> the main harvest is late summer. Some farms in the Aliyat al-Madinah area welcome visitors then.</li>
-</ul>`,
+</ul>
+<h2>Storing dates</h2>
+<ul>
+<li>Dried dates keep for weeks in a closed box in a cool room, and for months in the fridge.</li>
+<li>In the freezer they keep for a year or more and thaw in minutes, so buy in the season and freeze what you will not eat soon.</li>
+<li>Keep them airtight. Dates take on the smell of what is near them and dry out in the air conditioning.</li>
+<li>Rutab goes straight into the fridge and is eaten within a few days.</li>
+</ul>
+<h2>Taking dates home</h2>
+<ul>
+<li><strong>Ask the shop to vacuum pack them.</strong> Vacuum packed dates travel well in checked baggage, keep the smell in, and pass through security without trouble.</li>
+<li><strong>Declare food when you land</strong> if your country asks. Australia and New Zealand require every food item to be declared, and many countries limit the quantity you bring in for yourself.</li>
+<li><strong>A box too heavy for your bag</strong> goes by post or courier, and a sealed box of dates travels well: see <a href="/guides/shipping-and-receiving-parcels">Shipping and receiving parcels in Madinah</a>.</li>
+<li><strong>Buy in Madinah.</strong> Good dates are usually cheaper here than back home for the same grade.</li>
+</ul>
+<blockquote><p>Tip: Not sure which dates to take home for a gift? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "doctors-hospitals-and-pharmacies",
@@ -1275,6 +1323,13 @@ export const GUIDES_2026: SeedGuide[] = [
 <tr><td><strong>Prince Musaid bin Abdulrahman University, Madinah branch</strong></td><td>Public, blended</td><td>Known until September 2026 as the Saudi Electronic University. Business administration, computing and informatics, and health sciences, mixing online study with sessions at its Madinah centre.</td></tr>
 <tr><td><strong>Taibah University</strong></td><td>Public, founded 2003</td><td>A full range of colleges including medicine, engineering, computer science, pharmacy, education, Shariah and business. It runs its own international scholarships for bachelor's and master's study, applied for on Study in Saudi. Bachelor's applicants must be 17 to 24, live outside Saudi Arabia and hold a school certificate under five years old.</td></tr>
 </tbody></table>
+<h2>Applying</h2>
+<ul>
+<li><strong>Islamic University of Madinah:</strong> applied for on the Study in Saudi portal (studyinsaudi.sa), in the main spring window or a later extra round. The steps, documents and dates are in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</li>
+<li><strong>Prince Mugrin University:</strong> open to Saudis, residents, visitors and international students with a secondary school certificate, applied for on upm.edu.sa. For the first semester of 1448 the window ran from 14 June to 30 August 2026. Students start with a preparatory year, or go straight to their major with IELTS 5 or TOEFL 500. Fees are charged by the credit hour, and its scholarships are awarded by competition on grades and the English score.</li>
+<li><strong>Prince Musaid bin Abdulrahman University:</strong> applied for on the university's own admission portal. It took its new name by royal order on 18 September 2026.</li>
+<li><strong>Taibah University:</strong> residents apply on the university's own admission portal. Applicants from abroad apply for its international scholarships on Study in Saudi, with the age and certificate limits above.</li>
+</ul>
 <h2>Choosing</h2>
 <ul>
 <li><strong>Want Islamic sciences and Arabic?</strong> The Islamic University is built for that. Other routes are in <a href="/programs">Study in Madinah</a>.</li>
@@ -1307,7 +1362,7 @@ export const FAQS_2026: SeedFaq[] = [
   { slug: "etimad-what-for", category: "university", question: "What is Etimad and why do I need it?", answerHtml: "<p>It's the government platform where your University travel orders and ticket letters go. Set it up once and make sure your details match your passport exactly. See <a href=\"/guides/etimad-account\">Setting up your Etimad account</a>.</p>" },
   { slug: "student-discounts", category: "getting-settled", question: "Are there discounts for University students?", answerHtml: "<p>Yes. The University's partner programme has more than 100 offers at hospitals, clinics, labs, opticians, schools, car rentals, restaurants, hotels and gyms. Some name students, and many are written for University staff, so show your University card and ask before you pay. See <a href=\"/discounts\">Student discounts</a>.</p><p>At the University Sports Club a student pays 125 SAR for one month, half the 250 SAR public price, and 1,000 SAR for a year. The full price list is in <a href=\"/guides/sports-and-activities\">Sport and fitness classes</a>.</p>", tags: ["discounts", "sports club", "gym", "university card"] },
   { slug: "mahad-books", category: "university", question: "Where can I find the Ma'had books and the answers?", answerHtml: "<p>In the <a href=\"/library/mahad\">Ma'had collection</a> of the Jamiah library: the textbooks for all four levels, the new six-level books, the student guide, the study and exam regulations, the course descriptions, how-to videos for excuses, withdrawal, deferral and Blackboard, and extra practice from the old and new curriculum. The <a href=\"/library\">library page</a> also links to every level of the Madinah Books with their answer keys, and to the Madinah Books as web pages you can read and search in your browser.</p>", tags: ["mahad", "books", "library", "madinah books", "answers"] },
-  { slug: "muqarrarat", category: "university", question: "Where are the muqarrarat for my college?", answerHtml: "<p>The <a href=\"/library\">Jamiah library</a> has a collection for each college, with the course books and notes sorted by level. The folders follow the study plans of earlier years, so some current courses are not there yet, and some sit at a different level from the one in your plan:</p><ul><li><a href=\"/library/quran\">Qur'an</a>: 19 of the 65 courses in the 1448 plan have no folder yet, and there is no Level 1 folder. Most specialist courses sit one or two levels later than in the 1448 plan.</li><li><a href=\"/library/sharia\">Sharia</a>: 31 of the 87 courses in the 1448 plan have no folder yet, mostly the new law courses, the co-op training, the two research papers and Applications of AI.</li><li><a href=\"/library/hadith\">Hadith</a>: History of the Sunnah and Analytical Hadith 1 to 6 sit one or two levels later than in the 1448 plan.</li><li><a href=\"/library/dawah\">Da'wah</a> matches the 1448 plan level by level. <a href=\"/library/law\">Law</a> is a single set of files without levels.</li></ul><p>So search for the course by its name with the <a href=\"/library/search\">library search</a> rather than by level. Your own plan is in the Academic System under <strong>Academic</strong>, then <strong>Student plan</strong> (خطة الطالب). If your course is not there, ask the course teacher for the set book or notes, or ask your department. If you've written a takhlees that could help others, send it to us and we'll review it and add it.</p>", tags: ["library", "muqarrarat", "books", "study plan", "courses"] },
+  { slug: "muqarrarat", category: "university", question: "Where are the muqarrarat for my college?", answerHtml: "<p>The <a href=\"/library\">Jamiah library</a> has a collection for each college, with the course books and notes sorted by level. The folders follow the study plans of earlier years, so some current courses are not there yet, and some sit at a different level from the one in your plan:</p><ul><li><a href=\"/library/quran\">Qur'an</a>: 19 of the 65 courses in the 1448 plan have no folder yet, and there is no Level 1 folder. Most specialist courses sit one or two levels later than in the 1448 plan.</li><li><a href=\"/library/sharia\">Sharia</a>: 31 of the 87 courses in the 1448 plan have no folder yet, mostly the new law courses, the co-op training, the two research papers and Applications of AI.</li><li><a href=\"/library/hadith\">Hadith</a>: History of the Sunnah and Analytical Hadith 1 to 6 sit one or two levels later than in the 1448 plan.</li><li><a href=\"/library/dawah\">Da'wah</a> matches the 1448 plan level by level. <a href=\"/library/law\">Law</a> is a single set of files without levels.</li></ul><p>So search for the course by its name with the <a href=\"/library/search\">library search</a> rather than by level. Your own plan is in the Academic System under <strong>Academic</strong>, then <strong>Student plan</strong> (خطة الطالب). If your course is not there, ask the course teacher for the set book or notes, or ask your department. Printed notes (مذكرات) for many courses are sold at the Student Services bookshop in Unit 22, and the bookshops in al-Faisaliyah next to the campus buy and sell used course books. Prices for the same book vary a lot from shop to shop, so compare before you buy. If you've written a takhlees that could help others, send it to us and we'll review it and add it.</p>", tags: ["library", "muqarrarat", "books", "study plan", "courses"] },
   { slug: "absher-nafath-activation", category: "getting-settled", question: "My Absher or Nafath activation keeps failing. What do I do?", answerHtml: "<p>This happens to many new students on the student visa. Call Absher customer care on <strong>920020405</strong>, choose English and enter your border number. Ask them to open a technical support ticket, and say you are a new international scholarship student on a student visa with a border number. The fix can take a few days, and they may send you a temporary password.</p><p>Meanwhile, try the other ways to activate Absher: in the Nafath app (settings, then activate your national digital identity through Absher self service, then capture your left hand's fingerprints with the camera), at a self-service Absher kiosk with your fingerprints, or at a Jawazat office with an appointment. After any of them, sign in to Absher to check the account shows as active. The steps are in <a href=\"/guides/phone-sims-and-absher\">Your phone number, SIM checks and Absher</a>.</p>", tags: ["absher", "nafath", "visa", "new students"] },
   { slug: "find-my-timetable", category: "university", question: "Where do I find my class timetable?", answerHtml: "<p>In the University's Academic System, open <strong>Electronic Registration</strong> (التسجيل الإلكتروني), then <strong>Registered Courses</strong> (المقررات المسجلة), and choose the semester. Each course shows its section, credit hours, day, time, room and teacher, with your total hours and the name of your academic advisor at the bottom, and a <strong>Print</strong> (طباعة) button. Days are numbered: 1 is Sunday, 2 Monday, 3 Tuesday, 4 Wednesday and 5 Thursday.</p><p>Timetables appear in the days before classes start, so check again if yours is empty. New students receive a ready-made timetable and cannot change it in their first semester. To change a course later, use <strong>Drop and Add</strong> (الحذف والإضافة) under Electronic Registration, open only during the window in the academic calendar: tick the course, choose a section, tap <strong>Add</strong> (إضافة), then tap <strong>Confirm</strong> (تثبيت). Nothing is registered until you confirm, so check Registered Courses afterwards. Your final exam timetable is under <strong>Academic</strong>, then <strong>Final Exams</strong>. Step by step: <a href=\"/guides/university-student-system\">Using the University's student system</a>.</p>", tags: ["timetable", "schedule", "registration", "drop and add"] },
   { slug: "rent-on-student-visa", category: "getting-settled", question: "Can I register a rental contract on a student visa?", answerHtml: "<p>Yes. Find a flat and agree the terms, then contact a real-estate agent from Ejar's official list of accredited agents. The agent registers the contract on Ejar for you.</p>", tags: ["ejar", "rent", "housing", "visa"] },
