@@ -11,6 +11,7 @@ import { SearchPalette } from "@/features/search/SearchUI";
 import { Tracker } from "./Tracker";
 import { AssistantLauncher } from "@/features/assistant/AssistantLauncher";
 import { TextSizeControl } from "./TextSize";
+import { RegisterSW } from "./RegisterSW";
 
 export function SiteShell({
   locale,
@@ -53,6 +54,7 @@ export function SiteShell({
           </div>
         </div>
       </header>
+      <RegisterSW locale={locale} />
       <Tracker />
       <div className="contents" data-noprint>
         <AssistantLauncher locale={locale} />
