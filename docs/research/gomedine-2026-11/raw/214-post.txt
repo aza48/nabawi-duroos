@@ -1,0 +1,224 @@
+URL: https://gomedine.com/fr_fr/nitaqat-comment-verifier-la-couleur-de-votre-entreprise-et-ce-que-ca-change-pour-votre-iqama/
+TITLE: Nitaqat comment vérifier la couleur de votre entreprise et ce que ça change pour votre iqama — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Mis à jour le 29 août 2026. En Arabie saoudite, votre renouvellement d’iqama, votre visa de sortie-retour et votre liberté de changer d’employeur ne dépendent pas seulement de vous : ils dépendent d’une couleur attribuée à votre entreprise par le ministère des Ressources humaines (MHRSD). Cette couleur s’appelle le Nitaqat . Depuis l’entrée en application d’une nouvelle phase le 26 avril 2026, les seuils ont monté et des entreprises basculent au Rouge sans prévenir leurs salariés. Voici comment vérifier la vôtre en trois minutes, et ce que vous pouvez faire selon le résultat.
+À retenir (30 secondes)
+🟢 Vous pouvez vérifier la couleur de votre employeur vous-même, gratuitement, sans compte et sans passer par les RH . La page officielle et les étapes sont juste en dessous.
+🟢 Absher n’affiche jamais la couleur Nitaqat. Ce sont deux systèmes différents. Inutile de chercher.
+🟢 En Rouge , le renouvellement de votre iqama et votre changement de profession peuvent être bloqués — même si votre propre dossier est parfaitement en règle.
+🟢 En contrepartie, la non-conformité de l’établissement fait partie des motifs de transfert vers un autre employeur sans son accord . Ce droit est réel, mais soumis à conditions.
+🔴 Piège méconnu : une entreprise elle-même en Rouge ne peut pas vous recevoir . Vérifiez la couleur de votre futur employeur avant de signer, pas après.
+🟢 Aucun employeur n’est tenu de vous prévenir que sa couleur a changé. Recontrôlez avant chaque renouvellement.
+Étape 1 — Vérifier la couleur de votre entreprise
+Trois méthodes, de la plus fiable à la moins fiable.
+À savoir d’emblée : Absher n’affiche pas la couleur Nitaqat. Absher gère vos services de résidence personnels, côté ministère de l’Intérieur. Le Nitaqat est un classement d’établissement détenu par le MHRSD. Vous aurez beau fouiller dans Absher, la couleur n’y figurera jamais.
+Méthode 1 — Le portail de consultation du MHRSD (la plus directe)
+Service : « Consultation d’un employé expatrié » ( الاستعلام عن موظف وافد ).
+Adresse : https://es.hrsd.gov.sa/services/inquiry/nonsaudiempinquiry.aspx
+Les étapes :
+Ouvrez la page. Elle s’affiche en arabe par défaut. En haut, un sélecteur de langue permet de basculer en anglais ou en ourdou . Inutile donc de vous battre avec la traduction automatique du navigateur, contrairement à ce que conseillent beaucoup de tutoriels.
+Choisissez un identifiant. La page en accepte trois, et il faut en renseigner au moins un :
+numéro d’iqama — le plus adapté si vous êtes déjà résident ;
+numéro de frontière ( raqm al-houdoud ) — utile pour les nouveaux arrivants dont l’iqama n’est pas encore émise ;
+numéro de passeport , qui doit obligatoirement être accompagné du choix de votre nationalité dans la liste déroulante.
+Saisissez le code de vérification (captcha) affiché à l’écran. Un bouton permet de recharger l’image si elle est illisible.
+Validez.
+Lisez le résultat. L’écran renvoie la couleur Nitaqat de l’établissement, le nom de l’employeur, votre statut d’emploi et votre numéro de permis de travail.
+Deux limites à connaître :
+La page ne renvoie rien si votre iqama est déjà expirée . Vérifiez sa date de validité avant de conclure à un dysfonctionnement du site.
+Les employés de maison et les personnes à charge ne sont pas enregistrés sous Nitaqat. La consultation ne renverra aucune couleur pour eux. C’est normal, pas une anomalie.
+Méthode 2 — Qiwa
+Qiwa est la plateforme du MHRSD qui centralise les services du marché du travail. La connexion se fait par l’authentification nationale unifiée (compte Absher / application Nafath).
+En tant que salarié, vous accédez à l’espace Qiwa Individus . Vous y consultez votre contrat de travail, l’approuvez ou le rejetez, consultez votre historique professionnel et déposez vos demandes de transfert de services. Le niveau Nitaqat de l’établissement y apparaît également.
+C’est aussi depuis cet espace que vous vérifierez votre éligibilité personnelle à un transfert — un point sur lequel nous revenons plus bas, et qu’il ne faut jamais négliger.
+Numéro de contact unifié de la plateforme : 920000105 .
+Méthode 3 — Demander aux RH, mais par écrit
+C’est la méthode la plus simple et la moins fiable. Si vous l’utilisez, exigez la réponse par écrit (e-mail ou courrier), en particulier avant un renouvellement d’iqama ou un transfert. Un refus de communiquer l’information est en soi un signal.
+Les trois réflexes à prendre
+Prenez une capture d’écran datée. Elle doit montrer trois choses : le nom de l’établissement, le niveau Nitaqat, la date et l’heure. C’est votre preuve si le service RH change de version plus tard.
+Vérifiez avant de signer, pas après. Un excellent salaire dans une entreprise en Rouge est un salaire que vous risquez de ne pas pouvoir conserver, puisque votre renouvellement d’iqama dépend d’un employeur qui ne peut pas le déposer.
+Recontrôlez à chaque renouvellement de contrat. Aucun employeur n’est tenu de vous informer que sa couleur a changé, et la plupart ne le feront pas. Avec les seuils relevés en 2026, un basculement peut survenir sans qu’aucun salarié n’ait quitté l’entreprise.
+Étape 2 — Lire le résultat : ce que chaque couleur change pour vous
+Couleur affichée
+Situation de l’entreprise
+Ce que ça signifie pour votre dossier
+Platine
+Dépasse largement le quota de saoudisation
+Situation la plus confortable : visas accélérés, transferts sans restriction
+Vert haut
+Quota atteint avec marge
+Renouvellements et démarches RH fluides
+Vert moyen
+Quota atteint
+Capacités opérationnelles préservées
+Vert bas
+Juste au seuil
+Fonctionne, mais un seul départ peut faire basculer l’entreprise au Rouge. Restez vigilant
+Rouge
+Sous le quota
+Vos démarches peuvent se bloquer du jour au lendemain (voir étape 3)
+مستبعد « exclu »
+Sous le seuil de taille à partir duquel le classement s’applique
+🟡 Se comporte comme du Vert : renouvellements et transferts se traitent normalement (source : Saudi Life Guide, décembre 2025 — à confirmer auprès du MHRSD si votre cas en dépend)
+Un mot sur le vocabulaire : on parle souvent de « couleur de l’iqama », mais rien n’est imprimé sur votre carte . C’est un statut d’établissement, celui de votre employeur, pas le vôtre.
+Étape 3 — Si c’est Rouge : ce qui se bloque, et ce qu’il faut vérifier le jour même
+D’après Middle East Briefing (mai 2026), la sanction pesant sur une entreprise en Rouge n’est pas d’abord financière. Elle est systémique et quasi immédiate. Ce qui vous concerne directement :
+Renouvellement de votre iqama bloqué , même si vos propres papiers sont en règle ;
+Changement de profession bloqué ;
+Transfert entrant bloqué : l’entreprise ne peut plus accueillir de nouveaux salariés étrangers ;
+Délivrance de visas bloquée pour tout nouveau recrutement ;
+Prolongation de l’iqama du directeur général bloquée , avec effet en cascade sur le registre commercial et la licence MISA — un signe que la situation de l’entreprise se dégrade globalement ;
+Exclusion des appels d’offres publics via la plateforme Etimad ;
+🟡 Un lien existe avec la conformité fiscale : des manquements graves auprès de la ZATCA peuvent entraîner une dégradation Nitaqat.
+Précision utile pour couper court à une confusion fréquente : la couleur ne fixe pas le prix de votre permis de travail. La taxe reste de 800 SAR par mois et par salarié quand les étrangers sont plus nombreux que les Saoudiens, et de 700 SAR sinon — ce ratio suit l’équilibre des effectifs, pas la couleur. Ce que la bande commande, c’est la possibilité même d’émettre ou de renouveler le permis.
+Les deux vérifications à faire le jour même
+Une entreprise qui n’arrive plus à recruter des Saoudiens a le plus souvent un problème de trésorerie avant d’avoir un problème de conformité. Le Rouge est donc un signal d’alerte financier autant qu’administratif.
+Vérifiez qu’aucun signalement de huroob (absence du travail) n’a été déposé contre vous. C’est la manœuvre classique d’un employeur en difficulté, et elle vous coûterait très cher.
+Vérifiez que les frais de renouvellement de votre iqama ont réellement été payés. Un employeur en difficulté ne vous préviendra spontanément ni de l’un ni de l’autre.
+Notez ensuite votre date d’expiration d’iqama et posez un rappel. Les problèmes liés au Rouge paraissent « soudains » surtout parce qu’on s’y prend la dernière semaine.
+Étape 4 — Votre droit de partir sans l’accord de l’employeur
+C’est le point le plus important de cet article, et celui sur lequel circulent le plus d’approximations.
+Le cadre juridique
+Il s’appelle l’ Initiative de réforme du travail ( Labor Reform Initiative , LRI), lancée par le MHRSD en novembre 2020 et entrée en application en mars 2021. Elle n’a pas supprimé le principe de l’accord de l’employeur : elle a créé une liste d’exceptions dans lesquelles cet accord n’est tout simplement pas demandé.
+Le transfert de services ( naql khidmat ) se traite intégralement sur Qiwa .
+Point rassurant, souligné par le cabinet Noble Core (juillet 2026) : le système contrôle automatiquement votre éligibilité au regard des données du MHRSD avant d’autoriser un transfert sans accord. Le résultat est réglementaire, pas discrétionnaire . Votre employeur ne « décide » pas.
+Les motifs qui vous dispensent de son accord
+Motif
+Détail
+Non-conformité de l’établissement
+C’est le motif qui recouvre la bande Rouge
+Contrat non documenté
+L’employeur n’a pas authentifié votre contrat sur Qiwa dans le délai légal
+Salaires impayés
+Trois mois consécutifs sans versement, tracé par le système de protection des salaires (WPS)
+Iqama ou permis de travail expiré par la faute de l’employeur
+Vous n’êtes pas responsable du défaut de renouvellement
+Employeur absent des systèmes gouvernementaux
+Établissement inactif, fermé ou non enregistré
+Fin de contrat
+À l’expiration du contrat à durée déterminée
+Après préavis
+Après un an de service, avec un préavis (souvent cité à 90 jours)
+🟠 Niveau de confiance : à confirmer. Cette liste est recoupée par plusieurs cabinets spécialisés (Analytix, juin 2026 ; Wathim, juin 2026 ; Motaded ; Noble Core, juillet 2026), mais nous n’avons trouvé aucune page officielle du MHRSD énumérant ces motifs de façon exhaustive et à jour en anglais ou en français. Les formulations varient d’un cabinet à l’autre, notamment sur la durée du préavis. Faites vérifier votre cas précis sur Qiwa avant d’agir.
+Les 5 conditions que vous devez remplir malgré tout
+C’est ici que la plupart des dossiers échouent. Le motif d’exception ne suffit pas.
+Un contrat enregistré et documenté sur Qiwa. Un arrangement informel ne se transfère pas proprement.
+Une iqama valide. Une iqama expirée bloque la voie standard et doit être renouvelée d’abord. Nuance importante signalée par le cabinet Rapture : si l’expiration résulte du défaut de l’employeur, cela peut au contraire constituer un motif de transfert sans accord.
+Un passeport valide. Analytix (juin 2026) signale que la demande est automatiquement rejetée si le passeport est expiré. Renouvelez-le en amont.
+Aucune infraction active contre vous , en particulier aucun signalement de huroob .
+Un nouvel employeur en règle — voir l’étape 5, c’est le piège le plus coûteux.
+La procédure, étape par étape
+Le nouvel employeur envoie l’offre via Qiwa.
+Vous acceptez l’offre depuis votre compte Qiwa Individus.
+Le système vérifie votre éligibilité au regard des dossiers du MHRSD.
+Selon le cas : soit la demande part chez votre employeur actuel pour accord ; soit, si vous relevez d’un motif d’exception, le système ne le sollicite pas.
+Le préavis court , s’il s’applique à votre situation.
+Le nouvel employeur règle les frais. Point important rappelé par Daily Expat Info (février 2026) : les frais de transfert et les éventuelles pénalités d’iqama impayées incombent légalement au nouvel employeur . Ne les payez pas de votre poche.
+L’iqama est mise à jour automatiquement. La procédure démarre au MHRSD via Qiwa et se répercute ensuite sur les dossiers des Passeports. Aucune démarche séparée n’est à faire auprès de la Jawazat.
+Si votre demande est refusée sans base légale
+Le cabinet Wathim (juin 2026) décrit la marche à suivre : commencer par le code de motif du refus, vérifier si vous relevez d’un transfert sans accord, puis, si le refus est infondé, déposer une plainte auprès du MHRSD. La voie suivante est le règlement amiable ( Wudi ), puis le tribunal du travail — construits autour du droit sous-jacent (salaire impayé, contrat non documenté) plutôt qu’autour du transfert lui-même.
+Ne démissionnez de rien avant d’avoir confirmé votre éligibilité personnelle sur Qiwa. Une démission mal placée vous fait perdre le bénéfice du motif d’exception.
+Étape 5 — Avant d’accepter un nouveau poste : le réflexe qui évite le rejet
+Selon le cabinet Rapture (août 2026), un établissement en bande Rouge ne peut pas recevoir de transfert de parrainage.
+Traduction concrète : vous pouvez être parfaitement éligible à partir, avoir un motif d’exception solide, un passeport et une iqama valides — et voir votre demande rejetée parce que l’entreprise qui vous recrute n’est pas en règle.
+Le réflexe est donc simple : avant de signer, refaites l’étape 1 sur votre futur employeur . Si vous n’avez pas encore de lien contractuel avec lui, demandez-lui son statut par écrit, ou son numéro unifié d’établissement. Une entreprise saine n’a aucune raison de refuser.
+Votre métier est-il concerné par une saoudisation à 100 % ?
+Au-delà de la couleur globale de l’entreprise, le MHRSD impose des quotas métier par métier . Certaines professions sont désormais entièrement réservées aux Saoudiens. Si la vôtre y figure, votre poste est menacé indépendamment de la santé de votre employeur.
+Métier
+Nouveau taux
+Périmètre
+Depuis
+Superviseurs d’hébergement collectif
+100 %
+Structures gérant un hébergement de 20 résidents ou plus
+1er février 2026
+Support administratif : secrétariat, traduction, saisie de données (69 professions)
+100 %
+Dès 1 salarié dans un poste concerné
+5 avril 2026 (19 métiers immédiats, 50 avec 6 mois de grâce)
+Marketing (10 professions)
+60 % (contre 30 %)
+Dès 3 salariés — salaire minimum saoudien 5 500 SAR
+19 avril 2026
+Ventes (9 professions)
+60 % (contre 15 %)
+Dès 3 salariés
+19 avril 2026
+Tourisme — 1re phase : réceptionniste, réceptionniste d’hôtel…
+100 % sur certains postes
+Décision portant sur 28 professions
+22 avril 2026
+Achats et chaîne d’approvisionnement (12 professions)
+70 % (contre 50 %)
+Dès 3 salariés
+31 mai 2026
+Ingénierie
+30 % (contre 25 %)
+Dès 5 ingénieurs — salaire minimum saoudien 8 000 SAR + accréditation du Conseil saoudien des ingénieurs
+30 juin 2026
+Sources : Vialto Partners (28/04/2026), Clyde & Co (09/02/2026), Erickson Immigration Group (30/04/2026), Saudi Gazette relayé par Wego (avril 2026).
+🟡 Santé et comptabilité — chiffres issus d’une source unique (Middle East Briefing, mai 2026), à vérifier directement : pharmacie hospitalière 65 %, autres activités pharmaceutiques 55 %, pharmacies de quartier et complexes médicaux 35 %, radiologie 65 %, laboratoires médicaux 70 %, kinésithérapie et nutrition thérapeutique 80 %, dentisterie 55 % à partir de fin 2026. Comptabilité : 40 % depuis octobre 2025 pour les cabinets d’au moins 5 comptables, avec une hausse de 10 points par an jusqu’à 70 % en octobre 2028.
+Ce qu’il faut en retenir si vous occupez un poste concerné : anticipez. Les métiers qui restent ouverts aux étrangers sont ceux qui exigent une spécialisation forte. Un profil très spécialisé reste demandé ; un poste support généraliste l’est de moins en moins.
+Pourquoi tout cela bouge en 2026 : le contexte en bref
+Le Nitaqat existe depuis 2011. En 2021, il a été refondu sous le nom Nitaqat Mutawar (« Nitaqat développé ») : les pourcentages fixes ont laissé place à un modèle dynamique reliant le taux exigé au nombre de salariés et au secteur.
+Le 22 janvier 2026 , le MHRSD a annoncé une nouvelle phase de trois ans, avec un objectif de plus de 340 000 emplois supplémentaires saoudisés dans le privé. Selon le ministère, la première phase avait déjà permis l’embauche de plus de 550 000 Saoudiens , au-delà de l’objectif initial. Le ministre Ahmed ben Souleiman Al-Rajhi indiquait en décembre 2025 que 2,5 millions de Saoudiens travaillaient dans le secteur privé.
+Quatre changements expliquent pourquoi des couleurs basculent en ce moment :
+1. Des seuils relevés (26 avril 2026). Selon le cabinet de mobilité internationale Vialto Partners (28 avril 2026), les pourcentages exigés augmentent dans la plupart des secteurs et pour toutes les tailles d’entreprise. C’est pour cela qu’ une entreprise peut passer au Rouge sans qu’aucun salarié ne soit parti . 🟠 La date exacte diverge selon les sources : Vialto, Mercans et Masdar EOR retiennent le 26 avril 2026 ; Middle East Briefing écrit le 16 avril. Le 26 avril est la date la mieux recoupée.
+2. Le contrat Qiwa devient la condition d’existence (15 avril 2026). Selon Erickson Immigration Group (30 avril 2026), un salarié saoudien n’entre plus dans le calcul si son contrat n’est pas documenté électroniquement sur Qiwa. La paie l’affiche, la GOSI l’affiche, le Nitaqat ne le voit pas. Le ministère a relevé ses cibles de documentation à 85 % au 30 avril 2026, puis 90 % au 30 juin 2026.
+3. Le salaire pèse autant que le nombre. Selon Vialto, un Saoudien payé entre 3 000 et 4 000 SAR ne compte que pour une demi-unité ; en dessous de 3 000 SAR, il ne compte pas du tout. Cette logique est visible sur le portail officiel lui-même, qui précise sous son tableau des groupes professionnels que le nombre de Saoudiens affiché correspond uniquement à ceux qui remplissent les conditions de comptabilisation (page consultée le 29 août 2026).
+4. Les quotas par métier s’empilent sur le quota global. Une entreprise peut être verte globalement et en infraction sur un seul service. 🟡 Les décisions par profession couvriraient environ 269 métiers selon plusieurs cabinets — chiffre sans confirmation officielle directe.
+⚠️ Fact-check : non, la bande Jaune n’a pas été supprimée en 2026
+Une affirmation circule largement depuis mai 2026 : la nouvelle phase Nitaqat aurait « supprimé la bande Jaune ». C’est une vieille information présentée comme neuve.
+Le Saudi Gazette rapportait dès 2022 que le ministère avait décidé de supprimer la bande jaune, avec effet au 26 janvier 2020 , en reclassant automatiquement les entreprises jaunes en rouge.
+Le cabinet Masdar EOR situe l’abolition en janvier 2021 , lors de la refonte qui a donné la structure actuelle à cinq bandes, et précise qu’aucune bande tampon n’existe entre Vert et Rouge depuis.
+🟠 Les sources divergent sur l’année exacte (2020 ou 2021), mais concordent sur l’essentiel : la suppression est antérieure de plusieurs années à la phase 2026.
+D’où vient la confusion ? Sans doute d’un détail vérifié directement sur le portail du ministère : au niveau des groupes professionnels — et non de l’établissement — le système utilise toujours un code rouge/jaune. Le rouge y signale un groupe de métiers dont les services ont été suspendus faute d’avoir atteint le taux exigé ; le jaune signale un groupe dont les services seront suspendus si le taux n’est pas atteint. Ce jaune-là existe bien en 2026, mais il ne désigne pas la bande Nitaqat de l’entreprise.
+Ce qu’il faut en retenir : pour l’établissement, il n’y a pas de zone d’avertissement. C’est conforme, ou c’est sanctionné.
+Si vous êtes vous-même employeur ou gérant
+Les mêmes règles s’appliquent à vous, mais dans l’autre sens. Sept actions prioritaires :
+Auditez vos contrats Qiwa immédiatement. Tout Saoudien sans contrat documenté et signé numériquement est exclu du décompte depuis le 15 avril 2026. Le contrat est généré par l’employeur puis signé par le salarié depuis son compte Qiwa personnel. Beaucoup d’entreprises remontent d’une bande simplement en authentifiant des contrats existants, sans recruter une seule personne.
+Recalculez votre position avec le calculateur Nitaqat disponible dans l’espace Qiwa Business, service « Gestion de l’établissement » — qui affiche aussi votre niveau en cours et vos violations. Pour ajouter un établissement à votre compte, il faut son numéro unifié (il commence par 700).
+Cartographiez votre exposition métier par métier. Un taux global conforme ne protège pas d’une infraction dans un seul département.
+Vérifiez les planchers de salaire. Un Saoudien sous le seuil compte pour une demi-unité, ou pour rien selon le métier.
+Exploitez les pondérations favorables. Un salarié en situation de handicap compte pour quatre personnes (🟡 plafonné à 10 % de l’effectif selon Mercans). Un travailleur à temps partiel effectuant 160 heures par mois donne un point plein. Les ressortissants du CCG comptent comme des Saoudiens. Les Saoudiens en télétravail sont reconnus comme des salariés ordinaires. 🟡 Depuis avril 2024, l’investisseur étranger propriétaire de son établissement serait lui-même compté comme Saoudien — avantage structurel pour les petites structures détenues par des étrangers, à faire confirmer par votre PRO.
+Intégrez l’accréditation professionnelle au recrutement. Un ingénieur saoudien sans accréditation du Conseil saoudien des ingénieurs ne compte pas pour le quota ingénierie, même correctement contracté et payé.
+Suivez le calendrier des sanctions. Selon le cabinet Bird & Bird (juin 2026), un mécanisme de règlement permet, sous conditions, de transiger sur une première infraction avec une réduction pouvant atteindre 80 % du montant initial. Le délai est de 90 jours à compter de la notification — pas de la date à laquelle vous découvrez le courrier.
+🟡 Montants des amendes : la table des infractions du ministère prévoit des amendes s’échelonnant globalement de 2 000 à 250 000 SAR, appliquées par infraction et souvent par salarié. Chiffre issu d’une source secondaire, à confirmer auprès du MHRSD.
+Problèmes courants et solutions
+Symptôme
+Cause probable
+Ce qu’il faut faire
+La consultation ne renvoie aucun résultat
+Iqama expirée, ou statut non couvert (employé de maison, personne à charge)
+Vérifier la date d’expiration de l’iqama avant de conclure à une panne
+Renouvellement d’iqama bloqué sans explication
+Services employeur restreints par une bande Rouge
+Vérifier la couleur, prendre une capture d’écran datée, envisager le transfert
+Les RH disent « c’est en cours » depuis des semaines
+L’entreprise ne peut pas déposer la demande
+Demander un calendrier écrit avec des dates et un responsable, pas une promesse
+Demande de transfert rejetée alors que vous êtes éligible
+Passeport expiré, huroob actif, ou entreprise d’accueil en Rouge
+Vérifier ces trois points dans l’ordre avant de refaire une demande
+Votre poste figure dans une décision de saoudisation à 100 %
+Quota métier, indépendant de la santé de l’entreprise
+Anticiper une reconversion ou un repositionnement vers un profil spécialisé
+Votre entreprise est Verte mais reçoit une notification d’infraction
+Quota par métier non respecté dans un département
+Cartographier profession par profession
+Angle mort assumé : nous n’avons pas trouvé de témoignages publics de première main (forums, Reddit, groupes d’expatriés francophones) documentant ces situations pour la phase 2026. Les cas ci-dessus reflètent ce que rapportent les cabinets spécialisés, pas des retours d’expérience vérifiés. Si vous avez vécu l’un de ces cas, écrivez-nous : nous mettrons l’article à jour.
+Foire aux questions
+Puis-je vérifier la couleur Nitaqat sur Absher ? Non. Absher gère vos services de résidence personnels, côté ministère de l’Intérieur. Le Nitaqat est un classement d’établissement détenu par le MHRSD. Passez par la page de consultation de l’employé expatrié du MHRSD ou par Qiwa.
+Ai-je besoin d’un compte pour consulter ? Non pour la page de consultation du MHRSD : un numéro d’iqama (ou de frontière, ou de passeport avec nationalité) et un captcha suffisent. Oui pour Qiwa, qui exige une connexion via Absher/Nafath.
+La couleur Nitaqat est-elle imprimée sur mon iqama ? Non. C’est un statut d’établissement, pas une mention sur votre carte. On parle de « couleur d’iqama » par raccourci, mais il s’agit du niveau de conformité de votre employeur.
+Puis-je changer d’employeur si mon entreprise est en Rouge ? La non-conformité de l’établissement figure parmi les motifs de transfert sans accord. Mais les conditions de base restent exigées : iqama valide, passeport valide, contrat documenté, absence de huroob , ancienneté minimale — et une entreprise d’accueil qui n’est pas elle-même en Rouge. Vérifiez votre éligibilité sur Qiwa avant toute décision irréversible.
+Qui paie les frais de transfert ? Le nouvel employeur, légalement. Cela vaut aussi pour les éventuelles pénalités d’iqama impayées. Ne les réglez pas vous-même.
+Mon employeur doit-il me prévenir si sa couleur change ? Non. Aucune obligation d’information ne pèse sur lui, et la plupart des entreprises ne le font pas. C’est précisément pour cela qu’il faut vérifier soi-même, avant chaque renouvellement.
+La bande jaune existe-t-elle encore ? Pas au niveau de l’établissement, et elle n’a pas été supprimée en 2026 contrairement à ce qu’on lit souvent. Un code jaune subsiste en revanche au niveau des groupes professionnels , pour signaler un métier dont les services seront suspendus si le taux n’est pas atteint. Les deux choses sont distinctes.
+Combien de temps faut-il pour qu’une entreprise remonte de Rouge à Vert ? 🟠 Non vérifié de manière fiable. Certains cabinets avancent un à deux trimestres avec une exécution rigoureuse. Cela dépend de l’écart au seuil et de la capacité de recrutement de l’entreprise. Ne fondez pas votre plan personnel sur cette hypothèse.
+Niveaux de confiance employés dans cet article : 🟢 vérifié (2 sources indépendantes ou source officielle) · 🟡 probable (une source fiable) · 🟠 à confirmer (sources divergentes ou information partielle) · 🔴 non vérifié.
+Cet article vous a été utile ? Rejoignez notre canal pour recevoir les mises à jour réglementaires dès leur publication, en français, sans bruit.
+Pour avoir les dernières NEWS, vous pouvez rejoindre   Notre Chaine Youtube  ✅,  notre chaîne Telegram  ☑️.   suivez nous sur insta ici
+À lire aussi sur le blog : les nouvelles règles de l’iqama en 2026 · le visa Omra multi-entrées d’un an · la loi sur la propriété immobilière pour les non-Saoudiens.

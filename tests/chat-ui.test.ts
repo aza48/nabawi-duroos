@@ -9,7 +9,7 @@ describe("chat answer rendering", () => {
     ]);
     expect(html).toContain("<strong>840 SAR</strong>");
     expect(html).toContain('href="/ask/stipend-amount"');
-    expect(html).toContain('<ul class="list-disc');
+    expect(html).toContain('<ul dir="ltr" class="list-disc');
     expect(html).not.toContain("[1]");
   });
   it("escapes HTML and drops markers that point nowhere", () => {
@@ -17,7 +17,13 @@ describe("chat answer rendering", () => {
     expect(html).not.toContain("<script>");
     expect(html).not.toContain("[7]");
   });
+  it("gives every block its own direction, so English under an Arabic line reads left to right", () => {
+    const html = renderAnswer("إليك ما في MESH عن هذا، والنص بالإنجليزية:\n\nBook a slot in Nusuk. [1]\n1. Install the app.", [{ title: "الروضة", url: "/guides/umrah-rawdah-quba" }]);
+    expect(html.startsWith('<p dir="rtl" class="text-start">')).toBe(true);
+    expect(html).toContain('<p dir="ltr" class="text-start">Book a slot');
+    expect(html).toContain('<ol dir="ltr"');
+  });
   it("links only to pages on this site", () => {
-    expect(renderAnswer("[bad](https://evil.example) [good](/guides)")).toBe('<p>[bad](https://evil.example) <a href="/guides" class="font-semibold text-primary underline-offset-2 hover:underline">good</a></p>');
+    expect(renderAnswer("[bad](https://evil.example) [good](/guides)")).toBe('<p dir="ltr" class="text-start">[bad](https://evil.example) <a href="/guides" class="font-semibold text-primary underline-offset-2 hover:underline">good</a></p>');
   });
 });

@@ -1,0 +1,26 @@
+URL: https://gomedine.com/fr_fr/politique-confidentialite/
+TITLE: Politique de confidentialité — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Politique de confidentialité
+Cette page explique le fonctionnement des formulaires, des avis et des réservations sur gomedine.com . Informations mises à jour le 31 octobre 2026.
+Votre interlocuteur
+Le site est exploité par GOMEDINE LTD, société immatriculée au Royaume-Uni sous le numéro 17470723, dont l’adresse publiée dans les conditions générales est 71–75 Shelton Street, Covent Garden, Londres WC2H 9JQ. Pour toute question sur vos données : contact@gomedine.com .
+Informations transmises et utilisation
+Selon le formulaire utilisé, vous pouvez transmettre votre nom, votre e-mail, votre téléphone, vos dates de séjour, le nombre de voyageurs, votre budget, votre activité envisagée et le contenu de votre demande. Les champs obligatoires sont signalés sur chaque formulaire. Ces informations servent à répondre à votre demande, préparer un devis, vérifier une disponibilité et assurer le suivi d’une prestation ou d’une réservation.
+Les demandes de contact et d’accompagnement sont enregistrées dans un espace privé du site accessible à l’équipe autorisée. Un envoi de formulaire ne constitue pas une inscription automatique à une newsletter. N’insérez pas de pièce d’identité, de donnée bancaire ou d’information sensible dans les zones de texte libre.
+Annuaire et avis
+Une proposition d’adresse est examinée avant publication. Les coordonnées professionnelles destinées à la fiche peuvent devenir publiques après validation. Un signalement sert à identifier et corriger la fiche concernée ; votre message et vos coordonnées de contact ne sont pas publiés sur cette fiche.
+Si vous laissez un avis ou un commentaire, le nom affiché et le texte peuvent être publiés après modération. L’e-mail demandé pour le commentaire ne s’affiche pas publiquement. WordPress peut conserver l’adresse IP et les informations de navigateur associées au commentaire pour aider à traiter les abus.
+Sécurité et CAPTCHA
+Le code anti-spam est généré et vérifié sur les serveurs du site. Ce CAPTCHA n’utilise pas de service Google reCAPTCHA. Une empreinte technique dérivée de l’adresse IP et du navigateur relie le code à votre navigateur et limite les abus. Un code expire après dix minutes et la validation intermédiaire d’un formulaire après deux minutes. Les demandes restent soumises aux contrôles de sécurité et à la modération applicables.
+Cookies et services extérieurs
+WordPress et WooCommerce utilisent des mécanismes nécessaires à la connexion, à la sécurité, au panier et au suivi d’une commande. Des préférences peuvent être mémorisées lorsque vous les choisissez, par exemple pour les commentaires ou la langue. Vous pouvez gérer les cookies dans votre navigateur ; bloquer les cookies nécessaires peut empêcher la connexion ou le fonctionnement du panier.
+Le site charge des ressources de présentation et peut proposer des cartes, vidéos ou contenus intégrés provenant de services tiers. Ces services peuvent recevoir votre adresse IP et des informations techniques de connexion. Un lien vers WhatsApp, Google Maps, Skyscanner ou un autre site vous conduit vers ce service, qui applique ses propres règles de confidentialité. Les informations de paiement sont traitées par les prestataires présentés à l’étape de paiement, selon leurs propres conditions.
+Destinataires et conservation
+L’équipe GoMedine et les prestataires nécessaires à l’hébergement, à la diffusion technique, à la messagerie et au paiement peuvent traiter les informations nécessaires à leur intervention. Une demande de prestation peut nécessiter des échanges avec l’intervenant concerné pour organiser le service. Pour une question précise sur les destinataires, les pays de traitement ou les garanties applicables à votre dossier, contactez GoMedine avant de transmettre des informations sensibles.
+La conservation d’un dossier dépend de son traitement, du suivi des échanges, de l’existence d’une réservation, des obligations comptables et de la résolution d’éventuels différends. Les demandes privées ne sont pas supprimées automatiquement après une durée uniforme. Les avis publiés restent visibles jusqu’à leur retrait ou leur suppression. Vous pouvez nous demander les informations conservées à votre sujet ou leur suppression, sous réserve des obligations de conservation applicables.
+Vos demandes concernant vos données
+Écrivez à contact@gomedine.com pour demander l’accès à vos données, leur rectification, leur effacement ou, selon la situation, la limitation d’un traitement et la portabilité des données concernées. Vous pouvez également vous opposer à un traitement fondé sur un intérêt légitime. Une vérification proportionnée de votre identité peut être nécessaire pour protéger vos informations.
+Si votre demande n’est pas résolue, vous pouvez contacter l’autorité de protection des données compétente. Au Royaume-Uni : Information Commissioner’s Office (ICO) .

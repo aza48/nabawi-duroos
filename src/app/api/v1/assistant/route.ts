@@ -5,15 +5,10 @@ import { allow, clientIp } from "@/server/rate-limit";
 import { askMesh } from "@/server/assistant/answer";
 import { aiAvailable } from "@/server/assistant/llm";
 import { BOT_NAME } from "@/server/assistant/prompt";
+import { ASK_LIMITS } from "@/server/assistant/limits";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
-
-/** Enough for a real conversation; more than this from one address is a script. */
-export const ASK_LIMITS = [
-  { max: 12, windowMs: 60_000 },
-  { max: 80, windowMs: 3_600_000 },
-];
 
 /** A turn of the conversation so far; `content` (the panel) and `text` (older clients) are both accepted. */
 const turn = z

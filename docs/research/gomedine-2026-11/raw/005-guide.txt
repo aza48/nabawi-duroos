@@ -1,0 +1,135 @@
+URL: https://gomedine.com/fr_fr/guides/mettre-a-jour-son-passeport-via-absher/
+TITLE: Mettre à jour son passeport via Absher — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Accueil / Guides / Mettre à jour son passeport via Absher
+Moyen
+Expatriés
+Mettre à jour son passeport via Absher
+Guide complet pour mettre à jour les informations de votre passeport sur Absher en 2026.
+Mettre à jour son passeport via Absher (2026)
+Guide pas à pas pour mettre à jour les informations de votre passeport sur Absher Individuals : nouveau numéro, date d’expiration, photo, copie scannée. Évitez les blocages à l’aéroport, les refus de renouvellement d’Iqama et les amendes Jawazat.
+🛂 Passeport ⏱ Lecture 8 min 📱 100 % en ligne 🗓 Mise à jour avril 2026
+100 %
+En ligne (sans déplacement)
+Gratuit
+Frais d’enregistrement
+Immédiat
+Validation auto la plupart du temps
+6 mois
+Validité minimum requise
+1. Pourquoi mettre à jour son passeport sur Absher ?
+Votre Iqama et votre profil Jawazat sont liés à un numéro de passeport précis . Dès que vous renouvelez votre passeport dans votre pays d’origine (ou consulat), les anciennes informations deviennent obsolètes côté saoudien. Résultat : votre Iqama reste techniquement valide, mais elle pointe vers un document expiré .
+Les conséquences d’un passeport non mis à jour :
+Refus d’embarquement à l’aéroport (sortie ou entrée du royaume)
+Impossibilité de renouveler l’Iqama
+Impossibilité de renouveler le permis de conduire ou d’effectuer certaines démarches sur Absher / Muqeem
+Blocage de la délivrance du visa de sortie/retour (Exit Re-entry)
+Amende possible auprès de Jawazat
+2. Quand faut-il faire la mise à jour ?
+Renouvellement de passeport
+Nouveau numéro + nouvelle date d’expiration = mise à jour obligatoire sous 30 jours.
+Prolongation de validité
+Même numéro mais nouvelle date d’expiration : mise à jour obligatoire.
+Modification des données personnelles
+Changement de nom (mariage, correction d’état civil) : mise à jour du passeport et de l’Iqama (passage en agence Jawazat requis dans ce cas).
+Avant toute démarche critique
+Avant un renouvellement d’Iqama, demande de visa de sortie, transfert de sponsor, achat de billet aérien — vérifiez que votre passeport Absher est synchronisé.
+3. Prérequis
+Compte Absher Individuals actif et vérifié (lié à Nafath)
+Nouveau passeport déjà délivré par votre pays, avec au moins 6 mois de validité restante
+Téléphone mobile saoudien à votre nom (pour OTP)
+Iqama valide
+Scan de la page d’identité du nouveau passeport (haute qualité, PDF ou JPG,
+⚠️ Si vous n’avez pas Nafath : vous devez d’abord activer l’authentification Nafath sur l’application Absher, sinon les démarches sensibles (dont la mise à jour du passeport) sont bloquées.
+4. Documents et informations à préparer
+Élément
+Détail
+Numéro de l’ancien passeport
+Tel qu’enregistré actuellement sur Absher
+Numéro du nouveau passeport
+Lettre + chiffres selon votre pays
+Date d’émission
+Format grégorien et hégirien (Absher convertit automatiquement)
+Date d’expiration
+Doit être > 6 mois
+Lieu d’émission
+Ville / autorité émettrice
+Scan couleur haute qualité
+Page biométrique complète, PDF ou JPG, 2 Mo max
+💡 Qualité du scan : photo nette, pas d’ombre, texte entièrement lisible, fond uniforme. Un mauvais scan est la première cause de rejet.
+5. Étapes détaillées sur Absher
+Se connecter à Absher Individuals
+Via absher.sa ou l’application mobile (iOS / Android). Authentification par mot de passe + OTP ou Nafath.
+Accéder à « Mes services »
+Dans le tableau de bord, cliquez sur My Services → Passports (ou « الجوازات »).
+Choisir « Update Passport Info »
+Option officielle : « Update Passport Information » ou « تحديث بيانات جواز السفر » .
+Vérifier les informations pré-remplies
+Absher affiche votre nom et votre Iqama. Cliquez sur le membre concerné (vous ou un dépendant).
+Saisir les nouvelles informations
+Nouveau numéro de passeport, date d’émission, date d’expiration, lieu d’émission. Vérifiez tout 2 fois avant validation.
+Téléverser le scan
+Charger la page d’identité du nouveau passeport (PDF ou JPG). Attendre la confirmation d’upload.
+Valider et recevoir la confirmation
+Absher affiche un numéro de référence. Dans la majorité des cas, la mise à jour est immédiate . Sinon, un délai de 24–48 h peut être nécessaire (contrôle Jawazat).
+Vérifier la synchronisation
+Retournez dans Passports pour confirmer que le nouveau numéro apparaît. Vérifiez également Muqeem ( muqeem.sa ) si vous êtes sponsor d’un employé.
+✅ Astuce pro : faites une capture d’écran de la confirmation Absher avec le numéro de référence. C’est utile si un agent Jawazat vous réclame une preuve.
+6. Mettre à jour le passeport des dépendants
+En tant que sponsor (moualkif), vous pouvez mettre à jour les passeports de votre conjoint et de vos enfants directement depuis votre propre Absher :
+Onglet « Dependents » ou « Family Members »
+Sélectionnez le membre concerné
+Même procédure que ci-dessus : saisir les infos + téléverser le scan
+Répéter pour chaque dépendant
+Pour un employé (sous kafala professionnelle), la démarche s’effectue via Muqeem par l’employeur ou l’assistant administratif (« mu’aqqib »).
+7. Problèmes fréquents et solutions
+Erreur « Invalid passport data »
+Vérifiez le format du numéro (lettres capitales sans espaces), la date d’expiration (> 6 mois), et la concordance avec le scan.
+Upload refusé
+Taille > 2 Mo ou format non supporté. Réduisez le PDF ou convertissez en JPG 300 dpi.
+Pas d’option « Update Passport »
+Votre compte Absher est peut-être en mode basique. Activez la vérification Nafath pour accéder aux services complets.
+Mise à jour « Under Review »
+Attendez 48 h. Si toujours en attente, rendez-vous en agence Jawazat avec le nouveau passeport + Iqama pour validation manuelle.
+Ancien passeport expiré depuis longtemps
+Si le délai dépasse 6 mois, Jawazat peut exiger un passage en agence et une justification écrite. Préparez lettre explicative + copie du nouveau passeport + ancien passeport annulé.
+8. Sanctions en cas de non mise à jour
+La loi saoudienne impose la mise à jour des données de passeport. Les sanctions peuvent inclure :
+Amende pouvant aller jusqu’à 500–1 000 SAR selon la durée de l’omission
+Refus de renouvellement d’Iqama
+Blocage des visas de sortie/retour
+Interdiction de quitter le royaume en cas de contrôle aéroport
+❗ Cas aggravant : si un expatrié voyage avec un passeport différent de celui enregistré sur Absher, il peut être refoulé à la sortie ou à l’entrée, et son statut d’Iqama peut être mis en « irrégularité administrative ».
+9. Questions fréquentes
+Puis-je mettre à jour mon passeport si je suis en dehors de l’Arabie saoudite ?
+Oui, la mise à jour Absher fonctionne depuis l’étranger tant que votre compte est actif et que vous recevez les OTP sur votre numéro saoudien. Si votre numéro saoudien est inactif, activez Nafath ou contactez le support Absher.
+Dois-je garder mon ancien passeport ?
+Oui, conservez-le au moins pour 6 à 12 mois. Il peut être exigé pour certaines vérifications (ex : ancien visa saoudien actif, documents historiques, douanes).
+Combien de temps pour la validation ?
+Dans 85 % des cas, la validation est immédiate. Sinon, 24 à 48 h. Au-delà de 72 h, passez en agence Jawazat.
+La mise à jour coûte-t-elle quelque chose ?
+Non, l’enregistrement est gratuit sur Absher. Seul le renouvellement du passeport auprès de votre consulat a un coût (variable selon pays).
+Puis-je le faire pour mon employé domestique ?
+Oui, via l’onglet « Employees » ou « Domestic Labor » de votre compte Absher Individuals. Pour les salariés d’entreprise, cela passe par Muqeem / Qiwa.
+L’Iqama doit-elle aussi être mise à jour physiquement ?
+Non, l’Iqama (carte plastique) conserve un numéro unique indépendant du passeport. Seul le lien numérique dans la base Jawazat est mis à jour.
+Mon nom a changé sur le nouveau passeport, que faire ?
+Dans ce cas, la mise à jour Absher ne suffit pas. Vous devez vous rendre en agence Jawazat avec les documents d’état civil légalisés (acte de mariage, jugement) + traduction arabe certifiée + ancien et nouveau passeport. L’Iqama sera réémise avec le nouveau nom.
+10. Liens officiels
+Absher Individuals Portail officiel
+Jawazat (Direction Passeports) Ministère de l’Intérieur
+Nafath Via Absher / Application Nafath
+Muqeem Pour sponsors d’employés
+Ministry of Interior (MoI) Portail global
+Besoin d’aide pour une démarche Absher ?
+Nous orientons les expatriés francophones à Médine, étape par étape.
+Nous contacter →
+Guides associés
+Obtenir et renouveler son Iqama Lien direct avec votre passeport
+Visa de visite familiale Aussi via Absher
+Ouvrir un compte bancaire Requiert un passeport à jour
+Inscrire ses enfants à l’école Dépendants sur Absher
+📄 Mise à jour : avril 2026 · Les informations de ce guide sont données à titre indicatif. Les procédures, tarifs et règlements saoudiens évoluent régulièrement. Vérifiez toujours les informations à jour auprès des sources officielles (Absher, Jawazat, SAMA, MoE, CCHI, MOFA) avant toute démarche.
+Mis à jour le 19/04/2026
