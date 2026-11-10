@@ -146,7 +146,7 @@ export const GUIDES_NASEER_2_2026_11: SeedGuide[] = [
     summary: "The traps that catch newcomers, each with the official safe route: flats and deposits, property sold with a promise of residency, jobs on visit visas and visa conversion offers, running a business in someone else's name, fake Hajj and Umrah offers, calls and texts posing as your bank, Absher or the University, counterfeit goods, and where to report each one.",
     bodyHtml: `
 <p>Checked November 2026. Most scams aimed at newcomers follow one pattern: an offer that skips the official system, and a request for money or a code before anything is in writing. Each trap below has an official route that protects you and an official place to report it.</p>
-<h2>Renting a flat</h2>
+<h2>Flat and deposit scams</h2>
 <ul>
 <li><strong>Never transfer a deposit or a "holding fee"</strong> before you have seen the flat in person and a contract is ready to register. A cheap flat from someone who cannot meet you is the usual bait.</li>
 <li><strong>Check the agent.</strong> A real-estate broker needs a FAL licence from the Real Estate General Authority (REGA). Check the licence number on REGA's broker inquiry service at <a href="https://rega.gov.sa/">rega.gov.sa</a> or in REGA's app, Aqari (عقاري). Every property advert also needs its own advertisement licence, which REGA's advertisement licence inquiry confirms.</li>
