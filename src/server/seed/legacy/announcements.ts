@@ -4,6 +4,24 @@ const L = (ar: string, en: string): Localized => ({ ar, en });
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "lecture-ibrahim-ruhayli-14480601",
+    shaykh: L("أ. د. إبراهيم بن عامر الرحيلي", "Prof. Dr. Ibrahim ibn Amer al-Ruhayli"),
+    text: L(
+      "محاضرة بعنوان: آداب الجوال وأحكامه — في جامع الإمام محمد بن إبراهيم (الجامعة الإسلامية)، بعد صلاة المغرب، يوم [الأربعاء ١/٦/١٤٤٨]",
+      "A lecture titled: Etiquettes and Rulings of the Mobile Phone — at Jami' al-Imam Muhammad ibn Ibrahim (Islamic University), after Maghrib prayer, on [Wednesday 1/6/1448]"
+    ),
+    postedHijri: L("٢٩/٥/١٤٤٨هـ", "29/5/1448 AH"),
+    postedGregorian: L("٩ نوفمبر ٢٠٢٦", "9 November 2026"),
+    source: "@khizana_62",
+    sourceName: L("قناة خزانة العلم", "Khazanat al-Ilm channel"),
+    type: "lecture",
+    expired: false,
+    eventDate: "2026-11-11",
+    masjidId: "ibrahim",
+    image: "/images/flyer-ibrahim-ruhayli-lecture-14480601.jpg",
+    channelNote: L("من @khizana_62 (المنشور 11150)", "From @khizana_62 (post 11150)"),
+  },
+  {
     id: "abadr-tawhid-cancelled-18-5-1448",
     shaykh: L("أ. د. عبد الرزاق بن عبد المحسن البدر", "Prof. Dr. Abdurrazzaq ibn Abdulmuhsin al-Badr"),
     text: L(
