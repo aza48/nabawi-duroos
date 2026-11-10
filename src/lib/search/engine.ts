@@ -12,6 +12,8 @@ export type SearchDoc = {
   titleAr?: string;
   subtitleAr?: string;
   text?: string;
+  /** Arabic body text, in its own field so it does not lengthen (and so weaken) the English text for English searches. */
+  textAr?: string;
   url: string;
 };
 
@@ -28,11 +30,22 @@ const forms = (w: string) => {
   return b === w ? [w] : [w, b];
 };
 
+const ARABIC_LETTER = /[؀-ۿ]/;
+
 /** Builds an in-memory search over the docs: prefix, typo-tolerant, synonym-aware, title-weighted. */
 export function createSearch(docs: SearchDoc[]): Search {
+  // Guides and answers carry translated Arabic (title and body). It is indexed in fields of its own that only an
+  // Arabic search reads, so an English search ranks them exactly as before the translation: otherwise an Arabic
+  // synonym of a typed word ("exams", اختبار) lifts every translated page. Every other kind keeps its Arabic title
+  // (names, dates, terms) in titleArX, which English searches read as they always have.
+  const translated = (d: SearchDoc) => d.type === "guide" || d.type === "faq";
   const ms = new MiniSearch<SearchDoc>({
-    fields: ["title", "titleAr", "subtitle", "text"],
+    fields: ["title", "titleArX", "subtitle", "text", "titleArT", "textAr"],
     storeFields: ["id", "type", "title", "subtitle", "titleAr", "subtitleAr", "url"],
+    extractField: (d, field) =>
+      field === "titleArX" ? (translated(d) ? undefined : d.titleAr)
+      : field === "titleArT" ? (translated(d) ? d.titleAr : undefined)
+      : ((d as unknown as Record<string, string | undefined>)[field]),
     processTerm: (t) => {
       const n = normalize(t);
       if (!n) return null;
@@ -41,7 +54,7 @@ export function createSearch(docs: SearchDoc[]): Search {
     },
     tokenize: (s) => normalize(s).split(/[\s-]+/),
     searchOptions: {
-      boost: { title: 3, titleAr: 3, subtitle: 1.6, text: 1 },
+      boost: { title: 3, titleArX: 3, titleArT: 3, subtitle: 1.6, text: 1, textAr: 1 },
       prefix: (term) => term.length >= 3,
       fuzzy: (term) => (term.length >= 5 ? 0.25 : term.length >= 4 ? 1 : false),
       combineWith: "OR",
@@ -49,8 +62,10 @@ export function createSearch(docs: SearchDoc[]): Search {
   });
   ms.addAll(docs);
   const boostType: Record<SearchType, number> = { guide: 1.15, faq: 1.1, program: 1.1, shaykh: 1.05, dars: 1, library: 0.95, discount: 0.9, page: 0.9, date: 1.1, term: 1.05 };
-  // The words of each title, split once: a search compares the query with them for every hit.
-  const heads = new Map(docs.map((d) => [d.id, split(`${d.title} ${d.titleAr ?? ""} ${d.subtitle ?? ""}`).flatMap(forms)]));
+  // The words of each title, split once: a search compares the query with them for every hit. For an English search
+  // a translated guide or answer is compared on its English title only, as above.
+  const headsAr = new Map(docs.map((d) => [d.id, split(`${d.title} ${d.titleAr ?? ""} ${d.subtitle ?? ""}`).flatMap(forms)]));
+  const headsEn = new Map(docs.map((d) => [d.id, split(`${d.title} ${translated(d) ? "" : d.titleAr ?? ""} ${d.subtitle ?? ""}`).flatMap(forms)]));
   const vocab = vocabulary(docs);
 
   const correct = (q: string): string | null => {
@@ -72,8 +87,12 @@ export function createSearch(docs: SearchDoc[]): Search {
     // Words that only say "a dars" or "a book" do not decide the title match while a topic word is typed.
     const decisive = typed.filter((w) => !GENERIC.has(w[0]));
     const need = decisive.length ? decisive : typed;
+    // Arabic letters in the query search everything; an English query scores the English fields only.
+    const arabicQuery = ARABIC_LETTER.test(q);
+    const heads = arabicQuery ? headsAr : headsEn;
     return ms
       .search(query, {
+        ...(arabicQuery ? {} : { fields: ["title", "titleArX", "subtitle", "text"] }),
         // The words the person typed (and their spellings) count in full; related words only help.
         boostTerm: (term) => weight(term),
         boostDocument: (id, _term, stored) => {
@@ -129,7 +148,7 @@ function vocabulary(docs: SearchDoc[]) {
     if (w.length >= 3 && !/\d/.test(w)) count.set(w, (count.get(w) ?? 0) + n);
   };
   // Arabic words count without their article too: "داخلي" is a known word when the site says "الداخلي".
-  for (const d of docs) for (const w of split(`${d.title} ${d.titleAr ?? ""} ${d.subtitle ?? ""} ${d.text ?? ""}`)) for (const f of forms(w)) add(f);
+  for (const d of docs) for (const w of split(`${d.title} ${d.titleAr ?? ""} ${d.subtitle ?? ""} ${d.text ?? ""} ${d.textAr ?? ""}`)) for (const f of forms(w)) add(f);
   // A synonym word is worth many uses: "apartmnt" is "apartment", a word students type, before a rarer word one letter off.
   for (const w of knownWords()) add(w, 5);
   const sorted = [...count.keys()].sort();

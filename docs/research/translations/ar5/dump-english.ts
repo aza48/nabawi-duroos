@@ -1,8 +1,8 @@
 // Dumps the English of every seeded guide and answer at this checkout, as JSON on stdout.
-import * as sync from "./src/server/seed/content/sync";
+import * as sync from "@/server/seed/content/sync";
 async function main() {
   let leads: Record<string, string> = {};
-  try { leads = (await import("./src/server/seed/content/faq-leads")).FAQ_LEADS ?? {}; } catch {}
+  try { leads = (await import("@/server/seed/content/faq-leads")).FAQ_LEADS ?? {}; } catch {}
   const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const anyS = sync as unknown as Record<string, { slug: string; [k: string]: unknown }[]>;
   const G = anyS.ENGLISH_GUIDES ?? anyS.SEED_GUIDES ?? [];

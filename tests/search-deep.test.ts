@@ -118,7 +118,8 @@ describe("search index and the full-text pass", () => {
   });
   it("finds Arabic searches in English guides", async () => {
     const r = await deepSearch(db, "الخروج والعودة", "ar", NOW, knowledge);
-    expect(r.hits[0].url).toMatch(/exit-and-re-entry/);
+    // Once the guide has its Arabic, the Arabic section's own anchor is the better hit.
+    expect(r.hits[0].url).toMatch(/exit-and-re-entry|تأشيرة-الخروج-والعودة/);
   });
   it("answers adhan times, the Hijri date and tonight's duroos at once", async () => {
     const fajr = await deepSearch(db, "fajr time", "en", NOW, knowledge);
