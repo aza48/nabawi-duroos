@@ -29,7 +29,7 @@ export function htmlAttrs(locale: Locale): { lang: Locale; dir: "ltr" | "rtl" } 
  * English paths that have an Arabic twin at the same path under /ar. Every public section has one;
  * the home page is handled on its own.
  */
-const AR_TWINS = /^\/(ask|assistant|discounts|duroos|glossary|guides|library|mahad|more|programs|search|start)(\/|$|[?#])/;
+const AR_TWINS = /^\/(ask|assistant|discounts|duroos|glossary|guides|library|mahad|more|offline|programs|search|start)(\/|$|[?#])/;
 
 /** True when an English path has an Arabic page at /ar + path. */
 export function hasArabicTwin(path: string): boolean {
