@@ -56,7 +56,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li><strong>At a branch:</strong> take your passport and show your Visitor ID in the Absher app. <strong>Online:</strong> apply in the bank's app or website and confirm your identity through Nafath.</li>
 <li>Say you are a student at the Islamic University on the educational visa, and give your home address.</li>
 <li>Your account number comes by text message. Collect your mada debit card at the branch or ask for it to be posted.</li>
-<li>Your own account is for transfers and everyday spending. The stipend itself is paid onto <a href="/guides/getting-your-stipend-off-the-university-card">the University stipend card</a>, and you move it to your own account from there.</li>
+<li>Your own account is for transfers and everyday spending. The stipend itself is paid onto <a href="/guides/getting-your-stipend-off-the-university-card">the University stipend card</a>, and you take it out in cash at an Al Rajhi ATM.</li>
 </ol>
 <blockquote><p>Tip: Banks apply the rules differently from branch to branch. If one says no, try another branch or another bank.</p></blockquote>
 <h2>Phone and internet</h2>
@@ -65,7 +65,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>If your line stops working, take your passport to a branch of your operator. Afterwards update the number in Absher so your codes still reach you: see <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a>.</li>
 </ul>
 <h2>Renting a flat</h2>
-<p>You can register a rental contract on Ejar on a Visitor ID. An accredited agent does it for you.</p>
+<p>You can register a rental contract on Ejar on a Visitor ID. An accredited agent does it for you, as Ejar clarified on 31 August 2026. Before that, earlier in 2026, only iqama holders could register, so some landlords and offices still say it cannot be done. See <a href="/ask/rent-on-student-visa">Can I register a rental contract on a student visa?</a></p>
 <ol>
 <li>Find a flat and agree the rent, the length of the contract and how you will pay.</li>
 <li>Pick a real-estate agent from Ejar's official list of accredited agents.</li>
@@ -436,8 +436,8 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ul>
 <li><strong>Getting it:</strong> new students receive the card after orientation. Cards are issued and renewed at the card office in Unit 22 (الوحدة 22), 8:00 am to 2:00 pm on working days. The University activates the card, and the PIN comes in the envelope. You can change the PIN at any Al Rajhi ATM.</li>
 <li><strong>Money only goes out:</strong> the card takes no cash deposits and no transfers in, and it cannot be added to Apple Pay or the Al Rajhi app.</li>
-<li><strong>Using the money:</strong> withdraw it at an Al Rajhi ATM, or move it to your own bank account with the Barq app, which is instant and free. Step by step: <a href="/guides/getting-your-stipend-off-the-university-card">Getting your stipend off the University card</a>.</li>
-<li><strong>Your own account:</strong> open a Saudi bank account early so you have somewhere to move the money. On a Visitor ID, see <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
+<li><strong>Using the money:</strong> take it out in cash at an Al Rajhi ATM. The nearest to the University is next to Gate 4, where the taxis line up. The stipend cannot be sent to your own bank account. Step by step: <a href="/guides/getting-your-stipend-off-the-university-card">Getting your stipend off the University card</a>.</li>
+<li><strong>Your own account:</strong> a Saudi bank account of your own is still useful, for money from home, card payments and a deposit of your stipend cash if you want it there. On a Visitor ID, see <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
 <li><strong>Lost, swallowed or expired card:</strong> ask the stipends section for a replacement (بدل فاقد). It takes about two weeks, a small fee is taken from the card, and your stipend is kept. An expired card cannot be used at all, so renew it before the expiry date.</li>
 <li><strong>After a card change:</strong> a new or renewed card can hold up a payment while the University updates its records. If a payment is missing after a change, tell the stipends section.</li>
 </ul>
@@ -642,7 +642,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Activate Nafath</strong> (نفاذ) in the Nafath app: open the settings, choose to activate your national digital identity, and complete your details and the face check.</li>
 <li><strong>Issue your Visitor ID</strong> (هوية زائر) in Absher: choose <strong>Issue visitor ID</strong> and complete the details. It is digital only, it shows in the Absher app, and it cannot be printed.</li>
 <li><strong>Register your National Address</strong> with Saudi Post. Your bank needs it. See <a href="/ask/short-address">What is a short address?</a></li>
-<li><strong>Open a bank account.</strong> Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The account number arrives by text message, and the mada card is collected at the branch or posted to you. This is the account you move your stipend into from the University card. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
+<li><strong>Open a bank account.</strong> Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The account number arrives by text message, and the mada card is collected at the branch or posted to you. This account is for money from home and everyday payments. The stipend stays on the University card and is taken out in cash at an Al Rajhi ATM. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
 <li><strong>Attend orientation.</strong> New students have an orientation meeting in the first week, announced on the University's X account. It explains how your first weeks work, so do not miss it.</li>
 <li><strong>Collect your stipend card.</strong> Your stipend is paid onto a University stipend card (an Al Rajhi Bank card), not into your own account. New students receive it after orientation, and cards are issued and renewed at the card office in Unit 22. Your first stipend comes in your second month, as a double payment. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a> and <a href="/guides/getting-your-stipend-off-the-university-card">Getting your stipend off the University card</a>.</li>
 <li><strong>Get your student card.</strong> Your University ID is digital, in the Tawakkalna app. A printed card is optional: take a 4x6 photo and your ID to the Comprehensive Services Office on the ground floor of Unit 22, 8:00 am to 2:00 pm on working days.</li>
@@ -994,10 +994,12 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
   {
     slug: "kids-activities",
     stage: "family",
-    title: "Play areas and fun places for children in Madinah",
-    summary: "Soft play centres, mall crèches and gardens for young children in Madinah, with what is at each and the ages they take.",
+    title: "Fun places for children in Madinah: the Haram's children's centres, parks, outings and play areas",
+    summary: "The children's centres at Masjid an-Nabawi, parks and the Quba walkway, outings that teach (the Qur'an Printing Complex, the historic sites, the date farms), soft play centres and mall crèches, and what suits each season.",
     bodyHtml: `
-<p>Checked 9 November 2026. Madinah has indoor soft play centres, crèches in the malls and gardens with rides, which are a good way to spend a hot afternoon with young children. Each section below is in alphabetical order. Entry is paid per child at the desk.</p>
+<p>Checked November 2026. Madinah is an easy city for children: the Haram looks after the youngest while you pray, the parks fill with families after Maghrib, and indoor play centres carry you through the hot afternoons. This guide covers the Haram's children's centres, parks and walks, outings that teach, soft play and mall crèches, and what suits each season. Places of the same kind are listed alphabetically, and play centres charge per child at the desk.</p>
+<h2>At the Haram</h2>
+<p>Masjid an-Nabawi runs children's hospitality centres in the courtyards, where staff look after young children while you pray. They take boys up to 6 and girls up to 9, with play areas, activities and a class for memorising short surahs. Bring your ID, because it is needed to leave a child and to collect them. Gates, lost children and everything else for families are in <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</p>
 <h2>Soft play centres</h2>
 <h3>Kinetic</h3>
 <ul>
@@ -1023,10 +1025,26 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Al Noor Mall:</strong> a slide into a ball pit, a climbing frame and other activities. The mall has a second play area as well: <a href="https://maps.app.goo.gl/1xB4qFEvuGpt1vjA6">location on Google Maps</a>.</li>
 <li><strong>Al Rashid Mall:</strong> on the basement floor, near Home Centre. A ball pit, slides, activity tables and role-play corners such as a kitchen. For children under five only.</li>
 </ul>
-<h2>Gardens and parks</h2>
-<p>Gardens such as Reef Al Bustan have bouncy castles and rides such as small trains.</p>
+<h2>Parks and walks</h2>
+<ul>
+<li><strong>King Fahd Central Park</strong>, on Quba Road between the Second and Third Ring Roads, is the city's largest park: lawns, children's play areas with a sand play area, picnic shelters, and a walkway with a cycling track along its northwest side. It is busiest in the evenings and at weekends.</li>
+<li><strong>The Quba walkway</strong> runs about 3 km from the Haram to Masjid Quba, about 45 minutes on foot, with electric carts for tired legs. Walking it to pray at Quba on a Saturday morning is a family tradition here: see <a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba from Madinah</a>.</li>
+<li><strong>Private gardens</strong> such as Reef Al Bustan have bouncy castles and rides such as small trains, paid per ride.</li>
+</ul>
 <blockquote><p>Tip: Many mall arcade rides and the large bouncy castles in the gardens are built for children of four and over. Toddlers have their own areas in the soft play centres above.</p></blockquote>
-<p>For schools and nurseries, see <a href="/guides/kindergartens-and-schools">Kindergartens and schools</a>. The children's centres at the Haram are in <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</p>
+<h2>Outings that teach</h2>
+<ul>
+<li><strong>The King Fahd Complex for the Printing of the Holy Qur'an:</strong> entry is free with a time booked online, the tour follows each stage of printing a Mushaf, and every visitor leaves with a copy. See <a href="/guides/visiting-the-quran-printing-complex">Visiting the King Fahd Qur'an Printing Complex</a>.</li>
+<li><strong>Uhud, Quba and the historic masjids:</strong> the places of the seerah, close enough for a morning. See <a href="/guides/historic-sites-and-masjids">Historic sites and masjids of Madinah</a>.</li>
+<li><strong>The date farms and the dates season:</strong> some farms welcome visitors in the harvest, and the summer dates season at the Central Dates Market has stalls and an evening auction. See <a href="/guides/dates-of-madinah">Dates of Madinah</a>.</li>
+<li><strong>Qur'an circles:</strong> most neighbourhood masjids run circles for children after Asr or Maghrib. See <a href="/guides/kindergartens-and-schools">Kindergartens and schools</a>.</li>
+</ul>
+<h2>By season</h2>
+<ul>
+<li><strong>Summer:</strong> soft play and the malls between Dhuhr and Asr, the parks after Maghrib, and water all day. The heat and how to keep children safe in it are in <a href="/guides/seasons-and-camping">Madinah by season</a>.</li>
+<li><strong>Winter:</strong> the best months for the parks, the walkway and outings in daylight. Bring a layer for the evenings.</li>
+<li><strong>Ramadan:</strong> the Haram's children's centres are busiest after Taraweeh, so arrive early.</li>
+</ul>
 <blockquote><p>Tip: Know a place for children we should add? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {

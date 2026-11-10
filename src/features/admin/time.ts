@@ -1,3 +1,5 @@
+import { riyadhDateIso } from "@/lib/time/riyadh";
+
 export function timeAgo(d: Date, now: Date = new Date()): string {
   const mins = Math.round((now.getTime() - d.getTime()) / 60_000);
   if (mins < 1) return "just now";
@@ -9,7 +11,7 @@ export function timeAgo(d: Date, now: Date = new Date()): string {
 
 /** "Today", "Yesterday" or a date, in Madinah time, for grouping lists by day. */
 export function dayLabel(d: Date, now: Date = new Date()): string {
-  const key = (x: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Riyadh" }).format(x);
+  const key = riyadhDateIso;
   const today = key(now);
   const yesterday = key(new Date(now.getTime() - 86_400_000));
   const k = key(d);

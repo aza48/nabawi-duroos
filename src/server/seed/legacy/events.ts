@@ -217,9 +217,3 @@ export const EVENTS: MasjidEvent[] = [
     source: "https://t.me/khizana_62/10626",
   },
 ];
-
-export function eventsForMasjid(masjid: MasjidId): MasjidEvent[] {
-  return EVENTS.filter((e) => e.masjid === masjid).sort((a, b) =>
-    b.endIso.localeCompare(a.endIso)
-  );
-}

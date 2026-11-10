@@ -10,8 +10,15 @@ export function toArabicDigits(s: string | number): string {
   return String(s).replace(/\d/g, (d) => AR_DIGITS[Number(d)]);
 }
 
+const EASTERN = "٠١٢٣٤٥٦٧٨٩";
+const PERSIAN = "۰۱۲۳۴۵۶۷۸۹";
+/** Arabic-Indic and Persian digits as ASCII digits. */
+export const toAsciiDigits = (s: string) =>
+  s.replace(/[٠-٩۰-۹]/g, (d) => String(EASTERN.includes(d) ? EASTERN.indexOf(d) : PERSIAN.indexOf(d)));
+
 export const WEEKDAYS_EN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] as const;
 export const WEEKDAYS_AR = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"] as const;
+export const WEEKDAYS_SHORT_EN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
 
 /** Attributes for the <html> element of a locale's root layout. */
 export function htmlAttrs(locale: Locale): { lang: Locale; dir: "ltr" | "rtl" } {
@@ -22,7 +29,7 @@ export function htmlAttrs(locale: Locale): { lang: Locale; dir: "ltr" | "rtl" } 
  * English paths that have an Arabic twin at the same path under /ar. Every public section has one;
  * the home page is handled on its own.
  */
-const AR_TWINS = /^\/(ask|assistant|discounts|duroos|glossary|guides|library|mahad|more|programs|search|start)(\/|$|[?#])/;
+const AR_TWINS = /^\/(ask|assistant|discounts|duroos|glossary|guides|library|mahad|more|offline|programs|search|start)(\/|$|[?#])/;
 
 /** True when an English path has an Arabic page at /ar + path. */
 export function hasArabicTwin(path: string): boolean {
