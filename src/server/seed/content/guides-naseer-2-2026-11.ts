@@ -11,7 +11,7 @@ export const GUIDES_NASEER_2_2026_11: SeedGuide[] = [
 {
     slug: "ways-to-live-in-madinah-long-term",
     stage: "getting-started",
-    title: "Ways to live in Madinah long term: study, work, family, a company or Premium Residency",
+    title: "Ways to live in Madinah long term",
     summary: "The lawful routes to live in Madinah for years, side by side: studying, a job with a Saudi employer, living as a dependant, your own company and Premium Residency, with who sponsors you, whether family can join, whether you can work and what it costs, and what a visit or Umrah visa does not allow.",
     bodyHtml: `
 <p>Checked November 2026. Living in Madinah for years needs a residency of your own or a place on someone else's. There are five lawful routes: study, a job with a Saudi employer, living as a dependant, a company of your own, and Premium Residency. This page compares them and points you to the detail for each.</p>
