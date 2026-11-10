@@ -19,6 +19,7 @@ export const GUIDES_STUDENT_LIFE: SeedGuide[] = [
 <ol>
 <li>Sign in to the restaurant system at <a href="https://restaurant.iu.edu.sa/">restaurant.iu.edu.sa</a> with your University login.</li>
 <li>Book your meals for the coming month. Booking is done a month at a time, so set a reminder before each month ends.</li>
+<li>Meal times in term in 1447: breakfast from about 6:00 to 8:00 am, lunch from 11:00 am to 2:00 pm, and dinner from about 7:30 to 10:30 pm. Pay online when you book, or at the payment desk behind the restaurant, and show your meal barcode at the counter. The restaurant is behind the College of Sharia.</li>
 <li>Use your own card only. Taking meals on two cards is not allowed.</li>
 </ol>
 <h2>Free buses</h2>
@@ -43,7 +44,7 @@ export const GUIDES_STUDENT_LIFE: SeedGuide[] = [
 </tbody></table>
 <p>Book a clinic appointment at <a href="https://vcappointments.iu.edu.sa/">vcappointments.iu.edu.sa</a> with your University login. Outside these hours, go to a hospital emergency department or call 997. See <a href="/guides/doctors-hospitals-and-pharmacies">Doctors, hospitals, pharmacies and emergency numbers</a>.</p>
 <h2>The Central Library</h2>
-<p>The Central Library is on your right as you come in through the main gate. In term it opens Sunday to Thursday, 8:00 am to midnight, and during final exams it stays open 24 hours. It is closed on Friday and Saturday. Laptops are allowed and bags are not. The library also lends set textbooks free for the semester: renew them each month and return them in the same condition, or pay a small fine. See <a href="/ask/library-bags-laptops">Can I take a bag or laptop into the libraries?</a></p>
+<p>The Central Library is on your right as you come in through the main gate. In term it opens Sunday to Thursday, 8:00 am to midnight, and during final exams it stays open 24 hours. It is closed on Friday and Saturday. It is open to visitors as well as students, and its collections include the personal libraries of several scholars, among them Shaykh al-Albani's. Laptops are allowed and bags are not. The library also lends set textbooks free for the semester: renew them each month and return them in the same condition, or pay a small fine. See <a href="/ask/library-bags-laptops">Can I take a bag or laptop into the libraries?</a></p>
 <h2>Your University accounts</h2>
 <ul>
 <li><strong>Signing in:</strong> the University login at sso.iu.edu.sa works through Nafath, or with your University number, password and a verification code.</li>
@@ -60,9 +61,11 @@ export const GUIDES_STUDENT_LIFE: SeedGuide[] = [
 <li><strong>Loans:</strong> the Student Fund in Unit 22 lends up to 2,000 SAR, repaid from your stipend.</li>
 <li><strong>Printed iqama card:</strong> iqama holders can order a plastic iqama card through Student Affairs for about 58 SAR. Print your iqama from Absher, write your mobile number on it and hand it in. They call you to pay, and the card is ready in two to three weeks. Visitor ID holders have no card to print.</li>
 <li><strong>Airport buses:</strong> at the end of the academic year the Deanship runs free buses from the University to Prince Mohammad bin Abdulaziz Airport. The start date is announced on its X account, <a href="https://x.com/dsa_iu_edu">@dsa_iu_edu</a>.</li>
-<li><strong>Ramadan:</strong> the Deanship serves a daily iftar by the University sports ground and hands out suhoor meals, and runs free Umrah trips by bus in Ramadan, announced by the Deanship. Classes follow a separate Ramadan timetable.</li>
+<li><strong>Ramadan:</strong> the Deanship serves a daily iftar by the University sports ground and hands out suhoor meals. Classes follow a separate Ramadan timetable.</li>
+<li><strong>Free Umrah trips:</strong> the Deanship runs free day trips to Makkah for Umrah by bus, in Ramadan and at other times of the year. Each trip is announced with a registration form on the Deanship's accounts, and buses usually leave from the campus in the early morning or after Dhuhr. The bus comes back the same day, and a student who misses it returns at his own cost. Book your Umrah permit in Nusuk before you go: see <a href="/ask/umrah-from-madinah">How do I go for Umrah from Madinah?</a></li>
 <li><strong>Clubs and activities:</strong> run from the Deanship's first floor. You join through each club's president or group.</li>
 <li><strong>Nationality representatives:</strong> each nationality has a student representative who passes on University notices and collects ticket and visa lists. Their office is at the Deanship.</li>
+<li><strong>Cars:</strong> parking beside the housing units needs a permit. Permits are issued by the permits office just inside the main gate, mainly to postgraduate students and for medical need. Everyone else parks in the main car parks and walks.</li>
 </ul>
 <h2>Money and flights</h2>
 <ul>

@@ -1,0 +1,68 @@
+  {
+    slug: "homeschooling-in-madinah",
+    stage: "family",
+    title: "Homeschooling your children in Madinah",
+    summary: "What Saudi law says about schooling, the records to keep, curricula and IGCSE exams, Arabic and Qur'an circles, friends, libraries and sport, and how to move a child taught at home into a school here, including certificate equivalence.",
+    bodyHtml: `
+<p>Checked November 2026. Some English-speaking families in Madinah teach their children at home, for a few years or for the whole stay. This guide covers what Saudi law says about schooling, the records to keep, curricula and exams, Arabic and Qur'an, friends and sport, and how to move a child into a school here later.</p>
+<h2>What the law says</h2>
+<p>Saudi Arabia has a new General Education Law (نظام التعليم العام), approved by royal decree and published on 24 July 2026. It comes into force 180 days after publication, in January 2027. It makes schooling compulsory from age 6 to 15, keeps education free in government schools, and lets the Ministry of Education act against anyone who keeps a child of those ages out of education.</p>
+<p>Before you plan a year at home, ask how the law applies to your child. The office for Madinah is the General Administration of Education in Madinah Region (الإدارة العامة للتعليم بمنطقة المدينة المنورة), at <a href="https://sites.moe.gov.sa/Madinah/">sites.moe.gov.sa/Madinah</a>. The Ministry also answers on 19996, 24 hours a day, and through its Tawasul service at <a href="https://tawasul.moe.gov.sa/">tawasul.moe.gov.sa</a>. Ask through Tawasul so you have the answer in writing, and keep it with your records.</p>
+<p>Two routes inside the Saudi system suit some families who study at home. Ask the Education Department whether your child qualifies for either.</p>
+<ul>
+<li><strong>Affiliation (الانتساب):</strong> in the intermediate and secondary stages, a child can be enrolled with a Saudi school without attending daily, and sits the school's exams on the Saudi curriculum. Print proof of entry and residence from Absher and give it to the school four weeks before the first and the second semester exams. A child who was not living in the Kingdom just before the exams is removed, unless circumstances forced a trip of no more than two weeks.</li>
+<li><strong>Placement test (اختبار تحديد المستوى):</strong> for the intermediate and secondary stages, for a child who has never been to school, or who has been out of school for three years or more. The Education Department registers candidates and sets the dates.</li>
+</ul>
+<h2>Choosing a curriculum</h2>
+<p>The usual options are:</p>
+<ul>
+<li>Your own country's national curriculum, with its books and tests.</li>
+<li>An online school accredited in its own country, with classes, marking and a report for each year.</li>
+<li>International exams such as the IGCSE and A Levels, taken as a private candidate.</li>
+</ul>
+<p>Whatever you choose, think about where your child will finish. The Ministry of Education makes a certificate from abroad equivalent to a Saudi grade only when the school is accredited by the education authority of its own country, its secondary certificate is accepted by universities there, and the child attended the school regularly, in a clear sequence, with a pass record for each earlier year. The Saudi Arabian Cultural Mission in the United States does not attest high school diplomas from homeschool, online or distance programmes. If a university in the Kingdom is the goal, check the final certificate against these rules before the secondary years.</p>
+<h3>Sitting IGCSE and A Levels as a private candidate</h3>
+<p>The British Council in Saudi Arabia enters private candidates for Cambridge International exams in May and June and in October and November, and for Pearson Edexcel exams in January, in May and June, and in October and November. Each series has its own entry deadline, listed on the <a href="https://saudiarabia.britishcouncil.org/en/exam/igcse-school/register/dates-deadlines">registration dates page</a>.</p>
+<ol>
+<li>Register online through the British Council's School Registration System on <a href="https://saudiarabia.britishcouncil.org/en/exam/igcse-school/register/private">saudiarabia.britishcouncil.org</a>, before the deadline for the series.</li>
+<li>Pay the fees shown in the system. Your entry is not processed until you pay.</li>
+<li>About three weeks before the exams, you receive the Statement of Entry and the venue details.</li>
+</ol>
+<p>The British Council's offices are in Riyadh, Jeddah and Al Khobar, so ask where your child will sit before you register and plan the travel.</p>
+<h2>Records and documents to keep</h2>
+<ul>
+<li><strong>Identity:</strong> each child's passport with a valid visa, or the child's iqama. Dependants' iqamas are renewed in Absher (see <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>). On a Visitor ID there are no dependant iqamas (see <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID</a>).</li>
+<li><strong>Birth certificate and vaccination record:</strong> every school asks for both, with the birth certificate attested and translated into Arabic. See <a href="/ask/baby-vaccinations">How do I get my baby vaccinated in Madinah?</a> for the Saudi schedule.</li>
+<li><strong>School papers from before you came:</strong> every report and certificate, attested by the Ministry of Education (or the body that runs schools) and the Ministry of Foreign Affairs in the country that issued it, then by the Saudi embassy there, with its cultural attaché where there is one. Papers not in Arabic or English need a certified translation.</li>
+<li><strong>Your home programme's records:</strong> the enrolment letter, a report or transcript for each year, exam certificates, and a small folder of your child's work in each subject.</li>
+</ul>
+<blockquote><p>Important: the Ministry asks for originals, with no crossings out, and the child's name spelled the same on every paper. Fix any mismatch with the issuing school before you leave home, and keep scans of everything.</p></blockquote>
+<h2>Arabic and Qur'an</h2>
+<p>Give Arabic a daily slot from the start, so your child is ready if you move into a Saudi school later.</p>
+<ul>
+<li><strong>Masjid an-Nabawi halaqat:</strong> free Qur'an circles for children and adults. Register at <a href="https://reg.qm.edu.sa/">reg.qm.edu.sa</a>, make a separate account for each child, and choose the section, the type of study and the time. There is no entry test or interview for the recitation, memorisation and revision circles. Use an email address you check, because that is how the circles contact you. Ages, gates and times are in <a href="/guides/kindergartens-and-schools">Kindergartens and schools for your children</a>.</li>
+<li><strong>Your local masjid:</strong> most neighbourhood masjids run Qur'an circles after Asr or Maghrib. Ask the imam.</li>
+<li><strong>While you pray at the Haram:</strong> see <a href="/ask/children-at-masjid-an-nabawi">Is there somewhere for my children while I pray at Masjid an-Nabawi?</a></li>
+<li><strong>For mothers:</strong> several women's marakiz have a nursery or kindergarten beside the classes. See <a href="/guides/sisters-studying-in-madinah">Where sisters can study Arabic and Islamic sciences in Madinah</a>.</li>
+</ul>
+<h2>Friends, libraries and sport</h2>
+<ul>
+<li><strong>Other families:</strong> you meet them at the Haram circles, the masjid after Asr, the parks and play centres in <a href="/guides/kids-activities">Play areas and fun places for children in Madinah</a>, and in the MESH group (see <a href="/ask/join-mesh-group">How do I join the MESH WhatsApp group?</a>). Sharing lessons with one or two families, each parent taking a subject, gives children a small class of their own.</li>
+<li><strong>Libraries:</strong> the Prophet's Mosque Library has reading halls for children, open every day. Where each library is and what you can take in are in <a href="/ask/library-bags-laptops">Can I take a bag or laptop into the libraries?</a> The Madinah Book Fair, run by the Literature, Publishing and Translation Commission, has areas for children. Dates for each year are on <a href="https://lpt.moc.gov.sa/">lpt.moc.gov.sa</a>.</li>
+<li><strong>Sport:</strong> the Islamic University Sports Club and classes for children, such as jiu-jitsu and fitness, are in <a href="/guides/sports-and-activities">Sport and fitness classes</a>.</li>
+</ul>
+<h2>Moving into a school later</h2>
+<p>Fees, documents, Noor and registration dates are in <a href="/guides/kindergartens-and-schools">Kindergartens and schools for your children</a>. A child taught at home needs a few extra steps.</p>
+<ul>
+<li><strong>International and private schools</strong> set their own entry assessments. Ask each school what it needs from a child taught at home, and bring your yearly reports and work folder.</li>
+<li><strong>Government schools</strong> take the children of iqama holders into places left after Saudi pupils are registered, within a share of 15% set by the Council of Ministers. The child needs an authorisation letter from the Ministry of Education and a letter from the parent's employer. Children on a visit, tourist or Umrah visa are not taken.</li>
+<li><strong>Entry points:</strong> the first intermediate year needs a pass in the sixth primary year or its equivalent, attested. The first secondary year needs the intermediate certificate or its equivalent.</li>
+</ul>
+<h3>Getting your child's certificate made equivalent</h3>
+<ol>
+<li>Gather the originals: the latest certificate and the pass records for earlier years, attested and translated as above.</li>
+<li>Submit them at the Education Department in Madinah. For any grade below the final secondary year, the Department makes the papers equivalent itself. A secondary school leaving certificate is sent on to the Ministry electronically, and the decision comes back through the Department.</li>
+<li>The school places your child in the grade the equivalence decision names.</li>
+</ol>
+<p>For the intermediate and secondary stages, a child with no recognised records applies for the placement test above.</p>`,
+  },

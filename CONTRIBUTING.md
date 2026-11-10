@@ -36,8 +36,9 @@ Both must pass. Merging to `main` deploys to production automatically.
 
 ## Pull requests
 
-1. Branch from `main` and keep each PR to one change.
-2. Fill in the PR template: what, why, how you tested, and screenshots for UI changes.
-3. Muhaymin reviews every PR before it is merged.
+1. **Check nobody else is on it first:** `npm run overlap -- --find <topic>` lists open PRs that touch the same thing and who claimed them. Open a draft PR as soon as you start, with a comment `Working on: <your name>, <what>`, so others see your claim. The rules are at the top of `docs/AI-LOG.md`.
+2. Branch from `main` and keep each PR to one change.
+3. Fill in the PR template: what, why, how you tested, and screenshots for UI changes.
+4. Muhaymin reviews every PR before it is merged.
 
 By contributing you agree your contribution is provided under the project's license.

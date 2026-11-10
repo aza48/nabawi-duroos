@@ -79,7 +79,7 @@ const BANK: Q[] = [
   { q: "how much is rent for a two bedroom family flat", cat: "housing", ex: s(/finding-an-apartment|cost-of-living/) },
   { q: "do landlords want rent monthly or yearly", cat: "housing", ex: s(/finding-an-apartment|cost-of-living/) },
   // Family
-  { q: "how do I bring my wife to madinah", cat: "family", ex: s(/visas-for-family|istiqdam-deposit|living-on-a-visitor-id/) },
+  { q: "how do I bring my wife to madinah", cat: "family", ex: s(/visas-for-family|istiqdam-deposit|living-on-a-visitor-id|ways-to-live-in-madinah-long-term#living-here-as-a-dependant/) },
   { q: "how much is the istiqdam deposit", cat: "family", ex: s(/istiqdam-deposit/) },
   { q: "can my parents visit me in madinah", cat: "family", ex: s(/visas-for-family|bringing-parents-to-visit#which-visa/) },
   { q: "what are the dependent fees for my family", cat: "family", ex: s(/iqama-and-exit-reentry-fees/) },
@@ -194,7 +194,7 @@ const BANK: Q[] = [
   { q: "كيف أقدم على الماجستير", cat: "ar-university", ex: s(/postgraduate-admission-1448/) },
   { q: "كيف أستأجر شقة", cat: "ar-housing", ex: s(/finding-an-apartment/) },
   { q: "ما هو إيجار", cat: "ar-housing", ex: s(/what-is-ejar|rent-on-student-visa|finding-an-apartment/) },
-  { q: "كيف أستقدم زوجتي", cat: "ar-family", ex: s(/istiqdam-deposit|visas-for-family/) },
+  { q: "كيف أستقدم زوجتي", cat: "ar-family", ex: s(/istiqdam-deposit|visas-for-family|ways-to-live-in-madinah-long-term#living-here-as-a-dependant/) },
   { q: "مدارس لأطفالي", cat: "ar-family", ex: s(/kindergartens-and-schools/) },
   { q: "أبحث عن طبيبة لزوجتي", cat: "ar-health", ex: s(/female-doctor|doctors-hospitals/) },
   { q: "رقم الإسعاف", cat: "ar-health", ex: s(/emergency-numbers|doctors-hospitals/) },

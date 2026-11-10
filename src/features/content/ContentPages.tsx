@@ -10,6 +10,7 @@ import { related, type RelItem } from "@/lib/related";
 import { FaqExplorer } from "./FaqExplorer";
 import { GuideBody } from "./GuideBody";
 import { enhanceGuideHtml, linkScriptureRefs } from "@/lib/guide-html";
+import { ShareButton } from "@/components/ShareButton";
 import { JsonLd, ORG_ID, breadcrumbs } from "@/components/JsonLd";
 import { abs } from "@/lib/site";
 
@@ -167,6 +168,7 @@ export function FaqPage({ faq, locale = "en", guides = [], faqs = [] }: { faq: F
           <CircleCheck size={15} /> {verified(faq.lastVerifiedAt, "ar")}
         </p>
       )}
+      <ShareButton title={ft.question} locale={locale} className="mt-6" />
       <AdminHelp locale={locale} className="mt-6" />
       <RelatedList kind="guides" items={relGuides} locale={locale} />
       <div className="xl:hidden">
@@ -311,6 +313,7 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
             {!isCalendar && <span className="flex items-center gap-1.5"><BookOpen size={15} /> {ar ? `${arCount(gt.readingMinutes, "minute", { one: "bare" })} للقراءة` : `${guide.readingMinutes} min read`}</span>}
             {steps > 0 && <span className="flex items-center gap-1.5"><CircleCheck size={15} /> {ar ? arCount(steps, "step") : `${steps} ${steps === 1 ? "step" : "steps"} to tick off`}</span>}
             {verified(guide.lastVerifiedAt, locale) && <span className="flex items-center gap-1.5 text-gold-pale"><CircleCheck size={15} /> {verified(guide.lastVerifiedAt, locale)}</span>}
+            <ShareButton title={gt.title} text={gt.summary ?? undefined} locale={locale} tone="band" />
           </p>
         </div>
       </section>
