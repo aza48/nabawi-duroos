@@ -33,7 +33,7 @@ import { SLUG as COMPANY_SLUG } from "@/features/guides/company/content";
 const verified = (d: Date | null, locale: Locale = "en") =>
   d
     ? locale === "ar"
-      ? `آخر تحقق ${new Intl.DateTimeFormat("ar-SA-u-ca-gregory-nu-latn", { day: "numeric", month: "long", year: "numeric" }).format(d)}`
+      ? `آخر تحقق ${new Intl.DateTimeFormat("ar-SA-u-ca-gregory-nu-arab", { day: "numeric", month: "long", year: "numeric" }).format(d)}`
       : `Last verified ${new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(d)}`
     : null;
 

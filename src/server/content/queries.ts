@@ -3,7 +3,13 @@ import type { Db } from "@/server/db/client";
 import { faqs, guides, type GuideStage } from "@/server/db/schema";
 
 export type FaqRow = typeof faqs.$inferSelect;
-export type GuideRow = typeof guides.$inferSelect;
+type GuideSelect = typeof guides.$inferSelect;
+type GuideArabic = "titleAr" | "summaryAr" | "bodyHtmlAr";
+/**
+ * A guide as the public pages read it. Rows from the database always carry the Arabic columns (null until
+ * translated); they are optional here only so hand-built cards, such as the company guide's, need not list them.
+ */
+export type GuideRow = Omit<GuideSelect, GuideArabic> & Partial<Pick<GuideSelect, GuideArabic>>;
 
 export const FAQ_CATEGORIES = [
   { id: "getting-started", label: "Getting started", labelAr: "البداية" },

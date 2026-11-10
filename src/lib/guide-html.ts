@@ -15,6 +15,22 @@ export const slugify = (s: string) =>
 const YOUTUBE = /^https?:\/\/(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([A-Za-z0-9_-]{11})/;
 
 /**
+ * A blockquote that opens with one of these labels is a callout. Arabic text often starts with an
+ * invisible direction mark (RLM, LRM or ALM), so those are skipped like spaces. "\b" does not work after
+ * Arabic letters, so an Arabic label must be followed by a space, a colon, a comma, "!", "." or the end
+ * ("مهمة" is not "مهم").
+ */
+const CALLOUT = /^[\s\u200E\u200F\u061C]*(?:(?:tip|note|important|warning)\b|(?:نصيحة|ملاحظة|مهم|تنبيه)(?=[\s:،!.]|$))/i;
+
+/**
+ * True when article HTML shows something: text other than spaces, or an image. An emptied editor
+ * sends "<p></p>", which is nothing. Admin and the content sync both use this, so an empty Arabic
+ * body is stored as null and the Arabic page falls back to the English.
+ */
+export const hasVisibleHtml = (html: string | null | undefined): boolean =>
+  !!html && (/<img\b/i.test(html) || html.replace(/<[^>]*>/g, "").replace(/&nbsp;|&#160;|\u00A0/g, " ").trim().length > 0);
+
+/**
  * Adds the interactive layer to already-sanitised guide HTML: anchors and a table of contents
  * for h2s, numbered steps that readers can tick off, video slots for lone YouTube links, and
  * Tip/Note callouts, and a short definition on the first mention of each glossary term (see
@@ -54,7 +70,7 @@ export function enhanceGuideHtml(
   }
 
   for (const q of root.querySelectorAll("blockquote")) {
-    if (/^\s*(tip|note|important|warning)\b/i.test(q.text)) q.setAttribute("class", "callout");
+    if (CALLOUT.test(q.text)) q.setAttribute("class", "callout");
   }
 
   if (opts.glossary !== false) markGlossaryTerms(root, { base: opts.glossaryBase });

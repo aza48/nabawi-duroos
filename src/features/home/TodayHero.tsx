@@ -1,6 +1,6 @@
 import type { getToday } from "@/server/duroos/queries";
 import type { Locale } from "@/lib/locale";
-import { formatHijriLong } from "@/lib/time/hijri";
+import { formatHijriLong, hijriTextAr } from "@/lib/time/hijri";
 import { addDays } from "@/lib/time/riyadh";
 import { PRAYERS, prayerTimes } from "@/lib/time/prayer";
 import { DayArc, type ArcCounts, type ArcLesson } from "./DayArc";
@@ -88,7 +88,7 @@ export function TodayHero({ today, locale, title }: { today: Today; locale: Loca
               <WeatherChip locale={locale} />
             </div>
             <h1 className="mt-2 font-heading text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl xl:text-7xl">
-              {title ?? (ar ? today.hijri.ar.replace(/^\S+\s/, "") : formatHijriLong(today.date))}
+              {title ?? (ar ? hijriTextAr(formatHijriLong(today.date)) : formatHijriLong(today.date))}
             </h1>
             <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-base text-white/90 md:text-lg">
               <span>{summary}</span>

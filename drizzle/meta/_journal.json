@@ -57,6 +57,13 @@
       "when": 1794138303671,
       "tag": "0007_admin_questions",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1794229045103,
+      "tag": "0008_arabic-content",
+      "breakpoints": true
     }
   ]
 }

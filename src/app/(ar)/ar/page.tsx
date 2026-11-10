@@ -1,6 +1,20 @@
-import { permanentRedirect } from "next/navigation";
+import type { Metadata } from "next";
+import { getDb } from "@/server/db/client";
+import { getToday, listAnnouncements } from "@/server/duroos/queries";
+import { listGuides } from "@/server/content/queries";
+import { getWhatsAppUrl } from "@/server/settings";
+import { HomePage } from "@/features/home/HomePage";
 
-/** The Arabic part of MESH is the duroos section for now. */
-export default function ArabicHome() {
-  permanentRedirect("/ar/duroos");
+export const revalidate = 60;
+export const metadata: Metadata = {
+  title: { absolute: "MESH: ملتقى الطلاب الناطقين بالإنجليزية في المدينة" },
+  description: "دروس المشايخ في المسجد النبوي وقباء لحظة بلحظة، ومواعيد الجامعة الإسلامية، وأدلة الحياة اليومية للطلاب في المدينة المنورة.",
+  alternates: { canonical: "/ar", languages: { en: "/", ar: "/ar", "x-default": "/" } },
+};
+
+/** The Arabic home page: the same page as the English home, in Arabic. */
+export default async function ArabicHome() {
+  const db = await getDb();
+  const [today, guides, updates, whatsappUrl] = await Promise.all([getToday(db), listGuides(db), listAnnouncements(db, { limit: 3 }), getWhatsAppUrl(db)]);
+  return <HomePage today={today} guides={guides} updates={updates} whatsappUrl={whatsappUrl} locale="ar" />;
 }
