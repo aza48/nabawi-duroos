@@ -59,7 +59,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 </tbody></table>
 <ul>
 <li>Dress modestly at all times. Madinah is more conservative than Jeddah or Riyadh.</li>
-<li><strong>Men:</strong> bring a few thobes to start. Every neighbourhood has tailors who make one for 100 to 300 SAR in 2 to 4 days.</li>
+<li><strong>Men:</strong> bring a few thobes to start. Every neighbourhood has tailors who make one for 100 to 300 SAR in 2 to 4 days. The thobe is everyday dress on campus, in class and in exams: the University reminded staff and students of this in September 2025.</li>
 <li><strong>Women:</strong> women wear an abaya outdoors. Bring one or two for the first days. Many more are sold all over the city.</li>
 <li><strong>Shoes:</strong> pick shoes that slip on and off easily. They come off at every masjid, and at the Haram they go on shelves.</li>
 </ul>
@@ -123,6 +123,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <h3>Excusing an absence</h3>
 <ol>
 <li>Get proof for the day. For illness, that is a sick leave issued in Sehhaty (صحتي). The University Medical Center can issue one. A prescription on its own is not an excuse.</li>
+<li>A sick leave from a private hospital or clinic counts as much as one from a government hospital, as long as it is issued in Sehhaty and shows the date. A paper note without the electronic record is not enough.</li>
 <li>In the Academic System, open <strong>Academic</strong>, then <strong>Submit excuses for lecture absences</strong> (تقديم الأعذار عن غياب المحاضرات). Once an absence is recorded, a notice link also appears when you sign in.</li>
 <li>Upload the proof for that course within the window the screen gives you. If your college announces its own excuse form as well, use it too.</li>
 <li>If the course no longer appears on the screen, the window has passed. Send the excuse through Tawasul at <a href="https://helpdesk.iu.edu.sa/">helpdesk.iu.edu.sa</a> to your college.</li>
@@ -135,6 +136,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <li>Your final exam timetable is in the Academic System under <strong>Academic</strong>, then <strong>Final Exams</strong>. It goes up between a week and a month before the exam period. The exam times are set by the University and differ from your class times.</li>
 <li>The timetable marks each course you are barred from as barred (محروم), and each course you have withdrawn from as withdrawn.</li>
 <li>Courses taught in several sections, and the Qur'an courses, usually have one unified final for the whole University.</li>
+<li>Two finals on the same day at the same hour are a clash. Take your exam timetable to the wakeel of your college as soon as it appears: one exam is moved, or sat later with the substitute exams. Two exams on the same day at different times, such as 8:00 and 10:30, are not a clash.</li>
 <li>Go by the Academic System only. Unofficial timetables and wrong dates circulate in the groups every semester.</li>
 <li>Fill in the <strong>course evaluation</strong> as soon as it opens near the end of the semester. Your results stay hidden until you do. See <strong>Where results appear</strong> below.</li>
 <li>For 1448, first semester finals run from 29 November to 14 December 2026, and second semester finals from 25 April to 10 May 2027. If a summer semester runs, its finals start on 27 July 2027. All the dates are in <a href="/guides/university-calendar-1448">The University calendar</a>.</li>
@@ -142,13 +144,14 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <h2>On exam day</h2>
 <ol>
 <li>Be in the hall at least 10 minutes before the start.</li>
+<li>Bring your University card or another official ID, such as your iqama or Visitor ID in Absher. Switch your phone off and leave it where the proctor tells you.</li>
 <li>Finals last between one and three hours.</li>
 <li>No one may enter more than 30 minutes after the start.</li>
 <li>No one may leave during the first 30 minutes.</li>
 <li>Cheating is dealt with under the student conduct rules.</li>
 </ol>
 <h2>How grades work</h2>
-<p>Every course is marked out of 100, and 60 is the pass mark. In most courses about 40 marks come from coursework, such as monthly tests, often taken on Blackboard, and 60 from the final exam. Your teacher gives the split at the start of the course. Your GPA is out of 5.</p>
+<p>Every course is marked out of 100, and 60 is the pass mark. In most courses about 40 marks come from coursework, such as monthly tests, often taken on Blackboard, and 60 from the final exam. Your teacher gives the split at the start of the course. Qur'an courses are split differently: recitation and memorisation tests carry marks through the semester, and the written final, a unified paper of about 20 multiple-choice questions, is out of 40. Your GPA is out of 5.</p>
 <p>The University's distance programmes use a different split, 60 for coursework and 40 for the final: see <a href="/guides/studying-online-at-the-islamic-university">Studying online at the Islamic University</a>.</p>
 <table><thead><tr><th>Grade</th><th>Mark</th><th>Points</th></tr></thead><tbody>
 <tr><td>A+</td><td>95 to 100</td><td>5.00</td></tr>
@@ -188,6 +191,7 @@ export const GUIDES_GAPS_2026_11: SeedGuide[] = [
 <p>If the excuse is refused, the zero stands. Questions about excuses go to student care: <strong>920022042</strong> or <strong>care@iu.edu.sa</strong>.</p>
 <h2>Appealing a mark</h2>
 <p>A final exam is sat once. The only second sitting is the substitute exam for an accepted excuse, and there is no substitute exam for a course you failed. If you believe a final was marked wrongly, you can ask for it to be reviewed.</p>
+<p>Check each mark the day it appears. If you think the teacher entered it wrongly, ask him first: a teacher can correct an entry error himself until the grading period closes. After that, a confirmed grade changes only through the formal review below, and a review can move the mark down as well as up.</p>
 <ol>
 <li>Submit your request to the dean of your college <strong>within 15 days</strong> of the result being announced.</li>
 <li>Give the course name and code, your section, the teacher, the mark you received, and why you believe it is wrong.</li>
@@ -292,7 +296,8 @@ export const FAQS_GAPS_2026_11: SeedFaq[] = [
     slug: "summer-semester",
     category: "university",
     question: "Is there a summer semester at the Islamic University?",
-    answerHtml: `<p>Not every year. A summer semester runs only in the years the University announces one, and none ran in the summer of 2026, although the calendar had listed one. The 1448 calendar again lists a summer semester, from Sunday 6 June 2027 (1 Muharram 1449) with finals from Tuesday 27 July 2027, but it runs only if the University confirms it. Do not plan your graduation around it. There is no summer semester for the distance programmes.</p><p>When a summer semester runs, it works like this:</p><ul><li>The Deanship of Admission and Registration first asks students which courses they want, and opens only the courses enough students ask for. Not every course runs.</li><li>You then register your summer courses in the Academic System, under <strong>Drop and add</strong>, like any semester, and press <strong>Confirm</strong> (تثبيت).</li><li>You can take at most 12 credit hours.</li><li>The absence limit applies in full: past 25% you are barred. Register only if you will attend.</li></ul><p>Students use it to retake a failed course or catch up after an i'tithaar. If you are counting on one, ask your college early and register the course again in the next regular semester if no summer runs. All the dates are in <a href="/guides/university-calendar-1448">The University calendar</a>, and how failed courses work is in <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>`,
+    answerHtml: `<p>Not every year. A summer semester runs only in the years the University announces one, and none ran in the summer of 2026, although the calendar had listed one. The 1448 calendar again lists a summer semester, from Sunday 6 June 2027 (1 Muharram 1449) with finals from Tuesday 27 July 2027, but it runs only if the University confirms it. Do not plan your graduation around it. There is no summer semester for the distance programmes.</p><p>When a summer semester runs, it works like this:</p><ul><li>The Deanship of Admission and Registration first asks students which courses they want, and opens only the courses enough students ask for. Not every course runs.</li><li>You then register your summer courses in the Academic System, under <strong>Drop and add</strong>, like any semester, and press <strong>Confirm</strong> (تثبيت).</li><li>You can take at most 12 credit hours.</li>
+<li>It is compressed: each course meets about twice as many hours a week as in a regular semester, for the same credit hours and the same weight in your GPA. Sections are small, and your own teacher sets the final.</li><li>The absence limit applies in full: past 25% you are barred. Register only if you will attend.</li></ul><p>Students use it to retake a failed course or catch up after an i'tithaar. If you are counting on one, ask your college early and register the course again in the next regular semester if no summer runs. All the dates are in <a href="/guides/university-calendar-1448">The University calendar</a>, and how failed courses work is in <a href="/guides/exams-results-and-attendance">Exams, results and attendance</a>.</p>`,
     tags: ["summer", "semester", "retake", "calendar", "courses"],
   },
   {
@@ -411,7 +416,7 @@ export const FAQS_GAPS_2026_11: SeedFaq[] = [
     slug: "learn-tajweed-in-madinah",
     category: "duroos",
     question: "Where can I learn tajweed in Madinah?",
-    answerHtml: `<p>Start with the Haram. Masjid an-Nabawi runs free Qur'an halaqat for men and women, and correcting recitation (تصحيح التلاوة) is one of their programmes, alongside memorisation and the mutun. Classes meet at set times around the prayers, in person at the masjid, and some are taught remotely.</p><ol><li>Open <a href="https://qm.edu.sa/">qm.edu.sa</a> and choose the men's or the women's section.</li><li>Register at <a href="https://reg.qm.edu.sa/">reg.qm.edu.sa</a> and wait for your placement.</li><li>Attend on the days and times you are given. Teaching is in Arabic.</li></ol><p>See <a href="/programs/nabawi-halaqat">Qur'an and mutun halaqat in the Haram</a>. Several institutes and marakiz in the city also teach the Qur'an and tajweed, some free and some paid: all are on <a href="/programs">Study in Madinah</a>. Sisters: see <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a> and <a href="/guides/sisters-studying-in-madinah">Where sisters can study</a>.</p>`,
+    answerHtml: `<p>Start with the Haram. Masjid an-Nabawi runs free Qur'an halaqat for men and women, and correcting recitation (تصحيح التلاوة) is one of their programmes, alongside memorisation and the mutun. Classes meet at set times around the prayers, in person at the masjid, and some are taught remotely. For those who have memorised, the halaqat also run weekend revision programmes from Dhuhr to Isha, covering the whole Qur'an or 10 or 20 juz, with registration on the same site.</p><ol><li>Open <a href="https://qm.edu.sa/">qm.edu.sa</a> and choose the men's or the women's section.</li><li>Register at <a href="https://reg.qm.edu.sa/">reg.qm.edu.sa</a> and wait for your placement.</li><li>Attend on the days and times you are given. Teaching is in Arabic.</li></ol><p>See <a href="/programs/nabawi-halaqat">Qur'an and mutun halaqat in the Haram</a>. Several institutes and marakiz in the city also teach the Qur'an and tajweed, some free and some paid: all are on <a href="/programs">Study in Madinah</a>. Sisters: see <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a> and <a href="/guides/sisters-studying-in-madinah">Where sisters can study</a>.</p>`,
     tags: ["tajweed", "quran", "recitation", "halaqat", "haram", "qm.edu.sa", "sisters"],
   },
   {

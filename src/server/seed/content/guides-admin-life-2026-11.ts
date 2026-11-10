@@ -51,6 +51,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <h2>Weeks 2 to 5: settling into your courses</h2>
 <ul>
 <li><strong>Course description:</strong> teachers usually hand out the course description (توصيف المقرر) in the first week. Many colleges also post it on their channels, on a QR code in the classroom or on Blackboard. It also shows what each course needs first.</li>
+<li><strong>Your section's group:</strong> most sections have a WhatsApp or Telegram group run by a student class head (رئيس الشعبة), who passes on the teacher's notices, test dates and marks. Ask for it in your first lecture. The Academic System and your University email stay the official record, and a link posted in a group is never a reason to type your password.</li>
 <li><strong>Books:</strong> see <a href="/ask/muqarrarat">What are muqarrarat?</a></li>
 <li><strong>Blackboard:</strong> class materials, monthly tests and announcements. If you cannot sign in, see <a href="/ask/blackboard-login">How do I sign in to Blackboard?</a></li>
 <li><strong>Your study plan</strong> is in the Academic System under <strong>Academic</strong>, then <strong>Student Plan</strong> (خطة الطالب). It shows every course you will take, level by level, and what each needs first.</li>
@@ -122,6 +123,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li><strong>The summer:</strong> the stipend is paid through the summer break as well.</li>
 <li><strong>New students:</strong> nothing is paid in your first month. The first two months come together in the second month.</li>
 <li><strong>No text message?</strong> Alerts do not always arrive. Check the balance at an ATM, or your payments in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
+<li><strong>Your mobile number:</strong> the card's alerts and codes go to the mobile number on your University account, and the number must be in your own name. If you change your number, update it from the user account icon on iu.edu.sa first, and allow a few days for the card to follow.</li>
 </ul>
 <h2>Moving the money to your own account with a wallet app</h2>
 <p>This is the quickest way, and it needs no ATM. The steps below are for Barq. Alinma Pay and urpay accept the card the same way.</p>
@@ -277,7 +279,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <tr><td>Amount</td><td>Up to 2,000 SAR. Your GPA counts towards how much you are given</td></tr>
 <tr><td>Repayment</td><td>200 SAR a month, taken from your stipend</td></tr>
 <tr><td>How often</td><td>Once only</td></tr>
-<tr><td>Not open to</td><td>Students in their final year</td></tr>
+<tr><td>Not open to</td><td>Students in their first semester, who have no GPA yet, and students in their final year</td></tr>
 <tr><td>Time to arrive</td><td>One to two weeks, and up to a month in busy periods</td></tr>
 </tbody></table>
 <ol>
@@ -307,6 +309,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <h2>The first hour</h2>
 <ol>
 <li><strong>Look again calmly</strong> where you last had it: your room, the mat'am, the prayer room, the bus, the car you came in.</li>
+<li><strong>Lost it on campus?</strong> Ask campus security, and Student Relations (العلاقات الطلابية) on the first floor of the Deanship of Student Affairs. Things found on campus are handed in to them, and they contact the owner. If you find something yourself, take it there.</li>
 <li><strong>Block anything that holds money:</strong> freeze your bank card in your banking app, and report the stipend card (below).</li>
 <li><strong>Suspend your SIM</strong> if your phone is gone, by calling your mobile operator, so nobody receives your codes.</li>
 <li><strong>Write down what was lost</strong>, when and where. You need it for the police report.</li>
