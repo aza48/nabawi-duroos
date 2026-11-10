@@ -2,7 +2,7 @@
 
 Seven reviews run in parallel on commit 4c156d6 (typecheck clean, 279 tests passing, every live page 200 in under 1.2 s, strong security headers). Each review's full report is in this folder with file and line evidence and a fix for every item. This file is the ranked plan built from them. Status marks: **todo**, **doing**, **done <commit>**.
 
-Reports: `security.md` (0 critical, 1 high, 8 medium, 10 low), `duroos.md` (0 critical, 4 high, 10 medium, 11 low, test gaps), `frontend.md` (1 critical, 7 high, 16 medium, 12 low). Still to land when their reviewers finish: `content.md`, `crawl.md` (live crawl of 662 pages with screenshots), `admin.md` (phone click-through of the admin), `personas.md` (seven role-played users on the live site).
+Reports: `security.md` (0 critical, 1 high, 8 medium, 10 low), `duroos.md` (0 critical, 4 high, 10 medium, 11 low, test gaps), `frontend.md` (1 critical, 7 high, 16 medium, 12 low). Also here: `personas.md` (seven role-played users on the live site) and the raw rows of the live crawl of 662 pages (`raw/crawl.csv`). The written content, crawl and admin reports never landed; the content audit was done later in `docs/audit/content-2026-11-09.md` and the admin click-through in `docs/audit/admin-phone-2026-11-09.md`.
 
 ## Tier 1: wrong information or broken behaviour a student can hit today
 | # | Item | Report | Size | Status |

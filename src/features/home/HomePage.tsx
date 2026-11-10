@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BellRing, BookOpen, BookOpenText, Compass, GraduationCap, KeyRound, Luggage, Megaphone, Plane, RefreshCw, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BellRing, BookOpenText, Compass, Megaphone, RefreshCw } from "lucide-react";
 import type { getToday, AnnouncementRow } from "@/server/duroos/queries";
 import type { GuideRow } from "@/server/content/queries";
-import type { GuideStage } from "@/server/db/schema";
 import { WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { SectionHeader } from "@/components/ui";
 import { TodayHero } from "./TodayHero";
@@ -14,8 +13,9 @@ import { todaysChanges } from "./rail";
 import { slimLesson } from "@/features/duroos/now-next";
 import { AdminHelp } from "@/components/shell/AdminHelp";
 import { guideText } from "@/lib/arabic-content";
-import { arCount } from "@/lib/arabic-count";
 import type { Locale } from "@/lib/locale";
+import { HomeGuides, type HomeGuide } from "./HomeGuides";
+import { WhoChooser } from "./WhoChooser";
 
 /** The home page's own words; the hero, the duroos cards and the rail carry their own Arabic. */
 const T = {
@@ -25,7 +25,6 @@ const T = {
     groupOnly: "Only for English-speaking Western students.", join: "Join on WhatsApp",
     guides: "Settling in Madinah", guidesSub: "Step-by-step help, from the day your visa arrives to the day you leave.", allGuides: "All guides", guidesHref: "/guides",
     noGuides: "Guides are being written. Until then, ask Admin.",
-    read: (n: number) => `${n} min read`,
     updates: "Latest updates", all: "All", updatesHref: "/duroos/updates", noAnnouncements: "No announcements.", allOn: "No changes announced. Every dars is on as usual.",
     alert: "Get a phone alert when a dars changes", alertHref: "/more#alerts",
   },
@@ -35,7 +34,6 @@ const T = {
     groupOnly: "المجموعة خاصة بالطلاب الغربيين الناطقين بالإنجليزية فقط.", join: "انضم عبر واتساب",
     guides: "الاستقرار في المدينة", guidesSub: "خطوة بخطوة، من يوم وصول تأشيرتك إلى يوم مغادرتك.", allGuides: "كل الأدلة", guidesHref: "/ar/guides",
     noGuides: "الأدلة قيد الكتابة. إلى ذلك الحين راسل الإدارة.",
-    read: (n: number) => `${arCount(n, "minute", { one: "bare" })} للقراءة`,
     updates: "آخر التحديثات", all: "الكل", updatesHref: "/ar/duroos/updates", noAnnouncements: "لا إعلانات.", allOn: "لا تغييرات معلنة، وكل الدروس قائمة كالمعتاد.",
     alert: "نبّهني على جوالي إذا تغيّر درس", alertHref: "/ar/more#alerts",
   },
@@ -43,12 +41,10 @@ const T = {
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
-export const STAGE_ICON: Record<GuideStage, typeof Plane> = {
-  "getting-started": Plane,
-  "getting-settled": KeyRound,
-  study: GraduationCap,
-  family: Users,
-  leaving: Luggage,
+/** Only what a card needs, so the page does not ship every guide's body to the phone; on /ar, its Arabic title and minutes. */
+const homeGuide = (g: GuideRow, locale: Locale): HomeGuide => {
+  const gt = guideText(g, locale);
+  return { slug: g.slug, title: gt.title, stage: g.stage, readingMinutes: gt.readingMinutes, ...(gt.titleInArabic ? { titleInArabic: true } : {}) };
 };
 
 export function HomePage({ today, guides, updates, whatsappUrl, locale = "en" }: { today: Today; guides: GuideRow[]; updates: AnnouncementRow[]; whatsappUrl: string; locale?: Locale }) {
@@ -108,25 +104,15 @@ export function HomePage({ today, guides, updates, whatsappUrl, locale = "en" }:
             <AdminHelp variant="line" locale={locale} className="mt-2 text-sm" />
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
-            {guides.slice(0, 8).map((g) => {
-              const Icon = STAGE_ICON[g.stage] ?? BookOpen;
-              const gt = guideText(g, locale);
-              return (
-                <Link
-                  key={g.slug}
-                  href={`${ar ? "/ar" : ""}/guides/${g.slug}`}
-                  className="lift group flex min-h-36 flex-col rounded-2xl border border-line bg-card p-4 hover:border-primary/50 md:min-h-40 md:p-5"
-                >
-                  <span className="grid size-10 place-items-center rounded-xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-ink">
-                    <Icon size={20} />
-                  </span>
-                  <span className="mt-3 font-heading text-[15px] font-semibold leading-snug md:mt-4 md:text-lg" dir={ar && !gt.titleInArabic ? "ltr" : undefined}>{gt.title}</span>
-                  <span className="mt-auto pt-3 text-xs text-muted">{t.read(gt.readingMinutes)}</span>
-                </Link>
-              );
-            })}
-          </div>
+          <>
+            {/* The chooser has no Arabic labels yet, so the Arabic home page shows the usual eight guides. */}
+            {!ar && (
+              <div className="mb-4 md:mb-5">
+                <WhoChooser />
+              </div>
+            )}
+            <HomeGuides guides={guides.map((g) => homeGuide(g, locale))} locale={locale} />
+          </>
         )}
       </section>
     </>

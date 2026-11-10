@@ -2,27 +2,30 @@
 
 Cleaned up on 9 November 2026, about 17:00 Riyadh, by akheeai. This file is the current state and nothing else. The older session notes are in `docs/archive/HANDOFF-2026-11-07-to-09.md`.
 
-Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG.md` (who owns what, owner decisions, the log) and the latest comments on GitHub issue 13.
+Read order is in `CLAUDE.md` (AI-LOG and issue 13 first). This file holds only where things stand and what is next.
 
 ## 10 November 2026, about 02:45 Riyadh: aiakhee (Lane B, the assistant, AR1)
 **Merged to `main`:** B4 dars locations (#60), B1 First 100 days `/start` (#54), B2 glossary `/glossary` (#56), B6 Quran and hadith links (#57), B5 FAQ short answers (#58), FAQ fixes and 13 new FAQs (#85), the assistant (#106: ruling guard, citations, search fixes, authoritative wording, a 228-question test bank in `tests/assistant-eval.test.ts`).
 
 **Waiting for the owner:**
-- #49 AR1 Arabic columns (`aiakhee/AR1-arabic-columns`, `2dff60c`, current with `main`, 1285 tests pass). Apply the migration first (`docs/AR1-MIGRATION.md`), then merge. It carries `tests/assistant-arabic.test.ts`; the assistant already reads the Arabic fields once they exist.
-- `npm run content:sync` publishes the FAQ short answers, the FAQ fixes and the new FAQs.
+- AR1: #49 and #101 carry the same migration (`drizzle/0008_arabic-content.sql`). #101 goes ahead and #49 is to be closed; see item 1 of "Waiting for the owner" in `docs/AI-LOG.md`.
+- Done 10 Nov, 06:45: the full `npm run content:sync` published the FAQ short answers, fixes and new FAQs.
 
 **Next for aiakhee (or anyone free):**
-1. AR4: the FAQs in Arabic (`questionAr`, `answerHtmlAr`) after #49 merges, in aiakhee's own files (`faqs-aiakhee-2026-11.ts` overlay).
+1. AR4 (the FAQs in Arabic) is already done in #101 (all 74 answers). Do not start it.
 2. The deferred admission and University FAQs: drafts and evidence in `docs/research/faq-deferred-2026-11.md`; recheck against admin's corrected guides first.
 3. Assistant weak answers listed in `docs/research/assistant-eval-2026-11.md` (Haram opening hours, Jawazat location, visa expiry), mostly content gaps for the guide owners.
 4. New guide topics offered to admin on issue 13 (Qur'an circles at the Haram, government offices, utilities in a rented flat, working on an iqama); write them only if admin passes them on.
 
 aiakhee's hourly wake-up is paused (owner, to save tokens); the usage reset wake-up is booked for 03:52 UTC.
 
+## 10 November 2026, about 07:30 Riyadh: Overseer 1 (the Desktop agent, renamed by the owner)
+**Overseer 1 is now the one merger.** When your PR is done, mark it ready and comment `Ready to merge: <name>`; Overseer 1 verifies and merges (rule 4 and the owner decision of 10 Nov in `docs/AI-LOG.md`). Merged today: #115, #118 and #119 (the repo cleanup). Waiting for the owner: publish 13 changed pages (exact command under "Waiting for the owner" in AI-LOG), close #49, delete the 101 merged branches.
+
 ## 10 November 2026, about 06:30 Riyadh: Desktop agent
 **Live:** the 28 guides and 35 FAQs from the research are published (`--only`, all 63 checked on medinahub.org).
 
-**Still not live, merged on `main`:** 10 new guides (Ramadan, volunteering, marriage, Eid al-Adha, janazah, utilities, the Qur'an Printing Complex, naseer's three) and updates to about 30 guides and 40 FAQs. `npm run content:diff` lists them (read only). `npm run content:sync` publishes them; this session's permissions stop it from running a full sync, so the owner runs it. Every live timestamp matches an earlier sync, so no edit made in the admin is overwritten.
+**Everything merged is live (06:45):** the owner asked, and the Desktop agent ran the full `npm run content:sync` from `main`: 68 guides and 74 FAQs, all 142 pages return 200, and `npm run content:diff` shows nothing waiting. A backup of the live rows was taken first.
 
 **Stopping duplicate work (new, read before you start anything):**
 - `npm run overlap`: every open PR, who claimed it, and any guide slug, migration number or file two open PRs share. `npm run overlap -- --find <topic>` before you start a topic. Every PR also gets this as an automatic comment when it overlaps another (`.github/workflows/pr-overlap.yml`, comment only).
@@ -32,19 +35,14 @@ aiakhee's hourly wake-up is paused (owner, to save tokens); the usage reset wake
 
 **#101 (Arabic):** its own session is active and bringing the Arabic in line with `main`; nobody else touches it. When it is ready: the owner applies migration 0008 and runs `npm run content:sync` from that branch, then it merges.
 
-## 9 November 2026, about 20:15 Riyadh: Desktop agent, admin's research taken over for the owner
-The owner asked the Desktop agent to finish the admin agent's research and publish it in guides, skipping the remaining Telegram periods. **Read `docs/research/NEXT-STEPS-admin-research.md` on branch `claude/wonderful-davinci-um61gf` first**: it lists what is done, what was still running and the publishing plan.
-- On that branch: the official PDFs the owner downloaded (sources and text in `docs/research/iu-pdfs-2026-11/`), and findings for the bachelor's scholarship admission guide (63), the postgraduate admission guides 1448 and 1446 (63), the student system guide (55, with a full draft guide `university-student-system`), and the official discounts deck and sports club leaflet (134).
-- Running at handoff: the study plans reader and four gomedine.com readers (`docs/research/gomedine-2026-11/part-1.md` to `part-4.md`). If their files are not on the branch, rerun them as the status file says.
-- Nothing is published yet. Next: the `university-student-system` guide in a new seed file `guides-admin-2026-11.ts`, then the corrections to other lanes' guides (announced on issue 13), then discounts, sports club, study plans and the site research. Production steps (`content:sync`) stay with the owner or an agent the owner allows.
-
 ## 1. Standing instructions from the owner (binding for every agent)
-1. **Stay in touch through GitHub.** On every wake-up run `git fetch --all`, then read the new commits on `main` and every branch, the open pull requests and the latest comments on issue 13. `docs/AI-LOG.md` is the shared file: who owns what, owner decisions, questions waiting for the owner, and a log line for every push. Claim a task on issue 13 before starting it, so no two agents do the same work.
+1. **Stay in touch through GitHub.** On every wake-up run `git fetch --all`, then read the new commits on `main` and every branch, the open pull requests and the latest comments on issue 13. `docs/AI-LOG.md` is the shared file: who owns what, owner decisions, questions waiting for the owner, and a log line for every push. Claim a task before starting it as rules 2 to 4 at the top of `docs/AI-LOG.md` say (`npm run overlap -- --find <topic>`, then a draft PR with a `Working on:` comment and a note on issue 13), so no two agents do the same work.
 2. **Always on, fully hands off.** Every agent keeps itself working without anyone opening a session:
    - a scheduled task that wakes your own session every hour (cloud agents: `create_trigger` bound to their own session, never `create_new_session_on_fire`, because a fresh session gets no repo, no GitHub login and no tools)
    - a one-shot wake-up at your next usage reset, about 5 hours after your window began plus 2 minutes, booked again on each run
 
    A wake-up that arrives while you are working waits until you finish, so runs never overlap. Never schedule work for another agent's session.
+   The Desktop agent is the exception: it has no wake-up and works only when the owner opens it (owner decision of 9 Nov in `docs/AI-LOG.md`).
 3. **Push as soon as work is done** (owner, 9 Nov). Push it and open its PR at once, so the others see it and updates reach the site fast. Post a short note on issue 13 at the same time.
 4. **Always be working while there is usage.** When your lane is done, take spare tasks, review other agents' PRs, or audit the site and add ranked tasks here and in the log.
 5. **No unapproved features.** A new feature the owner has not approved is not built. Ask the owner, or add it under "Waiting for the owner" in AI-LOG.
@@ -58,7 +56,7 @@ The owner asked the Desktop agent to finish the admin agent's research and publi
 
    The teammate checks "Takeovers" first on every wake-up, works on that branch and in those files only, signs commits "<name> for <owner>", and hands back when the owner of the task returns.
 10. **Vercel builds `main` only** (owner, 9 Nov; `vercel.json`). Agent branches build no previews. Check your work locally before pushing: tsc, vitest, `MESH_LOCAL_DB=1 npx next build`, and screenshots at 390 and 1440 px.
-11. **Merging.** The owner told akheeai and web to review and merge PRs that pass review, tests and the build. A PR with a migration waits until the owner has applied the migration in production. Nobody changes the production database for someone else.
+11. **Merging.** Who reviews and merges is set by the owner under "Owner decisions" in `docs/AI-LOG.md`; the review claim rules are at the top of that file. A PR with a migration waits until the owner has applied the migration in production. Nobody changes the production database for someone else.
 
 ## 2. Where things stand (9 November, evening)
 **Live on medinahub.org, or live with the next deploy of `main`:**
@@ -81,62 +79,14 @@ The owner asked the Desktop agent to finish the admin agent's research and publi
 - **Arabic pages** show Arabic articles as soon as AR1 lands and its migration is applied. The page code (AR2) is already on `main`.
 - **Data waiting for a sync:**
   - the mashayikh's current positions for 26 shaykhs, with research in `docs/research/mashayikh-positions-2026-11.md`
-  - four new guides (#23)
 
-**Open PRs:**
-- #49 AR1 (Arabic columns, migration first)
-- #44, #46, #47 and #48 (AR3 translation batches)
-- #45 (Ramadan and summer guides)
-- #23 (four new guides)
-- #41 (a Vercel bot PR for Web Analytics)
+**Open PRs:** run `npm run overlap` (every open PR, who claimed it, and overlaps).
 
-**Only the owner can do these:**
-1. **By 9 December 2026: enter the next Masjid Quba lesson schedule** in Admin > Duroos. The current period ends then, and the Quba duroos drop off the site.
-2. **Add the 13 official Masjid an-Nabawi lessons in Admin > Duroos**, and rename the Fada'il al-Qur'an teacher to Prof. Dr. Badr ibn Nasir al-Badr. The tables are in `docs/research/duroos-official-schedule-2026-11.md`. Then run `npm run shaykh:sync -- --apply` to publish all the positions, including the 12 new teachers.
-3. **Yes or no:** an automatic import of the official schedule; official photos for 14 shaykhs (both in AI-LOG).
-4. Apply the AR1 migration (`docs/AR1-MIGRATION.md` on the AR1 branch), then merge #49.
-5. Publish the data:
-   - `npm run shaykh:sync` (a preview), then `npm run shaykh:sync -- --apply`
-   - `npm run content:sync` after #23, #45 and the AR3 batches merge
-6. Admin > Shaykhs: apply the name and title fixes listed at the top of `MASHAYIKH_POSITIONS` (`src/server/seed/content/mashayikh.ts`).
-7. The Ramadan facts in `RAMADAN_SETTINGS` (`src/features/home/ramadan.ts`), before 8 February 2027.
-8. Vercel environment:
-   - `DATABASE_CA`, so database TLS can be verified
-   - a free AI key for the assistant (`GROQ_API_KEY` or `ASSISTANT_GEMINI_API_KEY`), so it stops sharing the watcher's quota
-9. Say yes or no to:
-   - PR checks on GitHub (C7)
-   - a weekly crawl and accessibility check
-   - "Remove passkey" in Admin
-   - a two-column admin on wide screens
-   - the desktop agent's wake-up
-   - Vercel Web Analytics (#41)
+**Only the owner can do these:** the list is "Waiting for the owner" in `docs/AI-LOG.md`. One item not yet there: add the 13 official Masjid an-Nabawi lessons in Admin > Duroos and rename the Fada'il al-Qur'an teacher to Prof. Dr. Badr ibn Nasir al-Badr (tables in `docs/research/duroos-official-schedule-2026-11.md`), then `npm run shaykh:sync -- --apply`.
 
 ## 3. Open work by agent
-The live list is in AI-LOG (agent table) and the latest summary on issue 13. In short:
-- **akheeai** (Lane A, duroos and shaykh data): **out for about 4 days from 9 Nov (weekly limit).** Its unfinished items are under "Takeovers" in AI-LOG, for web or naseer: the University news scan, two shaykhs still open, and Ruhayli's Asr sitting.
-  - **Done 9 Nov:**
-    - the official schedule and its 13 lessons (#80, #88)
-    - every shaykh's current position (#93, #98)
-    - the slug fix (#90)
-    - the Quba deadline (#91)
-    - the calendar check (#99)
-    - eight chats researched
-- **aiakhee** (Lane B): AR1 (#49), then AR4 (Arabic FAQs). B1 First 100 days, B2 glossary, B4 dars locations, B5 short answers and B6 Quran and hadith links are pushed on their own `aiakhee/B*` branches, with no PRs yet.
-- **akhiai** (Lane E): AR3 for the remaining guides (five per PR), E3 sisters at Masjid an-Nabawi, and E4 keeping guides fresh.
-- **web** (Lanes C and D; lead reviewer while akheeai is out; near its weekly limit, back 11 Nov 05:00 UTC):
-  - D3 "Who are you?": WIP on `web/D3-who-are-you`, handed to naseer (Takeovers)
-  - C3 share button, C1 offline, S1 to S3 (analytics)
-  - the Arabic font preload through `next/font` is dropped: this Next version gives both declarations the family name "Alexandria", so Arabic pages download it twice and English pages preload it too
-- **admin** (the owner's own agent, added 9 Nov; takes orders from the owner only):
-  - distilling the IU students' Telegram forum (478k messages, Dec 2015 to 9 Nov 2026) into `docs/research/telegram-iu-2026-11/`, one findings file per period, then a `SYNTHESIS.md` with the latest state per topic and the conflicts with MESH
-  - a full crawl of gomedine.com, rewritten in MESH's words, in `docs/research/gomedine-2026-11/`
-  - new guides from both, and a guide ideas list for the owner in `docs/research/GUIDE-IDEAS-admin-2026-11.md`
-  - status 10 Nov: every Telegram period and every gomedine.com page is read. 14 new guides and about 40 corrections or additions are published from this research (see AI-LOG). What is left needs the owner's answers: the last section of `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`
-  - other agents may read these files as research, like `docs/research/chats-2026-11/`
-- **Desktop agent:** release checks after big merges (`docs/audit/release-checks/`); search ranking; production database steps when the owner asks.
-- **naiifos** (a person, not always on; work around them when possible): the duroos cards. Optional: the report link and the plural fix in the cards.
-
-Plan and buddies: `docs/WORKPLAN-2026-11-09.md`. Start prompts for each agent: `docs/agents/PROMPTS-2026-11-09.md`. All 314 researched ideas: `docs/IDEAS-2026-11-09.md`.
+Who owns what, what each agent is doing now, and handed-over work: "Who owns what" and "Takeovers" in `docs/AI-LOG.md`, plus the latest comments on issue 13. Task specs for the lanes: `docs/WORKPLAN-2026-11-09.md`. All 314 researched ideas: `docs/IDEAS-2026-11-09.md`.
+- **admin** (10 Nov): every Telegram period and every gomedine.com page is read, and the guides and corrections from them are published. What is left needs the owner's answers: the last section of `docs/research/admin-publish-2026-11/OWNER-QUESTIONS.md`. Other agents may read `docs/research/telegram-iu-2026-11/` and `docs/research/gomedine-2026-11/` as research.
 
 ## 4. What MESH is
 medinahub.org is run by students, for English-speaking students and families in Madinah. It covers:
@@ -187,7 +137,7 @@ It is in English, with Arabic under `/ar`, and it promotes the MESH WhatsApp gro
   - Drizzle ORM; PGlite in memory for dev, tests and local builds
   - Better Auth: invites, roles, passkey or TOTP second factor, audit log with undo
   - MiniSearch with an Arabic and transliteration normaliser
-  - Vitest (about 490 tests) and Playwright for screenshots
+  - Vitest (over 1,200 tests) and Playwright for screenshots
 - **Commands:**
   - `npm run dev -- -p 3100`: dev server
   - `npx tsc --noEmit` and `npx vitest run`: run both before every push
@@ -237,6 +187,7 @@ It is in English, with Arabic under `/ar`, and it promotes the MESH WhatsApp gro
   - set `WATCHPACK_POLLING=true` for the dev server, because OneDrive breaks file watching
   - write `node -e` scripts to files, because Git Bash breaks the quotes
   - remotes `mine` (medinahub) and `origin` (mirror)
+- The Arabic font preload through `next/font` is dropped: this Next version gives both declarations the family name "Alexandria", so Arabic pages download it twice and English pages preload it too.
 
 ## 10. Open questions for the owner
 The answers let MESH state these with authority. Earlier rounds and their decisions are in `docs/archive/IDEAS-FOR-OWNER-2026-11-08.md`.

@@ -7,4 +7,6 @@ export const MORE_GROUPS: string[][] = [
   ["hifz", "hifdh", "hifd", "tahfeez", "tahfiz", "tahfidh", "memorise", "memorize", "memorisation", "memorization", "halaqat", "حفظ", "تحفيظ"],
   ["tajweed", "tajwid", "tajwed", "recitation", "تجويد", "تلاوه"],
   ["dependents", "dependent", "dependant", "dependants", "family visa", "family visit visa", "wife", "husband", "spouse", "مرافق", "مرافقين"],
+  ["exit and re-entry", "exit reentry", "re-entry", "reentry", "خروج وعوده", "الخروج والعوده", "خروج وعودة"],
+  ["student housing", "university housing", "halls", "residence halls", "dorm", "dorms", "سكن الطلاب", "سكن طلابي", "السكن الجامعي", "سكن الجامعه"],
 ];

@@ -33,6 +33,7 @@ export function contextBlock(passages: Chunk[]): string {
   return passages.map((p, i) => `[${i + 1}] ${p.title}${p.section ? `, ${p.section}` : ""}\n${p.text}`).join("\n\n");
 }
 
-export function userTurn(question: string, passages: Chunk[]): string {
-  return `Passages:\n\n${contextBlock(passages)}\n\nQuestion: ${question}`;
+/** `reading`: the page the person has open, when the question is about it ("how much does it cost?"). */
+export function userTurn(question: string, passages: Chunk[], reading?: string): string {
+  return `Passages:\n\n${contextBlock(passages)}\n\n${reading ? `The person is reading: ${reading}\n` : ""}Question: ${question}`;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,6 +21,11 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const opener = useRef<HTMLButtonElement>(null);
   const [opened, setOpened] = useState(false);
+  const [request, setRequest] = useState<{ q: string; n: number } | null>(null);
+  const seq = useRef(0);
+  const onAssistantPage = /^\/(ar\/)?assistant$/.test(path);
+  // Once asked, a question from the search box is done: the panel opening again later must not ask it again.
+  const clearRequest = useCallback(() => setRequest(null), []);
 
   useEffect(() => {
     const d = dialog.current;
@@ -28,9 +33,31 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
     const onClose = () => opener.current?.focus();
     d.addEventListener("close", onClose);
     return () => d.removeEventListener("close", onClose);
-  }, []);
+  }, [onAssistantPage]);
 
-  if (/^\/(ar\/)?assistant$/.test(path)) return null;
+  // "Ask the MESHaykh" from the search box: answered here, on the page the person is on.
+  useEffect(() => {
+    if (onAssistantPage) return;
+    const onAsk = (e: Event) => {
+      const q = (e as CustomEvent<{ q?: string }>).detail?.q?.trim();
+      if (!q) return;
+      e.preventDefault();
+      setOpened(true);
+      // A fresh number each time, even after the last one was cleared, so the panel always sees a new question.
+      seq.current += 1;
+      setRequest({ q, n: seq.current });
+      if (!dialog.current?.open) dialog.current?.showModal();
+    };
+    window.addEventListener("mesh:ask", onAsk);
+    return () => window.removeEventListener("mesh:ask", onAsk);
+  }, [onAssistantPage]);
+
+  // A link followed from the chat opens its page: the dialog gets out of the way.
+  useEffect(() => {
+    if (dialog.current?.open) dialog.current.close();
+  }, [path]);
+
+  if (onAssistantPage) return null;
 
   const open = () => {
     setOpened(true);
@@ -72,7 +99,7 @@ export function AssistantLauncher({ locale = "en" }: { locale?: Locale }) {
               </button>
             </span>
           </div>
-          <div className="min-h-0 flex-1">{opened && <AssistantPanel locale={locale} autoFocus compact />}</div>
+          <div className="min-h-0 flex-1">{opened && <AssistantPanel locale={locale} autoFocus compact request={request} page={path} onNavigate={() => dialog.current?.close()} onRequestHandled={clearRequest} />}</div>
         </div>
       </dialog>
     </>

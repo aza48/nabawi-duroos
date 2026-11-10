@@ -4,7 +4,7 @@ import type { Locale } from "@/lib/locale";
 import { AssistantPanel } from "./AssistantPanel";
 import { MeshaykhName } from "./MeshaykhName";
 
-export function AssistantPage({ locale = "en" }: { locale?: Locale }) {
+export function AssistantPage({ locale = "en", question }: { locale?: Locale; question?: string }) {
   const ar = locale === "ar";
   return (
     <>
@@ -14,7 +14,7 @@ export function AssistantPage({ locale = "en" }: { locale?: Locale }) {
       />
       <div className="shell mt-8 md:mt-12">
         <div className="mx-auto flex min-h-[60vh] max-w-3xl flex-col rounded-3xl border border-line bg-bg p-4 md:p-6">
-          <AssistantPanel locale={locale} />
+          <AssistantPanel locale={locale} initialQuestion={question} />
         </div>
       </div>
     </>

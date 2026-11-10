@@ -51,3 +51,7 @@ Fields: `slug`, `shaykh`, `masjid`, `bookEn`, `bookAr`, `bookAuthorEn`, `bookAut
 ## Other endpoints
 
 `GET /guides`, `GET /faqs`, `GET /search`, `GET /weather`, `GET /settings`: used by the site itself. `POST /push/subscribe` and `POST /push/unsubscribe` take a browser push subscription plus topics (`all`, `daily`, `shaykh:<slug>`); `POST /track` is the site's own anonymous analytics. Both write endpoints are rate limited per address.
+
+`GET /search/deep?q=...&locale=en|ar`: the search box's second pass over the full text of every guide and answer. `data.hits` lists sections (`title`, `titleAr`, `section`, `snippet`, `url` with the section's anchor, `kind`), and `data.instant` is a reply to the search itself when there is one (`title`, `text`, `url`, `kind`: `live` for adhan times, the Hijri date or tonight's duroos, `answer` for a question MESH has answered). Rate limited per address.
+
+`POST /assistant` (Ask the MESHaykh) takes `{ question, history?, locale?, page? }`; `page` is the path the person is reading, so a short question such as "how much does it cost?" is answered about that page.

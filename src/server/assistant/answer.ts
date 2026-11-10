@@ -30,7 +30,8 @@ export { HELP_LINE, isGreeting, isRulingQuestion } from "./guard";
  */
 
 export type Turn = { role: "user" | "assistant"; text: string };
-export type AskInput = { question: string; history?: Turn[]; locale: "en" | "ar" };
+/** `page` is the path the person is reading ("/guides/drivers-license"), so "how much does it cost?" is about that page. */
+export type AskInput = { question: string; history?: Turn[]; locale: "en" | "ar"; page?: string };
 export type Source = { title: string; section?: string; url: string };
 export type AskResult = {
   answer: string;
@@ -137,6 +138,17 @@ export function sameQuestion(q: string, faqQuestion: string): boolean {
 const pageKey = (url: string) => url.replace(/^\/ar(?=\/)/, "").split("#")[0];
 const page = (url: string) => url.split("#")[0];
 
+/** "This", "it", "here", "هذا": a question about what the person is reading. */
+const POINTS_AT_PAGE = /\b(this|it|that|here|these|those)\b|(^|\s)(هذا|هذه|ذلك|هنا|هذي)(\s|$)/;
+
+/** The first passage of the guide, answer, programme, lesson or profile at `path`, if it is one. */
+function pageChunk(chunks: Chunk[], path: string): Chunk | undefined {
+  const key = pageKey(path);
+  if (!/^\/(guides|ask|programs|duroos\/lesson|duroos\/shaykh)\//.test(key)) return undefined;
+  // A glossary word links to the page that explains it, but it is not that page.
+  return chunks.find((c) => c.lang !== "ar" && c.kind !== "term" && pageKey(c.url) === key);
+}
+
 /** A source as shown under the answer: an Arabic answer shows the page's Arabic title when it has one. */
 const sourceOf = (c: Chunk, lang: "en" | "ar"): Source => ({ title: lang === "ar" && c.titleAr ? c.titleAr : c.title, ...(c.section ? { section: c.section } : {}), url: c.url });
 
@@ -167,6 +179,31 @@ function darsRetriever(chunks: Chunk[]): Retriever {
 /** Arabic passages by page, built once per knowledge list. */
 const arabicPages = new WeakMap<Chunk[], Map<string, Chunk[]>>();
 
+/** Each English page's sections in order (by anchor; "" is the summary and the text before the first heading). */
+const englishSections = new WeakMap<Chunk[], Map<string, string[]>>();
+const anchorOf = (url: string) => url.split("#")[1] ?? "";
+const inOrder = (list: Chunk[]) => [...new Set(list.map((c) => anchorOf(c.url)))];
+
+/**
+ * The Arabic passages under the same heading as an English passage. A translation keeps the English
+ * headings in the same order (tests/arabic-complete.test.ts), so the nth section matches the nth; when
+ * the counts differ the pages do not line up and nothing is returned.
+ */
+function sameSection(p: Passage, twins: Chunk[], chunks: Chunk[]): Chunk[] {
+  let byPage = englishSections.get(chunks);
+  if (!byPage) {
+    const lists = new Map<string, Chunk[]>();
+    for (const c of chunks) if (c.lang !== "ar") lists.set(pageKey(c.url), [...(lists.get(pageKey(c.url)) ?? []), c]);
+    byPage = new Map([...lists].map(([k, v]) => [k, inOrder(v)]));
+    englishSections.set(chunks, byPage);
+  }
+  const en = byPage.get(pageKey(p.url)) ?? [];
+  const ar = inOrder(twins);
+  const k = en.indexOf(anchorOf(p.url));
+  if (k < 0 || en.length !== ar.length) return [];
+  return twins.filter((c) => anchorOf(c.url) === ar[k]);
+}
+
 /**
  * Each English passage of a translated page swapped for the Arabic passage of that page that answers the
  * question, if one does; Arabic passages that answer go first.
@@ -180,24 +217,27 @@ function inArabicWherePossible(found: Passage[], chunks: Chunk[], question: stri
   }
   if (!pages.size) return found;
   const terms = keyTerms(question);
+  const pick = (cands: Chunk[]) => cands.map((c) => ({ c, n: termHits(terms, `${c.title} ${c.section ?? ""} ${c.text}`) })).sort((x, y) => y.n - x.n)[0];
   const seen = new Set<string>();
   const out: Passage[] = [];
   for (const p of found) {
     let q: Passage = p;
-    const twins = p.lang === "ar" ? undefined : pages.get(pageKey(p.url));
+    // A glossary meaning is not a page: it keeps its place, not swapped for the linked guide's Arabic passage.
+    const twins = p.lang === "ar" || p.kind === "term" ? undefined : pages.get(pageKey(p.url));
     if (twins) {
-      // The Arabic of the same section first (same headings in the same order), then any Arabic passage of the page.
-      const same = p.part === undefined ? [] : twins.filter((c) => c.part === p.part);
-      const pool = same.some((c) => answers(question, c)) ? same : twins;
-      const best = pool.map((c) => ({ c, n: termHits(terms, `${c.title} ${c.section ?? ""} ${c.text}`) })).sort((x, y) => y.n - x.n)[0];
+      // The same section in Arabic first (an English "Exit and re-entry visa" passage becomes «تأشيرة الخروج والعودة»,
+      // not the summary that names every topic), then the page's best Arabic passage.
+      const same = sameSection(p, twins, chunks);
+      const near = same.length ? pick(same) : undefined;
+      const best = near && answers(question, near.c) ? near : pick(twins);
       if (best && answers(question, best.c)) q = { ...best.c, score: p.score, cover: p.cover };
     }
     if (seen.has(q.id)) continue;
     seen.add(q.id);
     out.push(q);
   }
-  // An answer in the reader's language comes first, except after a calendar date the search put first for a "when"
-  // question: "متى الاختبارات النهائية" is answered by the date, not by a page that also mentions the exams.
+  // An answer in the reader's language comes first, except the calendar line a "when" question was ranked
+  // to (it has no Arabic passage, and "متى الاختبارات النهائية" wants the date, not the page about exams).
   const lead = out[0]?.kind === "date" ? out.slice(0, 1) : [];
   const rest = out.slice(lead.length);
   const answering = (p: Passage) => p.lang === "ar" && answers(question, p);
@@ -314,7 +354,7 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   const users = history.filter((t) => t.role === "user").map((t) => t.text);
   const earlier = users.slice(-2).join(" ");
   const short = keyTerms(q).length < 3;
-  const searchText = short && earlier ? `${earlier} ${q}` : q;
+  let searchText = short && earlier ? `${earlier} ${q}` : q;
   // A short follow-up to a ruling question ("and nasheeds?", "وفي السفر؟") is a ruling question too,
   // unless it asks when or where.
   const prev = users[users.length - 1];
@@ -322,19 +362,33 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
   const today = riyadhDateIso(now);
   const live = detectLive(searchText, today);
   const cacheable = !live.duroos && !live.prayerTimes && !live.date && history.length === 0;
-  const key = `${lang}|${normalize(q)}`;
+  // A short first question asked on a page may be about that page, so its answer is kept for that page only.
+  const onPageKey = short && !earlier && input.page ? `|${pageKey(input.page)}` : "";
+  const key = `${lang}|${normalize(q)}${onPageKey}`;
   const hit = cacheable ? cache.get(key) : undefined;
   if (hit && now.getTime() - hit.at < CACHE_MS) return hit.result;
 
   const chunks = opts.knowledge ?? (await getKnowledge(db));
   let found = retrieverFor(chunks, lang)(searchText, 6);
+  // "How much does it cost?" on the driving licence guide: a short first question that points at the page ("this",
+  // "it") or that nothing answers on its own is searched with the title of the page the person is reading.
+  const reading = onPageKey ? pageChunk(chunks, input.page!) : undefined;
+  if (reading && (POINTS_AT_PAGE.test(normalize(q)) || !found.slice(0, 3).some((p) => answersWell(searchText, p)))) {
+    // A guide's title before the colon names it ("Driving in Madinah"); the list after it would steer the search
+    // to one subtopic ("renting a car"). Passages of the page itself come first.
+    searchText = `${reading.kind === "guide" ? reading.title.split(":")[0] : reading.title} ${q}`;
+    const all = retrieverFor(chunks, lang)(searchText, 6);
+    // The page's own sections, ranked by the question alone: "how much does it cost?" is its "What it costs".
+    const own = createRetriever(chunks.filter((c) => c.lang !== "ar" && c.kind !== "term" && pageKey(c.url) === pageKey(reading.url)))(q, 3, 3);
+    found = [...new Map([...own.slice(0, 3), ...all].map((p) => [p.id, p])).values()].slice(0, 6);
+  }
   // The synonyms find the right page, often through its English text; when that page is translated,
   // its Arabic passage that answers the question takes the English one's place.
   if (ar) found = inArabicWherePossible(found, chunks, searchText);
   // A page found in Arabic is not shown again in English.
   if (ar) {
     const inArabic = new Set(found.filter((p) => p.lang === "ar").map((p) => pageKey(p.url)));
-    found = found.filter((p) => p.lang === "ar" || !inArabic.has(pageKey(p.url)));
+    found = found.filter((p) => p.lang === "ar" || p.kind === "term" || !inArabic.has(pageKey(p.url)));
   }
   // "Where can I buy a fridge": a passage answers only where it says where the thing is sold, not where it mentions selling one.
   if (BUY_Q.test(normalize(q))) found = found.filter((p) => !p.rareTerm || BUY_WORD.test(p.rareTerm) || sentences(p.text).some((x) => termHits([p.rareTerm!], x) > 0 && SOLD_HERE.test(x) && (!/\bsell(s|ing)?\b/i.test(x) || /\b(buy|shops?)\b/i.test(x))));
@@ -383,7 +437,7 @@ export async function askMesh(db: Db, input: AskInput, opts: AskOptions = {}): P
     const messages: ChatMessage[] = [
       { role: "system", content: systemPrompt(lang) },
       ...history.map((t) => ({ role: t.role, content: t.text }) as ChatMessage),
-      { role: "user", content: userTurn(q, context) },
+      { role: "user", content: userTurn(q, context, reading && searchText !== q ? reading.title : undefined) },
     ];
     const written = await writer(messages).catch(() => null);
     const reply = written ? parseReply(written.text) : null;

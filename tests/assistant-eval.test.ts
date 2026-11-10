@@ -18,6 +18,8 @@ import { askMesh, resetAnswerCache, type AskResult } from "@/server/assistant/an
  *  greet: the fixed greeting reply
  *  impartial: the options side by side from a neutral page, never one place recommended
  * A content gap stays a help-line answer until the page is written; then its expectation moves to src.
+ * An Arabic question answered from a translated page cites the Arabic section, whose anchor is Arabic
+ * ("#تأشيرة-الخروج-والعودة"), so its expectation accepts both anchors, and riyal figures read "ريال".
  */
 
 type Expect =
@@ -300,7 +302,6 @@ const QUALITY: Record<string, { first?: RegExp; must?: RegExp; not?: RegExp }> =
   "what do I need to do before I leave madinah for good": { first: /leaving-steps|graduate-procedures/ },
   "is shaykh abdurrazzaq al-badr teaching today": { not: /Muqbil/ },
   "دروس الشيخ عبدالرزاق البدر": { first: /abdurrazzaq|abadr/, not: /^net |Muqbil/m },
-  // Answered from the Arabic page once the guide is translated: its figures in ريال.
   "كم تكلفة المعيشة في المدينة": { must: /SAR|Single person|ريال/ },
   "which arabic institute is best for sisters": { must: /(Markaz|Academiyah|Dar at-Tawheed|Fusha)[\s\S]*(Markaz|Academiyah|Dar at-Tawheed|Fusha)/ },
   "when is ramadan": { first: /university-calendar-1448/, must: /Ramadan/ },

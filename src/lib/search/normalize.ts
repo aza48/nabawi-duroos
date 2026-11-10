@@ -90,9 +90,26 @@ const GROUPS: string[][] = [
   ["fajr", "فجر"], ["dhuhr", "zuhr", "duhr", "ظهر"], ["asr", "عصر"], ["maghrib", "مغرب"], ["isha", "ishaa", "عشاء"],
 ];
 
+/** Arabic words carry the article and a joined "و", "ب", "ف", "ك" or "ل" in front ("والعودة", "بالجامعة", "للطلاب"). */
+const AR_LEAD = /^(?:[وفبك]?ال|لل)/;
+
+/**
+ * An Arabic word without its article and joined particle ("الرحيلي" is "رحيلي", "والعودة" is "عوده"), so a
+ * search for either form finds the other. Other words come back as they are.
+ */
+export function arabicBare(w: string): string {
+  const m = AR_LEAD.exec(w);
+  return m && w.length - m[0].length >= 3 && /[\u0600-\u06ff]/.test(w) ? w.slice(m[0].length) : w;
+}
+
 const LOOKUP = new Map<string, string[]>();
 for (const g of GROUPS) for (const w of g) LOOKUP.set(normalize(w), g.map(normalize));
 for (const g of MORE_GROUPS) for (const w of g) LOOKUP.set(normalize(w), [...new Set([...(LOOKUP.get(normalize(w)) ?? []), ...g.map(normalize)])]);
+
+/** Every word the synonym lists know, normalised: the vocabulary a misspelt word is corrected to. */
+export function knownWords(): string[] {
+  return [...LOOKUP.keys()].filter((w) => !w.includes(" "));
+}
 
 /** The query plus every spelling and synonym it implies, normalised. */
 export function expandQuery(q: string): string {

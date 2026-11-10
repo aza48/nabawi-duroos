@@ -1,47 +1,42 @@
-import { Announcement, Localized, PendingPost, TelegramSource } from "./types";
+import { Announcement, Localized } from "./types";
 
 const L = (ar: string, en: string): Localized => ({ ar, en });
 
-export const TELEGRAM_SOURCES: TelegramSource[] = [
-  {
-    handle: "@drosalmadina",
-    name: L("دروس المدينة النبوية", "Duroos al-Madinah an-Nabawiyyah"),
-    previewUrl: "https://t.me/s/drosalmadina",
-    note: L("المصدر الرئيسي للتحديثات والإعلانات", "Main source of updates and announcements"),
-  },
-  {
-    handle: "@khizana_62",
-    name: L("خزانة العلم", "Khizanat al-'Ilm"),
-    previewUrl: "https://t.me/s/khizana_62",
-    note: L("ينشر أغلب الدروس والبثوث المباشرة", "Posts most of the duroos and live streams"),
-  },
-  {
-    handle: "@sohaymi",
-    name: L("فوائد الشيخ د. صالح السحيمي", "Beneficial lessons of Dr. Salih al-Suhaymi"),
-    previewUrl: "https://t.me/s/sohaymi",
-    note: L("قناة الشيخ صالح السحيمي الرسمية — المصدر المعتمد لإعلاناته", "Shaykh Salih al-Suhaymi's official channel — authoritative source for his announcements"),
-  },
-  {
-    handle: "@dr_maherkhujah",
-    name: L("قناة أ. د. ماهر خوجة", "Prof. Dr. Mahir Khujah's channel"),
-    previewUrl: "https://t.me/s/dr_maherkhujah",
-    note: L("دروس الشيخ ماهر خوجة بالجامعة الإسلامية", "Shaykh Mahir Khujah's lessons at the Islamic University"),
-  },
-  {
-    handle: "@Sulalruhaily",
-    name: L("قناة الشيخ سليمان الرحيلي", "Shaykh Sulayman al-Ruhayli's channel"),
-    previewUrl: "https://t.me/s/Sulalruhaily",
-    note: L("إعلانات ودروس الشيخ سليمان الرحيلي", "Announcements and lessons of Shaykh Sulayman al-Ruhayli"),
-  },
-  {
-    handle: "@twijri",
-    name: L("قناة أ. د. علي بن غازي التويجري", "Prof. Dr. Ali al-Tuwaijri's channel"),
-    previewUrl: "https://t.me/s/twijri",
-    note: L("إعلانات ودروس الشيخ علي التويجري", "Announcements and lessons of Shaykh Ali al-Tuwaijri"),
-  },
-];
-
 export const ANNOUNCEMENTS: Announcement[] = [
+  {
+    id: "maher-duroos-paused-until-next-semester",
+    shaykh: L("أ. د. ماهر بن عبد الرحيم خوجة", "Prof. Dr. Mahir ibn Abdurrahim Khujah"),
+    text: L(
+      "أعلن الشيخ أ. د. ماهر بن عبد الرحيم خوجة في درسه الأخير [الاثنين ٢٩/٥/١٤٤٨] أن دروسه الأسبوعية يوم الاثنين (بعد صلاة العشاء، في مسجد محمد بن إبراهيم بالجامعة الإسلامية) ستتوقف حتى بداية الفصل الدراسي القادم بسبب الاختبارات، وسيُعلن عن الموعد الدقيق للدرس القادم بإذن الله في مجموعة التلغرام، وسيبدأ عند الاستئناف شرح «العقيدة الواسطية» بإذن الله",
+      "Shaykh Prof. Dr. Mahir ibn Abdurrahim Khujah announced in his last lesson [Monday 29/5/1448] that his weekly Monday lessons (after Isha prayer, at Masjid Muhammad ibn Ibrahim, Islamic University) are paused until the beginning of the next semester because of the exams. The exact date of the next lesson will be announced, in sha Allah, in the Telegram group, and when he resumes he will begin the explanation of «Al-Aqidah al-Wasitiyyah», in sha Allah"
+    ),
+    postedHijri: L("٣٠/٥/١٤٤٨هـ", "30/5/1448 AH"),
+    postedGregorian: L("١٠ نوفمبر ٢٠٢٦", "10 November 2026"),
+    source: "@admin",
+    sourceName: L("إدارة الموقع", "Site admin"),
+    type: "info",
+    expired: false,
+    masjidId: "ibrahim",
+    image: "/images/flyer-ibrahim-maher-duroos-series.jpg",
+  },
+  {
+    id: "lecture-ibrahim-ruhayli-14480601",
+    shaykh: L("أ. د. إبراهيم بن عامر الرحيلي", "Prof. Dr. Ibrahim ibn Amer al-Ruhayli"),
+    text: L(
+      "محاضرة بعنوان: آداب الجوال وأحكامه — في جامع الإمام محمد بن إبراهيم (الجامعة الإسلامية)، بعد صلاة المغرب، يوم [الأربعاء ١/٦/١٤٤٨]",
+      "A lecture titled: Etiquettes and Rulings of the Mobile Phone — at Jami' al-Imam Muhammad ibn Ibrahim (Islamic University), after Maghrib prayer, on [Wednesday 1/6/1448]"
+    ),
+    postedHijri: L("٢٩/٥/١٤٤٨هـ", "29/5/1448 AH"),
+    postedGregorian: L("٩ نوفمبر ٢٠٢٦", "9 November 2026"),
+    source: "@khizana_62",
+    sourceName: L("قناة خزانة العلم", "Khazanat al-Ilm channel"),
+    type: "lecture",
+    expired: false,
+    eventDate: "2026-11-11",
+    masjidId: "ibrahim",
+    image: "/images/flyer-ibrahim-ruhayli-lecture-14480601.jpg",
+    channelNote: L("من @khizana_62 (المنشور 11150)", "From @khizana_62 (post 11150)"),
+  },
   {
     id: "abadr-tawhid-cancelled-18-5-1448",
     shaykh: L("أ. د. عبد الرزاق بن عبد المحسن البدر", "Prof. Dr. Abdurrazzaq ibn Abdulmuhsin al-Badr"),
@@ -310,29 +305,5 @@ export const ANNOUNCEMENTS: Announcement[] = [
     sourceName: L("خزانة العلم", "Khizanat al-'Ilm"),
     type: "info",
     expired: true,
-  },
-];
-
-export const PENDING_POSTS: PendingPost[] = [
-  {
-    id: "p1",
-    source: "@khizana_62",
-    sourceName: L("خزانة العلم", "Khizanat al-'Ilm"),
-    preview: L("المجلس (٥) سلسلة أشراط الساعة من الكتاب والسنة — الشيخ د. هيثم بن محمد جميل سرحان — مسجد قباء", "Majlis (5) of the Ashrat as-Sa'ah series — Dr. Haytham ibn Muhammad Jamil Sarhan — Masjid Quba"),
-    receivedAt: L("قبل ساعات", "Hours ago"),
-  },
-  {
-    id: "p2",
-    source: "@khizana_62",
-    sourceName: L("خزانة العلم", "Khizanat al-'Ilm"),
-    preview: L("المجلس (٢٢) شرح الفتوى الحموية — الشيخ أ. د. عبد القادر بن محمد عطا صوفي — مسجد قباء", "Majlis (22) of the Hamawiyyah explanation — Prof. Dr. Abdulqadir ibn Muhammad Ata Sufi — Masjid Quba"),
-    receivedAt: L("قبل يوم", "A day ago"),
-  },
-  {
-    id: "p3",
-    source: "@khizana_62",
-    sourceName: L("خزانة العلم", "Khizanat al-'Ilm"),
-    preview: L("المجلس (٧) شرح الأرجوزة المئية في ذكر حال أشرف البرية — الشيخ أ. د. عارف بن مزيد السحيمي — مسجد قباء", "Majlis (7) of the Arjuzah al-Mi'iyyah commentary — Prof. Dr. Arif ibn Mazid al-Suhaymi — Masjid Quba"),
-    receivedAt: L("قبل يومين", "Two days ago"),
   },
 ];

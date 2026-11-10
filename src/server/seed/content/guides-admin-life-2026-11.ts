@@ -72,7 +72,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li><strong>Nothing is paid in your first month.</strong> In the second month the first two months arrive together. In 1448 new students were paid on 19 and 20 September 2026.</li>
 <li>From then on the stipend usually lands between the 21st and the 25th of each month, and early before National Day, Founding Day and Eid.</li>
 <li>Bring enough money from home to cover the first two months.</li>
-<li>Moving the money to your own account, and fixing card problems, is in <a href="/guides/getting-your-stipend-off-the-university-card">Your University stipend card</a>. The allowances on top of the stipend are in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
+<li>Taking the money out at the ATM, and fixing card problems, is in <a href="/guides/getting-your-stipend-off-the-university-card">Your University stipend card</a>. The allowances on top of the stipend are in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</li>
 </ul>
 <h2>Weeks 4 to 14: monthly tests</h2>
 <ul>
@@ -100,7 +100,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
     slug: "getting-your-stipend-off-the-university-card",
     stage: "study",
     title: "Your University stipend card: getting the money off it, and fixing problems",
-    summary: "The Al Rajhi card the University pays your stipend onto: when the money lands, moving it to your own account through a wallet app or an ATM, the PIN, and what to do when the card expires, stops working or is lost.",
+    summary: "The Al Rajhi card the University pays your stipend onto: when the money lands, taking it out in cash at an Al Rajhi ATM, the PIN, and what to do when the card expires, stops working or is lost.",
     bodyHtml: `
 <p>Checked 9 November 2026. The University pays the monthly stipend onto a bank card it issues in your name: an Al Rajhi card, called the stipend card or the mukafa'ah card (بطاقة المكافأة). This guide covers how to get the money off it and what to do when the card gives trouble. What the scholarship pays, and what stops it, is in <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a>.</p>
 <h2>Getting the card</h2>
@@ -111,9 +111,9 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 </ul>
 <h2>What the card can and cannot do</h2>
 <table><thead><tr><th>The card can</th><th>The card cannot</th></tr></thead><tbody>
-<tr><td>Withdraw cash at an ATM</td><td>Take cash deposits or transfers in. Only the University pays into it</td></tr>
-<tr><td>Transfer to your own account from an Al Rajhi ATM</td><td>Be added to Apple Pay or to the Al Rajhi app</td></tr>
-<tr><td>Top up a wallet app such as Barq, Alinma Pay or urpay</td><td>Be used at all once it has expired, even with money on it</td></tr>
+<tr><td>Withdraw cash at an Al Rajhi ATM</td><td>Send the stipend to your own bank account. The stipend cannot be paid to your own IBAN, so the cash withdrawal is how you get it</td></tr>
+<tr><td>Show your balance at an ATM</td><td>Take cash deposits or transfers in. Only the University pays into it</td></tr>
+<tr><td>Change its PIN at an Al Rajhi ATM</td><td>Be used at all once it has expired, even with money on it</td></tr>
 </tbody></table>
 <h2>When the stipend lands</h2>
 <ul>
@@ -125,20 +125,11 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <li><strong>No text message?</strong> Alerts do not always arrive. Check the balance at an ATM, or your payments in the Academic System under <strong>Personal</strong>, then <strong>Rewards</strong> (المكافآت).</li>
 <li><strong>Your mobile number:</strong> the card's alerts and codes go to the mobile number on your University account, and the number must be in your own name. If you change your number, update it from the user account icon on iu.edu.sa first, and allow a few days for the card to follow.</li>
 </ul>
-<h2>Moving the money to your own account with a wallet app</h2>
-<p>This is the quickest way, and it needs no ATM. The steps below are for Barq. Alinma Pay and urpay accept the card the same way.</p>
-<ol>
-<li>Install the wallet app and open an account in your own name.</li>
-<li>Wait until the stipend is on the card. The app accepts the card only once it holds money.</li>
-<li>Choose to add money from a card, enter the stipend card's number, expiry date and CVV, and the amount.</li>
-<li>When the app asks for your source of income, choose <strong>student stipend</strong> or <strong>salary</strong>.</li>
-<li>Transfer from the wallet to your own bank account by IBAN. In 2026 a transfer from Barq to a Saudi bank was instant and free. Other wallets can charge a small fee to send to another bank.</li>
-</ol>
-<h2>Using an ATM</h2>
+<h2>Taking the money out</h2>
 <ul>
-<li>Withdraw cash at an Al Rajhi ATM with your PIN.</li>
-<li>To move money without cash, choose transfer at an Al Rajhi ATM and send it to your own account by its account number.</li>
-<li>Sending money home from your own account or wallet is in <a href="/guides/sending-and-receiving-money">Sending money home and receiving money in Madinah</a>.</li>
+<li>Withdraw the stipend in cash at an <strong>Al Rajhi ATM</strong> with your PIN. The nearest to the University is next to Gate 4, where the taxis line up.</li>
+<li>Go a day or two after pay day if you can. The machines by the campus are busiest on the evening the stipend lands.</li>
+<li>Once you have the cash, you can pay it into your own bank account at a deposit machine of your bank if you want it there. Sending money home from your own account is in <a href="/guides/sending-and-receiving-money">Sending money home and receiving money in Madinah</a>.</li>
 </ul>
 <h2>Where to go: the stipend card counter in Unit 22</h2>
 <p>Card problems are handled at the stipend counter in Unit 22 (الوحدة 22), on the ground floor. Enter by the main entrance, turn left through the glass door, and go to the counter on the far right. Unit 22 is the second building after the College of Da'wah, heading towards the Muhammad bin Ibrahim masjid. Go in the morning: the office works from about 8 am to 2 pm, and new cards are best collected before noon. Questions about the payment itself also go to the stipends section (قسم المكافآت) of the Deanship of Student Affairs.</p>
@@ -222,7 +213,7 @@ export const GUIDES_ADMIN_LIFE_2026_11: SeedGuide[] = [
 <tr><td>Deposit</td><td>500 SAR, once</td><td>With your first payment. It is returned when you hand the room back after you graduate</td></tr>
 </tbody></table>
 <ul>
-<li>Every room is shared by two students.</li>
+<li>Rooms in the units (wihdat) are usually shared by two students. Some older units put three or four in a room.</li>
 <li>For comparison, a furnished room with its own bathroom near the University rents for about 1,500 SAR a month, bills included (2026). Flats and rents are in <a href="/guides/finding-an-apartment">Finding and renting a flat</a> and <a href="/guides/cost-of-living">What it costs to live in Madinah</a>.</li>
 </ul>
 <h2>How to apply</h2>

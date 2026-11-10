@@ -9,6 +9,7 @@ import { KEY_DATES } from "@/content/key-dates";
 import { DISCOUNTS } from "@/content/discounts";
 import { LIVE_COLLECTIONS } from "@/content/library-books";
 import { OFFICIAL } from "@/content/library";
+import { GLOSSARY } from "@/content/glossary";
 import { MAHAD_COPY } from "@/features/library/MahadPage";
 import { slugify } from "@/lib/guide-html";
 import { HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
@@ -18,7 +19,7 @@ import { HELP_CONTACT_DEFAULT, HELP_EMAIL_DEFAULT } from "@/server/settings";
  * (a guide is split at its h2 headings, long sections again by paragraph). Each passage keeps
  * the link to the exact place it came from, so an answer can always point to "read more".
  */
-export type ChunkKind = "guide" | "faq" | "program" | "date" | "discount" | "dars" | "shaykh" | "library" | "page";
+export type ChunkKind = "guide" | "faq" | "program" | "date" | "discount" | "dars" | "shaykh" | "library" | "page" | "term";
 
 export type Chunk = {
   id: string;
@@ -31,10 +32,6 @@ export type Chunk = {
   url: string;
   /** Extra search words that are not shown (an FAQ's tags). */
   keywords?: string;
-  /** Arabic words that find an English passage (its page's Arabic title or question). Only Arabic questions search them. */
-  keywordsAr?: string;
-  /** A guide passage's place: -1 the summary, then 0 for the text before the first heading and 1, 2... per heading. The Arabic twin of a section has the same number. */
-  part?: number;
   /** "ar" when the passage itself is Arabic (a translated guide or answer); English otherwise. */
   lang?: "ar";
   /** The page's Arabic title, shown as the source when an English passage answers an Arabic question. */
@@ -104,17 +101,16 @@ function windows(blocks: string[]): string[] {
 export function chunkGuide(g: { slug: string; title: string; summary: string; bodyHtml: string }, base = "/guides/", opts: { lang?: "ar"; titleAr?: string } = {}): Chunk[] {
   const url = `${base}${g.slug}`;
   const id = opts.lang ? `guide-ar-${g.slug}` : `guide-${g.slug}`;
-  const extra = { ...(opts.lang ? { lang: opts.lang } : {}), ...(opts.titleAr ? { titleAr: opts.titleAr, keywordsAr: opts.titleAr } : {}) };
-  const out: Chunk[] = [{ id: `${id}-0`, kind: "guide", title: g.title, text: g.summary, url, part: -1, ...extra }];
+  const extra = { ...(opts.lang ? { lang: opts.lang } : {}), ...(opts.titleAr ? { titleAr: opts.titleAr, keywords: opts.titleAr } : {}) };
+  const out: Chunk[] = [{ id: `${id}-0`, kind: "guide", title: g.title, text: g.summary, url, ...extra }];
   const root = parse(g.bodyHtml);
   const used = new Set<string>();
   let section: string | undefined;
   let anchor = "";
   let blocks: string[] = [];
   let n = 1;
-  let part = 0;
   const flush = () => {
-    for (const w of windows(blocks)) out.push({ id: `${id}-${n++}`, kind: "guide", title: g.title, section, text: w, url: anchor ? `${url}#${anchor}` : url, part, ...extra });
+    for (const w of windows(blocks)) out.push({ id: `${id}-${n++}`, kind: "guide", title: g.title, section, text: w, url: anchor ? `${url}#${anchor}` : url, ...extra });
     blocks = [];
   };
   for (const node of root.childNodes) {
@@ -122,7 +118,6 @@ export function chunkGuide(g: { slug: string; title: string; summary: string; bo
     const tag = el.tagName?.toLowerCase();
     if (tag === "h2") {
       flush();
-      part++;
       section = squash(el.text);
       // Same ids as enhanceGuideHtml gives the headings on the page.
       let id = slugify(section);
@@ -230,6 +225,23 @@ function siteChunks(): Chunk[] {
   ];
 }
 
+/**
+ * The glossary, one passage a word: "what is an iqama" or "what does mukafa'ah mean" is answered by the word's
+ * meaning. It links to the page that explains more (every glossary fact is also on that page), or to the
+ * glossary card when there is none.
+ */
+export function glossaryChunks(): Chunk[] {
+  return GLOSSARY.map((t) => ({
+    id: `term-${t.id}`,
+    kind: "term" as const,
+    title: `${t.term} (${t.ar})`,
+    titleAr: t.ar,
+    text: `${t.term} (${t.ar}): ${t.meaning} ${t.use}`,
+    url: t.href ?? `/glossary#${t.id}`,
+    keywords: `${t.match.join(" ")} meaning definition`,
+  }));
+}
+
 const filled = (s: string | null | undefined): s is string => typeof s === "string" && s.trim().length > 0;
 
 /**
@@ -264,7 +276,7 @@ type FaqIn = { slug: string; question: string; answerHtml: string; tags?: string
 export function faqChunks(f: FaqIn): Chunk[] {
   const tags = (f.tags ?? []).join(" ");
   const questionAr = filled(f.questionAr) ? f.questionAr.trim() : undefined;
-  const en: Chunk = { id: `faq-${f.slug}`, kind: "faq", title: f.question, text: answerText(f.answerHtml), url: `/ask/${f.slug}`, keywords: tags, ...(questionAr ? { titleAr: questionAr, keywordsAr: questionAr } : {}) };
+  const en: Chunk = { id: `faq-${f.slug}`, kind: "faq", title: f.question, text: answerText(f.answerHtml), url: `/ask/${f.slug}`, keywords: [tags, questionAr].filter(Boolean).join(" "), ...(questionAr ? { titleAr: questionAr } : {}) };
   if (!hasVisibleHtml(f.answerHtmlAr)) return [en];
   return [en, { id: `faq-ar-${f.slug}`, kind: "faq", lang: "ar", title: questionAr ?? f.question, text: answerText(f.answerHtmlAr!), url: `/ar/ask/${f.slug}`, keywords: [tags, f.question].join(" ") }];
 }
@@ -282,6 +294,7 @@ export async function buildKnowledge(db: Db): Promise<Chunk[]> {
     // The calendar guide's page is drawn from the key dates (indexed below), not from its stored body.
     ...guides.flatMap((g) => guideChunks(g.slug === "university-calendar-1448" ? { ...g, bodyHtml: "", bodyHtmlAr: null } : g)),
     ...companyChunks(),
+    ...glossaryChunks(),
     ...faqs.flatMap(faqChunks),
     ...programChunks(),
     ...dateChunks(),
