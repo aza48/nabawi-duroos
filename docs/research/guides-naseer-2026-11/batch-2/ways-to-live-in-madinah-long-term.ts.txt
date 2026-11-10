@@ -1,0 +1,63 @@
+  {
+    slug: "ways-to-live-in-madinah-long-term",
+    stage: "getting-started",
+    title: "Ways to live in Madinah long term: study, work, family, a company or Premium Residency",
+    summary: "The lawful routes to live in Madinah for years, side by side: studying, a job with a Saudi employer, joining a family member as a dependant, your own company and Premium Residency, with who sponsors you, whether family can join, whether you can work and what it costs, and what a visit or Umrah visa does not allow.",
+    bodyHtml: `
+<p>Checked November 2026. Living in Madinah for years needs a residency of your own or a place on someone else's. There are five lawful routes: study, a job with a Saudi employer, joining a family member as a dependant, a company of your own, and Premium Residency. This page compares them and points you to the detail for each.</p>
+<h2>The routes at a glance</h2>
+<table><thead><tr><th>Route</th><th>Who it suits</th><th>Who sponsors you</th><th>Can family join?</th><th>Can you work?</th><th>Cost to you</th></tr></thead><tbody>
+<tr><td><strong>Islamic University full scholarship</strong></td><td>Brothers living outside Saudi Arabia, aged 17 to 25 for a bachelor's degree</td><td>The University</td><td>On visit visas only. University family residency (istiqdam) is closed</td><td>Ask the University before taking any paid work</td><td>None. Tuition, housing and a monthly stipend are covered</td></tr>
+<tr><td><strong>Study while already resident</strong></td><td>Residents who want a degree or Islamic studies alongside their life here</td><td>Your existing sponsor</td><td>As on your existing residency</td><td>Yes, if your employer approves your study in writing</td><td>Free tuition, no stipend or free housing</td></tr>
+<tr><td><strong>A job with a Saudi employer</strong></td><td>Anyone with a job offer</td><td>Your employer</td><td>You can apply for them as dependants once your iqama is issued, if your salary meets the minimum</td><td>Yes, for that employer</td><td>400 SAR a month for each dependant</td></tr>
+<tr><td><strong>Dependant of a family member</strong></td><td>A wife and children of an iqama holder</td><td>The family member</td><td>Through the same head of the family</td><td>Not on the dependant iqama itself</td><td>400 SAR a month for each dependant on a work iqama</td></tr>
+<tr><td><strong>Your own company</strong></td><td>People with paying clients and money to carry the yearly costs</td><td>Your company</td><td>Yes, once your iqama is issued, if your salary meets the minimum</td><td>Yes, in your company</td><td>Setup and yearly fees, a levy of 700 or 800 SAR a month for each foreign worker, 400 SAR a month for each dependant</td></tr>
+<tr><td><strong>Premium Residency</strong></td><td>People who meet one product's conditions</td><td>No sponsor</td><td>Yes</td><td>Yes, in the private sector, except jobs kept for Saudis</td><td>A government fee set for each product</td></tr>
+</tbody></table>
+<p>An iqama has one sponsor at a time. Moving from one route to another means leaving the first sponsor, so plan the order before you start.</p>
+<h2>Studying</h2>
+<p><strong>The Islamic University</strong> is the main route for brothers who come from abroad. You apply free on Study in Saudi in the yearly window. A full scholarship covers tuition, housing and a monthly stipend. New students arrive on the educational visa and hold a digital Visitor ID, not an iqama, and the visa is renewed each year while you study. Family residency (istiqdam) through the University is closed, so a student's wife and children come on visit visas. Scholarship students agree to go home when their studies end, so a degree is a stay of several years, not a permanent one.</p>
+<ul>
+<li>How to apply: <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a></li>
+<li>Daily life without an iqama: <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID: what works and what does not</a></li>
+<li>Students from earlier intakes with a student iqama: <a href="/ask/student-iqama-renewal">Who renews my student iqama?</a></li>
+<li>Sisters: <a href="/guides/sisters-studying-in-madinah">Where sisters can study Arabic and Islamic sciences in Madinah</a></li>
+</ul>
+<p><strong>Already living here?</strong> You apply for the University's partial scholarship, which gives free tuition and nothing else, and you keep your own residency for the whole degree. <a href="/guides/masjid-an-nabawi-institute-and-college">The Masjid an-Nabawi Institute and College</a> teaches brothers and sisters free inside the Haram, but non-Saudis need a valid iqama to register, so it is a place to study once you live here, not a way in. Taibah University and others are in <a href="/guides/other-universities-in-madinah">Other universities in Madinah</a>.</p>
+<h2>Working for a Saudi employer</h2>
+<p>Employment is the commonest route to an iqama. The employer applies for your work visa and work permit through Qiwa, the labour ministry's platform. Your work visa is issued while you are abroad. You enter on it, complete the medical and fingerprints here and receive your iqama. Under the Labour Law the employer pays the fees for recruiting you, your iqama, your work permit and their renewals.</p>
+<ul>
+<li>Your contract is recorded on Qiwa. Read it in your own Qiwa account before you rely on any promise made outside it.</li>
+<li>Once your iqama is issued, and if your recorded salary meets the minimum for family sponsorship, you can request visas for your wife and children as dependants.</li>
+<li>Fees for the iqama, exit and re-entry and dependants are in <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>.</li>
+</ul>
+<h2>Joining a family member as a dependant</h2>
+<p>If you hold an iqama, your wife and children live here on it as your dependants (مرافقين). You handle their papers yourself in Absher, and a fee of 400 SAR a month is charged for each dependant on a work iqama, paid when the iqamas are renewed. A dependant iqama is not a work iqama.</p>
+<ul>
+<li>Family visit visas, and moving children from a visit visa to an iqama: <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a></li>
+<li>Renewing their iqamas, exit and re-entry and other records: <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a></li>
+<li>Students and the closed University family residency: <a href="/ask/istiqdam-deposit">Can I sponsor my family, and what is the deposit?</a></li>
+</ul>
+<h2>Starting your own company</h2>
+<p>You register with the Ministry of Investment as a foreign owner, set up the company and its commercial registration, and the company then issues a work visa for you as its General Manager. Your iqama comes through your own company, and your family follows as dependants. The yearly fees and the levy fall due whether or not the business earns. If you are on a University scholarship, you cannot be sponsored by your own company without leaving University sponsorship.</p>
+<p>Never run a business in a Saudi's name. This is commercial concealment (التستر), and the penalties include up to five years in prison, fines of up to 5 million SAR, closure of the business and deportation with a ban on returning to work. Every phase, cost and tax is in <a href="/guides/start-a-company-in-saudi">Start your own company in Saudi Arabia</a>.</p>
+<h2>Premium Residency</h2>
+<p>Premium Residency (الإقامة المميزة) is a residency in your own name with no sponsor, issued by the Premium Residency Center and applied for at <a href="https://pr.gov.sa/">pr.gov.sa</a>. There are seven products:</p>
+<ul>
+<li><strong>Special Talent:</strong> specialised professionals and senior leaders.</li>
+<li><strong>Gifted:</strong> people with exceptional ability in their field.</li>
+<li><strong>Investor:</strong> people investing in the Saudi economy.</li>
+<li><strong>Entrepreneur:</strong> founders of a start-up funded by an approved investment body.</li>
+<li><strong>Real Estate Owner:</strong> owning a built residential property in Saudi Arabia worth at least 4 million SAR, with no mortgage on it. Land does not count.</li>
+<li><strong>Limited Duration:</strong> a renewable residency of one year or more.</li>
+<li><strong>Unlimited Duration:</strong> permanent residency.</li>
+</ul>
+<p>With Premium Residency you live here with your family, work in private companies and change jobs (except in jobs kept for Saudis), and leave and re-enter without an exit and re-entry visa. Each product carries its own conditions and its own government fee, both shown on the portal. You can own property in other cities. In Madinah and Makkah, as a Muslim you can own only inside the approved zones and hold a right of use only outside them: see <a href="/guides/owning-property-as-a-non-saudi">Owning a home in Madinah as a non-Saudi</a>. Buying an ordinary home gives no residency.</p>
+<h2>What a visit or Umrah visa does not allow</h2>
+<ul>
+<li><strong>No work.</strong> A tourist eVisa, a family visit visa or an Umrah visa does not allow any paid work.</li>
+<li><strong>No switching.</strong> You cannot turn a visit, tourist or Umrah visa into your own iqama. A work visa is issued abroad and you enter on it. The one exception is for children under 18 on a family visit visa whose parents both hold iqamas: see <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</li>
+<li><strong>A limited stay.</strong> A family visit visa reaches 180 days at most with every extension. A tourist eVisa allows 90 days in a year and cannot be extended.</li>
+</ul>
+<blockquote><p>Important: Anyone who offers to turn your visit visa into a job or an iqama for a fee, or to arrange residency as part of a property sale, is not following the rules. Do not pay them. Every route here runs through an official platform: Study in Saudi, Qiwa, Absher, the Ministry of Investment or the Premium Residency portal.</p></blockquote>`,
+  },
