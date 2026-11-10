@@ -1,5 +1,11 @@
 # Owner questions from publishing admin's research (November 2026)
 
+## Answered by the owner, 10 November 2026 (applied in the guides)
+- **Stipend to your own IBAN:** not possible. Students take the stipend out in cash at Al Rajhi ATMs; the nearest to the University is next to Gate 4, where the taxis line up. The wallet-app and ATM-transfer routes were removed.
+- **Room sharing:** in the units (wihdat) usually two students to a room; some older units three or four.
+- **Renting on a Visitor ID through Ejar:** give the newest source (Ejar's clarification of 31 August 2026: yes, through an accredited agent) and say that earlier in 2026 only iqama holders could register.
+- **The student-made system guide:** fine to use; leave out anything clearly untrue.
+
 Each writer held these back instead of publishing either side. Finding numbers point into `docs/research/iu-pdfs-2026-11/`, `telegram-iu-2026-11/` (c1 to c7) and `gomedine-2026-11/`. Answer them on issue 13 or in `scripts/open-questions.json`, and the guides get updated.
 
 ## Writer A

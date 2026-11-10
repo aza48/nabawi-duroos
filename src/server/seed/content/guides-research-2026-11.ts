@@ -56,7 +56,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li><strong>At a branch:</strong> take your passport and show your Visitor ID in the Absher app. <strong>Online:</strong> apply in the bank's app or website and confirm your identity through Nafath.</li>
 <li>Say you are a student at the Islamic University on the educational visa, and give your home address.</li>
 <li>Your account number comes by text message. Collect your mada debit card at the branch or ask for it to be posted.</li>
-<li>Your own account is for transfers and everyday spending. The stipend itself is paid onto <a href="/guides/getting-your-stipend-off-the-university-card">the University stipend card</a>, and you move it to your own account from there.</li>
+<li>Your own account is for transfers and everyday spending. The stipend itself is paid onto <a href="/guides/getting-your-stipend-off-the-university-card">the University stipend card</a>, and you take it out in cash at an Al Rajhi ATM.</li>
 </ol>
 <blockquote><p>Tip: Banks apply the rules differently from branch to branch. If one says no, try another branch or another bank.</p></blockquote>
 <h2>Phone and internet</h2>
@@ -65,7 +65,7 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <li>If your line stops working, take your passport to a branch of your operator. Afterwards update the number in Absher so your codes still reach you: see <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a>.</li>
 </ul>
 <h2>Renting a flat</h2>
-<p>You can register a rental contract on Ejar on a Visitor ID. An accredited agent does it for you.</p>
+<p>You can register a rental contract on Ejar on a Visitor ID. An accredited agent does it for you, as Ejar clarified on 31 August 2026. Before that, earlier in 2026, only iqama holders could register, so some landlords and offices still say it cannot be done. See <a href="/ask/rent-on-student-visa">Can I register a rental contract on a student visa?</a></p>
 <ol>
 <li>Find a flat and agree the rent, the length of the contract and how you will pay.</li>
 <li>Pick a real-estate agent from Ejar's official list of accredited agents.</li>
@@ -436,8 +436,8 @@ export const GUIDES_RESEARCH_2026_11: SeedGuide[] = [
 <ul>
 <li><strong>Getting it:</strong> new students receive the card after orientation. Cards are issued and renewed at the card office in Unit 22 (الوحدة 22), 8:00 am to 2:00 pm on working days. The University activates the card, and the PIN comes in the envelope. You can change the PIN at any Al Rajhi ATM.</li>
 <li><strong>Money only goes out:</strong> the card takes no cash deposits and no transfers in, and it cannot be added to Apple Pay or the Al Rajhi app.</li>
-<li><strong>Using the money:</strong> withdraw it at an Al Rajhi ATM, or move it to your own bank account with the Barq app, which is instant and free. Step by step: <a href="/guides/getting-your-stipend-off-the-university-card">Getting your stipend off the University card</a>.</li>
-<li><strong>Your own account:</strong> open a Saudi bank account early so you have somewhere to move the money. On a Visitor ID, see <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
+<li><strong>Using the money:</strong> take it out in cash at an Al Rajhi ATM. The nearest to the University is next to Gate 4, where the taxis line up. The stipend cannot be sent to your own bank account. Step by step: <a href="/guides/getting-your-stipend-off-the-university-card">Getting your stipend off the University card</a>.</li>
+<li><strong>Your own account:</strong> a Saudi bank account of your own is still useful, for money from home, card payments and a deposit of your stipend cash if you want it there. On a Visitor ID, see <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
 <li><strong>Lost, swallowed or expired card:</strong> ask the stipends section for a replacement (بدل فاقد). It takes about two weeks, a small fee is taken from the card, and your stipend is kept. An expired card cannot be used at all, so renew it before the expiry date.</li>
 <li><strong>After a card change:</strong> a new or renewed card can hold up a payment while the University updates its records. If a payment is missing after a change, tell the stipends section.</li>
 </ul>
@@ -642,7 +642,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Activate Nafath</strong> (نفاذ) in the Nafath app: open the settings, choose to activate your national digital identity, and complete your details and the face check.</li>
 <li><strong>Issue your Visitor ID</strong> (هوية زائر) in Absher: choose <strong>Issue visitor ID</strong> and complete the details. It is digital only, it shows in the Absher app, and it cannot be printed.</li>
 <li><strong>Register your National Address</strong> with Saudi Post. Your bank needs it. See <a href="/ask/short-address">What is a short address?</a></li>
-<li><strong>Open a bank account.</strong> Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The account number arrives by text message, and the mada card is collected at the branch or posted to you. This is the account you move your stipend into from the University card. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
+<li><strong>Open a bank account.</strong> Either go to a branch with your passport and show your Visitor ID in the Absher app, or open the account online and confirm your identity through Nafath. The account number arrives by text message, and the mada card is collected at the branch or posted to you. This account is for money from home and everyday payments. The stipend stays on the University card and is taken out in cash at an Al Rajhi ATM. See <a href="/guides/sim-internet-bank">SIM card, internet and a Saudi bank card</a>.</li>
 <li><strong>Attend orientation.</strong> New students have an orientation meeting in the first week, announced on the University's X account. It explains how your first weeks work, so do not miss it.</li>
 <li><strong>Collect your stipend card.</strong> Your stipend is paid onto a University stipend card (an Al Rajhi Bank card), not into your own account. New students receive it after orientation, and cards are issued and renewed at the card office in Unit 22. Your first stipend comes in your second month, as a double payment. See <a href="/guides/scholarship-stipend-and-allowances">Your scholarship money</a> and <a href="/guides/getting-your-stipend-off-the-university-card">Getting your stipend off the University card</a>.</li>
 <li><strong>Get your student card.</strong> Your University ID is digital, in the Tawakkalna app. A printed card is optional: take a 4x6 photo and your ID to the Comprehensive Services Office on the ground floor of Unit 22, 8:00 am to 2:00 pm on working days.</li>
