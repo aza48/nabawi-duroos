@@ -175,6 +175,24 @@ function Body({ r }: { r: Report }) {
             )}
           </Panel>
           <Panel title="Searches that found nothing (content to add)"><Bars rows={r.searchesNoResults} /></Panel>
+          <Panel title="Was this useful? (lowest scores first)">
+            {r.usefulness.length === 0 ? <Empty /> : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead><tr className="text-left text-muted"><th className="py-1 pr-2 font-medium">Page</th><th className="py-1 pr-2 text-right font-medium">Yes</th><th className="py-1 text-right font-medium">No</th></tr></thead>
+                  <tbody className="divide-y divide-line">
+                    {r.usefulness.map((u) => (
+                      <tr key={u.path}>
+                        <td className="py-1.5 pr-2"><a href={u.path} className="hover:underline" target="_blank" rel="noopener noreferrer">{u.path}</a></td>
+                        <td className="py-1.5 pr-2 text-right tabular">{fmt(u.yes)}</td>
+                        <td className={`py-1.5 text-right tabular ${u.no > u.yes ? "font-semibold text-red-600" : ""}`}>{fmt(u.no)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </Panel>
           <Panel title="Latest searches">
             {r.recentSearches.length === 0 ? <Empty /> : (
               <ul className="divide-y divide-line text-sm">

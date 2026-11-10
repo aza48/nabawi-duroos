@@ -11,7 +11,7 @@ const str = (n: number) => z.string().max(4000).transform((s) => s.slice(0, n)).
 const int = (max: number) => z.number().int().min(0).max(max).optional().nullable();
 
 const body = z.object({
-  t: z.enum(["pv", "hb", "click", "vital", "err", "search", "ask"]),
+  t: z.enum(["pv", "hb", "click", "vital", "err", "search", "ask", "rate"]),
   v: id,
   s: id,
   e: id,
@@ -138,7 +138,8 @@ export async function POST(req: Request) {
         await db.execute(sql`update analytics_sessions set last_seen = ${now}, clicks = clicks + 1 where id = ${data.s}`);
       } else {
         // A page-speed measurement (label is the metric: LCP, CLS, INP, FCP, TTFB), a script error (label is the message),
-        // or a search (label is what was typed, target how it was sent, value the number of results shown).
+        // a search (label is what was typed, target how it was sent, value the number of results shown),
+        // or a "Was this useful?" vote (label is guide or faq, value 1 for yes and 0 for no).
         await db.execute(sql`
           insert into analytics_events (id, session_id, visitor_id, ts, type, path, label, target, value)
           values (${data.e}, ${data.s}, ${data.v}, ${now}, ${data.t === "err" ? "error" : data.t}, ${data.path}, ${data.label ?? null}, ${data.target ?? null}, ${data.value ?? null})

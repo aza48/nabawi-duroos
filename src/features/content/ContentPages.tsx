@@ -11,6 +11,7 @@ import { FaqExplorer } from "./FaqExplorer";
 import { GuideBody } from "./GuideBody";
 import { enhanceGuideHtml, linkScriptureRefs } from "@/lib/guide-html";
 import { ShareButton } from "@/components/ShareButton";
+import { WasThisUseful } from "@/components/WasThisUseful";
 import { JsonLd, ORG_ID, breadcrumbs } from "@/components/JsonLd";
 import { abs } from "@/lib/site";
 
@@ -168,7 +169,8 @@ export function FaqPage({ faq, locale = "en", guides = [], faqs = [] }: { faq: F
           <CircleCheck size={15} /> {verified(faq.lastVerifiedAt, "ar")}
         </p>
       )}
-      <ShareButton title={ft.question} locale={locale} className="mt-6" />
+      <WasThisUseful kind="faq" locale={locale} className="mt-6" />
+      <ShareButton title={ft.question} locale={locale} className="mt-4" />
       <AdminHelp locale={locale} className="mt-6" />
       <RelatedList kind="guides" items={relGuides} locale={locale} />
       <div className="xl:hidden">
@@ -359,6 +361,7 @@ export function GuidePage({ guide, locale = "en", guides = [], faqs = [] }: { gu
             {guide.slug === "university-calendar-1448" ? <UniversityCalendar locale={locale} /> : <GuideBody html={html} slug={gt.bodyInArabic ? `${guide.slug}.ar` : guide.slug} steps={steps} locale={ar ? "ar" : "en"} />}
           </div>
           <div className={isCalendar ? "max-w-3xl" : undefined} data-noprint>
+            <WasThisUseful kind="guide" locale={locale} className="mt-8" />
             <AdminHelp locale={locale} className="mt-6" />
             <RelatedList kind="guides" items={relGuides} locale={locale} />
             {relFaqs.length > 0 && (

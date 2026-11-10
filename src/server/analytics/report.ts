@@ -1,4 +1,5 @@
 import { sql, type SQL } from "drizzle-orm";
+import { lowestFirst, type UsefulRow } from "@/components/useful";
 import type { Db } from "@/server/db/client";
 import { ensureAnalytics, rowsOf } from "./store";
 
@@ -49,6 +50,8 @@ export type Report = {
   // Searches typed into the search bar and the search page
   searches: { query: string; n: number; avgResults: number; zero: number }[];
   searchesNoResults: Count[];
+  /** "Was this useful?" votes per page, lowest scores first (work plan S1). */
+  usefulness: UsefulRow[];
   recentSearches: { ts: string; query: string; results: number; path: string | null }[];
   searchCount: number;
   // Questions asked to the Ask MESH assistant
@@ -177,6 +180,11 @@ export async function analyticsReport(db: Db, days: number): Promise<Report> {
     from analytics_events where type = 'search' and ts >= ${since} and label is not null group by 1 order by 2 desc limit 40`)).map((r) => ({
     query: String(r.query), n: num(r.n), avgResults: num(r.avg_results), zero: num(r.zero),
   }));
+  const usefulness = lowestFirst((await q<Record<string, unknown>>(sql`
+    select path, max(label) as kind, count(*) filter (where value = 1) as yes, count(*) filter (where value = 0) as no
+    from analytics_events where type = 'rate' and ts >= ${since} and path is not null group by path`)).map((r) => ({
+    path: String(r.path), kind: String(r.kind ?? ""), yes: num(r.yes), no: num(r.no),
+  }))).slice(0, 40);
   const searchesNoResults = await count(sql`
     select lower(label) as key, count(*) as n from analytics_events where type = 'search' and ts >= ${since} and value = 0 group by 1 order by 2 desc limit 25`);
   const recentSearches = (await q<Record<string, unknown>>(sql`
@@ -233,7 +241,7 @@ export async function analyticsReport(db: Db, days: number): Promise<Report> {
 
   return {
     sources, referrerUrls, campaignsFull, landingQueries,
-    searches, searchesNoResults, recentSearches, searchCount: num(searchTotal?.n),
+    searches, searchesNoResults, usefulness, recentSearches, searchCount: num(searchTotal?.n),
     questions, questionsUnanswered, questionCount: num(askTotal?.n),
     regions, continents, timezones, places, deviceModels, osVersions, browserVersions, screens, connections, themes, installed, phoneLanguages, visitNumbers, tenure,
     vitals, slowPages, errors, monthly,
