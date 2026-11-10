@@ -189,6 +189,13 @@ export const GUIDES_NASEER_2_2026_11: SeedGuide[] = [
 <li><strong>Scam texts:</strong> forward them, free, to <strong>330330</strong>, the reporting number of the Communications, Space and Technology Commission.</li>
 </ul>
 <blockquote><p>Important: If you have already shared a code or your card details, call your bank at once on the number in its app or on the back of your card, and ask it to block the card and stop the transfer. Then change your passwords and report the fraud in Absher, under Public Security, Financial Fraud Reports, or in the Ministry of Interior's Kollona Amn app (كلنا أمن).</p></blockquote>
+<h2>On and around the campus</h2>
+<ul>
+<li><strong>Strangers who want to borrow money.</strong> A well-dressed man stops you near the colleges or the gates, often from a car, says he is a graduate, an imam or a muezzin, and tells a sad story: a swallowed card, a broken-down car, a relative in hospital. He asks for a few hundred riyals until tonight, then blocks your number. Never lend to someone you do not know. If he insists, walk away and tell campus security. If you have already paid, report it with his phone number and the transfer receipt.</li>
+<li><strong>Theft.</strong> Lock your room every time you go out, even for a minute, and keep your bag and phone with you in the prayer rooms, the mat'am and the library. Watch your pockets in bus queues and crowds, at the Haram as well. Lost something? See <a href="/guides/lost-your-iqama-passport-or-card">Lost your passport, iqama, phone or University card?</a></li>
+<li><strong>Hijacked WhatsApp and Telegram accounts.</strong> A stolen account is used to ask your friends and family for money in your name. Turn on two-step verification in both apps, and if a friend suddenly asks for money by message, call him before you send anything.</li>
+<li><strong>Rumours.</strong> Messages about new fines, deadlines, stopped stipends or students being sent home go round the groups every year, and many are false or years old. Go only by the University's official accounts, your University email and the Academic System, and ask the office concerned through Tawasul before you act.</li>
+</ul>
 <h2>Counterfeit goods</h2>
 <p>Fake brand perfumes, phones, chargers and spare parts are sold in markets and through "message me" posts. Buy electronics from shops that give a tax invoice, and keep it for the warranty. Report counterfeit goods and commercial fraud to the Ministry of Commerce on <strong>1900</strong> or in the Balagh Tijari app.</p>
 <h2>Where to report</h2>
