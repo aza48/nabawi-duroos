@@ -994,10 +994,12 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
   {
     slug: "kids-activities",
     stage: "family",
-    title: "Play areas and fun places for children in Madinah",
-    summary: "Soft play centres, mall crèches and gardens for young children in Madinah, with what is at each and the ages they take.",
+    title: "Fun places for children in Madinah: the Haram's children's centres, parks, outings and play areas",
+    summary: "The children's centres at Masjid an-Nabawi, parks and the Quba walkway, outings that teach (the Qur'an Printing Complex, the historic sites, the date farms), soft play centres and mall crèches, and what suits each season.",
     bodyHtml: `
-<p>Checked 9 November 2026. Madinah has indoor soft play centres, crèches in the malls and gardens with rides, which are a good way to spend a hot afternoon with young children. Each section below is in alphabetical order. Entry is paid per child at the desk.</p>
+<p>Checked November 2026. Madinah is an easy city for children: the Haram looks after the youngest while you pray, the parks fill with families after Maghrib, and indoor play centres carry you through the hot afternoons. This guide covers the Haram's children's centres, parks and walks, outings that teach, soft play and mall crèches, and what suits each season. Places of the same kind are listed alphabetically, and play centres charge per child at the desk.</p>
+<h2>At the Haram</h2>
+<p>Masjid an-Nabawi runs children's hospitality centres in the courtyards, where staff look after young children while you pray. They take boys up to 6 and girls up to 9, with play areas, activities and a class for memorising short surahs. Bring your ID, because it is needed to leave a child and to collect them. Gates, lost children and everything else for families are in <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</p>
 <h2>Soft play centres</h2>
 <h3>Kinetic</h3>
 <ul>
@@ -1023,10 +1025,26 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Al Noor Mall:</strong> a slide into a ball pit, a climbing frame and other activities. The mall has a second play area as well: <a href="https://maps.app.goo.gl/1xB4qFEvuGpt1vjA6">location on Google Maps</a>.</li>
 <li><strong>Al Rashid Mall:</strong> on the basement floor, near Home Centre. A ball pit, slides, activity tables and role-play corners such as a kitchen. For children under five only.</li>
 </ul>
-<h2>Gardens and parks</h2>
-<p>Gardens such as Reef Al Bustan have bouncy castles and rides such as small trains.</p>
+<h2>Parks and walks</h2>
+<ul>
+<li><strong>King Fahd Central Park</strong>, on Quba Road between the Second and Third Ring Roads, is the city's largest park: lawns, children's play areas with a sand play area, picnic shelters, and a walkway with a cycling track along its northwest side. It is busiest in the evenings and at weekends.</li>
+<li><strong>The Quba walkway</strong> runs about 3 km from the Haram to Masjid Quba, about 45 minutes on foot, with electric carts for tired legs. Walking it to pray at Quba on a Saturday morning is a family tradition here: see <a href="/guides/umrah-rawdah-quba">Umrah, the Rawdah and Quba from Madinah</a>.</li>
+<li><strong>Private gardens</strong> such as Reef Al Bustan have bouncy castles and rides such as small trains, paid per ride.</li>
+</ul>
 <blockquote><p>Tip: Many mall arcade rides and the large bouncy castles in the gardens are built for children of four and over. Toddlers have their own areas in the soft play centres above.</p></blockquote>
-<p>For schools and nurseries, see <a href="/guides/kindergartens-and-schools">Kindergartens and schools</a>. The children's centres at the Haram are in <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>.</p>
+<h2>Outings that teach</h2>
+<ul>
+<li><strong>The King Fahd Complex for the Printing of the Holy Qur'an:</strong> entry is free with a time booked online, the tour follows each stage of printing a Mushaf, and every visitor leaves with a copy. See <a href="/guides/visiting-the-quran-printing-complex">Visiting the King Fahd Qur'an Printing Complex</a>.</li>
+<li><strong>Uhud, Quba and the historic masjids:</strong> the places of the seerah, close enough for a morning. See <a href="/guides/historic-sites-and-masjids">Historic sites and masjids of Madinah</a>.</li>
+<li><strong>The date farms and the dates season:</strong> some farms welcome visitors in the harvest, and the summer dates season at the Central Dates Market has stalls and an evening auction. See <a href="/guides/dates-of-madinah">Dates of Madinah</a>.</li>
+<li><strong>Qur'an circles:</strong> most neighbourhood masjids run circles for children after Asr or Maghrib. See <a href="/guides/kindergartens-and-schools">Kindergartens and schools</a>.</li>
+</ul>
+<h2>By season</h2>
+<ul>
+<li><strong>Summer:</strong> soft play and the malls between Dhuhr and Asr, the parks after Maghrib, and water all day. The heat and how to keep children safe in it are in <a href="/guides/seasons-and-camping">Madinah by season</a>.</li>
+<li><strong>Winter:</strong> the best months for the parks, the walkway and outings in daylight. Bring a layer for the evenings.</li>
+<li><strong>Ramadan:</strong> the Haram's children's centres are busiest after Taraweeh, so arrive early.</li>
+</ul>
 <blockquote><p>Tip: Know a place for children we should add? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
