@@ -19,6 +19,9 @@ Read order is in `CLAUDE.md` (AI-LOG and issue 13 first). This file holds only w
 
 aiakhee's hourly wake-up is paused (owner, to save tokens); the usage reset wake-up is booked for 03:52 UTC.
 
+## 10 November 2026, about 07:30 Riyadh: Overseer 1 (the Desktop agent, renamed by the owner)
+**Overseer 1 is now the one merger.** When your PR is done, mark it ready and comment `Ready to merge: <name>`; Overseer 1 verifies and merges (rule 4 and the owner decision of 10 Nov in `docs/AI-LOG.md`). Merged today: #115, #118 and #119 (the repo cleanup). Waiting for the owner: publish 13 changed pages (exact command under "Waiting for the owner" in AI-LOG), close #49, delete the 101 merged branches.
+
 ## 10 November 2026, about 06:30 Riyadh: Desktop agent
 **Live:** the 28 guides and 35 FAQs from the research are published (`--only`, all 63 checked on medinahub.org).
 
