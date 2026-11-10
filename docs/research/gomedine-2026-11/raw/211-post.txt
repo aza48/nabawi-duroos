@@ -1,0 +1,77 @@
+URL: https://gomedine.com/fr_fr/qiwa-la-nouvelle-regle-du-30-juin-2026-sur-les-permis-de-travail-expires-ce-que-tout-resident-et-employeur-doit-savoir/
+TITLE: Qiwa : la nouvelle règle du 30 juin 2026 sur les permis de travail expirés (ce que tout résident et employeur doit savoir) — GoMedine
+PUBLISHED: 
+MODIFIED: 
+
+Bismillah. Pour notre communauté francophone installée — ou bientôt installée — en Arabie Saoudite, voici une mise à jour importante. Elle est courte à lire, mais lourde de conséquences si on la néglige. Qu’Allah nous facilite à rester en règle.
+L’essentiel en 30 secondes
+À partir du 30 juin 2026 , la plateforme Qiwa (le portail officiel du ministère des Ressources humaines saoudien, le MHRSD) va radier automatiquement des registres d’une entreprise tout salarié étranger dont le permis de travail (rukhsat al-‘amal) est expiré depuis plus de 3 mois — et ce, même si l’iqama est encore valide .
+La radiation se fait par voie électronique, sans intervention humaine , et c’est l’ employeur qui supporte alors toutes les sommes accumulées (frais de renouvellement en retard, pénalités, frais d’accompagnants). Pour le salarié, perdre son enregistrement, c’est se retrouver en situation irrégulière de travail.
+Bonne nouvelle : il existe encore une fenêtre pour se mettre en règle avant l’échéance. On t’explique tout, simplement.
+Qiwa, c’est quoi exactement ?
+Qiwa (qiwa.sa) est la plateforme numérique du marché du travail saoudien. C’est par elle que passent les contrats de travail, l’émission et le renouvellement des permis de travail des étrangers, les transferts de parrainage (kafala), et le calcul de la saoudisation (Nitaqat) des entreprises.
+Point essentiel à comprendre : en Arabie Saoudite, un résident étranger qui travaille a deux documents distincts qui n’ont pas forcément la même date d’expiration :
+l’ iqama (titre de séjour, géré côté Jawazat / Absher) ;
+le permis de travail (rukhsat al-‘amal, géré côté Qiwa).
+C’est cette différence de dates qui est au cœur de la nouvelle règle.
+Ce que dit la nouvelle règle
+D’après le journal Okaz (9 mai 2026), repris ensuite par plusieurs cabinets spécialisés et confirmé par les pages officielles de Qiwa : à compter du 30 juin 2026, tout salarié étranger qui reste sans permis de travail valide depuis plus de trois mois verra son enregistrement automatiquement annulé, quel que soit son statut de résidence (iqama).
+Trois points à retenir :
+L’échéance est le 30 juin 2026. C’est la date de mise en route du mécanisme automatique.
+Le seuil déclencheur, c’est 3 mois d’expiration du permis de travail.
+L’iqama valide ne protège pas à elle seule. On pouvait croire qu’avec une iqama en règle on était tranquille : ce n’est plus le cas pour le volet « travail ».
+Les 3 situations possibles (le cœur du sujet)
+Qiwa a clarifié sa décision en distinguant trois cas selon la durée de validité restante de l’iqama. C’est la partie la plus importante : ta situation dépend de ce tableau.
+Cas n°1 — Permis de travail expiré depuis 3 mois ou plus
+C’est le cas qui déclenche la sanction. Qiwa radie automatiquement le salarié du registre de l’entreprise. Plus grave encore : l’employeur doit régler, en un seul versement , toutes les obligations accumulées depuis la date d’expiration jusqu’à la radiation — frais de renouvellement en retard, pénalités, et frais d’accompagnants éventuels.
+Cas n°2 — Iqama valide plus de 180 jours, mais permis expiré
+C’est la seule exception : le salarié n’est pas radié dans l’immédiat. Qiwa reconnaît que l’iqama et le permis n’ont pas toujours la même date, et accorde une fenêtre de régularisation . Attention : ce n’est pas un feu vert pour traîner — c’est un sursis exceptionnel, à utiliser pour se mettre en règle vite.
+Cas n°3 — Iqama valide moins de 180 jours, et permis expiré
+C’est le cas considéré comme le plus dangereux . L’employeur et le salarié doivent renouveler à la fois l’iqama et le permis avant d’entrer dans la fenêtre de radiation. Sinon, on bascule dans le traitement du Cas n°1 , et la radiation peut tomber en quelques semaines, pas en quelques mois .
+Repère simple : regarde d’abord la date de ton permis de travail . S’il est expiré, regarde ensuite combien de jours de validité il reste sur ton iqama : plus de 180 jours = sursis (Cas 2) ; moins de 180 jours = urgence (Cas 3).
+Pourquoi c’est sérieux : les conséquences
+Pour l’ employeur (y compris les petites structures et entreprises détenues par des étrangers), une radiation peut entraîner :
+des obligations financières lourdes , pouvant atteindre plusieurs dizaines de milliers de riyals par salarié , exigées d’un coup ;
+une dégradation de la saoudisation (Nitaqat) : radier un étranger peut faire changer la zone Nitaqat de l’entreprise, ce qui affecte les quotas de visas et l’accès aux services Qiwa ;
+un arrêt d’activités sensibles si le salarié occupait un poste-clé ;
+la perte de l’investissement en formation et en qualification du salarié ;
+un réembauche compliqué , car la radiation est inscrite au dossier de l’entreprise auprès du ministère.
+Pour le salarié , être radié du registre alors que le permis est expiré, c’est se retrouver en situation irrégulière de travail . Dans le contexte actuel de campagnes d’inspection renforcées dans le Royaume, c’est un risque réel à ne pas prendre à la légère.
+Que faire avant le 30 juin 2026 ?
+Si tu es employeur
+Qiwa recommande deux options pour éviter les pénalités :
+Régler immédiatement les frais de permis en retard et renouveler le permis via Qiwa.
+Transférer le salarié vers un autre employeur (transfert de kafala) avant d’entrer dans la fenêtre de radiation, si tu ne peux pas le garder.
+Un plan d’action concret et clés-en-main :
+Connecte-toi à ton compte Qiwa dès aujourd’hui — ne reporte pas.
+Édite un rapport complet de tous tes salariés étrangers avec les dates d’expiration de leur permis et de leur iqama .
+Classe chaque salarié selon les trois cas ci-dessus (permis expiré 3 mois+ / iqama 180 jours+ / iqama moins de 180 jours).
+Calcule les sommes dues par salarié (frais de permis en retard, pénalités, frais d’accompagnants).
+Paie et renouvelle pour ceux que tu veux garder.
+Ouvre une voie de transfert pour ceux dont le permis ne peut pas être renouvelé — avant la fenêtre de radiation.
+Vérifie ta zone Nitaqat après mise à jour pour t’assurer de rester en zone verte.
+Si tu es salarié
+Tu ne contrôles pas le renouvellement (c’est l’employeur qui le fait), mais tu peux te protéger :
+Vérifie toi-même la validité de ton permis de travail et de ton iqama (via Absher , Muqeem , ou l’application Qiwa ). Ne te fie pas seulement à une iqama « qui a l’air valide ».
+Comment vérifier votre contrat de travail sur Qiwa en Arabie Saoudite?
+Alerte ton employeur par écrit si ton permis approche de l’expiration ou est déjà expiré.
+Si l’employeur ne renouvelle pas dans les temps, sache qu’en cas de retard, le salarié peut devenir éligible à un transfert direct vers un nouvel employeur, sans l’accord de l’ancien — un droit issu des réformes du marché du travail.
+À noter aussi : les détenteurs de la Résidence Premium concernés
+Dans le même train de clarifications (rapporté par le Saudi Gazette , 12 juin 2026), Qiwa a précisé que les titulaires de la Résidence Premium (« Saudi Green Card ») doivent désormais obtenir un permis de travail dédié via la plateforme , au tarif de 100 SAR . Les frais d’abonnement varient selon la taille de l’établissement (nombre total d’employés sous le numéro unifié). Les contrats de formation du programme Tamheer peuvent aussi être documentés sur Qiwa.
+Autrement dit : même les résidents « sans kafil » ont désormais un volet permis de travail à gérer sur Qiwa. Un point utile à connaître si tu es passé par ce statut.
+Qui n’est pas (directement) concerné ?
+Cette règle vise les salariés étrangers enregistrés sous une entreprise et leurs employeurs . Elle ne concerne pas :
+les visiteurs (visa de tourisme, Omra, Hajj) — qui n’ont pas de permis de travail ;
+les étudiants en immersion qui ne travaillent pas ;
+de manière générale, toute personne qui n’est pas dans une relation de travail enregistrée en Arabie Saoudite.
+Si tu prépares un séjour d’étude de l’arabe ou une Omra, tu n’es pas dans le périmètre de cette règle. En revanche, si tu travailles dans le Royaume ou si tu emploies quelqu’un, elle te concerne pleinement.
+Foire aux questions
+La règle s’applique-t-elle si mon iqama est encore valide ? Oui. La nouveauté, c’est justement que l’iqama valide ne suffit plus à elle seule. C’est le permis de travail qui est visé.
+Que veut dire « être radié du registre » ? Que ton enregistrement comme salarié de cette entreprise est annulé sur Qiwa. Combiné à un permis expiré, cela place ta situation de travail dans l’irrégularité.
+Qui paie les sommes dues ? L’ employeur supporte les obligations accumulées (frais de renouvellement, pénalités, accompagnants). La loi saoudienne interdit de déduire ces frais du salaire.
+J’ai une iqama valide plus de 180 jours : suis-je tranquille ? Tu bénéficies d’un sursis (Cas n°2), mais pas d’une exemption. Profites-en pour régulariser sans attendre.
+Comment vérifier mes dates ? Via Absher , Muqeem ou l’application Qiwa . En cas de doute, contacte le service RH de ton employeur.
+En résumé
+Le 30 juin 2026 marque l’entrée en vigueur d’une règle simple à énoncer mais sévère : un permis de travail expiré depuis 3 mois entraîne la radiation automatique du salarié , même avec une iqama valide. La parade est tout aussi simple : vérifier ses dates maintenant , renouveler ou transférer avant la fenêtre, et ne pas se reposer sur la seule validité de l’iqama.
+Reste en règle, anticipe, et qu’Allah facilite à chacun d’entre nous notre installation et notre travail dans le Royaume. Âmîn.
+Pour avoir toutes les dernières News veuillez nous rejoindre sur notre Groupe TELEGRAM   CLIQUEZ ICI
