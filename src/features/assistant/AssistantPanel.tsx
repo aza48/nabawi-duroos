@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUp, Check, Copy, Loader2, RotateCcw, Square, ThumbsDown, ThumbsUp } from "lucide-react";
 import { localizeUrl, type Locale } from "@/lib/locale";
+import { takeAskPending } from "./ask-pending";
 
 type Source = { title: string; section?: string; url: string };
 type Reply = { answer: string; sources: Source[]; related?: { title: string; url: string }[]; mode: string; found?: boolean; lang?: string };
@@ -285,6 +286,13 @@ export function AssistantPanel({ locale = "en", autoFocus = false, compact = fal
       url.searchParams.delete("q");
       window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
     } catch {}
+    // Only the site's own search box may ask on arrival. A question that came in through a link someone
+    // shared is put in the box and waits for a click, so a posted link cannot spend the model's quota
+    // through every visitor who opens it, or show steered answers on medinahub.org.
+    if (!takeAskPending(initialQuestion)) {
+      setQ(initialQuestion);
+      return;
+    }
     void ask(initialQuestion);
   }, [restored, busy, initialQuestion, ask]);
   useEffect(() => {

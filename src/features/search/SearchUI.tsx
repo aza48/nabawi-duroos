@@ -1,5 +1,6 @@
 "use client";
 
+import { markAskPending } from "@/features/assistant/ask-pending";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
@@ -178,7 +179,11 @@ export function looksLikeQuestion(q: string): boolean {
  */
 export function askMeshaykh(q: string, locale: "en" | "ar", go: (url: string) => void) {
   const ev = new CustomEvent("mesh:ask", { detail: { q: q.trim() }, cancelable: true });
-  if (window.dispatchEvent(ev)) go(`${locale === "ar" ? "/ar" : ""}/assistant?q=${encodeURIComponent(q.trim())}`);
+  if (window.dispatchEvent(ev)) {
+    // Mark the hand-off as the site's own, so /assistant asks at once only when this box sent it.
+    markAskPending(q);
+    go(`${locale === "ar" ? "/ar" : ""}/assistant?q=${encodeURIComponent(q.trim())}`);
+  }
 }
 
 /** The id of a result's option element, for aria-activedescendant. */
