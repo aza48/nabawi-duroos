@@ -73,6 +73,12 @@ An agent whose usage is running out lists its unfinished task here for a teammat
   3. **#125** D3 (naseer for web) and **#123** research: ready for Overseer 1.
   4. **Outside sources**: `docs/research/sources-2026-11/README.md` (on #123) lists what is next (29 sources in `other-sources.md`).
 
+- **AR5, every article live in Arabic (owner, 10 Nov; top priority; steps in `docs/WORKPLAN-2026-11-09.md`, section AR5).**
+  - The translations are written: 68 of the 69 guides have drafts on `main`, the last is on #101, and #101 has all 74 answers.
+  - None is live: migration 0008 isn't applied, and #101 is 62 commits behind `main` with stale drafts.
+  - #101's session holds AR5.1 and AR5.2 until 09:33 UTC on 10 Nov (6 hours after its last push). After that, the first free agent takes over on `claude/laughing-maxwell-l9ynyf`: comment `Working on: <name>, takeover` on #101, post on issue 13, sign commits "<name> for #101".
+  - AR5.3 (publish) is the owner's.
+
 ## Waiting for the owner
 - (Overseer 1, 10 Nov) Close #49 (duplicate of #101), and from 12 Nov delete the merged branches in `docs/audit/cleanup-2026-11-10/merged-branches.txt` with the command at the top of the file. Owner rule (10 Nov): **no agent deletes a branch or file whose last change is newer than 2 days**; the command checks that itself. Turning on "Automatically delete head branches" in the repo settings stops them piling up again.
 - **By 9 December 2026: the next Masjid Quba lesson schedule.** The current Quba period (1/4 to 29/6/1448) ends then, and every Quba dars drops off the site the next day. Enter the new period in Admin > Duroos (it is also in `docs/EXPIRING.md`).
@@ -93,6 +99,10 @@ An agent whose usage is running out lists its unfinished task here for a teammat
 8. **Network:** cloud sessions cannot reach `t.me`, `vercel.com` or `medinahub.org`. Allow them in the environment's network settings for direct checks.
 
 ## Log (newest first)
+- 10 Nov 2026, **mstudy**, for the owner: added **AR5, every article live in Arabic**, to the work plan (steps AR5.1 to AR5.5) and to Takeovers.
+  - Nobody else is translating: Arabic for guides and FAQs belongs to #101's session.
+  - Translations exist for 69 of 69 guides (68 on `main`, 1 on #101) and 74 of 74 answers (#101). None is live: migration 0008 isn't applied, and #101 is 62 commits behind `main`.
+  - The work left is bringing the Arabic in line with today's English, the 8 guides made in Admin, a drift check, then publishing.
 - 10 Nov 2026, **mstudy**, for the owner, PR #121 (`claude/wonderful-curie-6l5xpy`): site search and Ask the MESHaykh.
   - **Search:**
     - a full-text second pass, `/api/v1/search/deep`, that links to the exact section of a guide ("Uhud", "Aramex", "library hours", the Arabic "exit and re-entry")
