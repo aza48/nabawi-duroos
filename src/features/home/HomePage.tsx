@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BellRing, BookOpen, BookOpenText, Compass, GraduationCap, KeyRound, Luggage, Megaphone, Plane, RefreshCw, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BellRing, BookOpenText, Compass, Megaphone, RefreshCw } from "lucide-react";
 import type { getToday, AnnouncementRow } from "@/server/duroos/queries";
 import type { GuideRow } from "@/server/content/queries";
-import type { GuideStage } from "@/server/db/schema";
 import { WhatsAppIcon } from "@/components/shell/WhatsApp";
 import { SectionHeader } from "@/components/ui";
 import { TodayHero } from "./TodayHero";
@@ -13,16 +12,13 @@ import { NextUpRail } from "./NextUpRail";
 import { todaysChanges } from "./rail";
 import { slimLesson } from "@/features/duroos/now-next";
 import { AdminHelp } from "@/components/shell/AdminHelp";
+import { HomeGuides, type HomeGuide } from "./HomeGuides";
+import { WhoChooser } from "./WhoChooser";
 
 type Today = Awaited<ReturnType<typeof getToday>>;
 
-export const STAGE_ICON: Record<GuideStage, typeof Plane> = {
-  "getting-started": Plane,
-  "getting-settled": KeyRound,
-  study: GraduationCap,
-  family: Users,
-  leaving: Luggage,
-};
+/** Only what a card needs, so the page does not ship every guide's body to the phone. */
+const homeGuide = (g: GuideRow): HomeGuide => ({ slug: g.slug, title: g.title, stage: g.stage, readingMinutes: g.readingMinutes });
 
 export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today; guides: GuideRow[]; updates: AnnouncementRow[]; whatsappUrl: string }) {
   const changes = todaysChanges(today.lessons);
@@ -81,24 +77,12 @@ export function HomePage({ today, guides, updates, whatsappUrl }: { today: Today
             <AdminHelp variant="line" className="mt-2 text-sm" />
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
-            {guides.slice(0, 8).map((g) => {
-              const Icon = STAGE_ICON[g.stage] ?? BookOpen;
-              return (
-                <Link
-                  key={g.slug}
-                  href={`/guides/${g.slug}`}
-                  className="lift group flex min-h-36 flex-col rounded-2xl border border-line bg-card p-4 hover:border-primary/50 md:min-h-40 md:p-5"
-                >
-                  <span className="grid size-10 place-items-center rounded-xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-ink">
-                    <Icon size={20} />
-                  </span>
-                  <span className="mt-3 font-heading text-[15px] font-semibold leading-snug md:mt-4 md:text-lg">{g.title}</span>
-                  <span className="mt-auto pt-3 text-xs text-muted">{g.readingMinutes} min read</span>
-                </Link>
-              );
-            })}
-          </div>
+          <>
+            <div className="mb-4 md:mb-5">
+              <WhoChooser />
+            </div>
+            <HomeGuides guides={guides.map(homeGuide)} />
+          </>
         )}
       </section>
     </>
