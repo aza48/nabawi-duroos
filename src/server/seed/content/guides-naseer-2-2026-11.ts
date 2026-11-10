@@ -146,7 +146,7 @@ export const GUIDES_NASEER_2_2026_11: SeedGuide[] = [
     summary: "The traps that catch newcomers, each with the official safe route: flats and deposits, property sold with a promise of residency, jobs on visit visas and visa conversion offers, running a business in someone else's name, fake Hajj and Umrah offers, calls and texts posing as your bank, Absher or the University, counterfeit goods, and where to report each one.",
     bodyHtml: `
 <p>Checked November 2026. Most scams aimed at newcomers follow one pattern: an offer that skips the official system, and a request for money or a code before anything is in writing. Each trap below has an official route that protects you and an official place to report it.</p>
-<h2>Renting a flat</h2>
+<h2>Flat and deposit scams</h2>
 <ul>
 <li><strong>Never transfer a deposit or a "holding fee"</strong> before you have seen the flat in person and a contract is ready to register. A cheap flat from someone who cannot meet you is the usual bait.</li>
 <li><strong>Check the agent.</strong> A real-estate broker needs a FAL licence from the Real Estate General Authority (REGA). Check the licence number on REGA's broker inquiry service at <a href="https://rega.gov.sa/">rega.gov.sa</a> or in REGA's app, Aqari (عقاري). Every property advert also needs its own advertisement licence, which REGA's advertisement licence inquiry confirms.</li>
@@ -212,5 +212,85 @@ export const GUIDES_NASEER_2_2026_11: SeedGuide[] = [
 <tr><td>A University account taken over</td><td><strong>it.care@iu.edu.sa</strong>, and report fake Blackboard accounts to <strong>bb@iu.edu.sa</strong></td></tr>
 </tbody></table>
 <p>All the emergency numbers are in <a href="/ask/emergency-numbers">What are the emergency numbers in Saudi Arabia?</a></p>`,
+  },
+{
+    slug: "paperwork-before-you-move-from-the-us",
+    stage: "getting-started",
+    title: "Paperwork to finish in the US before you move to Madinah",
+    summary: "The documents Americans should have certified before they fly, so they do not need a trip back: how the apostille chain works, the FBI background check, certificates for the University, papers for a wife and children, the International Driving Permit and a power of attorney, with short notes for the UK and Canada.",
+    bodyHtml: `
+<p>Checked November 2026. Official papers are far easier to get in the US than from Madinah. Saudi Arabia and the US are both members of the Hague Apostille Convention, so Saudi banks, courts and government offices accept a US document with an apostille with no Saudi embassy stamp. The University has its own rule for certificates, set out below. Prepare each document, have it certified, and pack it before you fly.</p>
+<h2>How the document chain works</h2>
+<p>An apostille is a certificate attached to one document that confirms the signature and seal on it are genuine. The Convention has applied between Saudi Arabia and the US since 7 December 2022. Saudi government offices, banks and courts accept an apostille in place of the old route through the Saudi embassy and the Ministry of Foreign Affairs (وزارة الخارجية).</p>
+<ol>
+<li><strong>Get an official copy</strong> from the body that issued the document: a certified birth certificate from the state, an official transcript from your school, the background check from the FBI.</li>
+<li><strong>Notarise it only if it is a private document,</strong> such as a power of attorney or a school's signed certification. Never notarise a public record such as an FBI check or a birth certificate.</li>
+<li><strong>Add the apostille.</strong> A state document goes to the apostille office of the state that issued it (the Secretary of State in most states). A federal document, such as the FBI check, goes to the US Department of State's Office of Authentications.</li>
+<li><strong>Translate it into Arabic</strong> through a certified translator when a Saudi office asks. The apostille does not replace the translation.</li>
+</ol>
+<table><thead><tr><th>Document</th><th>Official copy from</th><th>Apostille from</th></tr></thead><tbody>
+<tr><td>FBI background check</td><td>The FBI</td><td>US Department of State</td></tr>
+<tr><td>Birth, marriage or death certificate</td><td>The state or county vital records office</td><td>That state's apostille office</td></tr>
+<tr><td>Divorce decree</td><td>The court that granted it</td><td>That state's apostille office</td></tr>
+<tr><td>Diploma and transcript</td><td>The school, college or university</td><td>The apostille office of the state where the school is</td></tr>
+<tr><td>Power of attorney</td><td>Signed by you before a notary</td><td>The apostille office of the state where it was notarised</td></tr>
+</tbody></table>
+<p>Each state's apostille page gives the form, fee and address. Some states first want a county clerk's certificate on county records, so read that page before you order copies.</p>
+<h2>The FBI background check</h2>
+<p>The University asks for a police clearance (شهادة خلو من السوابق) from your country. In the US, the record that covers the whole country is the FBI's Identity History Summary. A letter from your local police covers only that force's area.</p>
+<ol>
+<li><strong>Apply online</strong> through the FBI's Electronic Departmental Order service (eDO) at <a href="https://www.edo.cjis.gov/">edo.cjis.gov</a> and pay the FBI fee. Keep the confirmation email.</li>
+<li><strong>Give your fingerprints</strong> at a Post Office that offers FBI fingerprinting, after you register online with USPS Fingerprinting Services. Take the confirmation email and a photo ID. Not every Post Office does this, so check the location first.</li>
+<li><strong>Ask for a paper copy by post</strong> as well as the electronic result. The paper copy carries the FBI's watermark and the signature of a division official, which the apostille office needs.</li>
+<li><strong>Send the paper copy for the apostille</strong> to the US Department of State's Office of Authentications with form DS-4194, naming Saudi Arabia as the country of use. The fee is 20 US dollars for each document, as of November 2026. By post, allow at least five weeks.</li>
+</ol>
+<blockquote><p>Important: Only the US Department of State apostilles an FBI check, never a state office, and a notary's stamp on the check makes it invalid.</p></blockquote>
+<h2>Certificates for the University</h2>
+<p>The application asks for your secondary school certificate and transcript, your birth certificate, a medical report and Arabic translations where needed. The full list and the steps are in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>. For a master's or PhD, see <a href="/guides/postgraduate-admission-1448">Postgraduate admission at the Islamic University</a>.</p>
+<ul>
+<li><strong>Diplomas, degrees and transcripts:</strong> ask the registrar for official copies certified for an apostille, then send them to the apostille office of the state where the school or university is.</li>
+<li><strong>For the University:</strong> accepted students bring their original certificates certified by the Saudi embassy or the Saudi Arabian Cultural Mission (SACM).</li>
+</ul>
+<h2>Papers for your wife and children</h2>
+<p>Family visas, school places and a baby's papers all need proof of who is related to whom. Have these certified and apostilled before you leave:</p>
+<ul>
+<li>Your marriage certificate, and any earlier divorce decree.</li>
+<li>Each child's birth certificate. For a family visa, the certificate must name both parents.</li>
+</ul>
+<p>Order two or three certified copies of each birth and marriage certificate and have each one apostilled. One apostille covers one copy, and ordering a fresh copy from Madinah means international post both ways.</p>
+<p>For school, also bring each child's vaccination record, the school reports for the last two or three years and the leaving certificate from the last school. Reports not in Arabic or English need attesting and translating.</p>
+<p>A baby born here to one US citizen parent and one parent who is not can be registered with the US Embassy as a US citizen. For this, the US parent shows five years of physical presence in the US before the birth, two of them after age 14. The Embassy accepts school transcripts, tax returns with W-2 forms, a Social Security earnings statement and pay slips. A driving licence does not count. Gather these before you move.</p>
+<p>The details are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>, <a href="/guides/kindergartens-and-schools">Kindergartens and schools for your children</a>, <a href="/guides/having-a-baby-in-madinah">Having a baby in Madinah</a> and <a href="/guides/getting-married-in-saudi-arabia">Getting married in Saudi Arabia</a>.</p>
+<h2>Driving</h2>
+<p>In the US, the State Department authorises only the American Automobile Association (AAA) and the American Automobile Touring Alliance (AATA) to issue International Driving Permits.</p>
+<ul>
+<li>You must be 18 or over with a valid US licence. Take two passport photos, signed on the back.</li>
+<li>The permit lasts one year and cannot be renewed. It is issued up to six months before the date you want it to start. Set the start date to the day you fly, because on a Visitor ID or visit visa you drive on it for one year from the day you enter.</li>
+<li>It is valid only with your original US licence, so bring both.</li>
+<li>Online and postal applications take longer than applying in person. From abroad by post, allow five to seven weeks.</li>
+</ul>
+<p>With an iqama, a US licence is swapped for a Saudi one: see <a href="/guides/drivers-license">Driving in Madinah: your Saudi driving licence</a>.</p>
+<h2>Someone to act for you at home</h2>
+<p>Before you leave, sign a power of attorney before a notary so someone you trust can deal with your bank, post and papers in the US. If it will be used in Saudi Arabia, have it apostilled by the apostille office of the state where it was notarised.</p>
+<p>If you leave without one, the US Embassy in Riyadh and the Consulates General in Jeddah and Dhahran notarise documents in person, by appointment only. The fee is 50 US dollars for each seal, as of November 2026. Bring the document typed and unsigned, and sign it in front of the officer.</p>
+<p>Starting a company here has its own list of papers to apostille before you leave: see <a href="/guides/start-a-company-in-saudi">Start your own company in Saudi Arabia</a>.</p>
+<h2>From the UK, Canada and elsewhere</h2>
+<ul>
+<li><strong>UK:</strong> the police certificate comes from ACRO, and the Foreign, Commonwealth and Development Office's Legalisation Office adds the apostille.</li>
+<li><strong>Canada:</strong> the Convention has applied in Canada since 11 January 2024. Alberta, British Columbia, Ontario, Quebec and Saskatchewan apostille their own documents. Global Affairs Canada apostilles federal documents, including RCMP criminal record checks, and documents from the other provinces and territories.</li>
+<li><strong>Other countries:</strong> members of the Convention follow the same chain through their own apostille office. For other countries, documents go through the foreign ministry, then the Saudi embassy there.</li>
+</ul>
+<h2>Checklist before you fly</h2>
+<ul>
+<li>FBI check, paper copy, apostilled by the US Department of State.</li>
+<li>Diploma and transcript, apostilled by the state, and the originals certified by the Saudi embassy or SACM for the University.</li>
+<li>Birth certificates for everyone travelling and your marriage certificate, two or three copies each, all apostilled.</li>
+<li>Children's vaccination records, school reports and the leaving certificate from the last school.</li>
+<li>Proof of US physical presence, if you expect a child here and only one parent is a US citizen.</li>
+<li>International Driving Permit and your US licence.</li>
+<li>A notarised power of attorney for someone at home.</li>
+<li>A doctor's letter for regular medicines: see <a href="/ask/bringing-medicine-into-saudi">Can I bring my regular medicine to Saudi Arabia?</a></li>
+<li>Scans of everything in cloud storage. The packing list is in <a href="/guides/what-to-bring-to-madinah">What to bring to Madinah</a>.</li>
+</ul>`,
   },
 ];
