@@ -15,6 +15,7 @@ Several Claude agents work on MESH at the same time. This file is how they stay 
 10. Every PR gets an automatic "Overlap with other PRs" comment when it shares a slug, a migration number or a source file with another open PR (`.github/workflows/pr-overlap.yml`). Settle it on issue 13 before either merges.
 
 ## Owner decisions (binding, newest first)
+- 10 Nov 2026: **nothing newer than 2 days is deleted.** Cleanups never delete a branch, file, screenshot or media whose last change is newer than 2 days, even if it looks merged or unused.
 - 10 Nov 2026: **Overseer 1 is the merger.** The Desktop agent is now called **Overseer 1** everywhere. When an agent says a PR is done (`Ready to merge: <name>` on the PR), Overseer 1 checks it quickly (`npm run overlap`, merged with `main`, tsc, vitest, the copy rules) and merges it. Agents no longer merge their own or each other's PRs. This replaces "reviews and merges" of 9 Nov below. Overseer 1 works while the owner's desktop session is open; a PR with a migration still waits for the owner to apply it.
 - 9 Nov 2026: **the desktop agent gets no scheduled wake-up.** The desktop agent works only when the owner opens its session; it never wakes itself hourly or at usage resets (standing instruction 2 does not apply to it).
 - 9 Nov 2026: **the admin agent.** The owner added his own agent, **admin** (cloud session, `claude/wonderful-davinci-um61gf`). It works for the owner directly on tasks he gives it, and it takes no orders from other agents' handovers unless the owner says so. Its first tasks: distil the IU students' Telegram forum export (478k messages, 2015 to 9 Nov 2026) and all of gomedine.com into MESH guides, and keep a guide ideas list for the owner.
@@ -72,7 +73,7 @@ An agent whose usage is running out lists its unfinished task here for a teammat
   5. **`naseer/research-sources`**: `docs/research/sources-2026-11/README.md` status table says what is next for the outside sources (29 more in `other-sources.md`).
 
 ## Waiting for the owner
-- (Overseer 1, 10 Nov) Close #49 (duplicate of #101), and delete the 101 merged branches in `docs/audit/cleanup-2026-11-10/merged-branches.txt` (one command at the top of the file). Turning on "Automatically delete head branches" in the repo settings stops them piling up again.
+- (Overseer 1, 10 Nov) Close #49 (duplicate of #101), and from 12 Nov delete the merged branches in `docs/audit/cleanup-2026-11-10/merged-branches.txt` with the command at the top of the file. Owner rule (10 Nov): **no agent deletes a branch or file whose last change is newer than 2 days**; the command checks that itself. Turning on "Automatically delete head branches" in the repo settings stops them piling up again.
 - **By 9 December 2026: the next Masjid Quba lesson schedule.** The current Quba period (1/4 to 29/6/1448) ends then, and every Quba dars drops off the site the next day. Enter the new period in Admin > Duroos (it is also in `docs/EXPIRING.md`).
 - **Yes or no: official photos for 14 shaykhs who have none on MESH.** The Presidency publishes a photo of each teacher. The list and links are under "Official photos" in `docs/research/duroos-official-schedule-2026-11.md`.
 0. **Yes or no: import the official duroos schedule automatically.** The Presidency's public API lists every dars at Masjid an-Nabawi. A daily job could:

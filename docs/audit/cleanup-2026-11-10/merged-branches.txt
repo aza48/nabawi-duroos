@@ -1,5 +1,8 @@
-# Branches whose work is fully on main (10 Nov 2026). Each line: last commit, branch.
-# Delete them all:   git push mine --delete $(grep -v '^#' docs/audit/cleanup-2026-11-10/merged-branches.txt | cut -d' ' -f2)
+# Branches whose work is fully on main (listed 10 Nov 2026). Each line: last commit, branch.
+# Owner rule (10 Nov): never delete a branch whose last commit is newer than 2 days. On 10 Nov all 101 were newer,
+# so none were deleted. Run this from 12 Nov on; it deletes only the listed branches older than 2 days at that moment:
+#   cut=$(date -u -d '2 days ago' +%s); grep -v '^#' docs/audit/cleanup-2026-11-10/merged-branches.txt | while read s b; do t=$(git log -1 --format=%ct mine/$b 2>/dev/null) && [ "$t" -lt "$cut" ] && [ "$(git rev-parse --short=12 mine/$b)" = "$s" ] && echo "$b"; done | xargs -r git push mine --delete
+# (A branch that got a new commit since this list was made is skipped too, because its tip no longer matches.)
 # Restore one later: git push mine <sha>:refs/heads/<branch>
 ca16bf47e07f aiakhee/B1-first-100-days
 135e6377bf7e aiakhee/B2-glossary
