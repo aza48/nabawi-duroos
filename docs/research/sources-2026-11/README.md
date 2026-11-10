@@ -13,10 +13,10 @@ The owner asked for this on 9 November 2026: scrape Saudistics (Substack and You
 
 | Source | What it is | Index | Notes | Guides made | Who / state |
 |---|---|---|---|---|---|
-| Saudistics Substack, `saudistics.substack.com` | 6 English posts (28 Sep to 3 Oct 2026), all on work iqamas: changing profession on Qiwa, huroob, resigning and end of service, can a wife or children work on a family visa, expired work permits | below | `saudistics-substack.md` (to do) | none yet | naseer: reading |
-| Saudistics YouTube, `youtube.com/@Saudistics786` (channel id `UCk7Aa7lCVUAuXeJqEufDgtA`) | 30 videos, in Indonesian, mostly about Hajj and Umrah from Indonesia. Five are about living in Madinah (see below) | `saudistics-youtube-index.txt` | `saudistics-youtube.md` (to do) | none yet | naseer: reading the five Madinah videos |
-| Other organisations | To find: blogs, newsletters and channels on living, studying and residency in Saudi Arabia and Madinah | `other-sources.md` (to do) | | | naseer: searching |
-| A student's answer on paperwork to do in the US before moving (sent by the owner) | Apostilles, the FBI check, degrees, civil documents, power of attorney, driving record | `us-paperwork-brief.md` | | `paperwork-before-you-move-from-the-us` (to do, claimed by naseer on issue 13) | naseer: researching |
+| Saudistics Substack, `saudistics.substack.com` | 6 English posts (28 Sep to 3 Oct 2026), all on work iqamas: changing profession on Qiwa, huroob, resigning and end of service, can a wife or children work on a family visa, expired work permits | below | `saudistics-substack.md` (done 9 Nov: facts in our words, each checked against hrsd.gov.sa where it loaded) | none yet; proposals at the end of the notes | open: write the proposed FAQs (claim on issue 13 first) |
+| Saudistics YouTube, `youtube.com/@Saudistics786` (channel id `UCk7Aa7lCVUAuXeJqEufDgtA`) | 30 videos, in Indonesian, mostly about Hajj and Umrah from Indonesia. Five are about living in Madinah (see below) | `saudistics-youtube-index.txt` | `saudistics-youtube.md` (done 9 Nov from the video descriptions; captions are blocked from cloud sessions) | none yet; proposals at the end of the notes | open: Premium Residency fees unconfirmed (sa.gov.sa and pr.sa blocked) |
+| Other organisations | To find: blogs, newsletters and channels on living, studying and residency in Saudi Arabia and Madinah | `other-sources.md` (done 9 Nov: 29 sources ranked, with RSS, sitemap or channel ids) | | | open: any agent can take a source from the top of the list; claim it on issue 13 and add a row here |
+| A student's answer on paperwork to do in the US before moving (sent by the owner) | Apostilles, the FBI check, degrees, civil documents, power of attorney, driving record | `us-paperwork-brief.md` | | `paperwork-before-you-move-from-the-us`: draft in `drafts/`, under review (claimed by naseer) | naseer: review and fix running 10 Nov, then into `guides-naseer-2026-11.ts` |
 
 ## Saudistics Substack posts
 | Date | Title | Link | Useful for |
@@ -39,3 +39,7 @@ The owner asked for this on 9 November 2026: scrape Saudistics (Substack and You
 | `A1zN-FFBwNM` | Can foreigners buy property in Madinah (part 1) | `owning-property-as-a-non-saudi` |
 
 Transcripts: `https://www.youtube.com/watch?v=<id>`. If a session can't fetch captions, note it here and move on.
+
+## Also on this branch
+- `../iu-news-2026-11.md`: the University's news and announcements, scanned for student-facing items (akheeai's Lane A item 1, taken by naseer for web, 10 Nov).
+- `../mashayikh-open-answers-2026-11.md`: answers to the open mashayikh questions (akheeai's item 2).
