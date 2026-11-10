@@ -4,6 +4,22 @@ const L = (ar: string, en: string): Localized => ({ ar, en });
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "maher-duroos-paused-until-next-semester",
+    shaykh: L("أ. د. ماهر بن عبد الرحيم خوجة", "Prof. Dr. Mahir ibn Abdurrahim Khujah"),
+    text: L(
+      "أعلن الشيخ أ. د. ماهر بن عبد الرحيم خوجة في درسه الأخير [الاثنين ٢٩/٥/١٤٤٨] أن دروسه الأسبوعية يوم الاثنين (بعد صلاة العشاء، في مسجد محمد بن إبراهيم بالجامعة الإسلامية) ستتوقف حتى بداية الفصل الدراسي القادم بسبب الاختبارات، وسيُعلن عن الموعد الدقيق للدرس القادم بإذن الله في مجموعة التلغرام، وسيبدأ عند الاستئناف شرح «العقيدة الواسطية» بإذن الله",
+      "Shaykh Prof. Dr. Mahir ibn Abdurrahim Khujah announced in his last lesson [Monday 29/5/1448] that his weekly Monday lessons (after Isha prayer, at Masjid Muhammad ibn Ibrahim, Islamic University) are paused until the beginning of the next semester because of the exams. The exact date of the next lesson will be announced, in sha Allah, in the Telegram group, and when he resumes he will begin the explanation of «Al-Aqidah al-Wasitiyyah», in sha Allah"
+    ),
+    postedHijri: L("٣٠/٥/١٤٤٨هـ", "30/5/1448 AH"),
+    postedGregorian: L("١٠ نوفمبر ٢٠٢٦", "10 November 2026"),
+    source: "@admin",
+    sourceName: L("إدارة الموقع", "Site admin"),
+    type: "info",
+    expired: false,
+    masjidId: "ibrahim",
+    image: "/images/flyer-ibrahim-maher-duroos-series.jpg",
+  },
+  {
     id: "lecture-ibrahim-ruhayli-14480601",
     shaykh: L("أ. د. إبراهيم بن عامر الرحيلي", "Prof. Dr. Ibrahim ibn Amer al-Ruhayli"),
     text: L(
