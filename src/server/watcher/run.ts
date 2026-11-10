@@ -9,6 +9,7 @@ import { assertCan, type Actor } from "@/server/auth/permissions";
 import { addOverride } from "@/server/admin/duroos";
 import { setSetting } from "@/server/settings";
 import { riyadhDateIso } from "@/lib/time/riyadh";
+import { WEEKDAYS_SHORT_EN as DAY } from "@/lib/locale";
 import { parseChannelHtml, previewUrl, type ChannelPost } from "./telegram";
 import { decide } from "./decide";
 import type { AiParse } from "./ai";
@@ -34,7 +35,6 @@ export async function lessonContext(db: Db) {
     .innerJoin(shaykhs, eq(lessons.shaykhId, shaykhs.id))
     .innerJoin(masjids, eq(lessons.masjidId, masjids.id))
     .where(eq(lessons.status, "active"));
-  const DAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return {
     list: rows.map((r) => ({
       slug: r.slug,

@@ -1,5 +1,11 @@
 # Owner questions from publishing admin's research (November 2026)
 
+## Answered by the owner, 10 November 2026 (applied in the guides)
+- **Stipend to your own IBAN:** not possible. Students take the stipend out in cash at Al Rajhi ATMs; the nearest to the University is next to Gate 4, where the taxis line up. The wallet-app and ATM-transfer routes were removed.
+- **Room sharing:** in the units (wihdat) usually two students to a room; some older units three or four.
+- **Renting on a Visitor ID through Ejar:** give the newest source (Ejar's clarification of 31 August 2026: yes, through an accredited agent) and say that earlier in 2026 only iqama holders could register.
+- **The student-made system guide:** fine to use; leave out anything clearly untrue.
+
 Each writer held these back instead of publishing either side. Finding numbers point into `docs/research/iu-pdfs-2026-11/`, `telegram-iu-2026-11/` (c1 to c7) and `gomedine-2026-11/`. Answer them on issue 13 or in `scripts/open-questions.json`, and the guides get updated.
 
 ## Writer A
@@ -116,6 +122,17 @@ Other open points (left out):
 8. **Requesting the qualification.** Through which screen or Tawasul option does an e-course student request a diploma or bachelor's once the requirements are met, and how many hours does each diploma need?
 9. **Technical support mobile +966 55 796 5152.** Left out until confirmed as an official line (same as student-system-guide.md question 8).
 10. **Moving to Madinah.** Do hours passed in the distance programmes count if the student later joins a college in Madinah on a scholarship? Readers abroad will ask; the source does not say.
+
+## admin, 9 November late (gomedine.com part 2 and the Telegram delta)
+The full lists are section 5 of `docs/research/gomedine-2026-11/part-2.md` (15 questions) and section 4 of `docs/research/telegram-iu-2026-11/DELTA-c3-c5-c6.md` (30 questions). The ones that hold back text that is ready to publish:
+1. **Stipend and GPA.** Does the stipend stop while the cumulative GPA is below 2.75 (four periods, 2024 to 2026, one dating it to semester 2 of 1445), or below 2.00? Ready line: DELTA 2.1.1.
+2. **Ejar.** Does a registered residential contract renew itself unless notice is given 60 days ahead, and is the helpline 199011? Ready text: part 2, 4.5 (ending a lease early).
+3. **Car sale in Absher.** Are the one hour to accept, the 72 hours to pay and the 150 plus 230 SAR fees current? Ready text: part 2, 4.4 (`buying-a-used-car`).
+4. **A baby born to a mother on a visit visa.** Is the Jawazat exit stamp step right for Madinah? Ready text: part 2, 4.2 (second block).
+5. **Family visit visa relatives**, the list in part 2, 4.8; and **Tawakkalna sign-in** for Visitor ID students, part 2, 4.9.
+6. **A marriage guide** (part 2, 4.10): wanted at all? If yes, can Visitor ID students marry here, and what does the University require?
+7. **Mat'am meals for someone else.** A 2024 notice allowed sending your meal barcode to another student; the guide says your own card only (DELTA 1.3 and 1.4).
+8. **Postgraduate 1448 closing date:** an official post gives 6 December 2025; the guide says "early December" (DELTA 1.2).
 
 
 ## gomedine.com part 2 (G2)

@@ -63,7 +63,7 @@ Screenshots: `docs/screenshots/admin-phone/` (390x844 unless the name says deskt
 | 32 | **Dev setup issues.** `next dev` logs server action arguments, including the new admin's password in plain text. Auth falls back to port 3000 while the docs and invite use 3100. | `next.config.ts` (`logging.serverFunctions`), `src/server/auth/auth.ts:39-42` | Set `logging: { serverFunctions: false }`. In dev, default `BETTER_AUTH_URL` to the port in use, or print a hint next to the invite link. | low |
 | 33 | **Answers and guides have no Arabic fields**, so `/ar/guides/*` shows English bodies. This is already listed in `docs/audit/arabic-2026-11-09.md` line 56. | `src/server/db/schema.ts` faqs and guides | Product decision for the owner; out of scope here. | low |
 
-## Open items from ADMIN-AUDIT.md
+## Open items from ADMIN-AUDIT.md (now `docs/archive/ADMIN-AUDIT-2026-11-08.md`)
 
 | Item | Status now |
 |---|---|

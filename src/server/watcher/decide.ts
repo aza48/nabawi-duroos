@@ -1,3 +1,4 @@
+import { toAsciiDigits } from "@/lib/locale";
 import { addDays, weekdayOf } from "@/lib/time/riyadh";
 import { hijriIsoBounds, hijriOf } from "@/lib/time/hijri";
 import type { AiParse } from "./ai";
@@ -76,12 +77,6 @@ export function checkPostAgainst(
   return problems;
 }
 
-const EASTERN = "٠١٢٣٤٥٦٧٨٩";
-const PERSIAN = "۰۱۲۳۴۵۶۷۸۹";
-/** Arabic-Indic and Persian digits as ASCII digits. */
-export const latinDigits = (s: string) =>
-  s.replace(/[٠-٩۰-۹]/g, (d) => String(EASTERN.includes(d) ? EASTERN.indexOf(d) : PERSIAN.indexOf(d)));
-
 const HIJRI_MONTHS: [RegExp, number][] = [
   [/محرم/, 1], [/صفر/, 2], [/ربيع الاول/, 3], [/ربيع (الثاني|الاخر)/, 4], [/جمادي الاولي/, 5], [/جمادي (الاخره|الثانيه)/, 6],
   [/رجب/, 7], [/شعبان/, 8], [/رمضان/, 9], [/شوال/, 10], [/ذ[يو] القعده/, 11], [/ذ[يو] الحجه/, 12],
@@ -108,7 +103,7 @@ function nearestHijriYear(month: number, day: number, today: string): number {
 export function hijriDatesIn(text: string, today: string): string[] {
   const out = new Set<string>();
   // Digits first: normalizeArabic() drops Arabic-Indic digits and slashes, so the slash form is read from the raw text.
-  const raw = latinDigits(text);
+  const raw = toAsciiDigits(text);
   const n = normalizeArabic(raw);
   const add = (d: number, m: number, y?: number) => {
     if (d < 1 || d > 30 || m < 1 || m > 12) return;

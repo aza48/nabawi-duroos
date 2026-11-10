@@ -4,14 +4,9 @@
  *   npm run shaykh:sync -- --apply           writes every change (each one can be undone in Admin > Activity)
  *   npm run shaykh:sync -- --apply --only=slug-one,slug-two
  */
-import { readFileSync } from "node:fs";
+import { loadEnvFile } from "./load-env";
 
-try {
-  for (const line of readFileSync(".env.production.local", "utf8").split("\n")) {
-    const m = /^([A-Z_]+)=(.*)$/.exec(line.trim());
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, "");
-  }
-} catch {}
+loadEnvFile(".env.production.local");
 
 async function main() {
   if (!process.env.DATABASE_URL) throw new Error("Put the live DATABASE_URL in .env.production.local first.");

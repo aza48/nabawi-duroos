@@ -10,13 +10,9 @@
  * publishes it, then moves the entry under "Processed" in that file.
  */
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
+import { loadEnvFile } from "./load-env";
 
-try {
-  for (const line of readFileSync(".env.production.local", "utf8").split("\n")) {
-    const m = /^([A-Z_]+)=(.*)$/.exec(line.trim());
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, "");
-  }
-} catch {}
+loadEnvFile(".env.production.local");
 
 const NOTES = "docs/ADMIN-ANSWERS.md";
 const HEADER = `# Admin answers

@@ -11,6 +11,8 @@ import { GUIDES_ADMIN_2026_11 } from "./guides-admin-2026-11";
 import { GUIDES_ADMIN_LIFE_2026_11 } from "./guides-admin-life-2026-11";
 import { GUIDES_ADMIN_ONLINE_2026_11 } from "./guides-admin-online-2026-11";
 import { GUIDES_ADMIN_PAPERS_2026_11 } from "./guides-admin-papers-2026-11";
+import { GUIDES_NASEER_2026_11 } from "./guides-naseer-2026-11";
+import { GUIDES_NASEER_2_2026_11 } from "./guides-naseer-2-2026-11";
 import { withFaqLead } from "./faq-leads";
 import { FAQS_AIAKHEE_2026_11 } from "./faqs-aiakhee-2026-11";
 
@@ -19,7 +21,7 @@ import { FAQS_AIAKHEE_2026_11 } from "./faqs-aiakhee-2026-11";
  * which is how rewrites kept outside guides-2026.ts take effect.
  */
 export const SEED_GUIDES: SeedGuide[] = [
-  ...new Map([...GUIDES_2026, ...GUIDES_STUDENT_LIFE, ...GUIDES_RESEARCH_2026_11, ...GUIDES_GAPS_2026_11, ...GUIDES_LANE_E_2026_11, ...GUIDES_ADMIN_2026_11, ...GUIDES_ADMIN_LIFE_2026_11, ...GUIDES_ADMIN_ONLINE_2026_11, ...GUIDES_ADMIN_PAPERS_2026_11, ...GUIDE_REWRITES_2026_11].map((g) => [g.slug, g] as const)).values(),
+  ...new Map([...GUIDES_2026, ...GUIDES_STUDENT_LIFE, ...GUIDES_RESEARCH_2026_11, ...GUIDES_GAPS_2026_11, ...GUIDES_LANE_E_2026_11, ...GUIDES_ADMIN_2026_11, ...GUIDES_ADMIN_LIFE_2026_11, ...GUIDES_ADMIN_ONLINE_2026_11, ...GUIDES_ADMIN_PAPERS_2026_11, ...GUIDES_NASEER_2026_11, ...GUIDES_NASEER_2_2026_11, ...GUIDE_REWRITES_2026_11].map((g) => [g.slug, g] as const)).values(),
 ];
 export const SEED_FAQS: SeedFaq[] = [...new Map([...FAQS_2026, ...FAQS_STUDENT_LIFE, ...FAQS_GAPS_2026_11, ...FAQS_AIAKHEE_2026_11].map((f) => [f.slug, f] as const)).values()].map(withFaqLead);
 

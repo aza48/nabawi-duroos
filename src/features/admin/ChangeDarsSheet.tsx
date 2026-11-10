@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import { addOverrideAction } from "@/app/(admin)/admin/actions";
+import { riyadhDateIso } from "@/lib/time/riyadh";
 import { btnPrimary, ErrorNote, inputCls, labelCls } from "./ui";
 import { useFeedback } from "./Feedback";
 
@@ -17,8 +18,7 @@ const KINDS = [
 ] as const;
 
 function riyadhIso(offsetDays = 0): string {
-  const d = new Date(Date.now() + offsetDays * 86_400_000);
-  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Riyadh", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+  return riyadhDateIso(new Date(Date.now() + offsetDays * 86_400_000));
 }
 
 export function ChangeDarsButton({ lessonSlug, label, title, compact = false }: { lessonSlug: string; label?: string; title: string; compact?: boolean }) {
