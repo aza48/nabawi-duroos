@@ -789,7 +789,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li><strong>Arrange the inspection</strong> with your building's mushrif (supervisor), at his office or by phone. He checks the room, takes the key and signs the form. <strong>Keep the original form.</strong></li>
 <li><strong>Go back to the housing office</strong> the next working morning for the final clearance. The system then shows your room as returned.</li>
 </ol>
-<p>The University sets a date by which graduates must empty their rooms. In 2026 it was 27 June, about five weeks after the final exams. Anything left after that date is removed at your own risk, so plan your handover, your visa and your ticket around it.</p>
+<p>The University sets a date by which graduates must empty their rooms. In 2026 it was 27 June, about five weeks after the final exams. Anything left after that date is removed at your own risk, so plan your handover, your visa and your ticket around it. Ma'had graduates moving into a college keep their room as regular students.</p>
 <p>Your blanket and bedsheets are yours to take home. Anything else you bought for the room, from a kettle to a bookshelf, goes with you, to a friend or to the market: see <strong>Your things</strong> below.</p>
 <h2>4. Return your student card and clear your file</h2>
 <p>Hand in the signed room form at the housing office, and return your student card at the student card office. Keep a copy or a PDF of the card first. Then complete the clearance (إخلاء طرف) in the Academic System, under <strong>Academic</strong>, then <strong>Clearance</strong>. It opens once your status shows Graduate, and lists each office that must sign you off. Travel Management (إدارة السفر) then confirms your clearance in the University's records, and your ticket and, with an iqama, your final exit follow from that. Nothing is issued before the clearance shows.</p>
@@ -828,7 +828,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <ol>
 <li>Finish everything above first, including the embassy, before you book.</li>
 <li>Make sure the University has confirmed your clearance. Graduates' tickets are issued only after that.</li>
-<li>Your final ticket is issued against a travel order on Etimad, to a capital city in your own country or the country that issued your visa. Check that your name on Etimad matches your passport letter for letter.</li>
+<li>Your final ticket is issued against a travel order on Etimad, to one of the cities the University sets for your country. Check that your name on Etimad matches your passport letter for letter.</li>
 <li>Tell the ticket unit the date you can really travel. A date change later costs you the fare difference, and a no-show loses the ticket.</li>
 <li>You can upgrade the class of travel at your own cost. Your family's tickets are at your own cost.</li>
 </ol>
@@ -878,7 +878,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <h3>Ship your books</h3>
 <p>Books are the heaviest thing a student owns, and the graduation allowance exists for exactly this. Compare these ways, and weigh your boxes before you choose.</p>
 <table><thead><tr><th>Way</th><th>Good for</th><th>What to know</th></tr></thead><tbody>
-<tr><td>Your checked baggage</td><td>Up to two bags on the University ticket</td><td>Often the cheapest for the first 40 to 50 kg. As of November 2026 Saudia allows 23 kg a bag in economy and charges 138 SAR a bag between 23 and 32 kg. Buy an extra bag from the airline online before the flight, not at the counter</td></tr>
+<tr><td>Your checked baggage</td><td>Up to two bags on the University ticket</td><td>Often the cheapest for the first 40 to 50 kg. The airlines flying from Madinah allow about 23 kg a bag in economy on most fares, a bag between 23 and 32 kg pays an excess fee per piece or per kilo, and nothing heavier than 32 kg goes in the hold. Buy an extra bag from the airline online before the flight, not at the counter</td></tr>
 <tr><td>SPL (Saudi Post)</td><td>Boxes up to 30 kg</td><td>Economy is delivered to the post office nearest the receiver, Express and Sea Freight to the door. Priced by weight and country in SPL's price calculator. As of 2025 a 30 kg express parcel costs from under 300 SAR to South Asia to about 750 SAR to Europe and North America. Customer service 19992</td></tr>
 <tr><td>Courier companies</td><td>Faster, tracked, any weight</td><td>Aramex, DHL, FedEx, SMSA and UPS all ship from Madinah. Ask each for a quote by weight, and ask about a books or student rate</td></tr>
 <tr><td>Sea cargo</td><td>Many boxes to Africa or Asia</td><td>Cargo offices in the city ship by the box or the cubic metre. Slow, but far cheaper per kilo for a whole library</td></tr>
@@ -918,7 +918,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     title: "Where sisters can study Arabic and Islamic sciences in Madinah",
     summary: "The in-person options for sisters, listed alphabetically: the women's marakiz for Arabic, Qur'an and Shariah, and the Masjid an-Nabawi Ma'had and Kulliyah, with who each is for, what it teaches and how to apply.",
     bodyHtml: `
-<p>Checked 9 November 2026. Madinah has several places where sisters study Arabic, the Qur'an and the Islamic sciences in person. They are listed here alphabetically. Teaching is in Arabic, and most classes are in the morning. Contact each place for the start of the next term before you plan around it.</p>
+<p>Checked 9 November 2026. Madinah has several places where sisters study Arabic, the Qur'an and the Islamic sciences in person. They are listed here alphabetically, with the Haram's own Ma'had and Kulliyah together at the end. Teaching is in Arabic, and most classes are in the morning. Contact each place for the start of the next term before you plan around it.</p>
 <h2>At a glance</h2>
 <table><thead><tr><th>Where</th><th>What it teaches</th><th>Length</th><th>Nursery</th></tr></thead><tbody>
 <tr><td>Academiyah al-Ma'rifah</td><td>Arabic for non-Arabic speakers, Shariah and Qur'an</td><td>Arabic 2 years, Shariah 1 year</td><td>Yes</td></tr>
@@ -985,7 +985,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
 <li>Bring the originals and copies of your documents when you are accepted, then start your studies.</li>
 </ol>
 <p>The full conditions for each level are in <a href="/guides/masjid-an-nabawi-institute-and-college">The Masjid an-Nabawi Institute and College</a> and <a href="/programs/nabawi-women">Masjid an-Nabawi programmes for women</a>.</p>
-<h2>Without registering</h2>
+<h2>Without enrolling</h2>
 <p>The Haram's free Qur'an and mutun halaqat for sisters take registrations online, and the duroos in the masjid are open to everyone. See <a href="/guides/women-at-masjid-an-nabawi">Masjid an-Nabawi for sisters and families</a>. For online study and the other routes, see <a href="/ask/sisters-study">Where can sisters study?</a> and <a href="/programs">Study in Madinah</a>.</p>
 <blockquote><p>Tip: A question about your own case? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
@@ -993,7 +993,7 @@ export const GUIDE_REWRITES_2026_11: SeedGuide[] = [
     slug: "kids-activities",
     stage: "family",
     title: "Play areas and fun places for children in Madinah",
-    summary: "Soft play centres, mall crèches and gardens for young children in Madinah, with the ages each takes and what is there.",
+    summary: "Soft play centres, mall crèches and gardens for young children in Madinah, with what is at each and the ages they take.",
     bodyHtml: `
 <p>Checked 9 November 2026. Madinah has indoor soft play centres, crèches in the malls and gardens with rides, which are a good way to spend a hot afternoon with young children. Each section below is in alphabetical order. Entry is paid per child at the desk.</p>
 <h2>Soft play centres</h2>

@@ -84,7 +84,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "الحرم والعبادة",
     blurb: "Your first visit to Masjid an-Nabawi, the Rawdah, Umrah, Quba, the women's sections, and Hajj as a resident.",
     blurbAr: "زيارتك الأولى للمسجد النبوي والروضة والعمرة وقباء ومصليات النساء.",
-    slugs: ["masjid-an-nabawi-first-visit", "umrah-rawdah-quba", "women-at-masjid-an-nabawi", "hajj-as-a-student"],
+    slugs: ["masjid-an-nabawi-first-visit", "umrah-rawdah-quba", "women-at-masjid-an-nabawi", "hajj-as-a-student", "ramadan-in-madinah"],
   },
   {
     id: "family",
@@ -98,9 +98,9 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     id: "explore",
     label: "Explore Madinah",
     labelAr: "استكشف المدينة",
-    blurb: "Historic sites, day trips, the seasons and camping, dates, and sport.",
-    blurbAr: "المعالم التاريخية والرحلات القصيرة والمواسم والتخييم والتمور والرياضة.",
-    slugs: ["historic-sites-and-masjids", "day-trips-from-madinah", "seasons-and-camping", "dates-of-madinah", "sports-and-activities"],
+    blurb: "Historic sites, day trips, the seasons and camping, dates, sport and volunteering.",
+    blurbAr: "المعالم التاريخية والرحلات القصيرة والمواسم والتخييم والتمور والرياضة والتطوع.",
+    slugs: ["historic-sites-and-masjids", "day-trips-from-madinah", "seasons-and-camping", "dates-of-madinah", "sports-and-activities", "volunteering-as-a-student"],
   },
 ];
 

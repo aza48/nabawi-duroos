@@ -94,6 +94,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Open the account in one of two ways. <strong>At a branch:</strong> take your passport and show your Visitor ID in the Absher app. <strong>Online:</strong> apply in the bank's app or website and confirm your identity through Nafath. Each bank sets its own extra conditions, so if one turns you away, try another bank.</li>
 <li>Your account number arrives by text message. Collect your mada debit card at the branch or ask for it to be posted to your National Address.</li>
 </ol>
+<p>US citizens: banks run extra checks under the FATCA agreement, and some ask for your Social Security number, so have it with you.</p>
 <p>A Visitor ID account works only while your Visitor ID and your stay are valid. When the ID expires the bank freezes the account until it is renewed, so renew your visa in good time.</p>
 <blockquote><p>Tip: A mada card is worth having. Some shops take only mada or cash, foreign cards are sometimes blocked by bank security checks, and you need a local card to pay bills and government fees.</p></blockquote>
 <p>Already have a SIM? See <a href="/guides/phone-sims-and-absher">Your phone number, SIM checks and Absher</a> for codes, SIM checks and updating your Absher number.</p>
@@ -422,11 +423,12 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>WhatsApp and Telegram groups:</strong> up-to-date listings and direct contact with landlords and students who are leaving.</li>
 <li><strong>Property sites and apps:</strong> Aqar, Bayut and Haraj are the biggest. Prices on them tend to be inflated and many landlords speak only Arabic.</li>
 <li><strong>Agents:</strong> some real-estate offices work in English. Use an agent from Ejar's official list of accredited agents, and check their FAL licence number in the FAL app or on the Real Estate General Authority's website before you pay anything.</li>
+<li><strong>Building supervisors:</strong> ask the haris of the buildings you like, in person after Asr when he is at the door. He knows which flats are about to empty.</li>
 <li><strong>Taking over a flat:</strong> students who are leaving often hand over their flat, sometimes with the furniture. Ask to see the contract and meet the landlord before you pay for the furniture or the remaining rent.</li>
 </ul>
 <blockquote><p>Tip: If it's your first time, stay in a hotel or a short let (Booking, Airbnb or Gathern) for a week or two and look in person. You'll see the building, test the air conditioning and negotiate directly.</p></blockquote>
 <h2>Furnished or empty</h2>
-<p>For 3 to 6 months, take furnished. For a year or more, an empty flat is 40 to 50% cheaper and you can furnish it cheaply at Haraj market. Most good newer buildings are an 8 to 15 minute drive from the Haram rather than walking distance.</p>
+<p>For 3 to 6 months, take furnished. For a year or more, an empty flat is 40 to 50% cheaper and you can furnish it cheaply at Haraj market. Most good newer buildings are an 8 to 15 minute drive from the Haram rather than walking distance. Basement flats are cheaper to cool and damp in winter, so look at the walls before you take one. As of 2025, an empty flat of three or four bedrooms let by the year went for about 23,000 to 25,000 SAR, and a room for about 600 SAR a month.</p>
 <h2>The contract</h2>
 <p><strong>Ejar</strong> is the official system of the Real Estate General Authority, and a registered contract legally protects both sides. You do not type the contract in yourself: an accredited agent, or a landlord who meets Ejar's conditions, creates it on Ejar, and you approve it from the link Ejar sends you by SMS. This works with an iqama, and on the educational visa with a Visitor ID (see the answer on renting on a student visa). The registration fee is 125 SAR a year, so check in the contract who pays it. Since September 2025 landlords must register their leases, and a tenant can ask for registration too. Many rentals in Madinah are still private paper agreements, which carry no legal protection. Ejar's helpline is 199011.</p>
 <h2>Renting on your own</h2>
@@ -527,7 +529,6 @@ export const GUIDES_2026: SeedGuide[] = [
 <li><strong>Go to your appointment</strong> with your original licence, the translation, a photo, and your iqama (the card or the digital one in Absher).</li>
 <li><strong>Check Absher afterwards.</strong> Your Saudi licence appears there once it is issued, and Absher offers delivery of the card to your National Address.</li>
 </ol>
-<blockquote><p>Tip: The driving school keeps your original licence in some cases. Take photos of both sides first.</p></blockquote>
 <blockquote><p>Note: People near the driving school offer to book a slot for you for a small fee, but they ask for your Absher password or the code sent to your phone. Never share either. Book the appointment yourself on Absher.</p></blockquote>
 <blockquote><p>Note: If you held a Saudi licence before and came back on a new iqama, you do not start again. Transfer or renew it onto the new iqama through Absher.</p></blockquote>
 <h2>If your country is not on the list: the driving school</h2>
@@ -1040,7 +1041,7 @@ export const GUIDES_2026: SeedGuide[] = [
 <ul>
 <li><strong>Masjid Quba</strong> (about 3.5 km): the first masjid of Islam. Two rak'ahs after wudu at home carry the reward of an Umrah. Many people walk there on Saturdays along the Quba walkway, which is around 3 km and takes about 45 minutes.</li>
 <li><strong>Masjid al-Jumu'ah</strong> (about 4 to 5 km): where the first Friday prayer was held in Madinah, on the way between the Haram and Quba.</li>
-<li><strong>Quba gardens:</strong> Bir Ariis and Bir al-Khatim are in the gardens near Quba, and the square around the masjid has family cafés.</li>
+<li><strong>Quba gardens:</strong> Bir Aris, also called Bir al-Khatim, is in the gardens near Quba: the well into which the Prophet's ﷺ ring fell from Uthman's hand. The square around the masjid has family cafés.</li>
 </ul>
 <h2>Khandaq, Mount Sala' and Qiblatayn</h2>
 <p>The Battle of the Trench took place in 5 AH around Mount Sala' (Sal'), north-west of the Haram. The small masjids on its slope are still called the Seven Masjids, although several have been rebuilt or joined into larger ones and fewer stand today. The best known is Masjid al-Fath, where the Prophet ﷺ made du'a, and the large Masjid al-Khandaq stands beside the site. The walk through the area takes about 40 minutes.</p>
@@ -1063,7 +1064,7 @@ export const GUIDES_2026: SeedGuide[] = [
     title: "Day trips and weekends away from Madinah",
     summary: "Badr, Khaybar, Yanbu, AlUla, Jeddah and more, with distance, drive time and the best months to go.",
     bodyHtml: `
-<p>Distances and times are by road from Madinah. For anywhere over 300 km, a flight or the Haramain train is often easier. Checked November 2026.</p>
+<p>Distances and times are by road from Madinah. For anywhere over 300 km a flight is often easier, and the Haramain train covers Jeddah and Makkah. Checked November 2026.</p>
 <table><thead><tr><th>Place</th><th>Distance</th><th>Drive</th><th>Good for</th></tr></thead><tbody>
 <tr><td>Wadi al-Jinn</td><td>about 30 km</td><td>about 40 min</td><td>A half-day outing to the valley where cars seem to roll uphill. Any car will do and you need no guide.</td></tr>
 <tr><td>Badr</td><td>about 150 km</td><td>1.5 to 2 h</td><td>The battlefield of the Battle of Badr, with a visitor centre and signs in Arabic and English. Leave after Fajr and be back by Maghrib. Take water and food, as services are limited.</td></tr>
@@ -1081,30 +1082,93 @@ export const GUIDES_2026: SeedGuide[] = [
 <li>Tell someone your route. Mobile signal fades more than 30 km from the city.</li>
 <li>Keep your iqama or passport and your car papers with you for police checkpoints.</li>
 </ol>
-<p>Hiring a car needs a licence your country is recognised for, and many companies ask for residency. See <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>`,
+<p>Hiring a car needs a licence that Saudi Arabia recognises, usually with an International Driving Permit, and many companies ask for residency. See <a href="/guides/drivers-license">Driving in Madinah: your Saudi driving licence</a> and <a href="/guides/getting-around">Getting around Madinah, and to Makkah</a>.</p>`,
   },
   {
     slug: "seasons-and-camping",
     stage: "getting-settled",
-    title: "Madinah by season, and where to camp",
-    summary: "What each season feels like, when the crowds peak, and the rules and places for camping around the city.",
+    title: "Madinah by season: summer, winter, Ramadan and where to camp",
+    summary: "The year month by month, when the city is busiest, the summer in detail (the heat and how to stay safe, your electricity bill, the University's long break and whether to go home or stay, exit and re-entry before you fly, summer courses), and the rules and places for camping.",
     bodyHtml: `
+<p>Checked November 2026. Madinah has two real seasons, a long hot summer and a short mild winter, with Ramadan and Hajj moving through them about eleven days earlier each year. This guide covers the year month by month, when the city is busiest, the summer in detail (the heat, your bills, the University's long break and what to do with it), and the rules and places for camping.</p>
 <h2>The year in Madinah</h2>
 <table><thead><tr><th>Season</th><th>Typical temperatures</th><th>What it is like</th></tr></thead><tbody>
 <tr><td>Winter, November to February</td><td>12 to 24°C in January, warmer in November</td><td>Cool and mostly dry, the best weather for walking and trips. Nights are cold in the open courtyards, so bring a layer for Maghrib and Isha. Most of the year's little rain falls between November and January, sometimes in sudden heavy bursts. It is also the busiest Umrah period.</td></tr>
-<tr><td>Spring, March to May</td><td>15 to 40°C</td><td>Pleasant in March and early April, hot by May. Dust storms can come, mostly from March to May.</td></tr>
+<tr><td>Spring, March to May</td><td>15 to 40°C</td><td>Pleasant in March and early April, hot by May. Dust storms come, mostly from March to May.</td></tr>
 <tr><td>Summer, June to August</td><td>28 to 44°C, hotter on the worst days</td><td>Very hot, with August the hottest month. Do outdoor things before 9 am or after 6 pm and drink water all day. The date harvest runs in late summer.</td></tr>
 <tr><td>Autumn, September to October</td><td>23 to 41°C</td><td>September is still very hot. The heat breaks during October and crowds are lighter.</td></tr>
 </tbody></table>
 <h2>When it is busiest</h2>
 <ul>
 <li><strong>Hajj</strong> (8 to 13 Dhul Hijjah, moving earlier each year): hotels are at their highest prices and traffic around the Haram is heavy.</li>
-<li><strong>The last 10 nights of Ramadan:</strong> huge crowds for Tahajjud. Daytime is quiet, and life and shopping start after Maghrib.</li>
+<li><strong>Ramadan, and above all the last ten nights:</strong> huge crowds for Taraweeh and Tahajjud. Daytime is quiet, and life and shopping start after Maghrib. The whole month is in <a href="/guides/ramadan-in-madinah">Ramadan in Madinah</a>.</li>
 <li><strong>December to February:</strong> the main Umrah season, with high but steadier numbers.</li>
 <li>Late September to mid November and late February to March have the best mix of weather and calm.</li>
 </ul>
+<h2>Summer: how hot, and when</h2>
+<table><thead><tr><th>Month</th><th>Typical daytime high</th><th>Typical night low</th><th>What it means</th></tr></thead><tbody>
+<tr><td>May</td><td>38 to 40°C</td><td>25°C</td><td>Hot. Outdoor things before 9 am and after Maghrib</td></tr>
+<tr><td>June to August</td><td>42 to 45°C</td><td>28 to 30°C</td><td>Very hot. The Haram's courtyards are hot to the touch by mid-morning, and dust storms come some afternoons</td></tr>
+<tr><td>September</td><td>39 to 41°C</td><td>26°C</td><td>Still very hot until the last week</td></tr>
+<tr><td>October</td><td>33 to 36°C</td><td>21°C</td><td>The heat breaks. Evenings are pleasant again</td></tr>
+</tbody></table>
+<h2>Staying safe in the heat</h2>
+<ul>
+<li>Stay out of direct sun between 10 am and 4 pm. Walk on the shaded side, use the umbrellas of the Haram courtyards, carry an umbrella of your own, and wear light colours.</li>
+<li>Drink before you are thirsty. Two to four litres a day in summer is normal. Water coolers stand at every gate of the Haram and in most masjids.</li>
+<li>Headache, dizziness, heavy sweating, nausea and cramps mean heat exhaustion: get into air conditioning, drink, cool the neck and wrists with water, and rest. Confusion, collapse or hot dry skin is heatstroke: call 997 at once and cool the person with water while you wait.</li>
+<li>Children, pregnant women, older parents and anyone fasting on a hot day are most at risk. Voluntary fasts in summer, such as Ashura and Mondays and Thursdays, fall on very long days, so plan a quiet afternoon.</li>
+<li>A parked car becomes an oven within minutes. Never leave a child or an animal in one, and run the air conditioning before you get in.</li>
+<li>The Ministry of Health's advice line is 937, 24 hours, in several languages.</li>
+</ul>
+<blockquote><p>Tip: Fajr and the hour after it is the best time of a summer day in Madinah. Students who pray Fajr in the Haram, study until Dhuhr, sleep in the afternoon and go out after Maghrib find summer easy.</p></blockquote>
+<h2>What summer does to your bills</h2>
+<p>Air conditioning is most of a summer electricity bill. The residential tariff in 2026 is 18 halalas per kilowatt-hour up to 6,000 kWh a month and 30 halalas above that, plus 15% VAT. From 1 January 2027 it rises to 21 and 33 halalas, with a fixed monthly charge of about 70 SAR for a normal household breaker. A two-bedroom flat with two split units running most of the day uses 1,000 to 2,000 kWh in a summer month, so expect about 200 to 500 SAR a month in summer against 100 to 150 in winter, and more under the 2027 tariff. Set the thermostat to 24°C, have the filters cleaned in May, and close the curtains on the sunny side. The year's figures are in <a href="/guides/cost-of-living">What it costs to live in Madinah</a>.</p>
+<h2>The long break: dates</h2>
+<table><thead><tr><th>1448 and 1449</th><th>Date</th></tr></thead><tbody>
+<tr><td>Second-semester final exams</td><td>25 April to 10 May 2027</td></tr>
+<tr><td>Eid al-Adha holiday</td><td>11 to 22 May 2027</td></tr>
+<tr><td>End-of-year holiday begins</td><td>3 June 2027</td></tr>
+<tr><td>Summer semester classes (optional, if the University runs one)</td><td>6 June 2027</td></tr>
+<tr><td>Summer semester finals</td><td>27 July 2027</td></tr>
+<tr><td>The 1449 academic year begins</td><td>22 August 2027</td></tr>
+</tbody></table>
+<p>The Academic System is the live authority for these dates, and they are all in the <a href="/guides/university-calendar-1448">University calendar</a>.</p>
+<h2>Go home or stay?</h2>
+<table><thead><tr><th>Topic</th><th>Going home</th><th>Staying in Madinah</th></tr></thead><tbody>
+<tr><td>Ticket</td><td>For full scholarship students, the yearly University ticket, issued against an Etimad travel order, covers one return trip to one of the cities the University sets for your country. Sign up when Travel Management collects the summer lists, because a student who misses the list gets no ticket</td><td>The ticket is yearly, and an unused ticket does not carry over</td></tr>
+<tr><td>Stipend</td><td>Continues through the break for full scholarship students</td><td>Continues</td></tr>
+<tr><td>Housing</td><td>Full scholarship students keep their room, except graduates, who leave it by the University's set date (27 June in 2026). Empty it of valuables, lock the wardrobe and take photos, because thefts from emptying halls happen every summer</td><td>The halls stay open. The mat'am closes over the break and reopens with the new year</td></tr>
+<tr><td>Residency</td><td>Iqama holders need an exit and re-entry visa before flying. Visitor ID holders travel on their visa and return on it while it is valid</td><td>Nothing to do</td></tr>
+<tr><td>Study</td><td>Take the texts home and keep your Arabic alive</td><td>The Haram's summer course, the dawrat around the Kingdom, and the library</td></tr>
+</tbody></table>
+<p>A partial (internal) scholarship carries no stipend, no ticket and no free housing, so the summer is planned on your own means.</p>
+<h2>Before you fly for the summer</h2>
+<ol>
+<li>With an iqama, check in Absher that your exit and re-entry visa covers the break before you book. In 1448 the University issues multiple visas in blocks with fixed end dates, sometimes without an application, and the last block covers the winter break, Ramadan and the summer. A visa you request yourself costs 200 SAR for a single visa of up to two months and 500 SAR for a multiple visa of three months. The visa cannot run past your iqama's expiry, so an iqama expiring in summer is renewed first.</li>
+<li>Come back before the visa's return date. Extending from abroad costs double and works only while the visa is still valid.</li>
+<li>On a Visitor ID, check in Absher that your visa covers your return date, and ask the Deanship of Admission and Registration through Tawasul if it expires during the break.</li>
+<li>Pay any traffic fines first. A fine blocks the visa.</li>
+<li>The University sets group travel dates for most students. Master's and PhD students choose their own, so set them with care: the rules in <a href="/guides/etimad-account">Your University ticket: Etimad, the travel order and the rules</a> make a date change expensive and a no-show final.</li>
+</ol>
+<p>Fees and the fine print are in <a href="/guides/iqama-and-exit-reentry-fees">Iqama, exit and re-entry, final exit and dependant fees</a>.</p>
+<h2>If you stay: summer courses and quiet study</h2>
+<ul>
+<li>The Prophet's Mosque runs a summer course in Qur'an and the mutun each year in Muharram and Safar, in person and online, for men and women, with sessions after Fajr and after Asr. In 1448 it ran from 5 to 31 July 2026. Registration is through the Haram's educational portal, announced on the Presidency's channels before Muharram.</li>
+<li>Several of the mashayikh pause their regular duroos over the summer and the Hajj season and restart in Rabi' al-Awwal. The <a href="/duroos">Duroos</a> page shows which lessons are paused.</li>
+<li>Intensive dawrat run in other cities in Safar, some with housing. They are announced on the Duroos updates page when the dates are known.</li>
+<li>The University's Central Library is open through the summer semester, Sunday to Thursday, air-conditioned and quiet.</li>
+<li>Madinah's own residents go out after Isha. The parks, the Quba walkway and the date farms are busy until well after midnight in summer.</li>
+</ul>
+<h2>Families in summer</h2>
+<ul>
+<li>Schools close from late June to late August. Soft-play centres and mall crèches are the daytime answer, and the parks after Maghrib. See <a href="/guides/kids-activities">Play areas and fun places for children</a>.</li>
+<li>Compounds and some hotels sell summer pool passes, and the University sports club has a pool for its members.</li>
+<li>The date harvest begins in late July and the date market is at its best in August and September. See <a href="/guides/dates-of-madinah">Dates of Madinah</a>.</li>
+<li>Parents visiting in summer find the cheapest hotels of the year and the hardest afternoons. The plan for a visit is in <a href="/guides/bringing-parents-to-visit">Bringing your parents to visit Madinah</a>.</li>
+</ul>
 <h2>Camping</h2>
-<p>Camping in open desert and wadis is a favourite weekend activity, but it is regulated. Camping in areas with natural vegetation needs a licence from the National Center for Vegetation Cover, issued on its Nabati platform, protected areas need a permit, and unlicensed camping in forests or national parks can be fined up to 3,000 SAR. Check the current rules before you go, and respect the signed heritage zones around Uhud.</p>
+<p>Camping in open desert and wadis is a favourite weekend activity from October to April, but it is regulated. Camping in areas with natural vegetation needs a licence from the National Center for Vegetation Cover, issued on its Nabati platform, protected areas need a permit, and unlicensed camping in forests or national parks can be fined up to 3,000 SAR. Check the current rules before you go, and respect the signed heritage zones around Uhud.</p>
 <ul>
 <li><strong>Fires:</strong> gas stoves and bought, imported charcoal are the norm. Never buy or burn local firewood or charcoal made from local trees: it is banned, and fines start in the thousands of riyals for each cubic metre. Never light a fire inside a protected reserve or a city park, and check for fire restrictions in summer.</li>
 <li><strong>Rubbish:</strong> take everything back with you, including charcoal ash and food scraps. Bring big bin bags.</li>
@@ -1123,7 +1187,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </tbody></table>
 <h3>Gear</h3>
 <p>Camping gear is sold online and in the shops around Souq al-Manakhah, including charcoal grills, dallah pots and floor mats.</p>
-`,
+<blockquote><p>Tip: Stuck on a step? Please message Admin on WhatsApp at +1 234 567 9076 or email <a href="mailto:mesh@albaseerah.org">mesh@albaseerah.org</a>.</p></blockquote>`,
   },
   {
     slug: "dates-of-madinah",
@@ -1194,7 +1258,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </tbody></table>
 <h2>Where to go</h2>
 <ul>
-<li><strong>University students:</strong> start with the University Medical Center on campus. It is free for scholarship students. Clinics run Sunday to Thursday from 8:00 am to 3:15 pm. An emergency shift follows until 11:00 pm on those days, and runs from 1:00 pm to 9:00 pm on Fridays and Saturdays. Book clinic appointments at <a href="https://vcappointments.iu.edu.sa/">vcappointments.iu.edu.sa</a> with your University login. Many private clinics also give students big discounts (see <a href="/discounts">Student discounts</a>).</li>
+<li><strong>University students:</strong> start with the University Medical Center on campus. It is free for scholarship students. Clinics run Sunday to Thursday from 8:00 am to 3:15 pm. An emergency shift follows until 11:00 pm on those days, and runs from 1:00 pm to 9:00 pm on Fridays and Saturdays. Book clinic appointments at <a href="https://vcappointments.iu.edu.sa/">vcappointments.iu.edu.sa</a> with your University login. The Medical Center treats family members on your iqama, once a file is opened for them in person at the Center, and then they book on the same site. Many private clinics also give students big discounts (see <a href="/discounts">Student discounts</a>).</li>
 <li><strong>Minor illness:</strong> a private clinic is quickest. A GP visit usually costs 100 to 200 SAR (see <a href="/guides/cost-of-living">What it costs to live in Madinah</a>).</li>
 <li><strong>Emergencies:</strong> go to the nearest hospital emergency department, or call 997.</li>
 <li><strong>Visitors:</strong> every visit visa comes with compulsory medical insurance, but it covers emergencies only, up to 100,000 SAR, with low limits for dental emergencies and childbirth. Routine visits are paid by you, and a private hospital may ask for payment up front, so keep some money aside or buy extra cover. If you extend your visa, the insurance must be extended too.</li>
@@ -1240,7 +1304,7 @@ export const GUIDES_2026: SeedGuide[] = [
 </tbody></table>
 <h2>Applying</h2>
 <ul>
-<li><strong>Islamic University of Madinah:</strong> the scholarship application opens once a year on the University's admission portal, and the steps, documents and dates are in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</li>
+<li><strong>Islamic University of Madinah:</strong> applied for on the Study in Saudi portal (studyinsaudi.sa), in the main spring window or a later extra round. The steps, documents and dates are in <a href="/guides/applying-to-the-islamic-university">Applying to the Islamic University</a>.</li>
 <li><strong>Prince Mugrin University:</strong> open to Saudis, residents, visitors and international students with a secondary school certificate, applied for on upm.edu.sa. For the first semester of 1448 the window ran from 14 June to 30 August 2026. Students start with a preparatory year, or go straight to their major with IELTS 5 or TOEFL 500. Fees are charged by the credit hour, and its scholarships are awarded by competition on grades and the English score.</li>
 <li><strong>Prince Musaid bin Abdulrahman University:</strong> applied for on the university's own admission portal. It took its new name by royal order on 18 September 2026.</li>
 <li><strong>Taibah University:</strong> residents apply on the university's own admission portal. Applicants from abroad apply for its international scholarships on Study in Saudi, with the age and certificate limits above.</li>
