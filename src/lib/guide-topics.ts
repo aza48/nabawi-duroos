@@ -16,7 +16,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "ابدأ هنا",
     blurb: "Applying, arriving and your first weeks: the steps in the order you will need them.",
     blurbAr: "التقديم والوصول وأسابيعك الأولى، بالترتيب الذي ستحتاجه.",
-    slugs: ["applying-to-the-islamic-university", "what-to-bring-to-madinah", "first-30-days-in-madinah", "new-student-steps", "your-first-semester-week-by-week", "living-on-a-visitor-id", "lost-your-iqama-passport-or-card", "sim-internet-bank"],
+    slugs: ["applying-to-the-islamic-university", "what-to-bring-to-madinah", "first-30-days-in-madinah", "new-student-steps", "your-first-semester-week-by-week", "living-on-a-visitor-id", "lost-your-iqama-passport-or-card", "sim-internet-bank", "ways-to-live-in-madinah-long-term"],
   },
   {
     id: "papers",
@@ -32,7 +32,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "السكن والمواصلات والصحة",
     blurb: "Renting a flat, buses, the train and taxis, and doctors, hospitals and pharmacies.",
     blurbAr: "استئجار شقة والحافلات والقطار وسيارات الأجرة والأطباء والمستشفيات والصيدليات.",
-    slugs: ["finding-an-apartment", "getting-around", "haramain-train-and-city-buses", "university-to-the-haram", "shipping-and-receiving-parcels", "doctors-hospitals-and-pharmacies"],
+    slugs: ["finding-an-apartment", "getting-around", "haramain-train-and-city-buses", "university-to-the-haram", "shipping-and-receiving-parcels", "doctors-hospitals-and-pharmacies", "avoiding-scams-in-madinah"],
   },
   {
     id: "study",
@@ -92,7 +92,7 @@ export const GUIDE_TOPICS: GuideTopic[] = [
     labelAr: "الأسرة والأخوات والأطفال",
     blurb: "Study for sisters, having a baby, schools and things to do with children.",
     blurbAr: "دراسة الأخوات والولادة والمدارس وأنشطة الأطفال.",
-    slugs: ["sisters-studying-in-madinah", "having-a-baby-in-madinah", "kindergartens-and-schools", "bringing-parents-to-visit", "family-records-on-absher", "getting-married-in-saudi-arabia", "kids-activities"],
+    slugs: ["sisters-studying-in-madinah", "having-a-baby-in-madinah", "kindergartens-and-schools", "bringing-parents-to-visit", "family-records-on-absher", "getting-married-in-saudi-arabia", "kids-activities", "homeschooling-in-madinah"],
   },
   {
     id: "explore",
