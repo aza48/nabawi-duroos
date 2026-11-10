@@ -1,0 +1,72 @@
+{
+    slug: "getting-married-in-saudi-as-a-resident",
+    stage: "family",
+    title: "Getting married in Saudi Arabia as a student or resident",
+    summary: "How a foreign student or resident marries in Saudi Arabia: the premarital screening and who needs it, the electronic contract on Najiz with a licensed ma'dhun, marrying a Saudi citizen, attesting the contract for use abroad, your wife's residence and housing, and marrying a wife who lives abroad.",
+    bodyHtml: `
+<p>Checked November 2026. Getting married here as a foreign student or resident has two official parts: the Ministry of Health's premarital screening, and an electronic marriage contract on Najiz, the Ministry of Justice's platform, completed by a licensed marriage officiant (ma'dhun). For the religious conditions of the nikah, ask a scholar: the University's scholars and the scholars at Masjid an-Nabawi answer questions.</p>
+<h2>The steps in order</h2>
+<ol>
+<li>Book the premarital screening, where your contract needs it, at least three months before the date.</li>
+<li>Check that the groom, the bride, her guardian (wali) and the two witnesses each have a mobile number registered in Absher.</li>
+<li>Create the contract application on Najiz and have every party confirm it by text message.</li>
+<li>Complete the contract with a licensed ma'dhun.</li>
+<li>Keep the electronic contract, and have it attested if you will use it outside Saudi Arabia.</li>
+</ol>
+<h2>The premarital screening</h2>
+<p>The Ministry of Health's Healthy Marriage programme (برنامج الزواج الصحي) tests a couple for two inherited blood disorders, sickle cell anaemia and thalassaemia, and for three infections: hepatitis B, hepatitis C and HIV.</p>
+<ul>
+<li><strong>Who needs it:</strong> it is compulsory for Saudi citizens, including a Saudi marrying a non-Saudi. On the Najiz marriage contract service, the screening is required for Saudi citizens only.</li>
+<li><strong>Booking:</strong> book in the Sehhaty app or by calling 937. You need your own ID and your partner's ID number and date of birth. You can attend separately or together.</li>
+<li><strong>Where:</strong> more than 300 screening centres across the Kingdom, in government and private health facilities.</li>
+<li><strong>Results:</strong> when both results are clear, a compatibility certificate is issued and each of you receives a text message with the certificate number and a link to view it. If either result is positive, the message asks you to book the counselling clinic, and the certificate is issued after that visit. The decision to marry stays with the couple.</li>
+<li><strong>Validity:</strong> the certificate is valid for six months. Paper certificates are not accepted, because the certificate is held in the Ministry's electronic system.</li>
+</ul>
+<h2>The marriage contract on Najiz</h2>
+<p>Marriage contracts are electronic. You create the application on <a href="https://najiz.sa/">najiz.sa</a> or in the Najiz app, and a ma'dhun licensed by the Ministry of Justice (مأذون الأنكحة) completes it.</p>
+<h3>What you need</h3>
+<ul>
+<li>The details of the groom, the bride, her guardian and the two witnesses, or of anyone acting for them under a power of attorney.</li>
+<li>A mobile number registered in Absher for every one of them, and a Nafath (National Single Sign-On) login for the person who files. Activation problems: see <a href="/ask/absher-nafath-activation">My Absher or Nafath activation keeps failing. What do I do?</a></li>
+<li>Every party and witness over 18. A bride or groom under 18 needs a court's approval first.</li>
+<li>The guardian follows the order of guardianship in the Sharia. If someone other than the father is the guardian, attach proof that guardianship passed to him.</li>
+<li>For a divorced bride, the electronic divorce document number or a copy of the paper deed. For a widow, the heirship document number or a copy of the paper deed.</li>
+<li>The screening certificate, where it applies.</li>
+<li>Documents issued outside Saudi Arabia, including a foreign power of attorney, certified by the Ministry of Justice.</li>
+</ul>
+<h3>The steps</h3>
+<ol>
+<li>Sign in to Najiz with Nafath, open All Electronic Services, then Social Affairs (الحالات الاجتماعية), then Create Marriage Contract (إنشاء عقد زواج).</li>
+<li>Enter the bride's details and status, the groom's details, the guardian's details, the screening, the mahr, any conditions set by either side, the place, the witnesses and the attachments, then submit. A text message gives you the application number.</li>
+<li>After review, the groom, the bride, the guardian and the witnesses each receive a text asking them to confirm the application.</li>
+<li>Choose a ma'dhun from the Marriage Registrars' Directory (دليل مأذوني الأنكحة) on Najiz and give him the application number.</li>
+<li>The ma'dhun hears the parties, checks the terms and approves the contract on Najiz. The marriage contract certificate is issued and every party is told by text.</li>
+</ol>
+<p>Before you submit, check each name letter by letter against the Arabic spelling on the iqama. To check a contract afterwards, use Marriage Contract Verification on Najiz with the document number and an ID number. The Ministry of Justice's helpline is 1950.</p>
+<h2>Marrying a Saudi citizen</h2>
+<p>A marriage between a Saudi and a non-Saudi follows the Regulation on Marriage of Saudis to Non-Saudis, issued by the Minister of Interior. The Saudi partner first asks for permission to marry through the emirate's marriage services in Absher, and the contract follows the approval. It is then documented on Najiz through Notarise Marriage with a Non-Saudi Spouse (توثيق زواج أحد الزوجين غير سعودي), which always requires the screening.</p>
+<p>The non-Saudi partner takes a wider screening: sickle cell anaemia, beta thalassaemia, G6PD deficiency, haemophilia, hepatitis B and C, HIV and syphilis. A drug test is added when a non-Saudi man marries a Saudi woman.</p>
+<h2>Using your contract outside Saudi Arabia</h2>
+<p>Offices abroad want the contract attested. A contract issued in Saudi Arabia, for Saudis and foreigners alike, goes through two ministries.</p>
+<ol>
+<li><strong>Ministry of Justice:</strong> it certifies the contract first.</li>
+<li><strong>Ministry of Foreign Affairs:</strong> apply on its attestation portal, <a href="https://ratification.mofa.gov.sa/">ratification.mofa.gov.sa</a>. Choose the Madinah branch, then a branch visit or delivery by Saudi Post. The fee is 30 SAR for each document, paid online, with one paid document per request. The applicant is the person named in the document or someone holding their power of attorney.</li>
+</ol>
+<p>For a country that is party to the Apostille Convention, apply on the same portal for an apostille certificate in place of the Ministry of Foreign Affairs attestation. That country's embassy then does not need to stamp the contract.</p>
+<p>Your embassy keeps its own rules for recording a marriage of its citizens, so ask it what it needs.</p>
+<blockquote><p>Tip: Keep the contract and every attestation as PDFs on your phone for family visas and a baby's papers later.</p></blockquote>
+<h2>Your wife's residence and University housing</h2>
+<ul>
+<li><strong>Students with an iqama:</strong> the University's family residency (istiqdam), the route for a student's wife to join him as a dependant, has been closed since January 2025. See <a href="/ask/istiqdam-deposit">Can I sponsor my family, and what is the deposit?</a></li>
+<li><strong>Visitor ID:</strong> family visas for students on the educational visa go through the University's own procedures, so ask the University through Tawasul before you plan. See <a href="/guides/living-on-a-visitor-id">Living on a Visitor ID: what works and what does not</a>.</li>
+<li><strong>Other iqama holders:</strong> once your wife holds an iqama as your dependant, you manage her records in Absher under Family Members Services. See <a href="/guides/family-records-on-absher">Your family's iqamas and records on Absher</a>.</li>
+<li><strong>Housing:</strong> University family units are offered only when one is free, so most married students rent in the city. See <a href="/ask/married-students-housing">Do married students get free housing?</a> and <a href="/guides/finding-an-apartment">Finding and renting a flat</a>.</li>
+</ul>
+<h2>Marrying a wife who lives abroad</h2>
+<ul>
+<li><strong>The screening when one of you is abroad:</strong> the partner abroad has the tests done there, covering thalassaemia, sickle cell anaemia, hepatitis B and C and HIV, with full personal details on the report. The Saudi embassy in that country authenticates the results, and the family here gives a PDF copy to a screening centre, which issues the certificate.</li>
+<li><strong>A contract here while a party is abroad:</strong> Najiz accepts a party acting through an agent, and a power of attorney issued abroad must first be certified by the Ministry of Justice. Ask a scholar about appointing an agent for the nikah itself.</li>
+<li><strong>A marriage concluded in her country:</strong> for use in Saudi Arabia, the contract is attested by the Saudi embassy in that country, or by your own country's embassy here, and then by the Ministry of Foreign Affairs.</li>
+<li><strong>Bringing her here:</strong> the marriage certificate is the proof of relationship for a family visit visa. The visas, the fingerprint step and extensions are in <a href="/guides/visas-for-family-and-visitors">Visas for family members and visitors</a>.</li>
+</ul>`,
+  },
