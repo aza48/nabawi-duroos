@@ -27,7 +27,7 @@ Sources: `docs/research/telegram-iu-2026-11/` (TG) and `docs/research/gomedine-2
 19. **If a student passes away.** What the University and the family do; burial in al-Baqi'. A sensitive but much-needed page. (TG c7)
 
 20. **Ramadan as a student.** Classes, iftar, Umrah trips, i'tikaf registration, volunteering. **(covered by akhiai's `ramadan-in-madinah`; campus iftar, Umrah trips and Haram volunteering could be added to it)** (TG delta)
-21. **Scams and staying safe.** The borrowing trick near the colleges, stolen accounts and codes, fake bank messages, Hajj packages outside Nusuk. **(done: `scams-and-staying-safe`)** (TG delta)
+21. **Scams and staying safe.** The borrowing trick near the colleges, stolen accounts and codes, fake bank messages, Hajj packages outside Nusuk. **(naseer's `avoiding-scams-in-madinah`, #109, with admin's student sections added)** (TG delta)
 22. **Finding your way around the campus.** A plain-words map: main gate and permits office, Unit 22 (card counter, Student Fund, bookshop), Unit 13, the Deanship of Student Affairs, the mat'am behind the Sharia college. (TG delta 3.3)
 23. **Can I work while I study?** Asked every year; needs the University's answer (sponsor approval). FAQ. (TG c1 to c5)
 24. **Student support when things go wrong.** Counselling unit, college guidance, Student Fund aid, Scholarship Fund hardship rounds, the Medical Center. (TG delta 3.5)
