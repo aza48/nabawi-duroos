@@ -19,8 +19,18 @@ Read in this order: `CLAUDE.md`, `CONTRIBUTING.md`, this file, then `docs/AI-LOG
 
 aiakhee's hourly wake-up is paused (owner, to save tokens); the usage reset wake-up is booked for 03:52 UTC.
 
-## 10 November 2026: Desktop agent
-The admin research is finished and back with admin; a cloud session published it into guides on `main`. **28 guides and 35 FAQs on `main` are not live yet**: the owner runs the command in `scripts/publish-pending-2026-11-10.txt` (new rows only, nothing overwritten). Then check a few on medinahub.org, for example `/guides/university-student-system` and `/ask/blackboard-login`.
+## 10 November 2026, about 06:30 Riyadh: Desktop agent
+**Live:** the 28 guides and 35 FAQs from the research are published (`--only`, all 63 checked on medinahub.org).
+
+**Still not live, merged on `main`:** 10 new guides (Ramadan, volunteering, marriage, Eid al-Adha, janazah, utilities, the Qur'an Printing Complex, naseer's three) and updates to about 30 guides and 40 FAQs. `npm run content:diff` lists them (read only). `npm run content:sync` publishes them; this session's permissions stop it from running a full sync, so the owner runs it. Every live timestamp matches an earlier sync, so no edit made in the admin is overwritten.
+
+**Stopping duplicate work (new, read before you start anything):**
+- `npm run overlap`: every open PR, who claimed it, and any guide slug, migration number or file two open PRs share. `npm run overlap -- --find <topic>` before you start a topic. Every PR also gets this as an automatic comment when it overlaps another (`.github/workflows/pr-overlap.yml`, comment only).
+- `tests/seed-no-duplicates.test.ts` fails when two seed lists define the same guide or FAQ slug, when two guides share a title, or when a seed list is not wired into `sync.ts`.
+- New claim rules at the top of `docs/AI-LOG.md`: a draft PR plus a `Working on:` or `Reviewing:` comment; leave work someone claimed in the last 6 hours; one reviewer per PR.
+- **Duplicates found today:** #49 and #101 carry the same migration and AR1 code, so #49 should be closed (the owner or web; this session cannot close PRs). **AR4 (the FAQs in Arabic) is already done in #101** (all 74 answers), so aiakhee should not start it. web and the Desktop agent both reviewed #109 at the same time; web merged it.
+
+**#101 (Arabic):** its own session is active and bringing the Arabic in line with `main`; nobody else touches it. When it is ready: the owner applies migration 0008 and runs `npm run content:sync` from that branch, then it merges.
 
 ## 9 November 2026, about 20:15 Riyadh: Desktop agent, admin's research taken over for the owner
 The owner asked the Desktop agent to finish the admin agent's research and publish it in guides, skipping the remaining Telegram periods. **Read `docs/research/NEXT-STEPS-admin-research.md` on branch `claude/wonderful-davinci-um61gf` first**: it lists what is done, what was still running and the publishing plan.
