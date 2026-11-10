@@ -4,6 +4,7 @@
  * MESH reader page, so nobody has to dig through Drive.
  */
 import data from "./library-books.json";
+import { toArabicDigits, toAsciiDigits } from "@/lib/locale";
 import { normalize } from "@/lib/search/normalize";
 
 export type LibFile = { id: string; t: string; k: "pdf" | "img" | "video" | "audio" | "doc" | "other"; m?: string };
@@ -109,8 +110,6 @@ const TITLE_FIXES: Record<string, string> = {
   "1sPUEk4QE-bYyJtd2csXb66UgW75uDf56": "ملف من مقررات كلية التربية",
 };
 
-const arDigit = (n: number) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
-
 /** A file whose name says nothing takes its folder's name, numbered in brackets when several in that folder do. */
 function cleanTree(n: LibFolder): LibFolder {
   const folder = cleanTitle(n.t);
@@ -127,7 +126,7 @@ function cleanTree(n: LibFolder): LibFolder {
       const t = named[i]!;
       if (!isJunkTitle(t)) return { ...c, t };
       k++;
-      return { ...c, t: numbered ? `${folder} (${ar ? arDigit(k) : k})` : folder };
+      return { ...c, t: numbered ? `${folder} (${ar ? toArabicDigits(k) : k})` : folder };
     }),
   };
 }
@@ -143,7 +142,7 @@ export const countFiles = (n: LibNode): number => (isFolder(n) ? n.f.reduce((a, 
 /** "المستوى 3" reads as "Level 3"; other folder names stay as they are. */
 const ORDINALS: Record<string, number> = { الاول: 1, الأول: 1, الثاني: 2, الثالث: 3, الرابع: 4, الخامس: 5, السادس: 6, السابع: 7, الثامن: 8 };
 export function levelLabel(t: string): string | null {
-  const s = t.replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d))).trim();
+  const s = toAsciiDigits(t).trim();
   const m = /^المستوى\s*(\d+|\S+)$/.exec(s);
   if (!m) return null;
   const n = /^\d+$/.test(m[1]) ? Number(m[1]) : ORDINALS[m[1]];
@@ -223,7 +222,7 @@ export function fileIndex(): Map<string, FileHit> {
   return index;
 }
 
-const fold = (s: string) => normalize(s.replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d))));
+const fold = (s: string) => normalize(toAsciiDigits(s));
 
 /** Files whose name, subject, level or college match every word typed. */
 export function searchFiles(q: string, limit = 60): FileHit[] {

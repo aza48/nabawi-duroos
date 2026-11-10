@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { inputCls } from "../ui";
+import { WEEKDAYS_SHORT_EN as DAY } from "@/lib/locale";
 
 type Row = { slug: string; bookEn: string; bookAr: string; prayer: string; days: number[]; status: string; masjid: string; shaykh: string };
-const DAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export function LessonList({ rows }: { rows: Row[] }) {
   const [q, setQ] = useState("");

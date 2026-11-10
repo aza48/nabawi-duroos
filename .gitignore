@@ -12,3 +12,5 @@ data/pending.json
 .superpowers/
 next-env.d.ts
 *.tsbuildinfo
+# full live guides/FAQs dumps from npm run content:diff -- --backup=<dir>
+live-content-*.json

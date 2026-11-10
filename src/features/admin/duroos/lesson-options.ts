@@ -1,7 +1,7 @@
 import type { adminLessons } from "@/server/admin/queries";
 import type { LessonOption } from "./AnnouncementForm";
+import { WEEKDAYS_SHORT_EN as DAY } from "@/lib/locale";
 
-const DAY = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
 /** Dars choices for the update form: "Shaykh: book, masjid, after prayer, days", active duroos only. */
 export function lessonOptions(rows: Awaited<ReturnType<typeof adminLessons>>): LessonOption[] {

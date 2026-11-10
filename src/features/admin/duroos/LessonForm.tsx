@@ -6,6 +6,7 @@ import { createLessonAction, updateLessonAction } from "@/app/(admin)/admin/acti
 import { btnPrimary, ErrorNote, Field, inputCls } from "../ui";
 import { useUnsavedWarning } from "../useUnsavedWarning";
 import { useFeedback } from "../Feedback";
+import { WEEKDAYS_SHORT_EN as DAYS } from "@/lib/locale";
 
 type Lesson = {
   slug?: string; bookEn: string; bookAr: string; bookAuthorEn: string | null; bookAuthorAr: string | null; bookUrl?: string | null; topic: string;
@@ -14,7 +15,6 @@ type Lesson = {
   validFrom: string | null; validTo: string | null; masjidId: string;
 };
 
-const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const PRAYERS = ["fajr", "dhuhr", "asr", "maghrib", "isha"] as const;
 const TOPICS = ["aqidah", "tafsir", "hadith", "fiqh", "sirah", "manhaj", "usul"];
 
