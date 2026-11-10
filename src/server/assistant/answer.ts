@@ -186,16 +186,22 @@ function inArabicWherePossible(found: Passage[], chunks: Chunk[], question: stri
     let q: Passage = p;
     const twins = p.lang === "ar" ? undefined : pages.get(pageKey(p.url));
     if (twins) {
-      const best = twins.map((c) => ({ c, n: termHits(terms, `${c.title} ${c.section ?? ""} ${c.text}`) })).sort((x, y) => y.n - x.n)[0];
+      // The Arabic of the same section first (same headings in the same order), then any Arabic passage of the page.
+      const same = p.part === undefined ? [] : twins.filter((c) => c.part === p.part);
+      const pool = same.some((c) => answers(question, c)) ? same : twins;
+      const best = pool.map((c) => ({ c, n: termHits(terms, `${c.title} ${c.section ?? ""} ${c.text}`) })).sort((x, y) => y.n - x.n)[0];
       if (best && answers(question, best.c)) q = { ...best.c, score: p.score, cover: p.cover };
     }
     if (seen.has(q.id)) continue;
     seen.add(q.id);
     out.push(q);
   }
-  // An answer in the reader's language comes first.
+  // An answer in the reader's language comes first, except after a calendar date the search put first for a "when"
+  // question: "متى الاختبارات النهائية" is answered by the date, not by a page that also mentions the exams.
+  const lead = out[0]?.kind === "date" ? out.slice(0, 1) : [];
+  const rest = out.slice(lead.length);
   const answering = (p: Passage) => p.lang === "ar" && answers(question, p);
-  return [...out.filter(answering), ...out.filter((p) => !answering(p))];
+  return [...lead, ...rest.filter(answering), ...rest.filter((p) => !answering(p))];
 }
 
 /**

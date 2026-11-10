@@ -275,7 +275,12 @@ const built = new WeakMap<Chunk[], { en?: Retriever; ar?: Retriever }>();
 export function retrieverFor(chunks: Chunk[], lang: "en" | "ar"): Retriever {
   const slot = built.get(chunks) ?? {};
   built.set(chunks, slot);
-  return (slot[lang] ??= createRetriever(lang === "ar" ? chunks : chunks.filter((c) => c.lang !== "ar")));
+  return (slot[lang] ??= createRetriever(lang === "ar" ? chunks.map(withArabicKeywords) : chunks.filter((c) => c.lang !== "ar")));
+}
+
+/** For Arabic questions, an English passage also carries its page's Arabic title or question, so the question finds it. */
+function withArabicKeywords(c: Chunk): Chunk {
+  return c.keywordsAr ? { ...c, keywords: [c.keywords, c.keywordsAr].filter(Boolean).join(" ") } : c;
 }
 
 /**

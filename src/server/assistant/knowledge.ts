@@ -31,6 +31,10 @@ export type Chunk = {
   url: string;
   /** Extra search words that are not shown (an FAQ's tags). */
   keywords?: string;
+  /** Arabic words that find an English passage (its page's Arabic title or question). Only Arabic questions search them. */
+  keywordsAr?: string;
+  /** A guide passage's place: -1 the summary, then 0 for the text before the first heading and 1, 2... per heading. The Arabic twin of a section has the same number. */
+  part?: number;
   /** "ar" when the passage itself is Arabic (a translated guide or answer); English otherwise. */
   lang?: "ar";
   /** The page's Arabic title, shown as the source when an English passage answers an Arabic question. */
@@ -100,16 +104,17 @@ function windows(blocks: string[]): string[] {
 export function chunkGuide(g: { slug: string; title: string; summary: string; bodyHtml: string }, base = "/guides/", opts: { lang?: "ar"; titleAr?: string } = {}): Chunk[] {
   const url = `${base}${g.slug}`;
   const id = opts.lang ? `guide-ar-${g.slug}` : `guide-${g.slug}`;
-  const extra = { ...(opts.lang ? { lang: opts.lang } : {}), ...(opts.titleAr ? { titleAr: opts.titleAr, keywords: opts.titleAr } : {}) };
-  const out: Chunk[] = [{ id: `${id}-0`, kind: "guide", title: g.title, text: g.summary, url, ...extra }];
+  const extra = { ...(opts.lang ? { lang: opts.lang } : {}), ...(opts.titleAr ? { titleAr: opts.titleAr, keywordsAr: opts.titleAr } : {}) };
+  const out: Chunk[] = [{ id: `${id}-0`, kind: "guide", title: g.title, text: g.summary, url, part: -1, ...extra }];
   const root = parse(g.bodyHtml);
   const used = new Set<string>();
   let section: string | undefined;
   let anchor = "";
   let blocks: string[] = [];
   let n = 1;
+  let part = 0;
   const flush = () => {
-    for (const w of windows(blocks)) out.push({ id: `${id}-${n++}`, kind: "guide", title: g.title, section, text: w, url: anchor ? `${url}#${anchor}` : url, ...extra });
+    for (const w of windows(blocks)) out.push({ id: `${id}-${n++}`, kind: "guide", title: g.title, section, text: w, url: anchor ? `${url}#${anchor}` : url, part, ...extra });
     blocks = [];
   };
   for (const node of root.childNodes) {
@@ -117,6 +122,7 @@ export function chunkGuide(g: { slug: string; title: string; summary: string; bo
     const tag = el.tagName?.toLowerCase();
     if (tag === "h2") {
       flush();
+      part++;
       section = squash(el.text);
       // Same ids as enhanceGuideHtml gives the headings on the page.
       let id = slugify(section);
@@ -258,7 +264,7 @@ type FaqIn = { slug: string; question: string; answerHtml: string; tags?: string
 export function faqChunks(f: FaqIn): Chunk[] {
   const tags = (f.tags ?? []).join(" ");
   const questionAr = filled(f.questionAr) ? f.questionAr.trim() : undefined;
-  const en: Chunk = { id: `faq-${f.slug}`, kind: "faq", title: f.question, text: answerText(f.answerHtml), url: `/ask/${f.slug}`, keywords: [tags, questionAr].filter(Boolean).join(" "), ...(questionAr ? { titleAr: questionAr } : {}) };
+  const en: Chunk = { id: `faq-${f.slug}`, kind: "faq", title: f.question, text: answerText(f.answerHtml), url: `/ask/${f.slug}`, keywords: tags, ...(questionAr ? { titleAr: questionAr, keywordsAr: questionAr } : {}) };
   if (!hasVisibleHtml(f.answerHtmlAr)) return [en];
   return [en, { id: `faq-ar-${f.slug}`, kind: "faq", lang: "ar", title: questionAr ?? f.question, text: answerText(f.answerHtmlAr!), url: `/ar/ask/${f.slug}`, keywords: [tags, f.question].join(" ") }];
 }
